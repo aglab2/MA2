@@ -487,16 +487,16 @@ ALWAYS_INLINE void check_move_end_position(struct MarioState *m, struct MoveData
 
         // Clip if collision was found
         if (moveResult->hitSurface != NULL) {
-            const f32 DistanceMoved = sqrtf(sqr(hitPos[0] - moveResult->intendedPos[0])
+            const f32 distanceMoved = sqrtf(sqr(hitPos[0] - moveResult->intendedPos[0])
                                             + sqr(hitPos[1]- MARIOHEIGHT / 2 - moveResult->intendedPos[1])
                                             + sqr(hitPos[2] - moveResult->intendedPos[2]));
             // move back either by as wide as mario is or the whole distance, whatever is less.
-            const f32 MoveBackScale = (MIN(DistanceMoved, MARIOWIDENESS) / moveSize);
+            const f32 moveBackScale = (MIN(distanceMoved, MARIOWIDENESS) / moveSize);
             if (absf((moveResult->hitSurface)->normal.y) <= NORMAL_WALL_THRESHOLD) {
-                moveResult->intendedPos[0] = hitPos[0] - moveVector[0] * MoveBackScale;
+                moveResult->intendedPos[0] = hitPos[0] - moveVector[0] * moveBackScale;
                 moveResult->intendedPos[1] =
-                    hitPos[1] - moveVector[1] * MoveBackScale - MARIOHEIGHT / 2;
-                moveResult->intendedPos[2] = hitPos[2] - moveVector[2] * MoveBackScale;
+                    hitPos[1] - moveVector[1] * moveBackScale - MARIOHEIGHT / 2;
+                moveResult->intendedPos[2] = hitPos[2] - moveVector[2] * moveBackScale;
             } else if ((moveResult->hitSurface)->normal.y < 0.f) {
                 // let the binary search find a good position towards mario's direction
                 moveResult->intendedPos[0] = hitPos[0] + moveResult->hitSurface->normal.x;
@@ -602,11 +602,11 @@ s32 finish_move(struct MarioState *m, struct MoveData *moveResult) {
 
     const float ceilDist = m->ceilHeight - m->pos[1];
     if (ceilDist < moveResult->marioHeight) {
-        const float MissingDist = moveResult->marioHeight - ceilDist;
+        const float missingDist = moveResult->marioHeight - ceilDist;
         // Why am I dividing by 2 here? I don't know.
-        m->pos[0] += m->ceil->normal.x * MissingDist/2;
-        m->pos[1] += m->ceil->normal.y * MissingDist/2;
-        m->pos[2] += m->ceil->normal.z * MissingDist/2;
+        m->pos[0] += m->ceil->normal.x * missingDist/2;
+        m->pos[1] += m->ceil->normal.y * missingDist/2;
+        m->pos[2] += m->ceil->normal.z * missingDist/2;
         if ((moveResult->stepArgs & STEP_CHECK_HANG) && m->ceil != NULL
             && ((m->ceil->type  == SURFACE_HANGABLE))) {
             m->vel[1] = 0.0f;
