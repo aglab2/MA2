@@ -449,102 +449,99 @@ void set_vel_from_yaw(struct MarioState *m) {
 
 // Movedata lets us pass by struct to reduce arg passing overhead
 struct MoveData {
-    struct Surface *HitSurface; // Raycast hit result
-    struct Surface *Wall;
-    struct Surface *Floor;
-    struct Surface *Ceil;
-    f32 IntendedPos[3]; // Position we believe to be a good enough approximation for where mario can go
-    f32 GoalPos[3];     // Position we originally wanted to move towards
-    f32 FloorHeight;
-    f32 CeilHeight;
-    f32 MarioHeight;
-    s32 StepArgs;
-    f32 BiggestValidMove; // How much we managed to move
+    struct Surface *hitSurface; // Raycast hit result
+    struct Surface *wall;
+    struct Surface *floor;
+    struct Surface *ceil;
+    f32 intendedPos[3]; // Position we believe to be a good enough approximation for where mario can go
+    f32 goalPos[3];     // Position we originally wanted to move towards
+    f32 floorHeight;
+    f32 ceilHeight;
+    f32 marioHeight;
+    s32 stepArgs;
+    f32 biggestValidMove; // How much we managed to move
 };
 
 // Snap to the first collision in direction
-ALWAYS_INLINE void CheckMoveEndPosition(struct MarioState *m, struct MoveData *MoveResult) {
-    MoveResult->HitSurface = 0;
-    Vec3f MoveVector;
-    MoveVector[0] = MoveResult->IntendedPos[0] - m->pos[0];
-    MoveVector[1] = MoveResult->IntendedPos[1] - m->pos[1];
-    MoveVector[2] = MoveResult->IntendedPos[2] - m->pos[2];
-    f32 MoveSize = vec3_mag(MoveVector);
-    if (MoveSize > 0.0f) {
+ALWAYS_INLINE void check_move_end_position(struct MarioState *m, struct MoveData *moveResult) {
+    moveResult->hitSurface = 0;
+    Vec3f moveVector;
+    moveVector[0] = moveResult->intendedPos[0] - m->pos[0];
+    moveVector[1] = moveResult->intendedPos[1] - m->pos[1];
+    moveVector[2] = moveResult->intendedPos[2] - m->pos[2];
+    f32 moveSize = vec3_mag(moveVector);
+    if (moveSize > 0.0f) {
         // Scale up move size to account for mario's size
-        f32 ScaledMoveSize = ((MoveSize + MARIOWIDENESS) / MoveSize);
+        f32 scaledMoveSize = ((moveSize + MARIOWIDENESS) / moveSize);
         // Seperate clipvector saves us some multiplications down the line!
-        Vec3f ClipVector;
-        ClipVector[0] = MoveVector[0] * ScaledMoveSize;
-        ClipVector[1] = MoveVector[1] * ScaledMoveSize;
-        ClipVector[2] = MoveVector[2] * ScaledMoveSize;
+        Vec3f clipVector;
+        clipVector[0] = moveVector[0] * scaledMoveSize;
+        clipVector[1] = moveVector[1] * scaledMoveSize;
+        clipVector[2] = moveVector[2] * scaledMoveSize;
 
         // Use the middle of Mario's to most represent his hitbox (idealls this would be a capsule cast)
         m->pos[1] += MARIOHEIGHT / 2;
-        Vec3f HitPos;
-        find_surface_on_ray(m->pos, ClipVector, &MoveResult->HitSurface, HitPos, 7);
+        Vec3f hitPos;
+        find_surface_on_ray(m->pos, clipVector, &moveResult->hitSurface, hitPos, 7);
         m->pos[1] -= MARIOHEIGHT / 2;
 
         // Clip if collision was found
-        if (MoveResult->HitSurface != NULL) {
-            const f32 DistanceMoved = sqrtf(sqr(HitPos[0] - MoveResult->IntendedPos[0])
-                                            + sqr(HitPos[1]- MARIOHEIGHT / 2 - MoveResult->IntendedPos[1])
-                                            + sqr(HitPos[2] - MoveResult->IntendedPos[2]));
+        if (moveResult->hitSurface != NULL) {
+            const f32 DistanceMoved = sqrtf(sqr(hitPos[0] - moveResult->intendedPos[0])
+                                            + sqr(hitPos[1]- MARIOHEIGHT / 2 - moveResult->intendedPos[1])
+                                            + sqr(hitPos[2] - moveResult->intendedPos[2]));
             // move back either by as wide as mario is or the whole distance, whatever is less.
-            const f32 MoveBackScale = (MIN(DistanceMoved, MARIOWIDENESS) / MoveSize);
-            if (absf((MoveResult->HitSurface)->normal.y) <= NORMAL_WALL_THRESHOLD) {
-                MoveResult->IntendedPos[0] = HitPos[0] - MoveVector[0] * MoveBackScale;
-                MoveResult->IntendedPos[1] =
-                    HitPos[1] - MoveVector[1] * MoveBackScale - MARIOHEIGHT / 2;
-                MoveResult->IntendedPos[2] = HitPos[2] - MoveVector[2] * MoveBackScale;
-            } else if ((MoveResult->HitSurface)->normal.y < 0.f) {
+            const f32 MoveBackScale = (MIN(DistanceMoved, MARIOWIDENESS) / moveSize);
+            if (absf((moveResult->hitSurface)->normal.y) <= NORMAL_WALL_THRESHOLD) {
+                moveResult->intendedPos[0] = hitPos[0] - moveVector[0] * MoveBackScale;
+                moveResult->intendedPos[1] =
+                    hitPos[1] - moveVector[1] * MoveBackScale - MARIOHEIGHT / 2;
+                moveResult->intendedPos[2] = hitPos[2] - moveVector[2] * MoveBackScale;
+            } else if ((moveResult->hitSurface)->normal.y < 0.f) {
                 // let the binary search find a good position towards mario's direction
-                MoveResult->IntendedPos[0] = HitPos[0] + MoveResult->HitSurface->normal.x;
-                MoveResult->IntendedPos[1] = HitPos[1] - MARIOHEIGHT / 2;
-                MoveResult->IntendedPos[2] = HitPos[2] + MoveResult->HitSurface->normal.z;
+                moveResult->intendedPos[0] = hitPos[0] + moveResult->hitSurface->normal.x;
+                moveResult->intendedPos[1] = hitPos[1] - MARIOHEIGHT / 2;
+                moveResult->intendedPos[2] = hitPos[2] + moveResult->hitSurface->normal.z;
             } else {
-                MoveResult->IntendedPos[0] = HitPos[0];
+                moveResult->intendedPos[0] = hitPos[0];
                 // Snap far enough down to guarantee find_floor will find a bigger value.
-                MoveResult->IntendedPos[1] = HitPos[1] - ((f32) FLOOR_SNAP_OFFSET) / 2.f;
-                MoveResult->IntendedPos[2] = HitPos[2];
+                moveResult->intendedPos[1] = hitPos[1] - ((f32) FLOOR_SNAP_OFFSET) / 2.f;
+                moveResult->intendedPos[2] = hitPos[2];
             }
         }
     }
 }
 
 // Checks if the new position is valid.
-s32 CheckMoveValid(struct MarioState *m, struct MoveData *MoveResult) {
+s32 check_move_valid(struct MarioState *m, struct MoveData *moveResult) {
     // Wall collisino happens first since walls will never prevent a move.
     struct WallCollisionData wallCollision;
-    resolve_and_return_wall_collisions(MoveResult->IntendedPos, (60.0f), MARIOWIDENESS, &wallCollision);
+    resolve_and_return_wall_collisions(moveResult->intendedPos, (60.0f), MARIOWIDENESS, &wallCollision);
     // Use last wall we collided with as the wall under consideration
-    MoveResult->Wall = wallCollision.numWalls > 0 ? wallCollision.walls[wallCollision.numWalls - 1] : NULL;
-    // MoveResult->FloorHeight =
-    //     find_floor_marioair(MoveResult->IntendedPos[0], MoveResult->IntendedPos[1],
-    //                         MoveResult->IntendedPos[2], &MoveResult->Floor, m->vel[1]);
-    MoveResult->FloorHeight =
-        find_floor_marioair(MoveResult->IntendedPos[0], MoveResult->IntendedPos[1],
-                            MoveResult->IntendedPos[2], &MoveResult->Floor);
+    moveResult->wall = wallCollision.numWalls > 0 ? wallCollision.walls[wallCollision.numWalls - 1] : NULL;
+    moveResult->floorHeight =
+        find_floor_marioair(moveResult->intendedPos[0], moveResult->intendedPos[1],
+                            moveResult->intendedPos[2], &moveResult->floor);
     // oob is invalid
-    if (!MoveResult->Floor)
+    if (!moveResult->floor)
         return 0;
     // snap up early to make sure ceiling test happens from the right spot
-    if ((MoveResult->StepArgs & STEP_SNAP_TO_FLOOR)
-        && MoveResult->IntendedPos[1] < MoveResult->FloorHeight + FLOOR_SNAP_OFFSET) {
-        MoveResult->IntendedPos[1] = MoveResult->FloorHeight;
-    } else if (MoveResult->IntendedPos[1] < MoveResult->FloorHeight) {
-        MoveResult->IntendedPos[1] = MoveResult->FloorHeight;
+    if ((moveResult->stepArgs & STEP_SNAP_TO_FLOOR)
+        && moveResult->intendedPos[1] < moveResult->floorHeight + FLOOR_SNAP_OFFSET) {
+        moveResult->intendedPos[1] = moveResult->floorHeight;
+    } else if (moveResult->intendedPos[1] < moveResult->floorHeight) {
+        moveResult->intendedPos[1] = moveResult->floorHeight;
     }
     // ensure ice cap and shell works
     if (((m->action & ACT_FLAG_RIDING_SHELL) || (m->flags & MARIO_VANISH_CAP))
-        && MoveResult->FloorHeight < m->waterLevel) {
-        MoveResult->FloorHeight = m->waterLevel + ICEFLOWERWALKOFFSTE;
-        MoveResult->Floor = &gWaterSurfacePseudoFloor;
-        MoveResult->Floor->originOffset = m->waterLevel + ICEFLOWERWALKOFFSTE;
+        && moveResult->floorHeight < m->waterLevel) {
+        moveResult->floorHeight = m->waterLevel + ICEFLOWERWALKOFFSTE;
+        moveResult->floor = &gWaterSurfacePseudoFloor;
+        moveResult->floor->originOffset = m->waterLevel + ICEFLOWERWALKOFFSTE;
     }
-    MoveResult->CeilHeight = vec3f_find_ceil(MoveResult->IntendedPos, &MoveResult->Ceil);
+    moveResult->ceilHeight = vec3f_find_ceil(moveResult->intendedPos, &moveResult->ceil);
     // Mario does not fit here!
-    if (MoveResult->FloorHeight + MoveResult->MarioHeight >= MoveResult->CeilHeight)
+    if (moveResult->floorHeight + moveResult->marioHeight >= moveResult->ceilHeight)
         return 0;
 
     return 1;
@@ -593,70 +590,71 @@ u32 check_ledge_grab_kaze(struct MarioState *m, struct Surface *wall, Vec3f inte
     return 1;
 }
 
-// Set Mario's data and determine the StepResult from the MoveResult.
-s32 FinishMove(struct MarioState *m, struct MoveData *MoveResult) {
-    m->floor = MoveResult->Floor;
-    m->ceil = MoveResult->Ceil;
-    m->wall = MoveResult->Wall;
-    m->floorHeight = MoveResult->FloorHeight;
-    m->ceilHeight = MoveResult->CeilHeight;
-    vec3f_copy(m->pos, MoveResult->IntendedPos);
+// Set Mario's data and determine the StepResult from the moveResult.
+s32 finish_move(struct MarioState *m, struct MoveData *moveResult) {
+    m->floor = moveResult->floor;
+    m->ceil = moveResult->ceil;
+    m->wall = moveResult->wall;
+    m->floorHeight = moveResult->floorHeight;
+    m->ceilHeight = moveResult->ceilHeight;
+    vec3f_copy(m->pos, moveResult->intendedPos);
     m->terrainSoundAddend = mario_get_terrain_sound_addend(m);
 
-    const float CeilDist = m->ceilHeight - m->pos[1];
-    if (CeilDist < MoveResult->MarioHeight) {
-        const float MissingDist = MoveResult->MarioHeight - CeilDist;
+    const float ceilDist = m->ceilHeight - m->pos[1];
+    if (ceilDist < moveResult->marioHeight) {
+        const float MissingDist = moveResult->marioHeight - ceilDist;
         // Why am I dividing by 2 here? I don't know.
         m->pos[0] += m->ceil->normal.x * MissingDist/2;
         m->pos[1] += m->ceil->normal.y * MissingDist/2;
         m->pos[2] += m->ceil->normal.z * MissingDist/2;
-        if ((MoveResult->StepArgs & STEP_CHECK_HANG) && m->ceil != NULL
+        if ((moveResult->stepArgs & STEP_CHECK_HANG) && m->ceil != NULL
             && ((m->ceil->type  == SURFACE_HANGABLE))) {
             m->vel[1] = 0.0f;
             return STEP_GRAB_CEILING;
         }
         // bonk mario if the ceiling is sloped towards him.
         // use the same angle as a wall would for consistency.
-        f32 VelocitySize = vec3_mag(m->vel);
+        f32 velocitySize = vec3_mag(m->vel);
         // m->inertia[1] = 0;
-        if (VelocitySize > 0.f) {
-            const f32 DotBetweenCeilAndMario = vec3f_dot(m->vel, &m->ceil->normal.x) / VelocitySize;
-            float DotProduct = m->vel[0] * m->ceil->normal.x + m->vel[1] * m->ceil->normal.y
+        if (velocitySize > 0.f) {
+            const f32 dotBetweenCeilAndMario = vec3f_dot(m->vel, &m->ceil->normal.x) / velocitySize;
+            // reproject mario's current velocity normal to the colliding ceiling
+            float dotProduct = m->vel[0] * m->ceil->normal.x + m->vel[1] * m->ceil->normal.y
                                + m->vel[2] * m->ceil->normal.z;
-            m->vel[0] -= DotProduct * m->ceil->normal.x;
-            m->vel[1] -= MAX(0, DotProduct * m->ceil->normal.y);
-            m->vel[2] -= DotProduct * m->ceil->normal.z;
-            if (DotBetweenCeilAndMario <= CEILING_BONK_DOT && VelocitySize >= WALLKICK_MIN_VEL) {
+            m->vel[0] -= dotProduct * m->ceil->normal.x;
+            m->vel[1] -= MAX(0, dotProduct * m->ceil->normal.y);
+            m->vel[2] -= dotProduct * m->ceil->normal.z;
+            if (dotBetweenCeilAndMario <= CEILING_BONK_DOT && velocitySize >= WALLKICK_MIN_VEL) {
                 // if hitting a ceiling, just remove velocity
                 return STEP_HIT_WALL;
             }
         }
     }
     // if we are not set to snap to the floor but landed despite that, on ground takes priority!
-    if (!(MoveResult->StepArgs & STEP_SNAP_TO_FLOOR) && (m->pos[1] <= m->floorHeight))
+    if (!(moveResult->stepArgs & STEP_SNAP_TO_FLOOR) && (m->pos[1] <= m->floorHeight))
         return STEP_ON_GROUND;
 
     if (m->wall) {
         if (m->wall->type & SURFACE_BURNING) {
             return STEP_HIT_LAVA;
         }
-        if (MoveResult->StepArgs & STEP_CHECK_LEDGE_GRAB) {
-            if (check_ledge_grab_kaze(m, m->wall, MoveResult->GoalPos, MoveResult->IntendedPos)) {
+        if (moveResult->stepArgs & STEP_CHECK_LEDGE_GRAB) {
+            if (check_ledge_grab_kaze(m, m->wall, moveResult->goalPos, moveResult->intendedPos)) {
                 return STEP_GRAB_LEDGE;
             }
         }
-        u16 WallAngleMaxDiff = MoveResult->StepArgs & STEP_SNAP_TO_FLOOR
+        u16 wallAngleMaxDiff = moveResult->stepArgs & STEP_SNAP_TO_FLOOR
                                     ? 0x8000 - MAX_ANGLE_DIFF_FOR_WALL_COLLISION_ON_GROUND
                                     : 0x8000 - MAX_ANGLE_DIFF_FOR_WALL_COLLISION_IN_AIR;
         if (absi((s16) (atan2s(m->wall->normal.z, m->wall->normal.x) - m->faceAngle[1]))
-            >= WallAngleMaxDiff) {
+            >= wallAngleMaxDiff) {
             return STEP_HIT_WALL;
         }
     }
 
     // If we haven't moved, we hit either oob or a ceiling.
 #define ZERO_POINT_FIVE_TO_THE_POWER_OF_MINUS_NUM_SEARCHES 0.015625f
-    if (MoveResult->BiggestValidMove < ZERO_POINT_FIVE_TO_THE_POWER_OF_MINUS_NUM_SEARCHES) {
+    if (moveResult->biggestValidMove < ZERO_POINT_FIVE_TO_THE_POWER_OF_MINUS_NUM_SEARCHES) {
         return STEP_HIT_WALL;
     }
 
@@ -664,75 +662,77 @@ s32 FinishMove(struct MarioState *m, struct MoveData *MoveResult) {
 }
 
 // Scales the move. The Y is assumed to always be valid (if not, we are ceiling bonking anyway)
-s32 ScaleMove(struct MarioState *m, struct MoveData *MoveResult, f32 Scale) {
-    MoveResult->IntendedPos[0] = (MoveResult->GoalPos[0] - m->pos[0]) * Scale + m->pos[0];
-    MoveResult->IntendedPos[1] = MoveResult->GoalPos[1];
-    MoveResult->IntendedPos[2] = (MoveResult->GoalPos[2] - m->pos[2]) * Scale + m->pos[2];
+s32 scale_move(struct MarioState *m, struct MoveData *moveResult, f32 Scale) {
+    moveResult->intendedPos[0] = (moveResult->goalPos[0] - m->pos[0]) * Scale + m->pos[0];
+    moveResult->intendedPos[1] = moveResult->goalPos[1];
+    moveResult->intendedPos[2] = (moveResult->goalPos[2] - m->pos[2]) * Scale + m->pos[2];
 }
 
 // Performs a generic step and returns the step result
 // [StepArgs] checks for special interactions like ceilings, ledges and floor snapping
-s32 PerformStep(struct MarioState *m, Vec3f GoalPos, const s32 StepArgs) {
-    struct MoveData MoveResult;
-    MoveResult.MarioHeight = (m->action & ACT_FLAG_SHORT_HITBOX) ? MARIOHEIGHT / 2.f : MARIOHEIGHT;
-    MoveResult.StepArgs = StepArgs;
-    vec3f_copy(MoveResult.IntendedPos, GoalPos);
-    s32 IterationsRemaining = 2;
-DoItAgain:
-    CheckMoveEndPosition(m, &MoveResult);
-    vec3f_copy(MoveResult.GoalPos, MoveResult.IntendedPos);
+s32 perform_step(struct MarioState *m, Vec3f goalPos, const s32 stepArgs) {
+    struct MoveData moveResult;
+    moveResult.marioHeight = (m->action & ACT_FLAG_SHORT_HITBOX) ? MARIOHEIGHT / 2.f : MARIOHEIGHT;
+    moveResult.stepArgs = stepArgs;
+    vec3f_copy(moveResult.intendedPos, goalPos);
+    s32 iterationsRemaining = 2;
+do_it_again:
+    check_move_end_position(m, &moveResult);
+    vec3f_copy(moveResult.goalPos, moveResult.intendedPos);
 
     // If the move is outright valid (VAST MAJORITY OF MOVES), just exit instantly.
-    if (CheckMoveValid(m, &MoveResult)) {
-        if (MoveResult.HitSurface) {
-            struct Surface *HitSurface;
-            Vec3f HitPos;
-            Vec3f ClipVector;
-            ClipVector[0] = MoveResult.GoalPos[0] - m->pos[0];
+    if (check_move_valid(m, &moveResult)) {
+        if (moveResult.hitSurface) {
+            struct Surface *hitSurface;
+            Vec3f hitPos;
+            Vec3f clipVector;
+            clipVector[0] = moveResult.goalPos[0] - m->pos[0];
             // move back up because floors in HitSurface move mario down (ensures snapping)
-            ClipVector[1] =
-                MoveResult.GoalPos[1] - m->pos[1]
-                + (MoveResult.HitSurface->normal.y > NORMAL_WALL_THRESHOLD ? FLOOR_SNAP_OFFSET / 2.f + 4.f
+            clipVector[1] =
+                moveResult.goalPos[1] - m->pos[1]
+                + (moveResult.hitSurface->normal.y > NORMAL_WALL_THRESHOLD ? FLOOR_SNAP_OFFSET / 2.f + 4.f
                                                                     : 0.f);
-            ClipVector[2] = MoveResult.GoalPos[2] - m->pos[2];
-            find_surface_on_ray(m->pos, ClipVector, &HitSurface, HitPos, 7);
+            clipVector[2] = moveResult.goalPos[2] - m->pos[2];
+            find_surface_on_ray(m->pos, clipVector, &hitSurface, hitPos, 7);
             // Ensure nothing moved mario's feet through a surface.
             // (Ledgegrabs may teleport mario, but they happen in FinishMove)
-            if (HitSurface) {
+            if (hitSurface) {
                 // Give it another try, we do want to move as much as possible.
-                vec3f_copy(MoveResult.GoalPos, HitPos);
-                IterationsRemaining--;
-                if (IterationsRemaining)
-                    goto DoItAgain;
+                vec3f_copy(moveResult.goalPos, hitPos);
+                iterationsRemaining--;
+                if (iterationsRemaining)
+                    goto do_it_again;
                 // No valid moves managed to be made. Emergency exit!
                 return STEP_HIT_WALL;
             }
         }
         // Full move happened
-        MoveResult.BiggestValidMove = 1.f;
-        return FinishMove(m, &MoveResult);
+        moveResult.biggestValidMove = 1.f;
+        return finish_move(m, &moveResult);
     }
     // Move was unsuccessful. Scale it down to a precision of 2^-NUM_SEARCHES
-    f32 CurrentMoveSize = 0.5f;
-    MoveResult.BiggestValidMove = 0.f;
+    f32 currentMoveSize = 0.5f;
+    moveResult.biggestValidMove = 0.f;
 #define NUM_SEARCHES 6
-    for (s32 BinarySplitsReamining = NUM_SEARCHES; BinarySplitsReamining > 0; BinarySplitsReamining--) {
-        ScaleMove(m, &MoveResult, MoveResult.BiggestValidMove + CurrentMoveSize);
-        if (CheckMoveValid(m, &MoveResult)) {
-            MoveResult.BiggestValidMove += CurrentMoveSize;
+    for (s32 binarySplitsRemaining = NUM_SEARCHES; binarySplitsRemaining > 0; binarySplitsRemaining--) {
+        scale_move(m, &moveResult, moveResult.biggestValidMove + currentMoveSize);
+        if (check_move_valid(m, &moveResult)) {
+            moveResult.biggestValidMove += currentMoveSize;
         }
-        CurrentMoveSize *= 0.5f;
+        currentMoveSize *= 0.5f;
     }
-    ScaleMove(m, &MoveResult, MoveResult.BiggestValidMove);
+    scale_move(m, &moveResult, moveResult.biggestValidMove);
     // No valid move can be made. We are stuck OOB.
     // This should only happen if a platform OOB teleported away.
     // Mario should die here.
-    if (!CheckMoveValid(m, &MoveResult)) {
+    if (!check_move_valid(m, &moveResult)) {
         return STEP_HIT_WALL;
     }
     // We've moved, but not the full distance.
-    return FinishMove(m, &MoveResult);
+    return finish_move(m, &moveResult);
 }
+
+#define EPSILON 0.0001f
 
 s32 perform_ground_step(struct MarioState *m) {
     u32 stepResult;
@@ -757,7 +757,7 @@ s32 perform_ground_step(struct MarioState *m) {
         intendedPos[1] = m->pos[1];
     }
 
-    stepResult = PerformStep(m, intendedPos, STEP_SNAP_TO_FLOOR);
+    stepResult = perform_step(m, intendedPos, STEP_SNAP_TO_FLOOR);
 
     vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
     vec3s_set(m->marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
@@ -771,7 +771,7 @@ s32 perform_air_step(struct MarioState *m, u32 stepArg) {
     for (j = 0; j < 3; j++) {
         intendedPos[j] = m->pos[j] + (m->vel[j]);
     }
-    s32 stepResult = PerformStep(m, intendedPos, stepArg);
+    s32 stepResult = perform_step(m, intendedPos, stepArg);
 
     if (m->vel[1] >= 0.0f) {
         m->peakHeight = m->pos[1];
@@ -787,6 +787,8 @@ s32 perform_air_step(struct MarioState *m, u32 stepArg) {
 
     return stepResult;
 }
+
+#undef EPSILON
 
 #else
 
