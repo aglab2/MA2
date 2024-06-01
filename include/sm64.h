@@ -129,6 +129,49 @@ enum MarioInput {
     INPUT_Z_DOWN                 = /* 0x4000 */ (1 << 14),
     INPUT_Z_PRESSED              = /* 0x8000 */ (1 << 15),
 };
+
+#ifdef ENABLE_RAYCAST_MARIO_STEP
+
+enum StepArgs {
+    STEP_CHECK_NONE      = 0, // 0x00
+    STEP_CHECK_HANG       = BIT(0), // 0x01
+    STEP_CHECK_LEDGE_GRAB = BIT(1), // 0x02
+    STEP_SNAP_TO_FLOOR    = BIT(2), // 0x04
+    STEP_NO_GRAVITY       = BIT(3), // 0x08
+};
+
+enum Step {
+    STEP_ON_GROUND,
+    STEP_IN_AIR,
+    STEP_HIT_WALL,
+    STEP_HIT_LAVA,
+    STEP_GRAB_LEDGE,
+    STEP_GRAB_CEILING,
+    STEP_UNK = -1,
+};
+
+#define GROUND_STEP_LEFT_GROUND               STEP_IN_AIR
+#define GROUND_STEP_NONE                      STEP_ON_GROUND
+#define GROUND_STEP_HIT_WALL                  STEP_HIT_WALL
+#define GROUND_STEP_HIT_WALL_STOP_QSTEPS      STEP_HIT_WALL
+#define GROUND_STEP_HIT_WALL_CONTINUE_QSTEPS  GROUND_STEP_NONE
+
+#define AIR_STEP_NONE                         STEP_IN_AIR
+#define AIR_STEP_LANDED                       STEP_ON_GROUND
+#define AIR_STEP_HIT_WALL                     STEP_HIT_WALL
+#define AIR_STEP_GRABBED_CEILING              STEP_GRAB_CEILING
+#define AIR_STEP_GRABBED_LEDGE                STEP_GRAB_LEDGE
+#define AIR_STEP_UNK                          STEP_UNK
+#define AIR_STEP_HIT_LAVA_WALL                STEP_HIT_LAVA
+#define AIR_STEP_HIT_CEILING                  STEP_HIT_WALL
+
+#define AIR_STEP_CHECK_NONE                   STEP_CHECK_NONE
+#define AIR_STEP_CHECK_LEDGE_GRAB             STEP_CHECK_LEDGE_GRAB
+#define AIR_STEP_CHECK_HANG                   STEP_CHECK_HANG
+#define AIR_STEP_SNAP_TO_FLOOR                STEP_SNAP_TO_FLOOR
+
+#else // ENABLE_RAYCAST_MARIO_STEP
+
 enum GroundStep {
     GROUND_STEP_LEFT_GROUND,
     GROUND_STEP_NONE,
@@ -153,6 +196,8 @@ enum AirStep {
     AIR_STEP_HIT_LAVA_WALL,
     AIR_STEP_HIT_CEILING
 };
+
+#endif // ENABLE_RAYCAST_MARIO_STEP
 
 enum WaterStep {
     WATER_STEP_NONE,

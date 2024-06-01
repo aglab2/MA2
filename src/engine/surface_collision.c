@@ -557,6 +557,48 @@ f32 find_floor_height(f32 x, f32 y, f32 z) {
     return find_floor(x, y, z, &floor);
 }
 
+f32 find_floor_marioair(f32 xPos, f32 yPos, f32 zPos, struct Surface **pfloor) {
+    s16 cellZ, cellX;
+
+    struct Surface *floor, *dynamicFloor;
+    struct SurfaceNode *surfaceList;
+
+    f32 height = -11000.0f;
+    f32 dynamicHeight = -11000.0f;
+
+    //! (Parallel Universes) Because position is casted to an s16, reaching higher
+    // float locations  can return floors despite them not existing there.
+    //(Dynamic floors will unload due to the range.)
+    s16 x = (s16) xPos;
+    s16 y = (s16) yPos;
+    s16 z = (s16) zPos;
+
+    // Each level is split into cells to limit load, find the appropriate cell.
+    cellX = (((x) + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0x3F;
+    cellZ = (((z) + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & 0x3F;
+
+    // Check for surfaces belonging to objects.
+    surfaceList = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS];
+    if (gMarioState->vel[1] < 10.f) {
+        dynamicFloor = find_floor_from_list(surfaceList, x, y, z, &dynamicHeight);
+    } else {
+        dynamicFloor = 0;
+    }
+
+    // Check for surfaces that are a part of level geometry.
+    surfaceList = gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS];
+    floor = find_floor_from_list(surfaceList, x, y, z, &height);
+
+    if (dynamicHeight > height) {
+        floor = dynamicFloor;
+        height = dynamicHeight;
+    }
+
+    *pfloor = floor;
+
+    return height;
+}
+
 /**
  * Find the highest dynamic floor under a given position. Perhaps originally static
  * and dynamic floors were checked separately.

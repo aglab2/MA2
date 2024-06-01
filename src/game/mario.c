@@ -513,6 +513,14 @@ u32 mario_get_terrain_sound_addend(struct MarioState *m) {
 }
 
 /**
+ * Finds the ceiling from a vec3f horizontally and a height (with 80 vertical buffer).
+ */
+f32 vec3f_find_ceil(Vec3f pos, struct Surface **ceil) {
+
+    return find_ceil(pos[0], pos[1] + 80.0f, pos[2], ceil);
+}
+
+/**
  * Determines if Mario is facing "downhill."
  */
 s32 mario_facing_downhill(struct MarioState *m, s32 turnYaw) {

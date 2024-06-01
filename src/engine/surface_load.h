@@ -6,6 +6,8 @@
 #include "surface_collision.h"
 #include "types.h"
 
+#define NORMAL_WALL_THRESHOLD 0.03f
+
 #define SURFACE_VERTICAL_BUFFER 5
 
 #define NORMAL_FLOOR_THRESHOLD 0.01f

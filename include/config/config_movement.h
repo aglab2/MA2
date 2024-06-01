@@ -141,3 +141,36 @@
  */
 #define MARIO_INERTIA_UPWARD
 // #define MARIO_INERTIA_LATERAL
+
+/**
+ * Use Kaze Emanuar's raycast-style Mario movement step code inspired by UE5 pawn collider.
+ * 
+ * Note that even without DISABLE_BLJ, BLJs are no longer possible with this enabled.
+*/
+#define ENABLE_RAYCAST_MARIO_STEP
+
+/**************************
+ * IMPROVED STEP SETTINGS *
+ **************************/
+
+/* These settings are only used if ENABLE_RAYCAST_MARIO_STEP is enabled. */
+
+// TODO: correct values
+// Width of Mario collider
+#define MARIOWIDENESS 50.0f
+// Height of Mario collider
+#define MARIOHEIGHT 160.0f
+// negative Y displacement added to make Mario snap to the nearest floor
+#define FLOOR_SNAP_OFFSET 78
+// additional height added to Mario's collider when on shell or using vanish cap ice
+#define ICEFLOWERWALKOFFSTE 25.f
+// Minimum speed at which mario can wallkick/bonk a wall rather than slide along it
+#define WALLKICK_MIN_VEL 16.0f
+// Magnitude in direction of ceiling needed to cause a bonk
+#define CEILING_BONK_DOT 0.7071067811f // 1/sqrt(2)
+// When grounded, what the angle difference between the wall and Mario's head needs to be for wall collision to occur
+// i.e. the angle below which Mario bonks and above which he slides along the wall
+#define MAX_ANGLE_DIFF_FOR_WALL_COLLISION_ON_GROUND DEGREES(60)
+// When airborne, what the angle difference between the wall and Mario's head needs to be for wall collision to occur
+// Tends to be larger as you can't mantle a wall while airborne
+#define MAX_ANGLE_DIFF_FOR_WALL_COLLISION_IN_AIR DEGREES(135)
