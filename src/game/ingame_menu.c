@@ -2070,6 +2070,9 @@ s32 render_pause_courses_and_castle(void) {
 
     puppycam_render_option_text();
 #endif
+#if defined(DEBUG_MARIO_COLLIDER) && defined(PUPPYPRINT_DEBUG)
+    render_mario_collider_info();
+#endif
     return MENU_OPT_NONE;
 }
 

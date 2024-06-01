@@ -93,3 +93,8 @@
  * Intentionally crash the game whenever a runtime assertion fails (also invoked by the DEBUG define in the Makefile).
  */
 #define DEBUG_ASSERTIONS
+
+/**
+ * Show which Mario collider is enabled.
+*/
+#define DEBUG_MARIO_COLLIDER
