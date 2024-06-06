@@ -517,8 +517,8 @@ s32 check_move_valid(struct MarioState *m, struct MoveData *moveResult) {
     // Wall collisino happens first since walls will never prevent a move.
     struct WallCollisionData wallCollision;
     resolve_and_return_wall_collisions(moveResult->intendedPos, (60.0f), MARIOWIDENESS, &wallCollision);
-    // Use last wall we collided with as the wall under consideration
-    moveResult->wall = wallCollision.numWalls > 0 ? wallCollision.walls[wallCollision.numWalls - 1] : NULL;
+    // Use first wall we collided with as the wall under consideration
+    moveResult->wall = wallCollision.numWalls > 0 ? wallCollision.walls[0] : NULL;
     moveResult->floorHeight =
         find_floor_marioair(moveResult->intendedPos[0], moveResult->intendedPos[1],
                             moveResult->intendedPos[2], &moveResult->floor);
@@ -592,11 +592,9 @@ u32 check_ledge_grab_kaze(struct MarioState *m, struct Surface *wall, Vec3f inte
 
 // Set Mario's data and determine the StepResult from the moveResult.
 s32 finish_move(struct MarioState *m, struct MoveData *moveResult) {
-    m->floor = moveResult->floor;
-    m->ceil = moveResult->ceil;
-    m->wall = moveResult->wall;
-    m->floorHeight = moveResult->floorHeight;
-    m->ceilHeight = moveResult->ceilHeight;
+    set_mario_floor(m, moveResult->floor, moveResult->floorHeight);
+    set_mario_ceil(m, moveResult->ceil, moveResult->ceilHeight);
+    set_mario_wall(m, moveResult->wall);
     vec3f_copy(m->pos, moveResult->intendedPos);
     m->terrainSoundAddend = mario_get_terrain_sound_addend(m);
 
