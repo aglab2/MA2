@@ -622,10 +622,6 @@ s32 finish_move(struct MarioState *m, struct MoveData *moveResult) {
             m->vel[0] -= dotProduct * m->ceil->normal.x;
             m->vel[1] -= MAX(0, dotProduct * m->ceil->normal.y);
             m->vel[2] -= dotProduct * m->ceil->normal.z;
-            if (dotBetweenCeilAndMario <= CEILING_BONK_DOT && velocitySize >= WALLKICK_MIN_VEL) {
-                // if hitting a ceiling, just remove velocity
-                return STEP_HIT_WALL;
-            }
         }
     }
     // if we are not set to snap to the floor but landed despite that, on ground takes priority!

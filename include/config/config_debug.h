@@ -97,4 +97,4 @@
 /**
  * Show which Mario collider is enabled.
 */
-#define DEBUG_MARIO_COLLIDER
+// #define DEBUG_MARIO_COLLIDER

@@ -147,7 +147,7 @@
  * 
  * Note that even without DISABLE_BLJ, BLJs are no longer possible with this enabled.
 */
-#define ENABLE_RAYCAST_MARIO_STEP
+// #define ENABLE_RAYCAST_MARIO_STEP
 
 /**************************
  * IMPROVED STEP SETTINGS *
