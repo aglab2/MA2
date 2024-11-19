@@ -25,6 +25,7 @@
 #define RAM_1MB     0x00100000
 
 // Calculate total amount of RAM
+#define USE_EXT_RAM
 #ifndef USE_EXT_RAM
 #define TOTAL_RAM_SIZE  (RAM_1MB * 4)
 #else

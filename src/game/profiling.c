@@ -1,6 +1,7 @@
 #include <ultra64.h>
 #include <PR/os_internal_reg.h>
 #include "game_init.h"
+#include "game/level_update.h"
 
 #include "profiling.h"
 #include "fasttext.h"
@@ -287,7 +288,8 @@ void profiler_print_times() {
             "\n"
             "RSP\t\t%d (%d%%)\n"
             " Gfx\t\t\t%d\n"
-            " Audio\t\t\t%d\n",
+            " Audio\t\t\t%d\n"
+            "%d %d %d",
             1000000.0f / microseconds[PROFILER_TIME_FPS],
             total_cpu, total_cpu / 333, 
             microseconds[PROFILER_TIME_CONTROLLERS],
@@ -309,7 +311,8 @@ void profiler_print_times() {
             microseconds[PROFILER_TIME_PIPE],
             total_rsp, total_rsp / 333,
             microseconds[PROFILER_TIME_RSP_GFX],
-            microseconds[PROFILER_TIME_RSP_AUDIO] * 2
+            microseconds[PROFILER_TIME_RSP_AUDIO] * 2,
+            (int) gMarioStates->pos[0], (int) gMarioStates->pos[1], (int) gMarioStates->pos[2]
         );
 
         Gfx* dlHead = gDisplayListHead;
