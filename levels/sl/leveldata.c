@@ -20,3 +20,5 @@
 #include "levels/sl/areas/1/collision.inc.c"
 #include "levels/sl/areas/2/collision.inc.c"
 #include "levels/sl/areas/1/movtext.inc.c"
+
+#include "levels/sl/leveldata.inc.c"

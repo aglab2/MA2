@@ -39,7 +39,7 @@ const LevelScript level_intro_splash_screen[] = {
     // Load "Super Mario 64" logo
     ALLOC_LEVEL_POOL(),
     LOAD_MODEL_FROM_GEO(MODEL_GOOMBA, goomba_geo),
-    AREA(/*index*/ 1, intro_geo_splash_screen),
+    AREA(/*index*/ 1, intro_geo_splash_screen ,0,0,0),
         OBJECT(/*model*/ MODEL_GOOMBA, /*pos*/ -570, -480, 1500, /*angle*/ 0,  50, 0, /*behParam*/ BP(0x18, 0x00, 0x10, 0x0B), /*beh*/ bhvFloombaStartup),
         OBJECT(/*model*/ MODEL_GOOMBA, /*pos*/  570, -480, 1500, /*angle*/ 0, -50, 0, /*behParam*/ BP(0x18, 0x00, 0x90, 0x0B), /*beh*/ bhvFloombaStartup),
     END_AREA(),
@@ -124,7 +124,7 @@ const LevelScript level_intro_mario_head_dizzy[] = {
     LOAD_TITLE_SCREEN_BG(),
     ALLOC_LEVEL_POOL(),
 
-    AREA(/*index*/ 1, intro_geo_mario_head_dizzy),
+    AREA(/*index*/ 1, intro_geo_mario_head_dizzy ,0,0,0),
     END_AREA(),
 
     FREE_LEVEL_POOL(),
@@ -148,7 +148,7 @@ const LevelScript level_intro_entry_level_select[] = {
     FIXED_LOAD(/*loadAddr*/ _goddardSegmentStart, /*romStart*/ _goddardSegmentRomStart, /*romEnd*/ _goddardSegmentRomEnd),
     ALLOC_LEVEL_POOL(),
 
-    AREA(/*index*/ 1, intro_geo_debug_level_select),
+    AREA(/*index*/ 1, intro_geo_debug_level_select ,0,0,0),
     END_AREA(),
 
     FREE_LEVEL_POOL(),

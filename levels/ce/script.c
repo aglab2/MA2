@@ -42,7 +42,7 @@ const LevelScript level_ce_entry[] = {
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
 
-	AREA(1, ce_area_1),
+	AREA(1, ce_area_1, 0, -1236, 1000),
 		WARP_NODE(0x0A, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
@@ -56,7 +56,7 @@ const LevelScript level_ce_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 
-	AREA(10, ce_area_10),
+	AREA(10, ce_area_10, 4000, -21902, 17000),
 		WARP_NODE(0x0A, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
@@ -68,7 +68,7 @@ const LevelScript level_ce_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 
-	AREA(2, ce_area_2),
+	AREA(2, ce_area_2, 0, -3498, 5000),
 		WARP_NODE(0x0A, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
@@ -80,7 +80,7 @@ const LevelScript level_ce_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 
-	AREA(3, ce_area_3),
+	AREA(3, ce_area_3, 0, -6071, 9000),
 		WARP_NODE(0x0A, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
@@ -92,7 +92,7 @@ const LevelScript level_ce_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 
-	AREA(4, ce_area_4),
+	AREA(4, ce_area_4, 0, -7740, 5000),
 		WARP_NODE(0x0A, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
@@ -104,7 +104,7 @@ const LevelScript level_ce_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 
-	AREA(5, ce_area_5),
+	AREA(5, ce_area_5, 4000, -9601, 5000),
 		WARP_NODE(0x0A, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
@@ -116,7 +116,7 @@ const LevelScript level_ce_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 
-	AREA(6, ce_area_6),
+	AREA(6, ce_area_6, 8000, -12556, 5000),
 		WARP_NODE(0x0A, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
@@ -128,7 +128,7 @@ const LevelScript level_ce_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 
-	AREA(7, ce_area_7),
+	AREA(7, ce_area_7, 8000, -15682, 9000),
 		WARP_NODE(0x0A, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
@@ -140,7 +140,7 @@ const LevelScript level_ce_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 
-	AREA(8, ce_area_8),
+	AREA(8, ce_area_8, 8000, -17675, 13000),
 		WARP_NODE(0x0A, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
@@ -152,7 +152,7 @@ const LevelScript level_ce_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 
-	AREA(9, ce_area_9),
+	AREA(9, ce_area_9, 8000, -20396, 17000),
 		WARP_NODE(0x0A, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_BOB, 0x01, 0x0A, WARP_NO_CHECKPOINT),

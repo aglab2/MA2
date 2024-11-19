@@ -322,9 +322,12 @@ enum GoddardScene {
 #define FREE_LEVEL_POOL() \
     CMD_BBH(LEVEL_CMD_FREE_LEVEL_POOL, 0x04, 0x0000)
 
-#define AREA(index, geo) \
-    CMD_BBBB(LEVEL_CMD_BEGIN_AREA, 0x08, index, 0), \
-    CMD_PTR(geo)
+#define AREA(index, geo, posX, posY, posZ) \
+    CMD_BBBB(LEVEL_CMD_BEGIN_AREA, 0x14, index, 0), \
+    CMD_PTR(geo), \
+    CMD_W(posX), \
+    CMD_W(posY), \
+    CMD_W(posZ)
 
 #define END_AREA() \
     CMD_BBH(LEVEL_CMD_END_AREA, 0x04, 0x0000)

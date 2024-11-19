@@ -26,7 +26,7 @@ const LevelScript level_ending_entry[] = {
     LOAD_LEVEL_DATA(ending),
     ALLOC_LEVEL_POOL(),
 
-    AREA(/*index*/ 1, ending_geo_area_1),
+    AREA(/*index*/ 1, ending_geo_area_1 ,0,0,0),
     END_AREA(),
 
     FREE_LEVEL_POOL(),

@@ -15,3 +15,5 @@
 
 #include "levels/sl/areas/1/geo.inc.c"
 #include "levels/sl/areas/2/geo.inc.c"
+
+#include "levels/sl/geo.inc.c"

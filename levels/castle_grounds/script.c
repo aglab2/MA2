@@ -154,7 +154,7 @@ const LevelScript level_castle_grounds_entry[] = {
     MARIO(/*model*/ MODEL_MARIO, /*behParam*/ 0x00000001, /*beh*/ bhvMario),
 #include "levels/castle_grounds/areas/script_vanilla.inc.c"
 
-    AREA(/*index*/ 1, castle_grounds_geo_00073C),
+    AREA(/*index*/ 1, castle_grounds_geo_00073C ,0,0,0),
         WARP_NODE(/*id*/ 0xF1, /*destLevel*/ LEVEL_CASTLE_GROUNDS, /*destArea*/ 0x01, /*destNode*/ 0x03, /*flags*/ WARP_NO_CHECKPOINT),
         JUMP_LINK(script_castle_grounds_objects_1),
         JUMP_LINK(script_castle_grounds_objects_2),

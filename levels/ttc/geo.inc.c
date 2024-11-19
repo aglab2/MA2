@@ -1,1 +1,1 @@
-#include "levels/ttc/areas/1/geo.inc.c"
+#include "levels/ttc/area_1/geo.inc.c"

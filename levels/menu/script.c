@@ -38,7 +38,7 @@ const LevelScript level_main_menu_entry_file_select[] = {
     LOAD_MODEL_FROM_GEO(MODEL_MAIN_MENU_PURPLE_SOUND_BUTTON,    geo_menu_sound_button),
     LOAD_MODEL_FROM_GEO(MODEL_MAIN_MENU_GENERIC_BUTTON,         geo_menu_generic_button),
 
-    AREA(/*index*/ 1, geo_menu_file_select_strings_and_menu_cursor),
+    AREA(/*index*/ 1, geo_menu_file_select_strings_and_menu_cursor ,0,0,0),
         OBJECT(/*model*/ MODEL_NONE,                         /*pos*/ 0, 0, -19000, /*angle*/ 0, 0, 0, /*behParam*/ BP(0x04, 0x00, 0x00, 0x00), /*beh*/ bhvMenuButtonManager),
         OBJECT(/*model*/ MODEL_MAIN_MENU_YELLOW_FILE_BUTTON, /*pos*/ 0, 0, -19000, /*angle*/ 0, 0, 0, /*behParam*/ BP(0x04, 0x00, 0x00, 0x00), /*beh*/ bhvYellowBackgroundInMenu),
         TERRAIN(/*terrainData*/ main_menu_seg7_collision),
@@ -73,7 +73,7 @@ const LevelScript level_main_menu_entry_act_select[] = {
     LOAD_LEVEL_DATA(menu),
     ALLOC_LEVEL_POOL(),
 
-    AREA(/*index*/ 2, geo_menu_act_selector_strings),
+    AREA(/*index*/ 2, geo_menu_act_selector_strings ,0,0,0),
         OBJECT(/*model*/ MODEL_NONE, /*pos*/ 0, -100, 0, /*angle*/ 0, 0, 0, /*behParam*/ BP(0x04, 0x00, 0x00, 0x00), /*beh*/ bhvActSelector),
         TERRAIN(/*terrainData*/ main_menu_seg7_collision),
     END_AREA(),

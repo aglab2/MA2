@@ -1,1 +1,1 @@
-#include "levels/cotmc/areas/1/geo.inc.c"
+#include "levels/cotmc/area_1/geo.inc.c"
