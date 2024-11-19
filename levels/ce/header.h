@@ -8,4 +8,7 @@ extern const LevelScript level_ce_entry[];
 
 #include "levels/ce/visual/header.inc.h"
 
+
+#include "levels/ce/header.inc.h"
+
 #endif
