@@ -1358,11 +1358,24 @@ void geo_try_process_children(struct GraphNode *node) {
     }
 }
 
+static int is_far_from_mario(Vec3f loc)
+{
+    f32 dx = loc[0] - gPlayerCameraState->pos[0];
+    f32 dy = loc[1] - gPlayerCameraState->pos[1];
+    f32 dz = loc[2] - gPlayerCameraState->pos[2];
+    f32 dist = sqrtf(dx*dx + dy*dy + dz*dz);
+    return dist > 20000.0f;
+}
+
 void geo_process_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation *node) {
     Vec3f translation;
     translation[0] = node->translation[0] - gCurrentArea->renderOffset[0];
     translation[1] = node->translation[1] - gCurrentArea->renderOffset[1];
     translation[2] = node->translation[2] - gCurrentArea->renderOffset[2];
+    if (is_far_from_mario(translation)) {
+        return;
+    }
+
     mtxf_rotate_zxy_and_translate_and_mul(node->rotation, translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
 
     inc_mat_stack();
@@ -1374,6 +1387,10 @@ void geo_process_lvl_translation(struct GraphNodeLvlTranslation *node) {
     translation[0] = node->translation[0] - gCurrentArea->renderOffset[0];
     translation[1] = node->translation[1] - gCurrentArea->renderOffset[1];
     translation[2] = node->translation[2] - gCurrentArea->renderOffset[2];
+    if (is_far_from_mario(translation)) {
+        return;
+    }
+
     mtxf_rotate_zxy_and_translate_and_mul(gVec3sZero, translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
 
     inc_mat_stack();
