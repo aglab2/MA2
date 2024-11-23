@@ -32,6 +32,7 @@
 #include "level_commands.h"
 #include "debug.h"
 #include "fail_warp.h"
+#include "instant_warp_desc.h"
 
 #include "config.h"
 
@@ -532,9 +533,28 @@ void warp_credits(void) {
     }
 }
 
+extern const IWDHeader* iw_descs_ce[];
+
+static const IWDHeader** kWarpHeaders[] = {
+    [ LEVEL_CE ] = iw_descs_ce,
+    [ LEVEL_BOB ] = iw_descs_ce,
+};
+
+static void handle_iw_area_desc(int* newArea, const IWDirectionAreas* desc)
+{
+    const f32 kWarpDistance = 21000.f;
+    if (desc->x_low && gMarioStates->pos[0] < -kWarpDistance)
+        *newArea = desc->x_low;
+    if (desc->x_high && gMarioStates->pos[0] > kWarpDistance)
+        *newArea = desc->x_high;
+    if (desc->z_low && gMarioStates->pos[2] < -kWarpDistance)
+        *newArea = desc->z_low;
+    if (desc->z_high && gMarioStates->pos[2] > kWarpDistance)
+        *newArea = desc->z_high;
+}
+
 void check_instant_warp(void) {
     s16 cameraAngle;
-    struct Surface *floor;
 
 #ifdef ENABLE_VANILLA_LEVEL_SPECIFIC_CHECKS
  #ifdef UNLOCK_ALL
@@ -547,6 +567,72 @@ void check_instant_warp(void) {
     }
 #endif // ENABLE_VANILLA_LEVEL_SPECIFIC_CHECKS
 
+    const IWDHeader** headers = NULL;
+    if ((unsigned int) gCurrLevelNum < sizeof(kWarpHeaders) / sizeof(kWarpHeaders[0]))
+        headers = kWarpHeaders[gCurrLevelNum];
+
+    int newArea = 0;
+    if (headers)
+    {
+        headers = segmented_to_virtual(headers);
+        const IWDHeader* header = headers[gCurrAreaIndex - 1];
+        if (header)
+        {
+            header = segmented_to_virtual(header);
+            switch (header->type)
+            {
+                case IWDT_DIRECTIONS:
+                {
+                    const IWDirectionAreasDesc* desc = (const IWDirectionAreasDesc*)header;
+                    handle_iw_area_desc(&newArea, &desc->areas);
+                    break;
+                }
+                case IWDT_UP_DOWN_DIRECTIONS:
+                {
+                    const IWDirectionUpDownDirectionsAreasDesc* desc = (const IWDirectionUpDownDirectionsAreasDesc*)header;
+                    if (gMarioStates->pos[1] > 0)
+                        handle_iw_area_desc(&newArea, &desc->areas.y_high);
+                    else
+                        handle_iw_area_desc(&newArea, &desc->areas.y_low);
+
+                    break;
+                }
+            }
+        }
+    }
+
+    if (newArea)
+    {
+        Vec3f displacement;
+        displacement[0] = -gAreas[newArea].renderOffset[0] + gCurrentArea->renderOffset[0];
+        displacement[1] = -gAreas[newArea].renderOffset[1] + gCurrentArea->renderOffset[1];
+        displacement[2] = -gAreas[newArea].renderOffset[2] + gCurrentArea->renderOffset[2];
+
+        gMarioState->pos[0] += displacement[0];
+        gMarioState->pos[1] += displacement[1];
+        gMarioState->pos[2] += displacement[2];
+
+        gMarioState->marioObj->oPosX = gMarioState->pos[0];
+        gMarioState->marioObj->oPosY = gMarioState->pos[1];
+        gMarioState->marioObj->oPosZ = gMarioState->pos[2];
+
+        // Fix instant warp offset not working when warping across different areas
+        gMarioObject->header.gfx.pos[0] = gMarioState->pos[0];
+        gMarioObject->header.gfx.pos[1] = gMarioState->pos[1];
+        gMarioObject->header.gfx.pos[2] = gMarioState->pos[2];
+
+        cameraAngle = gMarioState->area->camera->yaw;
+
+        change_area(newArea);
+        gMarioState->area = gCurrentArea;
+
+        warp_camera(displacement[0], displacement[1], displacement[2]);
+
+        gMarioState->area->camera->yaw = cameraAngle;
+    }
+
+#if 0
+    struct Surface *floor;
     if ((floor = gMarioState->floor) != NULL) {
         s32 index = floor->type - SURFACE_INSTANT_WARP_1B;
         if (index >= INSTANT_WARP_INDEX_START && index < INSTANT_WARP_INDEX_STOP
@@ -578,6 +664,7 @@ void check_instant_warp(void) {
             }
         }
     }
+#endif
 }
 
 s16 music_unchanged_through_warp(s16 arg) {
