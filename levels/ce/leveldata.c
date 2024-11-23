@@ -53,12 +53,12 @@ static IWDirectionAreasDesc iw_ce_area8 = {
 
 static IWDirectionAreasDesc iw_ce_area9 = {
     { IWDT_DIRECTIONS },
-    { .z_low = 8, .x_high = 10, },
+    { .z_low = 8, .x_low = 10, },
 };
 
 static IWDirectionAreasDesc iw_ce_area10 = {
     { IWDT_DIRECTIONS },
-    { .x_low = 9, },
+    { .x_high = 9, },
 };
 
 IWDHeader* iw_descs_ce[] = {
