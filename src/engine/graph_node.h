@@ -67,6 +67,10 @@ enum GraphNodeTypes {
     GRAPH_NODE_TYPE_START,
     GRAPH_NODE_TYPE_CULL,
     GRAPH_NODE_TYPE_COIN,
+
+    GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION,
+    GRAPH_NODE_TYPE_LVL_TRANSLATION,
+    GRAPH_NODE_TYPE_LVL_DISPLAY_LIST,
 };
 
 // Passed as first argument to a GraphNodeFunc to give information about in
@@ -366,6 +370,19 @@ struct GraphNodeCoin {
     /*0x14*/ void* displayList_r;
 };
 
+struct GraphNodeLvlTranslationRotation {
+    /*0x00*/ struct GraphNode node;
+    /*0x14*/ void *displayList;
+    /*0x18*/ Vec3f translation;
+    /*0x1E*/ Vec3s rotation;
+};
+
+struct GraphNodeLvlTranslation {
+    /*0x00*/ struct GraphNode node;
+    /*0x14*/ void *displayList;
+    /*0x18*/ Vec3f translation;
+};
+
 extern struct GraphNodeMasterList  *gCurGraphNodeMasterList;
 extern struct GraphNodePerspective *gCurGraphNodeCamFrustum;
 extern struct GraphNodeCamera      *gCurGraphNodeCamera;
@@ -407,6 +424,11 @@ struct GraphNodeCull                *init_graph_node_cull                (s32 al
                                                                           s16 y0, s16 y1,
                                                                           s16 z0, s16 z1, s16 style);
 struct GraphNodeCoin                *init_graph_node_coin                (s32 alloc, struct GraphNodeCoin                *graphNode, s32 drawingLayer, void* displayList, void* displayList_r);
+
+struct GraphNodeLvlTranslationRotation *init_graph_node_lvl_translation_rotation(s32 alloc, struct GraphNodeLvlTranslationRotation *graphNode, s32 drawingLayer, void *displayList, Vec3f translation, Vec3s rotation);
+struct GraphNodeLvlTranslation         *init_graph_node_lvl_translation         (s32 alloc, struct GraphNodeLvlTranslation         *graphNode, s32 drawingLayer, void *displayList, Vec3f translation);
+struct GraphNodeDisplayList            *init_graph_node_lvl_display_list        (s32 alloc, struct GraphNodeDisplayList            *graphNode, s32 drawingLayer, void *displayList);
+
 struct GraphNodeHeldObject          *init_graph_node_held_object         (s32 alloc, struct GraphNodeHeldObject          *graphNode, struct Object *objNode, Vec3s translation, GraphNodeFunc nodeFunc, s32 playerIndex);
 
 struct GraphNode *geo_add_child       (struct GraphNode *parent, struct GraphNode *childNode);

@@ -60,6 +60,10 @@ enum GeoLayoutCommands {
     /*0x20*/ GEO_CMD_NODE_CULLING_RADIUS,
     /*0x21*/ GEO_CMD_NODE_COIN,
 
+    GEO_CMD_LVL_NODE_TRANSLATION_ROTATION,
+    GEO_CMD_LVL_NODE_TRANSLATION,
+    GEO_CMD_LVL_NODE_DISPLAY_LIST,
+
     GEO_CMD_COUNT,
 };
 
@@ -240,6 +244,14 @@ enum GeoLayoutCommands {
     CMD_BBH(GEO_CMD_NODE_TRANSLATION_ROTATION, (0x00 | layer | 0x80), 0x0000), \
     CMD_HHHHHH(tx, ty, tz, rx, ry, rz), \
     CMD_PTR(displayList)
+    
+#define GEO_LVL_TRANSLATE_ROTATE_WITH_DL(layer, tx, ty, tz, rx, ry, rz, displayList) \
+    CMD_BBH(GEO_CMD_LVL_NODE_TRANSLATION_ROTATION, (0x00 | layer), rx), \
+    CMD_HH(ry, rz), \
+    CMD_W(tx), \
+    CMD_W(ty), \
+    CMD_W(tz), \
+    CMD_PTR(displayList)
 
 #if 0
 /**
@@ -301,6 +313,13 @@ enum GeoLayoutCommands {
     CMD_BBH(GEO_CMD_NODE_TRANSLATION, (layer | 0x80), ux), \
     CMD_HH(uy, uz), \
     CMD_PTR(displayList)
+    
+#define GEO_LVL_TRANSLATE_NODE_WITH_DL(layer, ux, uy, uz, displayList) \
+    CMD_BBH(GEO_CMD_LVL_NODE_TRANSLATION, (layer), 0), \
+    CMD_W(ux), \
+    CMD_W(uy), \
+    CMD_W(uz), \
+    CMD_PTR(displayList)
 
 /**
  * 0x12: Create rotation scene graph node with optional display list
@@ -361,6 +380,10 @@ enum GeoLayoutCommands {
  */
 #define GEO_DISPLAY_LIST(layer, displayList) \
     CMD_BBH(GEO_CMD_NODE_DISPLAY_LIST, layer, 0x0000), \
+    CMD_PTR(displayList)
+    
+#define GEO_LVL_DISPLAY_LIST(layer, displayList) \
+    CMD_BBH(GEO_CMD_LVL_NODE_DISPLAY_LIST, layer, 0x0000), \
     CMD_PTR(displayList)
 
 /**

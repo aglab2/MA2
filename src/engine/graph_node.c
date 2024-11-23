@@ -563,6 +563,55 @@ struct GraphNodeCoin *init_graph_node_coin(s32 alloc,
     return graphNode;
 }
 
+struct GraphNodeLvlTranslationRotation *init_graph_node_lvl_translation_rotation(s32 alloc, struct GraphNodeLvlTranslationRotation *graphNode, s32 drawingLayer, void *displayList, Vec3f translation, Vec3s rotation)
+{
+    if (alloc) {
+        graphNode = main_pool_alloc(sizeof(struct GraphNodeLvlTranslationRotation));
+    }
+
+    if (graphNode != NULL) {
+        init_scene_graph_node_links(&graphNode->node, GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION);
+        vec3_copy(graphNode->translation, translation);
+        vec3s_copy(graphNode->rotation, rotation);
+        SET_GRAPH_NODE_LAYER(graphNode->node.flags, drawingLayer);
+        graphNode->displayList = displayList;
+    }
+
+    return graphNode;
+}
+
+struct GraphNodeLvlTranslation         *init_graph_node_lvl_translation         (s32 alloc, struct GraphNodeLvlTranslation         *graphNode, s32 drawingLayer, void *displayList, Vec3f translation)
+{
+    if (alloc) {
+        graphNode = main_pool_alloc(sizeof(struct GraphNodeLvlTranslation));
+    }
+
+    if (graphNode != NULL) {
+        init_scene_graph_node_links(&graphNode->node, GRAPH_NODE_TYPE_LVL_TRANSLATION);
+
+        vec3_copy(graphNode->translation, translation);
+        SET_GRAPH_NODE_LAYER(graphNode->node.flags, drawingLayer);
+        graphNode->displayList = displayList;
+    }
+
+    return graphNode;
+}
+
+struct GraphNodeDisplayList         *init_graph_node_lvl_display_list        (s32 alloc, struct GraphNodeDisplayList         *graphNode, s32 drawingLayer, void *displayList)
+{
+    if (alloc) {
+        graphNode = main_pool_alloc(sizeof(struct GraphNodeDisplayList));
+    }
+
+    if (graphNode != NULL) {
+        init_scene_graph_node_links(&graphNode->node, GRAPH_NODE_TYPE_LVL_DISPLAY_LIST);
+        SET_GRAPH_NODE_LAYER(graphNode->node.flags, drawingLayer);
+        graphNode->displayList = displayList;
+    }
+
+    return graphNode;
+}
+
 /**
  * Adds 'childNode' to the end of the list children from 'parent'
  */

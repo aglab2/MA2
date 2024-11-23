@@ -413,6 +413,9 @@ static void level_cmd_begin_area(void) {
         } else {
             gAreas[areaIndex].camera = NULL;
         }
+        gAreas[areaIndex].renderOffset[0] = 10 * CMD_GET(s32, 8);
+        gAreas[areaIndex].renderOffset[1] = 10 * CMD_GET(s32, 12);
+        gAreas[areaIndex].renderOffset[2] = 10 * CMD_GET(s32, 16);
     }
 
     sCurrentCmd = CMD_NEXT;

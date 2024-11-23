@@ -1358,6 +1358,34 @@ void geo_try_process_children(struct GraphNode *node) {
     }
 }
 
+void geo_process_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation *node) {
+    Vec3f translation;
+    translation[0] = node->translation[0] - gCurrentArea->renderOffset[0];
+    translation[1] = node->translation[1] - gCurrentArea->renderOffset[1];
+    translation[2] = node->translation[2] - gCurrentArea->renderOffset[2];
+    mtxf_rotate_zxy_and_translate_and_mul(node->rotation, translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+
+    inc_mat_stack();
+    append_dl_and_return((struct GraphNodeDisplayList *)node);
+}
+
+void geo_process_lvl_translation(struct GraphNodeLvlTranslation *node) {
+    Vec3f translation;
+    translation[0] = node->translation[0] - gCurrentArea->renderOffset[0];
+    translation[1] = node->translation[1] - gCurrentArea->renderOffset[1];
+    translation[2] = node->translation[2] - gCurrentArea->renderOffset[2];
+    mtxf_rotate_zxy_and_translate_and_mul(gVec3sZero, translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+
+    inc_mat_stack();
+    append_dl_and_return((struct GraphNodeDisplayList *)node);
+}
+
+void geo_process_lvl_display_list(struct GraphNodeDisplayList *node) {
+    append_dl_and_return((struct GraphNodeDisplayList *)node);
+
+    gMatStackIndex++;
+}
+
 typedef void (*GeoProcessFunc)();
 
 // See enum 'GraphNodeTypes' in 'graph_node.h'.
@@ -1386,6 +1414,10 @@ static GeoProcessFunc GeoProcessJumpTable[] = {
     [GRAPH_NODE_TYPE_START               ] = geo_try_process_children,
     [GRAPH_NODE_TYPE_CULL                ] = geo_process_cull,
     [GRAPH_NODE_TYPE_COIN                ] = geo_process_coin,
+
+    [GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION] = geo_process_lvl_translation_rotation,
+    [GRAPH_NODE_TYPE_LVL_TRANSLATION         ] = geo_process_lvl_translation,
+    [GRAPH_NODE_TYPE_LVL_DISPLAY_LIST        ] = geo_process_lvl_display_list,
 };
 
 /**
