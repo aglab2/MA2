@@ -1,0 +1,17 @@
+extern const GeoLayout box_wood_geo[];
+extern Lights1 box_wood_OBJECT_CONTWOOD_sa2mdl_0_f3d_lights;
+extern Lights1 box_wood_OBJECT_CONTWOOD_sa2mdl_1_f3d_lights;
+extern u8 box_wood_sikake_19_128_ci4[];
+extern u8 box_wood_sikake_19_128_pal_rgba16[];
+extern u8 box_wood_sikake_18_128_ci4[];
+extern u8 box_wood_sikake_18_128_pal_rgba16[];
+extern Vtx box_wood_object_00747BA4_mesh_layer_1_vtx_cull[8];
+extern Vtx box_wood_object_00747BA4_mesh_layer_1_vtx_0[4];
+extern Gfx box_wood_object_00747BA4_mesh_layer_1_tri_0[];
+extern Vtx box_wood_object_00747BA4_mesh_layer_1_vtx_1[16];
+extern Gfx box_wood_object_00747BA4_mesh_layer_1_tri_1[];
+extern Gfx mat_box_wood_OBJECT_CONTWOOD_sa2mdl_0_f3d[];
+extern Gfx mat_revert_box_wood_OBJECT_CONTWOOD_sa2mdl_0_f3d[];
+extern Gfx mat_box_wood_OBJECT_CONTWOOD_sa2mdl_1_f3d[];
+extern Gfx mat_revert_box_wood_OBJECT_CONTWOOD_sa2mdl_1_f3d[];
+extern Gfx box_wood_object_00747BA4_mesh_layer_1[];

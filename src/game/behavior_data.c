@@ -1790,7 +1790,7 @@ const BehaviorScript bhvHiddenObject[] = {
 const BehaviorScript bhvBreakableBox[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_DONT_CALC_COLL_DIST)),
-    LOAD_COLLISION_DATA(breakable_box_seg8_collision),
+    LOAD_COLLISION_DATA(box_wood_collision),
     SET_FLOAT(oCollisionDistance, 1000),
     CALL_NATIVE(bhv_init_room),
     BEGIN_LOOP(),
@@ -6081,5 +6081,23 @@ const BehaviorScript RM_Scroll_Texture[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_murder),
+    END_LOOP(),
+};
+
+extern void bhv_checkpoint_loop();
+const BehaviorScript bhvCheckpoint[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_checkpoint_loop),
+    END_LOOP(),
+};
+
+extern void bhv_goal_loop();
+const BehaviorScript bhvGoal[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_goal_loop),
     END_LOOP(),
 };

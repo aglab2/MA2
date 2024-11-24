@@ -30,3 +30,8 @@
 #include "src/s2d_engine/s2d_config.h"
 #include FONT_C_FILE
 #endif
+
+#include "checkpoint/model.inc.c"
+#include "goal/model.inc.c"
+#include "box_wood/model.inc.c"
+#include "box_wood/collision.inc.c"

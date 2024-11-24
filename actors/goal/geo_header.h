@@ -1,0 +1,13 @@
+extern const GeoLayout goal_geo[];
+extern Lights1 goal_OBJECT_GOALRING_GOAL_sa2mdl_0_f3d_lights;
+extern Lights1 goal_OBJECT_GOALRING_sa2mdl_0_001_f3d_lights;
+extern u8 goal_goal_ci8[];
+extern u8 goal_goal_pal_rgba16[];
+extern u8 goal_sikake_05_64_rgba32[];
+extern Vtx goal_object_0074EC84_mesh_layer_4_vtx_cull[8];
+extern Vtx goal_object_0074EC84_mesh_layer_4_vtx_0[8];
+extern Vtx goal_object_0074EC84_mesh_layer_1_vtx_cull[8];
+extern Vtx goal_object_0074EC84_mesh_layer_1_vtx_0[207];
+extern Vtx goal_object_0074EC84_mesh_layer_1_vtx_1[9];
+extern Gfx goal_object_0074EC84_mesh_layer_4[];
+extern Gfx goal_object_0074EC84_mesh_layer_1[];

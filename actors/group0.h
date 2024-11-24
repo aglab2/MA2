@@ -333,4 +333,12 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "mario/geo_header.h"
 
+#include "checkpoint/geo_header.h"
+
+#include "goal/geo_header.h"
+
+#include "box_wood/geo_header.h"
+
+#include "box_wood/collision_header.h"
+
 #endif
