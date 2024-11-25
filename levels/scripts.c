@@ -120,6 +120,9 @@ const LevelScript level_main_scripts_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_CHECKPOINT, checkpoint_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BREAKABLE_BOX,           box_wood_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BREAKABLE_BOX_NO_SHADOW, box_wood_geo),
+
+    LOAD_MODEL_FROM_GEO(MODEL_CASTLE_GROUNDS_WARP_PIPE,    warp_pipe_geo),
+
     FREE_LEVEL_POOL(),
     POP_POOL(),
     CALL(/*arg*/ 0, /*func*/ lvl_init_from_save_file),
