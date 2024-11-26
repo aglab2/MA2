@@ -537,7 +537,6 @@ extern const IWDHeader* iw_descs_ce[];
 
 static const IWDHeader** kWarpHeaders[] = {
     [ LEVEL_CE ] = iw_descs_ce,
-    [ LEVEL_BOB ] = iw_descs_ce,
 };
 
 static void handle_iw_area_desc(int* newArea, const IWDirectionAreas* desc)
