@@ -54,8 +54,9 @@ static int handle_trajectory_cancel(const Trajectory* traj, int it)
     Vec3f closestPoint = {0, 0, 0};
     f32 minT = 0;
     int minPoint = 0;
-    
-    for (int i = 0; i < 2; i++)
+    int i = 0;
+
+    while (-1 != traj[i*4 + 4])
     {
         Vec3f trajCurPoint = {traj[i*4 + 1], traj[i*4 + 2], traj[i*4 + 3]};
         Vec3f trajNextPoint = {traj[i*4 + 5], traj[i*4 + 6], traj[i*4 + 7]};
@@ -70,10 +71,11 @@ static int handle_trajectory_cancel(const Trajectory* traj, int it)
             minPoint = i * 4;
             vec3f_copy(closestPoint, tmpClosestPoint);
         }
+        i++;
     }
 
-#if 0
     print_text_fmt_int(20 + 40*it, 20, "%d", (int) minDist);
+#if 0
     print_text_fmt_int(20 + 40*it, 40, "X %d", (int) sPosX);
     print_text_fmt_int(20 + 40*it, 60, "Y %d", (int) sPosY);
     print_text_fmt_int(20 + 40*it, 80, "Z %d", (int) sPosZ);
@@ -83,13 +85,14 @@ static int handle_trajectory_cancel(const Trajectory* traj, int it)
     print_text_fmt_int(20 + 40*it, 180, "Z %d", (int) gMarioStates->pos[2]);
 #endif
 
-    if (minDist < 30.f)
+    if (minDist < 60.f)
     {
         sPosX = closestPoint[0];
         sPosY = closestPoint[1];
         sPosZ = closestPoint[2];
         sZiplineProgress = minT;
         sZiplineCurPoint = minPoint;
+        // TODO: Project current forward velocity onto the zipline
         sForwardVel = 30.f;
         sTrajectory = traj;
         sCancelTimeout = 30;
@@ -166,6 +169,8 @@ int zipline_step()
 
             sForwardVel *= 0.95f;
             sForwardVel += dot / 12.0f;
+            // TODO: CLAMP this properly from negative to positive
+            // TODO: Add gravity
             sForwardVel = CLAMP(sForwardVel, 0.f, 40.f);
 
 #if 0
@@ -198,6 +203,7 @@ int zipline_step()
                 sZiplineCurPoint += 4;
             }
         }
+        // TODO: Handle negative progress
     }
     {
         Vec3f trajCurPoint = {traj[sZiplineCurPoint + 1], traj[sZiplineCurPoint + 2], traj[sZiplineCurPoint + 3]};

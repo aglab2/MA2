@@ -81,6 +81,7 @@ static const Trajectory* rail_ce_area3[] = {
     ce_area_3_spline_2473_object_00CFEC08_001,
     ce_area_3_spline_z_1681_object_00D2405C_001,
     ce_area_3_spline_z_1757_object_00CA7120_001,
+    ce_area_3_spline_z_1757_object_00CA7120_002,
     NULL,
 };
 

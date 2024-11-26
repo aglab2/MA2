@@ -18,6 +18,7 @@ extern const Trajectory ce_area_3_spline_2459_object_00CFC480_001[];
 extern const Trajectory ce_area_3_spline_2473_object_00CFEC08_001[];
 extern const Trajectory ce_area_3_spline_z_1681_object_00D2405C_001[];
 extern const Trajectory ce_area_3_spline_z_1757_object_00CA7120_001[];
+extern const Trajectory ce_area_3_spline_z_1757_object_00CA7120_002[];
 extern const GeoLayout ce_area_4_geo[];
 extern const GeoLayout ce_area_4[];
 extern const Collision ce_area_4_collision[];

@@ -2,6 +2,7 @@ const Trajectory ce_area_3_spline_2459_object_00CFC480_001[] = {
 	TRAJECTORY_POS( 0, -2350, -2881, 10150),
 	TRAJECTORY_POS( 1, -2450, -2881, 10150),
 	TRAJECTORY_POS( 2, -3200, -2381, 10150),
+	TRAJECTORY_POS( 3, -3950, -1881, 10150),
 	TRAJECTORY_END(),
 };
 const Trajectory ce_area_3_spline_2473_object_00CFEC08_001[] = {
@@ -19,5 +20,11 @@ const Trajectory ce_area_3_spline_z_1681_object_00D2405C_001[] = {
 const Trajectory ce_area_3_spline_z_1757_object_00CA7120_001[] = {
 	TRAJECTORY_POS( 0, -7100, -2831, 8300),
 	TRAJECTORY_POS( 1, -7100, -1831, 9800),
+	TRAJECTORY_END(),
+};
+const Trajectory ce_area_3_spline_z_1757_object_00CA7120_002[] = {
+	TRAJECTORY_POS( 0, -13750, -1761, 3475),
+	TRAJECTORY_POS( 1, -13250, -1261, 3475),
+	TRAJECTORY_POS( 2, -12850, -1261, 3475),
 	TRAJECTORY_END(),
 };
