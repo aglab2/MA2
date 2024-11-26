@@ -1245,6 +1245,30 @@ s32 act_riding_shell_ground(struct MarioState *m) {
     return FALSE;
 }
 
+s32 act_rail_grind(struct MarioState *m)
+{
+    s16 startYaw = m->faceAngle[1];
+
+    if (m->input & INPUT_A_PRESSED) {
+        return set_mario_action(m, ACT_JUMP, 0);
+    }
+
+    if (zipline_step()) {
+        return set_mario_action(m, ACT_FREEFALL, 0);
+    }
+
+    m->marioObj->header.gfx.pos[0] = m->pos[0];
+    m->marioObj->header.gfx.pos[1] = m->pos[1] - 45.f;
+    m->marioObj->header.gfx.pos[2] = m->pos[2];
+    set_mario_animation(m, MARIO_ANIM_RIDING_SHELL);
+    tilt_body_ground_shell(m, startYaw);
+    play_sound(SOUND_MOVING_TERRAIN_RIDING_SHELL + m->terrainSoundAddend,
+                m->marioObj->header.gfx.cameraToObject);
+
+    adjust_sound_for_speed(m);
+    return FALSE;
+}
+
 s32 act_crawling(struct MarioState *m) {
     if (should_begin_sliding(m)) {
         return set_mario_action(m, ACT_BEGIN_SLIDING, 0);
@@ -1943,6 +1967,11 @@ s32 act_hold_quicksand_jump_land(struct MarioState *m) {
 }
 
 s32 check_common_moving_cancels(struct MarioState *m) {
+    if (zipline_cancel())
+    {
+        return drop_and_set_mario_action(m, ACT_RAIL_GRIND, 0);
+    }
+
     if (m->pos[1] < m->waterLevel - 100) {
         return set_water_plunge_action(m);
     }
@@ -2015,6 +2044,7 @@ s32 mario_execute_moving_action(struct MarioState *m) {
         case ACT_QUICKSAND_JUMP_LAND:      cancel = act_quicksand_jump_land(m);      break;
         case ACT_HOLD_QUICKSAND_JUMP_LAND: cancel = act_hold_quicksand_jump_land(m); break;
         case ACT_LONG_JUMP_LAND:           cancel = act_long_jump_land(m);           break;
+        case ACT_RAIL_GRIND:               cancel = act_rail_grind(m);               break;
     }
     /* clang-format on */
 

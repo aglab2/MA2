@@ -1058,6 +1058,11 @@ s32 act_first_person(struct MarioState *m) {
 }
 
 s32 check_common_stationary_cancels(struct MarioState *m) {
+    if (zipline_cancel())
+    {
+        return drop_and_set_mario_action(m, ACT_RAIL_GRIND, 0);
+    }
+
     if (m->pos[1] < m->waterLevel - 100) {
         if (m->action == ACT_SPAWN_SPIN_LANDING) {
             load_level_init_text(0);

@@ -1975,6 +1975,11 @@ s32 act_special_triple_jump(struct MarioState *m) {
 }
 
 s32 check_common_airborne_cancels(struct MarioState *m) {
+    if (zipline_cancel())
+    {
+        return drop_and_set_mario_action(m, ACT_RAIL_GRIND, 0);
+    }
+
     if (m->pos[1] < m->waterLevel - 100) {
         return set_water_plunge_action(m);
     }
