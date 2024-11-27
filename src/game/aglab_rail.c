@@ -172,6 +172,12 @@ static void prepare_mario_for_zipline_drop(Vec3f trajDirection)
     gMarioStates->vel[1] = 0;
     gMarioStates->vel[2] = trajDirection[2];
     gMarioStates->forwardVel = sqrtf(gMarioStates->vel[0] * gMarioStates->vel[0] + gMarioStates->vel[2] * gMarioStates->vel[2]);
+    
+    s16 angle = atan2s(trajDirection[2], trajDirection[0]);
+    if (abs_angle_diff(gMarioStates->faceAngle[1], angle) > 0x4000)
+    {
+        gMarioStates->forwardVel = -gMarioStates->forwardVel;
+    }
 }
 
 int zipline_step()
@@ -201,12 +207,19 @@ int zipline_step()
 
             f32 xspd = gMarioState->intendedMag * sins(gMarioState->intendedYaw);
             f32 zspd = gMarioState->intendedMag * coss(gMarioState->intendedYaw);
+            if (abs_angle_diff(gMarioState->faceAngle[1], gMarioState->intendedYaw) > 0x4000)
+            {
+                xspd /= 5.f;
+                zspd /= 5.f;
+            }
             f32 dot = xdir * xspd + zdir * zspd;
 
             sForwardVel *= 0.95f;
             sForwardVel += dot / 12.0f;
             sForwardVel -= trajDirection[1] / dirMag * 3.f;
             sForwardVel = CLAMP(sForwardVel, -60.f, 60.f);
+
+            print_text_fmt_int(20, 20, "%d", (int) sForwardVel);
 
 #if 0
             if (sForwardVel < 1.f)
