@@ -747,6 +747,7 @@ void tilt_body_ground_shell(struct MarioState *m, s16 startYaw) {
     marioBodyState->torsoAngle[0] = approach_s32_symmetric(marioBodyState->torsoAngle[0], nextBodyPitch, 0x200);
     marioBodyState->headAngle[2] = -marioBodyState->torsoAngle[2];
 
+    marioObj->header.gfx.angle[1] = m->faceAngle[1];
     marioObj->header.gfx.angle[2] = marioBodyState->torsoAngle[2];
     marioObj->header.gfx.pos[1] += 45.0f;
 }

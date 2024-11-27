@@ -19,6 +19,7 @@ static int sZiplineCurPoint = 0;
 static f32 sForwardVel = 0;
 static s16 sFaceAngleYaw;
 static u8 sCancelTimeout = 0;
+static u8 sAngleFlipped = 0;
 
 static inline float point_to_segment_distance(Vec3f Q, Vec3f P1, Vec3f P2, Vec3f closest_point, float* ot) {
     Vec3f P1P2;
@@ -74,15 +75,15 @@ static int handle_trajectory_cancel(const Trajectory* traj, int it)
         i++;
     }
 
-    print_text_fmt_int(20 + 40*it, 20, "%d", (int) minDist);
 #if 0
-    print_text_fmt_int(20 + 40*it, 40, "X %d", (int) sPosX);
-    print_text_fmt_int(20 + 40*it, 60, "Y %d", (int) sPosY);
-    print_text_fmt_int(20 + 40*it, 80, "Z %d", (int) sPosZ);
+    print_text_fmt_int(20 + 50*it, 20, "%d", (int) minDist);
+    print_text_fmt_int(20 + 50*it, 40, "X %d", (int) sPosX);
+    print_text_fmt_int(20 + 50*it, 60, "Y %d", (int) sPosY);
+    print_text_fmt_int(20 + 50*it, 80, "Z %d", (int) sPosZ);
     
-    print_text_fmt_int(20 + 40*it, 140, "X %d", (int) gMarioStates->pos[0]);
-    print_text_fmt_int(20 + 40*it, 160, "Y %d", (int) gMarioStates->pos[1]);
-    print_text_fmt_int(20 + 40*it, 180, "Z %d", (int) gMarioStates->pos[2]);
+    print_text_fmt_int(20 + 50*it, 140, "X %d", (int) gMarioStates->pos[0]);
+    print_text_fmt_int(20 + 50*it, 160, "Y %d", (int) gMarioStates->pos[1]);
+    print_text_fmt_int(20 + 50*it, 180, "Z %d", (int) gMarioStates->pos[2]);
 #endif
 
     if (minDist < 60.f)
@@ -92,10 +93,20 @@ static int handle_trajectory_cancel(const Trajectory* traj, int it)
         sPosZ = closestPoint[2];
         sZiplineProgress = minT;
         sZiplineCurPoint = minPoint;
-        // TODO: Project current forward velocity onto the zipline
-        sForwardVel = 30.f;
+        
+        Vec3f trajCurPoint = {traj[sZiplineCurPoint + 1], traj[sZiplineCurPoint + 2], traj[sZiplineCurPoint + 3]};
+        Vec3f trajNextPoint = {traj[sZiplineCurPoint + 4 + 1], traj[sZiplineCurPoint + 4 + 2], traj[sZiplineCurPoint + 4 + 3]};
+        Vec3f trajDirection;
+        vec3f_diff(trajDirection, trajNextPoint, trajCurPoint);
+        f32 dirMag = vec3_mag(trajDirection);
+        trajDirection[0] /= dirMag;
+        trajDirection[1] /= dirMag;
+        trajDirection[2] /= dirMag;
+        sForwardVel = trajDirection[0] * gMarioStates->vel[0] + trajDirection[1] * gMarioStates->vel[1] + trajDirection[2] * gMarioStates->vel[2];
         sTrajectory = traj;
-        sCancelTimeout = 30;
+        s16 yaw = atan2s(trajDirection[2], trajDirection[0]);
+        sAngleFlipped = abs_angle_diff(gMarioStates->faceAngle[1], yaw) > 0x4000;
+        sCancelTimeout = 4;
         return 1;
     }
     else
@@ -138,8 +149,29 @@ int zipline_cancel()
         trajectories++;
     }
 
+#if 0
     print_text_fmt_int(20, 20, "%d", it);
+#endif
     return 0;
+}
+
+static void prepare_mario_for_zipline_drop(Vec3f trajDirection)
+{
+#if 0
+                cur_obj_become_intangible();
+                gMarioObject->oInteractStatus |= INT_STATUS_MARIO_DROP_FROM_HOOT;
+#endif
+
+    f32 mag = sqrtf(trajDirection[0] * trajDirection[0] + trajDirection[2] * trajDirection[2]);
+    trajDirection[0] /= mag;
+    trajDirection[2] /= mag;
+    trajDirection[0] *= sForwardVel;
+    trajDirection[2] *= sForwardVel;
+
+    gMarioStates->vel[0] = trajDirection[0];
+    gMarioStates->vel[1] = 0;
+    gMarioStates->vel[2] = trajDirection[2];
+    gMarioStates->forwardVel = sqrtf(gMarioStates->vel[0] * gMarioStates->vel[0] + gMarioStates->vel[2] * gMarioStates->vel[2]);
 }
 
 int zipline_step()
@@ -153,6 +185,10 @@ int zipline_step()
         vec3f_diff(trajDirection, trajNextPoint, trajCurPoint);
         sFaceAngleYaw = atan2s(trajDirection[2], trajDirection[0]);
         gMarioStates->faceAngle[1] = sFaceAngleYaw;
+        if (sAngleFlipped)
+        {
+            gMarioStates->faceAngle[1] += 0x8000;
+        }
 
         f32 dirMag = vec3_mag(trajDirection);
         // Calculate velocity
@@ -169,9 +205,8 @@ int zipline_step()
 
             sForwardVel *= 0.95f;
             sForwardVel += dot / 12.0f;
-            // TODO: CLAMP this properly from negative to positive
-            // TODO: Add gravity
-            sForwardVel = CLAMP(sForwardVel, 0.f, 40.f);
+            sForwardVel -= trajDirection[1] / dirMag * 3.f;
+            sForwardVel = CLAMP(sForwardVel, -60.f, 60.f);
 
 #if 0
             if (sForwardVel < 1.f)
@@ -184,6 +219,7 @@ int zipline_step()
 
         }
 
+        prepare_mario_for_zipline_drop(trajDirection);
         f32 movAmt = sForwardVel / dirMag;
 
         sZiplineProgress += movAmt;
@@ -191,16 +227,24 @@ int zipline_step()
         {
             if (traj[sZiplineCurPoint + 8] == -1)
             {
-#if 0
-                cur_obj_become_intangible();
-                gMarioObject->oInteractStatus |= INT_STATUS_MARIO_DROP_FROM_HOOT;
-#endif
                 return 1;
             }
             else
             {
                 sZiplineProgress = sZiplineProgress - 1.f;
                 sZiplineCurPoint += 4;
+            }
+        }
+        if (sZiplineProgress < 0.f)
+        {
+            if (0 == sZiplineCurPoint)
+            {
+                return 1;
+            }
+            else
+            {
+                sZiplineProgress = 1.f + sZiplineProgress;
+                sZiplineCurPoint -= 4;
             }
         }
         // TODO: Handle negative progress
