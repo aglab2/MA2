@@ -207,7 +207,7 @@ void update_air_without_turn(struct MarioState *m) {
     if (!check_horizontal_wind(m)) {
         dragThreshold = m->action == ACT_LONG_JUMP ? 48.0f : 32.0f;
         if (m->prevAction == ACT_RAIL_GRIND) {
-            dragThreshold = 61.0f;
+            dragThreshold = 101.0f;
         }
         m->forwardVel = approach_f32(m->forwardVel, 0.0f, 0.35f, 0.35f);
 

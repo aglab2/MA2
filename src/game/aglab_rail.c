@@ -11,6 +11,7 @@ static const Trajectory*** kRails[] = {
 
 #define MAX_ZIPLINE_DISTANCE 50000.f
 
+static const Trajectory* sTrajectory;
 static f32 sZiplineProgress = 0;
 static f32 sPosX;
 static f32 sPosY;
@@ -20,6 +21,7 @@ static f32 sForwardVel = 0;
 static s16 sFaceAngleYaw;
 static u8 sCancelTimeout = 0;
 static u8 sAngleFlipped = 0;
+static u8 sTrajectoryArea = 0;
 
 static inline float point_to_segment_distance(Vec3f Q, Vec3f P1, Vec3f P2, Vec3f closest_point, float* ot) {
     Vec3f P1P2;
@@ -47,7 +49,6 @@ static inline float point_to_segment_distance(Vec3f Q, Vec3f P1, Vec3f P2, Vec3f
     }
 }
 
-static const Trajectory* sTrajectory;
 static int handle_trajectory_cancel(const Trajectory* traj, int it)
 {
     Vec3f Q = { gMarioStates->pos[0], gMarioStates->pos[1], gMarioStates->pos[2] };
@@ -104,6 +105,7 @@ static int handle_trajectory_cancel(const Trajectory* traj, int it)
         trajDirection[2] /= dirMag;
         sForwardVel = trajDirection[0] * gMarioStates->vel[0] + trajDirection[1] * gMarioStates->vel[1] + trajDirection[2] * gMarioStates->vel[2];
         sTrajectory = traj;
+        sTrajectoryArea = gCurrAreaIndex;
         s16 yaw = atan2s(trajDirection[2], trajDirection[0]);
         sAngleFlipped = abs_angle_diff(gMarioStates->faceAngle[1], yaw) > 0x4000;
         sCancelTimeout = 4;
@@ -182,6 +184,15 @@ static void prepare_mario_for_zipline_drop(Vec3f trajDirection)
 
 int zipline_step()
 {
+    if (sTrajectoryArea != gCurrAreaIndex)
+    {
+        f32 fv = sForwardVel;
+        if (!zipline_cancel())
+            return 1;
+
+        sForwardVel = fv;
+    }
+
     const Trajectory* traj = sTrajectory;
     // Advance along the zipline
     {
@@ -216,8 +227,8 @@ int zipline_step()
 
             sForwardVel *= 0.95f;
             sForwardVel += dot / 12.0f;
-            sForwardVel -= trajDirection[1] / dirMag * 3.f;
-            sForwardVel = CLAMP(sForwardVel, -60.f, 60.f);
+            sForwardVel -= trajDirection[1] / dirMag * 5.f;
+            sForwardVel = CLAMP(sForwardVel, -100.f, 100.f);
 
             print_text_fmt_int(20, 20, "%d", (int) sForwardVel);
 
@@ -260,7 +271,6 @@ int zipline_step()
                 sZiplineCurPoint -= 4;
             }
         }
-        // TODO: Handle negative progress
     }
     {
         Vec3f trajCurPoint = {traj[sZiplineCurPoint + 1], traj[sZiplineCurPoint + 2], traj[sZiplineCurPoint + 3]};
