@@ -428,7 +428,7 @@ s32 update_slide_or_0f_camera(struct Camera *c, Vec3f focus, Vec3f pos);
 s32 update_spiral_stairs_camera(struct Camera *c, Vec3f focus, Vec3f pos);
 
 typedef s32 (*CameraTransition)(struct Camera *c, Vec3f focus, Vec3f pos);
-CameraTransition sModeTransitions[] = {
+static const CameraTransition sModeTransitions[] = {
     NULL,
     update_radial_camera,
     update_outward_radial_camera,
@@ -1120,7 +1120,7 @@ s32 snap_to_45_degrees(s16 angle) {
 #define VERTICAL_RAY_OFFSET 300.0f // The ray is cast from 300 units above Mario in order to prevent small obstacles from constantly snapping the camera
 
 // courtesy of ReonuCam but rewritten for my usecases
-void eight_dir_collision_handler(struct Camera *c, Vec3f oldPos)
+static void eight_dir_collision_handler(struct Camera *c)
 {
     struct Surface *surf;
 
@@ -1163,6 +1163,10 @@ void eight_dir_collision_handler(struct Camera *c, Vec3f oldPos)
     }
 
     if (surf) {
+        c->paraCamProgress -= 0.2f;
+        if (c->paraCamProgress < 0.f)
+            c->paraCamProgress = 0.f;
+
         f32 dist;
         Vec3f camToMario;
         vec3f_diff(camToMario, gMarioState->pos, hitpos);
@@ -1179,7 +1183,7 @@ void eight_dir_collision_handler(struct Camera *c, Vec3f oldPos)
         }
         else
         {
-            // very far camera, move along the ray a tiny bit
+            // move camera along the ray a tiny bit
             Vec3f camRay;
             vec3f_diff(camRay, hitpos, origin);
             f32 camRayMag = vec3_mag(camRay);
@@ -1195,6 +1199,10 @@ void eight_dir_collision_handler(struct Camera *c, Vec3f oldPos)
         print_text_fmt_int(120, 40, "H1 %d", hitpos[1]);
         print_text_fmt_int(120, 60, "H2 %d", hitpos[2]);
 #endif
+    }
+    else
+    {
+        c->paraCamProgress = 1.f;
     }
 
     c->yaw = atan2s(c->pos[2] - gMarioState->pos[2], c->pos[0] - gMarioState->pos[0]);
@@ -1235,15 +1243,15 @@ void mode_8_directions_camera(struct Camera *c) {
 #endif
 
     lakitu_zoom(400.f, 0x900);
-    Vec3f oldPos;
-    vec3_copy(oldPos, c->pos);
     c->nextYaw = update_8_directions_camera(c, c->focus, pos);
     set_camera_height(c, pos[1]);
     c->pos[0] = pos[0];
     c->pos[2] = pos[2];
+    c->paraCamOrigPos[0] = c->pos[0];
+    c->paraCamOrigPos[1] = c->pos[1];
+    c->paraCamOrigPos[2] = c->pos[2];
     sAreaYawChange = sAreaYaw - oldAreaYaw;
-    eight_dir_collision_handler(c, oldPos);
-    // set_camera_height(c, pos[1]);
+    eight_dir_collision_handler(c);
 }
 
 /**
@@ -2873,7 +2881,11 @@ void update_lakitu(struct Camera *c) {
     s16 newYaw;
 
     if (!(gCameraMovementFlags & CAM_MOVE_PAUSE_SCREEN)) {
-        newYaw = next_lakitu_state(newPos, newFoc, c->pos, c->focus, sOldPosition, sOldFocus,
+        Vec3f realCamPos;
+        realCamPos[0] = c->pos[0] * (1.f - c->paraCamProgress) + c->paraCamOrigPos[0] * c->paraCamProgress;
+        realCamPos[1] = c->pos[1];
+        realCamPos[2] = c->pos[2] * (1.f - c->paraCamProgress) + c->paraCamOrigPos[2] * c->paraCamProgress;
+        newYaw = next_lakitu_state(newPos, newFoc, realCamPos, c->focus, sOldPosition, sOldFocus,
                                    c->nextYaw);
         set_or_approach_s16_symmetric(&c->yaw, newYaw, sYawSpeed);
         sStatusFlags &= ~CAM_FLAG_UNUSED_CUTSCENE_ACTIVE;
@@ -3034,6 +3046,7 @@ void update_camera(struct Camera *c) {
         sYawSpeed = 0x400;
 
         if (sSelectionFlags & CAM_MODE_MARIO_ACTIVE) {
+            c->paraCamProgress = 0.f;
             switch (c->mode) {
                 case CAMERA_MODE_BEHIND_MARIO:
                     mode_behind_mario_camera(c);
@@ -3057,59 +3070,27 @@ void update_camera(struct Camera *c) {
         } else {
             switch (c->mode) {
                 case CAMERA_MODE_BEHIND_MARIO:
+                c->paraCamProgress = 0.f;
                     mode_behind_mario_camera(c);
                     break;
 
                 case CAMERA_MODE_C_UP:
+                    c->paraCamProgress = 0.f;
                     mode_c_up_camera(c);
                     break;
 
                 case CAMERA_MODE_WATER_SURFACE:
+                    c->paraCamProgress = 0.f;
                     mode_water_surface_camera(c);
                     break;
 
                 case CAMERA_MODE_INSIDE_CANNON:
+                    c->paraCamProgress = 0.f;
                     mode_cannon_camera(c);
                     break;
 
-                case CAMERA_MODE_8_DIRECTIONS:
+                default:
                     mode_8_directions_camera(c);
-                    break;
-
-                case CAMERA_MODE_RADIAL:
-                    mode_radial_camera(c);
-                    break;
-
-                case CAMERA_MODE_OUTWARD_RADIAL:
-                    mode_outward_radial_camera(c);
-                    break;
-
-                case CAMERA_MODE_CLOSE:
-                    mode_lakitu_camera(c);
-                    break;
-
-                case CAMERA_MODE_FREE_ROAM:
-                    mode_lakitu_camera(c);
-                    break;
-
-                case CAMERA_MODE_BOSS_FIGHT:
-                    mode_boss_fight_camera(c);
-                    break;
-
-                case CAMERA_MODE_PARALLEL_TRACKING:
-                    mode_parallel_tracking_camera(c);
-                    break;
-
-                case CAMERA_MODE_SLIDE_HOOT:
-                    mode_slide_camera(c);
-                    break;
-
-                case CAMERA_MODE_FIXED:
-                    mode_fixed_camera(c);
-                    break;
-
-                case CAMERA_MODE_SPIRAL_STAIRS:
-                    mode_spiral_stairs_camera(c);
                     break;
             }
         }
@@ -3496,6 +3477,7 @@ void create_camera(struct GraphNodeCamera *gc) {
     c->areaCenY = gc->focus[1];
     c->areaCenZ = gc->focus[2];
     c->yaw = 0;
+    c->paraCamProgress = 0;
     vec3f_copy(c->pos, gc->pos);
     vec3f_copy(c->focus, gc->focus);
 }

@@ -599,13 +599,13 @@ struct Camera {
     /// For example, this is what makes the camera rotate around the hill in BoB
     /*0x2C*/ f32 areaCenZ;
     /*0x30*/ u8 cutscene;
-    /*0x31*/ u8 filler1[8];
     /*0x3A*/ s16 nextYaw;
-    /*0x3C*/ u8 filler2[40];
     /*0x64*/ u8 doorStatus;
     /// The y coordinate of the "center" of the area. Unlike areaCenX and areaCenZ, this is only used
     /// when paused. See zoom_out_if_paused_and_outside
     /*0x68*/ f32 areaCenY;
+    Vec3f paraCamOrigPos;
+    f32 paraCamProgress;
 };
 
 /**
