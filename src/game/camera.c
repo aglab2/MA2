@@ -1116,6 +1116,88 @@ s32 snap_to_45_degrees(s16 angle) {
     return angle;
 }
 
+#define MIN_CAMERA_DISTANCE 160.0f // Minimum distance between Mario and the camera.
+#define VERTICAL_RAY_OFFSET 300.0f // The ray is cast from 300 units above Mario in order to prevent small obstacles from constantly snapping the camera
+
+// courtesy of ReonuCam but rewritten for my usecases
+void eight_dir_collision_handler(struct Camera *c, Vec3f oldPos)
+{
+    struct Surface *surf;
+
+    Vec3f camdir;
+    Vec3f origin;
+    Vec3f thick;
+    Vec3f hitpos;
+
+    vec3f_copy(origin, gMarioState->pos);
+
+    origin[1] += VERTICAL_RAY_OFFSET; 
+    camdir[0] = c->pos[0] - origin[0];
+    camdir[1] = c->pos[1] - origin[1];
+    if (0 < camdir[1] && camdir[1] < 320.f)
+        camdir[1] = 320.f;
+
+    camdir[2] = c->pos[2] - origin[2];
+
+#if 0
+    print_text_fmt_int(20, 20, "C0 %d", c->pos[0]);
+    print_text_fmt_int(20, 40, "C1 %d", c->pos[1]);
+    print_text_fmt_int(20, 60, "C2 %d", c->pos[2]);
+
+    print_text_fmt_int(20, 120, "O0 %d", origin[0]);
+    print_text_fmt_int(20, 140, "O1 %d", origin[1]);
+    print_text_fmt_int(20, 160, "O2 %d", origin[2]);
+    
+    print_text_fmt_int(120, 120, "CD0 %d", camdir[0]);
+    print_text_fmt_int(120, 140, "CD1 %d", camdir[1]);
+    print_text_fmt_int(120, 160, "CD2 %d", camdir[2]);
+#endif
+
+    find_surface_on_ray(origin, camdir, &surf, hitpos, (RAYCAST_FIND_FLOOR | RAYCAST_FIND_WALL | RAYCAST_FIND_CEIL));
+    if (surf && surf->normal.y < -0.05f) // ceiling
+    {
+        // cap the ceiling and cast ray from mario location instead
+        c->pos[1] = hitpos[1] - 60.f;
+        camdir[1] = c->pos[1] - origin[1];
+        find_surface_on_ray(origin, camdir, &surf, hitpos, (RAYCAST_FIND_FLOOR | RAYCAST_FIND_WALL));
+    }
+
+    if (surf) {
+        f32 dist;
+        Vec3f camToMario;
+        vec3f_diff(camToMario, gMarioState->pos, hitpos);
+        vec3f_get_lateral_dist(hitpos, gMarioState->pos, &dist);
+        if (dist < MIN_CAMERA_DISTANCE) {
+            // close up camera
+            s16 yaw = atan2s(camToMario[2], camToMario[0]);
+            f32 distFromSurf = 100.f + (dist - MIN_CAMERA_DISTANCE); // If Mario runs right up to the screen, the camera pull back slightly...
+            f32 yDist = MIN_CAMERA_DISTANCE - CLAMP(dist, 0, MIN_CAMERA_DISTANCE); // ...and also up slightly.
+            thick[0] = sins(yaw) * distFromSurf;
+            thick[1] = yDist;
+            thick[2] = coss(yaw) * distFromSurf;
+            vec3f_add(hitpos,thick);
+        }
+        else
+        {
+            // very far camera, move along the ray a tiny bit
+            Vec3f camRay;
+            vec3f_diff(camRay, hitpos, origin);
+            vec3f_normalize(camRay);
+            vec3_scale(camRay, -25.f);
+            vec3_add(hitpos, camRay);
+        }
+
+        vec3f_copy(c->pos,hitpos);
+#if 0
+        print_text_fmt_int(120, 20, "H0 %d", hitpos[0]);
+        print_text_fmt_int(120, 40, "H1 %d", hitpos[1]);
+        print_text_fmt_int(120, 60, "H2 %d", hitpos[2]);
+#endif
+    }
+
+    c->yaw = atan2s(c->pos[2] - gMarioState->pos[2], c->pos[0] - gMarioState->pos[0]);
+}
+
 /**
  * A mode that only has 8 camera angles, 45 degrees apart
  */
@@ -1151,11 +1233,15 @@ void mode_8_directions_camera(struct Camera *c) {
 #endif
 
     lakitu_zoom(400.f, 0x900);
+    Vec3f oldPos;
+    vec3_copy(oldPos, c->pos);
     c->nextYaw = update_8_directions_camera(c, c->focus, pos);
+    set_camera_height(c, pos[1]);
     c->pos[0] = pos[0];
     c->pos[2] = pos[2];
     sAreaYawChange = sAreaYaw - oldAreaYaw;
-    set_camera_height(c, pos[1]);
+    eight_dir_collision_handler(c, oldPos);
+    // set_camera_height(c, pos[1]);
 }
 
 /**
