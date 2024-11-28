@@ -575,4 +575,6 @@
 #define MODEL_GOAL 0xff
 #define MODEL_CHECKPOINT 0xfe
 
+#define MODEL_CE_HAMMER MODEL_LEVEL_GEOMETRY_03
+
 #endif // MODEL_IDS_H

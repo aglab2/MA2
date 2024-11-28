@@ -18,3 +18,5 @@
 
 
 #include "levels/ce/geo.inc.c"
+
+#include "levels/ce/ce_hammer/geo.inc.c"

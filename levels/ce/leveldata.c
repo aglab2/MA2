@@ -123,3 +123,6 @@ const Trajectory** rail_descs_ce[] = {
 
 #include "levels/ce/visual/model.inc.c"
 #include "levels/ce/leveldata.inc.c"
+
+#include "levels/ce/ce_hammer/model.inc.c"
+#include "levels/ce/ce_hammer/collision.inc.c"
