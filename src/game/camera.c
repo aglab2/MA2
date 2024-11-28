@@ -1182,8 +1182,10 @@ void eight_dir_collision_handler(struct Camera *c, Vec3f oldPos)
             // very far camera, move along the ray a tiny bit
             Vec3f camRay;
             vec3f_diff(camRay, hitpos, origin);
-            vec3f_normalize(camRay);
-            vec3_scale(camRay, -25.f);
+            f32 camRayMag = vec3_mag(camRay);
+            if (camRayMag > 25.f)
+                vec3_scale(camRay, -25.f / camRayMag);
+
             vec3_add(hitpos, camRay);
         }
 
