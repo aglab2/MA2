@@ -15,4 +15,6 @@ extern const LevelScript level_ce_entry[];
 
 #include "levels/ce/ce_hammer/collision_header.h"
 
+#include "levels/ce/ce_skybox/header.h"
+
 #endif

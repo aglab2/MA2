@@ -1,0 +1,17 @@
+extern u8 ce_skybox_scitynbg2_rgba16[];
+extern u8 ce_skybox_scitynbg_rgba16[];
+extern u8 ce_skybox_scitynbg3_ci4[];
+extern u8 ce_skybox_scitynbg3_pal_rgba16[];
+extern Vtx ce_skybox_object_00CDC390_mesh_vtx_0[62];
+extern Gfx ce_skybox_object_00CDC390_mesh_tri_0[];
+extern Vtx ce_skybox_object_00CDC390_mesh_vtx_1[960];
+extern Gfx ce_skybox_object_00CDC390_mesh_tri_1[];
+extern Vtx ce_skybox_object_00CDC390_mesh_vtx_2[62];
+extern Gfx ce_skybox_object_00CDC390_mesh_tri_2[];
+extern Gfx mat_ce_skybox_Skybox_sa2bmdl_0_f3d[];
+extern Gfx mat_revert_ce_skybox_Skybox_sa2bmdl_0_f3d[];
+extern Gfx mat_ce_skybox_Skybox_sa2bmdl_1_f3d[];
+extern Gfx mat_revert_ce_skybox_Skybox_sa2bmdl_1_f3d[];
+extern Gfx mat_ce_skybox_Skybox_sa2bmdl_2_f3d[];
+extern Gfx mat_revert_ce_skybox_Skybox_sa2bmdl_2_f3d[];
+extern Gfx ce_skybox_object_00CDC390_mesh[];
