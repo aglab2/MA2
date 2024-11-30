@@ -169,4 +169,6 @@ s32 load_patchable_table(struct DmaHandlerList *list, s32 index);
 
 
 extern uintptr_t sSegmentROMTable[32] __attribute__((section(".bss.sSegmentROMTable")));
+
+extern uintptr_t sSegmentROMTable[32];
 #endif // MEMORY_H

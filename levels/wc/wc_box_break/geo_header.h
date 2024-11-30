@@ -1,0 +1,16 @@
+extern const GeoLayout wc_box_break_geo[];
+extern u8 wc_box_break_dz_takarabako128_001_ci4[];
+extern u8 wc_box_break_dz_takarabako128_001_pal_rgba16[];
+extern u8 wc_box_break_dz_wc_shadow_sq32_001_rgba16[];
+extern Vtx wc_box_break_wc_box_break_mesh_layer_1_vtx_cull[8];
+extern Vtx wc_box_break_wc_box_break_mesh_layer_1_vtx_0[69];
+extern Gfx wc_box_break_wc_box_break_mesh_layer_1_tri_0[];
+extern Vtx wc_box_break_wc_box_break_mesh_layer_6_vtx_cull[8];
+extern Vtx wc_box_break_wc_box_break_mesh_layer_6_vtx_0[10];
+extern Gfx wc_box_break_wc_box_break_mesh_layer_6_tri_0[];
+extern Gfx mat_wc_box_break_BOX_BREAK_sa2mdl_0_f3d[];
+extern Gfx mat_revert_wc_box_break_BOX_BREAK_sa2mdl_0_f3d[];
+extern Gfx mat_wc_box_break_BOX_BREAK_sa2mdl_1_f3d[];
+extern Gfx mat_revert_wc_box_break_BOX_BREAK_sa2mdl_1_f3d[];
+extern Gfx wc_box_break_wc_box_break_mesh_layer_1[];
+extern Gfx wc_box_break_wc_box_break_mesh_layer_6[];

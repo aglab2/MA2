@@ -23,6 +23,17 @@ const LevelScript level_wc_entry[] = {
 	LOAD_MIO0(0xa, _water_skybox_mio0SegmentRomStart, _water_skybox_mio0SegmentRomEnd), 
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
+	LOAD_MODEL_FROM_GEO(MODEL_WC_BOX, wc_box_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_WC_BOX_BROKEN, wc_box_break_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_WC_FAN_BRIGHT, wc_fan_bright_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_WC_FAN_DARK, wc_fan_dark_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_WC_FANBASE_BRIGHT, wc_fanbase_bright_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_WC_FANBASE_DARK, wc_fanbase_dark_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_WC_ROCK, wc_rock_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_WC_ROCK_BREAK, wc_rock_break_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_WC_STONEHEAD, wc_stonehead_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_WC_STONEHEAD_BREAK, wc_stonehead_path_geo),
+
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
 

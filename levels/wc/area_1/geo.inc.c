@@ -141,6 +141,7 @@ const GeoLayout wc_area_1_geo[] = {
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 1120, 0, -1500, wc_dl_0147_object_00DDBE34_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 2880, 0, -1500, wc_dl_0148_object_00DDB3D4_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 3730, 0, 0, wc_dl_0149_object_00DDA90C_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, 2193, 3200, -296, wc_dl_object_007ECD14_mesh_layer_5),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, wc_dl_Plane_mesh_layer_1),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),

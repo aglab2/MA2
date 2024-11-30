@@ -15,3 +15,14 @@
 
 
 #include "levels/wc/geo.inc.c"
+
+#include "levels/wc/wc_box/geo.inc.c"
+#include "levels/wc/wc_box_break/geo.inc.c"
+#include "levels/wc/wc_fanbase_bright/geo.inc.c"
+#include "levels/wc/wc_fanbase_dark/geo.inc.c"
+#include "levels/wc/wc_fan_bright/geo.inc.c"
+#include "levels/wc/wc_fan_dark/geo.inc.c"
+#include "levels/wc/wc_rock/geo.inc.c"
+#include "levels/wc/wc_rock_break/geo.inc.c"
+#include "levels/wc/wc_stonehead/geo.inc.c"
+#include "levels/wc/wc_stonehead_path/geo.inc.c"

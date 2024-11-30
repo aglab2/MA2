@@ -1,0 +1,11 @@
+#include "src/game/envfx_snow.h"
+
+const GeoLayout wc_fan_bright_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, wc_fan_bright_wc_fan_bright_mesh_layer_5),
+		GEO_DISPLAY_LIST(LAYER_OPAQUE, wc_fan_bright_wc_fan_bright_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_ALPHA, wc_fan_bright_wc_fan_bright_mesh_layer_4),
+	GEO_CLOSE_NODE(),
+	GEO_END(),
+};
