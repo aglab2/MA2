@@ -958,6 +958,7 @@ extern Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_73_f3d[];
 extern Gfx mat_wc_dl_objLandTable0016_sa2blvl_74_f3d[];
 extern Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_74_f3d[];
 extern Gfx mat_wc_dl_f3dlite_material_001[];
+extern Gfx mat_revert_wc_dl_f3dlite_material_001[];
 extern Gfx wc_dl_0012_object_00E169B4_mesh_layer_1[];
 extern Gfx wc_dl_0013_object_00E16604_mesh_layer_1[];
 extern Gfx wc_dl_0017_object_00E1542C_mesh_layer_1[];

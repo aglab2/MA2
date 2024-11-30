@@ -23911,6 +23911,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_4_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_yuka2_vq_pal_rgba16),
@@ -23927,6 +23928,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_4_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_4_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -23935,6 +23937,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_9_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira3_vq_pal_rgba16),
@@ -23951,6 +23954,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_9_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_9_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -23959,6 +23963,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_10_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira3_vq_pal_rgba16),
@@ -23975,6 +23980,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_10_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_10_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -23983,6 +23989,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_14_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_kabe2_vq_pal_rgba16),
@@ -23999,6 +24006,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_14_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_14_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24007,6 +24015,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_15_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira7_pal_rgba16),
@@ -24023,6 +24032,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_15_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_15_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24031,6 +24041,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_16_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_dz_iron_box2_pal_rgba16),
@@ -24047,6 +24058,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_16_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_16_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24055,19 +24067,21 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_17_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, wc_dl_kd_nde_kabe5_vq_rgba16),
 	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 256),
-	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0),
+	gsDPSetTileSize(0, 0, 0, 124, 124),
 	gsSPEndDisplayList(),
 };
 
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_17_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsSPEndDisplayList(),
 };
 
@@ -24075,6 +24089,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_18_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_kabe2_vq_pal_rgba16),
@@ -24091,6 +24106,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_18_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_18_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24099,6 +24115,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_19_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_yuka2_vq_pal_rgba16),
@@ -24115,6 +24132,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_19_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_19_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24123,6 +24141,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_20_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira3_vq_pal_rgba16),
@@ -24139,6 +24158,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_20_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_20_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24147,6 +24167,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_21_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira8_vq_pal_rgba16),
@@ -24163,6 +24184,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_21_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_21_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24171,6 +24193,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_23_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_kabe4_vq_pal_rgba16),
@@ -24187,6 +24210,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_23_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_23_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24195,6 +24219,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_24_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_yuka2_vq_pal_rgba16),
@@ -24211,6 +24236,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_24_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_24_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24219,6 +24245,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_25_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_dz_iron_box_pal_rgba16),
@@ -24235,6 +24262,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_25_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_25_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24243,6 +24271,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_26_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira9_vq_pal_rgba16),
@@ -24259,6 +24288,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_26_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_26_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24267,6 +24297,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_6_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_kabepic2_vq_pal_rgba16),
@@ -24283,6 +24314,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_6_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_6_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24291,6 +24323,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_27_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira1_vq_pal_rgba16),
@@ -24307,6 +24340,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_27_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_27_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24315,6 +24349,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_29_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_yuka1_pal_rgba16),
@@ -24331,6 +24366,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_29_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_29_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24339,6 +24375,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_30_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_kabe8_vq_pal_rgba16),
@@ -24355,6 +24392,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_30_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_30_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24363,6 +24401,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_31_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_yuka2_vq_pal_rgba16),
@@ -24379,6 +24418,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_31_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_31_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24387,6 +24427,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_32_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira5_vq_pal_rgba16),
@@ -24403,6 +24444,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_32_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_32_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24411,6 +24453,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_33_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira8_vq_pal_rgba16),
@@ -24427,6 +24470,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_33_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_33_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24435,6 +24479,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_13_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira9_vq_pal_rgba16),
@@ -24451,6 +24496,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_13_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_13_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24459,6 +24505,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_34_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_dz_iron_boxeye_pal_rgba16),
@@ -24475,6 +24522,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_34_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_34_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24483,6 +24531,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_35_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_dz_iron_box2_pal_rgba16),
@@ -24499,6 +24548,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_35_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_35_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24507,6 +24557,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_36_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_dz_iron_boxeye_pal_rgba16),
@@ -24523,6 +24574,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_36_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_36_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24531,6 +24583,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_37_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_dz_pharaoh_wall_pal_rgba16),
@@ -24547,6 +24600,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_37_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_37_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24555,6 +24609,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_39_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_yuka1_pal_rgba16),
@@ -24571,6 +24626,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_39_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_39_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24579,6 +24635,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_40_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira7_pal_rgba16),
@@ -24595,6 +24652,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_40_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_40_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24603,6 +24661,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_41_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_sphinx_face1_pal_rgba16),
@@ -24619,6 +24678,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_41_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_41_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24627,6 +24687,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_42_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_kabe2_vq_pal_rgba16),
@@ -24643,6 +24704,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_42_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_42_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24651,6 +24713,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_43_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira8_vq_pal_rgba16),
@@ -24667,6 +24730,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_43_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_43_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24675,6 +24739,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_44_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira2_vq_pal_rgba16),
@@ -24691,6 +24756,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_44_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_44_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24699,6 +24765,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_45_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira1_vq_pal_rgba16),
@@ -24715,6 +24782,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_45_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_45_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24723,6 +24791,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_46_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira2_vq_pal_rgba16),
@@ -24739,6 +24808,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_46_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_46_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24747,6 +24817,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_7_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira3_vq_pal_rgba16),
@@ -24763,6 +24834,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_7_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_7_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24771,6 +24843,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_28_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_yuka2_vq_pal_rgba16),
@@ -24787,6 +24860,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_28_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_28_f3d[] = {
 	gsSPGeometryMode(0, G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24795,6 +24869,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_47_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_yuka2_vq_pal_rgba16),
@@ -24811,6 +24886,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_47_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_47_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24819,6 +24895,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_48_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
@@ -24836,6 +24913,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_48_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_48_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24844,6 +24922,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_49_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_dz_pharaohsit_pal_rgba16),
@@ -24860,6 +24939,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_49_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_49_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24868,6 +24948,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_50_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_dz_pharaohmanface_pal_rgba16),
@@ -24884,6 +24965,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_50_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_50_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24892,6 +24974,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_51_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_dz_balconymoji_tile_pal_rgba16),
@@ -24908,6 +24991,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_51_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_51_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24916,6 +25000,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_52_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_dz_pharaoh_wall_pal_rgba16),
@@ -24932,6 +25017,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_52_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_52_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24940,6 +25026,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_53_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_dz_pharaoh_wall_pal_rgba16),
@@ -24956,6 +25043,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_53_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_53_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24964,6 +25052,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_54_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_dz_swallpaint_pal_rgba16),
@@ -24980,6 +25069,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_54_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_54_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -24988,6 +25078,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_55_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira3_vq_pal_rgba16),
@@ -25004,6 +25095,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_55_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_55_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25012,6 +25104,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_56_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_yuka2_vq_pal_rgba16),
@@ -25028,6 +25121,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_56_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_56_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25036,6 +25130,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_57_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_kabepic3_vq_pal_rgba16),
@@ -25052,6 +25147,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_57_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_57_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25060,6 +25156,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_58_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira3_vq_pal_rgba16),
@@ -25076,6 +25173,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_58_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_58_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25084,6 +25182,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_59_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira6_vq_pal_rgba16),
@@ -25100,6 +25199,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_59_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_59_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25108,6 +25208,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_60_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_kabe4_vq_pal_rgba16),
@@ -25124,6 +25225,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_60_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_60_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25132,6 +25234,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_61_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira1_vq_pal_rgba16),
@@ -25148,6 +25251,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_61_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_61_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25156,6 +25260,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_62_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira1_vq_pal_rgba16),
@@ -25172,6 +25277,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_62_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_62_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25180,6 +25286,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_63_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira2_vq_pal_rgba16),
@@ -25196,6 +25303,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_63_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_63_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25204,6 +25312,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_64_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_kabepic2_vq_pal_rgba16),
@@ -25220,6 +25329,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_64_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_64_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25228,6 +25338,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_65_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_kabepic1_vq_pal_rgba16),
@@ -25244,6 +25355,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_65_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_65_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25252,6 +25364,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_66_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira2_vq_pal_rgba16),
@@ -25268,6 +25381,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_66_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_66_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25276,6 +25390,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_67_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira1_vq_pal_rgba16),
@@ -25292,6 +25407,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_67_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_67_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25300,6 +25416,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_68_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_kabepic2_vq_pal_rgba16),
@@ -25316,6 +25433,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_68_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_68_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25324,6 +25442,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_69_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_kabepic4_pal_rgba16),
@@ -25340,6 +25459,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_69_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_69_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25348,6 +25468,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_11_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_ido1_pal_rgba16),
@@ -25364,6 +25485,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_11_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_11_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25372,6 +25494,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_70_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_yuka2_vq_pal_rgba16),
@@ -25388,6 +25511,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_70_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_70_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25396,6 +25520,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_71_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_yuka2_vq_pal_rgba16),
@@ -25412,6 +25537,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_71_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_71_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25420,6 +25546,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_72_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira5_vq_pal_rgba16),
@@ -25436,6 +25563,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_72_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_72_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25444,6 +25572,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_73_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira4_pal_rgba16),
@@ -25460,6 +25589,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_73_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_73_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25468,6 +25598,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_74_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_dl_kd_nde_hasira1_vq_pal_rgba16),
@@ -25484,6 +25615,7 @@ Gfx mat_wc_dl_objLandTable0016_sa2blvl_74_f3d[] = {
 Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_74_f3d[] = {
 	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
 	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayList(),
 };
@@ -25491,7 +25623,14 @@ Gfx mat_revert_wc_dl_objLandTable0016_sa2blvl_74_f3d[] = {
 Gfx mat_wc_dl_f3dlite_material_001[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(0, 0, 0, 0, 0, 0, 0, ENVIRONMENT, 0, 0, 0, 0, 0, 0, 0, ENVIRONMENT),
+	gsDPSetAlphaDither(G_AD_NOISE),
 	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsSPEndDisplayList(),
+};
+
+Gfx mat_revert_wc_dl_f3dlite_material_001[] = {
+	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsSPEndDisplayList(),
 };
 
@@ -27131,6 +27270,7 @@ Gfx wc_dl_0149_object_00DDA90C_mesh_layer_1[] = {
 Gfx wc_dl_Plane_mesh_layer_1[] = {
 	gsSPDisplayList(mat_wc_dl_f3dlite_material_001),
 	gsSPDisplayList(wc_dl_Plane_mesh_layer_1_tri_0),
+	gsSPDisplayList(mat_revert_wc_dl_f3dlite_material_001),
 	gsDPPipeSync(),
 	gsSPSetGeometryMode(G_LIGHTING),
 	gsSPClearGeometryMode(G_TEXTURE_GEN),
