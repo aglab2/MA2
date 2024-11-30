@@ -1043,10 +1043,6 @@ void lakitu_zoom(f32 rangeDist, s16 rangePitch) {
         }
     }
 
-    if (gCurrLevelArea == AREA_SSL_PYRAMID && gCamera->mode == CAMERA_MODE_OUTWARD_RADIAL) {
-        rangePitch /= 2;
-    }
-
     if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
         if ((sLakituPitch += rangePitch / 13) > rangePitch) {
             sLakituPitch = rangePitch;
@@ -1486,25 +1482,6 @@ s32 update_fixed_camera(struct Camera *c, Vec3f focus, UNUSED Vec3f pos) {
     Vec3f basePos;
 
     play_camera_buzz_if_c_sideways();
-
-    // Don't move closer to Mario in these areas
-    switch (gCurrLevelArea) {
-        case AREA_RR:
-            scaleToMario = 0.f;
-            heightOffset = 0.f;
-            break;
-
-        case AREA_CASTLE_LOBBY:
-            scaleToMario = 0.3f;
-            heightOffset = 0.f;
-            break;
-
-        case AREA_BBH:
-            scaleToMario = 0.f;
-            heightOffset = 0.f;
-            break;
-    }
-
     handle_c_button_movement(c);
     play_camera_buzz_if_cdown();
 
@@ -2289,9 +2266,6 @@ s16 update_default_camera(struct Camera *c) {
     if (c->mode == CAMERA_MODE_FREE_ROAM) {
         if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
             posHeight = 375.f;
-            if (gCurrLevelArea == AREA_SSL_PYRAMID) {
-                posHeight /= 2;
-            }
         } else {
             posHeight = 100.f;
         }
@@ -3433,7 +3407,7 @@ void zoom_out_if_paused_and_outside(struct GraphNodeCamera *camera) {
     }
     if (gCameraMovementFlags & CAM_MOVE_PAUSE_SCREEN) {
         if (sFramesPaused >= 2) {
-            if (sZoomOutAreaMasks[areaMaskIndex] & areaBit) {
+            if (0) { // AGLAB sZoomOutAreaMasks
 
                 camera->focus[0] = gCamera->areaCenX;
                 camera->focus[1] = (sMarioCamState->pos[1] + gCamera->areaCenY) / 2;
@@ -4538,29 +4512,6 @@ s32 offset_yaw_outward_radial(struct Camera *c, s16 areaYaw) {
     s16 yaw = sModeOffsetYaw;
     Vec3f areaCenter;
     s16 dYaw;
-    switch (gCurrLevelArea) {
-        case AREA_TTC:
-            areaCenter[0] = c->areaCenX;
-            areaCenter[1] = sMarioCamState->pos[1];
-            areaCenter[2] = c->areaCenZ;
-            if (sqr(800.f) > calc_abs_dist_squared(areaCenter, sMarioCamState->pos)) {
-                yawGoal = 0x3800;
-            }
-            break;
-        case AREA_SSL_PYRAMID:
-            // This mask splits the 360 degrees of yaw into 4 corners. It adds 45 degrees so that the yaw
-            // offset at the corner will be 0, but the yaw offset near the center will face more towards
-            // the direction Mario is running in.
-            yawGoal = (areaYaw & 0xC000) - areaYaw + DEGREES(45);
-            if (yawGoal < 0) {
-                yawGoal = -yawGoal;
-            }
-            yawGoal = yawGoal / 32 * 48;
-            break;
-        case AREA_LLL_OUTSIDE:
-            yawGoal = 0;
-            break;
-    }
     dYaw = gMarioStates[0].forwardVel / 32.f * 128.f;
 
     if (sAreaYawChange < 0) {
@@ -4909,14 +4860,6 @@ u8 get_cutscene_from_mario_status(struct Camera *c) {
                         cutscene = open_door_cutscene(CUTSCENE_DOOR_PULL_MODE, CUTSCENE_DOOR_PUSH_MODE);
                     } else {
                         cutscene = open_door_cutscene(CUTSCENE_DOOR_PULL, CUTSCENE_DOOR_PUSH);
-                    }
-                    break;
-                case AREA_BBH:
-                    //! Castle Lobby uses 0 to mean 'no special modes', but BBH uses 1...
-                    if (c->doorStatus == DOOR_LEAVING_SPECIAL) {
-                        cutscene = open_door_cutscene(CUTSCENE_DOOR_PULL, CUTSCENE_DOOR_PUSH);
-                    } else {
-                        cutscene = open_door_cutscene(CUTSCENE_DOOR_PULL_MODE, CUTSCENE_DOOR_PUSH_MODE);
                     }
                     break;
                 default:
@@ -5349,15 +5292,6 @@ void parallel_tracking_init(struct Camera *c, struct ParallelTrackingPoint *path
  * Set the fixed camera base pos depending on the current level area
  */
 void set_fixed_cam_axis_sa_lobby(UNUSED s16 preset) {
-    switch (gCurrLevelArea) {
-        case AREA_SA:
-            vec3f_set(sFixedModeBasePosition, 646.f, 143.f, -1513.f);
-            break;
-
-        case AREA_CASTLE_LOBBY:
-            vec3f_set(sFixedModeBasePosition, -577.f, 143.f, 1443.f);
-            break;
-    }
 }
 
 /**
@@ -8776,28 +8710,8 @@ void cutscene_exit_succ_start(UNUSED struct Camera *c) {
 void cutscene_non_painting_set_cam_pos(struct Camera *c) {
     struct Surface *floor;
 
-    switch (gPrevLevel) {
-        case LEVEL_HMC:
-            vec3f_set(c->pos, 3465.f, -1008.f, -2961.f);
-            break;
-
-        case LEVEL_COTMC:
-            vec3f_set(c->pos, 3465.f, -1008.f, -2961.f);
-            break;
-
-        case LEVEL_RR:
-            vec3f_set(c->pos, -3741.f, 3151.f, 6065.f);
-            break;
-
-        case LEVEL_WMOTR:
-            vec3f_set(c->pos, 1972.f, 3230.f, 5891.f);
-            break;
-
-        default:
-            offset_rotated(c->pos, sCutsceneVars[7].point, sCutsceneVars[5].point, sCutsceneVars[7].angle);
-            c->pos[1] = find_floor(c->pos[0], c->pos[1] + 1000.f, c->pos[2], &floor) + 125.f;
-            break;
-    }
+    offset_rotated(c->pos, sCutsceneVars[7].point, sCutsceneVars[5].point, sCutsceneVars[7].angle);
+    c->pos[1] = find_floor(c->pos[0], c->pos[1] + 1000.f, c->pos[2], &floor) + 125.f;
 }
 
 /**
@@ -8805,15 +8719,7 @@ void cutscene_non_painting_set_cam_pos(struct Camera *c) {
  */
 void cutscene_non_painting_set_cam_focus(struct Camera *c) {
     offset_rotated(c->focus, sCutsceneVars[7].point, sCutsceneVars[6].point, sCutsceneVars[7].angle);
-
-    if ((gPrevLevel == LEVEL_COTMC) || (gPrevLevel == LEVEL_HMC) || (gPrevLevel == LEVEL_RR)
-        || (gPrevLevel == LEVEL_WMOTR)) {
-        c->focus[0] = c->pos[0] + (sMarioCamState->pos[0] - c->pos[0]) * 0.7f;
-        c->focus[1] = c->pos[1] + (sMarioCamState->pos[1] - c->pos[1]) * 0.4f;
-        c->focus[2] = c->pos[2] + (sMarioCamState->pos[2] - c->pos[2]) * 0.7f;
-    } else {
-        c->focus[1] = c->pos[1] + (sMarioCamState->pos[1] - c->pos[1]) * 0.2f;
-    }
+    c->focus[1] = c->pos[1] + (sMarioCamState->pos[1] - c->pos[1]) * 0.2f;
 }
 
 /**
@@ -8927,17 +8833,7 @@ void cutscene_exit_bowser_death(struct Camera *c) {
  * This overrides cutscene_non_painting_death_start()
  */
 void cutscene_non_painting_death_override_offset(UNUSED struct Camera *c) {
-    switch (gPrevLevel) {
-        case LEVEL_HMC:
-            vec3f_set(sCutsceneVars[5].point, 187.f, 369.f, -197.f);
-            break;
-        case LEVEL_COTMC:
-            vec3f_set(sCutsceneVars[5].point, 187.f, 369.f, -197.f);
-            break;
-        default:
-            vec3f_set(sCutsceneVars[5].point, 107.f, 246.f, 1307.f);
-            break;
-    }
+    vec3f_set(sCutsceneVars[5].point, 107.f, 246.f, 1307.f);
 }
 
 /**
@@ -9421,94 +9317,7 @@ void cutscene_credits(struct Camera *c) {
     cutscene_event(cutscene_credits_reset_spline, c, 0, 0);
 
     switch (gCurrLevelArea) {
-        case AREA_BOB:
-            pos = sBobCreditsSplinePositions;
-            focus = sBobCreditsSplineFocus;
-            break;
-        case AREA_WF:
-            pos = sWfCreditsSplinePositions;
-            focus = sWfCreditsSplineFocus;
-            break;
-        case AREA_JRB_MAIN:
-            pos = sJrbCreditsSplinePositions;
-            focus = sJrbCreditsSplineFocus;
-            break;
-        case AREA_CCM_SLIDE:
-            pos = sCcmSlideCreditsSplinePositions;
-            focus = sCcmSlideCreditsSplineFocus;
-            break;
-        case AREA_BBH:
-            pos = sBbhCreditsSplinePositions;
-            focus = sBbhCreditsSplineFocus;
-            break;
-        case AREA_HMC:
-            pos = sHmcCreditsSplinePositions;
-            focus = sHmcCreditsSplineFocus;
-            break;
-        case AREA_THI_WIGGLER:
-            pos = sThiWigglerCreditsSplinePositions;
-            focus = sThiWigglerCreditsSplineFocus;
-            break;
-        case AREA_LLL_VOLCANO:
-            pos = sVolcanoCreditsSplinePositions;
-            focus = sVolcanoCreditsSplineFocus;
-            break;
-        case AREA_SSL_OUTSIDE:
-            pos = sSslCreditsSplinePositions;
-            focus = sSslCreditsSplineFocus;
-            break;
-        case AREA_DDD_WHIRLPOOL:
-            pos = sDddCreditsSplinePositions;
-            focus = sDddCreditsSplineFocus;
-            break;
-        case AREA_SL_OUTSIDE:
-            pos = sSlCreditsSplinePositions;
-            focus = sSlCreditsSplineFocus;
-            break;
-        case AREA_WDW_MAIN:
-            pos = sWdwCreditsSplinePositions;
-            focus = sWdwCreditsSplineFocus;
-            break;
-        case AREA_TTM_OUTSIDE:
-            pos = sTtmCreditsSplinePositions;
-            focus = sTtmCreditsSplineFocus;
-            break;
-        case AREA_THI_HUGE:
-            pos = sThiHugeCreditsSplinePositions;
-            focus = sThiHugeCreditsSplineFocus;
-            break;
-        case AREA_TTC:
-            pos = sTtcCreditsSplinePositions;
-            focus = sTtcCreditsSplineFocus;
-            break;
-        case AREA_RR:
-            pos = sRrCreditsSplinePositions;
-            focus = sRrCreditsSplineFocus;
-            break;
-        case AREA_SA:
-            pos = sSaCreditsSplinePositions;
-            focus = sSaCreditsSplineFocus;
-            break;
-        case AREA_COTMC:
-            pos = sCotmcCreditsSplinePositions;
-            focus = sCotmcCreditsSplineFocus;
-            break;
-        case AREA_DDD_SUB:
-            pos = sDddSubCreditsSplinePositions;
-            focus = sDddSubCreditsSplineFocus;
-            break;
-        case AREA_CCM_OUTSIDE:
-            //! Checks if the "Snowman's Lost His Head" star was collected. The credits likely would
-            //! have avoided the snowman if the player didn't collect that star, but in the end the
-            //! developers decided against it.
-            if (save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum)) & (1 << 4)) {
-                pos = sCcmOutsideCreditsSplinePositions;
-                focus = sCcmOutsideCreditsSplineFocus;
-            } else {
-                pos = sCcmOutsideCreditsSplinePositions;
-                focus = sCcmOutsideCreditsSplineFocus;
-            }
-            break;
+        // AGLAB CREDITS
         default:
             pos = sCcmOutsideCreditsSplinePositions;
             focus = sCcmOutsideCreditsSplineFocus;
@@ -9686,11 +9495,6 @@ void cutscene_exit_painting_start(struct Camera *c) {
 
     vec3f_set(sCutsceneVars[2].point, 258.f, -352.f, 1189.f);
     vec3f_set(sCutsceneVars[1].point, 65.f, -155.f, 444.f);
-
-    if (gPrevLevel == LEVEL_TTM) {
-        sCutsceneVars[1].point[1] = 0.f;
-        sCutsceneVars[1].point[2] = 0.f;
-    }
     vec3f_copy(sCutsceneVars[0].point, sMarioCamState->pos);
     sCutsceneVars[0].angle[0] = 0;
     sCutsceneVars[0].angle[1] = sMarioCamState->faceAngle[1];
@@ -9752,12 +9556,6 @@ void cutscene_exit_painting(struct Camera *c) {
     cutscene_event(cutscene_exit_painting_start, c, 0, 0);
     cutscene_event(cutscene_exit_painting_move_to_mario, c, 5, -1);
     cutscene_event(cutscene_exit_painting_move_to_floor, c, 5, -1);
-
-    //! Hardcoded position. TTM's painting is close to an opposite wall, so just fix the pos.
-    if (gPrevLevel == LEVEL_TTM) {
-        vec3f_set(c->pos, -296.f, 1261.f, 3521.f);
-    }
-
     update_camera_yaw(c);
 }
 
@@ -10436,14 +10234,7 @@ u8 sDanceCutsceneIndexTable[][4] = {
  * and if the result is non-zero, the camera will zoom out.
  */
 u8 sZoomOutAreaMasks[] = {
-	ZOOMOUT_AREA_MASK(0, 0, 0, 0, 0, 0, 0, 0), // Unused         | Unused
-	ZOOMOUT_AREA_MASK(0, 0, 0, 0, 0, 0, 0, 0), // Unused         | Unused
-	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), // BBH            | CCM
 	ZOOMOUT_AREA_MASK(0, 0, 0, 0, 1, 0, 0, 0), // CASTLE_INSIDE  | HMC
-	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), // SSL            | BOB
-	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), // SL             | WDW
-	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), // JRB            | THI
-	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), // TTC            | RR
 	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), // CASTLE_GROUNDS | BITDW
 	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), // VCUTM          | BITFS
 	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), // SA             | BITS
@@ -10458,8 +10249,6 @@ u8 sZoomOutAreaMasks[] = {
 	ZOOMOUT_AREA_MASK(0, 0, 0, 0, 1, 1, 1, 1), // Unused         | Unused
 	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 0, 0, 0, 0), 
 };
-
-STATIC_ASSERT(ARRAY_COUNT(sZoomOutAreaMasks) - 1 == LEVEL_MAX / 2, "Make sure you edit sZoomOutAreaMasks when adding / removing courses.");
 
 /*
  * credits spline paths.

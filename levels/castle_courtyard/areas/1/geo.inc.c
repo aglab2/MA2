@@ -18,8 +18,6 @@ const GeoLayout castle_courtyard_geo_000218[] = {
                GEO_DISPLAY_LIST(LAYER_OPAQUE, castle_courtyard_seg7_dl_070048B8),
                GEO_DISPLAY_LIST(LAYER_TRANSPARENT_DECAL, castle_courtyard_seg7_dl_07005698),
                GEO_DISPLAY_LIST(LAYER_ALPHA, castle_courtyard_seg7_dl_07005938),
-               GEO_ASM(0, geo_movtex_pause_control),
-               GEO_ASM(CASTLE_COURTYARD_MOVTEX_STAR_STATUE_WATER, geo_movtex_draw_water_regions),
                GEO_RENDER_OBJ(),
                GEO_ASM(ENVFX_MODE_NONE, geo_envfx_main),
             GEO_CLOSE_NODE(),

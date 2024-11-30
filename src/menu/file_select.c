@@ -2212,7 +2212,7 @@ s32 lvl_init_menu_values_and_cursor_pos(UNUSED s32 arg, UNUSED s32 unused) {
         }
     }
 #endif
-    gCurrLevelNum = LEVEL_UNKNOWN_1;
+    gCurrLevelNum = 0;
     return 0;
 }
 

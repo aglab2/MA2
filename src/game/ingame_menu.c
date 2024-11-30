@@ -2179,29 +2179,7 @@ void render_course_complete_lvl_info_and_hud_str(void) {
     void **actNameTbl    = segmented_to_virtual(gLanguageTables[gInGameLanguage].act_name_table);
     void **courseNameTbl = segmented_to_virtual(gLanguageTables[gInGameLanguage].course_name_table);
 
-    if (gLastCompletedCourseNum <= COURSE_STAGES_MAX) { // Main courses
-        print_hud_course_complete_coins(COURSE_COMPLETE_COINS_X, COURSE_COMPLETE_COINS_Y);
-        play_star_fanfare_and_flash_hud(HUD_FLASH_STARS, (1 << (gLastCompletedStarNum - 1)));
-
-        if (gLastCompletedStarNum == 7) {
-            name = segmented_to_virtual(actNameTbl[COURSE_STAGES_MAX * 6 + 1]);
-        } else {
-            name = segmented_to_virtual(actNameTbl[COURSE_NUM_TO_INDEX(gLastCompletedCourseNum) * 6 + gLastCompletedStarNum - 1]);
-        }
-
-        // Print course number
-        gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
-
-        format_int_to_string(courseNumText, gLastCompletedCourseNum);
-        sprintf(str, LANG_ARRAY(textCourseX), courseNumText);
-        set_text_color(0, 0, 0);
-        print_generic_string(COURSE_COMPLETE_COURSE_X + 2,  COURSE_COMPLETE_COURSE_Y - 2, str);
-
-        set_text_color(255, 255, 255);
-        print_generic_string(COURSE_COMPLETE_COURSE_X,      COURSE_COMPLETE_COURSE_Y, str);
-
-        gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
-    } else if (gLastCompletedCourseNum == COURSE_BITDW || gLastCompletedCourseNum == COURSE_BITFS) { // Bowser courses
+    { // Bowser courses
         name = segmented_to_virtual(courseNameTbl[COURSE_NUM_TO_INDEX(gLastCompletedCourseNum)]);
         u32 clearX = get_string_width(name, main_font_lut, &main_font_utf8_lut) + COURSE_COMPLETE_COURSE_X + 16;
 
@@ -2220,11 +2198,6 @@ void render_course_complete_lvl_info_and_hud_str(void) {
         print_hud_course_complete_coins(COURSE_COMPLETE_COINS_X, CONGRATULATIONS_COINS_Y);
         play_star_fanfare_and_flash_hud(HUD_FLASH_KEYS, 0);
         return;
-    } else { // Castle secret stars
-        name = segmented_to_virtual(actNameTbl[COURSE_STAGES_MAX * 6]);
-
-        print_hud_course_complete_coins(COURSE_COMPLETE_COINS_X, COURSE_COMPLETE_COINS_Y);
-        play_star_fanfare_and_flash_hud(HUD_FLASH_STARS, 1 << (gLastCompletedStarNum - 1));
     }
 
     // Print star glyph

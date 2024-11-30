@@ -7,10 +7,6 @@
  * flag.
  */
 
-// There is no good solution for this - just keep paths in BOB and THI for now
-#include "levels/bob/header.h"
-#include "levels/thi/header.h"
-
 /**
  * Hitbox for koopa - this is used for every form except Koopa the Quick, which
  * uses a hardcoded soft hitbox.
@@ -61,12 +57,16 @@ struct KoopaTheQuickProperties {
     Vec3s starPos;
 };
 
+const Trajectory bob_seg7_trajectory_koopa[] = {
+    TRAJECTORY_END(),
+};
+
 /**
  * Properties for the BoB race and the THI race.
  */
 static struct KoopaTheQuickProperties sKoopaTheQuickProperties[] = {
     { DIALOG_005, DIALOG_007, bob_seg7_trajectory_koopa, { 3030, 4500, -4600 } },
-    { DIALOG_009, DIALOG_031, thi_seg7_trajectory_koopa, { 7100, -1300, -6000 } },
+    { DIALOG_009, DIALOG_031, bob_seg7_trajectory_koopa, { 7100, -1300, -6000 } },
 };
 
 /**

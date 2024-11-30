@@ -8,8 +8,6 @@
 #include "game_init.h"
 #include "geo_misc.h"
 #include "levels/castle_inside/header.h"
-#include "levels/hmc/header.h"
-#include "levels/ttm/header.h"
 #include "mario.h"
 #include "memory.h"
 #include "moving_texture.h"
@@ -167,7 +165,7 @@ struct Painting *gRipplingPainting;
 s8 gDddPaintingStatus;
 
 struct Painting *sHmcPaintings[] = {
-    &cotmc_painting,
+    NULL,
     NULL,
 };
 
@@ -178,7 +176,7 @@ struct Painting *sInsideCastlePaintings[] = {
 };
 
 struct Painting *sTtmPaintings[] = {
-    &ttm_slide_painting,
+    NULL,
     NULL,
 };
 

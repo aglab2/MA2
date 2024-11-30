@@ -5,35 +5,16 @@
  * themselves as the platform moves past them.
  */
 
-#include "levels/bitfs/header.h"
-#include "levels/ccm/header.h"
-#include "levels/hmc/header.h"
-#include "levels/lll/header.h"
-#include "levels/rr/header.h"
-
 /**
  * Collision models for the different types of platforms.
  */
 static Collision const *sPlatformOnTrackCollisionModels[] = {
-    /* PLATFORM_ON_TRACK_TYPE_CARPET    */ rr_seg7_collision_flying_carpet,
-    /* PLATFORM_ON_TRACK_TYPE_SKI_LIFT  */ ccm_seg7_collision_ropeway_lift,
-    /* PLATFORM_ON_TRACK_TYPE_CHECKERED */ checkerboard_platform_seg8_collision_platform,
-    /* PLATFORM_ON_TRACK_TYPE_GRATE     */ bitfs_seg7_collision_platform_on_track,
 };
 
 /**
  * Paths for the different instances of these platforms.
  */
 static Trajectory const *sPlatformOnTrackPaths[] = {
-    rr_seg7_trajectory_0702EC3C,
-    rr_seg7_trajectory_0702ECC0,
-    ccm_seg7_trajectory_ropeway_lift,
-    bitfs_seg7_trajectory_070159AC,
-    hmc_seg7_trajectory_checkerboard_platform,
-    lll_seg7_trajectory_0702856C,
-    lll_seg7_trajectory_07028660,
-    rr_seg7_trajectory_0702ED9C,
-    rr_seg7_trajectory_0702EEE0,
 };
 
 static void platform_on_track_update_pos_or_spawn_ball(s32 ballIndex, Vec3f pos) {

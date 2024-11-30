@@ -18,8 +18,6 @@ const GeoLayout castle_geo_001980[] = {
       GEO_ASM(   0, geo_painting_update),
       GEO_ASM( PAINTING_ID(4, 1), geo_painting_draw),
       GEO_ASM( PAINTING_ID(5, 1), geo_painting_draw),
-      GEO_ASM(   0, geo_movtex_pause_control),
-      GEO_ASM(INSIDE_CASTLE_MOVTEX_GREEN_ROOM_WATER, geo_movtex_draw_water_regions),
    GEO_CLOSE_NODE(),
    GEO_RETURN(),
 };
@@ -43,8 +41,6 @@ const GeoLayout castle_geo_0019F8[] = {
       GEO_DISPLAY_LIST(LAYER_OPAQUE, inside_castle_seg7_dl_07066CE0),
       GEO_DISPLAY_LIST(LAYER_TRANSPARENT, inside_castle_seg7_dl_07066E90),
       GEO_DISPLAY_LIST(LAYER_ALPHA, inside_castle_seg7_dl_07066FA0),
-      GEO_ASM(   0, geo_movtex_pause_control),
-      GEO_ASM(INSIDE_CASTLE_MOVTEX_MOAT_WATER, geo_movtex_draw_water_regions),
    GEO_CLOSE_NODE(),
    GEO_RETURN(),
 };
@@ -72,8 +68,6 @@ const GeoLayout castle_geo_001A58[] = {
       GEO_ASM(   0, geo_painting_update),
       GEO_ASM( PAINTING_ID(4, 1), geo_painting_draw),
       GEO_ASM( PAINTING_ID(5, 1), geo_painting_draw),
-      GEO_ASM(   0, geo_movtex_pause_control),
-      GEO_ASM(INSIDE_CASTLE_MOVTEX_GREEN_ROOM_WATER,  geo_movtex_draw_water_regions),
    GEO_CLOSE_NODE(),
    GEO_RETURN(),
 };
@@ -102,8 +96,6 @@ const GeoLayout castle_geo_001AF8[] = {
       GEO_DISPLAY_LIST(LAYER_OPAQUE, inside_castle_seg7_dl_07066CE0),
       GEO_DISPLAY_LIST(LAYER_TRANSPARENT, inside_castle_seg7_dl_07066E90),
       GEO_DISPLAY_LIST(LAYER_ALPHA, inside_castle_seg7_dl_07066FA0),
-      GEO_ASM(   0, geo_movtex_pause_control),
-      GEO_ASM(INSIDE_CASTLE_MOVTEX_MOAT_WATER, geo_movtex_draw_water_regions),
    GEO_CLOSE_NODE(),
    GEO_RETURN(),
 };
@@ -120,9 +112,6 @@ const GeoLayout castle_geo_001B48[] = {
       GEO_ASM(   0, geo_painting_update),
       GEO_ASM( PAINTING_ID(4, 1), geo_painting_draw),
       GEO_ASM( PAINTING_ID(5, 1), geo_painting_draw),
-      GEO_ASM(   0, geo_movtex_pause_control),
-      GEO_ASM(INSIDE_CASTLE_MOVTEX_GREEN_ROOM_WATER, geo_movtex_draw_water_regions),
-      GEO_ASM(INSIDE_CASTLE_MOVTEX_MOAT_WATER, geo_movtex_draw_water_regions),
    GEO_CLOSE_NODE(),
    GEO_RETURN(),
 };
@@ -139,8 +128,6 @@ const GeoLayout castle_geo_001BB0[] = {
       GEO_ASM( PAINTING_ID(4, 1), geo_painting_draw),
       GEO_ASM( PAINTING_ID(5, 1), geo_painting_draw),
       GEO_ASM( PAINTING_ID(6, 1), geo_painting_draw),
-      GEO_ASM(   0, geo_movtex_pause_control),
-      GEO_ASM(INSIDE_CASTLE_MOVTEX_GREEN_ROOM_WATER,  geo_movtex_draw_water_regions),
    GEO_CLOSE_NODE(),
    GEO_RETURN(),
 };

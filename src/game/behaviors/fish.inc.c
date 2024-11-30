@@ -47,7 +47,7 @@ static void fish_spawner_act_spawn(void) {
  * Mario is more than 2000 units higher.
  */
 static void fish_spawner_act_idle(void) {
-    if ((gCurrLevelNum != LEVEL_SA) && (gMarioObject->oPosY - o->oPosY > 2000.0f)) {
+    if ((gMarioObject->oPosY - o->oPosY > 2000.0f)) {
         o->oAction = FISH_SPAWNER_ACT_RESPAWN;
     }
 }

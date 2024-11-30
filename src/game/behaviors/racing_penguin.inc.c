@@ -1,7 +1,5 @@
 // racing_penguin.inc.c
 
-#include "levels/ccm/header.h"
-
 struct RacingPenguinData {
     s16 text;
     f32 radius;
@@ -27,6 +25,8 @@ static void racing_penguin_act_wait_for_mario(void) {
         o->oAction = RACING_PENGUIN_ACT_SHOW_INIT_TEXT;
     }
 }
+
+const Trajectory ccm_seg7_trajectory_penguin_race[] = { TRAJECTORY_END(), };
 
 static void racing_penguin_act_show_init_text(void) {
     s32 response = obj_update_race_proposition_dialog(sRacingPenguinData[o->oBehParams2ndByte].text);

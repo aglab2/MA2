@@ -732,17 +732,6 @@ u32 save_file_get_sound_mode(void) {
 
 void save_file_move_cap_to_default_location(void) {
     if (save_file_get_flags() & SAVE_FLAG_CAP_ON_GROUND) {
-        switch (gSaveBuffer.files[gCurrSaveFileNum - 1][0].capLevel) {
-            case LEVEL_SSL:
-                save_file_set_flags(SAVE_FLAG_CAP_ON_KLEPTO);
-                break;
-            case LEVEL_SL:
-                save_file_set_flags(SAVE_FLAG_CAP_ON_MR_BLIZZARD);
-                break;
-            case LEVEL_TTM:
-                save_file_set_flags(SAVE_FLAG_CAP_ON_UKIKI);
-                break;
-        }
         save_file_clear_flags(SAVE_FLAG_CAP_ON_GROUND);
     }
 }
