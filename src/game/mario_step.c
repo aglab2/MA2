@@ -606,18 +606,19 @@ u32 should_strengthen_gravity_for_jump_ascent(struct MarioState *m) {
 }
 
 void apply_gravity(struct MarioState *m) {
+    const f32 terminalSpeed = -120.f;
     if (m->action == ACT_TWIRLING && m->vel[1] < 0.0f) {
         apply_twirl_gravity(m);
     } else if (m->action == ACT_SHOT_FROM_CANNON) {
         m->vel[1] -= 1.0f;
-        if (m->vel[1] < -75.0f) {
-            m->vel[1] = -75.0f;
+        if (m->vel[1] < terminalSpeed) {
+            m->vel[1] = terminalSpeed;
         }
     } else if (m->action == ACT_LONG_JUMP || m->action == ACT_SLIDE_KICK
                || m->action == ACT_BBH_ENTER_SPIN) {
         m->vel[1] -= 2.0f;
-        if (m->vel[1] < -75.0f) {
-            m->vel[1] = -75.0f;
+        if (m->vel[1] < terminalSpeed) {
+            m->vel[1] = terminalSpeed;
         }
     } else if (m->action == ACT_LAVA_BOOST || m->action == ACT_FALL_AFTER_STAR_GRAB) {
         m->vel[1] -= 3.2f;
@@ -626,8 +627,8 @@ void apply_gravity(struct MarioState *m) {
         }
     } else if (m->action == ACT_GETTING_BLOWN) {
         m->vel[1] -= m->windGravity;
-        if (m->vel[1] < -75.0f) {
-            m->vel[1] = -75.0f;
+        if (m->vel[1] < terminalSpeed) {
+            m->vel[1] = terminalSpeed;
         }
     } else if (should_strengthen_gravity_for_jump_ascent(m)) {
         m->vel[1] /= 4.0f;
@@ -647,8 +648,8 @@ void apply_gravity(struct MarioState *m) {
         }
     } else {
         m->vel[1] -= 4.0f;
-        if (m->vel[1] < -75.0f) {
-            m->vel[1] = -75.0f;
+        if (m->vel[1] < terminalSpeed) {
+            m->vel[1] = terminalSpeed;
         }
     }
 }
@@ -657,14 +658,15 @@ void apply_vertical_wind(struct MarioState *m) {
     f32 maxVelY;
 
     if (m->action != ACT_GROUND_POUND) {
-        f32 offsetY = m->pos[1] - -1500.0f;
+        f32 offsetY = m->pos[1] - 10000.0f;
 
-        if (m->floor->type == SURFACE_VERTICAL_WIND && -3000.0f < offsetY && offsetY < 2000.0f) {
+        if (m->floor->type == SURFACE_VERTICAL_WIND && offsetY < 2000.0f) {
             if (offsetY >= 0.0f) {
                 maxVelY = 10000.0f / (offsetY + 200.0f);
             } else {
                 maxVelY = 50.0f;
             }
+            maxVelY *= 1.3f;
 
             if (m->vel[1] < maxVelY) {
                 if ((m->vel[1] += maxVelY / 8.0f) > maxVelY) {

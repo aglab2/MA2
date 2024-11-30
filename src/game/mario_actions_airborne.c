@@ -1679,13 +1679,6 @@ s32 act_flying(struct MarioState *m) {
         return set_mario_action(m, ACT_GROUND_POUND, 1);
     }
 
-    if (!(m->flags & MARIO_WING_CAP)) {
-        if (m->area->camera->mode == FLYING_CAMERA_MODE) {
-            set_camera_mode(m->area->camera, m->area->camera->defMode, 1);
-        }
-        return set_mario_action(m, ACT_FREEFALL, 0);
-    }
-
     if (m->area->camera->mode != FLYING_CAMERA_MODE) {
         set_camera_mode(m->area->camera, FLYING_CAMERA_MODE, 1);
     }
@@ -1900,6 +1893,10 @@ s32 act_top_of_pole_jump(struct MarioState *m) {
 }
 
 s32 act_vertical_wind(struct MarioState *m) {
+    if (m->floor && m->floor->type != SURFACE_VERTICAL_WIND) {
+        return set_mario_action(m, ACT_FLYING, 0);
+    }
+
     s16 intendedDYaw = m->intendedYaw - m->faceAngle[1];
     f32 intendedMag = m->intendedMag / 32.0f;
 

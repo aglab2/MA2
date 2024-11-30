@@ -263,23 +263,10 @@ void init_door_warp(struct SpawnInfo *spawnInfo, u32 warpDestFlags) {
 }
 
 void set_mario_initial_cap_powerup(struct MarioState *m) {
-    u32 capCourseIndex = gCurrCourseNum - COURSE_CAP_COURSES;
-
-    switch (capCourseIndex) {
-        case COURSE_COTMC - COURSE_CAP_COURSES:
-            m->flags |= MARIO_METAL_CAP | MARIO_CAP_ON_HEAD;
-            m->capTimer = 600;
-            break;
-
-        case COURSE_TOTWC - COURSE_CAP_COURSES:
-            m->flags |= MARIO_WING_CAP | MARIO_CAP_ON_HEAD;
-            m->capTimer = 1200;
-            break;
-
-        case COURSE_VCUTM - COURSE_CAP_COURSES:
-            m->flags |= MARIO_VANISH_CAP | MARIO_CAP_ON_HEAD;
-            m->capTimer = 600;
-            break;
+    if (gCurrCourseNum == COURSE_WC)
+    {
+        m->flags |= MARIO_WING_CAP | MARIO_CAP_ON_HEAD;
+        m->capTimer = 600;
     }
 }
 
@@ -416,14 +403,6 @@ void init_mario_after_warp(void) {
         gBetterReverbPresetValue = gCurrentArea->betterReverbPreset;
 #endif
         set_background_music(gCurrentArea->musicParam, gCurrentArea->musicParam2, 0);
-
-        if (gMarioState->flags & MARIO_METAL_CAP) {
-            play_cap_music(SEQUENCE_ARGS(4, SEQ_EVENT_METAL_CAP));
-        }
-
-        if (gMarioState->flags & (MARIO_VANISH_CAP | MARIO_WING_CAP)) {
-            play_cap_music(SEQUENCE_ARGS(4, SEQ_EVENT_POWERUP));
-        }
 
 #ifdef ENABLE_VANILLA_LEVEL_SPECIFIC_CHECKS
         if (gCurrLevelNum == LEVEL_BOB
