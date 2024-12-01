@@ -1399,13 +1399,18 @@ void geo_process_lvl_translation(struct GraphNodeLvlTranslation *node) {
 
 void geo_process_break_translation(struct GraphNodeTranslation *node) {
     Vec3f translation;
-    translation[0] = node->translation[0] - 0.f;
-    translation[1] = node->translation[1] - 0.f;
-    translation[2] = node->translation[2] - 0.f;
-    if (is_far_from_mario(translation)) {
-        return;
+    
+    struct Object* obj = (struct Object*)gCurGraphNodeObject;
+    Vec3f dir = { node->translation[0], 0,  node->translation[2] };
+    f32 mag = sqrtf(dir[0]*dir[0] + dir[2]*dir[2]);
+    if (mag > 0.1f) {
+        dir[0] /= mag;
+        dir[2] /= mag;
     }
 
+    translation[0] = node->translation[0] - dir[0] * obj->oHomeX;
+    translation[1] = node->translation[1] - obj->oHomeY;
+    translation[2] = node->translation[2] - dir[2] * obj->oHomeZ;
     mtxf_rotate_zxy_and_translate_and_mul(gVec3sZero, translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
 
     inc_mat_stack();

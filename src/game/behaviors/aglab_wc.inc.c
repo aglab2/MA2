@@ -75,8 +75,12 @@ void bhv_wc_rock_loop()
 {
     if (0 == o->oAction)
     {
-        if (o->oDistanceToMario < 200.f)
+        o->oHomeX = 0;
+        o->oHomeY = 0;
+        o->oHomeZ = 0;
+        if (o->oDistanceToMario < 400.f)
         {
+            cur_obj_play_sound_2(SOUND_GENERAL_POUND_ROCK);
             puffAt(o, 100.f, 10);
             o->oAction = 1;
             obj_set_model(o, MODEL_WC_ROCK_BREAK);
@@ -84,7 +88,14 @@ void bhv_wc_rock_loop()
     }
     else
     {
-
+        o->oHomeX += 10.f / o->header.gfx.scale[0];
+        o->oHomeY += 10.f / o->header.gfx.scale[0];
+        o->oHomeZ += 14.f / o->header.gfx.scale[0];
+        obj_scale(o, 1.f - o->oTimer / 70.f);
+        if (50 == o->oTimer)
+        {
+            obj_mark_for_deletion(o);
+        }
     }
 }
 
@@ -92,8 +103,9 @@ void bhv_wc_box_loop()
 {
     if (0 == o->oAction)
     {
-        if (o->oDistanceToMario < 40.f)
+        if (o->oDistanceToMario < 130.f)
         {
+            cur_obj_play_sound_2(SOUND_GENERAL_BREAK_BOX);
             o->oAction = 1;
             puffAt(o, 100.f, 10);
             obj_set_model(o, MODEL_WC_BOX_BROKEN);

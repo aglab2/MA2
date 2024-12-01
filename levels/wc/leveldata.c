@@ -11,7 +11,7 @@ const BehaviorScript bhvWCFanSpin[] = {
     BEGIN(OBJ_LIST_LEVEL),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
     BEGIN_LOOP(),
-        ADD_INT(oFaceAngleYaw, 0x100),
+        ADD_INT(oFaceAngleRoll, 0x100),
     END_LOOP(),
 };
 
