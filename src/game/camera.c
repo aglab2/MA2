@@ -10664,7 +10664,7 @@ void play_cutscene(struct Camera *c) {
  * Call the event while `start` <= gCutsceneTimer <= `end`
  * If `end` is -1, call for the rest of the shot.
  */
-void cutscene_event(CameraEvent event, struct Camera *c, s16 start, s16 end) {
+void cutscene_event(CameraEventFn event, struct Camera *c, s16 start, s16 end) {
     if (start <= gCutsceneTimer) {
         if (end == -1 || end >= gCutsceneTimer) {
             event(c);

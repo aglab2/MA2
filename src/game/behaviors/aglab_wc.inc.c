@@ -10,6 +10,43 @@ struct ObjectHitbox sWCStoneHeadBoxHitbox = {
     /* hurtboxHeight:     */ 400,
 };
 
+static void puffAt(struct Object* obj, float size, int numParticles)
+{
+    f32 sizeBase = size;
+    f32 sizeRange = size / 20.f;
+    f32 forwardVelBase = 40.f;
+    f32 forwardVelRange = 5.f;
+    f32 velYBase = 30.f;
+    f32 velYRange = 20.f;
+
+    if ((gPrevFrameObjectCount > (OBJECT_POOL_CAPACITY - 90)) && numParticles > 10) {
+        numParticles = 10;
+    }
+
+    if (gPrevFrameObjectCount > (OBJECT_POOL_CAPACITY - 30)) {
+        numParticles = 0;
+    }
+
+    for (int i = 0; i < numParticles; i++) {
+        f32 scale = random_float() * (sizeRange * 0.1f) + sizeBase * 0.1f;
+        struct Object* particle = spawn_object(obj, MODEL_MIST, bhvWhitePuffExplosion);
+
+        particle->oBehParams2ndByte = 2;
+        particle->oMoveAngleYaw = random_u16();
+        particle->oGravity = 2.52f;
+        particle->oDragStrength = 1.0f;
+        particle->oForwardVel = random_float() * forwardVelRange + forwardVelBase;
+        particle->oPosX = obj->oPosX;
+        particle->oPosY = obj->oPosY;
+        particle->oPosZ = obj->oPosZ;
+        particle->oVelX = 0.f;
+        particle->oVelY = random_float() * velYRange + velYBase;
+        particle->oVelZ = 0.f;
+
+        obj_scale(particle, scale);
+    }
+}
+
 #define oWCStoneHeadAmountPushed oF4
 
 void bhv_wc_stonehead_loop(void) {
@@ -38,8 +75,9 @@ void bhv_wc_rock_loop()
 {
     if (0 == o->oAction)
     {
-        if (o->oDistanceToMario < 100.f)
+        if (o->oDistanceToMario < 200.f)
         {
+            puffAt(o, 100.f, 10);
             o->oAction = 1;
             obj_set_model(o, MODEL_WC_ROCK_BREAK);
         }
@@ -57,6 +95,7 @@ void bhv_wc_box_loop()
         if (o->oDistanceToMario < 40.f)
         {
             o->oAction = 1;
+            puffAt(o, 100.f, 10);
             obj_set_model(o, MODEL_WC_BOX_BROKEN);
         }
     }

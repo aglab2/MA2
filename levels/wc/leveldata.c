@@ -1,3 +1,5 @@
+#include "game/behavior_data_decl.h"
+
 #include <ultra64.h>"
 #include "sm64.h"
 #include "surface_terrains.h"
@@ -5,8 +7,13 @@
 #include "textures.h"
 #include "dialog_ids.h"
 
-#include "make_const_nonconst.h"
-
+const BehaviorScript bhvWCFanSpin[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    BEGIN_LOOP(),
+        ADD_INT(oFaceAngleYaw, 0x100),
+    END_LOOP(),
+};
 
 #include "levels/wc/leveldata.inc.c"
 

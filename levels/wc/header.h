@@ -6,6 +6,7 @@
 
 extern const LevelScript level_wc_entry[];
 
+extern const BehaviorScript bhvWCFanSpin[];
 
 #include "levels/wc/header.inc.h"
 

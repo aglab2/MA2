@@ -370,7 +370,7 @@ struct HandheldShakePoint {
  * A function that is called by CameraTriggers and cutscene shots.
  * These are concurrent: multiple CameraEvents can occur on the same frame.
  */
-typedef void (*CameraEvent)(struct Camera *c);
+typedef void (*CameraEventFn)(struct Camera *c);
 /**
  * The same type as a CameraEvent, but because these are generally longer, and happen in sequential
  * order, they're are called "shots," a term taken from cinematography.
@@ -378,7 +378,7 @@ typedef void (*CameraEvent)(struct Camera *c);
  * To further tell the difference: CutsceneShots usually call multiple CameraEvents at once, but only
  * one CutsceneShot is ever called on a given frame.
  */
-typedef CameraEvent CutsceneShot;
+typedef CameraEventFn CutsceneShot;
 
 /**
  * Defines a bounding box which activates an event while Mario is inside
@@ -393,7 +393,7 @@ struct CameraTrigger {
      */
     s8 area;
     /// A function that gets called while Mario is in the trigger bounds
-    CameraEvent event;
+    CameraEventFn event;
     // The (x,y,z) position of the center of the bounding box
     s16 centerX;
     s16 centerY;
@@ -760,7 +760,7 @@ s16 cutscene_object_with_dialog(u8 cutscene, struct Object *obj, s16 dialogID);
 s16 cutscene_object_without_dialog(u8 cutscene, struct Object *obj);
 s16 cutscene_object(u8 cutscene, struct Object *obj);
 void play_cutscene(struct Camera *c);
-void cutscene_event(CameraEvent event, struct Camera * c, s16 start, s16 end);
+void cutscene_event(CameraEventFn event, struct Camera * c, s16 start, s16 end);
 void cutscene_spawn_obj(u32 obj, s16 frame);
 void set_fov_shake(s16 amplitude, s16 decay, s16 shakeSpeed);
 
