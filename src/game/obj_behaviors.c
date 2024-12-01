@@ -772,3 +772,4 @@ UNUSED s32 debug_sequence_tracker(s16 debugInputSequence[]) {
 #include "behaviors/yoshi.inc.c"
 
 #include "behaviors/aglab.inc.c"
+#include "behaviors/aglab_wc.inc.c"

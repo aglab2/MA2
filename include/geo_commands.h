@@ -62,7 +62,7 @@ enum GeoLayoutCommands {
 
     GEO_CMD_LVL_NODE_TRANSLATION_ROTATION,
     GEO_CMD_LVL_NODE_TRANSLATION,
-    GEO_CMD_LVL_NODE_DISPLAY_LIST,
+    GEO_CMD_CRUMBLE_NODE_TRANSLATION,
 
     GEO_CMD_COUNT,
 };
@@ -311,6 +311,11 @@ enum GeoLayoutCommands {
     CMD_HH(uy, uz)
 #define GEO_TRANSLATE_NODE_WITH_DL(layer, ux, uy, uz, displayList) \
     CMD_BBH(GEO_CMD_NODE_TRANSLATION, (layer | 0x80), ux), \
+    CMD_HH(uy, uz), \
+    CMD_PTR(displayList)
+
+#define GEO_CRUMBLE_TRANSLATE_NODE_WITH_DL(layer, ux, uy, uz, displayList) \
+    CMD_BBH(GEO_CMD_CRUMBLE_NODE_TRANSLATION, (layer | 0x80), ux), \
     CMD_HH(uy, uz), \
     CMD_PTR(displayList)
     

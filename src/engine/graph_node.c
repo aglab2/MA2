@@ -597,14 +597,16 @@ struct GraphNodeLvlTranslation         *init_graph_node_lvl_translation         
     return graphNode;
 }
 
-struct GraphNodeDisplayList         *init_graph_node_lvl_display_list        (s32 alloc, struct GraphNodeDisplayList         *graphNode, s32 drawingLayer, void *displayList)
+struct GraphNodeTranslation         *init_graph_node_break_translation        (s32 alloc, struct GraphNodeTranslation         *graphNode, s32 drawingLayer, void *displayList, Vec3s translation)
 {
     if (alloc) {
-        graphNode = main_pool_alloc(sizeof(struct GraphNodeDisplayList));
+        graphNode = main_pool_alloc(sizeof(struct GraphNodeTranslation));
     }
 
     if (graphNode != NULL) {
-        init_scene_graph_node_links(&graphNode->node, GRAPH_NODE_TYPE_LVL_DISPLAY_LIST);
+        init_scene_graph_node_links(&graphNode->node, GRAPH_NODE_TYPE_BREAK_TRANSLATION);
+
+        vec3_copy(graphNode->translation, translation);
         SET_GRAPH_NODE_LAYER(graphNode->node.flags, drawingLayer);
         graphNode->displayList = displayList;
     }

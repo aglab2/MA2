@@ -6113,3 +6113,34 @@ const BehaviorScript bhvHammerUpDown[] = {
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
+
+extern const Collision wc_stonehead_collision[];
+extern void bhv_wc_stonehead_loop();
+const BehaviorScript bhvWCStoneHead[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(wc_stonehead_collision),
+    SET_HOME(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_wc_stonehead_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern void bhv_wc_rock_loop();
+const BehaviorScript bhvWCRock[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_wc_rock_loop),
+    END_LOOP(),
+};
+
+extern void bhv_wc_box_loop();
+const BehaviorScript bhvWCBox[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_wc_box_loop),
+    END_LOOP(),
+};

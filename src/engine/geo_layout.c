@@ -47,7 +47,7 @@ GeoLayoutCommandProc GeoLayoutJumpTable[] = {
 
     geo_layout_cmd_lvl_translation_rotation,
     geo_layout_cmd_lvl_translation,
-    geo_layout_cmd_lvl_display_list,
+    geo_layout_cmd_break_translation,
 };
 
 struct GraphNode gObjParentGraphNode;
@@ -845,16 +845,27 @@ void geo_layout_cmd_lvl_translation(void) {
     gGeoLayoutCommand = (u8 *) cmdPos;
 }
 
-void geo_layout_cmd_lvl_display_list(void) {
-    struct GraphNodeDisplayList *graphNode;
-    s32 drawingLayer = cur_geo_cmd_u8(0x01);
-    void *displayList = cur_geo_cmd_ptr(0x04);
+void geo_layout_cmd_break_translation(void) {
+    struct GraphNodeLvlTranslation *graphNode;
 
-    graphNode = init_graph_node_lvl_display_list(TRUE, NULL, drawingLayer, displayList);
+    Vec3f translation;
+
+    s16 drawingLayer = LAYER_FIRST;
+    s16 params = cur_geo_cmd_u8(0x01);
+    s16 *cmdPos = (s16 *) gGeoLayoutCommand;
+    void *displayList = NULL;
+
+    cmdPos = read_vec3s(translation, &cmdPos[1]);
+    displayList = *(void **) &cmdPos[0];
+    drawingLayer = params & 0x7F;
+    cmdPos += 2 << CMD_SIZE_SHIFT;
+
+    graphNode =
+        init_graph_node_break_translation(TRUE, NULL, drawingLayer, displayList, translation);
 
     register_scene_graph_node(&graphNode->node);
 
-    gGeoLayoutCommand += 0x08 << CMD_SIZE_SHIFT;
+    gGeoLayoutCommand = (u8 *) cmdPos;
 }
 
 struct GraphNode *process_geo_layout(void *segptr) {

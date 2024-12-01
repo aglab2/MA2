@@ -1397,10 +1397,19 @@ void geo_process_lvl_translation(struct GraphNodeLvlTranslation *node) {
     append_dl_and_return((struct GraphNodeDisplayList *)node);
 }
 
-void geo_process_lvl_display_list(struct GraphNodeDisplayList *node) {
-    append_dl_and_return((struct GraphNodeDisplayList *)node);
+void geo_process_break_translation(struct GraphNodeTranslation *node) {
+    Vec3f translation;
+    translation[0] = node->translation[0] - 0.f;
+    translation[1] = node->translation[1] - 0.f;
+    translation[2] = node->translation[2] - 0.f;
+    if (is_far_from_mario(translation)) {
+        return;
+    }
 
-    gMatStackIndex++;
+    mtxf_rotate_zxy_and_translate_and_mul(gVec3sZero, translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+
+    inc_mat_stack();
+    append_dl_and_return((struct GraphNodeDisplayList *)node);
 }
 
 typedef void (*GeoProcessFunc)();
@@ -1434,7 +1443,7 @@ static GeoProcessFunc GeoProcessJumpTable[] = {
 
     [GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION] = geo_process_lvl_translation_rotation,
     [GRAPH_NODE_TYPE_LVL_TRANSLATION         ] = geo_process_lvl_translation,
-    [GRAPH_NODE_TYPE_LVL_DISPLAY_LIST        ] = geo_process_lvl_display_list,
+    [GRAPH_NODE_TYPE_BREAK_TRANSLATION       ] = geo_process_break_translation,
 };
 
 /**

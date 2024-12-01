@@ -128,7 +128,7 @@ int zipline_cancel()
     if (gMarioStates->action == ACT_RAIL_GRIND)
         return 0;
 
-    if (gCurrLevelNum > sizeof(kRails) / sizeof(kRails[0]))
+    if (gCurrLevelNum >= sizeof(kRails) / sizeof(kRails[0]))
         return 0;
 
     const Trajectory*** areaTrajectories = kRails[gCurrLevelNum];

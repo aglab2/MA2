@@ -13,7 +13,7 @@
 // TODO: Figure something out for sZoomOutAreaMasks?
 
 DEFINE_LEVEL("OW2 IN CASTLE", LEVEL_CASTLE, COURSE_NONE, castle_inside, inside, 20000, 0x20, 0x20, 0x30, _, sCamCastle) 
-DEFINE_LEVEL("OW1 C GROUNDS", LEVEL_CASTLE_GROUNDS, COURSE_NONE, castle_grounds, outside, 25000, 0x08, 0x08, 0x08, _, _) 
+DEFINE_LEVEL("OW1 C GROUNDS", LEVEL_CASTLE_GROUNDS, COURSE_NONE, castle_grounds, outside, 20000, 0x00, 0x00, 0x00, _, sCamCastleGrounds) 
 DEFINE_LEVEL("END CAKE", LEVEL_ENDING, COURSE_CAKE_END, ending, generic, 20000, 0x00, 0x00, 0x00, _, _) 
 DEFINE_LEVEL("OW3 C COURTYD", LEVEL_CASTLE_COURTYARD, COURSE_NONE, castle_courtyard, outside, 20000, 0x00, 0x00, 0x00, _, sCamCastleCourtyard) 
 DEFINE_LEVEL("B BATTLE1", LEVEL_BOWSER_1, COURSE_NONE, bowser_1, generic, 60000, 0x40, 0x40, 0x40, _, _) 

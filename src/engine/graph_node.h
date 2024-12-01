@@ -70,7 +70,7 @@ enum GraphNodeTypes {
 
     GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION,
     GRAPH_NODE_TYPE_LVL_TRANSLATION,
-    GRAPH_NODE_TYPE_LVL_DISPLAY_LIST,
+    GRAPH_NODE_TYPE_BREAK_TRANSLATION,
 };
 
 // Passed as first argument to a GraphNodeFunc to give information about in
@@ -427,7 +427,7 @@ struct GraphNodeCoin                *init_graph_node_coin                (s32 al
 
 struct GraphNodeLvlTranslationRotation *init_graph_node_lvl_translation_rotation(s32 alloc, struct GraphNodeLvlTranslationRotation *graphNode, s32 drawingLayer, void *displayList, Vec3f translation, Vec3s rotation);
 struct GraphNodeLvlTranslation         *init_graph_node_lvl_translation         (s32 alloc, struct GraphNodeLvlTranslation         *graphNode, s32 drawingLayer, void *displayList, Vec3f translation);
-struct GraphNodeDisplayList            *init_graph_node_lvl_display_list        (s32 alloc, struct GraphNodeDisplayList            *graphNode, s32 drawingLayer, void *displayList);
+struct GraphNodeTranslation            *init_graph_node_break_translation       (s32 alloc, struct GraphNodeTranslation            *graphNode, s32 drawingLayer, void *displayList, Vec3s translation);
 
 struct GraphNodeHeldObject          *init_graph_node_held_object         (s32 alloc, struct GraphNodeHeldObject          *graphNode, struct Object *objNode, Vec3s translation, GraphNodeFunc nodeFunc, s32 playerIndex);
 

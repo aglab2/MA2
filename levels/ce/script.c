@@ -35,7 +35,6 @@ extern const GeoLayout ce_area_visual[];
 const LevelScript level_ce_entry[] = {
 	INIT_LEVEL(),
 	LOAD_MIO0(0x7, _ce_segment_7SegmentRomStart, _ce_segment_7SegmentRomEnd), 
-	LOAD_MIO0(0xa, _water_skybox_mio0SegmentRomStart, _water_skybox_mio0SegmentRomEnd), 
 	LOAD_YAY0(0x06, _group17_yay0SegmentRomStart, _group17_yay0SegmentRomEnd), 
 	LOAD_RAW(0x0D, _group17_geoSegmentRomStart, _group17_geoSegmentRomEnd), 
 	LOAD_YAY0(0x08, _common0_yay0SegmentRomStart, _common0_yay0SegmentRomEnd), 

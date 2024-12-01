@@ -543,5 +543,8 @@ extern const BehaviorScript bhvUnusedFakeStar[];
 extern const BehaviorScript bhvCheckpoint[];
 extern const BehaviorScript bhvGoal[];
 extern const BehaviorScript bhvHammerUpDown[];
+extern const BehaviorScript bhvWCStoneHead[];
+extern const BehaviorScript bhvWCRock[];
+extern const BehaviorScript bhvWCBox[];
 
 #endif // BEHAVIOR_DATA_H
