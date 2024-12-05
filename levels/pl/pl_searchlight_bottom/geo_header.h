@@ -1,0 +1,9 @@
+extern const GeoLayout pl_searchlight_bottom_geo[];
+extern u8 pl_searchlight_bottom_miu128_ig009_ci4[];
+extern u8 pl_searchlight_bottom_miu128_ig009_pal_rgba16[];
+extern Vtx pl_searchlight_bottom_pl_searchlight_bottom_mesh_layer_1_vtx_cull[8];
+extern Vtx pl_searchlight_bottom_pl_searchlight_bottom_mesh_layer_1_vtx_0[78];
+extern Gfx pl_searchlight_bottom_pl_searchlight_bottom_mesh_layer_1_tri_0[];
+extern Gfx mat_pl_searchlight_bottom_SEARCHLIGHT_sa2mdl_0_f3d[];
+extern Gfx mat_revert_pl_searchlight_bottom_SEARCHLIGHT_sa2mdl_0_f3d[];
+extern Gfx pl_searchlight_bottom_pl_searchlight_bottom_mesh_layer_1[];

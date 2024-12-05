@@ -5808,3 +5808,25 @@ const BehaviorScript bhvWCBox[] = {
         CALL_NATIVE(bhv_wc_box_loop),
     END_LOOP(),
 };
+
+extern void bhv_pl_elv_loop();
+extern const Collision pl_elv_collision[];
+const BehaviorScript bhvPLElv[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(pl_elv_collision),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_pl_elv_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern void bhv_pl_cage_loop();
+const BehaviorScript bhvPLCage[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(pl_elv_collision),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_pl_cage_loop),
+    END_LOOP(),
+};

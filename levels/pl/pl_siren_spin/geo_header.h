@@ -1,0 +1,15 @@
+extern const GeoLayout pl_siren_spin_geo[];
+extern u8 pl_siren_spin_miu32_ig001_ci8[];
+extern u8 pl_siren_spin_miu32_ig001_pal_rgba16[];
+extern u8 pl_siren_spin_miu128_ig002_ci4[];
+extern u8 pl_siren_spin_miu128_ig002_pal_rgba16[];
+extern Vtx pl_siren_spin_pl_siren_spin_mesh_layer_5_vtx_0[12];
+extern Gfx pl_siren_spin_pl_siren_spin_mesh_layer_5_tri_0[];
+extern Vtx pl_siren_spin_pl_siren_spin_mesh_layer_1_vtx_0[12];
+extern Gfx pl_siren_spin_pl_siren_spin_mesh_layer_1_tri_0[];
+extern Gfx mat_pl_siren_spin_SIREN_sa2mdl_4_f3d[];
+extern Gfx mat_revert_pl_siren_spin_SIREN_sa2mdl_4_f3d[];
+extern Gfx mat_pl_siren_spin_SIREN_sa2mdl_5_f3d[];
+extern Gfx mat_revert_pl_siren_spin_SIREN_sa2mdl_5_f3d[];
+extern Gfx pl_siren_spin_pl_siren_spin_mesh_layer_5[];
+extern Gfx pl_siren_spin_pl_siren_spin_mesh_layer_1[];

@@ -1,0 +1,15 @@
+extern const GeoLayout pl_bombe_breakb_geo[];
+extern u8 pl_bombe_breakb_pr64_6_ci4[];
+extern u8 pl_bombe_breakb_pr64_6_pal_rgba16[];
+extern u8 pl_bombe_breakb_miu128_pl001_ci4[];
+extern u8 pl_bombe_breakb_miu128_pl001_pal_rgba16[];
+extern Vtx pl_bombe_breakb_pl_bombe_breakb_mesh_layer_1_vtx_cull[8];
+extern Vtx pl_bombe_breakb_pl_bombe_breakb_mesh_layer_1_vtx_0[5];
+extern Gfx pl_bombe_breakb_pl_bombe_breakb_mesh_layer_1_tri_0[];
+extern Vtx pl_bombe_breakb_pl_bombe_breakb_mesh_layer_1_vtx_1[12];
+extern Gfx pl_bombe_breakb_pl_bombe_breakb_mesh_layer_1_tri_1[];
+extern Gfx mat_pl_bombe_breakb_BOMBE_BREAKB_sa2mdl_0_f3d[];
+extern Gfx mat_revert_pl_bombe_breakb_BOMBE_BREAKB_sa2mdl_0_f3d[];
+extern Gfx mat_pl_bombe_breakb_BOMBE_BREAKB_sa2mdl_1_f3d[];
+extern Gfx mat_revert_pl_bombe_breakb_BOMBE_BREAKB_sa2mdl_1_f3d[];
+extern Gfx pl_bombe_breakb_pl_bombe_breakb_mesh_layer_1[];
