@@ -45,9 +45,10 @@ GeoLayoutCommandProc GeoLayoutJumpTable[] = {
     /*GEO_CMD_NODE_CULLING_RADIUS       */ geo_layout_cmd_node_culling_radius,
     /*GEO_COIN      */                     geo_layout_cmd_coin,
 
-    geo_layout_cmd_lvl_translation_rotation,
-    geo_layout_cmd_lvl_translation,
-    geo_layout_cmd_break_translation,
+    /* GEO_CMD_LVL_NODE_TRANSLATION_ROTATION */ geo_layout_cmd_lvl_translation_rotation,
+    /* GEO_CMD_LVL_NODE_TRANSLATION */          geo_layout_cmd_lvl_translation,
+    /* GEO_CMD_CRUMBLE_NODE_TRANSLATION */      geo_layout_cmd_break_translation,
+    /* GEO_CMD_OBJ_NODE_TRANSLATION_ROTATION */ geo_layout_cmd_obj_node_translation_rotation,
 };
 
 struct GraphNode gObjParentGraphNode;
@@ -431,7 +432,7 @@ void geo_layout_cmd_node_camera(void) {
 
    [cmd+var: void *displayList]
 */
-void geo_layout_cmd_node_translation_rotation(void) {
+static void geo_layout_cmd_node_translation_rotation_impl(int style) {
     struct GraphNodeTranslationRotation *graphNode;
 
     Vec3s translation, rotation;
@@ -474,10 +475,18 @@ void geo_layout_cmd_node_translation_rotation(void) {
     }
 
     graphNode = init_graph_node_translation_rotation(TRUE, NULL, drawingLayer, displayList,
-                                                     translation, rotation);
+                                                     translation, rotation, style);
     register_scene_graph_node(&graphNode->node);
 
     gGeoLayoutCommand = (u8 *) cmdPos;
+}
+
+void geo_layout_cmd_node_translation_rotation(void) {
+    geo_layout_cmd_node_translation_rotation_impl(GRAPH_NODE_TYPE_TRANSLATION_ROTATION);
+}
+
+void geo_layout_cmd_obj_node_translation_rotation(void) {
+    geo_layout_cmd_node_translation_rotation_impl(GRAPH_NODE_TYPE_OBJ_TRANSLATION_ROTATION);
 }
 
 /*

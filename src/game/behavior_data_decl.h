@@ -75,6 +75,8 @@ enum BehaviorCommands {
     /*0x35*/ BHV_CMD_DISABLE_RENDERING,
     /*0x36*/ BHV_CMD_SET_INT_UNUSED,
     /*0x37*/ BHV_CMD_SPAWN_WATER_DROPLET,
+    
+    /*0x08*/ BHV_CMD_CALL_INDEXED,
 };
 
 // Defines the start of the behavior script as well as the object list the object belongs to.
@@ -115,6 +117,9 @@ enum BehaviorCommands {
 // Marks the beginning of an infinite loop.
 #define BEGIN_LOOP() \
     BC_B(BHV_CMD_BEGIN_LOOP)
+
+#define CALL_COLLISION() \
+    BC_BBH(BHV_CMD_CALL_INDEXED, 0, 0)
 
 // Marks the end of an infinite loop.
 #define END_LOOP() \

@@ -201,6 +201,36 @@ void mtxf_rotate_zxy_and_translate_and_mul(Vec3s rot, Vec3f trans, Mat4 dest, Ma
     MTXF_END(dest);
 }
 
+void mtxf_translate_and_mul(Vec3f trans, Mat4 dest, Mat4 src) {
+    PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);
+    const f32 sx = 0;
+    const f32 cx = 1;
+    const f32 sy = 0;
+    const f32 cy = 1;
+    const f32 sz = 0;
+    const f32 cz = 1;
+    Vec3f entry;
+    f32 sysz = (sy * sz);
+    f32 cycz = (cy * cz);
+    entry[0] = ((sysz * sx) + cycz);
+    entry[1] = (sz * cx);
+    f32 cysz = (cy * sz);
+    f32 sycz = (sy * cz);
+    entry[2] = ((cysz * sx) - sycz);
+    linear_mtxf_mul_vec3f(src, dest[0], entry);
+    entry[0] = ((sycz * sx) - cysz);
+    entry[1] = (cz * cx);
+    entry[2] = ((cycz * sx) + sysz);
+    linear_mtxf_mul_vec3f(src, dest[1], entry);
+    entry[0] = (cx * sy);
+    entry[1] = -sx;
+    entry[2] = (cx * cy);
+    linear_mtxf_mul_vec3f(src, dest[2], entry);
+    linear_mtxf_mul_vec3f(src, dest[3], trans);
+    vec3f_add(dest[3], src[3]);
+    MTXF_END(dest);
+}
+
 /// Build a matrix that rotates around the x axis, then the y axis, then the z axis, and then translates and multiplies.
 void mtxf_rotate_xyz_and_translate_and_mul(Vec3s rot, Vec3f trans, Mat4 dest, Mat4 src) {
     PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);

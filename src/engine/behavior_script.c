@@ -11,6 +11,7 @@
 #include "game/obj_behaviors_2.h"
 #include "game/object_helpers.h"
 #include "game/object_list_processor.h"
+#include "engine/surface_load.h"
 #include "math_util.h"
 #include "graph_node.h"
 #include "surface_collision.h"
@@ -297,6 +298,19 @@ static s32 bhv_cmd_begin_loop(void) {
     gCurBhvCommand++;
     return BHV_PROC_CONTINUE;
 }
+
+typedef void (*NativeBhvFuncParamed)(s16);
+static const NativeBhvFuncParamed kIndexedBhvFuncs[] = {
+    (NativeBhvFuncParamed) load_object_collision_model,
+};
+
+static s32 bhv_cmd_call_indexed(void) {
+    NativeBhvFuncParamed behaviorFunc = kIndexedBhvFuncs[BHV_CMD_GET_2ND_U8(0)];
+    behaviorFunc(BHV_CMD_GET_2ND_S16(0));
+
+    gCurBhvCommand++;
+    return BHV_PROC_CONTINUE;
+};
 
 // Command 0x09: Marks the end of an infinite loop.
 // Usage: END_LOOP()
@@ -810,6 +824,8 @@ static BhvCommandProc BehaviorCmdTable[] = {
     /*BHV_CMD_DISABLE_RENDERING     */ bhv_cmd_disable_rendering,
     /*BHV_CMD_SET_INT_UNUSED        */ bhv_cmd_set_int_unused,
     /*BHV_CMD_SPAWN_WATER_DROPLET   */ bhv_cmd_spawn_water_droplet,
+    
+    /*BHV_CMD_CALL_INDEXED          */ bhv_cmd_call_indexed,
 };
 
 // Execute the behavior script of the current object, process the object flags, and other miscellaneous code for updating objects.

@@ -9,11 +9,16 @@
 
 #include "make_const_nonconst.h"
 
+extern const Collision pl_roll_collision[];
 const BehaviorScript bhvPLRoll[] = {
-    BEGIN(OBJ_LIST_LEVEL),
+    BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    SET_INT(oFaceAngleRoll, 0xD800),
+    LOAD_COLLISION_DATA(pl_roll_collision),
     BEGIN_LOOP(),
         ADD_INT(oFaceAngleRoll, 0x100),
+        ADD_INT(oGeoRoll, -0x100),
+        CALL_COLLISION(),
     END_LOOP(),
 };
 
@@ -37,3 +42,6 @@ const BehaviorScript bhvPLRoll[] = {
 #include "levels/pl/pl_mlift/collision.inc.c"
 #include "levels/pl/pl_mlift/model.inc.c"
 #include "levels/pl/pl_roll/model.inc.c"
+#include "levels/pl/pl_roll/collision.inc.c"
+#include "levels/pl/pl_cage/collision.inc.c"
+#include "levels/pl/pl_caged/collision.inc.c"

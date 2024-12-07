@@ -230,13 +230,13 @@ struct GraphNodeCamera *init_graph_node_camera(s32 alloc,
 struct GraphNodeTranslationRotation *
 init_graph_node_translation_rotation(s32 alloc,
                                      struct GraphNodeTranslationRotation *graphNode, s32 drawingLayer,
-                                     void *displayList, Vec3s translation, Vec3s rotation) {
+                                     void *displayList, Vec3s translation, Vec3s rotation, int style) {
     if (alloc) {
         graphNode = main_pool_alloc(sizeof(struct GraphNodeTranslationRotation));
     }
 
     if (graphNode != NULL) {
-        init_scene_graph_node_links(&graphNode->node, GRAPH_NODE_TYPE_TRANSLATION_ROTATION);
+        init_scene_graph_node_links(&graphNode->node, style);
 
         vec3s_copy(graphNode->translation, translation);
         vec3s_copy(graphNode->rotation, rotation);

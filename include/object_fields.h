@@ -1250,6 +1250,12 @@
 #define /*0x0FC*/ oYoshiChosenHome OBJECT_FIELD_S32(0x1D)
 #define /*0x100*/ oYoshiTargetYaw  OBJECT_FIELD_S32(0x1E)
 
+#define oGeoMoveX  oHomeX
+#define oGeoMoveY  oHomeY
+#define oGeoMoveZ  oHomeZ
+#define oGeoPitch  OBJECT_FIELD_S32(0x47)
+#define oGeoYaw    OBJECT_FIELD_S32(0x48)
+#define oGeoRoll   OBJECT_FIELD_S32(0x49)
 
 /*Custom general defines:
 
