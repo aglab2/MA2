@@ -1140,6 +1140,7 @@ static void eight_dir_collision_handler(struct Camera *c)
 
     camdir[0] = c->pos[0] - origin[0];
     camdir[1] = c->pos[1] - origin[1];
+    // TODO: smooth this out a bit using smoothstep
     if (-200.f < camdir[1] && camdir[1] < 320.f)
         camdir[1] = 320.f;
 

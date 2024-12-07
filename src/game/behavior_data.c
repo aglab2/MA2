@@ -5813,6 +5813,7 @@ extern void bhv_pl_elv_loop();
 extern const Collision pl_elv_collision[];
 const BehaviorScript bhvPLElv[] = {
     BEGIN(OBJ_LIST_SURFACE),
+    SET_HOME(),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     LOAD_COLLISION_DATA(pl_elv_collision),
     BEGIN_LOOP(),
