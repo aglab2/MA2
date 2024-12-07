@@ -543,6 +543,11 @@ struct CutsceneVariable {
  * update_lakitu, its pos and focus are used to calculate lakitu's next position and focus, which are
  * then used to render the game.
  */
+
+struct CamCollisionProgress {
+    f32 xz;
+    f32 y;
+};
 struct Camera {
     /*0x00*/ u8 mode; // What type of mode the camera uses (see defines above)
     /*0x01*/ u8 defMode;
@@ -571,7 +576,7 @@ struct Camera {
     /// when paused. See zoom_out_if_paused_and_outside
     /*0x68*/ f32 areaCenY;
     Vec3f paraCamOrigPos;
-    f32 paraCamProgress;
+    struct CamCollisionProgress camCollisionProgress;
 };
 
 /**

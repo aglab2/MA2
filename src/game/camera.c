@@ -1115,6 +1115,13 @@ s32 snap_to_45_degrees(s16 angle) {
 #define MIN_CAMERA_DISTANCE 160.0f // Minimum distance between Mario and the camera.
 #define VERTICAL_RAY_OFFSET 300.0f // The ray is cast from 300 units above Mario in order to prevent small obstacles from constantly snapping the camera
 
+static void cam_collision_advance(f32* val)
+{
+    *val -= 0.2f;
+    if (*val < 0.f)
+        *val = 0.f;
+}
+
 // courtesy of ReonuCam but rewritten for my usecases
 static void eight_dir_collision_handler(struct Camera *c)
 {
@@ -1133,7 +1140,7 @@ static void eight_dir_collision_handler(struct Camera *c)
 
     camdir[0] = c->pos[0] - origin[0];
     camdir[1] = c->pos[1] - origin[1];
-    if (0 < camdir[1] && camdir[1] < 320.f)
+    if (-200.f < camdir[1] && camdir[1] < 320.f)
         camdir[1] = 320.f;
 
     camdir[2] = c->pos[2] - origin[2];
@@ -1152,6 +1159,7 @@ static void eight_dir_collision_handler(struct Camera *c)
     print_text_fmt_int(120, 160, "CD2 %d", camdir[2]);
 #endif
 
+    int yAffected = 0;
     find_surface_on_ray(origin, camdir, &surf, hitpos, (RAYCAST_FIND_FLOOR | RAYCAST_FIND_WALL | RAYCAST_FIND_CEIL));
     if (surf && surf->normal.y < -0.6f) // ceiling
     {
@@ -1159,15 +1167,19 @@ static void eight_dir_collision_handler(struct Camera *c)
         print_text_fmt_int(220, 20, "C %d", (int) (surf->normal.y * 1000.f));
 #endif
         // cap the ceiling and cast ray from mario location instead
+        cam_collision_advance(&c->camCollisionProgress.y);
+        yAffected = 1;
         c->pos[1] = hitpos[1] - 60.f;
         camdir[1] = c->pos[1] - origin[1];
         find_surface_on_ray(origin, camdir, &surf, hitpos, (RAYCAST_FIND_FLOOR | RAYCAST_FIND_WALL));
     }
 
     if (surf) {
-        c->paraCamProgress -= 0.2f;
-        if (c->paraCamProgress < 0.f)
-            c->paraCamProgress = 0.f;
+        if (!yAffected) {
+            yAffected = 1;
+            cam_collision_advance(&c->camCollisionProgress.y);
+        }
+        cam_collision_advance(&c->camCollisionProgress.xz);
 
         f32 dist;
         Vec3f camToMario;
@@ -1201,10 +1213,12 @@ static void eight_dir_collision_handler(struct Camera *c)
         print_text_fmt_int(120, 40, "H1 %d", hitpos[1]);
         print_text_fmt_int(120, 60, "H2 %d", hitpos[2]);
 #endif
+    } else {
+        c->camCollisionProgress.xz = 1.f;
     }
-    else
-    {
-        c->paraCamProgress = 1.f;
+
+    if (!yAffected) {
+        c->camCollisionProgress.y = 1.f;
     }
 
     c->yaw = atan2s(c->pos[2] - gMarioState->pos[2], c->pos[0] - gMarioState->pos[0]);
@@ -2862,9 +2876,9 @@ void update_lakitu(struct Camera *c) {
 
     if (!(gCameraMovementFlags & CAM_MOVE_PAUSE_SCREEN)) {
         Vec3f realCamPos;
-        realCamPos[0] = c->pos[0] * (1.f - c->paraCamProgress) + c->paraCamOrigPos[0] * c->paraCamProgress;
-        realCamPos[1] = c->pos[1];
-        realCamPos[2] = c->pos[2] * (1.f - c->paraCamProgress) + c->paraCamOrigPos[2] * c->paraCamProgress;
+        realCamPos[0] = c->pos[0] * (1.f - c->camCollisionProgress.xz) + c->paraCamOrigPos[0] * c->camCollisionProgress.xz;
+        realCamPos[1] = c->pos[1] * (1.f - c->camCollisionProgress.y ) + c->paraCamOrigPos[1] * c->camCollisionProgress.y ;
+        realCamPos[2] = c->pos[2] * (1.f - c->camCollisionProgress.xz) + c->paraCamOrigPos[2] * c->camCollisionProgress.xz;
         newYaw = next_lakitu_state(newPos, newFoc, realCamPos, c->focus, sOldPosition, sOldFocus,
                                    c->nextYaw);
         set_or_approach_s16_symmetric(&c->yaw, newYaw, sYawSpeed);
@@ -3026,7 +3040,7 @@ void update_camera(struct Camera *c) {
         sYawSpeed = 0x400;
 
         if (sSelectionFlags & CAM_MODE_MARIO_ACTIVE) {
-            c->paraCamProgress = 0.f;
+            c->camCollisionProgress = (struct CamCollisionProgress){};
             switch (c->mode) {
                 case CAMERA_MODE_BEHIND_MARIO:
                     mode_behind_mario_camera(c);
@@ -3050,22 +3064,22 @@ void update_camera(struct Camera *c) {
         } else {
             switch (c->mode) {
                 case CAMERA_MODE_BEHIND_MARIO:
-                c->paraCamProgress = 0.f;
+                c->camCollisionProgress = (struct CamCollisionProgress){};
                     mode_behind_mario_camera(c);
                     break;
 
                 case CAMERA_MODE_C_UP:
-                    c->paraCamProgress = 0.f;
+                    c->camCollisionProgress = (struct CamCollisionProgress){};
                     mode_c_up_camera(c);
                     break;
 
                 case CAMERA_MODE_WATER_SURFACE:
-                    c->paraCamProgress = 0.f;
+                    c->camCollisionProgress = (struct CamCollisionProgress){};
                     mode_water_surface_camera(c);
                     break;
 
                 case CAMERA_MODE_INSIDE_CANNON:
-                    c->paraCamProgress = 0.f;
+                    c->camCollisionProgress = (struct CamCollisionProgress){};
                     mode_cannon_camera(c);
                     break;
 
@@ -3457,7 +3471,7 @@ void create_camera(struct GraphNodeCamera *gc) {
     c->areaCenY = gc->focus[1];
     c->areaCenZ = gc->focus[2];
     c->yaw = 0;
-    c->paraCamProgress = 0;
+    c->camCollisionProgress = (struct CamCollisionProgress){};
     vec3f_copy(c->pos, gc->pos);
     vec3f_copy(c->focus, gc->focus);
 }
