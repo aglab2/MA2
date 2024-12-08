@@ -5,8 +5,10 @@
 #include "engine/math_util.h"
 
 extern const Trajectory** rail_descs_ce[];
+extern const Trajectory** rail_descs_mh[];
 static const Trajectory*** kRails[] = {
     [ LEVEL_CE ] = rail_descs_ce,
+    [ LEVEL_MH ] = rail_descs_mh,
 };
 
 #define MAX_ZIPLINE_DISTANCE 50000.f

@@ -494,9 +494,11 @@ void warp_credits(void) {
 }
 
 extern const IWDHeader* iw_descs_ce[];
+extern const IWDHeader* iw_descs_mh[];
 
 static const IWDHeader** kWarpHeaders[] = {
     [ LEVEL_CE ] = iw_descs_ce,
+    [ LEVEL_MH ] = iw_descs_mh,
 };
 
 static void handle_iw_area_desc(int* newArea, const IWDirectionAreas* desc)
