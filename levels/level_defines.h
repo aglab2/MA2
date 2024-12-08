@@ -22,3 +22,4 @@ DEFINE_LEVEL("B BATTLE3", LEVEL_BOWSER_3, COURSE_NONE, bowser_3, generic, 60000,
 DEFINE_LEVEL("CE", LEVEL_CE, COURSE_CE, ce, generic, 20000, 0x00, 0x00, 0x00, _, sCamCe) 
 DEFINE_LEVEL("WC", LEVEL_WC, COURSE_WC, wc, generic, 20000, 0x00, 0x00, 0x00, _, sCamWc) 
 DEFINE_LEVEL("PL", LEVEL_PL, COURSE_PL, pl, generic, 20000, 0x00, 0x00, 0x00, _, sCamPl) 
+DEFINE_LEVEL("MH", LEVEL_MH, COURSE_MH, mh, generic, 20000, 0x00, 0x00, 0x00, _, sCamMh) 
