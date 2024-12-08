@@ -667,7 +667,7 @@ const BehaviorScript bhvTemporaryYellowCoin[] = {
 const BehaviorScript bhvThreeCoinsSpawn[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    BEGIN_REPEAT(3),
+    BEGIN_REPEAT(5),
         SPAWN_CHILD(/*Model*/ MODEL_YELLOW_COIN, /*Behavior*/ bhvSingleCoinGetsSpawned),
     END_REPEAT(),
     DEACTIVATE(),
@@ -5822,12 +5822,38 @@ const BehaviorScript bhvPLElv[] = {
     END_LOOP(),
 };
 
+extern const Collision pl_cage_collision[]; 
 extern void bhv_pl_cage_loop();
 const BehaviorScript bhvPLCage[] = {
-    BEGIN(OBJ_LIST_LEVEL),
+    BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    LOAD_COLLISION_DATA(pl_elv_collision),
+    LOAD_COLLISION_DATA(pl_cage_collision),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_pl_cage_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern const Collision pl_caged_collision[];
+extern void bhv_pl_cage_loop();
+const BehaviorScript bhvPLCage2[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(pl_caged_collision),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_pl_cage_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern const Collision pl_mlift_collision[];
+extern void bhv_pl_lift_loop();
+const BehaviorScript bhvPLLift[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(pl_mlift_collision),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_pl_lift_loop),
+        CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };

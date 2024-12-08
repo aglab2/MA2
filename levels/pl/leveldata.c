@@ -45,3 +45,4 @@ const BehaviorScript bhvPLRoll[] = {
 #include "levels/pl/pl_roll/collision.inc.c"
 #include "levels/pl/pl_cage/collision.inc.c"
 #include "levels/pl/pl_caged/collision.inc.c"
+#include "levels/pl/pl_caged/model.inc.c"

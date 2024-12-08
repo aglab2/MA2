@@ -548,5 +548,7 @@ extern const BehaviorScript bhvWCRock[];
 extern const BehaviorScript bhvWCBox[];
 extern const BehaviorScript bhvPLElv[];
 extern const BehaviorScript bhvPLCage[];
+extern const BehaviorScript bhvPLCage2[];
+extern const BehaviorScript bhvPLLift[];
 
 #endif // BEHAVIOR_DATA_H

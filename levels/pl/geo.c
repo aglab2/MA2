@@ -31,3 +31,4 @@
 #include "levels/pl/pl_wall/geo.inc.c"
 #include "levels/pl/pl_mlift/geo.inc.c"
 #include "levels/pl/pl_roll/geo.inc.c"
+#include "levels/pl/pl_caged/geo.inc.c"

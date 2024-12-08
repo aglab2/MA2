@@ -52,4 +52,6 @@ extern const LevelScript level_pl_entry[];
 
 #include "levels/pl/pl_caged/collision_header.h"
 
+#include "levels/pl/pl_caged/geo_header.h"
+
 #endif
