@@ -13,4 +13,6 @@ extern const LevelScript level_mh_entry[];
 #undef mh_area_1
 
 #include "levels/mh/header.inc.h"
+#include "levels/mh/mh_skybox/geo_header.h"
+
 #endif

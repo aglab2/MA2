@@ -2353,6 +2353,12 @@ void cur_obj_spawn_star_at_y_offset(f32 targetX, f32 targetY, f32 targetZ, f32 o
 }
 
 extern Gfx ce_skybox_object_00CDC390_mesh[];
+extern Gfx mh_skybox_mh_skybox_mesh_layer_1[];
+static const Gfx* k_skyboxes[] = {
+    [ LEVEL_CE ] = ce_skybox_object_00CDC390_mesh,
+    [ LEVEL_MH ] = mh_skybox_mh_skybox_mesh_layer_1,
+};
+
 extern void geo_append_display_list(void *displayList, s16 layer);
 extern s16 gMatStackIndex;
 extern Mat4 gMatStack[32];
@@ -2374,7 +2380,7 @@ Gfx *geo_render_backdrop(s32 callContext, struct GraphNode *node, UNUSED f32 b[4
         gMatStackIndex++;
         mtxf_to_mtx(mtx, gMatStack[gMatStackIndex]);
         gMatStackFixed[gMatStackIndex] = mtx;
-        geo_append_display_list(ce_skybox_object_00CDC390_mesh, 0); // DL pointer
+        geo_append_display_list(k_skyboxes[gCurrLevelNum], 0); // DL pointer
         
         gMatStackIndex--;
     }

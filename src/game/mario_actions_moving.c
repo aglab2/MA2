@@ -1263,6 +1263,9 @@ s32 act_rail_grind(struct MarioState *m)
     m->marioObj->header.gfx.pos[2] = m->pos[2];
     set_mario_animation(m, MARIO_ANIM_RIDING_SHELL);
     tilt_body_ground_shell(m, startYaw);
+    m->marioObj->header.gfx.angle[0] = m->faceAngle[0];
+    m->marioObj->header.gfx.angle[1] = m->faceAngle[1];
+    m->marioObj->header.gfx.angle[2] = m->faceAngle[2];
     play_sound(SOUND_MOVING_TERRAIN_RIDING_SHELL + m->terrainSoundAddend,
                 m->marioObj->header.gfx.cameraToObject);
 

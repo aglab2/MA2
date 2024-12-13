@@ -22,3 +22,5 @@
 #undef GEO_TRANSLATE_ROTATE_WITH_DL
 #define GEO_TRANSLATE_ROTATE_WITH_DL GEO_LVL_TRANSLATE_ROTATE_WITH_DL
 #include "levels/mh/visual/geo.inc.c"
+
+#include "levels/mh/mh_skybox/geo.inc.c"

@@ -40,12 +40,15 @@ IWDHeader* iw_descs_mh[] = {
 static const Trajectory* rail_mh_area1[] = {
     mh_area_1_spline_1089_object_00BE4D68_001,
     mh_area_1_spline_1089_object_00BE4D68_002,
+    mh_area_1_spline_NurbsCurve,
     NULL,
 };
 
 static const Trajectory* rail_mh_area3[] = {
     mh_area_3_spline_1088_object_00BC6BA0_002,
     mh_area_3_spline_1088_object_00BC6BA0_003,
+    mh_area_3_spline_NurbsCurve_001,
+    mh_area_3_spline_NurbsCurve_002,
     NULL,
 };
 
@@ -59,3 +62,4 @@ const Trajectory** rail_descs_mh[] = {
 #include "levels/mh/visual/model.inc.c"
 
 #include "levels/mh/leveldata.inc.c"
+#include "levels/mh/mh_skybox/model.inc.c"
