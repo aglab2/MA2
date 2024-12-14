@@ -118,6 +118,10 @@ const LevelScript level_main_scripts_entry[] = {
 
     LOAD_MODEL_FROM_GEO(MODEL_GOAL, goal_geo),
     LOAD_MODEL_FROM_GEO(MODEL_CHECKPOINT, checkpoint_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_SPRING, spring_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_SPEEDER, speeder_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_RAMP, ramp_geo),
+
     LOAD_MODEL_FROM_GEO(MODEL_BREAKABLE_BOX,           box_wood_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BREAKABLE_BOX_NO_SHADOW, box_wood_geo),
 

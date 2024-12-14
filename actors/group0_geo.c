@@ -20,3 +20,6 @@
 #include "checkpoint/geo.inc.c"
 #include "goal/geo.inc.c"
 #include "box_wood/geo.inc.c"
+#include "speeder/geo.inc.c"
+#include "spring/geo.inc.c"
+#include "ramp/geo.inc.c"

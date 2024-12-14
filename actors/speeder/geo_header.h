@@ -1,0 +1,11 @@
+extern const GeoLayout speeder_geo[];
+extern u8 speeder_speeder_ci4[];
+extern u8 speeder_speeder_pal_rgba16[];
+extern u8 speeder_arrows_ci4[];
+extern u8 speeder_arrows_pal_rgba16[];
+extern u8 speeder_sikake_06_64_ci4[];
+extern u8 speeder_sikake_06_64_pal_rgba16[];
+extern Vtx speeder_object_00743C6C_mesh_layer_1_vtx_0[85];
+extern Vtx speeder_object_00743C6C_mesh_layer_1_vtx_1[6];
+extern Vtx speeder_object_00743C6C_mesh_layer_1_vtx_2[10];
+extern Gfx speeder_object_00743C6C_mesh_layer_1[];

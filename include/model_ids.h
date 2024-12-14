@@ -572,9 +572,14 @@
 #define MODEL_VCUTM_WARP_PIPE                     MODEL_LEVEL_GEOMETRY_16   // warp_pipe_geo
 #define MODEL_CASTLE_GROUNDS_WARP_PIPE            MODEL_LEVEL_GEOMETRY_16   // warp_pipe_geo
 
+// MA globals
 #define MODEL_GOAL 0xff
 #define MODEL_CHECKPOINT 0xfe
+#define MODEL_SPRING 0xfd
+#define MODEL_SPEEDER 0xfc
+#define MODEL_RAMP 0xfb
 
+// MA course specifics
 #define MODEL_CE_HAMMER MODEL_LEVEL_GEOMETRY_03
 
 #define MODEL_WC_BOX MODEL_LEVEL_GEOMETRY_03

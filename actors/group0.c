@@ -35,3 +35,8 @@
 #include "goal/model.inc.c"
 #include "box_wood/model.inc.c"
 #include "box_wood/collision.inc.c"
+#include "speeder/collision.inc.c"
+#include "speeder/model.inc.c"
+#include "spring/model.inc.c"
+#include "ramp/collision.inc.c"
+#include "ramp/model.inc.c"

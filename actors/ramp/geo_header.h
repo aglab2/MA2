@@ -1,0 +1,16 @@
+extern const GeoLayout ramp_geo[];
+extern Lights1 ramp_OBJECT_BIGJUMP_sa2mdl_0_f3d_lights;
+extern Lights1 ramp_OBJECT_BIGJUMP_sa2mdl_1_f3d_lights;
+extern Lights1 ramp_OBJECT_BIGJUMP_sa2mdl_2_f3d_lights;
+extern Lights1 ramp_OBJECT_BIGJUMP_PANEL_sa2mdl_0_f3d_lights;
+extern u8 ramp_sikake_06_64_ci4[];
+extern u8 ramp_sikake_06_64_pal_rgba16[];
+extern u8 ramp_sikake_08_64_ci4[];
+extern u8 ramp_sikake_08_64_pal_rgba16[];
+extern u8 ramp_sikake_07_64_ci4[];
+extern u8 ramp_sikake_07_64_pal_rgba16[];
+extern Vtx ramp_ramp_mesh_layer_1_vtx_0[46];
+extern Vtx ramp_ramp_mesh_layer_1_vtx_1[12];
+extern Vtx ramp_ramp_mesh_layer_1_vtx_2[8];
+extern Vtx ramp_ramp_mesh_layer_1_vtx_3[12];
+extern Gfx ramp_ramp_mesh_layer_1[];

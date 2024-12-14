@@ -341,4 +341,14 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "box_wood/collision_header.h"
 
+#include "speeder/collision_header.h"
+
+#include "speeder/geo_header.h"
+
+#include "spring/geo_header.h"
+
+#include "ramp/collision_header.h"
+
+#include "ramp/geo_header.h"
+
 #endif
