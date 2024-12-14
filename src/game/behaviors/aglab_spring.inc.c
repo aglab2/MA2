@@ -6,6 +6,7 @@ static const SpringDesc** kSpringDescs[] = {
 };
 
 #define oSpringBezier OBJECT_FIELD_VPTR(0x1B)
+#define oSpringQuant OBJECT_FIELD_F32(0x1C)
 
 static void bezierInterp(s16* curve, Vec3f result, f32 t)
 {
@@ -33,7 +34,7 @@ void bhv_spring_loop()
 {
     if (0 == o->oAction)
     {
-        if (o->oDistanceToMario < 100.f)
+        if (o->oDistanceToMario < 200.f)
         {
             o->oAction = 1;
             gMarioStates->pos[0] = o->oPosX;
@@ -41,11 +42,24 @@ void bhv_spring_loop()
             gMarioStates->pos[2] = o->oPosZ;
             set_mario_action(gMarioStates, ACT_JUMP, 0);
             sSpringBezier = (s16*)o->oSpringBezier;
+
+            // I am not taking integrals here for bezier curve but approximation will be good enough
+            f32 bezierLength = 0;
+            for (int i = 0; i < 3; i++)
+            {
+                Vec3f diff;
+                diff[0] = sSpringBezier[5 + 4*i] - sSpringBezier[1 + 4*i];
+                diff[1] = sSpringBezier[6 + 4*i] - sSpringBezier[2 + 4*i];
+                diff[2] = sSpringBezier[7 + 4*i] - sSpringBezier[3 + 4*i];
+                bezierLength += sqrtf(diff[0] * diff[0] + diff[1] * diff[1] + diff[2] * diff[2]);
+            }
+
+            o->oSpringQuant = 120.f / bezierLength;
         }
     }
     else
     {
-        f32 quant = 1.f / 60.f;
+        f32 quant = o->oSpringQuant;
         f32 t = (f32)o->oTimer * quant;
         s16* bezier = (s16*)o->oSpringBezier;
         if (bezier != sSpringBezier)
