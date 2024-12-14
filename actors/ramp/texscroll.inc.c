@@ -22,7 +22,7 @@ void scroll_ramp_ramp_mesh_layer_1_vtx_3() {
 void scroll_gfx_ramp_ramp_mesh_layer_1() {
 	Gfx *mat = segmented_to_virtual(ramp_ramp_mesh_layer_1);
 
-	shift_t(mat, 57, PACK_TILESIZE(0, 1));
+	shift_t(mat, 49, PACK_TILESIZE(0, 1));
 
 };
 

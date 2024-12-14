@@ -1,8 +1,4 @@
 extern const GeoLayout ramp_geo[];
-extern Lights1 ramp_OBJECT_BIGJUMP_sa2mdl_0_f3d_lights;
-extern Lights1 ramp_OBJECT_BIGJUMP_sa2mdl_1_f3d_lights;
-extern Lights1 ramp_OBJECT_BIGJUMP_sa2mdl_2_f3d_lights;
-extern Lights1 ramp_OBJECT_BIGJUMP_PANEL_sa2mdl_0_f3d_lights;
 extern u8 ramp_sikake_06_64_ci4[];
 extern u8 ramp_sikake_06_64_pal_rgba16[];
 extern u8 ramp_sikake_08_64_ci4[];

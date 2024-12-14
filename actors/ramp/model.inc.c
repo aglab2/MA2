@@ -1,19 +1,3 @@
-Lights1 ramp_OBJECT_BIGJUMP_sa2mdl_0_f3d_lights = gdSPDefLights1(
-	0x7F, 0x7F, 0x7F,
-	0xFF, 0xFF, 0xFF, 0x49, 0x49, 0x49);
-
-Lights1 ramp_OBJECT_BIGJUMP_sa2mdl_1_f3d_lights = gdSPDefLights1(
-	0x7F, 0x7F, 0x7F,
-	0xFF, 0xFF, 0xFF, 0x49, 0x49, 0x49);
-
-Lights1 ramp_OBJECT_BIGJUMP_sa2mdl_2_f3d_lights = gdSPDefLights1(
-	0x7F, 0x7F, 0x7F,
-	0xFF, 0xFF, 0xFF, 0x49, 0x49, 0x49);
-
-Lights1 ramp_OBJECT_BIGJUMP_PANEL_sa2mdl_0_f3d_lights = gdSPDefLights1(
-	0x7F, 0x7F, 0x7F,
-	0xFF, 0xFF, 0xFF, 0x49, 0x49, 0x49);
-
 Gfx ramp_sikake_06_64_ci4_aligner[] = {gsSPEndDisplayList()};
 u8 ramp_sikake_06_64_ci4[] = {
 	0x01, 0x11, 0x12, 0x22, 0x22, 0x33, 0x44, 0x05, 
@@ -917,7 +901,8 @@ Vtx ramp_ramp_mesh_layer_1_vtx_3[12] = {
 
 Gfx ramp_ramp_mesh_layer_1[] = {
 	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
-	gsSPSetLights1(ramp_OBJECT_BIGJUMP_sa2mdl_0_f3d_lights),
+	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
@@ -944,13 +929,11 @@ Gfx ramp_ramp_mesh_layer_1[] = {
 	gsSP2Triangles(2, 3, 4, 0, 4, 3, 5, 0),
 	gsSP2Triangles(6, 7, 8, 0, 8, 7, 9, 0),
 	gsSP2Triangles(10, 11, 12, 0, 12, 11, 13, 0),
-	gsSPSetLights1(ramp_OBJECT_BIGJUMP_sa2mdl_1_f3d_lights),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_MIRROR, 6, 0),
 	gsSPVertex(ramp_ramp_mesh_layer_1_vtx_1 + 0, 12, 0),
 	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
 	gsSP2Triangles(6, 7, 8, 0, 6, 8, 9, 0),
 	gsSP2Triangles(9, 8, 10, 0, 9, 10, 11, 0),
-	gsSPSetLights1(ramp_OBJECT_BIGJUMP_sa2mdl_2_f3d_lights),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, ramp_sikake_08_64_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, ramp_sikake_08_64_ci4),
@@ -959,7 +942,6 @@ Gfx ramp_ramp_mesh_layer_1[] = {
 	gsSPVertex(ramp_ramp_mesh_layer_1_vtx_2 + 0, 8, 0),
 	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
 	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
-	gsSPSetLights1(ramp_OBJECT_BIGJUMP_PANEL_sa2mdl_0_f3d_lights),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, ramp_sikake_07_64_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, ramp_sikake_07_64_ci4),
