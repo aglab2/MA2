@@ -20,16 +20,23 @@ const Trajectory mh_area_2_spline_NurbsCurve_Spring_008[] = {
 	TRAJECTORY_END(),
 };
 const Trajectory mh_area_2_spline_NurbsCurve_Spring_017[] = {
-	TRAJECTORY_POS( 0, -1300, 1016, -6009),
+	TRAJECTORY_POS( 0, -1141, 651, -5890),
 	TRAJECTORY_POS( 1, -1596, 1617, -8506),
 	TRAJECTORY_POS( 2, -2452, 1415, -11570),
-	TRAJECTORY_POS( 3, -2954, -139, -13870),
+	TRAJECTORY_POS( 3, -2972, -139, -14207),
 	TRAJECTORY_END(),
 };
 const Trajectory mh_area_2_spline_NurbsCurve_Spring_018[] = {
 	TRAJECTORY_POS( 0, -2135, -1700, -15910),
 	TRAJECTORY_POS( 1, -1457, -1334, -16374),
-	TRAJECTORY_POS( 2, -638, -1363, -17161),
-	TRAJECTORY_POS( 3, 110, -1860, -17797),
+	TRAJECTORY_POS( 2, -340, -1361, -17221),
+	TRAJECTORY_POS( 3, 450, -1858, -17832),
+	TRAJECTORY_END(),
+};
+const Trajectory mh_area_2_spline_NurbsCurve_Spring_020[] = {
+	TRAJECTORY_POS( 0, 1266, -2700, 19464),
+	TRAJECTORY_POS( 1, 1195, -1924, 18639),
+	TRAJECTORY_POS( 2, 992, -1375, 16644),
+	TRAJECTORY_POS( 3, 921, -1985, 15819),
 	TRAJECTORY_END(),
 };

@@ -69,8 +69,10 @@ static const SpringDesc spring_mh_area1[] = {
     mh_area_1_spline_NurbsCurve_Spring_002,
     mh_area_1_spline_NurbsCurve_Spring_003,
     mh_area_1_spline_NurbsCurve_Spring_004,
+    mh_area_1_spline_NurbsCurve_Spring_006,
     mh_area_1_spline_NurbsCurve_Spring_011,
     mh_area_1_spline_NurbsCurve_Spring_012,
+    mh_area_1_spline_NurbsCurve_Spring_019,
     NULL,
 };
 
@@ -80,6 +82,7 @@ static const SpringDesc spring_mh_area2[] = {
     mh_area_2_spline_NurbsCurve_Spring_008,
     mh_area_2_spline_NurbsCurve_Spring_017,
     mh_area_2_spline_NurbsCurve_Spring_018,
+    mh_area_2_spline_NurbsCurve_Spring_020,
     NULL,
 };
 
@@ -97,11 +100,16 @@ static SpringDesc spring_mh_area4[] = {
     NULL,
 };
 
-const const SpringDesc* spring_descs_mh[] = {
+const SpringDesc* spring_descs_mh[] = {
     spring_mh_area1,
     spring_mh_area2,
     spring_mh_area3,
     spring_mh_area4,
+};
+
+const SpringLinkDesc spring_links_mh[] = {
+    { mh_area_1_spline_NurbsCurve_Spring_004, mh_area_2_spline_NurbsCurve_Spring_020, },
+    { NULL, NULL, }
 };
 
 #include "levels/mh/visual/model.inc.c"

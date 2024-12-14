@@ -606,7 +606,7 @@ u32 should_strengthen_gravity_for_jump_ascent(struct MarioState *m) {
 }
 
 void apply_gravity(struct MarioState *m) {
-    const f32 terminalSpeed = -110.f;
+    const f32 terminalSpeed = (m->prevAction == ACT_BUTT_SLIDE || m->action == ACT_BUTT_SLIDE_AIR) ? -110.f : - 75.f;
     if (m->action == ACT_TWIRLING && m->vel[1] < 0.0f) {
         apply_twirl_gravity(m);
     } else if (m->action == ACT_SHOT_FROM_CANNON) {

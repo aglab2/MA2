@@ -154,8 +154,12 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
     }
 }
 
+extern int on_spring();
 int zipline_cancel()
 {
+    if (on_spring())
+        return 0;
+
     if (sCancelTimeout)
     {
         sCancelTimeout--;
@@ -262,6 +266,8 @@ int zipline_step()
                     gMarioStates->faceAngle[1] += 0x8000;
                 }
             }
+            gMarioStates->faceAngle[0] = 0;
+            gMarioStates->faceAngle[2] = 0;
         }
 
         f32 dirMag = vec3_mag(trajDirection);
