@@ -76,9 +76,10 @@ static const SpringDesc spring_mh_area1[] = {
 
 static const SpringDesc spring_mh_area2[] = {
     mh_area_2_spline_NurbsCurve_Spring_005,
-    mh_area_2_spline_NurbsCurve_Spring_006,
     mh_area_2_spline_NurbsCurve_Spring_007,
     mh_area_2_spline_NurbsCurve_Spring_008,
+    mh_area_2_spline_NurbsCurve_Spring_017,
+    mh_area_2_spline_NurbsCurve_Spring_018,
     NULL,
 };
 
@@ -91,6 +92,8 @@ static const SpringDesc spring_mh_area3[] = {
 static SpringDesc spring_mh_area4[] = {
     mh_area_4_spline_NurbsCurve_Spring_013,
     mh_area_4_spline_NurbsCurve_Spring_014,
+    mh_area_4_spline_NurbsCurve_Spring_015,
+    mh_area_4_spline_NurbsCurve_Spring_016,
     NULL,
 };
 

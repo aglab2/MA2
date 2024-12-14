@@ -17,10 +17,6 @@
 
 #define mh_area_1 mh_area_visual
 #define mh_area_1_geo mh_area_geo_visual
-#undef GEO_TRANSLATE_NODE_WITH_DL
-#define GEO_TRANSLATE_NODE_WITH_DL GEO_LVL_TRANSLATE_NODE_WITH_DL
-#undef GEO_TRANSLATE_ROTATE_WITH_DL
-#define GEO_TRANSLATE_ROTATE_WITH_DL GEO_LVL_TRANSLATE_ROTATE_WITH_DL
 #include "levels/mh/visual/geo.inc.c"
 
 #include "levels/mh/mh_skybox/geo.inc.c"

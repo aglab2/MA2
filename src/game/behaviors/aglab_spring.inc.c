@@ -78,7 +78,7 @@ void bhv_spring_loop()
 
 void bhv_spring_ctl_init()
 {
-    sBezier = NULL;
+    sSpringBezier = NULL;
 }
 
 void bhv_spring_ctl_loop()
