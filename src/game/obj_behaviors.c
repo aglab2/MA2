@@ -774,3 +774,4 @@ UNUSED s32 debug_sequence_tracker(s16 debugInputSequence[]) {
 #include "behaviors/aglab.inc.c"
 #include "behaviors/aglab_wc.inc.c"
 #include "behaviors/aglab_pl.inc.c"
+#include "behaviors/aglab_spring.inc.c"

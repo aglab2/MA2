@@ -550,5 +550,7 @@ extern const BehaviorScript bhvPLElv[];
 extern const BehaviorScript bhvPLCage[];
 extern const BehaviorScript bhvPLCage2[];
 extern const BehaviorScript bhvPLLift[];
+extern const BehaviorScript bhvSpringCtl[];
+extern const BehaviorScript bhvSpring[];
 
 #endif // BEHAVIOR_DATA_H

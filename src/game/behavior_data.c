@@ -5857,3 +5857,22 @@ const BehaviorScript bhvPLLift[] = {
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
+
+extern void bhv_spring_ctl_init();
+extern void bhv_spring_ctl_loop();
+const BehaviorScript bhvSpringCtl[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    CALL_NATIVE(bhv_spring_ctl_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_spring_ctl_loop),
+    END_LOOP(),
+};
+
+extern void bhv_spring_loop();
+const BehaviorScript bhvSpring[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_spring_loop),
+    END_LOOP(),
+};

@@ -15,6 +15,8 @@
 #include "behavior_data.h"
 #include "rumble_init.h"
 
+#include "aglab_rail.h"
+
 #include "config.h"
 
 struct LandingAction {
@@ -1250,12 +1252,17 @@ s32 act_rail_grind(struct MarioState *m)
 {
     s16 startYaw = m->faceAngle[1];
 
-    if (m->input & INPUT_A_PRESSED) {
-        return set_mario_action(m, ACT_JUMP, 0);
+    if (!zipline_on_loop()) {
+        if (m->input & INPUT_A_PRESSED) {
+            return set_mario_action(m, ACT_JUMP, 0);
+        }
     }
 
     if (zipline_step()) {
-        return set_mario_action(m, ACT_FREEFALL, 0);
+        if (zipline_on_loop())
+            return set_mario_action(m, ACT_BUTT_SLIDE, 0);
+        else
+            return set_mario_action(m, ACT_FREEFALL, 0);
     }
 
     m->marioObj->header.gfx.pos[0] = m->pos[0];

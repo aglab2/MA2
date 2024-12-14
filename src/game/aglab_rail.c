@@ -2,11 +2,12 @@
 #include "types.h"
 #include "game/area.h"
 #include "game/level_update.h"
+#include "rail_desc.h"
 #include "engine/math_util.h"
 
-extern const Trajectory** rail_descs_ce[];
-extern const Trajectory** rail_descs_mh[];
-static const Trajectory*** kRails[] = {
+extern const RailDesc* rail_descs_ce[];
+extern const RailDesc* rail_descs_mh[];
+static const RailDesc** kRails[] = {
     [ LEVEL_CE ] = rail_descs_ce,
     [ LEVEL_MH ] = rail_descs_mh,
 };
@@ -14,7 +15,7 @@ static const Trajectory*** kRails[] = {
 #define MAX_ZIPLINE_DISTANCE 50000.f
 
 static const Trajectory* sTrajectory;
-// TODO: Enable this only for loops
+static const LDLDesc* sLoopDesc;
 static Vec3f sTrajectoryMiddle;
 static f32 sZiplineProgress = 0;
 static f32 sPosX;
@@ -75,7 +76,7 @@ static void calculate_trajectory_middle()
     sTrajectoryMiddle[2] = (maxPoint[2] + minPoint[2]) / 2;
 }
 
-static int handle_trajectory_cancel(const Trajectory* traj, int it)
+static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop, int it)
 {
     Vec3f Q = { gMarioStates->pos[0], gMarioStates->pos[1], gMarioStates->pos[2] };
     f32 minDist = 2000.f;
@@ -130,12 +131,21 @@ static int handle_trajectory_cancel(const Trajectory* traj, int it)
         trajDirection[1] /= dirMag;
         trajDirection[2] /= dirMag;
         sForwardVel = trajDirection[0] * gMarioStates->vel[0] + trajDirection[1] * gMarioStates->vel[1] + trajDirection[2] * gMarioStates->vel[2];
+        if (loop && sForwardVel < 0)
+        {
+            // Do not allow to use loop in the opposite direction, probably will cause some weird stuff
+            return 0;
+        }
+
         sTrajectory = traj;
+        sLoopDesc = loop ? segmented_to_virtual(loop) : NULL;
         sTrajectoryArea = gCurrAreaIndex;
         s16 yaw = atan2s(trajDirection[2], trajDirection[0]);
         sAngleFlipped = abs_angle_diff(gMarioStates->faceAngle[1], yaw) > 0x4000;
         sCancelTimeout = 4;
-        calculate_trajectory_middle();
+        if (sLoopDesc)
+            calculate_trajectory_middle();
+
         return 1;
     }
     else
@@ -155,24 +165,25 @@ int zipline_cancel()
     if (gMarioStates->action == ACT_RAIL_GRIND)
         return 0;
 
-    if (gCurrLevelNum >= sizeof(kRails) / sizeof(kRails[0]))
+    if (gCurrLevelNum >= (int) (sizeof(kRails) / sizeof(kRails[0])))
         return 0;
 
-    const Trajectory*** areaTrajectories = kRails[gCurrLevelNum];
+    const RailDesc** areaTrajectories = kRails[gCurrLevelNum];
     if (!areaTrajectories)
         return 0;
 
     areaTrajectories = segmented_to_virtual(areaTrajectories);
-    const Trajectory** trajectories = areaTrajectories[gCurrAreaIndex - 1];
+    const RailDesc* trajectories = areaTrajectories[gCurrAreaIndex - 1];
     if (!trajectories)
         return 0;
 
     trajectories = segmented_to_virtual(trajectories);
     int it = 0;
-    while (*trajectories)
+    while (trajectories->rail)
     {
-        const Trajectory* traj = segmented_to_virtual(*trajectories);
-        if (handle_trajectory_cancel(traj, it++))
+        const Trajectory* traj = segmented_to_virtual(trajectories->rail);
+        const LDLDesc* loop = trajectories->loop;
+        if (handle_trajectory_cancel(traj, loop, it++))
             return 1;
 
         trajectories++;
@@ -227,53 +238,62 @@ int zipline_step()
         Vec3f trajNextPoint = {traj[sZiplineCurPoint + 4 + 1], traj[sZiplineCurPoint + 4 + 2], traj[sZiplineCurPoint + 4 + 3]};
         Vec3f trajDirection;
         vec3f_diff(trajDirection, trajNextPoint, trajCurPoint);
+
+#if 0
         print_text_fmt_int(20, 100, "X %d", (int) trajDirection[0]);
         print_text_fmt_int(20, 120, "Z %d", (int) trajDirection[2]);
-        #if 0
-        if (absf(trajDirection[0] > 10.f) && absf(trajDirection[2]) > 10.f)
-        {
-            gMarioStates->faceAngle[1] = atan2s(trajDirection[2], trajDirection[0]);
-            if (sAngleFlipped)
-            {
-                gMarioStates->faceAngle[1] += 0x8000;
-            }
-        }
-        #endif
+#endif
 
+        if (sLoopDesc)
         {
+            // adjust rotation angle from the center
             Vec3f loopDiff;
             vec3f_diff(loopDiff, gMarioStates->pos, sTrajectoryMiddle);
-            gMarioStates->faceAngle[0] = 0x4000 + atan2s(loopDiff[2], loopDiff[1]);
-            print_text_fmt_int(20, 20, "0 %d", (int) gMarioStates->faceAngle[0]);
-            print_text_fmt_int(20, 40, "1 %d", (int) gMarioStates->faceAngle[1]);
+            gMarioStates->faceAngle[sLoopDesc->m0] = sLoopDesc->angleOffset + atan2s(loopDiff[sLoopDesc->c0], loopDiff[sLoopDesc->c1]);
+        }
+        else
+        {
+            // adjust face angle to the zipline
+            if (absf(trajDirection[0] > 10.f) && absf(trajDirection[2]) > 10.f)
+            {
+                gMarioStates->faceAngle[1] = atan2s(trajDirection[2], trajDirection[0]);
+                if (sAngleFlipped)
+                {
+                    gMarioStates->faceAngle[1] += 0x8000;
+                }
+            }
         }
 
         f32 dirMag = vec3_mag(trajDirection);
         // Calculate velocity
         {
-            f32 xdir = trajDirection[0];
-            f32 zdir = trajDirection[2];
-            f32 szmag = sqrtf(xdir * xdir + zdir * zdir);
-            xdir /= szmag;
-            zdir /= szmag;
-
-            f32 xspd = gMarioState->intendedMag * sins(gMarioState->intendedYaw);
-            f32 zspd = gMarioState->intendedMag * coss(gMarioState->intendedYaw);
-            if (abs_angle_diff(gMarioState->faceAngle[1], gMarioState->intendedYaw) > 0x4000)
+            if (sLoopDesc)
             {
-                xspd /= 5.f;
-                zspd /= 5.f;
+                sForwardVel += 5.f;
+                sForwardVel = CLAMP(sForwardVel, 0.f, 80.f);
             }
-            f32 dot = xdir * xspd + zdir * zspd;
+            else
+            {
+                f32 xdir = trajDirection[0];
+                f32 zdir = trajDirection[2];
+                f32 szmag = sqrtf(xdir * xdir + zdir * zdir);
+                xdir /= szmag;
+                zdir /= szmag;
 
-#ifndef test
-            sForwardVel += 5.f;
-#else
-            sForwardVel *= 0.95f;
-            sForwardVel += dot / 12.0f;
-            sForwardVel -= trajDirection[1] / dirMag * 5.f;
-#endif
-            sForwardVel = CLAMP(sForwardVel, -100.f, 100.f);
+                f32 xspd = gMarioState->intendedMag * sins(gMarioState->intendedYaw);
+                f32 zspd = gMarioState->intendedMag * coss(gMarioState->intendedYaw);
+                if (abs_angle_diff(gMarioState->faceAngle[1], gMarioState->intendedYaw) > 0x4000)
+                {
+                    xspd /= 5.f;
+                    zspd /= 5.f;
+                }
+                f32 dot = xdir * xspd + zdir * zspd;
+
+                sForwardVel *= 0.95f;
+                sForwardVel += dot / 12.0f;
+                sForwardVel -= trajDirection[1] / dirMag * 5.f;
+                sForwardVel = CLAMP(sForwardVel, -100.f, 100.f);
+            }
 
             // print_text_fmt_int(20, 20, "%d", (int) sForwardVel);
 
@@ -331,4 +351,9 @@ int zipline_step()
     }
 
     return 0;
+}
+
+int zipline_on_loop()
+{
+    return sLoopDesc != NULL;
 }
