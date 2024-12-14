@@ -40,6 +40,7 @@ void bhv_spring_loop()
             gMarioStates->pos[0] = o->oPosX;
             gMarioStates->pos[1] = o->oPosY;
             gMarioStates->pos[2] = o->oPosZ;
+            gMarioStates->faceAngle[1] = o->oFaceAngleYaw;
             set_mario_action(gMarioStates, ACT_JUMP, 0);
             sSpringBezier = (s16*)o->oSpringBezier;
 
