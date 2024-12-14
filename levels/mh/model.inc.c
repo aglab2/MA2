@@ -151,8 +151,8 @@ Gfx mh_dl_a3_004_mesh_layer_1_tri_0[] = {
 };
 
 Gfx mat_mh_dl_f3dlite_material_002[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	gsSPLightColor(LIGHT_1, 0x656565FF),
+	gsSPLightColor(LIGHT_2, 0x2E2E2EFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),

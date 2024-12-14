@@ -21,7 +21,7 @@ const GeoLayout mh_area_2[] = {
 		GEO_OPEN_NODE(),
 			GEO_CAMERA_FRUSTUM_WITH_FUNC(45.0000, 100, 30000, geo_camera_fov),
 			GEO_OPEN_NODE(),
-				GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 20000, 0, -50000, 20000, -10, -50000, geo_camera_main),
+				GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 20000, 0, -49000, 20000, -10, -49000, geo_camera_main),
 				GEO_OPEN_NODE(),
 					GEO_BRANCH(1, mh_area_2_geo),
 					GEO_RENDER_OBJ(),
