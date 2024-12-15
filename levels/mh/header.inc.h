@@ -36,6 +36,7 @@ extern const Trajectory mh_area_3_spline_NurbsCurve_Spring_009[];
 extern const Trajectory mh_area_3_spline_NurbsCurve_Spring_010[];
 extern const Trajectory mh_area_3_spline_NurbsCurve_Spring_021[];
 extern const Trajectory mh_area_3_spline_NurbsCurve_Spring_022[];
+extern const Trajectory mh_area_3_spline_NurbsCurve_Spring_023[];
 extern const GeoLayout mh_area_4_geo[];
 extern const GeoLayout mh_area_4[];
 extern const Collision mh_area_4_collision[];
