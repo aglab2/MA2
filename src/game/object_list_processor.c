@@ -162,17 +162,17 @@ struct ObjectNode gObjectListArray[16];
 /**
  * The order that object lists are processed in a frame.
  */
-s8 sObjectListUpdateOrder[] = { OBJ_LIST_SPAWNER,
-                                OBJ_LIST_SURFACE,
-                                OBJ_LIST_POLELIKE,
-                                OBJ_LIST_PLAYER,
-                                OBJ_LIST_PUSHABLE,
-                                OBJ_LIST_GENACTOR,
-                                OBJ_LIST_DESTRUCTIVE,
-                                OBJ_LIST_LEVEL,
-                                OBJ_LIST_DEFAULT,
-                                OBJ_LIST_UNIMPORTANT,
-                                -1 };
+static const s8 sObjectListUpdateOrder[] = { OBJ_LIST_SPAWNER,
+                                             OBJ_LIST_SURFACE,
+                                             OBJ_LIST_POLELIKE,
+                                             OBJ_LIST_PLAYER,
+                                             OBJ_LIST_PUSHABLE,
+                                             OBJ_LIST_GENACTOR,
+                                             OBJ_LIST_DESTRUCTIVE,
+                                             OBJ_LIST_LEVEL,
+                                             OBJ_LIST_DEFAULT,
+                                             OBJ_LIST_UNIMPORTANT,
+                                             -1 };
 
 /**
  * Info needed to spawn particles and keep track of which have been spawned for
@@ -188,7 +188,7 @@ struct ParticleProperties {
 /**
  * A table mapping particle flags to various properties use when spawning a particle.
  */
-struct ParticleProperties sParticleTypes[] = {
+static const struct ParticleProperties sParticleTypes[] = {
     { PARTICLE_DUST,                 ACTIVE_PARTICLE_DUST,                 MODEL_MIST,                 bhvMistParticleSpawner },
     { PARTICLE_VERTICAL_STAR,        ACTIVE_PARTICLE_V_STAR,               MODEL_NONE,                 bhvVertStarParticleSpawner },
     { PARTICLE_HORIZONTAL_STAR,      ACTIVE_PARTICLE_H_STAR,               MODEL_NONE,                 bhvHorStarParticleSpawner },
@@ -214,7 +214,7 @@ struct ParticleProperties sParticleTypes[] = {
  * Copy position, velocity, and angle variables from MarioState to the Mario
  * object.
  */
-void copy_mario_state_to_object(void) {
+static void copy_mario_state_to_object(void) {
     s32 i = 0;
     // L is real
     if (gCurrentObject != gMarioObject) {
@@ -245,7 +245,7 @@ void copy_mario_state_to_object(void) {
 /**
  * Spawn a particle at gCurrentObject's location.
  */
-void spawn_particle(u32 activeParticleFlag, ModelID16 model, const BehaviorScript *behavior) {
+static void spawn_particle(u32 activeParticleFlag, ModelID16 model, const BehaviorScript *behavior) {
     if (!(gCurrentObject->oActiveParticleFlags & activeParticleFlag)) {
         struct Object *particle;
         gCurrentObject->oActiveParticleFlags |= activeParticleFlag;
@@ -283,7 +283,7 @@ void bhv_mario_update(void) {
  * Update every object that occurs after firstObj in the given object list,
  * including firstObj itself. Return the number of objects that were updated.
  */
-s32 update_objects_starting_at(struct ObjectNode *objList, struct ObjectNode *firstObj) {
+static s32 update_objects_starting_at(struct ObjectNode *objList, struct ObjectNode *firstObj) {
     s32 count = 0;
 
     while (objList != firstObj) {
@@ -308,7 +308,7 @@ s32 update_objects_starting_at(struct ObjectNode *objList, struct ObjectNode *fi
  * Return the total number of objects in the list (including those that weren't
  * updated)
  */
-s32 update_objects_during_time_stop(struct ObjectNode *objList, struct ObjectNode *firstObj) {
+static s32 update_objects_during_time_stop(struct ObjectNode *objList, struct ObjectNode *firstObj) {
     s32 count = 0;
     s32 unfrozen;
 
@@ -353,7 +353,7 @@ s32 update_objects_during_time_stop(struct ObjectNode *objList, struct ObjectNod
  * Update every object in the given list. Return the total number of objects in
  * the list.
  */
-s32 update_objects_in_list(struct ObjectNode *objList) {
+static s32 update_objects_in_list(struct ObjectNode *objList) {
     s32 count;
     struct ObjectNode *firstObj = objList->next;
 
@@ -369,7 +369,7 @@ s32 update_objects_in_list(struct ObjectNode *objList) {
 /**
  * Unload any objects in the list that have been deactivated.
  */
-s32 unload_deactivated_objects_in_list(struct ObjectNode *objList) {
+static s32 unload_deactivated_objects_in_list(struct ObjectNode *objList) {
     struct ObjectNode *obj = objList->next;
 
     while (objList != obj) {
@@ -521,7 +521,7 @@ void clear_objects(void) {
 /**
  * Update spawner and surface objects.
  */
-void update_terrain_objects(void) {
+static void update_terrain_objects(void) {
     PROFILER_GET_SNAPSHOT_TYPE(PROFILER_DELTA_COLLISION);
     gObjectCounter = update_objects_in_list(&gObjectLists[OBJ_LIST_SPAWNER]);
     profiler_update(PROFILER_TIME_SPAWNER, profiler_get_delta(PROFILER_DELTA_COLLISION) - first);
@@ -540,7 +540,7 @@ void update_terrain_objects(void) {
  * Update all other object lists besides spawner and surface objects, using
  * the order specified by sObjectListUpdateOrder.
  */
-void update_non_terrain_objects(void) {
+static void update_non_terrain_objects(void) {
     s32 listIndex;
 
     s32 i = 2;
@@ -560,7 +560,7 @@ void update_non_terrain_objects(void) {
 /**
  * Unload deactivated objects in any object list.
  */
-void unload_deactivated_objects(void) {
+static void unload_deactivated_objects(void) {
     s32 listIndex;
 
     s32 i = 0;
