@@ -121,3 +121,17 @@ const Trajectory mh_area_3_spline_NurbsCurve_Spring_010[] = {
 	TRAJECTORY_POS( 3, 17228, -1083, -458),
 	TRAJECTORY_END(),
 };
+const Trajectory mh_area_3_spline_NurbsCurve_Spring_021[] = {
+	TRAJECTORY_POS( 0, 19720, -2560, -4575),
+	TRAJECTORY_POS( 1, 19993, -2380, -4665),
+	TRAJECTORY_POS( 2, 20295, -2364, -4775),
+	TRAJECTORY_POS( 3, 20633, -2521, -4917),
+	TRAJECTORY_END(),
+};
+const Trajectory mh_area_3_spline_NurbsCurve_Spring_022[] = {
+	TRAJECTORY_POS( 0, 19720, -2560, -5215),
+	TRAJECTORY_POS( 1, 19993, -2380, -5125),
+	TRAJECTORY_POS( 2, 20295, -2364, -5015),
+	TRAJECTORY_POS( 3, 20633, -2521, -4873),
+	TRAJECTORY_END(),
+};
