@@ -13,7 +13,7 @@
 
 #include "config.h"
 
-static s16 sMovingSandSpeeds[] = { 12, 8, 4, 0 };
+static const s16 sMovingSandSpeeds[] = { 12, 8, 4, 0 };
 
 struct Surface gWaterSurfacePseudoFloor = {
     SURFACE_VERY_SLIPPERY,      // type
@@ -373,7 +373,7 @@ s32 perform_ground_step(struct MarioState *m) {
 // Horizontal dot product of surface normal
 #define hdot_surf(surf, vec) (((surf)->normal.x * (vec)[0]) + ((surf)->normal.z * (vec)[2]))
 
-struct Surface *check_ledge_grab(struct MarioState *m, struct Surface *prevWall, struct Surface *wall, Vec3f intendedPos, Vec3f nextPos, Vec3f ledgePos, struct Surface **ledgeFloor) {
+static struct Surface *check_ledge_grab(struct MarioState *m, struct Surface *prevWall, struct Surface *wall, Vec3f intendedPos, Vec3f nextPos, Vec3f ledgePos, struct Surface **ledgeFloor) {
     struct Surface *returnedWall = wall;
     if (m->vel[1] > 0.0f || wall == NULL) {
         return NULL;
@@ -415,7 +415,7 @@ struct Surface *check_ledge_grab(struct MarioState *m, struct Surface *prevWall,
 
 #undef hdot_surf
 
-s32 bonk_or_hit_lava_wall(struct MarioState *m, struct WallCollisionData *wallData) {
+static s32 bonk_or_hit_lava_wall(struct MarioState *m, struct WallCollisionData *wallData) {
     s16 i;
     s16 wallDYaw;
     s32 oldWallDYaw;
@@ -451,7 +451,7 @@ s32 bonk_or_hit_lava_wall(struct MarioState *m, struct WallCollisionData *wallDa
     return result;
 }
 
-s32 perform_air_quarter_step(struct MarioState *m, Vec3f intendedPos, u32 stepArg) {
+static s32 perform_air_quarter_step(struct MarioState *m, Vec3f intendedPos, u32 stepArg) {
     s16 i;
     s32 stepResult = AIR_STEP_NONE;
 
@@ -566,7 +566,7 @@ s32 perform_air_quarter_step(struct MarioState *m, Vec3f intendedPos, u32 stepAr
     return (lowerWall.numWalls > 0) ? bonk_or_hit_lava_wall(m, &lowerWall) : AIR_STEP_NONE;
 }
 
-void apply_twirl_gravity(struct MarioState *m) {
+static void apply_twirl_gravity(struct MarioState *m) {
 #ifdef Z_TWIRL
     f32 Zmodifier = m->input & INPUT_Z_DOWN ? 4.0f : 1.0f;
 #endif
@@ -589,7 +589,7 @@ void apply_twirl_gravity(struct MarioState *m) {
     }
 }
 
-u32 should_strengthen_gravity_for_jump_ascent(struct MarioState *m) {
+static u32 should_strengthen_gravity_for_jump_ascent(struct MarioState *m) {
     if (!(m->flags & MARIO_JUMPING)) {
         return FALSE;
     }
@@ -605,7 +605,7 @@ u32 should_strengthen_gravity_for_jump_ascent(struct MarioState *m) {
     return FALSE;
 }
 
-void apply_gravity(struct MarioState *m) {
+static void apply_gravity(struct MarioState *m) {
     const f32 terminalSpeed = (m->prevAction == ACT_BUTT_SLIDE || m->action == ACT_BUTT_SLIDE_AIR) ? -110.f : - 75.f;
     if (m->action == ACT_TWIRLING && m->vel[1] < 0.0f) {
         apply_twirl_gravity(m);
@@ -654,7 +654,7 @@ void apply_gravity(struct MarioState *m) {
     }
 }
 
-void apply_vertical_wind(struct MarioState *m) {
+static void apply_vertical_wind(struct MarioState *m) {
     f32 maxVelY;
 
     if (m->action != ACT_GROUND_POUND) {
