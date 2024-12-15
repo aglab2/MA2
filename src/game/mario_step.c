@@ -345,11 +345,11 @@ s32 perform_ground_step(struct MarioState *m) {
     s32 i;
     u32 stepResult;
     Vec3f intendedPos;
-    const f32 numSteps = 4.0f;
+    int numSteps = 64;
 
     set_mario_wall(m, NULL);
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < numSteps; i++) {
         intendedPos[0] = m->pos[0] + m->floor->normal.y * (m->vel[0] / numSteps);
         intendedPos[2] = m->pos[2] + m->floor->normal.y * (m->vel[2] / numSteps);
         intendedPos[1] = m->pos[1];
@@ -679,14 +679,14 @@ void apply_vertical_wind(struct MarioState *m) {
 
 s32 perform_air_step(struct MarioState *m, u32 stepArg) {
     Vec3f intendedPos;
-    const f32 numSteps = 4.0f;
+    int numSteps = 64;
     s32 i;
     s32 quarterStepResult;
     s32 stepResult = AIR_STEP_NONE;
 
     set_mario_wall(m, NULL);
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < numSteps; i++) {
         intendedPos[0] = m->pos[0] + m->vel[0] / numSteps;
         intendedPos[1] = m->pos[1] + m->vel[1] / numSteps;
         intendedPos[2] = m->pos[2] + m->vel[2] / numSteps;
