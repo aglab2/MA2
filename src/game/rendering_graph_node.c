@@ -79,7 +79,7 @@ u16 *gCurrAnimAttribute;
 s16 *gCurrAnimData;
 
 /* Rendermode settings for cycle 1 for all 8 or 13 layers. */
-struct RenderModeContainer renderModeTable_1Cycle[2] = { 
+static const struct RenderModeContainer renderModeTable_1Cycle[2] = { 
     [RENDER_NO_ZB] = { {
         [LAYER_FORCE] = G_RM_OPA_SURF,
         [LAYER_CORKBOX] = G_RM_AA_OPA_SURF,
@@ -133,7 +133,7 @@ struct RenderModeContainer renderModeTable_1Cycle[2] = {
     } } };
 
 /* Rendermode settings for cycle 2 for all 13 layers. */
-struct RenderModeContainer renderModeTable_2Cycle[2] = {
+static const struct RenderModeContainer renderModeTable_2Cycle[2] = {
     [RENDER_NO_ZB] = { {
         [LAYER_FORCE] = G_RM_OPA_SURF2,
         [LAYER_CORKBOX] = G_RM_AA_OPA_SURF2,
@@ -194,7 +194,7 @@ ALIGNED16 struct GraphNodeCamera *gCurGraphNodeCamera = NULL;
 ALIGNED16 struct GraphNodeObject *gCurGraphNodeObject = NULL;
 ALIGNED16 struct GraphNodeHeldObject *gCurGraphNodeHeldObject = NULL;
 u16 gAreaUpdateCounter = 0;
-LookAt* gCurLookAt;
+static LookAt* gCurLookAt;
 
 #if SILHOUETTE
 // AA_EN        Enable anti aliasing (not actually used for AA in this case).
@@ -231,7 +231,7 @@ struct RenderPhase {
     u8 endLayer;
 };
 
-static struct RenderPhase sRenderPhases[] = {
+static const struct RenderPhase sRenderPhases[] = {
 #if SILHOUETTE
     [RENDER_PHASE_ZEX_BEFORE_SILHOUETTE]   = {
         .startLayer = LAYER_FIRST,
@@ -271,7 +271,7 @@ extern const Gfx init_rsp[];
 #define LOWER_FIXED(x) ((int)((unsigned int)((x) * 0x10000) & 0xFFFF))
 
 // Fixed-point identity matrix with the inverse of world scale
-Mtx identityMatrixWorldScale = {{
+static const Mtx identityMatrixWorldScale = {{
     {UPPER_FIXED(1.0f / WORLD_SCALE) << 16, 0x00000000,
      UPPER_FIXED(1.0f / WORLD_SCALE) <<  0, 0x00000000},
     {0x00000000,                            UPPER_FIXED(1.0f / WORLD_SCALE) << 16,
@@ -1437,7 +1437,7 @@ void geo_process_obj_translation_rotation(struct GraphNodeTranslationRotation *n
 typedef void (*GeoProcessFunc)();
 
 // See enum 'GraphNodeTypes' in 'graph_node.h'.
-static GeoProcessFunc GeoProcessJumpTable[] = {
+static const GeoProcessFunc GeoProcessJumpTable[] = {
     [GRAPH_NODE_TYPE_ORTHO_PROJECTION    ] = geo_process_ortho_projection,
     [GRAPH_NODE_TYPE_PERSPECTIVE         ] = geo_process_perspective,
     [GRAPH_NODE_TYPE_MASTER_LIST         ] = geo_process_master_list,
