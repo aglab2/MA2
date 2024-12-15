@@ -2367,15 +2367,8 @@ extern u32 gMoveSpeed;
 Gfx *geo_render_backdrop(s32 callContext, struct GraphNode *node, UNUSED f32 b[4][4]) {
     Mat4 mat;
     Mtx *mtx = alloc_display_list(sizeof(*mtx));
-    s32 i;
-    f32 pos[3];
-    Vec3s rotation = { 0, 0, 0 };
     if (callContext == GEO_CONTEXT_RENDER) {
-#define FARAWAYNESS .95f // the closer to 1 the further away
-        for (i = 0; i < 3; i++) {
-            pos[i] = gCurGraphNodeCamera->pos[i] * FARAWAYNESS;
-        }
-        mtxf_rotate_zxy_and_translate(mat, pos, rotation);
+        mtxf_translate(mat, gCurGraphNodeCamera->pos);
         mtxf_mul(gMatStack[gMatStackIndex + 1], mat, gMatStack[gMatStackIndex]);
         gMatStackIndex++;
         mtxf_to_mtx(mtx, gMatStack[gMatStackIndex]);
