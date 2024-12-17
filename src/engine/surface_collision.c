@@ -28,7 +28,7 @@ static s32 check_wall_vw(f32 d00, f32 d01, f32 d11, f32 d20, f32 d21, f32 invDen
     return FALSE;
 }
 
-s32 check_wall_edge(Vec3f vert, Vec3f v2, f32 *d00, f32 *d01, f32 *invDenom, f32 *offset, f32 margin_radius) {
+static s32 check_wall_edge(Vec3f vert, Vec3f v2, f32 *d00, f32 *d01, f32 *invDenom, f32 *offset, f32 margin_radius) {
     if (FLT_IS_NONZERO(vert[1])) {
         f32 v = (v2[1] / vert[1]);
         if (v < 0.0f || v > 1.0f) {
@@ -261,7 +261,7 @@ void resolve_and_return_wall_collisions(Vec3f pos, f32 offset, f32 radius, struc
  *                     CEILINGS                   *
  **************************************************/
 
-void add_ceil_margin(s32 *x, s32 *z, Vec3s target1, Vec3s target2, f32 margin) {
+static void add_ceil_margin(s32 *x, s32 *z, Vec3s target1, Vec3s target2, f32 margin) {
     register f32 diff_x = target1[0] - *x + target2[0] - *x;
     register f32 diff_z = target1[2] - *z + target2[2] - *z;
     register f32 invDenom = margin / sqrtf(sqr(diff_x) + sqr(diff_z));
@@ -493,7 +493,7 @@ ALWAYS_INLINE static s32 check_within_bounds_y_norm(s32 x, s32 z, struct Surface
 /**
  * Iterate through the list of water floors and find the first water floor under a given point.
  */
-struct Surface *find_water_floor_from_list(struct SurfaceNode *surfaceNode, s32 x, s32 y, s32 z, f32 *pheight) {
+static struct Surface *find_water_floor_from_list(struct SurfaceNode *surfaceNode, s32 x, s32 y, s32 z, f32 *pheight) {
     register struct Surface *surf;
     struct Surface *floor = NULL;
     struct SurfaceNode *topSurfaceNode = surfaceNode;
@@ -676,7 +676,7 @@ s32 get_room_at_pos(f32 x, f32 y, f32 z) {
 /**
  * Find the highest water floor under a given position and return the height.
  */
-f32 find_water_floor(s32 xPos, s32 yPos, s32 zPos, struct Surface **pfloor) {
+static f32 find_water_floor(s32 xPos, s32 yPos, s32 zPos, struct Surface **pfloor) {
     f32 height = FLOOR_LOWER_LIMIT;
 
     s32 x = xPos;
