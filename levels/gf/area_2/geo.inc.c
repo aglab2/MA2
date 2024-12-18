@@ -5,6 +5,12 @@ const GeoLayout gf_area_2_geo[] = {
 	GEO_OPEN_NODE(),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 0, 45, 0, gf_dl_a1_002_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 0, 291, -235, gf_dl_a1_005_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 296, -56, 280, gf_dl_C_object_00C6EB00_mesh_layer_1),
+		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, 310, -26, 293, 0, 90, 0, gf_dl_C_object_00C6FDB8_mesh_layer_1),
+		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, 300, -25, 293, 0, 90, 0, gf_dl_C_object_00C726A0_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 75, -124, 270, gf_dl_object_00C73774_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, -237, 147, -325, gf_dl_object_00C739E4_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 82, -124, 308, gf_dl_object_00C739E4_mesh_layer_1),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
