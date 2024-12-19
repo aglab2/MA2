@@ -462,7 +462,7 @@ static s32 perform_air_quarter_step(struct MarioState *m, Vec3f intendedPos, u32
 
     vec3f_copy(nextPos, intendedPos);
 
-    resolve_and_return_wall_collisions(nextPos, 150.0f, 50.0f, &upperWall);
+    resolve_and_return_wall_collisions(nextPos, 150.0f, 52.0f, &upperWall);
     resolve_and_return_wall_collisions(nextPos, 30.0f, 50.0f, &lowerWall);
 
     f32 floorHeight = find_floor(nextPos[0], nextPos[1], nextPos[2], &floor);

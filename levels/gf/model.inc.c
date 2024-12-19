@@ -57,17 +57,6 @@ Gfx gf_dl_a1_001_mesh_layer_1_tri_0[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx gf_dl_C_object_00C6F038_mesh_layer_1_vtx_cull[8] = {
-	{{ {-300, 0, 150}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {-300, 500, 150}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {-300, 500, -150}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {-300, 0, -150}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {300, 0, 150}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {300, 500, 150}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {300, 500, -150}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {300, 0, -150}, 0, {0, 0}, {0, 0, 0, 0} }},
-};
-
 Vtx gf_dl_C_object_00C6F038_mesh_layer_1_vtx_0[8] = {
 	{{ {-250, 0, 100}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {-300, 500, 150}, 0, {-16, -16}, {255, 255, 255, 255} }},
@@ -149,17 +138,6 @@ Gfx gf_dl_a1_005_mesh_layer_1_tri_0[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx gf_dl_C_object_00C6EB00_mesh_layer_1_vtx_cull[8] = {
-	{{ {-150, 0, 150}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {-150, 500, 150}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {-150, 500, -150}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {-150, 0, -150}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {150, 0, 150}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {150, 500, 150}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {150, 500, -150}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {150, 0, -150}, 0, {0, 0}, {0, 0, 0, 0} }},
-};
-
 Vtx gf_dl_C_object_00C6EB00_mesh_layer_1_vtx_0[8] = {
 	{{ {-100, 0, -100}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {-100, 0, 100}, 0, {-16, -16}, {255, 255, 255, 255} }},
@@ -180,17 +158,6 @@ Gfx gf_dl_C_object_00C6EB00_mesh_layer_1_tri_0[] = {
 	gsSP2Triangles(6, 3, 7, 0, 3, 4, 7, 0),
 	gsSP2Triangles(7, 4, 5, 0, 5, 6, 7, 0),
 	gsSPEndDisplayList(),
-};
-
-Vtx gf_dl_C_object_00C6FDB8_mesh_layer_1_vtx_cull[8] = {
-	{{ {-300, -350, 450}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {-300, 50, 450}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {-300, 50, -450}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {-300, -350, -450}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {300, -350, 450}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {300, 50, 450}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {300, 50, -450}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {300, -350, -450}, 0, {0, 0}, {0, 0, 0, 0} }},
 };
 
 Vtx gf_dl_C_object_00C6FDB8_mesh_layer_1_vtx_0[12] = {
@@ -223,17 +190,6 @@ Gfx gf_dl_C_object_00C6FDB8_mesh_layer_1_tri_0[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx gf_dl_C_object_00C726A0_mesh_layer_1_vtx_cull[8] = {
-	{{ {-250, 0, 2}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {-250, 100, 2}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {-250, 100, -12}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {-250, 0, -12}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {250, 0, 2}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {250, 100, 2}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {250, 100, -12}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {250, 0, -12}, 0, {0, 0}, {0, 0, 0, 0} }},
-};
-
 Vtx gf_dl_C_object_00C726A0_mesh_layer_1_vtx_0[8] = {
 	{{ {-250, 100, 2}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {-250, 0, 2}, 0, {-16, -16}, {255, 255, 255, 255} }},
@@ -253,17 +209,6 @@ Gfx gf_dl_C_object_00C726A0_mesh_layer_1_tri_0[] = {
 	gsSP2Triangles(5, 6, 4, 0, 4, 6, 7, 0),
 	gsSP2Triangles(3, 4, 7, 0, 3, 7, 1, 0),
 	gsSPEndDisplayList(),
-};
-
-Vtx gf_dl_object_00C73774_mesh_layer_1_vtx_cull[8] = {
-	{{ {-209, 0, 210}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {-209, 177, 210}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {-209, 177, -5}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {-209, 0, -5}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {208, 0, 210}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {208, 177, 210}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {208, 177, -5}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {208, 0, -5}, 0, {0, 0}, {0, 0, 0, 0} }},
 };
 
 Vtx gf_dl_object_00C73774_mesh_layer_1_vtx_0[13] = {
@@ -293,17 +238,6 @@ Gfx gf_dl_object_00C73774_mesh_layer_1_tri_0[] = {
 	gsSP2Triangles(0, 3, 12, 0, 3, 5, 11, 0),
 	gsSP1Triangle(5, 7, 11, 0),
 	gsSPEndDisplayList(),
-};
-
-Vtx gf_dl_object_00C739E4_mesh_layer_1_vtx_cull[8] = {
-	{{ {-215, 0, 213}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {-215, 65, 213}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {-215, 65, -180}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {-215, 0, -180}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {286, 0, 213}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {286, 65, 213}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {286, 65, -180}, 0, {0, 0}, {0, 0, 0, 0} }},
-	{{ {286, 0, -180}, 0, {0, 0}, {0, 0, 0, 0} }},
 };
 
 Vtx gf_dl_object_00C739E4_mesh_layer_1_vtx_0[17] = {
@@ -588,10 +522,6 @@ Gfx gf_dl_a1_001_mesh_layer_1[] = {
 };
 
 Gfx gf_dl_C_object_00C6F038_mesh_layer_1[] = {
-	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(gf_dl_C_object_00C6F038_mesh_layer_1_vtx_cull + 0, 8, 0),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPCullDisplayList(0, 7),
 	gsSPDisplayList(mat_gf_dl_SHOUKOU_M_sa1mdl_0_f3d),
 	gsSPDisplayList(gf_dl_C_object_00C6F038_mesh_layer_1_tri_0),
 	gsSPDisplayList(mat_revert_gf_dl_SHOUKOU_M_sa1mdl_0_f3d),
@@ -620,10 +550,6 @@ Gfx gf_dl_a1_005_mesh_layer_1[] = {
 };
 
 Gfx gf_dl_C_object_00C6EB00_mesh_layer_1[] = {
-	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(gf_dl_C_object_00C6EB00_mesh_layer_1_vtx_cull + 0, 8, 0),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPCullDisplayList(0, 7),
 	gsSPDisplayList(mat_gf_dl_SHOUKOU_S_sa1mdl_0_f3d),
 	gsSPDisplayList(gf_dl_C_object_00C6EB00_mesh_layer_1_tri_0),
 	gsSPDisplayList(mat_revert_gf_dl_SHOUKOU_S_sa1mdl_0_f3d),
@@ -631,10 +557,6 @@ Gfx gf_dl_C_object_00C6EB00_mesh_layer_1[] = {
 };
 
 Gfx gf_dl_C_object_00C6FDB8_mesh_layer_1[] = {
-	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(gf_dl_C_object_00C6FDB8_mesh_layer_1_vtx_cull + 0, 8, 0),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPCullDisplayList(0, 7),
 	gsSPDisplayList(mat_gf_dl_SHOUKOU_L_sa1mdl_0_f3d),
 	gsSPDisplayList(gf_dl_C_object_00C6FDB8_mesh_layer_1_tri_0),
 	gsSPDisplayList(mat_revert_gf_dl_SHOUKOU_L_sa1mdl_0_f3d),
@@ -642,10 +564,6 @@ Gfx gf_dl_C_object_00C6FDB8_mesh_layer_1[] = {
 };
 
 Gfx gf_dl_C_object_00C726A0_mesh_layer_1[] = {
-	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(gf_dl_C_object_00C726A0_mesh_layer_1_vtx_cull + 0, 8, 0),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPCullDisplayList(0, 7),
 	gsSPDisplayList(mat_gf_dl_SAKU_sa1mdl_0_f3d),
 	gsSPDisplayList(gf_dl_C_object_00C726A0_mesh_layer_1_tri_0),
 	gsSPDisplayList(mat_revert_gf_dl_SAKU_sa1mdl_0_f3d),
@@ -653,10 +571,6 @@ Gfx gf_dl_C_object_00C726A0_mesh_layer_1[] = {
 };
 
 Gfx gf_dl_object_00C73774_mesh_layer_1[] = {
-	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(gf_dl_object_00C73774_mesh_layer_1_vtx_cull + 0, 8, 0),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPCullDisplayList(0, 7),
 	gsSPDisplayList(mat_gf_dl_LargeBump_sa1mdl_0_f3d),
 	gsSPDisplayList(gf_dl_object_00C73774_mesh_layer_1_tri_0),
 	gsSPDisplayList(mat_revert_gf_dl_LargeBump_sa1mdl_0_f3d),
@@ -664,10 +578,6 @@ Gfx gf_dl_object_00C73774_mesh_layer_1[] = {
 };
 
 Gfx gf_dl_object_00C739E4_mesh_layer_1[] = {
-	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(gf_dl_object_00C739E4_mesh_layer_1_vtx_cull + 0, 8, 0),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPCullDisplayList(0, 7),
 	gsSPDisplayList(mat_gf_dl_SmallBump_sa1mdl_0_f3d),
 	gsSPDisplayList(gf_dl_object_00C739E4_mesh_layer_1_tri_0),
 	gsSPDisplayList(mat_revert_gf_dl_SmallBump_sa1mdl_0_f3d),
