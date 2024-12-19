@@ -15,4 +15,28 @@ extern const LevelScript level_gf_entry[];
 #include "levels/gf/header.inc.h"
 #include "levels/gf/gf_skybox/geo_header.h"
 
+#include "levels/gf/gf_gake_a/geo_header.h"
+
+#include "levels/gf/gf_gake_b/geo_header.h"
+
+#include "levels/gf/gf_gake_c/geo_header.h"
+
+#include "levels/gf/gf_gake_d/geo_header.h"
+
+#include "levels/gf/gf_gake_e/geo_header.h"
+
+#include "levels/gf/gf_gake_f/geo_header.h"
+
+#include "levels/gf/gf_gake_a/collision_header.h"
+
+#include "levels/gf/gf_gake_b/collision_header.h"
+
+#include "levels/gf/gf_gake_c/collision_header.h"
+
+#include "levels/gf/gf_gake_d/collision_header.h"
+
+#include "levels/gf/gf_gake_e/collision_header.h"
+
+#include "levels/gf/gf_gake_f/collision_header.h"
+
 #endif

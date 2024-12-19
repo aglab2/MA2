@@ -7,9 +7,11 @@
 
 extern const RailDesc* rail_descs_ce[];
 extern const RailDesc* rail_descs_mh[];
+extern const RailDesc* rail_descs_gf[];
 static const RailDesc** kRails[] = {
     [ LEVEL_CE ] = rail_descs_ce,
     [ LEVEL_MH ] = rail_descs_mh,
+    [ LEVEL_GF ] = rail_descs_gf,
 };
 
 #define MAX_ZIPLINE_DISTANCE 50000.f

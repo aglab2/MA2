@@ -5858,13 +5858,10 @@ const BehaviorScript bhvPLLift[] = {
     END_LOOP(),
 };
 
-extern void bhv_spring_ctl_init();
 extern void bhv_spring_ctl_loop();
 const BehaviorScript bhvSpringCtl[] = {
     BEGIN(OBJ_LIST_SPAWNER),
-    CALL_NATIVE(bhv_spring_ctl_init),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_spring_ctl_loop),
     END_LOOP(),
 };
 

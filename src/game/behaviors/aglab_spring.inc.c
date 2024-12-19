@@ -3,8 +3,10 @@
 #define DEBUG_QUANT
 
 extern const SpringDesc* spring_descs_mh[];
+extern const SpringDesc* spring_descs_gf[];
 static const SpringDesc** kSpringDescs[] = {
     [ LEVEL_MH ] = spring_descs_mh,
+    [ LEVEL_GF ] = spring_descs_gf,
 };
 
 extern const SpringLinkDesc spring_links_mh[]; 
@@ -112,15 +114,6 @@ void bhv_spring_loop()
     }
 }
 
-void bhv_spring_ctl_init()
-{
-    if (sSpringBezierLevelNum != gCurrLevelNum)
-    {
-        sSpringBezierLevelNum = gCurrLevelNum;
-        sSpringBezier = NULL;
-    }
-}
-
 static void spring_transition_area()
 {
     if (!sSpringBezier)
@@ -166,7 +159,11 @@ static void spring_spawn()
     {
         s16* bezier = (s16*)segmented_to_virtual(descs->bezier);
 
-        struct Object* spring = spawn_object(o, MODEL_SPRING, bhvSpring);
+        struct Object* spring = create_object(bhvSpring);
+        spring->header.gfx.areaIndex = gCurrAreaIndex;
+        spring->header.gfx.activeAreaIndex = gCurrAreaIndex;
+        geo_obj_init((struct GraphNodeObject *) &spring->header.gfx, gLoadedGraphNodes[MODEL_SPRING], gVec3fZero, gVec3sZero);
+
         spring->oPosX = bezier[1];
         spring->oPosY = bezier[2];
         spring->oPosZ = bezier[3];
@@ -189,10 +186,14 @@ static void spring_spawn()
         descs++;
     }
 }
-void bhv_spring_ctl_loop()
+
+void springs_init()
 {
-    if (0 != o->oTimer)
-        return;
+    if (sSpringBezierLevelNum != gCurrLevelNum)
+    {
+        sSpringBezierLevelNum = gCurrLevelNum;
+        sSpringBezier = NULL;
+    }
 
     spring_transition_area();
     spring_spawn();

@@ -109,6 +109,16 @@ const Trajectory gf_area_1_spline_NurbsCurve_Rail_006[] = {
 	TRAJECTORY_POS( 12, -11739, -4107, 2001),
 	TRAJECTORY_END(),
 };
+const Trajectory gf_area_1_spline_NurbsCurve_Rail_007[] = {
+	TRAJECTORY_POS( 0, 18085, 770, 23095),
+	TRAJECTORY_POS( 1, 19782, -927, 23095),
+	TRAJECTORY_END(),
+};
+const Trajectory gf_area_1_spline_NurbsCurve_Rail_008[] = {
+	TRAJECTORY_POS( 0, 20210, -1355, 22940),
+	TRAJECTORY_POS( 1, 21907, -3052, 22940),
+	TRAJECTORY_END(),
+};
 const Trajectory gf_area_1_spline_NurbsCurve_Spring[] = {
 	TRAJECTORY_POS( 0, -16000, -3554, -14540),
 	TRAJECTORY_POS( 1, -16000, -2820, -13439),

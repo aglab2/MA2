@@ -39,20 +39,20 @@ IWDHeader* iw_descs_mh[] = {
     &iw_mh_area4.header,
 };
 
-static const LDLDesc loop_mh_desc1 = { 2, 1, 0, 0x4000 };
+static const LDLDesc loop_desc = { 2, 1, 0, 0x4000 };
 
 static const RailDesc rail_mh_area1[] = {
     RAIL_TRAJ(mh_area_1_spline_1089_object_00BE4D68_001),
     RAIL_TRAJ(mh_area_1_spline_1089_object_00BE4D68_002),
-    LOOP_TRAJ(mh_area_1_spline_NurbsCurve_Loop, &loop_mh_desc1),
+    LOOP_TRAJ(mh_area_1_spline_NurbsCurve_Loop, &loop_desc),
     NULL,
 };
 
 static const RailDesc rail_mh_area3[] = {
     RAIL_TRAJ(mh_area_3_spline_1088_object_00BC6BA0_002),
     RAIL_TRAJ(mh_area_3_spline_1088_object_00BC6BA0_003),
-    LOOP_TRAJ(mh_area_3_spline_NurbsCurve_Loop_001, &loop_mh_desc1),
-    LOOP_TRAJ(mh_area_3_spline_NurbsCurve_Loop_002, &loop_mh_desc1),
+    LOOP_TRAJ(mh_area_3_spline_NurbsCurve_Loop_001, &loop_desc),
+    LOOP_TRAJ(mh_area_3_spline_NurbsCurve_Loop_002, &loop_desc),
     NULL,
 };
 

@@ -20,3 +20,9 @@
 #include "levels/gf/visual/geo.inc.c"
 
 #include "levels/gf/gf_skybox/geo.inc.c"
+#include "levels/gf/gf_gake_a/geo.inc.c"
+#include "levels/gf/gf_gake_b/geo.inc.c"
+#include "levels/gf/gf_gake_c/geo.inc.c"
+#include "levels/gf/gf_gake_d/geo.inc.c"
+#include "levels/gf/gf_gake_e/geo.inc.c"
+#include "levels/gf/gf_gake_f/geo.inc.c"

@@ -430,6 +430,8 @@ void unload_objects_from_area(UNUSED s32 unused, s32 areaIndex) {
 /**
  * Spawn objects given a list of SpawnInfos. Called when loading an area.
  */
+
+void springs_init();
 void spawn_objects_from_info(UNUSED s32 unused, struct SpawnInfo *spawnInfo) {
     gObjectLists = gObjectListArray;
     gTimeStopState = 0;
@@ -443,6 +445,7 @@ void spawn_objects_from_info(UNUSED s32 unused, struct SpawnInfo *spawnInfo) {
         gCCMEnteredSlide |= 1;
     }
 
+    springs_init();
     while (spawnInfo != NULL) {
         struct Object *object;
         const BehaviorScript *script;
