@@ -1172,7 +1172,7 @@ static void eight_dir_collision_handler(struct Camera *c)
         yAffected = 1;
         c->pos[1] = hitpos[1] - 60.f;
         camdir[1] = c->pos[1] - origin[1];
-        find_surface_on_ray(origin, camdir, &surf, hitpos, (RAYCAST_FIND_FLOOR | RAYCAST_FIND_WALL));
+        find_surface_on_ray(origin, camdir, &surf, hitpos, (RAYCAST_FIND_FLOOR | RAYCAST_FIND_WALL | RAYCAST_FIND_CEIL));
     }
 
     if (surf) {
