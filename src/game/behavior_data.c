@@ -5885,11 +5885,16 @@ const BehaviorScript bhvGfVine[] = {
     END_LOOP(),
 };
 
+extern void bhv_gf_gake_init();
 extern void bhv_gf_gake_loop();
 const BehaviorScript bhvGfGake[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    CALL_NATIVE(bhv_gf_gake_init),
+    SET_FLOAT(oDrawingDistance, 20000),
+    SET_HOME(),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_gf_gake_loop),
+        CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
