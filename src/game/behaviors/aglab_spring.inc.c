@@ -85,6 +85,12 @@ void bhv_spring_loop()
     }
     else
     {
+        if (o->oTimer < 5)
+        {
+            // do this for a couple frames to ensure that mario is being in the jump animation
+            set_mario_action(gMarioStates, ACT_JUMP, 0);
+        }
+
         f32 quant = o->oSpringQuant;
         sSpringTimer = o->oTimer;
         f32 t = (f32)o->oTimer * quant;
@@ -96,7 +102,7 @@ void bhv_spring_loop()
             return;
         }
         
-        if (t > 0.96f || gMarioStates->action != ACT_JUMP)
+        if (t + quant > 1.f || gMarioStates->action != ACT_JUMP)
         {
             // either action was cancelled or we reached the end of the curve
             // Technically we dont have to overwrite bezier check but be careful

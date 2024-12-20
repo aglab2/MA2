@@ -45,6 +45,7 @@ extern const GeoLayout gf_area_4[];
 extern const Collision gf_area_4_collision[];
 extern const MacroObject gf_area_4_macro_objs[];
 extern const Trajectory gf_area_4_spline_NurbsCurve_Loop_004[];
+extern const Trajectory gf_area_4_spline_NurbsCurve_Loop_005[];
 extern const Trajectory gf_area_4_spline_NurbsCurve_Spring_016[];
 extern Vtx gf_dl_a1_mesh_layer_1_vtx_0[24];
 extern Gfx gf_dl_a1_mesh_layer_1_tri_0[];
