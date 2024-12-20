@@ -5875,3 +5875,21 @@ const BehaviorScript bhvSpring[] = {
         CALL_NATIVE(bhv_spring_loop),
     END_LOOP(),
 };
+
+extern void bhv_gf_vine_loop();
+const BehaviorScript bhvGfVine[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_gf_vine_loop),
+    END_LOOP(),
+};
+
+extern void bhv_gf_gake_loop();
+const BehaviorScript bhvGfGake[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_gf_gake_loop),
+    END_LOOP(),
+};

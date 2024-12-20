@@ -39,4 +39,6 @@ extern const LevelScript level_gf_entry[];
 
 #include "levels/gf/gf_gake_f/collision_header.h"
 
+#include "levels/gf/gf_vine/geo_header.h"
+
 #endif

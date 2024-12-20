@@ -14,9 +14,9 @@ const Trajectory gf_area_3_spline_NurbsCurve_Spring_011[] = {
 };
 const Trajectory gf_area_3_spline_NurbsCurve_Spring_012[] = {
 	TRAJECTORY_POS( 0, -13821, -8167, 15274),
-	TRAJECTORY_POS( 1, -13706, -5585, 15518),
-	TRAJECTORY_POS( 2, -13229, -2813, 16133),
-	TRAJECTORY_POS( 3, -12269, -2273, 17083),
+	TRAJECTORY_POS( 1, -13836, -5526, 15763),
+	TRAJECTORY_POS( 2, -13557, -2713, 16427),
+	TRAJECTORY_POS( 3, -12941, -2271, 17149),
 	TRAJECTORY_END(),
 };
 const Trajectory gf_area_3_spline_NurbsCurve_Spring_013[] = {

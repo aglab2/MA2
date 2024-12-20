@@ -26,3 +26,4 @@
 #include "levels/gf/gf_gake_d/geo.inc.c"
 #include "levels/gf/gf_gake_e/geo.inc.c"
 #include "levels/gf/gf_gake_f/geo.inc.c"
+#include "levels/gf/gf_vine/geo.inc.c"

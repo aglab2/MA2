@@ -48,7 +48,7 @@ static const RailDesc rail_gf_area1[] = {
     RAIL_TRAJ(gf_area_1_spline_NurbsCurve_Rail_006),
     RAIL_TRAJ(gf_area_1_spline_NurbsCurve_Rail_007),
     RAIL_TRAJ(gf_area_1_spline_NurbsCurve_Rail_008),
-    NULL,
+    RAIL_END,
 };
 
 static const RailDesc rail_gf_area2[] = {
@@ -58,17 +58,17 @@ static const RailDesc rail_gf_area2[] = {
     RAIL_TRAJ(gf_area_2_spline_NurbsCurve_Rail_002),
     RAIL_TRAJ(gf_area_2_spline_NurbsCurve_Rail_003),
     RAIL_TRAJ(gf_area_2_spline_NurbsCurve_Rail_004),
-    RAIL_TRAJ(gf_area_2_spline_NurbsCurve_Rail_005),
+    LOOP_TRAJ(gf_area_2_spline_NurbsCurve_VineLoop_005, &loop_desc1),
     RAIL_TRAJ(gf_area_2_spline_NurbsCurve_Rail_009),
-    NULL,
+    RAIL_END,
 };
 
 static const RailDesc rail_gf_area3[] = {
-    NULL,
+    RAIL_END,
 };
 
 static const RailDesc rail_gf_area4[] = {
-    NULL,
+    RAIL_END,
 };
 
 const RailDesc* rail_descs_gf[] = {
@@ -134,3 +134,4 @@ const SpringDesc* spring_descs_gf[] = {
 #include "levels/gf/gf_gake_d/collision.inc.c"
 #include "levels/gf/gf_gake_e/collision.inc.c"
 #include "levels/gf/gf_gake_f/collision.inc.c"
+#include "levels/gf/gf_vine/model.inc.c"
