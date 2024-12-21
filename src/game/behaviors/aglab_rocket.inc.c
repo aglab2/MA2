@@ -7,7 +7,9 @@ void bhv_rocket_loop()
 {
     if (o->oTimer < 20)
     {
-        o->oGeoRoll -= 0x500;
+        if (0 == o->oAction)
+            o->oGeoRoll -= 0x500;
+
         return;
     }
 
@@ -30,7 +32,7 @@ void bhv_rocket_loop()
     else
     {
         o->oPosY += 70.f;
-        if (o->oTimer > 120)
+        if (o->oTimer > 100)
         {
             set_mario_action(gMarioStates, ACT_FLYING, 0);
             o->parentObj->oAction = 0;
