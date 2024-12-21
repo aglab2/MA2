@@ -1251,15 +1251,16 @@ s32 act_riding_shell_ground(struct MarioState *m) {
 s32 act_rail_grind(struct MarioState *m)
 {
     s16 startYaw = m->faceAngle[1];
+    int onLoop = zipline_on_loop();
 
-    if (!zipline_on_loop()) {
+    if (!onLoop) {
         if (m->input & INPUT_A_PRESSED) {
             return set_mario_action(m, ACT_JUMP, 0);
         }
     }
 
     if (zipline_step()) {
-        if (zipline_on_loop())
+        if (onLoop)
             return set_mario_action(m, ACT_BUTT_SLIDE, 0);
         else
             return set_mario_action(m, ACT_FREEFALL, 0);
@@ -1268,7 +1269,7 @@ s32 act_rail_grind(struct MarioState *m)
     m->marioObj->header.gfx.pos[0] = m->pos[0];
     m->marioObj->header.gfx.pos[1] = m->pos[1] - 45.f;
     m->marioObj->header.gfx.pos[2] = m->pos[2];
-    set_mario_animation(m, MARIO_ANIM_RIDING_SHELL);
+    set_mario_animation(m, onLoop ? MARIO_ANIM_SLIDE : MARIO_ANIM_RIDING_SHELL);
     tilt_body_ground_shell(m, startYaw);
     m->marioObj->header.gfx.angle[0] = m->faceAngle[0];
     m->marioObj->header.gfx.angle[1] = m->faceAngle[1];
