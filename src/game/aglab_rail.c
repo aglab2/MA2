@@ -144,9 +144,13 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
         sTrajectoryArea = gCurrAreaIndex;
         s16 yaw = atan2s(trajDirection[2], trajDirection[0]);
         sAngleFlipped = abs_angle_diff(gMarioStates->faceAngle[1], yaw) > 0x4000;
-        sCancelTimeout = 4;
+        sCancelTimeout = sLoopDesc ? 30 : 4;
         if (sLoopDesc)
+        {
+            sAngleFlipped = 0;
+            gMarioStates->faceAngle[1] = yaw;
             calculate_trajectory_middle();
+        }
 
         return 1;
     }
@@ -162,14 +166,14 @@ int zipline_cancel()
     if (on_spring())
         return 0;
 
+    if (gMarioStates->action == ACT_RAIL_GRIND)
+        return 0;
+
     if (sCancelTimeout)
     {
         sCancelTimeout--;
         return 0;
     }
-
-    if (gMarioStates->action == ACT_RAIL_GRIND)
-        return 0;
 
     if (gCurrLevelNum >= (int) (sizeof(kRails) / sizeof(kRails[0])))
         return 0;
@@ -255,7 +259,7 @@ int zipline_step()
             // adjust rotation angle from the center
             Vec3f loopDiff;
             vec3f_diff(loopDiff, gMarioStates->pos, sTrajectoryMiddle);
-            gMarioStates->faceAngle[sLoopDesc->m0] = sLoopDesc->angleOffset + atan2s(loopDiff[sLoopDesc->c0], loopDiff[sLoopDesc->c1]);
+            gMarioStates->faceAngle[sLoopDesc->m0] = sLoopDesc->angleOffset + sLoopDesc->mult * atan2s(loopDiff[sLoopDesc->c0], loopDiff[sLoopDesc->c1]);
         }
         else
         {
@@ -324,6 +328,19 @@ int zipline_step()
         {
             if (traj[sZiplineCurPoint + 8] == -1)
             {
+                print_text_fmt_int(20, 20, "0 %d", (int) gMarioStates->faceAngle[0]);
+                print_text_fmt_int(20, 40, "1 %d", (int) gMarioStates->faceAngle[1]);
+                print_text_fmt_int(20, 60, "2 %d", (int) gMarioStates->faceAngle[2]);
+                if (sLoopDesc)
+                {
+                    if (sLoopDesc->m0 == 0 && abs_angle_diff(gMarioStates->faceAngle[0], 0x8000) < 0x2000)
+                    {
+                        gMarioStates->faceAngle[0] = 0;
+                        gMarioStates->faceAngle[1] = -gMarioStates->faceAngle[1];
+                        gMarioStates->faceAngle[2] = 0;
+                    }
+                }
+
                 return 1;
             }
             else

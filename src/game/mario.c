@@ -1701,10 +1701,55 @@ void queue_rumble_particles(struct MarioState *m) {
 }
 #endif
 
+#include "rail_desc.h"
+extern LDLDesc __debug__loop_desc __attribute__((section(".data")));
+void rail_debug()
+{
+    LDLDesc* desc = segmented_to_virtual(&__debug__loop_desc);
+    static char selected = 0;
+    if (gPlayer1Controller->buttonPressed & U_JPAD) {
+        selected++;
+        if (selected >= 5) {
+            selected = 0;
+        }
+    }
+    if (gPlayer1Controller->buttonPressed & D_JPAD) {
+        selected--;
+        if (selected < 0) {
+            selected = 4;
+        }
+    }
+    if (gPlayer1Controller->buttonPressed & R_JPAD) {
+        char* cast = (char*)desc;
+        if (selected == 4)
+            cast[selected] += 0x40;
+        else
+            cast[selected]++;
+    }
+    if (gPlayer1Controller->buttonPressed & L_JPAD) {
+        char* cast = (char*)desc;
+        if (selected == 4)
+            cast[selected] -= 0x40;
+        else
+            cast[selected]--;
+    }
+
+    print_text_fmt_int(20, 20, "C0 %d", desc->c0);
+    print_text_fmt_int(20, 40, "C1 %d", desc->c1);
+    print_text_fmt_int(20, 60, "M0 %d", desc->m0);
+    print_text_fmt_int(20, 80, "MUL %d", desc->mult);
+    print_text_fmt_int(20, 10, "A %x" , desc->angleOffset);
+
+    print_text_fmt_int(20, 200, "S %d", selected);
+}
+
 /**
  * Main function for executing Mario's behavior. Returns particleFlags.
  */
 s32 execute_mario_action(UNUSED struct Object *obj) {
+#if 0
+    rail_debug();
+#endif
     s32 inLoop = TRUE;
 
     // Updates once per frame:

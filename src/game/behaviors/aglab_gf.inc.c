@@ -49,6 +49,6 @@ void bhv_gf_gake_loop()
     else
     {
         o->oPosY -= 1.f;
-        o->oPosY -= 0.3f * o->oBehParams2ndByte;
+        o->oPosY -= 0.6f * o->oBehParams2ndByte;
     }
 }

@@ -10,6 +10,8 @@ typedef struct
     u8 c1;
     // x/y/z mario index that will be set 
     u8 m0;
+    // multiplier for the angle
+    s8 mult;
     // offset that will be added to mario angle after atan
     s16 angleOffset;
 } LDLDesc;

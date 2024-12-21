@@ -39,8 +39,12 @@ IWDHeader* iw_descs_gf[] = {
     &iw_gf_area4.header,
 };
 
-static const LDLDesc loop_desc1 = { 2, 1, 0, 0x4000 };
-static const LDLDesc loop_desc2 = { 2, 0, 1, 0x4000 };
+static const LDLDesc loop_desc1 = { 2, 1, 0, 1, 0x4000 };
+static const LDLDesc loop_desc2 = { 2, 0, 1, 1, 0x4000 };
+static const LDLDesc loop_desc3 = { 0, 1, 0, 1, 0x4000 };
+static const LDLDesc loop_desc4 = { 1, 2, 0, 1, 0x8000 };
+
+// LDLDesc __debug__loop_desc = {  0, 1, 0, 1, 0x4000 };
 
 static const RailDesc rail_gf_area1[] = {
     LOOP_TRAJ(gf_area_1_spline_NurbsCurve_Loop, &loop_desc1),
@@ -54,7 +58,7 @@ static const RailDesc rail_gf_area1[] = {
 
 static const RailDesc rail_gf_area2[] = {
     LOOP_TRAJ(gf_area_2_spline_NurbsCurve_Loop_001, &loop_desc1),
-    LOOP_TRAJ(gf_area_2_spline_NurbsCurve_Loop_002, &loop_desc1),
+    LOOP_TRAJ(gf_area_2_spline_NurbsCurve_Loop_002, &loop_desc3),
     LOOP_TRAJ(gf_area_2_spline_NurbsCurve_Loop_003, &loop_desc1),
     RAIL_TRAJ(gf_area_2_spline_NurbsCurve_Rail_002),
     RAIL_TRAJ(gf_area_2_spline_NurbsCurve_Rail_003),
@@ -69,7 +73,7 @@ static const RailDesc rail_gf_area3[] = {
 };
 
 static const RailDesc rail_gf_area4[] = {
-    LOOP_TRAJ(gf_area_4_spline_NurbsCurve_Loop_004, &loop_desc1),
+    LOOP_TRAJ(gf_area_4_spline_NurbsCurve_Loop_004, &loop_desc4),
     RAIL_TRAJ(gf_area_4_spline_NurbsCurve_Loop_005),
     RAIL_END,
 };
