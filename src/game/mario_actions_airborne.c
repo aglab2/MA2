@@ -1784,8 +1784,10 @@ s32 act_flying(struct MarioState *m) {
     return FALSE;
 }
 
+extern const BehaviorScript bhvRocket[];
 s32 act_riding_hoot(struct MarioState *m) {
-    if (!(m->input & INPUT_A_DOWN) || (m->marioObj->oInteractStatus & INT_STATUS_MARIO_DROP_FROM_HOOT)) {
+    // if (!(m->input & INPUT_A_DOWN) || (m->marioObj->oInteractStatus & INT_STATUS_MARIO_DROP_FROM_HOOT)) {
+    if (0) {
         m->usedObj->oInteractStatus = 0;
         m->usedObj->oHootMarioReleaseTime = gGlobalTimer;
 
@@ -1796,11 +1798,20 @@ s32 act_riding_hoot(struct MarioState *m) {
         return set_mario_action(m, ACT_FREEFALL, 0);
     }
 
-    m->pos[0] = m->usedObj->oPosX;
-    m->pos[1] = m->usedObj->oPosY - 92.5f;
-    m->pos[2] = m->usedObj->oPosZ;
-
-    m->faceAngle[1] = 0x4000 - m->usedObj->oMoveAngleYaw;
+    if (m->usedObj->behavior == bhvRocket)
+    {
+        m->pos[0] = m->usedObj->oPosX + 40.f * sins(0x4000 + m->usedObj->oFaceAngleYaw);
+        m->pos[1] = m->usedObj->oPosY - 160.5f;
+        m->pos[2] = m->usedObj->oPosZ + 40.f * coss(0x4000 + m->usedObj->oFaceAngleYaw);
+        m->faceAngle[1] = 0xC000 + m->usedObj->oFaceAngleYaw;
+    }
+    else
+    {
+        m->pos[0] = m->usedObj->oPosX;
+        m->pos[1] = m->usedObj->oPosY - 92.5f;
+        m->pos[2] = m->usedObj->oPosZ;
+        m->faceAngle[1] = 0x4000 - m->usedObj->oMoveAngleYaw;
+    }
 
     if (m->actionState == ACT_STATE_RIDING_HOOT_GRABBING) {
         set_mario_animation(m, MARIO_ANIM_HANG_ON_CEILING);
@@ -1812,7 +1823,7 @@ s32 act_riding_hoot(struct MarioState *m) {
 
     vec3f_set(m->vel, 0.0f, 0.0f, 0.0f);
     vec3f_set(m->marioObj->header.gfx.pos, m->pos[0], m->pos[1], m->pos[2]);
-    vec3s_set(m->marioObj->header.gfx.angle, 0, 0x4000 - m->faceAngle[1], 0);
+    vec3s_set(m->marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
     return FALSE;
 }
 

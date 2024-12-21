@@ -16,14 +16,26 @@ void bhv_rocket_loop()
         if (o->oDistanceToMario < 100.f)
         {
             o->oAction = 1;
+            struct MarioState* m = gMarioStates;
+            mario_stop_riding_and_holding(m);
+
+            o->oInteractStatus = TRUE; //! Note: Not a flag, treated as a TRUE/FALSE statement
+            m->interactObj = o;
+            m->usedObj     = o;
+
+            update_mario_sound_and_camera(m);
+            set_mario_action(m, ACT_RIDING_HOOT, 0);
         }
     }
     else
     {
         o->oPosY += 70.f;
-        gMarioStates->pos[0] = o->oPosX;
-        gMarioStates->pos[1] = o->oPosY;
-        gMarioStates->pos[2] = o->oPosZ;
+        if (o->oTimer > 120)
+        {
+            set_mario_action(gMarioStates, ACT_FLYING, 0);
+            o->parentObj->oAction = 0;
+            o->activeFlags = 0;
+        }
     }
 }
 
