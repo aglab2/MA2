@@ -353,4 +353,8 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "rocket/geo_header.h"
 
+#include "rocket_launcher/geo_header.h"
+
+#include "rocket_launcher/collision_header.h"
+
 #endif

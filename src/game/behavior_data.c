@@ -5887,6 +5887,18 @@ const BehaviorScript bhvRocket[] = {
     END_LOOP(),
 };
 
+extern const Collision rocket_launcher_collision[];
+extern void bhv_rocket_spawner_loop();
+const BehaviorScript bhvRocketSpawner[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    LOAD_COLLISION_DATA(rocket_launcher_collision),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_rocket_spawner_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
 extern void bhv_gf_vine_loop();
 const BehaviorScript bhvGfVine[] = {
     BEGIN(OBJ_LIST_LEVEL),

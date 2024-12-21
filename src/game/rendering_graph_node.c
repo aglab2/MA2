@@ -1434,6 +1434,18 @@ void geo_process_obj_translation_rotation(struct GraphNodeTranslationRotation *n
     append_dl_and_return((struct GraphNodeDisplayList *)node);
 }
 
+void geo_process_obj_rocket_translation(struct GraphNodeTranslation *node) {
+    struct Object* obj = (struct Object*)gCurGraphNodeObject;
+    Vec3f translation;
+    translation[0] = node->translation[0] + obj->oHomeX;
+    translation[1] = node->translation[1] + obj->oHomeY;
+    translation[2] = node->translation[2] + (node->translation[2] < 0 ? -obj->oHomeZ : obj->oHomeZ);
+    mtxf_translate_and_mul(translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+
+    inc_mat_stack();
+    append_dl_and_return((struct GraphNodeDisplayList *)node);
+}
+
 typedef void (*GeoProcessFunc)();
 
 // See enum 'GraphNodeTypes' in 'graph_node.h'.
@@ -1467,6 +1479,7 @@ static const GeoProcessFunc GeoProcessJumpTable[] = {
     [GRAPH_NODE_TYPE_LVL_TRANSLATION         ] = geo_process_lvl_translation,
     [GRAPH_NODE_TYPE_BREAK_TRANSLATION       ] = geo_process_break_translation,
     [GRAPH_NODE_TYPE_OBJ_TRANSLATION_ROTATION] = geo_process_obj_translation_rotation,
+    [GRAPH_NODE_TYPE_OBJ_ROCKET_TRANSLATION  ] = geo_process_obj_rocket_translation,
 };
 
 /**

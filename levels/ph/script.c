@@ -27,7 +27,7 @@ const LevelScript level_ph_entry[] = {
 
 	AREA(1, ph_area_1, 0, 0, 0),
 		MARIO_POS(0x01, 0, 4656, -13643, -12571),
-		OBJECT(MODEL_ROCKET, -1738, -13444, -3490, 0, 23, 0, 0x00000000, bhvRocket),
+		OBJECT(MODEL_ROCKET_SPAWNER, -1738, -13613, -3490, 0, -76, 0, 0x00000000, bhvRocketSpawner),
 		TERRAIN(ph_area_1_collision),
 		MACRO_OBJECTS(ph_area_1_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),

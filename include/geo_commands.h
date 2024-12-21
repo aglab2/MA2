@@ -64,6 +64,7 @@ enum GeoLayoutCommands {
     GEO_CMD_LVL_NODE_TRANSLATION,
     GEO_CMD_CRUMBLE_NODE_TRANSLATION,
     GEO_CMD_OBJ_NODE_TRANSLATION_ROTATION,
+    GEO_CMD_OBJ_ROCKET_NODE_TRANSLATION,
 
     GEO_CMD_COUNT,
 };
@@ -257,6 +258,11 @@ enum GeoLayoutCommands {
 #define GEO_OBJ_TRANSLATE_ROTATE_WITH_DL(layer, tx, ty, tz, rx, ry, rz, displayList) \
     CMD_BBH(GEO_CMD_OBJ_NODE_TRANSLATION_ROTATION, (0x00 | layer | 0x80), 0x0000), \
     CMD_HHHHHH(tx, ty, tz, rx, ry, rz), \
+    CMD_PTR(displayList)
+
+#define GEO_OBJ_ROCKET_TRANSLATE_NODE_WITH_DL(layer, ux, uy, uz, displayList) \
+    CMD_BBH(GEO_CMD_OBJ_ROCKET_NODE_TRANSLATION, (layer | 0x80), ux), \
+    CMD_HH(uy, uz), \
     CMD_PTR(displayList)
 
 #if 0

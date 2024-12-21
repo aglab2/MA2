@@ -579,6 +579,7 @@
 #define MODEL_SPEEDER 0xfc
 #define MODEL_RAMP 0xfb
 #define MODEL_ROCKET 0xfa
+#define MODEL_ROCKET_SPAWNER 0xf9
 
 // MA course specifics
 #define MODEL_CE_HAMMER MODEL_LEVEL_GEOMETRY_03

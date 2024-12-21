@@ -41,3 +41,5 @@
 #include "ramp/collision.inc.c"
 #include "ramp/model.inc.c"
 #include "rocket/model.inc.c"
+#include "rocket_launcher/model.inc.c"
+#include "rocket_launcher/collision.inc.c"

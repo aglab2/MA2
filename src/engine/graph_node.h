@@ -72,6 +72,7 @@ enum GraphNodeTypes {
     GRAPH_NODE_TYPE_LVL_TRANSLATION,
     GRAPH_NODE_TYPE_BREAK_TRANSLATION,
     GRAPH_NODE_TYPE_OBJ_TRANSLATION_ROTATION,
+    GRAPH_NODE_TYPE_OBJ_ROCKET_TRANSLATION,
 };
 
 // Passed as first argument to a GraphNodeFunc to give information about in
@@ -407,7 +408,7 @@ struct GraphNodeLevelOfDetail       *init_graph_node_render_range        (s32 al
 struct GraphNodeSwitchCase          *init_graph_node_switch_case         (s32 alloc, struct GraphNodeSwitchCase          *graphNode, s16 numCases, s16 selectedCase, GraphNodeFunc nodeFunc, s32 unused);
 struct GraphNodeCamera              *init_graph_node_camera              (s32 alloc, struct GraphNodeCamera              *graphNode, f32 *pos, f32 *focus, GraphNodeFunc func, s32 mode);
 struct GraphNodeTranslationRotation *init_graph_node_translation_rotation(s32 alloc, struct GraphNodeTranslationRotation *graphNode, s32 drawingLayer, void *displayList, Vec3s translation, Vec3s rotation, int style);
-struct GraphNodeTranslation         *init_graph_node_translation         (s32 alloc, struct GraphNodeTranslation         *graphNode, s32 drawingLayer, void *displayList, Vec3s translation);
+struct GraphNodeTranslation         *init_graph_node_translation         (s32 alloc, struct GraphNodeTranslation         *graphNode, s32 drawingLayer, void *displayList, Vec3s translation, int style);
 struct GraphNodeRotation            *init_graph_node_rotation            (s32 alloc, struct GraphNodeRotation            *graphNode, s32 drawingLayer, void *displayList, Vec3s rotation);
 struct GraphNodeScale               *init_graph_node_scale               (s32 alloc, struct GraphNodeScale               *graphNode, s32 drawingLayer, void *displayList, f32 scale);
 struct GraphNodeObject              *init_graph_node_object              (s32 alloc, struct GraphNodeObject              *graphNode, struct GraphNode *sharedChild, Vec3f pos, Vec3s angle, Vec3f scale);

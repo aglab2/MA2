@@ -24,3 +24,4 @@
 #include "spring/geo.inc.c"
 #include "ramp/geo.inc.c"
 #include "rocket/geo.inc.c"
+#include "rocket_launcher/geo.inc.c"

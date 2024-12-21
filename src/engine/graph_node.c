@@ -253,13 +253,13 @@ init_graph_node_translation_rotation(s32 alloc,
 struct GraphNodeTranslation *init_graph_node_translation(s32 alloc,
                                                          struct GraphNodeTranslation *graphNode,
                                                          s32 drawingLayer, void *displayList,
-                                                         Vec3s translation) {
+                                                         Vec3s translation, int style) {
     if (alloc) {
         graphNode = main_pool_alloc(sizeof(struct GraphNodeTranslation));
     }
 
     if (graphNode != NULL) {
-        init_scene_graph_node_links(&graphNode->node, GRAPH_NODE_TYPE_TRANSLATION);
+        init_scene_graph_node_links(&graphNode->node, style);
 
         vec3s_copy(graphNode->translation, translation);
         SET_GRAPH_NODE_LAYER(graphNode->node.flags, drawingLayer);
