@@ -5892,6 +5892,7 @@ extern void bhv_rocket_spawner_loop();
 const BehaviorScript bhvRocketSpawner[] = {
     BEGIN(OBJ_LIST_SPAWNER),
     LOAD_COLLISION_DATA(rocket_launcher_collision),
+    SET_FLOAT(oDrawingDistance, 5000),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_rocket_spawner_loop),

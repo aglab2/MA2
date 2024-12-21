@@ -1,13 +1,13 @@
 void bhv_rocket_init()
 {
-    o->oGeoRoll = 0;
+    o->oGeoRoll = 0x500 * 20;
 }
 
 void bhv_rocket_loop()
 {
     if (o->oTimer < 20)
     {
-        o->oGeoRoll += 0x10;
+        o->oGeoRoll -= 0x500;
         return;
     }
 
