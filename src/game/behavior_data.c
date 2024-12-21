@@ -5876,6 +5876,17 @@ const BehaviorScript bhvSpring[] = {
     END_LOOP(),
 };
 
+extern void bhv_rocket_init();
+extern void bhv_rocket_loop();
+const BehaviorScript bhvRocket[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    CALL_NATIVE(bhv_rocket_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_rocket_loop),
+    END_LOOP(),
+};
+
 extern void bhv_gf_vine_loop();
 const BehaviorScript bhvGfVine[] = {
     BEGIN(OBJ_LIST_LEVEL),

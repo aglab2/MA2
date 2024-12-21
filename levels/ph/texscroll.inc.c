@@ -7,7 +7,7 @@ void scroll_ph_dl_object_0128B5BC_mesh_layer_5_vtx_0() {
 	int deltaY;
 	Vtx *vertices = segmented_to_virtual(ph_dl_object_0128B5BC_mesh_layer_5_vtx_0);
 
-	deltaY = (int)(0.019999999552965164 * 0x20) % height;
+	deltaY = (int)(0.07999999821186066 * 0x20) % height;
 
 	if (absi(currentY) > height) {
 		deltaY -= (int)(absi(currentY) / height) * height * signum_positive(deltaY);

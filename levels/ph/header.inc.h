@@ -659,7 +659,7 @@ extern Vtx ph_dl_0072_object_00A9EA7C_mesh_layer_1_vtx_1[42];
 extern Gfx ph_dl_0072_object_00A9EA7C_mesh_layer_1_tri_1[];
 extern Vtx ph_dl_0072_object_00A9EA7C_mesh_layer_1_vtx_2[40];
 extern Gfx ph_dl_0072_object_00A9EA7C_mesh_layer_1_tri_2[];
-extern Vtx ph_dl_0072_object_00A9EA7C_mesh_layer_1_vtx_3[38];
+extern Vtx ph_dl_0072_object_00A9EA7C_mesh_layer_1_vtx_3[21];
 extern Gfx ph_dl_0072_object_00A9EA7C_mesh_layer_1_tri_3[];
 extern Vtx ph_dl_0072_object_00A9EA7C_mesh_layer_1_vtx_4[28];
 extern Gfx ph_dl_0072_object_00A9EA7C_mesh_layer_1_tri_4[];

@@ -40,3 +40,4 @@
 #include "spring/model.inc.c"
 #include "ramp/collision.inc.c"
 #include "ramp/model.inc.c"
+#include "rocket/model.inc.c"

@@ -554,5 +554,6 @@ extern const BehaviorScript bhvSpringCtl[];
 extern const BehaviorScript bhvSpring[];
 extern const BehaviorScript bhvGfVine[];
 extern const BehaviorScript bhvGfGake[];
+extern const BehaviorScript bhvRocket[];
 
 #endif // BEHAVIOR_DATA_H

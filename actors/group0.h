@@ -351,4 +351,6 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "ramp/geo_header.h"
 
+#include "rocket/geo_header.h"
+
 #endif
