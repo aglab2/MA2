@@ -2,6 +2,7 @@ extern const GeoLayout ph_area_1_geo[];
 extern const GeoLayout ph_area_1[];
 extern const Collision ph_area_1_collision[];
 extern const MacroObject ph_area_1_macro_objs[];
+extern const Trajectory ph_area_1_spline_NurbsCurve_Spring[];
 extern u8 ph_dl_pum128_5_ci4[];
 extern u8 ph_dl_pum128_5_pal_rgba16[];
 extern u8 ph_dl_pum256_2_ci4[];

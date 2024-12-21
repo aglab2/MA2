@@ -77,6 +77,7 @@ const GeoLayout ph_area_1_geo[] = {
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 301, -7820, -1456, ph_dl_0071_object_00A9F8D4_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, 0, -3160, 0, ph_dl_0072_object_00A9EA7C_mesh_layer_1),
 		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, -2060, -15000, -9090, 0, 60, 0, ph_dl_0073_object_00A9D45C_mesh_layer_1),
+		GEO_ASM(0, geo_render_backdrop),
 		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ph_dl_object_0128B5BC_mesh_layer_5),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, 0, -326, 0, ph_dl_object_0128B80C_mesh_layer_5),
 	GEO_CLOSE_NODE(),

@@ -1,0 +1,7 @@
+const Trajectory ph_area_1_spline_NurbsCurve_Spring[] = {
+	TRAJECTORY_POS( 0, 6962, -12818, -8213),
+	TRAJECTORY_POS( 1, 7359, -12290, -9454),
+	TRAJECTORY_POS( 2, 7777, -12731, -10838),
+	TRAJECTORY_POS( 3, 8014, -13613, -11602),
+	TRAJECTORY_END(),
+};
