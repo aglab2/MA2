@@ -11,10 +11,13 @@
 
 #include "make_const_nonconst.h"
 
-#include "levels/mh/header.h"
+#include "levels/ms/header.h"
 
-#include "levels/mh/geo.inc.c"
 
-#define mh_area_1 mh_area_visual
-#define mh_area_1_geo mh_area_geo_visual
-#include "levels/mh/visual/geo.inc.c"
+#include "levels/ms/geo.inc.c"
+
+#define ms_area_1 ms_area_visual
+#define ms_area_1_geo ms_area_geo_visual
+#include "levels/ms/visual/geo.inc.c"
+
+#include "levels/ms/ms_skybox/geo.inc.c"
