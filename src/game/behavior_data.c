@@ -5800,12 +5800,12 @@ const BehaviorScript bhvWCRock[] = {
     END_LOOP(),
 };
 
-extern void bhv_wc_box_loop();
-const BehaviorScript bhvWCBox[] = {
+extern void bhv_breakable_loop();
+const BehaviorScript bhvBreakable[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_wc_box_loop),
+        CALL_NATIVE(bhv_breakable_loop),
     END_LOOP(),
 };
 
@@ -5919,6 +5919,23 @@ const BehaviorScript bhvGfGake[] = {
     SET_HOME(),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_gf_gake_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern const Collision ph_terminal_collision[];
+extern void bhv_ph_terminal_init();
+extern void bhv_ph_terminal_loop();
+const BehaviorScript bhvPhTerminal[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    CALL_NATIVE(bhv_ph_terminal_init),
+    SET_FLOAT(oDrawingDistance, 20000),
+    CALL_NATIVE(bhv_ph_terminal_init),
+    LOAD_COLLISION_DATA(ph_terminal_collision),
+    SET_HOME(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ph_terminal_loop),
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };

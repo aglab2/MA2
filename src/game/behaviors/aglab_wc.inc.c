@@ -98,17 +98,3 @@ void bhv_wc_rock_loop()
         }
     }
 }
-
-void bhv_wc_box_loop()
-{
-    if (0 == o->oAction)
-    {
-        if (o->oDistanceToMario < 130.f)
-        {
-            cur_obj_play_sound_2(SOUND_GENERAL_BREAK_BOX);
-            o->oAction = 1;
-            puffAt(o, 100.f, 10);
-            obj_set_model(o, MODEL_WC_BOX_BROKEN);
-        }
-    }
-}

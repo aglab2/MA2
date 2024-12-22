@@ -1,0 +1,14 @@
+extern const GeoLayout ph_drum_break_geo[];
+extern u8 ph_drum_break_miu64_loco004_ci4[];
+extern u8 ph_drum_break_miu64_loco004_pal_rgba16[];
+extern u8 ph_drum_break_pum32_1_ci8[];
+extern u8 ph_drum_break_pum32_1_pal_rgba16[];
+extern Vtx ph_drum_break_ph_drum_break_mesh_layer_1_vtx_0[8];
+extern Gfx ph_drum_break_ph_drum_break_mesh_layer_1_tri_0[];
+extern Vtx ph_drum_break_ph_drum_break_mesh_layer_1_vtx_1[18];
+extern Gfx ph_drum_break_ph_drum_break_mesh_layer_1_tri_1[];
+extern Gfx mat_ph_drum_break_DRMCN_BREAKA_sa2mdl_0_f3d[];
+extern Gfx mat_revert_ph_drum_break_DRMCN_BREAKA_sa2mdl_0_f3d[];
+extern Gfx mat_ph_drum_break_DRMCN_BREAKA_sa2mdl_1_f3d[];
+extern Gfx mat_revert_ph_drum_break_DRMCN_BREAKA_sa2mdl_1_f3d[];
+extern Gfx ph_drum_break_ph_drum_break_mesh_layer_1[];

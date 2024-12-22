@@ -545,7 +545,7 @@ extern const BehaviorScript bhvGoal[];
 extern const BehaviorScript bhvHammerUpDown[];
 extern const BehaviorScript bhvWCStoneHead[];
 extern const BehaviorScript bhvWCRock[];
-extern const BehaviorScript bhvWCBox[];
+extern const BehaviorScript bhvBreakable[];
 extern const BehaviorScript bhvPLElv[];
 extern const BehaviorScript bhvPLCage[];
 extern const BehaviorScript bhvPLCage2[];
