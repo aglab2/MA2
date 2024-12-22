@@ -23,6 +23,14 @@ const SpringDesc* spring_descs_ph[] = {
     spring_ph_area1,
 };
 
+const Trajectory* starmove_trajs_ph[] = {
+    ph_area_1_spline_NurbsCurve_StarMove,
+    ph_area_1_spline_NurbsCurve_StarMove_001,
+    ph_area_1_spline_NurbsCurve_StarMove_002,
+    ph_area_1_spline_NurbsCurve_StarMove_003,
+    ph_area_1_spline_NurbsCurve_StarMove_004,
+};
+
 #include "levels/ph/leveldata.inc.c"
 #include "levels/ph/ph_skybox/model.inc.c"
 #include "levels/ph/ph_drum/model.inc.c"

@@ -12,6 +12,7 @@ static struct ObjectHitbox sCollectStarHitbox = {
     /* hurtboxHeight:     */ 0,
 };
 
+extern void bhv_starmove_init();
 void bhv_collect_star_init(void) {
     u8 starId = GET_BPARAM1(o->oBehParams);
 #ifdef GLOBAL_STAR_IDS
@@ -27,9 +28,16 @@ void bhv_collect_star_init(void) {
     }
 
     obj_set_hitbox(o, &sCollectStarHitbox);
+    
+    if (GET_BPARAM3(o->oBehParams))
+        bhv_starmove_init();
 }
 
+extern void bhv_starmove_loop();
 void bhv_collect_star_loop(void) {
+    if (GET_BPARAM3(o->oBehParams))
+        bhv_starmove_loop();
+
     o->oFaceAngleYaw += 0x800;
 
     if (o->oInteractStatus & INT_STATUS_INTERACTED) {

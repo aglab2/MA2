@@ -5929,7 +5929,6 @@ extern void bhv_ph_terminal_loop();
 const BehaviorScript bhvPhTerminal[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    CALL_NATIVE(bhv_ph_terminal_init),
     SET_FLOAT(oDrawingDistance, 20000),
     CALL_NATIVE(bhv_ph_terminal_init),
     LOAD_COLLISION_DATA(ph_terminal_collision),
