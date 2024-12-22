@@ -285,7 +285,7 @@ static s32 obj_face_pitch_approach(s16 targetPitch, s16 deltaPitch) {
     return FALSE;
 }
 
-static s32 obj_face_yaw_approach(s16 targetYaw, s16 deltaYaw) {
+s32 obj_face_yaw_approach(s16 targetYaw, s16 deltaYaw) {
     o->oFaceAngleYaw = approach_s16_symmetric(o->oFaceAngleYaw, targetYaw, deltaYaw);
 
     if ((s16) o->oFaceAngleYaw == targetYaw) {

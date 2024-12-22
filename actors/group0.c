@@ -43,3 +43,5 @@
 #include "rocket/model.inc.c"
 #include "rocket_launcher/model.inc.c"
 #include "rocket_launcher/collision.inc.c"
+#include "purple_switch/model.inc.c"
+#include "purple_switch/collision.inc.c"

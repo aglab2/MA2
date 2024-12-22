@@ -32,7 +32,7 @@ void bhv_rocket_loop()
     else
     {
         o->oPosY += 70.f;
-        if (o->oTimer > 100)
+        if (o->oTimer > 110)
         {
             set_mario_action(gMarioStates, ACT_FLYING, 0);
             o->parentObj->oAction = 0;
@@ -51,6 +51,7 @@ void bhv_rocket_spawner_loop()
             {
                 o->oAction = 1;
                 o->parentObj = spawn_object(o, MODEL_ROCKET, bhvRocket);
+                o->parentObj->oFaceAngleYaw += 0x8000;
             }
         }
         break;

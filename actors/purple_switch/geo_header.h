@@ -1,0 +1,14 @@
+extern const GeoLayout purple_switch_geo[];
+extern u8 purple_switch_springunder_ci8[];
+extern u8 purple_switch_springunder_pal_rgba16[];
+extern u8 purple_switch_switchbottom_ci8[];
+extern u8 purple_switch_switchbottom_pal_rgba16[];
+extern u8 purple_switch_switchtop_rgba16[];
+extern u8 purple_switch_springbottomh_ci8[];
+extern u8 purple_switch_springbottomh_pal_rgba16[];
+extern Vtx purple_switch_purple_switch_mesh_layer_1_vtx_0[32];
+extern Vtx purple_switch_purple_switch_mesh_layer_1_vtx_1[51];
+extern Vtx purple_switch_001_object_0071765C_mesh_layer_1_vtx_0[150];
+extern Vtx purple_switch_001_object_0071765C_mesh_layer_1_vtx_1[17];
+extern Gfx purple_switch_purple_switch_mesh_layer_1[];
+extern Gfx purple_switch_001_object_0071765C_mesh_layer_1[];

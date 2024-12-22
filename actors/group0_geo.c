@@ -25,3 +25,4 @@
 #include "ramp/geo.inc.c"
 #include "rocket/geo.inc.c"
 #include "rocket_launcher/geo.inc.c"
+#include "purple_switch/geo.inc.c"

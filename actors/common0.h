@@ -188,7 +188,6 @@ extern const GeoLayout purple_switch_geo[];
 extern const Gfx purple_switch_seg8_dl_0800C668[];
 extern const Gfx purple_switch_seg8_dl_0800C6E0[];
 extern const Gfx purple_switch_seg8_dl_0800C718[];
-extern const Collision purple_switch_seg8_collision_0800C7A8[];
 
 // test_platform
 extern const GeoLayout test_platform_geo[];

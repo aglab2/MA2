@@ -262,6 +262,14 @@ void bhv_mario_update(void) {
     s32 i;
 
     particleFlags = execute_mario_action(gCurrentObject);
+
+    if (gMarioStates->action != ACT_FLYING)
+    {
+        if (gMarioStates->area->camera->mode == FLYING_CAMERA_MODE) {
+            set_camera_mode(gMarioStates->area->camera, gMarioStates->area->camera->defMode, 1);
+        }
+    }
+
     gCurrentObject->oMarioParticleFlags = particleFlags;
 
     // Mario code updates MarioState's versions of position etc, so we need

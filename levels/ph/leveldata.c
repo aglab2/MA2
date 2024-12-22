@@ -16,6 +16,8 @@ static SpringDesc spring_ph_area1[] = {
     ph_area_1_spline_NurbsCurve_Spring_002,
     ph_area_1_spline_NurbsCurve_Spring_003,
     ph_area_1_spline_NurbsCurve_Spring_004,
+    ph_area_1_spline_NurbsCurve_Spring_005,
+    ph_area_1_spline_NurbsCurve_Spring_006,
     NULL,
 };
 
