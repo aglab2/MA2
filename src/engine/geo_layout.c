@@ -820,9 +820,9 @@ void geo_layout_cmd_lvl_translation_rotation(void) {
     cmdPos += 1;
     cmdPos = read_vec3s_angle(rotation, cmdPos);
     s32* cmdPos_f = (s32*)cmdPos;
-    translation[0] = next_s32_in_geo_script(&cmdPos_f);
-    translation[1] = next_s32_in_geo_script(&cmdPos_f);
-    translation[2] = next_s32_in_geo_script(&cmdPos_f);
+    translation[0] = GEO_INT_TO_FLOAT(next_s32_in_geo_script(&cmdPos_f));
+    translation[1] = GEO_INT_TO_FLOAT(next_s32_in_geo_script(&cmdPos_f));
+    translation[2] = GEO_INT_TO_FLOAT(next_s32_in_geo_script(&cmdPos_f));
     cmdPos = (s16*)cmdPos_f;
     displayList = *(void **) &cmdPos[0];
     drawingLayer = params & 0x7F;
@@ -847,9 +847,9 @@ void geo_layout_cmd_lvl_translation(void) {
 
     cmdPos += 2;
     s32* cmdPos_f = (s32*)cmdPos;
-    translation[0] = next_s32_in_geo_script(&cmdPos_f);
-    translation[1] = next_s32_in_geo_script(&cmdPos_f);
-    translation[2] = next_s32_in_geo_script(&cmdPos_f);
+    translation[0] = GEO_INT_TO_FLOAT(next_s32_in_geo_script(&cmdPos_f));
+    translation[1] = GEO_INT_TO_FLOAT(next_s32_in_geo_script(&cmdPos_f));
+    translation[2] = GEO_INT_TO_FLOAT(next_s32_in_geo_script(&cmdPos_f));
     cmdPos = (s16*)cmdPos_f;
     displayList = *(void **) &cmdPos[0];
     drawingLayer = params & 0x7F;

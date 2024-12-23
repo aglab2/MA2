@@ -246,13 +246,17 @@ enum GeoLayoutCommands {
     CMD_BBH(GEO_CMD_NODE_TRANSLATION_ROTATION, (0x00 | layer | 0x80), 0x0000), \
     CMD_HHHHHH(tx, ty, tz, rx, ry, rz), \
     CMD_PTR(displayList)
-    
+
+#define GEO_FLOAT_DELIMITER 1000.0f
+#define GEO_FLOAT_TO_INT(fv) ((s32) ((fv) * GEO_FLOAT_DELIMITER))
+#define GEO_INT_TO_FLOAT(iv) ((f32) ((iv) / GEO_FLOAT_DELIMITER))
+
 #define GEO_LVL_TRANSLATE_ROTATE_WITH_DL(layer, tx, ty, tz, rx, ry, rz, displayList) \
     CMD_BBH(GEO_CMD_LVL_NODE_TRANSLATION_ROTATION, (0x00 | layer), rx), \
     CMD_HH(ry, rz), \
-    CMD_W(tx), \
-    CMD_W(ty), \
-    CMD_W(tz), \
+    CMD_W(GEO_FLOAT_TO_INT(tx)), \
+    CMD_W(GEO_FLOAT_TO_INT(ty)), \
+    CMD_W(GEO_FLOAT_TO_INT(tz)), \
     CMD_PTR(displayList)
 
 #define GEO_OBJ_TRANSLATE_ROTATE_WITH_DL(layer, tx, ty, tz, rx, ry, rz, displayList) \
@@ -322,8 +326,8 @@ enum GeoLayoutCommands {
     CMD_BBH(GEO_CMD_NODE_TRANSLATION, layer, ux), \
     CMD_HH(uy, uz)
 #define GEO_TRANSLATE_NODE_WITH_DL(layer, ux, uy, uz, displayList) \
-    CMD_BBH(GEO_CMD_NODE_TRANSLATION, (layer | 0x80), ux), \
-    CMD_HH(uy, uz), \
+    CMD_BBH(GEO_CMD_NODE_TRANSLATION, (layer | 0x80), (s16)ux), \
+    CMD_HH((s16)uy, (s16)uz), \
     CMD_PTR(displayList)
 
 #define GEO_CRUMBLE_TRANSLATE_NODE_WITH_DL(layer, ux, uy, uz, displayList) \
@@ -333,9 +337,9 @@ enum GeoLayoutCommands {
     
 #define GEO_LVL_TRANSLATE_NODE_WITH_DL(layer, ux, uy, uz, displayList) \
     CMD_BBH(GEO_CMD_LVL_NODE_TRANSLATION, (layer), 0), \
-    CMD_W(ux), \
-    CMD_W(uy), \
-    CMD_W(uz), \
+    CMD_W(GEO_FLOAT_TO_INT(ux)), \
+    CMD_W(GEO_FLOAT_TO_INT(uy)), \
+    CMD_W(GEO_FLOAT_TO_INT(uz)), \
     CMD_PTR(displayList)
 
 /**
@@ -397,10 +401,6 @@ enum GeoLayoutCommands {
  */
 #define GEO_DISPLAY_LIST(layer, displayList) \
     CMD_BBH(GEO_CMD_NODE_DISPLAY_LIST, layer, 0x0000), \
-    CMD_PTR(displayList)
-    
-#define GEO_LVL_DISPLAY_LIST(layer, displayList) \
-    CMD_BBH(GEO_CMD_LVL_NODE_DISPLAY_LIST, layer, 0x0000), \
     CMD_PTR(displayList)
 
 /**
