@@ -5979,6 +5979,5 @@ const BehaviorScript bhvAqWater[] = {
     CALL_NATIVE(bhv_aq_ctls_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_aq_water_loop),
-        CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };

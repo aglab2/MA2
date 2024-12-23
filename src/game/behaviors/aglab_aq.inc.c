@@ -9,8 +9,11 @@ void bhv_aq_ctls_init()
     objs[0]->oAction = 1;
 }
 
+extern void bhv_init_changing_water_level_loop(void);
+
 void bhv_aq_ctls_loop()
 {
+    bhv_init_changing_water_level_loop();
     struct Object** objs = &o->oObjF4;
     for (int i = 0; i < 3; i++)
     {
@@ -56,15 +59,15 @@ void bhv_aq_water_loop()
     struct Object** objs = &o->oObjF4;
     if (SWITCH_ACTIVE(0))
     {
-        o->oPosY = 1100.f;
+        gEnvironmentRegions[6] = gEnvironmentLevels[0] = o->oPosY = 1100.f;
     }
     if (SWITCH_ACTIVE(1))
     {
-        o->oPosY = -920.f;
+        gEnvironmentRegions[6] = gEnvironmentLevels[0] = o->oPosY = -920.f;
     }
     if (SWITCH_ACTIVE(2))
     {
-        o->oPosY = -10000.f;
+        gEnvironmentRegions[6] = gEnvironmentLevels[0] = o->oPosY = -10000.f;
     }
 }
 
