@@ -634,12 +634,14 @@ void calc_y_to_curr_floor(f32 *posOff, f32 posMul, f32 posBound, f32 *focOff, f3
     f32 floorHeight = sMarioGeometry.currFloorHeight;
     f32 waterHeight;
 
+#if 0
     if (!(sMarioCamState->action & ACT_FLAG_METAL_WATER)) {
         //! @bug this should use sMarioGeometry.waterHeight
         if (floorHeight < (waterHeight = find_water_level(sMarioCamState->pos[0], sMarioCamState->pos[2]))) {
             floorHeight = waterHeight;
         }
     }
+#endif
 
     if (sMarioCamState->action & ACT_FLAG_ON_POLE) {
         if (sMarioGeometry.currFloorHeight >= gMarioStates[0].usedObj->oPosY && sMarioCamState->pos[1]
@@ -2251,6 +2253,7 @@ s16 update_default_camera(struct Camera *c) {
         c->focus[1] -= 25.f;
     }
 
+#if 0
     // If there's water below the camera, decide whether to keep the camera above the water surface
     waterHeight = find_water_level(cPos[0], cPos[2]);
     if (waterHeight != FLOOR_LOWER_LIMIT) {
@@ -2269,7 +2272,9 @@ s16 update_default_camera(struct Camera *c) {
         if (!(gCameraMovementFlags & CAM_MOVE_METAL_BELOW_WATER) && camFloorHeight < waterHeight) {
             camFloorHeight = waterHeight;
         }
-    } else {
+    } else 
+#endif
+    {
         gCameraMovementFlags &= ~CAM_MOVE_METAL_BELOW_WATER;
     }
 
@@ -3068,8 +3073,15 @@ void update_camera(struct Camera *c) {
             print_text_fmt_int(20, 20, "LA %d", c->mode);
             switch (c->mode) {
                 case CAMERA_MODE_BEHIND_MARIO:
-                c->camCollisionProgress = (struct CamCollisionProgress){};
-                    mode_behind_mario_camera(c);
+                    if (gMarioStates->action == ACT_FLYING)
+                    {
+                        c->camCollisionProgress = (struct CamCollisionProgress){};
+                        mode_behind_mario_camera(c);
+                    }
+                    else
+                    {
+                        mode_8_directions_camera(c);
+                    }
                     break;
 
                 case CAMERA_MODE_C_UP:
@@ -3078,8 +3090,7 @@ void update_camera(struct Camera *c) {
                     break;
 
                 case CAMERA_MODE_WATER_SURFACE:
-                    c->camCollisionProgress = (struct CamCollisionProgress){};
-                    mode_water_surface_camera(c);
+                    mode_8_directions_camera(c);
                     break;
 
                 case CAMERA_MODE_INSIDE_CANNON:
