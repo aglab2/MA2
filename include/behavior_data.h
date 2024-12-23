@@ -558,5 +558,7 @@ extern const BehaviorScript bhvRocket[];
 extern const BehaviorScript bhvRocketSpawner[];
 extern const BehaviorScript bhvPhTerminal[];
 extern const BehaviorScript bhvMsBreak[];
+extern const BehaviorScript bhvAqLift[];
+extern const BehaviorScript bhvAqWater[];
 
 #endif // BEHAVIOR_DATA_H

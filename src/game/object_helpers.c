@@ -664,6 +664,25 @@ struct Object *cur_obj_find_object_with_behavior_and_bparam3(const BehaviorScrip
     return NULL;
 }
 
+struct Object *cur_obj_find_object_with_behavior_and_bparam2(const BehaviorScript *behavior, int val) {
+    uintptr_t *behaviorAddr = segmented_to_virtual(behavior);
+    struct ObjectNode *listHead = &gObjectLists[get_object_list_from_behavior(behaviorAddr)];
+    struct Object *obj = (struct Object *) listHead->next;
+    while (obj != (struct Object *) listHead) {
+        if (obj->behavior == behaviorAddr
+            && obj->activeFlags != ACTIVE_FLAG_DEACTIVATED
+            && obj != o
+            && obj->oBehParams2ndByte == val
+        ) {
+            return obj;
+        }
+
+        obj = (struct Object *) obj->header.next;
+    }
+
+    return NULL;
+}
+
 struct Object *find_unimportant_object(void) {
     struct ObjectNode *listHead = &gObjectLists[OBJ_LIST_UNIMPORTANT];
     struct ObjectNode *obj = listHead->next;

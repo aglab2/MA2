@@ -4477,10 +4477,11 @@ const BehaviorScript bhvSnowMoundSpawn[] = {
     END_LOOP(),
 };
 
+extern const Collision aq_ukiasiba_collision[];
 const BehaviorScript bhvWdwSquareFloatingPlatform[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    LOAD_COLLISION_DATA(wdw_seg7_collision_square_floating_platform),
+    LOAD_COLLISION_DATA(aq_ukiasiba_collision),
     SET_FLOAT(oFloatingPlatformHeightOffset, 64),
     SET_HOME(),
     BEGIN_LOOP(),
@@ -5950,6 +5951,34 @@ const BehaviorScript bhvMsBreak[] = {
     CALL_NATIVE(bhv_ms_slane_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_ms_slane_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern void bhv_aq_ctls_init();
+
+extern const Collision aq_milift_collision[];
+extern void bhv_aq_lift_loop();
+const BehaviorScript bhvAqLift[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(aq_milift_collision),
+    CALL_NATIVE(bhv_aq_ctls_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_aq_lift_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern const Collision aq_water_collision[];
+extern void bhv_aq_water_loop();
+const BehaviorScript bhvAqWater[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(aq_water_collision),
+    CALL_NATIVE(bhv_aq_ctls_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_aq_water_loop),
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };

@@ -26,3 +26,4 @@ DEFINE_LEVEL("MH", LEVEL_MH, COURSE_MH, mh, generic, 20000, 0x00, 0x00, 0x00, _,
 DEFINE_LEVEL("GF", LEVEL_GF, COURSE_GF, gf, generic, 20000, 0x00, 0x00, 0x00, _, sCamGf) 
 DEFINE_LEVEL("PH", LEVEL_PH, COURSE_PH, ph, generic, 20000, 0x00, 0x00, 0x00, _, sCamPh) 
 DEFINE_LEVEL("MS", LEVEL_MS, COURSE_MS, ms, generic, 20000, 0x00, 0x00, 0x00, _, sCamMs) 
+DEFINE_LEVEL("AQ", LEVEL_AQ, COURSE_AQ, aq, generic, 20000, 0x00, 0x00, 0x00, _, sCamAq) 

@@ -1,0 +1,14 @@
+extern const GeoLayout aq_pic_geo[];
+extern u8 aq_pic_miu64_ms003_ci4[];
+extern u8 aq_pic_miu64_ms003_pal_rgba16[];
+extern u8 aq_pic_miu64_mo014_ci4[];
+extern u8 aq_pic_miu64_mo014_pal_rgba16[];
+extern Vtx aq_pic_aq_pic_mesh_layer_1_vtx_0[55];
+extern Gfx aq_pic_aq_pic_mesh_layer_1_tri_0[];
+extern Vtx aq_pic_aq_pic_mesh_layer_1_vtx_1[28];
+extern Gfx aq_pic_aq_pic_mesh_layer_1_tri_1[];
+extern Gfx mat_aq_pic_PIC_sa2bmdl_0_f3d[];
+extern Gfx mat_revert_aq_pic_PIC_sa2bmdl_0_f3d[];
+extern Gfx mat_aq_pic_PIC_sa2bmdl_1_f3d[];
+extern Gfx mat_revert_aq_pic_PIC_sa2bmdl_1_f3d[];
+extern Gfx aq_pic_aq_pic_mesh_layer_1[];
