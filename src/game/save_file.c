@@ -41,7 +41,7 @@ u8 gLastCompletedCourseNum = COURSE_NONE;
 u8 gLastCompletedStarNum = 0;
 s8 sUnusedGotGlobalCoinHiScore = FALSE;
 u8 gGotFileCoinHiScore = FALSE;
-u8 gCurrCourseStarFlags = 0;
+u64 gCurrCourseStarFlags = 0;
 
 u8 gSpecialTripleJump = FALSE;
 
@@ -447,39 +447,16 @@ void save_file_reload(void) {
  * Update the current save file after collecting a star or a key.
  * If coin score is greater than the current high score, update it.
  */
+static void save_file_set_star_flags(s32 fileIndex, s32 courseIndex, u64 starFlags);
 void save_file_collect_star_or_key(s16 coinScore, s16 starIndex) {
     s32 fileIndex = gCurrSaveFileNum - 1;
     s32 courseIndex = COURSE_NUM_TO_INDEX(gCurrCourseNum);
-#ifdef GLOBAL_STAR_IDS
-    s32 starByte = COURSE_NUM_TO_INDEX(starIndex / 7);
-    s32 starFlag = 1 << (starIndex % 7);
-#else
-    s32 starFlag = 1 << starIndex;
-#endif
+    u64 starFlag = 1ULL << starIndex;
 
     gLastCompletedCourseNum = courseIndex + 1;
     gLastCompletedStarNum = starIndex + 1;
     sUnusedGotGlobalCoinHiScore = FALSE;
     gGotFileCoinHiScore = FALSE;
-
-    if (courseIndex >= COURSE_NUM_TO_INDEX(COURSE_MIN)
-        && courseIndex <= COURSE_NUM_TO_INDEX(COURSE_STAGES_MAX)) {
-        //! Compares the coin score as a 16 bit value, but only writes the 8 bit
-        // truncation. This can allow a high score to decrease.
-
-        if (coinScore > ((u16) save_file_get_max_coin_score(courseIndex) & 0xFFFF)) {
-            sUnusedGotGlobalCoinHiScore = TRUE;
-        }
-
-        if (coinScore > save_file_get_course_coin_score(fileIndex, courseIndex)) {
-            gSaveBuffer.files[fileIndex][0].courseCoinScores[courseIndex] = coinScore;
-            touch_coin_score_age(fileIndex, courseIndex);
-
-            gGotFileCoinHiScore = TRUE;
-            gSaveFileModified = TRUE;
-        }
-    }
-
     switch (gCurrLevelNum) {
         case LEVEL_BOWSER_1:
             if (!(save_file_get_flags() & (SAVE_FLAG_HAVE_KEY_1 | SAVE_FLAG_UNLOCKED_BASEMENT_DOOR))) {
@@ -497,15 +474,9 @@ void save_file_collect_star_or_key(s16 coinScore, s16 starIndex) {
             break;
 
         default:
-#ifdef GLOBAL_STAR_IDS
-            if (!(save_file_get_star_flags(fileIndex, starByte) & starFlag)) {
-                save_file_set_star_flags(fileIndex, starByte, starFlag);
-            }
-#else
             if (!(save_file_get_star_flags(fileIndex, courseIndex) & starFlag)) {
                 save_file_set_star_flags(fileIndex, courseIndex, starFlag);
             }
-#endif
             break;
     }
 }
@@ -548,10 +519,10 @@ s32 save_file_get_course_star_count(UNUSED s32 fileIndex, UNUSED s32 courseIndex
 s32 save_file_get_course_star_count(s32 fileIndex, s32 courseIndex) {
     s32 i;
     s32 count = 0;
-    u8 flag = 1;
-    u8 starFlags = save_file_get_star_flags(fileIndex, courseIndex);
+    u64 flag = 1;
+    u64 starFlags = save_file_get_star_flags(fileIndex, courseIndex);
 
-    for (i = 0; i < 7; i++, flag <<= 1) {
+    for (i = 0; i < 64; i++, flag <<= 1) {
         if (starFlags & flag) {
             count++;
         }
@@ -614,38 +585,11 @@ u32 save_file_get_flags(void) {
 }
 
 /**
- * Return the bitset of obtained stars in the specified course.
- * If course is COURSE_NONE, return the bitset of obtained castle secret stars.
- */
-#ifdef COMPLETE_SAVE_FILE
-u32 save_file_get_star_flags(UNUSED s32 fileIndex, UNUSED s32 courseIndex) {
-    return 0x7F;
-}
-#else
-u32 save_file_get_star_flags(s32 fileIndex, s32 courseIndex) {
-    u32 starFlags;
-
-    if (courseIndex == COURSE_NUM_TO_INDEX(COURSE_NONE)) {
-        starFlags = SAVE_FLAG_TO_STAR_FLAG(gSaveBuffer.files[fileIndex][0].flags);
-    } else {
-        starFlags = gSaveBuffer.files[fileIndex][0].courseStars[courseIndex] & 0x7F;
-    }
-
-    return starFlags;
-}
-#endif
-
-/**
  * Add to the bitset of obtained stars in the specified course.
  * If course is COURSE_NONE, add to the bitset of obtained castle secret stars.
  */
-void save_file_set_star_flags(s32 fileIndex, s32 courseIndex, u32 starFlags) {
-    if (courseIndex == COURSE_NUM_TO_INDEX(COURSE_NONE)) {
-        gSaveBuffer.files[fileIndex][0].flags |= STAR_FLAG_TO_SAVE_FLAG(starFlags);
-    } else {
-        gSaveBuffer.files[fileIndex][0].courseStars[courseIndex] |= starFlags;
-    }
-
+static void save_file_set_star_flags(s32 fileIndex, s32 courseIndex, u64 starFlags) {
+    gSaveBuffer.files[fileIndex][0].courseStars[courseIndex + 1] |= starFlags;
     gSaveBuffer.files[fileIndex][0].flags |= SAVE_FLAG_FILE_EXISTS;
     gSaveFileModified = TRUE;
 }
@@ -656,7 +600,7 @@ s32 save_file_get_course_coin_score(UNUSED s32 fileIndex, UNUSED s32 courseIndex
 }
 #else
 s32 save_file_get_course_coin_score(s32 fileIndex, s32 courseIndex) {
-    return gSaveBuffer.files[fileIndex][0].courseCoinScores[courseIndex];
+    return 0;
 }
 #endif
 
@@ -664,20 +608,7 @@ s32 save_file_get_course_coin_score(s32 fileIndex, s32 courseIndex) {
  * Return TRUE if the cannon is unlocked in the current course.
  */
 s32 save_file_is_cannon_unlocked(void) {
-#ifdef UNLOCK_ALL
     return TRUE;
-#else
-    return (gSaveBuffer.files[gCurrSaveFileNum - 1][0].courseStars[gCurrCourseNum] & COURSE_FLAG_CANNON_UNLOCKED) != 0;
-#endif
-}
-
-/**
- * Sets the cannon status to unlocked in the current course.
- */
-void save_file_set_cannon_unlocked(void) {
-    gSaveBuffer.files[gCurrSaveFileNum - 1][0].courseStars[gCurrCourseNum] |= COURSE_FLAG_CANNON_UNLOCKED;
-    gSaveBuffer.files[gCurrSaveFileNum - 1][0].flags |= SAVE_FLAG_FILE_EXISTS;
-    gSaveFileModified = TRUE;
 }
 
 void save_file_set_cap_pos(s16 x, s16 y, s16 z) {

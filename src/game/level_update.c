@@ -224,7 +224,7 @@ void load_level_init_text(u32 arg) {
 
         default:
             gotAchievement =
-                save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
+                !!save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
             break;
     }
 

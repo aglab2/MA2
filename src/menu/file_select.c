@@ -2001,7 +2001,7 @@ LangArray textMarioFace = DEFINE_LANGUAGE_ARRAY(
 void print_score_file_course_coin_score(s8 fileIndex, s16 courseIndex, s16 x, s16 y) {
     char str[20];
     char coinScoreText[10];
-    u8 stars = save_file_get_star_flags(fileIndex, courseIndex);
+    u64 stars = save_file_get_star_flags(fileIndex, courseIndex);
 
     // MYSCORE
     if (sScoreFileCoinScoreMode == 0) {
@@ -2039,7 +2039,7 @@ void print_score_file_star_score(s8 fileIndex, s16 courseIndex, s16 x, s16 y) {
     s16 i = 0;
     char starScoreText[30];
     char *entries[6];
-    u8 stars = save_file_get_star_flags(fileIndex, courseIndex);
+    u64 stars = save_file_get_star_flags(fileIndex, courseIndex);
     s8 starCount = save_file_get_course_star_count(fileIndex, courseIndex);
     // Don't count 100 coin star
     if (stars & STAR_FLAG_ACT_100_COINS) {

@@ -37,11 +37,7 @@ struct SaveFile {
     u32 flags;
 
     // Star flags for each course.
-    // The most significant bit of the byte *following* each course is set if the
-    // cannon is open.
-    u8 courseStars[COURSE_COUNT]; // 200 bits
-
-    u8 courseCoinScores[COURSE_STAGES_COUNT]; // 120 bits
+    u64 courseStars[1 + COURSE_COUNT];
 
     struct SaveBlockSignature signature; // 32 bits
 };
@@ -79,6 +75,7 @@ struct SaveBuffer {
     // Main menu data, storing config options.
     struct MainMenuSaveData menuData;
 };
+extern struct SaveBuffer gSaveBuffer __attribute__((section(".bss.gSaveBuffer")));
 
 #ifdef PUPPYCAM
 extern void puppycam_set_save(void);
@@ -92,7 +89,7 @@ extern u8 gLastCompletedCourseNum;
 extern u8 gLastCompletedStarNum;
 extern s8 sUnusedGotGlobalCoinHiScore;
 extern u8 gGotFileCoinHiScore;
-extern u8 gCurrCourseStarFlags;
+extern u64 gCurrCourseStarFlags;
 extern u8 gSpecialTripleJump;
 extern s8 gLevelToCourseNumTable[];
 
@@ -138,12 +135,10 @@ enum StarFlags {
     STAR_FLAG_ACT_4         = (1 << 3), // 0x08
     STAR_FLAG_ACT_5         = (1 << 4), // 0x10
     STAR_FLAG_ACT_6         = (1 << 5), // 0x20
-    STAR_FLAG_ACT_100_COINS = (1 << 6), // 0x40
-    STAR_FLAG_LAST          = STAR_FLAG_ACT_100_COINS
+    STAR_FLAG_LAST          = (1 << 6), // 0x20
 };
 
-#define SAVE_FLAG_TO_STAR_FLAG(cmd) (((cmd) >> 24) & 0x7F)
-#define STAR_FLAG_TO_SAVE_FLAG(cmd) ((cmd) << 24)
+#define STAR_FLAG_ACT_100_COINS (1ULL << 48)
 
 // Variable for setting a warp checkpoint.
 
@@ -174,11 +169,18 @@ s32 save_file_get_total_star_count(s32 fileIndex, s32 minCourse, s32 maxCourse);
 void save_file_set_flags(u32 flags);
 void save_file_clear_flags(u32 flags);
 u32 save_file_get_flags(void);
-u32 save_file_get_star_flags(s32 fileIndex, s32 courseIndex);
-void save_file_set_star_flags(s32 fileIndex, s32 courseIndex, u32 starFlags);
+#ifdef COMPLETE_SAVE_FILE
+static inline u64 save_file_get_star_flags(UNUSED s32 fileIndex, UNUSED s32 courseIndex) {
+    return ~0ULL;
+}
+#else
+static inline u64 save_file_get_star_flags(s32 fileIndex, s32 courseIndex) {
+    return gSaveBuffer.files[fileIndex][0].courseStars[courseIndex + 1];
+}
+#endif
 s32 save_file_get_course_coin_score(s32 fileIndex, s32 courseIndex);
 s32 save_file_is_cannon_unlocked(void);
-void save_file_set_cannon_unlocked(void);
+static inline void save_file_set_cannon_unlocked(void) {}
 void save_file_set_cap_pos(s16 x, s16 y, s16 z);
 s32 save_file_get_cap_pos(Vec3s capPos);
 void save_file_set_sound_mode(u16 mode);

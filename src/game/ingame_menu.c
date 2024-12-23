@@ -1645,6 +1645,7 @@ void render_pause_my_score_coins(void) {
     void    **actNameTbl = segmented_to_virtual(gLanguageTables[gInGameLanguage].act_name_table);
 
     u8 courseIndex = COURSE_NUM_TO_INDEX(gCurrCourseNum);
+    // AGLAB TODO: This rendering will fail for the course because type is now u64
     u8 starFlags = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
     if (!Hacktice_gEnabled)
     {
@@ -2144,7 +2145,7 @@ void print_hud_course_complete_coins(s16 x, s16 y) {
     }
 }
 
-void play_star_fanfare_and_flash_hud(s32 arg, u8 starNum) {
+static void play_star_fanfare_and_flash_hud(s32 arg, u64 starNum) {
     if (gHudDisplay.coins == gCourseCompleteCoins && (gCurrCourseStarFlags & starNum) == 0 && gHudFlash == HUD_FLASH_NONE) {
         play_star_fanfare();
         gHudFlash = arg;
