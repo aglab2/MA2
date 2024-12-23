@@ -1,0 +1,55 @@
+#define oMsSlaneFloor oFloatF4
+
+void bhv_ms_slane_init()
+{
+    struct Surface* floor;
+    o->oMsSlaneFloor = find_floor(o->oPosX, o->oPosY, o->oPosZ, &floor);
+}
+
+void bhv_ms_slane_loop()
+{
+    if (0 == o->oAction)
+    {
+        if (gMarioObject->platform == o)
+        {
+            o->oAction = 1 + o->oBehParams2ndByte;
+            obj_set_model(o, MODEL_MS_SLANE_BREAK);
+        }
+    }
+    else if (1 == o->oAction)
+    {
+        o->oVelY += 1.f;
+        o->oPosY -= o->oVelY;
+        if (o->oPosY < o->oMsSlaneFloor)
+        {
+            o->oPosY = o->oMsSlaneFloor;
+            o->oVelY = 0;
+        }
+    }
+    else if (2 == o->oAction)
+    {
+        o->oFaceAngleRoll += sins(o->oTimer * 0x169) * 0x80;
+    }
+    else if (3 == o->oAction)
+    {
+        o->oFaceAngleYaw += 40;
+        if (o->oFaceAngleYaw > 0x500)
+        {
+            o->oFaceAngleYaw = 0x500;
+        }
+        
+        o->oFaceAnglePitch += 20;
+        if (o->oFaceAnglePitch > 0x300)
+        {
+            o->oFaceAnglePitch = 0x300;
+        }
+    }
+    else if (4 == o->oAction)
+    {
+        o->oFaceAnglePitch += 10;
+        if (o->oFaceAnglePitch > 0x800)
+        {
+            o->oFaceAnglePitch = 0x800;
+        }
+    }
+}

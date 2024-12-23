@@ -557,5 +557,6 @@ extern const BehaviorScript bhvGfGake[];
 extern const BehaviorScript bhvRocket[];
 extern const BehaviorScript bhvRocketSpawner[];
 extern const BehaviorScript bhvPhTerminal[];
+extern const BehaviorScript bhvMsBreak[];
 
 #endif // BEHAVIOR_DATA_H

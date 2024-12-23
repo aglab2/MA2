@@ -5939,3 +5939,18 @@ const BehaviorScript bhvPhTerminal[] = {
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
+
+extern const Collision ms_slane_collision[];
+extern void bhv_ms_slane_init();
+extern void bhv_ms_slane_loop();
+const BehaviorScript bhvMsBreak[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    SET_FLOAT(oDrawingDistance, 20000),
+    LOAD_COLLISION_DATA(ms_slane_collision),
+    CALL_NATIVE(bhv_ms_slane_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ms_slane_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};

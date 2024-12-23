@@ -1,12 +1,15 @@
 extern const Collision ce_hammer_collision[];
+extern const Collision ms_hammer_collision[];
+
+static const Collision *const k_hammer_collisions[] = {
+    [ LEVEL_CE ] = ce_hammer_collision,
+    [ LEVEL_MS ] = ms_hammer_collision,
+};
 
 void bhv_up_down_init()
 {
     o->oTimer = o->oBehParams2ndByte;
-    if (gCurrCourseNum == COURSE_CE)
-    {
-        obj_set_collision_data(o, ce_hammer_collision);
-    }
+    obj_set_collision_data(o, k_hammer_collisions[gCurrLevelNum]);
 }
 
 void bhv_up_down_loop()
