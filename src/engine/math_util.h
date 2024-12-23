@@ -35,7 +35,7 @@ extern Vec3s gVec3sOne;
 
 // Trig functions
 
-extern f32 gSineTable[];
+extern const f32 gSineTable[];
 #define gCosineTable (gSineTable + 0x400)
 
 #define sins(x) gSineTable[  (u16) (x) >> 4]
