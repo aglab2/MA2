@@ -3,7 +3,7 @@
 void bhv_ms_slane_init()
 {
     struct Surface* floor;
-    o->oMsSlaneFloor = find_floor(o->oPosX, o->oPosY, o->oPosZ, &floor);
+    o->oMsSlaneFloor = 20.f + find_floor(o->oPosX, o->oPosY, o->oPosZ, &floor);
 }
 
 void bhv_ms_slane_loop()

@@ -5,15 +5,19 @@
 extern const SpringDesc* spring_descs_mh[];
 extern const SpringDesc* spring_descs_gf[];
 extern const SpringDesc* spring_descs_ph[];
+extern const SpringDesc* spring_descs_ms[];
 static const SpringDesc** kSpringDescs[] = {
     [ LEVEL_MH ] = spring_descs_mh,
     [ LEVEL_GF ] = spring_descs_gf,
     [ LEVEL_PH ] = spring_descs_ph,
+    [ LEVEL_MS ] = spring_descs_ms,
 };
 
 extern const SpringLinkDesc spring_links_mh[]; 
+extern const SpringLinkDesc spring_links_ms[]; 
 static const SpringLinkDesc* kSpringsLinkDescs[] = {
     [ LEVEL_MH ] = spring_links_mh,
+    [ LEVEL_MS ] = spring_links_ms,
 };
 
 // Curve is a singleton to ensure that 2 springs wont try to pull mario at the same time

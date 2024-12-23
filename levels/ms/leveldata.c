@@ -33,6 +33,32 @@ IWDHeader* iw_descs_ms[] = {
     &iw_ms_area3.header,
 };
 
+static SpringDesc spring_ms_area1[] = {
+    ms_area_1_spline_NurbsCurve_Spring,
+    ms_area_1_spline_NurbsCurve_Spring_001,
+    ms_area_1_spline_NurbsCurve_Spring_002,
+    ms_area_1_spline_NurbsCurve_Spring_003,
+    ms_area_1_spline_NurbsCurve_Spring_004,
+    ms_area_1_spline_NurbsCurve_Spring_005,
+    NULL,
+};
+
+static SpringDesc spring_ms_area2[] = {
+    ms_area_2_spline_NurbsCurve_Spring_006,
+    NULL,
+};
+
+const SpringLinkDesc spring_links_ms[] = {
+    { ms_area_1_spline_NurbsCurve_Spring_005, ms_area_2_spline_NurbsCurve_Spring_006, },
+    { NULL, NULL, }
+};
+
+const SpringDesc* spring_descs_ms[] = {
+    spring_ms_area1,
+    spring_ms_area2,
+    NULL,
+};
+
 #include "levels/ms/visual/model.inc.c"
 
 #include "levels/ms/leveldata.inc.c"
