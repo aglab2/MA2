@@ -3041,6 +3041,7 @@ void update_camera(struct Camera *c) {
         sYawSpeed = 0x400;
 
         if (sSelectionFlags & CAM_MODE_MARIO_ACTIVE) {
+            print_text_fmt_int(20, 20, "MA %d", c->mode);
             c->camCollisionProgress = (struct CamCollisionProgress){};
             switch (c->mode) {
                 case CAMERA_MODE_BEHIND_MARIO:
@@ -3052,6 +3053,7 @@ void update_camera(struct Camera *c) {
                     break;
 
                 case CAMERA_MODE_WATER_SURFACE:
+                    c->camCollisionProgress = (struct CamCollisionProgress){};
                     mode_water_surface_camera(c);
                     break;
 
@@ -3063,6 +3065,7 @@ void update_camera(struct Camera *c) {
                     mode_mario_camera(c);
             }
         } else {
+            print_text_fmt_int(20, 20, "LA %d", c->mode);
             switch (c->mode) {
                 case CAMERA_MODE_BEHIND_MARIO:
                 c->camCollisionProgress = (struct CamCollisionProgress){};

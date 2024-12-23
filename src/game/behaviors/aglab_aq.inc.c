@@ -9,11 +9,8 @@ void bhv_aq_ctls_init()
     objs[0]->oAction = 1;
 }
 
-extern void bhv_init_changing_water_level_loop(void);
-
 void bhv_aq_ctls_loop()
 {
-    bhv_init_changing_water_level_loop();
     struct Object** objs = &o->oObjF4;
     for (int i = 0; i < 3; i++)
     {
@@ -30,19 +27,6 @@ void bhv_aq_ctls_loop()
 
 void bhv_aq_lift_loop()
 {
-    if (gPlayer1Controller->buttonDown & U_JPAD)
-    {
-        o->oPosY += 10.0f;
-    }
-    if (gPlayer1Controller->buttonDown & D_JPAD)
-    {
-        o->oPosY -= 10.0f;
-    }
-
-    print_text_fmt_int(20, 20, "%d", (int) o->oPosY);
-    // 1100
-    // -920
-    
     struct Object** objs = &o->oObjF4;
     if (SWITCH_ACTIVE(0))
     {
@@ -57,18 +41,21 @@ void bhv_aq_lift_loop()
 void bhv_aq_water_loop()
 {
     struct Object** objs = &o->oObjF4;
+    f32 height = 0.f;
     if (SWITCH_ACTIVE(0))
     {
-        gEnvironmentRegions[6] = gEnvironmentLevels[0] = o->oPosY = 1100.f;
+        height = 1100.f;
     }
     if (SWITCH_ACTIVE(1))
     {
-        gEnvironmentRegions[6] = gEnvironmentLevels[0] = o->oPosY = -920.f;
+        height = -920.f;
     }
     if (SWITCH_ACTIVE(2))
     {
-        gEnvironmentRegions[6] = gEnvironmentLevels[0] = o->oPosY = -10000.f;
+        height = -10000.f;
     }
+    
+    gEnvironmentRegions[12] = gEnvironmentLevels[6] = gEnvironmentRegions[6] = gEnvironmentLevels[0] = o->oPosY = height;
 }
 
 #undef SWITCH_ACTIVE

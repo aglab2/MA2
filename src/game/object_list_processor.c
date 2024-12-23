@@ -263,7 +263,7 @@ void bhv_mario_update(void) {
 
     particleFlags = execute_mario_action(gCurrentObject);
 
-    if (gMarioStates->action != ACT_FLYING)
+    if (gMarioStates->action != ACT_FLYING && !(gMarioStates->action & (ACT_FLAG_SWIMMING | ACT_FLAG_METAL_WATER)))
     {
         if (gMarioStates->area->camera->mode == FLYING_CAMERA_MODE) {
             set_camera_mode(gMarioStates->area->camera, gMarioStates->area->camera->defMode, 1);
