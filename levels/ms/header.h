@@ -15,4 +15,18 @@ extern const LevelScript level_ms_entry[];
 #include "levels/ms/header.inc.h"
 #include "levels/ms/ms_skybox/geo_header.h"
 
+#include "levels/ms/ms_buffer/geo_header.h"
+
+#include "levels/ms/ms_buffer_break/geo_header.h"
+
+#include "levels/ms/ms_hammer/geo_header.h"
+
+#include "levels/ms/ms_hammer/collision_header.h"
+
+#include "levels/ms/ms_slane/collision_header.h"
+
+#include "levels/ms/ms_slane_break/geo_header.h"
+
+#include "levels/ms/ms_slane/geo_header.h"
+
 #endif

@@ -21,3 +21,8 @@
 #include "levels/ms/visual/geo.inc.c"
 
 #include "levels/ms/ms_skybox/geo.inc.c"
+#include "levels/ms/ms_buffer/geo.inc.c"
+#include "levels/ms/ms_buffer_break/geo.inc.c"
+#include "levels/ms/ms_hammer/geo.inc.c"
+#include "levels/ms/ms_slane_break/geo.inc.c"
+#include "levels/ms/ms_slane/geo.inc.c"

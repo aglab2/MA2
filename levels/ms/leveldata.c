@@ -37,3 +37,10 @@ IWDHeader* iw_descs_ms[] = {
 
 #include "levels/ms/leveldata.inc.c"
 #include "levels/ms/ms_skybox/model.inc.c"
+#include "levels/ms/ms_buffer/model.inc.c"
+#include "levels/ms/ms_buffer_break/model.inc.c"
+#include "levels/ms/ms_hammer/model.inc.c"
+#include "levels/ms/ms_hammer/collision.inc.c"
+#include "levels/ms/ms_slane/collision.inc.c"
+#include "levels/ms/ms_slane_break/model.inc.c"
+#include "levels/ms/ms_slane/model.inc.c"

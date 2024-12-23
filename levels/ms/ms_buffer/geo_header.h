@@ -1,0 +1,15 @@
+extern const GeoLayout ms_buffer_geo[];
+extern u8 ms_buffer_miu64_rh011_ci4[];
+extern u8 ms_buffer_miu64_rh011_pal_rgba16[];
+extern u8 ms_buffer_miu64_rh009_ci4[];
+extern u8 ms_buffer_miu64_rh009_pal_rgba16[];
+extern Vtx ms_buffer_ms_buffer_mesh_layer_1_vtx_cull[8];
+extern Vtx ms_buffer_ms_buffer_mesh_layer_1_vtx_0[52];
+extern Gfx ms_buffer_ms_buffer_mesh_layer_1_tri_0[];
+extern Vtx ms_buffer_ms_buffer_mesh_layer_1_vtx_1[25];
+extern Gfx ms_buffer_ms_buffer_mesh_layer_1_tri_1[];
+extern Gfx mat_ms_buffer_BUFFER_A_sa2bmdl_0_f3d[];
+extern Gfx mat_revert_ms_buffer_BUFFER_A_sa2bmdl_0_f3d[];
+extern Gfx mat_ms_buffer_BUFFER_A_sa2bmdl_1_f3d[];
+extern Gfx mat_revert_ms_buffer_BUFFER_A_sa2bmdl_1_f3d[];
+extern Gfx ms_buffer_ms_buffer_mesh_layer_1[];
