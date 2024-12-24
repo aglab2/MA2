@@ -6,14 +6,14 @@ for obj in bpy.context.scene.objects:
     if obj.type == 'MESH':
         mesh = obj.data
         try:
+            obj.ignore_collision = True
+            obj.use_f3d_culling = False
             num = int(obj.name.split('_')[0])
-            print(num)
             if num < 2376:
                 obj.ignore_collision = True
                 obj.ignore_render = False
             else:
                 obj.ignore_collision = False   
                 obj.ignore_render = True 
-			obj.use_f3d_culling = False
         except:
             pass
