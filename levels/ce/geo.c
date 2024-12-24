@@ -14,9 +14,11 @@
 #include "levels/ce/header.h"
 
 
-#include "levels/ce/visual/geo.inc.c"
-
 
 #include "levels/ce/geo.inc.c"
+
+#define ce_area_1 ce_area_visual
+#define ce_area_1_geo ce_area_geo_visual
+#include "levels/ce/visual/geo.inc.c"
 
 #include "levels/ce/ce_hammer/geo.inc.c"
