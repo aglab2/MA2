@@ -71,7 +71,7 @@ void bhv_wc_stonehead_loop(void) {
     cur_obj_move_using_fvel_and_gravity();
 }
 
-void bhv_wc_rock_loop()
+void bhv_breakable_shrinking_loop()
 {
     if (0 == o->oAction)
     {
@@ -83,7 +83,7 @@ void bhv_wc_rock_loop()
             cur_obj_play_sound_2(SOUND_GENERAL_POUND_ROCK);
             puffAt(o, 100.f, 10);
             o->oAction = 1;
-            obj_set_model(o, MODEL_WC_ROCK_BREAK);
+            obj_set_model(o, o->oBehParams2ndByte);
         }
     }
     else

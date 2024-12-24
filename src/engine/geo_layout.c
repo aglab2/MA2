@@ -50,6 +50,8 @@ GeoLayoutCommandProc GeoLayoutJumpTable[] = {
     /* GEO_CMD_CRUMBLE_NODE_TRANSLATION */      geo_layout_cmd_break_translation,
     /* GEO_CMD_OBJ_NODE_TRANSLATION_ROTATION */ geo_layout_cmd_obj_node_translation_rotation,
     /* GEO_CMD_OBJ_ROCKET_NODE_TRANSLATION */   geo_layout_cmd_obj_rocket_node_translation,
+    /* GEO_CMD_OBJ_NODE_TRANSLATION */          geo_layout_cmd_obj_node_translation,
+    /* GEO_CMD_CRUMBLE_NODE_TRANSLATION_ROTATION */ geo_layout_cmd_break_translation_rotation,
 };
 
 struct GraphNode gObjParentGraphNode;
@@ -490,6 +492,10 @@ void geo_layout_cmd_obj_node_translation_rotation(void) {
     geo_layout_cmd_node_translation_rotation_impl(GRAPH_NODE_TYPE_OBJ_TRANSLATION_ROTATION);
 }
 
+void geo_layout_cmd_break_translation_rotation(void) {
+    geo_layout_cmd_node_translation_rotation_impl(GRAPH_NODE_TYPE_BREAK_TRANSLATION_ROTATION);
+}
+
 /*
   0x11: Create translation scene graph node with optional display list
    cmd+0x01: u8 params
@@ -532,6 +538,10 @@ void geo_layout_cmd_node_translation(void) {
 
 void geo_layout_cmd_obj_rocket_node_translation(void) {
     geo_layout_cmd_node_translation_impl(GRAPH_NODE_TYPE_OBJ_ROCKET_TRANSLATION);
+}
+
+void geo_layout_cmd_obj_node_translation(void) {
+    geo_layout_cmd_node_translation_impl(GRAPH_NODE_TYPE_OBJ_TRANSLATION);
 }
 
 /*

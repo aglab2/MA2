@@ -85,8 +85,10 @@ void geo_layout_cmd_node_culling_radius(void);
 void geo_layout_cmd_lvl_translation_rotation(void);
 void geo_layout_cmd_lvl_translation(void);
 void geo_layout_cmd_break_translation(void);
+void geo_layout_cmd_break_translation_rotation(void);
 void geo_layout_cmd_obj_node_translation_rotation(void);
 void geo_layout_cmd_obj_rocket_node_translation(void);
+void geo_layout_cmd_obj_node_translation(void);
 
 struct GraphNode *process_geo_layout(void *segptr);
 

@@ -215,12 +215,16 @@ u32 determine_interaction(struct MarioState *m, struct Object *obj) {
     // that the interaction not be set prior. This specifically overrides turning a ground
     // pound into just a bounce.
     if ((interaction == INT_NONE) && (action & ACT_FLAG_AIR)) {
+        f32 y = obj->oPosY;
+        if (obj->behavior == bhvHbSupport)
+            y += 250.f;
+
         if (m->vel[1] < 0.0f) {
-            if (m->pos[1] > obj->oPosY) {
+            if (m->pos[1] > y) {
                 interaction = INT_HIT_FROM_ABOVE;
             }
         } else {
-            if (m->pos[1] < obj->oPosY) {
+            if (m->pos[1] < y) {
                 interaction = INT_HIT_FROM_BELOW;
             }
         }
@@ -515,7 +519,7 @@ void bounce_off_object(struct MarioState *m, struct Object *obj, f32 velY) {
 }
 
 void hit_object_from_below(struct MarioState *m, UNUSED struct Object *obj) {
-    m->vel[1] = 0.0f;
+    // m->vel[1] = 0.0f;
     set_camera_shake_from_hit(SHAKE_HIT_FROM_BELOW);
 }
 

@@ -1,0 +1,14 @@
+extern const GeoLayout hb_vase_geo[];
+extern u8 hb_vase_dz_hb_tubo_kage32_ia16[];
+extern u8 hb_vase_dz_hb_tubo128_ci4[];
+extern u8 hb_vase_dz_hb_tubo128_pal_rgba16[];
+extern Vtx hb_vase_hb_vase_mesh_layer_5_vtx_0[6];
+extern Gfx hb_vase_hb_vase_mesh_layer_5_tri_0[];
+extern Vtx hb_vase_hb_vase_mesh_layer_1_vtx_0[297];
+extern Gfx hb_vase_hb_vase_mesh_layer_1_tri_0[];
+extern Gfx mat_hb_vase_TSUBO_BRIGHT_sa2mdl_0_f3d[];
+extern Gfx mat_revert_hb_vase_TSUBO_BRIGHT_sa2mdl_0_f3d[];
+extern Gfx mat_hb_vase_TSUBO_BRIGHT_sa2mdl_1_f3d[];
+extern Gfx mat_revert_hb_vase_TSUBO_BRIGHT_sa2mdl_1_f3d[];
+extern Gfx hb_vase_hb_vase_mesh_layer_5[];
+extern Gfx hb_vase_hb_vase_mesh_layer_1[];

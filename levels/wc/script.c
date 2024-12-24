@@ -173,7 +173,7 @@ const LevelScript level_wc_entry[] = {
 		OBJECT(MODEL_STAR, 4158, 2030, 2935, 0, 0, 0, (27 << 24), bhvStar),
 		OBJECT(MODEL_STAR, 276, 2022, -8, 0, 0, 0, (28 << 24), bhvStar),
 		OBJECT(MODEL_STAR, 4625, 10659, 452, 0, 0, 0, (29 << 24), bhvStar),
-		OBJECT(MODEL_WC_ROCK, 3642, 2898, 1205, 0, 0, 0, (30 << 24), bhvWCRock),
+		OBJECT(MODEL_WC_ROCK, 3642, 2898, 1205, 0, 0, 0, (MODEL_WC_ROCK_BREAK << 16), bhvBreakableShrinking),
 		OBJECT(MODEL_STAR, 4861, 1562, 290, 0, 0, 0, (31 << 24), bhvStar),
 		OBJECT(MODEL_STAR, 2000, 693, -4459, 0, 0, 0, (32 << 24), bhvStar),
 		OBJECT(MODEL_WC_STONEHEAD_PATH, 4866, 1500, -25, 0, -180, 0, 0x00000000, bhvStaticObject),

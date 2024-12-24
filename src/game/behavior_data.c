@@ -5792,12 +5792,13 @@ const BehaviorScript bhvWCStoneHead[] = {
     END_LOOP(),
 };
 
-extern void bhv_wc_rock_loop();
-const BehaviorScript bhvWCRock[] = {
-    BEGIN(OBJ_LIST_SURFACE),
+extern void bhv_breakable_shrinking_loop();
+const BehaviorScript bhvBreakableShrinking[] = {
+    BEGIN(OBJ_LIST_LEVEL),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    SET_FLOAT(oDrawingDistance, 10000),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_wc_rock_loop),
+        CALL_NATIVE(bhv_breakable_shrinking_loop),
     END_LOOP(),
 };
 
@@ -5979,5 +5980,50 @@ const BehaviorScript bhvAqWater[] = {
     CALL_NATIVE(bhv_aq_ctls_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_aq_water_loop),
+    END_LOOP(),
+};
+
+const Collision hb_hashira_platform_collision[];
+extern void bhv_hb_platform_init();
+extern void bhv_hb_platform_loop();
+const BehaviorScript bhvHbPlatform[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(hb_hashira_platform_collision),
+    SET_FLOAT(oDrawingDistance, 10000),
+    CALL_NATIVE(bhv_hb_platform_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_hb_platform_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern const Collision hb_updown_collision[];
+extern void bhv_hb_up_down_loop();
+const BehaviorScript bhvHbUpDown[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    SET_FLOAT(oDrawingDistance, 10000),
+    LOAD_COLLISION_DATA(hb_updown_collision),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_hb_up_down_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern const Collision hb_hashira_collision[];
+extern void bhv_hb_support_init();
+extern void bhv_hb_support_loop();
+const BehaviorScript bhvHbSupport[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    SET_FLOAT(oDrawingDistance, 10000),
+    LOAD_COLLISION_DATA(hb_hashira_collision),
+    CALL_NATIVE(bhv_hb_support_init),
+    SET_INT(oInteractType, INTERACT_BREAKABLE),
+    SET_INT(oInteractionSubtype, INT_SUBTYPE_KICKABLE),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_hb_support_loop),
+        CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };

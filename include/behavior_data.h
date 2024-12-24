@@ -544,7 +544,7 @@ extern const BehaviorScript bhvCheckpoint[];
 extern const BehaviorScript bhvGoal[];
 extern const BehaviorScript bhvHammerUpDown[];
 extern const BehaviorScript bhvWCStoneHead[];
-extern const BehaviorScript bhvWCRock[];
+extern const BehaviorScript bhvBreakableShrinking[];
 extern const BehaviorScript bhvBreakable[];
 extern const BehaviorScript bhvPLElv[];
 extern const BehaviorScript bhvPLCage[];
@@ -560,5 +560,8 @@ extern const BehaviorScript bhvPhTerminal[];
 extern const BehaviorScript bhvMsBreak[];
 extern const BehaviorScript bhvAqLift[];
 extern const BehaviorScript bhvAqWater[];
+extern const BehaviorScript bhvHbPlatform[];
+extern const BehaviorScript bhvHbUpDown[];
+extern const BehaviorScript bhvHbSupport[];
 
 #endif // BEHAVIOR_DATA_H

@@ -48,3 +48,18 @@ IWDHeader* iw_descs_hb[] = {
 #endif
 
 #include "levels/hb/hb_skybox/model.inc.c"
+#include "levels/hb/hb_block/collision.inc.c"
+#include "levels/hb/hb_block/model.inc.c"
+#include "levels/hb/hb_block_break/model.inc.c"
+#include "levels/hb/hb_hashira/collision.inc.c"
+#include "levels/hb/hb_hashira/model.inc.c"
+#include "levels/hb/hb_hashira_break/model.inc.c"
+#include "levels/hb/hb_vase/model.inc.c"
+#include "levels/hb/hb_vase_break/model.inc.c"
+#include "levels/hb/hb_wall_break/model.inc.c"
+#include "levels/hb/hb_hashira_platform/model.inc.c"
+#include "levels/hb/hb_hashira_platform/collision.inc.c"
+#include "levels/hb/hb_updown/collision.inc.c"
+#include "levels/hb/hb_updown/model.inc.c"
+#include "levels/hb/hb_updown_bright/model.inc.c"
+#include "levels/hb/hb_wall/model.inc.c"

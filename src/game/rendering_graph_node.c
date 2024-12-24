@@ -1417,6 +1417,30 @@ void geo_process_break_translation(struct GraphNodeTranslation *node) {
     append_dl_and_return((struct GraphNodeDisplayList *)node);
 }
 
+void geo_process_break_translation_rotation(struct GraphNodeTranslationRotation *node) {
+    Vec3f translation;
+    
+    struct Object* obj = (struct Object*)gCurGraphNodeObject;
+    Vec3f dir = { node->translation[0], 0,  node->translation[2] };
+    Vec3s rotation;
+    f32 mag = sqrtf(dir[0]*dir[0] + dir[2]*dir[2]);
+    if (mag > 0.1f) {
+        dir[0] /= mag;
+        dir[2] /= mag;
+    }
+
+    translation[0] = node->translation[0] - dir[0] * obj->oHomeX;
+    translation[1] = node->translation[1] - obj->oHomeY;
+    translation[2] = node->translation[2] - dir[2] * obj->oHomeZ;
+    rotation[0] = node->rotation[0];
+    rotation[1] = node->rotation[1];
+    rotation[2] = node->rotation[2];
+    mtxf_translate_and_mul(translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+
+    inc_mat_stack();
+    append_dl_and_return((struct GraphNodeDisplayList *)node);
+}
+
 void geo_process_obj_translation_rotation(struct GraphNodeTranslationRotation *node) {
     struct Object* obj = (struct Object*)gCurGraphNodeObject;
     Vec3f translation;
@@ -1440,6 +1464,18 @@ void geo_process_obj_rocket_translation(struct GraphNodeTranslation *node) {
     translation[0] = node->translation[0] + obj->oHomeX;
     translation[1] = node->translation[1] + obj->oHomeY;
     translation[2] = node->translation[2] + (node->translation[2] < 0 ? -obj->oHomeZ : obj->oHomeZ);
+    mtxf_translate_and_mul(translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+
+    inc_mat_stack();
+    append_dl_and_return((struct GraphNodeDisplayList *)node);
+}
+
+void geo_process_obj_translation(struct GraphNodeTranslation *node) {
+    struct Object* obj = (struct Object*)gCurGraphNodeObject;
+    Vec3f translation;
+    translation[0] = node->translation[0] + obj->oHomeX;
+    translation[1] = node->translation[1] + obj->oHomeY;
+    translation[2] = node->translation[2] + obj->oHomeZ;
     mtxf_translate_and_mul(translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
 
     inc_mat_stack();
@@ -1480,6 +1516,8 @@ static const GeoProcessFunc GeoProcessJumpTable[] = {
     [GRAPH_NODE_TYPE_BREAK_TRANSLATION       ] = geo_process_break_translation,
     [GRAPH_NODE_TYPE_OBJ_TRANSLATION_ROTATION] = geo_process_obj_translation_rotation,
     [GRAPH_NODE_TYPE_OBJ_ROCKET_TRANSLATION  ] = geo_process_obj_rocket_translation,
+    [GRAPH_NODE_TYPE_OBJ_TRANSLATION  ]        = geo_process_obj_translation,
+    [GRAPH_NODE_TYPE_BREAK_TRANSLATION_ROTATION] = geo_process_break_translation_rotation,
 };
 
 /**
