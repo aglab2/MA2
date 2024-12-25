@@ -282,8 +282,7 @@ void set_vi_mode(int enabled)
 }
 
 void load_area(s32 index) {
-    int mode = 0;
-    set_vi_mode(mode);
+    set_vi_mode(6);
 
     if (gCurrentArea == NULL && gAreaData[index].graphNode != NULL) {
         gCurrentArea = &gAreaData[index];

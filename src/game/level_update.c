@@ -498,12 +498,14 @@ extern const IWDHeader* iw_descs_mh[];
 extern const IWDHeader* iw_descs_gf[];
 extern const IWDHeader* iw_descs_ms[];
 extern const IWDHeader* iw_descs_hb[];
+extern const IWDHeader* iw_descs_pc[];
 static const IWDHeader** kWarpHeaders[] = {
     [ LEVEL_CE ] = iw_descs_ce,
     [ LEVEL_MH ] = iw_descs_mh,
     [ LEVEL_GF ] = iw_descs_gf,
     [ LEVEL_MS ] = iw_descs_ms,
     [ LEVEL_HB ] = iw_descs_hb,
+    [ LEVEL_PC ] = iw_descs_pc,
 };
 
 static void handle_iw_area_desc(int* newArea, const IWDirectionAreas* desc)

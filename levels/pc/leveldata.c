@@ -1,0 +1,96 @@
+#include <ultra64.h>
+#include "sm64.h"
+#include "surface_terrains.h"
+#include "moving_texture_macros.h"
+#include "textures.h"
+#include "dialog_ids.h"
+#include "instant_warp_desc.h"
+#include "rail_desc.h"
+#include "spring_desc.h"
+
+#include "make_const_nonconst.h"
+
+#include "levels/pc/header.inc.h"
+
+static IWDirectionAreasDesc iw_pc_area1 = {
+    { IWDT_DIRECTIONS },
+    { .z_low = 2, },
+};
+
+static IWDirectionAreasDesc iw_pc_area2 = {
+    { IWDT_DIRECTIONS },
+    { .z_high = 1, .x_low = 3, },
+};
+
+static IWDirectionAreasDesc iw_pc_area3 = {
+    { IWDT_DIRECTIONS },
+    { .x_high = 2, .z_low = 4, },
+};
+
+static IWDirectionAreasDesc iw_pc_area4 = {
+    { IWDT_DIRECTIONS },
+    { .z_high = 3, .z_low = 5, },
+};
+
+static IWDirectionAreasDesc iw_pc_area5 = {
+    { IWDT_DIRECTIONS },
+    { .z_high = 4, .z_low = 6, },
+};
+
+static IWDirectionAreasDesc iw_pc_area6 = {
+    { IWDT_DIRECTIONS },
+    { .z_high = 5, .z_low = 7, },
+};
+
+static IWDirectionAreasDesc iw_pc_area7 = {
+    { IWDT_DIRECTIONS },
+    { .z_high = 6, .x_high = 8, },
+};
+
+static IWDirectionAreasDesc iw_pc_area8 = {
+    { IWDT_DIRECTIONS },
+    { .x_low = 6, },
+};
+
+IWDHeader* iw_descs_pc[] = {
+    &iw_pc_area1.header,
+    &iw_pc_area2.header,
+    &iw_pc_area3.header,
+    &iw_pc_area4.header,
+    &iw_pc_area5.header,
+    &iw_pc_area6.header,
+    &iw_pc_area7.header,
+    &iw_pc_area8.header,
+};
+
+static const LDLDesc loop_desc1 = { 2, 1, 0, 1, 0x4000 };
+
+static const RailDesc rail_pc_area1[] = {
+    // LOOP_TRAJ(pc_area_1_spline_NurbsCurve_Loop, &loop_desc1),
+};
+
+const RailDesc* rail_descs_pc[] = {
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+};
+
+const SpringDesc* spring_descs_pc[] = {
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+};
+
+#include "levels/pc/visual/model.inc.c"
+
+#include "levels/pc/leveldata.inc.c"
