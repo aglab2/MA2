@@ -9,7 +9,7 @@
 
 typedef void (*GeoLayoutCommandProc)(void);
 
-GeoLayoutCommandProc GeoLayoutJumpTable[] = {
+static const GeoLayoutCommandProc GeoLayoutJumpTable[] = {
     /*GEO_CMD_BRANCH_AND_LINK           */ geo_layout_cmd_branch_and_link,
     /*GEO_CMD_END                       */ geo_layout_cmd_end,
     /*GEO_CMD_BRANCH                    */ geo_layout_cmd_branch,
@@ -52,6 +52,7 @@ GeoLayoutCommandProc GeoLayoutJumpTable[] = {
     /* GEO_CMD_OBJ_ROCKET_NODE_TRANSLATION */   geo_layout_cmd_obj_rocket_node_translation,
     /* GEO_CMD_OBJ_NODE_TRANSLATION */          geo_layout_cmd_obj_node_translation,
     /* GEO_CMD_CRUMBLE_NODE_TRANSLATION_ROTATION */ geo_layout_cmd_break_translation_rotation,
+    /* GEO_CMD_LVL_NODE_DISPLAY_LIST */         geo_layout_cmd_lvl_node_display_list,
 };
 
 struct GraphNode gObjParentGraphNode;
@@ -700,16 +701,24 @@ void geo_layout_cmd_node_billboard(void) {
    cmd+0x01: u8 drawingLayer
    cmd+0x04: void *displayList
 */
-void geo_layout_cmd_node_display_list(void) {
+static void geo_layout_cmd_node_display_list_impl(int style) {
     struct GraphNodeDisplayList *graphNode;
     s32 drawingLayer = cur_geo_cmd_u8(0x01);
     void *displayList = cur_geo_cmd_ptr(0x04);
 
-    graphNode = init_graph_node_display_list(TRUE, NULL, drawingLayer, displayList);
+    graphNode = init_graph_node_display_list(TRUE, NULL, drawingLayer, displayList, style);
 
     register_scene_graph_node(&graphNode->node);
 
     gGeoLayoutCommand += 0x08 << CMD_SIZE_SHIFT;
+}
+
+void geo_layout_cmd_node_display_list(void) {
+    return geo_layout_cmd_node_display_list_impl(GRAPH_NODE_TYPE_DISPLAY_LIST);
+}
+
+void geo_layout_cmd_lvl_node_display_list(void) {
+    return geo_layout_cmd_node_display_list_impl(GRAPH_NODE_TYPE_LVL_DISPLAY_LIST);
 }
 
 /*

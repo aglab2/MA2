@@ -75,6 +75,7 @@ enum GraphNodeTypes {
     GRAPH_NODE_TYPE_OBJ_ROCKET_TRANSLATION,
     GRAPH_NODE_TYPE_OBJ_TRANSLATION,
     GRAPH_NODE_TYPE_BREAK_TRANSLATION_ROTATION,
+    GRAPH_NODE_TYPE_LVL_DISPLAY_LIST,
 };
 
 // Passed as first argument to a GraphNodeFunc to give information about in
@@ -417,7 +418,7 @@ struct GraphNodeObject              *init_graph_node_object              (s32 al
 struct GraphNodeCullingRadius       *init_graph_node_culling_radius      (s32 alloc, struct GraphNodeCullingRadius       *graphNode, s16 radius);
 struct GraphNodeAnimatedPart        *init_graph_node_animated_part       (s32 alloc, struct GraphNodeAnimatedPart        *graphNode, s32 drawingLayer, void *displayList, Vec3s translation);
 struct GraphNodeBillboard           *init_graph_node_billboard           (s32 alloc, struct GraphNodeBillboard           *graphNode, s32 drawingLayer, void *displayList, Vec3s translation);
-struct GraphNodeDisplayList         *init_graph_node_display_list        (s32 alloc, struct GraphNodeDisplayList         *graphNode, s32 drawingLayer, void *displayList);
+struct GraphNodeDisplayList         *init_graph_node_display_list        (s32 alloc, struct GraphNodeDisplayList         *graphNode, s32 drawingLayer, void *displayList, int style);
 struct GraphNodeShadow              *init_graph_node_shadow              (s32 alloc, struct GraphNodeShadow              *graphNode, s16 shadowScale, u8 shadowSolidity, u8 shadowType);
 struct GraphNodeObjectParent        *init_graph_node_object_parent       (s32 alloc, struct GraphNodeObjectParent        *graphNode, struct GraphNode *sharedChild);
 struct GraphNodeGenerated           *init_graph_node_generated           (s32 alloc, struct GraphNodeGenerated           *graphNode, GraphNodeFunc gfxFunc, s32 parameter);

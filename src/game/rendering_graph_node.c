@@ -882,6 +882,24 @@ void geo_process_display_list(struct GraphNodeDisplayList *node) {
     gMatStackIndex++;
 }
 
+int gDLTotalParsed = 0;
+static void parseDL(void* segptr)
+{
+    uint8_t* data = segmented_to_virtual(segptr);
+    while (data[0] != G_ENDDL)
+    {
+        gDLTotalParsed++;
+        data += 8;
+    }
+}
+
+void geo_process_lvl_display_list(struct GraphNodeDisplayList *node) {
+    struct GraphNodeDisplayList *dlNode = node;
+    append_dl_and_return(dlNode);
+    parseDL(dlNode->displayList);
+    gMatStackIndex++;
+}
+
 /**
  * Process a generated list. Instead of storing a pointer to a display list,
  * the list is generated on the fly by a function.
@@ -1379,7 +1397,9 @@ void geo_process_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation
     mtxf_rotate_zxy_and_translate_and_mul(node->rotation, translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
 
     inc_mat_stack();
-    append_dl_and_return((struct GraphNodeDisplayList *)node);
+    struct GraphNodeDisplayList *dlNode = (struct GraphNodeDisplayList *)node;
+    parseDL(dlNode->displayList);
+    append_dl_and_return(dlNode);
 }
 
 void geo_process_lvl_translation(struct GraphNodeLvlTranslation *node) {
@@ -1394,7 +1414,9 @@ void geo_process_lvl_translation(struct GraphNodeLvlTranslation *node) {
     mtxf_translate_and_mul(translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
 
     inc_mat_stack();
-    append_dl_and_return((struct GraphNodeDisplayList *)node);
+    struct GraphNodeDisplayList *dlNode = (struct GraphNodeDisplayList *)node;
+    parseDL(dlNode->displayList);
+    append_dl_and_return(dlNode);
 }
 
 void geo_process_break_translation(struct GraphNodeTranslation *node) {
@@ -1518,6 +1540,7 @@ static const GeoProcessFunc GeoProcessJumpTable[] = {
     [GRAPH_NODE_TYPE_OBJ_ROCKET_TRANSLATION  ] = geo_process_obj_rocket_translation,
     [GRAPH_NODE_TYPE_OBJ_TRANSLATION  ]        = geo_process_obj_translation,
     [GRAPH_NODE_TYPE_BREAK_TRANSLATION_ROTATION] = geo_process_break_translation_rotation,
+    [GRAPH_NODE_TYPE_LVL_DISPLAY_LIST]         = geo_process_lvl_display_list,
 };
 
 /**

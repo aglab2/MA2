@@ -441,7 +441,7 @@ static void level_cmd_load_model_from_dl(void) {
     assert(model < MODEL_ID_COUNT, "Tried to load an invalid model ID.");
     if (model < MODEL_ID_COUNT) {
         gLoadedGraphNodes[model] =
-            (struct GraphNode *) init_graph_node_display_list(TRUE, 0, layer, dl_ptr);
+            (struct GraphNode *) init_graph_node_display_list(TRUE, 0, layer, dl_ptr, GRAPH_NODE_TYPE_DISPLAY_LIST);
     }
 
     sCurrentCmd = CMD_NEXT;

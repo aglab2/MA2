@@ -405,13 +405,13 @@ struct GraphNodeBillboard *init_graph_node_billboard(s32 alloc,
  */
 struct GraphNodeDisplayList *init_graph_node_display_list(s32 alloc,
                                                           struct GraphNodeDisplayList *graphNode,
-                                                          s32 drawingLayer, void *displayList) {
+                                                          s32 drawingLayer, void *displayList, int style) {
     if (alloc) {
         graphNode = main_pool_alloc(sizeof(struct GraphNodeDisplayList));
     }
 
     if (graphNode != NULL) {
-        init_scene_graph_node_links(&graphNode->node, GRAPH_NODE_TYPE_DISPLAY_LIST);
+        init_scene_graph_node_links(&graphNode->node, style);
         SET_GRAPH_NODE_LAYER(graphNode->node.flags, drawingLayer);
         graphNode->displayList = displayList;
     }
