@@ -502,7 +502,7 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
  */
 void geo_append_display_list(void *displayList, s32 layer) {
 #ifdef F3DEX_GBI_2
-    gSPLookAt(gDisplayListHead++, gCurLookAt);
+    // gSPLookAt(gDisplayListHead++, gCurLookAt);
 #endif
 #if SILHOUETTE
     if (gCurGraphNodeObject != NULL) {
@@ -520,7 +520,7 @@ void geo_append_display_list(void *displayList, s32 layer) {
         }
     }
 #endif // F3DEX_GBI_2 || SILHOUETTE
-    if (gCurGraphNodeMasterList != NULL) {
+    {
         struct DisplayListNode *listNode = main_pool_alloc(sizeof(struct DisplayListNode));
 
         listNode->transform = gMatStackFixed[gMatStackIndex];
@@ -763,6 +763,7 @@ void geo_process_camera(struct GraphNodeCamera *node) {
     gCurLookAt->l[1].l.dir[0] = (s8)(127.0f * -(*cameraMatrix)[0][1]);
     gCurLookAt->l[1].l.dir[1] = (s8)(127.0f * -(*cameraMatrix)[1][1]);
     gCurLookAt->l[1].l.dir[2] = (s8)(127.0f * -(*cameraMatrix)[2][1]);
+    gSPLookAt(gDisplayListHead++, gCurLookAt);
 #endif // F3DEX_GBI_2
 
 #if WORLD_SCALE > 1
@@ -893,10 +894,37 @@ static void parseDL(void* segptr)
     }
 }
 
+static void geo_lvl_append_display_list(void *displayList, s32 layer) {
+    parseDL(displayList);
+    // gSPLookAt(gDisplayListHead++, gCurLookAt);
+    {
+        struct DisplayListNode *listNode = main_pool_alloc(sizeof(struct DisplayListNode));
+
+        listNode->transform = gMatStackFixed[gMatStackIndex];
+        listNode->displayList = displayList;
+        listNode->next = NULL;
+        if (gCurGraphNodeMasterList->listHeads[layer] == NULL) {
+            gCurGraphNodeMasterList->listHeads[layer] = listNode;
+        } else {
+            gCurGraphNodeMasterList->listTails[layer]->next = listNode;
+        }
+        gCurGraphNodeMasterList->listTails[layer] = listNode;
+    }
+}
+
+static void append_lvl_dl_and_return(struct GraphNodeDisplayList *node) {
+    if (node->displayList != NULL) {
+        geo_lvl_append_display_list(node->displayList, GET_GRAPH_NODE_LAYER(node->node.flags));
+    }
+    if (node->node.children != NULL) {
+        geo_process_node_and_siblings(node->node.children);
+    }
+    gMatStackIndex--;
+}
+
 void geo_process_lvl_display_list(struct GraphNodeDisplayList *node) {
     struct GraphNodeDisplayList *dlNode = node;
-    append_dl_and_return(dlNode);
-    parseDL(dlNode->displayList);
+    append_lvl_dl_and_return(dlNode);
     gMatStackIndex++;
 }
 
@@ -1398,8 +1426,7 @@ void geo_process_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation
 
     inc_mat_stack();
     struct GraphNodeDisplayList *dlNode = (struct GraphNodeDisplayList *)node;
-    parseDL(dlNode->displayList);
-    append_dl_and_return(dlNode);
+    return append_lvl_dl_and_return(dlNode);
 }
 
 void geo_process_lvl_translation(struct GraphNodeLvlTranslation *node) {
@@ -1415,8 +1442,7 @@ void geo_process_lvl_translation(struct GraphNodeLvlTranslation *node) {
 
     inc_mat_stack();
     struct GraphNodeDisplayList *dlNode = (struct GraphNodeDisplayList *)node;
-    parseDL(dlNode->displayList);
-    append_dl_and_return(dlNode);
+    return append_lvl_dl_and_return(dlNode);
 }
 
 void geo_process_break_translation(struct GraphNodeTranslation *node) {

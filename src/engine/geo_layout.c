@@ -6,6 +6,7 @@
 #include "game/memory.h"
 #include "graph_node.h"
 #include "game/debug.h"
+#include "batch_ht.h"
 
 typedef void (*GeoLayoutCommandProc)(void);
 
@@ -421,6 +422,7 @@ void geo_layout_cmd_node_camera(void) {
     }
     else
     {
+        batch_ht_init((batch_ht_t*) (0x80710000 + 25800));
         sCameraCache = graphNode;
         gGeoLayoutCommand += 0x14 << CMD_SIZE_SHIFT;
     }
@@ -717,7 +719,96 @@ void geo_layout_cmd_node_display_list(void) {
     return geo_layout_cmd_node_display_list_impl(GRAPH_NODE_TYPE_DISPLAY_LIST);
 }
 
+#define DEBUG_ASSERTIONS
+#ifdef DEBUG_ASSERTIONS
+#define ASSERT_PRINTF(cond, fmt, ...) do{ if (!(cond)) { char msg[40]; sprintf(msg, fmt, ##__VA_ARGS__); error(msg); } }while(0)
+#else
+#define ASSERT_PRINTF(cond, fmt, ...) do{}while(0)
+#endif
+
+static __attribute__ ((noinline)) int is_draw_dl(void* segPtr)
+{
+    uint8_t* data = segmented_to_virtual(segPtr);
+    if (G_RDPPIPESYNC == data[0] || G_MOVEWORD == data[0] || G_GEOMETRYMODE == data[0])
+    {
+        return 1;
+    }
+    if (G_VTX == data[0])
+    {
+        return 0;
+    }
+
+    ASSERT_PRINTF(0, "Unknown dl command %d", data[0]);
+    return 1;
+}
+
+static __attribute__ ((noinline)) void batch_cmd_yield(uint32_t** cmds, uint32_t cmd)
+{
+    // *(*cmds) = cmd;
+    // (*cmds)++;
+}
+
+// Converts given DL to structure that is suitable for being batched
+// API is using 4 byte values for batches. It guarantees that we won't step on our tail
+// 0 - terminate batches
+// >0 - enable batch with index
+// <0 - push dl to batch with index
+static void batchify_dl(void* segPtr)
+{
+    uint8_t* data = segmented_to_virtual(segPtr);
+    uint32_t* batchCmds = (uint32_t*) data;
+    batch_ht_entry_t* batch = NULL;
+    while (1)
+    {
+        uint8_t cmd = data[0];
+        if (cmd == G_ENDDL)
+        {
+            break;
+        }
+        else if (cmd == G_DL)
+        {
+            void* dl = *(void**)(data + 4);
+            int draw = is_draw_dl(dl);
+            if (draw)
+            {
+                if (batch)
+                {
+                    // end texture (revert)
+                    if (batch->endPtr == NULL)
+                        batch->endPtr = dl;
+                    else
+                        ASSERT_PRINTF(batch->endPtr == dl, "%x: END %x != %x", data, batch->endPtr, dl);
+
+                    batch = NULL;
+                }
+                else
+                {
+                    // start texture
+                    batch = batch_ht_indexize(((batch_ht_t*) (0x80710000 + 25800)), dl);
+                    batch_cmd_yield(&batchCmds, batch->idx);
+                }
+            }
+            else
+            {
+                // draw
+                ASSERT_PRINTF(batch, "%x: DL without texture assigned", data);
+                batch_cmd_yield(&batchCmds, dl);
+            }
+        }
+        else
+        {
+            ASSERT_PRINTF(0, "%x: Unknown jumps command", data);
+        }
+
+        data += 8;
+    }
+
+    ASSERT_PRINTF(NULL == batch, "%x: Unterminated batch", data);
+}
+
 void geo_layout_cmd_lvl_node_display_list(void) {
+    void *displayList = cur_geo_cmd_ptr(0x04);
+    batchify_dl(displayList);
     return geo_layout_cmd_node_display_list_impl(GRAPH_NODE_TYPE_LVL_DISPLAY_LIST);
 }
 
@@ -870,6 +961,7 @@ void geo_layout_cmd_lvl_translation_rotation(void) {
     displayList = *(void **) &cmdPos[0];
     drawingLayer = params & 0x7F;
     cmdPos += 2 << CMD_SIZE_SHIFT;
+    batchify_dl(displayList);
 
     graphNode = init_graph_node_lvl_translation_rotation(TRUE, NULL, drawingLayer, displayList,
                                                      translation, rotation);
@@ -897,6 +989,8 @@ void geo_layout_cmd_lvl_translation(void) {
     displayList = *(void **) &cmdPos[0];
     drawingLayer = params & 0x7F;
     cmdPos += 2 << CMD_SIZE_SHIFT;
+
+    batchify_dl(displayList);
 
     graphNode =
         init_graph_node_lvl_translation(TRUE, NULL, drawingLayer, displayList, translation);
