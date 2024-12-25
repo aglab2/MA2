@@ -382,6 +382,7 @@ void geo_layout_cmd_node_switch_case(void) {
   cmd+0x0E: s16 focusZ
   cmd+0x10: GraphNodeFunc func
 */
+struct GraphNodeCamera* sCameraCache = NULL;
 void geo_layout_cmd_node_camera(void) {
     struct GraphNodeCamera *graphNode;
     s16 *cmdPos = (s16 *) &gGeoLayoutCommand[4];
@@ -398,7 +399,30 @@ void geo_layout_cmd_node_camera(void) {
 
     gGeoViews[0] = &graphNode->fnNode.node;
 
-    gGeoLayoutCommand += 0x14 << CMD_SIZE_SHIFT;
+    if (sCameraCache)
+    {
+        graphNode->fnNode.node.children = sCameraCache->fnNode.node.children;
+        // When cache is hit, the following pattern is seen
+        /*
+        GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 0, 0, 0, 0, -10, 0, geo_camera_main),
+        GEO_OPEN_NODE(),
+            GEO_BRANCH(1, ce_area_1_geo),
+            GEO_RENDER_OBJ(),
+            GEO_ASM(ENVFX_MODE_NONE, geo_envfx_main),
+        GEO_CLOSE_NODE(),
+        */
+        gGeoLayoutCommand += (0x14 << CMD_SIZE_SHIFT) 
+                           + (0x4  << CMD_SIZE_SHIFT) 
+                           + (0x8  << CMD_SIZE_SHIFT) 
+                           + (0x4  << CMD_SIZE_SHIFT) 
+                           + (0x8  << CMD_SIZE_SHIFT) 
+                           + (0x4  << CMD_SIZE_SHIFT);
+    }
+    else
+    {
+        sCameraCache = graphNode;
+        gGeoLayoutCommand += 0x14 << CMD_SIZE_SHIFT;
+    }
 }
 
 /*

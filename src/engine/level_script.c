@@ -377,8 +377,11 @@ static void level_cmd_clear_level(void) {
     sCurrentCmd = CMD_NEXT;
 }
 
+extern struct GraphNodeCamera* sCameraCache;
 static void level_cmd_alloc_level_pool(void) {
     sCurrentCmd = CMD_NEXT;
+    // drop cache, we just loaded bunch of bytes in
+    sCameraCache = NULL;
 }
 
 static void level_cmd_free_level_pool(void) {
@@ -398,6 +401,9 @@ static void level_cmd_free_level_pool(void) {
 static void level_cmd_begin_area(void) {
     u8 areaIndex = CMD_GET(u8, 2);
     void *geoLayoutAddr = CMD_GET(void *, 4);
+    static void* sCameraCacheAreaSegPtr = NULL;
+    if (sCameraCacheAreaSegPtr != geoLayoutAddr)
+        sCameraCache = NULL;
 
     if (areaIndex < AREA_COUNT) {
         struct GraphNodeRoot *screenArea =
@@ -418,6 +424,7 @@ static void level_cmd_begin_area(void) {
         gAreas[areaIndex].renderOffset[2] = 10 * CMD_GET(s32, 16);
     }
 
+    sCameraCacheAreaSegPtr = geoLayoutAddr;
     sCurrentCmd = CMD_NEXT;
 }
 
