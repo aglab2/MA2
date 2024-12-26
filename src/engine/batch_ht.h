@@ -57,7 +57,7 @@ static inline batch_ht_entry_t* batch_ht_get(batch_ht_t *table, const char *star
     return 0;
 }
 
-static __attribute__ ((noinline)) batch_ht_entry_t* batch_ht_indexize(batch_ht_t *table, const char *startPtr) {
+static batch_ht_entry_t* batch_ht_indexize(batch_ht_t *table, const char *startPtr) {
     batch_ht_entry_t *entry = batch_ht_get(table, startPtr);
     if (entry != NULL) {
         return entry;

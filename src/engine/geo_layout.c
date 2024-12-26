@@ -726,23 +726,43 @@ void geo_layout_cmd_node_display_list(void) {
 #define ASSERT_PRINTF(cond, fmt, ...) do{}while(0)
 #endif
 
-static __attribute__ ((noinline)) int is_draw_dl(void* segPtr)
+enum DLType
+{
+    DLT_ENTER = -1,
+    DLT_EXIT,
+    DLT_DRAW,
+};
+
+static enum DLType decide_dl_type(void* segPtr)
 {
     uint8_t* data = segmented_to_virtual(segPtr);
-    if (G_RDPPIPESYNC == data[0] || G_MOVEWORD == data[0] || G_GEOMETRYMODE == data[0])
-    {
-        return 1;
-    }
     if (G_VTX == data[0])
     {
-        return 0;
+        return DLT_DRAW;
     }
 
-    ASSERT_PRINTF(0, "Unknown dl command %d", data[0]);
-    return 1;
+    ASSERT_PRINTF(G_RDPPIPESYNC != data[0] || G_MOVEWORD != data[0] || G_GEOMETRYMODE != data[0], "%x: unk %d", segPtr, data[0]);
+
+    // need to distinguish between enter and exit - scan for a setcombiner command that indicates enter
+    for (int i = 0; i < 0x20; i++)
+    {
+        data += 8;
+        if (G_ENDDL == *data)
+        {
+            return DLT_EXIT;
+        }
+        if (G_SETCOMBINE == *data)
+        {
+            return DLT_ENTER;
+        }
+    }
+
+    // Reverts are usually very tiny, for now cause an assert
+    ASSERT_PRINTF(0, "%x: Scan overflow", segPtr);
+    return DLT_EXIT;
 }
 
-static __attribute__ ((noinline)) void batch_cmd_yield(uint32_t** cmds, uint32_t cmd)
+static void batch_cmd_yield(uint32_t** cmds, uint32_t cmd)
 {
     // *(*cmds) = cmd;
     // (*cmds)++;
@@ -761,49 +781,47 @@ static void batchify_dl(void* segPtr)
     while (1)
     {
         uint8_t cmd = data[0];
-        if (cmd == G_ENDDL)
+        // PipeSync is usually inserted in the very last DL, just consider it being a termination point
+        if (cmd == G_ENDDL || cmd == G_RDPPIPESYNC)
         {
             break;
         }
         else if (cmd == G_DL)
         {
             void* dl = *(void**)(data + 4);
-            int draw = is_draw_dl(dl);
-            if (draw)
+            enum DLType dlType = decide_dl_type(dl);
+            switch (dlType)
             {
-                if (batch)
+                case DLT_ENTER:
                 {
-                    // end texture (revert)
+                    batch = batch_ht_indexize(((batch_ht_t*) (0x80710000 + 25800)), dl);
+                    batch_cmd_yield(&batchCmds, batch->idx);
+                }
+                    break;
+                case DLT_EXIT:
+                {
                     if (batch->endPtr == NULL)
                         batch->endPtr = dl;
                     else
                         ASSERT_PRINTF(batch->endPtr == dl, "%x: END %x != %x", data, batch->endPtr, dl);
 
-                    batch = NULL;
+                    // avoid resetting batch because fast64 bug
+                    // batch = NULL;
                 }
-                else
-                {
-                    // start texture
-                    batch = batch_ht_indexize(((batch_ht_t*) (0x80710000 + 25800)), dl);
+                    break;
+                case DLT_DRAW:
+                    ASSERT_PRINTF(batch, "%x: no batch", data);
                     batch_cmd_yield(&batchCmds, batch->idx);
-                }
-            }
-            else
-            {
-                // draw
-                ASSERT_PRINTF(batch, "%x: DL without texture assigned", data);
-                batch_cmd_yield(&batchCmds, dl);
+                    break;
             }
         }
         else
         {
-            ASSERT_PRINTF(0, "%x: Unknown jumps command", data);
+            ASSERT_PRINTF(0, "%x: bad cmd", data);
         }
 
         data += 8;
     }
-
-    ASSERT_PRINTF(NULL == batch, "%x: Unterminated batch", data);
 }
 
 void geo_layout_cmd_lvl_node_display_list(void) {
