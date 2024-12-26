@@ -2408,7 +2408,7 @@ static const Gfx* k_skyboxes[] = {
     [ LEVEL_HB ] = hb_skybox_hb_skybox_mesh_layer_1,
 };
 
-extern void geo_append_display_list(void *displayList, s16 layer);
+extern void geo_append_display_list(void *displayList, s32 layer);
 extern s16 gMatStackIndex;
 extern Mat4 gMatStack[32];
 extern Mtx *gMatStackFixed[32];

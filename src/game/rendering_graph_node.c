@@ -93,8 +93,7 @@ static const struct RenderModeContainer renderModeTable_1Cycle[2] = {
         [LAYER_OCCLUDE_SILHOUETTE_OPAQUE] = G_RM_AA_OPA_SURF,
         [LAYER_OCCLUDE_SILHOUETTE_ALPHA] = G_RM_AA_TEX_EDGE,
 #endif
-        [LAYER_CIRCLE_SHADOW] = G_RM_CLD_SURF,
-        [LAYER_CIRCLE_SHADOW_TRANSPARENT] = G_RM_CLD_SURF,
+        [LAYER_CLD] = G_RM_CLD_SURF,
         [LAYER_TRANSPARENT_DECAL] = G_RM_AA_XLU_SURF,
         [LAYER_TRANSPARENT] = G_RM_AA_XLU_SURF,
         [LAYER_MIST] = G_RM_AA_XLU_SURF,
@@ -115,8 +114,7 @@ static const struct RenderModeContainer renderModeTable_1Cycle[2] = {
         [LAYER_OCCLUDE_SILHOUETTE_OPAQUE] = G_RM_AA_ZB_OPA_SURF,
         [LAYER_OCCLUDE_SILHOUETTE_ALPHA] = G_RM_AA_ZB_TEX_EDGE,
 #endif
-        [LAYER_CIRCLE_SHADOW] = G_RM_AA_ZB_XLU_DECAL,
-        [LAYER_CIRCLE_SHADOW_TRANSPARENT] = G_RM_ZB_CLD_SURF,
+        [LAYER_CLD] = G_RM_ZB_CLD_SURF,
         [LAYER_TRANSPARENT_DECAL] = G_RM_AA_ZB_XLU_DECAL,
         [LAYER_TRANSPARENT] = G_RM_AA_ZB_XLU_SURF,
         [LAYER_MIST] = G_RM_AA_ZB_XLU_SURF,
@@ -140,8 +138,7 @@ static const struct RenderModeContainer renderModeTable_2Cycle[2] = {
         [LAYER_OCCLUDE_SILHOUETTE_OPAQUE] = G_RM_AA_OPA_SURF2,
         [LAYER_OCCLUDE_SILHOUETTE_ALPHA] = G_RM_AA_TEX_EDGE2,
 #endif
-        [LAYER_CIRCLE_SHADOW] = G_RM_CLD_SURF2,
-        [LAYER_CIRCLE_SHADOW_TRANSPARENT] = G_RM_CLD_SURF2,
+        [LAYER_CLD] = G_RM_CLD_SURF2,
         [LAYER_TRANSPARENT_DECAL] = G_RM_AA_XLU_SURF2,
         [LAYER_TRANSPARENT] = G_RM_AA_XLU_SURF2,
         [LAYER_MIST] = G_RM_AA_XLU_SURF2,
@@ -162,8 +159,7 @@ static const struct RenderModeContainer renderModeTable_2Cycle[2] = {
         [LAYER_OCCLUDE_SILHOUETTE_OPAQUE] = G_RM_AA_ZB_OPA_SURF2,
         [LAYER_OCCLUDE_SILHOUETTE_ALPHA] = G_RM_AA_ZB_TEX_EDGE2,
 #endif
-        [LAYER_CIRCLE_SHADOW] = G_RM_AA_ZB_XLU_DECAL2,
-        [LAYER_CIRCLE_SHADOW_TRANSPARENT] = G_RM_ZB_CLD_SURF2,
+        [LAYER_CLD] = G_RM_ZB_CLD_SURF2,
         [LAYER_TRANSPARENT_DECAL] = G_RM_AA_ZB_XLU_DECAL2,
         [LAYER_TRANSPARENT] = G_RM_AA_ZB_XLU_SURF2,
         [LAYER_MIST] = G_RM_AA_ZB_XLU_SURF2,
@@ -267,7 +263,6 @@ static const Mtx identityMatrixWorldScale = {{
      0x00000000,                            LOWER_FIXED(1.0f)               <<  0}
 }};
 
-extern const Gfx dl_shadow_circle_end[];
 static const Gfx* sRedFlameTextureDls[] = {
     flame_seg3_dl_0301B3B0,
     flame_seg3_dl_0301B3C8,
@@ -372,12 +367,6 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
                     int flFrame = (gGlobalTimer / 2) % 8;
                     startDl = sBlueFlameTextureDls[flFrame];
                     endDl = flame_seg3_dl_end;
-                }
-
-                if (currLayer == LAYER_CIRCLE_SHADOW || currLayer == LAYER_CIRCLE_SHADOW_TRANSPARENT)
-                {
-                    startDl = dl_shadow_circle;
-                    endDl = dl_shadow_circle_end;
                 }
 
                 if (startDl != curStartDl)
@@ -1118,16 +1107,14 @@ void geo_process_shadow(struct GraphNodeShadow *node) {
 
             inc_mat_stack();
 
-            s32 layer;
             if (node->shadowType == SHADOW_CIRCLE) {
-                layer = gCurrShadow.isDecal ? LAYER_CIRCLE_SHADOW : LAYER_CIRCLE_SHADOW_TRANSPARENT;
+                s32 layer = gCurrShadow.isDecal ? LAYER_TRANSPARENT_DECAL : LAYER_CLD;
+                s32 batch = gCurrShadow.isDecal ? LAYER_TRANSPARENT_DECAL_SHADOW_CIRCLE : LAYER_CLD_SHADOW_CIRCLE;
+                geo_append_batched_display_list((void *) VIRTUAL_TO_PHYSICAL(shadowList), layer, batch);
             } else {
-                layer = gCurrShadow.isDecal ? LAYER_TRANSPARENT_DECAL : LAYER_TRANSPARENT;
+                s32 layer = gCurrShadow.isDecal ? LAYER_TRANSPARENT_DECAL : LAYER_TRANSPARENT;
+                geo_append_display_list((void *) VIRTUAL_TO_PHYSICAL(shadowList), layer);
             }
-
-            geo_append_display_list(
-                (void *) VIRTUAL_TO_PHYSICAL(shadowList), layer
-            );
 
             gMatStackIndex--;
         }

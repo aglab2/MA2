@@ -1,6 +1,7 @@
 #include "batch_list.h"
 
 #include "actors/common1.h"
+#include "game/segment2.h"
 
 static const Gfx* sCoinsTextureDls[] = {
     dl_coin_0,
@@ -16,6 +17,8 @@ extern const Gfx breakable_box_seg8_dl_cork_box_end[];
 extern Gfx burn_smoke_seg4_sub_dl_begin_translucent[];
 extern Gfx burn_smoke_seg4_sub_dl_begin_alpha[];
 extern const Gfx burn_smoke_seg4_sub_dl_end[];
+
+extern const Gfx dl_shadow_circle_end[];
 
 static inline struct BatchArray* batch_array_alloc(int count)
 {
@@ -60,6 +63,28 @@ struct BatchArray* batch_list_objects_alloc_xlu()
         struct Batch* batch = &batchesArr->batches[LAYER_TRANSPARENT_SMOKE];
         batch->startDl = burn_smoke_seg4_sub_dl_begin_translucent;
         batch->endDl   = burn_smoke_seg4_sub_dl_end;
+    }
+    return batchesArr;
+}
+
+struct BatchArray* batch_list_objects_alloc_xlu_decal()
+{
+    struct BatchArray* batchesArr = batch_array_alloc(LAYER_TRANSPARENT_DECAL_BATCHES_COUNT);
+    {
+        struct Batch* batch = &batchesArr->batches[LAYER_TRANSPARENT_DECAL_SHADOW_CIRCLE];
+        batch->startDl = dl_shadow_circle;
+        batch->endDl   = dl_shadow_circle_end;
+    }
+    return batchesArr;
+}
+
+struct BatchArray* batch_list_objects_alloc_cld()
+{
+    struct BatchArray* batchesArr = batch_array_alloc(LAYER_CLD_BATCHES_COUNT);
+    {
+        struct Batch* batch = &batchesArr->batches[LAYER_CLD_SHADOW_CIRCLE];
+        batch->startDl = dl_shadow_circle;
+        batch->endDl   = dl_shadow_circle_end;
     }
     return batchesArr;
 }
