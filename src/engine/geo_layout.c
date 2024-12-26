@@ -801,7 +801,7 @@ enum DLType
 static enum DLType decide_dl_type(void* segPtr)
 {
     uint8_t* data = segmented_to_virtual(segPtr);
-    if (G_VTX == data[0])
+    if (G_VTX == data[0] || G_RDPLOADSYNC == data[0])
     {
         return DLT_DRAW;
     }
