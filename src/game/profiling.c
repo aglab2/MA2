@@ -231,7 +231,6 @@ u32 profiler_get_rdp_microseconds() {
     return RDP_CYCLE_CONV(rdp_max_cycles / PROFILING_BUFFER_SIZE);
 }
 
-extern int gDLTotalParsed;
 void profiler_print_times() {
     u32 microseconds[PROFILER_TIME_COUNT];
     char text_buffer[196];
@@ -291,7 +290,7 @@ void profiler_print_times() {
             "RSP\t\t%d (%d%%)\n"
             " Gfx\t\t\t%d\n"
             " Audio\t\t\t%d\n"
-            "%d %d %d %d %d",
+            "%d %d %d %d",
             1000000.0f / microseconds[PROFILER_TIME_FPS],
             total_cpu, total_cpu / 333, 
             microseconds[PROFILER_TIME_CONTROLLERS],
@@ -314,7 +313,7 @@ void profiler_print_times() {
             total_rsp, total_rsp / 333,
             microseconds[PROFILER_TIME_RSP_GFX],
             microseconds[PROFILER_TIME_RSP_AUDIO] * 2,
-            (int) gMarioStates->pos[0], (int) gMarioStates->pos[1], (int) gMarioStates->pos[2], gCurrAreaIndex, gDLTotalParsed
+            (int) gMarioStates->pos[0], (int) gMarioStates->pos[1], (int) gMarioStates->pos[2], gCurrAreaIndex
         );
 
         Gfx* dlHead = gDisplayListHead;

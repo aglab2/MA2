@@ -382,7 +382,7 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
     gDisplayListHead = tempGfxHead;
 }
 
-static __attribute__((noinline))  void append_dl(struct DisplayListHead* list, void* dl)
+static void append_dl(struct DisplayListHead* list, void* dl)
 {
     struct DisplayListNode *listNode = main_pool_alloc(sizeof(struct DisplayListNode));
 
@@ -796,8 +796,7 @@ void geo_process_display_list(struct GraphNodeDisplayList *node) {
     gMatStackIndex++;
 }
 
-int gDLTotalParsed = 0;
-static __attribute__((noinline)) void geo_lvl_append_display_list(void *displayList, s32 layer) {
+static void geo_lvl_append_display_list(void *displayList, s32 layer) {
     // gSPLookAt(gDisplayListHead++, gCurLookAt);
     // append_dl(&gCurGraphNodeMasterList->layers[layer].list, displayList);
     int32_t* data = segmented_to_virtual(displayList);
@@ -805,7 +804,6 @@ static __attribute__((noinline)) void geo_lvl_append_display_list(void *displayL
     int batchIdx = 0;
     while (*data)
     {
-        gDLTotalParsed++;
         if (*data > 0)
         {
             append_dl(&batchArr->batches[batchIdx].list, (void*)*data);
@@ -1339,7 +1337,7 @@ static int is_far_from_mario(Vec3f loc)
     f32 dy = loc[1] - gCurGraphNodeCamera->focus[1];
     f32 dz = loc[2] - gCurGraphNodeCamera->focus[2];
     f32 dist = sqrtf(dx*dx + dy*dy + dz*dz);
-    return dist > 20000.0f;
+    return dist > 5000.0f;
 }
 
 void geo_process_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation *node) {
