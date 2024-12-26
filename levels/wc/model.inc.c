@@ -27819,10 +27819,6 @@ Gfx wc_dl_0149_object_00DDA90C_mesh_layer_1[] = {
 };
 
 Gfx wc_dl_object_007ECD14_mesh_layer_5[] = {
-	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(wc_dl_object_007ECD14_mesh_layer_5_vtx_cull + 0, 8, 0),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPCullDisplayList(0, 7),
 	gsSPDisplayList(mat_wc_dl_LightPillar_sa2mdl_0_f3d),
 	gsSPDisplayList(wc_dl_object_007ECD14_mesh_layer_5_tri_0),
 	gsSPDisplayList(mat_revert_wc_dl_LightPillar_sa2mdl_0_f3d),
