@@ -362,8 +362,8 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
                 while (currList != NULL);
             }
 
-            render_batches(&tempGfxHead, masterLayer->objects, wantMode1, wantMode2);
             render_batches(&tempGfxHead, masterLayer->course, wantMode1, wantMode2);
+            render_batches(&tempGfxHead, masterLayer->objects, wantMode1, wantMode2);
         }
     }
 
@@ -382,7 +382,7 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
     gDisplayListHead = tempGfxHead;
 }
 
-static void append_dl(struct DisplayListHead* list, void* dl)
+static __attribute__((noinline))  void append_dl(struct DisplayListHead* list, void* dl)
 {
     struct DisplayListNode *listNode = main_pool_alloc(sizeof(struct DisplayListNode));
 
@@ -797,20 +797,26 @@ void geo_process_display_list(struct GraphNodeDisplayList *node) {
 }
 
 int gDLTotalParsed = 0;
-static void parseDL(void* segptr)
-{
-    uint8_t* data = segmented_to_virtual(segptr);
-    while (data[0] != G_ENDDL)
+static __attribute__((noinline)) void geo_lvl_append_display_list(void *displayList, s32 layer) {
+    // gSPLookAt(gDisplayListHead++, gCurLookAt);
+    // append_dl(&gCurGraphNodeMasterList->layers[layer].list, displayList);
+    int32_t* data = segmented_to_virtual(displayList);
+    struct BatchArray* batchArr = gCurGraphNodeMasterList->layers[layer].course;
+    int batchIdx = 0;
+    while (*data)
     {
         gDLTotalParsed++;
-        data += 8;
-    }
-}
+        if (*data > 0)
+        {
+            append_dl(&batchArr->batches[batchIdx].list, (void*)*data);
+        }
+        if (*data < 0)
+        {
+            batchIdx = -(1 + *data);
+        }
 
-static void geo_lvl_append_display_list(void *displayList, s32 layer) {
-    parseDL(displayList);
-    // gSPLookAt(gDisplayListHead++, gCurLookAt);
-    append_dl(&gCurGraphNodeMasterList->layers[layer].list, displayList);
+        data++;
+    }
 }
 
 static void append_lvl_dl_and_return(struct GraphNodeDisplayList *node) {

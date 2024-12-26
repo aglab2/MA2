@@ -61,8 +61,8 @@ static inline batch_ht_entry_t* batch_ht_indexize(batch_ht_t *table, const char 
         return entry;
     }
 
-    int idx = table->next++;
-    table->totals[layer]++;
+    table->next++;
+    int idx = table->totals[layer]++;
     entry = batch_ht_set(table, startPtr, idx, layer);
     return entry;
 }

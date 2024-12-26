@@ -162,16 +162,15 @@ void geo_layout_cmd_return(void) {
             if (0 == total)
                 continue;
 
-            gMasterNode->layers[layer].course = main_pool_alloc(sizeof(struct BatchArray) + total * sizeof(struct Batch));
+            struct MasterLayer* masterLayer = &gMasterNode->layers[layer];
+            masterLayer->course = main_pool_alloc(sizeof(struct BatchArray) + total * sizeof(struct Batch));
+            masterLayer->course->count = total;
         }
 
-        s16 layerIdx[LAYER_COUNT] = {0};
         for (int entryId = 0; entryId < ht->next; entryId++) {
             batch_ht_entry_t* entry = &ht->firstEntry[entryId];
-            ASSERT_PRINTF(entry->idx == entryId, "Incorrect value %d != %d", entry->idx, entryId);
             struct BatchArray* batchArr = gMasterNode->layers[entry->layer].course;
-            struct Batch* batch = &batchArr->batches[layerIdx[entry->layer]];
-            layerIdx[entry->layer]++;
+            struct Batch* batch = &batchArr->batches[entry->idx];
             batch->startDl = entry->startPtr;
             batch->endDl   = entry->endPtr;
         }
@@ -421,6 +420,7 @@ void geo_layout_cmd_node_switch_case(void) {
   cmd+0x10: GraphNodeFunc func
 */
 struct GraphNodeCamera* sCameraCache = NULL;
+struct GraphNodeMasterList* sCameraCacheMasterNode = NULL;
 void geo_layout_cmd_node_camera(void) {
     struct GraphNodeCamera *graphNode;
     s16 *cmdPos = (s16 *) &gGeoLayoutCommand[4];
@@ -439,7 +439,15 @@ void geo_layout_cmd_node_camera(void) {
 
     if (sCameraCache)
     {
+        // copy in shared data
         graphNode->fnNode.node.children = sCameraCache->fnNode.node.children;
+        // also copy in batches from cached master node, references are ok
+        // TODO: Perform the same for objects
+        for (int i = 0; i < LAYER_COUNT; i++)
+        {
+            gMasterNode->layers[i].course = sCameraCacheMasterNode->layers[i].course;
+        }
+
         // When cache is hit, the following pattern is seen
         /*
         GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 0, 0, 0, 0, -10, 0, geo_camera_main),
@@ -460,6 +468,7 @@ void geo_layout_cmd_node_camera(void) {
     {
         batch_ht_init((batch_ht_t*) (0x80710000 + 0x25800));
         sCameraCache = graphNode;
+        sCameraCacheMasterNode = gMasterNode;
         gGeoLayoutCommand += 0x14 << CMD_SIZE_SHIFT;
     }
 }
@@ -820,8 +829,8 @@ static enum DLType decide_dl_type(void* segPtr)
 
 static void batch_cmd_yield(uint32_t** cmds, uint32_t cmd)
 {
-    // *(*cmds) = cmd;
-    // (*cmds)++;
+    *(*cmds) = cmd;
+    (*cmds)++;
 }
 
 // Converts given DL to structure that is suitable for being batched
@@ -838,6 +847,12 @@ static void batchify_dl(void* segPtr, int layer)
     while (1)
     {
         uint8_t cmd = data[0];
+        if (cmd == 0xff)
+        {
+            // this dl is already batchified
+            return;
+        }
+
         // PipeSync is usually inserted in the very last DL, just consider it being a termination point
         if (cmd == G_ENDDL || cmd == G_RDPPIPESYNC)
         {
@@ -852,7 +867,7 @@ static void batchify_dl(void* segPtr, int layer)
                 case DLT_ENTER:
                 {
                     batch = batch_ht_indexize(((batch_ht_t*) (0x80710000 + 0x25800)), dl, layer);
-                    batch_cmd_yield(&batchCmds, batch->idx);
+                    batch_cmd_yield(&batchCmds, -1-batch->idx);
                 }
                     break;
                 case DLT_EXIT:
@@ -868,7 +883,7 @@ static void batchify_dl(void* segPtr, int layer)
                     break;
                 case DLT_DRAW:
                     ASSERT_PRINTF(batch, "%x: no batch", data);
-                    batch_cmd_yield(&batchCmds, batch->idx);
+                    batch_cmd_yield(&batchCmds, dl);
                     break;
             }
         }
@@ -879,6 +894,8 @@ static void batchify_dl(void* segPtr, int layer)
 
         data += 8;
     }
+
+    batch_cmd_yield(&batchCmds, 0);
 }
 
 void geo_layout_cmd_lvl_node_display_list(void) {
