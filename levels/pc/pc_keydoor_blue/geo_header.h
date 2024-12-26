@@ -1,0 +1,15 @@
+extern const GeoLayout pc_keydoor_blue_geo[];
+extern u8 pc_keydoor_blue_dz_pc_doorkey_door128_ci4[];
+extern u8 pc_keydoor_blue_dz_pc_doorkey_door128_pal_rgba16[];
+extern u8 pc_keydoor_blue_kd_pc_ami2_ci4[];
+extern u8 pc_keydoor_blue_kd_pc_ami2_pal_rgba16[];
+extern Vtx pc_keydoor_blue_pc_keydoor_blue_mesh_layer_1_vtx_0[12];
+extern Gfx pc_keydoor_blue_pc_keydoor_blue_mesh_layer_1_tri_0[];
+extern Vtx pc_keydoor_blue_pc_keydoor_blue_mesh_layer_5_vtx_0[8];
+extern Gfx pc_keydoor_blue_pc_keydoor_blue_mesh_layer_5_tri_0[];
+extern Gfx mat_pc_keydoor_blue_KEYDOOR_BLUE_sa2mdl_0_f3d[];
+extern Gfx mat_revert_pc_keydoor_blue_KEYDOOR_BLUE_sa2mdl_0_f3d[];
+extern Gfx mat_pc_keydoor_blue_KEYDOOR_BLUE_sa2mdl_1_f3d[];
+extern Gfx mat_revert_pc_keydoor_blue_KEYDOOR_BLUE_sa2mdl_1_f3d[];
+extern Gfx pc_keydoor_blue_pc_keydoor_blue_mesh_layer_1[];
+extern Gfx pc_keydoor_blue_pc_keydoor_blue_mesh_layer_5[];

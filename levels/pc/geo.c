@@ -19,3 +19,15 @@
 #define pc_area_1 pc_area_visual
 #define pc_area_1_geo pc_area_geo_visual
 #include "levels/pc/visual/geo.inc.c"
+
+#include "levels/pc/pc_door_b/geo.inc.c"
+#include "levels/pc/pc_door_g/geo.inc.c"
+#include "levels/pc/pc_door_n/geo.inc.c"
+#include "levels/pc/pc_door_r/geo.inc.c"
+#include "levels/pc/pc_block/geo.inc.c"
+#include "levels/pc/pc_key_blue/geo.inc.c"
+#include "levels/pc/pc_key_green/geo.inc.c"
+#include "levels/pc/pc_keydoor_blue/geo.inc.c"
+#include "levels/pc/pc_keydoor_green/geo.inc.c"
+#include "levels/pc/pc_windmill/geo.inc.c"
+#include "levels/pc/pc_walltype/geo.inc.c"
