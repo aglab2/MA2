@@ -46,6 +46,7 @@ Gfx *geo_update_layer_transparency(s32 callContext, struct GraphNode *node, UNUS
 
     if (callContext == GEO_CONTEXT_RENDER) {
         struct Object *objectGraphNode = (struct Object *) gCurGraphNodeObject; // TODO: change this to object pointer?
+        struct GraphNodeBatchGenerated *currentBatchGraphNode = (struct GraphNodeBatchGenerated *) node;
         struct GraphNodeGenerated *currentGraphNode = (struct GraphNodeGenerated *) node;
         s32 parameter = currentGraphNode->parameter;
 
@@ -70,7 +71,8 @@ Gfx *geo_update_layer_transparency(s32 callContext, struct GraphNode *node, UNUS
             if (parameter == GEO_TRANSPARENCY_MODE_DECAL) {
                 SET_GRAPH_NODE_LAYER(currentGraphNode->fnNode.node.flags, LAYER_TRANSPARENT_DECAL);
             } else if (parameter == GEO_TRANSPARENCY_MODE_MIST) {
-                SET_GRAPH_NODE_LAYER(currentGraphNode->fnNode.node.flags, LAYER_MIST);
+                SET_GRAPH_NODE_LAYER(currentGraphNode->fnNode.node.flags, LAYER_TRANSPARENT);
+                currentBatchGraphNode->batch = LAYER_TRANSPARENT_MIST;
             } else {
                 SET_GRAPH_NODE_LAYER(currentGraphNode->fnNode.node.flags, LAYER_TRANSPARENT);
             }
@@ -93,7 +95,7 @@ Gfx *geo_update_layer_transparency(s32 callContext, struct GraphNode *node, UNUS
     return dlStart;
 }
 
-Gfx *geo_update_layer_transparency_envcolor(s32 callContext, struct GraphNode *node, UNUSED void *context) {
+Gfx *geo_update_layer_smoke(s32 callContext, struct GraphNode *node, UNUSED void *context) {
     Gfx *dlStart = NULL;
     struct GraphNodeBatchGenerated *currentBatchGraphNode = (struct GraphNodeBatchGenerated *) node;
     struct GraphNodeGenerated *currentGraphNode = (struct GraphNodeGenerated *) node;

@@ -3,7 +3,7 @@ const GeoLayout mist_geo[] = {
    GEO_NODE_START(),
    GEO_OPEN_NODE(),
       GEO_ASM(GEO_TRANSPARENCY_MODE_MIST, geo_update_layer_transparency),
-      GEO_DISPLAY_LIST(LAYER_MIST, mist_seg3_dl_03000880),
+      GEO_BATCH_DISPLAY_LIST(LAYER_TRANSPARENT, LAYER_TRANSPARENT_MIST, mist_seg3_dl_03000880),
    GEO_CLOSE_NODE(),
    GEO_END(),
 };
@@ -13,7 +13,7 @@ const GeoLayout white_puff_geo[] = {
    GEO_NODE_START(),
    GEO_OPEN_NODE(),
       GEO_ASM(GEO_TRANSPARENCY_MODE_MIST, geo_update_layer_transparency),
-      GEO_DISPLAY_LIST(LAYER_MIST, mist_seg3_dl_03000920),
+      GEO_BATCH_DISPLAY_LIST(LAYER_TRANSPARENT, LAYER_TRANSPARENT_MIST, mist_seg3_dl_03000920),
    GEO_CLOSE_NODE(),
    GEO_END(),
 };

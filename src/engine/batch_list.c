@@ -20,6 +20,9 @@ extern const Gfx burn_smoke_seg4_sub_dl_end[];
 
 extern const Gfx dl_shadow_circle_end[];
 
+extern const Gfx mist_dl[];
+extern const Gfx mist_dl_end[];
+
 static inline struct BatchArray* batch_array_alloc(int count)
 {
     struct BatchArray* batches = main_pool_alloc(sizeof(struct BatchArray) + count * sizeof(struct Batch));
@@ -63,6 +66,11 @@ struct BatchArray* batch_list_objects_alloc_xlu()
         struct Batch* batch = &batchesArr->batches[LAYER_TRANSPARENT_SMOKE];
         batch->startDl = burn_smoke_seg4_sub_dl_begin_translucent;
         batch->endDl   = burn_smoke_seg4_sub_dl_end;
+    }
+    {
+        struct Batch* batch = &batchesArr->batches[LAYER_TRANSPARENT_MIST];
+        batch->startDl = mist_dl;
+        batch->endDl   = mist_dl_end;
     }
     return batchesArr;
 }

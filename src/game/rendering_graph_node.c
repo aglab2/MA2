@@ -96,7 +96,6 @@ static const struct RenderModeContainer renderModeTable_1Cycle[2] = {
         [LAYER_CLD] = G_RM_CLD_SURF,
         [LAYER_TRANSPARENT_DECAL] = G_RM_AA_XLU_SURF,
         [LAYER_TRANSPARENT] = G_RM_AA_XLU_SURF,
-        [LAYER_MIST] = G_RM_AA_XLU_SURF,
         [LAYER_RED_FLAME] = G_RM_AA_XLU_SURF,
         [LAYER_BLUE_FLAME] = G_RM_AA_XLU_SURF,
         [LAYER_TRANSPARENT_INTER] = G_RM_AA_XLU_SURF,
@@ -117,7 +116,6 @@ static const struct RenderModeContainer renderModeTable_1Cycle[2] = {
         [LAYER_CLD] = G_RM_ZB_CLD_SURF,
         [LAYER_TRANSPARENT_DECAL] = G_RM_AA_ZB_XLU_DECAL,
         [LAYER_TRANSPARENT] = G_RM_AA_ZB_XLU_SURF,
-        [LAYER_MIST] = G_RM_AA_ZB_XLU_SURF,
         [LAYER_RED_FLAME] = G_RM_AA_ZB_XLU_SURF,
         [LAYER_BLUE_FLAME] = G_RM_AA_ZB_XLU_SURF,
         [LAYER_TRANSPARENT_INTER] = G_RM_AA_ZB_XLU_INTER,
@@ -141,7 +139,6 @@ static const struct RenderModeContainer renderModeTable_2Cycle[2] = {
         [LAYER_CLD] = G_RM_CLD_SURF2,
         [LAYER_TRANSPARENT_DECAL] = G_RM_AA_XLU_SURF2,
         [LAYER_TRANSPARENT] = G_RM_AA_XLU_SURF2,
-        [LAYER_MIST] = G_RM_AA_XLU_SURF2,
         [LAYER_RED_FLAME] = G_RM_AA_XLU_SURF2,
         [LAYER_BLUE_FLAME] = G_RM_AA_XLU_SURF2,
         [LAYER_TRANSPARENT_INTER] = G_RM_AA_XLU_SURF2,
@@ -162,7 +159,6 @@ static const struct RenderModeContainer renderModeTable_2Cycle[2] = {
         [LAYER_CLD] = G_RM_ZB_CLD_SURF2,
         [LAYER_TRANSPARENT_DECAL] = G_RM_AA_ZB_XLU_DECAL2,
         [LAYER_TRANSPARENT] = G_RM_AA_ZB_XLU_SURF2,
-        [LAYER_MIST] = G_RM_AA_ZB_XLU_SURF2,
         [LAYER_RED_FLAME] = G_RM_AA_ZB_XLU_SURF2,
         [LAYER_BLUE_FLAME] = G_RM_AA_ZB_XLU_SURF2,
         [LAYER_TRANSPARENT_INTER] = G_RM_AA_ZB_XLU_INTER2,
@@ -285,9 +281,6 @@ static const Gfx* sBlueFlameTextureDls[] = {
     flame_seg3_dl_0301B5A8,
 };
 
-extern const Gfx mist_dl[];
-extern const Gfx mist_dl_end[];
-
 /**
  * Process a master list node. This has been modified, so now it runs twice, for each microcode.
  * It iterates through the first 5 layers of if the first index using F3DLX2.Rej, then it switches
@@ -351,11 +344,6 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
                 const Gfx* startDl = NULL;
                 const Gfx* endDl = NULL;
 
-                if (LAYER_MIST == currLayer)
-                {
-                    startDl = mist_dl;
-                    endDl = mist_dl_end;
-                }
                 if (LAYER_RED_FLAME == currLayer)
                 {
                     int flFrame = (gGlobalTimer / 2) % 8;
