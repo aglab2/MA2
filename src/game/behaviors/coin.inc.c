@@ -71,11 +71,11 @@ void bhv_yellow_coin_init(void) {
 
 void bhv_yellow_coin_loop(void) {
     bhv_coin_sparkles_init();
-    // o->oAnimState++;
+    o->oAnimState++;
 }
 
 void bhv_temp_coin_loop(void) {
-    // o->oAnimState++;
+    o->oAnimState++;
 
     if (cur_obj_wait_then_blink(200, 20)) {
         obj_mark_for_deletion(o);
@@ -181,7 +181,7 @@ void bhv_coin_formation_spawned_coin_loop(void) {
         if (bhv_coin_sparkles_init()) {
             o->parentObj->oCoinRespawnBits |= (1 << o->oBehParams2ndByte);
         }
-        //  o->oAnimState++;
+        o->oAnimState++;
     }
     if (o->parentObj->oAction == COIN_FORMATION_ACT_DEACTIVATE) {
         obj_mark_for_deletion(o);

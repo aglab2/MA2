@@ -95,7 +95,6 @@ static const struct RenderModeContainer renderModeTable_1Cycle[2] = {
         [LAYER_OCCLUDE_SILHOUETTE_ALPHA] = G_RM_AA_TEX_EDGE,
 #endif
         [LAYER_SMOKE_ALPHA] = G_RM_AA_TEX_EDGE,
-        [LAYER_COIN] = G_RM_AA_TEX_EDGE,
         [LAYER_CIRCLE_SHADOW] = G_RM_CLD_SURF,
         [LAYER_CIRCLE_SHADOW_TRANSPARENT] = G_RM_CLD_SURF,
         [LAYER_TRANSPARENT_DECAL] = G_RM_AA_XLU_SURF,
@@ -120,7 +119,6 @@ static const struct RenderModeContainer renderModeTable_1Cycle[2] = {
         [LAYER_OCCLUDE_SILHOUETTE_ALPHA] = G_RM_AA_ZB_TEX_EDGE,
 #endif
         [LAYER_SMOKE_ALPHA] = G_RM_AA_ZB_TEX_EDGE,
-        [LAYER_COIN] = G_RM_AA_ZB_TEX_EDGE,
         [LAYER_CIRCLE_SHADOW] = G_RM_AA_ZB_XLU_DECAL,
         [LAYER_CIRCLE_SHADOW_TRANSPARENT] = G_RM_ZB_CLD_SURF,
         [LAYER_TRANSPARENT_DECAL] = G_RM_AA_ZB_XLU_DECAL,
@@ -149,7 +147,6 @@ static const struct RenderModeContainer renderModeTable_2Cycle[2] = {
         [LAYER_OCCLUDE_SILHOUETTE_ALPHA] = G_RM_AA_TEX_EDGE2,
 #endif
         [LAYER_SMOKE_ALPHA] = G_RM_AA_TEX_EDGE2,
-        [LAYER_COIN] = G_RM_AA_TEX_EDGE2,
         [LAYER_CIRCLE_SHADOW] = G_RM_CLD_SURF2,
         [LAYER_CIRCLE_SHADOW_TRANSPARENT] = G_RM_CLD_SURF2,
         [LAYER_TRANSPARENT_DECAL] = G_RM_AA_XLU_SURF2,
@@ -175,7 +172,6 @@ static const struct RenderModeContainer renderModeTable_2Cycle[2] = {
         [LAYER_OCCLUDE_SILHOUETTE_ALPHA] = G_RM_AA_ZB_TEX_EDGE2,
 #endif
         [LAYER_SMOKE_ALPHA] = G_RM_AA_ZB_TEX_EDGE2,
-        [LAYER_COIN] = G_RM_AA_ZB_TEX_EDGE2,
         [LAYER_CIRCLE_SHADOW] = G_RM_AA_ZB_XLU_DECAL2,
         [LAYER_CIRCLE_SHADOW_TRANSPARENT] = G_RM_ZB_CLD_SURF2,
         [LAYER_TRANSPARENT_DECAL] = G_RM_AA_ZB_XLU_DECAL2,
@@ -282,14 +278,6 @@ static const Mtx identityMatrixWorldScale = {{
      0x00000000,                            LOWER_FIXED(1.0f)               <<  0}
 }};
 
-static const Gfx* sCoinsTextureDls[] = {
-    dl_coin_0,
-    dl_coin_22_5,
-    dl_coin_45,
-    dl_coin_67_5,
-    dl_coin_90,
-};
-
 extern const Gfx dl_shadow_circle_end[];
 static const Gfx* sRedFlameTextureDls[] = {
     flame_seg3_dl_0301B3B0,
@@ -331,18 +319,16 @@ extern const Gfx breakable_box_seg8_dl_cork_box_end[];
  */
 
 void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
-    struct RenderPhase *renderPhase;
-    struct DisplayListNode *currList;
+    const struct RenderPhase *renderPhase;
     s32 currLayer     = LAYER_FIRST;
     s32 startLayer    = LAYER_FIRST;
     s32 endLayer      = LAYER_LAST;
     s32 phaseIndex    = RENDER_PHASE_FIRST;
     s32 enableZBuffer = (node->node.flags & GRAPH_RENDER_Z_BUFFER) != 0;
     s32 finalPhase    = enableZBuffer ? RENDER_PHASE_END : 1;
-    struct RenderModeContainer *mode1List = &renderModeTable_1Cycle[enableZBuffer];
-    struct RenderModeContainer *mode2List = &renderModeTable_2Cycle[enableZBuffer];
+    const struct RenderModeContainer *mode1List = &renderModeTable_1Cycle[enableZBuffer];
+    const struct RenderModeContainer *mode2List = &renderModeTable_2Cycle[enableZBuffer];
     Gfx *tempGfxHead = gDisplayListHead;
-    int frame = gGlobalTimer % 8;
     u32 curMode1 = 0, curMode2 = 0;
     const Gfx* curStartDl = NULL, *curEndDl = NULL;
 
@@ -363,118 +349,127 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
         // Iterate through the layers on the current render phase.
         for (currLayer = startLayer; currLayer <= endLayer; currLayer++) {
             // Set 'currList' to the first DisplayListNode on the current layer.
-            currList = node->listHeads[currLayer];
-            if (!currList)
-                continue;
-
-            // Set the render mode for the current layer.
+            struct MasterLayer* masterLayer = &node->layers[currLayer];
+            struct DisplayListNode *currList = masterLayer->list.head;
             u32 wantMode1 = mode1List->modes[currLayer];
             u32 wantMode2 = mode2List->modes[currLayer];
-#if defined(DISABLE_AA) || !SILHOUETTE
-            // - do nothing...
-#else
-            if (phaseIndex == RENDER_PHASE_NON_SILHOUETTE) {
-                wantMode1 &= ~IM_RD;
-                wantMode2 &= ~IM_RD;
-            }
-#endif
-            if (currLayer == LAYER_COIN || currLayer == LAYER_SMOKE_ALPHA || wantMode1 != curMode1 || wantMode2 != curMode2)
+            if (currList)
             {
-                gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
-                curMode1 = wantMode1; curMode2 = wantMode2;
-            }
-
-            const Gfx* startDl = NULL;
-            const Gfx* endDl = NULL;
-            
-            if (currLayer == LAYER_CORKBOX)
-            {
-                startDl = breakable_box_seg8_dl_cork_box_init;
-                endDl = breakable_box_seg8_dl_cork_box_end;
-            }
-
-            if (currLayer == LAYER_COIN) 
-            {
-                if (frame < 5)
-                {
-                    startDl = sCoinsTextureDls[frame];
+                // Set the render mode for the current layer.
+    #if defined(DISABLE_AA) || !SILHOUETTE
+                // - do nothing...
+    #else
+                if (phaseIndex == RENDER_PHASE_NON_SILHOUETTE) {
+                    wantMode1 &= ~IM_RD;
+                    wantMode2 &= ~IM_RD;
                 }
-                else
+    #endif
+                if (currLayer == LAYER_SMOKE_ALPHA || wantMode1 != curMode1 || wantMode2 != curMode2)
                 {
-                    startDl = sCoinsTextureDls[8 - frame];
+                    gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
+                    curMode1 = wantMode1; curMode2 = wantMode2;
                 }
-                endDl = dl_coin_end;
-            }
 
-            if (LAYER_MIST == currLayer)
-            {
-                startDl = mist_dl;
-                endDl = mist_dl_end;
-            }
-            if (LAYER_RED_FLAME == currLayer)
-            {
-                int flFrame = (gGlobalTimer / 2) % 8;
-                startDl = sRedFlameTextureDls[flFrame];
-                endDl = flame_seg3_dl_end;
-            }
-            if (LAYER_BLUE_FLAME == currLayer)
-            {
-                int flFrame = (gGlobalTimer / 2) % 8;
-                startDl = sBlueFlameTextureDls[flFrame];
-                endDl = flame_seg3_dl_end;
-            }
+                const Gfx* startDl = NULL;
+                const Gfx* endDl = NULL;
+                
+                if (currLayer == LAYER_CORKBOX)
+                {
+                    startDl = breakable_box_seg8_dl_cork_box_init;
+                    endDl = breakable_box_seg8_dl_cork_box_end;
+                }
 
-            if (currLayer == LAYER_CIRCLE_SHADOW || currLayer == LAYER_CIRCLE_SHADOW_TRANSPARENT)
-            {
-                startDl = dl_shadow_circle;
-                endDl = dl_shadow_circle_end;
-            }
+                if (LAYER_MIST == currLayer)
+                {
+                    startDl = mist_dl;
+                    endDl = mist_dl_end;
+                }
+                if (LAYER_RED_FLAME == currLayer)
+                {
+                    int flFrame = (gGlobalTimer / 2) % 8;
+                    startDl = sRedFlameTextureDls[flFrame];
+                    endDl = flame_seg3_dl_end;
+                }
+                if (LAYER_BLUE_FLAME == currLayer)
+                {
+                    int flFrame = (gGlobalTimer / 2) % 8;
+                    startDl = sBlueFlameTextureDls[flFrame];
+                    endDl = flame_seg3_dl_end;
+                }
 
-            if (LAYER_SMOKE_ALPHA == currLayer)
-            {
-                startDl = burn_smoke_seg4_sub_dl_begin_alpha;
-                endDl   = burn_smoke_seg4_sub_dl_end;
-            }
+                if (currLayer == LAYER_CIRCLE_SHADOW || currLayer == LAYER_CIRCLE_SHADOW_TRANSPARENT)
+                {
+                    startDl = dl_shadow_circle;
+                    endDl = dl_shadow_circle_end;
+                }
 
-            if (LAYER_SMOKE_TRANSPARENT == currLayer)
-            {
-                startDl = burn_smoke_seg4_sub_dl_begin_translucent;
-                endDl   = burn_smoke_seg4_sub_dl_end;
-            }
+                if (LAYER_SMOKE_ALPHA == currLayer)
+                {
+                    startDl = burn_smoke_seg4_sub_dl_begin_alpha;
+                    endDl   = burn_smoke_seg4_sub_dl_end;
+                }
 
-            if (startDl != curStartDl)
-            {
-                // It is reasonable to expect 'startDl' and 'endDl' be paired together so it is abused here
-                // We want to switch dls as few times as possible so it is assumed that startDl+endDl can be merged together in no-op
-                if (curEndDl) gSPDisplayList(tempGfxHead++, curEndDl);
-                if (startDl)  gSPDisplayList(tempGfxHead++, startDl);
-                curStartDl = startDl;
-                curEndDl = endDl;
-            }
+                if (LAYER_SMOKE_TRANSPARENT == currLayer)
+                {
+                    startDl = burn_smoke_seg4_sub_dl_begin_translucent;
+                    endDl   = burn_smoke_seg4_sub_dl_end;
+                }
 
-            // Iterate through all the displaylists on the current layer.
-            do {
-                // Add the display list's transformation to the master list.
-                gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(currList->transform),
-                          (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
-#if SILHOUETTE
-                if (phaseIndex == RENDER_PHASE_SILHOUETTE) {
-                    // Add the current display list to the master list, with silhouette F3D.
-                    gSPDisplayList(tempGfxHead++, dl_silhouette_begin);
-                    gSPDisplayList(tempGfxHead++, currList->displayList);
-                    gSPDisplayList(tempGfxHead++, dl_silhouette_end);
-                } else {
+                if (startDl != curStartDl)
+                {
+                    // It is reasonable to expect 'startDl' and 'endDl' be paired together so it is abused here
+                    // We want to switch dls as few times as possible so it is assumed that startDl+endDl can be merged together in no-op
+                    if (curEndDl) gSPDisplayList(tempGfxHead++, curEndDl);
+                    if (startDl)  gSPDisplayList(tempGfxHead++, startDl);
+                    curStartDl = startDl;
+                    curEndDl = endDl;
+                }
+
+                // Iterate through all the displaylists on the current layer.
+                do {
+                    // Add the display list's transformation to the master list.
+                    gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(currList->transform),
+                            (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
+    #if SILHOUETTE
+                    if (phaseIndex == RENDER_PHASE_SILHOUETTE) {
+                        // Add the current display list to the master list, with silhouette F3D.
+                        gSPDisplayList(tempGfxHead++, dl_silhouette_begin);
+                        gSPDisplayList(tempGfxHead++, currList->displayList);
+                        gSPDisplayList(tempGfxHead++, dl_silhouette_end);
+                    } else {
+                        // Add the current display list to the master list.
+                        gSPDisplayList(tempGfxHead++, currList->displayList);
+                    }
+    #else
                     // Add the current display list to the master list.
                     gSPDisplayList(tempGfxHead++, currList->displayList);
+    #endif
+                    // Move to the next DisplayListNode.
+                    currList = currList->next;
                 }
-#else
-                // Add the current display list to the master list.
-                gSPDisplayList(tempGfxHead++, currList->displayList);
-#endif
-                // Move to the next DisplayListNode.
-                currList = currList->next;
+                while (currList != NULL);
             }
-            while (currList != NULL);
+
+            struct BatchArray* batchesArr = masterLayer->objects;
+            if (batchesArr) {
+                // Some "fun" display lists before may decide to change the render mode, so we need to reset it.
+                gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
+
+                for (int batch = 0; batch < batchesArr->count; batch++) {
+                    struct Batch* batches = &batchesArr->batches[batch];
+                    if (!batches->list.head)
+                        continue;
+
+                    gSPDisplayList(tempGfxHead++, batches->startDl);
+                    struct DisplayListNode* currList = batches->list.head;
+                    do {
+                        gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(currList->transform), (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
+                        gSPDisplayList(tempGfxHead++, currList->displayList);
+                        currList = currList->next;
+                    } while (currList != NULL);
+                    gSPDisplayList(tempGfxHead++, batches->endDl);
+                }
+            }
         }
     }
 
@@ -493,6 +488,21 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
     }
 
     gDisplayListHead = tempGfxHead;
+}
+
+static void append_dl(struct DisplayListHead* list, void* dl)
+{
+    struct DisplayListNode *listNode = main_pool_alloc(sizeof(struct DisplayListNode));
+
+    listNode->transform = gMatStackFixed[gMatStackIndex];
+    listNode->displayList = dl;
+    listNode->next = NULL;
+    if (list->head == NULL) {
+        list->head = listNode;
+    } else {
+        list->tail->next = listNode;
+    }
+    list->tail = listNode;
 }
 
 /**
@@ -520,19 +530,13 @@ void geo_append_display_list(void *displayList, s32 layer) {
         }
     }
 #endif // F3DEX_GBI_2 || SILHOUETTE
-    {
-        struct DisplayListNode *listNode = main_pool_alloc(sizeof(struct DisplayListNode));
+    struct MasterLayer* masterLayer = &gCurGraphNodeMasterList->layers[layer];
+    append_dl(&masterLayer->list, displayList);
+}
 
-        listNode->transform = gMatStackFixed[gMatStackIndex];
-        listNode->displayList = displayList;
-        listNode->next = NULL;
-        if (gCurGraphNodeMasterList->listHeads[layer] == NULL) {
-            gCurGraphNodeMasterList->listHeads[layer] = listNode;
-        } else {
-            gCurGraphNodeMasterList->listTails[layer]->next = listNode;
-        }
-        gCurGraphNodeMasterList->listTails[layer] = listNode;
-    }
+static void geo_append_batched_display_list(void *displayList, enum RenderLayers layer, enum LayerBatches batch) {
+    struct MasterLayer* masterLayer = &gCurGraphNodeMasterList->layers[layer];
+    append_dl(&masterLayer->objects->batches[batch].list, displayList);
 }
 
 static void inc_mat_stack() {
@@ -556,12 +560,17 @@ static void append_dl_and_return(struct GraphNodeDisplayList *node) {
  * Process the master list node.
  */
 void geo_process_master_list(struct GraphNodeMasterList *node) {
-    s32 layer;
-
     if (gCurGraphNodeMasterList == NULL && node->node.children != NULL) {
         gCurGraphNodeMasterList = node;
-        for (layer = LAYER_FIRST; layer < LAYER_COUNT; layer++) {
-            node->listHeads[layer] = NULL;
+        for (int layer = LAYER_FIRST; layer < LAYER_COUNT; layer++) {
+            struct MasterLayer* masterLayer = &node->layers[layer];
+            masterLayer->list.head = NULL;
+
+            if (masterLayer->objects) {
+                for (int batch = 0; batch < masterLayer->objects->count; batch++) {
+                    masterLayer->objects->batches[batch].list.head = NULL;
+                }
+            }
         }
         geo_process_node_and_siblings(node->node.children);
         geo_process_master_list_sub(gCurGraphNodeMasterList);
@@ -679,8 +688,10 @@ void geo_process_cull(struct GraphNodeCull* node)
 
 void geo_process_coin(struct GraphNodeCoin *node)
 {
-    void* dl = gGlobalTimer % 8 < 5 ? node->displayList : node->displayList_r;
-    geo_append_display_list(dl, GET_GRAPH_NODE_LAYER(node->node.flags));
+    int frame = ((u32) gCurGraphNodeObjectNode->oAnimState) % 8;
+    enum LayerBatches batch = LAYER_ALPHA_BATCHES_BASE + (frame < 5 ? frame : 8 - frame);
+    void* dl = frame < 5 ? node->displayList : node->displayList_r;
+    geo_append_batched_display_list(dl, LAYER_ALPHA, batch);
 }
 
 /**
@@ -897,19 +908,7 @@ static void parseDL(void* segptr)
 static void geo_lvl_append_display_list(void *displayList, s32 layer) {
     parseDL(displayList);
     // gSPLookAt(gDisplayListHead++, gCurLookAt);
-    {
-        struct DisplayListNode *listNode = main_pool_alloc(sizeof(struct DisplayListNode));
-
-        listNode->transform = gMatStackFixed[gMatStackIndex];
-        listNode->displayList = displayList;
-        listNode->next = NULL;
-        if (gCurGraphNodeMasterList->listHeads[layer] == NULL) {
-            gCurGraphNodeMasterList->listHeads[layer] = listNode;
-        } else {
-            gCurGraphNodeMasterList->listTails[layer]->next = listNode;
-        }
-        gCurGraphNodeMasterList->listTails[layer] = listNode;
-    }
+    append_dl(&gCurGraphNodeMasterList->layers[layer].list, displayList);
 }
 
 static void append_lvl_dl_and_return(struct GraphNodeDisplayList *node) {

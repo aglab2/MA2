@@ -3,7 +3,7 @@
 const GeoLayout yellow_coin_geo[] = {
    GEO_SHADOW(SHADOW_CIRCLE_4_VERTS, 0xB4, 50),
    GEO_OPEN_NODE(),
-      GEO_COIN(LAYER_COIN, coin_seg3_dl_yellow, coin_seg3_dl_yellow_r),
+      GEO_COIN(LAYER_OPAQUE, coin_seg3_dl_yellow, coin_seg3_dl_yellow_r),
    GEO_CLOSE_NODE(),
    GEO_END(),
 };
@@ -12,7 +12,7 @@ const GeoLayout yellow_coin_geo[] = {
 const GeoLayout yellow_coin_no_shadow_geo[] = {
    GEO_NODE_START(),
    GEO_OPEN_NODE(),
-      GEO_COIN(LAYER_COIN, coin_seg3_dl_yellow, coin_seg3_dl_yellow_r),
+      GEO_COIN(LAYER_OPAQUE, coin_seg3_dl_yellow, coin_seg3_dl_yellow_r),
    GEO_CLOSE_NODE(),
    GEO_END(),
 };
@@ -21,7 +21,7 @@ const GeoLayout yellow_coin_no_shadow_geo[] = {
 const GeoLayout blue_coin_geo[] = {
    GEO_SHADOW(SHADOW_CIRCLE_4_VERTS, 0xB4, 80),
    GEO_OPEN_NODE(),
-      GEO_COIN(LAYER_COIN, coin_seg3_dl_blue, coin_seg3_dl_blue_r),
+      GEO_COIN(LAYER_OPAQUE, coin_seg3_dl_blue, coin_seg3_dl_blue_r),
    GEO_CLOSE_NODE(),
    GEO_END(),
 };
@@ -30,7 +30,7 @@ const GeoLayout blue_coin_geo[] = {
 const GeoLayout blue_coin_no_shadow_geo[] = {
    GEO_NODE_START(),
    GEO_OPEN_NODE(),
-      GEO_COIN(LAYER_COIN, coin_seg3_dl_blue, coin_seg3_dl_blue_r),
+      GEO_COIN(LAYER_OPAQUE, coin_seg3_dl_blue, coin_seg3_dl_blue_r),
    GEO_CLOSE_NODE(),
    GEO_END(),
 };
@@ -39,7 +39,7 @@ const GeoLayout blue_coin_no_shadow_geo[] = {
 const GeoLayout red_coin_geo[] = {
    GEO_SHADOW(SHADOW_CIRCLE_4_VERTS, 0xB4, 80),
    GEO_OPEN_NODE(),
-      GEO_COIN(LAYER_COIN, coin_seg3_dl_red, coin_seg3_dl_red_r),
+      GEO_COIN(LAYER_OPAQUE, coin_seg3_dl_red, coin_seg3_dl_red_r),
    GEO_CLOSE_NODE(),
    GEO_END(),
 };
@@ -48,7 +48,7 @@ const GeoLayout red_coin_geo[] = {
 const GeoLayout red_coin_no_shadow_geo[] = {
    GEO_NODE_START(),
    GEO_OPEN_NODE(),
-      GEO_COIN(LAYER_COIN, coin_seg3_dl_red, coin_seg3_dl_red_r),
+      GEO_COIN(LAYER_OPAQUE, coin_seg3_dl_red, coin_seg3_dl_red_r),
    GEO_CLOSE_NODE(),
    GEO_END(),
 };
@@ -57,7 +57,7 @@ const GeoLayout red_coin_no_shadow_geo[] = {
 const GeoLayout silver_coin_geo[] = {
    GEO_SHADOW(SHADOW_CIRCLE_4_VERTS, 0xB4, 80),
    GEO_OPEN_NODE(),
-      GEO_COIN(LAYER_COIN, coin_seg3_dl_secret, coin_seg3_dl_secret_r),
+      GEO_COIN(LAYER_OPAQUE, coin_seg3_dl_secret, coin_seg3_dl_secret_r),
    GEO_CLOSE_NODE(),
    GEO_END(),
 };
@@ -66,7 +66,7 @@ const GeoLayout silver_coin_geo[] = {
 const GeoLayout silver_coin_no_shadow_geo[] = {
    GEO_NODE_START(),
    GEO_OPEN_NODE(),
-      GEO_COIN(LAYER_COIN, coin_seg3_dl_secret, coin_seg3_dl_secret_r),
+      GEO_COIN(LAYER_OPAQUE, coin_seg3_dl_secret, coin_seg3_dl_secret_r),
    GEO_CLOSE_NODE(),
    GEO_END(),
 };

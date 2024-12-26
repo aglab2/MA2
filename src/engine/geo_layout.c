@@ -44,7 +44,7 @@ static const GeoLayoutCommandProc GeoLayoutJumpTable[] = {
     /*GEO_CMD_NOP_1E                    */ geo_layout_cmd_nop2,
     /*GEO_CMD_NODE_CULL                 */ geo_layout_cmd_node_cull,
     /*GEO_CMD_NODE_CULLING_RADIUS       */ geo_layout_cmd_node_culling_radius,
-    /*GEO_COIN      */                     geo_layout_cmd_coin,
+    /*GEO_CMD_NODE_COIN      */            geo_layout_cmd_coin,
 
     /* GEO_CMD_LVL_NODE_TRANSLATION_ROTATION */ geo_layout_cmd_lvl_translation_rotation,
     /* GEO_CMD_LVL_NODE_TRANSLATION */          geo_layout_cmd_lvl_translation,
@@ -140,8 +140,11 @@ void geo_layout_cmd_branch(void) {
 }
 
 // 0x03: Return from branch
+static u8 sBatchCommit = 0;
 void geo_layout_cmd_return(void) {
     gGeoLayoutCommand = (u8 *) gGeoLayoutStack[--gGeoLayoutStackIndex];
+    if (sBatchCommit) {
+    }
 }
 
 // 0x04: Open node
@@ -312,9 +315,11 @@ void geo_layout_cmd_node_cull(void) {
   0x0C: Create z-buffer-toggling scene graph node
    cmd+0x01: u8 enableZBuffer (1 = on, 0 = off)
 */
+static struct GraphNodeMasterList *gMasterNode = NULL;
 void geo_layout_cmd_node_master_list(void) {
     struct GraphNodeMasterList *graphNode = init_graph_node_master_list(TRUE, NULL, cur_geo_cmd_u8(0x01));
 
+    gMasterNode = graphNode;
     register_scene_graph_node(&graphNode->node);
 
     gGeoLayoutCommand += 0x04 << CMD_SIZE_SHIFT;
@@ -775,6 +780,7 @@ static void batch_cmd_yield(uint32_t** cmds, uint32_t cmd)
 // <0 - push dl to batch with index
 static void batchify_dl(void* segPtr)
 {
+    sBatchCommit = 1;
     uint8_t* data = segmented_to_virtual(segPtr);
     uint32_t* batchCmds = (uint32_t*) data;
     batch_ht_entry_t* batch = NULL;
