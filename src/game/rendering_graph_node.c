@@ -271,11 +271,12 @@ static void render_lists(Gfx **ptempGfxHead, struct DisplayListNode* currList)
 }
 
 extern const Gfx dl_course_common_revert[];
-static void render_batches(Gfx **ptempGfxHead, struct BatchArray* batchesArr, u32 wantMode1, u32 wantMode2, int course)
+static int render_batches(Gfx **ptempGfxHead, struct BatchArray* batchesArr, u32 wantMode1, u32 wantMode2, int course)
 {
 #define tempGfxHead (*ptempGfxHead)
+    int amountRendered = 0;
     if (!batchesArr)
-        return;
+        return 0;
 
     // Some "fun" display lists before may decide to change the render mode, so we need to reset it.
     gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
@@ -286,6 +287,7 @@ static void render_batches(Gfx **ptempGfxHead, struct BatchArray* batchesArr, u3
             continue;
 
         gSPDisplayList(tempGfxHead++, batches->startDl);
+        amountRendered++;
         render_lists(&tempGfxHead, batches->list.head);
         gSPDisplayList(tempGfxHead++, batches->endDl);
 
@@ -294,6 +296,8 @@ static void render_batches(Gfx **ptempGfxHead, struct BatchArray* batchesArr, u3
         }
     }
 #undef tempGfxHead
+
+    return amountRendered;
 }
 
 void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
@@ -367,7 +371,9 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
                 while (currList != NULL);
             }
 
-            render_batches(&tempGfxHead, masterLayer->course, wantMode1, wantMode2, 1);
+            int amt = render_batches(&tempGfxHead, masterLayer->course, wantMode1, wantMode2, 1);
+            // if (amt)
+            //     print_text_fmt_int(20, 20 + currLayer * 20, "%d", amt);
             render_batches(&tempGfxHead, masterLayer->objects, wantMode1, wantMode2, 0);
         }
     }
