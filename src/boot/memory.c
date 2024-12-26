@@ -168,7 +168,8 @@ void move_segment_table_to_dmem(void) {
 }
 #endif
 
-extern u8 _framebuffer2SegmentBssEnd[];
+extern u8 _framebuffer0SegmentBssEnd[];
+extern u8 _framebuffer1SegmentBssStart[];
 extern u8 _goddardSegmentStart[];
 extern u8 _sbssSegmentBssEnd[];
 
@@ -191,7 +192,7 @@ void main_pool_init() {
 
 #if MEMORY_FRAGMENTATION_NO_FRAGMENTATION == MEMORY_FRAGMENTATION_LEVEL
     // One giant region encompassing all of the ram
-    SET_REGION(0, _framebuffer2SegmentBssEnd, _goddardSegmentStart);
+    SET_REGION(0, _framebuffer0SegmentBssEnd, _framebuffer1SegmentBssStart);
 #endif
 
 #if MEMORY_FRAGMENTATION_ZBUFFER_AND_FRAMEBUFFERS == MEMORY_FRAGMENTATION_LEVEL

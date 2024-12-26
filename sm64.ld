@@ -339,18 +339,6 @@ SECTIONS
       BUILD_DIR/src/buffers/framebuffer0.o(.bss*);
    }
    END_NOLOAD(framebuffer0)
-
-   BEGIN_NOLOAD(framebuffer1)
-   {
-      BUILD_DIR/src/buffers/framebuffer1.o(.bss*);
-   }
-   END_NOLOAD(framebuffer1)
-
-   BEGIN_NOLOAD(framebuffer2)
-   {
-      BUILD_DIR/src/buffers/framebuffer2.o(.bss*);
-   }
-   END_NOLOAD(framebuffer2)
 #else
    . = ZBUFFER_START;
    BEGIN_NOLOAD(zbuffer)
@@ -374,6 +362,21 @@ SECTIONS
    END_NOLOAD(framebuffer1)
 
    . = FRAMEBUFFER2_START;
+   BEGIN_NOLOAD(framebuffer2)
+   {
+      BUILD_DIR/src/buffers/framebuffer2.o(.bss*);
+   }
+   END_NOLOAD(framebuffer2)
+#endif
+
+#if MEMORY_FRAGMENTATION_NO_FRAGMENTATION == MEMORY_FRAGMENTATION_LEVEL
+   . = 0x80700000 - 0x25800;
+   BEGIN_NOLOAD(framebuffer1)
+   {
+      BUILD_DIR/src/buffers/framebuffer1.o(.bss*);
+   }
+   END_NOLOAD(framebuffer1)
+
    BEGIN_NOLOAD(framebuffer2)
    {
       BUILD_DIR/src/buffers/framebuffer2.o(.bss*);
