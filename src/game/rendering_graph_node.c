@@ -270,8 +270,6 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
     const struct RenderModeContainer *mode1List = &renderModeTable_1Cycle[enableZBuffer];
     const struct RenderModeContainer *mode2List = &renderModeTable_2Cycle[enableZBuffer];
     Gfx *tempGfxHead = gDisplayListHead;
-    u32 curMode1 = 0, curMode2 = 0;
-    const Gfx* curStartDl = NULL, *curEndDl = NULL;
 
     // Loop through the render phases
     for (phaseIndex = RENDER_PHASE_FIRST; phaseIndex < finalPhase; phaseIndex++) {
@@ -305,24 +303,7 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
                     wantMode2 &= ~IM_RD;
                 }
     #endif
-                if (wantMode1 != curMode1 || wantMode2 != curMode2)
-                {
-                    gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
-                    curMode1 = wantMode1; curMode2 = wantMode2;
-                }
-
-                const Gfx* startDl = NULL;
-                const Gfx* endDl = NULL;
-
-                if (startDl != curStartDl)
-                {
-                    // It is reasonable to expect 'startDl' and 'endDl' be paired together so it is abused here
-                    // We want to switch dls as few times as possible so it is assumed that startDl+endDl can be merged together in no-op
-                    if (curEndDl) gSPDisplayList(tempGfxHead++, curEndDl);
-                    if (startDl)  gSPDisplayList(tempGfxHead++, startDl);
-                    curStartDl = startDl;
-                    curEndDl = endDl;
-                }
+                gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
 
                 // Iterate through all the displaylists on the current layer.
                 do {
@@ -371,8 +352,6 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
             }
         }
     }
-
-    if (curEndDl) gSPDisplayList(tempGfxHead++, curEndDl);
 
     if (enableZBuffer) {
         // Disable z buffer.
