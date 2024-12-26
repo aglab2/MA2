@@ -142,11 +142,40 @@ void geo_layout_cmd_branch(void) {
     gGeoLayoutCommand = segmented_to_virtual(cur_geo_cmd_ptr(0x04));
 }
 
+#define DEBUG_ASSERTIONS
+#ifdef DEBUG_ASSERTIONS
+#define ASSERT_PRINTF(cond, fmt, ...) do{ if (!(cond)) { char msg[40]; sprintf(msg, fmt, ##__VA_ARGS__); error(msg); } }while(0)
+#else
+#define ASSERT_PRINTF(cond, fmt, ...) do{}while(0)
+#endif
+
 // 0x03: Return from branch
 static u8 sBatchCommit = 0;
+static struct GraphNodeMasterList *gMasterNode = NULL;
 void geo_layout_cmd_return(void) {
     gGeoLayoutCommand = (u8 *) gGeoLayoutStack[--gGeoLayoutStackIndex];
     if (sBatchCommit) {
+        batch_ht_t* ht = ((batch_ht_t*) (0x80710000 + 0x25800));
+
+        for (int layer = LAYER_FIRST; layer < LAYER_COUNT; layer++) {
+            int total = ht->totals[layer];
+            if (0 == total)
+                continue;
+
+            gMasterNode->layers[layer].course = main_pool_alloc(sizeof(struct BatchArray) + total * sizeof(struct Batch));
+        }
+
+        s16 layerIdx[LAYER_COUNT] = {0};
+        for (int entryId = 0; entryId < ht->next; entryId++) {
+            batch_ht_entry_t* entry = &ht->firstEntry[entryId];
+            ASSERT_PRINTF(entry->idx == entryId, "Incorrect value %d != %d", entry->idx, entryId);
+            struct BatchArray* batchArr = gMasterNode->layers[entry->layer].course;
+            struct Batch* batch = &batchArr->batches[layerIdx[entry->layer]];
+            layerIdx[entry->layer]++;
+            batch->startDl = entry->startPtr;
+            batch->endDl   = entry->endPtr;
+        }
+        sBatchCommit = 0;
     }
 }
 
@@ -318,7 +347,6 @@ void geo_layout_cmd_node_cull(void) {
   0x0C: Create z-buffer-toggling scene graph node
    cmd+0x01: u8 enableZBuffer (1 = on, 0 = off)
 */
-static struct GraphNodeMasterList *gMasterNode = NULL;
 void geo_layout_cmd_node_master_list(void) {
     struct GraphNodeMasterList *graphNode = init_graph_node_master_list(TRUE, NULL, cur_geo_cmd_u8(0x01));
 
@@ -430,7 +458,7 @@ void geo_layout_cmd_node_camera(void) {
     }
     else
     {
-        batch_ht_init((batch_ht_t*) (0x80710000 + 25800));
+        batch_ht_init((batch_ht_t*) (0x80710000 + 0x25800));
         sCameraCache = graphNode;
         gGeoLayoutCommand += 0x14 << CMD_SIZE_SHIFT;
     }
@@ -754,13 +782,6 @@ void geo_layout_cmd_node_batch_display_list_anim(void) {
     gGeoLayoutCommand += 0x0C << CMD_SIZE_SHIFT;
 }
 
-#define DEBUG_ASSERTIONS
-#ifdef DEBUG_ASSERTIONS
-#define ASSERT_PRINTF(cond, fmt, ...) do{ if (!(cond)) { char msg[40]; sprintf(msg, fmt, ##__VA_ARGS__); error(msg); } }while(0)
-#else
-#define ASSERT_PRINTF(cond, fmt, ...) do{}while(0)
-#endif
-
 enum DLType
 {
     DLT_ENTER = -1,
@@ -808,7 +829,7 @@ static void batch_cmd_yield(uint32_t** cmds, uint32_t cmd)
 // 0 - terminate batches
 // >0 - enable batch with index
 // <0 - push dl to batch with index
-static void batchify_dl(void* segPtr)
+static void batchify_dl(void* segPtr, int layer)
 {
     sBatchCommit = 1;
     uint8_t* data = segmented_to_virtual(segPtr);
@@ -830,7 +851,7 @@ static void batchify_dl(void* segPtr)
             {
                 case DLT_ENTER:
                 {
-                    batch = batch_ht_indexize(((batch_ht_t*) (0x80710000 + 25800)), dl);
+                    batch = batch_ht_indexize(((batch_ht_t*) (0x80710000 + 0x25800)), dl, layer);
                     batch_cmd_yield(&batchCmds, batch->idx);
                 }
                     break;
@@ -861,8 +882,9 @@ static void batchify_dl(void* segPtr)
 }
 
 void geo_layout_cmd_lvl_node_display_list(void) {
+    s32 drawingLayer = cur_geo_cmd_u8(0x01);
     void *displayList = cur_geo_cmd_ptr(0x04);
-    batchify_dl(displayList);
+    batchify_dl(displayList, drawingLayer);
     return geo_layout_cmd_node_display_list_impl(GRAPH_NODE_TYPE_LVL_DISPLAY_LIST);
 }
 
@@ -1026,7 +1048,7 @@ void geo_layout_cmd_lvl_translation_rotation(void) {
     displayList = *(void **) &cmdPos[0];
     drawingLayer = params & 0x7F;
     cmdPos += 2 << CMD_SIZE_SHIFT;
-    batchify_dl(displayList);
+    batchify_dl(displayList, drawingLayer);
 
     graphNode = init_graph_node_lvl_translation_rotation(TRUE, NULL, drawingLayer, displayList,
                                                      translation, rotation);
@@ -1055,7 +1077,7 @@ void geo_layout_cmd_lvl_translation(void) {
     drawingLayer = params & 0x7F;
     cmdPos += 2 << CMD_SIZE_SHIFT;
 
-    batchify_dl(displayList);
+    batchify_dl(displayList, drawingLayer);
 
     graphNode =
         init_graph_node_lvl_translation(TRUE, NULL, drawingLayer, displayList, translation);

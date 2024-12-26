@@ -7,14 +7,17 @@
 typedef struct batch_ht_entry {
     const void* startPtr;
     const void* endPtr;
-    int idx;
+    s16 layer;
+    s16 idx;
     struct batch_ht_entry *next;
 } batch_ht_entry_t;
 
 typedef struct {
     batch_ht_entry_t *entries[TABLE_SIZE];
     int next;
-    void* nextAlloc;
+    int totals[LAYER_COUNT];
+    batch_ht_entry_t* firstEntry;
+    batch_ht_entry_t* nextEntry;
 } batch_ht_t;
 
 static inline unsigned int hash(const void* startPtr) {
@@ -23,20 +26,15 @@ static inline unsigned int hash(const void* startPtr) {
 
 static inline void batch_ht_init(batch_ht_t *table) {
     bzero(table, sizeof(table));
-    table->nextAlloc = table + 1;
+    table->firstEntry = table->nextEntry = (batch_ht_entry_t*) (((uint8_t*) table) + sizeof(batch_ht_t));
 }
 
-static inline void* batch_ht_malloc(batch_ht_t *table, int sz) {
-    void* ret = table->nextAlloc;
-    table->nextAlloc += sz;
-    return ret;
-}
-
-static inline batch_ht_entry_t* batch_ht_set(batch_ht_t *table, const char *startPtr, int idx) {
+static inline batch_ht_entry_t* batch_ht_set(batch_ht_t *table, const char *startPtr, int idx, int layer) {
     unsigned int slot = hash(startPtr);
 
-    batch_ht_entry_t* newEntry = (batch_ht_entry_t*) batch_ht_malloc(table, sizeof(batch_ht_entry_t));
+    batch_ht_entry_t* newEntry = table->nextEntry++;
     newEntry->startPtr = startPtr;
+    newEntry->layer = layer;
     newEntry->idx = idx;
     newEntry->next = table->entries[slot];
     table->entries[slot] = newEntry;
@@ -57,13 +55,14 @@ static inline batch_ht_entry_t* batch_ht_get(batch_ht_t *table, const char *star
     return 0;
 }
 
-static batch_ht_entry_t* batch_ht_indexize(batch_ht_t *table, const char *startPtr) {
+static inline batch_ht_entry_t* batch_ht_indexize(batch_ht_t *table, const char *startPtr, int layer) {
     batch_ht_entry_t *entry = batch_ht_get(table, startPtr);
     if (entry != NULL) {
         return entry;
     }
 
     int idx = table->next++;
-    entry = batch_ht_set(table, startPtr, idx + 1);
+    table->totals[layer]++;
+    entry = batch_ht_set(table, startPtr, idx, layer);
     return entry;
 }

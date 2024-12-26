@@ -259,6 +259,38 @@ static const Mtx identityMatrixWorldScale = {{
  * would make the ZEX 0-4 render on top of Rej's 5-7.
  */
 
+static void render_lists(Gfx **ptempGfxHead, struct DisplayListNode* currList)
+{
+#define tempGfxHead (*ptempGfxHead)
+    do {
+        gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(currList->transform), (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
+        gSPDisplayList(tempGfxHead++, currList->displayList);
+        currList = currList->next;
+    } while (currList != NULL);
+#undef tempGfxHead
+}
+
+static void render_batches(Gfx **ptempGfxHead, struct BatchArray* batchesArr, u32 wantMode1, u32 wantMode2)
+{
+#define tempGfxHead (*ptempGfxHead)
+    if (!batchesArr)
+        return;
+
+    // Some "fun" display lists before may decide to change the render mode, so we need to reset it.
+    gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
+
+    for (int batch = 0; batch < batchesArr->count; batch++) {
+        struct Batch* batches = &batchesArr->batches[batch];
+        if (!batches->list.head)
+            continue;
+
+        gSPDisplayList(tempGfxHead++, batches->startDl);
+        render_lists(&tempGfxHead, batches->list.head);
+        gSPDisplayList(tempGfxHead++, batches->endDl);
+    }
+#undef tempGfxHead
+}
+
 void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
     const struct RenderPhase *renderPhase;
     s32 currLayer     = LAYER_FIRST;
@@ -330,26 +362,8 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
                 while (currList != NULL);
             }
 
-            struct BatchArray* batchesArr = masterLayer->objects;
-            if (batchesArr) {
-                // Some "fun" display lists before may decide to change the render mode, so we need to reset it.
-                gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
-
-                for (int batch = 0; batch < batchesArr->count; batch++) {
-                    struct Batch* batches = &batchesArr->batches[batch];
-                    if (!batches->list.head)
-                        continue;
-
-                    gSPDisplayList(tempGfxHead++, batches->startDl);
-                    struct DisplayListNode* currList = batches->list.head;
-                    do {
-                        gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(currList->transform), (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
-                        gSPDisplayList(tempGfxHead++, currList->displayList);
-                        currList = currList->next;
-                    } while (currList != NULL);
-                    gSPDisplayList(tempGfxHead++, batches->endDl);
-                }
-            }
+            render_batches(&tempGfxHead, masterLayer->objects, wantMode1, wantMode2);
+            render_batches(&tempGfxHead, masterLayer->course, wantMode1, wantMode2);
         }
     }
 
@@ -437,18 +451,24 @@ static void append_dl_and_return(struct GraphNodeDisplayList *node) {
 /**
  * Process the master list node.
  */
+
+static void batches_clean(struct BatchArray* batchArr)
+{
+    if (batchArr) {
+        for (int batch = 0; batch < batchArr->count; batch++) {
+            batchArr->batches[batch].list.head = NULL;
+        }
+    }
+}
+
 void geo_process_master_list(struct GraphNodeMasterList *node) {
     if (gCurGraphNodeMasterList == NULL && node->node.children != NULL) {
         gCurGraphNodeMasterList = node;
         for (int layer = LAYER_FIRST; layer < LAYER_COUNT; layer++) {
             struct MasterLayer* masterLayer = &node->layers[layer];
             masterLayer->list.head = NULL;
-
-            if (masterLayer->objects) {
-                for (int batch = 0; batch < masterLayer->objects->count; batch++) {
-                    masterLayer->objects->batches[batch].list.head = NULL;
-                }
-            }
+            batches_clean(masterLayer->objects);
+            batches_clean(masterLayer->course);
         }
         geo_process_node_and_siblings(node->node.children);
         geo_process_master_list_sub(gCurGraphNodeMasterList);

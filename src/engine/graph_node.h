@@ -178,6 +178,7 @@ struct MasterLayer {
     struct DisplayListHead list;
     // filled in parsing of the geo + extra for rendering
     struct BatchArray* objects;
+    struct BatchArray* course;
 };
 
 /** GraphNode that manages the 8 top-level display lists that will be drawn

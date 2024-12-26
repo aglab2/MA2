@@ -131,6 +131,10 @@ struct GraphNodeMasterList *init_graph_node_master_list(s32 alloc,
                 graphNode->layers[layer].objects = NULL;
             }
         }
+
+        for (int layer = 0; layer < LAYER_COUNT; layer++) {
+            graphNode->layers[layer].course = NULL;
+        }
     }
 
     return graphNode;
