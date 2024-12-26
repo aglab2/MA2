@@ -1107,12 +1107,11 @@ void geo_process_shadow(struct GraphNodeShadow *node) {
 
             inc_mat_stack();
 
+            s32 layer = gCurrShadow.isDecal ? LAYER_TRANSPARENT_DECAL : LAYER_CLD;
             if (node->shadowType == SHADOW_CIRCLE) {
-                s32 layer = gCurrShadow.isDecal ? LAYER_TRANSPARENT_DECAL : LAYER_CLD;
                 s32 batch = gCurrShadow.isDecal ? LAYER_TRANSPARENT_DECAL_SHADOW_CIRCLE : LAYER_CLD_SHADOW_CIRCLE;
                 geo_append_batched_display_list((void *) VIRTUAL_TO_PHYSICAL(shadowList), layer, batch);
             } else {
-                s32 layer = gCurrShadow.isDecal ? LAYER_TRANSPARENT_DECAL : LAYER_TRANSPARENT;
                 geo_append_display_list((void *) VIRTUAL_TO_PHYSICAL(shadowList), layer);
             }
 
