@@ -3,6 +3,7 @@
 const GeoLayout pc_area_1_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)-10000.0, (s16)7259.453125, (s16)10000.0, pc_dl_0383_object_0114A508_mesh_layer_1),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, pc_dl_a1_mesh_layer_1),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),

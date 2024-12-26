@@ -4,6 +4,7 @@ const GeoLayout pc_area_6_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, pc_dl_a1_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)4422.4560546875, (s16)-5178.2421875, (s16)-12723.4765625, pc_dl_object_006B5B48_mesh_layer_1),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };

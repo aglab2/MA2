@@ -13,8 +13,9 @@
 
 #include "levels/pc/header.h"
 
-
+#if 0
 #include "levels/pc/geo.inc.c"
+#endif
 
 #define pc_area_1 pc_area_visual
 #define pc_area_1_geo pc_area_geo_visual

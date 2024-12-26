@@ -350,9 +350,14 @@ enum GeoLayoutCommands {
     CMD_BBH(GEO_CMD_CRUMBLE_NODE_TRANSLATION, (layer | 0x80), ux), \
     CMD_HH(uy, uz), \
     CMD_PTR(displayList)
-    
-#define GEO_LVL_TRANSLATE_NODE_WITH_DL(layer, ux, uy, uz, displayList) \
+
+#define GEO_LVL_TRANSLATE_NODE(layer, ux, uy, uz) \
     CMD_BBH(GEO_CMD_LVL_NODE_TRANSLATION, (layer), 0), \
+    CMD_W(GEO_FLOAT_TO_INT(ux)), \
+    CMD_W(GEO_FLOAT_TO_INT(uy)), \
+    CMD_W(GEO_FLOAT_TO_INT(uz))
+#define GEO_LVL_TRANSLATE_NODE_WITH_DL(layer, ux, uy, uz, displayList) \
+    CMD_BBH(GEO_CMD_LVL_NODE_TRANSLATION, (layer | 0x80), 0), \
     CMD_W(GEO_FLOAT_TO_INT(ux)), \
     CMD_W(GEO_FLOAT_TO_INT(uy)), \
     CMD_W(GEO_FLOAT_TO_INT(uz)), \

@@ -1090,11 +1090,13 @@ void geo_layout_cmd_lvl_translation(void) {
     translation[1] = GEO_INT_TO_FLOAT(next_s32_in_geo_script(&cmdPos_f));
     translation[2] = GEO_INT_TO_FLOAT(next_s32_in_geo_script(&cmdPos_f));
     cmdPos = (s16*)cmdPos_f;
-    displayList = *(void **) &cmdPos[0];
     drawingLayer = params & 0x7F;
-    cmdPos += 2 << CMD_SIZE_SHIFT;
-
-    batchify_dl(displayList, drawingLayer);
+    if (params & 0x80)
+    {
+        displayList = *(void **) &cmdPos[0];
+        cmdPos += 2 << CMD_SIZE_SHIFT;
+        batchify_dl(displayList, drawingLayer);
+    }
 
     graphNode =
         init_graph_node_lvl_translation(TRUE, NULL, drawingLayer, displayList, translation);
