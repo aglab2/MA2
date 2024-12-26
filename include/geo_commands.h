@@ -69,6 +69,7 @@ enum GeoLayoutCommands {
     GEO_CMD_CRUMBLE_NODE_TRANSLATION_ROTATION,
     GEO_CMD_LVL_NODE_DISPLAY_LIST,
     GEO_CMD_NODE_BATCH_DISPLAY_LIST,
+    GEO_CMD_NODE_BATCH_GENERATED,
 
     GEO_CMD_COUNT,
 };
@@ -451,6 +452,10 @@ enum GeoLayoutCommands {
  */
 #define GEO_ASM(param, function) \
     CMD_BBH(GEO_CMD_NODE_GENERATED, 0x00, param), \
+    CMD_PTR(function)
+
+#define GEO_BATCH_ASM(param, function) \
+    CMD_BBH(GEO_CMD_NODE_BATCH_GENERATED, 0x00, param), \
     CMD_PTR(function)
 
 /**

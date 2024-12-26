@@ -55,6 +55,7 @@ static const GeoLayoutCommandProc GeoLayoutJumpTable[] = {
     /* GEO_CMD_CRUMBLE_NODE_TRANSLATION_ROTATION */ geo_layout_cmd_break_translation_rotation,
     /* GEO_CMD_LVL_NODE_DISPLAY_LIST */         geo_layout_cmd_lvl_node_display_list,
     /* GEO_CMD_NODE_BATCH_DISPLAY_LIST */       geo_layout_cmd_node_batch_display_list,
+    /* GEO_CMD_NODE_BATCH_GENERATED */          geo_layout_cmd_node_batch_generated,
 };
 
 struct GraphNode gObjParentGraphNode;
@@ -890,6 +891,17 @@ void geo_layout_cmd_node_generated(void) {
                                   cur_geo_cmd_s16(0x02));                // parameter
 
     register_scene_graph_node(&graphNode->fnNode.node);
+
+    gGeoLayoutCommand += 0x08 << CMD_SIZE_SHIFT;
+}
+
+void geo_layout_cmd_node_batch_generated(void) {
+    struct GraphNodeBatchGenerated *graphNode =
+        init_graph_node_batch_generated(TRUE, NULL,
+                                        (GraphNodeFunc) cur_geo_cmd_ptr(0x04), // asm function
+                                        cur_geo_cmd_s16(0x02));
+
+    register_scene_graph_node(&graphNode->genNode.fnNode.node);
 
     gGeoLayoutCommand += 0x08 << CMD_SIZE_SHIFT;
 }

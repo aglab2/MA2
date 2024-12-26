@@ -95,6 +95,7 @@ Gfx *geo_update_layer_transparency(s32 callContext, struct GraphNode *node, UNUS
 
 Gfx *geo_update_layer_transparency_envcolor(s32 callContext, struct GraphNode *node, UNUSED void *context) {
     Gfx *dlStart = NULL;
+    struct GraphNodeBatchGenerated *currentBatchGraphNode = (struct GraphNodeBatchGenerated *) node;
     struct GraphNodeGenerated *currentGraphNode = (struct GraphNodeGenerated *) node;
 
     if (callContext == GEO_CONTEXT_RENDER) {
@@ -104,9 +105,11 @@ Gfx *geo_update_layer_transparency_envcolor(s32 callContext, struct GraphNode *n
             objectGraphNode = gCurGraphNodeHeldObject->objNode;
         }
 
+        SET_GRAPH_NODE_LAYER(currentGraphNode->fnNode.node.flags, gIsConsole ? LAYER_ALPHA : LAYER_TRANSPARENT);
+        currentBatchGraphNode->batch = gIsConsole ? LAYER_ALPHA_SMOKE : LAYER_TRANSPARENT_SMOKE;
         o->oAnimState = gIsConsole;
-        SET_GRAPH_NODE_LAYER(currentGraphNode->fnNode.node.flags, gIsConsole ? LAYER_SMOKE_ALPHA : LAYER_SMOKE_TRANSPARENT);
         s32 objectOpacity = objectGraphNode->oOpacity;
+
         dlStart = alloc_display_list(sizeof(Gfx) * 2);
         Gfx *dlHead = dlStart;
         gDPSetEnvColor(dlHead++, 255, 255, 255, objectOpacity);

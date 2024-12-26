@@ -518,6 +518,26 @@ struct GraphNodeGenerated *init_graph_node_generated(s32 alloc,
     return graphNode;
 }
 
+struct GraphNodeBatchGenerated *init_graph_node_batch_generated(s32 alloc,
+                                                           struct GraphNodeBatchGenerated *graphNode,
+                                                           GraphNodeFunc gfxFunc, s32 parameter) {
+    if (alloc) {
+        graphNode = main_pool_alloc(sizeof(struct GraphNodeBatchGenerated));
+    }
+
+    if (graphNode != NULL) {
+        init_scene_graph_node_links(&graphNode->genNode.fnNode.node, GRAPH_NODE_TYPE_BATCH_GENERATED_LIST);
+        graphNode->genNode.fnNode.func = gfxFunc;
+        graphNode->genNode.parameter = parameter;
+
+        if (gfxFunc != NULL) {
+            gfxFunc(GEO_CONTEXT_CREATE, &graphNode->genNode.fnNode.node, (void*) alloc);
+        }
+    }
+
+    return graphNode;
+}
+
 /**
  * Allocates and returns a newly created background node
  */
@@ -738,6 +758,7 @@ void geo_call_global_function_nodes_helper(struct GraphNode *graphNode, s32 call
          || type == GRAPH_NODE_TYPE_SWITCH_CASE
          || type == GRAPH_NODE_TYPE_CAMERA
          || type == GRAPH_NODE_TYPE_GENERATED_LIST
+         || type == GRAPH_NODE_TYPE_BATCH_GENERATED_LIST
          || type == GRAPH_NODE_TYPE_BACKGROUND
          || type == GRAPH_NODE_TYPE_HELD_OBJ) {
             if (asFnNode->func != NULL) {

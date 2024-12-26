@@ -93,12 +93,10 @@ static const struct RenderModeContainer renderModeTable_1Cycle[2] = {
         [LAYER_OCCLUDE_SILHOUETTE_OPAQUE] = G_RM_AA_OPA_SURF,
         [LAYER_OCCLUDE_SILHOUETTE_ALPHA] = G_RM_AA_TEX_EDGE,
 #endif
-        [LAYER_SMOKE_ALPHA] = G_RM_AA_TEX_EDGE,
         [LAYER_CIRCLE_SHADOW] = G_RM_CLD_SURF,
         [LAYER_CIRCLE_SHADOW_TRANSPARENT] = G_RM_CLD_SURF,
         [LAYER_TRANSPARENT_DECAL] = G_RM_AA_XLU_SURF,
         [LAYER_TRANSPARENT] = G_RM_AA_XLU_SURF,
-        [LAYER_SMOKE_TRANSPARENT] = G_RM_AA_XLU_SURF,
         [LAYER_MIST] = G_RM_AA_XLU_SURF,
         [LAYER_RED_FLAME] = G_RM_AA_XLU_SURF,
         [LAYER_BLUE_FLAME] = G_RM_AA_XLU_SURF,
@@ -117,12 +115,10 @@ static const struct RenderModeContainer renderModeTable_1Cycle[2] = {
         [LAYER_OCCLUDE_SILHOUETTE_OPAQUE] = G_RM_AA_ZB_OPA_SURF,
         [LAYER_OCCLUDE_SILHOUETTE_ALPHA] = G_RM_AA_ZB_TEX_EDGE,
 #endif
-        [LAYER_SMOKE_ALPHA] = G_RM_AA_ZB_TEX_EDGE,
         [LAYER_CIRCLE_SHADOW] = G_RM_AA_ZB_XLU_DECAL,
         [LAYER_CIRCLE_SHADOW_TRANSPARENT] = G_RM_ZB_CLD_SURF,
         [LAYER_TRANSPARENT_DECAL] = G_RM_AA_ZB_XLU_DECAL,
         [LAYER_TRANSPARENT] = G_RM_AA_ZB_XLU_SURF,
-        [LAYER_SMOKE_TRANSPARENT] = G_RM_AA_ZB_XLU_SURF,
         [LAYER_MIST] = G_RM_AA_ZB_XLU_SURF,
         [LAYER_RED_FLAME] = G_RM_AA_ZB_XLU_SURF,
         [LAYER_BLUE_FLAME] = G_RM_AA_ZB_XLU_SURF,
@@ -144,12 +140,10 @@ static const struct RenderModeContainer renderModeTable_2Cycle[2] = {
         [LAYER_OCCLUDE_SILHOUETTE_OPAQUE] = G_RM_AA_OPA_SURF2,
         [LAYER_OCCLUDE_SILHOUETTE_ALPHA] = G_RM_AA_TEX_EDGE2,
 #endif
-        [LAYER_SMOKE_ALPHA] = G_RM_AA_TEX_EDGE2,
         [LAYER_CIRCLE_SHADOW] = G_RM_CLD_SURF2,
         [LAYER_CIRCLE_SHADOW_TRANSPARENT] = G_RM_CLD_SURF2,
         [LAYER_TRANSPARENT_DECAL] = G_RM_AA_XLU_SURF2,
         [LAYER_TRANSPARENT] = G_RM_AA_XLU_SURF2,
-        [LAYER_SMOKE_TRANSPARENT] = G_RM_AA_XLU_SURF2,
         [LAYER_MIST] = G_RM_AA_XLU_SURF2,
         [LAYER_RED_FLAME] = G_RM_AA_XLU_SURF2,
         [LAYER_BLUE_FLAME] = G_RM_AA_XLU_SURF2,
@@ -168,12 +162,10 @@ static const struct RenderModeContainer renderModeTable_2Cycle[2] = {
         [LAYER_OCCLUDE_SILHOUETTE_OPAQUE] = G_RM_AA_ZB_OPA_SURF2,
         [LAYER_OCCLUDE_SILHOUETTE_ALPHA] = G_RM_AA_ZB_TEX_EDGE2,
 #endif
-        [LAYER_SMOKE_ALPHA] = G_RM_AA_ZB_TEX_EDGE2,
         [LAYER_CIRCLE_SHADOW] = G_RM_AA_ZB_XLU_DECAL2,
         [LAYER_CIRCLE_SHADOW_TRANSPARENT] = G_RM_ZB_CLD_SURF2,
         [LAYER_TRANSPARENT_DECAL] = G_RM_AA_ZB_XLU_DECAL2,
         [LAYER_TRANSPARENT] = G_RM_AA_ZB_XLU_SURF2,
-        [LAYER_SMOKE_TRANSPARENT] = G_RM_AA_ZB_XLU_SURF2,
         [LAYER_MIST] = G_RM_AA_ZB_XLU_SURF2,
         [LAYER_RED_FLAME] = G_RM_AA_ZB_XLU_SURF2,
         [LAYER_BLUE_FLAME] = G_RM_AA_ZB_XLU_SURF2,
@@ -298,9 +290,6 @@ static const Gfx* sBlueFlameTextureDls[] = {
     flame_seg3_dl_0301B5A8,
 };
 
-extern Gfx burn_smoke_seg4_sub_dl_begin_translucent[];
-extern Gfx burn_smoke_seg4_sub_dl_begin_alpha[];
-extern const Gfx burn_smoke_seg4_sub_dl_end[];
 extern const Gfx mist_dl[];
 extern const Gfx mist_dl_end[];
 
@@ -358,7 +347,7 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
                     wantMode2 &= ~IM_RD;
                 }
     #endif
-                if (currLayer == LAYER_SMOKE_ALPHA || wantMode1 != curMode1 || wantMode2 != curMode2)
+                if (wantMode1 != curMode1 || wantMode2 != curMode2)
                 {
                     gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
                     curMode1 = wantMode1; curMode2 = wantMode2;
@@ -389,18 +378,6 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
                 {
                     startDl = dl_shadow_circle;
                     endDl = dl_shadow_circle_end;
-                }
-
-                if (LAYER_SMOKE_ALPHA == currLayer)
-                {
-                    startDl = burn_smoke_seg4_sub_dl_begin_alpha;
-                    endDl   = burn_smoke_seg4_sub_dl_end;
-                }
-
-                if (LAYER_SMOKE_TRANSPARENT == currLayer)
-                {
-                    startDl = burn_smoke_seg4_sub_dl_begin_translucent;
-                    endDl   = burn_smoke_seg4_sub_dl_end;
                 }
 
                 if (startDl != curStartDl)
@@ -945,6 +922,19 @@ void geo_process_generated_list(struct GraphNodeGenerated *node) {
     }
     if (node->fnNode.node.children != NULL) {
         geo_process_node_and_siblings(node->fnNode.node.children);
+    }
+}
+
+void geo_process_batch_generated_list(struct GraphNodeBatchGenerated *node) {
+    if (node->genNode.fnNode.func != NULL) {
+        Gfx *list = node->genNode.fnNode.func(GEO_CONTEXT_RENDER, &node->genNode.fnNode.node, (struct AllocOnlyPool *) gMatStack[gMatStackIndex]);
+
+        if (list != NULL) {
+            geo_append_batched_display_list((void *) VIRTUAL_TO_PHYSICAL(list), GET_GRAPH_NODE_LAYER(node->genNode.fnNode.node.flags), node->batch);
+        }
+    }
+    if (node->genNode.fnNode.node.children != NULL) {
+        geo_process_node_and_siblings(node->genNode.fnNode.node.children);
     }
 }
 
@@ -1571,6 +1561,7 @@ static const GeoProcessFunc GeoProcessJumpTable[] = {
     [GRAPH_NODE_TYPE_BREAK_TRANSLATION_ROTATION] = geo_process_break_translation_rotation,
     [GRAPH_NODE_TYPE_LVL_DISPLAY_LIST]         = geo_process_lvl_display_list,
     [GRAPH_NODE_TYPE_BATCH_DISPLAY_LIST]       = geo_process_batch_display_list,
+    [GRAPH_NODE_TYPE_BATCH_GENERATED_LIST]     = geo_process_batch_generated_list,
 };
 
 /**

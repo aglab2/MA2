@@ -77,6 +77,7 @@ enum GraphNodeTypes {
     GRAPH_NODE_TYPE_BREAK_TRANSLATION_ROTATION,
     GRAPH_NODE_TYPE_LVL_DISPLAY_LIST,
     GRAPH_NODE_TYPE_BATCH_DISPLAY_LIST,
+    GRAPH_NODE_TYPE_BATCH_GENERATED_LIST,
 };
 
 // Passed as first argument to a GraphNodeFunc to give information about in
@@ -361,6 +362,11 @@ struct GraphNodeGenerated {
     /*0x18*/ u32 parameter; // extra context for the function
 };
 
+struct GraphNodeBatchGenerated {
+    struct GraphNodeGenerated genNode;
+    s32 batch;
+};
+
 /** GraphNode that draws a background image or a rectangle of a color.
  *  Drawn in an orthographic projection, used for skyboxes.
  */
@@ -455,6 +461,7 @@ struct GraphNodeBatchDisplayList    *init_graph_node_batch_display_list  (s32 al
 struct GraphNodeShadow              *init_graph_node_shadow              (s32 alloc, struct GraphNodeShadow              *graphNode, s16 shadowScale, u8 shadowSolidity, u8 shadowType);
 struct GraphNodeObjectParent        *init_graph_node_object_parent       (s32 alloc, struct GraphNodeObjectParent        *graphNode, struct GraphNode *sharedChild);
 struct GraphNodeGenerated           *init_graph_node_generated           (s32 alloc, struct GraphNodeGenerated           *graphNode, GraphNodeFunc gfxFunc, s32 parameter);
+struct GraphNodeBatchGenerated      *init_graph_node_batch_generated     (s32 alloc, struct GraphNodeBatchGenerated      *graphNode, GraphNodeFunc gfxFunc, s32 parameter);
 struct GraphNodeBackground          *init_graph_node_background          (s32 alloc, struct GraphNodeBackground          *graphNode, u16 background, GraphNodeFunc backgroundFunc, s32 zero);
 struct GraphNodeCull                *init_graph_node_cull                (s32 alloc,
                                                                           struct GraphNodeCull *graphNode,
