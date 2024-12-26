@@ -96,8 +96,6 @@ static const struct RenderModeContainer renderModeTable_1Cycle[2] = {
         [LAYER_CLD] = G_RM_CLD_SURF,
         [LAYER_TRANSPARENT_DECAL] = G_RM_AA_XLU_SURF,
         [LAYER_TRANSPARENT] = G_RM_AA_XLU_SURF,
-        [LAYER_RED_FLAME] = G_RM_AA_XLU_SURF,
-        [LAYER_BLUE_FLAME] = G_RM_AA_XLU_SURF,
         [LAYER_TRANSPARENT_INTER] = G_RM_AA_XLU_SURF,
     } },
     [RENDER_ZB] = { {
@@ -116,8 +114,6 @@ static const struct RenderModeContainer renderModeTable_1Cycle[2] = {
         [LAYER_CLD] = G_RM_ZB_CLD_SURF,
         [LAYER_TRANSPARENT_DECAL] = G_RM_AA_ZB_XLU_DECAL,
         [LAYER_TRANSPARENT] = G_RM_AA_ZB_XLU_SURF,
-        [LAYER_RED_FLAME] = G_RM_AA_ZB_XLU_SURF,
-        [LAYER_BLUE_FLAME] = G_RM_AA_ZB_XLU_SURF,
         [LAYER_TRANSPARENT_INTER] = G_RM_AA_ZB_XLU_INTER,
     } } };
 
@@ -139,8 +135,6 @@ static const struct RenderModeContainer renderModeTable_2Cycle[2] = {
         [LAYER_CLD] = G_RM_CLD_SURF2,
         [LAYER_TRANSPARENT_DECAL] = G_RM_AA_XLU_SURF2,
         [LAYER_TRANSPARENT] = G_RM_AA_XLU_SURF2,
-        [LAYER_RED_FLAME] = G_RM_AA_XLU_SURF2,
-        [LAYER_BLUE_FLAME] = G_RM_AA_XLU_SURF2,
         [LAYER_TRANSPARENT_INTER] = G_RM_AA_XLU_SURF2,
     } },
     [RENDER_ZB] = { {
@@ -159,8 +153,6 @@ static const struct RenderModeContainer renderModeTable_2Cycle[2] = {
         [LAYER_CLD] = G_RM_ZB_CLD_SURF2,
         [LAYER_TRANSPARENT_DECAL] = G_RM_AA_ZB_XLU_DECAL2,
         [LAYER_TRANSPARENT] = G_RM_AA_ZB_XLU_SURF2,
-        [LAYER_RED_FLAME] = G_RM_AA_ZB_XLU_SURF2,
-        [LAYER_BLUE_FLAME] = G_RM_AA_ZB_XLU_SURF2,
         [LAYER_TRANSPARENT_INTER] = G_RM_AA_ZB_XLU_INTER2,
     } } };
 
@@ -259,28 +251,6 @@ static const Mtx identityMatrixWorldScale = {{
      0x00000000,                            LOWER_FIXED(1.0f)               <<  0}
 }};
 
-static const Gfx* sRedFlameTextureDls[] = {
-    flame_seg3_dl_0301B3B0,
-    flame_seg3_dl_0301B3C8,
-    flame_seg3_dl_0301B3E0,
-    flame_seg3_dl_0301B3F8,
-    flame_seg3_dl_0301B410,
-    flame_seg3_dl_0301B428,
-    flame_seg3_dl_0301B440,
-    flame_seg3_dl_0301B458,
-};
-
-static const Gfx* sBlueFlameTextureDls[] = {
-    flame_seg3_dl_0301B500,
-    flame_seg3_dl_0301B518,
-    flame_seg3_dl_0301B530,
-    flame_seg3_dl_0301B548,
-    flame_seg3_dl_0301B560,
-    flame_seg3_dl_0301B578,
-    flame_seg3_dl_0301B590,
-    flame_seg3_dl_0301B5A8,
-};
-
 /**
  * Process a master list node. This has been modified, so now it runs twice, for each microcode.
  * It iterates through the first 5 layers of if the first index using F3DLX2.Rej, then it switches
@@ -343,19 +313,6 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
 
                 const Gfx* startDl = NULL;
                 const Gfx* endDl = NULL;
-
-                if (LAYER_RED_FLAME == currLayer)
-                {
-                    int flFrame = (gGlobalTimer / 2) % 8;
-                    startDl = sRedFlameTextureDls[flFrame];
-                    endDl = flame_seg3_dl_end;
-                }
-                if (LAYER_BLUE_FLAME == currLayer)
-                {
-                    int flFrame = (gGlobalTimer / 2) % 8;
-                    startDl = sBlueFlameTextureDls[flFrame];
-                    endDl = flame_seg3_dl_end;
-                }
 
                 if (startDl != curStartDl)
                 {
@@ -630,8 +587,12 @@ void geo_process_cull(struct GraphNodeCull* node)
 
 void geo_process_coin(struct GraphNodeCoin *node)
 {
-    int frame = ((u32) gCurGraphNodeObjectNode->oAnimState) % 8;
-    enum LayerBatches batch = LAYER_ALPHA_BATCHES_BASE + (frame < 5 ? frame : 8 - frame);
+    int* panimState = &gCurGraphNodeObjectNode->oAnimState;
+    if (*panimState >= 8)
+        *panimState = 0;
+
+    int frame = *panimState;
+    enum LayerBatches batch = LAYER_ALPHA_COINS_FIRST + (frame < 5 ? frame : 8 - frame);
     void* dl = frame < 5 ? node->displayList : node->displayList_r;
     geo_append_batched_display_list(dl, LAYER_ALPHA, batch);
 }
@@ -869,20 +830,16 @@ void geo_process_lvl_display_list(struct GraphNodeDisplayList *node) {
     gMatStackIndex++;
 }
 
-static void append_batch_dl_and_return(struct GraphNodeBatchDisplayList *node) {
-    if (node->displayList != NULL) {
-        geo_append_batched_display_list(node->displayList, GET_GRAPH_NODE_LAYER(node->node.flags), node->batch);
-    }
-    if (node->node.children != NULL) {
-        geo_process_node_and_siblings(node->node.children);
-    }
-    gMatStackIndex--;
+void geo_process_batch_display_list(struct GraphNodeBatchDisplayList *node) {
+    geo_append_batched_display_list(node->displayList, GET_GRAPH_NODE_LAYER(node->node.flags), node->batch);
 }
 
-void geo_process_batch_display_list(struct GraphNodeBatchDisplayList *node) {
-    struct GraphNodeBatchDisplayList *dlNode = node;
-    append_batch_dl_and_return(dlNode);
-    gMatStackIndex++;
+void geo_process_batch_anim_display_list(struct GraphNodeBatchAnimDisplayList *node) {
+    int* panimState = &gCurGraphNodeObjectNode->oAnimState;
+    if (*panimState >= node->animLimit)
+        *panimState = 0;
+
+    geo_append_batched_display_list(node->displayList, GET_GRAPH_NODE_LAYER(node->node.flags), node->batch + *panimState);
 }
 
 /**
@@ -1536,6 +1493,7 @@ static const GeoProcessFunc GeoProcessJumpTable[] = {
     [GRAPH_NODE_TYPE_LVL_DISPLAY_LIST]         = geo_process_lvl_display_list,
     [GRAPH_NODE_TYPE_BATCH_DISPLAY_LIST]       = geo_process_batch_display_list,
     [GRAPH_NODE_TYPE_BATCH_GENERATED_LIST]     = geo_process_batch_generated_list,
+    [GRAPH_NODE_TYPE_BATCH_ANIM_DISPLAY_LIST]  = geo_process_batch_anim_display_list,
 };
 
 /**

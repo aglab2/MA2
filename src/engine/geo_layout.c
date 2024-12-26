@@ -56,6 +56,7 @@ static const GeoLayoutCommandProc GeoLayoutJumpTable[] = {
     /* GEO_CMD_LVL_NODE_DISPLAY_LIST */         geo_layout_cmd_lvl_node_display_list,
     /* GEO_CMD_NODE_BATCH_DISPLAY_LIST */       geo_layout_cmd_node_batch_display_list,
     /* GEO_CMD_NODE_BATCH_GENERATED */          geo_layout_cmd_node_batch_generated,
+    /* GEO_CMD_NODE_BATCH_DISPLAY_LIST_ANIM */  geo_layout_cmd_node_batch_display_list_anim,
 };
 
 struct GraphNode gObjParentGraphNode;
@@ -727,7 +728,7 @@ void geo_layout_cmd_node_display_list(void) {
 }
 
 void geo_layout_cmd_node_batch_display_list(void) {
-    struct GraphNodeDisplayList *graphNode;
+    struct GraphNodeBatchDisplayList *graphNode;
     s32 drawingLayer = cur_geo_cmd_u8(0x01);
     s16 batch = cur_geo_cmd_s16(0x02);
     void *displayList = cur_geo_cmd_ptr(0x04);
@@ -737,6 +738,20 @@ void geo_layout_cmd_node_batch_display_list(void) {
     register_scene_graph_node(&graphNode->node);
 
     gGeoLayoutCommand += 0x08 << CMD_SIZE_SHIFT;
+}
+
+void geo_layout_cmd_node_batch_display_list_anim(void) {
+    struct GraphNodeBatchAnimDisplayList *graphNode;
+    s32 drawingLayer = cur_geo_cmd_u8(0x01);
+    s16 batch = cur_geo_cmd_s16(0x02);
+    void *displayList = cur_geo_cmd_ptr(0x04);
+    int animLimit = cur_geo_cmd_s32(0x08);
+
+    graphNode = init_graph_node_batch_display_list_anim(TRUE, NULL, drawingLayer, displayList, batch, animLimit);
+
+    register_scene_graph_node(&graphNode->node);
+
+    gGeoLayoutCommand += 0x0C << CMD_SIZE_SHIFT;
 }
 
 #define DEBUG_ASSERTIONS

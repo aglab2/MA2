@@ -13,7 +13,7 @@ extern const Gfx flame_seg3_dl_draw[];
 const GeoLayout red_flame_geo[] = {
    GEO_NODE_START(),
    GEO_OPEN_NODE(),
-      GEO_DISPLAY_LIST(LAYER_RED_FLAME, flame_seg3_dl_draw),
+      GEO_BATCH_DISPLAY_LIST_ANIM(LAYER_TRANSPARENT, LAYER_TRANSPARENT_RED_FLAMES_FIRST, flame_seg3_dl_draw, 8),
    GEO_CLOSE_NODE(),
    GEO_END(),
 };
@@ -22,7 +22,7 @@ const GeoLayout red_flame_geo[] = {
 const GeoLayout blue_flame_geo[] = {
    GEO_NODE_START(),
    GEO_OPEN_NODE(),
-      GEO_DISPLAY_LIST(LAYER_BLUE_FLAME, flame_seg3_dl_draw),
+      GEO_BATCH_DISPLAY_LIST_ANIM(LAYER_TRANSPARENT, LAYER_TRANSPARENT_BLUE_FLAMES_FIRST, flame_seg3_dl_draw, 8),
    GEO_CLOSE_NODE(),
    GEO_END(),
 };

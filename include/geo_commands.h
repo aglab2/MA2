@@ -70,6 +70,7 @@ enum GeoLayoutCommands {
     GEO_CMD_LVL_NODE_DISPLAY_LIST,
     GEO_CMD_NODE_BATCH_DISPLAY_LIST,
     GEO_CMD_NODE_BATCH_GENERATED,
+    GEO_CMD_NODE_BATCH_DISPLAY_LIST_ANIM,
 
     GEO_CMD_COUNT,
 };
@@ -543,5 +544,10 @@ enum GeoLayoutCommands {
     CMD_BBH(GEO_CMD_NODE_COIN, layer, 0x0000), \
     CMD_PTR(displayList), \
     CMD_PTR(displayList_r)
+
+#define GEO_BATCH_DISPLAY_LIST_ANIM(layer, batch, displayList, anim) \
+    CMD_BBH(GEO_CMD_NODE_BATCH_DISPLAY_LIST_ANIM, layer, batch), \
+    CMD_PTR(displayList), \
+    CMD_W(anim)
 
 #endif // GEO_COMMANDS_H

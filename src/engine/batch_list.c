@@ -44,10 +44,10 @@ struct BatchArray* batch_list_objects_alloc_opaque()
 struct BatchArray* batch_list_objects_alloc_alpha()
 {
     struct BatchArray* batchesArr = batch_array_alloc(LAYER_ALPHA_BATCHES_COUNT);
-    for (int batchIdx = LAYER_ALPHA_COIN_0; batchIdx <= LAYER_ALPHA_COIN_4; batchIdx++)
+    for (int batchIdx = LAYER_ALPHA_COINS_FIRST; batchIdx <= LAYER_ALPHA_COINS_LAST; batchIdx++)
     {
         struct Batch* batch = &batchesArr->batches[batchIdx];
-        batch->startDl = sCoinsTextureDls[batchIdx - LAYER_ALPHA_BATCHES_BASE];
+        batch->startDl = sCoinsTextureDls[batchIdx - LAYER_ALPHA_COINS_FIRST];
         batch->endDl = dl_coin_end;
     }
     {
@@ -71,6 +71,38 @@ struct BatchArray* batch_list_objects_alloc_xlu()
         struct Batch* batch = &batchesArr->batches[LAYER_TRANSPARENT_MIST];
         batch->startDl = mist_dl;
         batch->endDl   = mist_dl_end;
+    }
+    for (int batchIdx = LAYER_TRANSPARENT_RED_FLAMES_FIRST; batchIdx <= LAYER_TRANSPARENT_RED_FLAMES_LAST; batchIdx++)
+    {
+        static const Gfx* sRedFlameTextureDls[] = {
+            flame_seg3_dl_0301B3B0,
+            flame_seg3_dl_0301B3C8,
+            flame_seg3_dl_0301B3E0,
+            flame_seg3_dl_0301B3F8,
+            flame_seg3_dl_0301B410,
+            flame_seg3_dl_0301B428,
+            flame_seg3_dl_0301B440,
+            flame_seg3_dl_0301B458,
+        };
+        struct Batch* batch = &batchesArr->batches[batchIdx];
+        batch->startDl = sRedFlameTextureDls[batchIdx - LAYER_TRANSPARENT_RED_FLAMES_FIRST];
+        batch->endDl = dl_shadow_circle_end;
+    }
+    for (int batchIdx = LAYER_TRANSPARENT_BLUE_FLAMES_FIRST; batchIdx <= LAYER_TRANSPARENT_BLUE_FLAMES_LAST; batchIdx++)
+    {
+        static const Gfx* sBlueFlameTextureDls[] = {
+            flame_seg3_dl_0301B500,
+            flame_seg3_dl_0301B518,
+            flame_seg3_dl_0301B530,
+            flame_seg3_dl_0301B548,
+            flame_seg3_dl_0301B560,
+            flame_seg3_dl_0301B578,
+            flame_seg3_dl_0301B590,
+            flame_seg3_dl_0301B5A8,
+        };
+        struct Batch* batch = &batchesArr->batches[batchIdx];
+        batch->startDl = sBlueFlameTextureDls[batchIdx - LAYER_TRANSPARENT_BLUE_FLAMES_FIRST];
+        batch->endDl = dl_shadow_circle_end;
     }
     return batchesArr;
 }
