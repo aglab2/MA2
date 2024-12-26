@@ -59,7 +59,6 @@
 
 enum RenderLayers {
     LAYER_FORCE,
-    LAYER_CORKBOX,
     LAYER_OPAQUE,
     LAYER_OPAQUE_INTER,
     LAYER_OPAQUE_DECAL,
@@ -86,7 +85,8 @@ enum RenderLayers {
 
 enum LayerBatches {
     LAYER_OPAQUE_BATCHES_BASE = 0,
-    LAYER_OPAQUE_BATCHES_COUNT = 0,
+    LAYER_OPAQUE_CORKBOX = LAYER_OPAQUE_BATCHES_BASE,
+    LAYER_OPAQUE_BATCHES_COUNT,
 
     LAYER_ALPHA_BATCHES_BASE = 0,
     // coin frames batches, it goes 0, 1, 2, 3, 4, 3, 2, 1

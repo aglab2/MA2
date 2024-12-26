@@ -427,6 +427,23 @@ struct GraphNodeDisplayList *init_graph_node_display_list(s32 alloc,
     return graphNode;
 }
 
+struct GraphNodeBatchDisplayList *init_graph_node_batch_display_list(s32 alloc,
+                                                          struct GraphNodeBatchDisplayList *graphNode,
+                                                          s32 drawingLayer, void *displayList, s32 batch) {
+    if (alloc) {
+        graphNode = main_pool_alloc(sizeof(struct GraphNodeBatchDisplayList));
+    }
+
+    if (graphNode != NULL) {
+        init_scene_graph_node_links(&graphNode->node, GRAPH_NODE_TYPE_BATCH_DISPLAY_LIST);
+        SET_GRAPH_NODE_LAYER(graphNode->node.flags, drawingLayer);
+        graphNode->displayList = displayList;
+        graphNode->batch = batch;
+    }
+
+    return graphNode;
+}
+
 /**
  * Allocates and returns a newly created shadow node
  */
