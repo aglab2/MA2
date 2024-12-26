@@ -86,7 +86,7 @@ struct BatchArray* batch_list_objects_alloc_xlu()
         };
         struct Batch* batch = &batchesArr->batches[batchIdx];
         batch->startDl = sRedFlameTextureDls[batchIdx - LAYER_TRANSPARENT_RED_FLAMES_FIRST];
-        batch->endDl = dl_shadow_circle_end;
+        batch->endDl = flame_seg3_dl_end;
     }
     for (int batchIdx = LAYER_TRANSPARENT_BLUE_FLAMES_FIRST; batchIdx <= LAYER_TRANSPARENT_BLUE_FLAMES_LAST; batchIdx++)
     {
@@ -102,7 +102,7 @@ struct BatchArray* batch_list_objects_alloc_xlu()
         };
         struct Batch* batch = &batchesArr->batches[batchIdx];
         batch->startDl = sBlueFlameTextureDls[batchIdx - LAYER_TRANSPARENT_BLUE_FLAMES_FIRST];
-        batch->endDl = dl_shadow_circle_end;
+        batch->endDl = flame_seg3_dl_end;
     }
     return batchesArr;
 }

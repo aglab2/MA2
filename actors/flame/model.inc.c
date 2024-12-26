@@ -51,13 +51,12 @@ ALIGNED8 static const Texture flame_seg3_texture_0301AB20[] = {
 const Gfx flame_seg3_dl_draw[] = {
     gsSPVertex(flame_seg3_vertex_030172E0, 4, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
-    gsDPPipeSync(),
     gsSPEndDisplayList(),
 };
 
 const Gfx flame_seg3_dl_end[] = {
-    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
+    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsSPSetGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
     gsDPSetEnvColor(255, 255, 255, 255),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),

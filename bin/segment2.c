@@ -2954,6 +2954,7 @@ const Gfx dl_shadow_begin[] = {
 };
 
 const Gfx dl_shadow_circle_end[] = {
+    gsDPPipeSync(),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsSPSetGeometryMode(G_LIGHTING | G_CULL_BACK),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
@@ -3003,7 +3004,6 @@ static const Vtx vertex_shadow[] = {
 const Gfx dl_shadow_circle_tris[] = {
     gsSPVertex(vertex_shadow, 4, 0),
     gsSP2Triangles( 0,  2,  1, 0x0,  1,  2,  3, 0x0),
-    gsDPPipeSync(),
     gsSPEndDisplayList(),
 };
 
@@ -3215,6 +3215,16 @@ const Gfx dl_paintings_draw_ripples[] = {
     gsSP2Triangles( 6,  7,  8, 0x0,  9, 10, 11, 0x0),
     gsSP1Triangle( 12, 13, 14, 0x0),
     gsSPEndDisplayList(),
+};
+
+const Gfx dl_course_common_revert[] = {
+	gsSPSetGeometryMode(G_LIGHTING),
+	gsSPClearGeometryMode(G_TEXTURE_GEN),
+	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
+	gsSPTexture(65535, 65535, 0, 0, 0),
+	gsDPSetEnvColor(255, 255, 255, 255),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsSPEndDisplayList(),
 };
 
 // 14A60: triangle mesh

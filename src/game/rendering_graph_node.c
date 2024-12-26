@@ -270,7 +270,8 @@ static void render_lists(Gfx **ptempGfxHead, struct DisplayListNode* currList)
 #undef tempGfxHead
 }
 
-static void render_batches(Gfx **ptempGfxHead, struct BatchArray* batchesArr, u32 wantMode1, u32 wantMode2)
+extern const Gfx dl_course_common_revert[];
+static void render_batches(Gfx **ptempGfxHead, struct BatchArray* batchesArr, u32 wantMode1, u32 wantMode2, int course)
 {
 #define tempGfxHead (*ptempGfxHead)
     if (!batchesArr)
@@ -287,6 +288,10 @@ static void render_batches(Gfx **ptempGfxHead, struct BatchArray* batchesArr, u3
         gSPDisplayList(tempGfxHead++, batches->startDl);
         render_lists(&tempGfxHead, batches->list.head);
         gSPDisplayList(tempGfxHead++, batches->endDl);
+
+        if (course) {
+            gSPDisplayList(tempGfxHead++, dl_course_common_revert);
+        }
     }
 #undef tempGfxHead
 }
@@ -362,8 +367,8 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
                 while (currList != NULL);
             }
 
-            render_batches(&tempGfxHead, masterLayer->course, wantMode1, wantMode2);
-            render_batches(&tempGfxHead, masterLayer->objects, wantMode1, wantMode2);
+            render_batches(&tempGfxHead, masterLayer->course, wantMode1, wantMode2, 1);
+            render_batches(&tempGfxHead, masterLayer->objects, wantMode1, wantMode2, 0);
         }
     }
 

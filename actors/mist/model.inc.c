@@ -43,7 +43,6 @@ const Gfx mist_dl_end[] = {
 const Gfx mist_seg3_dl_03000880[] = {
     gsSPVertex(mist_seg3_vertex_03000000, 4, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
-    gsDPPipeSync(),
     gsSPEndDisplayList(),
 };
 
@@ -51,6 +50,5 @@ const Gfx mist_seg3_dl_03000880[] = {
 const Gfx mist_seg3_dl_03000920[] = {
     gsSPVertex(mist_seg3_vertex_03000040, 4, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
-    gsDPPipeSync(),
     gsSPEndDisplayList(),
 };

@@ -101,7 +101,6 @@ const Gfx breakable_box_seg8_dl_cork_box[] = {
     gsSP2Triangles(11, 13, 14, 0x0, 15, 16, 17, 0x0),
     gsSP2Triangles(15, 18, 16, 0x0, 19, 20, 21, 0x0),
     gsSP2Triangles(19, 21, 22, 0x0, 23, 24, 25, 0x0),
-    gsDPPipeSync(),
     gsSPEndDisplayList(),
 };
 
