@@ -49,4 +49,14 @@ extern const LevelScript level_pc_entry[];
 
 #include "levels/pc/pc_walltype/collision_header.h"
 
+#include "levels/pc/pc_sandglass_ends/geo_header.h"
+
+#include "levels/pc/pc_sandglass_glass/geo_header.h"
+
+#include "levels/pc/pc_sandglass_sand/geo_header.h"
+
+#include "levels/pc/pc_sandglass_sandf/geo_header.h"
+
+#include "levels/pc/pc_sandglass_spring/geo_header.h"
+
 #endif

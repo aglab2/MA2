@@ -139,3 +139,8 @@ const SpringDesc* spring_descs_pc[] = {
 #include "levels/pc/pc_windmill/collision.inc.c"
 #include "levels/pc/pc_walltype/model.inc.c"
 #include "levels/pc/pc_walltype/collision.inc.c"
+#include "levels/pc/pc_sandglass_ends/model.inc.c"
+#include "levels/pc/pc_sandglass_glass/model.inc.c"
+#include "levels/pc/pc_sandglass_sand/model.inc.c"
+#include "levels/pc/pc_sandglass_sandf/model.inc.c"
+#include "levels/pc/pc_sandglass_spring/model.inc.c"

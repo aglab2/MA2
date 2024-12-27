@@ -32,3 +32,8 @@
 #include "levels/pc/pc_keydoor_green/geo.inc.c"
 #include "levels/pc/pc_windmill/geo.inc.c"
 #include "levels/pc/pc_walltype/geo.inc.c"
+#include "levels/pc/pc_sandglass_ends/geo.inc.c"
+#include "levels/pc/pc_sandglass_glass/geo.inc.c"
+#include "levels/pc/pc_sandglass_sand/geo.inc.c"
+#include "levels/pc/pc_sandglass_sandf/geo.inc.c"
+#include "levels/pc/pc_sandglass_spring/geo.inc.c"

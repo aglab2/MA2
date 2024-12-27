@@ -1,0 +1,14 @@
+extern const GeoLayout pc_sandglass_spring_geo[];
+extern u8 pc_sandglass_spring_dz_sandglass_buttan128_ci4[];
+extern u8 pc_sandglass_spring_dz_sandglass_buttan128_pal_rgba16[];
+extern u8 pc_sandglass_spring_dz_sandglass_body128_ci4[];
+extern u8 pc_sandglass_spring_dz_sandglass_body128_pal_rgba16[];
+extern Vtx pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1_vtx_0[36];
+extern Gfx pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1_tri_0[];
+extern Vtx pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1_vtx_1[20];
+extern Gfx pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1_tri_1[];
+extern Gfx mat_pc_sandglass_spring_SANDGLASS_SPRING_sa2mdl_0_f3d[];
+extern Gfx mat_revert_pc_sandglass_spring_SANDGLASS_SPRING_sa2mdl_0_f3d[];
+extern Gfx mat_pc_sandglass_spring_SANDGLASS_SPRING_sa2mdl_1_f3d[];
+extern Gfx mat_revert_pc_sandglass_spring_SANDGLASS_SPRING_sa2mdl_1_f3d[];
+extern Gfx pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1[];

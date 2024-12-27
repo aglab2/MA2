@@ -33,6 +33,22 @@ const LevelScript level_pc_entry[] = {
 	LOAD_MIO0(0x7, _pc_segment_7SegmentRomStart, _pc_segment_7SegmentRomEnd), 
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
+	LOAD_MODEL_FROM_GEO(MODEL_PC_BLOCK, pc_block_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_PC_DOOR_B, pc_door_b_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_PC_DOOR_G, pc_door_g_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_PC_DOOR_R, pc_door_r_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_PC_DOOR_N, pc_door_n_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_PC_KEY_BLUE, pc_key_blue_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_PC_KEY_GREEN, pc_key_green_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_PC_KEYDOOR_BLUE, pc_keydoor_blue_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_PC_KEYDOOR_GREEN, pc_keydoor_green_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_PC_WALLTYPE, pc_walltype_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_PC_WINDMILL, pc_windmill_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_PC_SANDGLASS_ENDS, pc_sandglass_ends_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_PC_SANDGLASS_GLASS, pc_sandglass_glass_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_PC_SANDGLASS_SAND, pc_sandglass_sand_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_PC_SANDGLASS_SANDF, pc_sandglass_sandf_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_PC_SANDGLASS_SPRING, pc_sandglass_spring_geo),
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
 
