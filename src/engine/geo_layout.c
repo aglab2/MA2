@@ -169,8 +169,8 @@ void geo_layout_cmd_return(void) {
 
         for (int entryId = 0; entryId < ht->next; entryId++) {
             batch_ht_entry_t* entry = &ht->firstEntry[entryId];
-            struct BatchArray* batchArr = gMasterNode->layers[entry->layer].course;
-            struct Batch* batch = &batchArr->batches[entry->idx];
+            struct BatchArray* task = gMasterNode->layers[entry->layer].course;
+            struct Batch* batch = &task->batches[entry->idx];
             batch->startDl = entry->startPtr;
             batch->endDl   = entry->endPtr;
         }

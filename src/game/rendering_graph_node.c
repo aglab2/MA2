@@ -271,18 +271,18 @@ static void render_lists(Gfx **ptempGfxHead, struct DisplayListNode* currList)
 }
 
 extern const Gfx dl_course_common_revert[];
-static int render_batches(Gfx **ptempGfxHead, struct BatchArray* batchesArr, u32 wantMode1, u32 wantMode2, int course)
+static int render_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32 wantMode1, u32 wantMode2, int course)
 {
 #define tempGfxHead (*ptempGfxHead)
     int amountRendered = 0;
-    if (!batchesArr)
+    if (!arr)
         return 0;
 
     // Some "fun" display lists before may decide to change the render mode, so we need to reset it.
     gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
 
-    for (int batch = 0; batch < batchesArr->count; batch++) {
-        struct Batch* batches = &batchesArr->batches[batch];
+    for (int batch = 0; batch < arr->count; batch++) {
+        struct Batch* batches = &arr->batches[batch];
         if (!batches->list.head)
             continue;
 
@@ -463,11 +463,11 @@ static void append_dl_and_return(struct GraphNodeDisplayList *node) {
  * Process the master list node.
  */
 
-static void batches_clean(struct BatchArray* batchArr)
+static void batches_clean(struct BatchArray* task)
 {
-    if (batchArr) {
-        for (int batch = 0; batch < batchArr->count; batch++) {
-            batchArr->batches[batch].list.head = NULL;
+    if (task) {
+        for (int batch = 0; batch < task->count; batch++) {
+            task->batches[batch].list.head = NULL;
         }
     }
 }
@@ -811,13 +811,13 @@ static void geo_lvl_append_display_list(void *displayList, s32 layer) {
     // gSPLookAt(gDisplayListHead++, gCurLookAt);
     // append_dl(&gCurGraphNodeMasterList->layers[layer].list, displayList);
     int32_t* data = segmented_to_virtual(displayList);
-    struct BatchArray* batchArr = gCurGraphNodeMasterList->layers[layer].course;
+    struct BatchArray* task = gCurGraphNodeMasterList->layers[layer].course;
     int batchIdx = 0;
     while (*data)
     {
         if (*data > 0)
         {
-            append_dl(&batchArr->batches[batchIdx].list, (void*)*data);
+            append_dl(&task->batches[batchIdx].list, (void*)*data);
         }
         if (*data < 0)
         {
