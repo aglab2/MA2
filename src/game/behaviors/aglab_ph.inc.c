@@ -1,5 +1,8 @@
 #define oPhTerminalStars oObjF4
 
+extern struct Object *cur_obj_find_object_with_behavior_and_bparam3(const BehaviorScript *behavior, int val);
+extern s32 obj_face_yaw_approach(s16 targetYaw, s16 deltaYaw);
+
 void bhv_ph_terminal_init()
 {
     struct Object** objs = &o->oObjF4;

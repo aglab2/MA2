@@ -58,6 +58,7 @@ u32 interact_hoot          (struct MarioState *m, u32 interactType, struct Objec
 u32 interact_cap           (struct MarioState *m, u32 interactType, struct Object *obj);
 u32 interact_grabbable     (struct MarioState *m, u32 interactType, struct Object *obj);
 u32 interact_text          (struct MarioState *m, u32 interactType, struct Object *obj);
+u32 interact_push_bounce   (struct MarioState *m, u32 interactType, struct Object *obj);
 
 struct InteractionHandler {
     u32 interactType;
@@ -96,6 +97,7 @@ static struct InteractionHandler sInteractionHandlers[] = {
     { INTERACT_CAP,            interact_cap },
     { INTERACT_GRABBABLE,      interact_grabbable },
     { INTERACT_TEXT,           interact_text },
+    { INTERACT_PUSH_BOUNCE,    interact_push_bounce },
 };
 
 static u32 sForwardKnockbackActions[][3] = {
@@ -218,6 +220,8 @@ u32 determine_interaction(struct MarioState *m, struct Object *obj) {
         f32 y = obj->oPosY;
         if (obj->behavior == bhvHbSupport)
             y += 250.f;
+        if (obj->behavior == bhvPcSandglass)
+            y -= 100.f;
 
         if (m->vel[1] < 0.0f) {
             if (m->pos[1] > y) {
@@ -519,7 +523,9 @@ void bounce_off_object(struct MarioState *m, struct Object *obj, f32 velY) {
 }
 
 void hit_object_from_below(struct MarioState *m, UNUSED struct Object *obj) {
-    // m->vel[1] = 0.0f;
+    if (obj->behavior != bhvHbPlatform)
+        m->vel[1] = 0.0f;
+
     set_camera_shake_from_hit(SHAKE_HIT_FROM_BELOW);
 }
 
@@ -1392,6 +1398,30 @@ u32 interact_bounce_top(struct MarioState *m, UNUSED u32 interactType, struct Ob
 
     return FALSE;
 }
+
+u32 interact_push_bounce(struct MarioState *m, UNUSED u32 interactType, struct Object *obj) {
+    u32 interaction = determine_interaction(m, obj);
+    if (interaction & INT_ATTACK_NOT_FROM_BELOW) {
+#if ENABLE_RUMBLE
+        queue_rumble_data(5, 80);
+#endif
+        attack_object(obj, interaction);
+        bounce_back_from_attack(m, interaction);
+
+        if (interaction & INT_HIT_FROM_ABOVE) {
+            bounce_off_object(m, obj, 30.0f);
+        }
+    } else {
+        push_mario_out_of_object(m, obj, 5.0f);
+    }
+
+    if (!(obj->oInteractionSubtype & INT_SUBTYPE_DELAY_INVINCIBILITY)) {
+        sDelayInvincTimer = TRUE;
+    }
+
+    return FALSE;
+}
+
 
 u32 interact_spiny_walking(struct MarioState *m, UNUSED u32 interactType, struct Object *obj) {
     u32 interaction = determine_interaction(m, obj);

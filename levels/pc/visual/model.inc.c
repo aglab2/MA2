@@ -15459,7 +15459,7 @@ Gfx pc_dl_0009_object_011B1D6C_mesh_layer_1_tri_4[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx pc_dl_001_object_006C0A94_mesh_layer_5_vtx_0[6] = {
+Vtx pc_dl_001_object_006C0A94_mesh_layer_6_vtx_0[6] = {
 	{{ {-80, 100, -80}, 0, {0, 2016}, {255, 255, 255, 255} }},
 	{{ {-80, 100, 80}, 0, {0, -8}, {255, 255, 255, 255} }},
 	{{ {0, 100, -80}, 0, {996, 2016}, {255, 255, 255, 255} }},
@@ -15468,8 +15468,8 @@ Vtx pc_dl_001_object_006C0A94_mesh_layer_5_vtx_0[6] = {
 	{{ {80, 100, 80}, 0, {0, -8}, {255, 255, 255, 255} }},
 };
 
-Gfx pc_dl_001_object_006C0A94_mesh_layer_5_tri_0[] = {
-	gsSPVertex(pc_dl_001_object_006C0A94_mesh_layer_5_vtx_0 + 0, 6, 0),
+Gfx pc_dl_001_object_006C0A94_mesh_layer_6_tri_0[] = {
+	gsSPVertex(pc_dl_001_object_006C0A94_mesh_layer_6_vtx_0 + 0, 6, 0),
 	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
 	gsSP2Triangles(2, 3, 4, 0, 4, 3, 5, 0),
 	gsSPEndDisplayList(),
@@ -41413,15 +41413,15 @@ Gfx pc_dl_object_006B3E3C_mesh_layer_1_tri_1[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx pc_dl_object_006B54B4_mesh_layer_5_vtx_0[4] = {
+Vtx pc_dl_object_006B54B4_mesh_layer_6_vtx_0[4] = {
 	{{ {465, 0, 465}, 0, {1004, -12}, {255, 255, 255, 255} }},
 	{{ {465, 0, -465}, 0, {1004, 1000}, {255, 255, 255, 255} }},
 	{{ {-465, 0, 465}, 0, {-8, -12}, {255, 255, 255, 255} }},
 	{{ {-465, 0, -465}, 0, {-8, 1000}, {255, 255, 255, 255} }},
 };
 
-Gfx pc_dl_object_006B54B4_mesh_layer_5_tri_0[] = {
-	gsSPVertex(pc_dl_object_006B54B4_mesh_layer_5_vtx_0 + 0, 4, 0),
+Gfx pc_dl_object_006B54B4_mesh_layer_6_tri_0[] = {
+	gsSPVertex(pc_dl_object_006B54B4_mesh_layer_6_vtx_0 + 0, 4, 0),
 	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
 	gsSPEndDisplayList(),
 };
@@ -46921,9 +46921,9 @@ Gfx pc_dl_0009_object_011B1D6C_mesh_layer_1[] = {
 	gsSPEndDisplayList(),
 };
 
-Gfx pc_dl_001_object_006C0A94_mesh_layer_5[] = {
+Gfx pc_dl_001_object_006C0A94_mesh_layer_6[] = {
 	gsSPDisplayList(mat_pc_dl_KEYHOLE_GREEN_sa2mdl_0_f3d),
-	gsSPDisplayList(pc_dl_001_object_006C0A94_mesh_layer_5_tri_0),
+	gsSPDisplayList(pc_dl_001_object_006C0A94_mesh_layer_6_tri_0),
 	gsSPDisplayList(mat_revert_pc_dl_KEYHOLE_GREEN_sa2mdl_0_f3d),
 	gsSPEndDisplayList(),
 };
@@ -48393,10 +48393,17 @@ Gfx pc_dl_object_006B3E3C_mesh_layer_1[] = {
 	gsSPEndDisplayList(),
 };
 
-Gfx pc_dl_object_006B54B4_mesh_layer_5[] = {
+Gfx pc_dl_object_006B54B4_mesh_layer_6[] = {
 	gsSPDisplayList(mat_pc_dl_FIREPOT_sa2mdl_0_f3d),
-	gsSPDisplayList(pc_dl_object_006B54B4_mesh_layer_5_tri_0),
+	gsSPDisplayList(pc_dl_object_006B54B4_mesh_layer_6_tri_0),
 	gsSPDisplayList(mat_revert_pc_dl_FIREPOT_sa2mdl_0_f3d),
+	gsDPPipeSync(),
+	gsSPSetGeometryMode(G_LIGHTING),
+	gsSPClearGeometryMode(G_TEXTURE_GEN),
+	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
+	gsSPTexture(65535, 65535, 0, 0, 0),
+	gsDPSetEnvColor(255, 255, 255, 255),
+	gsDPSetAlphaCompare(G_AC_NONE),
 	gsSPEndDisplayList(),
 };
 

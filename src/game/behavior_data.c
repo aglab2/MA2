@@ -6027,3 +6027,13 @@ const BehaviorScript bhvHbSupport[] = {
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
+
+extern void bhv_pc_sandglass_init();
+extern void bhv_pc_sandglass_loop();
+const BehaviorScript bhvPcSandglass[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    SET_HOME(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_pc_sandglass_loop),
+    END_LOOP(),
+};

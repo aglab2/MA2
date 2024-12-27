@@ -563,5 +563,6 @@ extern const BehaviorScript bhvAqWater[];
 extern const BehaviorScript bhvHbPlatform[];
 extern const BehaviorScript bhvHbUpDown[];
 extern const BehaviorScript bhvHbSupport[];
+extern const BehaviorScript bhvPcSandglass[];
 
 #endif // BEHAVIOR_DATA_H
