@@ -85,3 +85,28 @@ void bhv_pc_sandglass_loop()
         parts[i]->oFaceAngleYaw = o->oFaceAngleYaw;
     }
 }
+
+void bhv_pc_key_door_loop()
+{
+
+}
+
+void bhv_pc_key_enter_init()
+{
+
+}
+
+void bhv_pc_key_enter_loop()
+{
+
+}
+
+void bhv_pc_move_init()
+{
+
+}
+
+void bhv_pc_move_loop()
+{
+
+}

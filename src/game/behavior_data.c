@@ -6037,3 +6037,53 @@ const BehaviorScript bhvPcSandglass[] = {
         CALL_NATIVE(bhv_pc_sandglass_loop),
     END_LOOP(),
 };
+
+extern void bhv_pc_move_init();
+extern void bhv_pc_move_loop();
+extern const Collision pc_door_b_collision[];
+const BehaviorScript bhvPcMove[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    SET_HOME(),
+    CALL_NATIVE(bhv_pc_move_init),
+    LOAD_COLLISION_DATA(pc_door_b_collision),
+    SET_FLOAT(oDrawingDistance, 10000),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_pc_move_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvPcKey[] = {
+    BEGIN(OBJ_LIST_DESTRUCTIVE),
+    OR_INT(oFlags, (OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    DROP_TO_FLOOR(),
+    SET_HOME(),
+    CALL_NATIVE(bhv_breakable_box_small_init),
+    BEGIN_LOOP(),
+        SET_INT(oIntangibleTimer, 0),
+        CALL_NATIVE(bhv_breakable_box_small_loop),
+    END_LOOP(),
+};
+
+extern void bhv_pc_key_enter_init();
+extern void bhv_pc_key_enter_loop();
+const BehaviorScript bhvPcKeyEnter[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    CALL_NATIVE(bhv_pc_key_enter_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_pc_key_enter_loop),
+    END_LOOP(),
+};
+
+extern void bhv_pc_key_door_init();
+extern void bhv_pc_key_door_loop();
+extern const Collision pc_keydoor_blue_collision[];
+const BehaviorScript bhvPcKeyDoor[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    LOAD_COLLISION_DATA(pc_keydoor_blue_collision),
+    CALL_NATIVE(bhv_breakable_box_small_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_pc_key_door_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};

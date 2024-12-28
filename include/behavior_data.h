@@ -564,5 +564,9 @@ extern const BehaviorScript bhvHbPlatform[];
 extern const BehaviorScript bhvHbUpDown[];
 extern const BehaviorScript bhvHbSupport[];
 extern const BehaviorScript bhvPcSandglass[];
+extern const BehaviorScript bhvPcMove[];
+extern const BehaviorScript bhvPcKey[];
+extern const BehaviorScript bhvPcKeyEnter[];
+extern const BehaviorScript bhvPcKeyDoor[];
 
 #endif // BEHAVIOR_DATA_H
