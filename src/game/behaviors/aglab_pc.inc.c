@@ -28,12 +28,12 @@ void bhv_pc_sandglass_loop()
     }
 
     const int FlipSpeed = 20;
-
+    obj_set_hitbox(o, &sPcSandglassHitbox);
     switch (o->oAction)
     {
         case 0:
         {
-            obj_set_hitbox(o, &sPcSandglassHitbox);
+            o->oInteractionSubtype = 0;
             if (cur_obj_was_attacked_or_ground_pounded()) {
                 // obj_explode_and_spawn_coins(46.0f, COIN_TYPE_YELLOW);
                 play_sound(SOUND_GENERAL_BREAK_BOX, gGlobalSoundSource);
@@ -43,6 +43,7 @@ void bhv_pc_sandglass_loop()
         break;
         case 1:
         {
+            o->oInteractionSubtype = INT_SUBTYPE_PUSH_ONLY;
             o->oPosY = 100.f + o->oHomeY + 2 * o->oTimer * (FlipSpeed - o->oTimer);
             o->oFaceAnglePitch = o->oTimer * 0x8000 / FlipSpeed;
             if (FlipSpeed == o->oTimer)
@@ -84,6 +85,7 @@ void bhv_pc_sandglass_loop()
         parts[i]->oFaceAngleRoll = o->oFaceAngleRoll;
         parts[i]->oFaceAngleYaw = o->oFaceAngleYaw;
     }
+    o->oInteractStatus = 0;
 }
 
 void bhv_pc_key_door_loop()
@@ -101,12 +103,77 @@ void bhv_pc_key_enter_loop()
 
 }
 
+#define PC_SANDGLASS_PROGRESS_MAX (360 + 40 * 5)
+
 void bhv_pc_move_init()
 {
+    o->parentObj = cur_obj_nearest_object_with_behavior(bhvPcSandglass);
+    switch (o->oBehParams2ndByte)
+    {
+        case 0:
+        break;
+        case 1:
+            o->oFaceAnglePitch = 0x4000;
+            o->oFaceAngleYaw = 0x4000;
+            o->oPosX -= PC_SANDGLASS_PROGRESS_MAX;
+        break;
+        case 2:
+            o->oFaceAnglePitch = 0x4000;
+        break;
+    }
+}
 
+#define PC_SANDGLASS_ACTIVE (o->parentObj->oAction == 2)
+
+static inline int pc_sandglass_progress(void)
+{
+    int time = o->parentObj->oTimer;
+    if (time < 360) {
+        return time;
+    } else {
+        return 360 + (time - 360) * 5;
+    }
+}
+
+static void pc_sandglass_modify_coord(f32* coord, f32 home, f32 mult)
+{
+    switch (o->parentObj->oAction)
+    {
+        case 0:
+        {
+            *coord = home;
+        }
+        break;
+        case 1:
+        {
+            *coord = home + mult * o->parentObj->oTimer * (PC_SANDGLASS_PROGRESS_MAX / 20);
+        }
+        break;
+        case 2:
+        {
+            *coord = home + mult * (PC_SANDGLASS_PROGRESS_MAX - pc_sandglass_progress());
+        }
+        break;
+        case 3:
+        {
+            *coord = home;
+        }
+        break;
+    }
 }
 
 void bhv_pc_move_loop()
 {
-
+    switch (o->oBehParams2ndByte)
+    {
+        case 0:
+        pc_sandglass_modify_coord(&o->oPosY, o->oHomeY, 1.f);
+        break;
+        case 1:
+        pc_sandglass_modify_coord(&o->oPosX, o->oHomeX, 1.f);
+        break;
+        case 2:
+        pc_sandglass_modify_coord(&o->oPosZ, o->oHomeZ, -1.f);
+        break;
+    }
 }

@@ -67,6 +67,8 @@ enum InteractSubtypes {
     INT_SUBTYPE_NPC                 = /* 0x00004000 */ (1 << 14),
     // INTERACT_CLAM_OR_BUBBA
     INT_SUBTYPE_EATS_MARIO          = /* 0x00002000 */ (1 << 13),
+
+    INT_SUBTYPE_PUSH_ONLY           = /* 0x00008000 */ (1 << 15),
     
 };
 

@@ -49,7 +49,7 @@ static IWDirectionAreasDesc iw_pc_area7 = {
 
 static IWDirectionAreasDesc iw_pc_area8 = {
     { IWDT_DIRECTIONS },
-    { .x_low = 6, },
+    { .x_low = 7, },
 };
 
 IWDHeader* iw_descs_pc[] = {
@@ -65,30 +65,107 @@ IWDHeader* iw_descs_pc[] = {
 
 static const LDLDesc loop_desc1 = { 2, 1, 0, 1, 0x4000 };
 
-static const RailDesc rail_pc_area1[] = {
-    // LOOP_TRAJ(pc_area_1_spline_NurbsCurve_Loop, &loop_desc1),
+static const RailDesc rail_pc_area3[] = {
+    LOOP_TRAJ(pc_area_3_spline_NurbsCurve_Loop, &loop_desc1),
+    RAIL_END,
+};
+
+static const RailDesc rail_pc_area4[] = {
+    RAIL_TRAJ(pc_area_4_spline_NurbsCurve_Rail),
+    RAIL_END,
+};
+
+static const RailDesc rail_pc_area5[] = {
+    RAIL_TRAJ(pc_area_5_spline_NurbsCurve_Rail_001),
+    RAIL_TRAJ(pc_area_5_spline_NurbsCurve_Rail_002),
+    RAIL_END,
+};
+
+static const RailDesc rail_pc_area6[] = {
+    RAIL_TRAJ(pc_area_6_spline_NurbsCurve_Rail_003),
+    RAIL_TRAJ(pc_area_6_spline_NurbsCurve_Rail_004),
+    RAIL_TRAJ(pc_area_6_spline_NurbsCurve_Rail_005),
+    RAIL_TRAJ(pc_area_6_spline_NurbsCurve_Rail_006),
+    RAIL_TRAJ(pc_area_6_spline_NurbsCurve_Rail_007),
+    RAIL_END,
+};
+
+static const RailDesc rail_pc_area7[] = {
+    LOOP_TRAJ(pc_area_7_spline_NurbsCurve_Loop_001, &loop_desc1),
+    LOOP_TRAJ(pc_area_7_spline_NurbsCurve_Loop_002, &loop_desc1),
+    RAIL_TRAJ(pc_area_7_spline_NurbsCurve_Rail_008),
+    RAIL_END,
+};
+
+static const RailDesc rail_pc_area8[] = {
+    LOOP_TRAJ(pc_area_8_spline_NurbsCurve_Loop_003, &loop_desc1),
+    LOOP_TRAJ(pc_area_8_spline_NurbsCurve_Loop_004, &loop_desc1),
+    RAIL_TRAJ(pc_area_8_spline_NurbsCurve_Rail_009),
+    RAIL_END,
 };
 
 const RailDesc* rail_descs_pc[] = {
     NULL,
     NULL,
+    rail_pc_area3,
+    rail_pc_area4,
+    rail_pc_area5,
+    rail_pc_area6,
+    rail_pc_area7,
+    rail_pc_area8,
+};
+
+static SpringDesc spring_pc_area2[] = {
+    pc_area_2_spline_NurbsCurve_Spring,
+    pc_area_2_spline_NurbsCurve_Spring_001,
     NULL,
+};
+
+static SpringDesc spring_pc_area3[] = {
+    pc_area_3_spline_NurbsCurve_Spring_002,
     NULL,
+};
+
+static SpringDesc spring_pc_area4[] = {
+    pc_area_4_spline_NurbsCurve_Spring_003,
     NULL,
+};
+
+static SpringDesc spring_pc_area6[] = {
+    pc_area_6_spline_NurbsCurve_Spring_004,
+    pc_area_6_spline_NurbsCurve_Spring_010,
     NULL,
+};
+
+static SpringDesc spring_pc_area7[] = {
+    pc_area_7_spline_NurbsCurve_Spring_005,
+    pc_area_7_spline_NurbsCurve_Spring_006,
+    pc_area_7_spline_NurbsCurve_Spring_008,
+    pc_area_7_spline_NurbsCurve_Spring_011,
     NULL,
+};
+
+static SpringDesc spring_pc_area8[] = {
+    pc_area_8_spline_NurbsCurve_Spring_007,
+    pc_area_8_spline_NurbsCurve_Spring_009,
     NULL,
 };
 
 const SpringDesc* spring_descs_pc[] = {
     NULL,
+    spring_pc_area2,
+    spring_pc_area3,
+    spring_pc_area4,
     NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
+    spring_pc_area6,
+    spring_pc_area7,
+    spring_pc_area8,
+};
+
+const SpringLinkDesc spring_links_pc[] = {
+    { pc_area_3_spline_NurbsCurve_Spring_002, pc_area_4_spline_NurbsCurve_Spring_003, },
+    { pc_area_6_spline_NurbsCurve_Spring_004, pc_area_7_spline_NurbsCurve_Spring_005, },
+    { NULL, NULL, }
 };
 
 #include "levels/pc/visual/model.inc.c"

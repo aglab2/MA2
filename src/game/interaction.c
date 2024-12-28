@@ -1400,7 +1400,7 @@ u32 interact_bounce_top(struct MarioState *m, UNUSED u32 interactType, struct Ob
 }
 
 u32 interact_push_bounce(struct MarioState *m, UNUSED u32 interactType, struct Object *obj) {
-    u32 interaction = determine_interaction(m, obj);
+    u32 interaction = (obj->oInteractionSubtype & INT_SUBTYPE_PUSH_ONLY) ? 0 : determine_interaction(m, obj);
     if (interaction & INT_ATTACK_NOT_FROM_BELOW) {
 #if ENABLE_RUMBLE
         queue_rumble_data(5, 80);
