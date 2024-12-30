@@ -31,3 +31,8 @@
 #include "levels/dc/dc_treasure_blue_break/geo.inc.c"
 #include "levels/dc/dc_treasure_green_break/geo.inc.c"
 #include "levels/dc/dc_treasure_red_break/geo.inc.c"
+#include "levels/dc/dc_sandglass_ends/geo.inc.c"
+#include "levels/dc/dc_sandglass_glass/geo.inc.c"
+#include "levels/dc/dc_sandglass_sand/geo.inc.c"
+#include "levels/dc/dc_sandglass_sandf/geo.inc.c"
+#include "levels/dc/dc_sandglass_spring/geo.inc.c"

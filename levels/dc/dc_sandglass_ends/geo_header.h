@@ -1,0 +1,18 @@
+extern const GeoLayout dc_sandglass_ends_geo[];
+extern u8 dc_sandglass_ends_dz_sandglass_body128_ci4[];
+extern u8 dc_sandglass_ends_dz_sandglass_body128_pal_rgba16[];
+extern u8 dc_sandglass_ends_dz_sandglass_edge32_ci8[];
+extern u8 dc_sandglass_ends_dz_sandglass_edge32_pal_rgba16[];
+extern Vtx dc_sandglass_ends_dc_sandglass_ends_mesh_layer_1_vtx_0[12];
+extern Gfx dc_sandglass_ends_dc_sandglass_ends_mesh_layer_1_tri_0[];
+extern Vtx dc_sandglass_ends_dc_sandglass_ends_mesh_layer_1_vtx_1[107];
+extern Gfx dc_sandglass_ends_dc_sandglass_ends_mesh_layer_1_tri_1[];
+extern Vtx dc_sandglass_ends_dc_sandglass_ends_mesh_layer_1_vtx_2[126];
+extern Gfx dc_sandglass_ends_dc_sandglass_ends_mesh_layer_1_tri_2[];
+extern Gfx mat_dc_sandglass_ends_SANDGLASS_ENDS_sa2mdl_0_f3d[];
+extern Gfx mat_revert_dc_sandglass_ends_SANDGLASS_ENDS_sa2mdl_0_f3d[];
+extern Gfx mat_dc_sandglass_ends_SANDGLASS_ENDS_sa2mdl_1_f3d[];
+extern Gfx mat_revert_dc_sandglass_ends_SANDGLASS_ENDS_sa2mdl_1_f3d[];
+extern Gfx mat_dc_sandglass_ends_SANDGLASS_ENDS_sa2mdl_2_f3d[];
+extern Gfx mat_revert_dc_sandglass_ends_SANDGLASS_ENDS_sa2mdl_2_f3d[];
+extern Gfx dc_sandglass_ends_dc_sandglass_ends_mesh_layer_1[];

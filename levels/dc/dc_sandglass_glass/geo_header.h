@@ -1,0 +1,8 @@
+extern const GeoLayout dc_sandglass_glass_geo[];
+extern u8 dc_sandglass_glass_dz_kankyou128_ci4[];
+extern u8 dc_sandglass_glass_dz_kankyou128_pal_rgba16[];
+extern Vtx dc_sandglass_glass_dc_sandglass_glass_mesh_layer_5_vtx_0[49];
+extern Gfx dc_sandglass_glass_dc_sandglass_glass_mesh_layer_5_tri_0[];
+extern Gfx mat_dc_sandglass_glass_SANDGLASS_GLASS_sa2mdl_0_f3d[];
+extern Gfx mat_revert_dc_sandglass_glass_SANDGLASS_GLASS_sa2mdl_0_f3d[];
+extern Gfx dc_sandglass_glass_dc_sandglass_glass_mesh_layer_5[];

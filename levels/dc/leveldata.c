@@ -26,3 +26,8 @@
 #include "levels/dc/dc_treasure_blue_break/model.inc.c"
 #include "levels/dc/dc_treasure_green_break/model.inc.c"
 #include "levels/dc/dc_treasure_red_break/model.inc.c"
+#include "levels/dc/dc_sandglass_ends/model.inc.c"
+#include "levels/dc/dc_sandglass_glass/model.inc.c"
+#include "levels/dc/dc_sandglass_sand/model.inc.c"
+#include "levels/dc/dc_sandglass_sandf/model.inc.c"
+#include "levels/dc/dc_sandglass_spring/model.inc.c"

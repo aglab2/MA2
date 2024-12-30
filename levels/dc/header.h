@@ -42,4 +42,14 @@ extern const LevelScript level_dc_entry[];
 
 #include "levels/dc/dc_treasure_red_break/geo_header.h"
 
+#include "levels/dc/dc_sandglass_ends/geo_header.h"
+
+#include "levels/dc/dc_sandglass_glass/geo_header.h"
+
+#include "levels/dc/dc_sandglass_sand/geo_header.h"
+
+#include "levels/dc/dc_sandglass_sandf/geo_header.h"
+
+#include "levels/dc/dc_sandglass_spring/geo_header.h"
+
 #endif
