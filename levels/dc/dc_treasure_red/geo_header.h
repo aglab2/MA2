@@ -1,0 +1,8 @@
+extern const GeoLayout dc_treasure_red_geo[];
+extern u8 dc_treasure_red_dz_dc_takarabako128_ci4[];
+extern u8 dc_treasure_red_dz_dc_takarabako128_pal_rgba16[];
+extern Vtx dc_treasure_red_dc_treasure_red_mesh_layer_1_vtx_0[68];
+extern Gfx dc_treasure_red_dc_treasure_red_mesh_layer_1_tri_0[];
+extern Gfx mat_dc_treasure_red_TREASURE_RED_sa2bmdl_0_f3d[];
+extern Gfx mat_revert_dc_treasure_red_TREASURE_RED_sa2bmdl_0_f3d[];
+extern Gfx dc_treasure_red_dc_treasure_red_mesh_layer_1[];
