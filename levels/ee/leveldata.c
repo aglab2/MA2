@@ -4,10 +4,65 @@
 #include "moving_texture_macros.h"
 #include "textures.h"
 #include "dialog_ids.h"
+#include "instant_warp_desc.h"
+#include "spring_desc.h"
 
 #include "make_const_nonconst.h"
 
 #include "levels/ee/visual/model.inc.c"
+
+static IWDirectionAreasDesc iw_ee_area1 = {
+    { IWDT_DIRECTIONS },
+    { .z_low = 2, },
+};
+
+static IWDirectionAreasDesc iw_ee_area2 = {
+    { IWDT_DIRECTIONS },
+    { .z_high = 1, .x_low = 3, },
+};
+
+static IWDirectionAreasDesc iw_ee_area3 = {
+    { IWDT_DIRECTIONS },
+    { .x_high = 2, .z_low = 4 },
+};
+
+static IWDirectionAreasDesc iw_ee_area4 = {
+    { IWDT_DIRECTIONS },
+    { .z_high = 3, .x_high = 5 },
+};
+
+static IWDirectionAreasDesc iw_ee_area5 = {
+    { IWDT_DIRECTIONS },
+    { .x_low = 4 },
+};
+
+IWDHeader* iw_descs_ee[] = {
+    &iw_ee_area1.header,
+    &iw_ee_area2.header,
+    &iw_ee_area3.header,
+    &iw_ee_area4.header,
+    &iw_ee_area5.header,
+};
+
+static SpringDesc spring_ee_area1[] = {
+    NULL,
+};
+
+static SpringDesc spring_ee_area2[] = {
+    NULL,
+};
+
+const SpringLinkDesc spring_links_ee[] = {
+    { NULL, NULL, }
+};
+
+const SpringDesc* spring_descs_ee[] = {
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+};
 
 #if 1
 #include "levels/ee/area_1/collision.inc.c"
