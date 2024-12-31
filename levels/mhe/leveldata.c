@@ -9,3 +9,4 @@
 
 
 #include "levels/mhe/leveldata.inc.c"
+#include "levels/mhe/mhe_skybox/model.inc.c"

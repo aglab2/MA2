@@ -15,3 +15,4 @@
 
 
 #include "levels/mhe/geo.inc.c"
+#include "levels/mhe/mhe_skybox/geo.inc.c"

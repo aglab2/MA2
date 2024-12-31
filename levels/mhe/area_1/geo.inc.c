@@ -3,6 +3,7 @@
 const GeoLayout mhe_area_1_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
+		GEO_ASM(0, geo_render_backdrop),
 		GEO_LVL_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, (f32)4170.0, (f32)-13000.0, (f32)-11099.998779296875, 0, -28, 0, mhe_dl_0000_object_012DDBE4_mesh_layer_1),
 		GEO_OPEN_NODE(),
 			GEO_LVL_DISPLAY_LIST(LAYER_TRANSPARENT_DECAL, mhe_dl_0000_object_012DDBE4_mesh_layer_6),
