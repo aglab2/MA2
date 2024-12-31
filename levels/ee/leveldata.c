@@ -8,6 +8,7 @@
 #include "spring_desc.h"
 
 #include "make_const_nonconst.h"
+#include "levels/ee/header.inc.h"
 
 #include "levels/ee/visual/model.inc.c"
 
@@ -45,10 +46,24 @@ IWDHeader* iw_descs_ee[] = {
 };
 
 static SpringDesc spring_ee_area1[] = {
+    ee_area_1_spline_NurbsCurve_Spring,
+    ee_area_1_spline_NurbsCurve_Spring_001,
     NULL,
 };
 
 static SpringDesc spring_ee_area2[] = {
+    ee_area_2_spline_NurbsCurve_Spring_002,
+    NULL,
+};
+
+static SpringDesc spring_ee_area3[] = {
+    ee_area_3_spline_NurbsCurve_Spring_004,
+    ee_area_3_spline_NurbsCurve_Spring_005,
+    NULL,
+};
+
+static SpringDesc spring_ee_area4[] = {
+    ee_area_4_spline_NurbsCurve_Spring_003,
     NULL,
 };
 
@@ -57,19 +72,24 @@ const SpringLinkDesc spring_links_ee[] = {
 };
 
 const SpringDesc* spring_descs_ee[] = {
-    NULL,
-    NULL,
-    NULL,
-    NULL,
+    spring_ee_area1,
+    spring_ee_area2,
+    spring_ee_area3,
+    spring_ee_area4,
     NULL,
 };
 
 #if 1
 #include "levels/ee/area_1/collision.inc.c"
+#include "levels/ee/area_1/spline.inc.c"
 #include "levels/ee/area_2/collision.inc.c"
+#include "levels/ee/area_2/spline.inc.c"
 #include "levels/ee/area_3/collision.inc.c"
+#include "levels/ee/area_3/spline.inc.c"
 #include "levels/ee/area_4/collision.inc.c"
+#include "levels/ee/area_4/spline.inc.c"
 #include "levels/ee/area_5/collision.inc.c"
+#include "levels/ee/area_5/spline.inc.c"
 #else
 #include "levels/ee/leveldata.inc.c"
 #endif
@@ -92,3 +112,4 @@ const SpringDesc* spring_descs_ee[] = {
 #include "levels/ee/ee_stepb/collision.inc.c"
 #include "levels/ee/ee_tank/model.inc.c"
 #include "levels/ee/ee_tank_break/model.inc.c"
+#include "levels/ee/ee_skybox1/model.inc.c"

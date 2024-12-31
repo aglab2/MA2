@@ -1,0 +1,14 @@
+const Trajectory ee_area_3_spline_NurbsCurve_Spring_004[] = {
+	TRAJECTORY_POS( 0, 8942, -2956, -15929),
+	TRAJECTORY_POS( 1, 8942, 110, -16382),
+	TRAJECTORY_POS( 2, 8942, 2800, -17572),
+	TRAJECTORY_POS( 3, 8942, 3506, -18638),
+	TRAJECTORY_END(),
+};
+const Trajectory ee_area_3_spline_NurbsCurve_Spring_005[] = {
+	TRAJECTORY_POS( 0, 10037, -2956, -17279),
+	TRAJECTORY_POS( 1, 10037, -253, -16827),
+	TRAJECTORY_POS( 2, 10037, 1009, -15637),
+	TRAJECTORY_POS( 3, 10037, 1351, -14383),
+	TRAJECTORY_END(),
+};

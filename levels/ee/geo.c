@@ -31,3 +31,4 @@
 #include "levels/ee/ee_stepb/geo.inc.c"
 #include "levels/ee/ee_tank/geo.inc.c"
 #include "levels/ee/ee_tank_break/geo.inc.c"
+#include "levels/ee/ee_skybox1/geo.inc.c"

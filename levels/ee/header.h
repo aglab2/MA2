@@ -49,4 +49,6 @@ extern const LevelScript level_ee_entry[];
 
 #include "levels/ee/ee_tank_break/geo_header.h"
 
+#include "levels/ee/ee_skybox1/geo_header.h"
+
 #endif
