@@ -20,3 +20,14 @@
 #if 0
 #include "levels/ee/geo.inc.c"
 #endif
+
+#include "levels/ee/ee_shutter_left/geo.inc.c"
+#include "levels/ee/ee_shutter_right/geo.inc.c"
+#include "levels/ee/ee_capsule/geo.inc.c"
+#include "levels/ee/ee_capsule_inside/geo.inc.c"
+#include "levels/ee/ee_hatch_a/geo.inc.c"
+#include "levels/ee/ee_hatch_b/geo.inc.c"
+#include "levels/ee/ee_laststep/geo.inc.c"
+#include "levels/ee/ee_stepb/geo.inc.c"
+#include "levels/ee/ee_tank/geo.inc.c"
+#include "levels/ee/ee_tank_break/geo.inc.c"

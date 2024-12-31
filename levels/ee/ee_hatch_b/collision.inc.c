@@ -1,0 +1,21 @@
+const Collision ee_hatch_b_collision[] = {
+	COL_INIT(),
+	COL_VERTEX_INIT(8),
+	COL_VERTEX(250, 0, 290),
+	COL_VERTEX(250, 0, -310),
+	COL_VERTEX(0, 0, 290),
+	COL_VERTEX(0, 0, -310),
+	COL_VERTEX(-50, 200, 290),
+	COL_VERTEX(-50, 200, -310),
+	COL_VERTEX(-50, 400, 290),
+	COL_VERTEX(-50, 400, -310),
+	COL_TRI_INIT(SURFACE_DEFAULT, 6),
+	COL_TRI(0, 1, 2),
+	COL_TRI(2, 1, 3),
+	COL_TRI(2, 3, 4),
+	COL_TRI(4, 3, 5),
+	COL_TRI(4, 5, 6),
+	COL_TRI(6, 5, 7),
+	COL_TRI_STOP(),
+	COL_END()
+};

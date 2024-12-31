@@ -73,3 +73,22 @@ const SpringDesc* spring_descs_ee[] = {
 #else
 #include "levels/ee/leveldata.inc.c"
 #endif
+
+#include "levels/ee/ee_shutter_dynamite/collision.inc.c"
+#include "levels/ee/ee_shutter_left/model.inc.c"
+#include "levels/ee/ee_shutter_right/model.inc.c"
+#include "levels/ee/ee_shutter_left/collision.inc.c"
+#include "levels/ee/ee_shutter_right/collision.inc.c"
+#include "levels/ee/ee_capsule/model.inc.c"
+#include "levels/ee/ee_capsule_inside/model.inc.c"
+#include "levels/ee/ee_hatch_a/model.inc.c"
+#include "levels/ee/ee_hatch_a/collision.inc.c"
+#include "levels/ee/ee_hatch_b/model.inc.c"
+#include "levels/ee/ee_hatch_b/collision.inc.c"
+#include "levels/ee/ee_laststep/collision.inc.c"
+#include "levels/ee/ee_laststep/model.inc.c"
+#include "levels/ee/ee_step/collision.inc.c"
+#include "levels/ee/ee_stepb/model.inc.c"
+#include "levels/ee/ee_stepb/collision.inc.c"
+#include "levels/ee/ee_tank/model.inc.c"
+#include "levels/ee/ee_tank_break/model.inc.c"
