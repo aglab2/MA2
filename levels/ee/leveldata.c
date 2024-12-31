@@ -64,6 +64,7 @@ static SpringDesc spring_ee_area3[] = {
 
 static SpringDesc spring_ee_area4[] = {
     ee_area_4_spline_NurbsCurve_Spring_003,
+    ee_area_4_spline_NurbsCurve_Spring_006,
     NULL,
 };
 
