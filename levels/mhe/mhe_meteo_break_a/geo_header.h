@@ -1,0 +1,14 @@
+extern const GeoLayout mhe_meteo_break_a_geo[];
+extern u8 mhe_meteo_break_a_miu256_fr001_ci4[];
+extern u8 mhe_meteo_break_a_miu256_fr001_pal_rgba16[];
+extern u8 mhe_meteo_break_a_miu128_fr002_ci4[];
+extern u8 mhe_meteo_break_a_miu128_fr002_pal_rgba16[];
+extern Vtx mhe_meteo_break_a_mhe_meteo_break_a_mesh_layer_1_vtx_0[7];
+extern Gfx mhe_meteo_break_a_mhe_meteo_break_a_mesh_layer_1_tri_0[];
+extern Vtx mhe_meteo_break_a_mhe_meteo_break_a_mesh_layer_1_vtx_1[16];
+extern Gfx mhe_meteo_break_a_mhe_meteo_break_a_mesh_layer_1_tri_1[];
+extern Gfx mat_mhe_meteo_break_a_METEO_BREAKA_sa2mdl_0_f3d[];
+extern Gfx mat_revert_mhe_meteo_break_a_METEO_BREAKA_sa2mdl_0_f3d[];
+extern Gfx mat_mhe_meteo_break_a_METEO_BREAKA_sa2mdl_1_f3d[];
+extern Gfx mat_revert_mhe_meteo_break_a_METEO_BREAKA_sa2mdl_1_f3d[];
+extern Gfx mhe_meteo_break_a_mhe_meteo_break_a_mesh_layer_1[];

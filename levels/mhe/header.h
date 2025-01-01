@@ -10,4 +10,32 @@ extern const LevelScript level_mhe_entry[];
 #include "levels/mhe/header.inc.h"
 #include "levels/mhe/mhe_skybox/geo_header.h"
 
+#include "levels/mhe/mhe_bigshutter/geo_header.h"
+
+#include "levels/mhe/mhe_bigshutter/collision_header.h"
+
+#include "levels/mhe/mhe_fireball/geo_header.h"
+
+#include "levels/mhe/mhe_fireball_break/geo_header.h"
+
+#include "levels/mhe/mhe_meteo_a/geo_header.h"
+
+#include "levels/mhe/mhe_meteo_b/geo_header.h"
+
+#include "levels/mhe/mhe_meteo_break_a/geo_header.h"
+
+#include "levels/mhe/mhe_meteobig/geo_header.h"
+
+#include "levels/mhe/mhe_meteobig_break/geo_header.h"
+
+#include "levels/mhe/mhe_meteo_fall/geo_header.h"
+
+#include "levels/mhe/mhe_meteoshut/geo_header.h"
+
+#include "levels/mhe/mhe_meteoshut/collision_header.h"
+
+#include "levels/mhe/mhe_tank/geo_header.h"
+
+#include "levels/mhe/mhe_tank_break/geo_header.h"
+
 #endif
