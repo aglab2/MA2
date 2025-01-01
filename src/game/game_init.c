@@ -224,10 +224,14 @@ void clear_framebuffer(s32 color) {
  * Resets the viewport, readying it for the final image.
  */
 void clear_viewport(Vp *viewport, s32 color) {
+    int vscale1 = viewport->vp.vscale[1];
+#ifdef F3DEX3
+    vscale1 = -vscale1;
+#endif
     s16 vpUlx = (viewport->vp.vtrans[0] - viewport->vp.vscale[0]) / 4 + 1;
-    s16 vpUly = (viewport->vp.vtrans[1] - viewport->vp.vscale[1]) / 4 + 1;
+    s16 vpUly = (viewport->vp.vtrans[1] - vscale1) / 4 + 1;
     s16 vpLrx = (viewport->vp.vtrans[0] + viewport->vp.vscale[0]) / 4 - 2;
-    s16 vpLry = (viewport->vp.vtrans[1] + viewport->vp.vscale[1]) / 4 - 2;
+    s16 vpLry = (viewport->vp.vtrans[1] + vscale1) / 4 - 2;
 
 #ifdef WIDESCREEN
     vpUlx = GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(vpUlx);
@@ -282,9 +286,13 @@ void draw_screen_borders(void) {
  */
 void make_viewport_clip_rect(Vp *viewport) {
     s16 vpUlx = (viewport->vp.vtrans[0] - viewport->vp.vscale[0]) / 4 + 1;
-    s16 vpPly = (viewport->vp.vtrans[1] - viewport->vp.vscale[1]) / 4 + 1;
+    int vscale1 = viewport->vp.vscale[1];
+#ifdef F3DEX3
+    vscale1 = -vscale1;
+#endif
+    s16 vpPly = (viewport->vp.vtrans[1] - vscale1) / 4 + 1;
     s16 vpLrx = (viewport->vp.vtrans[0] + viewport->vp.vscale[0]) / 4 - 1;
-    s16 vpLry = (viewport->vp.vtrans[1] + viewport->vp.vscale[1]) / 4 - 1;
+    s16 vpLry = (viewport->vp.vtrans[1] + vscale1) / 4 - 1;
 
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, vpUlx, vpPly, vpLrx, vpLry);
 }
@@ -307,6 +315,11 @@ void create_gfx_task_structure(void) {
     gGfxSPTask->task.t.ucode_data = gspL3DEX2_fifoDataStart;
     gGfxSPTask->task.t.ucode_size = ((u8 *) gspL3DEX2_fifoTextEnd - (u8 *) gspL3DEX2_fifoTextStart);
     gGfxSPTask->task.t.ucode_data_size = ((u8 *) gspL3DEX2_fifoDataEnd - (u8 *) gspL3DEX2_fifoDataStart);
+#elif F3DEX3
+    gGfxSPTask->task.t.ucode = gspF3DEX3_fifoTextStart;
+    gGfxSPTask->task.t.ucode_data = gspF3DEX3_fifoDataStart;
+    gGfxSPTask->task.t.ucode_size = ((u8 *) gspF3DEX3_fifoTextEnd - (u8 *) gspF3DEX3_fifoTextStart);
+    gGfxSPTask->task.t.ucode_data_size = ((u8 *) gspF3DEX3_fifoDataEnd - (u8 *) gspF3DEX3_fifoDataStart);
 #elif  F3DZEX_GBI_2
     gGfxSPTask->task.t.ucode = gspF3DZEX2_PosLight_fifoTextStart;
     gGfxSPTask->task.t.ucode_data = gspF3DZEX2_PosLight_fifoDataStart;

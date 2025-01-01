@@ -633,7 +633,11 @@ Lights1 defaultLight = gdSPDefLights1(
     0x3F, 0x3F, 0x3F, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00
 );
 
+#ifdef F3DEX3
+Vec3f globalLightDirection = { 0x49, 0x49, 0x49 };
+#else
 Vec3f globalLightDirection = { 0x28, 0x28, 0x28 };
+#endif
 
 void setup_global_light() {
     Lights1* curLight = (Lights1*)alloc_display_list(sizeof(Lights1));
@@ -1560,6 +1564,9 @@ void geo_process_root(struct GraphNodeRoot *node, Vp *b, Vp *c, s32 clearColor) 
         gCurrAnimType = ANIM_TYPE_NONE;
         vec3s_set(viewport->vp.vtrans, node->x * 4, node->y * 4, 511);
         vec3s_set(viewport->vp.vscale, node->width * 4, node->height * 4, 511);
+#ifdef F3DEX3
+        viewport->vp.vscale[1] = -viewport->vp.vscale[1];
+#endif
 
         if (b != NULL) {
             clear_framebuffer(clearColor);

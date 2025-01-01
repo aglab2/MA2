@@ -37,12 +37,21 @@ static s16 sEndPeachAnimation;
 static s16 sEndToadAnims[2];
 ModelID32 gStarModelLastCollected = MODEL_STAR;
 
+#ifdef F3DEX3
 Vp sEndCutsceneVp = {
     {
-        { (SCREEN_WIDTH  * 2), (SCREEN_HEIGHT * 2), 511, 0 },
-        { (SCREEN_WIDTH  * 2), (SCREEN_HEIGHT * 2), 511, 0 }
+        { (SCREEN_WIDTH * 2), -(SCREEN_HEIGHT * 2), G_NEW_MAXZ/2, 0 },
+        { (SCREEN_WIDTH * 2),  (SCREEN_HEIGHT * 2), G_NEW_MAXZ/2, 0 }
     }
 };
+#else
+Vp sEndCutsceneVp = {
+    {
+        { (SCREEN_WIDTH * 2), (SCREEN_HEIGHT * 2), 511, 0 },
+        { (SCREEN_WIDTH * 2), (SCREEN_HEIGHT * 2), 511, 0 }
+    }
+};
+#endif
 struct CreditsEntry *sDispCreditsEntry = NULL;
 
 // related to peach gfx?
@@ -2510,6 +2519,9 @@ static s32 act_end_peach_cutscene(struct MarioState *m) {
 
     sEndCutsceneVp.vp.vscale[0] = SCREEN_WIDTH  * 2;
     sEndCutsceneVp.vp.vscale[1] = SCREEN_HEIGHT * 1.5f;
+#ifdef F3DEX3
+    sEndCutsceneVp.vp.vscale[1] = -sEndCutsceneVp.vp.vtrans[1];
+#endif
     sEndCutsceneVp.vp.vtrans[0] = SCREEN_WIDTH  * 2;
     sEndCutsceneVp.vp.vtrans[1] = SCREEN_HEIGHT * 2;
     override_viewport_and_clip(NULL, &sEndCutsceneVp, 0, 0, 0);
@@ -2550,6 +2562,9 @@ static s32 act_credits_cutscene(struct MarioState *m) {
 
         sEndCutsceneVp.vp.vscale[0] = (SCREEN_WIDTH * 2) - width;
         sEndCutsceneVp.vp.vscale[1] = (SCREEN_HEIGHT * 2) - height;
+#ifdef F3DEX3
+        sEndCutsceneVp.vp.vscale[1] = -sEndCutsceneVp.vp.vtrans[1];
+#endif
         sEndCutsceneVp.vp.vtrans[0] =
             (gCurrCreditsEntry->actNum & (1 << 4) ? width : -width) * 56 / 100 + (SCREEN_WIDTH  * 2);
         sEndCutsceneVp.vp.vtrans[1] =

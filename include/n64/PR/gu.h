@@ -255,6 +255,7 @@ typedef struct {
     u32    paddr;
 } guDLPrintCB;
 
+#ifndef F3DEX3
 void guSprite2DInit(uSprite *SpritePointer,   
 		    void *SourceImagePointer,
 		    void *TlutPointer,
@@ -265,5 +266,6 @@ void guSprite2DInit(uSprite *SpritePointer,
 		    int SourceImageBitSize,
 		    int SourceImageOffsetS,
 		    int SourceImageOffsetT);
+#endif
 
 #endif /* !_GU_H_ */

@@ -63,6 +63,10 @@
       BUILD_DIR/lib/gspF3DZEX2.NoN_PosLight.fifo.o(.data);
 #endif
 
+#ifdef F3DEX3
+      BUILD_DIR/lib/gspF3DEX3.o(.data);
+#endif
+
 /* Fast3DEX2 Rej Data */
 #ifdef F3DEX2_REJ_GBI
       lib/PR/f3dex2/fifo/gspF3DEX2.Rej.fifo.o(.data);
