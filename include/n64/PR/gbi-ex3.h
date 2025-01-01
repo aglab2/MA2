@@ -3,6 +3,8 @@
  * @brief Modded GBI for use with F3DEX3 custom microcode
  */
 
+#define NO_SYNCS_IN_TEXTURE_LOADS
+
 /* List of options; the documentation for each is where it is used below. */
 /* #define REQUIRE_SEMICOLONS_AFTER_GBI_COMMANDS */ /* recommended */
 /* #define NO_SYNCS_IN_TEXTURE_LOADS */ /* see documentation */
