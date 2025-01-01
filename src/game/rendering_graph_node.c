@@ -1562,8 +1562,13 @@ void geo_process_root(struct GraphNodeRoot *node, Vp *b, Vp *c, s32 clearColor) 
 
         gMatStackIndex = 0;
         gCurrAnimType = ANIM_TYPE_NONE;
-        vec3s_set(viewport->vp.vtrans, node->x * 4, node->y * 4, 511);
-        vec3s_set(viewport->vp.vscale, node->width * 4, node->height * 4, 511);
+#ifdef F3DEX3
+        const int maxz = G_NEW_MAXZ / 2;
+#else
+        const int maxz = 511;
+#endif
+        vec3s_set(viewport->vp.vtrans, node->x * 4, node->y * 4, maxz);
+        vec3s_set(viewport->vp.vscale, node->width * 4, node->height * 4, maxz);
 #ifdef F3DEX3
         viewport->vp.vscale[1] = -viewport->vp.vscale[1];
 #endif
