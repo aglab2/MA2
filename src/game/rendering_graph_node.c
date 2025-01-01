@@ -813,7 +813,9 @@ void geo_process_display_list(struct GraphNodeDisplayList *node) {
 
 static void geo_lvl_append_display_list(void *displayList, s32 layer) {
     // gSPLookAt(gDisplayListHead++, gCurLookAt);
-    // append_dl(&gCurGraphNodeMasterList->layers[layer].list, displayList);
+#ifdef DISABLE_BATCHIFY
+    append_dl(&gCurGraphNodeMasterList->layers[layer].list, displayList);
+#else
     int32_t* data = segmented_to_virtual(displayList);
     struct BatchArray* task = gCurGraphNodeMasterList->layers[layer].course;
     int batchIdx = 0;
@@ -830,6 +832,7 @@ static void geo_lvl_append_display_list(void *displayList, s32 layer) {
 
         data++;
     }
+#endif
 }
 
 static void append_lvl_dl_and_return(struct GraphNodeDisplayList *node) {
@@ -1568,7 +1571,9 @@ void geo_process_root(struct GraphNodeRoot *node, Vp *b, Vp *c, s32 clearColor) 
         const int maxz = 511;
 #endif
         vec3s_set(viewport->vp.vtrans, node->x * 4, node->y * 4, maxz);
+        viewport->vp.vtrans[3] = 0;
         vec3s_set(viewport->vp.vscale, node->width * 4, node->height * 4, maxz);
+        viewport->vp.vscale[3] = 0;
 #ifdef F3DEX3
         viewport->vp.vscale[1] = -viewport->vp.vscale[1];
 #endif

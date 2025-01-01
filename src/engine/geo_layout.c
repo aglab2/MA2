@@ -840,6 +840,9 @@ static void batch_cmd_yield(uint32_t** cmds, uint32_t cmd)
 // <0 - push dl to batch with index
 static void batchify_dl(void* segPtr, int layer)
 {
+#ifdef DISABLE_BATCHIFY
+    return;
+#endif
     sBatchCommit = 1;
     uint8_t* data = segmented_to_virtual(segPtr);
     uint32_t* batchCmds = (uint32_t*) data;
