@@ -32,3 +32,4 @@ DEFINE_LEVEL("PC", LEVEL_PC, COURSE_PC, pc, generic, 20000, 0x00, 0x00, 0x00, _,
 DEFINE_LEVEL("DC", LEVEL_DC, COURSE_DC, dc, generic, 20000, 0x00, 0x00, 0x00, _, sCamDc) 
 DEFINE_LEVEL("EE", LEVEL_EE, COURSE_EE, ee, generic, 20000, 0x00, 0x00, 0x00, _, sCamEe) 
 DEFINE_LEVEL("MHE", LEVEL_MHE, COURSE_MHE, mhe, generic, 20000, 0x00, 0x00, 0x00, _, sCamMhe) 
+DEFINE_LEVEL("CG", LEVEL_CG, COURSE_CG, cg, generic, 20000, 0x00, 0x00, 0x00, _, sCamCg) 
