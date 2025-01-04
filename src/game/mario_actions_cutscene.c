@@ -1559,7 +1559,7 @@ s32 act_squished(struct MarioState *m) {
     }
 
     // steep floor
-    if (m->floor != NULL && m->floor->normal.y < 0.5f) {
+    if (m->floor != NULL && absf(m->floor->normal.y) < 0.5f) {
         surfAngle = m->floorYaw;
         underSteepSurf = TRUE;
     }

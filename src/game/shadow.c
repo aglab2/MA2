@@ -287,9 +287,9 @@ Gfx *create_shadow_below_xyz(Vec3f pos, s16 shadowScale, u8 shadowSolidity, s8 s
         nz = floor->normal.z;
 
         // No shadow if the y-normal is negative (an unexpected result).
-        if (ny <= 0.0f) {
-            return NULL;
-        }
+        // if (ny <= 0.0f) {
+        //     return NULL;
+        // }
 
         // If the animation changes the shadow position, move its height to the new position.
         if (shifted) {

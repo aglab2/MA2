@@ -566,7 +566,7 @@ s32 act_ledge_grab(struct MarioState *m) {
     if (m->actionTimer < 10) {
         m->actionTimer++;
     }
-    if (m->floor->normal.y < 0.1f) {
+    if (absf(m->floor->normal.y) < 0.1f) {
         return let_go_of_ledge(m);
     }
     if (m->input & (INPUT_Z_PRESSED | INPUT_OFF_FLOOR)) {
