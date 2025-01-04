@@ -17,6 +17,8 @@
 
 #include "config.h"
 
+extern u32 gGravityMode;
+
 void play_flip_sounds(struct MarioState *m, s16 frame1, s16 frame2, s16 frame3) {
     s32 animFrame = m->marioObj->header.gfx.animInfo.animFrame;
     if (animFrame == frame1 || animFrame == frame2 || animFrame == frame3) {
@@ -733,10 +735,15 @@ s32 act_dive(struct MarioState *m) {
 
     switch (perform_air_step(m, 0)) {
         case AIR_STEP_NONE:
-            if (m->vel[1] < 0.0f && m->faceAngle[0] > -DEGREES(60)) {
-                m->faceAngle[0] -= 0x200;
-                if (m->faceAngle[0] < -DEGREES(60)) {
-                    m->faceAngle[0] = -DEGREES(60);
+            if (m->vel[1] < 0.0f) {
+                if (gGravityMode) {
+                    m->faceAngle[0] += 0x200;
+                    if (m->faceAngle[0] > DEGREES(60))
+                        m->faceAngle[0] = DEGREES(60);
+                } else {
+                    m->faceAngle[0] -= 0x200;
+                    if (m->faceAngle[0] < -DEGREES(60))
+                        m->faceAngle[0] = -DEGREES(60);
                 }
             }
             m->marioObj->header.gfx.angle[0] = -m->faceAngle[0];
@@ -912,7 +919,10 @@ s32 act_ground_pound(struct MarioState *m) {
             if (m->pos[1] + yOffset + 160.0f < m->ceilHeight) {
                 m->pos[1] += yOffset;
                 m->peakHeight = m->pos[1];
-                vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
+                vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
+                // Ground pound explicitly sets GFX position, so undo the transform
+                if (gGravityMode)
+                    m->marioObj->header.gfx.pos[1] = 9000.f - m->marioObj->header.gfx.pos[1];
             }
         }
 
@@ -1822,7 +1832,7 @@ s32 act_riding_hoot(struct MarioState *m) {
     }
 
     vec3f_set(m->vel, 0.0f, 0.0f, 0.0f);
-    vec3f_set(m->marioObj->header.gfx.pos, m->pos[0], m->pos[1], m->pos[2]);
+    vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
     vec3s_set(m->marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
     return FALSE;
 }

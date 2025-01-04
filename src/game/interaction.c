@@ -1338,7 +1338,7 @@ u32 interact_hit_from_below(struct MarioState *m, UNUSED u32 interactType, struc
         attack_object(obj, interaction);
         bounce_back_from_attack(m, interaction);
 
-        if (interaction & INT_HIT_FROM_BELOW) {
+        if ((interaction & INT_HIT_FROM_BELOW) && (!gGravityMode)) {
             hit_object_from_below(m, obj);
         }
 

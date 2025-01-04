@@ -794,7 +794,7 @@ s32 act_shockwave_bounce(struct MarioState *m) {
         m->pos[1] = m->floorHeight - sins(bounceTimer) * bounceAmt;
     }
 
-    vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
+    vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
     vec3s_set(m->marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
     set_mario_animation(m, MARIO_ANIM_A_POSE);
     return FALSE;

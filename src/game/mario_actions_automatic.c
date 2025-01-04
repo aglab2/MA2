@@ -87,7 +87,7 @@ s32 set_pole_position(struct MarioState *m, f32 offsetY) {
         }
     }
 
-    vec3f_copy(marioObj->header.gfx.pos, m->pos);
+    vec3f_copy_with_gravity_switch(marioObj->header.gfx.pos, m->pos);
     vec3s_set(marioObj->header.gfx.angle, m->usedObj->oMoveAnglePitch, m->faceAngle[1],
               m->usedObj->oMoveAngleRoll);
 
@@ -337,7 +337,7 @@ s32 update_hang_moving(struct MarioState *m) {
 
     s32 stepResult = perform_hanging_step(m, nextPos);
 
-    vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
+    vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
     vec3s_set(m->marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
     return stepResult;
 }
@@ -349,7 +349,7 @@ void update_hang_stationary(struct MarioState *m) {
 
     m->pos[1] = m->ceilHeight - HANG_DISTANCE;
     vec3f_copy(m->vel, gVec3fZero);
-    vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
+    vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
 #ifdef BETTER_HANGING
     vec3s_set(m->marioObj->header.gfx.angle, 0x0, m->faceAngle[1], 0x0);
 #endif
@@ -532,7 +532,7 @@ void climb_up_ledge(struct MarioState *m) {
     set_mario_animation(m, MARIO_ANIM_IDLE_HEAD_LEFT);
     m->pos[0] += 14.0f * sins(m->faceAngle[1]);
     m->pos[2] += 14.0f * coss(m->faceAngle[1]);
-    vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
+    vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
 }
 
 void update_ledge_climb_camera(struct MarioState *m) {
@@ -541,6 +541,7 @@ void update_ledge_climb_camera(struct MarioState *m) {
     m->statusForCamera->pos[0] = m->pos[0] + dist * sins(m->faceAngle[1]);
     m->statusForCamera->pos[2] = m->pos[2] + dist * coss(m->faceAngle[1]);
     m->statusForCamera->pos[1] = m->pos[1];
+    if (gGravityMode) m->statusForCamera->pos[1] = 9000.f - m->pos[1]; // Update camera correctly when upside down=
     m->actionTimer++;
     m->flags |= MARIO_LEDGE_CLIMB_CAMERA;
 }
@@ -674,7 +675,7 @@ s32 act_grabbed(struct MarioState *m) {
         s32 thrown = (m->marioObj->oInteractStatus & INT_STATUS_MARIO_DROPPED_BY_OBJ) == 0;
 
         m->faceAngle[1] = m->usedObj->oMoveAngleYaw;
-        vec3f_copy(m->pos, m->marioObj->header.gfx.pos);
+        vec3f_copy_with_gravity_switch(m->pos, m->marioObj->header.gfx.pos);
 #if ENABLE_RUMBLE
         queue_rumble_data(5, 60);
 #endif
@@ -760,7 +761,7 @@ s32 act_in_cannon(struct MarioState *m) {
             }
     }
 
-    vec3f_copy(marioObj->header.gfx.pos, m->pos);
+    vec3f_copy_with_gravity_switch(marioObj->header.gfx.pos, m->pos);
     vec3s_set(marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
     set_mario_animation(m, MARIO_ANIM_DIVE);
 
@@ -838,7 +839,7 @@ s32 act_tornado_twirling(struct MarioState *m) {
         play_sound(SOUND_ACTION_TWIRL, marioObj->header.gfx.cameraToObject);
     }
 
-    vec3f_copy(marioObj->header.gfx.pos, m->pos);
+    vec3f_copy_with_gravity_switch(marioObj->header.gfx.pos, m->pos);
     vec3s_set(marioObj->header.gfx.angle, 0, m->faceAngle[1] + m->twirlYaw, 0);
 #if ENABLE_RUMBLE
     reset_rumble_timers_slip();

@@ -775,6 +775,33 @@ void setup_game_memory(void) {
     load_segment_decompress(SEGMENT_SEGMENT2, _segment2_mio0SegmentRomStart, _segment2_mio0SegmentRomEnd);
 }
 
+#include "game/object_list_processor.h"
+#include "game/level_update.h"
+
+extern u32 gIsGravityFlipped;
+static void set_gravity(u32 grav)
+{
+    if (grav == gIsGravityFlipped)
+        return;
+
+    gIsGravityFlipped = grav;
+            
+    if (gIsGravityFlipped)
+        play_sound(SOUND_MENU_CAMERA_ZOOM_IN, gMarioObject->header.gfx.pos);
+    else
+        play_sound(SOUND_MENU_CAMERA_ZOOM_OUT, gMarioObject->header.gfx.pos);
+
+    gMarioState->pos[1] = 8825.f - gMarioState->pos[1]; // Transform position. The extra 165 is due to Mario's visual model.
+    if ((gMarioState->action == ACT_CRAZY_BOX_BOUNCE) || (gMarioState->action == ACT_SHOT_FROM_CANNON))
+        gMarioState->pos[1] += 165.f;
+    else if ((gMarioState->action == ACT_DIVE) || (gMarioState->action == ACT_FLYING))
+        gMarioState->pos[1] += 65.f;
+
+    gMarioState->vel[1] = -gMarioState->vel[1]; // Flip velocity
+    gMarioState->peakHeight = 9000.f - gMarioState->peakHeight; // For fall damage
+    gMarioObject->hitboxDownOffset = (gIsGravityFlipped ? 160.f : 0.f); // Adjust hitbox when upside down
+}
+
 /**
  * Main game loop thread. Runs forever as long as the game continues.
  */
@@ -830,6 +857,9 @@ void thread5_game_loop(UNUSED void *arg) {
         audio_game_loop_tick();
         select_gfx_pool();
         read_controller_inputs(THREAD_5_GAME_LOOP);
+        if (gPlayer1Controller->buttonPressed & L_TRIG)
+            set_gravity(!gIsGravityFlipped);
+
         if (Hacktice_gEnabled)
         {
             Hacktice_onFrame();

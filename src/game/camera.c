@@ -675,10 +675,10 @@ void focus_on_mario(Vec3f focus, Vec3f pos, f32 posYOff, f32 focYOff, f32 dist, 
     Vec3f marioPos;
 
     marioPos[0] = sMarioCamState->pos[0];
-    marioPos[1] = sMarioCamState->pos[1] + posYOff;
+    marioPos[1] = sMarioCamState->pos[1] + (gIsGravityFlipped ? -posYOff : posYOff);
     marioPos[2] = sMarioCamState->pos[2];
 
-    vec3f_set_dist_and_angle(marioPos, pos, dist, pitch + sLakituPitch, yaw);
+    vec3f_set_dist_and_angle(marioPos, pos, dist, (gIsGravityFlipped ? -pitch-sLakituPitch : pitch + sLakituPitch), yaw);
 
     focus[0] = sMarioCamState->pos[0];
     focus[1] = sMarioCamState->pos[1] + focYOff;
@@ -2615,10 +2615,10 @@ void exit_c_up(struct Camera *c) {
  * The mode used when C-Up is pressed.
  */
 s32 update_c_up(UNUSED struct Camera *c, Vec3f focus, Vec3f pos) {
-    s16 pitch = sCUpCameraPitch;
-    s16 yaw = sMarioCamState->faceAngle[1] + sModeOffsetYaw + DEGREES(180);
+    s16 pitch = sCUpCameraPitch + (!gIsGravityFlipped ? 0 : DEGREES(180));
+    s16 yaw = sMarioCamState->faceAngle[1] + sModeOffsetYaw + (!gIsGravityFlipped ? DEGREES(180) : 0) ;
 
-    focus_on_mario(focus, pos, 125.f, 125.f, 250.f, pitch, yaw);
+    focus_on_mario(focus, pos, 125.f, gIsGravityFlipped ? 15.f : 125.f, 250.f, pitch, yaw);
     return sMarioCamState->faceAngle[1];
 }
 
@@ -6553,6 +6553,8 @@ void find_mario_floor_and_ceil(struct PlayerGeometry *pg) {
     s32 tempCollisionFlags = gCollisionFlags;
     gCollisionFlags |= COLLISION_FLAG_CAMERA;
 
+    gGravityMode = gIsGravityFlipped; // Enable gravity for checks
+
     if (find_floor(sMarioCamState->pos[0], sMarioCamState->pos[1] + 10.f,
                    sMarioCamState->pos[2], &surf) != FLOOR_LOWER_LIMIT) {
         pg->currFloorType = surf->type;
@@ -6576,6 +6578,8 @@ void find_mario_floor_and_ceil(struct PlayerGeometry *pg) {
                                    sMarioCamState->pos[2], &pg->currCeil);
     pg->waterHeight = find_water_level(sMarioCamState->pos[0], sMarioCamState->pos[2]);
     gCollisionFlags = tempCollisionFlags;
+
+    gGravityMode = 0;
 }
 
 /**

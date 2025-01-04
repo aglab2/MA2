@@ -226,7 +226,7 @@ static void copy_mario_state_to_object(void) {
     gCurrentObject->oVelZ = gMarioStates[i].vel[2];
 
     gCurrentObject->oPosX = gMarioStates[i].pos[0];
-    gCurrentObject->oPosY = gMarioStates[i].pos[1];
+    gCurrentObject->oPosY = (gGravityMode ? 9000.f - gMarioStates[i].pos[1] : gMarioStates[i].pos[1]);
     gCurrentObject->oPosZ = gMarioStates[i].pos[2];
 
     gCurrentObject->oMoveAnglePitch = gCurrentObject->header.gfx.angle[0];
@@ -261,6 +261,8 @@ void bhv_mario_update(void) {
     u32 particleFlags = 0;
     s32 i;
 
+    gGravityMode = gIsGravityFlipped;
+
     particleFlags = execute_mario_action(gCurrentObject);
 
     if (gMarioStates->action != ACT_FLYING && !(gMarioStates->action & (ACT_FLAG_SWIMMING | ACT_FLAG_METAL_WATER)))
@@ -285,6 +287,9 @@ void bhv_mario_update(void) {
 
         i++;
     }
+
+    if (gGravityMode) gMarioObject->header.gfx.angle[2] += 0x8000; // Turn Mario upside down
+    gGravityMode = FALSE; // Gravity must only be flipped when checking Mario's collision, not other objects.
 }
 
 /**

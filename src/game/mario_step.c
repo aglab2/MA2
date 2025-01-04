@@ -248,7 +248,7 @@ void stop_and_set_height_to_floor(struct MarioState *m) {
         m->pos[1] = m->floorHeight;
     }
 
-    vec3f_copy(marioObj->header.gfx.pos, m->pos);
+    vec3f_copy_with_gravity_switch(marioObj->header.gfx.pos, m->pos);
     vec3s_set(marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
 }
 
@@ -267,7 +267,7 @@ s32 stationary_ground_step(struct MarioState *m) {
             m->pos[1] = m->floorHeight;
         }
 
-        vec3f_copy(marioObj->header.gfx.pos, m->pos);
+        vec3f_copy_with_gravity_switch(marioObj->header.gfx.pos, m->pos);
         vec3s_set(marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
     }
 
@@ -361,7 +361,7 @@ s32 perform_ground_step(struct MarioState *m) {
     }
 
     m->terrainSoundAddend = mario_get_terrain_sound_addend(m);
-    vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
+    vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
     vec3s_set(m->marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
 
     if (stepResult == GROUND_STEP_HIT_WALL_CONTINUE_QSTEPS) {
@@ -400,9 +400,10 @@ static struct Surface *check_ledge_grab(struct MarioState *m, struct Surface *pr
     ledgePos[2] = nextPos[2] - (wall->normal.z * 60.0f);
     ledgePos[1] = find_floor(ledgePos[0], nextPos[1] + 160.0f, ledgePos[2], ledgeFloor);
 
+    f32 dir = gGravityMode ? -1.0f : 1.0f;
     if (ledgeFloor == NULL
         || (*ledgeFloor) == NULL
-        || ledgePos[1] < nextPos[1] + 100.0f
+        || ledgePos[1] < nextPos[1] + (dir*100.0f)
 #ifdef DONT_LEDGE_GRAB_STEEP_SLOPES
         || (*ledgeFloor)->normal.y < 0.1f // H64 TODO: check if floor is actually slippery
 #endif
@@ -715,7 +716,7 @@ s32 perform_air_step(struct MarioState *m, u32 stepArg) {
     }
     apply_vertical_wind(m);
 
-    vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
+    vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
     vec3s_set(m->marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
 
     return stepResult;

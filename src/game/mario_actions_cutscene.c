@@ -375,7 +375,7 @@ s32 act_reading_npc_dialog(struct MarioState *m) {
             set_mario_action(m, m->heldObj == NULL ? ACT_IDLE : ACT_HOLD_IDLE, 0);
         }
     }
-    vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
+    vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
     vec3s_set(m->marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
     vec3s_set(m->marioBodyState->headAngle, m->actionTimer, 0, 0);
 
@@ -390,7 +390,7 @@ s32 act_reading_npc_dialog(struct MarioState *m) {
 s32 act_waiting_for_dialog(struct MarioState *m) {
     set_mario_animation(m, m->heldObj == NULL ? MARIO_ANIM_FIRST_PERSON
                                               : MARIO_ANIM_IDLE_WITH_LIGHT_OBJ);
-    vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
+    vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
     vec3s_set(m->marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
     return FALSE;
 }
@@ -499,7 +499,7 @@ s32 act_reading_sign(struct MarioState *m) {
             break;
     }
 
-    vec3f_copy(marioObj->header.gfx.pos, m->pos);
+    vec3f_copy_with_gravity_switch(marioObj->header.gfx.pos, m->pos);
     vec3s_set(marioObj->header.gfx.angle, 0x0, m->faceAngle[1], 0x0);
     return FALSE;
 }
@@ -571,7 +571,7 @@ s32 act_debug_free_move(struct MarioState *m) {
     }
 
     m->faceAngle[1] = m->intendedYaw;
-    vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
+    vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
     vec3s_set(m->marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
 
     return FALSE;
@@ -654,7 +654,7 @@ s32 act_star_dance_water(struct MarioState *m) {
     m->faceAngle[1] = m->area->camera->yaw;
     set_mario_animation(m, m->actionState == ACT_STATE_STAR_DANCE_RETURN ? MARIO_ANIM_RETURN_FROM_WATER_STAR_DANCE
                                                                          : MARIO_ANIM_WATER_STAR_DANCE);
-    vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
+    vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
     vec3s_set(m->marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
     general_star_dance_handler(m, TRUE);
     if (m->actionState != ACT_STATE_STAR_DANCE_RETURN && m->actionTimer >= 62) {
@@ -1880,7 +1880,7 @@ static void jumbo_star_cutscene_taking_off(struct MarioState *m) {
 
     vec3f_set(m->pos, 0.0f, 307.0, marioObj->oMarioJumboStarCutscenePosZ);
     update_mario_pos_for_anim(m);
-    vec3f_copy(marioObj->header.gfx.pos, m->pos);
+    vec3f_copy_with_gravity_switch(marioObj->header.gfx.pos, m->pos);
     vec3s_set(marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
 }
 
@@ -1919,7 +1919,7 @@ static void jumbo_star_cutscene_flying(struct MarioState *m) {
     }
 
     m->marioBodyState->handState = MARIO_HAND_RIGHT_OPEN;
-    vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
+    vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
     m->particleFlags |= PARTICLE_SPARKLES;
 
     if (m->actionTimer++ == 500) {
@@ -2145,7 +2145,7 @@ static void end_peach_cutscene_run_to_peach(struct MarioState *m) {
     set_mario_anim_with_accel(m, MARIO_ANIM_RUNNING, 0x00080000);
     play_step_sound(m, 9, 45);
 
-    vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
+    vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
     m->particleFlags |= PARTICLE_DUST;
 }
 
@@ -2541,7 +2541,7 @@ static s32 act_credits_cutscene(struct MarioState *m) {
             set_camera_mode(m->area->camera, CAMERA_MODE_BEHIND_MARIO, 1);
         }
         set_mario_animation(m, MARIO_ANIM_WATER_IDLE);
-        vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
+        vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
         // will copy over roll and pitch, if set
         vec3s_copy(m->marioObj->header.gfx.angle, m->faceAngle);
         m->particleFlags |= PARTICLE_BUBBLE;

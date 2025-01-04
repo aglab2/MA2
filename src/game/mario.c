@@ -1282,7 +1282,7 @@ void update_mario_geometry_inputs(struct MarioState *m) {
     // This can cause errant behavior when combined with astral projection,
     // since the graphical position was not Mario's previous location.
     if (m->floor == NULL) {
-        vec3f_copy(m->pos, m->marioObj->header.gfx.pos);
+        vec3f_copy_with_gravity_switch(m->pos, m->marioObj->header.gfx.pos);
         m->floorHeight = find_floor(m->pos[0], m->pos[1], m->pos[2], &m->floor);
     }
 
@@ -1533,8 +1533,11 @@ void update_mario_info_for_cam(struct MarioState *m) {
     vec3s_copy(m->statusForCamera->faceAngle, m->faceAngle);
 
     if (!(m->flags & MARIO_LEDGE_CLIMB_CAMERA)) {
-        vec3f_copy(m->statusForCamera->pos, m->pos);
+        vec3f_copy_with_gravity_switch(m->statusForCamera->pos, m->pos);
     }
+
+    if (gGravityMode)
+        m->statusForCamera->pos[1] -= 165.f;
 }
 
 /**
@@ -1906,7 +1909,7 @@ void init_mario(void) {
     vec3f_copy(&gMarioState->marioObj->oPosVec, gMarioState->pos);
     vec3s_to_vec3i(&gMarioState->marioObj->oMoveAngleVec, gMarioState->faceAngle);
 
-    vec3f_copy(gMarioState->marioObj->header.gfx.pos, gMarioState->pos);
+    vec3f_copy_with_gravity_switch(gMarioState->marioObj->header.gfx.pos, gMarioState->pos);
     vec3s_set(gMarioState->marioObj->header.gfx.angle, 0, gMarioState->faceAngle[1], 0);
 
     Vec3s capPos;
@@ -1947,4 +1950,14 @@ void init_mario_from_save_file(void) {
 
     gHudDisplay.coins = 0;
     gHudDisplay.wedges = 8;
+}
+
+// Copy a vec3f, but transform the Y if gravity is flipped.
+// Mario's object's GFX position is updated with vec3f_copy, so
+// use this instead to undo the transform for GFX pos.
+void vec3f_copy_with_gravity_switch(Vec3f dst, Vec3f src) {
+    dst[0] = src[0];
+    dst[1] = src[1];
+    if (gGravityMode) dst[1] = 9000.f - dst[1];
+    dst[2] = src[2];
 }

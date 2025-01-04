@@ -340,6 +340,8 @@ void init_mario_after_warp(void) {
         gPlayerSpawnInfos[0].startAngle[1] = object->oMoveAngleYaw;
         gPlayerSpawnInfos[0].startAngle[2] = 0;
 
+        if (gIsGravityFlipped) gPlayerSpawnInfos[0].startPos[1] = 9000.f - gPlayerSpawnInfos[0].startPos[1]; // If gravity is flipped when warping
+
         if (marioSpawnType == MARIO_SPAWN_DOOR_WARP) {
             init_door_warp(&gPlayerSpawnInfos[0], sWarpDest.arg);
         }
@@ -760,6 +762,7 @@ void initiate_painting_warp(void) {
                 }
 
                 initiate_warp(warpNode.destLevel & 0x7F, warpNode.destArea, warpNode.destNode, WARP_FLAGS_NONE);
+                gIsGravityFlipped = FALSE;
                 check_if_should_set_warp_checkpoint(&warpNode);
 
                 play_transition_after_delay(WARP_TRANSITION_FADE_INTO_COLOR, 30, 255, 255, 255, 45);
