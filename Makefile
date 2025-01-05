@@ -137,7 +137,7 @@ endif
 #==============================================================================#
 
 # Default non-gcc opt flags
-DEFAULT_OPT_FLAGS = -Os
+DEFAULT_OPT_FLAGS = -Os -ffast-math -fallow-store-data-races -fno-protect-parens -fno-semantic-interposition
 # Note: -fno-associative-math is used here to suppress warnings, ideally we would enable this as an optimization but
 # this conflicts with -ftrapping-math apparently.
 # TODO: Figure out how to allow -fassociative-math to be enabled
@@ -512,7 +512,6 @@ endif
 
 ifeq ($(TARGET_N64),1)
   TARGET_CFLAGS := -nostdinc -DTARGET_N64 -D_LANGUAGE_C -mfix4300
-  CC_CFLAGS := -fno-builtin
 endif
 
 INCLUDE_DIRS += include $(BUILD_DIR) $(BUILD_DIR)/include src . include/hvqm

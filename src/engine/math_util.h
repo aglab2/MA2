@@ -74,12 +74,7 @@ extern const f32 gSineTable[];
 #define absi ABS
 #define abss ABS
 
-// Absolute value of a float (faster than using the above macro)
-ALWAYS_INLINE f32 absf(f32 in) {
-    f32 out;
-    __asm__("abs.s %0,%1" : "=f" (out) : "f" (in));
-    return out;
-}
+#define absf ABS
 
 // Get the minimum / maximum of a set of numbers
 #undef MIN
@@ -110,16 +105,7 @@ void min_max_3f(f32 a, f32 b, f32 c, f32 *min, f32 *max);
 void min_max_3i(s32 a, s32 b, s32 c, s32 *min, s32 *max);
 void min_max_3s(s16 a, s16 b, s16 c, s16 *min, s16 *max);
 
-// From Wiseguy
-// Round a float to the nearest integer
-ALWAYS_INLINE s32 roundf(f32 in) {
-    f32 tmp;
-    s32 out;
-    __asm__("round.w.s %0,%1" : "=f" (tmp) : "f" (in ));
-    __asm__("mfc1      %0,%1" : "=r" (out) : "f" (tmp));
-    return out;
-}
-
+#define roundf(v) ((s32) (v))
 #define round_float roundf
 
 #define FLT_IS_NONZERO(x) (absf(x) > NEAR_ZERO)
