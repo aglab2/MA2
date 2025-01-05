@@ -21,3 +21,9 @@
 #endif
 
 #include "levels/cg/visual/model.inc.c"
+
+#include "levels/cg/cg_skybox/model.inc.c"
+#include "levels/cg/cg_capsule/model.inc.c"
+#include "levels/cg/cg_poison/collision.inc.c"
+#include "levels/cg/cg_poison/model.inc.c"
+#include "levels/cg/cg_poison_break/model.inc.c"

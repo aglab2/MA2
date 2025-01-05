@@ -137,7 +137,7 @@ endif
 #==============================================================================#
 
 # Default non-gcc opt flags
-DEFAULT_OPT_FLAGS = -Os -ffast-math -fallow-store-data-races -fno-protect-parens -fno-semantic-interposition -funsafe-math-optimizations
+DEFAULT_OPT_FLAGS = -Os -ffast-math -ftrapping-math -fno-associative-math -fallow-store-data-races -fno-protect-parens -fno-semantic-interposition
 # Note: -fno-associative-math is used here to suppress warnings, ideally we would enable this as an optimization but
 # this conflicts with -ftrapping-math apparently.
 # TODO: Figure out how to allow -fassociative-math to be enabled

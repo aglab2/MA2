@@ -1,0 +1,14 @@
+extern const GeoLayout cg_capsule_geo[];
+extern u8 cg_capsule_miu128_cg011_ci4[];
+extern u8 cg_capsule_miu128_cg011_pal_rgba16[];
+extern u8 cg_capsule_miu128_cg004_ci4[];
+extern u8 cg_capsule_miu128_cg004_pal_rgba16[];
+extern Vtx cg_capsule_cg_capsule_mesh_layer_1_vtx_0[12];
+extern Gfx cg_capsule_cg_capsule_mesh_layer_1_tri_0[];
+extern Vtx cg_capsule_cg_capsule_mesh_layer_1_vtx_1[38];
+extern Gfx cg_capsule_cg_capsule_mesh_layer_1_tri_1[];
+extern Gfx mat_cg_capsule_CAPSULE_sa2bmdl_0_f3d[];
+extern Gfx mat_revert_cg_capsule_CAPSULE_sa2bmdl_0_f3d[];
+extern Gfx mat_cg_capsule_CAPSULE_sa2bmdl_1_f3d[];
+extern Gfx mat_revert_cg_capsule_CAPSULE_sa2bmdl_1_f3d[];
+extern Gfx cg_capsule_cg_capsule_mesh_layer_1[];

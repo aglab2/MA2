@@ -1,0 +1,13 @@
+const Collision cg_poison_collision[] = {
+	COL_INIT(),
+	COL_VERTEX_INIT(4),
+	COL_VERTEX(-700, 0, 10),
+	COL_VERTEX(-700, 600, 10),
+	COL_VERTEX(700, 0, 10),
+	COL_VERTEX(700, 600, 10),
+	COL_TRI_INIT(SURFACE_DEFAULT, 2),
+	COL_TRI(0, 1, 2),
+	COL_TRI(2, 1, 3),
+	COL_TRI_STOP(),
+	COL_END()
+};
