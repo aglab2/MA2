@@ -95,10 +95,12 @@ static const RailDesc rail_ce_area5[] = {
     RAIL_END,
 };
 
+static const LDLDesc loop_desc1 = { 2, 1, 0, 1, 0x4000 };
 static const RailDesc rail_ce_area6[] = {
     RAIL_TRAJ(ce_area_6_spline_2443_object_00D39804_002),
     RAIL_TRAJ(ce_area_6_spline_2480_object_00D39A6C_001),
     RAIL_TRAJ(ce_area_6_spline_0870_object_00D2DB3C_001),
+    LOOP_TRAJ(ce_area_6_spline_NurbsCurve_Loop, &loop_desc1),
     RAIL_END,
 };
 
@@ -124,7 +126,30 @@ const RailDesc* rail_descs_ce[] = {
 
 #include "levels/ce/visual/header_lvl.inc.h"
 #include "levels/ce/visual/model_lvl.inc.c"
+#if 0
 #include "levels/ce/leveldata.inc.c"
+#else
+#include "levels/ce/area_1/collision.inc.c"
+#include "levels/ce/area_1/spline.inc.c"
+#include "levels/ce/area_10/collision.inc.c"
+#include "levels/ce/area_10/spline.inc.c"
+#include "levels/ce/area_2/collision.inc.c"
+#include "levels/ce/area_2/spline.inc.c"
+#include "levels/ce/area_3/collision.inc.c"
+#include "levels/ce/area_3/spline.inc.c"
+#include "levels/ce/area_4/collision.inc.c"
+#include "levels/ce/area_4/spline.inc.c"
+#include "levels/ce/area_5/collision.inc.c"
+#include "levels/ce/area_5/spline.inc.c"
+#include "levels/ce/area_6/collision.inc.c"
+#include "levels/ce/area_6/spline.inc.c"
+#include "levels/ce/area_7/collision.inc.c"
+#include "levels/ce/area_7/spline.inc.c"
+#include "levels/ce/area_8/collision.inc.c"
+#include "levels/ce/area_8/spline.inc.c"
+#include "levels/ce/area_9/collision.inc.c"
+#include "levels/ce/area_9/spline.inc.c"
+#endif
 
 #include "levels/ce/ce_hammer/model.inc.c"
 #include "levels/ce/ce_hammer/collision.inc.c"

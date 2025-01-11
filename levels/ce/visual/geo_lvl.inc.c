@@ -6,7 +6,7 @@ const GeoLayout ce_area_1_geo[] = {
 		GEO_ASM(0, geo_render_backdrop),
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, (f32)77060.0, (f32)-117550.0, (f32)55845.0, ce_dl_0000_object_00D1CC34_mesh_layer_1),
 		GEO_OPEN_NODE(),
-			GEO_BATCH(LAYER_ALPHA, ce_dl_0000_object_00D1CC34_mesh_layer_5),
+			GEO_BATCH(LAYER_ALPHA, ce_dl_0000_object_00D1CC34_mesh_layer_4),
 		GEO_CLOSE_NODE(),
 		GEO_LVL_BATCH_TRANSLATE_ROTATE(LAYER_OPAQUE, (f32)39550.0, (f32)-221350.0, (f32)156645.0, 0, 90, 0, ce_dl_0001_object_00D3952C_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_ROTATE(LAYER_OPAQUE, (f32)39550.0, (f32)-221150.0, (f32)157995.0, 0, -90, 0, ce_dl_0002_object_00D394F4_mesh_layer_1),

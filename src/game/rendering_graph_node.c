@@ -1375,19 +1375,34 @@ void geo_try_process_children(struct GraphNode *node) {
 }
 
 extern f32 profiler_get_fps();
+static const f32 sViewRangeMax = 400000000.0f;
+static const f32 sViewRangeMin = 20000000.0f;
 static f32 sViewRange = 400000000.0f;
 static const f32 sViewRangeChangeRate = 0.0003f * 400000000.0f;
 
 static void adjust_view_range()
 {
+    if (!gIsConsole)
+    {
+        return;
+    }
+
     f32 fps = profiler_get_fps();
+    
+    print_text_fmt_int(20, 20, "FPS %d", fps * 100);
+    print_text_fmt_int(20, 40, "VR: %d", sViewRange / 1000);
+
     if (fps < 29.0f) 
     {
         sViewRange -= sViewRangeChangeRate * (30.f - fps);
+        if (sViewRange < sViewRangeMin)
+            sViewRange = sViewRangeMin;
     }
     else
     {
         sViewRange += sViewRangeChangeRate;
+        if (sViewRange > sViewRangeMax)
+            sViewRange = sViewRangeMax;
     }
 }
 
