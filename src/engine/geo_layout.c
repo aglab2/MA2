@@ -8,6 +8,8 @@
 #include "game/debug.h"
 #include "batch_ht.h"
 
+#define DISABLE_BATCHIFY
+
 typedef void (*GeoLayoutCommandProc)(void);
 
 static const GeoLayoutCommandProc GeoLayoutJumpTable[] = {
@@ -150,10 +152,14 @@ void geo_layout_cmd_branch(void) {
 #endif
 
 // 0x03: Return from branch
+#ifndef DISABLE_BATCHIFY
 static u8 sBatchCommit = 0;
+#endif
+
 static struct GraphNodeMasterList *gMasterNode = NULL;
 void geo_layout_cmd_return(void) {
     gGeoLayoutCommand = (u8 *) gGeoLayoutStack[--gGeoLayoutStackIndex];
+#ifndef DISABLE_BATCHIFY
     if (sBatchCommit) {
         batch_ht_t* ht = ((batch_ht_t*) (0x80710000 + 0x25800));
 
@@ -176,6 +182,7 @@ void geo_layout_cmd_return(void) {
         }
         sBatchCommit = 0;
     }
+#endif
 }
 
 // 0x04: Open node
@@ -833,6 +840,7 @@ static void batch_cmd_yield(uint32_t** cmds, uint32_t cmd)
     (*cmds)++;
 }
 
+#ifndef DISABLE_BATCHIFY
 // Converts given DL to structure that is suitable for being batched
 // API is using 4 byte values for batches. It guarantees that we won't step on our tail
 // 0 - terminate batches
@@ -840,9 +848,6 @@ static void batch_cmd_yield(uint32_t** cmds, uint32_t cmd)
 // <0 - push dl to batch with index
 static void batchify_dl(void* segPtr, int layer)
 {
-#ifdef DISABLE_BATCHIFY
-    return;
-#endif
     sBatchCommit = 1;
     uint8_t* data = segmented_to_virtual(segPtr);
     uint32_t* batchCmds = (uint32_t*) data;
@@ -900,6 +905,12 @@ static void batchify_dl(void* segPtr, int layer)
 
     batch_cmd_yield(&batchCmds, 0);
 }
+#else
+static inline void batchify_dl(void* segPtr, int layer)
+{
+    return;
+}
+#endif
 
 void geo_layout_cmd_lvl_node_display_list(void) {
     s32 drawingLayer = cur_geo_cmd_u8(0x01);

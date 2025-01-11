@@ -154,29 +154,24 @@ struct DisplayListNode {
     struct DisplayListNode *next;
 };
 
-struct DisplayListHead {
+struct DisplayListLinks {
     struct DisplayListNode* head;
     struct DisplayListNode* tail;
 };
 
-struct Batch {
-    // filled in parsing of the geo layout
+struct BatchDisplayLists {
     const void* startDl;
     const void* endDl;
-
-    // filled in rendering of the master list
-    struct DisplayListHead list;
 };
 
 struct BatchArray {
     int count;
-    struct Batch batches[0];
+    const struct BatchDisplayLists* batchDLs;
+    struct DisplayListLinks batches[0];
 };
 
 struct MasterLayer {
-    // filled during rendering of the master list
-    struct DisplayListHead list;
-    // filled in parsing of the geo + extra for rendering
+    struct DisplayListLinks list;
     struct BatchArray* objects;
     struct BatchArray* course;
 };
@@ -187,7 +182,7 @@ struct MasterLayer {
  *  It also sets the z-buffer on before rendering and off after.
  */
 struct GraphNodeMasterList {
-    /*0x00*/ struct GraphNode node;
+    struct GraphNode node;
     struct MasterLayer layers[LAYER_COUNT];
 };
 

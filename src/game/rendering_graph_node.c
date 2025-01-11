@@ -282,14 +282,15 @@ static int render_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32 wantMo
     gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
 
     for (int batch = 0; batch < arr->count; batch++) {
-        struct Batch* batches = &arr->batches[batch];
-        if (!batches->list.head)
+        struct DisplayListLinks* batchLinks = &arr->batches[batch];
+        if (!batchLinks->head)
             continue;
 
-        gSPDisplayList(tempGfxHead++, batches->startDl);
+        const struct BatchDisplayLists* batchDisplayLists = &arr->batchDLs[batch];
+        gSPDisplayList(tempGfxHead++, batchDisplayLists->startDl);
         amountRendered++;
-        render_lists(&tempGfxHead, batches->list.head);
-        gSPDisplayList(tempGfxHead++, batches->endDl);
+        render_lists(&tempGfxHead, batchLinks->head);
+        gSPDisplayList(tempGfxHead++, batchDisplayLists->endDl);
 
         if (course) {
             gSPDisplayList(tempGfxHead++, dl_course_common_revert);
@@ -393,7 +394,7 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
     gDisplayListHead = tempGfxHead;
 }
 
-static void append_dl(struct DisplayListHead* list, void* dl)
+static void append_dl(struct DisplayListLinks* list, void* dl)
 {
     struct DisplayListNode *listNode = main_pool_alloc(sizeof(struct DisplayListNode));
 
@@ -439,7 +440,7 @@ void geo_append_display_list(void *displayList, s32 layer) {
 
 static void geo_append_batched_display_list(void *displayList, enum RenderLayers layer, enum LayerBatches batch) {
     struct MasterLayer* masterLayer = &gCurGraphNodeMasterList->layers[layer];
-    append_dl(&masterLayer->objects->batches[batch].list, displayList);
+    append_dl(&masterLayer->objects->batches[batch], displayList);
 }
 
 static void inc_mat_stack() {
@@ -467,7 +468,7 @@ static void batches_clean(struct BatchArray* task)
 {
     if (task) {
         for (int batch = 0; batch < task->count; batch++) {
-            task->batches[batch].list.head = NULL;
+            task->batches[batch].head = NULL;
         }
     }
 }
@@ -813,6 +814,7 @@ void geo_process_display_list(struct GraphNodeDisplayList *node) {
 
 static void geo_lvl_append_display_list(void *displayList, s32 layer) {
     // gSPLookAt(gDisplayListHead++, gCurLookAt);
+#define DISABLE_BATCHIFY
 #ifdef DISABLE_BATCHIFY
     append_dl(&gCurGraphNodeMasterList->layers[layer].list, displayList);
 #else
@@ -823,7 +825,7 @@ static void geo_lvl_append_display_list(void *displayList, s32 layer) {
     {
         if (*data > 0)
         {
-            append_dl(&task->batches[batchIdx].list, (void*)*data);
+            append_dl(&task->batches[batchIdx], (void*)*data);
         }
         if (*data < 0)
         {
