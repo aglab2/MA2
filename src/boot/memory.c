@@ -552,7 +552,7 @@ void *load_segment_decompress(s32 segment, u8 *srcStart, u8 *srcEnd) {
 #else
     u32 compSize = ALIGN16(srcEnd - srcStart);
 #endif
-    u8 *compressed = main_pool_alloc_aligned_freeable(compSize, 0);
+    u8 *compressed = 0x80725800; // main_pool_alloc_aligned_freeable(compSize, 0);
 #ifdef GZIP
     // Decompressed size from end of gzip
     u32 *size = (u32 *) (compressed + compSize);
