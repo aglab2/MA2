@@ -259,14 +259,20 @@ static const Mtx identityMatrixWorldScale = {{
  * would make the ZEX 0-4 render on top of Rej's 5-7.
  */
 
-static void render_lists(Gfx **ptempGfxHead, struct DisplayListNode* currList)
+static ALWAYS_INLINE void render_lists(Gfx **ptempGfxHead, Mtx **pprevMtx, struct DisplayListNode* currList)
 {
 #define tempGfxHead (*ptempGfxHead)
+#define prevMtx (*pprevMtx)
     do {
-        gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(currList->transform), (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
+        if (prevMtx != currList->transform)
+        {
+            gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(currList->transform), (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
+            prevMtx = currList->transform;
+        }
         gSPDisplayList(tempGfxHead++, currList->displayList);
         currList = currList->next;
     } while (currList != NULL);
+#undef prevMtx
 #undef tempGfxHead
 }
 
@@ -278,6 +284,7 @@ static int render_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32 wantMo
     if (!arr)
         return 0;
 
+    Mtx* prevMtx = NULL;
     // Some "fun" display lists before may decide to change the render mode, so we need to reset it.
     gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
 
@@ -289,7 +296,7 @@ static int render_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32 wantMo
         const struct BatchDisplayLists* batchDisplayLists = &arr->batchDLs[batch];
         gSPDisplayList(tempGfxHead++, batchDisplayLists->startDl);
         amountRendered++;
-        render_lists(&tempGfxHead, batchLinks->head);
+        render_lists(&tempGfxHead, &prevMtx, batchLinks->head);
         gSPDisplayList(tempGfxHead++, batchDisplayLists->endDl);
 
         if (course) {

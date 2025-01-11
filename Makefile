@@ -146,10 +146,6 @@ SAFETY_OPT_FLAGS =
 # Main opt flags
 GCC_MAIN_OPT_FLAGS = \
   $(DEFAULT_OPT_FLAGS) $(SAFETY_OPT_FLAGS) \
-  --param case-values-threshold=20 \
-  --param max-completely-peeled-insns=10 \
-  --param max-unrolled-insns=10 \
-  -finline-limit=1 \
   -freorder-blocks-algorithm=simple  \
   -ffunction-sections \
   -fdata-sections \
