@@ -308,6 +308,7 @@ static int render_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32 wantMo
     return amountRendered;
 }
 
+static void adjust_view_range();
 void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
     const struct RenderPhase *renderPhase;
     s32 currLayer     = LAYER_FIRST;
@@ -319,6 +320,8 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
     const struct RenderModeContainer *mode1List = &renderModeTable_1Cycle[enableZBuffer];
     const struct RenderModeContainer *mode2List = &renderModeTable_2Cycle[enableZBuffer];
     Gfx *tempGfxHead = gDisplayListHead;
+
+    adjust_view_range();
 
     // Loop through the render phases
     for (phaseIndex = RENDER_PHASE_FIRST; phaseIndex < finalPhase; phaseIndex++) {
@@ -1371,13 +1374,30 @@ void geo_try_process_children(struct GraphNode *node) {
     }
 }
 
+extern f32 profiler_get_fps();
+static f32 sViewRange = 400000000.0f;
+static const f32 sViewRangeChangeRate = 0.0003f * 400000000.0f;
+
+static void adjust_view_range()
+{
+    f32 fps = profiler_get_fps();
+    if (fps < 29.0f) 
+    {
+        sViewRange -= sViewRangeChangeRate * (30.f - fps);
+    }
+    else
+    {
+        sViewRange += sViewRangeChangeRate;
+    }
+}
+
 static int is_far_from_mario(Vec3f loc)
 {
     f32 dx = loc[0] - gCurGraphNodeCamera->focus[0];
     f32 dy = loc[1] - gCurGraphNodeCamera->focus[1];
     f32 dz = loc[2] - gCurGraphNodeCamera->focus[2];
     f32 dist = dx*dx + dy*dy + dz*dz;
-    return dist > 400000000.0f;
+    return dist > sViewRange;
 }
 
 void geo_process_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation *node) {
