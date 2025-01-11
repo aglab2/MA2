@@ -76,6 +76,7 @@ void geo_layout_cmd_node_billboard(void);
 void geo_layout_cmd_node_display_list(void);
 void geo_layout_cmd_node_batch_display_list(void);
 void geo_layout_cmd_node_batch_display_list_anim(void);
+void geo_layout_cmd_node_batch_start(void);
 void geo_layout_cmd_node_batch_generated(void);
 void geo_layout_cmd_node_shadow(void);
 void geo_layout_cmd_node_object_parent(void);

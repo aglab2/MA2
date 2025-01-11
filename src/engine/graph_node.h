@@ -159,11 +159,6 @@ struct DisplayListLinks {
     struct DisplayListNode* tail;
 };
 
-struct BatchDisplayLists {
-    const void* startDl;
-    const void* endDl;
-};
-
 struct BatchArray {
     int count;
     const struct BatchDisplayLists* batchDLs;

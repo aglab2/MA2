@@ -122,7 +122,8 @@ const RailDesc* rail_descs_ce[] = {
     NULL,
 };
 
-#include "levels/ce/visual/model.inc.c"
+#include "levels/ce/visual/header_lvl.inc.h"
+#include "levels/ce/visual/model_lvl.inc.c"
 #include "levels/ce/leveldata.inc.c"
 
 #include "levels/ce/ce_hammer/model.inc.c"

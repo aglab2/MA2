@@ -62,9 +62,9 @@ class RenderNode(GeoNode):
         else:
             assert translations
             if rotations:
-                return f"{super().__str__()}GEO_LVL_TRANSLATE_ROTATE({self.dl_reference.layer}, {translations}, {rotations}, {self.dl_reference.name}),"
+                return f"{super().__str__()}GEO_LVL_BATCH_TRANSLATE_ROTATE({self.dl_reference.layer}, {translations}, {rotations}, {self.dl_reference.name}),"
             else:
-                return f"{super().__str__()}GEO_LVL_TRANSLATE_NODE({self.dl_reference.layer}, {translations}, {self.dl_reference.name}),"
+                return f"{super().__str__()}GEO_LVL_BATCH_TRANSLATE_NODE({self.dl_reference.layer}, {translations}, {self.dl_reference.name}),"
 
 class ModelData:
     def __init__(self, decl, data = None, batched = False):
@@ -320,11 +320,16 @@ def batchify(geo, model, header):
 
     return layered_batches
 
+def deduce_level_name(name):
+    idx = name.find('_')
+    return name[0:idx]
+
 def serialize_geo(geo, area, path):
+    lvl_name = deduce_level_name(geo.name)
     with open(path, "w") as f_geo:
         f_geo.write('''#include "src/game/envfx_snow.h"\n\n''')
-        f_geo.write(f'''const GeoLayout {geo.name}[] = {{\n''')
-        f_geo.write('''\tGEO_NODE_START(),\n''')
+        f_geo.write(f'''const GeoLayout {geo.name} = {{\n''')
+        f_geo.write(f'''\tGEO_BATCH_NODE_START(batch_lvl_dls_{lvl_name}),\n''')
         f_geo.write('''\tGEO_OPEN_NODE(),\n''')
         for content in geo.contents:
             f_geo.write(f"{content}\n")
@@ -332,13 +337,11 @@ def serialize_geo(geo, area, path):
         f_geo.write('''\tGEO_RETURN(),\n''')
         f_geo.write('''};\n\n''')
 
-        f_geo.write(f'''const GeoLayout {area.name}[] = {{\n''')
+        f_geo.write(f'''const GeoLayout {area.name} = {{\n''')
         for content in area.contents:
             f_geo.write(content)
 
-def deduce_level_name(name):
-    idx = name.find('_')
-    return name[0:idx]
+        f_geo.write('''};\n\n''')
 
 def serialize_header(header, layered_batches, path):
     with open(path, "w") as f_header:
@@ -352,7 +355,7 @@ def serialize_header(header, layered_batches, path):
 
             name = deduce_level_name(batches[0].name)
 
-        f_header.write(f'extern struct BatchDisplayLists* batch_descs_{name}[LAYER_COUNT];\n')
+        f_header.write(f'extern struct BatchLevelDisplayLists batch_lvl_dls_{name}[LAYER_COUNT];\n')
 
 def serialize_model(model, layered_batches, path):
     with open(path, "w") as f_model:
@@ -366,15 +369,15 @@ def serialize_model(model, layered_batches, path):
 
         name = None
         for layer, batches in layered_batches.items():
-            f_model.write(f"static struct BatchDisplayLists batch_desc_{layer}[] = {{\n")
+            f_model.write(f"static struct BatchDisplayLists batch_lvl_dls_{layer}[] = {{\n")
             for batch in batches:
-                f_model.write(f"\t{{ {{mat_{batch.name}}}, {{mat_revert{batch.name}}} }},\n")
+                f_model.write(f"\t{{ mat_{batch.name}, mat_revert_{batch.name} }},\n")
             f_model.write('};\n\n')
             name = deduce_level_name(batches[0].name)
 
-        f_model.write(f'struct BatchDisplayLists* batch_descs_{name}[LAYER_COUNT] = {{\n')
+        f_model.write(f'struct BatchLevelDisplayLists batch_lvl_dls_{name}[LAYER_COUNT] = {{\n')
         for layer, batches in layered_batches.items():
-            f_model.write(f"\t[ {layer} ] = batch_desc_{layer},\n")
+            f_model.write(f"\t[ {layer} ] = {{ {len(batches)}, batch_lvl_dls_{layer} }},\n")
         f_model.write('};\n')
 
 if '__main__' in __name__:
@@ -389,9 +392,9 @@ if '__main__' in __name__:
 
     layered_batches = batchify(geo, model, header)
 
-    geo_patched_path = f"{path}/geo_patch.inc.c"
-    header_patched_path = f"{path}/header_patch.inc.h"
-    model_patched_path = f"{path}/model_patch.inc.c"
+    geo_patched_path = f"{path}/geo_lvl.inc.c"
+    header_patched_path = f"{path}/header_lvl.inc.h"
+    model_patched_path = f"{path}/model_lvl.inc.c"
 
     serialize_geo(geo, area, geo_patched_path)
     serialize_header(header, layered_batches, header_patched_path)

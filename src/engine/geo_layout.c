@@ -59,6 +59,7 @@ static const GeoLayoutCommandProc GeoLayoutJumpTable[] = {
     /* GEO_CMD_NODE_BATCH_DISPLAY_LIST */       geo_layout_cmd_node_batch_display_list,
     /* GEO_CMD_NODE_BATCH_GENERATED */          geo_layout_cmd_node_batch_generated,
     /* GEO_CMD_NODE_BATCH_DISPLAY_LIST_ANIM */  geo_layout_cmd_node_batch_display_list_anim,
+    /* GEO_CMD_NODE_BATCH_START */              geo_layout_cmd_node_batch_start,
 };
 
 struct GraphNode gObjParentGraphNode;
@@ -330,6 +331,29 @@ void geo_layout_cmd_node_start(void) {
     register_scene_graph_node(&graphNode->node);
 
     gGeoLayoutCommand += 0x04 << CMD_SIZE_SHIFT;
+}
+
+void geo_layout_cmd_node_batch_start(void) {
+    struct BatchLevelDisplayLists* dls = (struct BatchLevelDisplayLists*) cur_geo_cmd_ptr(0x04);
+    dls = segmented_to_virtual(dls);
+    struct GraphNodeStart *graphNode = init_graph_node_start(NULL);
+
+    register_scene_graph_node(&graphNode->node);
+
+    for (int layer = LAYER_FIRST; layer < LAYER_COUNT; layer++)
+    {
+        int total = dls[layer].count;
+        if (0 == total)
+            continue;
+
+        struct MasterLayer* masterLayer = &gMasterNode->layers[layer];
+        struct BatchArray* batches = main_pool_alloc(sizeof(struct BatchArray) + total * sizeof(struct DisplayListLinks));
+        batches->count = total;
+        batches->batchDLs = segmented_to_virtual(dls[layer].lists);
+        masterLayer->course = batches;
+    } 
+
+    gGeoLayoutCommand += 0x08 << CMD_SIZE_SHIFT;
 }
 
 // 0x1F: No operation

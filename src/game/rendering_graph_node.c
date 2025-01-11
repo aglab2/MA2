@@ -814,7 +814,6 @@ void geo_process_display_list(struct GraphNodeDisplayList *node) {
 
 static void geo_lvl_append_display_list(void *displayList, s32 layer) {
     // gSPLookAt(gDisplayListHead++, gCurLookAt);
-#define DISABLE_BATCHIFY
 #ifdef DISABLE_BATCHIFY
     append_dl(&gCurGraphNodeMasterList->layers[layer].list, displayList);
 #else

@@ -71,6 +71,7 @@ enum GeoLayoutCommands {
     GEO_CMD_NODE_BATCH_DISPLAY_LIST,
     GEO_CMD_NODE_BATCH_GENERATED,
     GEO_CMD_NODE_BATCH_DISPLAY_LIST_ANIM,
+    GEO_CMD_NODE_BATCH_START,
 
     GEO_CMD_COUNT,
 };
@@ -183,6 +184,10 @@ enum GeoLayoutCommands {
 #define GEO_NODE_START() \
     CMD_BBH(GEO_CMD_NODE_START, 0x00, 0x0000)
 
+#define GEO_BATCH_NODE_START(cmds) \
+    CMD_BBH(GEO_CMD_NODE_BATCH_START, 0x00, 0x0000), \
+    CMD_PTR(cmds)
+
 /**
  * 0x0C: Create zbuffer-toggling scene graph node
  *   0x01: u8 enableZBuffer (1 = on, 0 = off)
@@ -262,6 +267,7 @@ enum GeoLayoutCommands {
 #define GEO_FLOAT_TO_INT(fv) ((s32) ((fv) * GEO_FLOAT_DELIMITER))
 #define GEO_INT_TO_FLOAT(iv) ((f32) ((iv) / GEO_FLOAT_DELIMITER))
 
+#define GEO_LVL_BATCH_TRANSLATE_ROTATE GEO_LVL_TRANSLATE_ROTATE_WITH_DL
 #define GEO_LVL_TRANSLATE_ROTATE_WITH_DL(layer, tx, ty, tz, rx, ry, rz, displayList) \
     CMD_BBH(GEO_CMD_LVL_NODE_TRANSLATION_ROTATION, (0x00 | layer), rx), \
     CMD_HH(ry, rz), \
@@ -356,6 +362,7 @@ enum GeoLayoutCommands {
     CMD_W(GEO_FLOAT_TO_INT(ux)), \
     CMD_W(GEO_FLOAT_TO_INT(uy)), \
     CMD_W(GEO_FLOAT_TO_INT(uz))
+#define GEO_LVL_BATCH_TRANSLATE_NODE GEO_LVL_TRANSLATE_NODE_WITH_DL
 #define GEO_LVL_TRANSLATE_NODE_WITH_DL(layer, ux, uy, uz, displayList) \
     CMD_BBH(GEO_CMD_LVL_NODE_TRANSLATION, (layer | 0x80), 0), \
     CMD_W(GEO_FLOAT_TO_INT(ux)), \
@@ -428,6 +435,7 @@ enum GeoLayoutCommands {
     CMD_BBH(GEO_CMD_NODE_BATCH_DISPLAY_LIST, layer, batch), \
     CMD_PTR(displayList)
 
+#define GEO_BATCH GEO_LVL_DISPLAY_LIST
 #define GEO_LVL_DISPLAY_LIST(layer, displayList) \
     CMD_BBH(GEO_CMD_LVL_NODE_DISPLAY_LIST, layer, 0x0000), \
     CMD_PTR(displayList)

@@ -77,6 +77,21 @@ enum RenderLayers {
     LAYER_COUNT
 };
 
+#define BATCH_SET_TEXTURE(texture) ((uint32_t) (-texture-1))
+#define BATCH_LOAD_DL(dl) ((uint32_t)dl) 
+#define BATCH_END() 0
+
+struct BatchDisplayLists {
+    const void* startDl;
+    const void* endDl;
+};
+
+struct BatchLevelDisplayLists
+{
+    int count;
+    struct BatchDisplayLists* lists;
+};
+
 enum LayerBatches {
     LAYER_OPAQUE_BATCHES_BASE = 0,
     LAYER_OPAQUE_CORKBOX = LAYER_OPAQUE_BATCHES_BASE,
