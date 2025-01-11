@@ -497,7 +497,9 @@ void geo_layout_cmd_node_camera(void) {
     }
     else
     {
+#ifndef DISABLE_BATCHIFY
         batch_ht_init((batch_ht_t*) (0x80710000 + 0x25800));
+#endif
         sCameraCache = graphNode;
         sCameraCacheMasterNode = gMasterNode;
         gGeoLayoutCommand += 0x14 << CMD_SIZE_SHIFT;

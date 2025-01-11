@@ -18361,6 +18361,7 @@ Gfx ce_skybox_object_00CDC390_mesh_tri_2[] = {
 Gfx mat_ce_skybox_Skybox_sa2bmdl_0_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
+	gsSPSetGeometryMode(G_ZBUFFER),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, ce_skybox_scitynbg2_rgba16),
@@ -18426,6 +18427,7 @@ Gfx ce_skybox_object_00CDC390_mesh[] = {
 	gsSPDisplayList(ce_skybox_object_00CDC390_mesh_tri_2),
 	gsSPDisplayList(mat_revert_ce_skybox_Skybox_sa2bmdl_2_f3d),
 	gsDPPipeSync(),
+	gsSPSetGeometryMode(G_ZBUFFER),
 	gsSPSetGeometryMode(G_LIGHTING),
 	gsSPClearGeometryMode(G_TEXTURE_GEN),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
