@@ -812,13 +812,26 @@ void geo_process_display_list(struct GraphNodeDisplayList *node) {
     gMatStackIndex++;
 }
 
+struct BatchCmd
+{
+    u32 idx;
+    void* data;
+};
+
 static void geo_lvl_append_display_list(void *displayList, s32 layer) {
     // gSPLookAt(gDisplayListHead++, gCurLookAt);
 #ifdef DISABLE_BATCHIFY
     append_dl(&gCurGraphNodeMasterList->layers[layer].list, displayList);
 #else
-    int32_t* data = segmented_to_virtual(displayList);
     struct BatchArray* task = gCurGraphNodeMasterList->layers[layer].course;
+#ifndef BATCH_SLOW_LOOP
+    struct BatchCmd* data = segmented_to_virtual(displayList);
+    while (data->idx)
+    {
+        append_dl(&task->batches[-data->idx - 1], data->data);
+        data++;
+    }
+#else
     int batchIdx = 0;
     while (*data)
     {
@@ -833,6 +846,7 @@ static void geo_lvl_append_display_list(void *displayList, s32 layer) {
 
         data++;
     }
+#endif
 #endif
 }
 

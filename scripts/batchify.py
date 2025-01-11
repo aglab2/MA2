@@ -243,6 +243,15 @@ class BatchedTexture:
     def __repr__(self):
         return f"BatchedTexture({self.name}, {self.idx})"
 
+def append_dl(data_from, data_to):
+    # dl data at end looks like gsSPEndDisplayList(); }; so we need to strip the last two lines
+    assert '};\n' in data_to.data[-1]
+    del data_to.data[-1]
+    assert 'gsSPEndDisplayList' in data_to.data[-1]
+    del data_to.data[-1]
+    # Now we can safely just append the data
+    data_to.data.extend(data_from.data)
+
 def batchify(geo, model, header):
     def get_args(line):
         bracket_open = line.find('(')
@@ -270,6 +279,9 @@ def batchify(geo, model, header):
         layer = dl_ref.layer
         batches = layered_batches.setdefault(layer, [])
         batches_indexed = layered_batches_indexed.setdefault(layer, {})
+
+        curr_seen_batches = {}
+        curr_attached_batch_idx = None        
         for data in model_to_convert.data:
             if 'gsSPDisplayList(' in data:
                 dl = get_args(data)[0]
@@ -285,10 +297,21 @@ def batchify(geo, model, header):
                         # Stripping the mat_ prefix
                         batches.append(BatchedTexture(layer, dl[4:]))
 
-                    batch = batches[idx]
-                    curr_batched_data.append(f"\tBATCH_SET_TEXTURE({batch.idx}),\n")
+                    curr_attached_batch_idx = idx
                 else:
-                    curr_batched_data.append(f"\tBATCH_LOAD_DL({dl}),\n")
+                    assert curr_attached_batch_idx is not None
+                    if curr_attached_batch_idx not in curr_seen_batches:
+                        curr_seen_batches[curr_attached_batch_idx] = dl
+                        batch = batches[curr_attached_batch_idx]
+                        curr_batched_data.append(f"\tBATCH_SET_TEXTURE({batch.idx}),\n")
+                        curr_batched_data.append(f"\tBATCH_LOAD_DL({dl}),\n")
+                    else:
+                        # Append the dl to the batch that has been already seen, then clear it out
+                        seen_dl = curr_seen_batches[curr_attached_batch_idx]
+                        dl_idx = model_indexed[dl]
+                        append_dl(model.data[dl_idx], model.data[model_indexed[seen_dl]])
+                        model.data[dl_idx] = None
+                        del model_indexed[dl]
 
                 continue
             if 'gsSPEndDisplayList()' in data or 'gsDPPipeSync(' in data:
