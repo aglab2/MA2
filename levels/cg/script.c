@@ -31,10 +31,16 @@ extern const GeoLayout cg_area_visual[];
 const LevelScript level_cg_entry[] = {
 	INIT_LEVEL(),
 	LOAD_MIO0(0x7, _cg_segment_7SegmentRomStart, _cg_segment_7SegmentRomEnd), 
+	LOAD_YAY0(0x06, _group17_yay0SegmentRomStart, _group17_yay0SegmentRomEnd), 
+	LOAD_RAW(0x0D, _group17_geoSegmentRomStart, _group17_geoSegmentRomEnd), 
+	LOAD_YAY0(0x08, _common0_yay0SegmentRomStart, _common0_yay0SegmentRomEnd), 
+	LOAD_RAW(0x0F, _common0_geoSegmentRomStart, _common0_geoSegmentRomEnd), 
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
 	LOAD_MODEL_FROM_GEO(MODEL_CG_SHUTTER_LEFT, cg_shutter_left_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CG_SHUTTER_RIGHT, cg_shutter_right_geo), 
+	JUMP_LINK(script_func_global_18), 
+	JUMP_LINK(script_func_global_1), 
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
 
