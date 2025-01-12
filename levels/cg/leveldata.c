@@ -4,6 +4,9 @@
 #include "moving_texture_macros.h"
 #include "textures.h"
 #include "dialog_ids.h"
+#include "rail_desc.h"
+#include "spring_desc.h"
+#include "instant_warp_desc.h"
 
 #include "make_const_nonconst.h"
 
@@ -19,6 +22,33 @@
 #include "levels/cg/area_4/collision.inc.c"
 #include "levels/cg/area_4/spline.inc.c"
 #endif
+
+static IWDHeader iw_area1 = {
+    IWDT_CG_DROP,
+};
+
+static IWDirectionAreasDesc iw_area2 = {
+    IWDT_NONE,
+};
+
+static IWDirectionAreasDesc iw_area3 = {
+    { IWDT_DIRECTIONS },
+    { .x_high = 2, .z_low = 4, },
+};
+
+static IWDirectionAreasDesc iw_area4 = {
+    { IWDT_DIRECTIONS },
+    { .z_high = 3, .z_low = 5, },
+};
+
+IWDHeader* iw_descs_cg[] = {
+    &iw_area1,
+    &iw_area2.header,
+    &iw_area3.header,
+    &iw_area4.header,
+};
+
+#include "levels/cg/rails.inc.c"
 
 #include "levels/cg/visual/header_lvl.inc.h"
 #include "levels/cg/visual/model_lvl.inc.c"

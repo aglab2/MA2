@@ -8,6 +8,7 @@ extern const SpringDesc* spring_descs_ph[];
 extern const SpringDesc* spring_descs_ms[];
 extern const SpringDesc* spring_descs_pc[];
 extern const SpringDesc* spring_descs_ee[];
+extern const SpringDesc* spring_descs_cg[];
 static const SpringDesc** kSpringDescs[] = {
     [ LEVEL_MH ] = spring_descs_mh,
     [ LEVEL_GF ] = spring_descs_gf,
@@ -15,6 +16,7 @@ static const SpringDesc** kSpringDescs[] = {
     [ LEVEL_MS ] = spring_descs_ms,
     [ LEVEL_PC ] = spring_descs_pc,
     [ LEVEL_EE ] = spring_descs_ee,
+    [ LEVEL_CG ] = spring_descs_cg,
 };
 
 extern const SpringLinkDesc spring_links_mh[]; 
@@ -79,6 +81,7 @@ void bhv_spring_init()
     }
 }
 
+extern u32 gIsGravityFlipped;
 void bhv_spring_loop()
 {
     if (0 == o->oAction)
@@ -88,6 +91,9 @@ void bhv_spring_loop()
             o->oAction = 1;
             gMarioStates->pos[0] = o->oPosX;
             gMarioStates->pos[1] = o->oPosY;
+            if (gIsGravityFlipped)
+                 gMarioStates->pos[1] = 9000.f - gMarioStates->pos[1];
+
             gMarioStates->pos[2] = o->oPosZ;
             gMarioStates->faceAngle[1] = o->oFaceAngleYaw;
             set_mario_action(gMarioStates, ACT_JUMP, 0);
@@ -129,6 +135,12 @@ void bhv_spring_loop()
         gMarioStates->vel[0] = (end[0] - gMarioStates->pos[0]);
         gMarioStates->vel[1] = (end[1] - gMarioStates->pos[1]);
         gMarioStates->vel[2] = (end[2] - gMarioStates->pos[2]);
+        
+        if (gIsGravityFlipped)
+        {
+            gMarioStates->vel[1] = -gMarioStates->vel[1];
+            gMarioStates->pos[1] = 9000.f - gMarioStates->pos[1];
+        }
     }
 }
 

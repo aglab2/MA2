@@ -570,5 +570,7 @@ extern const BehaviorScript bhvPcKeyEnter[];
 extern const BehaviorScript bhvPcKeyDoor[];
 extern const BehaviorScript bhvDcMove[];
 extern const BehaviorScript bhvShutter[];
+extern const BehaviorScript bhvCollision[];
+extern const BehaviorScript bhvGravFlip[];
 
 #endif // BEHAVIOR_DATA_H

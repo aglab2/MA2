@@ -120,6 +120,28 @@ Gfx *geo_update_layer_smoke(s32 callContext, struct GraphNode *node, UNUSED void
     return dlStart;
 }
 
+Gfx *geo_update_transparency(s32 callContext, struct GraphNode *node, UNUSED void *context) {
+    Gfx *dlStart = NULL;
+    struct GraphNodeGenerated *currentGraphNode = (struct GraphNodeGenerated *) node;
+
+    if (callContext == GEO_CONTEXT_RENDER) {
+        struct Object *objectGraphNode = (struct Object *) gCurGraphNodeObject; // TODO: change this to object pointer?
+
+        if (gCurGraphNodeHeldObject != NULL) {
+            objectGraphNode = gCurGraphNodeHeldObject->objNode;
+        }
+
+        SET_GRAPH_NODE_LAYER(currentGraphNode->fnNode.node.flags, LAYER_TRANSPARENT);
+        s32 objectOpacity = objectGraphNode->oOpacity;
+
+        dlStart = alloc_display_list(sizeof(Gfx) * 2);
+        Gfx *dlHead = dlStart;
+        gDPSetEnvColor(dlHead++, 255, 255, 255, objectOpacity);
+        gSPEndDisplayList(dlHead);
+    }
+    return dlStart;
+}
+
 Gfx *geo_switch_anim_state(s32 callContext, struct GraphNode *node, UNUSED void *context) {
     if (callContext == GEO_CONTEXT_RENDER) {
         struct Object *obj = gCurGraphNodeObjectNode;

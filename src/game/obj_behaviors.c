@@ -786,3 +786,4 @@ UNUSED s32 debug_sequence_tracker(s16 debugInputSequence[]) {
 #include "behaviors/aglab_spring.inc.c"
 #include "behaviors/aglab_rocket.inc.c"
 #include "behaviors/aglab_shutter.inc.c"
+#include "behaviors/aglab_gravflip.inc.c"

@@ -2,8 +2,12 @@
 
 enum IWDType
 {
+    IWDT_NONE,
     IWDT_DIRECTIONS,
     IWDT_UP_DOWN_DIRECTIONS,
+    // I am handling this case in a special manner because it is painful to do otherwise
+    // Because of grav flip mechanic, relying on the value of Y becomes problematic so hardcode correct Y instead
+    IWDT_CG_DROP,
 };
 
 // MARK: Areas tools

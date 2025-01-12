@@ -201,7 +201,8 @@ void mtxf_rotate_zxy_and_translate_and_mul(Vec3s rot, Vec3f trans, Mat4 dest, Ma
     MTXF_END(dest);
 }
 
-void mtxf_translate_and_mul(Vec3f trans, Mat4 dest, Mat4 src) {
+void mtxf_translate_and_mul(f32 trans0, f32 trans1, f32 trans2, Mat4 dest, Mat4 src) {
+    Vec3f trans = { trans0, trans1, trans2 };
     PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);
     const f32 sx = 0;
     const f32 cx = 1;

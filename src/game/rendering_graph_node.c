@@ -754,7 +754,7 @@ void geo_process_translation(struct GraphNodeTranslation *node) {
     Vec3f translation;
 
     vec3s_to_vec3f(translation, node->translation);
-    mtxf_translate_and_mul(translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+    mtxf_translate_and_mul(translation[0], translation[1], translation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
 
     inc_mat_stack();
     append_dl_and_return((struct GraphNodeDisplayList *)node);
@@ -1440,7 +1440,7 @@ void geo_process_lvl_translation(struct GraphNodeLvlTranslation *node) {
         return;
     }
 
-    mtxf_translate_and_mul(translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+    mtxf_translate_and_mul(translation[0], translation[1], translation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
 
     inc_mat_stack();
     struct GraphNodeDisplayList *dlNode = (struct GraphNodeDisplayList *)node;
@@ -1461,7 +1461,7 @@ void geo_process_break_translation(struct GraphNodeTranslation *node) {
     translation[0] = node->translation[0] - dir[0] * obj->oHomeX;
     translation[1] = node->translation[1] - obj->oHomeY;
     translation[2] = node->translation[2] - dir[2] * obj->oHomeZ;
-    mtxf_translate_and_mul(translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+    mtxf_translate_and_mul(translation[0], translation[1], translation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
 
     inc_mat_stack();
     append_dl_and_return((struct GraphNodeDisplayList *)node);
@@ -1485,7 +1485,7 @@ void geo_process_break_translation_rotation(struct GraphNodeTranslationRotation 
     rotation[0] = node->rotation[0];
     rotation[1] = node->rotation[1];
     rotation[2] = node->rotation[2];
-    mtxf_translate_and_mul(translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+    mtxf_translate_and_mul(translation[0], translation[1], translation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
 
     inc_mat_stack();
     append_dl_and_return((struct GraphNodeDisplayList *)node);
@@ -1514,7 +1514,7 @@ void geo_process_obj_rocket_translation(struct GraphNodeTranslation *node) {
     translation[0] = node->translation[0] + obj->oHomeX;
     translation[1] = node->translation[1] + obj->oHomeY;
     translation[2] = node->translation[2] + (node->translation[2] < 0 ? -obj->oHomeZ : obj->oHomeZ);
-    mtxf_translate_and_mul(translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+    mtxf_translate_and_mul(translation[0], translation[1], translation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
 
     inc_mat_stack();
     append_dl_and_return((struct GraphNodeDisplayList *)node);
@@ -1526,7 +1526,7 @@ void geo_process_obj_translation(struct GraphNodeTranslation *node) {
     translation[0] = node->translation[0] + obj->oHomeX;
     translation[1] = node->translation[1] + obj->oHomeY;
     translation[2] = node->translation[2] + obj->oHomeZ;
-    mtxf_translate_and_mul(translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+    mtxf_translate_and_mul(translation[0], translation[1], translation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
 
     inc_mat_stack();
     append_dl_and_return((struct GraphNodeDisplayList *)node);
@@ -1537,7 +1537,7 @@ static geo_process_batchset_translation(struct GraphNodeTranslation *node) {
     translation[0] = node->translation[0];
     translation[1] = node->translation[1];
     translation[2] = node->translation[2];
-    mtxf_translate_and_mul(translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+    mtxf_translate_and_mul(translation[0], translation[1], translation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
 
     inc_mat_stack();
     append_lvl_dl_and_return((struct GraphNodeDisplayList *)node);

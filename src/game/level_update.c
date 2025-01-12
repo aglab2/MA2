@@ -505,6 +505,7 @@ extern const IWDHeader* iw_descs_ms[];
 extern const IWDHeader* iw_descs_hb[];
 extern const IWDHeader* iw_descs_pc[];
 extern const IWDHeader* iw_descs_ee[];
+extern const IWDHeader* iw_descs_cg[];
 static const IWDHeader** kWarpHeaders[] = {
     [ LEVEL_CE ] = iw_descs_ce,
     [ LEVEL_MH ] = iw_descs_mh,
@@ -513,6 +514,7 @@ static const IWDHeader** kWarpHeaders[] = {
     [ LEVEL_HB ] = iw_descs_hb,
     [ LEVEL_PC ] = iw_descs_pc,
     [ LEVEL_EE ] = iw_descs_ee,
+    [ LEVEL_CG ] = iw_descs_cg,
 };
 
 static void handle_iw_area_desc(int* newArea, const IWDirectionAreas* desc)
@@ -570,6 +572,14 @@ void check_instant_warp(void) {
                     else
                         handle_iw_area_desc(&newArea, &desc->areas.y_low);
 
+                    break;
+                }
+                case IWDT_CG_DROP:
+                {
+                    if (!gIsGravityFlipped && gMarioStates->pos[1] < -5000.f)
+                    {
+                        newArea = 2;
+                    }
                     break;
                 }
             }

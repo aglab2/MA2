@@ -9,11 +9,13 @@ extern const RailDesc* rail_descs_ce[];
 extern const RailDesc* rail_descs_mh[];
 extern const RailDesc* rail_descs_gf[];
 extern const RailDesc* rail_descs_pc[];
+extern const RailDesc* rail_descs_cg[];
 static const RailDesc** kRails[] = {
     [ LEVEL_CE ] = rail_descs_ce,
     [ LEVEL_MH ] = rail_descs_mh,
     [ LEVEL_GF ] = rail_descs_gf,
     [ LEVEL_PC ] = rail_descs_pc,
+    [ LEVEL_CG ] = rail_descs_cg,
 };
 
 #define MAX_ZIPLINE_DISTANCE 50000.f
@@ -80,9 +82,10 @@ static void calculate_trajectory_middle()
     sTrajectoryMiddle[2] = (maxPoint[2] + minPoint[2]) / 2;
 }
 
+extern u32 gIsGravityFlipped;
 static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop, int it)
 {
-    Vec3f Q = { gMarioStates->pos[0], gMarioStates->pos[1], gMarioStates->pos[2] };
+    Vec3f Q = { gMarioStates->pos[0], gIsGravityFlipped ? 9000.f - gMarioStates->pos[1] : gMarioStates->pos[1], gMarioStates->pos[2] };
     f32 minDist = 2000.f;
     Vec3f closestPoint = {0, 0, 0};
     f32 minT = 0;
@@ -261,6 +264,9 @@ int zipline_step()
             // adjust rotation angle from the center
             Vec3f loopDiff;
             vec3f_diff(loopDiff, gMarioStates->pos, sTrajectoryMiddle);
+            if (gIsGravityFlipped)
+                loopDiff[1] = 9000.f - loopDiff[1];
+
             gMarioStates->faceAngle[sLoopDesc->m0] = sLoopDesc->angleOffset + sLoopDesc->mult * atan2s(loopDiff[sLoopDesc->c0], loopDiff[sLoopDesc->c1]);
         }
         else
@@ -374,6 +380,9 @@ int zipline_step()
         sPosZ = trajCurPoint[2] + (trajDirection[2] * sZiplineProgress);
         gMarioStates->pos[0] = sPosX;
         gMarioStates->pos[1] = sPosY;
+        if (gIsGravityFlipped)
+            gMarioStates->pos[1] = 9000.f - gMarioStates->pos[1];
+
         gMarioStates->pos[2] = sPosZ;
     }
 

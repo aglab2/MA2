@@ -6108,7 +6108,17 @@ const BehaviorScript bhvCollision[] = {
 extern void bhv_shutter_loop();
 const BehaviorScript bhvShutter[] = {
     BEGIN(OBJ_LIST_SPAWNER),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO)),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_shutter_loop),
+    END_LOOP(),
+};
+
+extern void bhv_gravflip_loop();
+const BehaviorScript bhvGravFlip[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO)),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_gravflip_loop),
     END_LOOP(),
 };

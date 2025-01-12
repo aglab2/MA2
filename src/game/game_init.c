@@ -779,7 +779,7 @@ void setup_game_memory(void) {
 #include "game/level_update.h"
 
 extern u32 gIsGravityFlipped;
-static void set_gravity(u32 grav)
+void set_gravity(u32 grav)
 {
     if (grav == gIsGravityFlipped)
         return;
