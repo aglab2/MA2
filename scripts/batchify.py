@@ -251,13 +251,6 @@ def parse_model(model_path):
 
     return model
 
-def indexize_model(model):
-    indices = {}
-    for i, data in enumerate(model.data):
-        indices[data.name] = i
-
-    return indices
-
 class BatchedTexture:
     def __init__(self, layer: str, name: str):
         self.name = name
@@ -275,6 +268,32 @@ def append_dl(data_from, data_to):
     # Now we can safely just append the data
     data_to.data.extend(data_from.data)
 
+class ModelIndexer:
+    def __init__(self, model):
+        self._model = model
+        self._model_indexed = self._indexize(model)
+
+    def lookup(self, name):
+        idx = self._model_indexed[name]
+        return idx, self._model.data[idx]
+
+    def delete(self, name, idx = None):
+        idx = idx if idx else self._model_indexed[name]
+        self._model.data[idx] = None
+        del self._model_indexed[name]
+
+    def insert(self, new_data):
+        self._model_indexed[new_data.name] = len(self._model.data)
+        self._model.data.append(new_data)
+
+    @staticmethod
+    def _indexize(model):
+        indices = {}
+        for i, data in enumerate(model.data):
+            indices[data.name] = i
+
+        return indices
+
 # This procedure parses dls and converts them into batched textures
 # It also deduplicates the materials
 def batchify(geo, model, header):
@@ -283,7 +302,7 @@ def batchify(geo, model, header):
         bracket_close = line.rfind(')')
         return [arg.strip() for arg in line[bracket_open+1:bracket_close].split(',') ]
 
-    model_indexed = indexize_model(model)
+    model_indexer = ModelIndexer(model)
     layered_batches = {}
     layered_batches_indexed = {}
     dedup_data_to_mat = {}
@@ -298,8 +317,7 @@ def batchify(geo, model, header):
 
         curr_batched_data: list[str] = []
         dl_ref = node.dl_reference
-        model_to_convert_idx = model_indexed[dl_ref.name]
-        model_to_convert = model.data[model_to_convert_idx]
+        model_to_convert_idx, model_to_convert = model_indexer.lookup(dl_ref.name)
         if model_to_convert.batched:
             continue
 
@@ -321,19 +339,15 @@ def batchify(geo, model, header):
                     # Deduplicate the material
                     mat_real_dl = mat_dl
                     if mat_dl not in dedup_mat_to_real_mat:
-                        mat_dl_idx = model_indexed[mat_dl]
-                        mat_data = tuple(model.data[mat_dl_idx].data)
+                        mat_dl_idx, mat_dl_data = model_indexer.lookup(mat_dl)
+                        mat_data = tuple(mat_dl_data.data)
                         if mat_data in dedup_data_to_mat:
                             # Duplicate definition, delete the current mat and link to the "real" one (will be done in batch step)
                             mat_real_dl = dedup_data_to_mat[mat_data]
                             dedup_mat_to_real_mat[mat_dl] = mat_real_dl
 
-                            model.data[mat_dl_idx] = None
-                            del model_indexed[mat_dl]
-                            mat_dl_name = mat_dl[4:]
-                            revert_dl = f"mat_revert_{mat_dl_name}"
-                            model.data[model_indexed[revert_dl]] = None
-                            del model_indexed[revert_dl]
+                            model_indexer.delete(mat_dl, mat_dl_idx)
+                            model_indexer.delete(f"mat_revert_{mat_dl[4:]}")
                         else:
                             dedup_data_to_mat[mat_data] = mat_dl
                             dedup_mat_to_real_mat[mat_dl] = mat_dl
@@ -359,10 +373,9 @@ def batchify(geo, model, header):
                     else:
                         # Append the dl to the batch that has been already seen, then clear it out
                         seen_dl = curr_seen_batches[curr_attached_batch_idx]
-                        dl_idx = model_indexed[dl]
-                        append_dl(model.data[dl_idx], model.data[model_indexed[seen_dl]])
-                        model.data[dl_idx] = None
-                        del model_indexed[dl]
+                        dl_idx, dl_data = model_indexer.lookup(dl)
+                        append_dl(dl_data, model_indexer.lookup(seen_dl)[1])
+                        model_indexer.delete(dl, dl_idx)
 
                 continue
             if 'gsSPEndDisplayList()' in data or 'gsDPPipeSync(' in data:
@@ -371,16 +384,14 @@ def batchify(geo, model, header):
             raise Exception(f"Unknown dl: {data}")
 
         # Delete the old dl entry and link in new batched data
-        model.data[model_to_convert_idx] = None
-        del model_indexed[dl_ref.name]
+        model_indexer.delete(dl_ref.name, model_to_convert_idx)
 
         curr_batched_data.append(f"\tBATCH_END(),\n")
         curr_batched_data.append('};\n')
 
         batched_decl = f'u32 {model_to_convert.name}[] = {{\n'
         new_data = ModelData(batched_decl, curr_batched_data, True)
-        model_indexed[new_data.name] = len(model.data)
-        model.data.append(new_data)
+        model_indexer.insert(new_data)
 
         # Patch the header will the new name - switch Gfx for u32
         replaced = False
