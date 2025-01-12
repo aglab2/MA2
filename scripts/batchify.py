@@ -294,6 +294,33 @@ class ModelIndexer:
 
         return indices
 
+class MatDeduper:
+    def __init__(self, model_indexer):
+        self._dedup_data_to_mat = {}
+        self._dedup_mat_to_real_mat = {}
+        self._model_indexer = model_indexer
+
+    def dedup(self, mat_dl):
+        if mat_dl in self._dedup_mat_to_real_mat:
+            return self._dedup_mat_to_real_mat[mat_dl]
+
+        mat_dl_idx, mat_dl_entry = self._model_indexer.lookup(mat_dl)
+        # For hash lookup purposes we have to convert to tuple
+        # Mats are currently assumed to never change so this should be safe
+        mat_data = tuple(mat_dl_entry.data)
+        if mat_data in self._dedup_data_to_mat:
+            # Duplicate definition, delete the current mat and link to the "real" one (will be done in batch step)
+            mat_real_dl = self._dedup_data_to_mat[mat_data]
+            self._dedup_mat_to_real_mat[mat_dl] = mat_real_dl
+            self._model_indexer.delete(mat_dl, mat_dl_idx)
+            self._model_indexer.delete(f"mat_revert_{mat_dl[4:]}")
+            return mat_real_dl
+        else:
+            # It is the first time we see this material, register and return itself
+            self._dedup_data_to_mat[mat_data] = mat_dl
+            self._dedup_mat_to_real_mat[mat_dl] = mat_dl
+            return mat_dl
+
 # This procedure parses dls and converts them into batched textures
 # It also deduplicates the materials
 def batchify(geo, model, header):
@@ -305,8 +332,7 @@ def batchify(geo, model, header):
     model_indexer = ModelIndexer(model)
     layered_batches = {}
     layered_batches_indexed = {}
-    dedup_data_to_mat = {}
-    dedup_mat_to_real_mat = {}
+    mat_deduper = MatDeduper(model_indexer)
 
     for content in geo.contents:
         if content.batched:
@@ -336,23 +362,7 @@ def batchify(geo, model, header):
                     if revert:
                         continue
 
-                    # Deduplicate the material
-                    mat_real_dl = mat_dl
-                    if mat_dl not in dedup_mat_to_real_mat:
-                        mat_dl_idx, mat_dl_entry = model_indexer.lookup(mat_dl)
-                        mat_data = tuple(mat_dl_entry.data)
-                        if mat_data in dedup_data_to_mat:
-                            # Duplicate definition, delete the current mat and link to the "real" one (will be done in batch step)
-                            mat_real_dl = dedup_data_to_mat[mat_data]
-                            dedup_mat_to_real_mat[mat_dl] = mat_real_dl
-
-                            model_indexer.delete(mat_dl, mat_dl_idx)
-                            model_indexer.delete(f"mat_revert_{mat_dl[4:]}")
-                        else:
-                            dedup_data_to_mat[mat_data] = mat_dl
-                            dedup_mat_to_real_mat[mat_dl] = mat_dl
-                    else:
-                        mat_real_dl = dedup_mat_to_real_mat[mat_dl]
+                    mat_real_dl = mat_deduper.dedup(mat_dl)
 
                     # Assign real mat to batch index
                     idx = batches_indexed.get(mat_real_dl)
