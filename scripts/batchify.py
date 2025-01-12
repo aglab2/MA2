@@ -268,6 +268,7 @@ def append_dl(data_from, data_to):
     # Now we can safely just append the data
     data_to.data.extend(data_from.data)
 
+# Handles requests to convert dl referenced name to its model data
 class ModelIndexer:
     def __init__(self, model):
         self._model = model
@@ -294,6 +295,7 @@ class ModelIndexer:
 
         return indices
 
+# Handles deduplication of materials for same dls
 class MatDeduper:
     def __init__(self, model_indexer):
         self._dedup_data_to_mat = {}
@@ -321,17 +323,49 @@ class MatDeduper:
             self._dedup_mat_to_real_mat[mat_dl] = mat_dl
             return mat_dl
 
+# Tracks the current index for batched textures for a given layer
+class BatchIndexAllocator:
+    def __init__(self, batches, batches_indexed, layer):
+        self._batches = batches
+        self._batches_indexed = batches_indexed
+        self._layer = layer
+
+    def allocate(self, dl):
+        idx = self._batches_indexed.get(dl)
+        if idx is None:
+            idx = len(self._batches)
+            self._batches_indexed[dl] = idx
+            # Stripping the mat_ prefix
+            self._batches.append(BatchedTexture(self._layer, dl[4:]))
+
+        return idx
+
+    def get_batch(self, idx):
+        return self._batches[idx]
+
+class LayeredBatchIndexAllocator:
+    def __init__(self, layered_batches):
+        self._layered_batches = layered_batches
+        self._layered_batches_indexed = {}
+
+    def get_batch_allocator(self, layer):
+        batches = self._layered_batches.setdefault(layer, [])
+        batches_indexed = self._layered_batches_indexed.setdefault(layer, {})
+        return BatchIndexAllocator(batches, batches_indexed, layer)
+
 # This procedure parses dls and converts them into batched textures
-# It also deduplicates the materials
+# It also deduplicates the materials, currently on dl definition level
 def batchify(geo, model, header):
     def get_args(line):
         bracket_open = line.find('(')
         bracket_close = line.rfind(')')
         return [arg.strip() for arg in line[bracket_open+1:bracket_close].split(',') ]
 
-    model_indexer = ModelIndexer(model)
+    # The main product of this function is the layered_batches
     layered_batches = {}
-    layered_batches_indexed = {}
+
+    model_indexer = ModelIndexer(model)
+    layered_batch_index_allocator = LayeredBatchIndexAllocator(layered_batches)
     mat_deduper = MatDeduper(model_indexer)
 
     for content in geo.contents:
@@ -347,9 +381,7 @@ def batchify(geo, model, header):
         if model_to_convert.batched:
             continue
 
-        layer = dl_ref.layer
-        batches = layered_batches.setdefault(layer, [])
-        batches_indexed = layered_batches_indexed.setdefault(layer, {})
+        batch_allocator = layered_batch_index_allocator.get_batch_allocator(dl_ref.layer)
 
         curr_seen_batches = {}
         curr_attached_batch_idx = None        
@@ -363,21 +395,12 @@ def batchify(geo, model, header):
                         continue
 
                     mat_real_dl = mat_deduper.dedup(mat_dl)
-
-                    # Assign real mat to batch index
-                    idx = batches_indexed.get(mat_real_dl)
-                    if idx is None:
-                        idx = len(batches)
-                        batches_indexed[mat_real_dl] = idx
-                        # Stripping the mat_ prefix
-                        batches.append(BatchedTexture(layer, mat_real_dl[4:]))
-
-                    curr_attached_batch_idx = idx
+                    curr_attached_batch_idx = batch_allocator.allocate(mat_real_dl)
                 else:
                     assert curr_attached_batch_idx is not None
                     if curr_attached_batch_idx not in curr_seen_batches:
                         curr_seen_batches[curr_attached_batch_idx] = dl
-                        batch = batches[curr_attached_batch_idx]
+                        batch = batch_allocator.get_batch(curr_attached_batch_idx)
                         curr_batched_data.append(f"\tBATCH_SET_TEXTURE({batch.idx}),\n")
                         curr_batched_data.append(f"\tBATCH_LOAD_DL({dl}),\n")
                     else:
