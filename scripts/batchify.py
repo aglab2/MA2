@@ -275,6 +275,8 @@ def append_dl(data_from, data_to):
     # Now we can safely just append the data
     data_to.data.extend(data_from.data)
 
+# This procedure parses dls and converts them into batched textures
+# It also deduplicates the materials
 def batchify(geo, model, header):
     def get_args(line):
         bracket_open = line.find('(')
@@ -284,6 +286,8 @@ def batchify(geo, model, header):
     model_indexed = indexize_model(model)
     layered_batches = {}
     layered_batches_indexed = {}
+    dedup_data_to_mat = {}
+    dedup_mat_to_real_mat = {}
 
     for content in geo.contents:
         if content.batched:
@@ -309,16 +313,40 @@ def batchify(geo, model, header):
             if 'gsSPDisplayList(' in data:
                 dl = get_args(data)[0]
                 if dl.startswith('mat_'):
-                    revert = dl.startswith('mat_revert_')
+                    mat_dl = dl
+                    revert = mat_dl.startswith('mat_revert_')
                     if revert:
                         continue
 
-                    idx = batches_indexed.get(dl)
+                    # Deduplicate the material
+                    mat_real_dl = mat_dl
+                    if mat_dl not in dedup_mat_to_real_mat:
+                        mat_dl_idx = model_indexed[mat_dl]
+                        mat_data = tuple(model.data[mat_dl_idx].data)
+                        if mat_data in dedup_data_to_mat:
+                            # Duplicate definition, delete the current mat and link to the "real" one (will be done in batch step)
+                            mat_real_dl = dedup_data_to_mat[mat_data]
+                            dedup_mat_to_real_mat[mat_dl] = mat_real_dl
+
+                            model.data[mat_dl_idx] = None
+                            del model_indexed[mat_dl]
+                            mat_dl_name = mat_dl[4:]
+                            revert_dl = f"mat_revert_{mat_dl_name}"
+                            model.data[model_indexed[revert_dl]] = None
+                            del model_indexed[revert_dl]
+                        else:
+                            dedup_data_to_mat[mat_data] = mat_dl
+                            dedup_mat_to_real_mat[mat_dl] = mat_dl
+                    else:
+                        mat_real_dl = dedup_mat_to_real_mat[mat_dl]
+
+                    # Assign real mat to batch index
+                    idx = batches_indexed.get(mat_real_dl)
                     if idx is None:
                         idx = len(batches)
-                        batches_indexed[dl] = idx
+                        batches_indexed[mat_real_dl] = idx
                         # Stripping the mat_ prefix
-                        batches.append(BatchedTexture(layer, dl[4:]))
+                        batches.append(BatchedTexture(layer, mat_real_dl[4:]))
 
                     curr_attached_batch_idx = idx
                 else:
