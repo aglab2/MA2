@@ -1376,9 +1376,9 @@ void geo_try_process_children(struct GraphNode *node) {
 
 extern f32 profiler_get_fps();
 static const f32 sViewRangeMax = 400000000.0f;
-static const f32 sViewRangeMin = 20000000.0f;
+static const f32 sViewRangeMin = 30000000.0f;
 static f32 sViewRange = 400000000.0f;
-static const f32 sViewRangeChangeRate = 0.0003f * 400000000.0f;
+static const f32 sViewRangeChangeRate = 0.0004f * 400000000.0f;
 
 static void adjust_view_range()
 {
