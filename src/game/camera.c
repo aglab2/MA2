@@ -1135,16 +1135,26 @@ static void eight_dir_collision_handler(struct Camera *c)
     Vec3f hitpos;
 
     vec3f_copy(origin, gMarioState->pos);
+    if (gIsGravityFlipped)
+        origin[1] = 9000.f - origin[1];
 
-    origin[1] += VERTICAL_RAY_OFFSET; 
+    origin[1] += gIsGravityFlipped ? -VERTICAL_RAY_OFFSET : VERTICAL_RAY_OFFSET; 
     if (origin[1] > gMarioState->ceilHeight - 10.f)
         origin[1] = gMarioState->ceilHeight - 10.f;
 
     camdir[0] = c->pos[0] - origin[0];
     camdir[1] = c->pos[1] - origin[1];
     // TODO: smooth this out a bit using smoothstep
-    if (-200.f < camdir[1] && camdir[1] < 320.f)
-        camdir[1] = 320.f;
+    if (!gIsGravityFlipped)
+    {
+        if (-200.f < camdir[1] && camdir[1] < 320.f)
+            camdir[1] = 320.f;
+    }
+    else
+    {
+        if (-320.f < camdir[1] && camdir[1] < 200.f)
+            camdir[1] = -320.f;
+    }
 
     camdir[2] = c->pos[2] - origin[2];
 
@@ -1164,7 +1174,7 @@ static void eight_dir_collision_handler(struct Camera *c)
 
     int yAffected = 0;
     find_surface_on_ray(origin, camdir, &surf, hitpos, (RAYCAST_FIND_FLOOR | RAYCAST_FIND_WALL | RAYCAST_FIND_CEIL));
-    if (surf && surf->normal.y < -0.6f) // ceiling
+    if (surf && (!gIsGravityFlipped ? (surf->normal.y < -0.6f) : (surf->normal.y > 0.6f))) // ceiling
     {
 #if 0
         print_text_fmt_int(220, 20, "C %d", (int) (surf->normal.y * 1000.f));
@@ -1172,7 +1182,7 @@ static void eight_dir_collision_handler(struct Camera *c)
         // cap the ceiling and cast ray from mario location instead
         cam_collision_advance(&c->camCollisionProgress.y);
         yAffected = 1;
-        c->pos[1] = hitpos[1] - 60.f;
+        c->pos[1] = hitpos[1] - (!gIsGravityFlipped ? 60.f : -60.f);
         camdir[1] = c->pos[1] - origin[1];
         find_surface_on_ray(origin, camdir, &surf, hitpos, (RAYCAST_FIND_FLOOR | RAYCAST_FIND_WALL | RAYCAST_FIND_CEIL));
     }

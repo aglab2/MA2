@@ -33,12 +33,12 @@ static IWDirectionAreasDesc iw_area2 = {
 
 static IWDirectionAreasDesc iw_area3 = {
     { IWDT_DIRECTIONS },
-    { .x_high = 2, .z_low = 4, },
+    { .z_low = 4, },
 };
 
 static IWDirectionAreasDesc iw_area4 = {
     { IWDT_DIRECTIONS },
-    { .z_high = 3, .z_low = 5, },
+    { .z_high = 3 },
 };
 
 IWDHeader* iw_descs_cg[] = {
