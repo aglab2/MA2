@@ -8,7 +8,10 @@ extern const LevelScript level_wc_entry[];
 
 extern const BehaviorScript bhvWCFanSpin[];
 
+#if 0
 #include "levels/wc/header.inc.h"
+#endif
+#include "levels/wc/visual/header_lvl.inc.h"
 
 #include "levels/wc/wc_box/geo_header.h"
 

@@ -85,6 +85,12 @@ class Model:
     def __init__(self):
         self.data: list[ModelData] = []
 
+def peek_line(f):
+    pos = f.tell()
+    line = f.readline()
+    f.seek(pos)
+    return line
+
 def parse_geo(geo_path):
     def get_args(line):
         bracket_open = line.find('(')
@@ -125,6 +131,9 @@ def parse_geo(geo_path):
         def translate_rotate(self, layer, x, y, z, rx, ry, rz, name):
             dl_ref = DisplayListReference(layer, name)
             self._make_render_object((x, y, z), (rx, ry, rz), dl_ref)
+
+        def translate_empty(self, x, y, z):
+            self._make_render_object((x, y, z), None, None)
 
     geo: GeoLayout = None
     area: GeoLayout = None
@@ -175,6 +184,12 @@ def parse_geo(geo_path):
                     continue
                 if 'GEO_TRANSLATE_ROTATE_WITH_DL(' in line:
                     area_geolayout_parser.translate_rotate(*get_args(line))
+                    continue
+                if 'GEO_TRANSLATE_NODE(' in line:
+                    line = peek_line(f_geo)
+                    if 'GEO_OPEN_NODE(' in line:
+                        area_geolayout_parser.translate_empty(*get_args(line))
+
                     continue
                 if 'GEO_RETURN(' in line:
                     curr_geolayout = None

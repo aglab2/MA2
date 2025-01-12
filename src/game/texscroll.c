@@ -5,6 +5,7 @@
 #include "src/engine/behavior_script.h"
 #include "tile_scroll.h"
 #include "texscroll.h"
+#include "sm64.h"
 
 #ifdef TARGET_N64
 #define SCROLL_CONDITION(condition) condition

@@ -13,8 +13,11 @@
 
 #include "levels/wc/header.h"
 
-
+#if 0
 #include "levels/wc/geo.inc.c"
+#endif
+
+#include "levels/wc/visual/geo_lvl.inc.c"
 
 #include "levels/wc/wc_box/geo.inc.c"
 #include "levels/wc/wc_box_break/geo.inc.c"

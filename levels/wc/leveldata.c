@@ -1,6 +1,6 @@
 #include "game/behavior_data_decl.h"
 
-#include <ultra64.h>"
+#include <ultra64.h>
 #include "sm64.h"
 #include "surface_terrains.h"
 #include "moving_texture_macros.h"
@@ -15,7 +15,16 @@ const BehaviorScript bhvWCFanSpin[] = {
     END_LOOP(),
 };
 
+#if 0
 #include "levels/wc/leveldata.inc.c"
+#else
+#include "levels/wc/area_1/collision.inc.c"
+#include "levels/wc/area_1/macro.inc.c"
+#include "levels/wc/area_1/spline.inc.c"
+#endif
+
+#include "levels/wc/visual/header_lvl.inc.h"
+#include "levels/wc/visual/model_lvl.inc.c"
 
 #include "levels/wc/wc_box/model.inc.c"
 #include "levels/wc/wc_box_break/model.inc.c"

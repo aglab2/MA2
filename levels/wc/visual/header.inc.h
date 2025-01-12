@@ -12,7 +12,7 @@ extern u8 wc_dl_kd_nde_hasira7_ci4[];
 extern u8 wc_dl_kd_nde_hasira7_pal_rgba16[];
 extern u8 wc_dl_dz_iron_box2_ci4[];
 extern u8 wc_dl_dz_iron_box2_pal_rgba16[];
-extern u8 wc_dl_kd_nde_kabe5_vq_rgba16[];
+extern u8 wc_dl_kd_nde_kabe5_vq_ia16[];
 extern u8 wc_dl_kd_nde_hasira8_vq_ci4[];
 extern u8 wc_dl_kd_nde_hasira8_vq_pal_rgba16[];
 extern u8 wc_dl_kd_nde_kabe4_vq_ci4[];
