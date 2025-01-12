@@ -66,7 +66,7 @@ class RenderNode(GeoNode):
             else:
                 return f"{super().__str__()}GEO_LVL_BATCH_TRANSLATE_NODE({self.dl_reference.layer}, {translations}, {self.dl_reference.name}),"
 
-class ModelData:
+class ModelEntry:
     def __init__(self, decl, data = None, batched = False):
         self.decl = decl
         end = decl.rfind('] = {')
@@ -79,11 +79,11 @@ class ModelData:
         self.batched = batched
 
     def __repr__(self):
-        return f"ModelData({self.name}, {self.data})"
+        return f"ModelEntry({self.name}, {self.data})"
 
 class Model:
     def __init__(self):
-        self.data: list[ModelData] = []
+        self.entries: list[ModelEntry] = []
 
 def peek_line(f):
     pos = f.tell()
@@ -222,7 +222,7 @@ def parse_header(header_path):
 
 def parse_model(model_path):
     model = Model()
-    curr_data: ModelData = None
+    curr_entry: ModelEntry = None
     curr_want_align = False
     with open(model_path, "r") as f_model:
         while True:
@@ -235,19 +235,19 @@ def parse_model(model_path):
                 continue
         
             if line == '\n':
-                curr_data = None
+                curr_entry = None
                 continue
 
             if '] = {' in line:
-                assert curr_data is None
+                assert curr_entry is None
                 if curr_want_align:
                     line = 'ALIGNED8 ' + line
                     curr_want_align = False
 
-                curr_data = ModelData(line)
-                model.data.append(curr_data)
+                curr_entry = ModelEntry(line)
+                model.entries.append(curr_entry)
             else:
-                curr_data.data.append(line)
+                curr_entry.data.append(line)
 
     return model
 
@@ -275,22 +275,22 @@ class ModelIndexer:
 
     def lookup(self, name):
         idx = self._model_indexed[name]
-        return idx, self._model.data[idx]
+        return idx, self._model.entries[idx]
 
     def delete(self, name, idx = None):
         idx = idx if idx else self._model_indexed[name]
-        self._model.data[idx] = None
+        self._model.entries[idx] = None
         del self._model_indexed[name]
 
     def insert(self, new_data):
-        self._model_indexed[new_data.name] = len(self._model.data)
-        self._model.data.append(new_data)
+        self._model_indexed[new_data.name] = len(self._model.entries)
+        self._model.entries.append(new_data)
 
     @staticmethod
     def _indexize(model):
         indices = {}
-        for i, data in enumerate(model.data):
-            indices[data.name] = i
+        for i, entry in enumerate(model.entries):
+            indices[entry.name] = i
 
         return indices
 
@@ -339,8 +339,8 @@ def batchify(geo, model, header):
                     # Deduplicate the material
                     mat_real_dl = mat_dl
                     if mat_dl not in dedup_mat_to_real_mat:
-                        mat_dl_idx, mat_dl_data = model_indexer.lookup(mat_dl)
-                        mat_data = tuple(mat_dl_data.data)
+                        mat_dl_idx, mat_dl_entry = model_indexer.lookup(mat_dl)
+                        mat_data = tuple(mat_dl_entry.data)
                         if mat_data in dedup_data_to_mat:
                             # Duplicate definition, delete the current mat and link to the "real" one (will be done in batch step)
                             mat_real_dl = dedup_data_to_mat[mat_data]
@@ -373,8 +373,8 @@ def batchify(geo, model, header):
                     else:
                         # Append the dl to the batch that has been already seen, then clear it out
                         seen_dl = curr_seen_batches[curr_attached_batch_idx]
-                        dl_idx, dl_data = model_indexer.lookup(dl)
-                        append_dl(dl_data, model_indexer.lookup(seen_dl)[1])
+                        dl_idx, dl_entry = model_indexer.lookup(dl)
+                        append_dl(dl_entry, model_indexer.lookup(seen_dl)[1])
                         model_indexer.delete(dl, dl_idx)
 
                 continue
@@ -390,7 +390,7 @@ def batchify(geo, model, header):
         curr_batched_data.append('};\n')
 
         batched_decl = f'u32 {model_to_convert.name}[] = {{\n'
-        new_data = ModelData(batched_decl, curr_batched_data, True)
+        new_data = ModelEntry(batched_decl, curr_batched_data, True)
         model_indexer.insert(new_data)
 
         # Patch the header will the new name - switch Gfx for u32
@@ -444,13 +444,15 @@ def serialize_header(header, layered_batches, path):
 
 def serialize_model(model, layered_batches, path):
     with open(path, "w") as f_model:
-        for data in model.data:
-            if data:
-                f_model.write(data.decl)
-                for line in data.data:
-                    f_model.write(line)
+        for entry in model.entries:
+            if not entry:
+                continue
 
-                f_model.write('\n')
+            f_model.write(entry.decl)
+            for line in entry.data:
+                f_model.write(line)
+
+            f_model.write('\n')
 
         name = None
         for layer, batches in layered_batches.items():
