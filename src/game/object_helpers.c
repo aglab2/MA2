@@ -2403,6 +2403,7 @@ extern Gfx ms_skybox_ms_skybox_mesh_layer_1[];
 extern Gfx hb_skybox_hb_skybox_mesh_layer_1[];
 extern Gfx ee_skybox1_ee_skybox1_mesh_layer_1[];
 extern Gfx mhe_skybox_mhe_skybox_mesh_layer_1[];
+extern Gfx cg_skybox_cg_skybox_mesh[];
 static const Gfx* k_skyboxes[] = {
     [ LEVEL_CE ] = ce_skybox_object_00CDC390_mesh,
     [ LEVEL_MH ] = mh_skybox_mh_skybox_mesh_layer_1,
@@ -2412,6 +2413,7 @@ static const Gfx* k_skyboxes[] = {
     [ LEVEL_HB ] = hb_skybox_hb_skybox_mesh_layer_1,
     [ LEVEL_EE ] = ee_skybox1_ee_skybox1_mesh_layer_1,
     [ LEVEL_MHE ] = mhe_skybox_mhe_skybox_mesh_layer_1,
+    [ LEVEL_CG ] = cg_skybox_cg_skybox_mesh,  
 };
 
 extern void geo_append_display_list(void *displayList, s32 layer);

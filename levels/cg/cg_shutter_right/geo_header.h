@@ -1,0 +1,18 @@
+extern const GeoLayout cg_shutter_right_geo[];
+extern u8 cg_shutter_right_miu256_cg004_ci4[];
+extern u8 cg_shutter_right_miu256_cg004_pal_rgba16[];
+extern u8 cg_shutter_right_miu64_cg021_ci4[];
+extern u8 cg_shutter_right_miu64_cg021_pal_rgba16[];
+extern u8 cg_shutter_right_miu256_cg006_ci4[];
+extern u8 cg_shutter_right_miu256_cg006_pal_rgba16[];
+extern u8 cg_shutter_right_miu256_cg005_ci4[];
+extern u8 cg_shutter_right_miu256_cg005_pal_rgba16[];
+extern u8 cg_shutter_right_miu32_cg001_ci8[];
+extern u8 cg_shutter_right_miu32_cg001_pal_rgba16[];
+extern Vtx cg_shutter_right_006_object_005A9210_mesh_layer_1_vtx_0[32];
+extern Vtx cg_shutter_right_006_object_005A9210_mesh_layer_1_vtx_1[20];
+extern Vtx cg_shutter_right_006_object_005A9210_mesh_layer_1_vtx_2[6];
+extern Vtx cg_shutter_right_006_object_005A9210_mesh_layer_1_vtx_3[18];
+extern Vtx cg_shutter_right_007_object_005A89C8_mesh_layer_5_vtx_0[4];
+extern Gfx cg_shutter_right_006_object_005A9210_mesh_layer_1[];
+extern Gfx cg_shutter_right_007_object_005A89C8_mesh_layer_5[];

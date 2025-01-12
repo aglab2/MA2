@@ -21,7 +21,8 @@
 #define cg_area_1_geo cg_area_geo_visual
 #include "levels/cg/visual/geo.inc.c"
 
-#include "levels/cg/cg_skybox/geo.inc.c"
 #include "levels/cg/cg_capsule/geo.inc.c"
 #include "levels/cg/cg_poison/geo.inc.c"
 #include "levels/cg/cg_poison_break/geo.inc.c"
+#include "levels/cg/cg_shutter_left/geo.inc.c"
+#include "levels/cg/cg_shutter_right/geo.inc.c"

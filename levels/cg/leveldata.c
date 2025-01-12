@@ -27,3 +27,7 @@
 #include "levels/cg/cg_poison/collision.inc.c"
 #include "levels/cg/cg_poison/model.inc.c"
 #include "levels/cg/cg_poison_break/model.inc.c"
+#include "levels/cg/cg_shutter_left/collision.inc.c"
+#include "levels/cg/cg_shutter_left/model.inc.c"
+#include "levels/cg/cg_shutter_right/collision.inc.c"
+#include "levels/cg/cg_shutter_right/model.inc.c"

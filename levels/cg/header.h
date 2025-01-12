@@ -13,7 +13,6 @@ extern const LevelScript level_cg_entry[];
 #undef cg_area_1
 
 #include "levels/cg/header.inc.h"
-#include "levels/cg/cg_skybox/geo_header.h"
 
 #include "levels/cg/cg_capsule/geo_header.h"
 
@@ -22,5 +21,15 @@ extern const LevelScript level_cg_entry[];
 #include "levels/cg/cg_poison/geo_header.h"
 
 #include "levels/cg/cg_poison_break/geo_header.h"
+
+#include "levels/cg/cg_shutter_left/collision_header.h"
+
+#include "levels/cg/cg_shutter_left/geo_header.h"
+
+#include "levels/cg/cg_shutter_right/collision_header.h"
+
+#include "levels/cg/cg_shutter_right/geo_header.h"
+
+#include "levels/cg/cg_skybox/header.h"
 
 #endif
