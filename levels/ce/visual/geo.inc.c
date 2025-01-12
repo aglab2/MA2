@@ -3,7 +3,6 @@
 const GeoLayout ce_area_1_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
-		GEO_ASM(0, geo_render_backdrop),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)77060.0, (s16)-117550.0, (s16)55845.0, ce_dl_0000_object_00D1CC34_mesh_layer_1),
 		GEO_OPEN_NODE(),
 			GEO_DISPLAY_LIST(LAYER_ALPHA, ce_dl_0000_object_00D1CC34_mesh_layer_4),
