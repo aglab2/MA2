@@ -8,7 +8,7 @@ extern const LevelScript level_cg_entry[];
 
 #define cg_area_1 cg_area_visual
 #define cg_area_1_geo cg_area_geo_visual
-#include "levels/cg/visual/header.inc.h"
+#include "levels/cg/visual/header_lvl.inc.h"
 #undef cg_area_1_geo
 #undef cg_area_1
 

@@ -569,5 +569,6 @@ extern const BehaviorScript bhvPcKey[];
 extern const BehaviorScript bhvPcKeyEnter[];
 extern const BehaviorScript bhvPcKeyDoor[];
 extern const BehaviorScript bhvDcMove[];
+extern const BehaviorScript bhvShutter[];
 
 #endif // BEHAVIOR_DATA_H

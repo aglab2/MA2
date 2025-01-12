@@ -20,7 +20,8 @@
 #include "levels/cg/area_4/spline.inc.c"
 #endif
 
-#include "levels/cg/visual/model.inc.c"
+#include "levels/cg/visual/header_lvl.inc.h"
+#include "levels/cg/visual/model_lvl.inc.c"
 
 #include "levels/cg/cg_skybox/model.inc.c"
 #include "levels/cg/cg_capsule/model.inc.c"

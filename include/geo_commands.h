@@ -67,11 +67,12 @@ enum GeoLayoutCommands {
     GEO_CMD_OBJ_ROCKET_NODE_TRANSLATION,
     GEO_CMD_OBJ_NODE_TRANSLATION,
     GEO_CMD_CRUMBLE_NODE_TRANSLATION_ROTATION,
-    GEO_CMD_LVL_NODE_DISPLAY_LIST,
+    GEO_CMD_BATCHSET_NODE,
     GEO_CMD_NODE_BATCH_DISPLAY_LIST,
     GEO_CMD_NODE_BATCH_GENERATED,
     GEO_CMD_NODE_BATCH_DISPLAY_LIST_ANIM,
     GEO_CMD_NODE_BATCH_START,
+    GEO_CMD_BATCHSET_NODE_TRANSLATION,
 
     GEO_CMD_COUNT,
 };
@@ -346,6 +347,10 @@ enum GeoLayoutCommands {
     CMD_BBH(GEO_CMD_NODE_TRANSLATION, (layer | 0x80), (s16)ux), \
     CMD_HH((s16)uy, (s16)uz), \
     CMD_PTR(displayList)
+#define GEO_BATCH_TRANSLATE(layer, ux, uy, uz, displayList) \
+    CMD_BBH(GEO_CMD_BATCHSET_NODE_TRANSLATION, (layer | 0x80), (s16)ux), \
+    CMD_HH((s16)uy, (s16)uz), \
+    CMD_PTR(displayList)
 
 #define GEO_OBJ_TRANSLATE_NODE_WITH_DL(layer, ux, uy, uz, displayList) \
     CMD_BBH(GEO_CMD_OBJ_NODE_TRANSLATION, (layer | 0x80), (s16)ux), \
@@ -437,7 +442,7 @@ enum GeoLayoutCommands {
 
 #define GEO_BATCH GEO_LVL_DISPLAY_LIST
 #define GEO_LVL_DISPLAY_LIST(layer, displayList) \
-    CMD_BBH(GEO_CMD_LVL_NODE_DISPLAY_LIST, layer, 0x0000), \
+    CMD_BBH(GEO_CMD_BATCHSET_NODE, layer, 0x0000), \
     CMD_PTR(displayList)
 
 /**

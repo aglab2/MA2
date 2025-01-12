@@ -19,7 +19,7 @@
 
 #define cg_area_1 cg_area_visual
 #define cg_area_1_geo cg_area_geo_visual
-#include "levels/cg/visual/geo.inc.c"
+#include "levels/cg/visual/geo_lvl.inc.c"
 
 #include "levels/cg/cg_capsule/geo.inc.c"
 #include "levels/cg/cg_poison/geo.inc.c"

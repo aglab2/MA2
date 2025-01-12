@@ -870,7 +870,7 @@ static void append_lvl_dl_and_return(struct GraphNodeDisplayList *node) {
     gMatStackIndex--;
 }
 
-void geo_process_lvl_display_list(struct GraphNodeDisplayList *node) {
+void geo_process_batchset(struct GraphNodeDisplayList *node) {
     struct GraphNodeDisplayList *dlNode = node;
     append_lvl_dl_and_return(dlNode);
     gMatStackIndex++;
@@ -1532,6 +1532,17 @@ void geo_process_obj_translation(struct GraphNodeTranslation *node) {
     append_dl_and_return((struct GraphNodeDisplayList *)node);
 }
 
+static geo_process_batchset_translation(struct GraphNodeTranslation *node) {
+    Vec3f translation;
+    translation[0] = node->translation[0];
+    translation[1] = node->translation[1];
+    translation[2] = node->translation[2];
+    mtxf_translate_and_mul(translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+
+    inc_mat_stack();
+    append_lvl_dl_and_return((struct GraphNodeDisplayList *)node);
+}
+
 typedef void (*GeoProcessFunc)();
 
 // See enum 'GraphNodeTypes' in 'graph_node.h'.
@@ -1568,10 +1579,11 @@ static const GeoProcessFunc GeoProcessJumpTable[] = {
     [GRAPH_NODE_TYPE_OBJ_ROCKET_TRANSLATION  ] = geo_process_obj_rocket_translation,
     [GRAPH_NODE_TYPE_OBJ_TRANSLATION  ]        = geo_process_obj_translation,
     [GRAPH_NODE_TYPE_BREAK_TRANSLATION_ROTATION] = geo_process_break_translation_rotation,
-    [GRAPH_NODE_TYPE_LVL_DISPLAY_LIST]         = geo_process_lvl_display_list,
+    [GRAPH_NODE_TYPE_BATCHSET]                 = geo_process_batchset,
     [GRAPH_NODE_TYPE_BATCH_DISPLAY_LIST]       = geo_process_batch_display_list,
     [GRAPH_NODE_TYPE_BATCH_GENERATED_LIST]     = geo_process_batch_generated_list,
     [GRAPH_NODE_TYPE_BATCH_ANIM_DISPLAY_LIST]  = geo_process_batch_anim_display_list,
+    [GRAPH_NODE_TYPE_BATCHSET_TRANSLATION]     = geo_process_batchset_translation,
 };
 
 /**

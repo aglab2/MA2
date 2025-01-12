@@ -55,11 +55,12 @@ static const GeoLayoutCommandProc GeoLayoutJumpTable[] = {
     /* GEO_CMD_OBJ_ROCKET_NODE_TRANSLATION */   geo_layout_cmd_obj_rocket_node_translation,
     /* GEO_CMD_OBJ_NODE_TRANSLATION */          geo_layout_cmd_obj_node_translation,
     /* GEO_CMD_CRUMBLE_NODE_TRANSLATION_ROTATION */ geo_layout_cmd_break_translation_rotation,
-    /* GEO_CMD_LVL_NODE_DISPLAY_LIST */         geo_layout_cmd_lvl_node_display_list,
+    /* GEO_CMD_BATCHSET_NODE */                 geo_layout_cmd_batchset_node,
     /* GEO_CMD_NODE_BATCH_DISPLAY_LIST */       geo_layout_cmd_node_batch_display_list,
     /* GEO_CMD_NODE_BATCH_GENERATED */          geo_layout_cmd_node_batch_generated,
     /* GEO_CMD_NODE_BATCH_DISPLAY_LIST_ANIM */  geo_layout_cmd_node_batch_display_list_anim,
     /* GEO_CMD_NODE_BATCH_START */              geo_layout_cmd_node_batch_start,
+    /* GEO_CMD_BATCHSET_NODE_TRANSLATION */     geo_layout_cmd_batchset_node_translation,
 };
 
 struct GraphNode gObjParentGraphNode;
@@ -649,6 +650,10 @@ void geo_layout_cmd_obj_node_translation(void) {
     geo_layout_cmd_node_translation_impl(GRAPH_NODE_TYPE_OBJ_TRANSLATION);
 }
 
+void geo_layout_cmd_batchset_node_translation(void) {
+    geo_layout_cmd_node_translation_impl(GRAPH_NODE_TYPE_BATCHSET_TRANSLATION);
+}
+
 /*
   0x12: Create ? scene graph node
    cmd+0x01: u8 params
@@ -938,11 +943,11 @@ static inline void batchify_dl(void* segPtr, int layer)
 }
 #endif
 
-void geo_layout_cmd_lvl_node_display_list(void) {
+void geo_layout_cmd_batchset_node(void) {
     s32 drawingLayer = cur_geo_cmd_u8(0x01);
     void *displayList = cur_geo_cmd_ptr(0x04);
     batchify_dl(displayList, drawingLayer);
-    return geo_layout_cmd_node_display_list_impl(GRAPH_NODE_TYPE_LVL_DISPLAY_LIST);
+    return geo_layout_cmd_node_display_list_impl(GRAPH_NODE_TYPE_BATCHSET);
 }
 
 /*

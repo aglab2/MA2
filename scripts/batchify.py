@@ -132,6 +132,11 @@ def parse_geo(geo_path):
             dl_ref = DisplayListReference(layer, name)
             self._make_render_object((x, y, z), (rx, ry, rz), dl_ref)
 
+        def rotate(self, layer, rx, ry, rz, name):
+            dl_ref = DisplayListReference(layer, name)
+            # For purposes of culling non subrendered objects must have a translation
+            self._make_render_object(('0', '0', '0'), (rx, ry, rz), dl_ref)
+
         def translate_empty(self, x, y, z):
             self._make_render_object((x, y, z), None, None)
 
@@ -184,6 +189,9 @@ def parse_geo(geo_path):
                     continue
                 if 'GEO_TRANSLATE_ROTATE_WITH_DL(' in line:
                     area_geolayout_parser.translate_rotate(*get_args(line))
+                    continue
+                if 'GEO_ROTATION_NODE_WITH_DL(' in line:
+                    area_geolayout_parser.rotate(*get_args(line))
                     continue
                 if 'GEO_TRANSLATE_NODE(' in line:
                     line = peek_line(f_geo)
