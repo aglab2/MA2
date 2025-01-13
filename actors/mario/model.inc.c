@@ -4276,13 +4276,13 @@ Vtx mario_pelvis_mesh_layer_1_vtx_0[15] = {
 
 Gfx mario_pelvis_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_pelvis_mesh_layer_1_vtx_0 + 0, 15, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 0, 2, 0),
-	gsSP2Triangles(4, 3, 2, 0, 4, 5, 3, 0),
-	gsSP2Triangles(5, 4, 6, 0, 7, 3, 5, 0),
-	gsSP2Triangles(3, 7, 0, 0, 8, 9, 10, 0),
-	gsSP2Triangles(8, 11, 9, 0, 11, 8, 12, 0),
-	gsSP2Triangles(12, 8, 7, 0, 8, 10, 7, 0),
-	gsSP2Triangles(13, 11, 12, 0, 9, 14, 10, 0),
+	// gsSP2Triangles(0, 1, 2, 0, 3, 0, 2, 0),
+	// gsSP2Triangles(4, 3, 2, 0, 4, 5, 3, 0),
+	// gsSP2Triangles(5, 4, 6, 0, 7, 3, 5, 0),
+	// gsSP2Triangles(3, 7, 0, 0, 8, 9, 10, 0),
+	// gsSP2Triangles(8, 11, 9, 0, 11, 8, 12, 0),
+	// gsSP2Triangles(12, 8, 7, 0, 8, 10, 7, 0),
+	// gsSP2Triangles(13, 11, 12, 0, 9, 14, 10, 0),
 	gsSPEndDisplayList(),
 };
 
