@@ -259,6 +259,7 @@ static const Mtx identityMatrixWorldScale = {{
  * would make the ZEX 0-4 render on top of Rej's 5-7.
  */
 
+Lights1* curLight;
 static ALWAYS_INLINE void render_lists(Gfx **ptempGfxHead, Mtx **pprevMtx, struct DisplayListNode* currList)
 {
 #define tempGfxHead (*ptempGfxHead)
@@ -356,7 +357,7 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
                 }
     #endif
                 gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
-
+                gSPSetLights1(tempGfxHead++, (*curLight));
                 // Iterate through all the displaylists on the current layer.
                 do {
                     // Add the display list's transformation to the master list.
@@ -651,7 +652,7 @@ Vec3f globalLightDirection = { 0x28, 0x28, 0x28 };
 #endif
 
 void setup_global_light() {
-    Lights1* curLight = (Lights1*)alloc_display_list(sizeof(Lights1));
+    curLight = (Lights1*)alloc_display_list(sizeof(Lights1));
     *curLight = defaultLight;
 
 #ifdef WORLDSPACE_LIGHTING

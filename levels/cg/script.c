@@ -54,6 +54,8 @@ const LevelScript level_cg_entry[] = {
 		WARP_NODE(0x20, LEVEL_CG, 0x01, 0x21, WARP_NO_CHECKPOINT),
 		WARP_NODE(0x21, LEVEL_CG, 0x01, 0x20, WARP_NO_CHECKPOINT),
 		MARIO_POS(0x01, 0, 20011, -1186, 23308),
+		OBJECT(MODEL_CHECKPOINT, 20011, -1186, 23308, 0, 0, 0, 0x00000000, bhvCheckpoint),
+		#if 0
 		OBJECT(MODEL_CHECKPOINT, 12491, -2686, 16021, 0, 0, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_CHECKPOINT, -8114, 614, 14498, 0, 0, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_NONE, 20013, -1186, 22395, 0, 0, 0, (2 << 16), bhvCoinFormation),
@@ -98,6 +100,7 @@ const LevelScript level_cg_entry[] = {
 		OBJECT(MODEL_STAR, -18307, 894, 11422, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -19741, 1640, 6429, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -18331, 4711, 6195, 0, 0, 0, 0x00000000, bhvStar),
+		#endif
 		TERRAIN(cg_area_1_collision),
 		MACRO_OBJECTS(cg_area_1_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),

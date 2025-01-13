@@ -894,6 +894,7 @@ const GeoLayout mario_geo[] = {
 								GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
 								GEO_OPEN_NODE(),
 									GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, mario_pelvis_mesh_layer_1),
+#if 0
 									GEO_OPEN_NODE(),
 										GEO_DISPLAY_LIST(LAYER_OPAQUE, mario_chest_skinned_mesh_layer_1),
 										GEO_ASM(0, geo_move_mario_part_from_parent),
@@ -1038,6 +1039,7 @@ const GeoLayout mario_geo[] = {
 											GEO_CLOSE_NODE(),
 										GEO_CLOSE_NODE(),
 									GEO_CLOSE_NODE(),
+#endif
 								GEO_CLOSE_NODE(),
 							GEO_CLOSE_NODE(),
 							GEO_BRANCH(1, mario_002_switch_opt0_cap_switch_opt1),
