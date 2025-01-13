@@ -5,7 +5,7 @@
 
 .balign 16
 glabel gspF3DEX3_fifoTextStart
-    .incbin "lib/PR/f3dex3/fifo/F3DEX3_BrZ_LVP_NOC.code"
+    .incbin "lib/PR/f3dex3/fifo/F3DEX3_BrW_NOC.code"
 glabel gspF3DEX3_fifoTextEnd
 
 /* DATA SECTION START */
@@ -14,5 +14,5 @@ glabel gspF3DEX3_fifoTextEnd
 
 .balign 16
 glabel gspF3DEX3_fifoDataStart
-    .incbin "lib/PR/f3dex3/fifo/F3DEX3_BrZ_LVP_NOC.data"
+    .incbin "lib/PR/f3dex3/fifo/F3DEX3_BrW_NOC.data"
 glabel gspF3DEX3_fifoDataEnd
