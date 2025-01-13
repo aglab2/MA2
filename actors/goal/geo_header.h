@@ -1,6 +1,4 @@
 extern const GeoLayout goal_geo[];
-extern Lights1 goal_OBJECT_GOALRING_GOAL_sa2mdl_0_f3d_lights;
-extern Lights1 goal_OBJECT_GOALRING_sa2mdl_0_001_f3d_lights;
 extern u8 goal_goal_ci8[];
 extern u8 goal_goal_pal_rgba16[];
 extern u8 goal_sikake_05_64_rgba32[];

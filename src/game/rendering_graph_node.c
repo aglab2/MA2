@@ -640,7 +640,7 @@ void geo_process_switch(struct GraphNodeSwitchCase *node) {
 
 Mat4 gCameraTransform;
 
-Lights1 defaultLight = gdSPDefLights1(
+static const Lights1 defaultLight = gdSPDefLights1(
     0x3F, 0x3F, 0x3F, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00
 );
 
@@ -652,7 +652,7 @@ Vec3f globalLightDirection = { 0x28, 0x28, 0x28 };
 
 void setup_global_light() {
     Lights1* curLight = (Lights1*)alloc_display_list(sizeof(Lights1));
-    bcopy(&defaultLight, curLight, sizeof(Lights1));
+    *curLight = defaultLight;
 
 #ifdef WORLDSPACE_LIGHTING
     curLight->l->l.dir[0] = (s8)(globalLightDirection[0]);
