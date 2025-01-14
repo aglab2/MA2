@@ -187,7 +187,13 @@ enum GeoLayoutCommands {
 
 #define GEO_BATCH_NODE_START(cmds) \
     CMD_BBH(GEO_CMD_NODE_BATCH_START, 0x00, 0x0000), \
-    CMD_PTR(cmds)
+    CMD_PTR(cmds), \
+    CMD_PTR(0)
+
+#define GEO_BATCH_NODE_START_WITH_FLIPBOOK(cmds, flipbook) \
+    CMD_BBH(GEO_CMD_NODE_BATCH_START, 0x00, 0x0000), \
+    CMD_PTR(cmds), \
+    CMD_PTR(flipbook)
 
 /**
  * 0x0C: Create zbuffer-toggling scene graph node

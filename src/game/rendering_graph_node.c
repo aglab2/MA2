@@ -18,6 +18,7 @@
 #include "string.h"
 #include "color_presets.h"
 #include "emutest.h"
+#include "flipbook.h"
 
 #include "config.h"
 #include "config/config_world.h"
@@ -308,6 +309,26 @@ static int render_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32 wantMo
     return amountRendered;
 }
 
+static void apply_flipbooks(struct MasterLayer* masterLayer)
+{
+    struct FlipbookArray* flipbooks = masterLayer->flipbooks;
+    if (!flipbooks)
+        return;
+
+    for (int i = 0; i < flipbooks->count; i++)
+    {
+        const struct FlipbookData* flipData = &flipbooks->data[i];
+        struct FlipbookDls* flipDls = &flipbooks->dls[i];
+        int frame = (gGlobalTimer / flipData->frames) % flipData->count;
+        u8* startDl = (u8*) flipDls->startDls[0];
+        *(u8**) &startDl[flipDls->offCI4] = flipData->ci4s + frame * 2048;
+        *(u8**) &startDl[flipDls->offPal] = flipData->pals + frame * 32;
+        // this bending constness rules a bit but trust me, it's fine
+        struct BatchDisplayLists* batchDLs = (struct BatchDisplayLists*) masterLayer->course->batchDLs;
+        batchDLs[flipData->batchId].startDl = VIRTUAL_TO_PHYSICAL(startDl);
+    }
+}
+
 static void adjust_view_range();
 void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
     const struct RenderPhase *renderPhase;
@@ -341,6 +362,7 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
         for (currLayer = startLayer; currLayer <= endLayer; currLayer++) {
             // Set 'currList' to the first DisplayListNode on the current layer.
             struct MasterLayer* masterLayer = &node->layers[currLayer];
+            apply_flipbooks(masterLayer);
             struct DisplayListNode *currList = masterLayer->list.head;
             u32 wantMode1 = mode1List->modes[currLayer];
             u32 wantMode2 = mode2List->modes[currLayer];

@@ -7,6 +7,7 @@
 #include "graph_node.h"
 #include "game/debug.h"
 #include "batch_ht.h"
+#include "flipbook.h"
 
 #define DISABLE_BATCHIFY
 
@@ -334,9 +335,79 @@ void geo_layout_cmd_node_start(void) {
     gGeoLayoutCommand += 0x04 << CMD_SIZE_SHIFT;
 }
 
+struct CloneResult
+{
+    void* clonedDl;
+    u16 offCI4;
+    u16 offPal;
+};
+
+static struct CloneResult clone_dl(const void* _dl)
+{
+    struct CloneResult result = { 0 };
+    const u8* start = _dl;
+    const u8* dl = _dl;
+    while (G_ENDDL != *dl)
+    {
+        if (G_SETTIMG == *dl)
+        {
+            u8 b1 = dl[1];
+            int fmt = b1 >> 5;
+            int texOff = dl - start + 4;
+            if (fmt == G_IM_FMT_CI)
+            {
+                result.offCI4 = texOff;
+            }
+            else if (fmt == G_IM_FMT_RGBA)
+            {
+                result.offPal = texOff;
+            }
+        }
+
+        dl += 8;
+    }
+
+    void* clonedDl = main_pool_alloc(dl - start);
+    memcpy(clonedDl, start, dl - start);
+    result.clonedDl = clonedDl;
+
+    return result;
+}
+
+static struct FlipbookArray* make_flipbooks(struct FlipbookLayer* flipbooksLayers, int layer, const struct BatchDisplayLists* batchDLs)
+{
+    if (!flipbooksLayers)
+        return NULL;
+
+    struct FlipbookLayer* layerFlipbooks = &flipbooksLayers[layer];
+    if (!layerFlipbooks->count)
+        return NULL;
+
+    struct FlipbookArray* flipbooks = main_pool_alloc(sizeof(struct FlipbookArray) + layerFlipbooks->count * sizeof(struct FlipbookDls));
+    flipbooks->count = layerFlipbooks->count;
+    flipbooks->data = segmented_to_virtual(layerFlipbooks->data);
+    for (int flipId = 0; flipId < layerFlipbooks->count; flipId++)
+    {
+        const struct FlipbookData* flipData = &flipbooks->data[flipId];
+        struct FlipbookDls* flipDls = &flipbooks->dls[flipId];
+        void* dl = segmented_to_virtual(batchDLs[flipData->batchId].startDl);
+        struct CloneResult cloneResult = clone_dl(dl);
+        flipDls->startDls[0] = dl;
+        flipDls->startDls[1] = cloneResult.clonedDl;
+        flipDls->offCI4 = cloneResult.offCI4;
+        flipDls->offPal = cloneResult.offPal;
+    }
+
+    return flipbooks;
+}
+
 void geo_layout_cmd_node_batch_start(void) {
     struct BatchLevelDisplayLists* dls = (struct BatchLevelDisplayLists*) cur_geo_cmd_ptr(0x04);
+    struct FlipbookLayer* flipbooksLayers = (struct FlipbookLayer*) cur_geo_cmd_ptr(0x08);
     dls = segmented_to_virtual(dls);
+    if (flipbooksLayers)
+        flipbooksLayers = segmented_to_virtual(flipbooksLayers);
+
     struct GraphNodeStart *graphNode = init_graph_node_start(NULL);
 
     register_scene_graph_node(&graphNode->node);
@@ -350,11 +421,14 @@ void geo_layout_cmd_node_batch_start(void) {
         struct MasterLayer* masterLayer = &gMasterNode->layers[layer];
         struct BatchArray* batches = main_pool_alloc(sizeof(struct BatchArray) + total * sizeof(struct DisplayListLinks));
         batches->count = total;
-        batches->batchDLs = segmented_to_virtual(dls[layer].lists);
-        masterLayer->course = batches;
-    } 
+        const struct BatchDisplayLists* batchDLs = segmented_to_virtual(dls[layer].lists);
+        batches->batchDLs = batchDLs;
 
-    gGeoLayoutCommand += 0x08 << CMD_SIZE_SHIFT;
+        masterLayer->course = batches;
+        masterLayer->flipbooks = make_flipbooks(flipbooksLayers, layer, batchDLs);
+    }
+
+    gGeoLayoutCommand += 0x0C << CMD_SIZE_SHIFT;
 }
 
 // 0x1F: No operation

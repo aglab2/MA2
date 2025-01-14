@@ -1906,3 +1906,4 @@ extern u32 cg_dl_object_005C5D54_mesh_layer_5[];
 #define LVL_BATCH_LAYER_TRANSPARENT_CG_DL_ACID1_SA2MDL_0_F3D 4
 #define LVL_BATCH_LAYER_TRANSPARENT_CG_DL_ACID9_SA2MDL_0_F3D 5
 extern struct BatchLevelDisplayLists batch_lvl_dls_cg[LAYER_COUNT];
+extern const struct FlipbookLayer cg_flipbooks[LAYER_COUNT];

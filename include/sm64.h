@@ -92,6 +92,12 @@ struct BatchLevelDisplayLists
     struct BatchDisplayLists* lists;
 };
 
+struct FlipbookLayer
+{
+    u8 count;
+    struct FlipbookData* data;
+};
+
 enum LayerBatches {
     LAYER_OPAQUE_BATCHES_BASE = 0,
     LAYER_OPAQUE_CORKBOX = LAYER_OPAQUE_BATCHES_BASE,

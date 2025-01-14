@@ -166,8 +166,21 @@ struct BatchArray {
     struct DisplayListLinks batches[0];
 };
 
+struct FlipbookDls {
+    void* startDls[2];
+    u16 offCI4;
+    u16 offPal;
+};
+
+struct FlipbookArray {
+    int count;
+    const struct FlipbookData* data;
+    struct FlipbookDls dls[0];
+};
+
 struct MasterLayer {
     struct DisplayListLinks list;
+    struct FlipbookArray* flipbooks;
     struct BatchArray* objects;
     struct BatchArray* course;
 };
