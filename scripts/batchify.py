@@ -91,12 +91,12 @@ def peek_line(f):
     f.seek(pos)
     return line
 
-def parse_geo(geo_path):
-    def get_args(line):
-        bracket_open = line.find('(')
-        bracket_close = line.rfind(')')
-        return [arg.replace('(s16)', '(f32)').strip() for arg in line[bracket_open+1:bracket_close].split(',') ]
+def get_args(line):
+    bracket_open = line.find('(')
+    bracket_close = line.rfind(')')
+    return [arg.replace('(s16)', '(f32)').strip() for arg in line[bracket_open+1:bracket_close].split(',') ]
 
+def parse_geo(geo_path):
     class AreaGeoLayoutParser:
         def __init__(self, geolayout):
             self._geolayout: GeoLayout = geolayout
@@ -252,9 +252,9 @@ def parse_model(model_path):
     return model
 
 class BatchedTexture:
-    def __init__(self, layer: str, name: str):
+    def __init__(self, name: str, idx: str):
         self.name = name
-        self.idx = f"LVL_BATCH_{layer}_{name.upper()}"
+        self.idx = idx
 
     def __repr__(self):
         return f"BatchedTexture({self.name}, {self.idx})"
@@ -325,20 +325,49 @@ class MatDeduper:
 
 # Tracks the current index for batched textures for a given layer
 class BatchIndexAllocator:
-    def __init__(self, batches, batches_indexed, layer):
+    def __init__(self, batches, batches_indexed, layer, repeating_names):
         self._batches = batches
         self._batches_indexed = batches_indexed
         self._layer = layer
+        self._repeating_names = repeating_names
 
-    def allocate(self, dl):
+    def allocate(self, dl, entry):
         idx = self._batches_indexed.get(dl)
         if idx is None:
             idx = len(self._batches)
             self._batches_indexed[dl] = idx
+
             # Stripping the mat_ prefix
-            self._batches.append(BatchedTexture(self._layer, dl[4:]))
+            name = dl[4:]
+            tex_name = self._get_tex_name(name, entry)
+            batch_idx = self._make_batch_name(self._layer, tex_name)
+            batch_idx_unique = self._uniquealize_tex_name(batch_idx)
+            self._batches.append(BatchedTexture(name, batch_idx_unique))
 
         return idx
+
+    def _get_tex_name(self, name, entry):
+        tex_name = None
+        for line in entry.data:
+            if 'gsDPSetTextureImage(' in line:
+                tex_name = get_args(line)[3]
+                break
+ 
+        if not tex_name:
+            tex_name = name
+
+        return tex_name
+
+    def _make_batch_name(self, layer, tex_name):
+        return f"LVL_BATCH_{layer}_{tex_name.upper()}"
+
+    def _uniquealize_tex_name(self, val):
+        if val in self._repeating_names:
+            self._repeating_names[val] += 1
+            return f"{val}_{self._repeating_names[val]}"
+        else:
+            self._repeating_names[val] = 0
+            return val
 
     def get_batch(self, idx):
         return self._batches[idx]
@@ -347,20 +376,17 @@ class LayeredBatchIndexAllocator:
     def __init__(self, layered_batches):
         self._layered_batches = layered_batches
         self._layered_batches_indexed = {}
+        self._layered_repeating_names = {}
 
     def get_batch_allocator(self, layer):
         batches = self._layered_batches.setdefault(layer, [])
         batches_indexed = self._layered_batches_indexed.setdefault(layer, {})
-        return BatchIndexAllocator(batches, batches_indexed, layer)
+        repeating_names = self._layered_repeating_names.setdefault(layer, {})
+        return BatchIndexAllocator(batches, batches_indexed, layer, repeating_names)
 
 # This procedure parses dls and converts them into batched textures
 # It also deduplicates the materials, currently on dl definition level
 def batchify(geo, model, header):
-    def get_args(line):
-        bracket_open = line.find('(')
-        bracket_close = line.rfind(')')
-        return [arg.strip() for arg in line[bracket_open+1:bracket_close].split(',') ]
-
     # The main product of this function is the layered_batches
     layered_batches = {}
 
@@ -395,7 +421,8 @@ def batchify(geo, model, header):
                         continue
 
                     mat_real_dl = mat_deduper.dedup(mat_dl)
-                    curr_attached_batch_idx = batch_allocator.allocate(mat_real_dl)
+                    _, mat_entry = model_indexer.lookup(mat_real_dl)
+                    curr_attached_batch_idx = batch_allocator.allocate(mat_real_dl, mat_entry)
                 else:
                     assert curr_attached_batch_idx is not None
                     if curr_attached_batch_idx not in curr_seen_batches:

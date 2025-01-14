@@ -310,7 +310,7 @@ static int render_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32 wantMo
     return amountRendered;
 }
 
-__attribute__((noinline)) static void apply_flipbooks(struct MasterLayer* masterLayer)
+static void apply_flipbooks(struct MasterLayer* masterLayer)
 {
     struct FlipbookArray* flipbooks = masterLayer->flipbooks;
     if (!flipbooks)
@@ -336,6 +336,8 @@ __attribute__((noinline)) static void apply_flipbooks(struct MasterLayer* master
         // this bending constness rules a bit but trust me, it's fine
         struct BatchDisplayLists* batchDLs = (struct BatchDisplayLists*) masterLayer->course->batchDLs;
         batchDLs[flipData->batchId].startDl = VIRTUAL_TO_PHYSICAL(startDl);
+
+        return;
     }
 }
 
