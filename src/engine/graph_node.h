@@ -168,8 +168,10 @@ struct BatchArray {
 
 struct FlipbookDls {
     void* startDls[2];
-    u16 offCI4;
-    u16 offPal;
+    u8 offCI4;
+    u8 offPal;
+    u8 offTile;
+    u8 filler;
 };
 
 struct FlipbookArray {

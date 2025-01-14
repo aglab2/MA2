@@ -17,7 +17,7 @@ ALIGNED8 u8 cg_matrixs_pal[] = {
 };
 
 static struct FlipbookData flipbooks_opaque[] = {
-    { LVL_BATCH_LAYER_OPAQUE_CG_DL_OBJLANDTABLE0022_UV_SA2LVL_0_F3D, 5, 3, cg_matrixs_ci4, cg_matrixs_pal },
+    { LVL_BATCH_LAYER_OPAQUE_CG_DL_OBJLANDTABLE0022_UV_SA2LVL_0_F3D, 5, 10, -5, 0, cg_matrixs_ci4, cg_matrixs_pal },
 };
 
 const struct FlipbookLayer cg_flipbooks[LAYER_COUNT] = {

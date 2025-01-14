@@ -338,8 +338,9 @@ void geo_layout_cmd_node_start(void) {
 struct CloneResult
 {
     void* clonedDl;
-    u16 offCI4;
-    u16 offPal;
+    u8 offCI4;
+    u8 offPal;
+    u8 offTile;
 };
 
 static struct CloneResult clone_dl(const void* _dl)
@@ -363,12 +364,17 @@ static struct CloneResult clone_dl(const void* _dl)
                 result.offPal = texOff;
             }
         }
+        if (G_SETTILESIZE == *dl)
+        {
+            result.offTile = dl - start;
+        }
 
         dl += 8;
     }
 
-    void* clonedDl = main_pool_alloc(dl - start);
-    memcpy(clonedDl, start, dl - start);
+    // I need very good alignment guarantees for gfx dls
+    void* clonedDl = main_pool_alloc_aligned(dl - start + 8, 8);
+    memcpy(clonedDl, start, dl - start + 8);
     result.clonedDl = clonedDl;
 
     return result;
@@ -396,6 +402,7 @@ static struct FlipbookArray* make_flipbooks(struct FlipbookLayer* flipbooksLayer
         flipDls->startDls[1] = cloneResult.clonedDl;
         flipDls->offCI4 = cloneResult.offCI4;
         flipDls->offPal = cloneResult.offPal;
+        flipDls->offTile = cloneResult.offTile;
     }
 
     return flipbooks;

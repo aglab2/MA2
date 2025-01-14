@@ -19,6 +19,7 @@
 #include "color_presets.h"
 #include "emutest.h"
 #include "flipbook.h"
+#include "game/tile_scroll.h"
 
 #include "config.h"
 #include "config/config_world.h"
@@ -309,7 +310,7 @@ static int render_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32 wantMo
     return amountRendered;
 }
 
-static void apply_flipbooks(struct MasterLayer* masterLayer)
+__attribute__((noinline)) static void apply_flipbooks(struct MasterLayer* masterLayer)
 {
     struct FlipbookArray* flipbooks = masterLayer->flipbooks;
     if (!flipbooks)
@@ -319,10 +320,19 @@ static void apply_flipbooks(struct MasterLayer* masterLayer)
     {
         const struct FlipbookData* flipData = &flipbooks->data[i];
         struct FlipbookDls* flipDls = &flipbooks->dls[i];
+
+        // switch dl frames and patch the display list
         int frame = (gGlobalTimer / flipData->frames) % flipData->count;
-        u8* startDl = (u8*) flipDls->startDls[0];
+        u8* startDl = (u8*) flipDls->startDls[gGlobalTimer & 1];
         *(u8**) &startDl[flipDls->offCI4] = flipData->ci4s + frame * 2048;
         *(u8**) &startDl[flipDls->offPal] = flipData->pals + frame * 32;
+
+        SetTileSize* tile = (SetTileSize*) &startDl[flipDls->offTile];
+        // tile->u += gGlobalTimer * flipData->tileScrollX;
+        // tile->v += gGlobalTimer * flipData->tileScrollY;
+        tile->t = gGlobalTimer * flipData->tileScrollX;
+        tile->s = gGlobalTimer * flipData->tileScrollY;
+
         // this bending constness rules a bit but trust me, it's fine
         struct BatchDisplayLists* batchDLs = (struct BatchDisplayLists*) masterLayer->course->batchDLs;
         batchDLs[flipData->batchId].startDl = VIRTUAL_TO_PHYSICAL(startDl);
