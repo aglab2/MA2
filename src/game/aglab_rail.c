@@ -317,7 +317,9 @@ int zipline_step()
                 sForwardVel = CLAMP(sForwardVel, -100.f, 100.f);
             }
 
-            // print_text_fmt_int(20, 20, "%d", (int) sForwardVel);
+#if 0
+            print_text_fmt_int(20, 20, "%d", (int) sForwardVel);
+#endif
 
 #if 0
             if (sForwardVel < 1.f)
@@ -334,6 +336,12 @@ int zipline_step()
         f32 movAmt = sForwardVel / dirMag;
 
         sZiplineProgress += movAmt;
+
+#if 1
+        print_text_fmt_int(20, 20, "CP %d", (int) sZiplineCurPoint);
+        print_text_fmt_int(20, 40, "PR %d", (int) (1000.f * sZiplineProgress));
+#endif
+
         if (sZiplineProgress >= 1.f)
         {
             if (traj[sZiplineCurPoint + 8] == -1)

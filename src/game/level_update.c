@@ -578,9 +578,19 @@ void check_instant_warp(void) {
                 }
                 case IWDT_CG_DROP:
                 {
-                    if (!gIsGravityFlipped && gMarioStates->pos[1] < -5000.f)
+                    if (gCurrCourseNum == COURSE_CG)
                     {
-                        newArea = 2;
+                        if (!gIsGravityFlipped && gMarioStates->pos[1] < -5000.f)
+                        {
+                            newArea = 2;
+                        }
+                    }
+                    else
+                    {
+                        if (gMarioStates->pos[1] < -14000.f)
+                        {
+                            newArea = 3;
+                        }
                     }
                     break;
                 }

@@ -1,16 +1,14 @@
 #include "src/game/envfx_snow.h"
 
-const GeoLayout fr_area_10_geo[] = {
+const GeoLayout fr_area_12_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, fr_dl_a1_009_mesh_layer_1),
-		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)0.0, (s16)11698.271484375, (s16)0.01953125, fr_dl_a1_028_mesh_layer_1),
-		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)0.0, (s16)1545.9858703613281, (s16)0.01953125, fr_dl_a1_029_mesh_layer_1),
-		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)0.0, (s16)-2133.174285888672, (s16)0.0, fr_dl_a1_030_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_OPAQUE, fr_dl_a1_011_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_OPAQUE, fr_dl_a1_034_mesh_layer_1),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
-const GeoLayout fr_area_10[] = {
+const GeoLayout fr_area_12[] = {
 	GEO_NODE_SCREEN_AREA(10, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, SCREEN_WIDTH/2, SCREEN_HEIGHT/2),
 	GEO_OPEN_NODE(),
 		GEO_ZBUFFER(0),
@@ -24,9 +22,9 @@ const GeoLayout fr_area_10[] = {
 		GEO_OPEN_NODE(),
 			GEO_CAMERA_FRUSTUM_WITH_FUNC(45.0000, 100, 30000, geo_camera_fov),
 			GEO_OPEN_NODE(),
-				GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 35000, -191373, 170000, 35000, -191383, 170000, geo_camera_main),
+				GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 35000, -243517, 90000, 35000, -243527, 90000, geo_camera_main),
 				GEO_OPEN_NODE(),
-					GEO_BRANCH(1, fr_area_10_geo),
+					GEO_BRANCH(1, fr_area_12_geo),
 					GEO_RENDER_OBJ(),
 					GEO_ASM(ENVFX_MODE_NONE, geo_envfx_main),
 				GEO_CLOSE_NODE(),

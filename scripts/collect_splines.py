@@ -5,6 +5,11 @@ def deduce_level_name(name):
     idx = name.rfind('/')
     return name[idx + 1:]
 
+def get_args(line):
+    bracket_open = line.find('(')
+    bracket_close = line.rfind(')')
+    return [arg.strip() for arg in line[bracket_open+1:bracket_close].split(',') ]
+
 if '__main__' in __name__:
     lvl_path = sys.argv[1]
     lvl_name = deduce_level_name(lvl_path)
@@ -23,12 +28,28 @@ if '__main__' in __name__:
         area_springs = []
         area_loops = []
 
+        prev_traj_pos = None
+        area_spline_lines = []
+
         with open(area_spline_path, 'r') as f:
             while True:
                 line = f.readline()
                 if not line:
                     break
 
+                area_spline_lines.append(line)
+
+                if 'TRAJECTORY_POS' in line:
+                    args = get_args(line)
+                    pos = args[1:4]
+                    if '-1' != args[0] and prev_traj_pos and pos == prev_traj_pos:
+                        # Do not allow duplicate trajectory positions, it will break the game
+                        area_spline_lines.pop()
+
+                    prev_traj_pos = pos
+                    continue
+
+                prev_traj_pos = None
                 if 'Trajectory' not in line:
                     continue
 
@@ -42,6 +63,10 @@ if '__main__' in __name__:
                 if 'Loop' in spline_name:
                     area_loops.append(spline_name)
                     continue
+
+        with open(area_spline_path, 'w') as f:
+            for line in area_spline_lines:
+                f.write(line)
 
         area = {}
         if area_rails:

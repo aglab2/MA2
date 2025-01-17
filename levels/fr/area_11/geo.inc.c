@@ -3,8 +3,10 @@
 const GeoLayout fr_area_11_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, fr_dl_a1_011_mesh_layer_1),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, fr_dl_a1_034_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_OPAQUE, fr_dl_a1_010_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_OPAQUE, fr_dl_a1_031_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)0.0, (s16)2127.6840209960938, (s16)0.0, fr_dl_a1_032_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)0.0, (s16)-7468.096923828125, (s16)0.0, fr_dl_a1_033_mesh_layer_1),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
@@ -22,7 +24,7 @@ const GeoLayout fr_area_11[] = {
 		GEO_OPEN_NODE(),
 			GEO_CAMERA_FRUSTUM_WITH_FUNC(45.0000, 100, 30000, geo_camera_fov),
 			GEO_OPEN_NODE(),
-				GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 35000, -243517, 90000, 35000, -243527, 90000, geo_camera_main),
+				GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 35000, -207317, 130000, 35000, -207327, 130000, geo_camera_main),
 				GEO_OPEN_NODE(),
 					GEO_BRANCH(1, fr_area_11_geo),
 					GEO_RENDER_OBJ(),
