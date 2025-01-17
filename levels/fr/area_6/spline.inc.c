@@ -1,4 +1,4 @@
-const Trajectory fr_area_6_spline_0203_object_0124775C_001[] = {
+const Trajectory fr_area_6_spline_Rail_0203_object_0124775C_001[] = {
 	TRAJECTORY_POS( 0, -17230, -11845, 18330),
 	TRAJECTORY_POS( 1, -17230, -11850, 18562),
 	TRAJECTORY_POS( 2, -17230, -11861, 18675),
@@ -22,7 +22,7 @@ const Trajectory fr_area_6_spline_0203_object_0124775C_001[] = {
 	TRAJECTORY_POS( 20, -17230, -13845, 23330),
 	TRAJECTORY_END(),
 };
-const Trajectory fr_area_6_spline_0235_object_01247094_001[] = {
+const Trajectory fr_area_6_spline_Rail_0235_object_01247094_001[] = {
 	TRAJECTORY_POS( 0, -15991, 11138, -10972),
 	TRAJECTORY_POS( 1, -15848, 10530, -9941),
 	TRAJECTORY_POS( 2, -15528, 9697, -8905),

@@ -3,6 +3,7 @@
 const GeoLayout fr_area_1_geo[] = {
 	GEO_BATCH_NODE_START(batch_lvl_dls_fr),
 	GEO_OPEN_NODE(),
+		GEO_ASM(0, geo_render_backdrop),
 		GEO_LVL_BATCH_TRANSLATE_ROTATE(LAYER_OPAQUE, (f32)25300.0, (f32)-264950.0, (f32)72490.0, 0, 90, 0, fr_dl_0000_object_01220414_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_ROTATE(LAYER_OPAQUE, (f32)25300.0, (f32)-264950.0, (f32)72490.0, 0, 90, 0, fr_dl_0000_object_0124A07C_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_ROTATE(LAYER_OPAQUE, (f32)34820.00244140625, (f32)-256566.9921875, (f32)69790.01953125, 0, 157, 0, fr_dl_0001_object_012203DC_mesh_layer_1),
@@ -1383,7 +1384,7 @@ const GeoLayout fr_area_1[] = {
 	GEO_OPEN_NODE(),
 		GEO_ZBUFFER(1),
 		GEO_OPEN_NODE(),
-			GEO_CAMERA_FRUSTUM_WITH_FUNC(45.0000, 100, 30000, geo_camera_fov),
+			GEO_CAMERA_FRUSTUM_WITH_FUNC(45.0000, 200, 50000, geo_camera_fov),
 			GEO_OPEN_NODE(),
 				GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 0, 0, 0, 0, -10, 0, geo_camera_main),
 				GEO_OPEN_NODE(),

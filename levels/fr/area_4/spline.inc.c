@@ -1,4 +1,4 @@
-const Trajectory fr_area_4_spline_0348_object_01235B94_001[] = {
+const Trajectory fr_area_4_spline_Rail_0348_object_01235B94_001[] = {
 	TRAJECTORY_POS( 0, 3120, 12841, -9993),
 	TRAJECTORY_POS( 1, 3210, 12181, -8748),
 	TRAJECTORY_POS( 2, 3357, 11947, -8372),
@@ -36,19 +36,19 @@ const Trajectory fr_area_4_spline_0348_object_01235B94_001[] = {
 	TRAJECTORY_POS( 34, 2813, -6759, 8076),
 	TRAJECTORY_POS( 35, 1759, -7485, 8172),
 	TRAJECTORY_POS( 36, 689, -7963, 8055),
-	TRAJECTORY_POS( 37, -369, -8284, 7743),
+	TRAJECTORY_POS( 37, -369, -8284, 7742),
 	TRAJECTORY_POS( 38, -1381, -8576, 7256),
 	TRAJECTORY_POS( 39, -2314, -8964, 6618),
 	TRAJECTORY_POS( 40, -3133, -9576, 5853),
-	TRAJECTORY_POS( 41, -3809, -10494, 4983),
+	TRAJECTORY_POS( 41, -3809, -10495, 4983),
 	TRAJECTORY_POS( 42, -4336, -11622, 4030),
 	TRAJECTORY_POS( 43, -4717, -12820, 3013),
 	TRAJECTORY_POS( 44, -4952, -13948, 1954),
-	TRAJECTORY_POS( 45, -5042, -14867, 873),
+	TRAJECTORY_POS( 45, -5042, -14868, 873),
 	TRAJECTORY_POS( 46, -4987, -15477, -211),
 	TRAJECTORY_END(),
 };
-const Trajectory fr_area_4_spline_0378_object_012453B4_002[] = {
+const Trajectory fr_area_4_spline_Rail_0378_object_012453B4_002[] = {
 	TRAJECTORY_POS( 0, 3040, 16788, -21290),
 	TRAJECTORY_POS( 1, 3040, 16783, -21058),
 	TRAJECTORY_POS( 2, 3040, 16771, -20945),
@@ -72,7 +72,7 @@ const Trajectory fr_area_4_spline_0378_object_012453B4_002[] = {
 	TRAJECTORY_POS( 20, 3040, 14788, -16290),
 	TRAJECTORY_END(),
 };
-const Trajectory fr_area_4_spline_0386_object_0124522C_002[] = {
+const Trajectory fr_area_4_spline_Rail_0386_object_0124522C_002[] = {
 	TRAJECTORY_POS( 0, -4749, -2508, -24784),
 	TRAJECTORY_POS( 1, -4199, -3687, -23918),
 	TRAJECTORY_POS( 2, -3728, -4817, -23115),
@@ -96,7 +96,7 @@ const Trajectory fr_area_4_spline_0386_object_0124522C_002[] = {
 	TRAJECTORY_POS( 20, -8000, -13522, -12000),
 	TRAJECTORY_END(),
 };
-const Trajectory fr_area_4_spline_23_ini[] = {
+const Trajectory fr_area_4_spline_Rail_23_ini[] = {
 	TRAJECTORY_POS( 0, -7633, -14524, 12170),
 	TRAJECTORY_POS( 1, -7820, -14451, 12163),
 	TRAJECTORY_POS( 2, -7871, -14424, 12151),

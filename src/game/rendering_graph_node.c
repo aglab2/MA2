@@ -1446,7 +1446,12 @@ static int is_far_from_mario(Vec3f loc)
     f32 dy = loc[1] - gCurGraphNodeCamera->focus[1];
     f32 dz = loc[2] - gCurGraphNodeCamera->focus[2];
     f32 dist = dx*dx + dy*dy + dz*dz;
-    return dist > sViewRange;
+
+    f32 range = sViewRange;
+    if (gCurrCourseNum == COURSE_FR)
+        range *= 3.f;
+
+    return dist > range;
 }
 
 void geo_process_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation *node) {

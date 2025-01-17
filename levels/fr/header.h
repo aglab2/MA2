@@ -10,4 +10,6 @@ extern const LevelScript level_fr_entry[];
 #include "levels/fr/visual/header_lvl.inc.h"
 
 #include "levels/fr/header.inc.h"
+#include "levels/fr/fr_skybox/header.h"
+
 #endif

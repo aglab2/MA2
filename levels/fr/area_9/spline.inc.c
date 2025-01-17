@@ -1,4 +1,4 @@
-const Trajectory fr_area_9_spline_0070_object_0124919C_001[] = {
+const Trajectory fr_area_9_spline_Rail_0070_object_0124919C_001[] = {
 	TRAJECTORY_POS( 0, -9775, -7617, -18500),
 	TRAJECTORY_POS( 1, -9818, -7617, -18929),
 	TRAJECTORY_POS( 2, -9878, -7635, -19273),
@@ -34,7 +34,7 @@ const Trajectory fr_area_9_spline_0070_object_0124919C_001[] = {
 	TRAJECTORY_POS( 32, -9775, -14345, -26507),
 	TRAJECTORY_POS( 33, -9775, -14317, -26655),
 	TRAJECTORY_POS( 34, -9775, -14302, -26738),
-	TRAJECTORY_POS( 35, -9775, -14301, -26850),
+	TRAJECTORY_POS( 35, -9775, -14301, -26851),
 	TRAJECTORY_POS( 36, -9775, -14325, -27013),
 	TRAJECTORY_POS( 37, -9775, -14525, -27754),
 	TRAJECTORY_POS( 38, -9775, -14596, -28190),
@@ -83,7 +83,7 @@ const Trajectory fr_area_9_spline_0070_object_0124919C_001[] = {
 	TRAJECTORY_POS( 81, -9775, -20951, -39938),
 	TRAJECTORY_END(),
 };
-const Trajectory fr_area_9_spline_0072_object_0124912C_001[] = {
+const Trajectory fr_area_9_spline_Rail_0072_object_0124912C_001[] = {
 	TRAJECTORY_POS( 0, -13970, -6607, -14960),
 	TRAJECTORY_POS( 1, -14448, -6620, -14966),
 	TRAJECTORY_POS( 2, -15031, -6859, -15008),
@@ -94,7 +94,7 @@ const Trajectory fr_area_9_spline_0072_object_0124912C_001[] = {
 	TRAJECTORY_POS( 7, -19923, -8950, -17327),
 	TRAJECTORY_POS( 8, -20599, -9869, -18197),
 	TRAJECTORY_POS( 9, -21126, -10997, -19150),
-	TRAJECTORY_POS( 10, -21507, -12194, -20166),
+	TRAJECTORY_POS( 10, -21507, -12194, -20167),
 	TRAJECTORY_POS( 11, -21742, -13323, -21226),
 	TRAJECTORY_POS( 12, -21832, -14242, -22307),
 	TRAJECTORY_POS( 13, -21777, -14851, -23391),
@@ -110,7 +110,7 @@ const Trajectory fr_area_9_spline_0072_object_0124912C_001[] = {
 	TRAJECTORY_POS( 23, -14416, -17720, -29322),
 	TRAJECTORY_POS( 24, -14148, -17842, -29328),
 	TRAJECTORY_POS( 25, -13876, -17958, -29334),
-	TRAJECTORY_POS( 26, -13600, -18060, -29338),
+	TRAJECTORY_POS( 26, -13600, -18060, -29339),
 	TRAJECTORY_POS( 27, -13317, -18139, -29342),
 	TRAJECTORY_POS( 28, -13028, -18191, -29344),
 	TRAJECTORY_POS( 29, -12735, -18221, -29344),
@@ -158,7 +158,7 @@ const Trajectory fr_area_9_spline_0072_object_0124912C_001[] = {
 	TRAJECTORY_POS( 71, -9605, -20951, -41328),
 	TRAJECTORY_END(),
 };
-const Trajectory fr_area_9_spline_0089_object_01248D74_001[] = {
+const Trajectory fr_area_9_spline_Rail_0089_object_01248D74_001[] = {
 	TRAJECTORY_POS( 0, -10270, -692, 5050),
 	TRAJECTORY_POS( 1, -10270, -703, 4449),
 	TRAJECTORY_POS( 2, -10270, -718, 4248),
@@ -183,7 +183,7 @@ const Trajectory fr_area_9_spline_0089_object_01248D74_001[] = {
 	TRAJECTORY_POS( 21, -10270, -9536, -7438),
 	TRAJECTORY_END(),
 };
-const Trajectory fr_area_9_spline_0094_object_01248C5C_002[] = {
+const Trajectory fr_area_9_spline_Rail_0094_object_01248C5C_002[] = {
 	TRAJECTORY_POS( 0, -10100, -697, 4350),
 	TRAJECTORY_POS( 1, -10101, -697, 4716),
 	TRAJECTORY_POS( 2, -10112, -691, 5048),
@@ -250,10 +250,10 @@ const Trajectory fr_area_9_spline_0094_object_01248C5C_002[] = {
 	TRAJECTORY_POS( 63, -10200, 14093, 26349),
 	TRAJECTORY_END(),
 };
-const Trajectory fr_area_9_spline_50_ini[] = {
+const Trajectory fr_area_9_spline_Rail_50_ini[] = {
 	TRAJECTORY_POS( 0, -9930, -7601, -4954),
 	TRAJECTORY_POS( 1, -9930, -7615, -4847),
-	TRAJECTORY_POS( 2, -9930, -7617, -4742),
+	TRAJECTORY_POS( 2, -9930, -7617, -4743),
 	TRAJECTORY_POS( 3, -9930, -7592, -4642),
 	TRAJECTORY_POS( 4, -9930, -7492, -4453),
 	TRAJECTORY_POS( 5, -9920, -3808, 348),
