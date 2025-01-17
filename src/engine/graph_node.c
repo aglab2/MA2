@@ -131,6 +131,7 @@ struct GraphNodeMasterList *init_graph_node_master_list(struct GraphNodeMasterLi
 
         for (int layer = 0; layer < LAYER_COUNT; layer++) {
             graphNode->layers[layer].course = NULL;
+            graphNode->layers[layer].flipbooks = NULL;
         }
     }
 

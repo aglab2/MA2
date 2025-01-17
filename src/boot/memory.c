@@ -30,41 +30,7 @@
 #define	DOWN(s, align)	(((u32)(s)) & ~((align)-1))
 #define DOWN4(s) DOWN(s, 4)
 
-#ifndef MAIN_POOL_SINGLE_REGION
-
-#if MEMORY_FRAGMENTATION_NO_FRAGMENTATION == MEMORY_FRAGMENTATION_LEVEL
-// One giant region encompassing all of the ram. Memory layout follows vanilla implementation
-// -zbuffer-|-game/engine data-|-framebuffers-|-main pool region-
-#define MAIN_POOL_REGIONS_COUNT 1
-#endif
-
-#if MEMORY_FRAGMENTATION_ZBUFFER_AND_FRAMEBUFFERS == MEMORY_FRAGMENTATION_LEVEL
-// Region before zbuffer and region after the framebuffer2
-// -game/engine data-|-main pool region 0-|-zbuffer-|-framebuffers-|-main pool region 1-
-//                                                  ^
-//                                       0x80300000 or 0x80700000
 #define MAIN_POOL_REGIONS_COUNT 2
-#endif
-
-#if MEMORY_FRAGMENTATION_ZBUFFER_AND_FRAMEBUFFERS_SPLIT == MEMORY_FRAGMENTATION_LEVEL
-// Region after 0x80600000, before zbuffer, after the framebuffer2
-// -game/engine data-|-main pool region 1-|-zbuffer-|-framebuffers-|-main pool region 1-|-main pool region 0-
-//                                                  ^                                   ^
-//                                             0x80500000                          0x80600000
-#define MAIN_POOL_REGIONS_COUNT 3
-#endif
-
-#if MEMORY_FRAGMENTATION_ZBUFFER_AND_EACH_FRAMEBUFFER == MEMORY_FRAGMENTATION_LEVEL
-// Region before zbuffer, between fb0/fb1, after fb2
-// -game/engine data-|-main pool region 0-|-zb-|-fb0-|-main pool region 1-|-fb1-|-fb2-|-main pool region 2-
-//                                             ^                                ^
-//                                        0x80500000                       0x80700000
-#define MAIN_POOL_REGIONS_COUNT 3
-#endif
-
-#else
-#define MAIN_POOL_REGIONS_COUNT 1
-#endif
 
 struct MainPoolContext {
     struct MainPoolRegion regions[MAIN_POOL_REGIONS_COUNT];
@@ -168,16 +134,6 @@ void move_segment_table_to_dmem(void) {
 }
 #endif
 
-extern u8 _framebuffer0SegmentBssEnd[];
-extern u8 _framebuffer0SegmentBssStart[];
-extern u8 _goddardSegmentStart[];
-extern u8 _sbssSegmentBssEnd[];
-
-#define ZBUFFER_END ZBUFFER_START + RENDER_BUFFER_BUFFER_SIZE
-#define FRAMEBUFFER0_END FRAMEBUFFER0_START + RENDER_BUFFER_BUFFER_SIZE
-#define FRAMEBUFFER1_END FRAMEBUFFER1_START + RENDER_BUFFER_BUFFER_SIZE
-#define FRAMEBUFFER2_END FRAMEBUFFER2_START + RENDER_BUFFER_BUFFER_SIZE
-
 extern u8 _poolStart[];
 
 /**
@@ -189,37 +145,20 @@ void main_pool_init() {
 #define SET_REGION(id, bufStart, bufEnd) \
     sMainPool.regions[id].start = (u8 *) ALIGN4((uintptr_t)(bufStart)); \
     sMainPool.regions[id].end = (u8 *) DOWN4((uintptr_t)(bufEnd));
-
-#if MEMORY_FRAGMENTATION_NO_FRAGMENTATION == MEMORY_FRAGMENTATION_LEVEL
-    // One giant region encompassing all of the ram
-    SET_REGION(0, _poolStart, _framebuffer0SegmentBssStart);
-#endif
-
-#if MEMORY_FRAGMENTATION_ZBUFFER_AND_FRAMEBUFFERS == MEMORY_FRAGMENTATION_LEVEL
-    // Region before zbuffer and region after the framebuffer2
-    SET_REGION(0, _poolStart, ZBUFFER_START);
-#ifndef MAIN_POOL_SINGLE_REGION
-    SET_REGION(1, FRAMEBUFFER2_END, _goddardSegmentStart);
-#endif
-#endif
-
-#if MEMORY_FRAGMENTATION_ZBUFFER_AND_FRAMEBUFFERS_SPLIT == MEMORY_FRAGMENTATION_LEVEL
-    // Regions before zbuffer, after the framebuffer2, between zbuffer and framebuffer0
-    SET_REGION(0, 0x80600000, _goddardSegmentStart);
-#ifndef MAIN_POOL_SINGLE_REGION
-    SET_REGION(1, _poolStart, ZBUFFER_START);
-    SET_REGION(2, FRAMEBUFFER2_END, 0x80600000);
-#endif
-#endif
-
-#if MEMORY_FRAGMENTATION_ZBUFFER_AND_EACH_FRAMEBUFFER == MEMORY_FRAGMENTATION_LEVEL
-    // Region before zbuffer, between fb0/fb1, after fb2
-    SET_REGION(0, _poolStart, ZBUFFER_START);
-#ifndef MAIN_POOL_SINGLE_REGION
-    SET_REGION(1, FRAMEBUFFER0_END, FRAMEBUFFER1_START);
-    SET_REGION(2, FRAMEBUFFER2_END, _goddardSegmentStart);
-#endif
-#endif
+    
+    // ROM Map
+    // 80000000 - 80025800: zb
+    // 80025800 - 802xxxxx: code
+    // 802xxxxx - 80500000: main pool
+    // 80500000: fb1
+    // 80525800: low prio buffers (seg > 0xf)
+    // 80600000: fb2
+    // 80625800: savestate heap
+    // 80700000: fb3
+    // 80725800: decompression heap
+    // 80800000 backwards - file select heap
+    SET_REGION(0, _poolStart, 0x80500000);
+    SET_REGION(1, 0x80525800, 0x80600000);
 
 #undef SET_REGION
 
@@ -306,55 +245,25 @@ void *main_pool_alloc_slow(u32 size) {
     return NULL;
 }
 
-void *main_pool_alloc_aligned(u32 size, u32 alignment) {
+void *main_pool_alloc_aligned(int lowprio, u32 size, u32 alignment) {
     if (!alignment)
         alignment = 16;
 
     size = ALIGN4(size);
-    for (int i = 0; i < MAIN_POOL_REGIONS_COUNT; i++) {
-        struct MainPoolRegion* region = &sMainPool.regions[i];
-        void* ret = main_pool_region_try_alloc_from_start_aligned(region, size, alignment);
-        if (!ret)
-            continue;
-
-        return ret;
-    }
-
-    DEBUG_ASSERT("Failed to allocate memory");
-    return NULL;
+    return main_pool_region_try_alloc_from_start_aligned(&sMainPool.regions[lowprio], size, alignment);
 }
 
-void *main_pool_alloc_freeable(u32 size) {
+void *main_pool_alloc_freeable(int lowprio, u32 size) {
     size = ALIGN4(size) + sizeof(struct MainPoolFreeableHeader);
-    for (int i = 0; i < MAIN_POOL_REGIONS_COUNT; i++) {
-        struct MainPoolRegion* region = &sMainPool.regions[i];
-        void* ret = main_pool_region_try_alloc_from_end_freeable(region, i, size);
-        if (!ret)
-            continue;
-
-        return ret;
-    }
-
-    DEBUG_ASSERT("Failed to allocate memory");
-    return NULL;
+    return main_pool_region_try_alloc_from_end_freeable(&sMainPool.regions[lowprio], lowprio, size);
 }
 
-void *main_pool_alloc_aligned_freeable(u32 size, u32 alignment) {
+static void *main_pool_alloc_aligned_freeable(int lowprio, u32 size, u32 alignment) {
     if (!alignment)
         alignment = 16;
 
     size = ALIGN4(size);
-    for (int i = 0; i < MAIN_POOL_REGIONS_COUNT; i++) {
-        struct MainPoolRegion* region = &sMainPool.regions[i];
-        void* ret = main_pool_region_try_alloc_from_end_aligned_freeable(region, i, size, alignment);
-        if (!ret)
-            continue;
-
-        return ret;
-    }
-
-    DEBUG_ASSERT("Failed to allocate memory");
-    return NULL;
+    return main_pool_region_try_alloc_from_end_aligned_freeable(&sMainPool.regions[lowprio], lowprio, size, alignment);
 }
 
 /**
@@ -433,9 +342,9 @@ void dma_read(u8 *dest, u8 *srcStart, u8 *srcEnd) {
  * Perform a DMA read from ROM, allocating space in the memory pool to write to.
  * Return the destination address.
  */
-void *dynamic_dma_read(u8 *srcStart, u8 *srcEnd, u32 alignment, u32 bssLength) {
+static void *dynamic_dma_read(int lowprio, u8 *srcStart, u8 *srcEnd, u32 alignment, u32 bssLength) {
     u32 size = ALIGN16(srcEnd - srcStart);
-    void* dest = main_pool_alloc_aligned(size + bssLength, alignment);
+    void* dest = main_pool_alloc_aligned(lowprio, size + bssLength, alignment);
     if (dest != NULL) {
         dma_read(((u8 *)dest), srcStart, srcEnd);
         if (bssLength) {
@@ -445,9 +354,9 @@ void *dynamic_dma_read(u8 *srcStart, u8 *srcEnd, u32 alignment, u32 bssLength) {
     return dest;
 }
 
-static void *dynamic_dma_read_freeable(u8 *srcStart, u8 *srcEnd, u32 alignment, u32 bssLength) {
+static void *dynamic_dma_read_freeable(int lowprio, u8 *srcStart, u8 *srcEnd, u32 alignment, u32 bssLength) {
     u32 size = ALIGN16(srcEnd - srcStart);
-    void* dest = main_pool_alloc_aligned_freeable(size + bssLength, alignment);
+    void* dest = main_pool_alloc_aligned_freeable(lowprio, size + bssLength, alignment);
     if (dest != NULL) {
         dma_read(((u8 *)dest), srcStart, srcEnd);
         if (bssLength) {
@@ -479,6 +388,16 @@ void mapTLBPages(uintptr_t virtualAddress, uintptr_t physicalAddress, s32 length
     }
 }
 
+static u32 to_lowprio(int segment) {
+    if (segment > 0xf)
+        return 1;
+
+    if (SEGMENT_GROUPA_GEO == segment || SEGMENT_GROUPB_GEO == segment || SEGMENT_COMMON0_GEO == segment)
+        return 1;
+
+    return 0;
+}
+
 #ifndef NO_SEGMENTED_MEMORY
 /**
  * Load data from ROM into a newly allocated block, and set the segment base
@@ -488,14 +407,14 @@ void *load_segment(s32 segment, u8 *srcStart, u8 *srcEnd, u8 *bssStart, u8 *bssE
     void *addr;
 
     if ((bssStart != NULL)) {
-        addr = dynamic_dma_read(srcStart, srcEnd, TLB_PAGE_SIZE, ((uintptr_t)bssEnd - (uintptr_t)bssStart));
+        addr = dynamic_dma_read(to_lowprio(segment), srcStart, srcEnd, TLB_PAGE_SIZE, ((uintptr_t)bssEnd - (uintptr_t)bssStart));
         if (addr != NULL) {
             u8 *realAddr = (u8 *)ALIGN(addr, TLB_PAGE_SIZE);
             set_segment_base_addr(segment, realAddr); sSegmentROMTable[segment] = (uintptr_t) srcStart;
             mapTLBPages((segment << 24), VIRTUAL_TO_PHYSICAL(realAddr), ((srcEnd - srcStart) + ((uintptr_t)bssEnd - (uintptr_t)bssStart)), segment);
         }
     } else {
-        addr = dynamic_dma_read(srcStart, srcEnd, 0, 0);
+        addr = dynamic_dma_read(to_lowprio(segment), srcStart, srcEnd, 0, 0);
         if (addr != NULL) {
             set_segment_base_addr(segment, addr); sSegmentROMTable[segment] = (uintptr_t) srcStart;
         }
@@ -572,7 +491,7 @@ void *load_segment_decompress(s32 segment, u8 *srcStart, u8 *srcEnd) {
 # else
         dma_read(compressed, srcStart, srcEnd);
 # endif
-        dest = main_pool_alloc_aligned(*size, 0);
+        dest = main_pool_alloc_aligned(to_lowprio(segment), *size, 0);
 #endif
         if (dest != NULL) {
             osSyncPrintf("start decompress\n");
@@ -740,12 +659,12 @@ void *alloc_display_list(u32 size) {
 }
 
 static struct DmaTable *load_dma_table_address(u8 *srcAddr) {
-    struct DmaTable *table = dynamic_dma_read_freeable(srcAddr, srcAddr + sizeof(u32), 0, 0);
+    struct DmaTable *table = dynamic_dma_read_freeable(0, srcAddr, srcAddr + sizeof(u32), 0, 0);
     u32 size = table->count * sizeof(struct OffsetSizePair) +
         sizeof(struct DmaTable) - sizeof(struct OffsetSizePair);
     main_pool_free(table);
 
-    table = dynamic_dma_read(srcAddr, srcAddr + size, 0, 0);
+    table = dynamic_dma_read(0, srcAddr, srcAddr + size, 0, 0);
     table->srcAddr = srcAddr;
     return table;
 }

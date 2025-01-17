@@ -114,7 +114,7 @@ static inline void *main_pool_alloc(u32 size) {
     return main_pool_region_try_alloc_from_start(gMainPoolCurrentRegion, size);
 #endif
 }
-void *main_pool_alloc_aligned(u32 size, u32 alignment);
+void *main_pool_alloc_aligned(int lowprio, u32 size, u32 alignment);
 
 
 /*
@@ -125,8 +125,8 @@ void *main_pool_alloc_aligned(u32 size, u32 alignment);
  temporary buffer that is allocated, used and freed in the same function.
 */
 
-void *main_pool_alloc_freeable(u32 size);
-void *main_pool_alloc_aligned_freeable(u32 size, u32 alignment);
+void *main_pool_alloc_freeable(int lowprio, u32 size);
+// void *main_pool_alloc_aligned_freeable(int lowprio, u32 size, u32 alignment);
 void main_pool_free(void *addr);
 
 /*
