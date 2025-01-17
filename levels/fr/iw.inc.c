@@ -2,12 +2,12 @@
 
 static IWDirectionAreasDesc iw_area1 = {
     IWDT_DIRECTIONS,
-    { .z_low = 4, },
+    { .z_high = 2, },
 };
 
 static IWDirectionAreasDesc iw_area2 = {
     IWDT_DIRECTIONS,
-    { .z_low = 4, },
+    { .z_low = 1, },
 };
 
 static IWDirectionAreasDesc iw_area3 = {
