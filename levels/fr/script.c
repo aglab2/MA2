@@ -26,6 +26,8 @@ extern const GeoLayout fr_area_visual[];
 #define fr_area_8 fr_area_visual
 #define fr_area_9 fr_area_visual
 #define fr_area_10 fr_area_visual
+#define fr_area_11 fr_area_visual
+#define fr_area_12 fr_area_visual
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_fr_entry[] = {
