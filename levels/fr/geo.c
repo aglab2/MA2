@@ -13,8 +13,9 @@
 
 #include "levels/fr/header.h"
 
-
+#if 0
 #include "levels/fr/geo.inc.c"
+#endif
 
 #define fr_area_1 fr_area_visual
 #define fr_area_1_geo fr_area_geo_visual

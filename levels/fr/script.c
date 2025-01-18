@@ -28,6 +28,19 @@ extern const GeoLayout fr_area_visual[];
 #define fr_area_10 fr_area_visual
 #define fr_area_11 fr_area_visual
 #define fr_area_12 fr_area_visual
+
+#include "levels/fr/area_1/collision.inc.c"
+#include "levels/fr/area_10/collision.inc.c"
+#include "levels/fr/area_11/collision.inc.c"
+#include "levels/fr/area_12/collision.inc.c"
+#include "levels/fr/area_2/collision.inc.c"
+#include "levels/fr/area_3/collision.inc.c"
+#include "levels/fr/area_4/collision.inc.c"
+#include "levels/fr/area_5/collision.inc.c"
+#include "levels/fr/area_6/collision.inc.c"
+#include "levels/fr/area_7/collision.inc.c"
+#include "levels/fr/area_8/collision.inc.c"
+#include "levels/fr/area_9/collision.inc.c"
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_fr_entry[] = {

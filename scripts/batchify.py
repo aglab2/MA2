@@ -528,7 +528,7 @@ def serialize_model(model, layered_batches, path):
         f_model.write('};\n')
 
 if '__main__' in __name__:
-    path = sys.argv[1]
+    path = f"{sys.argv[1]}/visual"
     geo_path = f"{path}/geo.inc.c"
     header_path = f"{path}/header.inc.h"
     model_path = f"{path}/model.inc.c"
