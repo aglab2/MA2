@@ -70,6 +70,13 @@ static const SpringDesc spring_area5[] = {
 static const RailDesc rails_area5[] = {
 	RAIL_TRAJ(fr_area_5_spline_Rail_0348_object_01235B94_001),
 	RAIL_TRAJ(fr_area_5_spline_Rail_0378_object_012453B4_002),
+	RAIL_TRAJ(fr_area_5_spline_Rail_0380_object_01245344_001),
+	RAIL_TRAJ(fr_area_5_spline_Rail_0380_object_01245344_002),
+	RAIL_TRAJ(fr_area_5_spline_Rail_0380_object_01245344_003),
+	RAIL_TRAJ(fr_area_5_spline_Rail_0380_object_01245344_004),
+	RAIL_TRAJ(fr_area_5_spline_Rail_0380_object_01245344_005),
+	RAIL_TRAJ(fr_area_5_spline_Rail_0380_object_01245344_006),
+	RAIL_TRAJ(fr_area_5_spline_Rail_0380_object_01245344_007),
 	RAIL_TRAJ(fr_area_5_spline_Rail_0386_object_0124522C_002),
 	RAIL_TRAJ(fr_area_5_spline_Rail_23_ini),
 	RAIL_END
@@ -83,6 +90,9 @@ static const SpringDesc spring_area6[] = {
 static const RailDesc rails_area6[] = {
 	RAIL_TRAJ(fr_area_6_spline_Rail_0287_object_01237D74_001),
 	RAIL_TRAJ(fr_area_6_spline_Rail_0293_object_01236C34_001),
+	RAIL_TRAJ(fr_area_6_spline_Rail_0380_object_01245344_008),
+	RAIL_TRAJ(fr_area_6_spline_Rail_0380_object_01245344_009),
+	RAIL_TRAJ(fr_area_6_spline_Rail_0380_object_01245344_010),
 	LOOP_TRAJ(fr_area_6_spline_Loop_28_ini, loop_desc_fr_area_6_spline_Loop_28_ini),
 	LOOP_TRAJ(fr_area_6_spline_Loop_28_ini_001, loop_desc_fr_area_6_spline_Loop_28_ini_001),
 	LOOP_TRAJ(fr_area_6_spline_Loop_28_ini_002, loop_desc_fr_area_6_spline_Loop_28_ini_002),

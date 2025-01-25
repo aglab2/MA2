@@ -359,7 +359,7 @@ int zipline_step()
         f32 preProgress = sZiplineProgress;
         sZiplineProgress += movAmt;
 
-#if 0
+#if 1
         print_text_fmt_int(20, 20, "CP %d", (int) sZiplineCurPoint);
         print_text_fmt_int(20, 40, "PR %d", (int) (1000.f * sZiplineProgress));
 #endif

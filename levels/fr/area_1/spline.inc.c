@@ -221,7 +221,7 @@ const Trajectory fr_area_1_spline_Rail_0482_object_0122AF64_001[] = {
 };
 const Trajectory fr_area_1_spline_Rail_0484_object_012440AC_001[] = {
 	TRAJECTORY_POS( 0, 2636, 938, -10560),
-	TRAJECTORY_POS( 1, 3823, 566, -10558),
+	TRAJECTORY_POS( 1, 3823, 567, -10558),
 	TRAJECTORY_POS( 2, 3993, 507, -10541),
 	TRAJECTORY_POS( 3, 4135, 447, -10496),
 	TRAJECTORY_POS( 4, 4248, 381, -10408),
@@ -319,7 +319,7 @@ const Trajectory fr_area_1_spline_Rail_0486_object_0124403C_001[] = {
 	TRAJECTORY_POS( 16, -188, 4630, -17030),
 	TRAJECTORY_POS( 17, 554, 4430, -17030),
 	TRAJECTORY_POS( 18, 990, 4360, -17030),
-	TRAJECTORY_POS( 19, 1324, 4341, -17030),
+	TRAJECTORY_POS( 19, 1324, 4342, -17030),
 	TRAJECTORY_POS( 20, 1600, 4339, -17030),
 	TRAJECTORY_END(),
 };
@@ -439,7 +439,7 @@ const Trajectory fr_area_1_spline_Spring_NurbsCurve[] = {
 const Trajectory fr_area_1_spline_Spring_NurbsCurve_001[] = {
 	TRAJECTORY_POS( 0, -4800, 2059, -6400),
 	TRAJECTORY_POS( 1, -4292, 2973, -6222),
-	TRAJECTORY_POS( 2, -3570, 3664, -5905),
+	TRAJECTORY_POS( 2, -3570, 3665, -5905),
 	TRAJECTORY_POS( 3, -2996, 3547, -5645),
 	TRAJECTORY_END(),
 };
