@@ -599,17 +599,6 @@ void mem_pool_free(struct MemoryPool *pool, void *addr) {
     }
 }
 
-void *alloc_display_list(u32 size) {
-    void *ptr = NULL;
-
-    size = ALIGN8(size);
-    if (gGfxPoolEnd - size >= (u8 *) gDisplayListHead) {
-        gGfxPoolEnd -= size;
-        ptr = gGfxPoolEnd;
-    }
-    return ptr;
-}
-
 static struct DmaTable *load_dma_table_address(u8 *srcAddr) {
     struct DmaTable *table = dynamic_dma_read_freeable(0, srcAddr, srcAddr + sizeof(u32), 0, 0);
     u32 size = table->count * sizeof(struct OffsetSizePair) +

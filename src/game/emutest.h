@@ -37,7 +37,7 @@ extern void detect_emulator();
  * Test for Console, Ares, or ParallelN64:
  * if (gEmulator & (EMU_CONSOLE | EMU_ARES | EMU_PARALLELN64))
  */
-extern enum Emulator gEmulator __attribute__((section(".data")));
+extern enum Emulator gEmulator;
 
 // determines whether libpl is safe to use
 extern u8 gSupportsLibpl;

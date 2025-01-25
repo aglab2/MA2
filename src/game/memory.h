@@ -57,6 +57,8 @@ static inline void* main_pool_region_try_alloc_from_start(struct MainPoolRegion*
 #ifndef MAIN_POOL_SINGLE_REGION
     if (__builtin_expect(newStart > region->end, 0))
         return NULL;
+#else
+    if (!buf) __builtin_unreachable();
 #endif
 
     region->start = newStart;
@@ -162,7 +164,15 @@ struct MemoryPool *mem_pool_init(u32 size);
 void *mem_pool_alloc(struct MemoryPool *pool, u32 size);
 void mem_pool_free(struct MemoryPool *pool, void *addr);
 
-void *alloc_display_list(u32 size);
+extern u8 *gGfxPoolEnd;
+static inline void *alloc_display_list(u32 size) {
+    size = ALIGN8(size);
+    gGfxPoolEnd -= size;
+    void* ptr = gGfxPoolEnd;
+    if (!ptr) __builtin_unreachable();
+    return ptr;
+}
+
 void setup_dma_table_list(struct DmaHandlerList *list, void *srcAddr, void *buffer);
 s32 load_patchable_table(struct DmaHandlerList *list, s32 index);
 
