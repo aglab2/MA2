@@ -161,7 +161,7 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
         trajDirection[1] /= dirMag;
         trajDirection[2] /= dirMag;
         sForwardVel = trajDirection[0] * gMarioStates->vel[0] + trajDirection[1] * gMarioStates->vel[1] + trajDirection[2] * gMarioStates->vel[2];
-        sForwardVelLimit = 55.f + CLAMP(traj_length(traj) / 400.f, 30.f, 110.f);
+        sForwardVelLimit = 55.f + CLAMP(traj_length(traj) / 400.f, 30.f, 120.f);
         if (loop && sForwardVel < 0)
         {
             // Do not allow to use loop in the opposite direction, probably will cause some weird stuff
@@ -356,6 +356,7 @@ int zipline_step()
         prepare_mario_for_zipline_drop(trajDirection);
         f32 movAmt = sForwardVel / dirMag;
 
+        f32 preProgress = sZiplineProgress;
         sZiplineProgress += movAmt;
 
 #if 0
@@ -384,8 +385,23 @@ int zipline_step()
             }
             else
             {
-                sZiplineProgress = sZiplineProgress - 1.f;
+                f32 consumedProgress = 1.f - preProgress;
+                f32 consumedMag = consumedProgress * dirMag;
+                f32 remainingVel = sForwardVel - consumedMag;
+                
                 sZiplineCurPoint += 4;
+                {
+                    // now calculate the velocity for the next point using the same principle
+                    // this assume vel isn't too big to skip multiple points
+                    Vec3f trajCurrPoint = { traj[sZiplineCurPoint + 1], traj[sZiplineCurPoint + 2], traj[sZiplineCurPoint + 3] };
+                    Vec3f trajNextPoint = { traj[sZiplineCurPoint + 5], traj[sZiplineCurPoint + 6], traj[sZiplineCurPoint + 7] };
+
+                    Vec3f trajDirection;
+                    vec3f_diff(trajDirection, trajNextPoint, trajCurrPoint);
+                    f32 dirMag2 = vec3_mag(trajDirection);
+
+                    sZiplineProgress = remainingVel / dirMag2;
+                }
             }
         }
         if (sZiplineProgress < 0.f)
@@ -396,8 +412,23 @@ int zipline_step()
             }
             else
             {
-                sZiplineProgress = 1.f + sZiplineProgress;
+                f32 consumedProgress = preProgress;
+                f32 consumedMag = consumedProgress * dirMag;
+                f32 remainingVel = -sForwardVel - consumedMag;
+                
                 sZiplineCurPoint -= 4;
+                {
+                    // now calculate the velocity for the next point using the same principle
+                    // this assume vel isn't too big to skip multiple points
+                    Vec3f trajCurrPoint = { traj[sZiplineCurPoint + 1]    , traj[sZiplineCurPoint + 2]    , traj[sZiplineCurPoint + 3    ] };
+                    Vec3f trajNextPoint = { traj[sZiplineCurPoint + 1 - 4], traj[sZiplineCurPoint + 2 - 4], traj[sZiplineCurPoint + 3 - 4] };
+
+                    Vec3f trajDirection;
+                    vec3f_diff(trajDirection, trajNextPoint, trajCurrPoint);
+                    f32 dirMag2 = vec3_mag(trajDirection);
+
+                    sZiplineProgress = 1.f + remainingVel / dirMag2;
+                }
             }
         }
     }
