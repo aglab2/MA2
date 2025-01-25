@@ -87,6 +87,12 @@ static void calculate_trajectory_middle()
 extern u32 gIsGravityFlipped;
 static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop, int it)
 {
+    (void) it;
+    if (sCancelTimeout && traj == sTrajectory && sTrajectoryArea == gCurrAreaIndex)
+    {
+        return 0;
+    }
+
     Vec3f Q = { gMarioStates->pos[0], gIsGravityFlipped ? 9000.f - gMarioStates->pos[1] : gMarioStates->pos[1], gMarioStates->pos[2] };
     f32 minDist = 2000.f;
     Vec3f closestPoint = {0, 0, 0};
@@ -179,7 +185,6 @@ int zipline_cancel()
     if (sCancelTimeout)
     {
         sCancelTimeout--;
-        return 0;
     }
 
     if (gCurrLevelNum >= (int) (sizeof(kRails) / sizeof(kRails[0])))
@@ -337,7 +342,7 @@ int zipline_step()
 
         sZiplineProgress += movAmt;
 
-#if 1
+#if 0
         print_text_fmt_int(20, 20, "CP %d", (int) sZiplineCurPoint);
         print_text_fmt_int(20, 40, "PR %d", (int) (1000.f * sZiplineProgress));
 #endif

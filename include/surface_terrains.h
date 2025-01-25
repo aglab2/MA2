@@ -295,7 +295,7 @@ enum TerrainType {
 #define FLOOR_LOWER_LIMIT_CV            (-27000+10)
 
 #define CLAMP_SIMPLE(x, min, max) ((x) < (min) ? (min) : ((x) > (max) ? (max) : (x)))
-#define CLAMP_SIMPLE_S16(x) CLAMP_SIMPLE(x, -32768, 32767)
+#define CLAMP_SIMPLE_S16(x) CLAMP_SIMPLE(x, -32760, 32760)
 
 // Collision Vertex
 #define COL_VERTEX(x, y, z) CLAMP_SIMPLE_S16(x), CLAMP_SIMPLE((y), FLOOR_LOWER_LIMIT_CV, CELL_HEIGHT_LIMIT_CV), CLAMP_SIMPLE_S16(z)
