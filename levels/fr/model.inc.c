@@ -381,6 +381,37 @@ Gfx fr_dl_a1_034_mesh_layer_1_tri_0[] = {
 	gsSPEndDisplayList(),
 };
 
+Vtx fr_dl_a1_038_mesh_layer_1_vtx_0[15] = {
+	{{ {-10000, -25224, 20000}, 0, {240, 1008}, {0, 127, 0, 255} }},
+	{{ {0, -25224, 20000}, 0, {496, 1008}, {0, 127, 0, 255} }},
+	{{ {0, -25224, 10000}, 0, {496, 752}, {0, 127, 0, 255} }},
+	{{ {-10000, -25224, 10000}, 0, {240, 752}, {0, 127, 0, 255} }},
+	{{ {0, -25224, 0}, 0, {496, 496}, {0, 127, 0, 255} }},
+	{{ {-10000, -25224, 0}, 0, {240, 496}, {0, 127, 0, 255} }},
+	{{ {0, -25224, -10000}, 0, {496, 240}, {0, 127, 0, 255} }},
+	{{ {-10000, -25224, -10000}, 0, {240, 240}, {0, 127, 0, 255} }},
+	{{ {0, -25224, -20000}, 0, {496, -16}, {0, 127, 0, 255} }},
+	{{ {-10000, -25224, -20000}, 0, {240, -16}, {0, 127, 0, 255} }},
+	{{ {-20000, -25224, -10000}, 0, {-16, 240}, {0, 127, 0, 255} }},
+	{{ {-20000, -25224, -20000}, 0, {-16, -16}, {0, 127, 0, 255} }},
+	{{ {-20000, -25224, 0}, 0, {-16, 496}, {0, 127, 0, 255} }},
+	{{ {-20000, -25224, 10000}, 0, {-16, 752}, {0, 127, 0, 255} }},
+	{{ {-20000, -25224, 20000}, 0, {-16, 1008}, {0, 127, 0, 255} }},
+};
+
+Gfx fr_dl_a1_038_mesh_layer_1_tri_0[] = {
+	gsSPVertex(fr_dl_a1_038_mesh_layer_1_vtx_0 + 0, 15, 0),
+	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
+	gsSP2Triangles(3, 2, 4, 0, 3, 4, 5, 0),
+	gsSP2Triangles(5, 4, 6, 0, 5, 6, 7, 0),
+	gsSP2Triangles(7, 6, 8, 0, 7, 8, 9, 0),
+	gsSP2Triangles(10, 7, 9, 0, 10, 9, 11, 0),
+	gsSP2Triangles(12, 7, 10, 0, 12, 5, 7, 0),
+	gsSP2Triangles(13, 5, 12, 0, 13, 3, 5, 0),
+	gsSP2Triangles(14, 3, 13, 0, 14, 0, 3, 0),
+	gsSPEndDisplayList(),
+};
+
 Vtx fr_dl_a1_035_mesh_layer_1_vtx_0[24] = {
 	{{ {-20000, 18514, 20000}, 0, {-16, 1008}, {0, 129, 0, 255} }},
 	{{ {-20000, 18514, -20000}, 0, {-16, -16}, {0, 129, 0, 255} }},
@@ -1234,6 +1265,20 @@ Gfx fr_dl_a1_011_mesh_layer_1[] = {
 Gfx fr_dl_a1_034_mesh_layer_1[] = {
 	gsSPDisplayList(mat_fr_dl_f3dlite_material),
 	gsSPDisplayList(fr_dl_a1_034_mesh_layer_1_tri_0),
+	gsSPDisplayList(mat_revert_fr_dl_f3dlite_material),
+	gsDPPipeSync(),
+	gsSPSetGeometryMode(G_LIGHTING),
+	gsSPClearGeometryMode(G_TEXTURE_GEN),
+	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
+	gsSPTexture(65535, 65535, 0, 0, 0),
+	gsDPSetEnvColor(255, 255, 255, 255),
+	gsDPSetAlphaCompare(G_AC_NONE),
+	gsSPEndDisplayList(),
+};
+
+Gfx fr_dl_a1_038_mesh_layer_1[] = {
+	gsSPDisplayList(mat_fr_dl_f3dlite_material),
+	gsSPDisplayList(fr_dl_a1_038_mesh_layer_1_tri_0),
 	gsSPDisplayList(mat_revert_fr_dl_f3dlite_material),
 	gsDPPipeSync(),
 	gsSPSetGeometryMode(G_LIGHTING),

@@ -28,11 +28,13 @@ extern const GeoLayout fr_area_visual[];
 #define fr_area_10 fr_area_visual
 #define fr_area_11 fr_area_visual
 #define fr_area_12 fr_area_visual
+#define fr_area_13 fr_area_visual
 
 #include "levels/fr/area_1/collision.inc.c"
 #include "levels/fr/area_10/collision.inc.c"
 #include "levels/fr/area_11/collision.inc.c"
 #include "levels/fr/area_12/collision.inc.c"
+#include "levels/fr/area_13/collision.inc.c"
 #include "levels/fr/area_2/collision.inc.c"
 #include "levels/fr/area_3/collision.inc.c"
 #include "levels/fr/area_4/collision.inc.c"
@@ -91,7 +93,7 @@ const LevelScript level_fr_entry[] = {
 		/* Fast64 begin persistent block [area commands] */
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
-	AREA(12, fr_area_12, 3500, -24352, 9000),
+	AREA(12, fr_area_12, 3500, -22749, 9000),
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
@@ -99,6 +101,19 @@ const LevelScript level_fr_entry[] = {
 		WARP_NODE(0x21, LEVEL_CG, 0x01, 0x20, WARP_NO_CHECKPOINT),
 		TERRAIN(fr_area_12_collision),
 		MACRO_OBJECTS(fr_area_12_macro_objs),
+		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
+		TERRAIN_TYPE(TERRAIN_GRASS),
+		/* Fast64 begin persistent block [area commands] */
+		/* Fast64 end persistent block [area commands] */
+	END_AREA(),
+	AREA(13, fr_area_13, 3500, -25885, 9000),
+		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		WARP_NODE(0x20, LEVEL_CG, 0x01, 0x21, WARP_NO_CHECKPOINT),
+		WARP_NODE(0x21, LEVEL_CG, 0x01, 0x20, WARP_NO_CHECKPOINT),
+		TERRAIN(fr_area_13_collision),
+		MACRO_OBJECTS(fr_area_13_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
 		TERRAIN_TYPE(TERRAIN_GRASS),
 		/* Fast64 begin persistent block [area commands] */

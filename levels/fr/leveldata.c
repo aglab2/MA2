@@ -5,11 +5,23 @@
 #include "textures.h"
 #include "dialog_ids.h"
 #include "rail_desc.h"
+#include "spring_desc.h"
 
 #include "make_const_nonconst.h"
 
 #include "levels/fr/visual/header_lvl.inc.h"
 #include "levels/fr/visual/model_lvl.inc.c"
+
+static const LDLDesc loop_desc1 = { 2, 1, 0, 1, 0x4000 };
+
+#define loop_desc_fr_area_8_spline_Loop_0186_object_012479FC_001 &loop_desc1
+#define loop_desc_fr_area_9_spline_Loop_0129_object_0124232C_001 &loop_desc1
+#define loop_desc_fr_area_6_spline_Loop_28_ini_003 &loop_desc1
+#define loop_desc_fr_area_6_spline_Loop_28_ini_002 &loop_desc1
+#define loop_desc_fr_area_6_spline_Loop_28_ini_001 &loop_desc1
+#define loop_desc_fr_area_6_spline_Loop_28_ini &loop_desc1
+#define loop_desc_fr_area_1_spline_Loop_0502_object_01243CBC_001 &loop_desc1
+#define loop_desc_fr_area_4_spline_Loop_0381_object_0123429C_001 &loop_desc1
 
 #include "levels/fr/header.inc.h"
 #include "levels/fr/rails.inc.c"

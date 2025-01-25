@@ -9,6 +9,7 @@ extern const SpringDesc* spring_descs_ms[];
 extern const SpringDesc* spring_descs_pc[];
 extern const SpringDesc* spring_descs_ee[];
 extern const SpringDesc* spring_descs_cg[];
+extern const SpringDesc* spring_descs_fr[];
 static const SpringDesc** kSpringDescs[] = {
     [ LEVEL_MH ] = spring_descs_mh,
     [ LEVEL_GF ] = spring_descs_gf,
@@ -17,6 +18,7 @@ static const SpringDesc** kSpringDescs[] = {
     [ LEVEL_PC ] = spring_descs_pc,
     [ LEVEL_EE ] = spring_descs_ee,
     [ LEVEL_CG ] = spring_descs_cg,
+    [ LEVEL_FR ] = spring_descs_fr,
 };
 
 extern const SpringLinkDesc spring_links_mh[]; 
