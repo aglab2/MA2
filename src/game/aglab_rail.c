@@ -427,7 +427,7 @@ int zipline_step()
                     vec3f_diff(trajDirection, trajNextPoint, trajCurrPoint);
                     f32 dirMag2 = vec3_mag(trajDirection);
 
-                    sZiplineProgress = 1.f + remainingVel / dirMag2;
+                    sZiplineProgress = 1.f - remainingVel / dirMag2;
                 }
             }
         }
