@@ -1,4 +1,4 @@
-const Trajectory fr_area_6_spline_0293_object_01236C34_001[] = {
+const Trajectory Rail_fr_area_6_spline_0293_object_01236C34_001[] = {
 	TRAJECTORY_POS( 0, -8650, -8798, -310),
 	TRAJECTORY_POS( 1, -8650, -8798, -1310),
 	TRAJECTORY_POS( 2, -8650, -6198, -6310),
@@ -8,7 +8,7 @@ const Trajectory fr_area_6_spline_0293_object_01236C34_001[] = {
 const Trajectory fr_area_6_spline_Loop_28_ini[] = {
 	TRAJECTORY_POS( 0, -9039, -5299, 9170),
 	TRAJECTORY_POS( 1, -9541, -5279, 9170),
-	TRAJECTORY_POS( 2, -9732, -5234, 9170),
+	TRAJECTORY_POS( 2, -9732, -5233, 9170),
 	TRAJECTORY_POS( 3, -9862, -5149, 9170),
 	TRAJECTORY_POS( 4, -9941, -5022, 9170),
 	TRAJECTORY_POS( 5, -9987, -4848, 9170),
@@ -17,19 +17,19 @@ const Trajectory fr_area_6_spline_Loop_28_ini[] = {
 	TRAJECTORY_END(),
 };
 const Trajectory fr_area_6_spline_Loop_28_ini_001[] = {
-	TRAJECTORY_POS( 0, -8355, -7629, 7782),
-	TRAJECTORY_POS( 1, -8355, -7562, 7782),
-	TRAJECTORY_POS( 2, -8381, -7496, 7782),
-	TRAJECTORY_POS( 3, -8448, -7456, 7782),
-	TRAJECTORY_POS( 4, -8525, -7456, 7782),
-	TRAJECTORY_POS( 5, -8577, -7447, 7782),
-	TRAJECTORY_POS( 6, -8623, -7424, 7782),
-	TRAJECTORY_POS( 7, -8646, -7379, 7782),
-	TRAJECTORY_POS( 8, -8655, -7326, 7782),
-	TRAJECTORY_POS( 9, -8655, -6852, 7782),
-	TRAJECTORY_POS( 10, -8682, -6784, 7782),
-	TRAJECTORY_POS( 11, -8751, -6756, 7782),
-	TRAJECTORY_POS( 12, -8867, -6756, 7782),
+	TRAJECTORY_POS( 0, -8694, -8280, 7792),
+	TRAJECTORY_POS( 1, -8694, -8214, 7792),
+	TRAJECTORY_POS( 2, -8694, -8148, 7819),
+	TRAJECTORY_POS( 3, -8694, -8107, 7886),
+	TRAJECTORY_POS( 4, -8694, -8107, 7962),
+	TRAJECTORY_POS( 5, -8694, -8099, 8015),
+	TRAJECTORY_POS( 6, -8694, -8076, 8061),
+	TRAJECTORY_POS( 7, -8694, -8030, 8084),
+	TRAJECTORY_POS( 8, -8694, -7977, 8092),
+	TRAJECTORY_POS( 9, -8694, -7504, 8092),
+	TRAJECTORY_POS( 10, -8694, -7435, 8120),
+	TRAJECTORY_POS( 11, -8694, -7407, 8189),
+	TRAJECTORY_POS( 12, -8694, -7407, 8305),
 	TRAJECTORY_END(),
 };
 const Trajectory fr_area_6_spline_Loop_28_ini_002[] = {
@@ -48,7 +48,7 @@ const Trajectory fr_area_6_spline_Loop_28_ini_002[] = {
 	TRAJECTORY_POS( 12, -6855, -5841, 9469),
 	TRAJECTORY_END(),
 };
-const Trajectory fr_area_6_spline_Loop_28_ini_003[] = {
+const Trajectory fr_area_6_spline_Loop_28_ini_004[] = {
 	TRAJECTORY_POS( 0, -11450, -2582, 7776),
 	TRAJECTORY_POS( 1, -11450, -2516, 7776),
 	TRAJECTORY_POS( 2, -11476, -2450, 7776),

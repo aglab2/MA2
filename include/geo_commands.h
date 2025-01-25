@@ -276,8 +276,8 @@ enum GeoLayoutCommands {
 
 #define GEO_LVL_BATCH_TRANSLATE_ROTATE GEO_LVL_TRANSLATE_ROTATE_WITH_DL
 #define GEO_LVL_TRANSLATE_ROTATE_WITH_DL(layer, tx, ty, tz, rx, ry, rz, displayList) \
-    CMD_BBH(GEO_CMD_LVL_NODE_TRANSLATION_ROTATION, (0x00 | layer), rx), \
-    CMD_HH(ry, rz), \
+    CMD_BBH(GEO_CMD_LVL_NODE_TRANSLATION_ROTATION, (0x00 | layer), (s16) (rx / 360. * 0x10000)), \
+    CMD_HH((s16) (ry / 360. * 0x10000), (s16) (rz / 360. * 0x10000)), \
     CMD_W(GEO_FLOAT_TO_INT(tx)), \
     CMD_W(GEO_FLOAT_TO_INT(ty)), \
     CMD_W(GEO_FLOAT_TO_INT(tz)), \

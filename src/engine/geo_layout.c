@@ -1182,7 +1182,9 @@ void geo_layout_cmd_lvl_translation_rotation(void) {
     s16 params = cur_geo_cmd_u8(0x01);
     s16 *cmdPos = (s16 *) gGeoLayoutCommand;
     cmdPos += 1;
-    cmdPos = read_vec3s_angle(rotation, cmdPos);
+    rotation[0] = next_s32_in_geo_script(&cmdPos);
+    rotation[1] = next_s32_in_geo_script(&cmdPos);
+    rotation[2] = next_s32_in_geo_script(&cmdPos);
     s32* cmdPos_f = (s32*)cmdPos;
     translation[0] = GEO_INT_TO_FLOAT(next_s32_in_geo_script(&cmdPos_f));
     translation[1] = GEO_INT_TO_FLOAT(next_s32_in_geo_script(&cmdPos_f));
