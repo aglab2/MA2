@@ -57,12 +57,14 @@ if '__main__' in __name__:
                 if 'Rail' in spline_name:
                     area_rails.append(spline_name)
                     continue
-                if 'Spring' in spline_name:
+                elif 'Spring' in spline_name:
                     area_springs.append(spline_name)
                     continue
-                if 'Loop' in spline_name:
+                elif 'Loop' in spline_name:
                     area_loops.append(spline_name)
                     continue
+                else:
+                    assert False, f"Unknown spline type: {spline_name}"
 
         with open(area_spline_path, 'w') as f:
             for line in area_spline_lines:

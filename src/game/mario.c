@@ -1752,7 +1752,7 @@ void rail_debug()
  * Main function for executing Mario's behavior. Returns particleFlags.
  */
 s32 execute_mario_action(UNUSED struct Object *obj) {
-#if 0
+#if 1
     rail_debug();
 #endif
     s32 inLoop = TRUE;

@@ -8,7 +8,7 @@ const Trajectory fr_area_6_spline_0293_object_01236C34_001[] = {
 const Trajectory fr_area_6_spline_Loop_28_ini[] = {
 	TRAJECTORY_POS( 0, -9039, -5299, 9170),
 	TRAJECTORY_POS( 1, -9541, -5279, 9170),
-	TRAJECTORY_POS( 2, -9732, -5233, 9170),
+	TRAJECTORY_POS( 2, -9732, -5234, 9170),
 	TRAJECTORY_POS( 3, -9862, -5149, 9170),
 	TRAJECTORY_POS( 4, -9941, -5022, 9170),
 	TRAJECTORY_POS( 5, -9987, -4848, 9170),
