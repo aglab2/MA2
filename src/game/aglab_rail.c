@@ -152,8 +152,8 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
         sZiplineProgress = minT;
         sZiplineCurPoint = minPoint;
         
-        Vec3f trajCurPoint = {traj[sZiplineCurPoint + 1], traj[sZiplineCurPoint + 2], traj[sZiplineCurPoint + 3]};
-        Vec3f trajNextPoint = {traj[sZiplineCurPoint + 4 + 1], traj[sZiplineCurPoint + 4 + 2], traj[sZiplineCurPoint + 4 + 3]};
+        Vec3s trajCurPoint = {traj[sZiplineCurPoint + 1], traj[sZiplineCurPoint + 2], traj[sZiplineCurPoint + 3]};
+        Vec3s trajNextPoint = {traj[sZiplineCurPoint + 4 + 1], traj[sZiplineCurPoint + 4 + 2], traj[sZiplineCurPoint + 4 + 3]};
         Vec3f trajDirection;
         vec3f_diff(trajDirection, trajNextPoint, trajCurPoint);
         f32 dirMag = vec3_mag(trajDirection);
@@ -272,8 +272,8 @@ int zipline_step()
     const Trajectory* traj = sTrajectory;
     // Advance along the zipline
     {
-        Vec3f trajCurPoint = {traj[sZiplineCurPoint + 1], traj[sZiplineCurPoint + 2], traj[sZiplineCurPoint + 3]};
-        Vec3f trajNextPoint = {traj[sZiplineCurPoint + 4 + 1], traj[sZiplineCurPoint + 4 + 2], traj[sZiplineCurPoint + 4 + 3]};
+        Vec3s trajCurPoint = {traj[sZiplineCurPoint + 1], traj[sZiplineCurPoint + 2], traj[sZiplineCurPoint + 3]};
+        Vec3s trajNextPoint = {traj[sZiplineCurPoint + 4 + 1], traj[sZiplineCurPoint + 4 + 2], traj[sZiplineCurPoint + 4 + 3]};
         Vec3f trajDirection;
         vec3f_diff(trajDirection, trajNextPoint, trajCurPoint);
 
@@ -393,8 +393,8 @@ int zipline_step()
                 {
                     // now calculate the velocity for the next point using the same principle
                     // this assume vel isn't too big to skip multiple points
-                    Vec3f trajCurrPoint = { traj[sZiplineCurPoint + 1], traj[sZiplineCurPoint + 2], traj[sZiplineCurPoint + 3] };
-                    Vec3f trajNextPoint = { traj[sZiplineCurPoint + 5], traj[sZiplineCurPoint + 6], traj[sZiplineCurPoint + 7] };
+                    Vec3s trajCurrPoint = { traj[sZiplineCurPoint + 1], traj[sZiplineCurPoint + 2], traj[sZiplineCurPoint + 3] };
+                    Vec3s trajNextPoint = { traj[sZiplineCurPoint + 5], traj[sZiplineCurPoint + 6], traj[sZiplineCurPoint + 7] };
 
                     Vec3f trajDirection;
                     vec3f_diff(trajDirection, trajNextPoint, trajCurrPoint);
@@ -420,8 +420,8 @@ int zipline_step()
                 {
                     // now calculate the velocity for the next point using the same principle
                     // this assume vel isn't too big to skip multiple points
-                    Vec3f trajCurrPoint = { traj[sZiplineCurPoint + 1]    , traj[sZiplineCurPoint + 2]    , traj[sZiplineCurPoint + 3    ] };
-                    Vec3f trajNextPoint = { traj[sZiplineCurPoint + 1 - 4], traj[sZiplineCurPoint + 2 - 4], traj[sZiplineCurPoint + 3 - 4] };
+                    Vec3s trajCurrPoint = { traj[sZiplineCurPoint + 1]    , traj[sZiplineCurPoint + 2]    , traj[sZiplineCurPoint + 3    ] };
+                    Vec3s trajNextPoint = { traj[sZiplineCurPoint + 1 - 4], traj[sZiplineCurPoint + 2 - 4], traj[sZiplineCurPoint + 3 - 4] };
 
                     Vec3f trajDirection;
                     vec3f_diff(trajDirection, trajNextPoint, trajCurrPoint);
@@ -433,8 +433,8 @@ int zipline_step()
         }
     }
     {
-        Vec3f trajCurPoint = {traj[sZiplineCurPoint + 1], traj[sZiplineCurPoint + 2], traj[sZiplineCurPoint + 3]};
-        Vec3f trajNextPoint = {traj[sZiplineCurPoint + 4 + 1], traj[sZiplineCurPoint + 4 + 2], traj[sZiplineCurPoint + 4 + 3]};
+        Vec3s trajCurPoint = {traj[sZiplineCurPoint + 1], traj[sZiplineCurPoint + 2], traj[sZiplineCurPoint + 3]};
+        Vec3s trajNextPoint = {traj[sZiplineCurPoint + 4 + 1], traj[sZiplineCurPoint + 4 + 2], traj[sZiplineCurPoint + 4 + 3]};
         Vec3f trajDirection;
         vec3f_diff(trajDirection, trajNextPoint, trajCurPoint);
         sPosX = trajCurPoint[0] + (trajDirection[0] * sZiplineProgress);
