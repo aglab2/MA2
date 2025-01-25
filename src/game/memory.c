@@ -71,7 +71,7 @@ extern uintptr_t sSegmentTable[32];
  * Memory pool for small graphical effects that aren't connected to Objects.
  * Used for colored text, paintings, and environmental snow and bubbles.
  */
-struct MemoryPool *gEffectsMemoryPool __attribute__((section(".data")));
+struct MemoryPool *gEffectsMemoryPool;
 
 
 
@@ -318,27 +318,6 @@ void main_pool_pop_state(void) {
 }
 
 /**
- * Perform a DMA read from ROM. The transfer is split into 4KB blocks, and this
- * function blocks until completion.
- */
-void dma_read(u8 *dest, u8 *srcStart, u8 *srcEnd) {
-    u32 size = ALIGN16(srcEnd - srcStart);
-
-    osInvalDCache(dest, size);
-    while (size != 0) {
-        u32 copySize = (size >= 0x1000) ? 0x1000 : size;
-
-        osPiStartDma(&gDmaIoMesg, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) srcStart, dest, copySize,
-                     &gDmaMesgQueue);
-        osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
-
-        dest += copySize;
-        srcStart += copySize;
-        size -= copySize;
-    }
-}
-
-/**
  * Perform a DMA read from ROM, allocating space in the memory pool to write to.
  * Return the destination address.
  */
@@ -520,33 +499,6 @@ void *load_segment_decompress(s32 segment, u8 *srcStart, u8 *srcEnd) {
     return dest;
 }
 
-extern u8 _gp[];
-extern u8 _sdataSegmentStart[];
-extern u8 _sdataSegmentEnd[];
-extern u8 _sdataSegmentRomStart[];
-extern u8 _sdataSegmentRomEnd[];
-
-void load_sdata(void) {
-    void *startAddr = (void *) _sdataSegmentStart;
-    u32 totalSize = _sdataSegmentEnd - _sdataSegmentStart;
-
-    bzero(startAddr, totalSize);
-    osWritebackDCacheAll();
-    dma_read(startAddr, _sdataSegmentRomStart, _sdataSegmentRomEnd);
-    osInvalDCache(startAddr, totalSize);
-}
-
-void load_engine_code_segment(void) {
-    void *startAddr = (void *) _engineSegmentStart;
-    u32 totalSize = _engineSegmentEnd - _engineSegmentStart;
-    // UNUSED u32 alignedSize = ALIGN16(_engineSegmentRomEnd - _engineSegmentRomStart);
-
-    bzero(startAddr, totalSize);
-    osWritebackDCacheAll();
-    dma_read(startAddr, _engineSegmentRomStart, _engineSegmentRomEnd);
-    osInvalICache(startAddr, totalSize);
-    osInvalDCache(startAddr, totalSize);
-}
 #endif
 
 /**

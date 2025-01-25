@@ -339,8 +339,8 @@ static void level_cmd_init_level(void) {
     sCurrentCmd = CMD_NEXT;
 }
 
-extern s32 gTlbEntries __attribute__((section(".bss.gTlbEntries")));
-extern u8  gTlbSegments[NUM_TLB_SEGMENTS] __attribute__((section(".bss.gTlbSegments")));
+extern s32 gTlbEntries;
+extern u8  gTlbSegments[NUM_TLB_SEGMENTS];
 
 // This clears all the temporary bank TLB maps. group0, common1 and behavourdata are always loaded,
 // and they're also loaded first, so that means we just leave the first 3 indexes mapped.

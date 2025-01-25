@@ -29,7 +29,7 @@ struct DmaHandlerList {
 
 #define EFFECTS_MEMORY_POOL 0x4000
 
-extern struct MemoryPool *gEffectsMemoryPool __attribute__((section(".data")));
+extern struct MemoryPool *gEffectsMemoryPool;
 
 uintptr_t set_segment_base_addr(s32 segment, void *addr);
 void *get_segment_base_addr(s32 segment);
@@ -43,9 +43,9 @@ struct MainPoolRegion {
 };
 
 #ifndef MAIN_POOL_SINGLE_REGION
-extern struct MainPoolRegion* gMainPoolCurrentRegion __attribute__((section(".data")));
+extern struct MainPoolRegion* gMainPoolCurrentRegion;
 #else
-extern struct MainPoolContext sMainPool __attribute__((section(".bss.sMainPool")));
+extern struct MainPoolContext sMainPool;
 // There is only 1 region which is the first region
 #define gMainPoolCurrentRegion ((struct MainPoolRegion*) &sMainPool)
 #endif
@@ -151,7 +151,6 @@ u32 main_pool_available(void);
 void *load_segment(s32 segment, u8 *srcStart, u8 *srcEnd, u8 *bssStart, u8 *bssEnd);
 void *load_to_fixed_pool_addr(u8 *destAddr, u8 *srcStart, u8 *srcEnd);
 void *load_segment_decompress(s32 segment, u8 *srcStart, u8 *srcEnd);
-void load_engine_code_segment(void);
 #else
 #define load_segment(...)
 #define load_to_fixed_pool_addr(...)
@@ -168,7 +167,7 @@ void setup_dma_table_list(struct DmaHandlerList *list, void *srcAddr, void *buff
 s32 load_patchable_table(struct DmaHandlerList *list, s32 index);
 
 
-extern uintptr_t sSegmentROMTable[32] __attribute__((section(".bss.sSegmentROMTable")));
+extern uintptr_t sSegmentROMTable[32];
 
 extern uintptr_t sSegmentROMTable[32];
 #endif // MEMORY_H

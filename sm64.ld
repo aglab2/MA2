@@ -255,6 +255,8 @@ SECTIONS
 
    BEGIN_SEG(engine, .)
    {
+      BUILD_DIR/src/game/lz4t_fast.o(.text*);
+      BUILD_DIR/src/game/dma_async.o(.text*);
       BUILD_DIR/src/game*.o(.text*);
       BUILD_DIR/src/game/behavior_actions.o(.text*);
       BUILD_DIR/src/game/obj_behaviors_2.o(.text*);
