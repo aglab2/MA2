@@ -30,6 +30,7 @@ static f32 sPosX;
 static f32 sPosY;
 static f32 sPosZ;
 static int sZiplineCurPoint = 0;
+static f32 sForwardVelLimit = 0;
 static f32 sForwardVel = 0;
 static u8 sCancelTimeout = 0;
 static u8 sAngleFlipped = 0;
@@ -82,6 +83,20 @@ static void calculate_trajectory_middle()
     sTrajectoryMiddle[0] = (maxPoint[0] + minPoint[0]) / 2;
     sTrajectoryMiddle[1] = (maxPoint[1] + minPoint[1]) / 2;
     sTrajectoryMiddle[2] = (maxPoint[2] + minPoint[2]) / 2;
+}
+
+static f32 traj_length(const s16* traj)
+{
+    f32 length = 0;
+    while (-1 != traj[4])
+    {
+        Vec3s diff;
+        vec3_diff(diff, traj + 1, traj + 5);
+        traj += 4;
+        length += vec3_mag(diff);
+    }
+
+    return length;
 }
 
 extern u32 gIsGravityFlipped;
@@ -146,6 +161,7 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
         trajDirection[1] /= dirMag;
         trajDirection[2] /= dirMag;
         sForwardVel = trajDirection[0] * gMarioStates->vel[0] + trajDirection[1] * gMarioStates->vel[1] + trajDirection[2] * gMarioStates->vel[2];
+        sForwardVelLimit = 55.f + CLAMP(traj_length(traj) / 400.f, 30.f, 110.f);
         if (loop && sForwardVel < 0)
         {
             // Do not allow to use loop in the opposite direction, probably will cause some weird stuff
@@ -297,7 +313,7 @@ int zipline_step()
             if (sLoopDesc)
             {
                 sForwardVel += 5.f;
-                sForwardVel = CLAMP(sForwardVel, 0.f, 80.f);
+                sForwardVel = CLAMP(sForwardVel, 0.f, sForwardVelLimit);
             }
             else
             {
@@ -316,10 +332,10 @@ int zipline_step()
                 }
                 f32 dot = xdir * xspd + zdir * zspd;
 
-                sForwardVel *= 0.95f;
+                sForwardVel *= 0.97f;
                 sForwardVel += dot / 12.0f;
                 sForwardVel -= trajDirection[1] / dirMag * 5.f;
-                sForwardVel = CLAMP(sForwardVel, -100.f, 100.f);
+                sForwardVel = CLAMP(sForwardVel, -sForwardVelLimit, sForwardVelLimit);
             }
 
 #if 0
