@@ -88,9 +88,8 @@ static const SpringDesc spring_area6[] = {
 };
 
 static const RailDesc rails_area6[] = {
-	RAIL_TRAJ(Rail_fr_area_6_spline_0293_object_01236C34_001),
 	RAIL_TRAJ(fr_area_6_spline_Rail_0287_object_01237D74_001),
-	RAIL_TRAJ(fr_area_6_spline_Rail_0293_object_01236C34_001),
+	RAIL_TRAJ(fr_area_6_spline_Rail_0293_object_01236C34_002),
 	RAIL_TRAJ(fr_area_6_spline_Rail_0380_object_01245344_008),
 	RAIL_TRAJ(fr_area_6_spline_Rail_0380_object_01245344_009),
 	RAIL_TRAJ(fr_area_6_spline_Rail_0380_object_01245344_010),
