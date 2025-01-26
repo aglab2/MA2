@@ -241,6 +241,9 @@ static void prepare_mario_for_zipline_drop(Vec3f trajDirection)
 #endif
 
     f32 mag = sqrtf(trajDirection[0] * trajDirection[0] + trajDirection[2] * trajDirection[2]);
+    if (mag < 0.001f)
+        return;
+
     trajDirection[0] /= mag;
     trajDirection[2] /= mag;
     trajDirection[0] *= sForwardVel;

@@ -857,25 +857,25 @@ DUMMY != $(PYTHON) $(FIXLIGHTS_PY) levels
 endif
 $(BUILD_DIR)/src/boot/%.o: src/boot/%.c
 	$(call print,Compiling Boot:,$<,$@)
-	$(V)$(CC) -c -G 0 $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/boot/$*.d  -o $@ $<
+	$(V)$(CC) -gdwarf-4 -c -G 0 $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/boot/$*.d  -o $@ $<
 $(BUILD_DIR)/src/buffers/%.o: src/buffers/%.c
 	$(call print,Compiling Buffers:,$<,$@)
-	$(V)$(CC) -c -G 0 $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/buffers/$*.d  -o $@ $<
+	$(V)$(CC) -gdwarf-4 -c -G 0 $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/buffers/$*.d  -o $@ $<
 $(BUILD_DIR)/src/goddard/%.o: src/goddard/%.c
 	$(call print,Compiling Goddard:,$<,$@)
-	$(V)$(CC) -c -G 0 $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/goddard/$*.d  -o $@ $<
+	$(V)$(CC) -gdwarf-4 -c -G 0 $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/goddard/$*.d  -o $@ $<
 $(BUILD_DIR)/src/menu/%.o: src/menu/%.c
 	$(call print,Compiling Menu:,$<,$@)
-	$(V)$(CC) -c -G 0 $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/menu/$*.d  -o $@ $<
+	$(V)$(CC) -gdwarf-4 -c -G 0 $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/menu/$*.d  -o $@ $<
 $(BUILD_DIR)/src/game/texscroll.o: src/game/texscroll.c
 	$(call print,Compiling texscroll:,$<,$@)
-	$(V)$(CC) -c -G 0 $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/game/texscroll.d  -o $@ $<
+	$(V)$(CC) -gdwarf-4 -c -G 0 $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/game/texscroll.d  -o $@ $<
 $(BUILD_DIR)/src/game/behavior_data.o: src/game/behavior_data.c
 	$(call print,Compiling behavior_data:,$<,$@)
-	$(V)$(CC) -c -G 0 $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/$*.d  -o $@ $<
+	$(V)$(CC) -gdwarf-4 -c -G 0 $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/$*.d  -o $@ $<
 $(BUILD_DIR)/src/%.o: src/%.c
 	$(call print,Compiling with sdata:,$<,$@)
-	$(V)$(CC) -c -G 21000 $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/$*.d  -o $@ $<
+	$(V)$(CC) -gdwarf-4 -c -G 21000 $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/$*.d  -o $@ $<
 
 $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
