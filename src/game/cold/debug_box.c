@@ -34,7 +34,7 @@
 
 #ifdef VISUAL_DEBUG
 
-Vtx debug_box_mesh[32] __attribute__((section(".data"))) = {
+Vtx debug_box_mesh[32] = {
 	{{{    0,    0, -100}, 0, ST_B( 0, 32), {0x00, 0x00, 0x00, 0xFF}}},
 	{{{   50,  100,  -87}, 0, ST_B( 0, 32), {0x00, 0x00, 0x00, 0xFF}}},
 	{{{   50,    0,  -87}, 0, ST_B( 0, 32), {0x00, 0x00, 0x00, 0xFF}}},
@@ -69,7 +69,7 @@ Vtx debug_box_mesh[32] __attribute__((section(".data"))) = {
 	{{{  100,    0, -100}, 0, ST_B( 0, 32), {0xFF, 0xFF, 0xFF, 0xFF}}},
 };
 
-Gfx dl_debug_box_verts[] __attribute__((section(".data"))) = {
+Gfx dl_debug_box_verts[] = {
 	gsSPVertex(debug_box_mesh, 32, 0),
 	gsSP2Triangles(24, 25, 26, 0, 27, 25, 24, 0),
 	gsSP2Triangles(28, 27, 24, 0, 24, 26, 28, 0),
@@ -80,7 +80,7 @@ Gfx dl_debug_box_verts[] __attribute__((section(".data"))) = {
 	gsSPEndDisplayList(),
 };
 
-Gfx dl_debug_cylinder_verts[] __attribute__((section(".data"))) = {
+Gfx dl_debug_cylinder_verts[] = {
 	gsSPVertex(debug_box_mesh, 24, 0),
 	gsSP2Triangles( 0,  1,  2, 0x0,  0,  3,  1, 0x0),
 	gsSP2Triangles( 4,  3,  0, 0x0,  4,  5,  3, 0x0),
@@ -148,7 +148,7 @@ u32 sCurBoxColor = DBG_BOX_DEF_COLOR | DBG_BOX_ALPHA;
 /**
  * Sets up the RCP for drawing the boxes
  */
-static const Gfx dl_debug_box_begin[] = {
+static const Gfx dl_debug_box_begin[] __attribute__((section(".data")))  = {
     gsDPPipeSync(),
     gsDPSetRenderMode(G_RM_ZB_XLU_SURF, G_RM_NOOP2),
     gsSPClearGeometryMode(G_CULL_BACK),
@@ -158,7 +158,7 @@ static const Gfx dl_debug_box_begin[] = {
     gsSPEndDisplayList(),
 };
 
-static const Gfx dl_visual_surface[] = {
+static const Gfx dl_visual_surface[] __attribute__((section(".data")))  = {
     gsDPPipeSync(),
     gsDPSetRenderMode(G_RM_ZB_XLU_DECAL, G_RM_NOOP2),
     gsSPClearGeometryMode(G_LIGHTING),
@@ -167,7 +167,7 @@ static const Gfx dl_visual_surface[] = {
     gsSPEndDisplayList(),
 };
 
-static const Gfx dl_debug_box_end[] = {
+static const Gfx dl_debug_box_end[] __attribute__((section(".data")))  = {
     gsDPPipeSync(),
     gsDPSetRenderMode(G_RM_OPA_SURF, G_RM_OPA_SURF2),
     gsSPSetGeometryMode(G_LIGHTING | G_CULL_BACK),

@@ -59,7 +59,7 @@ enum ObjectList {
 };
 
 
-extern struct ObjectNode gObjectListArray[] __attribute__((section(".bss")));
+extern struct ObjectNode gObjectListArray[];
 
 extern s32 gDebugInfoFlags;
 extern s32 gNumFindFloorMisses;

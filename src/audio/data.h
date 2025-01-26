@@ -65,7 +65,7 @@ extern u8 gReverbMultsArrCount;
 #endif // PUPPYPRINT_DEBUG
 #endif // BETTER_REVERB
 
-extern f32 gPitchBendFrequencyScale[256] __attribute__((section(".data")));
+extern f32 gPitchBendFrequencyScale[256];
 extern f32 gNoteFrequencies[128];
 
 extern u8 gDefaultShortNoteVelocityTable[16];

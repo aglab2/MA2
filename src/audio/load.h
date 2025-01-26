@@ -25,7 +25,7 @@ extern u8 sAudioIsInitialized;
 extern struct SequencePlayer gSequencePlayers[SEQUENCE_PLAYERS];
 
 extern struct SequenceChannel gSequenceChannels[SEQUENCE_CHANNELS] __attribute__((section(".bss")));
-extern struct SequenceChannelLayer gSequenceLayers[SEQUENCE_LAYERS];
+extern struct SequenceChannelLayer gSequenceLayers[SEQUENCE_LAYERS] __attribute__((section(".bss")));
 
 extern struct SequenceChannel gSequenceChannelNone;
 

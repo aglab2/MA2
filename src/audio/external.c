@@ -257,7 +257,7 @@ u8 sCurrentSound[SOUND_BANK_COUNT][MAX_CHANNELS_PER_SOUND_BANK]; // index into s
  * is used as a list header for the used list, and never holds an actual sound. See also
  * sSoundBankUsedListBack and sSoundBankFreeListFront.
  */
-struct SoundCharacteristics sSoundBanks[SOUND_BANK_COUNT][40];
+struct SoundCharacteristics sSoundBanks[SOUND_BANK_COUNT][40] __attribute__((section(".bss")));
 
 u8 sSoundMovingSpeed[SOUND_BANK_COUNT];
 u8 sBackgroundMusicTargetVolume;
