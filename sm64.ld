@@ -341,7 +341,7 @@ SECTIONS
    }
    END_NOLOAD(framebuffer0)
 
-   . = 0x80600000;
+   . = 0x80700000 - 0x25800;
    BEGIN_NOLOAD(framebuffer1)
    {
       BUILD_DIR/src/buffers/framebuffer1.o(.bss*);
