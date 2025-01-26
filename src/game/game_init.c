@@ -170,11 +170,17 @@ void init_z_buffer(s32 resetZB) {
     gDPSetColorImage(tempGfxHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, gPhysicalZBuffer);
     if (!resetZB)
         return;
+
+#ifdef F3DEX_GBI_3
+    gSPMemset(tempGfxHead++, (u8*) gPhysicalZBuffer + gBorderHeight  * SCREEN_WIDTH * 2, GPACK_ZDZ(G_MAXFBZ, 0), SCREEN_WIDTH * (SCREEN_HEIGHT - 2 * gBorderHeight) * 2);
+#else
+    gDPSetColorImage(tempGfxHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, gPhysicalZBuffer);
     gDPSetFillColor(tempGfxHead++,
                     GPACK_ZDZ(G_MAXFBZ, 0) << 16 | GPACK_ZDZ(G_MAXFBZ, 0));
 
     gDPFillRectangle(tempGfxHead++, 0, gBorderHeight, SCREEN_WIDTH - 1,
                      SCREEN_HEIGHT - 1 - gBorderHeight);
+#endif
 
     gDisplayListHead = tempGfxHead;
 }
