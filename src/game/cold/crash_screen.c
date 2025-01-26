@@ -27,7 +27,7 @@ enum crashPages {
     PAGE_COUNT
 };
 
-u8 gCrashScreenCharToGlyph[128] = {
+u8 gCrashScreenCharToGlyph[128] __attribute__((section(".data"))) = {
     -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
     -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 41, -1, -1, -1, 43, -1, -1, 37, 38, -1, 42,
     -1, 39, 44, -1,  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 36, -1, -1, -1, -1, 40, -1, 10,
@@ -37,7 +37,7 @@ u8 gCrashScreenCharToGlyph[128] = {
 };
 
 // A height of seven pixels for each Character * nine rows of characters + one row unused.
-u32 gCrashScreenFont[7 * 9 + 1] = {
+u32 gCrashScreenFont[7 * 9 + 1] __attribute__((section(".data"))) = {
     #include "textures/crash_custom/crash_screen_font.ia1.inc.c"
 };
 
@@ -78,7 +78,7 @@ extern far char *parse_map(u32 pc);
 extern far void map_data_init(void);
 extern far char *find_function_in_stack(u32 *sp);
 
-struct {
+static struct {
     OSThread thread;
     u64 stack[THREAD2_STACK / sizeof(u64)];
     OSMesgQueue mesgQueue;
@@ -86,7 +86,7 @@ struct {
     u16 *framebuffer;
     u16 width;
     u16 height;
-} gCrashScreen;
+} gCrashScreen __attribute__((section(".bss")));
 
 void crash_screen_draw_rect(s32 x, s32 y, s32 w, s32 h) {
     u16 *ptr;

@@ -34,7 +34,7 @@
 
 #ifdef VISUAL_DEBUG
 
-Vtx debug_box_mesh[32] = {
+Vtx debug_box_mesh[32] __attribute__((section(".data"))) = {
 	{{{    0,    0, -100}, 0, ST_B( 0, 32), {0x00, 0x00, 0x00, 0xFF}}},
 	{{{   50,  100,  -87}, 0, ST_B( 0, 32), {0x00, 0x00, 0x00, 0xFF}}},
 	{{{   50,    0,  -87}, 0, ST_B( 0, 32), {0x00, 0x00, 0x00, 0xFF}}},
@@ -69,7 +69,7 @@ Vtx debug_box_mesh[32] = {
 	{{{  100,    0, -100}, 0, ST_B( 0, 32), {0xFF, 0xFF, 0xFF, 0xFF}}},
 };
 
-Gfx dl_debug_box_verts[] = {
+Gfx dl_debug_box_verts[] __attribute__((section(".data"))) = {
 	gsSPVertex(debug_box_mesh, 32, 0),
 	gsSP2Triangles(24, 25, 26, 0, 27, 25, 24, 0),
 	gsSP2Triangles(28, 27, 24, 0, 24, 26, 28, 0),
@@ -80,7 +80,7 @@ Gfx dl_debug_box_verts[] = {
 	gsSPEndDisplayList(),
 };
 
-Gfx dl_debug_cylinder_verts[] = {
+Gfx dl_debug_cylinder_verts[] __attribute__((section(".data"))) = {
 	gsSPVertex(debug_box_mesh, 24, 0),
 	gsSP2Triangles( 0,  1,  2, 0x0,  0,  3,  1, 0x0),
 	gsSP2Triangles( 4,  3,  0, 0x0,  4,  5,  3, 0x0),
@@ -121,7 +121,7 @@ struct DebugVert {
     Vec3f normal;
 };
 
-struct DebugBox sBoxes[MAX_DEBUG_BOXES];
+struct DebugBox sBoxes[MAX_DEBUG_BOXES] __attribute__((section(".bss")));
 s16 sNumBoxes = 0;
 
 extern Mat4 gMatStack[32]; // XXX: Hack

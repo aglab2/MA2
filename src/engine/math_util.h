@@ -35,11 +35,17 @@ extern Vec3s gVec3sOne;
 
 // Trig functions
 
+#if 0
+extern const f32 gSineCosineTable[];
+#define sins(x) gSineCosineTable[(((u16) (x)) >> 4) * 2 + 0]
+#define coss(x) gSineCosineTable[(((u16) (x)) >> 4) * 2 + 1]
+#else
 extern const f32 gSineTable[];
 #define gCosineTable (gSineTable + 0x400)
-
 #define sins(x) gSineTable[  (u16) (x) >> 4]
 #define coss(x) gCosineTable[(u16) (x) >> 4]
+#endif
+
 #define tans(x) (sins(x) / coss(x))
 #define cots(x) (coss(x) / sins(x))
 #define atans(x) gArctanTable[(s32)((((x) * 1024) + 0.5f))] // is this correct? used for atan2_lookup

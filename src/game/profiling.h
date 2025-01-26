@@ -87,7 +87,7 @@ typedef struct {
     u32 counts[PROFILING_BUFFER_SIZE];
     u32 total;
 } ProfileTimeData;
-extern ProfileTimeData all_profiling_data[PROFILER_TIME_COUNT];
+extern ProfileTimeData all_profiling_data[PROFILER_TIME_COUNT] __attribute__((section(".bss")));
 
 void profiler_update(enum ProfilerTime which, u32 delta);
 void profiler_print_times();

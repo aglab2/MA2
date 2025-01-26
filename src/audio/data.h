@@ -65,7 +65,7 @@ extern u8 gReverbMultsArrCount;
 #endif // PUPPYPRINT_DEBUG
 #endif // BETTER_REVERB
 
-extern f32 gPitchBendFrequencyScale[256];
+extern f32 gPitchBendFrequencyScale[256] __attribute__((section(".data")));
 extern f32 gNoteFrequencies[128];
 
 extern u8 gDefaultShortNoteVelocityTable[16];
@@ -101,12 +101,12 @@ extern f32 gStereoPanVolume[128];
 #endif
 extern f32 gDefaultPanVolume[128];
 
-extern f32 gVolRampingLhs136[1 << VOL_RAMPING_EXPONENT];
-extern f32 gVolRampingRhs136[1 << VOL_RAMPING_EXPONENT];
-extern f32 gVolRampingLhs144[1 << VOL_RAMPING_EXPONENT];
-extern f32 gVolRampingRhs144[1 << VOL_RAMPING_EXPONENT];
-extern f32 gVolRampingLhs128[1 << VOL_RAMPING_EXPONENT];
-extern f32 gVolRampingRhs128[1 << VOL_RAMPING_EXPONENT];
+extern f32 gVolRampingLhs136[1 << VOL_RAMPING_EXPONENT] __attribute__((section(".data")));
+extern f32 gVolRampingRhs136[1 << VOL_RAMPING_EXPONENT] __attribute__((section(".data")));
+extern f32 gVolRampingLhs144[1 << VOL_RAMPING_EXPONENT] __attribute__((section(".data")));
+extern f32 gVolRampingRhs144[1 << VOL_RAMPING_EXPONENT] __attribute__((section(".data")));
+extern f32 gVolRampingLhs128[1 << VOL_RAMPING_EXPONENT] __attribute__((section(".data")));
+extern f32 gVolRampingRhs128[1 << VOL_RAMPING_EXPONENT] __attribute__((section(".data")));
 
 // non-constant .data
 extern s16 gTatumsPerBeat;

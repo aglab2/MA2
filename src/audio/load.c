@@ -25,16 +25,16 @@ ALIGNED16 u32 dmaTempBuffer[4];
 struct Note *gNotes;
 
 struct SequencePlayer gSequencePlayers[SEQUENCE_PLAYERS];
-struct SequenceChannel gSequenceChannels[SEQUENCE_CHANNELS];
-struct SequenceChannelLayer gSequenceLayers[SEQUENCE_LAYERS];
+struct SequenceChannel gSequenceChannels[SEQUENCE_CHANNELS] __attribute__((section(".bss")));
+struct SequenceChannelLayer gSequenceLayers[SEQUENCE_LAYERS] __attribute__((section(".bss")));
 
 struct SequenceChannel gSequenceChannelNone;
 struct AudioListItem gLayerFreeList;
 struct NotePool gNoteFreeLists;
 
 OSMesgQueue gCurrAudioFrameDmaQueue;
-OSMesg gCurrAudioFrameDmaMesgBufs[AUDIO_FRAME_DMA_QUEUE_SIZE];
-OSIoMesg gCurrAudioFrameDmaIoMesgBufs[AUDIO_FRAME_DMA_QUEUE_SIZE];
+OSMesg gCurrAudioFrameDmaMesgBufs[AUDIO_FRAME_DMA_QUEUE_SIZE] __attribute__((section(".bss")));
+OSIoMesg gCurrAudioFrameDmaIoMesgBufs[AUDIO_FRAME_DMA_QUEUE_SIZE] __attribute__((section(".bss")));
 
 OSMesgQueue gAudioDmaMesgQueue;
 OSMesg gAudioDmaMesg;
