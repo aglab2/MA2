@@ -175,6 +175,13 @@ GCC_COLLISION_OPT_FLAGS = \
   -fdata-sections \
   -falign-functions=32
 
+AUDIO_COLLISION_OPT_FLAGS = \
+  -Os -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division $(SAFETY_OPT_FLAGS) \
+  -fno-inline \
+  -freorder-blocks-algorithm=simple  \
+  -ffunction-sections \
+  -fdata-sections
+
 # Math Util
 GCC_MATH_UTIL_OPT_FLAGS = \
   -Ofast -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division $(SAFETY_OPT_FLAGS) \
@@ -395,7 +402,7 @@ LEVEL_DIRS     := $(patsubst levels/%,%,$(dir $(wildcard levels/*/header.h)))
 VNL_ACTRS_DIRS := $(patsubst actors/vanilla_actors/%,%,$(dir $(wildcard actors/vanilla_actors/*/header.h)))
 
 # Directories containing source files
-SRC_DIRS += src src/boot src/game src/engine src/audio src/menu src/buffers src/hacktice actors levels bin data assets asm lib sound
+SRC_DIRS += src src/boot src/game src/game/cold src/engine src/audio src/menu src/buffers src/hacktice actors levels bin data assets asm lib sound
 LIBZ_SRC_DIRS := src/libz
 GODDARD_SRC_DIRS := src/goddard src/goddard/dynlists
 BIN_DIRS := bin bin/$(VERSION)
@@ -656,7 +663,7 @@ patch: $(ROM)
 
 # Extra object file dependencies
 $(BUILD_DIR)/asm/ipl3.o:              $(IPL3_RAW_FILES)
-$(BUILD_DIR)/src/game/crash_screen.o: $(CRASH_TEXTURE_C_FILES)
+$(BUILD_DIR)/src/game/cold/crash_screen.o: $(CRASH_TEXTURE_C_FILES)
 $(BUILD_DIR)/src/game/version.o:      $(BUILD_DIR)/src/game/version_data.h
 $(BUILD_DIR)/lib/aspMain.o:           $(BUILD_DIR)/rsp/audio.bin
 $(SOUND_BIN_DIR)/sound_data.o:        $(SOUND_BIN_DIR)/sound_data.ctl $(SOUND_BIN_DIR)/sound_data.tbl $(SOUND_BIN_DIR)/sequences.bin $(SOUND_BIN_DIR)/bank_sets
@@ -678,8 +685,8 @@ $(BUILD_DIR)/src/usb/usb.o: CFLAGS += -Wno-unused-variable -Wno-sign-compare -Wn
 $(BUILD_DIR)/src/usb/debug.o: OPT_FLAGS := -O0
 $(BUILD_DIR)/src/usb/debug.o: CFLAGS += -Wno-unused-parameter -Wno-maybe-uninitialized
 # File specific opt flags
-$(BUILD_DIR)/src/audio/heap.o:          OPT_FLAGS := -Os -fno-jump-tables
-$(BUILD_DIR)/src/audio/synthesis.o:     OPT_FLAGS := -Os -fno-jump-tables
+$(BUILD_DIR)/src/audio/heap.o:          OPT_FLAGS := $(AUDIO_COLLISION_OPT_FLAGS)
+$(BUILD_DIR)/src/audio/synthesis.o:     OPT_FLAGS := $(AUDIO_COLLISION_OPT_FLAGS)
 
 $(BUILD_DIR)/src/engine/surface_collision.o:  OPT_FLAGS := $(COLLISION_OPT_FLAGS)
 $(BUILD_DIR)/src/engine/math_util.o:          OPT_FLAGS := $(MATH_UTIL_OPT_FLAGS)
@@ -863,6 +870,9 @@ $(BUILD_DIR)/src/menu/%.o: src/menu/%.c
 $(BUILD_DIR)/src/game/texscroll.o: src/game/texscroll.c
 	$(call print,Compiling texscroll:,$<,$@)
 	$(V)$(CC) -c -G 0 $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/game/texscroll.d  -o $@ $<
+$(BUILD_DIR)/src/game/behavior_data.o: src/game/behavior_data.c
+	$(call print,Compiling behavior_data:,$<,$@)
+	$(V)$(CC) -c -G 0 $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/$*.d  -o $@ $<
 $(BUILD_DIR)/src/%.o: src/%.c
 	$(call print,Compiling with sdata:,$<,$@)
 	$(V)$(CC) -c -G 1024 $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/$*.d  -o $@ $<

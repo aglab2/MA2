@@ -379,6 +379,12 @@ static void level_cmd_clear_level(void) {
 
 extern struct GraphNodeCamera* sCameraCache;
 static void level_cmd_alloc_level_pool(void) {
+    if (CMD_GET(s16, 2))
+    {
+        if ((u32) gMainPoolCurrentRegion->start < (u32) 0x80400000)
+            gMainPoolCurrentRegion->start = (u8*) 0x80400000;
+    }
+
     sCurrentCmd = CMD_NEXT;
     // drop cache, we just loaded bunch of bytes in
     sCameraCache = NULL;

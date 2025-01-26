@@ -147,12 +147,15 @@ void main_pool_init() {
     sMainPool.regions[id].end = (u8 *) DOWN4((uintptr_t)(bufEnd));
     
     // ROM Map
-    // 80000000 - 80025800: zb
-    // 80025800 - 802xxxxx: code
-    // 802xxxxx - 80500000: main pool
+    // 80000000 - 80100000: large buffers
+    // 80100000 - 80200000: code
+    // 80200ish - 80025800: zb
+    // 80025800 - 80400000: main pool, might spill in 80400000
+    // 80400000 - 80500000: compiled graph node + collision nodes
+
     // 80500000: fb1
-    // 80525800: low prio buffers (seg > 0xf)
-    // 80600000: fb2
+    // 80525800 - 80700000 - 25800: low prio buffers (seg > 0xf)
+    // 80700000 - 25800: fb2
     // 80625800: savestate heap
     // 80700000: fb3
     // 80725800: decompression heap

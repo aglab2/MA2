@@ -4,17 +4,17 @@
 #include <string.h>
 #include "buffers/framebuffers.h"
 #include "types.h"
-#include "puppyprint.h"
+#include "game/puppyprint.h"
 #include "audio/external.h"
 #include "farcall.h"
-#include "game_init.h"
-#include "main.h"
-#include "debug.h"
-#include "rumble_init.h"
+#include "game/game_init.h"
+#include "game/main.h"
+#include "game/debug.h"
+#include "game/rumble_init.h"
 
 #include "sm64.h"
 
-#include "printf.h"
+#include "game/printf.h"
 
 enum crashPages {
     PAGE_CONTEXT,

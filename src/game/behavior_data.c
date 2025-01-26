@@ -1,4 +1,4 @@
-#include "behavior_data_decl.h"
+#include "game/behavior_data_decl.h"
 
 #include "sm64.h"
 

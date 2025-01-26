@@ -283,19 +283,6 @@ SECTIONS
       . = ALIGN(0x10);
    }
    END_SEG(engine)
-   BEGIN_NOLOAD(engine)
-   {
-      BUILD_DIR/src/game/crash_screen.o(.bss*);
-      BUILD_DIR/src/game/game_init.o(.bss*);
-      BUILD_DIR/src/game/sound_init.o(.bss*);
-      _hackticeStateDataStart0 = .;
-      BUILD_DIR/src/game*.o(.bss*);
-      _hackticeStateDataEnd0 = .;
-      BUILD_DIR/src/engine*.o(.bss*);
-      BUILD_DIR/src/hacktice*.o(.bss*);
-      . = ALIGN(0x40);
-   }
-   END_NOLOAD(engine)
 
    _gp = . + 0x8000;
    BEGIN_SEG(sdata, .)
@@ -310,7 +297,6 @@ SECTIONS
    END_SEG(sdata)
    BEGIN_NOLOAD(sbss)
    {
-      BUILD_DIR/src/game/crash_screen.o(.sdata*);
       BUILD_DIR/src/game/game_init.o(.sdata*);
       BUILD_DIR/src/game/sound_init.o(.sdata*);
       _hackticeStateDataStart1 = .;
@@ -322,9 +308,24 @@ SECTIONS
       BUILD_DIR/src/usb*.o(.sbss*);
       BUILD_DIR/src/menu*.o(.sbss*);
       BUILD_DIR/src/hacktice*.o(.sbss*);
+      BUILD_DIR/src/game/cold*.o(.sbss*);
       . = ALIGN(0x40);
    }
    END_NOLOAD(sbss)
+
+   BEGIN_NOLOAD(engine)
+   {
+      BUILD_DIR/src/engine*.o(.bss*);
+      BUILD_DIR/src/game/game_init.o(.bss*);
+      BUILD_DIR/src/game/sound_init.o(.bss*);
+      _hackticeStateDataStart0 = .;
+      BUILD_DIR/src/game*.o(.bss*);
+      _hackticeStateDataEnd0 = .;
+      BUILD_DIR/src/hacktice*.o(.bss*);
+      BUILD_DIR/src/game/cold*.o(.bss*);
+      . = ALIGN(0x40);
+   }
+   END_NOLOAD(engine)
 
    BEGIN_NOLOAD(zbuffer)
    {

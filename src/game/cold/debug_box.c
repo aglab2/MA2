@@ -22,15 +22,15 @@
 #include "game/geo_misc.h"
 #include "engine/math_util.h"
 #include "engine/colors.h"
-#include "area.h"
-#include "level_update.h"
-#include "print.h"
+#include "game/area.h"
+#include "game/level_update.h"
+#include "game/print.h"
 #include "engine/surface_collision.h"
 #include "engine/surface_load.h"
-#include "object_list_processor.h"
+#include "game/object_list_processor.h"
 #include "behavior_data.h"
 
-#include "debug_box.h"
+#include "game/debug_box.h"
 
 #ifdef VISUAL_DEBUG
 

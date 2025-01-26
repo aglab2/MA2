@@ -1,12 +1,12 @@
 #include <ultra64.h>
 #include <PR/os_internal_reg.h>
 #include "game/area.h"
-#include "game_init.h"
+#include "game/game_init.h"
 #include "game/level_update.h"
 
-#include "profiling.h"
-#include "fasttext.h"
-#include "puppyprint.h"
+#include "game/profiling.h"
+#include "game/fasttext.h"
+#include "game/puppyprint.h"
 
 #ifdef USE_PROFILER
 

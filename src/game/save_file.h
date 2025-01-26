@@ -37,7 +37,7 @@ struct SaveFile {
     u32 flags;
 
     // Star flags for each course.
-    u64 courseStars[1 + COURSE_COUNT];
+    u64 courseStars[60];
 
     struct SaveBlockSignature signature; // 32 bits
 };
