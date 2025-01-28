@@ -428,8 +428,7 @@ def batchify(geo, model, header):
                     if curr_attached_batch_idx not in curr_seen_batches:
                         curr_seen_batches[curr_attached_batch_idx] = dl
                         batch = batch_allocator.get_batch(curr_attached_batch_idx)
-                        curr_batched_data.append(f"\tBATCH_SET_TEXTURE({batch.idx}),\n")
-                        curr_batched_data.append(f"\tBATCH_LOAD_DL({dl}),\n")
+                        curr_batched_data.append(f"\tBATCH_DL({batch.idx}, {dl}),\n")
                     else:
                         # Append the dl to the batch that has been already seen, then clear it out
                         seen_dl = curr_seen_batches[curr_attached_batch_idx]
@@ -518,7 +517,7 @@ def serialize_model(model, layered_batches, path):
         for layer, batches in layered_batches.items():
             f_model.write(f"static struct BatchDisplayLists batch_lvl_dls_{layer}[] = {{\n")
             for batch in batches:
-                f_model.write(f"\t{{ mat_{batch.name}, mat_revert_{batch.name} }},\n")
+                f_model.write(f"\t{{ mat_{batch.name}, mat_revert_{batch.name}, DL_HINT(mat_{batch.name}), DL_HINT(mat_revert_{batch.name}), }},\n")
             f_model.write('};\n\n')
             name = deduce_level_name(batches[0].name)
 

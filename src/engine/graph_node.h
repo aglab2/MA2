@@ -152,6 +152,7 @@ struct GraphNodePerspective {
 struct DisplayListNode {
     Mtx *transform;
     void *displayList;
+    u8 hint;
     struct DisplayListNode *next;
 };
 

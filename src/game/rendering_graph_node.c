@@ -271,7 +271,7 @@ static ALWAYS_INLINE void render_lists(Gfx **ptempGfxHead, Mtx **pprevMtx, struc
             gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(currList->transform), (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
             prevMtx = currList->transform;
         }
-        gSPDisplayList(tempGfxHead++, currList->displayList);
+        _gSPDisplayListRaw(tempGfxHead++, currList->displayList, currList->hint);
         currList = currList->next;
     } while (currList != NULL);
 #undef prevMtx
@@ -296,10 +296,10 @@ static int render_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32 wantMo
             continue;
 
         const struct BatchDisplayLists* batchDisplayLists = &arr->batchDLs[batch];
-        gSPDisplayList(tempGfxHead++, batchDisplayLists->startDl);
+        _gSPDisplayListRaw(tempGfxHead++, batchDisplayLists->startDl, batchDisplayLists->startHint);
         amountRendered++;
         render_lists(&tempGfxHead, &prevMtx, batchLinks->head);
-        gSPDisplayList(tempGfxHead++, batchDisplayLists->endDl);
+        _gSPDisplayListRaw(tempGfxHead++, batchDisplayLists->endDl, batchDisplayLists->endHint);
 
         if (course) {
             gSPDisplayList(tempGfxHead++, dl_course_common_revert);
@@ -438,12 +438,13 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
     gDisplayListHead = tempGfxHead;
 }
 
-static void append_dl(struct DisplayListLinks* list, void* dl)
+static void append_dl_with_hint(struct DisplayListLinks* list, void* dl, u8 hint)
 {
     struct DisplayListNode *listNode = main_pool_alloc(sizeof(struct DisplayListNode));
 
     listNode->transform = gMatStackFixed[gMatStackIndex];
     listNode->displayList = dl;
+    listNode->hint = hint;
     listNode->next = NULL;
     if (list->head == NULL) {
         list->head = listNode;
@@ -451,6 +452,11 @@ static void append_dl(struct DisplayListLinks* list, void* dl)
         list->tail->next = listNode;
     }
     list->tail = listNode;
+}
+
+static void append_dl(struct DisplayListLinks* list, void* dl)
+{
+    return append_dl_with_hint(list, dl, 0);
 }
 
 /**
@@ -858,7 +864,9 @@ void geo_process_display_list(struct GraphNodeDisplayList *node) {
 
 struct BatchCmd
 {
-    u32 idx;
+    s16 idx;
+    u8 _pad;
+    u8 hint;
     void* data;
 };
 
@@ -872,7 +880,7 @@ static void geo_lvl_append_display_list(void *displayList, s32 layer) {
     struct BatchCmd* data = segmented_to_virtual(displayList);
     while (data->idx)
     {
-        append_dl(&task->batches[-data->idx - 1], data->data);
+        append_dl_with_hint(&task->batches[-data->idx - 1], data->data, data->hint);
         data++;
     }
 #else

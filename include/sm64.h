@@ -77,13 +77,20 @@ enum RenderLayers {
     LAYER_COUNT
 };
 
-#define BATCH_SET_TEXTURE(texture) ((uint32_t) (-texture-1))
-#define BATCH_LOAD_DL(dl) ((uint32_t)dl) 
+#define DL_HINT(dl) _DLHINTVALUE(sizeof(dl) / 8)
+
+#define BATCH_SET_TEXTURE(texture) (((-texture-1)) << 16)
+#define BATCH_LOAD_DL(dl) ((uint32_t)dl)
+
+#define BATCH_DL(texture, dl) (BATCH_SET_TEXTURE(texture) | DL_HINT(dl)), ((uint32_t)dl)
+
 #define BATCH_END() 0
 
 struct BatchDisplayLists {
     const void* startDl;
     const void* endDl;
+    u8 startHint;
+    u8 endHint;
 };
 
 struct BatchLevelDisplayLists
