@@ -28,6 +28,7 @@ static void fail_warp_set_safe_pos(struct MarioState *m)
     sSafePosCameraYaw = s8DirModeYawOffset;
     sSafePosArea = gCurrAreaIndex;
     sSafePosLevel = gCurrLevelNum;
+    m->extraGravityEnabled = 0;
 }
 
 void fail_warp_mario_set_safe_pos(struct MarioState *m, struct Surface *floor)

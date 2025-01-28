@@ -7,7 +7,7 @@ void scroll_speeder_object_00743C6C_mesh_layer_1_vtx_1() {
 	int deltaY;
 	Vtx *vertices = segmented_to_virtual(speeder_object_00743C6C_mesh_layer_1_vtx_1);
 
-	deltaY = (int)(0.12999999523162842 * 0x20) % height;
+	deltaY = (int)(0.72999999523162842 * 0x20) % height;
 
 	if (absi(currentY) > height) {
 		deltaY -= (int)(absi(currentY) / height) * height * signum_positive(deltaY);

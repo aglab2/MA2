@@ -572,5 +572,6 @@ extern const BehaviorScript bhvDcMove[];
 extern const BehaviorScript bhvShutter[];
 extern const BehaviorScript bhvCollision[];
 extern const BehaviorScript bhvGravFlip[];
+extern const BehaviorScript bhvSpeeder[];
 
 #endif // BEHAVIOR_DATA_H

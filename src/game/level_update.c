@@ -589,7 +589,7 @@ void check_instant_warp(void) {
                     {
                         if (gMarioStates->pos[1] < -14000.f)
                         {
-                            newArea = 3;
+                            newArea = gCurrAreaIndex == 2 ? 3 : 13;
                         }
                     }
                     break;

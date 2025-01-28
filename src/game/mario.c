@@ -1739,12 +1739,6 @@ void rail_debug()
             cast[selected]--;
     }
 
-    print_text_fmt_int(20, 20, "C0 %d", desc->c0);
-    print_text_fmt_int(20, 40, "C1 %d", desc->c1);
-    print_text_fmt_int(20, 60, "M0 %d", desc->m0);
-    print_text_fmt_int(20, 80, "MUL %d", desc->mult);
-    print_text_fmt_int(20, 10, "A %x" , desc->angleOffset);
-
     print_text_fmt_int(20, 200, "S %d", selected);
 }
 

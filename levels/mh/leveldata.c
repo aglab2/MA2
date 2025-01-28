@@ -39,7 +39,7 @@ IWDHeader* iw_descs_mh[] = {
     &iw_mh_area4.header,
 };
 
-static const LDLDesc loop_desc = { 2, 1, 0, 1, 0x4000 };
+static const LDLDesc loop_desc = { 0 };
 
 static const RailDesc rail_mh_area1[] = {
     RAIL_TRAJ(mh_area_1_spline_1089_object_00BE4D68_001),

@@ -54,9 +54,8 @@ static IWDirectionAreasDesc iw_area11 = {
     { .z_high = 10, .z_low = 12, },
 };
 
-static IWDirectionAreasDesc iw_area12 = {
-    IWDT_DIRECTIONS,
-    { .z_high = 11 },
+static IWDHeader iw_area12 = {
+    IWDT_CG_DROP
 };
 
 IWDHeader* iw_descs_fr[] = {
@@ -71,5 +70,6 @@ IWDHeader* iw_descs_fr[] = {
     &iw_area9.header,
     &iw_area10.header,
     &iw_area11.header,
-    &iw_area12.header,
+    &iw_area12,
+    NULL,
 };

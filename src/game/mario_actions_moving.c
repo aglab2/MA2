@@ -14,6 +14,7 @@
 #include "memory.h"
 #include "behavior_data.h"
 #include "rumble_init.h"
+#include "game/game_init.h"
 
 #include "aglab_rail.h"
 
@@ -423,11 +424,19 @@ s32 update_decelerating_speed(struct MarioState *m) {
 void update_walking_speed(struct MarioState *m) {
     f32 maxTargetSpeed;
     f32 targetSpeed;
+    f32 limit = 48.f;
 
     if (m->floor != NULL && m->floor->type == SURFACE_SLOW) {
         maxTargetSpeed = 24.0f;
     } else {
         maxTargetSpeed = 32.0f;
+    }
+
+    if (m->forwardVelOverrideDeadline > gGlobalTimer)
+    {
+        f32 diff = 8 * (m->forwardVelOverrideDeadline - gGlobalTimer);
+        maxTargetSpeed += diff;
+        limit += diff;
     }
 
     targetSpeed = m->intendedMag < maxTargetSpeed ? m->intendedMag : maxTargetSpeed;
@@ -446,8 +455,8 @@ void update_walking_speed(struct MarioState *m) {
         m->forwardVel -= 1.0f;
     }
 
-    if (m->forwardVel > 48.0f) {
-        m->forwardVel = 48.0f;
+    if (m->forwardVel > limit) {
+        m->forwardVel = limit;
     }
 
 #ifdef VELOCITY_BASED_TURN_SPEED
@@ -784,7 +793,7 @@ s32 act_walking(struct MarioState *m) {
         return TRUE;
     }
 
-    if (m->input & INPUT_IDLE) {
+    if ((m->forwardVelOverrideDeadline < gGlobalTimer) && (m->input & INPUT_IDLE)) {
         return begin_braking_action(m);
     }
 

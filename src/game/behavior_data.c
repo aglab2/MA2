@@ -6122,3 +6122,12 @@ const BehaviorScript bhvGravFlip[] = {
         CALL_NATIVE(bhv_gravflip_loop),
     END_LOOP(),
 };
+
+extern void bhv_speeder_loop();
+extern const BehaviorScript bhvSpeeder[] = {
+    BEGIN(OBJ_LIST_POLELIKE),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO)),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_speeder_loop),
+    END_LOOP(),
+};
