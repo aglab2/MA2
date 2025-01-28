@@ -29,6 +29,7 @@
 #include "game/puppycam2.h"
 #include "game/puppyprint.h"
 #include "game/emutest.h"
+#include "behavior_data.h"
 
 #include "config.h"
 
@@ -379,12 +380,6 @@ static void level_cmd_clear_level(void) {
 
 extern struct GraphNodeCamera* sCameraCache;
 static void level_cmd_alloc_level_pool(void) {
-    if (CMD_GET(s16, 2))
-    {
-        if ((u32) gMainPoolCurrentRegion->start < (u32) 0x80400000)
-            gMainPoolCurrentRegion->start = (u8*) 0x80400000;
-    }
-
     sCurrentCmd = CMD_NEXT;
     // drop cache, we just loaded bunch of bytes in
     sCameraCache = NULL;
@@ -482,6 +477,9 @@ static void level_cmd_23(void) {
     sCurrentCmd = CMD_NEXT;
 }
 
+static u8 sStarIds = 0;
+static u8 sCheckpointIds = 63;
+
 static void level_cmd_init_mario(void) {
     vec3_zero(gMarioSpawnInfo->startPos);
     vec3_zero(gMarioSpawnInfo->startAngle);
@@ -494,7 +492,29 @@ static void level_cmd_init_mario(void) {
     gMarioSpawnInfo->model = gLoadedGraphNodes[CMD_GET(ModelID16, 0x2)]; // u8, 3?
     gMarioSpawnInfo->next = NULL;
 
+    sStarIds = 0;
+    sCheckpointIds = 63;
+    if ((u32) gMainPoolCurrentRegion->start < (u32) 0x80400000)
+        gMainPoolCurrentRegion->start = (u8*) 0x80400000;
+
     sCurrentCmd = CMD_NEXT;
+}
+
+static void patch_behav_params(struct SpawnInfo *spawnInfo) {
+    if (spawnInfo->behaviorScript == bhvStar
+     || spawnInfo->behaviorScript == bhvHiddenStar
+     || spawnInfo->behaviorScript == bhvHiddenRedCoinStar
+    ) {
+        spawnInfo->behaviorArg = ((u32) (sStarIds++)) << 24;
+    }
+
+    if (spawnInfo->behaviorScript == bhvCheckpoint) {
+        spawnInfo->behaviorArg = ((u32) (sCheckpointIds--)) << 24;
+    }
+
+    if (spawnInfo->behaviorScript == bhvGoal) {
+        spawnInfo->behaviorArg = 63U << 24;
+    }
 }
 
 static void level_cmd_place_object(void) {
@@ -521,6 +541,8 @@ static void level_cmd_place_object(void) {
         spawnInfo->behaviorScript = CMD_GET(void *, 20);
         spawnInfo->model = gLoadedGraphNodes[model];
         spawnInfo->next = gAreas[sCurrAreaIndex].objectSpawnInfos;
+
+        patch_behav_params(spawnInfo);
 
         gAreas[sCurrAreaIndex].objectSpawnInfos = spawnInfo;
     }

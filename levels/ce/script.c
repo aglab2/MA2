@@ -26,6 +26,17 @@ extern const GeoLayout ce_area_visual[];
 #define ce_area_8 ce_area_visual
 #define ce_area_9 ce_area_visual
 #define ce_area_10 ce_area_visual
+
+#include "levels/ce/area_1/collision.inc.c"
+#include "levels/ce/area_10/collision.inc.c"
+#include "levels/ce/area_2/collision.inc.c"
+#include "levels/ce/area_3/collision.inc.c"
+#include "levels/ce/area_4/collision.inc.c"
+#include "levels/ce/area_5/collision.inc.c"
+#include "levels/ce/area_6/collision.inc.c"
+#include "levels/ce/area_7/collision.inc.c"
+#include "levels/ce/area_8/collision.inc.c"
+#include "levels/ce/area_9/collision.inc.c"
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_ce_entry[] = {
@@ -37,6 +48,7 @@ const LevelScript level_ce_entry[] = {
 	LOAD_RAW(0x0F, _common0_geoSegmentRomStart, _common0_geoSegmentRomEnd), 
 	LOAD_YAY0(0x05, _group1_yay0SegmentRomStart, _group1_yay0SegmentRomEnd), 
 	LOAD_RAW(0x0C, _group1_geoSegmentRomStart, _group1_geoSegmentRomEnd), 
+	LOAD_MIO0(0xa, _water_skybox_mio0SegmentRomStart, _water_skybox_mio0SegmentRomEnd), 
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
 	JUMP_LINK(script_func_global_1), 
