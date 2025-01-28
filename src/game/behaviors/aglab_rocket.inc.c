@@ -31,7 +31,16 @@ void bhv_rocket_loop()
     }
     else
     {
-        o->oPosY += 70.f;
+        if (0 == o->oBehParams2ndByte)
+        {
+            o->oPosY += 70.f;
+        }
+        else
+        {
+            o->oPosX += 70.f * sins(o->oFaceAngleYaw);
+            o->oPosZ += 70.f * coss(o->oFaceAngleYaw);
+        }
+        
         if (o->oTimer > 110)
         {
             set_mario_action(gMarioStates, ACT_FLYING, 0);
@@ -51,7 +60,8 @@ void bhv_rocket_spawner_loop()
             {
                 o->oAction = 1;
                 o->parentObj = spawn_object(o, MODEL_ROCKET, bhvRocket);
-                o->parentObj->oFaceAngleYaw += 0x8000;
+                if (0 == o->oBehParams2ndByte)
+                    o->parentObj->oFaceAngleYaw += 0x8000;
             }
         }
         break;
