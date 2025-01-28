@@ -233,7 +233,7 @@ int zipline_cancel()
     return 0;
 }
 
-static void prepare_mario_for_zipline_drop(Vec3f trajDirection)
+static void prepare_mario_for_zipline_drop_rail(Vec3f trajDirection)
 {
 #if 0
                 cur_obj_become_intangible();
@@ -241,8 +241,6 @@ static void prepare_mario_for_zipline_drop(Vec3f trajDirection)
 #endif
 
     f32 mag = sqrtf(trajDirection[0] * trajDirection[0] + trajDirection[2] * trajDirection[2]);
-    if (mag < 0.001f)
-        return;
 
     trajDirection[0] /= mag;
     trajDirection[2] /= mag;
@@ -251,6 +249,28 @@ static void prepare_mario_for_zipline_drop(Vec3f trajDirection)
 
     gMarioStates->vel[0] = trajDirection[0];
     gMarioStates->vel[1] = 0;
+    gMarioStates->vel[2] = trajDirection[2];
+    gMarioStates->forwardVel = sqrtf(gMarioStates->vel[0] * gMarioStates->vel[0] + gMarioStates->vel[2] * gMarioStates->vel[2]);
+    
+    s16 angle = atan2s(trajDirection[2], trajDirection[0]);
+    if (abs_angle_diff(gMarioStates->faceAngle[1], angle) > 0x4000)
+    {
+        gMarioStates->forwardVel = -gMarioStates->forwardVel;
+    }
+}
+
+static void prepare_mario_for_zipline_drop_loop(Vec3f trajDirection)
+{
+    f32 mag = sqrtf(trajDirection[0] * trajDirection[0] + trajDirection[1] * trajDirection[1] + trajDirection[2] * trajDirection[2]);
+    trajDirection[0] /= mag;
+    trajDirection[1] /= mag;
+    trajDirection[2] /= mag;
+    trajDirection[0] *= sForwardVel;
+    trajDirection[1] *= sForwardVel;
+    trajDirection[2] *= sForwardVel;
+
+    gMarioStates->vel[0] = trajDirection[0];
+    gMarioStates->vel[1] = trajDirection[1];
     gMarioStates->vel[2] = trajDirection[2];
     gMarioStates->forwardVel = sqrtf(gMarioStates->vel[0] * gMarioStates->vel[0] + gMarioStates->vel[2] * gMarioStates->vel[2]);
     
@@ -360,13 +380,17 @@ int zipline_step()
 
         }
 
-        prepare_mario_for_zipline_drop(trajDirection);
+        if (sLoopDesc)
+            prepare_mario_for_zipline_drop_loop(trajDirection);
+        else
+            prepare_mario_for_zipline_drop_rail(trajDirection);
+
         f32 movAmt = sForwardVel / dirMag;
 
         f32 preProgress = sZiplineProgress;
         sZiplineProgress += movAmt;
 
-#if 1
+#if 0
         print_text_fmt_int(20, 20, "CP %d", (int) sZiplineCurPoint);
         print_text_fmt_int(20, 40, "PR %d", (int) (1000.f * sZiplineProgress));
 #endif

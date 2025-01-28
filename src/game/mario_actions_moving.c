@@ -1263,7 +1263,14 @@ s32 act_rail_grind(struct MarioState *m)
     }
 
     if (zipline_step()) {
+        int butt = 0;
         if (onLoop)
+        {
+            f32 floorHeight = find_floor_height(m->pos[0], m->pos[1], m->pos[2]);
+            butt = m->pos[1] - floorHeight < 20.f;
+        }
+
+        if (butt)
             return set_mario_action(m, ACT_BUTT_SLIDE, 0);
         else
             return set_mario_action(m, ACT_FREEFALL, 0);
