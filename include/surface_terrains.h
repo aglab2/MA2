@@ -291,7 +291,7 @@ enum TerrainType {
 // Collision Vertices Read Initiate
 #define COL_VERTEX_INIT(vtxNum) vtxNum
 
-#define CELL_HEIGHT_LIMIT_CV            (20000-10)
+#define CELL_HEIGHT_LIMIT_CV            (22000-10)
 #define FLOOR_LOWER_LIMIT_CV            (-27000+10)
 
 #define CLAMP_SIMPLE(x, min, max) ((x) < (min) ? (min) : ((x) > (max) ? (max) : (x)))
