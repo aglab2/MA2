@@ -288,12 +288,16 @@ int zipline_step()
         if (sLoopDesc)
         {
             // adjust rotation angle from the center
+#if 0
             Vec3f loopDiff;
             vec3f_diff(loopDiff, gMarioStates->pos, sTrajectoryMiddle);
             if (gIsGravityFlipped)
                 loopDiff[1] = 9000.f - loopDiff[1];
 
             gMarioStates->faceAngle[sLoopDesc->m0] = sLoopDesc->angleOffset + sLoopDesc->mult * atan2s(loopDiff[sLoopDesc->c0], loopDiff[sLoopDesc->c1]);
+#else
+            gMarioStates->faceAngle[0] = atan2s(trajDirection[1], sqrtf(trajDirection[0] * trajDirection[0] + trajDirection[2] * trajDirection[2])) - 0x4000;
+#endif
         }
         else
         {
