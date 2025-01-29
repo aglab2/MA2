@@ -1,5 +1,4 @@
-Gfx spring_springbottomh_ci8_aligner[] = {gsSPEndDisplayList()};
-u8 spring_springbottomh_ci8[] = {
+ALIGNED8 u8 spring_springbottomh_ci8[] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 
 	0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x03, 
 	0x02, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 
@@ -259,8 +258,7 @@ u8 spring_springbottomh_ci8[] = {
 	
 };
 
-Gfx spring_springbottomh_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 spring_springbottomh_pal_rgba16[] = {
+ALIGNED8 u8 spring_springbottomh_pal_rgba16[] = {
 	0xde, 0xf7, 0xc6, 0x31, 0xe6, 0xf9, 0xe7, 0x39, 
 	0xce, 0x73, 0xd6, 0xb5, 0xa5, 0x29, 0x9c, 0xe7, 
 	0xb5, 0xad, 0xad, 0x6b, 0xbd, 0xef, 0x94, 0xa5, 
@@ -270,8 +268,7 @@ u8 spring_springbottomh_pal_rgba16[] = {
 	0x00, 0x01, 
 };
 
-Gfx spring_springtop_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 spring_springtop_rgba16[] = {
+ALIGNED8 u8 spring_springtop_rgba16[] = {
 	0xf8, 0x85, 0xf8, 0x85, 0xf8, 0x85, 0xf8, 0x85, 
 	0xf8, 0x85, 0xf8, 0x85, 0xf8, 0x85, 0xf8, 0x85, 
 	0xf8, 0x85, 0xf8, 0x85, 0xf8, 0x85, 0xf8, 0x85, 
@@ -787,8 +784,7 @@ u8 spring_springtop_rgba16[] = {
 	
 };
 
-Gfx spring_springunder_ci8_aligner[] = {gsSPEndDisplayList()};
-u8 spring_springunder_ci8[] = {
+ALIGNED8 u8 spring_springunder_ci8[] = {
 	0x00, 0x00, 0x00, 0x01, 0x02, 0x02, 0x03, 0x00, 
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 
 	0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
@@ -920,8 +916,7 @@ u8 spring_springunder_ci8[] = {
 	
 };
 
-Gfx spring_springunder_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 spring_springunder_pal_rgba16[] = {
+ALIGNED8 u8 spring_springunder_pal_rgba16[] = {
 	0xf8, 0x01, 0xe0, 0x01, 0xe8, 0x01, 0xf0, 0x01, 
 	0xf8, 0x85, 0xf8, 0x87, 0xd8, 0x01, 0xd0, 0x01, 
 	0xd0, 0x0b, 0xc8, 0x0d, 0xc0, 0x0d, 0xa0, 0x27, 
@@ -950,8 +945,7 @@ u8 spring_springunder_pal_rgba16[] = {
 	0x50, 0x2f, 0x48, 0x2b, 
 };
 
-Gfx spring_springbottomb_ci8_aligner[] = {gsSPEndDisplayList()};
-u8 spring_springbottomb_ci8[] = {
+ALIGNED8 u8 spring_springbottomb_ci8[] = {
 	0x00, 0x01, 0x02, 0x00, 0x02, 0x02, 0x00, 0x01, 
 	0x03, 0x04, 0x03, 0x03, 0x03, 0x03, 0x04, 0x03, 
 	0x03, 0x03, 0x03, 0x05, 0x03, 0x04, 0x03, 0x03, 
@@ -1083,8 +1077,7 @@ u8 spring_springbottomb_ci8[] = {
 	
 };
 
-Gfx spring_springbottomb_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 spring_springbottomb_pal_rgba16[] = {
+ALIGNED8 u8 spring_springbottomb_pal_rgba16[] = {
 	0xb5, 0xad, 0xa5, 0x29, 0xad, 0x6b, 0xc6, 0x31, 
 	0xbd, 0xef, 0xce, 0x73, 0x94, 0xa5, 0x84, 0x21, 
 	0x73, 0x9d, 0x8c, 0x63, 0x7b, 0xdf, 0x5a, 0xd7, 
@@ -1093,8 +1086,7 @@ u8 spring_springbottomb_pal_rgba16[] = {
 	0x42, 0x11, 
 };
 
-Gfx spring_springspring_ci8_aligner[] = {gsSPEndDisplayList()};
-u8 spring_springspring_ci8[] = {
+ALIGNED8 u8 spring_springspring_ci8[] = {
 	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 
 	0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f, 
 	0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x15, 0x16, 
@@ -1226,8 +1218,7 @@ u8 spring_springspring_ci8[] = {
 	
 };
 
-Gfx spring_springspring_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 spring_springspring_pal_rgba16[] = {
+ALIGNED8 u8 spring_springspring_pal_rgba16[] = {
 	0x31, 0xd3, 0x21, 0x4f, 0x19, 0x0b, 0x19, 0x0d, 
 	0x21, 0x4d, 0x29, 0x8f, 0x32, 0x15, 0x3a, 0x59, 
 	0x42, 0x9b, 0x4a, 0xdd, 0x52, 0xdd, 0x53, 0x1f, 
@@ -1268,8 +1259,7 @@ u8 spring_springspring_pal_rgba16[] = {
 	0x63, 0xa1, 0x42, 0xdd, 
 };
 
-Gfx spring_bomb2_ci8_aligner[] = {gsSPEndDisplayList()};
-u8 spring_bomb2_ci8[] = {
+ALIGNED8 u8 spring_bomb2_ci8[] = {
 	0x00, 0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x03, 
 	0x06, 0x03, 0x03, 0x03, 0x03, 0x06, 0x03, 0x03, 
 	0x06, 0x06, 0x07, 0x06, 0x06, 0x06, 0x08, 0x03, 
@@ -1529,8 +1519,7 @@ u8 spring_bomb2_ci8[] = {
 	
 };
 
-Gfx spring_bomb2_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 spring_bomb2_pal_rgba16[] = {
+ALIGNED8 u8 spring_bomb2_pal_rgba16[] = {
 	0xf8, 0x01, 0xfa, 0x11, 0xc0, 0x01, 0x60, 0x01, 
 	0x68, 0x01, 0x70, 0x01, 0x58, 0x01, 0x78, 0x01, 
 	0x80, 0x01, 0xf0, 0x01, 0xe8, 0x01, 0xf9, 0xcf, 
@@ -1562,7 +1551,7 @@ u8 spring_bomb2_pal_rgba16[] = {
 	0x28, 0x19, 0x30, 0x19, 
 };
 
-Vtx spring_spring_mesh_layer_1_vtx_0[51] = {
+Vtx spring_spring_mesh_layer_1_vtx_0[49] = {
 	{{ {33, 32, 33}, 0, {972, -135}, {78, 63, 78, 255} }},
 	{{ {46, 32, 0}, 0, {2, -135}, {110, 63, 0, 255} }},
 	{{ {0, 52, 0}, 0, {487, 1526}, {0, 127, 0, 255} }},
@@ -1595,8 +1584,6 @@ Vtx spring_spring_mesh_layer_1_vtx_0[51] = {
 	{{ {-33, 12, 33}, 0, {941, 483}, {174, 205, 82, 255} }},
 	{{ {0, 12, 46}, 0, {33, 483}, {0, 205, 116, 255} }},
 	{{ {-33, 32, 33}, 0, {941, -135}, {178, 63, 78, 255} }},
-	{{ {-33, 32, 33}, 0, {941, -135}, {178, 63, 78, 255} }},
-	{{ {0, 12, 46}, 0, {33, 483}, {0, 205, 116, 255} }},
 	{{ {0, 32, 46}, 0, {33, -135}, {0, 63, 110, 255} }},
 	{{ {-46, 12, 0}, 0, {941, 483}, {140, 205, 0, 255} }},
 	{{ {-33, 12, 33}, 0, {33, 483}, {174, 205, 82, 255} }},
@@ -1747,7 +1734,7 @@ Gfx spring_spring_mesh_layer_1[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_8b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0),
 	gsDPSetTileSize(0, 0, 0, 124, 252),
-	gsSPVertex(spring_spring_mesh_layer_1_vtx_0 + 0, 32, 0),
+	gsSPVertex(spring_spring_mesh_layer_1_vtx_0 + 0, 49, 0),
 	gsSP2Triangles(0, 1, 2, 0, 3, 4, 2, 0),
 	gsSP2Triangles(5, 6, 2, 0, 7, 8, 2, 0),
 	gsSP2Triangles(9, 10, 2, 0, 11, 12, 2, 0),
@@ -1755,13 +1742,11 @@ Gfx spring_spring_mesh_layer_1[] = {
 	gsSP2Triangles(17, 18, 19, 0, 19, 18, 20, 0),
 	gsSP2Triangles(21, 22, 23, 0, 23, 22, 24, 0),
 	gsSP2Triangles(25, 26, 27, 0, 27, 26, 28, 0),
-	gsSP1Triangle(29, 30, 31, 0),
-	gsSPVertex(spring_spring_mesh_layer_1_vtx_0 + 32, 19, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
-	gsSP2Triangles(5, 4, 6, 0, 7, 8, 9, 0),
-	gsSP2Triangles(9, 8, 10, 0, 11, 12, 13, 0),
-	gsSP2Triangles(13, 12, 14, 0, 15, 16, 17, 0),
-	gsSP1Triangle(17, 16, 18, 0),
+	gsSP2Triangles(29, 30, 31, 0, 31, 30, 32, 0),
+	gsSP2Triangles(33, 34, 35, 0, 35, 34, 36, 0),
+	gsSP2Triangles(37, 38, 39, 0, 39, 38, 40, 0),
+	gsSP2Triangles(41, 42, 43, 0, 43, 42, 44, 0),
+	gsSP2Triangles(45, 46, 47, 0, 47, 46, 48, 0),
 	gsDPPipeSync(),
 	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, spring_springtop_rgba16),
@@ -1792,6 +1777,7 @@ Gfx spring_spring_mesh_layer_1[] = {
 	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
 	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
 	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, spring_springbottomb_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 20),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_8b_LOAD_BLOCK, 1, spring_springbottomb_ci8),
@@ -1802,6 +1788,7 @@ Gfx spring_spring_mesh_layer_1[] = {
 	gsSP2Triangles(2, 5, 6, 0, 2, 7, 8, 0),
 	gsSP2Triangles(9, 10, 2, 0, 2, 11, 12, 0),
 	gsSP2Triangles(13, 14, 2, 0, 2, 15, 16, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, spring_springspring_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 149),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_8b_LOAD_BLOCK, 1, spring_springspring_ci8),
@@ -1815,6 +1802,7 @@ Gfx spring_spring_mesh_layer_1[] = {
 	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
 	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
 	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, spring_bomb2_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 113),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_8b_LOAD_BLOCK, 1, spring_bomb2_ci8),

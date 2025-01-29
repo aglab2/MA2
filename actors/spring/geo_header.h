@@ -10,7 +10,7 @@ extern u8 spring_springspring_ci8[];
 extern u8 spring_springspring_pal_rgba16[];
 extern u8 spring_bomb2_ci8[];
 extern u8 spring_bomb2_pal_rgba16[];
-extern Vtx spring_spring_mesh_layer_1_vtx_0[51];
+extern Vtx spring_spring_mesh_layer_1_vtx_0[49];
 extern Vtx spring_spring_mesh_layer_1_vtx_1[9];
 extern Vtx spring_spring_mesh_layer_1_vtx_2[32];
 extern Vtx spring_spring_mesh_layer_1_vtx_3[17];
