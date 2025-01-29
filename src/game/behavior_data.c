@@ -5753,7 +5753,7 @@ extern void bhv_checkpoint_init();
 extern void bhv_checkpoint_loop();
 const BehaviorScript bhvCheckpoint[] = {
     BEGIN(OBJ_LIST_LEVEL),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
     CALL_NATIVE(bhv_checkpoint_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_checkpoint_loop),
@@ -6133,5 +6133,21 @@ extern const BehaviorScript bhvSpeeder[] = {
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO)),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_speeder_loop),
+    END_LOOP(),
+};
+
+extern void bhv_ce_timer_loop();
+extern const BehaviorScript bhvCeTimer[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ce_timer_loop),
+    END_LOOP(),
+};
+
+extern void bhv_ce_timer_star_loop();
+extern const BehaviorScript bhvCETimerStar[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ce_timer_star_loop),
     END_LOOP(),
 };

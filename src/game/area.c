@@ -68,20 +68,22 @@ s16 gCurrLevelNum = LEVEL_MIN;
  * the spawn behavior executed, the index of that behavior is used with sSpawnTypeFromWarpBhv
 */
 
-const BehaviorScript *sWarpBhvSpawnTable[] = {
+static const BehaviorScript *sWarpBhvSpawnTable[] = {
     bhvDoorWarp,                bhvStar,                   bhvExitPodiumWarp,          bhvWarp,
     bhvWarpPipe,                bhvFadingWarp,             bhvInstantActiveWarp,       bhvAirborneWarp,
     bhvHardAirKnockBackWarp,    bhvSpinAirborneCircleWarp, bhvDeathWarp,               bhvSpinAirborneWarp,
     bhvFlyingWarp,              bhvSwimmingWarp,           bhvPaintingStarCollectWarp, bhvPaintingDeathWarp,
     bhvAirborneStarCollectWarp, bhvAirborneDeathWarp,      bhvLaunchStarCollectWarp,   bhvLaunchDeathWarp,
+    bhvCheckpoint, bhvGoal
 };
 
-u8 sSpawnTypeFromWarpBhv[] = {
+static const u8 sSpawnTypeFromWarpBhv[] = {
     MARIO_SPAWN_DOOR_WARP,             MARIO_SPAWN_IDLE,                 MARIO_SPAWN_PIPE,                  MARIO_SPAWN_PIPE,
     MARIO_SPAWN_PIPE,                  MARIO_SPAWN_TELEPORT,             MARIO_SPAWN_INSTANT_ACTIVE,        MARIO_SPAWN_AIRBORNE,
     MARIO_SPAWN_HARD_AIR_KNOCKBACK,    MARIO_SPAWN_SPIN_AIRBORNE_CIRCLE, MARIO_SPAWN_DEATH,                 MARIO_SPAWN_SPIN_AIRBORNE,
     MARIO_SPAWN_FLYING,                MARIO_SPAWN_SWIMMING,             MARIO_SPAWN_PAINTING_STAR_COLLECT, MARIO_SPAWN_PAINTING_DEATH,
     MARIO_SPAWN_AIRBORNE_STAR_COLLECT, MARIO_SPAWN_AIRBORNE_DEATH,       MARIO_SPAWN_LAUNCH_STAR_COLLECT,   MARIO_SPAWN_LAUNCH_DEATH,
+    MARIO_SPAWN_DEATH,                 MARIO_SPAWN_DEATH,
 };
 
 #ifdef F3DEX3
@@ -144,9 +146,9 @@ u32 get_mario_spawn_type(struct Object *obj) {
 }
 
 struct ObjectWarpNode *area_get_warp_node(u8 id) {
-    if (id == WARP_NODE_FAIL_WARP)
+    if (id == WARP_NODE_FAIL_WARP || (0xe0 <= id && id < 0xf0))
     {
-        return fail_warp_area_get_warp_node();
+        return fail_warp_area_get_warp_node(id);
     }
 
     struct ObjectWarpNode *node = NULL;

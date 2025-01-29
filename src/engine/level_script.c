@@ -30,6 +30,7 @@
 #include "game/puppyprint.h"
 #include "game/emutest.h"
 #include "behavior_data.h"
+#include "game/fail_warp.h"
 
 #include "config.h"
 
@@ -500,20 +501,37 @@ static void level_cmd_init_mario(void) {
     sCurrentCmd = CMD_NEXT;
 }
 
+static register_checkpoint_warp(int id) {
+    struct ObjectWarpNode *warpNode = main_pool_alloc(sizeof(struct ObjectWarpNode));
+
+    warpNode->node.id = id;
+    warpNode->node.destLevel = gCurrLevelNum;
+    warpNode->node.destArea = sCurrAreaIndex;
+    warpNode->node.destNode = id;
+
+    fail_warp_register_checkpoint_node(warpNode, id);
+}
+
 static void patch_behav_params(struct SpawnInfo *spawnInfo) {
     if (spawnInfo->behaviorScript == bhvStar
      || spawnInfo->behaviorScript == bhvHiddenStar
      || spawnInfo->behaviorScript == bhvHiddenRedCoinStar
+     || spawnInfo->behaviorScript == bhvCETimerStar
     ) {
         spawnInfo->behaviorArg = ((u32) (sStarIds++)) << 24;
     }
 
     if (spawnInfo->behaviorScript == bhvCheckpoint) {
-        spawnInfo->behaviorArg = ((u32) (sCheckpointIds--)) << 24;
+        u32 id = sCheckpointIds--;
+        u32 warpId = 0xf0 - (64 - id);
+        spawnInfo->behaviorArg = (id << 24) | (warpId << 16);
+        register_checkpoint_warp(warpId);
     }
 
     if (spawnInfo->behaviorScript == bhvGoal) {
-        spawnInfo->behaviorArg = 63U << 24;
+        u32 warpId = 0xf0 - 1;
+        spawnInfo->behaviorArg = (63U << 24) | (warpId << 16);
+        register_checkpoint_warp(warpId);
     }
 }
 

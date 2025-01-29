@@ -1,3 +1,5 @@
+#include "game/fail_warp.h"
+
 static struct ObjectHitbox sCheckpointGoalInteract = {
     /* interactType:      */ INTERACT_STAR_OR_KEY,
     /* downOffset:        */ 0,
@@ -15,7 +17,7 @@ void bhv_checkpoint_init()
     u8 starId = GET_BPARAM1(o->oBehParams);
     obj_set_hitbox(o, &sCheckpointGoalInteract);
     u64 currentLevelStarFlags = save_file_get_star_flags((gCurrSaveFileNum - 1), COURSE_NUM_TO_INDEX(gCurrCourseNum));
-#if 1
+#if 0
     if (0) { 
 #else
     if (currentLevelStarFlags & (1ULL << starId)) {
@@ -39,6 +41,10 @@ void bhv_checkpoint_loop()
             o->oGeoRoll -= 0x200;
             o->oOpacity = 255 - o->oGeoRoll * 255 / 0x4000;
         }
+    }
+
+    if (o->oDistanceToMario < 100.0f) {
+        sSafeWarpId = GET_BPARAM2(o->oBehParams);
     }
 }
 

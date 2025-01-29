@@ -15,6 +15,8 @@ static int sSafePosLevel = 0;
 static Vec3s sSafePos = {};
 static s16 sSafePosAngle;
 static s16 sSafePosCameraYaw;
+u8 sSafeWarpId;
+static void* sCheckpointNodes[16];
 
 static void fail_warp_set_safe_pos(struct MarioState *m)
 {
@@ -29,6 +31,7 @@ static void fail_warp_set_safe_pos(struct MarioState *m)
     sSafePosArea = gCurrAreaIndex;
     sSafePosLevel = gCurrLevelNum;
     m->extraGravityEnabled = 0;
+    sSafeWarpId = WARP_NODE_FAIL_WARP;
 }
 
 void fail_warp_mario_set_safe_pos(struct MarioState *m, struct Surface *floor)
@@ -43,11 +46,13 @@ void fail_warp_mario_set_safe_pos(struct MarioState *m, struct Surface *floor)
     if (floor->object)
         return;
 
-    if (sSafePosArea != gCurrAreaIndex || sSafePosLevel != gCurrLevelNum) 
+    if (sSafePosLevel != gCurrLevelNum) 
     {
         return fail_warp_set_safe_pos(m);
     }
-    
+
+    m->extraGravityEnabled = 0;
+#if 0
     bool slideTerrain = (m->area->terrainType & TERRAIN_MASK) == TERRAIN_SLIDE;
     if (slideTerrain)
         return;
@@ -57,45 +62,48 @@ void fail_warp_mario_set_safe_pos(struct MarioState *m, struct Surface *floor)
     {
         return fail_warp_set_safe_pos(m);
     }
+#endif
 }
 
 static struct ObjectWarpNode sSpoofedWarpNode = { };
 struct Object gFailWarpSpoofedWarpObject = { };
-struct ObjectWarpNode* fail_warp_area_get_warp_node(void)
+struct ObjectWarpNode* fail_warp_area_get_warp_node(int id)
 {
-    sSpoofedWarpNode.node.id = WARP_NODE_FAIL_WARP;
-    sSpoofedWarpNode.node.destLevel = gCurrLevelNum;
-    sSpoofedWarpNode.node.destArea = gCurrAreaIndex;
-    sSpoofedWarpNode.node.destNode = WARP_NODE_FAIL_WARP;
-    sSpoofedWarpNode.next = NULL;
-    gFailWarpSpoofedWarpObject.oPosX = sSafePos[0];
-    gFailWarpSpoofedWarpObject.oPosY = sSafePos[1];
-    gFailWarpSpoofedWarpObject.oPosZ = sSafePos[2];
-    gFailWarpSpoofedWarpObject.oFaceAngleYaw = sSafePosAngle;
-    gFailWarpSpoofedWarpObject.oMoveAngleYaw = sSafePosAngle;
-    gFailWarpSpoofedWarpObject.behavior = bhvInstantActiveWarp;
-    
-    return &sSpoofedWarpNode;
+    if (id == WARP_NODE_FAIL_WARP)
+    {
+        sSpoofedWarpNode.node.id = WARP_NODE_FAIL_WARP;
+        sSpoofedWarpNode.node.destLevel = sSafePosLevel;
+        sSpoofedWarpNode.node.destArea = sSafePosArea;
+        sSpoofedWarpNode.node.destNode = WARP_NODE_FAIL_WARP;
+        sSpoofedWarpNode.next = NULL;
+        gFailWarpSpoofedWarpObject.oPosX = sSafePos[0];
+        gFailWarpSpoofedWarpObject.oPosY = sSafePos[1];
+        gFailWarpSpoofedWarpObject.oPosZ = sSafePos[2];
+        gFailWarpSpoofedWarpObject.oFaceAngleYaw = sSafePosAngle;
+        gFailWarpSpoofedWarpObject.oMoveAngleYaw = sSafePosAngle;
+        gFailWarpSpoofedWarpObject.behavior = bhvInstantActiveWarp;
+        
+        return &sSpoofedWarpNode;
+    }
+    else
+    {
+        return sCheckpointNodes[id - 0xe0];
+    }
 }
 
 static void spoof_warp(struct MarioState *m)
 {
     m->usedObj = &gFailWarpSpoofedWarpObject;
-    gFailWarpSpoofedWarpObject.oBehParams = WARP_NODE_FAIL_WARP << 16;
-    gFailWarpSpoofedWarpObject.oBehParams2ndByte = WARP_NODE_FAIL_WARP;
+    gFailWarpSpoofedWarpObject.oBehParams = sSafeWarpId << 16;
+    gFailWarpSpoofedWarpObject.oBehParams2ndByte = sSafeWarpId;
 }
 
 void fail_warp_pre_level_trigger_warp(struct MarioState *m, s32* warpOp)
 {
-    int damage = 0;
     if (*warpOp != WARP_OP_DEATH && *warpOp != WARP_OP_WARP_FLOOR)
     {
         return;
     }
-
-    damage = 0x400;
-    if (m->health <= damage + 0x80)
-        return;
 
     m->health = (m->health & (~0xff)) + 0x80;
     if ((m->action == ACT_BURNING_JUMP) || (m->action == ACT_BURNING_FALL) || (m->action == ACT_BURNING_GROUND))
@@ -103,7 +111,6 @@ void fail_warp_pre_level_trigger_warp(struct MarioState *m, s32* warpOp)
         drop_and_set_mario_action(m, ACT_FREEFALL, 0);
     }
 
-    m->hurtCounter = damage / 0x40;
     *warpOp = WARP_OP_TELEPORT;
     spoof_warp(m);
 }
@@ -136,4 +143,9 @@ void fail_warp_trigger(struct MarioState* m)
 {
     spoof_warp(m);
     level_trigger_warp(m, WARP_OP_TELEPORT);
+}
+
+void fail_warp_register_checkpoint_node(void* node, int id)
+{
+    sCheckpointNodes[id - 0xe0] = node;
 }

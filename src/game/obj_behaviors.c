@@ -771,11 +771,16 @@ UNUSED s32 debug_sequence_tracker(s16 debugInputSequence[]) {
 #include "behaviors/mips.inc.c"
 #include "behaviors/yoshi.inc.c"
 
+// Because we are dealing with multi areas transitions,
+// it tends to be necessary to have a scratch to pass around between the objects.
+static int aglabGlobalScratch[0x10];
+
 #include "behaviors/aglab.inc.c"
 #include "behaviors/aglab_wc.inc.c"
 #include "behaviors/aglab_pl.inc.c"
 #include "behaviors/aglab_ph.inc.c"
 #include "behaviors/aglab_gf.inc.c"
+#include "behaviors/aglab_ce.inc.c"
 #include "behaviors/aglab_ms.inc.c"
 #include "behaviors/aglab_aq.inc.c"
 #include "behaviors/aglab_hb.inc.c"
