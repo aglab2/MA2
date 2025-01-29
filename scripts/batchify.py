@@ -332,7 +332,7 @@ class ContentDeduper:
     def __init__(self):
         self._dedup_data_to_mat = {}
         self._dedup_mat_to_real_mat = {}
-        self._deduped_names = {}
+        self.deduped_names = {}
 
     def dedup(self, mat_dl_entry):
         mat_dl = mat_dl_entry.name
@@ -343,12 +343,15 @@ class ContentDeduper:
         if mat_data in self._dedup_data_to_mat:
             mat_real_dl = self._dedup_data_to_mat[mat_data]
             self._dedup_mat_to_real_mat[mat_dl] = mat_real_dl
-            self._deduped_names[mat_dl] = mat_real_dl
+            self.deduped_names[mat_dl] = mat_real_dl
             return mat_real_dl
         else:
             self._dedup_data_to_mat[mat_data] = mat_dl
             self._dedup_mat_to_real_mat[mat_dl] = mat_dl
             return mat_dl
+
+    def keep(self, mat_dl_entry):
+        return mat_dl_entry.name == self.dedup(mat_dl_entry)
 
 # Tracks the current index for batched textures for a given layer
 class BatchIndexAllocator:
@@ -514,7 +517,7 @@ def serialize_geo(geo, area, path):
 
         f_geo.write('''};\n\n''')
 
-def serialize_header(header, layered_batches, path):
+def serialize_header(header, layered_batches, replacements, path):
     with open(path, "w") as f_header:
         for data in header:
             if data.startswith('extern Gfx mat_'):
@@ -531,23 +534,35 @@ def serialize_header(header, layered_batches, path):
 
         f_header.write(f'extern struct BatchLevelDisplayLists batch_lvl_dls_{name}[LAYER_COUNT];\n')
 
+        for k, v in replacements.items():
+            f_header.write(f"#define {k} {v}\n")
+
 def serialize_model(model, layered_batches, path):
+    replacemenets = {}
     with open(path, "w") as f_model:
-        content_deduper = ContentDeduper()
+        model.entries = [entry for entry in model.entries if entry]
+        for _ in range(10):
+            content_deduper = ContentDeduper()
+            model.entries = [entry for entry in model.entries if content_deduper.keep(entry)]
+            if not content_deduper.deduped_names:
+                break
+
+            replacemenets.update(content_deduper.deduped_names)
+
+            # We are not relying on 'defines' here for sole purpose of deduping again on the next cycle
+            # Current deduper is very primitive - it cannot known about the defined names - string must match exactly
+            for k, v in content_deduper.deduped_names.items():
+                for entry in model.entries:
+                    for i, line in enumerate(entry.data):
+                        entry.data[i] = line.replace(k, v)
+
         for entry in model.entries:
-            if not entry:
-                continue
+            mark_static = entry.decl.startswith('Gfx mat_')
+            f_model.write(("UNUSED static " if mark_static else "") + entry.decl)
+            for line in entry.data:
+                f_model.write(line.replace("gsSPEndDisplayList()", "gsSPEndDisplayListHint(4)"))
 
-            real_name = content_deduper.dedup(entry)
-            if real_name == entry.name:
-                mark_static = entry.decl.startswith('Gfx mat_')
-                f_model.write(("UNUSED static " if mark_static else "") + entry.decl)
-                for line in entry.data:
-                    f_model.write(line.replace("gsSPEndDisplayList()", "gsSPEndDisplayListHint(4)"))
-
-                f_model.write('\n')
-            else:
-                f_model.write(f"#define {entry.name} {real_name}\n")
+            f_model.write('\n')
 
         name = None
         for layer, batches in layered_batches.items():
@@ -561,6 +576,8 @@ def serialize_model(model, layered_batches, path):
         for layer, batches in layered_batches.items():
             f_model.write(f"\t[ {layer} ] = {{ {len(batches)}, batch_lvl_dls_{layer} }},\n")
         f_model.write('};\n')
+
+    return replacemenets
 
 if '__main__' in __name__:
     path = f"{sys.argv[1]}/visual"
@@ -579,5 +596,5 @@ if '__main__' in __name__:
     model_patched_path = f"{path}/model_lvl.inc.c"
 
     serialize_geo(geo, area, geo_patched_path)
-    serialize_header(header, layered_batches, header_patched_path)
-    serialize_model(model, layered_batches, model_patched_path)
+    replacements = serialize_model(model, layered_batches, model_patched_path)
+    serialize_header(header, layered_batches, replacements, header_patched_path)
