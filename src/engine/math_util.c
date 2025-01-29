@@ -1045,50 +1045,23 @@ f32 find_surface_on_ray(Vec3f orig, Vec3f dir, struct Surface **hit_surface, Vec
     return max_length;
 }
 
-// Constructs a float in registers, which can be faster than gcc's default of loading a float from rodata.
-// Especially fast for halfword floats, which get loaded with a `lui` + `mtc1`.
-static ALWAYS_INLINE float construct_float(const float f)
-{
-    u32 r;
-    float f_out;
-    u32 i = *(u32*)(&f);
-
-    if (!__builtin_constant_p(i))
-    {
-        return *(float*)(&i);
-    }
-
-    u32 upper = (i >> 16);
-    u32 lower = (i >>  0) & 0xFFFF;
-
-    if ((i & 0xFFFF) == 0) {
-        __asm__ ("lui %0, %1"
-                                : "=r"(r)
-                                : "K"(upper));
-    } else if ((i & 0xFFFF0000) == 0) {
-        __asm__ ("ori %0, $0, %1"
-                                : "+r"(r)
-                                : "K"(lower));
-    } else {
-        __asm__ ("lui %0, %1"
-                                : "=r"(r)
-                                : "K"(upper));
-        __asm__ ("ori %0, %0, %1"
-                                : "+r"(r)
-                                : "K"(lower));
-    }
-
-    __asm__ ("mtc1 %1, %0"
-                         : "=f"(f_out)
-                         : "r"(r));
-    return f_out;
+ALWAYS_INLINE void invalidateMatrixMemory(void* addr) {
+    asm volatile (
+        "cache 0xD, 0x00(%0);"
+        "cache 0xD, 0x10(%0);"
+        "cache 0xD, 0x20(%0);"
+        "cache 0xD, 0x30(%0);"
+        :
+        : "r"(addr)
+    );
 }
 
 // Converts a floating point matrix to a fixed point matrix
 // Makes some assumptions about certain fields in the matrix, which will always be true for valid matrices.
 OPTIMIZE_OS void mtxf_to_mtx_fast(s16* dst, float* src) {
+    invalidateMatrixMemory(dst);
     PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);
-    float scale = construct_float(65536.0f / WORLD_SCALE);
+    float scale = 65536.0f / WORLD_SCALE;
     // Iterate over pairs of values in the input matrix
     for (int i = 0; i < 8; i++)
     {

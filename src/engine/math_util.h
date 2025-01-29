@@ -701,4 +701,12 @@ ALWAYS_INLINE f32 smoothstep(f32 from, f32 to, f32 amount) {
     return lerpf(from, to, amount);
 }
 
+ALWAYS_INLINE void invalidateCDE(void* addr) {
+    asm volatile (
+        "cache 0xD, 0x00(%0);"
+        :
+        : "r"(addr)
+    );
+}
+
 #endif // MATH_UTIL_H
