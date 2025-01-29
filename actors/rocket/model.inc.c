@@ -1,5 +1,4 @@
-Gfx rocket_rocket_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 rocket_rocket_ci4[] = {
+ALIGNED8 u8 rocket_rocket_ci4[] = {
 	0x01, 0x10, 0x20, 0x02, 0x22, 0x22, 0x22, 0x00, 
 	0x00, 0x22, 0x20, 0x02, 0x02, 0x12, 0x12, 0x22, 
 	0x34, 0x41, 0x14, 0x43, 0x33, 0x41, 0x44, 0x44, 
@@ -259,16 +258,14 @@ u8 rocket_rocket_ci4[] = {
 	
 };
 
-Gfx rocket_rocket_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 rocket_rocket_pal_rgba16[] = {
+ALIGNED8 u8 rocket_rocket_pal_rgba16[] = {
 	0xb5, 0xad, 0x9c, 0xe7, 0xad, 0x6b, 0x63, 0x19, 
 	0x84, 0x21, 0x52, 0x95, 0x4a, 0x13, 0xce, 0x73, 
 	0x21, 0x09, 0x00, 0x01, 0xe7, 0x39, 0xf0, 0x01, 
 	0xa0, 0x01, 0xea, 0x95, 0xdd, 0x6b, 
 };
 
-Gfx rocket_sikake_03_64_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 rocket_sikake_03_64_ci4[] = {
+ALIGNED8 u8 rocket_sikake_03_64_ci4[] = {
 	0x00, 0x00, 0x00, 0x01, 0x23, 0x23, 0x33, 0x33, 
 	0x32, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 
 	0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x23, 
@@ -528,8 +525,7 @@ u8 rocket_sikake_03_64_ci4[] = {
 	
 };
 
-Gfx rocket_sikake_03_64_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 rocket_sikake_03_64_pal_rgba16[] = {
+ALIGNED8 u8 rocket_sikake_03_64_pal_rgba16[] = {
 	0xc5, 0xef, 0x4a, 0x53, 0x18, 0xc7, 0x00, 0x01, 
 	0x31, 0x8d, 0x6b, 0x5b, 0x20, 0xc1, 0x8c, 0x63, 
 	0xb5, 0x6d, 0xf7, 0xbf, 0xd6, 0xb5, 0x39, 0x01, 
@@ -537,8 +533,7 @@ u8 rocket_sikake_03_64_pal_rgba16[] = {
 	
 };
 
-Gfx rocket_rgb_rgba32_aligner[] = {gsSPEndDisplayList()};
-u8 rocket_rgb_rgba32[] = {
+ALIGNED8 u8 rocket_rgb_rgba32[] = {
 	0xff, 0xf7, 0x00, 0xff, 0xff, 0xf7, 0x00, 0xff, 
 	0xff, 0xf7, 0x00, 0xff, 0xff, 0xf7, 0x00, 0xff, 
 	0xff, 0xf7, 0x00, 0xff, 0xff, 0xf7, 0x00, 0xff, 
@@ -1054,8 +1049,7 @@ u8 rocket_rgb_rgba32[] = {
 	
 };
 
-Gfx rocket_springbottomh_ci8_aligner[] = {gsSPEndDisplayList()};
-u8 rocket_springbottomh_ci8[] = {
+ALIGNED8 u8 rocket_springbottomh_ci8[] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 
 	0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x02, 0x03, 
 	0x02, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 
@@ -1315,8 +1309,7 @@ u8 rocket_springbottomh_ci8[] = {
 	
 };
 
-Gfx rocket_springbottomh_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 rocket_springbottomh_pal_rgba16[] = {
+ALIGNED8 u8 rocket_springbottomh_pal_rgba16[] = {
 	0xde, 0xf7, 0xc6, 0x31, 0xe6, 0xf9, 0xe7, 0x39, 
 	0xce, 0x73, 0xd6, 0xb5, 0xa5, 0x29, 0x9c, 0xe7, 
 	0xb5, 0xad, 0xad, 0x6b, 0xbd, 0xef, 0x94, 0xa5, 
@@ -1326,8 +1319,7 @@ u8 rocket_springbottomh_pal_rgba16[] = {
 	0x00, 0x01, 
 };
 
-Gfx rocket_rocket2_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 rocket_rocket2_ci4[] = {
+ALIGNED8 u8 rocket_rocket2_ci4[] = {
 	0x01, 0x11, 0x23, 0x42, 0x56, 0x67, 0x77, 0x77, 
 	0x77, 0x77, 0x89, 0xa6, 0xbc, 0xcc, 0xbb, 0xbc, 
 	0xcc, 0xc6, 0x63, 0x02, 0xd2, 0x22, 0x22, 0x22, 
@@ -1587,8 +1579,7 @@ u8 rocket_rocket2_ci4[] = {
 	
 };
 
-Gfx rocket_rocket2_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 rocket_rocket2_pal_rgba16[] = {
+ALIGNED8 u8 rocket_rocket2_pal_rgba16[] = {
 	0x63, 0x19, 0xa5, 0x29, 0xce, 0x73, 0x7b, 0xdf, 
 	0xb5, 0xad, 0x29, 0x4d, 0x00, 0x01, 0xee, 0x01, 
 	0xfe, 0xc3, 0xac, 0x83, 0x08, 0x49, 0x18, 0xc5, 
@@ -1596,8 +1587,7 @@ u8 rocket_rocket2_pal_rgba16[] = {
 	
 };
 
-Gfx rocket_switchbottom_ci8_aligner[] = {gsSPEndDisplayList()};
-u8 rocket_switchbottom_ci8[] = {
+ALIGNED8 u8 rocket_switchbottom_ci8[] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 
 	0x02, 0x03, 0x04, 0x05, 0x05, 0x06, 0x05, 0x05, 
 	0x07, 0x07, 0x04, 0x07, 0x05, 0x08, 0x09, 0x02, 
@@ -1857,8 +1847,7 @@ u8 rocket_switchbottom_ci8[] = {
 	
 };
 
-Gfx rocket_switchbottom_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 rocket_switchbottom_pal_rgba16[] = {
+ALIGNED8 u8 rocket_switchbottom_pal_rgba16[] = {
 	0x00, 0x01, 0x08, 0x43, 0x63, 0x19, 0x94, 0xa5, 
 	0xce, 0x73, 0xd6, 0xb5, 0xde, 0xf7, 0xc6, 0x31, 
 	0xbd, 0xef, 0x9c, 0xe7, 0xe7, 0x39, 0xef, 0x7b, 
@@ -1883,8 +1872,7 @@ u8 rocket_switchbottom_pal_rgba16[] = {
 	
 };
 
-Gfx rocket_springbottomb_ci8_aligner[] = {gsSPEndDisplayList()};
-u8 rocket_springbottomb_ci8[] = {
+ALIGNED8 u8 rocket_springbottomb_ci8[] = {
 	0x00, 0x01, 0x02, 0x00, 0x02, 0x02, 0x00, 0x01, 
 	0x03, 0x04, 0x03, 0x03, 0x03, 0x03, 0x04, 0x03, 
 	0x03, 0x03, 0x03, 0x05, 0x03, 0x04, 0x03, 0x03, 
@@ -2016,8 +2004,7 @@ u8 rocket_springbottomb_ci8[] = {
 	
 };
 
-Gfx rocket_springbottomb_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 rocket_springbottomb_pal_rgba16[] = {
+ALIGNED8 u8 rocket_springbottomb_pal_rgba16[] = {
 	0xb5, 0xad, 0xa5, 0x29, 0xad, 0x6b, 0xc6, 0x31, 
 	0xbd, 0xef, 0xce, 0x73, 0x94, 0xa5, 0x84, 0x21, 
 	0x73, 0x9d, 0x8c, 0x63, 0x7b, 0xdf, 0x5a, 0xd7, 
@@ -2026,8 +2013,7 @@ u8 rocket_springbottomb_pal_rgba16[] = {
 	0x42, 0x11, 
 };
 
-Gfx rocket_bomb1_ci8_aligner[] = {gsSPEndDisplayList()};
-u8 rocket_bomb1_ci8[] = {
+ALIGNED8 u8 rocket_bomb1_ci8[] = {
 	0x00, 0x01, 0x02, 0x03, 0x02, 0x02, 0x02, 0x04, 
 	0x02, 0x02, 0x02, 0x02, 0x03, 0x05, 0x05, 0x06, 
 	0x06, 0x06, 0x06, 0x07, 0x06, 0x06, 0x06, 0x06, 
@@ -2159,8 +2145,7 @@ u8 rocket_bomb1_ci8[] = {
 	
 };
 
-Gfx rocket_bomb1_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 rocket_bomb1_pal_rgba16[] = {
+ALIGNED8 u8 rocket_bomb1_pal_rgba16[] = {
 	0xd6, 0xb5, 0xff, 0xff, 0xb5, 0xad, 0xad, 0x6b, 
 	0xa5, 0x29, 0x5a, 0xd7, 0x18, 0xc7, 0x21, 0x09, 
 	0x39, 0xcf, 0xc6, 0x31, 0x73, 0x9d, 0xbd, 0xef, 
@@ -2171,8 +2156,7 @@ u8 rocket_bomb1_pal_rgba16[] = {
 	0x63, 0x19, 0x08, 0x43, 0x08, 0x01, 
 };
 
-Gfx rocket_speeder_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 rocket_speeder_ci4[] = {
+ALIGNED8 u8 rocket_speeder_ci4[] = {
 	0x01, 0x11, 0x23, 0x42, 0x56, 0x67, 0x77, 0x77, 
 	0x77, 0x77, 0x89, 0xa6, 0xbc, 0xcc, 0xbb, 0xbc, 
 	0xcc, 0xc6, 0x63, 0x02, 0xd2, 0x22, 0x22, 0x22, 
@@ -2432,8 +2416,7 @@ u8 rocket_speeder_ci4[] = {
 	
 };
 
-Gfx rocket_speeder_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 rocket_speeder_pal_rgba16[] = {
+ALIGNED8 u8 rocket_speeder_pal_rgba16[] = {
 	0x63, 0x19, 0xa5, 0x29, 0xce, 0x73, 0x7b, 0xdf, 
 	0xb5, 0xad, 0x29, 0x4d, 0x00, 0x01, 0xee, 0x01, 
 	0xfe, 0xc3, 0xac, 0x83, 0x08, 0x49, 0x18, 0xc5, 
@@ -2503,7 +2486,7 @@ Vtx rocket_rocket_mesh_layer_1_vtx_0[48] = {
 	{{ {15, 0, -15}, 0, {-10, 2026}, {255, 255, 255, 255} }},
 };
 
-Vtx rocket_rocket_mesh_layer_1_vtx_1[51] = {
+Vtx rocket_rocket_mesh_layer_1_vtx_1[49] = {
 	{{ {0, -19, 22}, 0, {305, 1325}, {255, 255, 255, 255} }},
 	{{ {-15, -19, 15}, 0, {1711, 1325}, {255, 255, 255, 255} }},
 	{{ {0, -6, 0}, 0, {1012, -16}, {255, 255, 255, 255} }},
@@ -2536,8 +2519,6 @@ Vtx rocket_rocket_mesh_layer_1_vtx_1[51] = {
 	{{ {0, -19, -22}, 0, {297, 1309}, {255, 255, 255, 255} }},
 	{{ {-15, -19, -15}, 0, {1735, 1309}, {255, 255, 255, 255} }},
 	{{ {0, 0, -22}, 0, {297, -16}, {255, 255, 255, 255} }},
-	{{ {0, 0, -22}, 0, {297, -16}, {255, 255, 255, 255} }},
-	{{ {-15, -19, -15}, 0, {1735, 1309}, {255, 255, 255, 255} }},
 	{{ {-15, 0, -15}, 0, {1735, -16}, {255, 255, 255, 255} }},
 	{{ {15, -19, -15}, 0, {297, 1309}, {255, 255, 255, 255} }},
 	{{ {0, -19, -22}, 0, {1735, 1309}, {255, 255, 255, 255} }},
@@ -3070,7 +3051,7 @@ Vtx rocket_008_object_00737CAC_mesh_layer_1_vtx_1[17] = {
 	{{ {-68, -8, 28}, 0, {548, 1006}, {114, 246, 56, 255} }},
 };
 
-Vtx rocket_008_object_00737CAC_mesh_layer_1_vtx_2[39] = {
+Vtx rocket_008_object_00737CAC_mesh_layer_1_vtx_2[37] = {
 	{{ {-63, -6, 32}, 0, {1277, -1592}, {231, 132, 11, 255} }},
 	{{ {-70, 1, 29}, 0, {1983, -1945}, {155, 184, 231, 255} }},
 	{{ {-62, -8, 18}, 0, {1983, -1592}, {246, 161, 173, 255} }},
@@ -3103,8 +3084,6 @@ Vtx rocket_008_object_00737CAC_mesh_layer_1_vtx_2[39] = {
 	{{ {-74, -6, 35}, 0, {8, 625}, {85, 37, 87, 255} }},
 	{{ {-71, -13, 32}, 0, {972, 625}, {109, 237, 62, 255} }},
 	{{ {-70, -4, 30}, 0, {8, -179}, {92, 40, 78, 255} }},
-	{{ {-70, -4, 30}, 0, {8, -179}, {92, 40, 78, 255} }},
-	{{ {-71, -13, 32}, 0, {972, 625}, {109, 237, 62, 255} }},
 	{{ {-68, -8, 28}, 0, {972, -179}, {114, 246, 56, 255} }},
 	{{ {-77, 1, 32}, 0, {8, 625}, {60, 94, 61, 255} }},
 	{{ {-74, -6, 35}, 0, {972, 625}, {85, 37, 87, 255} }},
@@ -3148,7 +3127,7 @@ Gfx rocket_rocket_mesh_layer_1[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPVertex(rocket_rocket_mesh_layer_1_vtx_0 + 0, 32, 0),
+	gsSPVertex(rocket_rocket_mesh_layer_1_vtx_0 + 0, 48, 0),
 	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
 	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
 	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
@@ -3157,20 +3136,20 @@ Gfx rocket_rocket_mesh_layer_1[] = {
 	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
 	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
 	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
-	gsSPVertex(rocket_rocket_mesh_layer_1_vtx_0 + 32, 16, 0),
-	gsSP2Triangles(0, 1, 2, 0, 0, 3, 1, 0),
-	gsSP2Triangles(4, 3, 0, 0, 4, 5, 3, 0),
-	gsSP2Triangles(6, 5, 4, 0, 6, 7, 5, 0),
-	gsSP2Triangles(8, 7, 6, 0, 8, 9, 7, 0),
-	gsSP2Triangles(10, 9, 8, 0, 10, 11, 9, 0),
-	gsSP2Triangles(12, 11, 10, 0, 12, 13, 11, 0),
-	gsSP2Triangles(14, 13, 12, 0, 14, 15, 13, 0),
-	gsSP2Triangles(2, 15, 14, 0, 2, 1, 15, 0),
+	gsSP2Triangles(32, 33, 34, 0, 32, 35, 33, 0),
+	gsSP2Triangles(36, 35, 32, 0, 36, 37, 35, 0),
+	gsSP2Triangles(38, 37, 36, 0, 38, 39, 37, 0),
+	gsSP2Triangles(40, 39, 38, 0, 40, 41, 39, 0),
+	gsSP2Triangles(42, 41, 40, 0, 42, 43, 41, 0),
+	gsSP2Triangles(44, 43, 42, 0, 44, 45, 43, 0),
+	gsSP2Triangles(46, 45, 44, 0, 46, 47, 45, 0),
+	gsSP2Triangles(34, 47, 46, 0, 34, 33, 47, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, rocket_sikake_03_64_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, rocket_sikake_03_64_ci4),
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsSPVertex(rocket_rocket_mesh_layer_1_vtx_1 + 0, 32, 0),
+	gsSPVertex(rocket_rocket_mesh_layer_1_vtx_1 + 0, 49, 0),
 	gsSP2Triangles(0, 1, 2, 0, 3, 4, 2, 0),
 	gsSP2Triangles(5, 6, 2, 0, 7, 8, 2, 0),
 	gsSP2Triangles(9, 10, 2, 0, 11, 12, 2, 0),
@@ -3178,13 +3157,11 @@ Gfx rocket_rocket_mesh_layer_1[] = {
 	gsSP2Triangles(17, 18, 19, 0, 19, 18, 20, 0),
 	gsSP2Triangles(21, 22, 23, 0, 23, 22, 24, 0),
 	gsSP2Triangles(25, 26, 27, 0, 27, 26, 28, 0),
-	gsSP1Triangle(29, 30, 31, 0),
-	gsSPVertex(rocket_rocket_mesh_layer_1_vtx_1 + 32, 19, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
-	gsSP2Triangles(5, 4, 6, 0, 7, 8, 9, 0),
-	gsSP2Triangles(9, 8, 10, 0, 11, 12, 13, 0),
-	gsSP2Triangles(13, 12, 14, 0, 15, 16, 17, 0),
-	gsSP1Triangle(17, 16, 18, 0),
+	gsSP2Triangles(29, 30, 31, 0, 31, 30, 32, 0),
+	gsSP2Triangles(33, 34, 35, 0, 35, 34, 36, 0),
+	gsSP2Triangles(37, 38, 39, 0, 39, 38, 40, 0),
+	gsSP2Triangles(41, 42, 43, 0, 43, 42, 44, 0),
+	gsSP2Triangles(45, 46, 47, 0, 47, 46, 48, 0),
 	gsDPPipeSync(),
 	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
 	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
@@ -3302,6 +3279,7 @@ Gfx rocket_003_object_007392C4_mesh_layer_1[] = {
 	gsSP2Triangles(20, 21, 17, 0, 17, 21, 15, 0),
 	gsSP2Triangles(16, 22, 19, 0, 19, 22, 23, 0),
 	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, rocket_springbottomb_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 20),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_8b_LOAD_BLOCK, 1, rocket_springbottomb_ci8),
@@ -3312,6 +3290,7 @@ Gfx rocket_003_object_007392C4_mesh_layer_1[] = {
 	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
 	gsSP2Triangles(3, 2, 4, 0, 5, 6, 7, 0),
 	gsSP2Triangles(5, 7, 8, 0, 8, 7, 9, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, rocket_bomb1_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 30),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_8b_LOAD_BLOCK, 1, rocket_bomb1_ci8),
@@ -3345,7 +3324,7 @@ Gfx rocket_005_object_00738E0C_mesh_layer_1[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPVertex(rocket_005_object_00738E0C_mesh_layer_1_vtx_0 + 0, 32, 0),
+	gsSPVertex(rocket_005_object_00738E0C_mesh_layer_1_vtx_0 + 0, 36, 0),
 	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
 	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
 	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
@@ -3354,9 +3333,9 @@ Gfx rocket_005_object_00738E0C_mesh_layer_1[] = {
 	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
 	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
 	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
-	gsSPVertex(rocket_005_object_00738E0C_mesh_layer_1_vtx_0 + 32, 4, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSP2Triangles(32, 33, 34, 0, 34, 33, 35, 0),
 	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, rocket_sikake_03_64_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, rocket_sikake_03_64_ci4),
@@ -3450,7 +3429,7 @@ Gfx rocket_006_object_00738844_mesh_layer_1[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPVertex(rocket_006_object_00738844_mesh_layer_1_vtx_2 + 0, 32, 0),
+	gsSPVertex(rocket_006_object_00738844_mesh_layer_1_vtx_2 + 0, 36, 0),
 	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
 	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
 	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
@@ -3459,9 +3438,9 @@ Gfx rocket_006_object_00738844_mesh_layer_1[] = {
 	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
 	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
 	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
-	gsSPVertex(rocket_006_object_00738844_mesh_layer_1_vtx_2 + 32, 4, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSP2Triangles(32, 33, 34, 0, 34, 33, 35, 0),
 	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, rocket_rocket2_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, rocket_rocket2_ci4),
@@ -3526,7 +3505,7 @@ Gfx rocket_007_object_00738284_mesh_layer_1[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPVertex(rocket_007_object_00738284_mesh_layer_1_vtx_2 + 0, 32, 0),
+	gsSPVertex(rocket_007_object_00738284_mesh_layer_1_vtx_2 + 0, 36, 0),
 	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
 	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
 	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
@@ -3535,9 +3514,9 @@ Gfx rocket_007_object_00738284_mesh_layer_1[] = {
 	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
 	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
 	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
-	gsSPVertex(rocket_007_object_00738284_mesh_layer_1_vtx_2 + 32, 4, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSP2Triangles(32, 33, 34, 0, 34, 33, 35, 0),
 	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, rocket_speeder_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, rocket_speeder_ci4),
@@ -3602,7 +3581,7 @@ Gfx rocket_008_object_00737CAC_mesh_layer_1[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPVertex(rocket_008_object_00737CAC_mesh_layer_1_vtx_2 + 0, 32, 0),
+	gsSPVertex(rocket_008_object_00737CAC_mesh_layer_1_vtx_2 + 0, 37, 0),
 	gsSP2Triangles(0, 1, 2, 0, 3, 4, 1, 0),
 	gsSP2Triangles(5, 6, 7, 0, 7, 6, 8, 0),
 	gsSP2Triangles(9, 10, 11, 0, 11, 10, 12, 0),
@@ -3610,11 +3589,10 @@ Gfx rocket_008_object_00737CAC_mesh_layer_1[] = {
 	gsSP2Triangles(17, 18, 19, 0, 19, 18, 20, 0),
 	gsSP2Triangles(21, 22, 23, 0, 23, 22, 24, 0),
 	gsSP2Triangles(25, 26, 27, 0, 27, 26, 28, 0),
-	gsSP1Triangle(29, 30, 31, 0),
-	gsSPVertex(rocket_008_object_00737CAC_mesh_layer_1_vtx_2 + 32, 7, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
-	gsSP1Triangle(5, 4, 6, 0),
+	gsSP2Triangles(29, 30, 31, 0, 31, 30, 32, 0),
+	gsSP2Triangles(33, 34, 35, 0, 35, 34, 36, 0),
 	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, rocket_rocket2_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, rocket_rocket2_ci4),
