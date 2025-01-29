@@ -509,7 +509,7 @@ def serialize_model(model, layered_batches, path):
 
             f_model.write(entry.decl)
             for line in entry.data:
-                f_model.write(line)
+                f_model.write(line.replace("gsSPEndDisplayList()", "gsSPEndDisplayListHint(4)"))
 
             f_model.write('\n')
 

@@ -1,5 +1,4 @@
-Gfx fr_skybox_spacenbg64_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_spacenbg64_ci4[] = {
+ALIGNED8 u8 fr_skybox_spacenbg64_ci4[] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 
 	0x23, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 
@@ -259,8 +258,7 @@ u8 fr_skybox_spacenbg64_ci4[] = {
 	
 };
 
-Gfx fr_skybox_spacenbg64_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_spacenbg64_pal_rgba16[] = {
+ALIGNED8 u8 fr_skybox_spacenbg64_pal_rgba16[] = {
 	0x00, 0x01, 0x21, 0x4b, 0x11, 0x09, 0x00, 0x43, 
 	0x42, 0x55, 0x00, 0x03, 0x21, 0x4f, 0x08, 0xc3, 
 	0x10, 0xc5, 0x5b, 0x5b, 0x94, 0xe7, 0x10, 0xcb, 
@@ -268,8 +266,7 @@ u8 fr_skybox_spacenbg64_pal_rgba16[] = {
 	
 };
 
-Gfx fr_skybox_spacenbg128_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_spacenbg128_ci4[] = {
+ALIGNED8 u8 fr_skybox_spacenbg128_ci4[] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x11, 0x11, 
 	0x00, 0x00, 0x11, 0x10, 0x00, 0x00, 0x00, 0x01, 
 	0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
@@ -529,8 +526,7 @@ u8 fr_skybox_spacenbg128_ci4[] = {
 	
 };
 
-Gfx fr_skybox_spacenbg128_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_spacenbg128_pal_rgba16[] = {
+ALIGNED8 u8 fr_skybox_spacenbg128_pal_rgba16[] = {
 	0x08, 0x01, 0x00, 0x01, 0x08, 0x03, 0x10, 0x03, 
 	0x10, 0x41, 0x63, 0x69, 0x42, 0x63, 0x29, 0x53, 
 	0x29, 0x5f, 0x18, 0x47, 0x10, 0x47, 0x10, 0x8b, 
@@ -538,8 +534,7 @@ u8 fr_skybox_spacenbg128_pal_rgba16[] = {
 	
 };
 
-Gfx fr_skybox_space256_7_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space256_7_ci4[] = {
+ALIGNED8 u8 fr_skybox_space256_7_ci4[] = {
 	0x00, 0x00, 0x01, 0x02, 0x23, 0x22, 0x42, 0x20, 
 	0x10, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00, 0x00, 
 	0x00, 0x00, 0x00, 0x00, 0x22, 0x00, 0x00, 0x00, 
@@ -799,8 +794,7 @@ u8 fr_skybox_space256_7_ci4[] = {
 	
 };
 
-Gfx fr_skybox_space256_7_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space256_7_pal_rgba16[] = {
+ALIGNED8 u8 fr_skybox_space256_7_pal_rgba16[] = {
 	0x29, 0xdf, 0x11, 0x53, 0x00, 0x8d, 0x08, 0x89, 
 	0x00, 0x03, 0x32, 0x1b, 0x00, 0x01, 0x21, 0x93, 
 	0x92, 0x45, 0xff, 0x6b, 0xff, 0x9b, 0xd3, 0x07, 
@@ -808,8 +802,7 @@ u8 fr_skybox_space256_7_pal_rgba16[] = {
 	
 };
 
-Gfx fr_skybox_space64_19_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space64_19_ci4[] = {
+ALIGNED8 u8 fr_skybox_space64_19_ci4[] = {
 	0x01, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x10, 
 	0x02, 0x11, 0x12, 0x11, 0x11, 0x11, 0x11, 0x10, 
 	0x00, 0x01, 0x10, 0x11, 0x11, 0x11, 0x11, 0x00, 
@@ -1069,8 +1062,7 @@ u8 fr_skybox_space64_19_ci4[] = {
 	
 };
 
-Gfx fr_skybox_space64_19_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space64_19_pal_rgba16[] = {
+ALIGNED8 u8 fr_skybox_space64_19_pal_rgba16[] = {
 	0x28, 0xcf, 0x39, 0x13, 0x38, 0xc9, 0x00, 0x01, 
 	0x6a, 0x63, 0x6a, 0x1d, 0x62, 0x55, 0x91, 0xc9, 
 	0xac, 0x4d, 0xe3, 0xc7, 0x5a, 0x09, 0xf5, 0xc7, 
@@ -1078,8 +1070,7 @@ u8 fr_skybox_space64_19_pal_rgba16[] = {
 	
 };
 
-Gfx fr_skybox_space32_7_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space32_7_rgba16[] = {
+ALIGNED8 u8 fr_skybox_space32_7_rgba16[] = {
 	0x29, 0x93, 0x39, 0x8f, 0x49, 0xcd, 0x49, 0x8b, 
 	0x49, 0x89, 0x41, 0x87, 0x52, 0x0b, 0x49, 0xc9, 
 	0x52, 0x0b, 0x51, 0xcb, 0x52, 0x0f, 0x39, 0x8f, 
@@ -1339,8 +1330,7 @@ u8 fr_skybox_space32_7_rgba16[] = {
 	
 };
 
-Gfx fr_skybox_space128_17_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space128_17_ci4[] = {
+ALIGNED8 u8 fr_skybox_space128_17_ci4[] = {
 	0x01, 0x22, 0x22, 0x22, 0x22, 0x00, 0x13, 0x44, 
 	0x44, 0x44, 0x44, 0x44, 0x44, 0x44, 0x44, 0x44, 
 	0x44, 0x44, 0x44, 0x44, 0x44, 0x44, 0x44, 0x44, 
@@ -1600,8 +1590,7 @@ u8 fr_skybox_space128_17_ci4[] = {
 	
 };
 
-Gfx fr_skybox_space128_17_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space128_17_pal_rgba16[] = {
+ALIGNED8 u8 fr_skybox_space128_17_pal_rgba16[] = {
 	0x10, 0xd1, 0x08, 0x8d, 0x21, 0x57, 0x00, 0x47, 
 	0x00, 0x01, 0x29, 0x93, 0x48, 0xc5, 0xbc, 0x19, 
 	0x42, 0x1f, 0x82, 0x4d, 0xf7, 0x2d, 0xd5, 0xef, 
@@ -1609,8 +1598,7 @@ u8 fr_skybox_space128_17_pal_rgba16[] = {
 	
 };
 
-Gfx fr_skybox_space512_2_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space512_2_ci4[] = {
+ALIGNED8 u8 fr_skybox_space512_2_ci4[] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
@@ -1870,8 +1858,7 @@ u8 fr_skybox_space512_2_ci4[] = {
 	
 };
 
-Gfx fr_skybox_space512_2_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space512_2_pal_rgba16[] = {
+ALIGNED8 u8 fr_skybox_space512_2_pal_rgba16[] = {
 	0x4a, 0x27, 0x5a, 0xe1, 0x31, 0x17, 0x21, 0x53, 
 	0x41, 0xd7, 0x21, 0x51, 0x00, 0x01, 0x18, 0xc9, 
 	0x42, 0x1b, 0x7b, 0xa9, 0x4a, 0x5b, 0x32, 0x57, 
@@ -1879,8 +1866,7 @@ u8 fr_skybox_space512_2_pal_rgba16[] = {
 	
 };
 
-Gfx fr_skybox_space512_1_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space512_1_ci4[] = {
+ALIGNED8 u8 fr_skybox_space512_1_ci4[] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 
@@ -2140,8 +2126,7 @@ u8 fr_skybox_space512_1_ci4[] = {
 	
 };
 
-Gfx fr_skybox_space512_1_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space512_1_pal_rgba16[] = {
+ALIGNED8 u8 fr_skybox_space512_1_pal_rgba16[] = {
 	0x4a, 0x27, 0x52, 0x9f, 0x39, 0x19, 0x29, 0x51, 
 	0x73, 0x65, 0x73, 0xab, 0x41, 0xd5, 0x62, 0x9d, 
 	0x3a, 0x19, 0x39, 0xd5, 0x00, 0x01, 0x29, 0x0d, 
@@ -2149,8 +2134,7 @@ u8 fr_skybox_space512_1_pal_rgba16[] = {
 	
 };
 
-Gfx fr_skybox_space32_4_ci8_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space32_4_ci8[] = {
+ALIGNED8 u8 fr_skybox_space32_4_ci8[] = {
 	0x00, 0x01, 0x02, 0x03, 0x03, 0x04, 0x03, 0x03, 
 	0x03, 0x03, 0x02, 0x01, 0x02, 0x03, 0x03, 0x04, 
 	0x03, 0x03, 0x03, 0x03, 0x02, 0x01, 0x02, 0x03, 
@@ -2282,8 +2266,7 @@ u8 fr_skybox_space32_4_ci8[] = {
 	
 };
 
-Gfx fr_skybox_space32_4_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space32_4_pal_rgba16[] = {
+ALIGNED8 u8 fr_skybox_space32_4_pal_rgba16[] = {
 	0x08, 0x87, 0x10, 0x85, 0x18, 0x85, 0x18, 0x83, 
 	0x10, 0x83, 0x10, 0x87, 0x10, 0x43, 0x10, 0x41, 
 	0x18, 0xc5, 0x08, 0x85, 0x08, 0x43, 0x38, 0x03, 
@@ -2339,8 +2322,7 @@ u8 fr_skybox_space32_4_pal_rgba16[] = {
 	0x51, 0xcb, 0x39, 0x07, 
 };
 
-Gfx fr_skybox_space128_9_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space128_9_ci4[] = {
+ALIGNED8 u8 fr_skybox_space128_9_ci4[] = {
 	0x01, 0x01, 0x12, 0x01, 0x11, 0x01, 0x10, 0x13, 
 	0x10, 0x10, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 
 	0x40, 0x11, 0x11, 0x12, 0x10, 0x10, 0x01, 0x11, 
@@ -2600,8 +2582,7 @@ u8 fr_skybox_space128_9_ci4[] = {
 	
 };
 
-Gfx fr_skybox_space128_9_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space128_9_pal_rgba16[] = {
+ALIGNED8 u8 fr_skybox_space128_9_pal_rgba16[] = {
 	0x63, 0x65, 0x5b, 0x63, 0x84, 0x27, 0x3a, 0x59, 
 	0x42, 0x55, 0x29, 0x93, 0x29, 0x4d, 0x10, 0xc9, 
 	0x18, 0xc5, 0x4a, 0x1b, 0x63, 0x5b, 0x8c, 0xa3, 
@@ -2609,8 +2590,7 @@ u8 fr_skybox_space128_9_pal_rgba16[] = {
 	
 };
 
-Gfx fr_skybox_space64_20_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space64_20_ci4[] = {
+ALIGNED8 u8 fr_skybox_space64_20_ci4[] = {
 	0x01, 0x23, 0x45, 0x42, 0x11, 0x06, 0x24, 0x70, 
 	0x66, 0x21, 0x45, 0x66, 0x41, 0x66, 0x66, 0x17, 
 	0x68, 0x52, 0x16, 0x55, 0x21, 0x55, 0x88, 0x44, 
@@ -2870,8 +2850,7 @@ u8 fr_skybox_space64_20_ci4[] = {
 	
 };
 
-Gfx fr_skybox_space64_20_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space64_20_pal_rgba16[] = {
+ALIGNED8 u8 fr_skybox_space64_20_pal_rgba16[] = {
 	0xf9, 0x89, 0xfa, 0x53, 0xf9, 0x8d, 0xfb, 0xdd, 
 	0xf9, 0x8f, 0xf8, 0x45, 0xf9, 0x05, 0xfa, 0x4d, 
 	0xf8, 0x81, 0xfa, 0xd7, 0xfa, 0x89, 0xfb, 0x55, 
@@ -2879,8 +2858,7 @@ u8 fr_skybox_space64_20_pal_rgba16[] = {
 	
 };
 
-Gfx fr_skybox_et64_3_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_et64_3_ci4[] = {
+ALIGNED8 u8 fr_skybox_et64_3_ci4[] = {
 	0x00, 0x01, 0x11, 0x11, 0x11, 0x11, 0x10, 0x11, 
 	0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x11, 
 	0x11, 0x11, 0x00, 0x11, 0x11, 0x11, 0x11, 0x01, 
@@ -3140,8 +3118,7 @@ u8 fr_skybox_et64_3_ci4[] = {
 	
 };
 
-Gfx fr_skybox_et64_3_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_et64_3_pal_rgba16[] = {
+ALIGNED8 u8 fr_skybox_et64_3_pal_rgba16[] = {
 	0x33, 0x69, 0x1a, 0x63, 0x6c, 0xb1, 0xb6, 0xfd, 
 	0xff, 0xff, 0x01, 0x1b, 0x8c, 0xe7, 0x53, 0x5d, 
 	0x10, 0xcb, 0x00, 0x01, 0x52, 0x91, 0x29, 0x8d, 
@@ -3149,8 +3126,7 @@ u8 fr_skybox_et64_3_pal_rgba16[] = {
 	
 };
 
-Gfx fr_skybox_space64_18_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space64_18_ci4[] = {
+ALIGNED8 u8 fr_skybox_space64_18_ci4[] = {
 	0x01, 0x22, 0x22, 0x22, 0x22, 0x12, 0x22, 0x20, 
 	0x03, 0x22, 0x30, 0x22, 0x22, 0x22, 0x22, 0x10, 
 	0x30, 0x02, 0x20, 0x20, 0x02, 0x22, 0x22, 0x11, 
@@ -3410,8 +3386,7 @@ u8 fr_skybox_space64_18_ci4[] = {
 	
 };
 
-Gfx fr_skybox_space64_18_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space64_18_pal_rgba16[] = {
+ALIGNED8 u8 fr_skybox_space64_18_pal_rgba16[] = {
 	0x7a, 0x63, 0x72, 0x69, 0x9b, 0x6d, 0x82, 0x1d, 
 	0x48, 0xd3, 0x6a, 0x5b, 0x40, 0xc7, 0x82, 0x51, 
 	0xa4, 0x4f, 0x9a, 0x07, 0xe3, 0xc9, 0x00, 0x01, 
@@ -3419,8 +3394,7 @@ u8 fr_skybox_space64_18_pal_rgba16[] = {
 	
 };
 
-Gfx fr_skybox_space64_9_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space64_9_ci4[] = {
+ALIGNED8 u8 fr_skybox_space64_9_ci4[] = {
 	0x00, 0x00, 0x01, 0x11, 0x12, 0x34, 0x44, 0x44, 
 	0x45, 0x44, 0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 
 	0x67, 0x67, 0x77, 0x76, 0x44, 0x66, 0x65, 0x56, 
@@ -3680,8 +3654,7 @@ u8 fr_skybox_space64_9_ci4[] = {
 	
 };
 
-Gfx fr_skybox_space64_9_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space64_9_pal_rgba16[] = {
+ALIGNED8 u8 fr_skybox_space64_9_pal_rgba16[] = {
 	0x29, 0x17, 0x31, 0x1d, 0x8a, 0xef, 0x93, 0x2d, 
 	0x82, 0xab, 0x7a, 0x69, 0x59, 0xa5, 0x59, 0xa7, 
 	0x61, 0xa3, 0x72, 0x2b, 0x9b, 0x71, 0x93, 0x73, 
@@ -3689,8 +3662,7 @@ u8 fr_skybox_space64_9_pal_rgba16[] = {
 	
 };
 
-Gfx fr_skybox_space128_3_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space128_3_ci4[] = {
+ALIGNED8 u8 fr_skybox_space128_3_ci4[] = {
 	0x01, 0x11, 0x10, 0x01, 0x11, 0x11, 0x11, 0x12, 
 	0x31, 0x11, 0x11, 0x10, 0x11, 0x11, 0x11, 0x11, 
 	0x43, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 
@@ -3950,8 +3922,7 @@ u8 fr_skybox_space128_3_ci4[] = {
 	
 };
 
-Gfx fr_skybox_space128_3_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space128_3_pal_rgba16[] = {
+ALIGNED8 u8 fr_skybox_space128_3_pal_rgba16[] = {
 	0x8b, 0xab, 0x73, 0x65, 0x4a, 0x5b, 0x62, 0xe3, 
 	0x29, 0x4f, 0x21, 0x93, 0x29, 0x53, 0x4a, 0x5d, 
 	0x3a, 0x57, 0x18, 0xcb, 0x6b, 0x1d, 0x00, 0x01, 
@@ -3959,8 +3930,7 @@ u8 fr_skybox_space128_3_pal_rgba16[] = {
 	
 };
 
-Gfx fr_skybox_space128_4_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space128_4_ci4[] = {
+ALIGNED8 u8 fr_skybox_space128_4_ci4[] = {
 	0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x02, 
 	0x30, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
 	0x43, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
@@ -4220,8 +4190,7 @@ u8 fr_skybox_space128_4_ci4[] = {
 	
 };
 
-Gfx fr_skybox_space128_4_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space128_4_pal_rgba16[] = {
+ALIGNED8 u8 fr_skybox_space128_4_pal_rgba16[] = {
 	0x73, 0x27, 0x8b, 0xed, 0x4a, 0x5d, 0x62, 0xe3, 
 	0x29, 0x91, 0x21, 0x93, 0x6a, 0xdf, 0x4a, 0x19, 
 	0x3a, 0x59, 0x29, 0x55, 0x18, 0xcf, 0x18, 0xcb, 
@@ -4229,8 +4198,7 @@ u8 fr_skybox_space128_4_pal_rgba16[] = {
 	
 };
 
-Gfx fr_skybox_space128_2_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space128_2_ci4[] = {
+ALIGNED8 u8 fr_skybox_space128_2_ci4[] = {
 	0x00, 0x00, 0x11, 0x11, 0x10, 0x00, 0x00, 0x00, 
 	0x00, 0x00, 0x01, 0x00, 0x00, 0x11, 0x11, 0x11, 
 	0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x10, 0x11, 
@@ -4490,8 +4458,7 @@ u8 fr_skybox_space128_2_ci4[] = {
 	
 };
 
-Gfx fr_skybox_space128_2_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space128_2_pal_rgba16[] = {
+ALIGNED8 u8 fr_skybox_space128_2_pal_rgba16[] = {
 	0x7b, 0xeb, 0x63, 0x25, 0x42, 0x5b, 0x63, 0x1d, 
 	0x21, 0x57, 0x18, 0xcd, 0x10, 0x89, 0x31, 0x4b, 
 	0x21, 0x53, 0x42, 0x5f, 0x00, 0x01, 0x6a, 0x4d, 
@@ -4499,8 +4466,7 @@ u8 fr_skybox_space128_2_pal_rgba16[] = {
 	
 };
 
-Gfx fr_skybox_space128_7_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space128_7_ci4[] = {
+ALIGNED8 u8 fr_skybox_space128_7_ci4[] = {
 	0x01, 0x22, 0x22, 0x22, 0x22, 0x11, 0x34, 0x44, 
 	0x44, 0x44, 0x45, 0x44, 0x44, 0x44, 0x44, 0x54, 
 	0x54, 0x44, 0x44, 0x44, 0x45, 0x44, 0x44, 0x44, 
@@ -4760,8 +4726,7 @@ u8 fr_skybox_space128_7_ci4[] = {
 	
 };
 
-Gfx fr_skybox_space128_7_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space128_7_pal_rgba16[] = {
+ALIGNED8 u8 fr_skybox_space128_7_pal_rgba16[] = {
 	0x29, 0x97, 0x42, 0x5b, 0x6b, 0x25, 0x29, 0x91, 
 	0x18, 0xc9, 0x20, 0xc5, 0x6b, 0x69, 0x42, 0x5f, 
 	0x83, 0xeb, 0x50, 0xc5, 0xc4, 0x17, 0x79, 0xcb, 
@@ -4769,8 +4734,7 @@ u8 fr_skybox_space128_7_pal_rgba16[] = {
 	
 };
 
-Gfx fr_skybox_space256_1_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space256_1_ci4[] = {
+ALIGNED8 u8 fr_skybox_space256_1_ci4[] = {
 	0x00, 0x10, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 
 	0x10, 0x00, 0x00, 0x00, 0x10, 0x01, 0x22, 0x02, 
 	0x33, 0x33, 0x03, 0x33, 0x03, 0x03, 0x03, 0x13, 
@@ -5030,8 +4994,7 @@ u8 fr_skybox_space256_1_ci4[] = {
 	
 };
 
-Gfx fr_skybox_space256_1_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_space256_1_pal_rgba16[] = {
+ALIGNED8 u8 fr_skybox_space256_1_pal_rgba16[] = {
 	0x18, 0x89, 0x00, 0x01, 0x28, 0xc9, 0x28, 0xcd, 
 	0x29, 0x11, 0x39, 0x95, 0x39, 0x53, 0x52, 0x1b, 
 	0x31, 0x93, 0x4a, 0x19, 0x6a, 0xe3, 0x93, 0xef, 
@@ -5039,8 +5002,7 @@ u8 fr_skybox_space256_1_pal_rgba16[] = {
 	
 };
 
-Gfx fr_skybox_earth512_2_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_earth512_2_rgba16[] = {
+ALIGNED8 u8 fr_skybox_earth512_2_rgba16[] = {
 	0x55, 0x35, 0x55, 0x35, 0x55, 0x35, 0x55, 0x35, 
 	0x55, 0x35, 0x55, 0x35, 0x55, 0x35, 0x55, 0x35, 
 	0x55, 0x35, 0x55, 0x35, 0x55, 0x35, 0x55, 0x35, 
@@ -21428,8 +21390,7 @@ u8 fr_skybox_earth512_2_rgba16[] = {
 	
 };
 
-Gfx fr_skybox_y_co8_11_rgba32_aligner[] = {gsSPEndDisplayList()};
-u8 fr_skybox_y_co8_11_rgba32[] = {
+ALIGNED8 u8 fr_skybox_y_co8_11_rgba32[] = {
 	0x55, 0xee, 0xdd, 0x00, 0x55, 0xee, 0xdd, 0x00, 
 	0x55, 0xee, 0xdd, 0x00, 0x55, 0xee, 0xdd, 0x00, 
 	0x55, 0xee, 0xdd, 0x00, 0x55, 0xee, 0xdd, 0x00, 
@@ -23594,6 +23555,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(23, 25, 10, 0, 23, 10, 20, 0),
 	gsSP2Triangles(37, 38, 39, 0, 37, 40, 38, 0),
 	gsSP2Triangles(40, 41, 38, 0, 40, 42, 41, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_spacenbg128_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, fr_skybox_spacenbg128_ci4),
@@ -23665,6 +23627,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(23, 22, 24, 0, 23, 24, 25, 0),
 	gsSP2Triangles(25, 24, 26, 0, 25, 26, 27, 0),
 	gsSP2Triangles(28, 27, 26, 0, 28, 29, 27, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_space256_7_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, fr_skybox_space256_7_ci4),
@@ -23703,6 +23666,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(40, 41, 42, 0, 42, 41, 43, 0),
 	gsSP2Triangles(44, 45, 46, 0, 46, 45, 47, 0),
 	gsSP2Triangles(48, 49, 50, 0, 50, 49, 51, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_space64_19_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, fr_skybox_space64_19_ci4),
@@ -23775,6 +23739,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
 	gsSP2Triangles(3, 2, 4, 0, 3, 4, 5, 0),
 	gsSP2Triangles(5, 4, 6, 0, 5, 6, 7, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_space512_2_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, fr_skybox_space512_2_ci4),
@@ -23793,6 +23758,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(22, 25, 26, 0, 26, 27, 22, 0),
 	gsSP2Triangles(22, 27, 28, 0, 22, 28, 29, 0),
 	gsSP1Triangle(23, 22, 29, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_space512_1_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, fr_skybox_space512_1_ci4),
@@ -23806,6 +23772,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(12, 11, 10, 0, 12, 13, 11, 0),
 	gsSP2Triangles(14, 13, 12, 0, 14, 15, 13, 0),
 	gsSP2Triangles(2, 15, 14, 0, 2, 1, 15, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_space32_4_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 209),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_8b_LOAD_BLOCK, 1, fr_skybox_space32_4_ci8),
@@ -23858,6 +23825,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
 	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
 	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_space128_9_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, fr_skybox_space128_9_ci4),
@@ -23885,6 +23853,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
 	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
 	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_space64_20_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, fr_skybox_space64_20_ci4),
@@ -23903,6 +23872,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(36, 37, 38, 0, 38, 37, 39, 0),
 	gsSP2Triangles(40, 41, 42, 0, 42, 41, 43, 0),
 	gsSP2Triangles(44, 45, 46, 0, 46, 45, 47, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_et64_3_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, fr_skybox_et64_3_ci4),
@@ -23931,6 +23901,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
 	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
 	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_space256_7_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, fr_skybox_space256_7_ci4),
@@ -23953,6 +23924,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(52, 53, 54, 0, 54, 53, 55, 0),
 	gsSPVertex(fr_skybox_fr_skybox_mesh_vtx_13 + 56, 4, 0),
 	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_space64_19_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, fr_skybox_space64_19_ci4),
@@ -23965,6 +23937,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
 	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
 	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_space64_18_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, fr_skybox_space64_18_ci4),
@@ -23996,6 +23969,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
 	gsSP2Triangles(32, 33, 34, 0, 34, 33, 35, 0),
 	gsSP2Triangles(36, 37, 38, 0, 38, 37, 39, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_space64_9_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, fr_skybox_space64_9_ci4),
@@ -24014,6 +23988,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(36, 37, 38, 0, 38, 37, 39, 0),
 	gsSP2Triangles(40, 41, 42, 0, 42, 41, 43, 0),
 	gsSP2Triangles(44, 45, 46, 0, 46, 45, 47, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_space512_2_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, fr_skybox_space512_2_ci4),
@@ -24035,6 +24010,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(33, 32, 34, 0, 35, 36, 37, 0),
 	gsSP2Triangles(35, 37, 38, 0, 38, 37, 39, 0),
 	gsSP2Triangles(38, 39, 40, 0, 40, 39, 41, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_space128_17_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, fr_skybox_space128_17_ci4),
@@ -24050,6 +24026,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
 	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
 	gsSP2Triangles(32, 33, 34, 0, 34, 33, 35, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_space128_3_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, fr_skybox_space128_3_ci4),
@@ -24065,6 +24042,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
 	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
 	gsSP2Triangles(32, 33, 34, 0, 34, 33, 35, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_space128_4_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, fr_skybox_space128_4_ci4),
@@ -24083,6 +24061,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(36, 37, 38, 0, 38, 37, 39, 0),
 	gsSP2Triangles(40, 41, 42, 0, 42, 41, 43, 0),
 	gsSP2Triangles(44, 45, 46, 0, 46, 45, 47, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_space128_2_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, fr_skybox_space128_2_ci4),
@@ -24131,6 +24110,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(25, 24, 26, 0, 27, 28, 29, 0),
 	gsSP2Triangles(29, 28, 30, 0, 31, 32, 33, 0),
 	gsSP2Triangles(31, 33, 34, 0, 34, 33, 35, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_space128_7_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, fr_skybox_space128_7_ci4),
@@ -24169,6 +24149,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(42, 43, 44, 0, 44, 43, 45, 0),
 	gsSP2Triangles(46, 47, 48, 0, 48, 47, 49, 0),
 	gsSP2Triangles(50, 51, 52, 0, 52, 51, 53, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_space256_1_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, fr_skybox_space256_1_ci4),
@@ -24181,6 +24162,7 @@ Gfx fr_skybox_fr_skybox_mesh[] = {
 	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
 	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
 	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, fr_skybox_space64_18_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, fr_skybox_space64_18_ci4),
