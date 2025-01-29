@@ -6,6 +6,7 @@
 #include "dialog_ids.h"
 #include "instant_warp_desc.h"
 #include "rail_desc.h"
+#include "spring_desc.h"
 
 #include "make_const_nonconst.h"
 
@@ -47,6 +48,11 @@ static const RailDesc rail_ce_area7[] = {
     RAIL_END,
 };
 
+static const SpringDesc spring_ce_area6[] = {
+    ce_area_6_spline_NurbsCurve_Spring,
+    NULL,
+};
+
 const RailDesc* rail_descs_ce[] = {
     NULL,
     NULL,
@@ -55,6 +61,19 @@ const RailDesc* rail_descs_ce[] = {
     rail_ce_area5,
     rail_ce_area6,
     rail_ce_area7,
+    NULL,
+    NULL,
+    NULL,
+};
+
+const SpringDesc* spring_descs_ce[] = {
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    &spring_ce_area6,
+    NULL,
     NULL,
     NULL,
     NULL,

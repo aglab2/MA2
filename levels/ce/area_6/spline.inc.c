@@ -67,3 +67,10 @@ const Trajectory ce_area_6_spline_NurbsCurve_Loop[] = {
 	TRAJECTORY_POS( 11, -3175, 9314, 7332),
 	TRAJECTORY_END(),
 };
+const Trajectory ce_area_6_spline_NurbsCurve_Spring[] = {
+	TRAJECTORY_POS( 0, -2829, -19990, 7263),
+	TRAJECTORY_POS( 1, -2829, -12273, 7171),
+	TRAJECTORY_POS( 2, -2829, -5845, 6589),
+	TRAJECTORY_POS( 3, -2829, -5586, 5486),
+	TRAJECTORY_END(),
+};
