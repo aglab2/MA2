@@ -4839,32 +4839,7 @@ void start_cutscene(struct Camera *c, u8 cutscene) {
  * @return the victory cutscene to use
  */
 s32 determine_dance_cutscene(UNUSED struct Camera *c) {
-#ifdef NON_STOP_STARS
     return CUTSCENE_DANCE_DEFAULT;
-#else
-    u8 cutscene = CUTSCENE_NONE;
-    u8 cutsceneIndex = 0;
-    u8 starIndex = (gLastCompletedStarNum - 1) / 2;
-    u8 courseNum = gCurrCourseNum;
-
-    if (starIndex > 3) {
-        starIndex = 0;
-    }
-    if (courseNum > COURSE_MAX) {
-        courseNum = COURSE_NONE;
-    }
-    cutsceneIndex = sDanceCutsceneIndexTable[courseNum][starIndex];
-
-    if (gLastCompletedStarNum & 1) {
-        // Odd stars take the lower four bytes
-        cutsceneIndex &= 0xF;
-    } else {
-        // Even stars use the upper four bytes
-        cutsceneIndex = cutsceneIndex >> 4;
-    }
-    cutscene = sDanceCutsceneTable[cutsceneIndex];
-    return cutscene;
-#endif
 }
 
 /**
@@ -10662,8 +10637,8 @@ void play_cutscene(struct Camera *c) {
         CUTSCENE(CUTSCENE_ENTER_BOWSER_ARENA,   sCutsceneEnterBowserArena)
         CUTSCENE(CUTSCENE_DANCE_ROTATE,         sCutsceneDanceDefaultRotate)
         CUTSCENE(CUTSCENE_DANCE_DEFAULT,        sCutsceneDanceDefaultRotate)
-        CUTSCENE(CUTSCENE_DANCE_FLY_AWAY,       sCutsceneDanceFlyAway)
-        CUTSCENE(CUTSCENE_DANCE_CLOSEUP,        sCutsceneDanceCloseup)
+        CUTSCENE(CUTSCENE_DANCE_FLY_AWAY,       sCutsceneDanceDefaultRotate)
+        CUTSCENE(CUTSCENE_DANCE_CLOSEUP,        sCutsceneDanceDefaultRotate)
         CUTSCENE(CUTSCENE_KEY_DANCE,            sCutsceneKeyDance)
         CUTSCENE(CUTSCENE_0F_UNUSED,            sCutsceneUnused)
         CUTSCENE(CUTSCENE_END_WAVING,           sCutsceneEndWaving)

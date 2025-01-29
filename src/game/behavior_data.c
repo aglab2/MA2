@@ -5749,10 +5749,12 @@ const BehaviorScript RM_Scroll_Texture[] = {
     END_LOOP(),
 };
 
+extern void bhv_checkpoint_init();
 extern void bhv_checkpoint_loop();
 const BehaviorScript bhvCheckpoint[] = {
     BEGIN(OBJ_LIST_LEVEL),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    CALL_NATIVE(bhv_checkpoint_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_checkpoint_loop),
     END_LOOP(),

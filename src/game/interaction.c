@@ -775,18 +775,37 @@ u32 interact_water_ring(struct MarioState *m, UNUSED u32 interactType, struct Ob
     return FALSE;
 }
 
+enum StarGrabStyle
+{
+    STAR_GRAB_EXIT = -1,
+    STAR_GRAB_NONSTOP = 0,
+    STAR_GRAB_CHECKPOINT = 1,
+};
+
+#define IS_STAR_GRAB_EXIT(style) ((style) < 0)
+#define IS_STAR_GRAB_NONSTOP(style) ((style) == STAR_GRAB_NONSTOP)
+#define IS_STAR_GRAB_CHECKPOINT(style) ((style) > 0)
+
+static enum StarGrabStyle get_star_grab_style(struct Object *obj)
+{
+    if (obj_has_model(obj, MODEL_CHECKPOINT))
+        return STAR_GRAB_CHECKPOINT;
+
+    if (obj_has_model(obj, MODEL_GOAL))
+        return STAR_GRAB_EXIT;
+
+    return STAR_GRAB_NONSTOP;
+}
+
+static s32 to_no_exit(enum StarGrabStyle style)
+{
+    return IS_STAR_GRAB_EXIT(style) ? 0 : 1;
+}
+
 u32 interact_star_or_key(struct MarioState *m, UNUSED u32 interactType, struct Object *obj) {
     u32 starIndex;
     u32 starGrabAction = ACT_STAR_DANCE_EXIT;
-#ifdef NON_STOP_STARS
- #ifdef KEYS_EXIT_LEVEL
-    u32 noExit = !obj_has_model(obj, MODEL_BOWSER_KEY);
- #else
-    u32 noExit = TRUE;
- #endif
-#else // !NON_STOP_STARS
-    u32 noExit = (obj->oInteractionSubtype & INT_SUBTYPE_NO_EXIT) != 0;
-#endif // !NON_STOP_STARS
+    enum StarGrabStyle style = get_star_grab_style(obj);
     u32 grandStar = (obj->oInteractionSubtype & INT_SUBTYPE_GRAND_STAR) != 0;
 
     if (m->health >= 0x100) {
@@ -795,27 +814,18 @@ u32 interact_star_or_key(struct MarioState *m, UNUSED u32 interactType, struct O
         queue_rumble_data(5, 80);
 #endif
 
-#ifdef POWER_STARS_HEAL
         m->hurtCounter = 0;
         m->healCounter = 31;
  #ifdef BREATH_METER
         m->breathCounter = 31;
  #endif
-        if (!noExit) {
-#else // !POWER_STARS_HEAL
-        if (!noExit) {
-            m->hurtCounter = 0;
-            m->healCounter = 0;
- #ifdef BREATH_METER
-            m->breathCounter = 0;
- #endif
-#endif // !POWER_STARS_HEAL
+        if (IS_STAR_GRAB_EXIT(style)) {
             if (m->capTimer > 1) {
                 m->capTimer = 1;
             }
         }
 
-        if (noExit) {
+        if (IS_STAR_GRAB_CHECKPOINT(style)) {
             starGrabAction = ACT_STAR_DANCE_NO_EXIT;
         }
 
@@ -849,7 +859,7 @@ u32 interact_star_or_key(struct MarioState *m, UNUSED u32 interactType, struct O
         m->numStars =
             save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1);
 
-        if (!noExit) {
+        if (IS_STAR_GRAB_EXIT(style)) {
             drop_queued_background_music();
             fadeout_level_music(126);
         }
@@ -861,7 +871,9 @@ u32 interact_star_or_key(struct MarioState *m, UNUSED u32 interactType, struct O
             return set_mario_action(m, ACT_JUMBO_STAR_CUTSCENE, 0);
         }
 
-        return set_mario_action(m, starGrabAction, noExit + 2 * grandStar);
+        if (!IS_STAR_GRAB_NONSTOP(style)) {
+            return set_mario_action(m, starGrabAction, to_no_exit(style) + 2 * grandStar);
+        }
     }
 
     return FALSE;

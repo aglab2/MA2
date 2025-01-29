@@ -1514,11 +1514,7 @@ s32 lvl_set_current_level(UNUSED s16 initOrUpdate, s32 levelNum) {
         disable_warp_checkpoint();
     }
 
-    if (gCurrCourseNum > COURSE_STAGES_MAX || warpCheckpointActive) {
-        return FALSE;
-    }
-
-    return !gDebugLevelSelect;
+    return FALSE;
 }
 
 /**
