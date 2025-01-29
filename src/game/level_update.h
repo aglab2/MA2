@@ -108,10 +108,22 @@ extern s16 sSourceWarpNodeId;
 extern s32 sDelayedWarpArg;
 extern s8 sTimerRunning;
 
+enum HudDisplayStarState
+{
+    HUD_DISPLAY_STAR_HIDDEN,
+    HUD_DISPLAY_STAR_RAISE,
+    HUD_DISPLAY_STAR_WAIT,
+    HUD_DISPLAY_STAR_JUMP,
+    HUD_DISPLAY_STAR_LOWER,
+};
+
 struct HudDisplay {
     /*0x00*/ s16 lives;
     /*0x02*/ s16 coins;
     /*0x04*/ s16 stars;
+    u8 starsY;
+    u8 starsState;
+    u8 starsTimer;
     /*0x06*/ s16 wedges;
     /*0x08*/ s16 keys;
     /*0x0A*/ s16 flags;

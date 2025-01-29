@@ -10,11 +10,6 @@ static struct ObjectHitbox sCheckpointGoalInteract = {
     /* hurtboxHeight:     */ 0,
 };
 
-static void checkpoint_animate()
-{
-
-}
-
 void bhv_checkpoint_init()
 {
     u8 starId = GET_BPARAM1(o->oBehParams);
@@ -47,7 +42,14 @@ void bhv_checkpoint_loop()
     }
 }
 
+void bhv_goal_init()
+{
+    obj_set_hitbox(o, &sCheckpointGoalInteract);
+}
+
 void bhv_goal_loop()
 {
-
+    if (o->oInteractStatus & INT_STATUS_INTERACTED) {
+        o->activeFlags = 0;
+    }
 }

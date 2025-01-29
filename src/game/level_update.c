@@ -1064,7 +1064,76 @@ void update_hud_values(void) {
             gHudDisplay.coins = MAX_NUM_COINS;
         }
 
-        gHudDisplay.stars = gMarioState->numStars;
+#if 0
+        print_text_fmt_int(20, 20 , "S %d", gHudDisplay.starsState);
+        print_text_fmt_int(20, 40 , "C %d", gHudDisplay.stars);
+        print_text_fmt_int(20, 60 , "M %d", gMarioState->numStars);
+        print_text_fmt_int(20, 80 , "T %d", gHudDisplay.starsTimer);
+        print_text_fmt_int(20, 100, "Y %d", gHudDisplay.starsY);
+#endif
+
+        switch (gHudDisplay.starsState)
+        {
+            case HUD_DISPLAY_STAR_HIDDEN:
+                if (gHudDisplay.stars < gMarioState->numStars)
+                {
+                    gHudDisplay.starsState = HUD_DISPLAY_STAR_RAISE;
+                    gHudDisplay.starsY = 0;
+                }
+                break;
+            case HUD_DISPLAY_STAR_RAISE:
+                if (gHudDisplay.starsY < 30)
+                {
+                    gHudDisplay.starsY++;
+                }
+                else
+                {
+                    gHudDisplay.starsState = HUD_DISPLAY_STAR_WAIT;
+                    gHudDisplay.starsTimer = 0;
+                }
+                break;
+            case HUD_DISPLAY_STAR_WAIT:
+                if (gHudDisplay.starsTimer < 25)
+                {
+                    gHudDisplay.starsTimer++;
+                }
+                else
+                {
+                    if (gHudDisplay.stars < gMarioState->numStars)
+                    {
+                        gHudDisplay.stars++;
+                        gHudDisplay.starsTimer = 0;
+                        gHudDisplay.starsState = HUD_DISPLAY_STAR_JUMP;
+                    }
+                    else
+                    {
+                        gHudDisplay.starsState = HUD_DISPLAY_STAR_LOWER;
+                    }
+                }
+                break;
+            case HUD_DISPLAY_STAR_JUMP:
+                if (gHudDisplay.starsTimer <= 6)
+                {
+                    gHudDisplay.starsY = 30 - ((gHudDisplay.starsTimer - 3) * (gHudDisplay.starsTimer - 3) - 9);
+                    gHudDisplay.starsTimer++;
+                }
+                else
+                {
+                    gHudDisplay.starsTimer = 0;
+                    gHudDisplay.starsState = HUD_DISPLAY_STAR_WAIT;
+                }
+                break;
+            case HUD_DISPLAY_STAR_LOWER:
+                if (gHudDisplay.starsY > 0)
+                {
+                    gHudDisplay.starsY--;
+                }
+                else
+                {
+                    gHudDisplay.starsState = HUD_DISPLAY_STAR_HIDDEN;
+                }
+                break;
+        }
         gHudDisplay.lives = gMarioState->numLives;
         gHudDisplay.keys = gMarioState->numKeys;
 

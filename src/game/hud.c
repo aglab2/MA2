@@ -437,14 +437,14 @@ void render_hud_coins(void) {
  * Disables "X" glyph when Mario has 100 stars or more.
  */
 void render_hud_stars(void) {
+    if (0 == gHudDisplay.starsY)
+        return;
+
     char str[10];
-    if (gHudFlash == HUD_FLASH_STARS && gGlobalTimer & 0x8) return;
-    if (gHudDisplay.stars < 100) {
-        sprintf(str, "★×%d", gHudDisplay.stars);
-    } else {
-        sprintf(str, "★%d", gHudDisplay.stars);
-    }
-    print_text(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(HUD_STARS_X), HUD_TOP_Y, str);
+    int amount = gHudDisplay.stars / 10;
+    int digit = gHudDisplay.stars % 10;
+    sprintf(str, "%d.%d%%", amount, digit);
+    print_text(20, gBorderHeight + gHudDisplay.starsY - 16, str);
 }
 
 /**
