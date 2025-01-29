@@ -87,7 +87,6 @@ extern u8 gInGameLanguage;
 struct LanguageTables {
     /* 0x00 */ u8 *dialog_table;
     /* 0x01 */ u8 *course_name_table;
-    /* 0x02 */ u8 *act_name_table;
 }; /* 0x03 */
 
 extern const struct LanguageTables gLanguageTables[];

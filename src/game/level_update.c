@@ -1514,6 +1514,7 @@ s32 lvl_set_current_level(UNUSED s16 initOrUpdate, s32 levelNum) {
         disable_warp_checkpoint();
     }
 
+    // ACT SELECT HERE
     return FALSE;
 }
 

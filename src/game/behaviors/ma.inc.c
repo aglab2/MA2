@@ -10,16 +10,37 @@ static struct ObjectHitbox sCheckpointGoalInteract = {
     /* hurtboxHeight:     */ 0,
 };
 
+static void checkpoint_animate()
+{
+
+}
+
 void bhv_checkpoint_init()
 {
     u8 starId = GET_BPARAM1(o->oBehParams);
     obj_set_hitbox(o, &sCheckpointGoalInteract);
+    u64 currentLevelStarFlags = save_file_get_star_flags((gCurrSaveFileNum - 1), COURSE_NUM_TO_INDEX(gCurrCourseNum));
+#if 1
+    if (0) { 
+#else
+    if (currentLevelStarFlags & (1ULL << starId)) {
+#endif
+        o->oInteractStatus = INT_STATUS_INTERACTED;
+        o->oGeoRoll = 0;
+    }
+    else
+    {
+        o->oGeoRoll = 0x4000;
+    }
 }
 
 void bhv_checkpoint_loop()
 {
     if (o->oInteractStatus & INT_STATUS_INTERACTED) {
-        // o->oInteractStatus = INT_STATUS_NONE;
+        if (0 != o->oGeoRoll)
+        {
+            o->oGeoRoll -= 0x200;
+        }
     }
 }
 

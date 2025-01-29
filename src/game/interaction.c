@@ -849,11 +849,7 @@ u32 interact_star_or_key(struct MarioState *m, UNUSED u32 interactType, struct O
 
         gStarModelLastCollected = obj_get_model_id(obj);
 
-#ifdef GLOBAL_STAR_IDS
         starIndex = (obj->oBehParams >> 24) & 0xFF;
-#else
-        starIndex = (obj->oBehParams >> 24) & 0x1F;
-#endif
         save_file_collect_star_or_key(m->numCoins, starIndex);
 
         m->numStars =

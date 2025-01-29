@@ -81,7 +81,7 @@ extern u8 act_name_table_es[];
 #define act_name_table_en    seg2_act_name_table
 #endif // !MULTILANG
 
-#define LANGUAGE_TABLES(dialog, course_name, act_name) { (u8 *)(dialog), (u8 *)(course_name), (u8 *)(act_name) }
+#define LANGUAGE_TABLES(dialog, course_name, act_name) { (u8 *)(dialog), (u8 *)(course_name) }
 
 // The language table for the game's dialogs, level names and act names.
 // #ifdef MULTILANG
@@ -1618,7 +1618,7 @@ void render_hacktice_setting(int x, int y)
 }
 
 LangArray textCourseX = DEFINE_LANGUAGE_ARRAY(
-    "COURSE %s",
+    "Stage %s",
     "NIVEAU %s",
     "KURS %s",
     "コース%s",
@@ -1631,6 +1631,9 @@ LangArray textMyScore = DEFINE_LANGUAGE_ARRAY(
     "マイスコア",
     "MI RÉCORD");
 
+static const char* textCheckpoint = "Checkpoints";
+static const char* textStars = "Stars";
+
 #define PAUSE_MENU_LEFT_X  106
 #define PAUSE_MENU_RIGHT_X 117
 
@@ -1638,26 +1641,18 @@ LangArray textMyScore = DEFINE_LANGUAGE_ARRAY(
 #define PAUSE_MENU_ACT_Y 140
 #define PAUSE_MENU_MY_SCORE_Y 121
 
+extern u8 sStarIds;
+extern u8 sCheckpointIds;
+
 void render_pause_my_score_coins(void) {
     char str[20];
 
     void **courseNameTbl = segmented_to_virtual(gLanguageTables[gInGameLanguage].course_name_table);
-    void    **actNameTbl = segmented_to_virtual(gLanguageTables[gInGameLanguage].act_name_table);
 
     u8 courseIndex = COURSE_NUM_TO_INDEX(gCurrCourseNum);
-    // AGLAB TODO: This rendering will fail for the course because type is now u64
-    u8 starFlags = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
+    u64 starFlags = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
     if (!Hacktice_gEnabled)
     {
-        gSPDisplayList(gDisplayListHead++, dl_rgba16_text_begin);
-        gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
-
-        if (courseIndex <= COURSE_NUM_TO_INDEX(COURSE_STAGES_MAX)) {
-            print_hud_my_score_coins(1, gCurrSaveFileNum - 1, courseIndex, PAUSE_MENU_RIGHT_X + 61, PAUSE_MENU_MY_SCORE_Y - 18);
-            print_hud_my_score_stars(   gCurrSaveFileNum - 1, courseIndex, PAUSE_MENU_RIGHT_X,      PAUSE_MENU_MY_SCORE_Y - 18);
-        }
-
-        gSPDisplayList(gDisplayListHead++, dl_rgba16_text_end);
         gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
 
         set_text_color(255, 255, 255);
@@ -1669,20 +1664,30 @@ void render_pause_my_score_coins(void) {
             format_int_to_string(courseNumText, gCurrCourseNum);
             sprintf(str, LANG_ARRAY(textCourseX), courseNumText);
             print_generic_string_aligned(PAUSE_MENU_LEFT_X, PAUSE_MENU_COURSE_Y, str, TEXT_ALIGN_RIGHT);
-
-            char *actName = segmented_to_virtual(actNameTbl[COURSE_NUM_TO_INDEX(gCurrCourseNum) * 6 + gDialogCourseActNum - 1]);
-
-            if (starFlags & (1 << (gDialogCourseActNum - 1))) {
-                print_generic_string_aligned(PAUSE_MENU_LEFT_X, PAUSE_MENU_ACT_Y, "★", TEXT_ALIGN_RIGHT);
-            } else {
-                print_generic_string_aligned(PAUSE_MENU_LEFT_X, PAUSE_MENU_ACT_Y, "☆", TEXT_ALIGN_RIGHT);
-            }
-
-            print_generic_string(PAUSE_MENU_RIGHT_X, PAUSE_MENU_ACT_Y,    actName);
             print_generic_string(PAUSE_MENU_RIGHT_X, PAUSE_MENU_COURSE_Y, courseName);
 
-            if (save_file_get_course_star_count(gCurrSaveFileNum - 1, courseIndex) != 0) {
-                print_generic_string_aligned(PAUSE_MENU_LEFT_X + 3, PAUSE_MENU_MY_SCORE_Y, LANG_ARRAY(textMyScore), TEXT_ALIGN_RIGHT);
+            int y = PAUSE_MENU_MY_SCORE_Y + 20;
+            print_generic_string_aligned(PAUSE_MENU_LEFT_X + 3 - 45, y, textCheckpoint, TEXT_ALIGN_RIGHT);
+            for (int i = 63; i >= sCheckpointIds; i--)
+            {
+                const char* str = (starFlags & (1ULL << i)) ? "★" : "☆";
+                print_generic_string_aligned(PAUSE_MENU_LEFT_X + 3 + (63 - i) * 16 - 30, y, str, TEXT_ALIGN_RIGHT);
+            }
+
+            y = PAUSE_MENU_MY_SCORE_Y + 5;
+            print_generic_string_aligned(PAUSE_MENU_LEFT_X + 3 - 45, y, textStars, TEXT_ALIGN_RIGHT);
+            for (int i = 0; i < sStarIds; i++)
+            {
+                int sx = PAUSE_MENU_LEFT_X + 3 + i * 10 - 30;
+                int sy = y;
+                if (i >= 24)
+                {
+                    sx -= 24 * 10;
+                    sy -= 12;
+                }
+
+                const char* str = (starFlags & (1ULL << i)) ? "★" : "☆";
+                print_generic_string_aligned(sx, sy, str, TEXT_ALIGN_RIGHT);
             }
         } else {
             print_generic_string_aligned(SCREEN_CENTER_X, PAUSE_MENU_COURSE_Y, courseName, TEXT_ALIGN_CENTER);
@@ -2011,7 +2016,7 @@ s32 render_pause_courses_and_castle(void) {
         case DIALOG_STATE_VERTICAL:
             shade_screen();
             render_pause_my_score_coins();
-            render_pause_red_coins();
+            // render_pause_red_coins();
 #ifndef DISABLE_EXIT_COURSE
 #ifdef EXIT_COURSE_WHILE_MOVING
             if ((gMarioStates[0].action & (ACT_FLAG_SWIMMING | ACT_FLAG_METAL_WATER | ACT_FLAG_PAUSE_EXIT))
@@ -2177,7 +2182,7 @@ void render_course_complete_lvl_info_and_hud_str(void) {
     char str[20];
     char courseNumText[8];
 
-    void **actNameTbl    = segmented_to_virtual(gLanguageTables[gInGameLanguage].act_name_table);
+    void **actNameTbl    = NULL; // segmented_to_virtual(gLanguageTables[gInGameLanguage].act_name_table);
     void **courseNameTbl = segmented_to_virtual(gLanguageTables[gInGameLanguage].course_name_table);
 
     { // Bowser courses

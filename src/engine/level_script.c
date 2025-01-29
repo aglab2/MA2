@@ -477,8 +477,8 @@ static void level_cmd_23(void) {
     sCurrentCmd = CMD_NEXT;
 }
 
-static u8 sStarIds = 0;
-static u8 sCheckpointIds = 63;
+u8 sStarIds;
+u8 sCheckpointIds;
 
 static void level_cmd_init_mario(void) {
     vec3_zero(gMarioSpawnInfo->startPos);
@@ -493,7 +493,7 @@ static void level_cmd_init_mario(void) {
     gMarioSpawnInfo->next = NULL;
 
     sStarIds = 0;
-    sCheckpointIds = 63;
+    sCheckpointIds = 62;
     if ((u32) gMainPoolCurrentRegion->start < (u32) 0x80400000)
         gMainPoolCurrentRegion->start = (u8*) 0x80400000;
 
