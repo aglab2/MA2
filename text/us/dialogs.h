@@ -236,10 +236,7 @@ Do you want to Save?\n\
 \tYes\t\tNo")
 
 DEFINE_DIALOG(DIALOG_014, NO_SOUND, 4, 30, 200, "\
-Wow! Another Power Star!\n\
-Mario gains more courage\n\
-from the power of the\n\
-castle.\n\
+Checkpoint found!\n\
 Do you want to Save?\n\
 \n\
 \tYou Bet\tNot Now")
