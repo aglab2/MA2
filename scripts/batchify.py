@@ -70,8 +70,12 @@ class ModelEntry:
     def __init__(self, decl, data = None, batched = False):
         self.decl = decl
         end = decl.rfind('] = {')
+        end = decl.rfind('[', 0, end)
         start = decl.rfind(' ', 0, end)
-        self.name = decl[start+1:end-1].strip()
+        self.name = decl[start+1:end].strip()
+        assert not '[' in self.name
+        assert not ']' in self.name
+
         self.data = data
         if not self.data:
             self.data = []
@@ -323,6 +327,29 @@ class MatDeduper:
             self._dedup_mat_to_real_mat[mat_dl] = mat_dl
             return mat_dl
 
+# Generic variant of 'MatDeduper' that perform dedupes without assuming mat structure
+class ContentDeduper:
+    def __init__(self):
+        self._dedup_data_to_mat = {}
+        self._dedup_mat_to_real_mat = {}
+        self._deduped_names = {}
+
+    def dedup(self, mat_dl_entry):
+        mat_dl = mat_dl_entry.name
+        if mat_dl in self._dedup_mat_to_real_mat:
+            return self._dedup_mat_to_real_mat[mat_dl]
+
+        mat_data = tuple(mat_dl_entry.data)
+        if mat_data in self._dedup_data_to_mat:
+            mat_real_dl = self._dedup_data_to_mat[mat_data]
+            self._dedup_mat_to_real_mat[mat_dl] = mat_real_dl
+            self._deduped_names[mat_dl] = mat_real_dl
+            return mat_real_dl
+        else:
+            self._dedup_data_to_mat[mat_data] = mat_dl
+            self._dedup_mat_to_real_mat[mat_dl] = mat_dl
+            return mat_dl
+
 # Tracks the current index for batched textures for a given layer
 class BatchIndexAllocator:
     def __init__(self, batches, batches_indexed, layer, repeating_names):
@@ -490,6 +517,9 @@ def serialize_geo(geo, area, path):
 def serialize_header(header, layered_batches, path):
     with open(path, "w") as f_header:
         for data in header:
+            if data.startswith('extern Gfx mat_'):
+                continue
+
             f_header.write(data)
 
         name = None
@@ -503,15 +533,21 @@ def serialize_header(header, layered_batches, path):
 
 def serialize_model(model, layered_batches, path):
     with open(path, "w") as f_model:
+        content_deduper = ContentDeduper()
         for entry in model.entries:
             if not entry:
                 continue
 
-            f_model.write(entry.decl)
-            for line in entry.data:
-                f_model.write(line.replace("gsSPEndDisplayList()", "gsSPEndDisplayListHint(4)"))
+            real_name = content_deduper.dedup(entry)
+            if real_name == entry.name:
+                mark_static = entry.decl.startswith('Gfx mat_')
+                f_model.write(("UNUSED static " if mark_static else "") + entry.decl)
+                for line in entry.data:
+                    f_model.write(line.replace("gsSPEndDisplayList()", "gsSPEndDisplayListHint(4)"))
 
-            f_model.write('\n')
+                f_model.write('\n')
+            else:
+                f_model.write(f"#define {entry.name} {real_name}\n")
 
         name = None
         for layer, batches in layered_batches.items():
