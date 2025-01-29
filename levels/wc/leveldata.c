@@ -6,6 +6,9 @@
 #include "moving_texture_macros.h"
 #include "textures.h"
 #include "dialog_ids.h"
+#include "spring_desc.h"
+
+#include "levels/wc/visual/header_lvl.inc.h"
 
 const BehaviorScript bhvWCFanSpin[] = {
     BEGIN(OBJ_LIST_LEVEL),
@@ -15,15 +18,15 @@ const BehaviorScript bhvWCFanSpin[] = {
     END_LOOP(),
 };
 
+#include "levels/wc/rails.inc.c"
+
 #if 0
 #include "levels/wc/leveldata.inc.c"
 #else
-#include "levels/wc/area_1/collision.inc.c"
 #include "levels/wc/area_1/macro.inc.c"
 #include "levels/wc/area_1/spline.inc.c"
 #endif
 
-#include "levels/wc/visual/header_lvl.inc.h"
 #include "levels/wc/visual/model_lvl.inc.c"
 
 #include "levels/wc/wc_box/model.inc.c"

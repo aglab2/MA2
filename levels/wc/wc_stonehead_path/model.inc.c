@@ -1,5 +1,4 @@
-Gfx wc_stonehead_path_dz_wc_stonehead_railedga64_001_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 wc_stonehead_path_dz_wc_stonehead_railedga64_001_ci4[] = {
+ALIGNED8 u8 wc_stonehead_path_dz_wc_stonehead_railedga64_001_ci4[] = {
 	0x01, 0x23, 0x45, 0x15, 0x66, 0x67, 0x66, 0x76, 
 	0x68, 0x9a, 0xbb, 0xbb, 0xba, 0xcc, 0xcb, 0xad, 
 	0x78, 0x62, 0x52, 0x2e, 0x31, 0x13, 0x24, 0x44, 
@@ -259,8 +258,7 @@ u8 wc_stonehead_path_dz_wc_stonehead_railedga64_001_ci4[] = {
 	
 };
 
-Gfx wc_stonehead_path_dz_wc_stonehead_railedga64_001_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 wc_stonehead_path_dz_wc_stonehead_railedga64_001_pal_rgba16[] = {
+ALIGNED8 u8 wc_stonehead_path_dz_wc_stonehead_railedga64_001_pal_rgba16[] = {
 	0x50, 0x41, 0x68, 0xc1, 0x81, 0xc3, 0x9a, 0xcb, 
 	0x92, 0x43, 0x81, 0x43, 0x38, 0x01, 0x00, 0x01, 
 	0x03, 0x40, 0xab, 0x97, 0xfe, 0xe7, 0xfe, 0x21, 
@@ -268,8 +266,7 @@ u8 wc_stonehead_path_dz_wc_stonehead_railedga64_001_pal_rgba16[] = {
 	
 };
 
-Gfx wc_stonehead_path_dz_wc_stonehead_rail64_001_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 wc_stonehead_path_dz_wc_stonehead_rail64_001_ci4[] = {
+ALIGNED8 u8 wc_stonehead_path_dz_wc_stonehead_rail64_001_ci4[] = {
 	0x01, 0x22, 0x11, 0x00, 0x03, 0x34, 0x33, 0x43, 
 	0x35, 0x67, 0x88, 0x88, 0x77, 0x79, 0x88, 0x8a, 
 	0x45, 0x30, 0x00, 0xb0, 0x10, 0x11, 0xcc, 0xcc, 
@@ -529,8 +526,7 @@ u8 wc_stonehead_path_dz_wc_stonehead_rail64_001_ci4[] = {
 	
 };
 
-Gfx wc_stonehead_path_dz_wc_stonehead_rail64_001_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 wc_stonehead_path_dz_wc_stonehead_rail64_001_pal_rgba16[] = {
+ALIGNED8 u8 wc_stonehead_path_dz_wc_stonehead_rail64_001_pal_rgba16[] = {
 	0x60, 0xc1, 0x81, 0xc3, 0x81, 0x43, 0x38, 0x01, 
 	0x28, 0x41, 0x00, 0x00, 0xbb, 0xd3, 0xfe, 0xe7, 
 	0xfe, 0x21, 0xe5, 0x19, 0xff, 0xff, 0x50, 0x01, 
@@ -560,13 +556,6 @@ Vtx wc_stonehead_path_wc_stonehead_path_mesh_layer_4_vtx_0[8] = {
 	{{ {100, 3, -100}, 0, {4064, -16}, {87, 87, 87, 255} }},
 };
 
-Gfx wc_stonehead_path_wc_stonehead_path_mesh_layer_4_tri_0[] = {
-	gsSPVertex(wc_stonehead_path_wc_stonehead_path_mesh_layer_4_vtx_0 + 0, 8, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
-	gsSPEndDisplayList(),
-};
-
 Vtx wc_stonehead_path_wc_stonehead_path_mesh_layer_4_vtx_1[4] = {
 	{{ {100, 3, 100}, 0, {4064, -4072}, {87, 87, 87, 255} }},
 	{{ {100, 3, -100}, 0, {4064, -56}, {87, 87, 87, 255} }},
@@ -574,19 +563,16 @@ Vtx wc_stonehead_path_wc_stonehead_path_mesh_layer_4_vtx_1[4] = {
 	{{ {-100, 3, -100}, 0, {16, -64}, {87, 87, 87, 255} }},
 };
 
-Gfx wc_stonehead_path_wc_stonehead_path_mesh_layer_4_tri_1[] = {
-	gsSPVertex(wc_stonehead_path_wc_stonehead_path_mesh_layer_4_vtx_1 + 0, 4, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
-	gsSPEndDisplayList(),
-};
 
-
-Gfx mat_wc_stonehead_path_STONEHEAD_PATH_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
-	gsDPPipeSync(),
+Gfx wc_stonehead_path_wc_stonehead_path_mesh_layer_4[] = {
+	gsSPClearGeometryMode(G_LIGHTING),
+	gsSPVertex(wc_stonehead_path_wc_stonehead_path_mesh_layer_4_vtx_cull + 0, 8, 0),
+	gsSPSetGeometryMode(G_LIGHTING),
+	gsSPCullDisplayList(0, 7),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_stonehead_path_dz_wc_stonehead_railedga64_001_pal_rgba16),
@@ -597,58 +583,19 @@ Gfx mat_wc_stonehead_path_STONEHEAD_PATH_sa2mdl_0_f3d[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_MIRROR, 6, 0, G_TX_WRAP | G_TX_MIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_wc_stonehead_path_STONEHEAD_PATH_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(0, G_LIGHTING),
+	gsSPVertex(wc_stonehead_path_wc_stonehead_path_mesh_layer_4_vtx_0 + 0, 8, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
 	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_wc_stonehead_path_STONEHEAD_PATH_sa2mdl_1_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_stonehead_path_dz_wc_stonehead_rail64_001_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, wc_stonehead_path_dz_wc_stonehead_rail64_001_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_MIRROR, 6, 0, G_TX_WRAP | G_TX_MIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_wc_stonehead_path_STONEHEAD_PATH_sa2mdl_1_f3d[] = {
-	gsSPGeometryMode(0, G_LIGHTING),
+	gsSPVertex(wc_stonehead_path_wc_stonehead_path_mesh_layer_4_vtx_1 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
 	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx wc_stonehead_path_wc_stonehead_path_mesh_layer_4[] = {
-	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(wc_stonehead_path_wc_stonehead_path_mesh_layer_4_vtx_cull + 0, 8, 0),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPCullDisplayList(0, 7),
-	gsSPDisplayList(mat_wc_stonehead_path_STONEHEAD_PATH_sa2mdl_0_f3d),
-	gsSPDisplayList(wc_stonehead_path_wc_stonehead_path_mesh_layer_4_tri_0),
-	gsSPDisplayList(mat_revert_wc_stonehead_path_STONEHEAD_PATH_sa2mdl_0_f3d),
-	gsSPDisplayList(mat_wc_stonehead_path_STONEHEAD_PATH_sa2mdl_1_f3d),
-	gsSPDisplayList(wc_stonehead_path_wc_stonehead_path_mesh_layer_4_tri_1),
-	gsSPDisplayList(mat_revert_wc_stonehead_path_STONEHEAD_PATH_sa2mdl_1_f3d),
-	gsDPPipeSync(),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPClearGeometryMode(G_TEXTURE_GEN),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 0),
 	gsDPSetEnvColor(255, 255, 255, 255),

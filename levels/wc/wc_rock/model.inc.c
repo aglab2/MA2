@@ -1,5 +1,4 @@
-Gfx wc_rock_dz_floatrock_001_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 wc_rock_dz_floatrock_001_ci4[] = {
+ALIGNED8 u8 wc_rock_dz_floatrock_001_ci4[] = {
 	0x00, 0x10, 0x12, 0x00, 0x11, 0x21, 0x03, 0x00, 
 	0x11, 0x10, 0x00, 0x11, 0x11, 0x41, 0x11, 0x01, 
 	0x10, 0x10, 0x10, 0x01, 0x13, 0x21, 0x01, 0x56, 
@@ -259,8 +258,7 @@ u8 wc_rock_dz_floatrock_001_ci4[] = {
 	
 };
 
-Gfx wc_rock_dz_floatrock_001_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 wc_rock_dz_floatrock_001_pal_rgba16[] = {
+ALIGNED8 u8 wc_rock_dz_floatrock_001_pal_rgba16[] = {
 	0xb4, 0xa1, 0xbd, 0x25, 0xa4, 0x1d, 0x93, 0x99, 
 	0xb5, 0x27, 0xdd, 0xed, 0xcd, 0xa9, 0xe6, 0x6f, 
 	0x83, 0x15, 0x6a, 0x91, 0x4a, 0xd9, 0x31, 0x07, 
@@ -268,8 +266,7 @@ u8 wc_rock_dz_floatrock_001_pal_rgba16[] = {
 	
 };
 
-Gfx wc_rock_kd_nde_hasira5_vq_001_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 wc_rock_kd_nde_hasira5_vq_001_ci4[] = {
+ALIGNED8 u8 wc_rock_kd_nde_hasira5_vq_001_ci4[] = {
 	0x01, 0x22, 0x32, 0x14, 0x33, 0x52, 0x61, 0x56, 
 	0x67, 0x81, 0x13, 0x48, 0x22, 0x91, 0x73, 0x32, 
 	0xab, 0x17, 0x09, 0x45, 0xac, 0x51, 0x71, 0xdb, 
@@ -529,8 +526,7 @@ u8 wc_rock_kd_nde_hasira5_vq_001_ci4[] = {
 	
 };
 
-Gfx wc_rock_kd_nde_hasira5_vq_001_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 wc_rock_kd_nde_hasira5_vq_001_pal_rgba16[] = {
+ALIGNED8 u8 wc_rock_kd_nde_hasira5_vq_001_pal_rgba16[] = {
 	0x08, 0x03, 0x52, 0x13, 0x73, 0x19, 0x8b, 0xdd, 
 	0x6a, 0xd7, 0x31, 0x0b, 0x62, 0x55, 0x49, 0xd1, 
 	0x9c, 0x61, 0x39, 0x4d, 0x41, 0x8f, 0x00, 0x01, 
@@ -550,78 +546,63 @@ Vtx wc_rock_wc_rock_mesh_layer_1_vtx_cull[8] = {
 };
 
 Vtx wc_rock_wc_rock_mesh_layer_1_vtx_0[28] = {
-	{{ {150, -200, -150}, 0, {1735, 2032}, {255, 255, 255, 255} }},
-	{{ {150, 200, -257}, 0, {2032, -16}, {255, 255, 255, 255} }},
-	{{ {257, 200, -151}, 0, {1430, -16}, {255, 255, 255, 255} }},
-	{{ {-150, -200, 150}, 0, {1735, 2032}, {255, 255, 255, 255} }},
-	{{ {-150, 200, 257}, 0, {2032, -16}, {255, 255, 255, 255} }},
-	{{ {-257, 200, 151}, 0, {1430, -16}, {255, 255, 255, 255} }},
-	{{ {257, 200, 151}, 0, {2032, -16}, {255, 255, 255, 255} }},
-	{{ {150, 200, 257}, 0, {1430, -16}, {255, 255, 255, 255} }},
-	{{ {150, -200, 150}, 0, {1735, 2032}, {255, 255, 255, 255} }},
-	{{ {-257, 200, -151}, 0, {2032, -16}, {255, 255, 255, 255} }},
-	{{ {-150, 200, -257}, 0, {1430, -16}, {255, 255, 255, 255} }},
-	{{ {-150, -200, -150}, 0, {1735, 2032}, {255, 255, 255, 255} }},
-	{{ {-150, 200, -257}, 0, {1422, -16}, {255, 255, 255, 255} }},
-	{{ {150, 200, -257}, 0, {-8, -16}, {255, 255, 255, 255} }},
-	{{ {-150, -200, -150}, 0, {1422, 2032}, {255, 255, 255, 255} }},
-	{{ {150, -200, -150}, 0, {-16, 2032}, {255, 255, 255, 255} }},
-	{{ {150, 200, 257}, 0, {1422, -16}, {255, 255, 255, 255} }},
-	{{ {-150, 200, 257}, 0, {-8, -16}, {255, 255, 255, 255} }},
-	{{ {150, -200, 150}, 0, {1422, 2032}, {255, 255, 255, 255} }},
-	{{ {-150, -200, 150}, 0, {-16, 2032}, {255, 255, 255, 255} }},
-	{{ {150, -200, 150}, 0, {-16, 2032}, {255, 255, 255, 255} }},
-	{{ {150, -200, -150}, 0, {1422, 2032}, {255, 255, 255, 255} }},
-	{{ {257, 200, 151}, 0, {-8, -16}, {255, 255, 255, 255} }},
-	{{ {257, 200, -151}, 0, {1422, -16}, {255, 255, 255, 255} }},
-	{{ {-257, 200, 151}, 0, {1422, -16}, {255, 255, 255, 255} }},
-	{{ {-257, 200, -151}, 0, {-8, -16}, {255, 255, 255, 255} }},
-	{{ {-150, -200, 150}, 0, {1422, 2032}, {255, 255, 255, 255} }},
-	{{ {-150, -200, -150}, 0, {-16, 2032}, {255, 255, 255, 255} }},
-};
-
-Gfx wc_rock_wc_rock_mesh_layer_1_tri_0[] = {
-	gsSPVertex(wc_rock_wc_rock_mesh_layer_1_vtx_0 + 0, 28, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
-	gsSP2Triangles(6, 7, 8, 0, 9, 10, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
-	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
-	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
-	gsSPEndDisplayList(),
+	{{ {150, -200, -150}, 0, {1735, 2032}, {73, 181, 183, 255} }},
+	{{ {150, 200, -257}, 0, {2032, -16}, {37, 83, 167, 255} }},
+	{{ {257, 200, -151}, 0, {1430, -16}, {89, 83, 219, 255} }},
+	{{ {-150, -200, 150}, 0, {1735, 2032}, {183, 181, 73, 255} }},
+	{{ {-150, 200, 257}, 0, {2032, -16}, {219, 83, 89, 255} }},
+	{{ {-257, 200, 151}, 0, {1430, -16}, {167, 83, 37, 255} }},
+	{{ {257, 200, 151}, 0, {2032, -16}, {53, 113, 22, 255} }},
+	{{ {150, 200, 257}, 0, {1430, -16}, {47, 37, 112, 255} }},
+	{{ {150, -200, 150}, 0, {1735, 2032}, {59, 160, 59, 255} }},
+	{{ {-257, 200, -151}, 0, {2032, -16}, {203, 113, 234, 255} }},
+	{{ {-150, 200, -257}, 0, {1430, -16}, {209, 37, 144, 255} }},
+	{{ {-150, -200, -150}, 0, {1735, 2032}, {197, 160, 197, 255} }},
+	{{ {-150, 200, -257}, 0, {1422, -16}, {209, 37, 144, 255} }},
+	{{ {150, 200, -257}, 0, {-8, -16}, {37, 83, 167, 255} }},
+	{{ {-150, -200, -150}, 0, {1422, 2032}, {197, 160, 197, 255} }},
+	{{ {150, -200, -150}, 0, {-16, 2032}, {73, 181, 183, 255} }},
+	{{ {150, 200, 257}, 0, {1422, -16}, {47, 37, 112, 255} }},
+	{{ {-150, 200, 257}, 0, {-8, -16}, {219, 83, 89, 255} }},
+	{{ {150, -200, 150}, 0, {1422, 2032}, {59, 160, 59, 255} }},
+	{{ {-150, -200, 150}, 0, {-16, 2032}, {183, 181, 73, 255} }},
+	{{ {150, -200, 150}, 0, {-16, 2032}, {59, 160, 59, 255} }},
+	{{ {150, -200, -150}, 0, {1422, 2032}, {73, 181, 183, 255} }},
+	{{ {257, 200, 151}, 0, {-8, -16}, {53, 113, 22, 255} }},
+	{{ {257, 200, -151}, 0, {1422, -16}, {89, 83, 219, 255} }},
+	{{ {-257, 200, 151}, 0, {1422, -16}, {167, 83, 37, 255} }},
+	{{ {-257, 200, -151}, 0, {-8, -16}, {203, 113, 234, 255} }},
+	{{ {-150, -200, 150}, 0, {1422, 2032}, {183, 181, 73, 255} }},
+	{{ {-150, -200, -150}, 0, {-16, 2032}, {197, 160, 197, 255} }},
 };
 
 Vtx wc_rock_wc_rock_mesh_layer_1_vtx_1[12] = {
-	{{ {-150, 200, 257}, 0, {418, -16}, {255, 255, 255, 255} }},
-	{{ {150, 200, 257}, 0, {1606, -16}, {255, 255, 255, 255} }},
-	{{ {257, 200, 151}, 0, {2040, 402}, {255, 255, 255, 255} }},
-	{{ {-257, 200, 151}, 0, {-16, 402}, {255, 255, 255, 255} }},
-	{{ {-257, 200, -151}, 0, {-16, 1606}, {255, 255, 255, 255} }},
-	{{ {257, 200, -151}, 0, {2040, 1606}, {255, 255, 255, 255} }},
-	{{ {150, 200, -257}, 0, {1606, 2032}, {255, 255, 255, 255} }},
-	{{ {-150, 200, -257}, 0, {418, 2032}, {255, 255, 255, 255} }},
-	{{ {-150, -200, 150}, 0, {410, 402}, {255, 255, 255, 255} }},
-	{{ {-150, -200, -150}, 0, {410, 1606}, {255, 255, 255, 255} }},
-	{{ {150, -200, 150}, 0, {1614, 402}, {255, 255, 255, 255} }},
-	{{ {150, -200, -150}, 0, {1614, 1606}, {255, 255, 255, 255} }},
-};
-
-Gfx wc_rock_wc_rock_mesh_layer_1_tri_1[] = {
-	gsSPVertex(wc_rock_wc_rock_mesh_layer_1_vtx_1 + 0, 12, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 0, 2, 0),
-	gsSP2Triangles(3, 2, 4, 0, 4, 2, 5, 0),
-	gsSP2Triangles(4, 5, 6, 0, 6, 7, 4, 0),
-	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
-	gsSPEndDisplayList(),
+	{{ {-150, 200, 257}, 0, {418, -16}, {219, 83, 89, 255} }},
+	{{ {150, 200, 257}, 0, {1606, -16}, {47, 37, 112, 255} }},
+	{{ {257, 200, 151}, 0, {2040, 402}, {53, 113, 22, 255} }},
+	{{ {-257, 200, 151}, 0, {-16, 402}, {167, 83, 37, 255} }},
+	{{ {-257, 200, -151}, 0, {-16, 1606}, {203, 113, 234, 255} }},
+	{{ {257, 200, -151}, 0, {2040, 1606}, {89, 83, 219, 255} }},
+	{{ {150, 200, -257}, 0, {1606, 2032}, {37, 83, 167, 255} }},
+	{{ {-150, 200, -257}, 0, {418, 2032}, {209, 37, 144, 255} }},
+	{{ {-150, -200, 150}, 0, {410, 402}, {183, 181, 73, 255} }},
+	{{ {-150, -200, -150}, 0, {410, 1606}, {197, 160, 197, 255} }},
+	{{ {150, -200, 150}, 0, {1614, 402}, {59, 160, 59, 255} }},
+	{{ {150, -200, -150}, 0, {1614, 1606}, {73, 181, 183, 255} }},
 };
 
 
-Gfx mat_wc_rock_ROCK_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
+Gfx wc_rock_wc_rock_mesh_layer_1[] = {
+	gsSPClearGeometryMode(G_LIGHTING),
+	gsSPVertex(wc_rock_wc_rock_mesh_layer_1_vtx_cull + 0, 8, 0),
+	gsSPSetGeometryMode(G_LIGHTING),
+	gsSPCullDisplayList(0, 7),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPLightColor(LIGHT_1, 0xAAAAAAFF),
+	gsSPLightColor(LIGHT_2, 0x535353FF),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_rock_dz_floatrock_001_pal_rgba16),
 	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
@@ -631,57 +612,25 @@ Gfx mat_wc_rock_ROCK_sa2mdl_0_f3d[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_wc_rock_ROCK_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(0, G_LIGHTING),
+	gsSPVertex(wc_rock_wc_rock_mesh_layer_1_vtx_0 + 0, 28, 0),
+	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
+	gsSP2Triangles(6, 7, 8, 0, 9, 10, 11, 0),
+	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
+	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
+	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
+	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
 	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_wc_rock_ROCK_sa2mdl_1_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_rock_kd_nde_hasira5_vq_001_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, wc_rock_kd_nde_hasira5_vq_001_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_wc_rock_ROCK_sa2mdl_1_f3d[] = {
-	gsSPGeometryMode(0, G_LIGHTING),
+	gsSPVertex(wc_rock_wc_rock_mesh_layer_1_vtx_1 + 0, 12, 0),
+	gsSP2Triangles(0, 1, 2, 0, 3, 0, 2, 0),
+	gsSP2Triangles(3, 2, 4, 0, 4, 2, 5, 0),
+	gsSP2Triangles(4, 5, 6, 0, 6, 7, 4, 0),
+	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
 	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx wc_rock_wc_rock_mesh_layer_1[] = {
-	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(wc_rock_wc_rock_mesh_layer_1_vtx_cull + 0, 8, 0),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPCullDisplayList(0, 7),
-	gsSPDisplayList(mat_wc_rock_ROCK_sa2mdl_0_f3d),
-	gsSPDisplayList(wc_rock_wc_rock_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_wc_rock_ROCK_sa2mdl_0_f3d),
-	gsSPDisplayList(mat_wc_rock_ROCK_sa2mdl_1_f3d),
-	gsSPDisplayList(wc_rock_wc_rock_mesh_layer_1_tri_1),
-	gsSPDisplayList(mat_revert_wc_rock_ROCK_sa2mdl_1_f3d),
-	gsDPPipeSync(),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPClearGeometryMode(G_TEXTURE_GEN),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 0),
 	gsDPSetEnvColor(255, 255, 255, 255),

@@ -1,5 +1,4 @@
-Gfx wc_rock_break_dz_floatrock_001_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 wc_rock_break_dz_floatrock_001_ci4[] = {
+ALIGNED8 u8 wc_rock_break_dz_floatrock_001_ci4[] = {
 	0x00, 0x10, 0x12, 0x00, 0x11, 0x21, 0x03, 0x00, 
 	0x11, 0x10, 0x00, 0x11, 0x11, 0x41, 0x11, 0x01, 
 	0x10, 0x10, 0x10, 0x01, 0x13, 0x21, 0x01, 0x56, 
@@ -259,8 +258,7 @@ u8 wc_rock_break_dz_floatrock_001_ci4[] = {
 	
 };
 
-Gfx wc_rock_break_dz_floatrock_001_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 wc_rock_break_dz_floatrock_001_pal_rgba16[] = {
+ALIGNED8 u8 wc_rock_break_dz_floatrock_001_pal_rgba16[] = {
 	0xb4, 0xa1, 0xbd, 0x25, 0xa4, 0x1d, 0x93, 0x99, 
 	0xb5, 0x27, 0xdd, 0xed, 0xcd, 0xa9, 0xe6, 0x6f, 
 	0x83, 0x15, 0x6a, 0x91, 0x4a, 0xd9, 0x31, 0x07, 
@@ -268,8 +266,7 @@ u8 wc_rock_break_dz_floatrock_001_pal_rgba16[] = {
 	
 };
 
-Gfx wc_rock_break_kd_nde_hasira5_vq_001_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 wc_rock_break_kd_nde_hasira5_vq_001_ci4[] = {
+ALIGNED8 u8 wc_rock_break_kd_nde_hasira5_vq_001_ci4[] = {
 	0x01, 0x22, 0x32, 0x14, 0x33, 0x52, 0x61, 0x56, 
 	0x67, 0x81, 0x13, 0x48, 0x22, 0x91, 0x73, 0x32, 
 	0xab, 0x17, 0x09, 0x45, 0xac, 0x51, 0x71, 0xdb, 
@@ -529,8 +526,7 @@ u8 wc_rock_break_kd_nde_hasira5_vq_001_ci4[] = {
 	
 };
 
-Gfx wc_rock_break_kd_nde_hasira5_vq_001_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 wc_rock_break_kd_nde_hasira5_vq_001_pal_rgba16[] = {
+ALIGNED8 u8 wc_rock_break_kd_nde_hasira5_vq_001_pal_rgba16[] = {
 	0x08, 0x03, 0x52, 0x13, 0x73, 0x19, 0x8b, 0xdd, 
 	0x6a, 0xd7, 0x31, 0x0b, 0x62, 0x55, 0x49, 0xd1, 
 	0x9c, 0x61, 0x39, 0x4d, 0x41, 0x8f, 0x00, 0x01, 
@@ -550,53 +546,35 @@ Vtx wc_rock_break_wc_rock_break1_mesh_layer_1_vtx_cull[8] = {
 };
 
 Vtx wc_rock_break_wc_rock_break1_mesh_layer_1_vtx_0[11] = {
-	{{ {-19, -200, -88}, 0, {1422, 2032}, {255, 255, 255, 255} }},
-	{{ {-19, 200, -196}, 0, {1422, -16}, {255, 255, 255, 255} }},
-	{{ {131, 0, -142}, 0, {707, 1004}, {255, 255, 255, 255} }},
-	{{ {-127, 200, -89}, 0, {2032, -16}, {255, 255, 255, 255} }},
-	{{ {-19, 200, -196}, 0, {1430, -16}, {255, 255, 255, 255} }},
-	{{ {-19, -200, -88}, 0, {1735, 2032}, {255, 255, 255, 255} }},
-	{{ {-19, -200, -88}, 0, {-16, 2032}, {255, 255, 255, 255} }},
-	{{ {-19, -200, 212}, 0, {1422, 2032}, {255, 255, 255, 255} }},
-	{{ {-73, 0, 62}, 0, {707, 1004}, {255, 255, 255, 255} }},
-	{{ {-127, 200, -89}, 0, {-8, -16}, {255, 255, 255, 255} }},
-	{{ {-127, 200, 212}, 0, {1422, -16}, {255, 255, 255, 255} }},
-};
-
-Gfx wc_rock_break_wc_rock_break1_mesh_layer_1_tri_0[] = {
-	gsSPVertex(wc_rock_break_wc_rock_break1_mesh_layer_1_vtx_0 + 0, 11, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
-	gsSP2Triangles(6, 7, 8, 0, 6, 8, 9, 0),
-	gsSP1Triangle(9, 8, 10, 0),
-	gsSPEndDisplayList(),
+	{{ {-19, -200, -88}, 0, {1422, 2032}, {212, 163, 182, 255} }},
+	{{ {-19, 200, -196}, 0, {1422, -16}, {4, 55, 142, 255} }},
+	{{ {131, 0, -142}, 0, {707, 1004}, {106, 238, 189, 255} }},
+	{{ {-127, 200, -89}, 0, {2032, -16}, {145, 55, 227, 255} }},
+	{{ {-19, 200, -196}, 0, {1430, -16}, {4, 55, 142, 255} }},
+	{{ {-19, -200, -88}, 0, {1735, 2032}, {212, 163, 182, 255} }},
+	{{ {-19, -200, -88}, 0, {-16, 2032}, {212, 163, 182, 255} }},
+	{{ {-19, -200, 212}, 0, {1422, 2032}, {205, 167, 75, 255} }},
+	{{ {-73, 0, 62}, 0, {707, 1004}, {179, 229, 97, 255} }},
+	{{ {-127, 200, -89}, 0, {-8, -16}, {145, 55, 227, 255} }},
+	{{ {-127, 200, 212}, 0, {1422, -16}, {188, 37, 101, 255} }},
 };
 
 Vtx wc_rock_break_wc_rock_break1_mesh_layer_1_vtx_1[15] = {
-	{{ {-19, -200, 212}, 0, {410, 402}, {255, 255, 255, 255} }},
-	{{ {-19, -200, -88}, 0, {410, 1606}, {255, 255, 255, 255} }},
-	{{ {131, -200, 62}, 0, {1012, 1004}, {255, 255, 255, 255} }},
-	{{ {-19, 200, -196}, 0, {418, 2032}, {255, 255, 255, 255} }},
-	{{ {-127, 200, -89}, 0, {-16, 1606}, {255, 255, 255, 255} }},
-	{{ {131, 200, 62}, 0, {1012, 1004}, {255, 255, 255, 255} }},
-	{{ {-127, 200, 212}, 0, {-16, 402}, {255, 255, 255, 255} }},
-	{{ {-73, 0, 62}, 0, {410, 1004}, {255, 255, 255, 255} }},
-	{{ {-19, -200, 212}, 0, {843, 2032}, {255, 255, 255, 255} }},
-	{{ {131, -200, 62}, 0, {2040, 2032}, {255, 255, 255, 255} }},
-	{{ {131, 200, 62}, 0, {2040, -16}, {255, 255, 255, 255} }},
-	{{ {-19, -200, -88}, 0, {843, 2032}, {255, 255, 255, 255} }},
-	{{ {131, 0, -142}, 0, {2040, 1004}, {255, 255, 255, 255} }},
-	{{ {-19, 200, -196}, 0, {843, -16}, {255, 255, 255, 255} }},
-	{{ {-127, 200, 212}, 0, {-16, -16}, {255, 255, 255, 255} }},
-};
-
-Gfx wc_rock_break_wc_rock_break1_mesh_layer_1_tri_1[] = {
-	gsSPVertex(wc_rock_break_wc_rock_break1_mesh_layer_1_vtx_1 + 0, 15, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
-	gsSP2Triangles(5, 4, 6, 0, 7, 8, 9, 0),
-	gsSP2Triangles(9, 10, 7, 0, 9, 11, 10, 0),
-	gsSP2Triangles(11, 12, 10, 0, 10, 12, 13, 0),
-	gsSP1Triangle(7, 10, 14, 0),
-	gsSPEndDisplayList(),
+	{{ {-19, -200, 212}, 0, {410, 402}, {205, 167, 75, 255} }},
+	{{ {-19, -200, -88}, 0, {410, 1606}, {212, 163, 182, 255} }},
+	{{ {131, -200, 62}, 0, {1012, 1004}, {102, 223, 69, 255} }},
+	{{ {-19, 200, -196}, 0, {418, 2032}, {4, 55, 142, 255} }},
+	{{ {-127, 200, -89}, 0, {-16, 1606}, {145, 55, 227, 255} }},
+	{{ {131, 200, 62}, 0, {1012, 1004}, {104, 60, 41, 255} }},
+	{{ {-127, 200, 212}, 0, {-16, 402}, {188, 37, 101, 255} }},
+	{{ {-73, 0, 62}, 0, {410, 1004}, {179, 229, 97, 255} }},
+	{{ {-19, -200, 212}, 0, {843, 2032}, {205, 167, 75, 255} }},
+	{{ {131, -200, 62}, 0, {2040, 2032}, {102, 223, 69, 255} }},
+	{{ {131, 200, 62}, 0, {2040, -16}, {104, 60, 41, 255} }},
+	{{ {-19, -200, -88}, 0, {843, 2032}, {212, 163, 182, 255} }},
+	{{ {131, 0, -142}, 0, {2040, 1004}, {106, 238, 189, 255} }},
+	{{ {-19, 200, -196}, 0, {843, -16}, {4, 55, 142, 255} }},
+	{{ {-127, 200, 212}, 0, {-16, -16}, {188, 37, 101, 255} }},
 };
 
 Vtx wc_rock_break_wc_rock_break2_mesh_layer_1_vtx_cull[8] = {
@@ -611,56 +589,38 @@ Vtx wc_rock_break_wc_rock_break2_mesh_layer_1_vtx_cull[8] = {
 };
 
 Vtx wc_rock_break_wc_rock_break2_mesh_layer_1_vtx_0[12] = {
-	{{ {53, -198, -48}, 0, {1735, 2032}, {255, 255, 255, 255} }},
-	{{ {52, 202, -155}, 0, {2032, -16}, {255, 255, 255, 255} }},
-	{{ {160, 202, -48}, 0, {1430, -16}, {255, 255, 255, 255} }},
-	{{ {160, 202, 253}, 0, {-8, -16}, {255, 255, 255, 255} }},
-	{{ {106, 2, 102}, 0, {707, 1004}, {255, 255, 255, 255} }},
-	{{ {160, 202, -48}, 0, {1422, -16}, {255, 255, 255, 255} }},
-	{{ {53, -198, -48}, 0, {1422, 2032}, {255, 255, 255, 255} }},
-	{{ {53, -198, -48}, 0, {-16, 2032}, {255, 255, 255, 255} }},
-	{{ {-247, -198, -48}, 0, {1422, 2032}, {255, 255, 255, 255} }},
-	{{ {-97, 2, -101}, 0, {707, 1004}, {255, 255, 255, 255} }},
-	{{ {52, 202, -155}, 0, {-8, -16}, {255, 255, 255, 255} }},
-	{{ {-247, 202, -155}, 0, {1422, -16}, {255, 255, 255, 255} }},
-};
-
-Gfx wc_rock_break_wc_rock_break2_mesh_layer_1_tri_0[] = {
-	gsSPVertex(wc_rock_break_wc_rock_break2_mesh_layer_1_vtx_0 + 0, 12, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
-	gsSP2Triangles(5, 4, 6, 0, 7, 8, 9, 0),
-	gsSP2Triangles(7, 9, 10, 0, 10, 9, 11, 0),
-	gsSPEndDisplayList(),
+	{{ {53, -198, -48}, 0, {1735, 2032}, {74, 163, 212, 255} }},
+	{{ {52, 202, -155}, 0, {2032, -16}, {29, 55, 145, 255} }},
+	{{ {160, 202, -48}, 0, {1430, -16}, {111, 55, 227, 255} }},
+	{{ {160, 202, 253}, 0, {-8, -16}, {68, 37, 101, 255} }},
+	{{ {106, 2, 102}, 0, {707, 1004}, {56, 178, 83, 255} }},
+	{{ {160, 202, -48}, 0, {1422, -16}, {111, 55, 227, 255} }},
+	{{ {53, -198, -48}, 0, {1422, 2032}, {74, 163, 212, 255} }},
+	{{ {53, -198, -48}, 0, {-16, 2032}, {74, 163, 212, 255} }},
+	{{ {-247, -198, -48}, 0, {1422, 2032}, {181, 168, 205, 255} }},
+	{{ {-97, 2, -101}, 0, {707, 1004}, {159, 229, 178, 255} }},
+	{{ {52, 202, -155}, 0, {-8, -16}, {29, 55, 145, 255} }},
+	{{ {-247, 202, -155}, 0, {1422, -16}, {155, 37, 188, 255} }},
 };
 
 Vtx wc_rock_break_wc_rock_break2_mesh_layer_1_vtx_1[17] = {
-	{{ {-97, -198, 102}, 0, {1012, 1004}, {255, 255, 255, 255} }},
-	{{ {-247, -198, -48}, 0, {410, 1606}, {255, 255, 255, 255} }},
-	{{ {53, -198, -48}, 0, {1614, 1606}, {255, 255, 255, 255} }},
-	{{ {-97, 2, -101}, 0, {739, 1004}, {255, 255, 255, 255} }},
-	{{ {-247, -198, -48}, 0, {-16, 2032}, {255, 255, 255, 255} }},
-	{{ {-97, -198, 102}, 0, {739, 2032}, {255, 255, 255, 255} }},
-	{{ {-247, 202, -155}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {-97, 202, 102}, 0, {739, -16}, {255, 255, 255, 255} }},
-	{{ {52, 202, -155}, 0, {1606, 2032}, {255, 255, 255, 255} }},
-	{{ {-247, 202, -155}, 0, {418, 2032}, {255, 255, 255, 255} }},
-	{{ {-97, 202, 102}, 0, {1012, 1004}, {255, 255, 255, 255} }},
-	{{ {160, 202, -48}, 0, {2040, 1606}, {255, 255, 255, 255} }},
-	{{ {160, 202, 253}, 0, {2040, 402}, {255, 255, 255, 255} }},
-	{{ {-97, 2, -101}, 0, {1687, 1060}, {255, 255, 255, 255} }},
-	{{ {53, -198, -48}, 0, {1494, 2032}, {255, 255, 255, 255} }},
-	{{ {106, 2, 102}, 0, {1767, 1004}, {255, 255, 255, 255} }},
-	{{ {160, 202, 253}, 0, {2040, -16}, {255, 255, 255, 255} }},
-};
-
-Gfx wc_rock_break_wc_rock_break2_mesh_layer_1_tri_1[] = {
-	gsSPVertex(wc_rock_break_wc_rock_break2_mesh_layer_1_vtx_1 + 0, 17, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
-	gsSP2Triangles(6, 3, 7, 0, 8, 9, 10, 0),
-	gsSP2Triangles(8, 10, 11, 0, 11, 10, 12, 0),
-	gsSP2Triangles(5, 7, 13, 0, 14, 7, 5, 0),
-	gsSP2Triangles(14, 15, 7, 0, 15, 16, 7, 0),
-	gsSPEndDisplayList(),
+	{{ {-97, -198, 102}, 0, {1012, 1004}, {187, 223, 102, 255} }},
+	{{ {-247, -198, -48}, 0, {410, 1606}, {181, 168, 205, 255} }},
+	{{ {53, -198, -48}, 0, {1614, 1606}, {74, 163, 212, 255} }},
+	{{ {-97, 2, -101}, 0, {739, 1004}, {159, 229, 178, 255} }},
+	{{ {-247, -198, -48}, 0, {-16, 2032}, {181, 168, 205, 255} }},
+	{{ {-97, -198, 102}, 0, {739, 2032}, {187, 223, 102, 255} }},
+	{{ {-247, 202, -155}, 0, {-16, -16}, {155, 37, 188, 255} }},
+	{{ {-97, 202, 102}, 0, {739, -16}, {189, 56, 92, 255} }},
+	{{ {52, 202, -155}, 0, {1606, 2032}, {29, 55, 145, 255} }},
+	{{ {-247, 202, -155}, 0, {418, 2032}, {155, 37, 188, 255} }},
+	{{ {-97, 202, 102}, 0, {1012, 1004}, {189, 56, 92, 255} }},
+	{{ {160, 202, -48}, 0, {2040, 1606}, {111, 55, 227, 255} }},
+	{{ {160, 202, 253}, 0, {2040, 402}, {68, 37, 101, 255} }},
+	{{ {-97, 2, -101}, 0, {1687, 1060}, {159, 229, 178, 255} }},
+	{{ {53, -198, -48}, 0, {1494, 2032}, {74, 163, 212, 255} }},
+	{{ {106, 2, 102}, 0, {1767, 1004}, {56, 178, 83, 255} }},
+	{{ {160, 202, 253}, 0, {2040, -16}, {68, 37, 101, 255} }},
 };
 
 Vtx wc_rock_break_wc_rock_break3_mesh_layer_1_vtx_cull[8] = {
@@ -675,49 +635,33 @@ Vtx wc_rock_break_wc_rock_break3_mesh_layer_1_vtx_cull[8] = {
 };
 
 Vtx wc_rock_break_wc_rock_break3_mesh_layer_1_vtx_0[10] = {
-	{{ {-64, -200, 47}, 0, {1422, 2032}, {255, 255, 255, 255} }},
-	{{ {-171, 200, 48}, 0, {1422, -16}, {255, 255, 255, 255} }},
-	{{ {-117, 0, -102}, 0, {707, 1004}, {255, 255, 255, 255} }},
-	{{ {-64, -200, 47}, 0, {1735, 2032}, {255, 255, 255, 255} }},
-	{{ {-63, 200, 155}, 0, {2032, -16}, {255, 255, 255, 255} }},
-	{{ {-171, 200, 48}, 0, {1430, -16}, {255, 255, 255, 255} }},
-	{{ {236, -200, 47}, 0, {1422, 2032}, {255, 255, 255, 255} }},
-	{{ {86, 0, 101}, 0, {707, 1004}, {255, 255, 255, 255} }},
-	{{ {-64, -200, 47}, 0, {-16, 2032}, {255, 255, 255, 255} }},
-	{{ {-63, 200, 155}, 0, {-8, -16}, {255, 255, 255, 255} }},
-};
-
-Gfx wc_rock_break_wc_rock_break3_mesh_layer_1_tri_0[] = {
-	gsSPVertex(wc_rock_break_wc_rock_break3_mesh_layer_1_vtx_0 + 0, 10, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
-	gsSP2Triangles(6, 7, 8, 0, 8, 7, 9, 0),
-	gsSPEndDisplayList(),
+	{{ {-64, -200, 47}, 0, {1422, 2032}, {184, 174, 66, 255} }},
+	{{ {-171, 200, 48}, 0, {1422, -16}, {142, 55, 252, 255} }},
+	{{ {-117, 0, -102}, 0, {707, 1004}, {174, 240, 160, 255} }},
+	{{ {-64, -200, 47}, 0, {1735, 2032}, {184, 174, 66, 255} }},
+	{{ {-63, 200, 155}, 0, {2032, -16}, {4, 55, 115, 255} }},
+	{{ {-171, 200, 48}, 0, {1430, -16}, {142, 55, 252, 255} }},
+	{{ {236, -200, 47}, 0, {1422, 2032}, {103, 200, 49, 255} }},
+	{{ {86, 0, 101}, 0, {707, 1004}, {60, 15, 111, 255} }},
+	{{ {-64, -200, 47}, 0, {-16, 2032}, {184, 174, 66, 255} }},
+	{{ {-63, 200, 155}, 0, {-8, -16}, {4, 55, 115, 255} }},
 };
 
 Vtx wc_rock_break_wc_rock_break3_mesh_layer_1_vtx_1[14] = {
-	{{ {86, -200, -103}, 0, {1012, 1004}, {255, 255, 255, 255} }},
-	{{ {236, -200, 47}, 0, {1614, 402}, {255, 255, 255, 255} }},
-	{{ {-64, -200, 47}, 0, {410, 402}, {255, 255, 255, 255} }},
-	{{ {-171, 200, 48}, 0, {-16, 402}, {255, 255, 255, 255} }},
-	{{ {-63, 200, 155}, 0, {418, -16}, {255, 255, 255, 255} }},
-	{{ {86, 200, -103}, 0, {1012, 1004}, {255, 255, 255, 255} }},
-	{{ {-117, 0, -102}, 0, {257, 1004}, {255, 255, 255, 255} }},
-	{{ {86, -200, -103}, 0, {1285, 2032}, {255, 255, 255, 255} }},
-	{{ {-64, -200, 47}, 0, {530, 2032}, {255, 255, 255, 255} }},
-	{{ {86, 200, -103}, 0, {1285, -16}, {255, 255, 255, 255} }},
-	{{ {-171, 200, 48}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {236, -200, 47}, 0, {2040, 2032}, {255, 255, 255, 255} }},
-	{{ {86, 0, 101}, 0, {1285, 1004}, {255, 255, 255, 255} }},
-	{{ {-63, 200, 155}, 0, {530, -16}, {255, 255, 255, 255} }},
-};
-
-Gfx wc_rock_break_wc_rock_break3_mesh_layer_1_tri_1[] = {
-	gsSPVertex(wc_rock_break_wc_rock_break3_mesh_layer_1_vtx_1 + 0, 14, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
-	gsSP2Triangles(6, 7, 8, 0, 9, 7, 6, 0),
-	gsSP2Triangles(9, 6, 10, 0, 9, 11, 7, 0),
-	gsSP2Triangles(12, 11, 9, 0, 9, 13, 12, 0),
-	gsSPEndDisplayList(),
+	{{ {86, -200, -103}, 0, {1012, 1004}, {6, 184, 152, 255} }},
+	{{ {236, -200, 47}, 0, {1614, 402}, {103, 200, 49, 255} }},
+	{{ {-64, -200, 47}, 0, {410, 402}, {184, 174, 66, 255} }},
+	{{ {-171, 200, 48}, 0, {-16, 402}, {142, 55, 252, 255} }},
+	{{ {-63, 200, 155}, 0, {418, -16}, {4, 55, 115, 255} }},
+	{{ {86, 200, -103}, 0, {1012, 1004}, {68, 89, 196, 255} }},
+	{{ {-117, 0, -102}, 0, {257, 1004}, {174, 240, 160, 255} }},
+	{{ {86, -200, -103}, 0, {1285, 2032}, {6, 184, 152, 255} }},
+	{{ {-64, -200, 47}, 0, {530, 2032}, {184, 174, 66, 255} }},
+	{{ {86, 200, -103}, 0, {1285, -16}, {68, 89, 196, 255} }},
+	{{ {-171, 200, 48}, 0, {-16, -16}, {142, 55, 252, 255} }},
+	{{ {236, -200, 47}, 0, {2040, 2032}, {103, 200, 49, 255} }},
+	{{ {86, 0, 101}, 0, {1285, 1004}, {60, 15, 111, 255} }},
+	{{ {-63, 200, 155}, 0, {530, -16}, {4, 55, 115, 255} }},
 };
 
 Vtx wc_rock_break_wc_rock_break4_mesh_layer_1_vtx_cull[8] = {
@@ -732,53 +676,35 @@ Vtx wc_rock_break_wc_rock_break4_mesh_layer_1_vtx_cull[8] = {
 };
 
 Vtx wc_rock_break_wc_rock_break4_mesh_layer_1_vtx_0[11] = {
-	{{ {157, 200, 71}, 0, {2032, -16}, {255, 255, 255, 255} }},
-	{{ {49, 200, 178}, 0, {1430, -16}, {255, 255, 255, 255} }},
-	{{ {49, -200, 70}, 0, {1735, 2032}, {255, 255, 255, 255} }},
-	{{ {49, -200, 70}, 0, {1422, 2032}, {255, 255, 255, 255} }},
-	{{ {49, 200, 178}, 0, {1422, -16}, {255, 255, 255, 255} }},
-	{{ {-101, 0, 124}, 0, {707, 1004}, {255, 255, 255, 255} }},
-	{{ {-250, 200, 178}, 0, {-8, -16}, {255, 255, 255, 255} }},
-	{{ {157, 200, 71}, 0, {-8, -16}, {255, 255, 255, 255} }},
-	{{ {49, -200, 70}, 0, {-16, 2032}, {255, 255, 255, 255} }},
-	{{ {103, 0, -80}, 0, {707, 1004}, {255, 255, 255, 255} }},
-	{{ {49, -200, -230}, 0, {1422, 2032}, {255, 255, 255, 255} }},
-};
-
-Gfx wc_rock_break_wc_rock_break4_mesh_layer_1_tri_0[] = {
-	gsSPVertex(wc_rock_break_wc_rock_break4_mesh_layer_1_vtx_0 + 0, 11, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
-	gsSP2Triangles(5, 4, 6, 0, 7, 8, 9, 0),
-	gsSP1Triangle(9, 8, 10, 0),
-	gsSPEndDisplayList(),
+	{{ {157, 200, 71}, 0, {2032, -16}, {114, 55, 252, 255} }},
+	{{ {49, 200, 178}, 0, {1430, -16}, {29, 55, 111, 255} }},
+	{{ {49, -200, 70}, 0, {1735, 2032}, {44, 163, 74, 255} }},
+	{{ {49, -200, 70}, 0, {1422, 2032}, {44, 163, 74, 255} }},
+	{{ {49, 200, 178}, 0, {1422, -16}, {29, 55, 111, 255} }},
+	{{ {-101, 0, 124}, 0, {707, 1004}, {173, 178, 56, 255} }},
+	{{ {-250, 200, 178}, 0, {-8, -16}, {155, 37, 68, 255} }},
+	{{ {157, 200, 71}, 0, {-8, -16}, {114, 55, 252, 255} }},
+	{{ {49, -200, 70}, 0, {-16, 2032}, {44, 163, 74, 255} }},
+	{{ {103, 0, -80}, 0, {707, 1004}, {111, 16, 196, 255} }},
+	{{ {49, -200, -230}, 0, {1422, 2032}, {49, 200, 153, 255} }},
 };
 
 Vtx wc_rock_break_wc_rock_break4_mesh_layer_1_vtx_1[15] = {
-	{{ {49, -200, -230}, 0, {1614, 1606}, {255, 255, 255, 255} }},
-	{{ {49, -200, 70}, 0, {1614, 402}, {255, 255, 255, 255} }},
-	{{ {-101, -200, -80}, 0, {1012, 1004}, {255, 255, 255, 255} }},
-	{{ {-250, 200, 178}, 0, {418, -16}, {255, 255, 255, 255} }},
-	{{ {49, 200, 178}, 0, {1606, -16}, {255, 255, 255, 255} }},
-	{{ {-101, 200, -80}, 0, {1012, 1004}, {255, 255, 255, 255} }},
-	{{ {157, 200, 71}, 0, {2040, 402}, {255, 255, 255, 255} }},
-	{{ {103, 0, -80}, 0, {1767, 1004}, {255, 255, 255, 255} }},
-	{{ {-101, 200, -80}, 0, {739, -16}, {255, 255, 255, 255} }},
-	{{ {157, 200, 71}, 0, {2040, -16}, {255, 255, 255, 255} }},
-	{{ {49, -200, -230}, 0, {1494, 2032}, {255, 255, 255, 255} }},
-	{{ {-101, -200, -80}, 0, {739, 2032}, {255, 255, 255, 255} }},
-	{{ {49, -200, 70}, 0, {1494, 2032}, {255, 255, 255, 255} }},
-	{{ {-101, 0, 124}, 0, {739, 1004}, {255, 255, 255, 255} }},
-	{{ {-250, 200, 178}, 0, {-16, -16}, {255, 255, 255, 255} }},
-};
-
-Gfx wc_rock_break_wc_rock_break4_mesh_layer_1_tri_1[] = {
-	gsSPVertex(wc_rock_break_wc_rock_break4_mesh_layer_1_vtx_1 + 0, 15, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
-	gsSP2Triangles(5, 4, 6, 0, 7, 8, 9, 0),
-	gsSP2Triangles(10, 8, 7, 0, 11, 8, 10, 0),
-	gsSP2Triangles(12, 8, 11, 0, 12, 13, 8, 0),
-	gsSP1Triangle(13, 14, 8, 0),
-	gsSPEndDisplayList(),
+	{{ {49, -200, -230}, 0, {1614, 1606}, {49, 200, 153, 255} }},
+	{{ {49, -200, 70}, 0, {1614, 402}, {44, 163, 74, 255} }},
+	{{ {-101, -200, -80}, 0, {1012, 1004}, {152, 183, 0, 255} }},
+	{{ {-250, 200, 178}, 0, {418, -16}, {155, 37, 68, 255} }},
+	{{ {49, 200, 178}, 0, {1606, -16}, {29, 55, 111, 255} }},
+	{{ {-101, 200, -80}, 0, {1012, 1004}, {187, 68, 174, 255} }},
+	{{ {157, 200, 71}, 0, {2040, 402}, {114, 55, 252, 255} }},
+	{{ {103, 0, -80}, 0, {1767, 1004}, {111, 16, 196, 255} }},
+	{{ {-101, 200, -80}, 0, {739, -16}, {187, 68, 174, 255} }},
+	{{ {157, 200, 71}, 0, {2040, -16}, {114, 55, 252, 255} }},
+	{{ {49, -200, -230}, 0, {1494, 2032}, {49, 200, 153, 255} }},
+	{{ {-101, -200, -80}, 0, {739, 2032}, {152, 183, 0, 255} }},
+	{{ {49, -200, 70}, 0, {1494, 2032}, {44, 163, 74, 255} }},
+	{{ {-101, 0, 124}, 0, {739, 1004}, {173, 178, 56, 255} }},
+	{{ {-250, 200, 178}, 0, {-16, -16}, {155, 37, 68, 255} }},
 };
 
 Vtx wc_rock_break_wc_rock_break5_mesh_layer_1_vtx_cull[8] = {
@@ -793,25 +719,14 @@ Vtx wc_rock_break_wc_rock_break5_mesh_layer_1_vtx_cull[8] = {
 };
 
 Vtx wc_rock_break_wc_rock_break5_mesh_layer_1_vtx_0[8] = {
-	{{ {-64, 29, 56}, 0, {-16, 731}, {255, 255, 255, 255} }},
-	{{ {-35, -24, -38}, 0, {450, 1181}, {255, 255, 255, 255} }},
-	{{ {26, -28, 40}, 0, {1422, 1221}, {255, 255, 255, 255} }},
-	{{ {-12, 44, -64}, 0, {819, 594}, {255, 255, 255, 255} }},
-	{{ {-2, 117, 20}, 0, {980, -16}, {255, 255, 255, 255} }},
-	{{ {50, 18, -3}, 0, {1807, 819}, {255, 255, 255, 255} }},
-	{{ {-5, -123, -29}, 0, {940, 2032}, {255, 255, 255, 255} }},
-	{{ {64, -29, -56}, 0, {2040, 1221}, {255, 255, 255, 255} }},
-};
-
-Gfx wc_rock_break_wc_rock_break5_mesh_layer_1_tri_0[] = {
-	gsSPVertex(wc_rock_break_wc_rock_break5_mesh_layer_1_vtx_0 + 0, 8, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
-	gsSP2Triangles(3, 0, 4, 0, 4, 0, 5, 0),
-	gsSP2Triangles(0, 2, 5, 0, 5, 2, 6, 0),
-	gsSP2Triangles(1, 6, 2, 0, 7, 6, 1, 0),
-	gsSP2Triangles(7, 1, 3, 0, 3, 5, 7, 0),
-	gsSP2Triangles(4, 5, 3, 0, 5, 6, 7, 0),
-	gsSPEndDisplayList(),
+	{{ {-64, 29, 56}, 0, {-16, 731}, {167, 22, 88, 255} }},
+	{{ {-35, -24, -38}, 0, {450, 1181}, {154, 204, 201, 255} }},
+	{{ {26, -28, 40}, 0, {1422, 1221}, {7, 199, 113, 255} }},
+	{{ {-12, 44, -64}, 0, {819, 594}, {232, 63, 148, 255} }},
+	{{ {-2, 117, 20}, 0, {980, -16}, {41, 120, 9, 255} }},
+	{{ {50, 18, -3}, 0, {1807, 819}, {117, 27, 42, 255} }},
+	{{ {-5, -123, -29}, 0, {940, 2032}, {67, 152, 27, 255} }},
+	{{ {64, -29, -56}, 0, {2040, 1221}, {64, 244, 147, 255} }},
 };
 
 Vtx wc_rock_break_wc_rock_break6_mesh_layer_1_vtx_cull[8] = {
@@ -826,25 +741,14 @@ Vtx wc_rock_break_wc_rock_break6_mesh_layer_1_vtx_cull[8] = {
 };
 
 Vtx wc_rock_break_wc_rock_break6_mesh_layer_1_vtx_0[8] = {
-	{{ {-38, -36, 7}, 0, {-16, 2032}, {255, 255, 255, 255} }},
-	{{ {-21, 25, -7}, 0, {450, 281}, {255, 255, 255, 255} }},
-	{{ {15, -18, -23}, 0, {1422, 1526}, {255, 255, 255, 255} }},
-	{{ {-7, 29, 36}, 0, {819, 177}, {255, 255, 255, 255} }},
-	{{ {-1, -31, 63}, 0, {980, 1871}, {255, 255, 255, 255} }},
-	{{ {29, -1, 11}, 0, {1807, 1036}, {255, 255, 255, 255} }},
-	{{ {-3, 36, -65}, 0, {940, -16}, {255, 255, 255, 255} }},
-	{{ {38, 36, -7}, 0, {2040, -16}, {255, 255, 255, 255} }},
-};
-
-Gfx wc_rock_break_wc_rock_break6_mesh_layer_1_tri_0[] = {
-	gsSPVertex(wc_rock_break_wc_rock_break6_mesh_layer_1_vtx_0 + 0, 8, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
-	gsSP2Triangles(3, 0, 4, 0, 4, 0, 5, 0),
-	gsSP2Triangles(0, 2, 5, 0, 5, 2, 6, 0),
-	gsSP2Triangles(1, 6, 2, 0, 7, 6, 1, 0),
-	gsSP2Triangles(7, 1, 3, 0, 3, 5, 7, 0),
-	gsSP2Triangles(4, 5, 3, 0, 5, 6, 7, 0),
-	gsSPEndDisplayList(),
+	{{ {-38, -36, 7}, 0, {-16, 2032}, {167, 166, 253, 255} }},
+	{{ {-21, 25, -7}, 0, {450, 281}, {154, 68, 221, 255} }},
+	{{ {15, -18, -23}, 0, {1422, 1526}, {7, 163, 170, 255} }},
+	{{ {-7, 29, 36}, 0, {819, 177}, {232, 86, 90, 255} }},
+	{{ {-1, -31, 63}, 0, {980, 1871}, {41, 214, 113, 255} }},
+	{{ {29, -1, 11}, 0, {1807, 1036}, {117, 208, 14, 255} }},
+	{{ {-3, 36, -65}, 0, {940, -16}, {67, 3, 148, 255} }},
+	{{ {38, 36, -7}, 0, {2040, -16}, {64, 108, 19, 255} }},
 };
 
 Vtx wc_rock_break_wc_rock_break7_mesh_layer_1_vtx_cull[8] = {
@@ -859,25 +763,14 @@ Vtx wc_rock_break_wc_rock_break7_mesh_layer_1_vtx_cull[8] = {
 };
 
 Vtx wc_rock_break_wc_rock_break7_mesh_layer_1_vtx_0[8] = {
-	{{ {10, -18, -15}, 0, {1422, 1526}, {255, 255, 255, 255} }},
-	{{ {-26, -36, 5}, 0, {-16, 2032}, {255, 255, 255, 255} }},
-	{{ {-14, 25, -5}, 0, {450, 281}, {255, 255, 255, 255} }},
-	{{ {20, -1, 7}, 0, {1807, 1036}, {255, 255, 255, 255} }},
-	{{ {-2, 36, -44}, 0, {940, -16}, {255, 255, 255, 255} }},
-	{{ {26, 36, -5}, 0, {2040, -16}, {255, 255, 255, 255} }},
-	{{ {-5, 29, 24}, 0, {819, 177}, {255, 255, 255, 255} }},
-	{{ {-1, -31, 43}, 0, {980, 1871}, {255, 255, 255, 255} }},
-};
-
-Gfx wc_rock_break_wc_rock_break7_mesh_layer_1_tri_0[] = {
-	gsSPVertex(wc_rock_break_wc_rock_break7_mesh_layer_1_vtx_0 + 0, 8, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
-	gsSP2Triangles(3, 0, 4, 0, 4, 0, 2, 0),
-	gsSP2Triangles(4, 2, 5, 0, 5, 2, 6, 0),
-	gsSP2Triangles(1, 6, 2, 0, 1, 7, 6, 0),
-	gsSP2Triangles(3, 7, 1, 0, 3, 6, 7, 0),
-	gsSP2Triangles(5, 6, 3, 0, 4, 5, 3, 0),
-	gsSPEndDisplayList(),
+	{{ {10, -18, -15}, 0, {1422, 1526}, {12, 171, 163, 255} }},
+	{{ {-26, -36, 5}, 0, {-16, 2032}, {172, 161, 255, 255} }},
+	{{ {-14, 25, -5}, 0, {450, 281}, {151, 64, 224, 255} }},
+	{{ {20, -1, 7}, 0, {1807, 1036}, {120, 216, 14, 255} }},
+	{{ {-2, 36, -44}, 0, {940, -16}, {58, 25, 146, 255} }},
+	{{ {26, 36, -5}, 0, {2040, -16}, {59, 111, 20, 255} }},
+	{{ {-5, 29, 24}, 0, {819, 177}, {227, 77, 97, 255} }},
+	{{ {-1, -31, 43}, 0, {980, 1871}, {57, 210, 104, 255} }},
 };
 
 Vtx wc_rock_break_wc_rock_break8_mesh_layer_1_vtx_cull[8] = {
@@ -892,34 +785,28 @@ Vtx wc_rock_break_wc_rock_break8_mesh_layer_1_vtx_cull[8] = {
 };
 
 Vtx wc_rock_break_wc_rock_break8_mesh_layer_1_vtx_0[8] = {
-	{{ {76, 56, -8}, 0, {2040, -16}, {255, 255, 255, 255} }},
-	{{ {-5, 56, -68}, 0, {940, -16}, {255, 255, 255, 255} }},
-	{{ {-42, 39, -8}, 0, {450, 281}, {255, 255, 255, 255} }},
-	{{ {59, -2, 11}, 0, {1807, 1036}, {255, 255, 255, 255} }},
-	{{ {-14, 45, 37}, 0, {819, 177}, {255, 255, 255, 255} }},
-	{{ {-76, -56, 8}, 0, {-16, 2032}, {255, 255, 255, 255} }},
-	{{ {30, -28, -23}, 0, {1422, 1526}, {255, 255, 255, 255} }},
-	{{ {-2, -47, 65}, 0, {980, 1871}, {255, 255, 255, 255} }},
-};
-
-Gfx wc_rock_break_wc_rock_break8_mesh_layer_1_tri_0[] = {
-	gsSPVertex(wc_rock_break_wc_rock_break8_mesh_layer_1_vtx_0 + 0, 8, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
-	gsSP2Triangles(3, 0, 4, 0, 4, 0, 2, 0),
-	gsSP2Triangles(5, 4, 2, 0, 5, 2, 6, 0),
-	gsSP2Triangles(6, 2, 1, 0, 6, 1, 3, 0),
-	gsSP2Triangles(5, 6, 3, 0, 5, 3, 7, 0),
-	gsSP2Triangles(7, 3, 4, 0, 7, 4, 5, 0),
-	gsSPEndDisplayList(),
+	{{ {76, 56, -8}, 0, {2040, -16}, {47, 116, 20, 255} }},
+	{{ {-5, 56, -68}, 0, {940, -16}, {39, 1, 135, 255} }},
+	{{ {-42, 39, -8}, 0, {450, 281}, {165, 78, 215, 255} }},
+	{{ {59, -2, 11}, 0, {1807, 1036}, {110, 194, 15, 255} }},
+	{{ {-14, 45, 37}, 0, {819, 177}, {232, 71, 102, 255} }},
+	{{ {-76, -56, 8}, 0, {-16, 2032}, {179, 158, 24, 255} }},
+	{{ {30, -28, -23}, 0, {1422, 1526}, {12, 174, 160, 255} }},
+	{{ {-2, -47, 65}, 0, {980, 1871}, {22, 218, 119, 255} }},
 };
 
 
-Gfx mat_wc_rock_break_ROCK_BREAK_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
+Gfx wc_rock_break_wc_rock_break1_mesh_layer_1[] = {
+	gsSPClearGeometryMode(G_LIGHTING),
+	gsSPVertex(wc_rock_break_wc_rock_break1_mesh_layer_1_vtx_cull + 0, 8, 0),
+	gsSPSetGeometryMode(G_LIGHTING),
+	gsSPCullDisplayList(0, 7),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPLightColor(LIGHT_1, 0xAAAAAAFF),
+	gsSPLightColor(LIGHT_2, 0x535353FF),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_rock_break_dz_floatrock_001_pal_rgba16),
 	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
@@ -929,23 +816,155 @@ Gfx mat_wc_rock_break_ROCK_BREAK_sa2mdl_0_f3d[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsSPVertex(wc_rock_break_wc_rock_break1_mesh_layer_1_vtx_0 + 0, 11, 0),
+	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
+	gsSP2Triangles(6, 7, 8, 0, 6, 8, 9, 0),
+	gsSP1Triangle(9, 8, 10, 0),
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_rock_break_kd_nde_hasira5_vq_001_pal_rgba16),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, wc_rock_break_kd_nde_hasira5_vq_001_ci4),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsSPVertex(wc_rock_break_wc_rock_break1_mesh_layer_1_vtx_1 + 0, 15, 0),
+	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
+	gsSP2Triangles(5, 4, 6, 0, 7, 8, 9, 0),
+	gsSP2Triangles(9, 10, 7, 0, 9, 11, 10, 0),
+	gsSP2Triangles(11, 12, 10, 0, 10, 12, 13, 0),
+	gsSP1Triangle(7, 10, 14, 0),
+	gsDPPipeSync(),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsSPEndDisplayList(),
 };
 
-Gfx mat_revert_wc_rock_break_ROCK_BREAK_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(0, G_LIGHTING),
+Gfx wc_rock_break_wc_rock_break2_mesh_layer_1[] = {
+	gsSPClearGeometryMode(G_LIGHTING),
+	gsSPVertex(wc_rock_break_wc_rock_break2_mesh_layer_1_vtx_cull + 0, 8, 0),
+	gsSPSetGeometryMode(G_LIGHTING),
+	gsSPCullDisplayList(0, 7),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPLightColor(LIGHT_1, 0xAAAAAAFF),
+	gsSPLightColor(LIGHT_2, 0x535353FF),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
+	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_rock_break_dz_floatrock_001_pal_rgba16),
+	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, wc_rock_break_dz_floatrock_001_ci4),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsSPVertex(wc_rock_break_wc_rock_break2_mesh_layer_1_vtx_0 + 0, 12, 0),
+	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
+	gsSP2Triangles(5, 4, 6, 0, 7, 8, 9, 0),
+	gsSP2Triangles(7, 9, 10, 0, 10, 9, 11, 0),
 	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_rock_break_kd_nde_hasira5_vq_001_pal_rgba16),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, wc_rock_break_kd_nde_hasira5_vq_001_ci4),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsSPVertex(wc_rock_break_wc_rock_break2_mesh_layer_1_vtx_1 + 0, 17, 0),
+	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
+	gsSP2Triangles(6, 3, 7, 0, 8, 9, 10, 0),
+	gsSP2Triangles(8, 10, 11, 0, 11, 10, 12, 0),
+	gsSP2Triangles(5, 7, 13, 0, 14, 7, 5, 0),
+	gsSP2Triangles(14, 15, 7, 0, 15, 16, 7, 0),
+	gsDPPipeSync(),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsSPEndDisplayList(),
 };
 
-Gfx mat_wc_rock_break_ROCK_BREAK_sa2mdl_1_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
+Gfx wc_rock_break_wc_rock_break3_mesh_layer_1[] = {
+	gsSPClearGeometryMode(G_LIGHTING),
+	gsSPVertex(wc_rock_break_wc_rock_break3_mesh_layer_1_vtx_cull + 0, 8, 0),
+	gsSPSetGeometryMode(G_LIGHTING),
+	gsSPCullDisplayList(0, 7),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPLightColor(LIGHT_1, 0xAAAAAAFF),
+	gsSPLightColor(LIGHT_2, 0x535353FF),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
+	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_rock_break_dz_floatrock_001_pal_rgba16),
+	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, wc_rock_break_dz_floatrock_001_ci4),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsSPVertex(wc_rock_break_wc_rock_break3_mesh_layer_1_vtx_0 + 0, 10, 0),
+	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
+	gsSP2Triangles(6, 7, 8, 0, 8, 7, 9, 0),
 	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_rock_break_kd_nde_hasira5_vq_001_pal_rgba16),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, wc_rock_break_kd_nde_hasira5_vq_001_ci4),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsSPVertex(wc_rock_break_wc_rock_break3_mesh_layer_1_vtx_1 + 0, 14, 0),
+	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
+	gsSP2Triangles(6, 7, 8, 0, 9, 7, 6, 0),
+	gsSP2Triangles(9, 6, 10, 0, 9, 11, 7, 0),
+	gsSP2Triangles(12, 11, 9, 0, 9, 13, 12, 0),
+	gsDPPipeSync(),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPEndDisplayList(),
+};
+
+Gfx wc_rock_break_wc_rock_break4_mesh_layer_1[] = {
+	gsSPClearGeometryMode(G_LIGHTING),
+	gsSPVertex(wc_rock_break_wc_rock_break4_mesh_layer_1_vtx_cull + 0, 8, 0),
+	gsSPSetGeometryMode(G_LIGHTING),
+	gsSPCullDisplayList(0, 7),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPLightColor(LIGHT_1, 0xAAAAAAFF),
+	gsSPLightColor(LIGHT_2, 0x535353FF),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
+	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_rock_break_dz_floatrock_001_pal_rgba16),
+	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, wc_rock_break_dz_floatrock_001_ci4),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsSPVertex(wc_rock_break_wc_rock_break4_mesh_layer_1_vtx_0 + 0, 11, 0),
+	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
+	gsSP2Triangles(5, 4, 6, 0, 7, 8, 9, 0),
+	gsSP1Triangle(9, 8, 10, 0),
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_rock_break_kd_nde_hasira5_vq_001_pal_rgba16),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, wc_rock_break_kd_nde_hasira5_vq_001_ci4),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsSPVertex(wc_rock_break_wc_rock_break4_mesh_layer_1_vtx_1 + 0, 15, 0),
+	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
+	gsSP2Triangles(5, 4, 6, 0, 7, 8, 9, 0),
+	gsSP2Triangles(10, 8, 7, 0, 11, 8, 10, 0),
+	gsSP2Triangles(12, 8, 11, 0, 12, 13, 8, 0),
+	gsSP1Triangle(13, 14, 8, 0),
+	gsDPPipeSync(),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPEndDisplayList(),
+};
+
+Gfx wc_rock_break_wc_rock_break5_mesh_layer_1[] = {
+	gsSPClearGeometryMode(G_LIGHTING),
+	gsSPVertex(wc_rock_break_wc_rock_break5_mesh_layer_1_vtx_cull + 0, 8, 0),
+	gsSPSetGeometryMode(G_LIGHTING),
+	gsSPCullDisplayList(0, 7),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPLightColor(LIGHT_1, 0xAAAAAAFF),
+	gsSPLightColor(LIGHT_2, 0x535353FF),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_rock_break_kd_nde_hasira5_vq_001_pal_rgba16),
 	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
@@ -955,81 +974,15 @@ Gfx mat_wc_rock_break_ROCK_BREAK_sa2mdl_1_f3d[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_wc_rock_break_ROCK_BREAK_sa2mdl_1_f3d[] = {
-	gsSPGeometryMode(0, G_LIGHTING),
+	gsSPVertex(wc_rock_break_wc_rock_break5_mesh_layer_1_vtx_0 + 0, 8, 0),
+	gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
+	gsSP2Triangles(3, 0, 4, 0, 4, 0, 5, 0),
+	gsSP2Triangles(0, 2, 5, 0, 5, 2, 6, 0),
+	gsSP2Triangles(1, 6, 2, 0, 7, 6, 1, 0),
+	gsSP2Triangles(7, 1, 3, 0, 3, 5, 7, 0),
+	gsSP2Triangles(4, 5, 3, 0, 5, 6, 7, 0),
 	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx wc_rock_break_wc_rock_break1_mesh_layer_1[] = {
-	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(wc_rock_break_wc_rock_break1_mesh_layer_1_vtx_cull + 0, 8, 0),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPCullDisplayList(0, 7),
-	gsSPDisplayList(mat_wc_rock_break_ROCK_BREAK_sa2mdl_0_f3d),
-	gsSPDisplayList(wc_rock_break_wc_rock_break1_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_wc_rock_break_ROCK_BREAK_sa2mdl_0_f3d),
-	gsSPDisplayList(mat_wc_rock_break_ROCK_BREAK_sa2mdl_1_f3d),
-	gsSPDisplayList(wc_rock_break_wc_rock_break1_mesh_layer_1_tri_1),
-	gsSPDisplayList(mat_revert_wc_rock_break_ROCK_BREAK_sa2mdl_1_f3d),
-	gsSPEndDisplayList(),
-};
-
-Gfx wc_rock_break_wc_rock_break2_mesh_layer_1[] = {
-	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(wc_rock_break_wc_rock_break2_mesh_layer_1_vtx_cull + 0, 8, 0),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPCullDisplayList(0, 7),
-	gsSPDisplayList(mat_wc_rock_break_ROCK_BREAK_sa2mdl_0_f3d),
-	gsSPDisplayList(wc_rock_break_wc_rock_break2_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_wc_rock_break_ROCK_BREAK_sa2mdl_0_f3d),
-	gsSPDisplayList(mat_wc_rock_break_ROCK_BREAK_sa2mdl_1_f3d),
-	gsSPDisplayList(wc_rock_break_wc_rock_break2_mesh_layer_1_tri_1),
-	gsSPDisplayList(mat_revert_wc_rock_break_ROCK_BREAK_sa2mdl_1_f3d),
-	gsSPEndDisplayList(),
-};
-
-Gfx wc_rock_break_wc_rock_break3_mesh_layer_1[] = {
-	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(wc_rock_break_wc_rock_break3_mesh_layer_1_vtx_cull + 0, 8, 0),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPCullDisplayList(0, 7),
-	gsSPDisplayList(mat_wc_rock_break_ROCK_BREAK_sa2mdl_0_f3d),
-	gsSPDisplayList(wc_rock_break_wc_rock_break3_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_wc_rock_break_ROCK_BREAK_sa2mdl_0_f3d),
-	gsSPDisplayList(mat_wc_rock_break_ROCK_BREAK_sa2mdl_1_f3d),
-	gsSPDisplayList(wc_rock_break_wc_rock_break3_mesh_layer_1_tri_1),
-	gsSPDisplayList(mat_revert_wc_rock_break_ROCK_BREAK_sa2mdl_1_f3d),
-	gsSPEndDisplayList(),
-};
-
-Gfx wc_rock_break_wc_rock_break4_mesh_layer_1[] = {
-	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(wc_rock_break_wc_rock_break4_mesh_layer_1_vtx_cull + 0, 8, 0),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPCullDisplayList(0, 7),
-	gsSPDisplayList(mat_wc_rock_break_ROCK_BREAK_sa2mdl_0_f3d),
-	gsSPDisplayList(wc_rock_break_wc_rock_break4_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_wc_rock_break_ROCK_BREAK_sa2mdl_0_f3d),
-	gsSPDisplayList(mat_wc_rock_break_ROCK_BREAK_sa2mdl_1_f3d),
-	gsSPDisplayList(wc_rock_break_wc_rock_break4_mesh_layer_1_tri_1),
-	gsSPDisplayList(mat_revert_wc_rock_break_ROCK_BREAK_sa2mdl_1_f3d),
-	gsSPEndDisplayList(),
-};
-
-Gfx wc_rock_break_wc_rock_break5_mesh_layer_1[] = {
-	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(wc_rock_break_wc_rock_break5_mesh_layer_1_vtx_cull + 0, 8, 0),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPCullDisplayList(0, 7),
-	gsSPDisplayList(mat_wc_rock_break_ROCK_BREAK_sa2mdl_1_f3d),
-	gsSPDisplayList(wc_rock_break_wc_rock_break5_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_wc_rock_break_ROCK_BREAK_sa2mdl_1_f3d),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsSPEndDisplayList(),
 };
 
@@ -1038,9 +991,30 @@ Gfx wc_rock_break_wc_rock_break6_mesh_layer_1[] = {
 	gsSPVertex(wc_rock_break_wc_rock_break6_mesh_layer_1_vtx_cull + 0, 8, 0),
 	gsSPSetGeometryMode(G_LIGHTING),
 	gsSPCullDisplayList(0, 7),
-	gsSPDisplayList(mat_wc_rock_break_ROCK_BREAK_sa2mdl_1_f3d),
-	gsSPDisplayList(wc_rock_break_wc_rock_break6_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_wc_rock_break_ROCK_BREAK_sa2mdl_1_f3d),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPLightColor(LIGHT_1, 0xAAAAAAFF),
+	gsSPLightColor(LIGHT_2, 0x535353FF),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
+	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_rock_break_kd_nde_hasira5_vq_001_pal_rgba16),
+	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, wc_rock_break_kd_nde_hasira5_vq_001_ci4),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsSPVertex(wc_rock_break_wc_rock_break6_mesh_layer_1_vtx_0 + 0, 8, 0),
+	gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
+	gsSP2Triangles(3, 0, 4, 0, 4, 0, 5, 0),
+	gsSP2Triangles(0, 2, 5, 0, 5, 2, 6, 0),
+	gsSP2Triangles(1, 6, 2, 0, 7, 6, 1, 0),
+	gsSP2Triangles(7, 1, 3, 0, 3, 5, 7, 0),
+	gsSP2Triangles(4, 5, 3, 0, 5, 6, 7, 0),
+	gsDPPipeSync(),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsSPEndDisplayList(),
 };
 
@@ -1049,9 +1023,30 @@ Gfx wc_rock_break_wc_rock_break7_mesh_layer_1[] = {
 	gsSPVertex(wc_rock_break_wc_rock_break7_mesh_layer_1_vtx_cull + 0, 8, 0),
 	gsSPSetGeometryMode(G_LIGHTING),
 	gsSPCullDisplayList(0, 7),
-	gsSPDisplayList(mat_wc_rock_break_ROCK_BREAK_sa2mdl_1_f3d),
-	gsSPDisplayList(wc_rock_break_wc_rock_break7_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_wc_rock_break_ROCK_BREAK_sa2mdl_1_f3d),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPLightColor(LIGHT_1, 0xAAAAAAFF),
+	gsSPLightColor(LIGHT_2, 0x535353FF),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
+	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_rock_break_kd_nde_hasira5_vq_001_pal_rgba16),
+	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, wc_rock_break_kd_nde_hasira5_vq_001_ci4),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsSPVertex(wc_rock_break_wc_rock_break7_mesh_layer_1_vtx_0 + 0, 8, 0),
+	gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
+	gsSP2Triangles(3, 0, 4, 0, 4, 0, 2, 0),
+	gsSP2Triangles(4, 2, 5, 0, 5, 2, 6, 0),
+	gsSP2Triangles(1, 6, 2, 0, 1, 7, 6, 0),
+	gsSP2Triangles(3, 7, 1, 0, 3, 6, 7, 0),
+	gsSP2Triangles(5, 6, 3, 0, 4, 5, 3, 0),
+	gsDPPipeSync(),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsSPEndDisplayList(),
 };
 
@@ -1060,12 +1055,30 @@ Gfx wc_rock_break_wc_rock_break8_mesh_layer_1[] = {
 	gsSPVertex(wc_rock_break_wc_rock_break8_mesh_layer_1_vtx_cull + 0, 8, 0),
 	gsSPSetGeometryMode(G_LIGHTING),
 	gsSPCullDisplayList(0, 7),
-	gsSPDisplayList(mat_wc_rock_break_ROCK_BREAK_sa2mdl_1_f3d),
-	gsSPDisplayList(wc_rock_break_wc_rock_break8_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_wc_rock_break_ROCK_BREAK_sa2mdl_1_f3d),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPLightColor(LIGHT_1, 0xAAAAAAFF),
+	gsSPLightColor(LIGHT_2, 0x535353FF),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
+	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wc_rock_break_kd_nde_hasira5_vq_001_pal_rgba16),
+	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, wc_rock_break_kd_nde_hasira5_vq_001_ci4),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsSPVertex(wc_rock_break_wc_rock_break8_mesh_layer_1_vtx_0 + 0, 8, 0),
+	gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
+	gsSP2Triangles(3, 0, 4, 0, 4, 0, 2, 0),
+	gsSP2Triangles(5, 4, 2, 0, 5, 2, 6, 0),
+	gsSP2Triangles(6, 2, 1, 0, 6, 1, 3, 0),
+	gsSP2Triangles(5, 6, 3, 0, 5, 3, 7, 0),
+	gsSP2Triangles(7, 3, 4, 0, 7, 4, 5, 0),
 	gsDPPipeSync(),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPClearGeometryMode(G_TEXTURE_GEN),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 0),
 	gsDPSetEnvColor(255, 255, 255, 255),

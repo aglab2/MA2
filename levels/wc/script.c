@@ -15,6 +15,7 @@
 #include "levels/wc/header.h"
 
 /* Fast64 begin persistent block [scripts] */
+#include "levels/wc/area_1/collision.inc.c"
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_wc_entry[] = {
