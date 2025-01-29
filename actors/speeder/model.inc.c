@@ -1,5 +1,4 @@
-Gfx speeder_speeder_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 speeder_speeder_ci4[] = {
+ALIGNED8 u8 speeder_speeder_ci4[] = {
 	0x01, 0x11, 0x23, 0x42, 0x56, 0x67, 0x77, 0x77, 
 	0x77, 0x77, 0x89, 0xa6, 0xbc, 0xcc, 0xbb, 0xbc, 
 	0xcc, 0xc6, 0x63, 0x02, 0xd2, 0x22, 0x22, 0x22, 
@@ -259,8 +258,7 @@ u8 speeder_speeder_ci4[] = {
 	
 };
 
-Gfx speeder_speeder_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 speeder_speeder_pal_rgba16[] = {
+ALIGNED8 u8 speeder_speeder_pal_rgba16[] = {
 	0x63, 0x19, 0xa5, 0x29, 0xce, 0x73, 0x7b, 0xdf, 
 	0xb5, 0xad, 0x29, 0x4d, 0x00, 0x01, 0xee, 0x01, 
 	0xfe, 0xc3, 0xac, 0x83, 0x08, 0x49, 0x18, 0xc5, 
@@ -268,8 +266,7 @@ u8 speeder_speeder_pal_rgba16[] = {
 	
 };
 
-Gfx speeder_arrows_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 speeder_arrows_ci4[] = {
+ALIGNED8 u8 speeder_arrows_ci4[] = {
 	0x01, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 
 	0x11, 0x11, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 
 	0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x11, 0x11, 
@@ -529,8 +526,7 @@ u8 speeder_arrows_ci4[] = {
 	
 };
 
-Gfx speeder_arrows_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 speeder_arrows_pal_rgba16[] = {
+ALIGNED8 u8 speeder_arrows_pal_rgba16[] = {
 	0xcb, 0xcd, 0xff, 0x9f, 0xff, 0x97, 0x40, 0x81, 
 	0xca, 0xc7, 0x00, 0x01, 0x21, 0x09, 0x31, 0x8f, 
 	0x10, 0xc7, 0xc8, 0x01, 0x80, 0x01, 0xf8, 0xc1, 
@@ -671,44 +667,47 @@ Gfx speeder_object_00743C6C_mesh_layer_1[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPVertex(speeder_object_00743C6C_mesh_layer_1_vtx_0 + 0, 30, 0),
+	gsSPVertex(speeder_object_00743C6C_mesh_layer_1_vtx_0 + 0, 56, 0),
 	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
 	gsSP2Triangles(6, 7, 8, 0, 9, 10, 11, 0),
 	gsSP2Triangles(12, 13, 14, 0, 15, 16, 17, 0),
 	gsSP2Triangles(18, 19, 20, 0, 21, 22, 15, 0),
 	gsSP2Triangles(23, 24, 12, 0, 25, 26, 8, 0),
-	gsSP1Triangle(27, 28, 29, 0),
-	gsSPVertex(speeder_object_00743C6C_mesh_layer_1_vtx_0 + 30, 31, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 8, 10, 11, 0),
+	gsSP2Triangles(27, 28, 29, 0, 30, 31, 32, 0),
+	gsSP2Triangles(32, 31, 33, 0, 34, 35, 36, 0),
+	gsSP2Triangles(36, 35, 37, 0, 38, 39, 40, 0),
+	gsSP2Triangles(38, 40, 41, 0, 41, 40, 42, 0),
+	gsSP2Triangles(43, 44, 45, 0, 45, 46, 43, 0),
+	gsSP2Triangles(45, 47, 46, 0, 48, 47, 45, 0),
+	gsSP2Triangles(48, 49, 47, 0, 50, 51, 52, 0),
+	gsSP2Triangles(53, 51, 50, 0, 53, 54, 51, 0),
+	gsSP1Triangle(54, 55, 51, 0),
+	gsSPVertex(speeder_object_00743C6C_mesh_layer_1_vtx_0 + 56, 29, 0),
+	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
+	gsSP2Triangles(3, 2, 4, 0, 5, 6, 7, 0),
+	gsSP2Triangles(7, 6, 8, 0, 9, 10, 11, 0),
 	gsSP2Triangles(11, 10, 12, 0, 13, 14, 15, 0),
-	gsSP2Triangles(15, 16, 13, 0, 15, 17, 16, 0),
-	gsSP2Triangles(18, 17, 15, 0, 18, 19, 17, 0),
-	gsSP2Triangles(20, 21, 22, 0, 23, 21, 20, 0),
-	gsSP2Triangles(23, 24, 21, 0, 24, 25, 21, 0),
-	gsSP2Triangles(26, 27, 28, 0, 26, 28, 29, 0),
-	gsSP1Triangle(29, 28, 30, 0),
-	gsSPVertex(speeder_object_00743C6C_mesh_layer_1_vtx_0 + 61, 24, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
-	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
+	gsSP2Triangles(15, 14, 16, 0, 17, 18, 19, 0),
+	gsSP2Triangles(19, 18, 20, 0, 21, 22, 23, 0),
+	gsSP2Triangles(23, 22, 24, 0, 25, 26, 27, 0),
+	gsSP1Triangle(27, 26, 28, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, speeder_arrows_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, speeder_arrows_ci4),
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 252),
 	gsSPVertex(speeder_object_00743C6C_mesh_layer_1_vtx_1 + 0, 6, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
 	gsSP2Triangles(3, 2, 4, 0, 3, 4, 5, 0),
+	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, speeder_sikake_06_64_pal_rgba16),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, speeder_sikake_06_64_ci4),
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_MIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 252),
 	gsSPVertex(speeder_object_00743C6C_mesh_layer_1_vtx_2 + 0, 10, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
 	gsSP2Triangles(3, 2, 4, 0, 3, 4, 5, 0),
