@@ -623,10 +623,17 @@ longer a multiple of 8 (DMA word). This was not used in any command anyway. */
 #define G_CD_DISABLE        (3 << G_MDSFT_RGBDITHER)
 
 /* G_SETOTHERMODE_H gSetAlphaDither */
+#if 0
 #define G_AD_PATTERN        (0 << G_MDSFT_ALPHADITHER)
 #define G_AD_NOTPATTERN     (1 << G_MDSFT_ALPHADITHER)
 #define G_AD_NOISE          (2 << G_MDSFT_ALPHADITHER)
 #define G_AD_DISABLE        (3 << G_MDSFT_ALPHADITHER)
+#else
+#define G_AD_PATTERN        (3 << G_MDSFT_ALPHADITHER)
+#define G_AD_NOTPATTERN     (3 << G_MDSFT_ALPHADITHER)
+#define G_AD_NOISE          (3 << G_MDSFT_ALPHADITHER)
+#define G_AD_DISABLE        (3 << G_MDSFT_ALPHADITHER)
+#endif
 
 /* G_SETOTHERMODE_L gSetAlphaCompare */
 #define G_AC_NONE           (0 << G_MDSFT_ALPHACOMPARE)
