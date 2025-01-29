@@ -27,10 +27,12 @@ void bhv_checkpoint_init()
 #endif
         o->oInteractStatus = INT_STATUS_INTERACTED;
         o->oGeoRoll = 0;
+        o->oOpacity = 255;
     }
     else
     {
         o->oGeoRoll = 0x4000;
+        o->oOpacity = 0;
     }
 }
 
@@ -40,6 +42,7 @@ void bhv_checkpoint_loop()
         if (0 != o->oGeoRoll)
         {
             o->oGeoRoll -= 0x200;
+            o->oOpacity = 255 - o->oGeoRoll * 255 / 0x4000;
         }
     }
 }
