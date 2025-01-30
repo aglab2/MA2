@@ -1257,7 +1257,7 @@ s32 play_mode_paused(void) {
             initiate_warp(warpNode->node.destLevel & 0x7F, warpNode->node.destArea,
                             warpNode->node.destNode, WARP_FLAGS_NONE);
 #else // DEATH_ON_EXIT_COURSE
-            initiate_warp(EXIT_COURSE_LEVEL, EXIT_COURSE_AREA, EXIT_COURSE_NODE, WARP_FLAG_EXIT_COURSE);
+            initiate_warp(EXIT_COURSE_LEVEL, EXIT_COURSE_AREA, gCurrLevelNum - LEVEL_CE + 0x20, WARP_FLAG_EXIT_COURSE);
             gSavedCourseNum = COURSE_NONE;
 #endif // DEATH_ON_EXIT_COURSE
 
