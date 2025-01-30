@@ -141,7 +141,9 @@ void bhv_spring_loop()
         gMarioStates->vel[0] = (end[0] - gMarioStates->pos[0]);
         gMarioStates->vel[1] = (end[1] - gMarioStates->pos[1]);
         gMarioStates->vel[2] = (end[2] - gMarioStates->pos[2]);
-        
+        gMarioStates->forwardVel = sqrtf(gMarioStates->vel[0] * gMarioStates->vel[0] + gMarioStates->vel[2] * gMarioStates->vel[2]);
+        gMarioStates->extraGravityEnabled = 1;
+
         if (gIsGravityFlipped)
         {
             gMarioStates->vel[1] = -gMarioStates->vel[1];

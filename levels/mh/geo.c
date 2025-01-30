@@ -13,8 +13,10 @@
 
 #include "levels/mh/header.h"
 
+#if 0
 #include "levels/mh/geo.inc.c"
+#endif
 
 #define mh_area_1 mh_area_visual
 #define mh_area_1_geo mh_area_geo_visual
-#include "levels/mh/visual/geo.inc.c"
+#include "levels/mh/visual/geo_lvl.inc.c"

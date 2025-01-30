@@ -80,6 +80,7 @@ enum GraphNodeTypes {
     GRAPH_NODE_TYPE_BATCH_GENERATED_LIST,
     GRAPH_NODE_TYPE_BATCH_ANIM_DISPLAY_LIST,
     GRAPH_NODE_TYPE_BATCHSET_TRANSLATION,
+    GRAPH_NODE_TYPE_BATCHSET_TRANSLATION_ROTATION,
 };
 
 // Passed as first argument to a GraphNodeFunc to give information about in

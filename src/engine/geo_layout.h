@@ -95,6 +95,7 @@ void geo_layout_cmd_obj_rocket_node_translation(void);
 void geo_layout_cmd_obj_node_translation(void);
 void geo_layout_cmd_batchset_node(void);
 void geo_layout_cmd_batchset_node_translation(void);
+void geo_layout_cmd_batchset_node_translation_rotation(void);
 
 struct GraphNode *process_geo_layout(void *segptr);
 

@@ -26,12 +26,15 @@ extern const GeoLayout mh_area_visual[];
 #define mh_area_8 mh_area_visual
 #define mh_area_9 mh_area_visual
 #define mh_area_10 mh_area_visual
+#include "levels/mh/area_1/collision.inc.c"
+#include "levels/mh/area_2/collision.inc.c"
+#include "levels/mh/area_3/collision.inc.c"
+#include "levels/mh/area_4/collision.inc.c"
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_mh_entry[] = {
 	INIT_LEVEL(),
-	LOAD_MIO0(0x7, _mh_segment_7SegmentRomStart, _mh_segment_7SegmentRomEnd), 
-	LOAD_MIO0(0xa, _water_skybox_mio0SegmentRomStart, _water_skybox_mio0SegmentRomEnd), 
+	LOAD_MIO0(0x7, _mh_segment_7SegmentRomStart, _mh_segment_7SegmentRomEnd),
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
 	/* Fast64 begin persistent block [level commands] */

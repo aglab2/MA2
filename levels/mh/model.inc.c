@@ -157,7 +157,7 @@ Gfx mat_mh_dl_f3dlite_material_002[] = {
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetEnvColor(255, 255, 255, 27),
+	gsDPSetEnvColor(255, 255, 255, 221),
 	gsSPEndDisplayList(),
 };
 

@@ -73,6 +73,7 @@ enum GeoLayoutCommands {
     GEO_CMD_NODE_BATCH_DISPLAY_LIST_ANIM,
     GEO_CMD_NODE_BATCH_START,
     GEO_CMD_BATCHSET_NODE_TRANSLATION,
+    GEO_CMD_BATCHSET_NODE_TRANSLATION_ROTATION,
 
     GEO_CMD_COUNT,
 };
@@ -262,6 +263,10 @@ enum GeoLayoutCommands {
     CMD_HHHHHH(tx, ty, tz, rx, ry, rz)
 #define GEO_TRANSLATE_ROTATE_WITH_DL(layer, tx, ty, tz, rx, ry, rz, displayList) \
     CMD_BBH(GEO_CMD_NODE_TRANSLATION_ROTATION, (0x00 | layer | 0x80), 0x0000), \
+    CMD_HHHHHH(tx, ty, tz, rx, ry, rz), \
+    CMD_PTR(displayList)
+#define GEO_BATCH_TRANSLATE_ROTATE(layer, tx, ty, tz, rx, ry, rz, displayList) \
+    CMD_BBH(GEO_CMD_BATCHSET_NODE_TRANSLATION_ROTATION, (0x00 | layer | 0x80), 0x0000), \
     CMD_HHHHHH(tx, ty, tz, rx, ry, rz), \
     CMD_PTR(displayList)
 

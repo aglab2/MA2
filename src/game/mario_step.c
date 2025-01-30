@@ -591,6 +591,10 @@ static void apply_twirl_gravity(struct MarioState *m) {
 }
 
 static u32 should_strengthen_gravity_for_jump_ascent(struct MarioState *m) {
+    if (m->extraGravityEnabled) {
+        return FALSE;
+    }
+
     if (!(m->flags & MARIO_JUMPING)) {
         return FALSE;
     }

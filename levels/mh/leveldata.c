@@ -10,7 +10,8 @@
 
 #include "make_const_nonconst.h"
 
-#include "levels/mh/header.inc.h"
+#include "levels/mh/visual/header_lvl.inc.h"
+#include "levels/mh/header.h"
 
 static IWDirectionAreasDesc iw_mh_area1 = {
     { IWDT_DIRECTIONS },
@@ -115,7 +116,19 @@ const SpringLinkDesc spring_links_mh[] = {
     { NULL, NULL, }
 };
 
-#include "levels/mh/visual/model.inc.c"
-
+#if 0
 #include "levels/mh/leveldata.inc.c"
+#else
+#include "levels/mh/area_1/macro.inc.c"
+#include "levels/mh/area_1/spline.inc.c"
+#include "levels/mh/area_2/macro.inc.c"
+#include "levels/mh/area_2/spline.inc.c"
+#include "levels/mh/area_3/macro.inc.c"
+#include "levels/mh/area_3/spline.inc.c"
+#include "levels/mh/area_4/macro.inc.c"
+#include "levels/mh/area_4/spline.inc.c"
+#endif
+
+#include "levels/mh/visual/model_lvl.inc.c"
+
 #include "levels/mh/mh_skybox/model.inc.c"

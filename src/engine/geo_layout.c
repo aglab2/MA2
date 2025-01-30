@@ -62,6 +62,7 @@ static const GeoLayoutCommandProc GeoLayoutJumpTable[] = {
     /* GEO_CMD_NODE_BATCH_DISPLAY_LIST_ANIM */  geo_layout_cmd_node_batch_display_list_anim,
     /* GEO_CMD_NODE_BATCH_START */              geo_layout_cmd_node_batch_start,
     /* GEO_CMD_BATCHSET_NODE_TRANSLATION */     geo_layout_cmd_batchset_node_translation,
+    /* GEO_CMD_BATCHSET_NODE_TRANSLATION_ROTATION */ geo_layout_cmd_batchset_node_translation_rotation,
 };
 
 struct GraphNode gObjParentGraphNode;
@@ -681,6 +682,10 @@ void geo_layout_cmd_obj_node_translation_rotation(void) {
 
 void geo_layout_cmd_break_translation_rotation(void) {
     geo_layout_cmd_node_translation_rotation_impl(GRAPH_NODE_TYPE_BREAK_TRANSLATION_ROTATION);
+}
+
+void geo_layout_cmd_batchset_node_translation_rotation(void) {
+    geo_layout_cmd_node_translation_rotation_impl(GRAPH_NODE_TYPE_BATCHSET_TRANSLATION_ROTATION);
 }
 
 /*
