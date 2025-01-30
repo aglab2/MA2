@@ -54,4 +54,8 @@ extern const LevelScript level_pl_entry[];
 
 #include "levels/pl/pl_caged/geo_header.h"
 
+#if 0
+#include "levels/pl/header.inc.h"
+#endif
+
 #endif
