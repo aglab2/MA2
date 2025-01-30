@@ -4,7 +4,7 @@
  */
 
 #define NO_SYNCS_IN_TEXTURE_LOADS
-#define RISKY_RDP_SYNCS
+// #define RISKY_RDP_SYNCS
 
 /* List of options; the documentation for each is where it is used below. */
 /* #define REQUIRE_SEMICOLONS_AFTER_GBI_COMMANDS */ /* recommended */

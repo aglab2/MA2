@@ -389,6 +389,8 @@ f32 find_ceil(f32 posX, f32 posY, f32 posZ, struct Surface **pceil) {
         return height;
     }
 
+    gCollisionFlags |= COLLISION_FLAG_RETURN_FIRST;
+
     // Each level is split into cells to limit load, find the appropriate cell.
     s32 cellX = GET_CELL_COORD(x);
     s32 cellZ = GET_CELL_COORD(z);
@@ -645,6 +647,9 @@ f32 find_floor(f32 xPos, f32 yPos, f32 zPos, struct Surface **pfloor) {
         profiler_collision_update(first);
         return height;
     }
+
+    gCollisionFlags |= COLLISION_FLAG_RETURN_FIRST;
+
     // Each level is split into cells to limit load, find the appropriate cell.
     s32 cellX = GET_CELL_COORD(x);
     s32 cellZ = GET_CELL_COORD(z);
