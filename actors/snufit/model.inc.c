@@ -194,6 +194,7 @@ const Gfx snufit_seg6_dl_060092F0[] = {
 // 0x06009498 - 0x06009530
 const Gfx snufit_seg6_dl_06009498[] = {
     gsDPPipeSync(),
+    gsDPPipelineMode(G_PM_1PRIMITIVE_REAL),
     gsDPSetCombineMode(G_CC_BLENDRGBA, G_CC_BLENDRGBA),
     gsSPClearGeometryMode(G_CULL_BACK),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),
@@ -211,6 +212,8 @@ const Gfx snufit_seg6_dl_06009498[] = {
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPDisplayList(snufit_seg6_dl_060092F0),
     gsSPSetGeometryMode(G_CULL_BACK),
+    gsDPPipeSync(),
+    gsDPPipelineMode(G_PM_NPRIMITIVE),
     gsSPEndDisplayList(),
 };
 
@@ -273,6 +276,7 @@ const Gfx snufit_seg6_dl_06009700[] = {
 // 0x06009748 - 0x060097C8
 const Gfx snufit_seg6_dl_06009748[] = {
     gsDPPipeSync(),
+    gsDPPipelineMode(G_PM_1PRIMITIVE_REAL),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
@@ -287,6 +291,7 @@ const Gfx snufit_seg6_dl_06009748[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+    gsDPPipelineMode(G_PM_1PRIMITIVE),
     gsSPEndDisplayList(),
 };
 
@@ -328,6 +333,7 @@ const Gfx snufit_seg6_dl_060098A0[] = {
 // 0x06009938 - 0x06009998
 const Gfx snufit_seg6_dl_06009938[] = {
     gsDPPipeSync(),
+    gsDPPipelineMode(G_PM_1PRIMITIVE_REAL),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
@@ -338,6 +344,7 @@ const Gfx snufit_seg6_dl_06009938[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+    gsDPPipelineMode(G_PM_1PRIMITIVE),
     gsSPEndDisplayList(),
 };
 
@@ -362,6 +369,7 @@ const Gfx snufit_seg6_dl_060099D8[] = {
 // 0x06009A10 - 0x06009A80
 const Gfx snufit_seg6_dl_06009A10[] = {
     gsDPPipeSync(),
+    gsDPPipelineMode(G_PM_1PRIMITIVE_REAL),
     gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
     gsSPClearGeometryMode(G_LIGHTING),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),
@@ -374,6 +382,7 @@ const Gfx snufit_seg6_dl_06009A10[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPSetGeometryMode(G_LIGHTING),
+    gsDPPipelineMode(G_PM_1PRIMITIVE),
     gsSPEndDisplayList(),
 };
 
@@ -406,8 +415,9 @@ const Gfx snufit_seg6_dl_06009B18[] = {
 const Gfx snufit_seg6_dl_06009B68[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
-    gsDPPipeSync(),
-    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+    gsDPPipelineMode(G_PM_1PRIMITIVE_REAL),
     gsSPDisplayList(snufit_seg6_dl_06009B18),
+    gsDPPipeSync(),
+    gsDPPipelineMode(G_PM_1PRIMITIVE),
     gsSPEndDisplayList(),
 };
