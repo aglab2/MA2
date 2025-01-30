@@ -13,8 +13,12 @@
 
 #include "levels/pl/header.h"
 
-
+#if 0
 #include "levels/pl/geo.inc.c"
+#else
+#include "levels/pl/visual/geo_lvl.inc.c"
+#endif
+
 #include "levels/pl/pl_bombe/geo.inc.c"
 #include "levels/pl/pl_bombe_break/geo.inc.c"
 #include "levels/pl/pl_bombe_breakb/geo.inc.c"

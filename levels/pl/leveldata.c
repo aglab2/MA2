@@ -1,6 +1,6 @@
 #include "game/behavior_data_decl.h"
 
-#include <ultra64.h>"
+#include <ultra64.h>
 #include "sm64.h"
 #include "surface_terrains.h"
 #include "moving_texture_macros.h"
@@ -22,7 +22,13 @@ const BehaviorScript bhvPLRoll[] = {
     END_LOOP(),
 };
 
+#if 0
 #include "levels/pl/leveldata.inc.c"
+#else
+#include "levels/pl/visual/header_lvl.inc.h"
+#include "levels/pl/visual/model_lvl.inc.c"
+#endif
+
 #include "levels/pl/pl_bombe/model.inc.c"
 #include "levels/pl/pl_bombe_break/model.inc.c"
 #include "levels/pl/pl_bombe_breakb/model.inc.c"

@@ -571,13 +571,8 @@ longer a multiple of 8 (DMA word). This was not used in any command anyway. */
 #define G_MDSFT_PIPELINE        23
 
 /* G_SETOTHERMODE_H gPipelineMode */
-#if 0
-#define G_PM_1PRIMITIVE     (1 << G_MDSFT_PIPELINE)
-#else
 #define G_PM_1PRIMITIVE     (0 << G_MDSFT_PIPELINE)
-#endif
-#define G_PM_NPRIMITIVE     (0 << G_MDSFT_PIPELINE)
-#define G_PM_1PRIMITIVE_REAL (1 << G_MDSFT_PIPELINE)
+#define G_PM_NPRIMITIVE     (1 << G_MDSFT_PIPELINE)
 
 /* G_SETOTHERMODE_H gSetCycleType */
 #define G_CYC_1CYCLE        (0 << G_MDSFT_CYCLETYPE)

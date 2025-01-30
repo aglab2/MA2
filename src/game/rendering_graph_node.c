@@ -416,10 +416,12 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
                 while (currList != NULL);
             }
 
+            gDPPipelineMode(tempGfxHead++, G_PM_NPRIMITIVE);
             int amt = render_batches(&tempGfxHead, masterLayer->course, wantMode1, wantMode2, 1);
             // if (amt)
             //     print_text_fmt_int(20, 20 + currLayer * 20, "%d", amt);
             render_batches(&tempGfxHead, masterLayer->objects, wantMode1, wantMode2, 0);
+            gDPPipelineMode(tempGfxHead++, G_PM_1PRIMITIVE);
         }
     }
 

@@ -16,6 +16,7 @@
 
 /* Fast64 begin persistent block [scripts] */
 extern const BehaviorScript bhvPLRoll[];
+#include "levels/pl/area_1/collision.inc.c"
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_pl_entry[] = {
@@ -40,7 +41,7 @@ const LevelScript level_pl_entry[] = {
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
 
-	AREA(1, pl_area_1, -2000, 0, 0),
+	AREA(1, pl_area_1, 0, 0, 0),
 		MARIO_POS(0x01, 0, 20475, -30, 21),
 		OBJECT(MODEL_BLACK_BOBOMB, -24480, 8700, -4092, 0, 90, 0, 0x00000000, bhvBobomb),
 		OBJECT(MODEL_BLACK_BOBOMB, -24045, 8700, -2364, 0, 90, 0, 0x00000000, bhvBobomb),
@@ -71,10 +72,10 @@ const LevelScript level_pl_entry[] = {
 		OBJECT(MODEL_NONE, -9343, 6300, -2762, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -14005, 7300, 12, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -12986, 7586, 2465, 0, 0, 0, 0x00000000, bhvCoinFormation),
-		OBJECT(MODEL_NONE, -14896, 7600, 3698, 0, 0, 0, 0x00000000, bhvCoinFormation),
+		OBJECT(MODEL_NONE, -14896, 7600, 3698, 0, 90, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_NONE, -16855, 8400, 3400, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -18654, 8700, -2401, 0, 0, 0, (2 << 16), bhvCoinFormation),
-		OBJECT(MODEL_NONE, -21226, 8700, -2408, 0, 0, 0, 0x00000000, bhvCoinFormation),
+		OBJECT(MODEL_NONE, -21226, 8700, -2408, 0, 90, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_NONE, -24439, 9400, -7239, 0, 0, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_NONE, -26969, 9400, -11607, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 8685, 1770, 6203, 0, 0, 0, (2 << 16), bhvCoinFormation),
