@@ -34,9 +34,12 @@ extern const GeoLayout mh_area_visual[];
 
 const LevelScript level_mh_entry[] = {
 	INIT_LEVEL(),
-	LOAD_MIO0(0x7, _mh_segment_7SegmentRomStart, _mh_segment_7SegmentRomEnd),
+	LOAD_MIO0(0x7, _mh_segment_7SegmentRomStart, _mh_segment_7SegmentRomEnd), 
+	LOAD_YAY0(0x06, _group17_yay0SegmentRomStart, _group17_yay0SegmentRomEnd), 
+	LOAD_RAW(0x0D, _group17_geoSegmentRomStart, _group17_geoSegmentRomEnd), 
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
+	JUMP_LINK(script_func_global_18), 
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
 
@@ -45,6 +48,7 @@ const LevelScript level_mh_entry[] = {
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		MARIO_POS(0x01, -180, -19988, 1658, 8042),
+		OBJECT(MODEL_CHECKPOINT, -8451, -1490, -12508, 0, -90, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_SNUFIT, 1602, -1905, -14994, 0, -180, 0, 0x00000000, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 1602, -2092, -16278, 0, -180, 0, 0x00000000, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 1602, -2269, -17640, 0, -180, 0, 0x00000000, bhvSnufit),
@@ -69,6 +73,12 @@ const LevelScript level_mh_entry[] = {
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		OBJECT(MODEL_SPEEDER, 641, -1600, 3615, 0, -90, 0, 0x00000000, bhvSpeeder),
+		OBJECT(MODEL_SPEEDER, 652, -1597, 116, 0, -90, 0, 0x00000000, bhvSpeeder),
+		OBJECT(MODEL_SPEEDER, 639, -1600, -3652, 0, -90, 0, 0x00000000, bhvSpeeder),
+		OBJECT(MODEL_SPEEDER, 672, -1598, -7927, 0, -90, 0, 0x00000000, bhvSpeeder),
+		OBJECT(MODEL_SPEEDER, 2447, -1600, -2815, 0, -73, 0, 0x00000000, bhvSpeeder),
+		OBJECT(MODEL_CHECKPOINT, 658, -1600, 4341, 0, -90, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_NONE, 1015, -2200, 14445, 0, -180, 0, 0x00000000, bhvSpringCtl),
 		OBJECT(MODEL_STAR, -1472, -710, 1362, 0, -180, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 2223, -1634, 2015, 0, -180, 0, 0x00000000, bhvStar),
@@ -89,6 +99,7 @@ const LevelScript level_mh_entry[] = {
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		OBJECT(MODEL_CHECKPOINT, 15669, 1530, 16162, 0, 0, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_NONE, 4260, -200, 18547, 0, -180, 0, 0x00000000, bhvSpringCtl),
 		OBJECT(MODEL_STAR, 3941, -387, 18595, 0, -180, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 6822, -1051, 17797, 0, -180, 0, 0x00000000, bhvStar),
@@ -109,6 +120,7 @@ const LevelScript level_mh_entry[] = {
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(11, LEVEL_MH, 4, 12, WARP_NO_CHECKPOINT),
 		WARP_NODE(12, LEVEL_MH, 4, 11, WARP_NO_CHECKPOINT),
+		OBJECT(MODEL_CHECKPOINT, -12919, -11848, -3390, 0, 90, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_GOAL, 27994, -10283, -13695, 0, -180, 0, (1 << 16), bhvGoal),
 		OBJECT(MODEL_THI_WARP_PIPE, -10864, -9467, -14691, 0, -180, 0, (11 << 16), bhvWarpPipe),
 		OBJECT(MODEL_NONE, -6970, 14111, -13120, 0, -180, 0, (12 << 16), bhvInstantActiveWarp),
