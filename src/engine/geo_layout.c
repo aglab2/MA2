@@ -560,6 +560,7 @@ void geo_layout_cmd_node_camera(void) {
         for (int i = 0; i < LAYER_COUNT; i++)
         {
             gMasterNode->layers[i].course = sCameraCacheMasterNode->layers[i].course;
+            gMasterNode->layers[i].flipbooks = sCameraCacheMasterNode->layers[i].flipbooks;
         }
 
         // When cache is hit, the following pattern is seen
