@@ -1,3 +1,5 @@
+#include "game/print.h"
+
 #define sCeTimerDeadline (*((u32*) &aglabGlobalScratch[0]))
 #define sCeTimerLine ((char*) &aglabGlobalScratch[1])
 

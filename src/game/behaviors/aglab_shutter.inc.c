@@ -5,8 +5,8 @@
 struct ShutterConfig
 {
     int modelBase;
-    void* collisionLeft;
-    void* collisionRight;
+    const void* collisionLeft;
+    const void* collisionRight;
 };
 
 extern const Collision cg_shutter_left_collision[];

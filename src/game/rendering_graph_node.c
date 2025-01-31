@@ -321,17 +321,23 @@ static void apply_flipbooks(struct MasterLayer* masterLayer)
         const struct FlipbookData* flipData = &flipbooks->data[i];
         struct FlipbookDls* flipDls = &flipbooks->dls[i];
 
-        // switch dl frames and patch the display list
         int frame = (gGlobalTimer / flipData->frames) % flipData->count;
         u8* startDl = (u8*) flipDls->startDls[gGlobalTimer & 1];
-        *(u8**) &startDl[flipDls->offCI4] = flipData->ci4s + frame * 2048;
-        *(u8**) &startDl[flipDls->offPal] = flipData->pals + frame * 32;
+
+        // switch dl frames and patch the display list
+        if (flipData->count)
+        {
+            *(u8**) &startDl[flipDls->offCI4] = flipData->ci4s + frame * 2048;
+            *(u8**) &startDl[flipDls->offPal] = flipData->pals + frame * 32;
+        }
 
         SetTileSize* tile = (SetTileSize*) &startDl[flipDls->offTile];
         // tile->u += gGlobalTimer * flipData->tileScrollX;
         // tile->v += gGlobalTimer * flipData->tileScrollY;
-        tile->t = gGlobalTimer * flipData->tileScrollX;
-        tile->s = gGlobalTimer * flipData->tileScrollY;
+        if (flipData->tileScrollX)
+            tile->t = gGlobalTimer * flipData->tileScrollX;
+        if (flipData->tileScrollY)
+            tile->s = gGlobalTimer * flipData->tileScrollY;
 
         // this bending constness rules a bit but trust me, it's fine
         struct BatchDisplayLists* batchDLs = (struct BatchDisplayLists*) masterLayer->course->batchDLs;

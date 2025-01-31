@@ -2630,3 +2630,4 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_mh[LAYER_COUNT];
 #define mh_dl_object_006F9EF0_003_mesh_layer_6 mh_dl_object_006F9EF0_mesh_layer_6
 #define mh_dl_object_006F9EF0_004_mesh_layer_1 mh_dl_object_006F9EF0_mesh_layer_1
 #define mh_dl_object_006F9EF0_004_mesh_layer_6 mh_dl_object_006F9EF0_mesh_layer_6
+extern const struct FlipbookLayer mh_flipbooks[LAYER_COUNT];

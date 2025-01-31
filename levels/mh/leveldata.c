@@ -130,5 +130,6 @@ const SpringLinkDesc spring_links_mh[] = {
 #endif
 
 #include "levels/mh/visual/model_lvl.inc.c"
+#include "levels/mh/flipbook.inc.c"
 
 #include "levels/mh/mh_skybox/model.inc.c"
