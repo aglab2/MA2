@@ -1016,6 +1016,10 @@ void initiate_delayed_warp(void) {
 
                     initiate_warp(warpNode->node.destLevel & 0x7F, warpNode->node.destArea,
                                   warpNode->node.destNode, sDelayedWarpArg);
+                    if (sSourceWarpNodeId == WARP_NODE_FAIL_WARP || (0xe0 <= sSourceWarpNodeId && sSourceWarpNodeId < 0xf0))
+                    {
+                        sWarpDest.type = WARP_TYPE_CHANGE_LEVEL;
+                    }
 
                     check_if_should_set_warp_checkpoint(&warpNode->node);
                     if (sWarpDest.type != WARP_TYPE_CHANGE_LEVEL) {

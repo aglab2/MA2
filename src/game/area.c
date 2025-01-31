@@ -145,6 +145,7 @@ u32 get_mario_spawn_type(struct Object *obj) {
     return MARIO_SPAWN_NONE;
 }
 
+extern void LevelReset_markObjectsForRespawn();
 struct ObjectWarpNode *area_get_warp_node(u8 id) {
     if (id == WARP_NODE_FAIL_WARP || (0xe0 <= id && id < 0xf0))
     {

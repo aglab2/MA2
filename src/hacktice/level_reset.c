@@ -181,3 +181,8 @@ void LevelReset_setObjectRespawnInfoBits(struct Object *obj, u8 bits)
     }
 }
 #endif
+
+void LevelReset_markObjectsForRespawn()
+{
+    sReloadObjectsAreasMask = ~0;
+}
