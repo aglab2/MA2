@@ -374,7 +374,7 @@ static struct CloneResult clone_dl(const void* _dl)
     }
 
     // I need very good alignment guarantees for gfx dls
-    void* clonedDl = main_pool_alloc_aligned(0, dl - start + 8, 8);
+    void* clonedDl = main_pool_alloc_aligned(2, dl - start + 8, 8);
     memcpy(clonedDl, start, dl - start + 8);
     result.clonedDl = clonedDl;
 

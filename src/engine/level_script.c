@@ -496,7 +496,9 @@ static void level_cmd_init_mario(void) {
     sStarIds = 0;
     sCheckpointIds = 62;
     if ((u32) gMainPoolCurrentRegion->start < (u32) 0x80400000)
-        gMainPoolCurrentRegion->start = (u8*) 0x80400000;
+    {
+        main_pool_cut_graphics_pool();
+    }
 
     sCurrentCmd = CMD_NEXT;
 }

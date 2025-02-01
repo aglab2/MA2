@@ -30,12 +30,6 @@
 #define	DOWN(s, align)	(((u32)(s)) & ~((align)-1))
 #define DOWN4(s) DOWN(s, 4)
 
-#define MAIN_POOL_REGIONS_COUNT 2
-
-struct MainPoolContext {
-    struct MainPoolRegion regions[MAIN_POOL_REGIONS_COUNT];
-};
-
 struct MainPoolState {
     struct MainPoolContext ctx;
     struct MainPoolState* prev;
@@ -77,12 +71,7 @@ struct MemoryPool *gEffectsMemoryPool;
 
 uintptr_t sSegmentTable[32];
 uintptr_t sSegmentROMTable[32];
-#ifndef MAIN_POOL_SINGLE_REGION
-static struct MainPoolContext sMainPool;
-struct MainPoolRegion* gMainPoolCurrentRegion;
-#else
 struct MainPoolContext sMainPool;
-#endif
 
 static struct MainPoolState *gMainPoolState = NULL;
 
@@ -165,50 +154,25 @@ void main_pool_init() {
 
 #undef SET_REGION
 
-#ifndef MAIN_POOL_SINGLE_REGION
-    gMainPoolCurrentRegion = &sMainPool.regions[0];
-#endif
-
 #ifdef PUPPYPRINT_DEBUG
     mempool = main_pool_available();
 #endif
 }
 
-// all 'try_alloc' functions expect size to be ALIGN4
-
-// takes the at least first 'size' bytes from 'region' and return pointer aligned on 'alignment'
-static void* main_pool_region_try_alloc_from_start_aligned(struct MainPoolRegion* region, u32 size, u32 alignment) {
-    u8* ret = (u8*) ALIGN(region->start, alignment);
-    u8* newStart = ret + size;
-    u8* regionEnd = region->end;
-    if (newStart > regionEnd)
-        return NULL;
-
-    size = newStart - region->start;
-    region->start = newStart;
-    return ret;
+void main_pool_cut_graphics_pool()
+{
+    sMainPool.regions[2].start = sMainPool.regions[0].start;
+    sMainPool.regions[0].start = sMainPool.regions[2].end = (u8*) 0x80400000;
 }
 
-static void* main_pool_region_try_alloc_from_end_freeable(struct MainPoolRegion* region, u8 id, u32 sizeWithHeader) {
-    u32 size = region->end - region->start;
-    if (size < sizeWithHeader)
-        return NULL;
-
-    u8* regionEnd = region->end;
-
-    struct MainPoolFreeableHeader* header = (struct MainPoolFreeableHeader*) (regionEnd - sizeWithHeader);
-    header->magic = MAIN_POOL_FREEABLE_HEADER_MAGIC_RIGHT;
-    header->id = id;
-    header->ptr = regionEnd;
-
-    region->end -= sizeWithHeader;
-
-    return header->data;
-}
-
-static void* main_pool_region_try_alloc_from_end_aligned_freeable(struct MainPoolRegion* region, u8 id, u32 size, u32 alignment) {
+static ALWAYS_INLINE void* main_pool_region_try_alloc_from_end_freeable(struct MainPoolRegion* region, u8 id, u32 size, int alignment) {
     u8* region_end = region->end;
-    u8* new_end = (u8*) DOWN(region_end - size, alignment) - sizeof(struct MainPoolFreeableHeader);
+    u8* new_end;
+    if (alignment > 0)
+        new_end = (u8*) DOWN(region_end - size, alignment) - sizeof(struct MainPoolFreeableHeader);
+    else
+        new_end = region_end - size - sizeof(struct MainPoolFreeableHeader);
+
     if (new_end < region->start)
         return NULL;
 
@@ -224,49 +188,28 @@ static void* main_pool_region_try_alloc_from_end_aligned_freeable(struct MainPoo
     return header->data;
 }
 
-void *main_pool_alloc_slow(u32 size) {
-#ifndef MAIN_POOL_SINGLE_REGION
-    gMainPoolCurrentRegion = NULL;
-#endif
-
-    for (int i = 0; i < MAIN_POOL_REGIONS_COUNT; i++) {
-        struct MainPoolRegion* region = &sMainPool.regions[i];
-#ifndef MAIN_POOL_SINGLE_REGION
-        // Find region that has at least 'MAIN_POOL_SMALL_ALLOC_LIMIT' bytes left
-        if (!gMainPoolCurrentRegion && region->end - region->start >= MAIN_POOL_SMALL_ALLOC_LIMIT)
-            gMainPoolCurrentRegion = region;
-#endif
-
-        void* ret = main_pool_region_try_alloc_from_start(region, size);
-        if (__builtin_expect(!ret, 0))
-            continue;
-
-        return ret;
+void *main_pool_alloc_ex(int region, u32 size, u32 alignment) {
+    if (0 == region)
+    {
+        return main_pool_region_alloc_from_start(&sMainPool.regions[0], size, alignment, MAIN_POOL_ALLOC_FORCE);
     }
-
-    DEBUG_ASSERT("Failed to allocate memory");
-    return NULL;
+    else
+    {
+        void* buf = main_pool_region_alloc_from_start(&sMainPool.regions[region], size, alignment, MAIN_POOL_ALLOC_TRY);
+        return buf ?: main_pool_region_alloc_from_start(&sMainPool.regions[0], size, alignment, MAIN_POOL_ALLOC_FORCE);
+    }
 }
 
-void *main_pool_alloc_aligned(int lowprio, u32 size, u32 alignment) {
+void *main_pool_alloc_freeable(int region, u32 size, u32 alignment) {
+    return main_pool_region_try_alloc_from_end_freeable(&sMainPool.regions[region], region, size, MAIN_POOL_ALIGNMENT_DISABLE);
+}
+
+static void *main_pool_alloc_aligned_freeable(int region, u32 size, u32 alignment) {
     if (!alignment)
         alignment = 16;
 
     size = ALIGN4(size);
-    return main_pool_region_try_alloc_from_start_aligned(&sMainPool.regions[lowprio], size, alignment);
-}
-
-void *main_pool_alloc_freeable(int lowprio, u32 size) {
-    size = ALIGN4(size) + sizeof(struct MainPoolFreeableHeader);
-    return main_pool_region_try_alloc_from_end_freeable(&sMainPool.regions[lowprio], lowprio, size);
-}
-
-static void *main_pool_alloc_aligned_freeable(int lowprio, u32 size, u32 alignment) {
-    if (!alignment)
-        alignment = 16;
-
-    size = ALIGN4(size);
-    return main_pool_region_try_alloc_from_end_aligned_freeable(&sMainPool.regions[lowprio], lowprio, size, alignment);
+    return main_pool_region_try_alloc_from_end_freeable(&sMainPool.regions[region], region, size, MAIN_POOL_ALIGNMENT_DISABLE);
 }
 
 /**
@@ -324,9 +267,9 @@ void main_pool_pop_state(void) {
  * Perform a DMA read from ROM, allocating space in the memory pool to write to.
  * Return the destination address.
  */
-static void *dynamic_dma_read(int lowprio, u8 *srcStart, u8 *srcEnd, u32 alignment, u32 bssLength) {
+static void *dynamic_dma_read(int region, u8 *srcStart, u8 *srcEnd, u32 alignment, u32 bssLength) {
     u32 size = ALIGN16(srcEnd - srcStart);
-    void* dest = main_pool_alloc_aligned(lowprio, size + bssLength, alignment);
+    void* dest = main_pool_alloc_aligned(region, size + bssLength, alignment);
     if (dest != NULL) {
         dma_read(((u8 *)dest), srcStart, srcEnd);
         if (bssLength) {
@@ -336,9 +279,9 @@ static void *dynamic_dma_read(int lowprio, u8 *srcStart, u8 *srcEnd, u32 alignme
     return dest;
 }
 
-static void *dynamic_dma_read_freeable(int lowprio, u8 *srcStart, u8 *srcEnd, u32 alignment, u32 bssLength) {
+static void *dynamic_dma_read_freeable(int region, u8 *srcStart, u8 *srcEnd, u32 alignment, u32 bssLength) {
     u32 size = ALIGN16(srcEnd - srcStart);
-    void* dest = main_pool_alloc_aligned_freeable(lowprio, size + bssLength, alignment);
+    void* dest = main_pool_alloc_aligned_freeable(region, size + bssLength, alignment);
     if (dest != NULL) {
         dma_read(((u8 *)dest), srcStart, srcEnd);
         if (bssLength) {
@@ -370,7 +313,7 @@ void mapTLBPages(uintptr_t virtualAddress, uintptr_t physicalAddress, s32 length
     }
 }
 
-static u32 to_lowprio(int segment) {
+static int to_region(int segment) {
     if (segment > 0xf)
         return 1;
 
@@ -389,14 +332,14 @@ void *load_segment(s32 segment, u8 *srcStart, u8 *srcEnd, u8 *bssStart, u8 *bssE
     void *addr;
 
     if ((bssStart != NULL)) {
-        addr = dynamic_dma_read(to_lowprio(segment), srcStart, srcEnd, TLB_PAGE_SIZE, ((uintptr_t)bssEnd - (uintptr_t)bssStart));
+        addr = dynamic_dma_read(to_region(segment), srcStart, srcEnd, TLB_PAGE_SIZE, ((uintptr_t)bssEnd - (uintptr_t)bssStart));
         if (addr != NULL) {
             u8 *realAddr = (u8 *)ALIGN(addr, TLB_PAGE_SIZE);
             set_segment_base_addr(segment, realAddr); sSegmentROMTable[segment] = (uintptr_t) srcStart;
             mapTLBPages((segment << 24), VIRTUAL_TO_PHYSICAL(realAddr), ((srcEnd - srcStart) + ((uintptr_t)bssEnd - (uintptr_t)bssStart)), segment);
         }
     } else {
-        addr = dynamic_dma_read(to_lowprio(segment), srcStart, srcEnd, 0, 0);
+        addr = dynamic_dma_read(to_region(segment), srcStart, srcEnd, 0, 0);
         if (addr != NULL) {
             set_segment_base_addr(segment, addr); sSegmentROMTable[segment] = (uintptr_t) srcStart;
         }
@@ -473,7 +416,7 @@ void *load_segment_decompress(s32 segment, u8 *srcStart, u8 *srcEnd) {
 # else
         dma_read(compressed, srcStart, srcEnd);
 # endif
-        dest = main_pool_alloc_aligned(to_lowprio(segment), *size, 0);
+        dest = main_pool_alloc_aligned(to_region(segment), *size, 0);
 #endif
         if (dest != NULL) {
             osSyncPrintf("start decompress\n");

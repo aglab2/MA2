@@ -42,27 +42,31 @@ struct MainPoolRegion {
     u8* end;
 };
 
-#ifndef MAIN_POOL_SINGLE_REGION
-extern struct MainPoolRegion* gMainPoolCurrentRegion;
-#else
+#define MAIN_POOL_REGIONS_COUNT 3
+
+struct MainPoolContext {
+    struct MainPoolRegion regions[MAIN_POOL_REGIONS_COUNT];
+};
+
 extern struct MainPoolContext sMainPool;
-// There is only 1 region which is the first region
-#define gMainPoolCurrentRegion ((struct MainPoolRegion*) &sMainPool)
-#endif
+#define gMainPoolCurrentRegion (&sMainPool.regions[0])
+
+#define MAIN_POOL_ALIGNMENT_DISABLE -1
+#define MAIN_POOL_ALLOC_TRY TRUE
+#define MAIN_POOL_ALLOC_FORCE FALSE
 
 // takes the first 'size' bytes from 'region'
-static inline void* main_pool_region_try_alloc_from_start(struct MainPoolRegion* region, u32 size) {
-    u8* buf = region->start;
-    u8* newStart = buf + size;
-#ifndef MAIN_POOL_SINGLE_REGION
-    if (__builtin_expect(newStart > region->end, 0))
-        return NULL;
-#else
-    if (!buf) __builtin_unreachable();
-#endif
+static ALWAYS_INLINE void* main_pool_region_alloc_from_start(struct MainPoolRegion* region, u32 size, s32 alignment, int try) {
+    u8* ret = alignment < 0 ? region->start : (u8*) ALIGN(region->start, alignment);
+    u8* newStart = ret + size;
+    if (try) {
+        if (newStart > region->end)
+            return NULL;
+    }
 
     region->start = newStart;
-    return buf;
+    if (!ret) __builtin_unreachable();
+    return ret;
 }
 
 /*
@@ -73,51 +77,25 @@ static inline void* main_pool_region_try_alloc_from_start(struct MainPoolRegion*
  It behaves similarly to an array of AllocOnly pools from vanilla SM64 by
  "cutting" the start of the "region" when an allocation is made and returning the
  pointer to the start of the initial "region".
-
- Here is a simple visual example of how the memory is laid out in the main pool:
-
- Main pool initial state is a multiple regions of memory:
- |-------|   |----|  |-------------------|
- If alloc(sizeof(+++++)), first region is used and the state becomes:
- |+++++--|   |----|  |-------------------|
-  ^
-  returned pointer, no extra memory overhead
- If afterwards alloc(sizeof(+++)) is used, it does not fit in region 1, so region 2 is used:
- |+++++--|   |+++-|  |-------------------|
-              ^
-  returned pointer
  */
 void main_pool_init(void);
 
-/*
- When 'main_pool_alloc_slow' is used, regions are iterated till a region is found that
- can supply the necessary memory. Compared to vanilla SM64 main pool allocator,
- there is no extra cost in using 'main_pool_alloc' - it is has 0 bytes overhead.
- The only way to free memory returned by 'alloc' is to use 'main_pool_pop_state'.
- */
-void *main_pool_alloc_slow(u32 size);
-
-/*
- 'main_pool_alloc' is a faster version of 'main_pool_alloc_slow' that can be inlined for small allocations.
- Its fast path for small size basically looks like "(return *ptr += size)" making it
- very quick for common tiny allocs used, for example, in surface code.
- */
-static inline void *main_pool_alloc(u32 size) {
-#ifndef MAIN_POOL_SINGLE_REGION
-    size = ALIGN4(size);
-    if (size < MAIN_POOL_SMALL_ALLOC_LIMIT) {
-        void *buf = main_pool_region_try_alloc_from_start(gMainPoolCurrentRegion, size);
-        if (__builtin_expect(!!buf, 1))
-            return buf;
-    }
-
-    return main_pool_alloc_slow(size);
-#else
-    return main_pool_region_try_alloc_from_start(gMainPoolCurrentRegion, size);
-#endif
+static ALWAYS_INLINE void *main_pool_alloc(u32 size) {
+    void* buf = main_pool_region_alloc_from_start(gMainPoolCurrentRegion, ALIGN4(size), MAIN_POOL_ALIGNMENT_DISABLE, MAIN_POOL_ALLOC_FORCE);
+    if (!buf) __builtin_unreachable();
+    return buf;
 }
-void *main_pool_alloc_aligned(int lowprio, u32 size, u32 alignment);
 
+void *main_pool_alloc_ex(int region, u32 size, u32 alignment);
+static inline void *main_pool_alloc_aligned(int region, u32 size, u32 alignment)
+{
+    if (!alignment)
+        alignment = 16;
+
+    void* buf = main_pool_alloc_ex(region, ALIGN4(size), alignment);
+    if (!buf) __builtin_unreachable();
+    return buf;
+}
 
 /*
  Main pool also provides a way to free the latest allocated memory for temporary memory use.
@@ -127,8 +105,7 @@ void *main_pool_alloc_aligned(int lowprio, u32 size, u32 alignment);
  temporary buffer that is allocated, used and freed in the same function.
 */
 
-void *main_pool_alloc_freeable(int lowprio, u32 size);
-// void *main_pool_alloc_aligned_freeable(int lowprio, u32 size, u32 alignment);
+void *main_pool_alloc_freeable(int region, u32 size, u32 alignment);
 void main_pool_free(void *addr);
 
 /*
@@ -148,6 +125,8 @@ void main_pool_pop_state(void);
  to predict the memory layout as regions in main pool might not be contiguous.
  */
 u32 main_pool_available(void);
+
+void main_pool_cut_graphics_pool();
 
 #ifndef NO_SEGMENTED_MEMORY
 void *load_segment(s32 segment, u8 *srcStart, u8 *srcEnd, u8 *bssStart, u8 *bssEnd);

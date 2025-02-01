@@ -38,13 +38,3 @@
 #define FRAMEBUFFER1_START 0x80700000 - RENDER_BUFFER_BUFFER_SIZE
 #define FRAMEBUFFER2_START 0x80700000
 #endif
-
-// Small alloc is optimization that will use the latest region to allow inlining implementation
-#define MAIN_POOL_SMALL_ALLOC_LIMIT 0x80
-
-#if MEMORY_FRAGMENTATION_NO_FRAGMENTATION == MEMORY_FRAGMENTATION_LEVEL
-// Consider memory to be contiguous instead of consisting of multiple regions (single region) effectively removing any size checks
-#define MAIN_POOL_SINGLE_REGION
-#endif
-
-#define MAIN_POOL_SINGLE_REGION
