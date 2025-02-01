@@ -28,6 +28,7 @@ static Vec3f sTrajectoryMiddle;
 static s16 sZiplineCurPoint = 0;
 static s16 sZiplineSegmentCount;
 static s16 sZiplineLoopYaw;
+static s16 sLoopFaceAngle;
 static f32 sZiplineProgress = 0;
 static f32 sPosX;
 static f32 sPosY;
@@ -180,7 +181,7 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
         if (sLoopDesc)
         {
             sAngleFlipped = 0;
-            sZiplineLoopYaw = gMarioStates->faceAngle[1] = yaw;
+            sZiplineLoopYaw = gMarioStates->faceAngle[1] = sLoopFaceAngle = yaw;
             calculate_trajectory_middle();
         }
 
@@ -308,6 +309,17 @@ int zipline_step()
         print_text_fmt_int(20, 120, "Z %d", (int) trajDirection[2]);
 #endif
 
+        s16* pfaceAngle = sLoopDesc ? &sLoopFaceAngle : &gMarioStates->faceAngle[1];
+        // adjust face angle to the zipline
+        if (absf(trajDirection[0] > 0.1f) || absf(trajDirection[2]) > 0.1f)
+        {
+            *pfaceAngle = atan2s(trajDirection[2], trajDirection[0]);
+            if (sAngleFlipped)
+            {
+                *pfaceAngle += 0x8000;
+            }
+        }
+
         if (sLoopDesc)
         {
             // adjust rotation angle from the center
@@ -319,21 +331,17 @@ int zipline_step()
 
             gMarioStates->faceAngle[sLoopDesc->m0] = sLoopDesc->angleOffset + sLoopDesc->mult * atan2s(loopDiff[sLoopDesc->c0], loopDiff[sLoopDesc->c1]);
 #else
-            gMarioStates->faceAngle[0] = atan2s(trajDirection[1], sqrtf(trajDirection[0] * trajDirection[0] + trajDirection[2] * trajDirection[2])) - 0x4000;
-            gMarioStates->faceAngle[1] = sZiplineLoopYaw + sLoopDesc->angleOffset * sZiplineCurPoint / sZiplineSegmentCount;
+            if (sLoopDesc->angleOffset)
+                gMarioStates->faceAngle[1] = sZiplineLoopYaw + sLoopDesc->angleOffset * sZiplineCurPoint / sZiplineSegmentCount;
+
+            if (abs_angle_diff(gMarioState->faceAngle[1], sLoopFaceAngle) < 0x4000)
+                gMarioStates->faceAngle[0] = atan2s(trajDirection[1], sqrtf(trajDirection[0] * trajDirection[0] + trajDirection[2] * trajDirection[2])) - 0x4000;
+            else
+                gMarioStates->faceAngle[0] = atan2s(sqrtf(trajDirection[0] * trajDirection[0] + trajDirection[2] * trajDirection[2]), trajDirection[1]) + 0x8000;
 #endif
         }
         else
         {
-            // adjust face angle to the zipline
-            if (absf(trajDirection[0] > 0.1f) || absf(trajDirection[2]) > 0.1f)
-            {
-                gMarioStates->faceAngle[1] = atan2s(trajDirection[2], trajDirection[0]);
-                if (sAngleFlipped)
-                {
-                    gMarioStates->faceAngle[1] += 0x8000;
-                }
-            }
             gMarioStates->faceAngle[0] = 0;
             gMarioStates->faceAngle[2] = 0;
         }
