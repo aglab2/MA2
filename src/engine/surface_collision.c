@@ -370,6 +370,16 @@ static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 
     return ceil;
 }
 
+static int ban_fast_collision_ground(void)
+{
+    if (gCurrLevelNum == LEVEL_GF && 1 == gCurrAreaIndex)
+    {
+        return gMarioStates->pos[2] > 20000.f;
+    }
+
+    return 0;
+}
+
 /**
  * Find the lowest ceiling above a given position and return the height.
  */
@@ -648,7 +658,8 @@ f32 find_floor(f32 xPos, f32 yPos, f32 zPos, struct Surface **pfloor) {
         return height;
     }
 
-    gCollisionFlags |= COLLISION_FLAG_RETURN_FIRST;
+    if (!ban_fast_collision_ground())
+        gCollisionFlags |= COLLISION_FLAG_RETURN_FIRST;
 
     // Each level is split into cells to limit load, find the appropriate cell.
     s32 cellX = GET_CELL_COORD(x);

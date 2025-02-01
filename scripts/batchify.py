@@ -1,3 +1,4 @@
+import os
 import sys
 
 class GeoLayout:
@@ -498,13 +499,20 @@ def deduce_level_name(name):
     idx = name.find('_')
     return name[0:idx]
 
-def serialize_geo(geo, area, path):
+def serialize_geo(geo, area, path, has_flipbooks, has_skybox):
     lvl_name = deduce_level_name(geo.name)
     with open(path, "w") as f_geo:
         f_geo.write('''#include "src/game/envfx_snow.h"\n\n''')
         f_geo.write(f'''const GeoLayout {geo.name} = {{\n''')
-        f_geo.write(f'''\tGEO_BATCH_NODE_START(batch_lvl_dls_{lvl_name}),\n''')
+        if has_flipbooks:
+            f_geo.write(f'''\tGEO_BATCH_NODE_START_WITH_FLIPBOOK(batch_lvl_dls_{lvl_name}, {lvl_name}_flipbooks),\n''')
+        else:
+            f_geo.write(f'''\tGEO_BATCH_NODE_START(batch_lvl_dls_{lvl_name}),\n''')
+
         f_geo.write('''\tGEO_OPEN_NODE(),\n''')
+        if has_skybox:
+            f_geo.write('''\t\tGEO_ASM(0, geo_render_backdrop),\n''')    
+
         for content in geo.contents:
             f_geo.write(f"{content}\n")
 
@@ -517,7 +525,7 @@ def serialize_geo(geo, area, path):
 
         f_geo.write('''};\n\n''')
 
-def serialize_header(header, layered_batches, replacements, path):
+def serialize_header(header, layered_batches, replacements, path, has_flipbooks):
     with open(path, "w") as f_header:
         for data in header:
             if data.startswith('extern Gfx mat_'):
@@ -536,6 +544,9 @@ def serialize_header(header, layered_batches, replacements, path):
 
         for k, v in replacements.items():
             f_header.write(f"#define {k} {v}\n")
+
+        if has_flipbooks:
+            f_header.write(f'extern const struct FlipbookLayer {name}_flipbooks[LAYER_COUNT];\n')
 
 def serialize_model(model, layered_batches, path):
     replacemenets = {}
@@ -581,6 +592,8 @@ def serialize_model(model, layered_batches, path):
 
 if '__main__' in __name__:
     path = f"{sys.argv[1]}/visual"
+    slash_idx = sys.argv[1].rfind('/')
+    name = sys.argv[1][slash_idx+1:]
     geo_path = f"{path}/geo.inc.c"
     header_path = f"{path}/header.inc.h"
     model_path = f"{path}/model.inc.c"
@@ -595,6 +608,9 @@ if '__main__' in __name__:
     header_patched_path = f"{path}/header_lvl.inc.h"
     model_patched_path = f"{path}/model_lvl.inc.c"
 
-    serialize_geo(geo, area, geo_patched_path)
+    has_flipbooks = os.path.exists(f"{sys.argv[1]}/flipbook.inc.c")
+    has_skybox = os.path.exists(f"{sys.argv[1]}/{name}_skybox")
+
+    serialize_geo(geo, area, geo_patched_path, has_flipbooks, has_skybox)
     replacements = serialize_model(model, layered_batches, model_patched_path)
-    serialize_header(header, layered_batches, replacements, header_patched_path)
+    serialize_header(header, layered_batches, replacements, header_patched_path, has_flipbooks)

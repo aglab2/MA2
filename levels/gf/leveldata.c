@@ -51,6 +51,8 @@ static const LDLDesc loop_desc1 = { 0 };
 
 #include "levels/gf/rails.inc.c"
 
+#include "levels/gf/flipbook.inc.c"
+
 #include "levels/gf/visual/model_lvl.inc.c"
 
 #if 0
