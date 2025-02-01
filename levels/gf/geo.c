@@ -21,7 +21,6 @@
 #define gf_area_1_geo gf_area_geo_visual
 #include "levels/gf/visual/geo_lvl.inc.c"
 
-#include "levels/gf/gf_skybox/geo.inc.c"
 #include "levels/gf/gf_gake_a/geo.inc.c"
 #include "levels/gf/gf_gake_b/geo.inc.c"
 #include "levels/gf/gf_gake_c/geo.inc.c"
