@@ -435,6 +435,7 @@ void update_walking_speed(struct MarioState *m) {
 
     if (floorType == SURFACE_SPEEDUP)
     {
+        maxTargetSpeed += 64.f;
         limit += 64.f;
     }
     else
@@ -448,6 +449,10 @@ void update_walking_speed(struct MarioState *m) {
     }
 
     targetSpeed = m->intendedMag < maxTargetSpeed ? m->intendedMag : maxTargetSpeed;
+    if (floorType == SURFACE_SPEEDUP)
+    {
+        targetSpeed *= 2.5f;
+    }
 
     if (m->quicksandDepth > 10.0f) {
         targetSpeed *= 6.25f / m->quicksandDepth;
@@ -455,17 +460,27 @@ void update_walking_speed(struct MarioState *m) {
 
     if (m->forwardVel <= 0.0f) {
         // Slow down if moving backwards
+        // print_text_fmt_int(20, 100, "B %d", (int) m->forwardVel);
         m->forwardVel += 1.1f;
     } else if (m->forwardVel <= targetSpeed) {
         // If accelerating
-        m->forwardVel += 1.1f - m->forwardVel / 43.0f;
+        // print_text_fmt_int(20, 100, "A %d", (int) m->forwardVel);
+        m->forwardVel += 1.1f - m->forwardVel / limit;
     } else if (absf(m->floor->normal.y) >= 0.95f) {
+        // print_text_fmt_int(20, 100, "D %d", (int) m->forwardVel);
         m->forwardVel -= 1.0f;
     }
 
     if (m->forwardVel > limit) {
         m->forwardVel = limit;
     }
+
+#if 0
+    print_text_fmt_int(20, 20, "F %d", (int) m->forwardVel);
+    print_text_fmt_int(20, 40, "L %d", (int) limit);
+    print_text_fmt_int(20, 60, "MT %d", (int) maxTargetSpeed);
+    print_text_fmt_int(20, 80, "TS %d", (int) targetSpeed);
+#endif
 
 #ifdef VELOCITY_BASED_TURN_SPEED
     if ((m->heldObj == NULL) && !(m->action & ACT_FLAG_SHORT_HITBOX)) {
@@ -1491,6 +1506,11 @@ s32 common_slide_action_with_jump(struct MarioState *m, u32 stopAction, u32 jump
         m->actionTimer++;
     }
 #endif
+
+    if (m->floor->type == SURFACE_SPEEDUP)
+    {
+        return set_mario_action(m, ACT_WALKING, 0);
+    }
 
     if (update_sliding(m, 4.0f)) {
         return set_mario_action(m, stopAction, 0);
