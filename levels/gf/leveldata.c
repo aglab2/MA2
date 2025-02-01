@@ -10,7 +10,7 @@
 
 #include "make_const_nonconst.h"
 
-#include "levels/gf/header.inc.h"
+#include "levels/gf/header.h"
 
 static IWDirectionAreasDesc iw_gf_area1 = {
     { IWDT_DIRECTIONS },
@@ -40,91 +40,27 @@ IWDHeader* iw_descs_gf[] = {
 };
 
 static const LDLDesc loop_desc1 = { 0 };
-static const LDLDesc loop_desc2 = { 0 };
-// LDLDesc __debug__loop_desc = {  0, 1, 0, 1, 0x4000 };
 
-static const RailDesc rail_gf_area1[] = {
-    LOOP_TRAJ(gf_area_1_spline_NurbsCurve_Loop, &loop_desc1),
-    RAIL_TRAJ(gf_area_1_spline_NurbsCurve_Rail),
-    RAIL_TRAJ(gf_area_1_spline_NurbsCurve_Rail_001),
-    RAIL_TRAJ(gf_area_1_spline_NurbsCurve_Rail_006),
-    RAIL_TRAJ(gf_area_1_spline_NurbsCurve_Rail_007),
-    RAIL_TRAJ(gf_area_1_spline_NurbsCurve_Rail_008),
-    RAIL_END,
-};
+#define loop_desc_gf_area_1_spline_NurbsCurve_Loop &loop_desc1
+#define loop_desc_gf_area_2_spline_NurbsCurve_Loop_001 &loop_desc1
+#define loop_desc_gf_area_2_spline_NurbsCurve_Loop_002 &loop_desc1
+#define loop_desc_gf_area_2_spline_NurbsCurve_Loop_003 &loop_desc1
+#define loop_desc_gf_area_2_spline_NurbsCurve_VineLoop_005 &loop_desc1
+#define loop_desc_gf_area_4_spline_NurbsCurve_Loop_004 &loop_desc1
+#define loop_desc_gf_area_4_spline_NurbsCurve_Loop_005 &loop_desc1
 
-static const RailDesc rail_gf_area2[] = {
-    LOOP_TRAJ(gf_area_2_spline_NurbsCurve_Loop_001, &loop_desc1),
-    LOOP_TRAJ(gf_area_2_spline_NurbsCurve_Loop_002, &loop_desc1),
-    LOOP_TRAJ(gf_area_2_spline_NurbsCurve_Loop_003, &loop_desc1),
-    RAIL_TRAJ(gf_area_2_spline_NurbsCurve_Rail_002),
-    RAIL_TRAJ(gf_area_2_spline_NurbsCurve_Rail_003),
-    RAIL_TRAJ(gf_area_2_spline_NurbsCurve_Rail_004),
-    LOOP_TRAJ(gf_area_2_spline_NurbsCurve_VineLoop_005, &loop_desc1),
-    RAIL_TRAJ(gf_area_2_spline_NurbsCurve_Rail_009),
-    RAIL_END,
-};
+#include "levels/gf/rails.inc.c"
 
-static const RailDesc rail_gf_area3[] = {
-    RAIL_END,
-};
+#include "levels/gf/visual/model_lvl.inc.c"
 
-static const RailDesc rail_gf_area4[] = {
-    LOOP_TRAJ(gf_area_4_spline_NurbsCurve_Loop_004, &loop_desc1),
-    RAIL_TRAJ(gf_area_4_spline_NurbsCurve_Loop_005),
-    RAIL_END,
-};
-
-const RailDesc* rail_descs_gf[] = {
-    rail_gf_area1,
-    rail_gf_area2,
-    rail_gf_area3,
-    rail_gf_area4,
-};
-
-static SpringDesc spring_gf_area1[] = {
-    gf_area_1_spline_NurbsCurve_Spring,
-    gf_area_1_spline_NurbsCurve_Spring_001,
-    gf_area_1_spline_NurbsCurve_Spring_002,
-    gf_area_1_spline_NurbsCurve_Spring_003,
-    gf_area_1_spline_NurbsCurve_Spring_004,
-    gf_area_1_spline_NurbsCurve_Spring_005,
-    gf_area_1_spline_NurbsCurve_Spring_015,
-    NULL,
-};
-
-static SpringDesc spring_gf_area2[] = {
-    gf_area_2_spline_NurbsCurve_Spring_006,
-    gf_area_2_spline_NurbsCurve_Spring_007,
-    gf_area_2_spline_NurbsCurve_Spring_008,
-    gf_area_2_spline_NurbsCurve_Spring_009,
-    NULL,
-};
-
-static SpringDesc spring_gf_area3[] = {
-    gf_area_3_spline_NurbsCurve_Spring_010,
-    gf_area_3_spline_NurbsCurve_Spring_011,
-    gf_area_3_spline_NurbsCurve_Spring_012,
-    gf_area_3_spline_NurbsCurve_Spring_013,
-    gf_area_3_spline_NurbsCurve_Spring_014,
-    NULL,
-};
-
-static SpringDesc spring_gf_area4[] = {
-    gf_area_4_spline_NurbsCurve_Spring_016,
-    NULL,
-};
-
-const SpringDesc* spring_descs_gf[] = {
-    spring_gf_area1,
-    spring_gf_area2,
-    spring_gf_area3,
-    spring_gf_area4,
-};
-
-#include "levels/gf/visual/model.inc.c"
-
+#if 0
 #include "levels/gf/leveldata.inc.c"
+#else
+#include "levels/gf/area_1/spline.inc.c"
+#include "levels/gf/area_2/spline.inc.c"
+#include "levels/gf/area_3/spline.inc.c"
+#include "levels/gf/area_4/spline.inc.c"
+#endif
 
 #include "levels/gf/gf_skybox/model.inc.c"
 #include "levels/gf/gf_gake_a/model.inc.c"

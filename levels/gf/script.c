@@ -26,6 +26,10 @@ extern const GeoLayout gf_area_visual[];
 #define gf_area_8 gf_area_visual
 #define gf_area_9 gf_area_visual
 #define gf_area_10 gf_area_visual
+#include "levels/gf/area_1/collision.inc.c"
+#include "levels/gf/area_2/collision.inc.c"
+#include "levels/gf/area_3/collision.inc.c"
+#include "levels/gf/area_4/collision.inc.c"
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_gf_entry[] = {

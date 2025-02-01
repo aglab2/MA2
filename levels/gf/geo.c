@@ -13,11 +13,13 @@
 
 #include "levels/gf/header.h"
 
+#if 0
 #include "levels/gf/geo.inc.c"
+#endif
 
 #define gf_area_1 gf_area_visual
 #define gf_area_1_geo gf_area_geo_visual
-#include "levels/gf/visual/geo.inc.c"
+#include "levels/gf/visual/geo_lvl.inc.c"
 
 #include "levels/gf/gf_skybox/geo.inc.c"
 #include "levels/gf/gf_gake_a/geo.inc.c"
