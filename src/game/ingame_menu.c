@@ -1644,6 +1644,11 @@ static const char* textStars = "Stars";
 extern u8 sStarIds;
 extern u8 sCheckpointIds;
 
+static void render_star_at(int enabled, int x, int y)
+{
+    print_generic_string_aligned(x, y, enabled ? "★" : "☆", TEXT_ALIGN_RIGHT);
+}
+
 void render_pause_my_score_coins(void) {
     char str[20];
 
@@ -1668,11 +1673,11 @@ void render_pause_my_score_coins(void) {
 
             int y = PAUSE_MENU_MY_SCORE_Y + 20;
             print_generic_string_aligned(PAUSE_MENU_LEFT_X + 3 - 45, y, textCheckpoint, TEXT_ALIGN_RIGHT);
-            for (int i = 63; i >= sCheckpointIds; i--)
+            for (int i = 62; i >= sCheckpointIds; i--)
             {
-                const char* str = (starFlags & (1ULL << i)) ? "★" : "☆";
-                print_generic_string_aligned(PAUSE_MENU_LEFT_X + 3 + (63 - i) * 16 - 30, y, str, TEXT_ALIGN_RIGHT);
+                render_star_at(!!(starFlags & (1ULL << i)), PAUSE_MENU_LEFT_X + 3 + (62 - i) * 16 - 30, y);
             }
+            render_star_at(!!(starFlags & (1ULL << 63)), PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30, y);
 
             y = PAUSE_MENU_MY_SCORE_Y + 5;
             print_generic_string_aligned(PAUSE_MENU_LEFT_X + 3 - 45, y, textStars, TEXT_ALIGN_RIGHT);
@@ -1686,9 +1691,9 @@ void render_pause_my_score_coins(void) {
                     sy -= 12;
                 }
 
-                const char* str = (starFlags & (1ULL << i)) ? "★" : "☆";
-                print_generic_string_aligned(sx, sy, str, TEXT_ALIGN_RIGHT);
+                render_star_at(!!(starFlags & (1ULL << i)), sx, sy);
             }
+            render_star_at(!!(starFlags & (1ULL << 48)), PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30, PAUSE_MENU_MY_SCORE_Y + 5 - 12);
         } else {
             print_generic_string_aligned(SCREEN_CENTER_X, PAUSE_MENU_COURSE_Y, courseName, TEXT_ALIGN_CENTER);
         }
