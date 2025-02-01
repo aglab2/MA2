@@ -1,3 +1,8 @@
+void bhv_speeder_init()
+{
+
+}
+
 void bhv_speeder_loop()
 {
     if (o->oDistanceToMario < 100.f)

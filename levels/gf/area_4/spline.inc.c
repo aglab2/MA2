@@ -50,7 +50,7 @@ const Trajectory gf_area_4_spline_NurbsCurve_Loop_004[] = {
 	TRAJECTORY_POS( 48, -14290, -5839, -3120),
 	TRAJECTORY_END(),
 };
-const Trajectory gf_area_4_spline_NurbsCurve_Loop_005[] = {
+const Trajectory gf_area_4_spline_NurbsCurve_Rail_005[] = {
 	TRAJECTORY_POS( 0, -14566, -6470, 592),
 	TRAJECTORY_POS( 1, -14404, -7290, 3050),
 	TRAJECTORY_POS( 2, -14343, -7440, 3485),

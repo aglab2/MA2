@@ -411,6 +411,7 @@ int zipline_step()
         {
             if (traj[sZiplineCurPoint + 8] == -1)
             {
+#if 0
                 // print_text_fmt_int(20, 20, "0 %d", (int) gMarioStates->faceAngle[0]);
                 // print_text_fmt_int(20, 40, "1 %d", (int) gMarioStates->faceAngle[1]);
                 // print_text_fmt_int(20, 60, "2 %d", (int) gMarioStates->faceAngle[2]);
@@ -423,6 +424,7 @@ int zipline_step()
                         gMarioStates->faceAngle[2] = 0;
                     }
                 }
+#endif
 
                 vec3_copy(gMarioStates->pos, traj + sZiplineCurPoint + 4 + 1);
                 zipline_cancel();

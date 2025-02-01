@@ -54,8 +54,8 @@ static const SpringDesc spring_area4[] = {
 };
 
 static const RailDesc rails_area4[] = {
+	RAIL_TRAJ(gf_area_4_spline_NurbsCurve_Rail_005),
 	LOOP_TRAJ(gf_area_4_spline_NurbsCurve_Loop_004, loop_desc_gf_area_4_spline_NurbsCurve_Loop_004),
-	LOOP_TRAJ(gf_area_4_spline_NurbsCurve_Loop_005, loop_desc_gf_area_4_spline_NurbsCurve_Loop_005),
 	RAIL_END
 };
 

@@ -374,7 +374,7 @@ static int ban_fast_collision_ground(void)
 {
     if (gCurrLevelNum == LEVEL_GF && 1 == gCurrAreaIndex)
     {
-        return gMarioStates->pos[2] > 20000.f;
+        return gMarioStates->pos[2] > 13000.f;
     }
 
     return 0;

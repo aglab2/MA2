@@ -21,7 +21,7 @@ struct ObjectHitbox sYellowCoinHitbox = {
  * 
  *     0
  **/
-s16 sCoinArrowPositions[][2] = {
+static const s16 sCoinArrowPositions[][2] = {
     { 0, -150 },
     { 0, -50 },
     { 0, 50 },

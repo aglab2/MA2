@@ -425,18 +425,26 @@ void update_walking_speed(struct MarioState *m) {
     f32 maxTargetSpeed;
     f32 targetSpeed;
     f32 limit = 48.f;
+    int floorType = m->floor ? m->floor->type : 0;
 
-    if (m->floor != NULL && m->floor->type == SURFACE_SLOW) {
+    if (floorType == SURFACE_SLOW) {
         maxTargetSpeed = 24.0f;
     } else {
         maxTargetSpeed = 32.0f;
     }
 
-    if (m->forwardVelOverrideDeadline > gGlobalTimer)
+    if (floorType == SURFACE_SPEEDUP)
     {
-        f32 diff = 8 * (m->forwardVelOverrideDeadline - gGlobalTimer);
-        maxTargetSpeed += diff;
-        limit += diff;
+        limit += 64.f;
+    }
+    else
+    {
+        if (m->forwardVelOverrideDeadline > gGlobalTimer)
+        {
+            f32 diff = 8 * (m->forwardVelOverrideDeadline - gGlobalTimer);
+            maxTargetSpeed += diff;
+            limit += diff;
+        }
     }
 
     targetSpeed = m->intendedMag < maxTargetSpeed ? m->intendedMag : maxTargetSpeed;

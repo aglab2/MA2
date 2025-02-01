@@ -581,6 +581,8 @@
 #define MODEL_BOO                         0xf7
 #define MODEL_SNUFIT 0xf6
 
+#define MODEL_BOOSTER MODEL_SPEEDER
+
 // MA course specifics
 #define MODEL_CE_HAMMER MODEL_LEVEL_GEOMETRY_03
 
