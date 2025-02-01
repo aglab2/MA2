@@ -27,3 +27,4 @@
 #include "exclamation_box_outline/geo.inc.c"
 #include "koopa_shell/geo.inc.c"
 #include "boo/geo.inc.c"
+#include "snufit/geo.inc.c"

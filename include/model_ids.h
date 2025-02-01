@@ -580,6 +580,7 @@
 #define MODEL_ROCKET_SPAWNER 0xf9
 #define MODEL_THI_WARP_PIPE                       0xf8   // warp_pipe_geo
 #define MODEL_BOO                         0xf7
+#define MODEL_SNUFIT 0xf6
 
 // MA course specifics
 #define MODEL_CE_HAMMER MODEL_LEVEL_GEOMETRY_03

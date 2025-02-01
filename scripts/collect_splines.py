@@ -64,7 +64,9 @@ if '__main__' in __name__:
                     area_loops.append(spline_name)
                     continue
                 else:
-                    assert False, f"Unknown spline type: {spline_name}"
+                    area_rails.append(spline_name)
+                    continue
+                    #assert False, f"Unknown spline type: {spline_name}"
 
         with open(area_spline_path, 'w') as f:
             for line in area_spline_lines:

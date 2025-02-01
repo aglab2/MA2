@@ -77,3 +77,4 @@ UNUSED static const u64 binid_17 = 17;
 UNUSED static const u64 binid_18 = 18;
 
 #include "boo/model.inc.c"
+#include "snufit/model.inc.c"
