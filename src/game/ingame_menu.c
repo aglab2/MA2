@@ -111,26 +111,27 @@ enum DialogBoxType {
 #define DEFAULT_DIALOG_BOX_ANGLE 90.0f
 #define DEFAULT_DIALOG_BOX_SCALE 19.0f
 
-s8 gDialogBoxState = DIALOG_STATE_OPENING;
-s8 gDialogBoxType = DIALOG_TYPE_ROTATE;
-s8 gDialogLineNum = 1;
-s8 gDialogHasResponse = FALSE;
-u8 gMenuHoldKeyIndex = 0;
-u8 gMenuHoldKeyTimer = 0;
-s16 gDialogScrollOffsetY = 0;
-s16 gDialogID = DIALOG_NONE;
-s16 gLastDialogPageStrPos = 0;
-s16 gDialogTextPos = 0;
-f32 gDialogBoxOpenTimer = DEFAULT_DIALOG_BOX_ANGLE;
-f32 gDialogBoxScale = DEFAULT_DIALOG_BOX_SCALE;
+static s8 gDialogBoxState = DIALOG_STATE_OPENING;
+static s8 gDialogBoxType = DIALOG_TYPE_ROTATE;
+static s8 gDialogLineNum = 1;
+static s8 gDialogHasResponse = FALSE;
+static s16 gDialogScrollOffsetY = 0;
+static s16 gDialogID = DIALOG_NONE;
+static s16 gLastDialogPageStrPos = 0;
+static s16 gDialogTextPos = 0;
+static f32 gDialogBoxOpenTimer = DEFAULT_DIALOG_BOX_ANGLE;
+static f32 gDialogBoxScale = DEFAULT_DIALOG_BOX_SCALE;
 s32 gDialogResponse = DIALOG_RESPONSE_NONE;
-ColorRGBA gDialogColorByEnd;
-ColorRGBA gDialogCarryoverColor;
+static ColorRGBA gDialogColorByEnd;
+static ColorRGBA gDialogCarryoverColor;
 
 static ColorRGBA sActiveTextColor;
 
 static u8 sGenericFontLineHeight = 0;
 static u8 sGenericFontLineAlignment = TEXT_ALIGN_LEFT;
+
+extern u8 sStarIds;
+extern u8 sCheckpointIds;
 
 void create_dl_identity_matrix(void) {
     Mtx *matrix = (Mtx *) alloc_display_list(sizeof(Mtx));
@@ -884,6 +885,9 @@ void print_credits_string_aligned(s16 x, s16 y, const char *str, u32 alignment) 
 }
 
 void handle_menu_scrolling(s8 scrollDirection, s8 *currentIndex, s8 minIndex, s8 maxIndex) {
+    static u8 gMenuHoldKeyIndices[2];
+    static u8 gMenuHoldKeyTimers[2];
+
     u8 index = 0;
 
     if (scrollDirection == MENU_SCROLL_VERTICAL) {
@@ -894,30 +898,30 @@ void handle_menu_scrolling(s8 scrollDirection, s8 *currentIndex, s8 minIndex, s8
         if (gPlayer1Controller->rawStickX < -60) index++;
     }
 
-    if (((index ^ gMenuHoldKeyIndex) & index) == 2) {
+    if (((index ^ gMenuHoldKeyIndices[scrollDirection]) & index) == 2) {
         if (*currentIndex != maxIndex) {
             play_sound(SOUND_MENU_CHANGE_SELECT, gGlobalSoundSource);
             (*currentIndex)++;
         }
     }
 
-    if (((index ^ gMenuHoldKeyIndex) & index) == 1) {
+    if (((index ^ gMenuHoldKeyIndices[scrollDirection]) & index) == 1) {
         if (*currentIndex != minIndex) {
             play_sound(SOUND_MENU_CHANGE_SELECT, gGlobalSoundSource);
             (*currentIndex)--;
         }
     }
 
-    if (gMenuHoldKeyTimer == 10) {
-        gMenuHoldKeyTimer = 8;
-        gMenuHoldKeyIndex = 0;
+    if (gMenuHoldKeyTimers[scrollDirection] == 10) {
+        gMenuHoldKeyTimers[scrollDirection] = 8;
+        gMenuHoldKeyIndices[scrollDirection] = 0;
     } else {
-        gMenuHoldKeyTimer++;
-        gMenuHoldKeyIndex = index;
+        gMenuHoldKeyTimers[scrollDirection]++;
+        gMenuHoldKeyIndices[scrollDirection] = index;
     }
 
     if ((index & 3) == 0) {
-        gMenuHoldKeyTimer = 0;
+        gMenuHoldKeyTimers[scrollDirection] = 0;
     }
 }
 
@@ -1527,14 +1531,6 @@ void reset_red_coins_collected(void) {
     gRedCoinsCollected = 0;
 }
 
-void change_dialog_camera_angle(void) {
-    if (cam_select_alt_mode(0) == CAM_SELECTION_MARIO) {
-        gDialogCameraAngleIndex = CAM_SELECTION_MARIO;
-    } else {
-        gDialogCameraAngleIndex = CAM_SELECTION_FIXED;
-    }
-}
-
 void shade_screen(void) {
     Gfx* dlHead = gDisplayListHead;
 
@@ -1571,14 +1567,14 @@ void render_pause_red_coins(void) {
 }
 
 LangArray textCurrRatio43 = DEFINE_LANGUAGE_ARRAY(
-    "ASPECT RATIO: 4:3\nPRESS L TO SWITCH",
+    "Aspect Ratio: 4:3\nPress L to switch",
     "RATIO D'ASPECT: 4:3\nAPPUYEZ SUR L POUR CHANGER",
     "SEITENVERHÄLTNIS: 4:3\nDRÜCKE L ZUM WECHSELN",
     "アスペクトひ: ４:３\nＬボタンできりかえ",
     "RELACIÓN DE ASPECTO: 4:3\nPULSA L PARA CAMBIAR");
 
 LangArray textCurrRatio169 = DEFINE_LANGUAGE_ARRAY(
-    "ASPECT RATIO: 16:9\nPRESS L TO SWITCH",
+    "Aspect Ratio: 16:9\nPress L to switch",
     "RATIO D'ASPECT: 16:9\nAPPUYEZ SUR L POUR CHANGER",
     "SEITENVERHÄLTNIS: 16:9\nDRÜCKE L ZUM WECHSELN",
     "アスペクトひ: １６:９\nＬボタンできりかえ",
@@ -1637,12 +1633,9 @@ static const char* textStars = "Stars";
 #define PAUSE_MENU_LEFT_X  106
 #define PAUSE_MENU_RIGHT_X 117
 
-#define PAUSE_MENU_COURSE_Y 157
+#define PAUSE_MENU_COURSE_Y 172
 #define PAUSE_MENU_ACT_Y 140
 #define PAUSE_MENU_MY_SCORE_Y 121
-
-extern u8 sStarIds;
-extern u8 sCheckpointIds;
 
 static void render_star_at(int enabled, int x, int y)
 {
@@ -1673,7 +1666,7 @@ void render_pause_my_score_coins(void) {
 
             int y = PAUSE_MENU_MY_SCORE_Y + 20;
             print_generic_string_aligned(PAUSE_MENU_LEFT_X + 3 - 45, y, textCheckpoint, TEXT_ALIGN_RIGHT);
-            for (int i = 62; i >= sCheckpointIds; i--)
+            for (int i = 62; i > sCheckpointIds; i--)
             {
                 render_star_at(!!(starFlags & (1ULL << i)), PAUSE_MENU_LEFT_X + 3 + (62 - i) * 16 - 30, y);
             }
@@ -1709,81 +1702,45 @@ void render_pause_my_score_coins(void) {
     }
 }
 
-LangArray textLakituMario = DEFINE_LANGUAGE_ARRAY(
-    "LAKITU ↔ MARIO",
-    "LAKITU ↔ MARIO",
-    "LAKITU ↔ MARIO",
-    "ジュゲム↔マリオ",
-    "LAKITU ↔ MARIO");
+extern const Gfx dl_draw_triangle_down[];
+static void render_quick_warp(s16 x, s16 y, s8 *index, s16 xIndex) {
+    handle_menu_scrolling(MENU_SCROLL_HORIZONTAL, index, 1, 64 - sCheckpointIds);
+    if (*index == 1)
+        return;
 
-LangArray textLakituStop = DEFINE_LANGUAGE_ARRAY(
-    "LAKITU ↔ STOP",
-    "LAKITU ↔ STOP",
-    "LAKITU ↔ STOP",
-    "ジュゲム↔ストップ",
-    "LAKITU ↔ FIJA");
-
-LangArray textNormalUpClose = DEFINE_LANGUAGE_ARRAY(
-    "(NORMAL)(UP-CLOSE)",
-    "(NORMAL)(GROS-PLAN)",
-    "(NORMAL)(WEIT-ZOOM)",
-    "（おすすめ）（リアル）",
-    "(NORMAL)(CERCA)");
-
-LangArray textNormalFixed = DEFINE_LANGUAGE_ARRAY(
-    "(NORMAL)(FIXED)",
-    "(NORMAL)(FIXE)",
-    "(NORMAL)(STATIV)",
-    "（おすすめ）（とまる）",
-    "(NORMAL)(FIJA)");
-
-void render_pause_camera_options(s16 x, s16 y, s8 *index, s16 xIndex) {
-    handle_menu_scrolling(MENU_SCROLL_HORIZONTAL, index, 1, 2);
+    int xoff;
+    if (64 - sCheckpointIds != gDialogCameraAngleIndex)
+        xoff = PAUSE_MENU_LEFT_X - 57 + *index * 16;
+    else
+        xoff = PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30 + 2;
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
-
     set_text_color(255, 255, 255);
-    print_generic_string_aligned(x + 54,  y,      LANG_ARRAY(textLakituMario),   TEXT_ALIGN_CENTER);
-    print_generic_string_aligned(x + 54,  y - 15, LANG_ARRAY(textNormalUpClose), TEXT_ALIGN_CENTER);
-    print_generic_string_aligned(x + 160, y,      LANG_ARRAY(textLakituStop),    TEXT_ALIGN_CENTER);
-    print_generic_string_aligned(x + 160, y - 15, LANG_ARRAY(textNormalFixed),   TEXT_ALIGN_CENTER);
-
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
-    create_dl_translation_matrix(MENU_MTX_PUSH, ((*index - 1) * xIndex) + x, y, 0);
+    create_dl_translation_matrix(MENU_MTX_PUSH, xoff, PAUSE_MENU_MY_SCORE_Y + 44, 0);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
-    gSPDisplayList(gDisplayListHead++, dl_draw_triangle);
+    gSPDisplayList(gDisplayListHead++, dl_draw_triangle_down);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
-
-    switch (*index) {
-        case CAM_SELECTION_MARIO:
-            cam_select_alt_mode(CAM_SELECTION_MARIO);
-            break;
-        case CAM_SELECTION_FIXED:
-            cam_select_alt_mode(CAM_SELECTION_FIXED);
-            break;
-    }
 }
 
 LangArray textContinue = DEFINE_LANGUAGE_ARRAY(
-    "CONTINUE",
+    "Continue",
     "CONTINUER",
     "WEITER",
     "つづけて マリオする？",
     "CONTINUAR");
 
 LangArray textExitCourse = DEFINE_LANGUAGE_ARRAY(
-    "EXIT COURSE",
+    "Exit Course",
     "QUITTER NIVEAU",
     "KURS VERLASSEN",
     "コースからでる？",
     "SALIR DEL NIVEL");
 
-LangArray textCameraAngleR = DEFINE_LANGUAGE_ARRAY(
-    "SET CAMERA ANGLE WITH Ⓡ",
-    "RÉGLAGE CAMÉRA AVEC Ⓡ",
-    "KAMERA MIT Ⓡ VERSTELLEN",
-    "Ｒボタンのカメラきりかえ",
-    "MODO DE CÁMARA CON Ⓡ");
+static const char* warpTo = "Warp to ...";
+static const char* warpToCheckpoint = "Warp to Checkpoint";
+static const char* warpToStart = "Warp to Start";
+static const char* warpToGoal = "Warp to Goal";
 
 void render_pause_course_options(s16 x, s16 y, s8 *index, s16 yIndex) {
     handle_menu_scrolling(MENU_SCROLL_VERTICAL, index, 1, 3);
@@ -1794,8 +1751,23 @@ void render_pause_course_options(s16 x, s16 y, s8 *index, s16 yIndex) {
     print_generic_string(x, y,      LANG_ARRAY(textContinue));
     print_generic_string(x, y - 15, LANG_ARRAY(textExitCourse));
 
-    if (*index != MENU_OPT_CAMERA_ANGLE_R) {
-        print_generic_string(x, y - 31, LANG_ARRAY(textCameraAngleR));
+    {
+        const char* lastLine;
+        if (*index != MENU_OPT_WARP_CHECKPOINT)
+        {
+            lastLine = warpTo;
+        }
+        else
+        {
+            if (1 == gDialogCameraAngleIndex)
+                lastLine = warpToStart;
+            else if (64 - sCheckpointIds == gDialogCameraAngleIndex)
+                lastLine = warpToGoal;
+            else
+                lastLine = warpToCheckpoint;
+        }
+
+        print_generic_string(x, y - 31, lastLine);
         gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
 
         create_dl_translation_matrix(MENU_MTX_PUSH, x - 14, (y - ((*index - 1) * yIndex)), 0);
@@ -1805,8 +1777,8 @@ void render_pause_course_options(s16 x, s16 y, s8 *index, s16 yIndex) {
         gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
     }
 
-    if (*index == MENU_OPT_CAMERA_ANGLE_R) {
-        render_pause_camera_options(x - 52, y - 38, &gDialogCameraAngleIndex, 110);
+    if (*index == MENU_OPT_WARP_CHECKPOINT) {
+        render_quick_warp(x - 52, y - 38, &gDialogCameraAngleIndex, 110);
     }
 }
 
@@ -1989,6 +1961,18 @@ void render_pause_castle_main_strings(s16 x, s16 y) {
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
 }
 
+static int get_checkpoint_warp()
+{
+    if (1 == gDialogCameraAngleIndex)
+        return MENU_OPT_WARP_CHECKPOINT;
+
+    int checkpointIdx = 64 - sCheckpointIds == gDialogCameraAngleIndex ? 63 : 62 - (gDialogCameraAngleIndex - 2);
+    if (save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum)) & (1ULL << checkpointIdx))
+        return MENU_OPT_WARP_CHECKPOINT + 64 - checkpointIdx;
+    else
+        return MENU_OPT_CONTINUE;
+}
+
 s8 gCourseCompleteCoinsEqual = FALSE;
 s32 gCourseDoneMenuTimer = 0;
 s32 gCourseCompleteCoins = 0;
@@ -2010,7 +1994,6 @@ s32 render_pause_courses_and_castle(void) {
 
             if (gCurrCourseNum >= COURSE_MIN
              && gCurrCourseNum <= COURSE_MAX) {
-                change_dialog_camera_angle();
                 gDialogBoxState = DIALOG_STATE_VERTICAL;
             } else {
                 highlight_last_course_complete_stars();
@@ -2041,7 +2024,10 @@ s32 render_pause_courses_and_castle(void) {
 
                 if (gDialogLineNum == MENU_OPT_EXIT_COURSE) {
                     index = gDialogLineNum;
-                } else { // MENU_OPT_CONTINUE or MENU_OPT_CAMERA_ANGLE_R
+                } else if (gDialogLineNum == MENU_OPT_WARP_CHECKPOINT)
+                {
+                    index = get_checkpoint_warp();
+                } else { // MENU_OPT_CONTINUE
                     index = MENU_OPT_DEFAULT;
                 }
 

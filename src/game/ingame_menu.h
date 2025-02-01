@@ -60,7 +60,6 @@ enum MenuMtxPushOp {
 };
 
 enum MenuScrollAxis {
-    MENU_SCROLL_NONE,
     MENU_SCROLL_VERTICAL,
     MENU_SCROLL_HORIZONTAL,
 };

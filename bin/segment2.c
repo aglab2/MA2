@@ -2647,6 +2647,28 @@ const Gfx dl_draw_triangle[] = {
     gsSPEndDisplayList(),
 };
 
+// 0x0200EF30 - 0x0200EF60
+static const Vtx vertex_triangle_down[] = {
+    {{{     0,      0,      0}, 0, {     0,      0}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{   -16,      0,      0}, 0, {     0,      0}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{    -8,     -8,      0}, 0, {     0,      0}, {0xff, 0xff, 0xff, 0xff}}},
+};
+
+// 0x0200EF60 - 0x0200EFB0
+const Gfx dl_draw_triangle_down[] = {
+    gsSPClearGeometryMode(G_LIGHTING),
+    gsDPSetCombineMode(G_CC_FADE, G_CC_FADE),
+    gsDPSetRenderMode(G_RM_XLU_SURF, G_RM_XLU_SURF2),
+    gsDPSetTextureFilter(G_TF_POINT),
+    gsSPVertex(vertex_triangle_down, 3, 0),
+    gsSP1Triangle( 0,  1,  2, 0x0),
+    gsSPSetGeometryMode(G_LIGHTING),
+    gsDPPipeSync(),
+    gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
+    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+    gsSPEndDisplayList(),
+};
+
 // 0x0200EFB0 - 0x0200EFF0
 static const Vtx vertex_billboard_num[] = {
     {{{   -32,    -32,      0}, 0, {     0,  32<<5}, {0xff, 0xff, 0xff, 0xff}}},

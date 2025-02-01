@@ -1249,21 +1249,21 @@ s32 play_mode_paused(void) {
         raise_background_noise(1);
         gCameraMovementFlags &= ~CAM_MOVE_PAUSE_SCREEN;
         set_play_mode(PLAY_MODE_NORMAL);
-#ifndef DISABLE_EXIT_COURSE
-    } else { // MENU_OPT_EXIT_COURSE
+    } else { // MENU_OPT_EXIT_COURSE or checkpoint warps
         if (gDebugLevelSelect) {
             fade_into_special_warp(WARP_SPECIAL_LEVEL_SELECT, 1);
         } else {
-#ifdef DEATH_ON_EXIT_COURSE
-            struct ObjectWarpNode *warpNode = area_get_warp_node(WARP_NODE_DEATH);
-            assert(warpNode != NULL, "No death warp node could be found!");
-
-            initiate_warp(warpNode->node.destLevel & 0x7F, warpNode->node.destArea,
-                            warpNode->node.destNode, WARP_FLAGS_NONE);
-#else // DEATH_ON_EXIT_COURSE
-            initiate_warp(EXIT_COURSE_LEVEL, EXIT_COURSE_AREA, gCurrLevelNum - LEVEL_CE + 0x20, WARP_FLAG_EXIT_COURSE);
+            if (gMenuOptSelectIndex == MENU_OPT_EXIT_COURSE)
+            {
+                initiate_warp(EXIT_COURSE_LEVEL, EXIT_COURSE_AREA, gCurrLevelNum - LEVEL_CE + 0x20, WARP_FLAG_EXIT_COURSE);
+            }
+            else
+            {
+                int warpId = gMenuOptSelectIndex == MENU_OPT_WARP_CHECKPOINT ? WARP_NODE_FAIL_WARP : 0xf0 - gMenuOptSelectIndex + MENU_OPT_WARP_CHECKPOINT;
+                struct ObjectWarpNode* node = fail_warp_area_get_warp_node(warpId);
+                initiate_warp(node->node.destLevel, node->node.destArea, warpId, WARP_FLAG_EXIT_COURSE);
+            }
             gSavedCourseNum = COURSE_NONE;
-#endif // DEATH_ON_EXIT_COURSE
 
             fade_into_special_warp(WARP_SPECIAL_NONE, 0);
             if (sWarpDest.type != WARP_TYPE_CHANGE_LEVEL) {
@@ -1272,7 +1272,6 @@ s32 play_mode_paused(void) {
         }
 
         gCameraMovementFlags &= ~CAM_MOVE_PAUSE_SCREEN;
-#endif // DISABLE_EXIT_COURSE
     }
 
     return FALSE;
