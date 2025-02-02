@@ -59,6 +59,7 @@ u32 interact_cap           (struct MarioState *m, u32 interactType, struct Objec
 u32 interact_grabbable     (struct MarioState *m, u32 interactType, struct Object *obj);
 u32 interact_text          (struct MarioState *m, u32 interactType, struct Object *obj);
 u32 interact_push_bounce   (struct MarioState *m, u32 interactType, struct Object *obj);
+u32 interact_push_out      (struct MarioState *m, u32 interactType, struct Object *obj);
 
 struct InteractionHandler {
     u32 interactType;
@@ -69,7 +70,7 @@ static struct InteractionHandler sInteractionHandlers[] = {
     { INTERACT_COIN,           interact_coin },
     { INTERACT_WATER_RING,     interact_water_ring },
     { INTERACT_STAR_OR_KEY,    interact_star_or_key },
-    { INTERACT_BBH_ENTRANCE,   interact_bbh_entrance },
+    { INTERACT_PUSH_OUT,       interact_push_out },
     { INTERACT_WARP,           interact_warp },
     { INTERACT_WARP_DOOR,      interact_warp_door },
     { INTERACT_DOOR,           interact_door },
@@ -1430,6 +1431,14 @@ u32 interact_push_bounce(struct MarioState *m, UNUSED u32 interactType, struct O
     return FALSE;
 }
 
+u32 interact_push_out(struct MarioState *m, UNUSED u32 interactType, struct Object *obj) {
+    push_mario_out_of_object(m, obj, 5.0f);
+    if (!(obj->oInteractionSubtype & INT_SUBTYPE_DELAY_INVINCIBILITY)) {
+        sDelayInvincTimer = TRUE;
+    }
+
+    return FALSE;
+}
 
 u32 interact_spiny_walking(struct MarioState *m, UNUSED u32 interactType, struct Object *obj) {
     u32 interaction = determine_interaction(m, obj);

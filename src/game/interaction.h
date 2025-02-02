@@ -34,7 +34,7 @@ enum ObjInteractTypes {
     INTERACT_TORNADO              = /* 0x01000000 */ (1 << 24),
     INTERACT_WHIRLPOOL            = /* 0x02000000 */ (1 << 25),
     INTERACT_CLAM_OR_BUBBA        = /* 0x04000000 */ (1 << 26),
-    INTERACT_BBH_ENTRANCE         = /* 0x08000000 */ (1 << 27),
+    INTERACT_PUSH_OUT             = /* 0x08000000 */ (1 << 27),
     INTERACT_SNUFIT_BULLET        = /* 0x10000000 */ (1 << 28),
     INTERACT_SHOCK                = /* 0x20000000 */ (1 << 29),
     INTERACT_IGLOO_BARRIER        = /* 0x40000000 */ (1 << 30),

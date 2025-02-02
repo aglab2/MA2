@@ -51,7 +51,7 @@ static u32 hook_##name(struct MarioState* m, u32 v, struct Object* o) \
 #define HOOK_INTERACT_TORNADO        /* 0x01000000 */ 24
 #define HOOK_INTERACT_WHIRLPOOL      /* 0x02000000 */ 25
 #define HOOK_INTERACT_CLAM_OR_BUBBA  /* 0x04000000 */ 26
-#define HOOK_INTERACT_BBH_ENTRANCE   /* 0x08000000 */ 27
+#define HOOK_INTERACT_PUSH_OUT       /* 0x08000000 */ 27
 #define HOOK_INTERACT_SNUFIT_BULLET  /* 0x10000000 */ 28
 #define HOOK_INTERACT_SHOCK          /* 0x20000000 */ 29
 #define HOOK_INTERACT_IGLOO_BARRIER  /* 0x40000000 */ 30

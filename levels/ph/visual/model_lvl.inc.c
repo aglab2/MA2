@@ -27030,6 +27030,24 @@ UNUSED static Gfx mat_ph_dl_GRAVESTONE_A_sa2bmdl_4_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
+UNUSED static Gfx mat_ph_dl_GRAVESTONE_B_sa2bmdl_3_f3d[] = {
+	gsSPGeometryMode(G_LIGHTING, 0),
+	gsDPPipeSync(),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, ph_dl_miu128_mo001_pal_rgba16),
+	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, ph_dl_miu128_mo001_ci4),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_MIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsSPEndDisplayListHint(4),
+};
+
 UNUSED static Gfx mat_ph_dl_GSTRAIN_sa2mdl_0_f3d[] = {
 	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
 	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
@@ -27300,7 +27318,7 @@ UNUSED static Gfx mat_ph_dl_GSTRAIN_sa2mdl_14_f3d[] = {
 };
 
 UNUSED static Gfx mat_ph_dl_GSTRAIN_sa2mdl_15_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
+	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -27314,6 +27332,14 @@ UNUSED static Gfx mat_ph_dl_GSTRAIN_sa2mdl_15_f3d[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsSPEndDisplayListHint(4),
+};
+
+UNUSED static Gfx mat_revert_ph_dl_GSTRAIN_sa2mdl_15_f3d[] = {
+	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
+	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayListHint(4),
 };
 
@@ -28213,8 +28239,8 @@ UNUSED static Gfx mat_ph_dl_PPK_BG_sa2bmdl_3_f3d[] = {
 	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b_LOAD_BLOCK, 1, ph_dl_miu32_mo003_ia16),
 	gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 256),
-	gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 8, 0, 0, 0, G_TX_CLAMP | G_TX_MIRROR, 5, 0, G_TX_CLAMP | G_TX_MIRROR, 5, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 8, 0, 0, 0, G_TX_WRAP | G_TX_MIRROR, 5, 0, G_TX_WRAP | G_TX_MIRROR, 5, 0),
+	gsDPSetTileSize(0, 0, 0, 124, 124),
 	gsSPEndDisplayListHint(4),
 };
 
@@ -28251,14 +28277,6 @@ UNUSED static Gfx mat_ph_dl_WOODEAD_sa2bmdl_0_f3d[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayListHint(4),
-};
-
-UNUSED static Gfx mat_revert_ph_dl_WOODEAD_sa2bmdl_0_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayListHint(4),
 };
 
@@ -28363,6 +28381,21 @@ UNUSED static Gfx mat_ph_dl_KAKASI_sa2bmdl_3_f3d[] = {
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsSPEndDisplayListHint(4),
+};
+
+UNUSED static Gfx mat_ph_dl_KAKASI_sa2bmdl_4_f3d[] = {
+	gsSPGeometryMode(G_LIGHTING, 0),
+	gsDPPipeSync(),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
+	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b_LOAD_BLOCK, 1, ph_dl_miu32_mo003_ia16),
+	gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 1023, 256),
+	gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 8, 0, 0, 0, G_TX_CLAMP | G_TX_MIRROR, 5, 0, G_TX_CLAMP | G_TX_MIRROR, 5, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
 	gsSPEndDisplayListHint(4),
 };
@@ -28557,7 +28590,7 @@ u32 ph_dl_000_object_012778A0_mesh_layer_1[] = {
 u32 ph_dl_001_object_012774C8_mesh_layer_1[] = {
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_PH_DL_MIU64_MO012_PAL_RGBA16, ph_dl_001_object_01276BF0_mesh_layer_1_tri_0),
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_PH_DL_MIU128_MO001_PAL_RGBA16, ph_dl_001_object_012774C8_mesh_layer_1_tri_1),
-	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_PH_DL_MIU128_MO001_PAL_RGBA16_1, ph_dl_001_object_01276BF0_mesh_layer_1_tri_2),
+	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_PH_DL_MIU128_MO001_PAL_RGBA16_3, ph_dl_001_object_01276BF0_mesh_layer_1_tri_2),
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_PH_DL_MIU128_MO001_PAL_RGBA16_2, ph_dl_001_object_01276BF0_mesh_layer_1_tri_3),
 	BATCH_END(),
 };
@@ -29063,7 +29096,7 @@ u32 ph_dl_object_01286188_mesh_layer_1[] = {
 };
 
 u32 ph_dl_object_01286188_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_PH_DL_MIU32_MO003_IA16, ph_dl_object_01286188_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_PH_DL_MIU32_MO003_IA16_1, ph_dl_object_01286188_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
@@ -29107,6 +29140,7 @@ static struct BatchDisplayLists batch_lvl_dls_LAYER_OPAQUE[] = {
 	{ mat_ph_dl_GRAVESTONE_A_sa2bmdl_2_f3d, mat_revert_ph_dl_GRAVESTONE_A_sa2bmdl_2_f3d, DL_HINT(mat_ph_dl_GRAVESTONE_A_sa2bmdl_2_f3d), DL_HINT(mat_revert_ph_dl_GRAVESTONE_A_sa2bmdl_2_f3d), },
 	{ mat_ph_dl_GRAVESTONE_A_sa2bmdl_3_f3d, mat_revert_ph_dl_GRAVESTONE_A_sa2bmdl_3_f3d, DL_HINT(mat_ph_dl_GRAVESTONE_A_sa2bmdl_3_f3d), DL_HINT(mat_revert_ph_dl_GRAVESTONE_A_sa2bmdl_3_f3d), },
 	{ mat_ph_dl_GRAVESTONE_A_sa2bmdl_4_f3d, mat_revert_ph_dl_GRAVESTONE_A_sa2bmdl_4_f3d, DL_HINT(mat_ph_dl_GRAVESTONE_A_sa2bmdl_4_f3d), DL_HINT(mat_revert_ph_dl_GRAVESTONE_A_sa2bmdl_4_f3d), },
+	{ mat_ph_dl_GRAVESTONE_B_sa2bmdl_3_f3d, mat_revert_ph_dl_GRAVESTONE_B_sa2bmdl_3_f3d, DL_HINT(mat_ph_dl_GRAVESTONE_B_sa2bmdl_3_f3d), DL_HINT(mat_revert_ph_dl_GRAVESTONE_B_sa2bmdl_3_f3d), },
 	{ mat_ph_dl_GSTRAIN_sa2mdl_0_f3d, mat_revert_ph_dl_GSTRAIN_sa2mdl_0_f3d, DL_HINT(mat_ph_dl_GSTRAIN_sa2mdl_0_f3d), DL_HINT(mat_revert_ph_dl_GSTRAIN_sa2mdl_0_f3d), },
 	{ mat_ph_dl_GSTRAIN_sa2mdl_1_f3d, mat_revert_ph_dl_GSTRAIN_sa2mdl_1_f3d, DL_HINT(mat_ph_dl_GSTRAIN_sa2mdl_1_f3d), DL_HINT(mat_revert_ph_dl_GSTRAIN_sa2mdl_1_f3d), },
 	{ mat_ph_dl_GSTRAIN_sa2mdl_2_f3d, mat_revert_ph_dl_GSTRAIN_sa2mdl_2_f3d, DL_HINT(mat_ph_dl_GSTRAIN_sa2mdl_2_f3d), DL_HINT(mat_revert_ph_dl_GSTRAIN_sa2mdl_2_f3d), },
@@ -29188,11 +29222,12 @@ static struct BatchDisplayLists batch_lvl_dls_LAYER_TRANSPARENT[] = {
 	{ mat_ph_dl_PUMWALL_sa2bmdl_4_f3d, mat_revert_ph_dl_PUMWALL_sa2bmdl_4_f3d, DL_HINT(mat_ph_dl_PUMWALL_sa2bmdl_4_f3d), DL_HINT(mat_revert_ph_dl_PUMWALL_sa2bmdl_4_f3d), },
 	{ mat_ph_dl_PPK_BG_sa2bmdl_3_f3d, mat_revert_ph_dl_PPK_BG_sa2bmdl_3_f3d, DL_HINT(mat_ph_dl_PPK_BG_sa2bmdl_3_f3d), DL_HINT(mat_revert_ph_dl_PPK_BG_sa2bmdl_3_f3d), },
 	{ mat_ph_dl_WOODEAD_sa2bmdl_2_f3d, mat_revert_ph_dl_WOODEAD_sa2bmdl_2_f3d, DL_HINT(mat_ph_dl_WOODEAD_sa2bmdl_2_f3d), DL_HINT(mat_revert_ph_dl_WOODEAD_sa2bmdl_2_f3d), },
+	{ mat_ph_dl_KAKASI_sa2bmdl_4_f3d, mat_revert_ph_dl_KAKASI_sa2bmdl_4_f3d, DL_HINT(mat_ph_dl_KAKASI_sa2bmdl_4_f3d), DL_HINT(mat_revert_ph_dl_KAKASI_sa2bmdl_4_f3d), },
 	{ mat_ph_dl_AbyssFog_sa2mdl_0_f3d, mat_revert_ph_dl_AbyssFog_sa2mdl_0_f3d, DL_HINT(mat_ph_dl_AbyssFog_sa2mdl_0_f3d), DL_HINT(mat_revert_ph_dl_AbyssFog_sa2mdl_0_f3d), },
 	{ mat_ph_dl_AbyssFog2_sa2mdl_0_f3d, mat_revert_ph_dl_AbyssFog2_sa2mdl_0_f3d, DL_HINT(mat_ph_dl_AbyssFog2_sa2mdl_0_f3d), DL_HINT(mat_revert_ph_dl_AbyssFog2_sa2mdl_0_f3d), },
 };
 
 struct BatchLevelDisplayLists batch_lvl_dls_ph[LAYER_COUNT] = {
-	[ LAYER_OPAQUE ] = { 91, batch_lvl_dls_LAYER_OPAQUE },
-	[ LAYER_TRANSPARENT ] = { 5, batch_lvl_dls_LAYER_TRANSPARENT },
+	[ LAYER_OPAQUE ] = { 92, batch_lvl_dls_LAYER_OPAQUE },
+	[ LAYER_TRANSPARENT ] = { 6, batch_lvl_dls_LAYER_TRANSPARENT },
 };

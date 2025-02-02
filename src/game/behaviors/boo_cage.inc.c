@@ -3,7 +3,7 @@
  * Behavior for bhvBooCage.
  * This is the cage inside the big boo in the castle courtyard
  * that lets Mario enter BBH. It has its own special interaction type,
- * INTERACT_BBH_ENTRANCE.
+ * INTERACT_PUSH_OUT.
  */
 
 /**
@@ -11,7 +11,7 @@
  * Mario has to enter to enter BBH.
  */
 static struct ObjectHitbox sBooCageHitbox = {
-    /* interactType:      */ INTERACT_BBH_ENTRANCE,
+    /* interactType:      */ INTERACT_PUSH_OUT,
     /* downOffset:        */ 0,
     /* damageOrCoinValue: */ 0,
     /* health:            */ 0,

@@ -6153,3 +6153,11 @@ extern const BehaviorScript bhvCETimerStar[] = {
         CALL_NATIVE(bhv_ce_timer_star_loop),
     END_LOOP(),
 };
+
+extern void bhv_push_out_loop();
+extern const BehaviorScript bhvPushOut[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_push_out_loop),
+    END_LOOP(),
+};
