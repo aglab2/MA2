@@ -1,6 +1,47 @@
+extern const Trajectory gf_area_2_spline_NurbsCurve_VineLoop_005[];
+
+extern const Trajectory* sTrajectory;
 void bhv_gf_vine_loop()
 {
+    if (0 == o->oAction)
+    {        
+        s16* traj = segmented_to_virtual(gf_area_2_spline_NurbsCurve_VineLoop_005);
+        f32 x, y, z;
+        if (gMarioStates->action == ACT_RAIL_GRIND && sTrajectory == traj)
+        {
+            o->oSubAction = 1;
+            x = gMarioStates->pos[0];
+            y = gMarioStates->pos[1];
+            z = gMarioStates->pos[2];
+        }
+        else
+        {
+            if (1 == o->oSubAction)
+            {
+                o->oAction = 1;
+            }
 
+            x = traj[1];
+            y = traj[2];
+            z = traj[3];
+        }
+
+        o->oPosY = y;
+        f32 dx = x - o->oPosX;
+        f32 dz = z - o->oPosZ;
+        f32 dist = sqrtf(dx * dx + dz * dz);
+
+        obj_scale(o, dist / 1500.f);
+        o->oFaceAngleYaw = atan2s(dz, dx) - 0x4000;
+    }
+    else
+    {
+        if (30 == o->oTimer)
+        {
+            o->oSubAction = 0;
+            o->oAction = 0;
+        }
+    }
 }
 
 extern const Collision gf_gake_a_collision[];
