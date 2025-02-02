@@ -20,8 +20,6 @@ static const RailDesc** kRails[] = {
     [ LEVEL_FR ] = rail_descs_fr,
 };
 
-#define MAX_ZIPLINE_DISTANCE 50000.f
-
 static const Trajectory* sTrajectory;
 static const LDLDesc* sLoopDesc;
 static Vec3f sTrajectoryMiddle;
@@ -50,19 +48,18 @@ static inline float point_to_segment_distance(Vec3f Q, Vec3f P1, Vec3f P2, Vec3f
 
     if (t < 0) {
         vec3f_copy(closest_point, P1);
-        return MAX_ZIPLINE_DISTANCE;
     } else if (t > 1) {
         vec3f_copy(closest_point, P2);
-        return MAX_ZIPLINE_DISTANCE;
     } else {
         closest_point[0] = P1[0] + t * P1P2[0];
         closest_point[1] = P1[1] + t * P1P2[1];
         closest_point[2] = P1[2] + t * P1P2[2];
-        float d;
-        vec3f_get_dist(Q, closest_point, &d);
-        *ot = t;
-        return d;
     }
+
+    float d;
+    vec3f_get_dist(Q, closest_point, &d);
+    *ot = t;
+    return d;
 }
 
 static void calculate_trajectory_middle()
@@ -138,7 +135,7 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
     }
 
 #if 0
-    print_text_fmt_int(20 + 50*it, 20, "%d", (int) minDist);
+    print_text_fmt_int(20, 20 + 20*it, "%d", (int) minDist);
     print_text_fmt_int(20 + 50*it, 40, "X %d", (int) sPosX);
     print_text_fmt_int(20 + 50*it, 60, "Y %d", (int) sPosY);
     print_text_fmt_int(20 + 50*it, 80, "Z %d", (int) sPosZ);
@@ -148,7 +145,9 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
     print_text_fmt_int(20 + 50*it, 180, "Z %d", (int) gMarioStates->pos[2]);
 #endif
 
-    if (minDist < 90.f)
+    loop = loop ? segmented_to_virtual(loop) : NULL;
+    f32 minDistLimit = (loop && loop->dontFlip) ? 500.f : 90.f;
+    if (minDist < minDistLimit)
     {
         sPosX = closestPoint[0];
         sPosY = closestPoint[1];
@@ -173,7 +172,7 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
         }
 
         sTrajectory = traj;
-        sLoopDesc = loop ? segmented_to_virtual(loop) : NULL;
+        sLoopDesc = loop;
         sTrajectoryArea = gCurrAreaIndex;
         s16 yaw = atan2s(trajDirection[2], trajDirection[0]);
         sAngleFlipped = abs_angle_diff(gMarioStates->faceAngle[1], yaw) > 0x4000;
@@ -309,7 +308,7 @@ int zipline_step()
         print_text_fmt_int(20, 120, "Z %d", (int) trajDirection[2]);
 #endif
 
-        s16* pfaceAngle = sLoopDesc ? &sLoopFaceAngle : &gMarioStates->faceAngle[1];
+        s16* pfaceAngle = (sLoopDesc && !sLoopDesc->dontFlip) ? &sLoopFaceAngle : &gMarioStates->faceAngle[1];
         // adjust face angle to the zipline
         if (absf(trajDirection[0] > 0.1f) || absf(trajDirection[2]) > 0.1f)
         {
@@ -320,7 +319,7 @@ int zipline_step()
             }
         }
 
-        if (sLoopDesc)
+        if (sLoopDesc && !sLoopDesc->dontFlip)
         {
             // adjust rotation angle from the center
 #if 0

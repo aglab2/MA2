@@ -40,7 +40,7 @@ IWDHeader* iw_descs_mh[] = {
     &iw_mh_area4.header,
 };
 
-static const LDLDesc loop_desc = { 0 };
+static const LDLDesc loop_desc = { 0, 0 };
 
 #define loop_desc_mh_area_1_spline_NurbsCurve_Loop &loop_desc
 #define loop_desc_mh_area_3_spline_NurbsCurve_Loop_001 &loop_desc

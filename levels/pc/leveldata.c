@@ -63,7 +63,7 @@ IWDHeader* iw_descs_pc[] = {
     &iw_pc_area8.header,
 };
 
-static const LDLDesc loop_desc1 = { 0 };
+static const LDLDesc loop_desc1 = { 0, 0 };
 
 static const RailDesc rail_pc_area3[] = {
     LOOP_TRAJ(pc_area_3_spline_NurbsCurve_Loop, &loop_desc1),

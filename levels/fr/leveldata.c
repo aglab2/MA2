@@ -12,9 +12,9 @@
 #include "levels/fr/visual/header_lvl.inc.h"
 #include "levels/fr/visual/model_lvl.inc.c"
 
-LDLDesc __debug__loop_desc = { 0 };
-static const LDLDesc loop_desc1 = { 0 };
-static const LDLDesc loop_desc2 = { -0x4000 };
+LDLDesc __debug__loop_desc = { 0, 0 };
+static const LDLDesc loop_desc1 = { 0, 0 };
+static const LDLDesc loop_desc2 = { -0x4000, 0 };
 
 #define loop_desc_fr_area_8_spline_Loop_0186_object_012479FC_001 &loop_desc1
 #define loop_desc_fr_area_9_spline_Loop_0129_object_0124232C_001 &loop_desc1

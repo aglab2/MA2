@@ -39,13 +39,14 @@ IWDHeader* iw_descs_gf[] = {
     &iw_gf_area4.header,
 };
 
-static const LDLDesc loop_desc1 = { 0 };
+static const LDLDesc loop_desc1 = { 0, 0 };
+static const LDLDesc loop_desc2 = { 0, 1 };
 
 #define loop_desc_gf_area_1_spline_NurbsCurve_Loop &loop_desc1
 #define loop_desc_gf_area_2_spline_NurbsCurve_Loop_001 &loop_desc1
 #define loop_desc_gf_area_2_spline_NurbsCurve_Loop_002 &loop_desc1
 #define loop_desc_gf_area_2_spline_NurbsCurve_Loop_003 &loop_desc1
-#define loop_desc_gf_area_2_spline_NurbsCurve_VineLoop_005 &loop_desc1
+#define loop_desc_gf_area_2_spline_NurbsCurve_VineLoop_005 &loop_desc2
 #define loop_desc_gf_area_4_spline_NurbsCurve_Loop_004 &loop_desc1
 #define loop_desc_gf_area_4_spline_NurbsCurve_Loop_005 &loop_desc1
 
