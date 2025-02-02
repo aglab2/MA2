@@ -47,6 +47,20 @@ const Trajectory ph_area_1_spline_NurbsCurve_Spring_006[] = {
 	TRAJECTORY_POS( 3, 592, -5831, -1936),
 	TRAJECTORY_END(),
 };
+const Trajectory ph_area_1_spline_NurbsCurve_Spring_007[] = {
+	TRAJECTORY_POS( 0, 1967, -9193, 822),
+	TRAJECTORY_POS( 1, 1947, -8400, 606),
+	TRAJECTORY_POS( 2, 1923, -7993, 235),
+	TRAJECTORY_POS( 3, 1872, -7910, -230),
+	TRAJECTORY_END(),
+};
+const Trajectory ph_area_1_spline_NurbsCurve_Spring_008[] = {
+	TRAJECTORY_POS( 0, 11833, -10000, -7874),
+	TRAJECTORY_POS( 1, 11286, -8539, -8549),
+	TRAJECTORY_POS( 2, 10495, -7754, -9458),
+	TRAJECTORY_POS( 3, 9755, -7895, -10352),
+	TRAJECTORY_END(),
+};
 const Trajectory ph_area_1_spline_NurbsCurve_StarMove[] = {
 	TRAJECTORY_POS( 0, 8126, -12909, -7233),
 	TRAJECTORY_POS( 1, 8241, -12800, -6899),
