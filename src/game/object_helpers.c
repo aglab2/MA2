@@ -2447,7 +2447,7 @@ extern Gfx ce_skybox_object_00CDC390_mesh[];
 extern Gfx mh_skybox_mh_skybox_mesh[];
 extern Gfx gf_skybox_gf_skybox_mesh[];
 extern Gfx ph_skybox_ph_skybox_mesh[];
-extern Gfx ms_skybox_ms_skybox_mesh_layer_1[];
+extern Gfx ms_skybox_ms_skybox_mesh[];
 extern Gfx hb_skybox_hb_skybox_mesh_layer_1[];
 extern Gfx ee_skybox1_ee_skybox1_mesh_layer_1[];
 extern Gfx mhe_skybox_mhe_skybox_mesh_layer_1[];
@@ -2458,7 +2458,7 @@ static const Gfx* k_skyboxes[] = {
     [ LEVEL_MH ] = mh_skybox_mh_skybox_mesh,
     [ LEVEL_GF ] = gf_skybox_gf_skybox_mesh,
     [ LEVEL_PH ] = ph_skybox_ph_skybox_mesh,
-    [ LEVEL_MS ] = ms_skybox_ms_skybox_mesh_layer_1,
+    [ LEVEL_MS ] = ms_skybox_ms_skybox_mesh,
     [ LEVEL_HB ] = hb_skybox_hb_skybox_mesh_layer_1,
     [ LEVEL_EE ] = ee_skybox1_ee_skybox1_mesh_layer_1,
     [ LEVEL_MHE ] = mhe_skybox_mhe_skybox_mesh_layer_1,

@@ -13,14 +13,14 @@
 
 #include "levels/ms/header.h"
 
-
+#if 0
 #include "levels/ms/geo.inc.c"
+#endif
 
 #define ms_area_1 ms_area_visual
 #define ms_area_1_geo ms_area_geo_visual
-#include "levels/ms/visual/geo.inc.c"
+#include "levels/ms/visual/geo_lvl.inc.c"
 
-#include "levels/ms/ms_skybox/geo.inc.c"
 #include "levels/ms/ms_buffer/geo.inc.c"
 #include "levels/ms/ms_buffer_break/geo.inc.c"
 #include "levels/ms/ms_hammer/geo.inc.c"
