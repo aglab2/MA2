@@ -169,11 +169,24 @@ struct PairingHeapNode {
     u32 priority;
 };
 
+struct PairingHeapNodeDisplayList {
+    struct PairingHeapNode node;
+    Mtx *transform;
+    void *displayList;
+    u8 hint;
+};
+
+struct PairingHeapNodeBatch {
+    struct PairingHeapNode node;
+    s16 idx;
+};
+
 struct PairingHeapHead {
 	struct PairingHeapNode *root;
 };
 
 struct PairingHeapLinks {
+    // consists of PairingHeapNodeDisplayList
     struct PairingHeapHead head;
     struct PairingHeapNode* mat_node;
 };
@@ -186,6 +199,7 @@ union BatchContainer {
 struct BatchArray {
     int count;
     const struct BatchDisplayLists* batchDLs;
+    // consists of PairingHeapNodeBatch
     struct PairingHeapHead heap;
     union BatchContainer batches[0];
 };
