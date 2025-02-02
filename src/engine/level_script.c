@@ -520,7 +520,8 @@ static void patch_behav_params(struct SpawnInfo *spawnInfo) {
      || spawnInfo->behaviorScript == bhvHiddenRedCoinStar
      || spawnInfo->behaviorScript == bhvCETimerStar
     ) {
-        spawnInfo->behaviorArg = ((u32) (sStarIds++)) << 24;
+        u32 rawArgs = spawnInfo->behaviorArg & 0x00ffffff;
+        spawnInfo->behaviorArg = rawArgs | ((u32) (sStarIds++)) << 24;
     }
 
     if (spawnInfo->behaviorScript == bhvCheckpoint) {
