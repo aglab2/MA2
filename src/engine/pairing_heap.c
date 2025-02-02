@@ -40,7 +40,7 @@ static struct PairingHeapNode *merge_children(struct PairingHeapHead *heap, stru
 
 static int compare(struct PairingHeapNode *a, struct PairingHeapNode *b)
 {
-    return a->priority > b->priority;
+    return a->priority < b->priority;
 }
 
 static struct PairingHeapNode* merge(struct PairingHeapHead *heap, struct PairingHeapNode *a, struct PairingHeapNode *b)

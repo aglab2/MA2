@@ -188,7 +188,7 @@ struct PairingHeapHead {
 struct PairingHeapLinks {
     // consists of PairingHeapNodeDisplayList
     struct PairingHeapHead head;
-    struct PairingHeapNode* mat_node;
+    struct PairingHeapNodeBatch* mat_node;
 };
 
 union BatchContainer {
@@ -200,7 +200,7 @@ struct BatchArray {
     int count;
     const struct BatchDisplayLists* batchDLs;
     // consists of PairingHeapNodeBatch
-    struct PairingHeapHead heap;
+    struct PairingHeapHead mat_heap;
     union BatchContainer batches[0];
 };
 

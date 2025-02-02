@@ -20,6 +20,7 @@
 #include "emutest.h"
 #include "flipbook.h"
 #include "game/tile_scroll.h"
+#include "engine/pairing_heap.h"
 
 #include "config.h"
 #include "config/config_world.h"
@@ -261,37 +262,28 @@ static const Mtx identityMatrixWorldScale = {{
  * would make the ZEX 0-4 render on top of Rej's 5-7.
  */
 
-static ALWAYS_INLINE void render_lists(Gfx **ptempGfxHead, Mtx **pprevMtx, struct DisplayListNode* currList)
+static ALWAYS_INLINE void render_lists(Gfx **ptempGfxHead, struct DisplayListNode* currList)
 {
 #define tempGfxHead (*ptempGfxHead)
-#define prevMtx (*pprevMtx)
     do {
-        if (prevMtx != currList->transform)
-        {
-            gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(currList->transform), (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
-            prevMtx = currList->transform;
-        }
+        gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(currList->transform), (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
         _gSPDisplayListRaw(tempGfxHead++, currList->displayList, currList->hint);
         currList = currList->next;
     } while (currList != NULL);
-#undef prevMtx
 #undef tempGfxHead
 }
 
-extern const Gfx dl_course_common_revert[];
-static int render_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32 wantMode1, u32 wantMode2, int course)
+static int render_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32 wantMode1, u32 wantMode2)
 {
 #define tempGfxHead (*ptempGfxHead)
     int amountRendered = 0;
     if (!arr)
         return 0;
 
-    Mtx* prevMtx = NULL;
     // Some "fun" display lists before may decide to change the render mode, so we need to reset it.
     gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
 
     for (int batch = 0; batch < arr->count; batch++) {
-        // AGLAB BATCH LIST
         struct DisplayListLinks* batchLinks = &arr->batches[batch].list;
         if (!batchLinks->head)
             continue;
@@ -299,13 +291,64 @@ static int render_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32 wantMo
         const struct BatchDisplayLists* batchDisplayLists = &arr->batchDLs[batch];
         _gSPDisplayListRaw(tempGfxHead++, batchDisplayLists->startDl, batchDisplayLists->startHint);
         amountRendered++;
-        render_lists(&tempGfxHead, &prevMtx, batchLinks->head);
+        render_lists(&tempGfxHead, batchLinks->head);
         _gSPDisplayListRaw(tempGfxHead++, batchDisplayLists->endDl, batchDisplayLists->endHint);
-
-        if (course) {
-            gSPDisplayList(tempGfxHead++, dl_course_common_revert);
-        }
     }
+#undef tempGfxHead
+
+    return amountRendered;
+}
+
+static ALWAYS_INLINE void render_heap(Gfx **ptempGfxHead, Mtx **pprevMtx, struct PairingHeapHead* heap)
+{
+#define tempGfxHead (*ptempGfxHead)
+#define prevMtx (*pprevMtx)
+    do {
+        struct PairingHeapNodeDisplayList* dlNode = (struct PairingHeapNodeDisplayList*) pairingheap_remove_first(heap);
+        if (prevMtx != dlNode->transform)
+        {
+            gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(dlNode->transform), (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
+            prevMtx = dlNode->transform;
+        }
+        _gSPDisplayListRaw(tempGfxHead++, dlNode->displayList, dlNode->hint);
+    } while (!pairingheap_is_empty(heap));
+#undef prevMtx
+#undef tempGfxHead
+}
+
+extern const Gfx dl_course_common_revert[];
+static int render_course_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32 wantMode1, u32 wantMode2, int currLayer)
+{
+    (void) currLayer;
+#define tempGfxHead (*ptempGfxHead)
+    int amountRendered = 0;
+    if (!arr)
+        return 0;
+
+    Mtx* prevMtx = NULL;
+    gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
+
+    // It is would be extremely weird if mat_heap is empty initially but i'd rather check it
+    int idx = 0;
+    while (!pairingheap_is_empty(&arr->mat_heap))
+    {
+        struct PairingHeapNodeBatch* batchNode = (struct PairingHeapNodeBatch*) pairingheap_remove_first(&arr->mat_heap);
+        int batch = batchNode->idx;
+#if 0
+        if (idx < 24 && currLayer == LAYER_OPAQUE)
+            print_text_fmt_int(20 + 140 * (idx / 12), (idx % 12) * 20, "%d", batch);
+        idx++;
+#endif
+
+        const struct BatchDisplayLists* batchDisplayLists = &arr->batchDLs[batch];
+        _gSPDisplayListRaw(tempGfxHead++, batchDisplayLists->startDl, batchDisplayLists->startHint);
+        amountRendered++;
+        struct PairingHeapHead* heap = &arr->batches[batch].heap.head;
+        render_heap(&tempGfxHead, &prevMtx, heap);
+        _gSPDisplayListRaw(tempGfxHead++, batchDisplayLists->endDl, batchDisplayLists->endHint);
+    }
+
+    gSPDisplayList(tempGfxHead++, dl_course_common_revert);
 #undef tempGfxHead
 
     return amountRendered;
@@ -425,11 +468,11 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
 
             gDPPipeSync(tempGfxHead++);
             gDPPipelineMode(tempGfxHead++, G_PM_NPRIMITIVE);
-            int amt = render_batches(&tempGfxHead, masterLayer->course, wantMode1, wantMode2, 1);
+            int amt = render_course_batches(&tempGfxHead, masterLayer->course, wantMode1, wantMode2, currLayer);
             (void) amt;
             // if (amt)
             //     print_text_fmt_int(20, 20 + currLayer * 20, "%d", amt);
-            render_batches(&tempGfxHead, masterLayer->objects, wantMode1, wantMode2, 0);
+            render_batches(&tempGfxHead, masterLayer->objects, wantMode1, wantMode2);
             gDPPipeSync(tempGfxHead++);
             gDPPipelineMode(tempGfxHead++, G_PM_1PRIMITIVE);
         }
@@ -464,6 +507,30 @@ static void append_dl_with_hint(struct DisplayListLinks* list, void* dl, u8 hint
         list->tail->next = listNode;
     }
     list->tail = listNode;
+}
+
+static void append_dl_with_hint_course(struct PairingHeapHead* mat_heap, struct PairingHeapLinks* heap, void* dl, u8 hint, u32 prio, u32 batchIdx)
+{
+    struct PairingHeapNodeDisplayList* heapNode = main_pool_alloc(sizeof(struct PairingHeapNodeDisplayList));
+
+    heapNode->transform = gMatStackFixed[gMatStackIndex];
+    heapNode->displayList = dl;
+    heapNode->hint = hint;
+    heapNode->node.priority = prio;
+
+    pairingheap_add(&heap->head, &heapNode->node);
+    if (!heap->mat_node)
+    {
+        heap->mat_node = main_pool_alloc(sizeof(struct PairingHeapNodeBatch));
+        heap->mat_node->idx = batchIdx;
+        heap->mat_node->node.priority = prio;
+        pairingheap_add(mat_heap, &heap->mat_node->node);
+    }
+    else if (prio < heap->mat_node->node.priority)
+    {
+        heap->mat_node->node.priority = prio;
+        pairingheap_decrease(mat_heap, &heap->mat_node->node);
+    }
 }
 
 static void append_dl(struct DisplayListLinks* list, void* dl)
@@ -502,7 +569,6 @@ void geo_append_display_list(void *displayList, s32 layer) {
 
 static void geo_append_batched_display_list(void *displayList, enum RenderLayers layer, enum LayerBatches batch) {
     struct MasterLayer* masterLayer = &gCurGraphNodeMasterList->layers[layer];
-    // AGLAB BATCH LIST
     append_dl(&masterLayer->objects->batches[batch].list, displayList);
 }
 
@@ -530,6 +596,8 @@ static void append_dl_and_return(struct GraphNodeDisplayList *node) {
 static void batches_clean(struct BatchArray* task)
 {
     if (task) {
+        task->mat_heap.root = NULL;
+        // this will clear both the display list links and the heap metadata
         for (int batch = 0; batch < task->count; batch++) {
             task->batches[batch].list.head = NULL;
             task->batches[batch].list.tail = NULL;
@@ -884,14 +952,14 @@ struct BatchCmd
     void* data;
 };
 
+static u32 gPriority;
 static void geo_lvl_append_display_list(void *displayList, s32 layer) {
-    // gSPLookAt(gDisplayListHead++, gCurLookAt);
     struct BatchArray* task = gCurGraphNodeMasterList->layers[layer].course;
     struct BatchCmd* data = segmented_to_virtual(displayList);
     while (data->idx)
     {
-        // AGLAB BATCH LIST
-        append_dl_with_hint(&task->batches[-data->idx - 1].list, data->data, data->hint);
+        int batchIdx = -data->idx - 1;
+        append_dl_with_hint_course(&task->mat_heap, &task->batches[batchIdx].heap, data->data, data->hint, gPriority, batchIdx);
         data++;
     }
 }
@@ -1453,7 +1521,15 @@ static int is_far_from_mario(Vec3f loc)
     if (gCurrCourseNum == COURSE_FR)
         range *= 3.f;
 
-    return dist > range;
+    if (dist > range)
+    {
+        return 1;
+    }
+    else
+    {
+        gPriority = (u32) dist;
+        return 0;
+    }
 }
 
 void geo_process_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation *node) {

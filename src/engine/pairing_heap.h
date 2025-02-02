@@ -39,10 +39,10 @@ struct PairingHeapNode* pairingheap_remove_first(struct PairingHeapHead *heap);
 void pairingheap_decrease(struct PairingHeapHead *heap, struct PairingHeapNode *node);
 
 /* Is the heap empty? */
-#define pairingheap_is_empty(h)			((h)->ph_root == NULL)
+#define pairingheap_is_empty(h)			((h)->root == NULL)
 
 /* Is there exactly one node in the heap? */
 #define pairingheap_is_singular(h) \
-	((h)->ph_root && (h)->ph_root->first_child == NULL)
+	((h)->ph_root && (h)->root->first_child == NULL)
 
 #endif							/* PAIRINGHEAP_H */
