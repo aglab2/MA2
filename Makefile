@@ -759,6 +759,10 @@ $(BUILD_DIR)/levels/%/leveldata.bin: $(BUILD_DIR)/levels/%/leveldata.elf
 	$(call print,Extracting compressible data from:,$<,$@)
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
 
+levels/%/rails.inc.c: levels/% levels/%/area_1/spline.inc.c
+	$(call print,Collecting splines:,$<,$@)
+	python scripts/collect_splines.py $<
+
 ifeq ($(COMPRESS),gzip)
 include compression/gziprules.mk
 else ifeq ($(COMPRESS),rnc1)
