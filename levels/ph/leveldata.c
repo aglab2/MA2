@@ -8,7 +8,7 @@
 
 #include "make_const_nonconst.h"
 
-#include "levels/ph/header.inc.h"
+#include "levels/ph/visual/header_lvl.inc.h"
 
 static SpringDesc spring_ph_area1[] = {
     ph_area_1_spline_NurbsCurve_Spring,
@@ -33,7 +33,13 @@ const Trajectory* starmove_trajs_ph[] = {
     ph_area_1_spline_NurbsCurve_StarMove_004,
 };
 
+#if 0
 #include "levels/ph/leveldata.inc.c"
+#else
+#include "levels/ph/area_1/spline.inc.c"
+#include "levels/ph/visual/model_lvl.inc.c"
+#endif
+
 #include "levels/ph/ph_skybox/model.inc.c"
 #include "levels/ph/ph_drum/model.inc.c"
 #include "levels/ph/ph_drum_break/model.inc.c"

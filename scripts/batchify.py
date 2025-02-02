@@ -208,6 +208,8 @@ def parse_geo(geo_path):
                     curr_geolayout = None
                     area_geolayout_parser = None
                     continue
+                if 'GEO_ASM(' in line:
+                    continue
 
                 raise Exception(f"Unknown geo node: {line}")
 

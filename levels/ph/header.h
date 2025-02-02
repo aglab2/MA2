@@ -6,8 +6,12 @@
 
 extern const LevelScript level_ph_entry[];
 
-
+#if 0
 #include "levels/ph/header.inc.h"
+#else
+#include "levels/ph/visual/header_lvl.inc.h"
+#endif
+
 #include "levels/ph/ph_skybox/geo_header.h"
 
 #include "levels/ph/ph_drum/geo_header.h"
