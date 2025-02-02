@@ -162,10 +162,32 @@ struct DisplayListLinks {
     struct DisplayListNode* tail;
 };
 
+struct PairingHeapNode {
+	struct PairingHeapNode *first_child;
+	struct PairingHeapNode *next_sibling;
+	struct PairingHeapNode *prev_or_parent;
+    u32 priority;
+};
+
+struct PairingHeapHead {
+	struct PairingHeapNode *root;
+};
+
+struct PairingHeapLinks {
+    struct PairingHeapHead head;
+    struct PairingHeapNode* mat_node;
+};
+
+union BatchContainer {
+    struct DisplayListLinks list;
+    struct PairingHeapLinks heap;
+};
+
 struct BatchArray {
     int count;
     const struct BatchDisplayLists* batchDLs;
-    struct DisplayListLinks batches[0];
+    struct PairingHeapHead heap;
+    union BatchContainer batches[0];
 };
 
 struct FlipbookDls {

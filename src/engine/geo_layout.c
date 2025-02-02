@@ -9,8 +9,6 @@
 #include "batch_ht.h"
 #include "flipbook.h"
 
-#define DISABLE_BATCHIFY
-
 typedef void (*GeoLayoutCommandProc)(void);
 
 static const GeoLayoutCommandProc GeoLayoutJumpTable[] = {
@@ -156,37 +154,9 @@ void geo_layout_cmd_branch(void) {
 #endif
 
 // 0x03: Return from branch
-#ifndef DISABLE_BATCHIFY
-static u8 sBatchCommit = 0;
-#endif
-
 static struct GraphNodeMasterList *gMasterNode = NULL;
 void geo_layout_cmd_return(void) {
     gGeoLayoutCommand = (u8 *) gGeoLayoutStack[--gGeoLayoutStackIndex];
-#ifndef DISABLE_BATCHIFY
-    if (sBatchCommit) {
-        batch_ht_t* ht = ((batch_ht_t*) (0x80710000 + 0x25800));
-
-        for (int layer = LAYER_FIRST; layer < LAYER_COUNT; layer++) {
-            int total = ht->totals[layer];
-            if (0 == total)
-                continue;
-
-            struct MasterLayer* masterLayer = &gMasterNode->layers[layer];
-            masterLayer->course = main_pool_alloc(sizeof(struct BatchArray) + total * sizeof(struct Batch));
-            masterLayer->course->count = total;
-        }
-
-        for (int entryId = 0; entryId < ht->next; entryId++) {
-            batch_ht_entry_t* entry = &ht->firstEntry[entryId];
-            struct BatchArray* task = gMasterNode->layers[entry->layer].course;
-            struct Batch* batch = &task->batches[entry->idx];
-            batch->startDl = entry->startPtr;
-            batch->endDl   = entry->endPtr;
-        }
-        sBatchCommit = 0;
-    }
-#endif
 }
 
 // 0x04: Open node
@@ -581,9 +551,6 @@ void geo_layout_cmd_node_camera(void) {
     }
     else
     {
-#ifndef DISABLE_BATCHIFY
-        batch_ht_init((batch_ht_t*) (0x80710000 + 0x25800));
-#endif
         sCameraCache = graphNode;
         sCameraCacheMasterNode = gMasterNode;
         gGeoLayoutCommand += 0x14 << CMD_SIZE_SHIFT;
@@ -958,82 +925,9 @@ static void batch_cmd_yield(uint32_t** cmds, uint32_t cmd)
     (*cmds)++;
 }
 
-#ifndef DISABLE_BATCHIFY
-// Converts given DL to structure that is suitable for being batched
-// API is using 4 byte values for batches. It guarantees that we won't step on our tail
-// 0 - terminate batches
-// >0 - enable batch with index
-// <0 - push dl to batch with index
-static void batchify_dl(void* segPtr, int layer)
-{
-    sBatchCommit = 1;
-    uint8_t* data = segmented_to_virtual(segPtr);
-    uint32_t* batchCmds = (uint32_t*) data;
-    batch_ht_entry_t* batch = NULL;
-    while (1)
-    {
-        uint8_t cmd = data[0];
-        if (cmd == 0xff)
-        {
-            // this dl is already batchified
-            return;
-        }
-
-        // PipeSync is usually inserted in the very last DL, just consider it being a termination point
-        if (cmd == G_ENDDL || cmd == G_RDPPIPESYNC)
-        {
-            break;
-        }
-        else if (cmd == G_DL)
-        {
-            void* dl = *(void**)(data + 4);
-            enum DLType dlType = decide_dl_type(dl);
-            switch (dlType)
-            {
-                case DLT_ENTER:
-                {
-                    batch = batch_ht_indexize(((batch_ht_t*) (0x80710000 + 0x25800)), dl, layer);
-                    batch_cmd_yield(&batchCmds, -1-batch->idx);
-                }
-                    break;
-                case DLT_EXIT:
-                {
-                    if (batch->endPtr == NULL)
-                        batch->endPtr = dl;
-                    else
-                        ASSERT_PRINTF(batch->endPtr == dl, "%x: END %x != %x", data, batch->endPtr, dl);
-
-                    // avoid resetting batch because fast64 bug
-                    // batch = NULL;
-                }
-                    break;
-                case DLT_DRAW:
-                    ASSERT_PRINTF(batch, "%x: no batch", data);
-                    batch_cmd_yield(&batchCmds, dl);
-                    break;
-            }
-        }
-        else
-        {
-            ASSERT_PRINTF(0, "%x: bad cmd", data);
-        }
-
-        data += 8;
-    }
-
-    batch_cmd_yield(&batchCmds, 0);
-}
-#else
-static inline void batchify_dl(void* segPtr, int layer)
-{
-    return;
-}
-#endif
-
 void geo_layout_cmd_batchset_node(void) {
     s32 drawingLayer = cur_geo_cmd_u8(0x01);
     void *displayList = cur_geo_cmd_ptr(0x04);
-    batchify_dl(displayList, drawingLayer);
     return geo_layout_cmd_node_display_list_impl(GRAPH_NODE_TYPE_BATCHSET);
 }
 
@@ -1199,7 +1093,6 @@ void geo_layout_cmd_lvl_translation_rotation(void) {
     displayList = *(void **) &cmdPos[0];
     drawingLayer = params & 0x7F;
     cmdPos += 2 << CMD_SIZE_SHIFT;
-    batchify_dl(displayList, drawingLayer);
 
     graphNode = init_graph_node_lvl_translation_rotation(NULL, drawingLayer, displayList,
                                                      translation, rotation);
@@ -1229,7 +1122,6 @@ void geo_layout_cmd_lvl_translation(void) {
     {
         displayList = *(void **) &cmdPos[0];
         cmdPos += 2 << CMD_SIZE_SHIFT;
-        batchify_dl(displayList, drawingLayer);
     }
 
     graphNode =

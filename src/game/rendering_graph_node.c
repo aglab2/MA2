@@ -291,7 +291,8 @@ static int render_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32 wantMo
     gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
 
     for (int batch = 0; batch < arr->count; batch++) {
-        struct DisplayListLinks* batchLinks = &arr->batches[batch];
+        // AGLAB BATCH LIST
+        struct DisplayListLinks* batchLinks = &arr->batches[batch].list;
         if (!batchLinks->head)
             continue;
 
@@ -341,7 +342,7 @@ static void apply_flipbooks(struct MasterLayer* masterLayer)
 
         // this bending constness rules a bit but trust me, it's fine
         struct BatchDisplayLists* batchDLs = (struct BatchDisplayLists*) masterLayer->course->batchDLs;
-        batchDLs[flipData->batchId].startDl = VIRTUAL_TO_PHYSICAL(startDl);
+        batchDLs[flipData->batchId].startDl = (const void*) VIRTUAL_TO_PHYSICAL(startDl);
 
         return;
     }
@@ -425,6 +426,7 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
             gDPPipeSync(tempGfxHead++);
             gDPPipelineMode(tempGfxHead++, G_PM_NPRIMITIVE);
             int amt = render_batches(&tempGfxHead, masterLayer->course, wantMode1, wantMode2, 1);
+            (void) amt;
             // if (amt)
             //     print_text_fmt_int(20, 20 + currLayer * 20, "%d", amt);
             render_batches(&tempGfxHead, masterLayer->objects, wantMode1, wantMode2, 0);
@@ -500,7 +502,8 @@ void geo_append_display_list(void *displayList, s32 layer) {
 
 static void geo_append_batched_display_list(void *displayList, enum RenderLayers layer, enum LayerBatches batch) {
     struct MasterLayer* masterLayer = &gCurGraphNodeMasterList->layers[layer];
-    append_dl(&masterLayer->objects->batches[batch], displayList);
+    // AGLAB BATCH LIST
+    append_dl(&masterLayer->objects->batches[batch].list, displayList);
 }
 
 static void inc_mat_stack() {
@@ -528,7 +531,8 @@ static void batches_clean(struct BatchArray* task)
 {
     if (task) {
         for (int batch = 0; batch < task->count; batch++) {
-            task->batches[batch].head = NULL;
+            task->batches[batch].list.head = NULL;
+            task->batches[batch].list.tail = NULL;
         }
     }
 }
@@ -882,34 +886,14 @@ struct BatchCmd
 
 static void geo_lvl_append_display_list(void *displayList, s32 layer) {
     // gSPLookAt(gDisplayListHead++, gCurLookAt);
-#ifdef DISABLE_BATCHIFY
-    append_dl(&gCurGraphNodeMasterList->layers[layer].list, displayList);
-#else
     struct BatchArray* task = gCurGraphNodeMasterList->layers[layer].course;
-#ifndef BATCH_SLOW_LOOP
     struct BatchCmd* data = segmented_to_virtual(displayList);
     while (data->idx)
     {
-        append_dl_with_hint(&task->batches[-data->idx - 1], data->data, data->hint);
+        // AGLAB BATCH LIST
+        append_dl_with_hint(&task->batches[-data->idx - 1].list, data->data, data->hint);
         data++;
     }
-#else
-    int batchIdx = 0;
-    while (*data)
-    {
-        if (*data > 0)
-        {
-            append_dl(&task->batches[batchIdx], (void*)*data);
-        }
-        if (*data < 0)
-        {
-            batchIdx = -(1 + *data);
-        }
-
-        data++;
-    }
-#endif
-#endif
 }
 
 static void append_lvl_dl_and_return(struct GraphNodeDisplayList *node) {
