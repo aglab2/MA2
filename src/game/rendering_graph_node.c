@@ -26,6 +26,8 @@
 #include "config/config_world.h"
 #include "actors/common1.h"
 
+#define ENABLE_HEAP_BATCHES 1
+
 /**
  * This file contains the code that processes the scene graph for rendering.
  * The scene graph is responsible for drawing everything except the HUD / text boxes.
@@ -299,6 +301,7 @@ static int render_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32 wantMo
     return amountRendered;
 }
 
+#ifdef ENABLE_HEAP_BATCHES
 static ALWAYS_INLINE void render_heap(Gfx **ptempGfxHead, Mtx **pprevMtx, struct PairingHeapHead* heap)
 {
 #define tempGfxHead (*ptempGfxHead)
@@ -315,6 +318,24 @@ static ALWAYS_INLINE void render_heap(Gfx **ptempGfxHead, Mtx **pprevMtx, struct
 #undef prevMtx
 #undef tempGfxHead
 }
+#else
+static ALWAYS_INLINE void render_course_lists(Gfx **ptempGfxHead, Mtx **pprevMtx, struct DisplayListNode* currList)
+{
+#define tempGfxHead (*ptempGfxHead)
+#define prevMtx (*pprevMtx)
+    do {
+        if (prevMtx != currList->transform)
+        {
+            gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(currList->transform), (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
+            prevMtx = currList->transform;
+        }
+        _gSPDisplayListRaw(tempGfxHead++, currList->displayList, currList->hint);
+        currList = currList->next;
+    } while (currList != NULL);
+#undef prevMtx
+#undef tempGfxHead
+}
+#endif
 
 extern const Gfx dl_course_common_revert[];
 static int render_course_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32 wantMode1, u32 wantMode2, int currLayer)
@@ -328,6 +349,7 @@ static int render_course_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32
     Mtx* prevMtx = NULL;
     gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
 
+#ifdef ENABLE_HEAP_BATCHES
     // It is would be extremely weird if mat_heap is empty initially but i'd rather check it
     int idx = 0;
     while (!pairingheap_is_empty(&arr->mat_heap))
@@ -347,6 +369,19 @@ static int render_course_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32
         render_heap(&tempGfxHead, &prevMtx, heap);
         _gSPDisplayListRaw(tempGfxHead++, batchDisplayLists->endDl, batchDisplayLists->endHint);
     }
+#else
+    for (int batch = 0; batch < arr->count; batch++) {
+        struct DisplayListLinks* batchLinks = &arr->batches[batch].list;
+        if (!batchLinks->head)
+            continue;
+
+        const struct BatchDisplayLists* batchDisplayLists = &arr->batchDLs[batch];
+        _gSPDisplayListRaw(tempGfxHead++, batchDisplayLists->startDl, batchDisplayLists->startHint);
+        amountRendered++;
+        render_course_lists(&tempGfxHead, &prevMtx, batchLinks->head);
+        _gSPDisplayListRaw(tempGfxHead++, batchDisplayLists->endDl, batchDisplayLists->endHint);
+    }
+#endif
 
     gSPDisplayList(tempGfxHead++, dl_course_common_revert);
 #undef tempGfxHead
@@ -509,6 +544,7 @@ static void append_dl_with_hint(struct DisplayListLinks* list, void* dl, u8 hint
     list->tail = listNode;
 }
 
+#ifdef ENABLE_HEAP_BATCHES
 static void append_dl_with_hint_course(struct PairingHeapHead* mat_heap, struct PairingHeapLinks* heap, void* dl, u8 hint, u32 prio, u32 batchIdx)
 {
     struct PairingHeapNodeDisplayList* heapNode = main_pool_alloc(sizeof(struct PairingHeapNodeDisplayList));
@@ -532,6 +568,7 @@ static void append_dl_with_hint_course(struct PairingHeapHead* mat_heap, struct 
         pairingheap_decrease(mat_heap, &heap->mat_node->node);
     }
 }
+#endif
 
 static void append_dl(struct DisplayListLinks* list, void* dl)
 {
@@ -959,7 +996,11 @@ static void geo_lvl_append_display_list(void *displayList, s32 layer) {
     while (data->idx)
     {
         int batchIdx = -data->idx - 1;
+#ifdef ENABLE_HEAP_BATCHES
         append_dl_with_hint_course(&task->mat_heap, &task->batches[batchIdx].heap, data->data, data->hint, gPriority, batchIdx);
+#else
+        append_dl_with_hint(&task->batches[batchIdx].list, data->data, data->hint);
+#endif
         data++;
     }
 }
