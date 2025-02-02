@@ -2446,7 +2446,7 @@ void cur_obj_spawn_star_at_y_offset(f32 targetX, f32 targetY, f32 targetZ, f32 o
 extern Gfx ce_skybox_object_00CDC390_mesh[];
 extern Gfx mh_skybox_mh_skybox_mesh[];
 extern Gfx gf_skybox_gf_skybox_mesh[];
-extern Gfx ph_skybox_ph_skybox_mesh_layer_1[];
+extern Gfx ph_skybox_ph_skybox_mesh[];
 extern Gfx ms_skybox_ms_skybox_mesh_layer_1[];
 extern Gfx hb_skybox_hb_skybox_mesh_layer_1[];
 extern Gfx ee_skybox1_ee_skybox1_mesh_layer_1[];
@@ -2457,7 +2457,7 @@ static const Gfx* k_skyboxes[] = {
     [ LEVEL_CE ] = ce_skybox_object_00CDC390_mesh,
     [ LEVEL_MH ] = mh_skybox_mh_skybox_mesh,
     [ LEVEL_GF ] = gf_skybox_gf_skybox_mesh,
-    [ LEVEL_PH ] = ph_skybox_ph_skybox_mesh_layer_1,
+    [ LEVEL_PH ] = ph_skybox_ph_skybox_mesh,
     [ LEVEL_MS ] = ms_skybox_ms_skybox_mesh_layer_1,
     [ LEVEL_HB ] = hb_skybox_hb_skybox_mesh_layer_1,
     [ LEVEL_EE ] = ee_skybox1_ee_skybox1_mesh_layer_1,

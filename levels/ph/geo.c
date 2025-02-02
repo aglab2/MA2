@@ -19,7 +19,6 @@
 #include "levels/ph/visual/geo_lvl.inc.c"
 #endif
 
-#include "levels/ph/ph_skybox/geo.inc.c"
 #include "levels/ph/ph_drum/geo.inc.c"
 #include "levels/ph/ph_drum_break/geo.inc.c"
 #include "levels/ph/ph_ppshed/geo.inc.c"

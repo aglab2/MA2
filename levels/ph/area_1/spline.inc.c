@@ -8,43 +8,43 @@ const Trajectory ph_area_1_spline_NurbsCurve_Spring[] = {
 const Trajectory ph_area_1_spline_NurbsCurve_Spring_001[] = {
 	TRAJECTORY_POS( 0, 404, -5993, -2138),
 	TRAJECTORY_POS( 1, 191, -5302, -2177),
-	TRAJECTORY_POS( 2, -173, -4545, -2255),
-	TRAJECTORY_POS( 3, -777, -4227, -2302),
+	TRAJECTORY_POS( 2, -125, -4538, -2251),
+	TRAJECTORY_POS( 3, -513, -4391, -2278),
 	TRAJECTORY_END(),
 };
 const Trajectory ph_area_1_spline_NurbsCurve_Spring_002[] = {
 	TRAJECTORY_POS( 0, -1434, -4493, -2403),
 	TRAJECTORY_POS( 1, -1267, -3624, -2187),
-	TRAJECTORY_POS( 2, -991, -2647, -1809),
-	TRAJECTORY_POS( 3, -615, -2252, -1258),
+	TRAJECTORY_POS( 2, -991, -2578, -1809),
+	TRAJECTORY_POS( 3, -615, -2389, -1258),
 	TRAJECTORY_END(),
 };
 const Trajectory ph_area_1_spline_NurbsCurve_Spring_003[] = {
 	TRAJECTORY_POS( 0, -1088, -11500, -16771),
 	TRAJECTORY_POS( 1, -1083, -10788, -16838),
-	TRAJECTORY_POS( 2, -1126, -10018, -17065),
-	TRAJECTORY_POS( 3, -1133, -9844, -17455),
+	TRAJECTORY_POS( 2, -1158, -10027, -16960),
+	TRAJECTORY_POS( 3, -1073, -9922, -17288),
 	TRAJECTORY_END(),
 };
 const Trajectory ph_area_1_spline_NurbsCurve_Spring_004[] = {
 	TRAJECTORY_POS( 0, -1003, -10000, -17618),
 	TRAJECTORY_POS( 1, -886, -9104, -17662),
-	TRAJECTORY_POS( 2, -640, -8306, -17941),
-	TRAJECTORY_POS( 3, -215, -8088, -18180),
+	TRAJECTORY_POS( 2, -640, -8379, -17941),
+	TRAJECTORY_POS( 3, -391, -8230, -18095),
 	TRAJECTORY_END(),
 };
 const Trajectory ph_area_1_spline_NurbsCurve_Spring_005[] = {
 	TRAJECTORY_POS( 0, 106, -8320, -18292),
 	TRAJECTORY_POS( 1, 111, -7437, -18213),
-	TRAJECTORY_POS( 2, 145, -6598, -18023),
-	TRAJECTORY_POS( 3, 254, -6405, -17548),
+	TRAJECTORY_POS( 2, 130, -6643, -18118),
+	TRAJECTORY_POS( 3, 192, -6408, -17798),
 	TRAJECTORY_END(),
 };
 const Trajectory ph_area_1_spline_NurbsCurve_Spring_006[] = {
 	TRAJECTORY_POS( 0, 1564, -7993, -1642),
 	TRAJECTORY_POS( 1, 1359, -6873, -1712),
-	TRAJECTORY_POS( 2, 1010, -6012, -1843),
-	TRAJECTORY_POS( 3, 419, -5695, -1976),
+	TRAJECTORY_POS( 2, 1010, -6017, -1843),
+	TRAJECTORY_POS( 3, 592, -5831, -1936),
 	TRAJECTORY_END(),
 };
 const Trajectory ph_area_1_spline_NurbsCurve_StarMove[] = {

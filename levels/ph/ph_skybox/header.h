@@ -1,0 +1,10 @@
+extern u8 ph_skybox_pum8_1_ia16[];
+extern u8 ph_skybox_neopum_nbg_rgba16[];
+extern u8 ph_skybox_pum_nbg1_rgba16[];
+extern u8 ph_skybox_pum64_6_ci4[];
+extern u8 ph_skybox_pum64_6_pal_rgba16[];
+extern Vtx ph_skybox_ph_skybox_mesh_vtx_0[16];
+extern Vtx ph_skybox_ph_skybox_mesh_vtx_1[384];
+extern Vtx ph_skybox_ph_skybox_mesh_vtx_2[576];
+extern Vtx ph_skybox_ph_skybox_mesh_vtx_3[46];
+extern Gfx ph_skybox_ph_skybox_mesh[];
