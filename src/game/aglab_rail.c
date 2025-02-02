@@ -37,7 +37,7 @@ static u8 sCancelTimeout = 0;
 static u8 sAngleFlipped = 0;
 static u8 sTrajectoryArea = 0;
 
-static inline float point_to_segment_distance(Vec3f Q, Vec3f P1, Vec3f P2, Vec3f closest_point, float* ot) {
+static inline float point_to_segment_distance(Vec3f Q, Vec3f P1, Vec3f P2, Vec3f closest_point) {
     Vec3f P1P2;
     vec3f_diff(P1P2, P2, P1);
     Vec3f P1Q;
@@ -48,18 +48,16 @@ static inline float point_to_segment_distance(Vec3f Q, Vec3f P1, Vec3f P2, Vec3f
 
     if (t < 0) {
         vec3f_copy(closest_point, P1);
+        return 0.f;
     } else if (t > 1) {
         vec3f_copy(closest_point, P2);
+        return 1.f;
     } else {
         closest_point[0] = P1[0] + t * P1P2[0];
         closest_point[1] = P1[1] + t * P1P2[1];
         closest_point[2] = P1[2] + t * P1P2[2];
+        return t;
     }
-
-    float d;
-    vec3f_get_dist(Q, closest_point, &d);
-    *ot = t;
-    return d;
 }
 
 static void calculate_trajectory_middle()
@@ -110,10 +108,12 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
     }
 
     Vec3f Q = { gMarioStates->pos[0], gIsGravityFlipped ? 9000.f - (40.f + gMarioStates->pos[1]) : (40.f + gMarioStates->pos[1]), gMarioStates->pos[2] };
-    f32 minDist = 2000.f;
+    loop = loop ? segmented_to_virtual(loop) : NULL;
+    f32 minDist = (loop && loop->dontFlip) ? (500.f * 500.f) : (90.f * 90.f);
+    f32 DBGminDist = 100000000000.f;
     Vec3f closestPoint = {0, 0, 0};
     f32 minT = 0;
-    int minPoint = 0;
+    int minPoint = -1;
     int i = 0;
 
     while (-1 != traj[i*4 + 4])
@@ -122,8 +122,10 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
         Vec3f trajNextPoint = {traj[i*4 + 5], traj[i*4 + 6], traj[i*4 + 7]};
 
         Vec3f tmpClosestPoint;
-        f32 tmpT = 0;
-        float tmpDist = point_to_segment_distance(Q, trajCurPoint, trajNextPoint, tmpClosestPoint, &tmpT);
+        f32 tmpT = point_to_segment_distance(Q, trajCurPoint, trajNextPoint, tmpClosestPoint);
+        Vec3f diff;
+        vec3_diff(diff, Q, tmpClosestPoint);
+        float tmpDist = diff[0] * diff[0] + diff[1] * diff[1] + diff[2] * diff[2];
         if (tmpDist < minDist)
         {
             minDist = tmpDist;
@@ -131,9 +133,14 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
             minPoint = i * 4;
             vec3f_copy(closestPoint, tmpClosestPoint);
         }
+        if (tmpDist < DBGminDist)
+        {
+            DBGminDist = tmpDist;
+        }
         i++;
     }
 
+    // print_text_fmt_int(20, 20 + 20*it, "%d", (int) (DBGminDist));
 #if 0
     print_text_fmt_int(20, 20 + 20*it, "%d", (int) minDist);
     print_text_fmt_int(20 + 50*it, 40, "X %d", (int) sPosX);
@@ -145,9 +152,7 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
     print_text_fmt_int(20 + 50*it, 180, "Z %d", (int) gMarioStates->pos[2]);
 #endif
 
-    loop = loop ? segmented_to_virtual(loop) : NULL;
-    f32 minDistLimit = (loop && loop->dontFlip) ? 500.f : 90.f;
-    if (minDist < minDistLimit)
+    if (minPoint >= 0)
     {
         sPosX = closestPoint[0];
         sPosY = closestPoint[1];
@@ -165,7 +170,7 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
         trajDirection[2] /= dirMag;
         sForwardVel = trajDirection[0] * gMarioStates->vel[0] + trajDirection[1] * gMarioStates->vel[1] + trajDirection[2] * gMarioStates->vel[2];
         sForwardVelLimit = 55.f + CLAMP(traj_length(traj) / 400.f, 30.f, 120.f);
-        if (loop && sForwardVel < 0)
+        if (loop && !loop->dontFlip && sForwardVel < 0)
         {
             // Do not allow to use loop in the opposite direction, probably will cause some weird stuff
             return 0;

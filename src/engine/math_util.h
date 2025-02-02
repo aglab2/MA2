@@ -644,9 +644,9 @@ ALWAYS_INLINE void mtxf_to_mtx(void *dest, void *src) {
 
 void mtxf_rotate_xy(Mtx *mtx, s16 angle);
 
-s16 approach_s16(s16 current, s16 target, s16 inc, s16 dec);
-s32 approach_s32(s32 current, s32 target, s32 inc, s32 dec);
-f32 approach_f32(f32 current, f32 target, f32 inc, f32 dec);
+s16 approach_s16(s16 current, s16 target, s16 inc, s16 dec) __attribute__ ((pure));
+s32 approach_s32(s32 current, s32 target, s32 inc, s32 dec) __attribute__ ((pure));
+f32 approach_f32(f32 current, f32 target, f32 inc, f32 dec) __attribute__ ((pure));
 Bool32 approach_s16_bool(s16 *current, s16 target, s16 inc, s16 dec);
 Bool32 approach_s32_bool(s32 *current, s32 target, s32 inc, s32 dec);
 Bool32 approach_f32_bool(f32 *current, f32 target, f32 inc, f32 dec);
@@ -660,12 +660,12 @@ Bool32 approach_f32_bool(f32 *current, f32 target, f32 inc, f32 dec);
 #define approach_angle_bool approach_s16_symmetric_bool
 s32 approach_f32_signed(f32 *current, f32 target, f32 inc);
 s32 approach_f32_asymptotic_bool(f32 *current, f32 target, f32 multiplier);
-f32 approach_f32_asymptotic(f32 current, f32 target, f32 multiplier);
+f32 approach_f32_asymptotic(f32 current, f32 target, f32 multiplier) __attribute__ ((pure));
 s16 approach_s16_asymptotic_bool(s16 *current, s16 target, s16 divisor);
-s16 approach_s16_asymptotic(s16 current, s16 target, s16 divisor);
-s16 abs_angle_diff(s16 a0, s16 a1);
-s16 atan2s(f32 y, f32 x);
-f32 atan2f(f32 a, f32 b);
+s16 approach_s16_asymptotic(s16 current, s16 target, s16 divisor) __attribute__ ((pure));
+s16 abs_angle_diff(s16 a0, s16 a1) __attribute__ ((pure));
+s16 atan2s(f32 y, f32 x) __attribute__ ((pure));
+f32 atan2f(f32 a, f32 b) __attribute__ ((pure));
 void spline_get_weights(Vec4f result, f32 t, UNUSED s32 c);
 void anim_spline_init(Vec4s *keyFrames);
 s32  anim_spline_poll(Vec3f result);

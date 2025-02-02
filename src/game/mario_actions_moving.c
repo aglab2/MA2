@@ -828,7 +828,7 @@ s32 act_walking(struct MarioState *m) {
         return set_mario_action(m, ACT_TURNING_AROUND, 0);
     }
 
-    if ((m->floor->type != SURFACE_SPEEDUP) && (m->input & INPUT_Z_PRESSED)) {
+    if (m->input & INPUT_Z_PRESSED) {
         return set_mario_action(m, ACT_CROUCH_SLIDE, 0);
     }
 
@@ -1507,7 +1507,7 @@ s32 common_slide_action_with_jump(struct MarioState *m, u32 stopAction, u32 jump
     }
 #endif
 
-    if (m->floor->type == SURFACE_SPEEDUP)
+    if (!(m->input & (INPUT_Z_DOWN | INPUT_Z_PRESSED)) && m->floor->type == SURFACE_SPEEDUP)
     {
         return set_mario_action(m, ACT_WALKING, 0);
     }
