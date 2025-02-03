@@ -346,9 +346,11 @@ void load_mario_area(void) {
         spawn_objects_from_info(0, gMarioSpawnInfo);
     }
 
+#if 0
     if (gAreaSkyboxStart[gCurrAreaIndex - 1]) {
         load_segment_decompress(SEGMENT_SKYBOX, gAreaSkyboxStart[gCurrAreaIndex - 1], gAreaSkyboxEnd[gCurrAreaIndex - 1]);
     }
+#endif
 }
 
 void unload_mario_area(void) {

@@ -318,10 +318,12 @@ static void level_cmd_load_yay0_texture(void) {
 }
 
 static void level_cmd_change_area_skybox(void) {
+#if 0
     u8 areaCheck = CMD_GET(s16, 2);
     gAreaSkyboxStart[areaCheck-1] = CMD_GET(void *, 4);
     gAreaSkyboxEnd[areaCheck-1] = CMD_GET(void *, 8);
     sCurrentCmd = CMD_NEXT;
+#endif
 }
 
 static void level_cmd_init_level(void) {
@@ -333,10 +335,12 @@ static void level_cmd_init_level(void) {
     clear_objects();
     clear_areas();
     main_pool_push_state();
+#if 0
     for (u8 clearPointers = 0; clearPointers < AREA_COUNT; clearPointers++) {
         gAreaSkyboxStart[clearPointers] = 0;
         gAreaSkyboxEnd[clearPointers] = 0;
     }
+#endif
 
     sCurrentCmd = CMD_NEXT;
 }

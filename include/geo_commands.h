@@ -495,7 +495,7 @@ enum GeoLayoutCommands {
  */
 #define GEO_BACKGROUND(background, function) \
     CMD_BBH(GEO_CMD_NODE_BACKGROUND, 0x00, background), \
-    CMD_PTR(function)
+    CMD_PTR(NULL)
 #define GEO_BACKGROUND_COLOR(background) \
     GEO_BACKGROUND(background, NULL)
 
