@@ -90,11 +90,13 @@ u16 sRenderingFramebuffer = 0;
 // Goddard Vblank Function Caller
 void (*gGoddardVblankCallback)(void) = NULL;
 
+#if 0
 // Defined player slots. Anything above MAX_NUM_PLAYERS should not be used.
 struct Controller* const gPlayer1Controller = &gControllers[0];
 struct Controller* const gPlayer2Controller = &gControllers[1];
 struct Controller* const gPlayer3Controller = &gControllers[2];
 struct Controller* const gPlayer4Controller = &gControllers[3];
+#endif
 
 // Title Screen Demo Handler
 struct DemoInput *gCurrDemoInput = NULL;

@@ -61,10 +61,10 @@ extern s8 gSramProbe;
 #endif
 
 extern void (*gGoddardVblankCallback)(void);
-extern struct Controller* const gPlayer1Controller;
-extern struct Controller* const gPlayer2Controller;
-extern struct Controller* const gPlayer3Controller;
-extern struct Controller* const gPlayer4Controller;
+#define gPlayer1Controller (&gControllers[0])
+#define gPlayer2Controller (&gControllers[1])
+#define gPlayer3Controller (&gControllers[2])
+#define gPlayer4Controller (&gControllers[3])
 extern struct DemoInput *gCurrDemoInput;
 extern u16 gDemoInputListID;
 extern struct DemoInput gRecordedDemoInput;
