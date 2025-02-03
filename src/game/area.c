@@ -480,7 +480,8 @@ void render_game(void) {
                       SCREEN_HEIGHT - gBorderHeight);
         render_hud();
 
-        gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, gBorderHeight, SCREEN_WIDTH,
+                      SCREEN_HEIGHT - gBorderHeight);
         render_text_labels();
 #ifdef PUPPYPRINT
         puppyprint_print_deferred();

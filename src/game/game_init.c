@@ -265,6 +265,7 @@ void clear_viewport(Vp *viewport, s32 color) {
  * Draw the horizontal screen borders.
  */
 void draw_screen_borders(void) {
+    return;
     Gfx *tempGfxHead = gDisplayListHead;
 
     gDPPipeSync(tempGfxHead++);
@@ -772,7 +773,7 @@ void setup_game_memory(void) {
     set_segment_memory_printout(SEGMENT_DEMO_INPUTS, DEMO_INPUTS_POOL_SIZE);
 #endif
     // Setup Demo Inputs List
-    gDemoInputsMemAlloc = main_pool_alloc(DEMO_INPUTS_POOL_SIZE);
+    gDemoInputsMemAlloc = NULL; // main_pool_alloc(DEMO_INPUTS_POOL_SIZE);
     set_segment_base_addr(SEGMENT_DEMO_INPUTS, (void *) gDemoInputsMemAlloc);
     setup_dma_table_list(&gDemoInputsBuf, gDemoInputs, gDemoInputsMemAlloc);
     // Setup Level Script Entry
