@@ -152,7 +152,111 @@ static inline void *alloc_display_list(u32 size) {
     if (!ptr) __builtin_unreachable();
     return ptr;
 }
+#define main_pool_alloc_aligned_cde main_pool_alloc
 #else
+#define main_pool_alloc_aligned_cde(_size) ({ \
+    struct MainPoolRegion* region = gMainPoolCurrentRegion; \
+    u32 size = ALIGN16(_size); \
+    u8* ptr = region->start; \
+    if (__builtin_constant_p(_size)) { \
+        switch (size) { \
+            case 0x0: \
+                break; \
+            case 0x10: \
+            asm volatile ( \
+                "cache 0xD, 0x00(%0);" \
+                : \
+                : "r"(ptr) \
+            ); \
+                break; \
+            case 0x20: \
+            asm volatile ( \
+                "cache 0xD, 0x00(%0);" \
+                "cache 0xD, 0x10(%0);" \
+                : \
+                : "r"(ptr) \
+            ); \
+                break; \
+            case 0x30: \
+            asm volatile ( \
+                "cache 0xD, 0x00(%0);" \
+                "cache 0xD, 0x10(%0);" \
+                "cache 0xD, 0x20(%0);" \
+                : \
+                : "r"(ptr) \
+            ); \
+                break; \
+            case 0x40: \
+            asm volatile ( \
+                "cache 0xD, 0x00(%0);" \
+                "cache 0xD, 0x10(%0);" \
+                "cache 0xD, 0x20(%0);" \
+                "cache 0xD, 0x30(%0);" \
+                : \
+                : "r"(ptr) \
+            ); \
+                break; \
+            case 0x50: \
+            asm volatile ( \
+                "cache 0xD, 0x00(%0);" \
+                "cache 0xD, 0x10(%0);" \
+                "cache 0xD, 0x20(%0);" \
+                "cache 0xD, 0x30(%0);" \
+                "cache 0xD, 0x40(%0);" \
+                : \
+                : "r"(ptr) \
+            ); \
+                break; \
+            case 0x60: \
+            asm volatile ( \
+                "cache 0xD, 0x00(%0);" \
+                "cache 0xD, 0x10(%0);" \
+                "cache 0xD, 0x20(%0);" \
+                "cache 0xD, 0x30(%0);" \
+                "cache 0xD, 0x40(%0);" \
+                "cache 0xD, 0x50(%0);" \
+                : \
+                : "r"(ptr) \
+            ); \
+                break; \
+            case 0x70: \
+            asm volatile ( \
+                "cache 0xD, 0x00(%0);" \
+                "cache 0xD, 0x10(%0);" \
+                "cache 0xD, 0x20(%0);" \
+                "cache 0xD, 0x30(%0);" \
+                "cache 0xD, 0x40(%0);" \
+                "cache 0xD, 0x50(%0);" \
+                "cache 0xD, 0x60(%0);" \
+                : \
+                : "r"(ptr) \
+            ); \
+                break; \
+            case 0x80: \
+            asm volatile ( \
+                "cache 0xD, 0x00(%0);" \
+                "cache 0xD, 0x10(%0);" \
+                "cache 0xD, 0x20(%0);" \
+                "cache 0xD, 0x30(%0);" \
+                "cache 0xD, 0x40(%0);" \
+                "cache 0xD, 0x50(%0);" \
+                "cache 0xD, 0x60(%0);" \
+                "cache 0xD, 0x70(%0);" \
+                : \
+                : "r"(ptr) \
+            ); \
+                break; \
+            default: \
+                _xdd(); \
+                break; \
+        } \
+    } \
+    u8* newStart = ptr + size; \
+    region->start = newStart; \
+    if (!ptr) __builtin_unreachable(); \
+    ptr; \
+})
+
 #define alloc_display_list(_size) ({\
     u32 size = ALIGN16(_size); \
     void* ptr = gGfxPoolEnd - size; \

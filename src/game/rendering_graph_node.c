@@ -530,7 +530,7 @@ void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
 
 static void append_dl_with_hint(struct DisplayListLinks* list, void* dl, u8 hint)
 {
-    struct DisplayListNode *listNode = main_pool_alloc(sizeof(struct DisplayListNode));
+    struct DisplayListNode *listNode = main_pool_alloc_aligned_cde(sizeof(struct DisplayListNode));
 
     listNode->transform = gMatStackFixed[gMatStackIndex];
     listNode->displayList = dl;
@@ -547,7 +547,7 @@ static void append_dl_with_hint(struct DisplayListLinks* list, void* dl, u8 hint
 #ifdef ENABLE_HEAP_BATCHES
 static void append_dl_with_hint_course(struct PairingHeapHead* mat_heap, struct PairingHeapLinks* heap, void* dl, u8 hint, u32 prio, u32 batchIdx)
 {
-    struct PairingHeapNodeDisplayList* heapNode = main_pool_alloc(sizeof(struct PairingHeapNodeDisplayList));
+    struct PairingHeapNodeDisplayList* heapNode = main_pool_alloc_aligned_cde(sizeof(struct PairingHeapNodeDisplayList));
 
     heapNode->transform = gMatStackFixed[gMatStackIndex];
     heapNode->displayList = dl;
@@ -557,7 +557,7 @@ static void append_dl_with_hint_course(struct PairingHeapHead* mat_heap, struct 
     pairingheap_add(&heap->head, &heapNode->node);
     if (!heap->mat_node)
     {
-        heap->mat_node = main_pool_alloc(sizeof(struct PairingHeapNodeBatch));
+        heap->mat_node = main_pool_alloc_aligned_cde(sizeof(struct PairingHeapNodeBatch));
         heap->mat_node->idx = batchIdx;
         heap->mat_node->node.priority = prio;
         pairingheap_add(mat_heap, &heap->mat_node->node);
@@ -1802,6 +1802,9 @@ void geo_process_root(struct GraphNodeRoot *node, Vp *b, Vp *c, s32 clearColor) 
         Vp *viewport = alloc_display_list(sizeof(*viewport));
 
         main_pool_push_state();
+        // required for CDE optimization 
+        sMainPool.regions[0].start = (void*) ALIGN16(sMainPool.regions[0].start);
+
         initialMatrix = alloc_display_list(sizeof(*initialMatrix));
         gCurLookAt = (LookAt*)alloc_display_list(sizeof(LookAt));
         bzero(gCurLookAt, sizeof(LookAt));
