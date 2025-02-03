@@ -1045,6 +1045,7 @@ f32 find_surface_on_ray(Vec3f orig, Vec3f dir, struct Surface **hit_surface, Vec
     return max_length;
 }
 
+#if 0
 ALWAYS_INLINE void invalidateMatrixMemory(void* addr) {
     asm volatile (
         "cache 0xD, 0x00(%0);"
@@ -1055,11 +1056,14 @@ ALWAYS_INLINE void invalidateMatrixMemory(void* addr) {
         : "r"(addr)
     );
 }
+#endif
 
 // Converts a floating point matrix to a fixed point matrix
 // Makes some assumptions about certain fields in the matrix, which will always be true for valid matrices.
 OPTIMIZE_OS void mtxf_to_mtx_fast(s16* dst, float* src) {
+#if 0
     invalidateMatrixMemory(dst);
+#endif
     PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);
     float scale = 65536.0f / WORLD_SCALE;
     // Iterate over pairs of values in the input matrix
