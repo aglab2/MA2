@@ -200,7 +200,6 @@ GCC_GRAPH_NODE_OPT_FLAGS = \
   --param case-values-threshold=20 \
   --param max-completely-peeled-insns=100 \
   --param max-unrolled-insns=100 \
-  -finline-limit=0 \
   -freorder-blocks-algorithm=simple  \
   -ffunction-sections \
   -fdata-sections \

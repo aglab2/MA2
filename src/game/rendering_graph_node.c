@@ -53,10 +53,10 @@
  *
  */
 
-s16 gMatStackIndex = 0;
-ALIGNED16 Mat4 gMatStack[32];
-ALIGNED16 Mtx *gMatStackFixed[32];
-f32 sAspectRatio;
+static s16 gMatStackIndex = 0;
+static ALIGNED16 Mat4 gMatStack[32];
+static ALIGNED16 Mtx *gMatStackFixed[32];
+static f32 sAspectRatio;
 
 /**
  * Animation nodes have state in global variables, so this struct captures
@@ -74,14 +74,14 @@ struct GeoAnimState {
 
 // For some reason, this is a GeoAnimState struct, but the current state consists
 // of separate global variables. It won't match EU otherwise.
-struct GeoAnimState gGeoTempState;
+static struct GeoAnimState gGeoTempState;
 
-u8 gCurrAnimType;
-u8 gCurrAnimEnabled;
-s16 gCurrAnimFrame;
-f32 gCurrAnimTranslationMultiplier;
-u16 *gCurrAnimAttribute;
-s16 *gCurrAnimData;
+static u8 gCurrAnimType;
+static u8 gCurrAnimEnabled;
+static s16 gCurrAnimFrame;
+static f32 gCurrAnimTranslationMultiplier;
+static u16 *gCurrAnimAttribute;
+static s16 *gCurrAnimData;
 
 /* Rendermode settings for cycle 1 for all 8 or 13 layers. */
 static const struct RenderModeContainer renderModeTable_1Cycle[2] = { 
@@ -161,12 +161,12 @@ static const struct RenderModeContainer renderModeTable_2Cycle[2] = {
         [LAYER_TRANSPARENT_INTER] = G_RM_AA_ZB_XLU_INTER2,
     } } };
 
-ALIGNED16 struct GraphNodeRoot *gCurGraphNodeRoot = NULL;
-ALIGNED16 struct GraphNodeMasterList *gCurGraphNodeMasterList = NULL;
-ALIGNED16 struct GraphNodePerspective *gCurGraphNodeCamFrustum = NULL;
-ALIGNED16 struct GraphNodeCamera *gCurGraphNodeCamera = NULL;
-ALIGNED16 struct GraphNodeObject *gCurGraphNodeObject = NULL;
-ALIGNED16 struct GraphNodeHeldObject *gCurGraphNodeHeldObject = NULL;
+struct GraphNodeRoot *gCurGraphNodeRoot = NULL;
+struct GraphNodeMasterList *gCurGraphNodeMasterList = NULL;
+struct GraphNodePerspective *gCurGraphNodeCamFrustum = NULL;
+struct GraphNodeCamera *gCurGraphNodeCamera = NULL;
+struct GraphNodeObject *gCurGraphNodeObject = NULL;
+struct GraphNodeHeldObject *gCurGraphNodeHeldObject = NULL;
 u16 gAreaUpdateCounter = 0;
 static LookAt* gCurLookAt;
 
@@ -612,8 +612,8 @@ static void geo_append_batched_display_list(void *displayList, enum RenderLayers
 static void inc_mat_stack() {
     Mtx *mtx = alloc_display_list(sizeof(*mtx));
     gMatStackIndex++;
-    mtxf_to_mtx(mtx, gMatStack[gMatStackIndex]);
     gMatStackFixed[gMatStackIndex] = mtx;
+    mtxf_to_mtx(mtx, gMatStack[gMatStackIndex]);
 }
 
 static void append_dl_and_return(struct GraphNodeDisplayList *node) {
@@ -898,7 +898,7 @@ void geo_process_translation_rotation(struct GraphNodeTranslationRotation *node)
     Vec3f translation;
 
     vec3s_to_vec3f(translation, node->translation);
-    mtxf_rotate_zxy_and_translate_and_mul(node->rotation, translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+    mtxf_rotate_zxy_and_translate_and_mul(node->rotation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
 
     inc_mat_stack();
     append_dl_and_return((struct GraphNodeDisplayList *)node);
@@ -925,7 +925,7 @@ void geo_process_translation(struct GraphNodeTranslation *node) {
  * For the rest it acts as a normal display list node.
  */
 void geo_process_rotation(struct GraphNodeRotation *node) {
-    mtxf_rotate_zxy_and_translate_and_mul(node->rotation, gVec3fZero, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+    mtxf_rotate_zxy_and_translate_and_mul(node->rotation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], 0, 0, 0);
 
     inc_mat_stack();
     append_dl_and_return(((struct GraphNodeDisplayList *)node));
@@ -1551,12 +1551,12 @@ static void adjust_view_range()
     }
 }
 
-static int is_far_from_mario(Vec3f loc)
+static int is_far_from_mario(f32 l0, f32 l1, f32 l2)
 {
-    f32 dx = loc[0] - gCurGraphNodeCamera->focus[0];
-    f32 dy = loc[1] - gCurGraphNodeCamera->focus[1];
-    f32 dz = loc[2] - gCurGraphNodeCamera->focus[2];
-    f32 dist = dx*dx + dy*dy + dz*dz;
+    Vec3f loc = { l0, l1, l2 };
+    Vec3f d;
+    vec3_diff(d, loc, gCurGraphNodeCamera->focus);
+    f32 dist = d[0]*d[0] + d[1]*d[1] + d[2]*d[2];
 
     f32 range = sViewRange;
     if (gCurrCourseNum == COURSE_FR)
@@ -1576,11 +1576,11 @@ static int is_far_from_mario(Vec3f loc)
 void geo_process_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation *node) {
     Vec3f translation;
     vec3_diff(translation, node->translation, gCurrentArea->renderOffset);
-    if (is_far_from_mario(translation)) {
+    if (is_far_from_mario(translation[0], translation[1], translation[2])) {
         return;
     }
 
-    mtxf_rotate_zxy_and_translate_and_mul(node->rotation, translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+    mtxf_rotate_zxy_and_translate_and_mul(node->rotation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
 
     inc_mat_stack();
     struct GraphNodeDisplayList *dlNode = (struct GraphNodeDisplayList *)node;
@@ -1590,7 +1590,7 @@ void geo_process_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation
 void geo_process_lvl_translation(struct GraphNodeLvlTranslation *node) {
     Vec3f translation;
     vec3_diff(translation, node->translation, gCurrentArea->renderOffset);
-    if (is_far_from_mario(translation)) {
+    if (is_far_from_mario(translation[0], translation[1], translation[2])) {
         return;
     }
 
@@ -1656,7 +1656,7 @@ void geo_process_obj_translation_rotation(struct GraphNodeTranslationRotation *n
     rotation[0] = node->rotation[0] + obj->oGeoPitch;
     rotation[1] = node->rotation[1] + obj->oGeoYaw;
     rotation[2] = node->rotation[2] + obj->oGeoRoll;
-    mtxf_rotate_zxy_and_translate_and_mul(rotation, translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+    mtxf_rotate_zxy_and_translate_and_mul(rotation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
 
     inc_mat_stack();
     append_dl_and_return((struct GraphNodeDisplayList *)node);
@@ -1702,7 +1702,7 @@ void geo_process_batchset_translation_rotation(struct GraphNodeTranslationRotati
     translation[0] = node->translation[0];
     translation[1] = node->translation[1];
     translation[2] = node->translation[2];
-    mtxf_rotate_zxy_and_translate_and_mul(node->rotation, translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+    mtxf_rotate_zxy_and_translate_and_mul(node->rotation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
 
     inc_mat_stack();
     append_lvl_dl_and_return((struct GraphNodeDisplayList *)node);
@@ -1845,4 +1845,47 @@ void geo_process_root(struct GraphNodeRoot *node, Vp *b, Vp *c, s32 clearColor) 
 #endif
         main_pool_pop_state();
     }
+}
+
+extern Gfx ce_skybox_object_00CDC390_mesh[];
+extern Gfx mh_skybox_mh_skybox_mesh[];
+extern Gfx gf_skybox_gf_skybox_mesh[];
+extern Gfx ph_skybox_ph_skybox_mesh[];
+extern Gfx ms_skybox_ms_skybox_mesh[];
+extern Gfx hb_skybox_hb_skybox_mesh_layer_1[];
+extern Gfx ee_skybox1_ee_skybox1_mesh_layer_1[];
+extern Gfx mhe_skybox_mhe_skybox_mesh_layer_1[];
+extern Gfx cg_skybox_cg_skybox_mesh[];
+extern Gfx fr_skybox_fr_skybox_mesh[];
+static const Gfx* k_skyboxes[] = {
+    [ LEVEL_CE ] = ce_skybox_object_00CDC390_mesh,
+    [ LEVEL_MH ] = mh_skybox_mh_skybox_mesh,
+    [ LEVEL_GF ] = gf_skybox_gf_skybox_mesh,
+    [ LEVEL_PH ] = ph_skybox_ph_skybox_mesh,
+    [ LEVEL_MS ] = ms_skybox_ms_skybox_mesh,
+    [ LEVEL_HB ] = hb_skybox_hb_skybox_mesh_layer_1,
+    [ LEVEL_EE ] = ee_skybox1_ee_skybox1_mesh_layer_1,
+    [ LEVEL_MHE ] = mhe_skybox_mhe_skybox_mesh_layer_1,
+    [ LEVEL_CG ] = cg_skybox_cg_skybox_mesh,  
+    [ LEVEL_FR ] = fr_skybox_fr_skybox_mesh,
+};
+
+extern void geo_append_display_list(void *displayList, s32 layer);
+extern s16 gMatStackIndex;
+extern Mat4 gMatStack[32];
+extern Mtx *gMatStackFixed[32];
+Gfx *geo_render_backdrop(s32 callContext, struct GraphNode *node, UNUSED f32 b[4][4]) {
+    Mat4 mat;
+    Mtx *mtx = alloc_display_list(sizeof(*mtx));
+    if (callContext == GEO_CONTEXT_RENDER) {
+        mtxf_translate(mat, gCurGraphNodeCamera->pos);
+        mtxf_mul(gMatStack[gMatStackIndex + 1], mat, gMatStack[gMatStackIndex]);
+        gMatStackIndex++;
+        mtxf_to_mtx(mtx, gMatStack[gMatStackIndex]);
+        gMatStackFixed[gMatStackIndex] = mtx;
+        geo_append_display_list(k_skyboxes[gCurrLevelNum], 0); // DL pointer
+        
+        gMatStackIndex--;
+    }
+    return 0;
 }

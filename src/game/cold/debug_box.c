@@ -124,8 +124,6 @@ struct DebugVert {
 struct DebugBox sBoxes[MAX_DEBUG_BOXES] __attribute__((section(".bss")));
 s16 sNumBoxes = 0;
 
-extern Mat4 gMatStack[32]; // XXX: Hack
-
 /**
  * The debug boxes' default transparency
  */

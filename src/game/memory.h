@@ -163,91 +163,58 @@ static inline void *alloc_display_list(u32 size) {
             case 0x0: \
                 break; \
             case 0x10: \
-            asm volatile ( \
-                "cache 0xD, 0x00(%0);" \
-                : \
-                : "r"(ptr) \
-            ); \
+                __builtin_mips_cache(0xd, ptr + 0x0); \
                 break; \
             case 0x20: \
-            asm volatile ( \
-                "cache 0xD, 0x00(%0);" \
-                "cache 0xD, 0x10(%0);" \
-                : \
-                : "r"(ptr) \
-            ); \
+                __builtin_mips_cache(0xd, ptr + 0x0); \
+                __builtin_mips_cache(0xd, ptr + 0x10); \
                 break; \
             case 0x30: \
-            asm volatile ( \
-                "cache 0xD, 0x00(%0);" \
-                "cache 0xD, 0x10(%0);" \
-                "cache 0xD, 0x20(%0);" \
-                : \
-                : "r"(ptr) \
-            ); \
+                __builtin_mips_cache(0xd, ptr + 0x0); \
+                __builtin_mips_cache(0xd, ptr + 0x10); \
+                __builtin_mips_cache(0xd, ptr + 0x20); \
                 break; \
             case 0x40: \
-            asm volatile ( \
-                "cache 0xD, 0x00(%0);" \
-                "cache 0xD, 0x10(%0);" \
-                "cache 0xD, 0x20(%0);" \
-                "cache 0xD, 0x30(%0);" \
-                : \
-                : "r"(ptr) \
-            ); \
+                __builtin_mips_cache(0xd, ptr + 0x0); \
+                __builtin_mips_cache(0xd, ptr + 0x10); \
+                __builtin_mips_cache(0xd, ptr + 0x20); \
+                __builtin_mips_cache(0xd, ptr + 0x30); \
                 break; \
             case 0x50: \
-            asm volatile ( \
-                "cache 0xD, 0x00(%0);" \
-                "cache 0xD, 0x10(%0);" \
-                "cache 0xD, 0x20(%0);" \
-                "cache 0xD, 0x30(%0);" \
-                "cache 0xD, 0x40(%0);" \
-                : \
-                : "r"(ptr) \
-            ); \
+                __builtin_mips_cache(0xd, ptr + 0x0); \
+                __builtin_mips_cache(0xd, ptr + 0x10); \
+                __builtin_mips_cache(0xd, ptr + 0x20); \
+                __builtin_mips_cache(0xd, ptr + 0x30); \
+                __builtin_mips_cache(0xd, ptr + 0x40); \
                 break; \
             case 0x60: \
-            asm volatile ( \
-                "cache 0xD, 0x00(%0);" \
-                "cache 0xD, 0x10(%0);" \
-                "cache 0xD, 0x20(%0);" \
-                "cache 0xD, 0x30(%0);" \
-                "cache 0xD, 0x40(%0);" \
-                "cache 0xD, 0x50(%0);" \
-                : \
-                : "r"(ptr) \
-            ); \
+                __builtin_mips_cache(0xd, ptr + 0x0); \
+                __builtin_mips_cache(0xd, ptr + 0x10); \
+                __builtin_mips_cache(0xd, ptr + 0x20); \
+                __builtin_mips_cache(0xd, ptr + 0x30); \
+                __builtin_mips_cache(0xd, ptr + 0x40); \
+                __builtin_mips_cache(0xd, ptr + 0x50); \
                 break; \
             case 0x70: \
-            asm volatile ( \
-                "cache 0xD, 0x00(%0);" \
-                "cache 0xD, 0x10(%0);" \
-                "cache 0xD, 0x20(%0);" \
-                "cache 0xD, 0x30(%0);" \
-                "cache 0xD, 0x40(%0);" \
-                "cache 0xD, 0x50(%0);" \
-                "cache 0xD, 0x60(%0);" \
-                : \
-                : "r"(ptr) \
-            ); \
+                __builtin_mips_cache(0xd, ptr + 0x0); \
+                __builtin_mips_cache(0xd, ptr + 0x10); \
+                __builtin_mips_cache(0xd, ptr + 0x20); \
+                __builtin_mips_cache(0xd, ptr + 0x30); \
+                __builtin_mips_cache(0xd, ptr + 0x40); \
+                __builtin_mips_cache(0xd, ptr + 0x50); \
+                __builtin_mips_cache(0xd, ptr + 0x60); \
                 break; \
             case 0x80: \
-            asm volatile ( \
-                "cache 0xD, 0x00(%0);" \
-                "cache 0xD, 0x10(%0);" \
-                "cache 0xD, 0x20(%0);" \
-                "cache 0xD, 0x30(%0);" \
-                "cache 0xD, 0x40(%0);" \
-                "cache 0xD, 0x50(%0);" \
-                "cache 0xD, 0x60(%0);" \
-                "cache 0xD, 0x70(%0);" \
-                : \
-                : "r"(ptr) \
-            ); \
+                __builtin_mips_cache(0xd, ptr + 0x0); \
+                __builtin_mips_cache(0xd, ptr + 0x10); \
+                __builtin_mips_cache(0xd, ptr + 0x20); \
+                __builtin_mips_cache(0xd, ptr + 0x30); \
+                __builtin_mips_cache(0xd, ptr + 0x40); \
+                __builtin_mips_cache(0xd, ptr + 0x50); \
+                __builtin_mips_cache(0xd, ptr + 0x60); \
+                __builtin_mips_cache(0xd, ptr + 0x70); \
                 break; \
             default: \
-                _xdd(); \
                 break; \
         } \
     } \
@@ -265,88 +232,56 @@ static inline void *alloc_display_list(u32 size) {
             case 0x0: \
                 break; \
             case 0x10: \
-            asm volatile ( \
-                "cache 0xD, 0x00(%0);" \
-                : \
-                : "r"(ptr) \
-            ); \
+                __builtin_mips_cache(0xd, ptr + 0x0); \
                 break; \
             case 0x20: \
-            asm volatile ( \
-                "cache 0xD, 0x00(%0);" \
-                "cache 0xD, 0x10(%0);" \
-                : \
-                : "r"(ptr) \
-            ); \
+                __builtin_mips_cache(0xd, ptr + 0x0); \
+                __builtin_mips_cache(0xd, ptr + 0x10); \
                 break; \
             case 0x30: \
-            asm volatile ( \
-                "cache 0xD, 0x00(%0);" \
-                "cache 0xD, 0x10(%0);" \
-                "cache 0xD, 0x20(%0);" \
-                : \
-                : "r"(ptr) \
-            ); \
+                __builtin_mips_cache(0xd, ptr + 0x0); \
+                __builtin_mips_cache(0xd, ptr + 0x10); \
+                __builtin_mips_cache(0xd, ptr + 0x20); \
                 break; \
             case 0x40: \
-            asm volatile ( \
-                "cache 0xD, 0x00(%0);" \
-                "cache 0xD, 0x10(%0);" \
-                "cache 0xD, 0x20(%0);" \
-                "cache 0xD, 0x30(%0);" \
-                : \
-                : "r"(ptr) \
-            ); \
+                __builtin_mips_cache(0xd, ptr + 0x0); \
+                __builtin_mips_cache(0xd, ptr + 0x10); \
+                __builtin_mips_cache(0xd, ptr + 0x20); \
+                __builtin_mips_cache(0xd, ptr + 0x30); \
                 break; \
             case 0x50: \
-            asm volatile ( \
-                "cache 0xD, 0x00(%0);" \
-                "cache 0xD, 0x10(%0);" \
-                "cache 0xD, 0x20(%0);" \
-                "cache 0xD, 0x30(%0);" \
-                "cache 0xD, 0x40(%0);" \
-                : \
-                : "r"(ptr) \
-            ); \
+                __builtin_mips_cache(0xd, ptr + 0x0); \
+                __builtin_mips_cache(0xd, ptr + 0x10); \
+                __builtin_mips_cache(0xd, ptr + 0x20); \
+                __builtin_mips_cache(0xd, ptr + 0x30); \
+                __builtin_mips_cache(0xd, ptr + 0x40); \
                 break; \
             case 0x60: \
-            asm volatile ( \
-                "cache 0xD, 0x00(%0);" \
-                "cache 0xD, 0x10(%0);" \
-                "cache 0xD, 0x20(%0);" \
-                "cache 0xD, 0x30(%0);" \
-                "cache 0xD, 0x40(%0);" \
-                "cache 0xD, 0x50(%0);" \
-                : \
-                : "r"(ptr) \
-            ); \
+                __builtin_mips_cache(0xd, ptr + 0x0); \
+                __builtin_mips_cache(0xd, ptr + 0x10); \
+                __builtin_mips_cache(0xd, ptr + 0x20); \
+                __builtin_mips_cache(0xd, ptr + 0x30); \
+                __builtin_mips_cache(0xd, ptr + 0x40); \
+                __builtin_mips_cache(0xd, ptr + 0x50); \
                 break; \
             case 0x70: \
-            asm volatile ( \
-                "cache 0xD, 0x00(%0);" \
-                "cache 0xD, 0x10(%0);" \
-                "cache 0xD, 0x20(%0);" \
-                "cache 0xD, 0x30(%0);" \
-                "cache 0xD, 0x40(%0);" \
-                "cache 0xD, 0x50(%0);" \
-                "cache 0xD, 0x60(%0);" \
-                : \
-                : "r"(ptr) \
-            ); \
+                __builtin_mips_cache(0xd, ptr + 0x0); \
+                __builtin_mips_cache(0xd, ptr + 0x10); \
+                __builtin_mips_cache(0xd, ptr + 0x20); \
+                __builtin_mips_cache(0xd, ptr + 0x30); \
+                __builtin_mips_cache(0xd, ptr + 0x40); \
+                __builtin_mips_cache(0xd, ptr + 0x50); \
+                __builtin_mips_cache(0xd, ptr + 0x60); \
                 break; \
             case 0x80: \
-            asm volatile ( \
-                "cache 0xD, 0x00(%0);" \
-                "cache 0xD, 0x10(%0);" \
-                "cache 0xD, 0x20(%0);" \
-                "cache 0xD, 0x30(%0);" \
-                "cache 0xD, 0x40(%0);" \
-                "cache 0xD, 0x50(%0);" \
-                "cache 0xD, 0x60(%0);" \
-                "cache 0xD, 0x70(%0);" \
-                : \
-                : "r"(ptr) \
-            ); \
+                __builtin_mips_cache(0xd, ptr + 0x0); \
+                __builtin_mips_cache(0xd, ptr + 0x10); \
+                __builtin_mips_cache(0xd, ptr + 0x20); \
+                __builtin_mips_cache(0xd, ptr + 0x30); \
+                __builtin_mips_cache(0xd, ptr + 0x40); \
+                __builtin_mips_cache(0xd, ptr + 0x50); \
+                __builtin_mips_cache(0xd, ptr + 0x60); \
+                __builtin_mips_cache(0xd, ptr + 0x70); \
                 break; \
             default: \
                 break; \
