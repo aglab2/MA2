@@ -1575,9 +1575,7 @@ static int is_far_from_mario(Vec3f loc)
 
 void geo_process_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation *node) {
     Vec3f translation;
-    translation[0] = node->translation[0] - gCurrentArea->renderOffset[0];
-    translation[1] = node->translation[1] - gCurrentArea->renderOffset[1];
-    translation[2] = node->translation[2] - gCurrentArea->renderOffset[2];
+    vec3_diff(translation, node->translation, gCurrentArea->renderOffset);
     if (is_far_from_mario(translation)) {
         return;
     }
@@ -1591,9 +1589,7 @@ void geo_process_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation
 
 void geo_process_lvl_translation(struct GraphNodeLvlTranslation *node) {
     Vec3f translation;
-    translation[0] = node->translation[0] - gCurrentArea->renderOffset[0];
-    translation[1] = node->translation[1] - gCurrentArea->renderOffset[1];
-    translation[2] = node->translation[2] - gCurrentArea->renderOffset[2];
+    vec3_diff(translation, node->translation, gCurrentArea->renderOffset);
     if (is_far_from_mario(translation)) {
         return;
     }
@@ -1703,14 +1699,10 @@ void geo_process_batchset_translation(struct GraphNodeTranslation *node) {
 
 void geo_process_batchset_translation_rotation(struct GraphNodeTranslationRotation* node) {
     Vec3f translation;
-    Vec3s rotation;
     translation[0] = node->translation[0];
     translation[1] = node->translation[1];
     translation[2] = node->translation[2];
-    rotation[0] = node->rotation[0];
-    rotation[1] = node->rotation[1];
-    rotation[2] = node->rotation[2];
-    mtxf_rotate_zxy_and_translate_and_mul(rotation, translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+    mtxf_rotate_zxy_and_translate_and_mul(node->rotation, translation, gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
 
     inc_mat_stack();
     append_lvl_dl_and_return((struct GraphNodeDisplayList *)node);
