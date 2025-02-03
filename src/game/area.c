@@ -44,9 +44,9 @@ s16 gSavedCourseNum;
 s16 gMenuOptSelectIndex;
 s16 gSaveOptSelectIndex;
 
-struct SpawnInfo *gMarioSpawnInfo = &gPlayerSpawnInfos[0];
-struct GraphNode **gLoadedGraphNodes = gGraphNodePointers;
-struct Area *gAreas = gAreaData;
+// struct SpawnInfo *gMarioSpawnInfo = &gPlayerSpawnInfos[0];
+// struct GraphNode **gLoadedGraphNodes = gGraphNodePointers;
+// struct Area *gAreas = gAreaData;
 struct Area *gCurrentArea = NULL;
 struct CreditsEntry *gCurrCreditsEntry = NULL;
 

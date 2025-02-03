@@ -84,7 +84,8 @@ struct CreditsEntry {
 extern struct CreditsEntry *gCurrCreditsEntry;
 
 extern struct MarioState gMarioStates[];
-extern struct MarioState *gMarioState;
+#define gMarioState gMarioStates
+// extern struct MarioState *gMarioState;
 
 extern s16 sCurrPlayMode;
 extern s16 sTransitionTimer;
