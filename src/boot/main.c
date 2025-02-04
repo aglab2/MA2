@@ -94,7 +94,7 @@ UNUSED void handle_debug_key_sequences(void) {
 }
 #endif
 
-void setup_mesg_queues(void) {
+static void setup_mesg_queues(void) {
     osCreateMesgQueue(&gDmaMesgQueue, gDmaMesgBuf, ARRAY_COUNT(gDmaMesgBuf));
     osCreateMesgQueue(&gSIEventMesgQueue, gSIEventMesgBuf, ARRAY_COUNT(gSIEventMesgBuf));
     osSetEventMesg(OS_EVENT_SI, &gSIEventMesgQueue, NULL);
@@ -108,7 +108,7 @@ void setup_mesg_queues(void) {
     osSetEventMesg(OS_EVENT_PRENMI, &gIntrMesgQueue, (OSMesg) MESG_NMI_REQUEST);
 }
 
-void alloc_pool(void) {
+static void alloc_pool(void) {
     main_pool_init();
     gEffectsMemoryPool = mem_pool_init(EFFECTS_MEMORY_POOL);
 }
@@ -123,7 +123,7 @@ void create_thread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, 
 extern void func_sh_802f69cc(void);
 #endif
 
-void handle_nmi_request(void) {
+static void handle_nmi_request(void) {
     gResetTimer = 1;
     gNmiResetBarsTimer = 0;
     stop_sounds_in_continuous_banks();
@@ -134,7 +134,7 @@ void handle_nmi_request(void) {
 #endif
 }
 
-void receive_new_tasks(void) {
+static void receive_new_tasks(void) {
     struct SPTask *spTask;
 
     while (osRecvMesg(&gSPTaskMesgQueue, (OSMesg *) &spTask, OS_MESG_NOBLOCK) != -1) {
@@ -160,7 +160,7 @@ void receive_new_tasks(void) {
     }
 }
 
-void start_sptask(s32 taskType) {
+static void start_sptask(s32 taskType) {
     if (taskType == M_AUDTASK) {
         gActiveSPTask = sCurrentAudioSPTask;
     } else {
@@ -172,14 +172,14 @@ void start_sptask(s32 taskType) {
     gActiveSPTask->state = SPTASK_STATE_RUNNING;
 }
 
-void interrupt_gfx_sptask(void) {
+static void interrupt_gfx_sptask(void) {
     if (gActiveSPTask->task.t.type == M_GFXTASK) {
         gActiveSPTask->state = SPTASK_STATE_INTERRUPTED;
         osSpTaskYield();
     }
 }
 
-void start_gfx_sptask(void) {
+static void start_gfx_sptask(void) {
     if (gActiveSPTask == NULL
      && sCurrentDisplaySPTask != NULL
      && sCurrentDisplaySPTask->state == SPTASK_STATE_NOT_STARTED) {
@@ -188,13 +188,13 @@ void start_gfx_sptask(void) {
     }
 }
 
-void pretend_audio_sptask_done(void) {
+static void pretend_audio_sptask_done(void) {
     gActiveSPTask = sCurrentAudioSPTask;
     gActiveSPTask->state = SPTASK_STATE_RUNNING;
     osSendMesg(&gIntrMesgQueue, (OSMesg) MESG_SP_COMPLETE, OS_MESG_NOBLOCK);
 }
 
-void handle_vblank(void) {
+static void handle_vblank(void) {
     gNumVblanks++;
     if (gResetTimer > 0 && gResetTimer < 100) {
         gResetTimer++;
@@ -236,7 +236,7 @@ void handle_vblank(void) {
     if (gVblankHandler3 != NULL) osSendMesg(gVblankHandler3->queue, gVblankHandler3->msg, OS_MESG_NOBLOCK);
 }
 
-void handle_sp_complete(void) {
+static void handle_sp_complete(void) {
     struct SPTask *curSPTask = gActiveSPTask;
 
     gActiveSPTask = NULL;
@@ -287,7 +287,7 @@ void handle_sp_complete(void) {
     }
 }
 
-void handle_dp_complete(void) {
+static void handle_dp_complete(void) {
     // Gfx SP task is completely done.
     if (sCurrentDisplaySPTask->msgqueue != NULL) {
         osSendMesg(sCurrentDisplaySPTask->msgqueue, sCurrentDisplaySPTask->msg, OS_MESG_NOBLOCK);
@@ -296,20 +296,20 @@ void handle_dp_complete(void) {
     sCurrentDisplaySPTask = NULL;
 }
 
-OSTimerEx RCPHangTimer;
-void start_rcp_hang_timer(void) {
+static OSTimerEx RCPHangTimer;
+static void start_rcp_hang_timer(void) {
     if (RCPHangTimer.started == FALSE) {
         osSetTimer(&RCPHangTimer.timer, OS_USEC_TO_CYCLES(3000000), (OSTime) 0, &gIntrMesgQueue, (OSMesg) MESG_RCP_HUNG);
         RCPHangTimer.started = TRUE;
     }
 }
 
-void stop_rcp_hang_timer(void) {
+static void stop_rcp_hang_timer(void) {
     osStopTimer(&RCPHangTimer.timer);
     RCPHangTimer.started = FALSE;
 }
 
-void alert_rcp_hung_up(void) {
+static void alert_rcp_hung_up(void) {
     error("RCP is HUNG UP!! Oh! MY GOD!!");
 }
 
@@ -501,7 +501,7 @@ void set_vblank_handler(s32 index, struct VblankHandler *handler, OSMesgQueue *q
     }
 }
 
-void send_sp_task_message(OSMesg *msg) {
+static void send_sp_task_message(OSMesg *msg) {
     osWritebackDCacheAll();
     osSendMesg(&gSPTaskMesgQueue, msg, OS_MESG_NOBLOCK);
 }
@@ -515,6 +515,7 @@ void dispatch_audio_sptask(struct SPTask *spTask) {
 
 void exec_display_list(struct SPTask *spTask) {
     if (spTask != NULL) {
+        // AGLAB optimize?
         osWritebackDCacheAll();
         spTask->state = SPTASK_STATE_NOT_STARTED;
         if (sCurrentDisplaySPTask == NULL) {
@@ -538,7 +539,7 @@ void turn_off_audio(void) {
     }
 }
 
-void change_vi(OSViMode *mode, int width, int height) {
+static void change_vi(OSViMode *mode, int width, int height) {
     mode->comRegs.width  = width;
     mode->comRegs.xScale = ((width * 512) / 320);
     if (height > 240) {
@@ -556,7 +557,7 @@ void change_vi(OSViMode *mode, int width, int height) {
     }
 }
 
-void get_audio_frequency(void) {
+static void get_audio_frequency(void) {
     switch (gConfig.tvType) {
 #if defined(VERSION_JP) || defined(VERSION_US)
     case MODE_NTSC: gConfig.audioFrequency = 1.0f;    break;
@@ -612,7 +613,7 @@ void thread1_idle(UNUSED void *arg) {
 }
 
 // Clear RAM on boot
-void ClearRAM(void) {
+static void ClearRAM(void) {
     bzero(_mainSegmentEnd, (size_t)osMemSize - (size_t)OS_K0_TO_PHYSICAL(_mainSegmentEnd));
 }
 
