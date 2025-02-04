@@ -255,7 +255,7 @@ else ifeq ($(UNF),1)
   ULTRALIB := ultra
   DEFINES += _FINALROM=1 NDEBUG=1 OVERWRITE_OSPRINT=1
 else
-  ULTRALIB := gultra_rom_eabi
+  ULTRALIB := gultra_rom_eabi2
   DEFINES += _FINALROM=1 NDEBUG=1 OVERWRITE_OSPRINT=0
 endif
 
