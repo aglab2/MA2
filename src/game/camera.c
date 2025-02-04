@@ -29,6 +29,8 @@
 #include "puppyprint.h"
 #include "profiling.h"
 
+struct Object * const gCurrentObject;
+
 #define CBUTTON_MASK (U_CBUTTONS | D_CBUTTONS | L_CBUTTONS | R_CBUTTONS)
 
 /**
@@ -88,7 +90,7 @@ Vec3f sOldFocus;
  * Global array of PlayerCameraState.
  * L is real.
  */
-struct PlayerCameraState gPlayerCameraState[2];
+struct PlayerCameraState gPlayerCameraState[1];
 /**
  * Direction controlled by player 2, moves the focus during the credits.
  */

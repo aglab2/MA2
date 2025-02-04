@@ -95,13 +95,6 @@ struct Object *gMarioObject;
 // struct Object *gLuigiObject;
 
 /**
- * The object whose behavior script is currently being updated.
- * This object is used frequently in object behavior code, and so is often
- * aliased as "o".
- */
-struct Object *gCurrentObject;
-
-/**
  * The next object behavior command to be executed.
  */
 const BehaviorScript *gCurBhvCommand;
@@ -216,10 +209,6 @@ static const struct ParticleProperties sParticleTypes[] = {
  */
 static void copy_mario_state_to_object(void) {
     s32 i = 0;
-    // L is real
-    if (gCurrentObject != gMarioObject) {
-        i++;
-    }
 
     gCurrentObject->oVelX = gMarioStates[i].vel[0];
     gCurrentObject->oVelY = gMarioStates[i].vel[1];
@@ -300,9 +289,11 @@ static s32 update_objects_starting_at(struct ObjectNode *objList, struct ObjectN
     s32 count = 0;
 
     while (objList != firstObj) {
-        gCurrentObject = (struct Object *) firstObj;
+        struct Object** currentObject = (struct Object **) &gCurrentObject;
+        struct Object* obj = (struct Object *) firstObj;
+        *currentObject = obj;
 
-        gCurrentObject->header.gfx.node.flags |= GRAPH_RENDER_HAS_ANIMATION;
+        obj->header.gfx.node.flags |= GRAPH_RENDER_HAS_ANIMATION;
         cur_obj_update();
 
         firstObj = firstObj->next;
@@ -326,22 +317,24 @@ static s32 update_objects_during_time_stop(struct ObjectNode *objList, struct Ob
     s32 unfrozen;
 
     while (objList != firstObj) {
-        gCurrentObject = (struct Object *) firstObj;
+        struct Object** currentObject = (struct Object **) &gCurrentObject;
+        struct Object* obj = (struct Object *) firstObj;
+        *currentObject = obj;
 
         unfrozen = FALSE;
 
         // Selectively unfreeze certain objects
         if (!(gTimeStopState & TIME_STOP_ALL_OBJECTS)) {
-            if (gCurrentObject == gMarioObject && !(gTimeStopState & TIME_STOP_MARIO_AND_DOORS)) {
+            if (obj == gMarioObject && !(gTimeStopState & TIME_STOP_MARIO_AND_DOORS)) {
                 unfrozen = TRUE;
             }
 
-            if ((gCurrentObject->oInteractType & (INTERACT_DOOR | INTERACT_WARP_DOOR))
+            if ((obj->oInteractType & (INTERACT_DOOR | INTERACT_WARP_DOOR))
                 && !(gTimeStopState & TIME_STOP_MARIO_AND_DOORS)) {
                 unfrozen = TRUE;
             }
 
-            if (gCurrentObject->activeFlags
+            if (obj->activeFlags
                 & (ACTIVE_FLAG_UNIMPORTANT | ACTIVE_FLAG_INITIATED_TIME_STOP)) {
                 unfrozen = TRUE;
             }
@@ -349,10 +342,10 @@ static s32 update_objects_during_time_stop(struct ObjectNode *objList, struct Ob
 
         // Only update if unfrozen
         if (unfrozen) {
-            gCurrentObject->header.gfx.node.flags |= GRAPH_RENDER_HAS_ANIMATION;
+            obj->header.gfx.node.flags |= GRAPH_RENDER_HAS_ANIMATION;
             cur_obj_update();
         } else {
-            gCurrentObject->header.gfx.node.flags &= ~GRAPH_RENDER_HAS_ANIMATION;
+            obj->header.gfx.node.flags &= ~GRAPH_RENDER_HAS_ANIMATION;
         }
 
         firstObj = firstObj->next;
@@ -386,18 +379,20 @@ static s32 unload_deactivated_objects_in_list(struct ObjectNode *objList) {
     struct ObjectNode *obj = objList->next;
 
     while (objList != obj) {
-        gCurrentObject = (struct Object *) obj;
+        struct Object** currentObject = (struct Object **) &gCurrentObject;
+        struct Object* anObject = (struct Object *) obj;
+        *currentObject = anObject;
 
         obj = obj->next;
 
-        if ((gCurrentObject->activeFlags & ACTIVE_FLAG_ACTIVE) != ACTIVE_FLAG_ACTIVE) {
+        if ((anObject->activeFlags & ACTIVE_FLAG_ACTIVE) != ACTIVE_FLAG_ACTIVE) {
             // Prevent object from respawning after exiting and re-entering the
             // area
-            if (!(gCurrentObject->oFlags & OBJ_FLAG_PERSISTENT_RESPAWN)) {
-                set_object_respawn_info_bits(gCurrentObject, RESPAWN_INFO_DONT_RESPAWN);
+            if (!(anObject->oFlags & OBJ_FLAG_PERSISTENT_RESPAWN)) {
+                set_object_respawn_info_bits(anObject, RESPAWN_INFO_DONT_RESPAWN);
             }
 
-            unload_object(gCurrentObject);
+            unload_object(anObject);
         }
     }
 
