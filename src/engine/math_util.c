@@ -171,7 +171,8 @@ UNUSED void mtxf_rotate_xyz_and_translate(Mat4 dest, Vec3f trans, Vec3s rot) {
 }
 
 /// Build a matrix that rotates around the z axis, then the x axis, then the y axis, and then translates and multiplies.
-void mtxf_rotate_zxy_and_translate_and_mul(Vec3s rot, Mat4 dest, Mat4 src, f32 trans0, f32 trans1, f32 trans2) {
+void mtxf_rotate_zxy_and_translate_and_mul(s16 rot0, s16 rot1, s16 rot2, Mat4 dest, Mat4 src, f32 trans0, f32 trans1, f32 trans2) {
+    Vec3s rot = { rot0, rot1, rot2 };
     Vec3f trans = { trans0, trans1, trans2 };
     PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);
     f32 sx = sins(rot[0]);
