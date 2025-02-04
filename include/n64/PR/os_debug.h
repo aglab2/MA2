@@ -30,7 +30,6 @@
 #ifndef _OS_DEBUG_H_
 #define	_OS_DEBUG_H_
 
-
 #ifdef _LANGUAGE_C_PLUS_PLUS
 extern "C" {
 #endif
@@ -94,8 +93,8 @@ typedef struct {
 
 /* Profiler Interface */
 
-extern void		osProfileInit(OSProf *profp, u32 profcnt);
-extern void		osProfileStart(u32 microseconds);
+extern void		osProfileInit(OSProf *, u32 profcnt);
+extern void		osProfileStart(u32);
 extern void		osProfileFlush(void);
 extern void		osProfileStop(void);
 

@@ -53,14 +53,14 @@ extern "C" {
 typedef struct {
 	u16     type;                   /* Controller Type */
 	u8      status;                 /* Controller status */
-	u8	error;
+	u8	errno;
 }OSContStatus;
 
 typedef struct {
 	u16     button;
 	s8      stick_x;		/* -80 <= stick_x <= 80 */
 	s8      stick_y;		/* -80 <= stick_y <= 80 */
-	u8      error;
+	u8	errno;
 } OSContPad;
 
 // Custom extended controller pad struct that contains fields for gamecube controllers
@@ -78,9 +78,9 @@ typedef struct {
 typedef struct {
 	void    *address;               /* Ram pad Address:  11 bits */
 	u8      databuffer[32];         /* address of the data buffer */
-    u8      addressCrc;             /* CRC code for address */
+        u8      addressCrc;             /* CRC code for address */
 	u8      dataCrc;                /* CRC code for data */
-	u8      error;
+	u8	errno;
 } OSContRamIo;
 
 
@@ -105,6 +105,7 @@ typedef struct {
 /* controller errors */
 #define CONT_NO_RESPONSE_ERROR          0x8
 #define CONT_OVERRUN_ERROR              0x4
+#define CONT_RANGE_ERROR               -1
 #ifdef _HW_VERSION_1
 #define CONT_FRAME_ERROR                0x2
 #define CONT_COLLISION_ERROR            0x1
@@ -224,17 +225,15 @@ typedef struct {
 
 /* Controller interface */
 
-extern s32		osContInit(         OSMesgQueue *mq, u8 *bitpattern, OSContStatus *status);
-extern s32		osContReset(        OSMesgQueue *mq,                 OSContStatus *status);
-extern s32		osContStartQuery(   OSMesgQueue *mq);
-extern s32		osContStartReadData(OSMesgQueue *mq);
-extern s32		osContStartReadDataEx(OSMesgQueue *mq);
+extern s32		osContInit(OSMesgQueue *, u8 *, OSContStatus *);
+extern s32		osContReset(OSMesgQueue *, OSContStatus *);
+extern s32		osContStartQuery(OSMesgQueue *);
+extern s32		osContStartReadData(OSMesgQueue *);
 #ifndef _HW_VERSION_1
-extern s32		osContSetCh(u8 ch);
+extern s32		osContSetCh(u8);
 #endif
-extern void		osContGetQuery(OSContStatus *status);
-extern void		osContGetReadData(OSContPad *pad);
-extern void		osContGetReadDataEx(OSContPadEx *pad);
+extern void		osContGetQuery(OSContStatus *);
+extern void		osContGetReadData(OSContPad *);
 
 
 #endif  /* defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS) */

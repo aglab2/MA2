@@ -183,7 +183,8 @@ SECTIONS
 #ifdef LIBPL
       BUILD_DIR/lib/libpl*.o(.text*);
 #endif
-      *ULTRALIB.a:*.o(.text*);
+//      *ULTRALIB.a:*.o(.text*);
+      BUILD_DIR/src/ultra*.o(.text*);
       */libnustd.a:*.o(.text*);
       *libgcc.a:*.o(.text*);
       */libz.a:*.o(.text*);
@@ -205,7 +206,8 @@ SECTIONS
 #ifdef LIBPL
       BUILD_DIR/lib/libpl*.o(.data*);
 #endif
-      *ULTRALIB.a:*.o(.data*);
+//      *ULTRALIB.a:*.o(.data*);
+      BUILD_DIR/src/ultra*.o(.data*);
       */libhvqm2.a:*.o(.data*);
       */libz.a:*.o(.data*);
 #include "rspdata.inc.ld"
@@ -223,7 +225,8 @@ SECTIONS
 #ifdef LIBPL
       BUILD_DIR/lib/libpl*.o(.rodata*);
 #endif
-      *ULTRALIB.a:*.o(.rodata*);
+//      *ULTRALIB.a:*.o(.rodata*);
+      BUILD_DIR/src/ultra*.o(.rodata*);
       *libgcc.a:*.o(.rodata*);
       */libz.a:*.o(.rodata*);
 
@@ -242,9 +245,10 @@ SECTIONS
 #ifdef LIBPL
       BUILD_DIR/lib/libpl*.o(.bss*);
 #endif
-      *ULTRALIB.a:*.o(COMMON);
-      *ULTRALIB.a:*.o(.scommon);
-      *ULTRALIB.a:*.o(.bss*);
+//      *ULTRALIB.a:*.o(COMMON);
+//      *ULTRALIB.a:*.o(.scommon);
+//      *ULTRALIB.a:*.o(.bss*);
+      BUILD_DIR/src/ultra*.o(.bss*);
       */libhvqm2.a:*.o(.bss*);
       */libz.a:*.o(.bss*);
       . = ALIGN(0x8);

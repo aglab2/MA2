@@ -24,6 +24,7 @@
 #include <PR/mbi.h>
 #include <PR/ultratypes.h>
 #include <PR/sptask.h>
+#include <PR/os_version.h>
 
 #ifndef MAX
 #define MAX(a,b) (((a)>(b))?(a):(b))
@@ -192,10 +193,6 @@ extern float cosf(float angle);
 extern signed short sins (unsigned short angle);
 extern signed short coss (unsigned short angle);
 #define sqrtf __builtin_sqrtf
-// extern float sqrtf(float value);
-#ifdef __sgi
-#pragma intrinsic(sqrtf);
-#endif
 
 /*
  *  Dump routines for low-level display lists

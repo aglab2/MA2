@@ -35,6 +35,7 @@ extern "C" {
 #endif
 
 #include <PR/ultratypes.h>
+#include <PR/os_version.h>
 
 #if defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS)
 
@@ -126,6 +127,10 @@ extern void __osInitialize_emu(void);
 
 #endif  /* _FINAL_ROM */
 
+#if BUILD_VERSION < VERSION_K
+#undef osInitialize
+#endif
+
 /**************************************************************************
  *
  * Extern variables
@@ -142,8 +147,8 @@ extern void __osInitialize_emu(void);
 /* Game <> Host data transfer functions */
 
 extern s32		osTestHost(void);
-extern void		osReadHost( void *vAddr, u32 nbytes);
-extern void		osWriteHost(void *vAddr, u32 nbytes);
+extern void		osReadHost(void *, u32);
+extern void		osWriteHost(void *, u32);
 extern void		osAckRamromRead(void);
 extern void		osAckRamromWrite(void);
 

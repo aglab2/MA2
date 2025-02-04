@@ -80,11 +80,16 @@ extern "C" {
 
 /* byte string operations */
 
-#ifdef TARGET_N64
-	extern void     bcopy(const void *, void *, int);
-	extern int      bcmp(const void *, const void *, int);
-	extern void     bzero(void *, int);
+#ifndef MODERN_CC
+extern void     bcopy(const void *, void *, int);
+extern int      bcmp(const void *, const void *, int);
+extern void     bzero(void *, int);
+#else
+extern void     bcopy(const void *, void *, size_t);
+extern int      bcmp(const void *, const void *, size_t);
+extern void     bzero(void *, size_t);
 #endif
+
 /* Printf */
 
 extern int		sprintf(char *s, const char *fmt, ...);
