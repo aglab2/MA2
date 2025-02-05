@@ -12,9 +12,12 @@
 #include "make_const_nonconst.h"
 
 #include "levels/aq/header.h"
-
-
+#if 0
 #include "levels/aq/geo.inc.c"
+#else
+#include "levels/aq/visual/geo_lvl.inc.c"
+#endif
+
 #include "levels/aq/aq_milkin_door/geo.inc.c"
 #include "levels/aq/aq_drmcn/geo.inc.c"
 #include "levels/aq/aq_drmcn_break/geo.inc.c"

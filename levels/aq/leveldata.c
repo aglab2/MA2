@@ -7,8 +7,14 @@
 
 #include "make_const_nonconst.h"
 
-
+#if 0
 #include "levels/aq/leveldata.inc.c"
+#else
+#include "levels/aq/visual/header_lvl.inc.h"
+#include "levels/aq/area_1/spline.inc.c"
+#include "levels/aq/visual/model_lvl.inc.c"
+#endif
+
 #include "levels/aq/aq_milkin_door/model.inc.c"
 #include "levels/aq/aq_drmcn/model.inc.c"
 #include "levels/aq/aq_drmcn_break/model.inc.c"

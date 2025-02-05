@@ -164,30 +164,21 @@ GCC_MAIN_OPT_FLAGS = \
 
 # Surface Collision
 GCC_COLLISION_OPT_FLAGS = \
-  -Ofast -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division $(SAFETY_OPT_FLAGS) \
-  --param case-values-threshold=20 \
-  --param max-completely-peeled-insns=100 \
-  --param max-unrolled-insns=100 \
-  -finline-limit=0 \
-  -fno-inline \
+  -Os -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division $(GCC_MAIN_OPT_FLAGS) \
   -freorder-blocks-algorithm=simple  \
   -ffunction-sections \
   -fdata-sections \
   -falign-functions=32
 
 AUDIO_COLLISION_OPT_FLAGS = \
-  -Os -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division $(SAFETY_OPT_FLAGS) \
-  -fno-inline \
+  -Os -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division $(GCC_MAIN_OPT_FLAGS) \
   -freorder-blocks-algorithm=simple  \
   -ffunction-sections \
   -fdata-sections
 
 # Math Util
 GCC_MATH_UTIL_OPT_FLAGS = \
-  -Ofast -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division $(SAFETY_OPT_FLAGS) \
-  -fno-unroll-loops \
-  -fno-peel-loops \
-  --param case-values-threshold=20  \
+  -Os -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division $(GCC_MAIN_OPT_FLAGS) \
   -ffunction-sections \
   -fdata-sections \
   -falign-functions=32
@@ -196,7 +187,7 @@ GCC_MATH_UTIL_OPT_FLAGS = \
 
 # Rendering graph node
 GCC_GRAPH_NODE_OPT_FLAGS = \
-  -Ofast -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division $(SAFETY_OPT_FLAGS) \
+  -Os -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division $(GCC_MAIN_OPT_FLAGS) \
   --param case-values-threshold=20 \
   --param max-completely-peeled-insns=100 \
   --param max-unrolled-insns=100 \
