@@ -36,4 +36,8 @@ extern const LevelScript level_aq_entry[];
 
 #include "levels/aq/aq_water/geo_header.h"
 
+#if 0
+#include "levels/aq/header.inc.h"
+#endif
+
 #endif

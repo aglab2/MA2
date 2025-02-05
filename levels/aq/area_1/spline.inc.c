@@ -5,3 +5,4 @@ const Trajectory aq_area_1_spline_NurbsCurve_Spring[] = {
 	TRAJECTORY_POS( 3, -38, 3145, -629),
 	TRAJECTORY_END(),
 };
+ 
