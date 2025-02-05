@@ -360,6 +360,18 @@ struct Surface {
     /*0x2C*/ struct Object *object;
 };
 
+struct MiniSurface {
+    TerrainData type;
+    TerrainData force;
+    s8 flags;
+    RoomData room;
+    u16 off1;
+    u16 off2;
+    u16 off3;
+    s16* vertices;
+    struct Object *object;
+};
+
 #define PUNCH_STATE_TIMER_MASK          0b00111111
 #define PUNCH_STATE_TYPES_MASK          0b11000000
 

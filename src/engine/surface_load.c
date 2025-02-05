@@ -28,21 +28,21 @@ struct CellCoords {
     u8 x;
     u8 partition;
 };
-struct CellCoords sCellsUsed[NUM_CELLS];
-u16 sNumCellsUsed;
-u8 sClearAllCells;
+static struct CellCoords sCellsUsed[NUM_CELLS];
+static u16 sNumCellsUsed;
+static u8 sClearAllCells;
 
 /**
  * Pools of data that can contain either surface nodes or surfaces.
  * The static surface pool is resized to be exactly the amount of memory needed for the level geometry.
  * The dynamic surface pool is set at a fixed length and cleared every frame.
  */
-void *gDynamicSurfacePool;
+static void *gDynamicSurfacePool;
 
 /**
  * The end of the data currently allocated to the surface pools.
  */
-void *gDynamicSurfacePoolEnd;
+static void *gDynamicSurfacePoolEnd;
 
 /**
  * The amount of data currently allocated to static surfaces.
@@ -150,7 +150,7 @@ static void add_surface_to_cell(s32 dynamic, s32 cellX, s32 cellZ, struct Surfac
 
     // Check if surface should be placed at the beginning of the list.
     priority = curNode->surface->upperY * sortDir;
-    if (surfacePriority > priority) {
+    if (dynamic || surfacePriority > priority) {
         *list = newNode;
         newNode->next = curNode;
         return;
@@ -216,7 +216,7 @@ static s32 upper_cell_index(s32 coord) {
  * @param surface The surface to check
  * @param dynamic Boolean determining whether the surface is static or dynamic
  */
-static void add_surface(struct Surface *surface, s32 dynamic) {
+static ALWAYS_INLINE void add_surface(struct Surface *surface, s32 dynamic) {
     s32 cellZ, cellX;
     s32 minX, maxX, minZ, maxZ;
 
@@ -241,7 +241,7 @@ static void add_surface(struct Surface *surface, s32 dynamic) {
  * @param vertexIndices Helper which tells positions in vertexData to start reading vertices
  * @param dynamic If the surface belongs to an object or not
  */
-static struct Surface *read_surface_data(TerrainData *vertexData, TerrainData **vertexIndices, u32 dynamic) {
+static ALWAYS_INLINE struct Surface *read_surface_data(TerrainData *vertexData, TerrainData **vertexIndices, u32 dynamic) {
     Vec3t v[3];
     Vec3f n;
     Vec3t offset;
@@ -335,7 +335,7 @@ static s32 surf_has_no_cam_collision(s32 surfaceType) {
  * Load in the surfaces for a given surface type. This includes setting the flags,
  * exertion, and room.
  */
-static void load_static_surfaces(TerrainData **data, TerrainData *vertexData, s32 surfaceType, RoomData **surfaceRooms) {
+static ALWAYS_INLINE void load_static_surfaces(TerrainData **data, TerrainData *vertexData, s32 surfaceType, RoomData **surfaceRooms) {
     s32 i;
     struct Surface *surface;
     RoomData room = 0;
@@ -581,7 +581,7 @@ static void transform_object_vertices(TerrainData **data, TerrainData *vertexDat
 /**
  * Load in the surfaces for the o. This includes setting the flags, exertion, and room.
  */
-void load_object_surfaces(TerrainData **data, TerrainData *vertexData, u32 dynamic) {
+static ALWAYS_INLINE void load_object_surfaces(TerrainData **data, TerrainData *vertexData, u32 dynamic) {
     s32 i;
 
     s32 surfaceType = *(*data)++;
