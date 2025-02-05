@@ -23,12 +23,7 @@
  */
 SpatialPartitionCell gStaticSurfacePartition[NUM_CELLS][NUM_CELLS];
 SpatialPartitionCell gDynamicSurfacePartition[NUM_CELLS][NUM_CELLS];
-struct CellCoords {
-    u8 z;
-    u8 x;
-    u8 partition;
-};
-static struct CellCoords sCellsUsed[NUM_CELLS];
+u16 sCellsUsedOffsets[NUM_CELLS];
 static u16 sNumCellsUsed;
 static u8 sClearAllCells;
 
@@ -127,13 +122,11 @@ static void add_surface_to_cell(s32 dynamic, s32 cellX, s32 cellZ, struct Surfac
 
     if (dynamic) {
         list = &gDynamicSurfacePartition[cellZ][cellX][listIndex];
-        if (sNumCellsUsed >= sizeof(sCellsUsed) / sizeof(struct CellCoords)) {
+        if (sNumCellsUsed >= sizeof(sCellsUsedOffsets) / sizeof(*sCellsUsedOffsets)) {
             sClearAllCells = TRUE;
         } else {
             if (*list == NULL) {
-                sCellsUsed[sNumCellsUsed].z = cellZ;
-                sCellsUsed[sNumCellsUsed].x = cellX;
-                sCellsUsed[sNumCellsUsed].partition = listIndex;
+                sCellsUsedOffsets[sNumCellsUsed] = list - &gDynamicSurfacePartition[0][0][0];
                 sNumCellsUsed++;
             }
         }
@@ -486,7 +479,6 @@ void load_area_terrain(TerrainData *data, RoomData *surfaceRooms) {
     gEnvironmentRegions = NULL;
     gSurfaceNodesAllocated = 0;
     gSurfacesAllocated = 0;
-    bzero(&sCellsUsed, sizeof(sCellsUsed));
     sNumCellsUsed = 0;
     sClearAllCells = TRUE;
 
@@ -535,8 +527,9 @@ void clear_dynamic_surfaces(void) {
         if (sClearAllCells) {
             bzero(gDynamicSurfacePartition, sizeof(gDynamicSurfacePartition));
         } else {
+            struct SurfaceNode **list = &gDynamicSurfacePartition[0][0][0];
             for (u32 i = 0; i < sNumCellsUsed; i++) {
-                gDynamicSurfacePartition[sCellsUsed[i].z][sCellsUsed[i].x][sCellsUsed[i].partition] = NULL;
+                list[sCellsUsedOffsets[i]] = NULL;
             }
         }
         sNumCellsUsed = 0;
