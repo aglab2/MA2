@@ -1,5 +1,4 @@
-Gfx aq_ukiasiba_pum128_10_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 aq_ukiasiba_pum128_10_ci4[] = {
+ALIGNED8 u8 aq_ukiasiba_pum128_10_ci4[] = {
 	0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x10, 0x00, 
 	0x00, 0x02, 0x30, 0x00, 0x00, 0x00, 0x00, 0x00, 
 	0x00, 0x00, 0x33, 0x00, 0x30, 0x00, 0x00, 0x00, 
@@ -259,8 +258,7 @@ u8 aq_ukiasiba_pum128_10_ci4[] = {
 	
 };
 
-Gfx aq_ukiasiba_pum128_10_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 aq_ukiasiba_pum128_10_pal_rgba16[] = {
+ALIGNED8 u8 aq_ukiasiba_pum128_10_pal_rgba16[] = {
 	0xe6, 0xb3, 0xed, 0xe3, 0x8c, 0x5d, 0xa4, 0x1b, 
 	0x83, 0x11, 0xb4, 0x17, 0x73, 0x13, 0x62, 0x0d, 
 	0x52, 0x4d, 0x31, 0x49, 0x39, 0x49, 0x49, 0x47, 
@@ -268,8 +266,7 @@ u8 aq_ukiasiba_pum128_10_pal_rgba16[] = {
 	
 };
 
-Gfx aq_ukiasiba_pum64_4_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 aq_ukiasiba_pum64_4_ci4[] = {
+ALIGNED8 u8 aq_ukiasiba_pum64_4_ci4[] = {
 	0x01, 0x12, 0x33, 0x44, 0x11, 0x15, 0x67, 0x73, 
 	0x34, 0x44, 0x44, 0x38, 0x42, 0x99, 0x88, 0x48, 
 	0x3a, 0xa7, 0x45, 0x44, 0x55, 0x54, 0x00, 0x55, 
@@ -529,8 +526,7 @@ u8 aq_ukiasiba_pum64_4_ci4[] = {
 	
 };
 
-Gfx aq_ukiasiba_pum64_4_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 aq_ukiasiba_pum64_4_pal_rgba16[] = {
+ALIGNED8 u8 aq_ukiasiba_pum64_4_pal_rgba16[] = {
 	0x81, 0x43, 0xaa, 0xcf, 0xc3, 0x53, 0xcb, 0x51, 
 	0xb2, 0x8b, 0x9a, 0x09, 0x79, 0x89, 0x92, 0x4d, 
 	0xe4, 0x13, 0xdc, 0x19, 0xb2, 0x8f, 0xb2, 0x89, 
@@ -538,8 +534,7 @@ u8 aq_ukiasiba_pum64_4_pal_rgba16[] = {
 	
 };
 
-Gfx aq_ukiasiba_pum128_22_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 aq_ukiasiba_pum128_22_ci4[] = {
+ALIGNED8 u8 aq_ukiasiba_pum128_22_ci4[] = {
 	0x01, 0x23, 0x44, 0x51, 0x55, 0x55, 0x26, 0x75, 
 	0x25, 0x55, 0x55, 0x25, 0x55, 0x44, 0x44, 0x54, 
 	0x45, 0x54, 0x55, 0x52, 0x22, 0x12, 0x52, 0x52, 
@@ -799,8 +794,7 @@ u8 aq_ukiasiba_pum128_22_ci4[] = {
 	
 };
 
-Gfx aq_ukiasiba_pum128_22_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 aq_ukiasiba_pum128_22_pal_rgba16[] = {
+ALIGNED8 u8 aq_ukiasiba_pum128_22_pal_rgba16[] = {
 	0x8c, 0x63, 0x52, 0x4f, 0x6b, 0x55, 0x8c, 0x1d, 
 	0xd6, 0x6b, 0x94, 0x5b, 0x31, 0x89, 0x4a, 0x51, 
 	0x63, 0x17, 0x00, 0x01, 0x31, 0x8b, 0x63, 0x1b, 
@@ -827,15 +821,6 @@ Vtx aq_ukiasiba_aq_ukiasiba_mesh_layer_1_vtx_0[16] = {
 	{{ {250, -80, -250}, 0, {6152, 2032}, {104, 154, 173, 255} }},
 };
 
-Gfx aq_ukiasiba_aq_ukiasiba_mesh_layer_1_tri_0[] = {
-	gsSPVertex(aq_ukiasiba_aq_ukiasiba_mesh_layer_1_vtx_0 + 0, 16, 0),
-	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 9, 8, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 13, 12, 15, 0),
-	gsSPEndDisplayList(),
-};
-
 Vtx aq_ukiasiba_aq_ukiasiba_mesh_layer_1_vtx_1[8] = {
 	{{ {-250, -80, -250}, 0, {-16, 2032}, {101, 149, 167, 255} }},
 	{{ {250, -80, 250}, 0, {10264, -8240}, {77, 106, 118, 255} }},
@@ -845,13 +830,6 @@ Vtx aq_ukiasiba_aq_ukiasiba_mesh_layer_1_vtx_1[8] = {
 	{{ {-212, 80, 212}, 0, {88, -8136}, {111, 151, 157, 255} }},
 	{{ {212, 80, 212}, 0, {10160, -8136}, {133, 127, 68, 255} }},
 	{{ {-212, 80, -212}, 0, {88, 1928}, {147, 142, 147, 255} }},
-};
-
-Gfx aq_ukiasiba_aq_ukiasiba_mesh_layer_1_tri_1[] = {
-	gsSPVertex(aq_ukiasiba_aq_ukiasiba_mesh_layer_1_vtx_1 + 0, 8, 0),
-	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
-	gsSPEndDisplayList(),
 };
 
 Vtx aq_ukiasiba_aq_ukiasiba_mesh_layer_1_vtx_2[16] = {
@@ -873,22 +851,12 @@ Vtx aq_ukiasiba_aq_ukiasiba_mesh_layer_1_vtx_2[16] = {
 	{{ {-250, 80, -250}, 0, {7429, 2032}, {131, 87, 45, 255} }},
 };
 
-Gfx aq_ukiasiba_aq_ukiasiba_mesh_layer_1_tri_2[] = {
-	gsSPVertex(aq_ukiasiba_aq_ukiasiba_mesh_layer_1_vtx_2 + 0, 16, 0),
-	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 9, 8, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 13, 12, 15, 0),
-	gsSPEndDisplayList(),
-};
 
-
-Gfx mat_aq_ukiasiba_UKIASIBA_sa2bmdl_0_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
-	gsDPPipeSync(),
+Gfx aq_ukiasiba_aq_ukiasiba_mesh_layer_1[] = {
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, aq_ukiasiba_pum128_10_pal_rgba16),
 	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
@@ -898,82 +866,34 @@ Gfx mat_aq_ukiasiba_UKIASIBA_sa2bmdl_0_f3d[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_aq_ukiasiba_UKIASIBA_sa2bmdl_0_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsSPVertex(aq_ukiasiba_aq_ukiasiba_mesh_layer_1_vtx_0 + 0, 16, 0),
+	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
+	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
+	gsSP2Triangles(8, 9, 10, 0, 9, 8, 11, 0),
+	gsSP2Triangles(12, 13, 14, 0, 13, 12, 15, 0),
 	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_aq_ukiasiba_UKIASIBA_sa2bmdl_1_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, aq_ukiasiba_pum64_4_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, aq_ukiasiba_pum64_4_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_aq_ukiasiba_UKIASIBA_sa2bmdl_1_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsSPVertex(aq_ukiasiba_aq_ukiasiba_mesh_layer_1_vtx_1 + 0, 8, 0),
+	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
+	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
 	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_aq_ukiasiba_UKIASIBA_sa2bmdl_2_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, aq_ukiasiba_pum128_22_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, aq_ukiasiba_pum128_22_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_aq_ukiasiba_UKIASIBA_sa2bmdl_2_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsSPVertex(aq_ukiasiba_aq_ukiasiba_mesh_layer_1_vtx_2 + 0, 16, 0),
+	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
+	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
+	gsSP2Triangles(8, 9, 10, 0, 9, 8, 11, 0),
+	gsSP2Triangles(12, 13, 14, 0, 13, 12, 15, 0),
 	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx aq_ukiasiba_aq_ukiasiba_mesh_layer_1[] = {
-	gsSPDisplayList(mat_aq_ukiasiba_UKIASIBA_sa2bmdl_0_f3d),
-	gsSPDisplayList(aq_ukiasiba_aq_ukiasiba_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_aq_ukiasiba_UKIASIBA_sa2bmdl_0_f3d),
-	gsSPDisplayList(mat_aq_ukiasiba_UKIASIBA_sa2bmdl_1_f3d),
-	gsSPDisplayList(aq_ukiasiba_aq_ukiasiba_mesh_layer_1_tri_1),
-	gsSPDisplayList(mat_revert_aq_ukiasiba_UKIASIBA_sa2bmdl_1_f3d),
-	gsSPDisplayList(mat_aq_ukiasiba_UKIASIBA_sa2bmdl_2_f3d),
-	gsSPDisplayList(aq_ukiasiba_aq_ukiasiba_mesh_layer_1_tri_2),
-	gsSPDisplayList(mat_revert_aq_ukiasiba_UKIASIBA_sa2bmdl_2_f3d),
-	gsDPPipeSync(),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPClearGeometryMode(G_TEXTURE_GEN),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 0),
 	gsDPSetEnvColor(255, 255, 255, 255),

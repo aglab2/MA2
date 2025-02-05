@@ -1,5 +1,4 @@
-Gfx aq_water_tx_minemizu001_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 aq_water_tx_minemizu001_ci4[] = {
+ALIGNED8 u8 aq_water_tx_minemizu001_ci4[] = {
 	0x00, 0x11, 0x11, 0x22, 0x22, 0x30, 0x44, 0x44, 
 	0x44, 0x56, 0x66, 0x50, 0x05, 0x66, 0x77, 0x88, 
 	0x88, 0x77, 0x83, 0x55, 0x33, 0x35, 0x35, 0x55, 
@@ -259,8 +258,7 @@ u8 aq_water_tx_minemizu001_ci4[] = {
 	
 };
 
-Gfx aq_water_tx_minemizu001_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 aq_water_tx_minemizu001_pal_rgba16[] = {
+ALIGNED8 u8 aq_water_tx_minemizu001_pal_rgba16[] = {
 	0x2b, 0xa3, 0x2b, 0x1f, 0x1b, 0x1f, 0x23, 0x21, 
 	0x23, 0xa5, 0x23, 0x63, 0x23, 0x61, 0x22, 0xdf, 
 	0x1a, 0xdd, 0x34, 0x67, 0x34, 0x25, 0x22, 0xdd, 
@@ -278,42 +276,58 @@ Vtx aq_water_aq_water_mesh_layer_5_vtx_cull[8] = {
 	{{ {4744, 0, -8141}, 0, {0, 0}, {0, 0, 0, 0} }},
 };
 
-Vtx aq_water_aq_water_mesh_layer_5_vtx_0[13] = {
-	{{ {-7240, 0, -3275}, 0, {11227, 243}, {0, 127, 0, 255} }},
+Vtx aq_water_aq_water_mesh_layer_5_vtx_0[37] = {
 	{{ {-7240, 0, 6399}, 0, {4383, -13736}, {0, 127, 0, 255} }},
 	{{ {-5136, 0, 6399}, 0, {1344, -12248}, {0, 127, 0, 255} }},
+	{{ {-5198, 0, 4566}, 0, {2729, -9643}, {0, 127, 0, 255} }},
+	{{ {-7240, 0, 4931}, 0, {5422, -11614}, {0, 127, 0, 255} }},
+	{{ {-7240, 0, 1618}, 0, {7765, -6828}, {0, 127, 0, 255} }},
 	{{ {-5228, 0, 3660}, 0, {3414, -8356}, {0, 127, 0, 255} }},
+	{{ {-5228, 0, 3285}, 0, {3679, -7812}, {0, 127, 0, 255} }},
 	{{ {-5223, 0, 410}, 0, {5706, -3655}, {0, 127, 0, 255} }},
+	{{ {-7240, 0, -1380}, 0, {9887, -2495}, {0, 127, 0, 255} }},
+	{{ {-7240, 0, -3275}, 0, {11227, 243}, {0, 127, 0, 255} }},
+	{{ {-6014, 0, -3328}, 0, {9493, 1187}, {0, 127, 0, 255} }},
+	{{ {-3923, 0, -1192}, 0, {4961, -420}, {0, 127, 0, 255} }},
 	{{ {-3512, 0, 338}, 0, {3284, -2340}, {0, 127, 0, 255} }},
-	{{ {941, 0, -3628}, 0, {-345, 6542}, {0, 127, 0, 255} }},
-	{{ {-228, 0, 3660}, 0, {-3812, -4818}, {0, 127, 0, 255} }},
+	{{ {-1033, 0, 1760}, 0, {-1304, -2642}, {0, 127, 0, 255} }},
 	{{ {-3512, 0, 3660}, 0, {933, -7141}, {0, 127, 0, 255} }},
-	{{ {4744, 0, 6399}, 0, {-12933, -5257}, {0, 127, 0, 255} }},
+	{{ {-228, 0, 3660}, 0, {-3812, -4818}, {0, 127, 0, 255} }},
+	{{ {394, 0, 3218}, 0, {-4397, -3738}, {0, 127, 0, 255} }},
+	{{ {2281, 0, 5145}, 0, {-8487, -5189}, {0, 127, 0, 255} }},
+	{{ {450, 0, 6399}, 0, {-6728, -8296}, {0, 127, 0, 255} }},
 	{{ {-404, 0, 6399}, 0, {-5495, -8899}, {0, 127, 0, 255} }},
+	{{ {3508, 0, 6399}, 0, {-11147, -6132}, {0, 127, 0, 255} }},
+	{{ {4744, 0, 3293}, 0, {-10736, -770}, {0, 127, 0, 255} }},
+	{{ {4744, 0, 6399}, 0, {-12933, -5257}, {0, 127, 0, 255} }},
+	{{ {4744, 0, 2156}, 0, {-9932, 873}, {0, 127, 0, 255} }},
+	{{ {3279, 0, 937}, 0, {-6953, 1599}, {0, 127, 0, 255} }},
+	{{ {4744, 0, -27}, 0, {-8387, 4028}, {0, 127, 0, 255} }},
+	{{ {1702, 0, -376}, 0, {-3745, 2379}, {0, 127, 0, 255} }},
+	{{ {3193, 0, -1567}, 0, {-5056, 5155}, {0, 127, 0, 255} }},
+	{{ {4744, 0, -2807}, 0, {-6421, 8044}, {0, 127, 0, 255} }},
+	{{ {941, 0, -3628}, 0, {-345, 6542}, {0, 127, 0, 255} }},
+	{{ {1080, 0, -4769}, 0, {262, 8288}, {0, 127, 0, 255} }},
+	{{ {2706, 0, -6348}, 0, {-971, 11721}, {0, 127, 0, 255} }},
+	{{ {4744, 0, -6587}, 0, {-3747, 13506}, {0, 127, 0, 255} }},
 	{{ {4744, 0, -8141}, 0, {-2647, 15752}, {0, 127, 0, 255} }},
+	{{ {1251, 0, -6178}, 0, {1012, 10445}, {0, 127, 0, 255} }},
 	{{ {1489, 0, -8141}, 0, {2056, 13449}, {0, 127, 0, 255} }},
-};
-
-Gfx aq_water_aq_water_mesh_layer_5_tri_0[] = {
-	gsSPVertex(aq_water_aq_water_mesh_layer_5_vtx_0 + 0, 13, 0),
-	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
-	gsSP2Triangles(0, 3, 4, 0, 0, 4, 5, 0),
-	gsSP2Triangles(6, 0, 5, 0, 6, 5, 7, 0),
-	gsSP2Triangles(5, 8, 7, 0, 7, 9, 6, 0),
-	gsSP2Triangles(7, 10, 9, 0, 9, 11, 6, 0),
-	gsSP1Triangle(11, 12, 6, 0),
-	gsSPEndDisplayList(),
+	{{ {-2051, 0, -3499}, 0, {3888, 4238}, {0, 127, 0, 255} }},
 };
 
 
-Gfx mat_aq_water_f3dlite_material_001[] = {
-	gsSPGeometryMode(G_CULL_BACK, 0),
+Gfx aq_water_aq_water_mesh_layer_5[] = {
+	gsSPClearGeometryMode(G_LIGHTING),
+	gsSPVertex(aq_water_aq_water_mesh_layer_5_vtx_cull + 0, 8, 0),
+	gsSPSetGeometryMode(G_LIGHTING),
+	gsSPCullDisplayList(0, 7),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
 	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
 	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
-	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 171),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, aq_water_tx_minemizu001_pal_rgba16),
@@ -324,28 +338,31 @@ Gfx mat_aq_water_f3dlite_material_001[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_aq_water_f3dlite_material_001[] = {
-	gsSPGeometryMode(0, G_CULL_BACK),
+	gsSPVertex(aq_water_aq_water_mesh_layer_5_vtx_0 + 0, 37, 0),
+	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
+	gsSP2Triangles(4, 3, 2, 0, 2, 5, 4, 0),
+	gsSP2Triangles(5, 6, 4, 0, 4, 6, 7, 0),
+	gsSP2Triangles(4, 7, 8, 0, 9, 8, 7, 0),
+	gsSP2Triangles(7, 10, 9, 0, 7, 11, 10, 0),
+	gsSP2Triangles(11, 7, 12, 0, 11, 12, 13, 0),
+	gsSP2Triangles(12, 14, 13, 0, 13, 14, 15, 0),
+	gsSP2Triangles(13, 15, 16, 0, 17, 16, 15, 0),
+	gsSP2Triangles(15, 18, 17, 0, 15, 19, 18, 0),
+	gsSP2Triangles(17, 18, 20, 0, 21, 17, 20, 0),
+	gsSP2Triangles(21, 20, 22, 0, 16, 17, 21, 0),
+	gsSP2Triangles(16, 21, 23, 0, 23, 24, 16, 0),
+	gsSP2Triangles(25, 24, 23, 0, 25, 26, 24, 0),
+	gsSP2Triangles(25, 27, 26, 0, 28, 27, 25, 0),
+	gsSP2Triangles(29, 27, 28, 0, 29, 28, 30, 0),
+	gsSP2Triangles(31, 30, 28, 0, 31, 28, 32, 0),
+	gsSP2Triangles(33, 31, 32, 0, 34, 31, 33, 0),
+	gsSP2Triangles(34, 33, 35, 0, 30, 31, 34, 0),
+	gsSP2Triangles(36, 27, 29, 0, 36, 26, 27, 0),
+	gsSP2Triangles(36, 13, 26, 0, 36, 11, 13, 0),
+	gsSP2Triangles(10, 11, 36, 0, 26, 13, 16, 0),
+	gsSP1Triangle(26, 16, 24, 0),
 	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx aq_water_aq_water_mesh_layer_5[] = {
-	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(aq_water_aq_water_mesh_layer_5_vtx_cull + 0, 8, 0),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPCullDisplayList(0, 7),
-	gsSPDisplayList(mat_aq_water_f3dlite_material_001),
-	gsSPDisplayList(aq_water_aq_water_mesh_layer_5_tri_0),
-	gsSPDisplayList(mat_revert_aq_water_f3dlite_material_001),
-	gsDPPipeSync(),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPClearGeometryMode(G_TEXTURE_GEN),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 0),
 	gsDPSetEnvColor(255, 255, 255, 255),

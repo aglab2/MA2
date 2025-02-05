@@ -1,5 +1,4 @@
-Gfx aq_milkin_door_miu128_mi001_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 aq_milkin_door_miu128_mi001_ci4[] = {
+ALIGNED8 u8 aq_milkin_door_miu128_mi001_ci4[] = {
 	0x00, 0x12, 0x02, 0x32, 0x40, 0x50, 0x45, 0x66, 
 	0x77, 0x89, 0x28, 0x22, 0x81, 0x11, 0x2a, 0xa3, 
 	0x8b, 0x84, 0x8b, 0xa3, 0x4c, 0x78, 0xd1, 0x82, 
@@ -259,8 +258,7 @@ u8 aq_milkin_door_miu128_mi001_ci4[] = {
 	
 };
 
-Gfx aq_milkin_door_miu128_mi001_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 aq_milkin_door_miu128_mi001_pal_rgba16[] = {
+ALIGNED8 u8 aq_milkin_door_miu128_mi001_pal_rgba16[] = {
 	0xa2, 0x0b, 0x6a, 0x0b, 0xbb, 0x93, 0xf5, 0xa1, 
 	0xd3, 0x11, 0xb9, 0x87, 0x48, 0xc3, 0xea, 0x4b, 
 	0xdc, 0x9b, 0xea, 0xcf, 0xab, 0x97, 0xf6, 0xeb, 
@@ -275,19 +273,12 @@ Vtx aq_milkin_door_aq_milkin_door_mesh_layer_1_vtx_0[4] = {
 	{{ {-132, 0, 0}, 0, {900, 651}, {94, 110, 110, 255} }},
 };
 
-Gfx aq_milkin_door_aq_milkin_door_mesh_layer_1_tri_0[] = {
-	gsSPVertex(aq_milkin_door_aq_milkin_door_mesh_layer_1_vtx_0 + 0, 4, 0),
-	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
-	gsSPEndDisplayList(),
-};
 
-
-Gfx mat_aq_milkin_door_MIKILN_sa2bmdl_0_001_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
-	gsDPPipeSync(),
+Gfx aq_milkin_door_aq_milkin_door_mesh_layer_1[] = {
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, aq_milkin_door_miu128_mi001_pal_rgba16),
 	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
@@ -297,24 +288,11 @@ Gfx mat_aq_milkin_door_MIKILN_sa2bmdl_0_001_f3d[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_MIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 508, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_aq_milkin_door_MIKILN_sa2bmdl_0_001_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsSPVertex(aq_milkin_door_aq_milkin_door_mesh_layer_1_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
 	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx aq_milkin_door_aq_milkin_door_mesh_layer_1[] = {
-	gsSPDisplayList(mat_aq_milkin_door_MIKILN_sa2bmdl_0_001_f3d),
-	gsSPDisplayList(aq_milkin_door_aq_milkin_door_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_aq_milkin_door_MIKILN_sa2bmdl_0_001_f3d),
-	gsDPPipeSync(),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPClearGeometryMode(G_TEXTURE_GEN),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 0),
 	gsDPSetEnvColor(255, 255, 255, 255),

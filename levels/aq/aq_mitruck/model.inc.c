@@ -1,5 +1,4 @@
-Gfx aq_mitruck_miu128_mi006_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 aq_mitruck_miu128_mi006_ci4[] = {
+ALIGNED8 u8 aq_mitruck_miu128_mi006_ci4[] = {
 	0x01, 0x23, 0x45, 0x67, 0x36, 0x68, 0x68, 0x86, 
 	0x82, 0x88, 0x28, 0x82, 0x28, 0x22, 0x22, 0x55, 
 	0x45, 0x44, 0x44, 0x59, 0x99, 0x94, 0x11, 0x14, 
@@ -259,8 +258,7 @@ u8 aq_mitruck_miu128_mi006_ci4[] = {
 	
 };
 
-Gfx aq_mitruck_miu128_mi006_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 aq_mitruck_miu128_mi006_pal_rgba16[] = {
+ALIGNED8 u8 aq_mitruck_miu128_mi006_pal_rgba16[] = {
 	0xd6, 0x2d, 0xb4, 0xe5, 0x82, 0xcf, 0x9b, 0xd9, 
 	0x93, 0xdd, 0x73, 0x15, 0x7a, 0xd3, 0x5a, 0x0d, 
 	0x6a, 0x09, 0x4a, 0x0f, 0x39, 0x49, 0x49, 0x47, 
@@ -268,8 +266,7 @@ u8 aq_mitruck_miu128_mi006_pal_rgba16[] = {
 	
 };
 
-Gfx aq_mitruck_miu64_mi006_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 aq_mitruck_miu64_mi006_ci4[] = {
+ALIGNED8 u8 aq_mitruck_miu64_mi006_ci4[] = {
 	0x00, 0x11, 0x12, 0x11, 0x11, 0x12, 0x34, 0x00, 
 	0x22, 0x22, 0x22, 0x22, 0x55, 0x55, 0x00, 0x00, 
 	0x66, 0x66, 0x66, 0x66, 0x66, 0x66, 0x67, 0x66, 
@@ -529,8 +526,7 @@ u8 aq_mitruck_miu64_mi006_ci4[] = {
 	
 };
 
-Gfx aq_mitruck_miu64_mi006_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 aq_mitruck_miu64_mi006_pal_rgba16[] = {
+ALIGNED8 u8 aq_mitruck_miu64_mi006_pal_rgba16[] = {
 	0x73, 0x9b, 0xbd, 0xf1, 0x9c, 0xa5, 0x20, 0xc5, 
 	0x5a, 0xd5, 0x94, 0x9b, 0x73, 0x97, 0x62, 0xd1, 
 	0x42, 0x0f, 0x00, 0x01, 0x52, 0x4d, 0x31, 0x49, 
@@ -538,8 +534,7 @@ u8 aq_mitruck_miu64_mi006_pal_rgba16[] = {
 	
 };
 
-Gfx aq_mitruck_pum32_1_ci8_aligner[] = {gsSPEndDisplayList()};
-u8 aq_mitruck_pum32_1_ci8[] = {
+ALIGNED8 u8 aq_mitruck_pum32_1_ci8[] = {
 	0x00, 0x00, 0x01, 0x01, 0x02, 0x03, 0x00, 0x04, 
 	0x05, 0x06, 0x07, 0x06, 0x06, 0x06, 0x06, 0x08, 
 	0x03, 0x08, 0x06, 0x06, 0x06, 0x08, 0x08, 0x08, 
@@ -671,8 +666,7 @@ u8 aq_mitruck_pum32_1_ci8[] = {
 	
 };
 
-Gfx aq_mitruck_pum32_1_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 aq_mitruck_pum32_1_pal_rgba16[] = {
+ALIGNED8 u8 aq_mitruck_pum32_1_pal_rgba16[] = {
 	0x94, 0x65, 0xad, 0x6d, 0xbd, 0xaf, 0xa4, 0xe9, 
 	0x7b, 0x9f, 0x41, 0xd1, 0x62, 0xd9, 0x8c, 0x23, 
 	0x83, 0xe1, 0x73, 0x9f, 0x52, 0x97, 0x4a, 0x55, 
@@ -713,8 +707,7 @@ u8 aq_mitruck_pum32_1_pal_rgba16[] = {
 	0x50, 0xc5, 0x20, 0x43, 
 };
 
-Gfx aq_mitruck_miu64_loco005_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 aq_mitruck_miu64_loco005_ci4[] = {
+ALIGNED8 u8 aq_mitruck_miu64_loco005_ci4[] = {
 	0x01, 0x21, 0x34, 0x55, 0x05, 0x53, 0x65, 0x77, 
 	0x89, 0x8a, 0x94, 0x49, 0x9a, 0x00, 0xbb, 0x9c, 
 	0xdd, 0xd4, 0x4d, 0xde, 0x9f, 0xef, 0xf9, 0xf9, 
@@ -974,8 +967,7 @@ u8 aq_mitruck_miu64_loco005_ci4[] = {
 	
 };
 
-Gfx aq_mitruck_miu64_loco005_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 aq_mitruck_miu64_loco005_pal_rgba16[] = {
+ALIGNED8 u8 aq_mitruck_miu64_loco005_pal_rgba16[] = {
 	0x29, 0x07, 0x4a, 0x0d, 0xb5, 0x1f, 0x39, 0xcd, 
 	0x5a, 0x8f, 0x7b, 0x57, 0x00, 0x01, 0x31, 0x49, 
 	0x31, 0x07, 0x41, 0x89, 0x5a, 0x8d, 0x93, 0x51, 
@@ -1010,30 +1002,11 @@ Vtx aq_mitruck_aq_mitruck_mesh_layer_1_vtx_0[24] = {
 	{{ {-118, 189, 93}, 0, {289, 2032}, {102, 107, 132, 255} }},
 };
 
-Gfx aq_mitruck_aq_mitruck_mesh_layer_1_tri_0[] = {
-	gsSPVertex(aq_mitruck_aq_mitruck_mesh_layer_1_vtx_0 + 0, 24, 0),
-	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
-	gsSP2Triangles(3, 2, 4, 0, 3, 4, 5, 0),
-	gsSP2Triangles(6, 7, 8, 0, 6, 8, 9, 0),
-	gsSP2Triangles(9, 8, 10, 0, 9, 10, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 12, 14, 15, 0),
-	gsSP2Triangles(15, 14, 16, 0, 15, 16, 17, 0),
-	gsSP2Triangles(18, 19, 20, 0, 18, 20, 21, 0),
-	gsSP2Triangles(21, 20, 22, 0, 21, 22, 23, 0),
-	gsSPEndDisplayList(),
-};
-
 Vtx aq_mitruck_aq_mitruck_mesh_layer_1_vtx_1[4] = {
 	{{ {176, 141, -93}, 0, {-16, -2072}, {177, 162, 115, 255} }},
 	{{ {-118, 189, 93}, 0, {8208, 2032}, {132, 121, 90, 255} }},
 	{{ {176, 141, 93}, 0, {-16, 2032}, {141, 130, 95, 255} }},
 	{{ {-118, 189, -93}, 0, {8208, -2072}, {156, 143, 103, 255} }},
-};
-
-Gfx aq_mitruck_aq_mitruck_mesh_layer_1_tri_1[] = {
-	gsSPVertex(aq_mitruck_aq_mitruck_mesh_layer_1_vtx_1 + 0, 4, 0),
-	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
-	gsSPEndDisplayList(),
 };
 
 Vtx aq_mitruck_aq_mitruck_mesh_layer_1_vtx_2[55] = {
@@ -1092,29 +1065,6 @@ Vtx aq_mitruck_aq_mitruck_mesh_layer_1_vtx_2[55] = {
 	{{ {117, 154, 42}, 0, {2028, 667}, {136, 143, 180, 255} }},
 	{{ {111, 180, 90}, 0, {3068, 1008}, {151, 161, 203, 255} }},
 	{{ {120, 173, 92}, 0, {3068, 667}, {151, 160, 202, 255} }},
-};
-
-Gfx aq_mitruck_aq_mitruck_mesh_layer_1_tri_2[] = {
-	gsSPVertex(aq_mitruck_aq_mitruck_mesh_layer_1_vtx_2 + 0, 32, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
-	gsSP2Triangles(3, 4, 1, 0, 5, 4, 3, 0),
-	gsSP2Triangles(5, 6, 4, 0, 6, 5, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 11, 9, 8, 0),
-	gsSP2Triangles(11, 12, 9, 0, 12, 11, 13, 0),
-	gsSP2Triangles(14, 15, 16, 0, 17, 15, 14, 0),
-	gsSP2Triangles(17, 18, 15, 0, 18, 17, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 23, 21, 20, 0),
-	gsSP2Triangles(23, 24, 21, 0, 24, 23, 25, 0),
-	gsSP2Triangles(13, 26, 27, 0, 26, 13, 28, 0),
-	gsSP2Triangles(29, 30, 31, 0, 30, 29, 14, 0),
-	gsSPVertex(aq_mitruck_aq_mitruck_mesh_layer_1_vtx_2 + 32, 23, 0),
-	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 9, 8, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 13, 12, 15, 0),
-	gsSP2Triangles(16, 17, 18, 0, 17, 16, 19, 0),
-	gsSP2Triangles(20, 21, 17, 0, 21, 20, 22, 0),
-	gsSPEndDisplayList(),
 };
 
 Vtx aq_mitruck_aq_mitruck_mesh_layer_1_vtx_3[64] = {
@@ -1184,8 +1134,74 @@ Vtx aq_mitruck_aq_mitruck_mesh_layer_1_vtx_3[64] = {
 	{{ {91, 155, -6}, 0, {-16, 2032}, {146, 155, 195, 255} }},
 };
 
-Gfx aq_mitruck_aq_mitruck_mesh_layer_1_tri_3[] = {
-	gsSPVertex(aq_mitruck_aq_mitruck_mesh_layer_1_vtx_3 + 0, 32, 0),
+
+Gfx aq_mitruck_aq_mitruck_mesh_layer_1[] = {
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
+	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, aq_mitruck_miu128_mi006_pal_rgba16),
+	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, aq_mitruck_miu128_mi006_ci4),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_MIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 508, 252),
+	gsSPVertex(aq_mitruck_aq_mitruck_mesh_layer_1_vtx_0 + 0, 24, 0),
+	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
+	gsSP2Triangles(3, 2, 4, 0, 3, 4, 5, 0),
+	gsSP2Triangles(6, 7, 8, 0, 6, 8, 9, 0),
+	gsSP2Triangles(9, 8, 10, 0, 9, 10, 11, 0),
+	gsSP2Triangles(12, 13, 14, 0, 12, 14, 15, 0),
+	gsSP2Triangles(15, 14, 16, 0, 15, 16, 17, 0),
+	gsSP2Triangles(18, 19, 20, 0, 18, 20, 21, 0),
+	gsSP2Triangles(21, 20, 22, 0, 21, 22, 23, 0),
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, aq_mitruck_miu64_mi006_pal_rgba16),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, aq_mitruck_miu64_mi006_ci4),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_MIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsSPVertex(aq_mitruck_aq_mitruck_mesh_layer_1_vtx_1 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, aq_mitruck_pum32_1_pal_rgba16),
+	gsDPLoadTLUTCmd(5, 149),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_8b_LOAD_BLOCK, 1, aq_mitruck_pum32_1_ci8),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_8b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 511, 512),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_8b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 5, 0),
+	gsDPSetTileSize(0, 0, 0, 124, 124),
+	gsSPVertex(aq_mitruck_aq_mitruck_mesh_layer_1_vtx_2 + 0, 55, 0),
+	gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
+	gsSP2Triangles(3, 4, 1, 0, 5, 4, 3, 0),
+	gsSP2Triangles(5, 6, 4, 0, 6, 5, 7, 0),
+	gsSP2Triangles(8, 9, 10, 0, 11, 9, 8, 0),
+	gsSP2Triangles(11, 12, 9, 0, 12, 11, 13, 0),
+	gsSP2Triangles(14, 15, 16, 0, 17, 15, 14, 0),
+	gsSP2Triangles(17, 18, 15, 0, 18, 17, 19, 0),
+	gsSP2Triangles(20, 21, 22, 0, 23, 21, 20, 0),
+	gsSP2Triangles(23, 24, 21, 0, 24, 23, 25, 0),
+	gsSP2Triangles(13, 26, 27, 0, 26, 13, 28, 0),
+	gsSP2Triangles(29, 30, 31, 0, 30, 29, 14, 0),
+	gsSP2Triangles(32, 33, 34, 0, 33, 32, 35, 0),
+	gsSP2Triangles(36, 37, 38, 0, 37, 36, 39, 0),
+	gsSP2Triangles(40, 41, 42, 0, 41, 40, 43, 0),
+	gsSP2Triangles(44, 45, 46, 0, 45, 44, 47, 0),
+	gsSP2Triangles(48, 49, 50, 0, 49, 48, 51, 0),
+	gsSP2Triangles(52, 53, 49, 0, 53, 52, 54, 0),
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, aq_mitruck_miu64_loco005_pal_rgba16),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, aq_mitruck_miu64_loco005_ci4),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsSPVertex(aq_mitruck_aq_mitruck_mesh_layer_1_vtx_3 + 0, 56, 0),
 	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
 	gsSP2Triangles(6, 1, 7, 0, 8, 2, 9, 0),
 	gsSP2Triangles(8, 9, 10, 0, 10, 9, 6, 0),
@@ -1196,139 +1212,18 @@ Gfx aq_mitruck_aq_mitruck_mesh_layer_1_tri_3[] = {
 	gsSP2Triangles(4, 22, 23, 0, 22, 4, 0, 0),
 	gsSP2Triangles(24, 25, 26, 0, 25, 24, 27, 0),
 	gsSP2Triangles(28, 29, 30, 0, 29, 28, 31, 0),
-	gsSPVertex(aq_mitruck_aq_mitruck_mesh_layer_1_vtx_3 + 32, 32, 0),
+	gsSP2Triangles(32, 33, 34, 0, 33, 32, 35, 0),
+	gsSP2Triangles(36, 37, 38, 0, 37, 36, 39, 0),
+	gsSP2Triangles(40, 41, 42, 0, 41, 40, 43, 0),
+	gsSP2Triangles(44, 45, 46, 0, 45, 44, 47, 0),
+	gsSP2Triangles(48, 49, 50, 0, 49, 48, 51, 0),
+	gsSP2Triangles(52, 53, 54, 0, 53, 52, 55, 0),
+	gsSPVertex(aq_mitruck_aq_mitruck_mesh_layer_1_vtx_3 + 56, 8, 0),
 	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
 	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 9, 8, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 13, 12, 15, 0),
-	gsSP2Triangles(16, 17, 18, 0, 17, 16, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 21, 20, 23, 0),
-	gsSP2Triangles(24, 25, 26, 0, 25, 24, 27, 0),
-	gsSP2Triangles(28, 29, 30, 0, 29, 28, 31, 0),
-	gsSPEndDisplayList(),
-};
-
-
-Gfx mat_aq_mitruck_MITRUCK_sa2bmdl_0_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, aq_mitruck_miu128_mi006_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 15),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, aq_mitruck_miu128_mi006_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_MIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 508, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_aq_mitruck_MITRUCK_sa2bmdl_0_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_aq_mitruck_MITRUCK_sa2bmdl_1_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, aq_mitruck_miu64_mi006_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 15),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, aq_mitruck_miu64_mi006_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_MIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_aq_mitruck_MITRUCK_sa2bmdl_1_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_aq_mitruck_MITRUCK_sa2bmdl_2_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, aq_mitruck_pum32_1_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 149),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_8b_LOAD_BLOCK, 1, aq_mitruck_pum32_1_ci8),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_8b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 511, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_8b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 5, 0),
-	gsDPSetTileSize(0, 0, 0, 124, 124),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_aq_mitruck_MITRUCK_sa2bmdl_2_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_aq_mitruck_MITRUCK_sa2bmdl_3_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, aq_mitruck_miu64_loco005_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 15),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, aq_mitruck_miu64_loco005_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_aq_mitruck_MITRUCK_sa2bmdl_3_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx aq_mitruck_aq_mitruck_mesh_layer_1[] = {
-	gsSPDisplayList(mat_aq_mitruck_MITRUCK_sa2bmdl_0_f3d),
-	gsSPDisplayList(aq_mitruck_aq_mitruck_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_aq_mitruck_MITRUCK_sa2bmdl_0_f3d),
-	gsSPDisplayList(mat_aq_mitruck_MITRUCK_sa2bmdl_1_f3d),
-	gsSPDisplayList(aq_mitruck_aq_mitruck_mesh_layer_1_tri_1),
-	gsSPDisplayList(mat_revert_aq_mitruck_MITRUCK_sa2bmdl_1_f3d),
-	gsSPDisplayList(mat_aq_mitruck_MITRUCK_sa2bmdl_2_f3d),
-	gsSPDisplayList(aq_mitruck_aq_mitruck_mesh_layer_1_tri_2),
-	gsSPDisplayList(mat_revert_aq_mitruck_MITRUCK_sa2bmdl_2_f3d),
-	gsSPDisplayList(mat_aq_mitruck_MITRUCK_sa2bmdl_3_f3d),
-	gsSPDisplayList(aq_mitruck_aq_mitruck_mesh_layer_1_tri_3),
-	gsSPDisplayList(mat_revert_aq_mitruck_MITRUCK_sa2bmdl_3_f3d),
-	gsDPPipeSync(),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPClearGeometryMode(G_TEXTURE_GEN),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 0),
 	gsDPSetEnvColor(255, 255, 255, 255),
