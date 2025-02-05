@@ -24,7 +24,7 @@
 SpatialPartitionCell gStaticSurfacePartition[NUM_CELLS][NUM_CELLS];
 SpatialPartitionCell gDynamicSurfacePartition[NUM_CELLS][NUM_CELLS];
 u16 sCellsUsedOffsets[NUM_CELLS];
-static u16 sNumCellsUsed;
+static u8 sNumCellsUsed;
 static u8 sClearAllCells;
 
 /**
