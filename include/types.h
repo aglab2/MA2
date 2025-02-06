@@ -476,6 +476,7 @@ struct MarioState {
     // -- HackerSM64 MarioState fields end --
     u8 extraGravityEnabled;
     u32 forwardVelOverrideDeadline;
+    f32 waterBottomHeight;
 };
 
 #endif // TYPES_H

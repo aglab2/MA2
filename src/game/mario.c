@@ -33,6 +33,7 @@
 #include "sound_init.h"
 #include "rumble_init.h"
 
+s8 gCheckingWaterForMario = FALSE;
 
 /**************************************************
  *                    ANIMATIONS                  *

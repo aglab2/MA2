@@ -545,6 +545,7 @@ ALWAYS_INLINE static s32 check_within_bounds_y_norm(s32 x, s32 z, struct Surface
 /**
  * Iterate through the list of water floors and find the first water floor under a given point.
  */
+extern s8 gCheckingWaterForMario;
 static struct Surface *find_water_floor_from_list(struct SurfaceNode *surfaceNode, s32 x, s32 y, s32 z, f32 *pheight) {
     register struct Surface *surf;
     struct Surface *floor = NULL;
@@ -553,6 +554,7 @@ static struct Surface *find_water_floor_from_list(struct SurfaceNode *surfaceNod
     f32 height = FLOOR_LOWER_LIMIT;
     f32 curHeight = FLOOR_LOWER_LIMIT;
     f32 bottomHeight = FLOOR_LOWER_LIMIT;
+    f32 topBottomHeight = FLOOR_LOWER_LIMIT;
     f32 curBottomHeight = FLOOR_LOWER_LIMIT;
     f32 buffer = FIND_FLOOR_BUFFER;
 
@@ -570,6 +572,9 @@ static struct Surface *find_water_floor_from_list(struct SurfaceNode *surfaceNod
         curBottomHeight = get_surface_height_at_location(x, z, surf);
 
         if (curBottomHeight < y + buffer) {
+            if (curBottomHeight > topBottomHeight) {
+                topBottomHeight = curBottomHeight;
+            }
             continue;
         } else {
             bottomHeight = curBottomHeight;
@@ -596,6 +601,10 @@ static struct Surface *find_water_floor_from_list(struct SurfaceNode *surfaceNod
             *pheight = curHeight;
             floor = surf;
         }
+    }
+
+    if (gCheckingWaterForMario) {
+        gMarioState->waterBottomHeight = bottomHeight;
     }
 
     return floor;
