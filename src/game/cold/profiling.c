@@ -339,4 +339,42 @@ void profiler_frame_setup() {
     prev_time = cur_start = osGetCount();
 }
 
+#else
+static int profile_buffer_index = -1;
+static u32 prev_start;
+static u32 cur_start;
+static ProfileTimeData profiling_data_fps;
+
+static void buffer_update(ProfileTimeData* data, u32 new, int buffer_index) {
+    u32 old = data->counts[buffer_index];
+    data->total -= old;
+    data->total += new;
+    data->counts[buffer_index] = new;
+}
+
+static void update_fps_timer() {
+    u32 diff = cur_start - prev_start;
+
+    buffer_update(&profiling_data_fps, diff, profile_buffer_index);
+    prev_start = cur_start;
+}
+
+float profiler_get_fps() {
+    return (1000000.0f * PROFILING_BUFFER_SIZE) / (OS_CYCLES_TO_USEC(profiling_data_fps.total));
+}
+
+void profiler_print_times() {
+    update_fps_timer();
+}
+
+void profiler_frame_setup() {
+    profile_buffer_index++;
+
+    if (profile_buffer_index >= PROFILING_BUFFER_SIZE) {
+        profile_buffer_index = 0;
+    }
+
+    cur_start = osGetCount();
+}
+
 #endif

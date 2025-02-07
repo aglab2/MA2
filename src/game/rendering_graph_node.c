@@ -1559,7 +1559,7 @@ static int is_far_from_mario(f32 l0, f32 l1, f32 l2)
     f32 dist = d[0]*d[0] + d[1]*d[1] + d[2]*d[2];
 
     f32 range = sViewRange;
-    if (gCurrCourseNum == COURSE_FR)
+    if (gCurrCourseNum == COURSE_FR || gCurrCourseNum == COURSE_CE)
         range *= 3.f;
 
     if (dist > range)

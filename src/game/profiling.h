@@ -82,16 +82,18 @@ enum ProfilerDeltaTime {
 #define PROFILER_DELTA_PUPPYPRINT2 0
 #endif
 
-#ifdef USE_PROFILER
 typedef struct {
     u32 counts[PROFILING_BUFFER_SIZE];
     u32 total;
 } ProfileTimeData;
+
+void profiler_print_times();
+void profiler_frame_setup();
+
+#ifdef USE_PROFILER
 extern ProfileTimeData all_profiling_data[PROFILER_TIME_COUNT] __attribute__((section(".bss")));
 
 void profiler_update(enum ProfilerTime which, u32 delta);
-void profiler_print_times();
-void profiler_frame_setup();
 void profiler_rsp_started(enum ProfilerRSPTime which);
 void profiler_rsp_completed(enum ProfilerRSPTime which);
 void profiler_rsp_resumed();
@@ -120,8 +122,6 @@ static ALWAYS_INLINE void profiler_rsp_yielded() {
 #define PROFILER_GET_SNAPSHOT()
 #define PROFILER_GET_SNAPSHOT_TYPE(type)
 #define profiler_update(which, delta)
-#define profiler_print_times()
-#define profiler_frame_setup()
 #define profiler_rsp_started(which)
 #define profiler_rsp_completed(which)
 #define profiler_rsp_resumed()

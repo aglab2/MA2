@@ -8,29 +8,8 @@
  * hiding him if necessary.
  */
 void bhv_mips_init(void) {
-#ifndef UNLOCK_ALL
-    // AGLAB TODO: investigate this mess
-    // Retrieve star flags for Castle Secret Stars on current save file.
-    u64 starFlags = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(COURSE_NONE));
-
-    // If the player has >= 15 stars and hasn't collected first MIPS star...
-    if (save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1) >= 15
-        && !(starFlags & SAVE_FLAG_TO_STAR_FLAG(SAVE_FLAG_COLLECTED_MIPS_STAR_1))) {
-        o->oBehParams2ndByte    = MIPS_BP_STAR_1;
-        o->oMipsForwardVelocity = 40.0f;
-    }
-    // If the player has >= 50 stars and hasn't collected second MIPS star...
-    else if (save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1) >= 50
-             && !(starFlags & SAVE_FLAG_TO_STAR_FLAG(SAVE_FLAG_COLLECTED_MIPS_STAR_2))) {
-#endif
-        o->oBehParams2ndByte = MIPS_BP_STAR_2;
-        o->oMipsForwardVelocity = 45.0f;
-#ifndef UNLOCK_ALL
-    } else {
-        // No MIPS stars are available, hide MIPS.
-        o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
-    }
-#endif
+    o->oBehParams2ndByte = MIPS_BP_STAR_2;
+    o->oMipsForwardVelocity = 45.0f;
     o->oInteractionSubtype = INT_SUBTYPE_HOLDABLE_NPC;
 
     o->oGravity = 15.0f;
