@@ -32,8 +32,6 @@ extern const LevelScript level_aq_entry[];
 
 #include "levels/aq/aq_milift/geo_header.h"
 
-#include "levels/aq/aq_water/collision_header.h"
-
 #include "levels/aq/aq_water/geo_header.h"
 
 #if 0

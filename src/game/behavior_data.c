@@ -5980,7 +5980,6 @@ extern void bhv_aq_water_loop();
 const BehaviorScript bhvAqWater[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    LOAD_COLLISION_DATA(aq_water_collision),
     CALL_NATIVE(bhv_aq_ctls_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_aq_water_loop),

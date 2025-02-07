@@ -231,7 +231,7 @@ Gfx *create_shadow_below_xyz(Vec3f pos, s16 shadowScale, u8 shadowSolidity, s8 s
 
     // Check for water under the shadow.
     struct Surface *waterFloor = NULL;
-    f32 waterLevel = find_water_level_and_floor(x, y, z, &waterFloor);
+    f32 waterLevel = find_water_level(x, z);
 
     // Whether the floor is an environment box rather than an actual surface.
     s32 isEnvBox = FALSE;

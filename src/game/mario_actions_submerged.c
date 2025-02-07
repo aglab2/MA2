@@ -66,11 +66,7 @@ static s32 swimming_near_surface(struct MarioState *m) {
 }
 
 static s32 swimming_near_bottom_surface(struct MarioState *m) {
-    if (m->flags & MARIO_METAL_CAP) {
-        return FALSE;
-    }
-
-    return (m->waterBottomHeight + 150.0f) > m->pos[1];
+    return FALSE;
 }
 
 static f32 get_buoyancy(struct MarioState *m) {
@@ -212,7 +208,7 @@ static u32 perform_water_step(struct MarioState *m) {
             }
         }
 
-        if (nextPos[1] < m->waterBottomHeight + 25.0f && !canExitWaterWithMomentum) {
+        if (!canExitWaterWithMomentum) {
             nextPos[1] += 3.0f / 4.0f;
             m->vel[1] += 3.0f / 4.0f;
         }

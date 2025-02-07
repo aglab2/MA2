@@ -543,74 +543,6 @@ ALWAYS_INLINE static s32 check_within_bounds_y_norm(s32 x, s32 z, struct Surface
 }
 
 /**
- * Iterate through the list of water floors and find the first water floor under a given point.
- */
-extern s8 gCheckingWaterForMario;
-static struct Surface *find_water_floor_from_list(struct SurfaceNode *surfaceNode, s32 x, s32 y, s32 z, f32 *pheight) {
-    register struct Surface *surf;
-    struct Surface *floor = NULL;
-    struct SurfaceNode *topSurfaceNode = surfaceNode;
-    struct SurfaceNode *bottomSurfaceNode = surfaceNode;
-    f32 height = FLOOR_LOWER_LIMIT;
-    f32 curHeight = FLOOR_LOWER_LIMIT;
-    f32 bottomHeight = FLOOR_LOWER_LIMIT;
-    f32 topBottomHeight = FLOOR_LOWER_LIMIT;
-    f32 curBottomHeight = FLOOR_LOWER_LIMIT;
-    f32 buffer = FIND_FLOOR_BUFFER;
-
-    // Iterate through the list of water floors until there are no more water floors.
-    // SURFACE_NEW_WATER_BOTTOM
-    while (bottomSurfaceNode != NULL) {
-        surf = bottomSurfaceNode->surface;
-        bottomSurfaceNode = bottomSurfaceNode->next;
-
-        // skip wall angled water
-        if (surf->type != SURFACE_NEW_WATER_BOTTOM || absf(surf->normal.y) < NORMAL_FLOOR_THRESHOLD) continue;
-
-        if (!check_within_bounds_y_norm(x, z, surf)) continue;
-
-        curBottomHeight = get_surface_height_at_location(x, z, surf);
-
-        if (curBottomHeight < y + buffer) {
-            if (curBottomHeight > topBottomHeight) {
-                topBottomHeight = curBottomHeight;
-            }
-            continue;
-        } else {
-            bottomHeight = curBottomHeight;
-        }
-    }
-
-    // Iterate through the list of water tops until there are no more water tops.
-    // SURFACE_NEW_WATER
-    while (topSurfaceNode != NULL) {
-        surf = topSurfaceNode->surface;
-        topSurfaceNode = topSurfaceNode->next;
-
-        // skip water tops or wall angled water bottoms
-        if (surf->type == SURFACE_NEW_WATER_BOTTOM || absf(surf->normal.y) < NORMAL_FLOOR_THRESHOLD) continue;
-
-        if (!check_within_bounds_y_norm(x, z, surf)) continue;
-
-        curHeight = get_surface_height_at_location(x, z, surf);
-
-        if (bottomHeight != FLOOR_LOWER_LIMIT && curHeight > bottomHeight) continue;
-
-        if (curHeight > height) {
-            height = curHeight;
-            *pheight = curHeight;
-            floor = surf;
-        }
-    }
-
-    if (gCheckingWaterForMario) {
-        gMarioState->waterBottomHeight = bottomHeight;
-    }
-
-    return floor;
-}
-
-/**
  * Find the height of the highest floor below a point.
  */
 f32 find_floor_height(f32 x, f32 y, f32 z) {
@@ -740,80 +672,9 @@ s32 get_room_at_pos(f32 x, f32 y, f32 z) {
     return -1;
 }
 
-/**
- * Find the highest water floor under a given position and return the height.
- */
-static f32 find_water_floor(s32 xPos, s32 yPos, s32 zPos, struct Surface **pfloor) {
-    f32 height = FLOOR_LOWER_LIMIT;
-
-    s32 x = xPos;
-    s32 y = yPos;
-    s32 z = zPos;
-
-    if (is_outside_level_bounds(x, z)) return height;
-
-    // Each level is split into cells to limit load, find the appropriate cell.
-    s32 cellX = GET_CELL_COORD(x);
-    s32 cellZ = GET_CELL_COORD(z);
-
-    // Check for surfaces that are a part of level geometry.
-    struct SurfaceNode *surfaceList = gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WATER];
-    struct Surface     *floor       = find_water_floor_from_list(surfaceList, x, y, z, &height);
-
-    if (floor == NULL) {
-        height = FLOOR_LOWER_LIMIT;
-    } else {
-        *pfloor = floor;
-    }
-#ifdef VANILLA_DEBUG
-    // Increment the debug tracker.
-    gNumCalls.floor++;
-#endif
-    return height;
-}
-
 /**************************************************
  *               ENVIRONMENTAL BOXES              *
  **************************************************/
-
-/**
- * Finds the height of water at a given location.
- */
-s32 find_water_level_and_floor(s32 x, s32 y, s32 z, struct Surface **pfloor) {
-    s32 val;
-    s32 loX, hiX, loZ, hiZ;
-    TerrainData *p = gEnvironmentRegions;
-    struct Surface *floor = NULL;
-    PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.collision_water);
-    PUPPYPRINT_GET_SNAPSHOT();
-    s32 waterLevel = find_water_floor(x, y, z, &floor);
-
-    if (p != NULL && waterLevel == FLOOR_LOWER_LIMIT) {
-        s32 numRegions = *p++;
-
-        for (s32 i = 0; i < numRegions; i++) {
-            val = *p++;
-            loX = *p++;
-            loZ = *p++;
-            hiX = *p++;
-            hiZ = *p++;
-
-            // If the location is within a water box and it is a water box.
-            // Water is less than 50 val only, while above is gas and such.
-            if (loX < x && x < hiX && loZ < z && z < hiZ && val < 50) {
-                // Set the water height. Since this breaks, only return the first height.
-                waterLevel = *p;
-                break;
-            }
-            p++;
-        }
-    } else {
-        *pfloor = floor;
-    }
-
-    profiler_collision_update(first);
-    return waterLevel;
-}
 
 /**
  * Finds the height of water at a given location.
@@ -822,12 +683,11 @@ s32 find_water_level(s32 x, s32 z) { // TODO: Allow y pos
     s32 val;
     s32 loX, hiX, loZ, hiZ;
     TerrainData *p = gEnvironmentRegions;
-    struct Surface *floor = NULL;
     PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.collision_water);
     PUPPYPRINT_GET_SNAPSHOT();
-    s32 waterLevel = find_water_floor(x, ((gCollisionFlags & COLLISION_FLAG_CAMERA) ? gLakituState.pos[1] : gMarioState->pos[1]), z, &floor);
+    s32 waterLevel = FLOOR_LOWER_LIMIT;
 
-    if ((p != NULL) && (waterLevel == FLOOR_LOWER_LIMIT)) {
+    if (p != NULL) {
         s32 numRegions = *p++;
 
         for (s32 i = 0; i < numRegions; i++) {
