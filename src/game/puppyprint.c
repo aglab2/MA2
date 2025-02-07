@@ -156,7 +156,7 @@ void puppyprint_calculate_ram_usage_static(void) {
 
 void puppyprint_calculate_ram_usage_dynamic(void) {
     ramsizeSegment[RAM_POOLS] = gPoolMem;
-    ramsizeSegment[RAM_COLLISION] = ((u32) gDynamicSurfacePoolEnd - (u32) gDynamicSurfacePool) + gTotalStaticSurfaceData;
+    ramsizeSegment[RAM_COLLISION] = gTotalStaticSurfaceData;
     ramsizeSegment[RAM_MISC] = gMiscMem;
     ramsizeSegment[RAM_AUDIO] = gAudioHeapSize;
 }
@@ -482,7 +482,7 @@ void puppyprint_render_collision(void) {
     sprintf(textBytes, "Static Pool Size: 0x%X\nDynamic Pool Size: 0x%X\nDynamic Pool Used: 0x%X\nSurfaces Allocated: %d\nNodes Allocated: %d", 
     gTotalStaticSurfaceData,
     DYNAMIC_SURFACE_POOL_SIZE,
-    (uintptr_t)gDynamicSurfacePoolEnd - (uintptr_t)gDynamicSurfacePool,
+    0,
     gSurfacesAllocated, gSurfaceNodesAllocated);
     print_small_text_light(SCREEN_WIDTH-16, 60, textBytes, PRINT_TEXT_ALIGN_RIGHT, PRINT_ALL, 1);
 
