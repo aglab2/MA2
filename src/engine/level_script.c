@@ -345,32 +345,6 @@ static void level_cmd_init_level(void) {
     sCurrentCmd = CMD_NEXT;
 }
 
-extern s32 gTlbEntries;
-extern u8  gTlbSegments[NUM_TLB_SEGMENTS];
-
-// This clears all the temporary bank TLB maps. group0, common1 and behavourdata are always loaded,
-// and they're also loaded first, so that means we just leave the first 3 indexes mapped.
-void unmap_tlbs(void) {
-    s32 i;
-    for (i = 0; i < NUM_TLB_SEGMENTS; i++) {
-        if (gTlbSegments[i]) {
-            if (i != SEGMENT_GROUP0_GEO && i != SEGMENT_COMMON1_GEO && i != SEGMENT_BEHAVIOR_DATA) {
-                while (gTlbSegments[i] > 0) {
-                    osUnmapTLB(gTlbEntries);
-                    gTlbSegments[i]--;
-                    gTlbEntries--;
-#ifdef PUPPYPRINT_DEBUG
-                    set_segment_memory_printout(i, 0);
-#endif
-                }
-            } else {
-                gTlbEntries -= gTlbSegments[i];
-                gTlbSegments[i] = 0;
-            }
-        }
-    }
-}
-
 static void level_cmd_clear_level(void) {
     clear_objects();
     clear_area_graph_nodes();
@@ -378,7 +352,6 @@ static void level_cmd_clear_level(void) {
     main_pool_pop_state();
     // the game does a push on level load and a pop on level unload, we need to add another push to store state after the level has been loaded, so one more pop is needed
     main_pool_pop_state();
-    unmap_tlbs();
 
     sCurrentCmd = CMD_NEXT;
 }

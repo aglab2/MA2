@@ -291,28 +291,6 @@ static void *dynamic_dma_read_freeable(int region, u8 *srcStart, u8 *srcEnd, u32
     return dest;
 }
 
-#define TLB_PAGE_SIZE 4096 // Blocksize of TLB transfers. Larger values can be faster to transfer, but more wasteful of RAM.
-s32 gTlbEntries = 0;
-u8 gTlbSegments[NUM_TLB_SEGMENTS] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-
-void mapTLBPages(uintptr_t virtualAddress, uintptr_t physicalAddress, s32 length, s32 segment) {
-    while (length > 0) {
-        if (length > TLB_PAGE_SIZE) {
-            osMapTLB(gTlbEntries++, OS_PM_4K, (void *)virtualAddress, physicalAddress, (physicalAddress + TLB_PAGE_SIZE), -1);
-            virtualAddress  += TLB_PAGE_SIZE;
-            physicalAddress += TLB_PAGE_SIZE;
-            length          -= TLB_PAGE_SIZE;
-            gTlbSegments[segment]++;
-        } else {
-            osMapTLB(gTlbEntries++, OS_PM_4K, (void *)virtualAddress, physicalAddress, -1, -1);
-            gTlbSegments[segment]++;
-        }
-        virtualAddress  += TLB_PAGE_SIZE;
-        physicalAddress += TLB_PAGE_SIZE;
-        length          -= TLB_PAGE_SIZE;
-    }
-}
-
 static int to_region(int segment) {
     if (segment > 0xf)
         return 1;
@@ -332,11 +310,9 @@ void *load_segment(s32 segment, u8 *srcStart, u8 *srcEnd, u8 *bssStart, u8 *bssE
     void *addr;
 
     if ((bssStart != NULL)) {
-        addr = dynamic_dma_read(to_region(segment), srcStart, srcEnd, TLB_PAGE_SIZE, ((uintptr_t)bssEnd - (uintptr_t)bssStart));
+        addr = dynamic_dma_read(to_region(segment), srcStart, srcEnd, 0, ((uintptr_t)bssEnd - (uintptr_t)bssStart));
         if (addr != NULL) {
-            u8 *realAddr = (u8 *)ALIGN(addr, TLB_PAGE_SIZE);
-            set_segment_base_addr(segment, realAddr); sSegmentROMTable[segment] = (uintptr_t) srcStart;
-            mapTLBPages((segment << 24), VIRTUAL_TO_PHYSICAL(realAddr), ((srcEnd - srcStart) + ((uintptr_t)bssEnd - (uintptr_t)bssStart)), segment);
+            set_segment_base_addr(segment, addr); sSegmentROMTable[segment] = (uintptr_t) srcStart;
         }
     } else {
         addr = dynamic_dma_read(to_region(segment), srcStart, srcEnd, 0, 0);
