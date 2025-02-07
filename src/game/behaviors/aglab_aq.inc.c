@@ -1,17 +1,19 @@
-#define oAqLiftSwitches oObjF4
+#define oAqLiftActive oF4
+#define oAqLiftSwitches oObjF8
 
 void bhv_aq_ctls_init()
 {
-    struct Object** objs = &o->oObjF4;
+    struct Object** objs = &o->oAqLiftSwitches;
     for (int i = 0; i < 3; i++)
         objs[i] = cur_obj_find_object_with_behavior_and_bparam3(bhvFloorSwitchGrills, i);
 
     objs[0]->oAction = 1;
+    o->oAqLiftActive = -1;
 }
 
 void bhv_aq_ctls_loop()
 {
-    struct Object** objs = &o->oObjF4;
+    struct Object** objs = &o->oAqLiftSwitches;
     for (int i = 0; i < 3; i++)
     {
         if (1 == objs[i]->oAction)
@@ -27,20 +29,30 @@ void bhv_aq_ctls_loop()
 
 void bhv_aq_lift_loop()
 {
-    struct Object** objs = &o->oObjF4;
+    struct Object** objs = &o->oAqLiftSwitches;
+    int wanted_height = 0;
     if (SWITCH_ACTIVE(0))
     {
         o->oPosY = -224.f;
+        wanted_height = 0;
     }
     if (SWITCH_ACTIVE(1) || SWITCH_ACTIVE(2))
     {
         o->oPosY = -2324.f;
+        wanted_height = 1;
+    }
+
+    if (wanted_height != o->oAqLiftActive)
+    {
+        o->oAqLiftActive = wanted_height;
+        load_area_terrain(gCurrentArea->terrainData, gCurrentArea->surfaceRooms);
+        load_object_static_model();
     }
 }
 
 void bhv_aq_water_loop()
 {
-    struct Object** objs = &o->oObjF4;
+    struct Object** objs = &o->oAqLiftSwitches;
     f32 height = 0.f;
     if (SWITCH_ACTIVE(0))
     {
@@ -52,7 +64,7 @@ void bhv_aq_water_loop()
     }
     if (SWITCH_ACTIVE(2))
     {
-        height = -10000.f;
+        height = -2450.f;
     }
     
     gEnvironmentRegions[12] = gEnvironmentLevels[6] = gEnvironmentRegions[6] = gEnvironmentLevels[0] = o->oPosY = height;
