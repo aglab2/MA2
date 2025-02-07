@@ -591,7 +591,7 @@ void geo_layout_cmd_node_camera(void) {
 
    [cmd+var: void *displayList]
 */
-static void geo_layout_cmd_node_translation_rotation_impl(int style) {
+static void geo_layout_cmd_node_translation_rotation_impl(int style, int devirt) {
     struct GraphNodeTranslationRotation *graphNode;
 
     Vec3s translation, rotation;
@@ -633,7 +633,7 @@ static void geo_layout_cmd_node_translation_rotation_impl(int style) {
         cmdPos += 2 << CMD_SIZE_SHIFT;
     }
 
-    graphNode = init_graph_node_translation_rotation(NULL, drawingLayer, displayList,
+    graphNode = init_graph_node_translation_rotation(NULL, drawingLayer, devirt ? segmented_to_virtual(displayList) : displayList,
                                                      translation, rotation, style);
     register_scene_graph_node(&graphNode->node);
 
@@ -641,19 +641,19 @@ static void geo_layout_cmd_node_translation_rotation_impl(int style) {
 }
 
 void geo_layout_cmd_node_translation_rotation(void) {
-    geo_layout_cmd_node_translation_rotation_impl(GRAPH_NODE_TYPE_TRANSLATION_ROTATION);
+    geo_layout_cmd_node_translation_rotation_impl(GRAPH_NODE_TYPE_TRANSLATION_ROTATION, 0);
 }
 
 void geo_layout_cmd_obj_node_translation_rotation(void) {
-    geo_layout_cmd_node_translation_rotation_impl(GRAPH_NODE_TYPE_OBJ_TRANSLATION_ROTATION);
+    geo_layout_cmd_node_translation_rotation_impl(GRAPH_NODE_TYPE_OBJ_TRANSLATION_ROTATION, 0);
 }
 
 void geo_layout_cmd_break_translation_rotation(void) {
-    geo_layout_cmd_node_translation_rotation_impl(GRAPH_NODE_TYPE_BREAK_TRANSLATION_ROTATION);
+    geo_layout_cmd_node_translation_rotation_impl(GRAPH_NODE_TYPE_BREAK_TRANSLATION_ROTATION, 0);
 }
 
 void geo_layout_cmd_batchset_node_translation_rotation(void) {
-    geo_layout_cmd_node_translation_rotation_impl(GRAPH_NODE_TYPE_BATCHSET_TRANSLATION_ROTATION);
+    geo_layout_cmd_node_translation_rotation_impl(GRAPH_NODE_TYPE_BATCHSET_TRANSLATION_ROTATION, 1);
 }
 
 /*

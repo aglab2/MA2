@@ -28,6 +28,9 @@
 
 #define ENABLE_HEAP_BATCHES 1
 
+static void geo_process_node_and_siblings(struct GraphNode *firstNode);
+static void geo_process_node_and_siblings_quick(struct GraphNode *firstNode);
+
 /**
  * This file contains the code that processes the scene graph for rendering.
  * The scene graph is responsible for drawing everything except the HUD / text boxes.
@@ -1010,7 +1013,7 @@ static void append_lvl_dl_and_return(struct GraphNodeDisplayList *node) {
         geo_lvl_append_display_list(node->displayList, GET_GRAPH_NODE_LAYER(node->node.flags));
     }
     if (node->node.children != NULL) {
-        geo_process_node_and_siblings(node->node.children);
+        geo_process_node_and_siblings_quick(node->node.children);
     }
     gMatStackIndex--;
 }
@@ -1768,7 +1771,7 @@ static const GeoProcessFunc GeoProcessJumpTable[] = {
  * The first argument is the start node, and all its siblings will
  * be iterated over.
  */
-void geo_process_node_and_siblings(struct GraphNode *firstNode) {
+static void geo_process_node_and_siblings(struct GraphNode *firstNode) {
     s32 iterateChildren = TRUE;
     struct GraphNode *curGraphNode = firstNode;
     struct GraphNode *parent = curGraphNode->parent;
@@ -1792,6 +1795,13 @@ void geo_process_node_and_siblings(struct GraphNode *firstNode) {
             }
         }
     } while (iterateChildren && (curGraphNode = curGraphNode->next) != firstNode);
+}
+
+static void geo_process_node_and_siblings_quick(struct GraphNode *firstNode) {
+    struct GraphNode *curGraphNode = firstNode;
+    do {
+        GeoProcessJumpTable[curGraphNode->type](curGraphNode);
+    } while ((curGraphNode = curGraphNode->next) != firstNode);
 }
 
 /**
