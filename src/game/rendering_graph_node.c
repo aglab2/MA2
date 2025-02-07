@@ -992,7 +992,7 @@ struct BatchCmd
 static u32 gPriority;
 static void geo_lvl_append_display_list(void *displayList, s32 layer) {
     struct BatchArray* task = gCurGraphNodeMasterList->layers[layer].course;
-    struct BatchCmd* data = segmented_to_virtual(displayList);
+    struct BatchCmd* data = displayList;
     while (data->idx)
     {
         int batchIdx = -data->idx - 1;
@@ -1583,9 +1583,11 @@ static int is_far_from_mario(f32 l0, f32 l1, f32 l2)
 void geo_process_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation *node) {
     Vec3f translation;
     vec3_diff(translation, node->translation, gCurrentArea->renderOffset);
-    if (is_far_from_mario(translation[0], translation[1], translation[2])) {
+    if (!node->displayListDevirt)
         return;
-    }
+
+    if (is_far_from_mario(translation[0], translation[1], translation[2]))
+        return;
 
     mtxf_rotate_zxy_and_translate_and_mul(node->rotation[0], node->rotation[1], node->rotation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
 
@@ -1597,9 +1599,11 @@ void geo_process_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation
 void geo_process_lvl_translation(struct GraphNodeLvlTranslation *node) {
     Vec3f translation;
     vec3_diff(translation, node->translation, gCurrentArea->renderOffset);
-    if (is_far_from_mario(translation[0], translation[1], translation[2])) {
+    if (!node->displayListDevirt)
         return;
-    }
+
+    if (is_far_from_mario(translation[0], translation[1], translation[2]))
+        return;
 
     mtxf_translate_and_mul(translation[0], translation[1], translation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
 

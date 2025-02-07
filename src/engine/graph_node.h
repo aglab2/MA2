@@ -468,14 +468,14 @@ struct GraphNodeCoin {
 
 struct GraphNodeLvlTranslationRotation {
     /*0x00*/ struct GraphNode node;
-    /*0x14*/ void *displayList;
+    /*0x14*/ void *displayListDevirt;
     /*0x18*/ Vec3f translation;
     /*0x1E*/ Vec3s rotation;
 };
 
 struct GraphNodeLvlTranslation {
     /*0x00*/ struct GraphNode node;
-    /*0x14*/ void *displayList;
+    /*0x14*/ void *displayListDevirt;
     /*0x18*/ Vec3f translation;
 };
 

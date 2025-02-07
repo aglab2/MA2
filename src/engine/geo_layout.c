@@ -666,7 +666,7 @@ void geo_layout_cmd_batchset_node_translation_rotation(void) {
    cmd+0x06: s16 zTranslation
   [cmd+0x08: void *displayList]
 */
-static void geo_layout_cmd_node_translation_impl(int style) {
+static void geo_layout_cmd_node_translation_impl(int style, int devirt) {
     struct GraphNodeTranslation *graphNode;
 
     Vec3s translation;
@@ -685,7 +685,7 @@ static void geo_layout_cmd_node_translation_impl(int style) {
     }
 
     graphNode =
-        init_graph_node_translation(NULL, drawingLayer, displayList, translation, style);
+        init_graph_node_translation(NULL, drawingLayer, devirt ? segmented_to_virtual(displayList) : displayList, translation, style);
 
     register_scene_graph_node(&graphNode->node);
 
@@ -693,19 +693,19 @@ static void geo_layout_cmd_node_translation_impl(int style) {
 }
 
 void geo_layout_cmd_node_translation(void) {
-    geo_layout_cmd_node_translation_impl(GRAPH_NODE_TYPE_TRANSLATION);
+    geo_layout_cmd_node_translation_impl(GRAPH_NODE_TYPE_TRANSLATION, 0);
 }
 
 void geo_layout_cmd_obj_rocket_node_translation(void) {
-    geo_layout_cmd_node_translation_impl(GRAPH_NODE_TYPE_OBJ_ROCKET_TRANSLATION);
+    geo_layout_cmd_node_translation_impl(GRAPH_NODE_TYPE_OBJ_ROCKET_TRANSLATION, 0);
 }
 
 void geo_layout_cmd_obj_node_translation(void) {
-    geo_layout_cmd_node_translation_impl(GRAPH_NODE_TYPE_OBJ_TRANSLATION);
+    geo_layout_cmd_node_translation_impl(GRAPH_NODE_TYPE_OBJ_TRANSLATION, 0);
 }
 
 void geo_layout_cmd_batchset_node_translation(void) {
-    geo_layout_cmd_node_translation_impl(GRAPH_NODE_TYPE_BATCHSET_TRANSLATION);
+    geo_layout_cmd_node_translation_impl(GRAPH_NODE_TYPE_BATCHSET_TRANSLATION, 1);
 }
 
 /*
@@ -840,12 +840,12 @@ void geo_layout_cmd_node_billboard(void) {
    cmd+0x01: u8 drawingLayer
    cmd+0x04: void *displayList
 */
-static void geo_layout_cmd_node_display_list_impl(int style) {
+static void geo_layout_cmd_node_display_list_impl(int style, int devirt) {
     struct GraphNodeDisplayList *graphNode;
     s32 drawingLayer = cur_geo_cmd_u8(0x01);
     void *displayList = cur_geo_cmd_ptr(0x04);
 
-    graphNode = init_graph_node_display_list(NULL, drawingLayer, displayList, style);
+    graphNode = init_graph_node_display_list(NULL, drawingLayer, devirt ? segmented_to_virtual(displayList) : displayList, style);
 
     register_scene_graph_node(&graphNode->node);
 
@@ -853,7 +853,7 @@ static void geo_layout_cmd_node_display_list_impl(int style) {
 }
 
 void geo_layout_cmd_node_display_list(void) {
-    return geo_layout_cmd_node_display_list_impl(GRAPH_NODE_TYPE_DISPLAY_LIST);
+    return geo_layout_cmd_node_display_list_impl(GRAPH_NODE_TYPE_DISPLAY_LIST, 0);
 }
 
 void geo_layout_cmd_node_batch_display_list(void) {
@@ -928,7 +928,7 @@ static void batch_cmd_yield(uint32_t** cmds, uint32_t cmd)
 void geo_layout_cmd_batchset_node(void) {
     s32 drawingLayer = cur_geo_cmd_u8(0x01);
     void *displayList = cur_geo_cmd_ptr(0x04);
-    return geo_layout_cmd_node_display_list_impl(GRAPH_NODE_TYPE_BATCHSET);
+    return geo_layout_cmd_node_display_list_impl(GRAPH_NODE_TYPE_BATCHSET, 1);
 }
 
 /*
