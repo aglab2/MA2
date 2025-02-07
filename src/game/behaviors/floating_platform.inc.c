@@ -1,5 +1,8 @@
 // floating_platform.inc.c
 
+#define oFloatingPlatformYMax OBJECT_FIELD_F32(0x1F)
+#define oFloatingPlatformYMin OBJECT_FIELD_F32(0x1E)
+
 f32 floating_platform_find_home_y(void) {
     struct Surface *floor;
     f32 waterLevel  = find_water_level(o->oPosX, o->oPosZ);
@@ -46,11 +49,24 @@ void floating_platform_act_move_to_home(void) {
     o->oPosY = o->oHomeY - 64.0f - o->oFloatingPlatformMarioWeightWobbleOffset
                + sins(o->oFloatingPlatformWaterSurfaceWobbleOffset * 0x800) * 10.0f;
 
+    if (o->oFloatingPlatformYMax < o->oPosY) {
+        o->oPosY = o->oFloatingPlatformYMax;
+    }
+    if (o->oFloatingPlatformYMin > o->oPosY) {
+        o->oPosY = o->oFloatingPlatformYMin;
+    }
+
     o->oFloatingPlatformWaterSurfaceWobbleOffset++;
 
     if (o->oFloatingPlatformWaterSurfaceWobbleOffset == 32) {
         o->oFloatingPlatformWaterSurfaceWobbleOffset = 0;
     }
+}
+
+void bhv_floating_platform_init(void) {
+    struct Surface *surf;
+    o->oFloatingPlatformYMax = find_ceil (o->oPosX + 200.f, o->oPosY, o->oPosZ + 200.f, &surf);
+    o->oFloatingPlatformYMin = find_floor(o->oPosX + 200.f, o->oPosY, o->oPosZ + 200.f, &surf);
 }
 
 void bhv_floating_platform_loop(void) {

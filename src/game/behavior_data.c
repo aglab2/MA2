@@ -4477,12 +4477,14 @@ const BehaviorScript bhvSnowMoundSpawn[] = {
     END_LOOP(),
 };
 
+extern void bhv_floating_platform_init(void);
 extern const Collision aq_ukiasiba_collision[];
 const BehaviorScript bhvWdwSquareFloatingPlatform[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_COLLISION_DATA(aq_ukiasiba_collision),
     SET_FLOAT(oFloatingPlatformHeightOffset, 64),
+    CALL_NATIVE(bhv_floating_platform_init),
     SET_HOME(),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_floating_platform_loop),
