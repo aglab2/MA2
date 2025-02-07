@@ -1559,8 +1559,15 @@ static int is_far_from_mario(f32 l0, f32 l1, f32 l2)
     f32 dist = d[0]*d[0] + d[1]*d[1] + d[2]*d[2];
 
     f32 range = sViewRange;
-    if (gCurrCourseNum == COURSE_FR || gCurrCourseNum == COURSE_CE)
+    if (gCurrCourseNum == COURSE_FR)
         range *= 3.f;
+    if (gCurrCourseNum == COURSE_CE)
+    {
+        if (gCurrAreaIndex <= 2 || gCurrAreaIndex >= 8)
+            range *= 3.f;
+        if (gCurrAreaIndex == 3 && gMarioStates->pos[1] > 0.f)
+            range *= 3.f;
+    }
 
     if (dist > range)
     {
