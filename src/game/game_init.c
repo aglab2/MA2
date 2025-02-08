@@ -209,23 +209,30 @@ void select_framebuffer(void) {
  * Information about the color argument: https://jrra.zone/n64/doc/n64man/gdp/gDPSetFillColor.htm
  */
 void clear_framebuffer(s32 color) {
-    Gfx *tempGfxHead = gDisplayListHead;
 
-    gDPPipeSync(tempGfxHead++);
-
-    gDPSetRenderMode(tempGfxHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
-    gDPSetCycleType(tempGfxHead++, G_CYC_FILL);
-
-    gDPSetFillColor(tempGfxHead++, color);
-    gDPFillRectangle(tempGfxHead++,
-                     GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), gBorderHeight,
-                     GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - gBorderHeight - 1);
-
-    gDPPipeSync(tempGfxHead++);
-
-    gDPSetCycleType(tempGfxHead++, G_CYC_1CYCLE);
-
-    gDisplayListHead = tempGfxHead;
+    if (0 == color || 1 == color)
+    {
+        gSPMemset(gDisplayListHead++, (u8*) gPhysicalFramebuffers[sRenderingFramebuffer] + gBorderHeight * SCREEN_WIDTH * 2, color, SCREEN_WIDTH * (SCREEN_HEIGHT - 2 * gBorderHeight) * 2);
+    }
+    else
+    {
+        Gfx *tempGfxHead = gDisplayListHead;
+        gDPPipeSync(tempGfxHead++);
+    
+        gDPSetRenderMode(tempGfxHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
+        gDPSetCycleType(tempGfxHead++, G_CYC_FILL);
+    
+        gDPSetFillColor(tempGfxHead++, color);
+        gDPFillRectangle(tempGfxHead++,
+                         GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), gBorderHeight,
+                         GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - gBorderHeight - 1);
+    
+        gDPPipeSync(tempGfxHead++);
+    
+        gDPSetCycleType(tempGfxHead++, G_CYC_1CYCLE);
+    
+        gDisplayListHead = tempGfxHead;
+    }
 }
 
 /**
