@@ -46,3 +46,11 @@ void bhv_push_out_loop()
     obj_set_hitbox(o, &hitbox);
     o->oInteractStatus = 0;
 }
+
+void bhv_flame_init()
+{
+    if (gCurrCourseNum == COURSE_AQ)
+    {
+        obj_scale(o, 2.5f);
+    }
+}

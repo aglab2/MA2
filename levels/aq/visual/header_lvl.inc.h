@@ -3,6 +3,8 @@ extern const GeoLayout aq_area_1[];
 extern const Collision aq_area_1_collision[];
 extern const MacroObject aq_area_1_macro_objs[];
 extern const Trajectory aq_area_1_spline_NurbsCurve_Spring[];
+extern const Trajectory aq_area_1_spline_NurbsCurve_Spring_001[];
+extern const Trajectory aq_area_1_spline_NurbsCurve_Spring_002[];
 extern u8 aq_dl_pum128_20_ci4[];
 extern u8 aq_dl_pum128_20_pal_rgba16[];
 extern u8 aq_dl_pum128_17_ci4[];
@@ -47,8 +49,6 @@ extern u8 aq_dl_miu64_mo002_ci4[];
 extern u8 aq_dl_miu64_mo002_pal_rgba16[];
 extern u8 aq_dl_miu128_mi002_ci4[];
 extern u8 aq_dl_miu128_mi002_pal_rgba16[];
-extern u8 aq_dl_m_torch01_ci8[];
-extern u8 aq_dl_m_torch01_pal_rgba16[];
 extern u8 aq_dl_aqua128_1_ci4[];
 extern u8 aq_dl_aqua128_1_pal_rgba16[];
 extern u8 aq_dl_pum256_2_ci4[];
@@ -191,8 +191,6 @@ extern Vtx aq_dl_000_object_01224FF8_mesh_layer_1_vtx_1[12];
 extern Gfx aq_dl_000_object_01224FF8_mesh_layer_1_tri_1[];
 extern Vtx aq_dl_000_object_01224FF8_mesh_layer_1_vtx_2[22];
 extern Gfx aq_dl_000_object_01224FF8_mesh_layer_1_tri_2[];
-extern Vtx aq_dl_001_object_01224540_mesh_layer_5_vtx_0[4];
-extern Gfx aq_dl_001_object_01224540_mesh_layer_5_tri_0[];
 extern Vtx aq_dl_0010_object_01832708_mesh_layer_1_vtx_0[16];
 extern Gfx aq_dl_0010_object_01832708_mesh_layer_1_tri_0[];
 extern Vtx aq_dl_0011_object_01832490_mesh_layer_1_vtx_0[14];
@@ -553,14 +551,14 @@ extern Vtx aq_dl_0074_object_01822C6C_mesh_layer_1_vtx_0[4];
 extern Gfx aq_dl_0074_object_01822C6C_mesh_layer_1_tri_0[];
 extern Vtx aq_dl_0075_object_01822B00_mesh_layer_1_vtx_0[4];
 extern Gfx aq_dl_0075_object_01822B00_mesh_layer_1_tri_0[];
-extern Vtx aq_dl__aq_mitruck_mesh_layer_1_vtx_0[24];
-extern Gfx aq_dl__aq_mitruck_mesh_layer_1_tri_0[];
-extern Vtx aq_dl__aq_mitruck_mesh_layer_1_vtx_1[4];
-extern Gfx aq_dl__aq_mitruck_mesh_layer_1_tri_1[];
-extern Vtx aq_dl__aq_mitruck_mesh_layer_1_vtx_2[55];
-extern Gfx aq_dl__aq_mitruck_mesh_layer_1_tri_2[];
-extern Vtx aq_dl__aq_mitruck_mesh_layer_1_vtx_3[64];
-extern Gfx aq_dl__aq_mitruck_mesh_layer_1_tri_3[];
+extern Vtx aq_dl_aq_mitruck_mesh_layer_1_vtx_0[24];
+extern Gfx aq_dl_aq_mitruck_mesh_layer_1_tri_0[];
+extern Vtx aq_dl_aq_mitruck_mesh_layer_1_vtx_1[4];
+extern Gfx aq_dl_aq_mitruck_mesh_layer_1_tri_1[];
+extern Vtx aq_dl_aq_mitruck_mesh_layer_1_vtx_2[55];
+extern Gfx aq_dl_aq_mitruck_mesh_layer_1_tri_2[];
+extern Vtx aq_dl_aq_mitruck_mesh_layer_1_vtx_3[64];
+extern Gfx aq_dl_aq_mitruck_mesh_layer_1_tri_3[];
 extern Vtx aq_dl_object_01215688_mesh_layer_1_vtx_0[45];
 extern Gfx aq_dl_object_01215688_mesh_layer_1_tri_0[];
 extern Vtx aq_dl_object_01215688_mesh_layer_1_vtx_1[163];
@@ -628,7 +626,6 @@ extern u32 aq_dl_000_object_01218678_mesh_layer_5[];
 extern u32 aq_dl_001_object_01217C78_mesh_layer_1[];
 extern u32 aq_dl_000_object_012197D0_mesh_layer_1[];
 extern u32 aq_dl_000_object_01224FF8_mesh_layer_1[];
-extern u32 aq_dl_001_object_01224540_mesh_layer_5[];
 extern u32 aq_dl_0010_object_01832708_mesh_layer_1[];
 extern u32 aq_dl_0011_object_01832490_mesh_layer_1[];
 extern u32 aq_dl_0012_object_01832258_mesh_layer_1[];
@@ -678,7 +675,7 @@ extern u32 aq_dl_0072_object_0182320C_mesh_layer_1[];
 extern u32 aq_dl_0073_object_01822E38_mesh_layer_1[];
 extern u32 aq_dl_0074_object_01822C6C_mesh_layer_1[];
 extern u32 aq_dl_0075_object_01822B00_mesh_layer_1[];
-extern u32 aq_dl__aq_mitruck_mesh_layer_1[];
+extern u32 aq_dl_aq_mitruck_mesh_layer_1[];
 extern u32 aq_dl_object_01215688_mesh_layer_1[];
 extern u32 aq_dl_object_01216418_mesh_layer_1[];
 extern u32 aq_dl_object_0121BBF8_mesh_layer_1[];
@@ -772,7 +769,6 @@ extern u32 aq_dl_object_0122DBE0_mesh_layer_1[];
 #define LVL_BATCH_LAYER_OPAQUE_AQ_DL_PUM32_1_PAL_RGBA16_2 79
 #define LVL_BATCH_LAYER_OPAQUE_AQ_DL_MIU32_MI002_PAL_RGBA16_1 80
 #define LVL_BATCH_LAYER_TRANSPARENT_AQ_DL_MIU64_MS009_PAL_RGBA16 0
-#define LVL_BATCH_LAYER_TRANSPARENT_AQ_DL_M_TORCH01_PAL_RGBA16 1
 extern struct BatchLevelDisplayLists batch_lvl_dls_aq[LAYER_COUNT];
 #define mat_revert_aq_dl_objLandTable0007_sa2blvl_1_f3d mat_revert_aq_dl_objLandTable0007_sa2blvl_0_f3d
 #define mat_revert_aq_dl_objLandTable0007_sa2blvl_2_f3d mat_revert_aq_dl_objLandTable0007_sa2blvl_0_f3d
@@ -800,7 +796,6 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_aq[LAYER_COUNT];
 #define mat_revert_aq_dl_MILUMP_sa2bmdl_0_f3d mat_revert_aq_dl_objLandTable0007_sa2blvl_0_f3d
 #define mat_revert_aq_dl_MILUMP_sa2bmdl_1_f3d mat_revert_aq_dl_objLandTable0007_sa2blvl_0_f3d
 #define mat_revert_aq_dl_MILUMP_sa2bmdl_2_f3d mat_revert_aq_dl_objLandTable0007_sa2blvl_0_f3d
-#define mat_revert_aq_dl_MILUMP_sa2bmdl_3_f3d mat_revert_aq_dl_objLandTable0007_sa2blvl_0_f3d
 #define mat_revert_aq_dl_objLandTable0007_sa2blvl_15_f3d mat_revert_aq_dl_objLandTable0007_sa2blvl_0_f3d
 #define mat_revert_aq_dl_objLandTable0007_sa2blvl_16_f3d mat_revert_aq_dl_objLandTable0007_sa2blvl_0_f3d
 #define mat_revert_aq_dl_objLandTable0007_sa2blvl_17_f3d mat_revert_aq_dl_objLandTable0007_sa2blvl_0_f3d

@@ -15,6 +15,25 @@ extern const Gfx dl_shadow_circle_end[];
 extern const Gfx mist_dl[];
 extern const Gfx mist_dl_end[];
 
+extern const Gfx flame_v2_dl_render01[];
+extern const Gfx flame_v2_dl_render02[];
+extern const Gfx flame_v2_dl_render03[];
+extern const Gfx flame_v2_dl_render04[];
+extern const Gfx flame_v2_dl_render05[];
+extern const Gfx flame_v2_dl_render06[];
+extern const Gfx flame_v2_dl_render07[];
+extern const Gfx flame_v2_dl_render08[];
+extern const Gfx flame_v2_dl_render09[];
+extern const Gfx flame_v2_dl_render10[];
+extern const Gfx flame_v2_dl_render11[];
+extern const Gfx flame_v2_dl_render12[];
+extern const Gfx flame_v2_dl_render13[];
+extern const Gfx flame_v2_dl_render14[];
+extern const Gfx flame_v2_dl_render15[];
+extern const Gfx flame_v2_dl_render16[];
+
+extern const Gfx flame_v2_dl_revert[];
+
 static inline struct BatchArray* batch_array_alloc(int count, const struct BatchDisplayLists* dls)
 {
     struct BatchArray* batches = main_pool_alloc(sizeof(struct BatchArray) + count * sizeof(struct DisplayListLinks));
@@ -61,14 +80,22 @@ struct BatchArray* batch_list_objects_alloc_xlu()
         [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 5 ] = { flame_seg3_dl_0301B428, flame_seg3_dl_end },
         [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 6 ] = { flame_seg3_dl_0301B440, flame_seg3_dl_end },
         [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 7 ] = { flame_seg3_dl_0301B458, flame_seg3_dl_end },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 0 ] = { flame_seg3_dl_0301B500, flame_seg3_dl_end },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 1 ] = { flame_seg3_dl_0301B518, flame_seg3_dl_end },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 2 ] = { flame_seg3_dl_0301B530, flame_seg3_dl_end },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 3 ] = { flame_seg3_dl_0301B548, flame_seg3_dl_end },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 4 ] = { flame_seg3_dl_0301B560, flame_seg3_dl_end },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 5 ] = { flame_seg3_dl_0301B578, flame_seg3_dl_end },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 6 ] = { flame_seg3_dl_0301B590, flame_seg3_dl_end },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 7 ] = { flame_seg3_dl_0301B5A8, flame_seg3_dl_end },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 0  ] = { flame_v2_dl_render01, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 1  ] = { flame_v2_dl_render02, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 2  ] = { flame_v2_dl_render03, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 3  ] = { flame_v2_dl_render04, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 4  ] = { flame_v2_dl_render05, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 5  ] = { flame_v2_dl_render06, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 6  ] = { flame_v2_dl_render07, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 7  ] = { flame_v2_dl_render08, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 8  ] = { flame_v2_dl_render09, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 9  ] = { flame_v2_dl_render10, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 10 ] = { flame_v2_dl_render11, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 11 ] = { flame_v2_dl_render12, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 12 ] = { flame_v2_dl_render13, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 13 ] = { flame_v2_dl_render14, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 14 ] = { flame_v2_dl_render15, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 15 ] = { flame_v2_dl_render16, flame_v2_dl_revert },
     };
     STATIC_ASSERT(LAYER_TRANSPARENT_BATCHES_COUNT == sizeof(Batches) / sizeof(*Batches), "Mismatch");
 
