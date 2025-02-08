@@ -32,7 +32,7 @@ static u8 sClearAllCells;
  * The static surface pool is resized to be exactly the amount of memory needed for the level geometry.
  * The dynamic surface pool is set at a fixed length and cleared every frame.
  */
-u32 gDynamicSurfacePool[0x2000];
+ALIGNED16 u32 gDynamicSurfacePool[0x2000];
 
 /**
  * The end of the data currently allocated to the surface pools.
@@ -50,11 +50,11 @@ u32 gTotalStaticSurfaceData;
 static struct SurfaceNode *alloc_surface_node(u32 dynamic, struct Surface* surface, s16 lowerY, s16 upperY) {
     struct SurfaceNode *node;
     if (dynamic) {
-        struct SurfaceNode **poolEnd = (struct SurfaceNode**) &gDynamicSurfacePoolEnd;
-        node = *poolEnd;
-        (*poolEnd)++;
+        node = (struct SurfaceNode*) gDynamicSurfacePoolEnd;
+        __builtin_mips_cache(0xd, node);
+        gDynamicSurfacePoolEnd = (void*) ((u8*) gDynamicSurfacePoolEnd + 0x10);
     } else {
-        node = main_pool_alloc(sizeof(struct SurfaceNode));
+        node = main_pool_alloc_aligned_cde(sizeof(struct SurfaceNode));
         gTotalStaticSurfaceData += sizeof(struct SurfaceNode);
     }
 
@@ -76,11 +76,14 @@ static struct SurfaceNode *alloc_surface_node(u32 dynamic, struct Surface* surfa
 static struct Surface *alloc_surface(u32 dynamic) {
     struct Surface *surface;
     if (dynamic) {
-        struct Surface **poolEnd = (struct Surface**) &gDynamicSurfacePoolEnd;
-        surface = *poolEnd;
-        (*poolEnd)++;
+        surface = (struct Surface*) gDynamicSurfacePoolEnd;
+        __builtin_mips_cache(0xd, ((u8*) surface) + 0x0);
+        __builtin_mips_cache(0xd, ((u8*) surface) + 0x10);
+        __builtin_mips_cache(0xd, ((u8*) surface) + 0x20);
+        __builtin_mips_cache(0xd, ((u8*) surface) + 0x30);
+        gDynamicSurfacePoolEnd = (void*) ((u8*) gDynamicSurfacePoolEnd + 0x40);
     } else {
-        surface = main_pool_alloc(sizeof(struct Surface));
+        surface = main_pool_alloc_aligned_cde(sizeof(struct Surface));
         gTotalStaticSurfaceData += sizeof(struct Surface);
     }
 
@@ -326,6 +329,8 @@ static s32 surf_has_no_cam_collision(s32 surfaceType) {
  * exertion, and room.
  */
 static void load_static_surfaces(TerrainData **data, TerrainData *vertexData, s32 surfaceType, RoomData **surfaceRooms) {
+    sMainPool.regions[0].start = (void*) ALIGN16(sMainPool.regions[0].start);
+
     s32 i;
     struct Surface *surface;
     RoomData room = 0;
@@ -706,6 +711,8 @@ void load_object_collision_model(void) {
  * Transform an object's vertices and add them to the static surface pool.
  */
 void load_object_static_model(void) {
+    sMainPool.regions[0].start = (void*) ALIGN16(sMainPool.regions[0].start);
+
     PUPPYPRINT_GET_SNAPSHOT();
     TerrainData *collisionData = o->collisionData;
     u32 surfacePoolData;
