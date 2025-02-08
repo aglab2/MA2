@@ -26,6 +26,7 @@ extern const GeoLayout pc_area_visual[];
 #define pc_area_8 pc_area_visual
 #define pc_area_9 pc_area_visual
 #define pc_area_10 pc_area_visual
+#define SEQ_LEVEL_GRASS 0x25
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_pc_entry[] = {
@@ -74,6 +75,7 @@ const LevelScript level_pc_entry[] = {
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		OBJECT(MODEL_CHECKPOINT, -11632, -2022, -14699, 0, 0, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_RED_FLAME, -9987, -1723, -14712, 0, 0, 0, 0x00000000, bhvFlame),
 		OBJECT(MODEL_PC_DOOR_N, -9994, -3122, -13865, 0, 0, 0, 0x00000000, bhvPcMove),
 		OBJECT(MODEL_RED_COIN, -11355, 108, 8574, 0, 113, 0, 0x00000000, bhvRedCoin),
@@ -101,6 +103,7 @@ const LevelScript level_pc_entry[] = {
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		OBJECT(MODEL_CHECKPOINT, 4432, -1922, -16960, 0, 0, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_NONE, 8459, -1422, -14702, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 18479, -4022, -14698, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_RED_FLAME, 14557, -2219, -14725, 0, 0, 0, 0x00000000, bhvFlame),
@@ -158,6 +161,8 @@ const LevelScript level_pc_entry[] = {
 		OBJECT(MODEL_PC_KEY_BLUE, 24757, 1981, 10764, 0, 0, 0, 0x00000000, bhvPcKey),
 		OBJECT(MODEL_NONE, 4412, 2380, 10683, 0, 0, 0, 0x00000000, bhvPcKeyEnter),
 		OBJECT(MODEL_PC_KEYDOOR_GREEN, 4397, 2280, 9550, 0, 0, 0, 0x00000000, bhvPcKeyDoor),
+		OBJECT(MODEL_CHECKPOINT, 4384, 2280, 12283, 0, 0, 0, 0x00000000, bhvCheckpoint),
+		OBJECT(MODEL_CHECKPOINT, 4369, 2280, 8546, 0, 0, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_NONE, 4394, 2277, 6385, 0, 0, 0, (4 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 9021, 580, 10800, 0, 0, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_NONE, 4236, 1999, 3539, 0, 29, 0, 0x00000000, bhvCoinFormation),
@@ -218,7 +223,9 @@ const LevelScript level_pc_entry[] = {
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		OBJECT(MODEL_CHECKPOINT, 19638, -5578, 18806, 0, 0, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_STAR, -1026, -3096, 16652, 0, 0, 0, 0x00000000, bhvStar),
+		OBJECT(MODEL_STAR, 7736, -3043, -8712, 0, 0, 0, 0x00000000, bhvStar),
 		TERRAIN(pc_area_7_collision),
 		MACRO_OBJECTS(pc_area_7_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
@@ -230,6 +237,7 @@ const LevelScript level_pc_entry[] = {
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		OBJECT(MODEL_CHECKPOINT, -16849, -6078, 2461, 0, 0, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_NONE, -16844, -5315, 15512, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -16855, -7578, 4141, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -16892, -6078, 1840, 0, 0, 0, (2 << 16), bhvCoinFormation),
@@ -245,7 +253,6 @@ const LevelScript level_pc_entry[] = {
 		OBJECT(MODEL_STAR, -17242, -7072, 2927, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -16828, -2185, -8452, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -18976, -773, -8751, 0, 0, 0, 0x00000000, bhvStar),
-		OBJECT(MODEL_STAR, -32264, -3043, -8712, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -16782, -4825, 1791, 0, 0, 0, 0x00000000, bhvStar),
 		TERRAIN(pc_area_8_collision),
 		MACRO_OBJECTS(pc_area_8_macro_objs),

@@ -19,7 +19,7 @@
 
 #define pc_area_1 pc_area_visual
 #define pc_area_1_geo pc_area_geo_visual
-#include "levels/pc/visual/geo.inc.c"
+#include "levels/pc/visual/geo_lvl.inc.c"
 
 #include "levels/pc/pc_door_b/geo.inc.c"
 #include "levels/pc/pc_door_g/geo.inc.c"

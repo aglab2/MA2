@@ -65,7 +65,10 @@ class RenderNode(GeoNode):
             if rotations:
                 return f"{super().__str__()}GEO_LVL_BATCH_TRANSLATE_ROTATE({self.dl_reference.layer}, {translations}, {rotations}, {self.dl_reference.name}),"
             else:
-                return f"{super().__str__()}GEO_LVL_BATCH_TRANSLATE_NODE({self.dl_reference.layer}, {translations}, {self.dl_reference.name}),"
+                if not self.dl_reference:
+                    return f"{super().__str__()}GEO_LVL_TRANSLATE_NODE(LAYER_OPAQUE, {translations}),"
+                else:
+                    return f"{super().__str__()}GEO_LVL_BATCH_TRANSLATE_NODE({self.dl_reference.layer}, {translations}, {self.dl_reference.name}),"
 
 class ModelEntry:
     def __init__(self, decl, data = None, batched = False):
@@ -142,7 +145,7 @@ def parse_geo(geo_path):
             # For purposes of culling non subrendered objects must have a translation
             self._make_render_object(('0', '0', '0'), (rx, ry, rz), dl_ref)
 
-        def translate_empty(self, x, y, z):
+        def translate_empty(self, layer, x, y, z):
             self._make_render_object((x, y, z), None, None)
 
     geo: GeoLayout = None
@@ -199,9 +202,10 @@ def parse_geo(geo_path):
                     area_geolayout_parser.rotate(*get_args(line))
                     continue
                 if 'GEO_TRANSLATE_NODE(' in line:
+                    translate_line = line
                     line = peek_line(f_geo)
                     if 'GEO_OPEN_NODE(' in line:
-                        area_geolayout_parser.translate_empty(*get_args(line))
+                        area_geolayout_parser.translate_empty(*get_args(translate_line))
 
                     continue
                 if 'GEO_RETURN(' in line:
@@ -436,6 +440,9 @@ def batchify(geo, model, header):
 
         curr_batched_data: list[str] = []
         dl_ref = node.dl_reference
+        if not dl_ref:
+            continue
+
         model_to_convert_idx, model_to_convert = model_indexer.lookup(dl_ref.name)
         if model_to_convert.batched:
             continue
@@ -570,7 +577,7 @@ def serialize_model(model, layered_batches, path):
                         entry.data[i] = line.replace(k, v)
 
         for entry in model.entries:
-            mark_static = entry.decl.startswith('Gfx mat_')
+            mark_static = False
             f_model.write(("UNUSED static " if mark_static else "") + entry.decl)
             for line in entry.data:
                 f_model.write(line.replace("gsSPEndDisplayList()", "gsSPEndDisplayListHint(4)"))

@@ -12,6 +12,8 @@
 
 #include "levels/pc/header.inc.h"
 
+#include "levels/pc/visual/header_lvl.inc.h"
+
 static IWDirectionAreasDesc iw_pc_area1 = {
     { IWDT_DIRECTIONS },
     { .z_low = 2, },
@@ -168,7 +170,7 @@ const SpringLinkDesc spring_links_pc[] = {
     { NULL, NULL, }
 };
 
-#include "levels/pc/visual/model.inc.c"
+#include "levels/pc/visual/model_lvl.inc.c"
 
 #if 0
 #include "levels/pc/leveldata.inc.c"
