@@ -1,4 +1,5 @@
-#define oAqLiftActive oF4
+#define oAqLiftActive OBJECT_FIELD_S16(0x1B, 0)
+#define oAqLiftReload OBJECT_FIELD_S16(0x1B, 1)
 #define oAqLiftSwitches oObjF8
 
 void bhv_aq_ctls_init()
@@ -9,6 +10,7 @@ void bhv_aq_ctls_init()
 
     objs[0]->oAction = 1;
     o->oAqLiftActive = -1;
+    o->oAqLiftReload = 1;
 }
 
 static void bhv_aq_ctls_loop()
@@ -30,6 +32,15 @@ static void bhv_aq_ctls_loop()
 void bhv_aq_lift_loop()
 {
     bhv_aq_ctls_loop();
+    if (o->oAqLiftReload && o->oDistanceToMario < 2500.f)
+    {
+        main_pool_pop_state();
+        main_pool_push_state();
+        obj_build_transform_from_pos_and_angle(o, O_POS_INDEX, O_FACE_ANGLE_INDEX);
+        load_area_terrain(gCurrentArea->terrainData, gCurrentArea->surfaceRooms);
+        load_object_static_model();
+        o->oAqLiftReload = 0;
+    }
 
     struct Object** objs = &o->oAqLiftSwitches;
     int wanted_height = 0;
@@ -46,9 +57,8 @@ void bhv_aq_lift_loop()
 
     if (wanted_height != o->oAqLiftActive)
     {
+        o->oAqLiftReload = 1;
         o->oAqLiftActive = wanted_height;
-        load_area_terrain(gCurrentArea->terrainData, gCurrentArea->surfaceRooms);
-        load_object_static_model();
     }
 }
 

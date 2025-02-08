@@ -5968,7 +5968,7 @@ extern const Collision aq_milift_collision[];
 extern void bhv_aq_lift_loop();
 const BehaviorScript bhvAqLift[] = {
     BEGIN(OBJ_LIST_SURFACE),
-    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO)),
     LOAD_COLLISION_DATA(aq_milift_collision),
     CALL_NATIVE(bhv_aq_ctls_init),
     BEGIN_LOOP(),
