@@ -524,7 +524,7 @@ void bounce_off_object(struct MarioState *m, struct Object *obj, f32 velY) {
 }
 
 void hit_object_from_below(struct MarioState *m, UNUSED struct Object *obj) {
-    if (obj->behavior != bhvHbPlatform)
+    if (obj->behavior != bhvHbSupport)
         m->vel[1] = 0.0f;
 
     set_camera_shake_from_hit(SHAKE_HIT_FROM_BELOW);
