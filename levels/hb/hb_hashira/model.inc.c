@@ -1,5 +1,4 @@
-Gfx hb_hashira_kd_hb_kabe2_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 hb_hashira_kd_hb_kabe2_ci4[] = {
+ALIGNED8 u8 hb_hashira_kd_hb_kabe2_ci4[] = {
 	0x01, 0x11, 0x11, 0x12, 0x11, 0x11, 0x31, 0x11, 
 	0x10, 0x14, 0x22, 0x22, 0x21, 0x11, 0x45, 0x66, 
 	0x71, 0x28, 0x99, 0x9a, 0x11, 0x11, 0x00, 0x22, 
@@ -259,8 +258,7 @@ u8 hb_hashira_kd_hb_kabe2_ci4[] = {
 	
 };
 
-Gfx hb_hashira_kd_hb_kabe2_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 hb_hashira_kd_hb_kabe2_pal_rgba16[] = {
+ALIGNED8 u8 hb_hashira_kd_hb_kabe2_pal_rgba16[] = {
 	0xa3, 0x93, 0xdd, 0x61, 0xdd, 0x19, 0xd4, 0x97, 
 	0xc4, 0x15, 0xab, 0x0f, 0xb3, 0x91, 0xbc, 0x59, 
 	0x82, 0xcf, 0x38, 0xc7, 0x6a, 0x0b, 0xc3, 0xd3, 
@@ -294,24 +292,12 @@ Vtx hb_hashira_hb_hashira_mesh_layer_1_vtx_0[23] = {
 	{{ {-250, 500, -250}, 0, {-8, -16}, {70, 68, 95, 255} }},
 };
 
-Gfx hb_hashira_hb_hashira_mesh_layer_1_tri_0[] = {
-	gsSPVertex(hb_hashira_hb_hashira_mesh_layer_1_vtx_0 + 0, 23, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
-	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
-	gsSP2Triangles(20, 13, 21, 0, 21, 13, 22, 0),
-	gsSPEndDisplayList(),
-};
 
-
-Gfx mat_hb_hashira_HASHIRA_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
-	gsDPPipeSync(),
+Gfx hb_hashira_hb_hashira_mesh_layer_1[] = {
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, hb_hashira_kd_hb_kabe2_pal_rgba16),
 	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
@@ -321,24 +307,16 @@ Gfx mat_hb_hashira_HASHIRA_sa2mdl_0_f3d[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_hb_hashira_HASHIRA_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(0, G_LIGHTING),
+	gsSPVertex(hb_hashira_hb_hashira_mesh_layer_1_vtx_0 + 0, 23, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
+	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
+	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
+	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
+	gsSP2Triangles(20, 13, 21, 0, 21, 13, 22, 0),
 	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx hb_hashira_hb_hashira_mesh_layer_1[] = {
-	gsSPDisplayList(mat_hb_hashira_HASHIRA_sa2mdl_0_f3d),
-	gsSPDisplayList(hb_hashira_hb_hashira_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_hb_hashira_HASHIRA_sa2mdl_0_f3d),
-	gsDPPipeSync(),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPClearGeometryMode(G_TEXTURE_GEN),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 0),
 	gsDPSetEnvColor(255, 255, 255, 255),

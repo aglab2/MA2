@@ -613,10 +613,17 @@ longer a multiple of 8 (DMA word). This was not used in any command anyway. */
 #define G_CK_KEY            (1 << G_MDSFT_COMBKEY)
 
 /* G_SETOTHERMODE_H gSetColorDither */
+#if 0
 #define G_CD_MAGICSQ        (0 << G_MDSFT_RGBDITHER)
 #define G_CD_BAYER          (1 << G_MDSFT_RGBDITHER)
 #define G_CD_NOISE          (2 << G_MDSFT_RGBDITHER)
 #define G_CD_DISABLE        (3 << G_MDSFT_RGBDITHER)
+#else
+#define G_CD_MAGICSQ        (3 << G_MDSFT_RGBDITHER)
+#define G_CD_BAYER          (3 << G_MDSFT_RGBDITHER)
+#define G_CD_NOISE          (3 << G_MDSFT_RGBDITHER)
+#define G_CD_DISABLE        (3 << G_MDSFT_RGBDITHER)
+#endif
 
 /* G_SETOTHERMODE_H gSetAlphaDither */
 #if 0
