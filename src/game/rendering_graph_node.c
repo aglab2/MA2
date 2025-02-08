@@ -430,7 +430,7 @@ static void apply_flipbooks(struct MasterLayer* masterLayer)
 }
 
 static void adjust_view_range();
-void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
+static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
     const struct RenderPhase *renderPhase;
     s32 currLayer     = LAYER_FIRST;
     s32 startLayer    = LAYER_FIRST;
