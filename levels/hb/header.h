@@ -14,7 +14,6 @@ extern const LevelScript level_hb_entry[];
 
 
 #include "levels/hb/header.inc.h"
-#include "levels/hb/hb_skybox/geo_header.h"
 
 #include "levels/hb/hb_block/collision_header.h"
 
@@ -45,5 +44,7 @@ extern const LevelScript level_hb_entry[];
 #include "levels/hb/hb_updown_bright/geo_header.h"
 
 #include "levels/hb/hb_wall/geo_header.h"
+
+#include "levels/hb/hb_skybox/header.h"
 
 #endif

@@ -21,7 +21,6 @@
 #define hb_area_1_geo hb_area_geo_visual
 #include "levels/hb/visual/geo_lvl.inc.c"
 
-#include "levels/hb/hb_skybox/geo.inc.c"
 #include "levels/hb/hb_block/geo.inc.c"
 #include "levels/hb/hb_block_break/geo.inc.c"
 #include "levels/hb/hb_hashira/geo.inc.c"
