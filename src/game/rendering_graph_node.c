@@ -1088,7 +1088,7 @@ void geo_process_background(struct GraphNodeBackground *node) {
 #endif
         Gfx *gfx = gfxStart;
 
-        if (0 == node->background || 1 == node->background)
+        if (0 == node->background || 65537 == node->background)
         {
             gSPMemset(gfx++, (u8*) gPhysicalFramebuffers[sRenderingFramebuffer] + gBorderHeight  * SCREEN_WIDTH * 2, node->background, SCREEN_WIDTH * (SCREEN_HEIGHT - 2 * gBorderHeight) * 2);
         }

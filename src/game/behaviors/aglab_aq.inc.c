@@ -11,7 +11,7 @@ void bhv_aq_ctls_init()
     o->oAqLiftActive = -1;
 }
 
-void bhv_aq_ctls_loop()
+static void bhv_aq_ctls_loop()
 {
     struct Object** objs = &o->oAqLiftSwitches;
     for (int i = 0; i < 3; i++)
@@ -29,6 +29,8 @@ void bhv_aq_ctls_loop()
 
 void bhv_aq_lift_loop()
 {
+    bhv_aq_ctls_loop();
+
     struct Object** objs = &o->oAqLiftSwitches;
     int wanted_height = 0;
     if (SWITCH_ACTIVE(0))
@@ -60,7 +62,7 @@ void bhv_aq_water_loop()
     }
     if (SWITCH_ACTIVE(1))
     {
-        height = -920.f;
+        height = -950.f;
     }
     if (SWITCH_ACTIVE(2))
     {
