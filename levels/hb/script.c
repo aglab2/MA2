@@ -30,6 +30,7 @@ extern const GeoLayout hb_area_visual[];
 #include "levels/hb/area_1/collision.inc.c"
 #include "levels/hb/area_2/collision.inc.c"
 #include "levels/hb/area_3/collision.inc.c"
+#define SEQ_LEVEL_GRASS 0x24
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_hb_entry[] = {
