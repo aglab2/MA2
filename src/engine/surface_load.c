@@ -102,7 +102,7 @@ static struct Surface *alloc_surface(u32 dynamic) {
  * @param cellZ The Z position of the cell in which the surface resides
  * @param surface The surface to add
  */
-static __attribute__((noinline))  void add_surface_to_cell(s32 dynamic, s32 cellX, s32 cellZ, struct Surface *surface, s16 lowerY, s16 upperY) {
+static void add_surface_to_cell(s32 dynamic, s32 cellX, s32 cellZ, struct Surface *surface, s16 lowerY, s16 upperY) {
     struct SurfaceNode **list;
     s32 addingPriority;
     s32 listIndex;
@@ -150,7 +150,7 @@ static __attribute__((noinline))  void add_surface_to_cell(s32 dynamic, s32 cell
 
     // Loop until we find the appropriate place for the surface in the list.
     while (curNode->next != NULL) {
-        priority = (listIndex == SPATIAL_PARTITION_FLOORS) ? (curNode->upperY) : (-curNode->lowerY);
+        priority = (listIndex == SPATIAL_PARTITION_FLOORS) ? (curNode->next->upperY) : (-curNode->next->lowerY);
 
         if (addingPriority > priority) {
             break;
