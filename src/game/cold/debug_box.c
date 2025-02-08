@@ -217,7 +217,7 @@ void iterate_surfaces_visual(s32 x, s32 z, Vtx *verts) {
         }
 
         while (node != NULL) {
-            surf = node->surface;
+            surf = node->surf;
             node = node->next;
 
             if (SURFACE_IS_INSTANT_WARP(surf->type)) {

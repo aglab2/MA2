@@ -47,7 +47,7 @@ u32 gTotalStaticSurfaceData;
 /**
  * Allocate the part of the surface node pool to contain a surface node.
  */
-static struct SurfaceNode *alloc_surface_node(u32 dynamic) {
+static struct SurfaceNode *alloc_surface_node(u32 dynamic, struct Surface* surface, s16 lowerY, s16 upperY) {
     struct SurfaceNode *node;
     if (dynamic) {
         struct SurfaceNode **poolEnd = (struct SurfaceNode**) &gDynamicSurfacePoolEnd;
@@ -59,6 +59,11 @@ static struct SurfaceNode *alloc_surface_node(u32 dynamic) {
     }
 
     gSurfaceNodesAllocated++;
+    node->type = surface->type;
+    node->flags = surface->flags;
+    node->lowerY = lowerY;
+    node->upperY = upperY;
+    node->surf = surface;
     node->next = NULL;
 
     return node;
@@ -97,26 +102,22 @@ static struct Surface *alloc_surface(u32 dynamic) {
  * @param cellZ The Z position of the cell in which the surface resides
  * @param surface The surface to add
  */
-static void add_surface_to_cell(s32 dynamic, s32 cellX, s32 cellZ, struct Surface *surface) {
+static __attribute__((noinline))  void add_surface_to_cell(s32 dynamic, s32 cellX, s32 cellZ, struct Surface *surface, s16 lowerY, s16 upperY) {
     struct SurfaceNode **list;
-    s32 priority;
-    s32 sortDir = 1; // highest to lowest, then insertion order (water and floors)
+    s32 addingPriority;
     s32 listIndex;
 
     if (surface->normal.y > NORMAL_FLOOR_THRESHOLD) {
         listIndex = SPATIAL_PARTITION_FLOORS;
+        addingPriority = upperY;
     } else if (surface->normal.y < NORMAL_CEIL_THRESHOLD) {
         listIndex = SPATIAL_PARTITION_CEILS;
-        sortDir = -1; // lowest to highest, then insertion order
+        addingPriority = -lowerY;
     } else {
         listIndex = SPATIAL_PARTITION_WALLS;
-        sortDir = 0; // insertion order
     }
 
-    s32 surfacePriority = surface->upperY * sortDir;
-
-    struct SurfaceNode *newNode = alloc_surface_node(dynamic);
-    newNode->surface = surface;
+    struct SurfaceNode *newNode = alloc_surface_node(dynamic, surface, lowerY, upperY);
 
     if (dynamic) {
         list = &gDynamicSurfacePartition[cellZ][cellX][listIndex];
@@ -140,8 +141,8 @@ static void add_surface_to_cell(s32 dynamic, s32 cellX, s32 cellZ, struct Surfac
     struct SurfaceNode *curNode = *list;
 
     // Check if surface should be placed at the beginning of the list.
-    priority = curNode->surface->upperY * sortDir;
-    if (dynamic || surfacePriority > priority) {
+    s32 priority = (listIndex == SPATIAL_PARTITION_FLOORS) ? (curNode->upperY) : (-curNode->lowerY);
+    if (dynamic || listIndex == SPATIAL_PARTITION_WALLS || addingPriority > priority) {
         *list = newNode;
         newNode->next = curNode;
         return;
@@ -149,9 +150,9 @@ static void add_surface_to_cell(s32 dynamic, s32 cellX, s32 cellZ, struct Surfac
 
     // Loop until we find the appropriate place for the surface in the list.
     while (curNode->next != NULL) {
-        priority = curNode->next->surface->upperY * sortDir;
+        priority = (listIndex == SPATIAL_PARTITION_FLOORS) ? (curNode->upperY) : (-curNode->lowerY);
 
-        if (surfacePriority > priority) {
+        if (addingPriority > priority) {
             break;
         }
 
@@ -209,7 +210,7 @@ static s32 upper_cell_index(s32 coord) {
  */
 static void add_surface(struct Surface *surface, s32 dynamic) {
     s32 cellZ, cellX;
-    s32 minX, maxX, minZ, maxZ;
+    s32 minX, maxX, minY, maxY, minZ, maxZ;
 
     min_max_3i(surface->vertex1[0], surface->vertex2[0], surface->vertex3[0], &minX, &maxX);
     min_max_3i(surface->vertex1[2], surface->vertex2[2], surface->vertex3[2], &minZ, &maxZ);
@@ -218,10 +219,13 @@ static void add_surface(struct Surface *surface, s32 dynamic) {
     s32 maxCellX = upper_cell_index(maxX);
     s32 minCellZ = lower_cell_index(minZ);
     s32 maxCellZ = upper_cell_index(maxZ);
+    
+    s16 min, max;
+    min_max_3s(surface->vertex1[1], surface->vertex2[1], surface->vertex3[1], &min, &max);
 
     for (cellZ = minCellZ; cellZ <= maxCellZ; cellZ++) {
         for (cellX = minCellX; cellX <= maxCellX; cellX++) {
-            add_surface_to_cell(dynamic, cellX, cellZ, surface);
+            add_surface_to_cell(dynamic, cellX, cellZ, surface, min, max);
         }
     }
 }
@@ -236,7 +240,6 @@ static struct Surface *read_surface_data(TerrainData *vertexData, TerrainData **
     Vec3t v[3];
     Vec3f n;
     Vec3t offset;
-    s16 min, max;
 
     vec3_scale_dest(offset, (*vertexIndices), 3);
 
@@ -266,10 +269,6 @@ static struct Surface *read_surface_data(TerrainData *vertexData, TerrainData **
     surface->normal.z = n[2];
 
     surface->originOffset = -vec3_dot(n, v[0]);
-
-    min_max_3s(v[0][1], v[1][1], v[2][1], &min, &max);
-    surface->lowerY = (min - SURFACE_VERTICAL_BUFFER);
-    surface->upperY = (max + SURFACE_VERTICAL_BUFFER);
 
     return surface;
 }

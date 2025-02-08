@@ -20,8 +20,6 @@ struct Surface gWaterSurfacePseudoFloor = {
     0x0,                        // force
     0x0,                        // flags
      0,                         // room
-    -SURFACE_VERTICAL_BUFFER,   // lowerY
-     SURFACE_VERTICAL_BUFFER,   // upperY
     { 0, 0, 0 },                // vertex1
     { 0, 0, 0 },                // vertex2
     { 0, 0, 0 },                // vertex3

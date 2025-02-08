@@ -17,8 +17,12 @@
 #define DYNAMIC_SURFACE_POOL_SIZE 0x8000
 
 struct SurfaceNode {
+    s16 lowerY;
+    s16 upperY;
+    TerrainData type;
+    u8 flags;
+    struct Surface *surf;
     struct SurfaceNode *next;
-    struct Surface *surface;
 };
 
 enum SpatialPartitions {

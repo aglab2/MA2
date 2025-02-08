@@ -480,7 +480,7 @@ static void level_cmd_init_mario(void) {
     sCurrentCmd = CMD_NEXT;
 }
 
-static register_checkpoint_warp(int id) {
+static void register_checkpoint_warp(int id) {
     struct ObjectWarpNode *warpNode = main_pool_alloc(sizeof(struct ObjectWarpNode));
 
     warpNode->node.id = id;
