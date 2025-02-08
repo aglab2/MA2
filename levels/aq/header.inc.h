@@ -3,6 +3,8 @@ extern const GeoLayout aq_area_1[];
 extern const Collision aq_area_1_collision[];
 extern const MacroObject aq_area_1_macro_objs[];
 extern const Trajectory aq_area_1_spline_NurbsCurve_Spring[];
+extern const Trajectory aq_area_1_spline_NurbsCurve_Spring_001[];
+extern const Trajectory aq_area_1_spline_NurbsCurve_Spring_002[];
 extern u8 aq_dl_pum128_20_ci4[];
 extern u8 aq_dl_pum128_20_pal_rgba16[];
 extern u8 aq_dl_pum128_17_ci4[];
