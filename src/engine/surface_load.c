@@ -309,7 +309,7 @@ static s32 surf_has_no_cam_collision(s32 surfaceType) {
 
     switch (surfaceType) {
         case SURFACE_NO_CAM_COLLISION:
-        case SURFACE_NO_CAM_COLLISION_77: // Unused
+        case SURFACE_NO_CAM_COLLISION_NOT_SLIPPERY:
         case SURFACE_NO_CAM_COL_VERY_SLIPPERY:
         case SURFACE_SWITCH:
             flags = SURFACE_FLAG_NO_CAM_COLLISION;

@@ -396,6 +396,7 @@ s32 mario_get_floor_class(struct MarioState *m) {
             case SURFACE_NOT_SLIPPERY:
             case SURFACE_HARD_NOT_SLIPPERY:
             case SURFACE_SWITCH:
+            case SURFACE_NO_CAM_COLLISION_NOT_SLIPPERY:
                 floorClass = SURFACE_CLASS_NOT_SLIPPERY;
                 break;
 
@@ -474,6 +475,7 @@ u32 mario_get_terrain_sound_addend(struct MarioState *m) {
 
                 case SURFACE_SPEEDUP:
                 case SURFACE_NOT_SLIPPERY:
+                case SURFACE_NO_CAM_COLLISION_NOT_SLIPPERY:
                 case SURFACE_HARD:
                 case SURFACE_HARD_NOT_SLIPPERY:
                 case SURFACE_SWITCH:
@@ -584,7 +586,7 @@ s32 mario_floor_is_steep(struct MarioState *m) {
         return TRUE;
 
 #ifdef JUMP_KICK_FIX
-    if (m->floor->type == SURFACE_NOT_SLIPPERY || m->floor->type == SURFACE_HARD_NOT_SLIPPERY || m->floor->type == SURFACE_SPEEDUP) {
+    if (m->floor->type == SURFACE_NO_CAM_COLLISION_NOT_SLIPPERY || m->floor->type == SURFACE_NOT_SLIPPERY || m->floor->type == SURFACE_HARD_NOT_SLIPPERY || m->floor->type == SURFACE_SPEEDUP) {
         return FALSE;
     }
 #endif
