@@ -9,6 +9,7 @@
 #include "make_const_nonconst.h"
 
 #include "levels/hb/header.inc.h"
+#include "levels/hb/visual/header_lvl.inc.h"
 
 static IWDirectionAreasDesc iw_hb_area1 = {
     { IWDT_DIRECTIONS },
@@ -31,19 +32,13 @@ IWDHeader* iw_descs_hb[] = {
     &iw_hb_area3.header,
 };
 
-#include "levels/hb/visual/model.inc.c"
+#include "levels/hb/visual/model_lvl.inc.c"
 
 #if 0
 #include "levels/hb/leveldata.inc.c"
 #else
-#include "levels/hb/area_1/collision.inc.c"
-#include "levels/hb/area_1/macro.inc.c"
 #include "levels/hb/area_1/spline.inc.c"
-#include "levels/hb/area_2/collision.inc.c"
-#include "levels/hb/area_2/macro.inc.c"
 #include "levels/hb/area_2/spline.inc.c"
-#include "levels/hb/area_3/collision.inc.c"
-#include "levels/hb/area_3/macro.inc.c"
 #include "levels/hb/area_3/spline.inc.c"
 #endif
 

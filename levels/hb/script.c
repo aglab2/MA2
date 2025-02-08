@@ -27,6 +27,9 @@ extern const GeoLayout hb_area_visual[];
 #define hb_area_9 hb_area_visual
 #define hb_area_10 hb_area_visual
 #define bhvBreakable bhvBreakableShrinking
+#include "levels/hb/area_1/collision.inc.c"
+#include "levels/hb/area_2/collision.inc.c"
+#include "levels/hb/area_3/collision.inc.c"
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_hb_entry[] = {

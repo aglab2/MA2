@@ -19,7 +19,7 @@
 
 #define hb_area_1 hb_area_visual
 #define hb_area_1_geo hb_area_geo_visual
-#include "levels/hb/visual/geo.inc.c"
+#include "levels/hb/visual/geo_lvl.inc.c"
 
 #include "levels/hb/hb_skybox/geo.inc.c"
 #include "levels/hb/hb_block/geo.inc.c"
