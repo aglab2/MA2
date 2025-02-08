@@ -32,6 +32,8 @@ IWDHeader* iw_descs_hb[] = {
     &iw_hb_area3.header,
 };
 
+#include "levels/hb/flipbook.inc.c"
+
 #include "levels/hb/visual/model_lvl.inc.c"
 
 #if 0

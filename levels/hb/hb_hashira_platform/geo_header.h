@@ -13,7 +13,7 @@ extern Vtx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_vtx_1[8];
 extern Gfx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_tri_1[];
 extern Vtx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_vtx_2[32];
 extern Gfx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_tri_2[];
-extern Vtx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_vtx_3[64];
+extern Vtx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_vtx_3[63];
 extern Gfx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_tri_3[];
 extern Vtx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_vtx_4[16];
 extern Gfx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_tri_4[];

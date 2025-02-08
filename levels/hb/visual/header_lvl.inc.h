@@ -1677,3 +1677,4 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_hb[LAYER_COUNT];
 #define hb_dl_Plane_001_mesh_layer_1 hb_dl_Plane_mesh_layer_1
 #define hb_dl_Plane_002_mesh_layer_1 hb_dl_Plane_mesh_layer_1
 #define hb_dl_Plane_003_mesh_layer_1 hb_dl_Plane_mesh_layer_1
+extern const struct FlipbookLayer hb_flipbooks[LAYER_COUNT];

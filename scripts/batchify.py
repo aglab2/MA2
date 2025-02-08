@@ -581,7 +581,7 @@ def serialize_model(model, layered_batches, path):
         for layer, batches in layered_batches.items():
             f_model.write(f"static struct BatchDisplayLists batch_lvl_dls_{layer}[] = {{\n")
             for batch in batches:
-                f_model.write(f"\t{{ mat_{batch.name}, mat_revert_{batch.name}, DL_HINT(mat_{batch.name}), DL_HINT(mat_revert_{batch.name}), }},\n")
+                f_model.write(f"\t[{batch.idx}] = {{ mat_{batch.name}, mat_revert_{batch.name}, DL_HINT(mat_{batch.name}), DL_HINT(mat_revert_{batch.name}), }},\n")
             f_model.write('};\n\n')
             name = deduce_level_name(batches[0].name)
 

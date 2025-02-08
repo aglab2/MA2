@@ -1,7 +1,7 @@
 #include "src/game/envfx_snow.h"
 
 const GeoLayout hb_area_1_geo[] = {
-	GEO_BATCH_NODE_START(batch_lvl_dls_hb),
+	GEO_BATCH_NODE_START_WITH_FLIPBOOK(batch_lvl_dls_hb, hb_flipbooks),
 	GEO_OPEN_NODE(),
 		GEO_ASM(0, geo_render_backdrop),
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, (f32)-11000.0, (f32)0.0, (f32)-29200.0, hb_dl_0000_object_00FDF234_mesh_layer_1),
@@ -649,7 +649,7 @@ const GeoLayout hb_area_1[] = {
 	GEO_OPEN_NODE(),
 		GEO_ZBUFFER(1),
 		GEO_OPEN_NODE(),
-			GEO_CAMERA_FRUSTUM_WITH_FUNC(45.0000, 200, 50000, geo_camera_fov),
+			GEO_CAMERA_FRUSTUM_WITH_FUNC(45.0000, 100, 30000, geo_camera_fov),
 			GEO_OPEN_NODE(),
 				GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 0, 0, 0, 0, -10, 0, geo_camera_main),
 				GEO_OPEN_NODE(),

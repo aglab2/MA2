@@ -1,5 +1,4 @@
-Gfx hb_hashira_platform_kd_hb_hasira5_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 hb_hashira_platform_kd_hb_hasira5_ci4[] = {
+ALIGNED8 u8 hb_hashira_platform_kd_hb_hasira5_ci4[] = {
 	0x01, 0x23, 0x34, 0x44, 0x56, 0x44, 0x57, 0x55, 
 	0x88, 0x88, 0x66, 0x49, 0x49, 0x55, 0x75, 0x45, 
 	0x77, 0x55, 0x54, 0x54, 0x94, 0x48, 0x88, 0x86, 
@@ -259,8 +258,7 @@ u8 hb_hashira_platform_kd_hb_hasira5_ci4[] = {
 	
 };
 
-Gfx hb_hashira_platform_kd_hb_hasira5_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 hb_hashira_platform_kd_hb_hasira5_pal_rgba16[] = {
+ALIGNED8 u8 hb_hashira_platform_kd_hb_hasira5_pal_rgba16[] = {
 	0x6a, 0x0d, 0x9c, 0x1b, 0xce, 0x29, 0xbd, 0x23, 
 	0x39, 0x05, 0x92, 0xcf, 0x50, 0x43, 0xac, 0x15, 
 	0x89, 0x05, 0xc4, 0xdd, 0x83, 0x13, 0xef, 0x33, 
@@ -268,8 +266,7 @@ u8 hb_hashira_platform_kd_hb_hasira5_pal_rgba16[] = {
 	
 };
 
-Gfx hb_hashira_platform_kd_hb_kabe1_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 hb_hashira_platform_kd_hb_kabe1_ci4[] = {
+ALIGNED8 u8 hb_hashira_platform_kd_hb_kabe1_ci4[] = {
 	0x01, 0x23, 0x45, 0x63, 0x17, 0x89, 0x88, 0x91, 
 	0xab, 0x7b, 0xbb, 0xbb, 0xb3, 0x0c, 0xc0, 0x59, 
 	0x78, 0x88, 0xdd, 0xdd, 0xdd, 0xd8, 0x98, 0x94, 
@@ -529,8 +526,7 @@ u8 hb_hashira_platform_kd_hb_kabe1_ci4[] = {
 	
 };
 
-Gfx hb_hashira_platform_kd_hb_kabe1_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 hb_hashira_platform_kd_hb_kabe1_pal_rgba16[] = {
+ALIGNED8 u8 hb_hashira_platform_kd_hb_kabe1_pal_rgba16[] = {
 	0x61, 0x47, 0x9a, 0xcd, 0xab, 0x0f, 0x92, 0xcd, 
 	0x81, 0xc9, 0x7a, 0x0b, 0x92, 0x8b, 0xb3, 0x91, 
 	0xc4, 0x57, 0xbc, 0x15, 0x9a, 0x4b, 0xa3, 0x51, 
@@ -538,8 +534,7 @@ u8 hb_hashira_platform_kd_hb_kabe1_pal_rgba16[] = {
 	
 };
 
-Gfx hb_hashira_platform_kd_hb_hasira4_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 hb_hashira_platform_kd_hb_hasira4_ci4[] = {
+ALIGNED8 u8 hb_hashira_platform_kd_hb_hasira4_ci4[] = {
 	0x01, 0x23, 0x43, 0x45, 0x67, 0x80, 0x05, 0x95, 
 	0x95, 0xaa, 0x08, 0xbb, 0x73, 0x9b, 0x32, 0x12, 
 	0xc9, 0x99, 0xa9, 0xa9, 0xcc, 0xcc, 0x4a, 0x44, 
@@ -799,8 +794,7 @@ u8 hb_hashira_platform_kd_hb_hasira4_ci4[] = {
 	
 };
 
-Gfx hb_hashira_platform_kd_hb_hasira4_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 hb_hashira_platform_kd_hb_hasira4_pal_rgba16[] = {
+ALIGNED8 u8 hb_hashira_platform_kd_hb_hasira4_pal_rgba16[] = {
 	0x9c, 0x19, 0xd6, 0x6b, 0xbd, 0x63, 0x30, 0x83, 
 	0x72, 0x09, 0x92, 0xcb, 0x99, 0xc9, 0x98, 0xc5, 
 	0x51, 0x05, 0xb3, 0xd3, 0x8a, 0xd1, 0x70, 0x85, 
@@ -808,8 +802,7 @@ u8 hb_hashira_platform_kd_hb_hasira4_pal_rgba16[] = {
 	
 };
 
-Gfx hb_hashira_platform_dz_hb_eggwall256_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 hb_hashira_platform_dz_hb_eggwall256_ci4[] = {
+ALIGNED8 u8 hb_hashira_platform_dz_hb_eggwall256_ci4[] = {
 	0x01, 0x00, 0x23, 0x20, 0x22, 0x22, 0x40, 0x00, 
 	0x02, 0x22, 0x23, 0x55, 0x44, 0x22, 0x44, 0x22, 
 	0x24, 0x24, 0x44, 0x42, 0x44, 0x22, 0x44, 0x04, 
@@ -1069,8 +1062,7 @@ u8 hb_hashira_platform_dz_hb_eggwall256_ci4[] = {
 	
 };
 
-Gfx hb_hashira_platform_dz_hb_eggwall256_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 hb_hashira_platform_dz_hb_eggwall256_pal_rgba16[] = {
+ALIGNED8 u8 hb_hashira_platform_dz_hb_eggwall256_pal_rgba16[] = {
 	0x7a, 0x8b, 0x39, 0x45, 0xb3, 0x8f, 0xd4, 0x93, 
 	0xa3, 0xd1, 0xc4, 0x97, 0xf5, 0x59, 0xf4, 0x13, 
 	0xf3, 0x0f, 0xf5, 0xdd, 0xaa, 0x49, 0xee, 0x21, 
@@ -1176,7 +1168,7 @@ Vtx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_vtx_0[94] = {
 };
 
 Gfx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_tri_0[] = {
-	gsSPVertex(hb_hashira_platform_hb_hashira_platform_mesh_layer_1_vtx_0 + 0, 31, 0),
+	gsSPVertex(hb_hashira_platform_hb_hashira_platform_mesh_layer_1_vtx_0 + 0, 54, 0),
 	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
 	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
 	gsSP2Triangles(8, 9, 10, 0, 9, 8, 4, 0),
@@ -1185,16 +1177,13 @@ Gfx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_tri_0[] = {
 	gsSP2Triangles(19, 20, 21, 0, 20, 19, 22, 0),
 	gsSP2Triangles(23, 24, 25, 0, 24, 23, 26, 0),
 	gsSP2Triangles(27, 28, 29, 0, 28, 27, 30, 0),
-	gsSPVertex(hb_hashira_platform_hb_hashira_platform_mesh_layer_1_vtx_0 + 31, 31, 0),
-	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
-	gsSP2Triangles(8, 6, 9, 0, 6, 8, 10, 0),
-	gsSP2Triangles(11, 12, 13, 0, 12, 11, 14, 0),
-	gsSP2Triangles(15, 16, 17, 0, 16, 15, 18, 0),
-	gsSP2Triangles(19, 20, 21, 0, 20, 19, 22, 0),
-	gsSP2Triangles(23, 24, 25, 0, 24, 23, 26, 0),
-	gsSP2Triangles(27, 28, 29, 0, 28, 27, 30, 0),
-	gsSPVertex(hb_hashira_platform_hb_hashira_platform_mesh_layer_1_vtx_0 + 62, 32, 0),
+	gsSP2Triangles(31, 32, 33, 0, 32, 31, 34, 0),
+	gsSP2Triangles(35, 36, 37, 0, 36, 35, 38, 0),
+	gsSP2Triangles(39, 37, 40, 0, 37, 39, 41, 0),
+	gsSP2Triangles(42, 43, 44, 0, 43, 42, 45, 0),
+	gsSP2Triangles(46, 47, 48, 0, 47, 46, 49, 0),
+	gsSP2Triangles(50, 51, 52, 0, 51, 50, 53, 0),
+	gsSPVertex(hb_hashira_platform_hb_hashira_platform_mesh_layer_1_vtx_0 + 54, 40, 0),
 	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
 	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
 	gsSP2Triangles(8, 9, 10, 0, 9, 8, 11, 0),
@@ -1203,6 +1192,8 @@ Gfx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_tri_0[] = {
 	gsSP2Triangles(20, 21, 22, 0, 21, 20, 23, 0),
 	gsSP2Triangles(24, 25, 26, 0, 25, 24, 27, 0),
 	gsSP2Triangles(28, 29, 30, 0, 29, 28, 31, 0),
+	gsSP2Triangles(32, 33, 34, 0, 33, 32, 35, 0),
+	gsSP2Triangles(36, 37, 38, 0, 37, 36, 39, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -1272,7 +1263,7 @@ Gfx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_tri_2[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_vtx_3[64] = {
+Vtx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_vtx_3[63] = {
 	{{ {-675, 125, 177}, 0, {-8, 0}, {172, 172, 197, 255} }},
 	{{ {-675, 375, 109}, 0, {2032, 329}, {255, 255, 255, 255} }},
 	{{ {-675, 125, 109}, 0, {-8, 329}, {172, 172, 197, 255} }},
@@ -1306,7 +1297,6 @@ Vtx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_vtx_3[64] = {
 	{{ {-675, 375, 675}, 0, {2032, 329}, {255, 255, 255, 255} }},
 	{{ {-675, 125, 606}, 0, {-8, 0}, {172, 172, 197, 255} }},
 	{{ {606, 375, 675}, 0, {2032, 0}, {117, 117, 136, 255} }},
-	{{ {675, 125, 675}, 0, {-8, 329}, {70, 68, 85, 255} }},
 	{{ {675, 375, 675}, 0, {2032, 329}, {117, 117, 136, 255} }},
 	{{ {606, 125, 675}, 0, {-8, 0}, {70, 68, 85, 255} }},
 	{{ {675, 375, -606}, 0, {2032, 0}, {117, 117, 136, 255} }},
@@ -1340,7 +1330,7 @@ Vtx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_vtx_3[64] = {
 };
 
 Gfx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_tri_3[] = {
-	gsSPVertex(hb_hashira_platform_hb_hashira_platform_mesh_layer_1_vtx_3 + 0, 32, 0),
+	gsSPVertex(hb_hashira_platform_hb_hashira_platform_mesh_layer_1_vtx_3 + 0, 55, 0),
 	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
 	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
 	gsSP2Triangles(8, 9, 10, 0, 9, 8, 11, 0),
@@ -1349,15 +1339,15 @@ Gfx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_tri_3[] = {
 	gsSP2Triangles(20, 21, 22, 0, 21, 20, 23, 0),
 	gsSP2Triangles(24, 25, 26, 0, 25, 24, 27, 0),
 	gsSP2Triangles(28, 29, 30, 0, 29, 28, 31, 0),
-	gsSPVertex(hb_hashira_platform_hb_hashira_platform_mesh_layer_1_vtx_3 + 32, 32, 0),
+	gsSP2Triangles(32, 18, 33, 0, 18, 32, 34, 0),
+	gsSP2Triangles(35, 36, 37, 0, 36, 35, 38, 0),
+	gsSP2Triangles(39, 40, 41, 0, 40, 39, 42, 0),
+	gsSP2Triangles(43, 44, 45, 0, 44, 43, 46, 0),
+	gsSP2Triangles(47, 48, 49, 0, 48, 47, 50, 0),
+	gsSP2Triangles(51, 52, 53, 0, 52, 51, 54, 0),
+	gsSPVertex(hb_hashira_platform_hb_hashira_platform_mesh_layer_1_vtx_3 + 55, 8, 0),
 	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
 	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 9, 8, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 13, 12, 15, 0),
-	gsSP2Triangles(16, 17, 18, 0, 17, 16, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 21, 20, 23, 0),
-	gsSP2Triangles(24, 25, 26, 0, 25, 24, 27, 0),
-	gsSP2Triangles(28, 29, 30, 0, 29, 28, 31, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -1391,7 +1381,7 @@ Gfx hb_hashira_platform_hb_hashira_platform_mesh_layer_1_tri_4[] = {
 
 
 Gfx mat_hb_hashira_platform_HASHIRA_PLATFORM_sa2bmdl_0_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -1409,7 +1399,7 @@ Gfx mat_hb_hashira_platform_HASHIRA_PLATFORM_sa2bmdl_0_f3d[] = {
 };
 
 Gfx mat_revert_hb_hashira_platform_HASHIRA_PLATFORM_sa2bmdl_0_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsSPGeometryMode(0, G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
@@ -1417,7 +1407,7 @@ Gfx mat_revert_hb_hashira_platform_HASHIRA_PLATFORM_sa2bmdl_0_f3d[] = {
 };
 
 Gfx mat_hb_hashira_platform_HASHIRA_PLATFORM_sa2bmdl_1_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -1435,7 +1425,7 @@ Gfx mat_hb_hashira_platform_HASHIRA_PLATFORM_sa2bmdl_1_f3d[] = {
 };
 
 Gfx mat_revert_hb_hashira_platform_HASHIRA_PLATFORM_sa2bmdl_1_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsSPGeometryMode(0, G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
@@ -1443,7 +1433,7 @@ Gfx mat_revert_hb_hashira_platform_HASHIRA_PLATFORM_sa2bmdl_1_f3d[] = {
 };
 
 Gfx mat_hb_hashira_platform_HASHIRA_PLATFORM_sa2bmdl_2_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -1461,7 +1451,7 @@ Gfx mat_hb_hashira_platform_HASHIRA_PLATFORM_sa2bmdl_2_f3d[] = {
 };
 
 Gfx mat_revert_hb_hashira_platform_HASHIRA_PLATFORM_sa2bmdl_2_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsSPGeometryMode(0, G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
@@ -1469,7 +1459,7 @@ Gfx mat_revert_hb_hashira_platform_HASHIRA_PLATFORM_sa2bmdl_2_f3d[] = {
 };
 
 Gfx mat_hb_hashira_platform_HASHIRA_PLATFORM_sa2bmdl_3_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -1487,7 +1477,7 @@ Gfx mat_hb_hashira_platform_HASHIRA_PLATFORM_sa2bmdl_3_f3d[] = {
 };
 
 Gfx mat_revert_hb_hashira_platform_HASHIRA_PLATFORM_sa2bmdl_3_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsSPGeometryMode(0, G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
@@ -1495,7 +1485,7 @@ Gfx mat_revert_hb_hashira_platform_HASHIRA_PLATFORM_sa2bmdl_3_f3d[] = {
 };
 
 Gfx mat_hb_hashira_platform_HASHIRA_PLATFORM_sa2bmdl_4_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -1513,7 +1503,7 @@ Gfx mat_hb_hashira_platform_HASHIRA_PLATFORM_sa2bmdl_4_f3d[] = {
 };
 
 Gfx mat_revert_hb_hashira_platform_HASHIRA_PLATFORM_sa2bmdl_4_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsSPGeometryMode(0, G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
