@@ -1,5 +1,4 @@
-Gfx pc_sandglass_spring_dz_sandglass_buttan128_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 pc_sandglass_spring_dz_sandglass_buttan128_ci4[] = {
+ALIGNED8 u8 pc_sandglass_spring_dz_sandglass_buttan128_ci4[] = {
 	0x00, 0x01, 0x11, 0x00, 0x00, 0x21, 0x34, 0x21, 
 	0x22, 0x25, 0x67, 0x67, 0x43, 0x86, 0x00, 0x44, 
 	0x76, 0x44, 0x07, 0x00, 0x11, 0x00, 0x00, 0x33, 
@@ -259,8 +258,7 @@ u8 pc_sandglass_spring_dz_sandglass_buttan128_ci4[] = {
 	
 };
 
-Gfx pc_sandglass_spring_dz_sandglass_buttan128_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 pc_sandglass_spring_dz_sandglass_buttan128_pal_rgba16[] = {
+ALIGNED8 u8 pc_sandglass_spring_dz_sandglass_buttan128_pal_rgba16[] = {
 	0xa9, 0x89, 0xc3, 0x95, 0xe5, 0xe5, 0x60, 0x41, 
 	0xa2, 0x4d, 0xb4, 0xe1, 0x82, 0x91, 0xbc, 0x59, 
 	0x38, 0xc5, 0x74, 0x67, 0x32, 0xe1, 0x00, 0x01, 
@@ -268,8 +266,7 @@ u8 pc_sandglass_spring_dz_sandglass_buttan128_pal_rgba16[] = {
 	
 };
 
-Gfx pc_sandglass_spring_dz_sandglass_body128_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 pc_sandglass_spring_dz_sandglass_body128_ci4[] = {
+ALIGNED8 u8 pc_sandglass_spring_dz_sandglass_body128_ci4[] = {
 	0x00, 0x01, 0x23, 0x44, 0x55, 0x61, 0x70, 0x28, 
 	0x99, 0x23, 0x76, 0xa2, 0xb4, 0xcc, 0xbb, 0x43, 
 	0x04, 0xcc, 0x52, 0xa7, 0xb6, 0x00, 0xb0, 0xbb, 
@@ -529,8 +526,7 @@ u8 pc_sandglass_spring_dz_sandglass_body128_ci4[] = {
 	
 };
 
-Gfx pc_sandglass_spring_dz_sandglass_body128_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 pc_sandglass_spring_dz_sandglass_body128_pal_rgba16[] = {
+ALIGNED8 u8 pc_sandglass_spring_dz_sandglass_body128_pal_rgba16[] = {
 	0x9c, 0x57, 0xc5, 0x5d, 0xcd, 0xe5, 0xbd, 0x61, 
 	0x8b, 0xd5, 0xa4, 0x57, 0xd5, 0xe1, 0x62, 0x8f, 
 	0xb4, 0xdb, 0xe6, 0x69, 0x7b, 0x53, 0xac, 0xdb, 
@@ -538,7 +534,7 @@ u8 pc_sandglass_spring_dz_sandglass_body128_pal_rgba16[] = {
 	
 };
 
-Vtx pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1_vtx_0[36] = {
+Vtx pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1_vtx_0[33] = {
 	{{ {65, 101, 0}, 0, {2032, 2024}, {255, 255, 255, 255} }},
 	{{ {52, 102, 0}, 0, {1020, 2024}, {255, 255, 255, 255} }},
 	{{ {37, 102, 37}, 0, {1020, 1004}, {255, 255, 255, 255} }},
@@ -571,28 +567,7 @@ Vtx pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1_vtx_0[36] = {
 	{{ {0, 102, -52}, 0, {1004, 2024}, {255, 255, 255, 255} }},
 	{{ {-37, 102, -37}, 0, {289, 1727}, {255, 255, 255, 255} }},
 	{{ {-52, 102, 0}, 0, {-8, 1004}, {255, 255, 255, 255} }},
-	{{ {-52, 102, 0}, 0, {-8, 1004}, {255, 255, 255, 255} }},
 	{{ {-37, 102, 37}, 0, {289, 281}, {255, 255, 255, 255} }},
-	{{ {0, 103, 0}, 0, {1004, 1004}, {255, 255, 255, 255} }},
-	{{ {0, 102, 52}, 0, {1004, -16}, {255, 255, 255, 255} }},
-};
-
-Gfx pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1_tri_0[] = {
-	gsSPVertex(pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1_vtx_0 + 0, 32, 0),
-	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
-	gsSP2Triangles(3, 2, 4, 0, 3, 4, 5, 0),
-	gsSP2Triangles(6, 7, 8, 0, 6, 8, 9, 0),
-	gsSP2Triangles(9, 8, 10, 0, 9, 10, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 12, 14, 15, 0),
-	gsSP2Triangles(15, 14, 16, 0, 15, 16, 17, 0),
-	gsSP2Triangles(18, 19, 20, 0, 18, 20, 21, 0),
-	gsSP2Triangles(21, 20, 22, 0, 21, 22, 23, 0),
-	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
-	gsSP2Triangles(26, 27, 28, 0, 29, 26, 28, 0),
-	gsSP2Triangles(30, 26, 29, 0, 30, 31, 26, 0),
-	gsSPVertex(pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1_vtx_0 + 32, 4, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
-	gsSPEndDisplayList(),
 };
 
 Vtx pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1_vtx_1[20] = {
@@ -618,7 +593,39 @@ Vtx pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1_vtx_1[20] = {
 	{{ {-12, 101, -12}, 0, {699, 1373}, {255, 255, 255, 255} }},
 };
 
-Gfx pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1_tri_1[] = {
+
+Gfx pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1[] = {
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
+	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, pc_sandglass_spring_dz_sandglass_buttan128_pal_rgba16),
+	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, pc_sandglass_spring_dz_sandglass_buttan128_ci4),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsSPVertex(pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1_vtx_0 + 0, 33, 0),
+	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
+	gsSP2Triangles(3, 2, 4, 0, 3, 4, 5, 0),
+	gsSP2Triangles(6, 7, 8, 0, 6, 8, 9, 0),
+	gsSP2Triangles(9, 8, 10, 0, 9, 10, 11, 0),
+	gsSP2Triangles(12, 13, 14, 0, 12, 14, 15, 0),
+	gsSP2Triangles(15, 14, 16, 0, 15, 16, 17, 0),
+	gsSP2Triangles(18, 19, 20, 0, 18, 20, 21, 0),
+	gsSP2Triangles(21, 20, 22, 0, 21, 22, 23, 0),
+	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
+	gsSP2Triangles(26, 27, 28, 0, 29, 26, 28, 0),
+	gsSP2Triangles(30, 26, 29, 0, 30, 31, 26, 0),
+	gsSP2Triangles(31, 32, 26, 0, 26, 32, 24, 0),
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, pc_sandglass_spring_dz_sandglass_body128_pal_rgba16),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, pc_sandglass_spring_dz_sandglass_body128_ci4),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsSPVertex(pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1_vtx_1 + 0, 20, 0),
 	gsSP2Triangles(0, 1, 2, 0, 2, 3, 0, 0),
 	gsSP2Triangles(2, 4, 3, 0, 5, 4, 2, 0),
@@ -630,72 +637,9 @@ Gfx pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1_tri_1[] = {
 	gsSP2Triangles(16, 15, 12, 0, 16, 17, 15, 0),
 	gsSP2Triangles(18, 17, 16, 0, 18, 19, 17, 0),
 	gsSP2Triangles(14, 19, 18, 0, 14, 13, 19, 0),
-	gsSPEndDisplayList(),
-};
-
-
-Gfx mat_pc_sandglass_spring_SANDGLASS_SPRING_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, pc_sandglass_spring_dz_sandglass_buttan128_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 15),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, pc_sandglass_spring_dz_sandglass_buttan128_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_pc_sandglass_spring_SANDGLASS_SPRING_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(0, G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_pc_sandglass_spring_SANDGLASS_SPRING_sa2mdl_1_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, pc_sandglass_spring_dz_sandglass_body128_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 15),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, pc_sandglass_spring_dz_sandglass_body128_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_pc_sandglass_spring_SANDGLASS_SPRING_sa2mdl_1_f3d[] = {
-	gsSPGeometryMode(0, G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1[] = {
-	gsSPDisplayList(mat_pc_sandglass_spring_SANDGLASS_SPRING_sa2mdl_0_f3d),
-	gsSPDisplayList(pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_pc_sandglass_spring_SANDGLASS_SPRING_sa2mdl_0_f3d),
-	gsSPDisplayList(mat_pc_sandglass_spring_SANDGLASS_SPRING_sa2mdl_1_f3d),
-	gsSPDisplayList(pc_sandglass_spring_pc_sandglass_spring_mesh_layer_1_tri_1),
-	gsSPDisplayList(mat_revert_pc_sandglass_spring_SANDGLASS_SPRING_sa2mdl_1_f3d),
-	gsDPPipeSync(),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPClearGeometryMode(G_TEXTURE_GEN),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 0),
 	gsDPSetEnvColor(255, 255, 255, 255),

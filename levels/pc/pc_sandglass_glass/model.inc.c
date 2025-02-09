@@ -1,5 +1,4 @@
-Gfx pc_sandglass_glass_dz_kankyou128_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 pc_sandglass_glass_dz_kankyou128_ci4[] = {
+ALIGNED8 u8 pc_sandglass_glass_dz_kankyou128_ci4[] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
 	0x00, 0x00, 0x12, 0x33, 0x44, 0x56, 0x66, 0x66, 
 	0x66, 0x77, 0x75, 0x55, 0x55, 0x75, 0x44, 0x44, 
@@ -259,8 +258,7 @@ u8 pc_sandglass_glass_dz_kankyou128_ci4[] = {
 	
 };
 
-Gfx pc_sandglass_glass_dz_kankyou128_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 pc_sandglass_glass_dz_kankyou128_pal_rgba16[] = {
+ALIGNED8 u8 pc_sandglass_glass_dz_kankyou128_pal_rgba16[] = {
 	0xff, 0xff, 0xef, 0x3b, 0xde, 0xf7, 0xb5, 0xad, 
 	0x94, 0xa5, 0x84, 0x21, 0x6b, 0x5b, 0x73, 0xdd, 
 	0xad, 0x2b, 0xce, 0x73, 0x4a, 0x53, 0x5a, 0xd7, 
@@ -268,7 +266,7 @@ u8 pc_sandglass_glass_dz_kankyou128_pal_rgba16[] = {
 	
 };
 
-Vtx pc_sandglass_glass_pc_sandglass_glass_mesh_layer_5_vtx_0[49] = {
+Vtx pc_sandglass_glass_pc_sandglass_glass_mesh_layer_5_vtx_0[40] = {
 	{{ {-19, -43, -33}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {-30, -85, -52}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {-51, -85, -30}, 0, {-16, -16}, {255, 255, 255, 255} }},
@@ -302,26 +300,32 @@ Vtx pc_sandglass_glass_pc_sandglass_glass_mesh_layer_5_vtx_0[49] = {
 	{{ {19, 43, 33}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {30, 85, 52}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {0, 85, 59}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {19, 43, 33}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {30, 85, 52}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {-19, 43, 33}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {-30, 85, 52}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {-51, 85, 30}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {-38, 43, 0}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {-60, 85, 0}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {-51, 85, -30}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {-19, 43, -33}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {-30, 85, -52}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {0, 85, -59}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {-5, 0, -5}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {-5, 0, 5}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {5, 0, 5}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {38, 43, 0}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {5, 0, -5}, 0, {-16, -16}, {255, 255, 255, 255} }},
 };
 
-Gfx pc_sandglass_glass_pc_sandglass_glass_mesh_layer_5_tri_0[] = {
-	gsSPVertex(pc_sandglass_glass_pc_sandglass_glass_mesh_layer_5_vtx_0 + 0, 32, 0),
+
+Gfx pc_sandglass_glass_pc_sandglass_glass_mesh_layer_5[] = {
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
+	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsDPSetPrimColor(0, 0, 255, 255, 255, 42),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, pc_sandglass_glass_dz_kankyou128_pal_rgba16),
+	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, pc_sandglass_glass_dz_kankyou128_ci4),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsSPVertex(pc_sandglass_glass_pc_sandglass_glass_mesh_layer_5_vtx_0 + 0, 40, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 3, 1, 0),
 	gsSP2Triangles(0, 4, 3, 0, 5, 4, 0, 0),
 	gsSP2Triangles(6, 5, 0, 0, 6, 0, 7, 0),
@@ -341,55 +345,18 @@ Gfx pc_sandglass_glass_pc_sandglass_glass_mesh_layer_5_tri_0[] = {
 	gsSP2Triangles(5, 6, 22, 0, 5, 22, 27, 0),
 	gsSP2Triangles(27, 22, 24, 0, 27, 24, 28, 0),
 	gsSP2Triangles(28, 29, 27, 0, 27, 29, 30, 0),
-	gsSP1Triangle(31, 30, 29, 0),
-	gsSPVertex(pc_sandglass_glass_pc_sandglass_glass_mesh_layer_5_vtx_0 + 32, 17, 0),
-	gsSP2Triangles(0, 1, 2, 0, 0, 3, 1, 0),
-	gsSP2Triangles(4, 3, 0, 0, 5, 3, 4, 0),
-	gsSP2Triangles(5, 6, 3, 0, 5, 7, 6, 0),
-	gsSP2Triangles(6, 7, 8, 0, 6, 8, 9, 0),
-	gsSP2Triangles(9, 8, 10, 0, 9, 10, 11, 0),
-	gsSP2Triangles(12, 6, 9, 0, 13, 6, 12, 0),
-	gsSP2Triangles(13, 3, 6, 0, 14, 3, 13, 0),
-	gsSP2Triangles(14, 1, 3, 0, 15, 1, 14, 0),
-	gsSP1Triangle(14, 16, 15, 0),
-	gsSPEndDisplayList(),
-};
-
-
-Gfx mat_pc_sandglass_glass_SANDGLASS_GLASS_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
+	gsSP2Triangles(31, 30, 29, 0, 32, 30, 31, 0),
+	gsSP2Triangles(32, 33, 30, 0, 34, 33, 32, 0),
+	gsSP2Triangles(35, 33, 34, 0, 35, 36, 33, 0),
+	gsSP2Triangles(35, 37, 36, 0, 36, 37, 38, 0),
+	gsSP2Triangles(36, 38, 26, 0, 26, 38, 39, 0),
+	gsSP2Triangles(26, 39, 25, 0, 6, 36, 26, 0),
+	gsSP2Triangles(21, 36, 6, 0, 21, 33, 36, 0),
+	gsSP2Triangles(20, 33, 21, 0, 20, 30, 33, 0),
+	gsSP2Triangles(27, 30, 20, 0, 20, 5, 27, 0),
 	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetPrimColor(0, 0, 255, 255, 255, 42),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, pc_sandglass_glass_dz_kankyou128_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 15),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, pc_sandglass_glass_dz_kankyou128_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_pc_sandglass_glass_SANDGLASS_GLASS_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(0, G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx pc_sandglass_glass_pc_sandglass_glass_mesh_layer_5[] = {
-	gsSPDisplayList(mat_pc_sandglass_glass_SANDGLASS_GLASS_sa2mdl_0_f3d),
-	gsSPDisplayList(pc_sandglass_glass_pc_sandglass_glass_mesh_layer_5_tri_0),
-	gsSPDisplayList(mat_revert_pc_sandglass_glass_SANDGLASS_GLASS_sa2mdl_0_f3d),
-	gsDPPipeSync(),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPClearGeometryMode(G_TEXTURE_GEN),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 0),
 	gsDPSetEnvColor(255, 255, 255, 255),

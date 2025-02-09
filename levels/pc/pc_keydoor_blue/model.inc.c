@@ -1,5 +1,4 @@
-Gfx pc_keydoor_blue_dz_pc_doorkey_door128_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 pc_keydoor_blue_dz_pc_doorkey_door128_ci4[] = {
+ALIGNED8 u8 pc_keydoor_blue_dz_pc_doorkey_door128_ci4[] = {
 	0x00, 0x12, 0x23, 0x32, 0x34, 0x40, 0x56, 0x66, 
 	0x78, 0x77, 0x88, 0x88, 0x77, 0x77, 0x87, 0x87, 
 	0x77, 0x75, 0x88, 0x77, 0x77, 0x75, 0x77, 0x87, 
@@ -259,8 +258,7 @@ u8 pc_keydoor_blue_dz_pc_doorkey_door128_ci4[] = {
 	
 };
 
-Gfx pc_keydoor_blue_dz_pc_doorkey_door128_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 pc_keydoor_blue_dz_pc_doorkey_door128_pal_rgba16[] = {
+ALIGNED8 u8 pc_keydoor_blue_dz_pc_doorkey_door128_pal_rgba16[] = {
 	0xb5, 0x6d, 0xa4, 0xeb, 0x94, 0x67, 0x84, 0x23, 
 	0x73, 0x9f, 0x42, 0x13, 0x00, 0x01, 0x08, 0x87, 
 	0x29, 0x8f, 0x4a, 0x97, 0xb5, 0x27, 0x63, 0x1b, 
@@ -268,8 +266,7 @@ u8 pc_keydoor_blue_dz_pc_doorkey_door128_pal_rgba16[] = {
 	
 };
 
-Gfx pc_keydoor_blue_kd_pc_ami2_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 pc_keydoor_blue_kd_pc_ami2_ci4[] = {
+ALIGNED8 u8 pc_keydoor_blue_kd_pc_ami2_ci4[] = {
 	0x01, 0x23, 0x45, 0x44, 0x55, 0x11, 0x55, 0x41, 
 	0x14, 0x51, 0x41, 0x54, 0x45, 0x55, 0x50, 0x53, 
 	0x10, 0x11, 0x00, 0x01, 0x11, 0x54, 0x51, 0x33, 
@@ -529,8 +526,7 @@ u8 pc_keydoor_blue_kd_pc_ami2_ci4[] = {
 	
 };
 
-Gfx pc_keydoor_blue_kd_pc_ami2_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 pc_keydoor_blue_kd_pc_ami2_pal_rgba16[] = {
+ALIGNED8 u8 pc_keydoor_blue_kd_pc_ami2_pal_rgba16[] = {
 	0x6b, 0x5b, 0x8c, 0xa7, 0xf7, 0x33, 0x94, 0x1f, 
 	0xde, 0x6d, 0xb5, 0x25, 0x39, 0x8d, 0x4a, 0x55, 
 	0x52, 0x51, 0x20, 0xc7, 0x29, 0x95, 0x72, 0xd3, 
@@ -553,14 +549,6 @@ Vtx pc_keydoor_blue_pc_keydoor_blue_mesh_layer_1_vtx_0[12] = {
 	{{ {250, 0, 0}, 0, {4096, 2032}, {189, 175, 177, 255} }},
 };
 
-Gfx pc_keydoor_blue_pc_keydoor_blue_mesh_layer_1_tri_0[] = {
-	gsSPVertex(pc_keydoor_blue_pc_keydoor_blue_mesh_layer_1_vtx_0 + 0, 12, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
-	gsSPEndDisplayList(),
-};
-
 Vtx pc_keydoor_blue_pc_keydoor_blue_mesh_layer_5_vtx_0[8] = {
 	{{ {91, 197, 34}, 0, {2032, 2024}, {158, 158, 197, 255} }},
 	{{ {91, 303, 34}, 0, {2032, 498}, {112, 114, 158, 255} }},
@@ -572,20 +560,12 @@ Vtx pc_keydoor_blue_pc_keydoor_blue_mesh_layer_5_vtx_0[8] = {
 	{{ {91, 303, -4}, 0, {2032, 498}, {189, 175, 177, 255} }},
 };
 
-Gfx pc_keydoor_blue_pc_keydoor_blue_mesh_layer_5_tri_0[] = {
-	gsSPVertex(pc_keydoor_blue_pc_keydoor_blue_mesh_layer_5_vtx_0 + 0, 8, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
-	gsSPEndDisplayList(),
-};
 
-
-Gfx mat_pc_keydoor_blue_KEYDOOR_BLUE_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
-	gsDPPipeSync(),
+Gfx pc_keydoor_blue_pc_keydoor_blue_mesh_layer_1[] = {
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, pc_keydoor_blue_dz_pc_doorkey_door128_pal_rgba16),
 	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
@@ -595,23 +575,25 @@ Gfx mat_pc_keydoor_blue_KEYDOOR_BLUE_sa2mdl_0_f3d[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_MIRROR, 6, 0, G_TX_WRAP | G_TX_MIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsSPVertex(pc_keydoor_blue_pc_keydoor_blue_mesh_layer_1_vtx_0 + 0, 12, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
+	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
+	gsDPPipeSync(),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
+	gsSPTexture(65535, 65535, 0, 0, 0),
+	gsDPSetEnvColor(255, 255, 255, 255),
+	gsDPSetAlphaCompare(G_AC_NONE),
 	gsSPEndDisplayList(),
 };
 
-Gfx mat_revert_pc_keydoor_blue_KEYDOOR_BLUE_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(0, G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_pc_keydoor_blue_KEYDOOR_BLUE_sa2mdl_1_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
-	gsDPPipeSync(),
+Gfx pc_keydoor_blue_pc_keydoor_blue_mesh_layer_5[] = {
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, pc_keydoor_blue_kd_pc_ami2_pal_rgba16),
@@ -622,38 +604,12 @@ Gfx mat_pc_keydoor_blue_KEYDOOR_BLUE_sa2mdl_1_f3d[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_pc_keydoor_blue_KEYDOOR_BLUE_sa2mdl_1_f3d[] = {
-	gsSPGeometryMode(0, G_LIGHTING),
+	gsSPVertex(pc_keydoor_blue_pc_keydoor_blue_mesh_layer_5_vtx_0 + 0, 8, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
 	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx pc_keydoor_blue_pc_keydoor_blue_mesh_layer_1[] = {
-	gsSPDisplayList(mat_pc_keydoor_blue_KEYDOOR_BLUE_sa2mdl_0_f3d),
-	gsSPDisplayList(pc_keydoor_blue_pc_keydoor_blue_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_pc_keydoor_blue_KEYDOOR_BLUE_sa2mdl_0_f3d),
-	gsDPPipeSync(),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPClearGeometryMode(G_TEXTURE_GEN),
-	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
-	gsSPTexture(65535, 65535, 0, 0, 0),
-	gsDPSetEnvColor(255, 255, 255, 255),
-	gsDPSetAlphaCompare(G_AC_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx pc_keydoor_blue_pc_keydoor_blue_mesh_layer_5[] = {
-	gsSPDisplayList(mat_pc_keydoor_blue_KEYDOOR_BLUE_sa2mdl_1_f3d),
-	gsSPDisplayList(pc_keydoor_blue_pc_keydoor_blue_mesh_layer_5_tri_0),
-	gsSPDisplayList(mat_revert_pc_keydoor_blue_KEYDOOR_BLUE_sa2mdl_1_f3d),
-	gsDPPipeSync(),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPClearGeometryMode(G_TEXTURE_GEN),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 0),
 	gsDPSetEnvColor(255, 255, 255, 255),

@@ -1,5 +1,4 @@
-Gfx pc_windmill_kd_pc_yuka2_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 pc_windmill_kd_pc_yuka2_ci4[] = {
+ALIGNED8 u8 pc_windmill_kd_pc_yuka2_ci4[] = {
 	0x00, 0x12, 0x31, 0x24, 0x24, 0x54, 0x43, 0x60, 
 	0x70, 0x61, 0x32, 0x11, 0x44, 0x81, 0x14, 0x41, 
 	0x69, 0x24, 0x22, 0x24, 0x41, 0x33, 0xaa, 0xaa, 
@@ -259,8 +258,7 @@ u8 pc_windmill_kd_pc_yuka2_ci4[] = {
 	
 };
 
-Gfx pc_windmill_kd_pc_yuka2_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 pc_windmill_kd_pc_yuka2_pal_rgba16[] = {
+ALIGNED8 u8 pc_windmill_kd_pc_yuka2_pal_rgba16[] = {
 	0xef, 0x35, 0x92, 0xcd, 0x6a, 0x09, 0xb4, 0x13, 
 	0x49, 0x45, 0x78, 0xc5, 0x28, 0x81, 0xde, 0x6d, 
 	0xbd, 0x21, 0x72, 0x8f, 0x94, 0x4f, 0xa1, 0x8b, 
@@ -268,8 +266,7 @@ u8 pc_windmill_kd_pc_yuka2_pal_rgba16[] = {
 	
 };
 
-Gfx pc_windmill_kd_pc_hasira1_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 pc_windmill_kd_pc_hasira1_ci4[] = {
+ALIGNED8 u8 pc_windmill_kd_pc_hasira1_ci4[] = {
 	0x00, 0x01, 0x22, 0x34, 0x22, 0x55, 0x55, 0x34, 
 	0x33, 0x32, 0x44, 0x26, 0x33, 0x33, 0x00, 0x02, 
 	0x00, 0x23, 0x03, 0x00, 0x33, 0x00, 0x33, 0x00, 
@@ -529,8 +526,7 @@ u8 pc_windmill_kd_pc_hasira1_ci4[] = {
 	
 };
 
-Gfx pc_windmill_kd_pc_hasira1_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 pc_windmill_kd_pc_hasira1_pal_rgba16[] = {
+ALIGNED8 u8 pc_windmill_kd_pc_hasira1_pal_rgba16[] = {
 	0x69, 0x89, 0xab, 0x11, 0xa3, 0x53, 0x8a, 0x8d, 
 	0xc4, 0x17, 0x71, 0x87, 0xdc, 0xdb, 0xed, 0xe5, 
 	0x81, 0x07, 0x88, 0xc5, 0xaa, 0x4d, 0xa0, 0xc7, 
@@ -538,8 +534,7 @@ u8 pc_windmill_kd_pc_hasira1_pal_rgba16[] = {
 	
 };
 
-Gfx pc_windmill_dc_pc_crouchwall_pillar256_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 pc_windmill_dc_pc_crouchwall_pillar256_ci4[] = {
+ALIGNED8 u8 pc_windmill_dc_pc_crouchwall_pillar256_ci4[] = {
 	0x00, 0x11, 0x02, 0x32, 0x02, 0x22, 0x22, 0x00, 
 	0x11, 0x02, 0x24, 0x54, 0x46, 0x52, 0x27, 0x89, 
 	0x77, 0x77, 0x88, 0x91, 0x11, 0x22, 0x20, 0x92, 
@@ -799,8 +794,7 @@ u8 pc_windmill_dc_pc_crouchwall_pillar256_ci4[] = {
 	
 };
 
-Gfx pc_windmill_dc_pc_crouchwall_pillar256_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 pc_windmill_dc_pc_crouchwall_pillar256_pal_rgba16[] = {
+ALIGNED8 u8 pc_windmill_dc_pc_crouchwall_pillar256_pal_rgba16[] = {
 	0x52, 0x0d, 0x39, 0x49, 0x72, 0xd1, 0x73, 0x0f, 
 	0x94, 0x17, 0xd6, 0xb3, 0x8c, 0x5f, 0x5a, 0x05, 
 	0x82, 0xc5, 0x41, 0x85, 0x00, 0x01, 0x5d, 0x13, 
@@ -808,8 +802,7 @@ u8 pc_windmill_dc_pc_crouchwall_pillar256_pal_rgba16[] = {
 	
 };
 
-Gfx pc_windmill_dc_pc_hataa256_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 pc_windmill_dc_pc_hataa256_ci4[] = {
+ALIGNED8 u8 pc_windmill_dc_pc_hataa256_ci4[] = {
 	0x01, 0x22, 0x22, 0x23, 0x22, 0x42, 0x22, 0x24, 
 	0x22, 0x42, 0x42, 0x22, 0x22, 0x22, 0x25, 0x15, 
 	0x05, 0x22, 0x22, 0x22, 0x23, 0x22, 0x22, 0x23, 
@@ -1069,8 +1062,7 @@ u8 pc_windmill_dc_pc_hataa256_ci4[] = {
 	
 };
 
-Gfx pc_windmill_dc_pc_hataa256_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 pc_windmill_dc_pc_hataa256_pal_rgba16[] = {
+ALIGNED8 u8 pc_windmill_dc_pc_hataa256_pal_rgba16[] = {
 	0xc5, 0xe3, 0x94, 0x59, 0x10, 0x81, 0x18, 0xc1, 
 	0x00, 0x01, 0x52, 0x4d, 0xde, 0x67, 0xb5, 0x1f, 
 	0xee, 0xeb, 0x6b, 0x13, 0x20, 0x01, 0xcc, 0x9b, 
@@ -1078,8 +1070,7 @@ u8 pc_windmill_dc_pc_hataa256_pal_rgba16[] = {
 	
 };
 
-Gfx pc_windmill_dc_pc_hatab256_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 pc_windmill_dc_pc_hatab256_ci4[] = {
+ALIGNED8 u8 pc_windmill_dc_pc_hatab256_ci4[] = {
 	0x01, 0x22, 0x22, 0x23, 0x22, 0x42, 0x22, 0x24, 
 	0x22, 0x42, 0x42, 0x22, 0x22, 0x22, 0x25, 0x15, 
 	0x65, 0x22, 0x22, 0x22, 0x23, 0x22, 0x22, 0x23, 
@@ -1339,8 +1330,7 @@ u8 pc_windmill_dc_pc_hatab256_ci4[] = {
 	
 };
 
-Gfx pc_windmill_dc_pc_hatab256_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 pc_windmill_dc_pc_hatab256_pal_rgba16[] = {
+ALIGNED8 u8 pc_windmill_dc_pc_hatab256_pal_rgba16[] = {
 	0xde, 0xa9, 0x94, 0x59, 0x10, 0x81, 0x18, 0xc1, 
 	0x00, 0x01, 0x52, 0x4d, 0xce, 0x25, 0x20, 0xc1, 
 	0xb5, 0x5f, 0xef, 0x2d, 0x73, 0x53, 0x18, 0x01, 
@@ -1348,8 +1338,7 @@ u8 pc_windmill_dc_pc_hatab256_pal_rgba16[] = {
 	
 };
 
-Gfx pc_windmill_dc_pc_hatac256_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 pc_windmill_dc_pc_hatac256_ci4[] = {
+ALIGNED8 u8 pc_windmill_dc_pc_hatac256_ci4[] = {
 	0x01, 0x22, 0x22, 0x23, 0x22, 0x42, 0x22, 0x24, 
 	0x22, 0x42, 0x42, 0x22, 0x22, 0x22, 0x25, 0x15, 
 	0x05, 0x22, 0x22, 0x22, 0x23, 0x22, 0x22, 0x23, 
@@ -1609,8 +1598,7 @@ u8 pc_windmill_dc_pc_hatac256_ci4[] = {
 	
 };
 
-Gfx pc_windmill_dc_pc_hatac256_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 pc_windmill_dc_pc_hatac256_pal_rgba16[] = {
+ALIGNED8 u8 pc_windmill_dc_pc_hatac256_pal_rgba16[] = {
 	0xbd, 0xa1, 0x8c, 0x17, 0x10, 0x81, 0x18, 0xc1, 
 	0x00, 0x01, 0x52, 0x8d, 0x21, 0x03, 0xce, 0x25, 
 	0xac, 0xdd, 0xde, 0xa7, 0x20, 0x01, 0x92, 0x8f, 
@@ -1647,17 +1635,6 @@ Vtx pc_windmill_pc_windmill_mesh_layer_1_vtx_0[26] = {
 	{{ {100, -100, 0}, 0, {827, 723}, {255, 255, 255, 255} }},
 };
 
-Gfx pc_windmill_pc_windmill_mesh_layer_1_tri_0[] = {
-	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_0 + 0, 26, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
-	gsSP2Triangles(6, 7, 2, 0, 8, 9, 5, 0),
-	gsSP2Triangles(10, 11, 2, 0, 12, 13, 5, 0),
-	gsSP2Triangles(14, 15, 2, 0, 16, 17, 5, 0),
-	gsSP2Triangles(18, 19, 2, 0, 20, 21, 5, 0),
-	gsSP2Triangles(22, 23, 2, 0, 24, 25, 5, 0),
-	gsSPEndDisplayList(),
-};
-
 Vtx pc_windmill_pc_windmill_mesh_layer_1_vtx_1[18] = {
 	{{ {-100, -50, -87}, 0, {2032, 2064}, {255, 255, 255, 255} }},
 	{{ {100, -50, -87}, 0, {2016, -24}, {255, 255, 255, 255} }},
@@ -1677,17 +1654,6 @@ Vtx pc_windmill_pc_windmill_mesh_layer_1_vtx_1[18] = {
 	{{ {-100, 100, 0}, 0, {-32, 2048}, {255, 255, 255, 255} }},
 	{{ {100, -50, 87}, 0, {2016, -24}, {255, 255, 255, 255} }},
 	{{ {-100, -50, 87}, 0, {2032, 2064}, {255, 255, 255, 255} }},
-};
-
-Gfx pc_windmill_pc_windmill_mesh_layer_1_tri_1[] = {
-	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_1 + 0, 18, 0),
-	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
-	gsSP2Triangles(3, 2, 4, 0, 3, 4, 5, 0),
-	gsSP2Triangles(6, 7, 8, 0, 6, 8, 9, 0),
-	gsSP2Triangles(9, 8, 10, 0, 9, 10, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
-	gsSP2Triangles(16, 12, 17, 0, 17, 12, 14, 0),
-	gsSPEndDisplayList(),
 };
 
 Vtx pc_windmill_pc_windmill_mesh_layer_1_vtx_2[384] = {
@@ -2077,119 +2043,7 @@ Vtx pc_windmill_pc_windmill_mesh_layer_1_vtx_2[384] = {
 	{{ {-185, -328, 613}, 0, {924, 2032}, {255, 255, 255, 255} }},
 };
 
-Gfx pc_windmill_pc_windmill_mesh_layer_1_tri_2[] = {
-	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_2 + 0, 32, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
-	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
-	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
-	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
-	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_2 + 32, 32, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
-	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
-	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
-	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
-	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_2 + 64, 32, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
-	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
-	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
-	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
-	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_2 + 96, 32, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
-	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
-	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
-	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
-	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_2 + 128, 32, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
-	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
-	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
-	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
-	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_2 + 160, 32, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
-	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
-	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
-	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
-	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_2 + 192, 32, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
-	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
-	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
-	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
-	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_2 + 224, 32, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
-	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
-	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
-	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
-	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_2 + 256, 32, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
-	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
-	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
-	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
-	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_2 + 288, 32, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
-	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
-	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
-	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
-	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_2 + 320, 32, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
-	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
-	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
-	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
-	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_2 + 352, 32, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
-	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
-	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
-	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
-	gsSPEndDisplayList(),
-};
-
-Vtx pc_windmill_pc_windmill_mesh_layer_1_vtx_3[42] = {
+Vtx pc_windmill_pc_windmill_mesh_layer_1_vtx_3[40] = {
 	{{ {-74, 675, 0}, 0, {225, 56}, {255, 255, 255, 255} }},
 	{{ {-148, 695, 0}, 0, {-8, -16}, {255, 255, 255, 255} }},
 	{{ {-124, 621, 0}, 0, {80, 233}, {255, 255, 255, 255} }},
@@ -2222,9 +2076,7 @@ Vtx pc_windmill_pc_windmill_mesh_layer_1_vtx_3[42] = {
 	{{ {-87, 199, 345}, 0, {1229, 1004}, {255, 255, 255, 255} }},
 	{{ {87, 199, 345}, 0, {1815, 1004}, {255, 255, 255, 255} }},
 	{{ {-71, 125, 216}, 0, {1285, 1518}, {255, 255, 255, 255} }},
-	{{ {-71, 125, 216}, 0, {1285, 1518}, {255, 255, 255, 255} }},
 	{{ {71, 125, 216}, 0, {1767, 1518}, {255, 255, 255, 255} }},
-	{{ {87, 199, 345}, 0, {1815, 1004}, {255, 255, 255, 255} }},
 	{{ {-63, 75, 130}, 0, {1317, 1855}, {255, 255, 255, 255} }},
 	{{ {63, 75, 130}, 0, {1735, 1855}, {255, 255, 255, 255} }},
 	{{ {0, 56, 98}, 0, {1526, 1976}, {255, 255, 255, 255} }},
@@ -2234,31 +2086,7 @@ Vtx pc_windmill_pc_windmill_mesh_layer_1_vtx_3[42] = {
 	{{ {66, 50, 87}, 0, {1743, 2032}, {255, 255, 255, 255} }},
 };
 
-Gfx pc_windmill_pc_windmill_mesh_layer_1_tri_3[] = {
-	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_3 + 0, 32, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 3, 0, 0),
-	gsSP2Triangles(2, 4, 3, 0, 5, 4, 2, 0),
-	gsSP2Triangles(5, 6, 4, 0, 7, 6, 5, 0),
-	gsSP2Triangles(7, 8, 6, 0, 9, 8, 7, 0),
-	gsSP2Triangles(9, 10, 8, 0, 11, 10, 9, 0),
-	gsSP2Triangles(11, 12, 10, 0, 13, 12, 11, 0),
-	gsSP2Triangles(13, 11, 14, 0, 14, 11, 15, 0),
-	gsSP2Triangles(13, 16, 12, 0, 16, 17, 12, 0),
-	gsSP2Triangles(3, 4, 18, 0, 18, 4, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
-	gsSP2Triangles(22, 23, 24, 0, 24, 23, 25, 0),
-	gsSP2Triangles(24, 25, 26, 0, 27, 22, 24, 0),
-	gsSP2Triangles(27, 28, 22, 0, 29, 28, 27, 0),
-	gsSP2Triangles(29, 30, 28, 0, 31, 30, 29, 0),
-	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_3 + 32, 10, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
-	gsSP2Triangles(3, 4, 1, 0, 5, 4, 3, 0),
-	gsSP2Triangles(5, 3, 6, 0, 6, 3, 7, 0),
-	gsSP2Triangles(8, 4, 5, 0, 8, 9, 4, 0),
-	gsSPEndDisplayList(),
-};
-
-Vtx pc_windmill_pc_windmill_mesh_layer_1_vtx_4[44] = {
+Vtx pc_windmill_pc_windmill_mesh_layer_1_vtx_4[40] = {
 	{{ {-74, -338, 585}, 0, {225, 56}, {255, 255, 255, 255} }},
 	{{ {-148, -348, 602}, 0, {-8, -16}, {255, 255, 255, 255} }},
 	{{ {-124, -311, 538}, 0, {80, 233}, {255, 255, 255, 255} }},
@@ -2291,45 +2119,17 @@ Vtx pc_windmill_pc_windmill_mesh_layer_1_vtx_4[44] = {
 	{{ {-71, -249, 0}, 0, {1285, 1518}, {255, 255, 255, 255} }},
 	{{ {71, -249, 0}, 0, {1767, 1518}, {255, 255, 255, 255} }},
 	{{ {-63, -150, 0}, 0, {1317, 1855}, {255, 255, 255, 255} }},
-	{{ {-63, -150, 0}, 0, {1317, 1855}, {255, 255, 255, 255} }},
 	{{ {63, -150, 0}, 0, {1735, 1855}, {255, 255, 255, 255} }},
-	{{ {71, -249, 0}, 0, {1767, 1518}, {255, 255, 255, 255} }},
 	{{ {0, -113, 0}, 0, {1526, 1976}, {255, 255, 255, 255} }},
 	{{ {-33, -110, 0}, 0, {1398, 1992}, {255, 255, 255, 255} }},
 	{{ {-66, -100, 0}, 0, {1309, 2032}, {255, 255, 255, 255} }},
 	{{ {33, -110, 0}, 0, {1655, 1992}, {255, 255, 255, 255} }},
 	{{ {66, -100, 0}, 0, {1743, 2032}, {255, 255, 255, 255} }},
-	{{ {0, -668, 0}, 0, {1526, 88}, {255, 255, 255, 255} }},
-	{{ {124, -621, 0}, 0, {1952, 233}, {255, 255, 255, 255} }},
 	{{ {74, -675, 0}, 0, {1791, 64}, {255, 255, 255, 255} }},
 	{{ {148, -695, 0}, 0, {2032, -16}, {255, 255, 255, 255} }},
 };
 
-Gfx pc_windmill_pc_windmill_mesh_layer_1_tri_4[] = {
-	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_4 + 0, 32, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 3, 0, 0),
-	gsSP2Triangles(2, 4, 3, 0, 5, 4, 2, 0),
-	gsSP2Triangles(5, 6, 4, 0, 7, 6, 5, 0),
-	gsSP2Triangles(7, 8, 6, 0, 9, 8, 7, 0),
-	gsSP2Triangles(9, 10, 8, 0, 11, 10, 9, 0),
-	gsSP2Triangles(11, 12, 10, 0, 13, 12, 11, 0),
-	gsSP2Triangles(13, 11, 14, 0, 14, 11, 15, 0),
-	gsSP2Triangles(13, 16, 12, 0, 16, 17, 12, 0),
-	gsSP2Triangles(3, 4, 18, 0, 18, 4, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 22, 23, 20, 0),
-	gsSP2Triangles(22, 24, 23, 0, 25, 24, 22, 0),
-	gsSP2Triangles(25, 26, 24, 0, 27, 26, 25, 0),
-	gsSP2Triangles(27, 28, 26, 0, 29, 28, 27, 0),
-	gsSP2Triangles(29, 30, 28, 0, 31, 30, 29, 0),
-	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_4 + 32, 12, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
-	gsSP2Triangles(3, 0, 4, 0, 4, 0, 5, 0),
-	gsSP2Triangles(3, 6, 1, 0, 6, 7, 1, 0),
-	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
-	gsSPEndDisplayList(),
-};
-
-Vtx pc_windmill_pc_windmill_mesh_layer_1_vtx_5[44] = {
+Vtx pc_windmill_pc_windmill_mesh_layer_1_vtx_5[40] = {
 	{{ {-74, -338, -585}, 0, {225, 56}, {255, 255, 255, 255} }},
 	{{ {-148, -348, -602}, 0, {-8, -16}, {255, 255, 255, 255} }},
 	{{ {-124, -311, -538}, 0, {80, 233}, {255, 255, 255, 255} }},
@@ -2362,22 +2162,189 @@ Vtx pc_windmill_pc_windmill_mesh_layer_1_vtx_5[44] = {
 	{{ {-71, 125, -216}, 0, {1285, 1518}, {255, 255, 255, 255} }},
 	{{ {71, 125, -216}, 0, {1767, 1518}, {255, 255, 255, 255} }},
 	{{ {-63, 75, -130}, 0, {1317, 1855}, {255, 255, 255, 255} }},
-	{{ {-63, 75, -130}, 0, {1317, 1855}, {255, 255, 255, 255} }},
 	{{ {63, 75, -130}, 0, {1735, 1855}, {255, 255, 255, 255} }},
-	{{ {71, 125, -216}, 0, {1767, 1518}, {255, 255, 255, 255} }},
 	{{ {0, 56, -98}, 0, {1526, 1976}, {255, 255, 255, 255} }},
 	{{ {-33, 55, -95}, 0, {1398, 1992}, {255, 255, 255, 255} }},
 	{{ {-66, 50, -87}, 0, {1309, 2032}, {255, 255, 255, 255} }},
 	{{ {33, 55, -95}, 0, {1655, 1992}, {255, 255, 255, 255} }},
 	{{ {66, 50, -87}, 0, {1743, 2032}, {255, 255, 255, 255} }},
-	{{ {0, 334, -579}, 0, {1526, 88}, {255, 255, 255, 255} }},
-	{{ {124, 311, -538}, 0, {1952, 233}, {255, 255, 255, 255} }},
 	{{ {74, 338, -585}, 0, {1791, 64}, {255, 255, 255, 255} }},
 	{{ {148, 348, -602}, 0, {2032, -16}, {255, 255, 255, 255} }},
 };
 
-Gfx pc_windmill_pc_windmill_mesh_layer_1_tri_5[] = {
-	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_5 + 0, 32, 0),
+
+Gfx pc_windmill_pc_windmill_mesh_layer_1[] = {
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
+	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, pc_windmill_kd_pc_yuka2_pal_rgba16),
+	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, pc_windmill_kd_pc_yuka2_ci4),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_0 + 0, 26, 0),
+	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
+	gsSP2Triangles(6, 7, 2, 0, 8, 9, 5, 0),
+	gsSP2Triangles(10, 11, 2, 0, 12, 13, 5, 0),
+	gsSP2Triangles(14, 15, 2, 0, 16, 17, 5, 0),
+	gsSP2Triangles(18, 19, 2, 0, 20, 21, 5, 0),
+	gsSP2Triangles(22, 23, 2, 0, 24, 25, 5, 0),
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, pc_windmill_kd_pc_hasira1_pal_rgba16),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, pc_windmill_kd_pc_hasira1_ci4),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_1 + 0, 18, 0),
+	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
+	gsSP2Triangles(3, 2, 4, 0, 3, 4, 5, 0),
+	gsSP2Triangles(6, 7, 8, 0, 6, 8, 9, 0),
+	gsSP2Triangles(9, 8, 10, 0, 9, 10, 11, 0),
+	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
+	gsSP2Triangles(16, 12, 17, 0, 17, 12, 14, 0),
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, pc_windmill_dc_pc_crouchwall_pillar256_pal_rgba16),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, pc_windmill_dc_pc_crouchwall_pillar256_ci4),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_2 + 0, 56, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
+	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
+	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
+	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
+	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
+	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
+	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
+	gsSP2Triangles(32, 33, 34, 0, 34, 33, 35, 0),
+	gsSP2Triangles(36, 37, 38, 0, 38, 37, 39, 0),
+	gsSP2Triangles(40, 41, 42, 0, 42, 41, 43, 0),
+	gsSP2Triangles(44, 45, 46, 0, 46, 45, 47, 0),
+	gsSP2Triangles(48, 49, 50, 0, 50, 49, 51, 0),
+	gsSP2Triangles(52, 53, 54, 0, 54, 53, 55, 0),
+	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_2 + 56, 56, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
+	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
+	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
+	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
+	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
+	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
+	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
+	gsSP2Triangles(32, 33, 34, 0, 34, 33, 35, 0),
+	gsSP2Triangles(36, 37, 38, 0, 38, 37, 39, 0),
+	gsSP2Triangles(40, 41, 42, 0, 42, 41, 43, 0),
+	gsSP2Triangles(44, 45, 46, 0, 46, 45, 47, 0),
+	gsSP2Triangles(48, 49, 50, 0, 50, 49, 51, 0),
+	gsSP2Triangles(52, 53, 54, 0, 54, 53, 55, 0),
+	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_2 + 112, 56, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
+	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
+	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
+	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
+	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
+	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
+	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
+	gsSP2Triangles(32, 33, 34, 0, 34, 33, 35, 0),
+	gsSP2Triangles(36, 37, 38, 0, 38, 37, 39, 0),
+	gsSP2Triangles(40, 41, 42, 0, 42, 41, 43, 0),
+	gsSP2Triangles(44, 45, 46, 0, 46, 45, 47, 0),
+	gsSP2Triangles(48, 49, 50, 0, 50, 49, 51, 0),
+	gsSP2Triangles(52, 53, 54, 0, 54, 53, 55, 0),
+	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_2 + 168, 56, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
+	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
+	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
+	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
+	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
+	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
+	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
+	gsSP2Triangles(32, 33, 34, 0, 34, 33, 35, 0),
+	gsSP2Triangles(36, 37, 38, 0, 38, 37, 39, 0),
+	gsSP2Triangles(40, 41, 42, 0, 42, 41, 43, 0),
+	gsSP2Triangles(44, 45, 46, 0, 46, 45, 47, 0),
+	gsSP2Triangles(48, 49, 50, 0, 50, 49, 51, 0),
+	gsSP2Triangles(52, 53, 54, 0, 54, 53, 55, 0),
+	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_2 + 224, 56, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
+	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
+	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
+	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
+	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
+	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
+	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
+	gsSP2Triangles(32, 33, 34, 0, 34, 33, 35, 0),
+	gsSP2Triangles(36, 37, 38, 0, 38, 37, 39, 0),
+	gsSP2Triangles(40, 41, 42, 0, 42, 41, 43, 0),
+	gsSP2Triangles(44, 45, 46, 0, 46, 45, 47, 0),
+	gsSP2Triangles(48, 49, 50, 0, 50, 49, 51, 0),
+	gsSP2Triangles(52, 53, 54, 0, 54, 53, 55, 0),
+	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_2 + 280, 56, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
+	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
+	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
+	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
+	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
+	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
+	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
+	gsSP2Triangles(32, 33, 34, 0, 34, 33, 35, 0),
+	gsSP2Triangles(36, 37, 38, 0, 38, 37, 39, 0),
+	gsSP2Triangles(40, 41, 42, 0, 42, 41, 43, 0),
+	gsSP2Triangles(44, 45, 46, 0, 46, 45, 47, 0),
+	gsSP2Triangles(48, 49, 50, 0, 50, 49, 51, 0),
+	gsSP2Triangles(52, 53, 54, 0, 54, 53, 55, 0),
+	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_2 + 336, 48, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
+	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
+	gsSP2Triangles(12, 13, 14, 0, 14, 13, 15, 0),
+	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
+	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
+	gsSP2Triangles(24, 25, 26, 0, 26, 25, 27, 0),
+	gsSP2Triangles(28, 29, 30, 0, 30, 29, 31, 0),
+	gsSP2Triangles(32, 33, 34, 0, 34, 33, 35, 0),
+	gsSP2Triangles(36, 37, 38, 0, 38, 37, 39, 0),
+	gsSP2Triangles(40, 41, 42, 0, 42, 41, 43, 0),
+	gsSP2Triangles(44, 45, 46, 0, 46, 45, 47, 0),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH),
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, pc_windmill_dc_pc_hataa256_pal_rgba16),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, pc_windmill_dc_pc_hataa256_ci4),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_3 + 0, 40, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 3, 0, 0),
+	gsSP2Triangles(2, 4, 3, 0, 5, 4, 2, 0),
+	gsSP2Triangles(5, 6, 4, 0, 7, 6, 5, 0),
+	gsSP2Triangles(7, 8, 6, 0, 9, 8, 7, 0),
+	gsSP2Triangles(9, 10, 8, 0, 11, 10, 9, 0),
+	gsSP2Triangles(11, 12, 10, 0, 13, 12, 11, 0),
+	gsSP2Triangles(13, 11, 14, 0, 14, 11, 15, 0),
+	gsSP2Triangles(13, 16, 12, 0, 16, 17, 12, 0),
+	gsSP2Triangles(3, 4, 18, 0, 18, 4, 19, 0),
+	gsSP2Triangles(20, 21, 22, 0, 22, 21, 23, 0),
+	gsSP2Triangles(22, 23, 24, 0, 24, 23, 25, 0),
+	gsSP2Triangles(24, 25, 26, 0, 27, 22, 24, 0),
+	gsSP2Triangles(27, 28, 22, 0, 29, 28, 27, 0),
+	gsSP2Triangles(29, 30, 28, 0, 31, 30, 29, 0),
+	gsSP2Triangles(31, 32, 30, 0, 33, 32, 31, 0),
+	gsSP2Triangles(33, 34, 32, 0, 35, 34, 33, 0),
+	gsSP2Triangles(35, 33, 36, 0, 36, 33, 37, 0),
+	gsSP2Triangles(38, 34, 35, 0, 38, 39, 34, 0),
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, pc_windmill_dc_pc_hatab256_pal_rgba16),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, pc_windmill_dc_pc_hatab256_ci4),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_4 + 0, 40, 0),
 	gsSP2Triangles(0, 1, 2, 0, 2, 3, 0, 0),
 	gsSP2Triangles(2, 4, 3, 0, 5, 4, 2, 0),
 	gsSP2Triangles(5, 6, 4, 0, 7, 6, 5, 0),
@@ -2392,193 +2359,37 @@ Gfx pc_windmill_pc_windmill_mesh_layer_1_tri_5[] = {
 	gsSP2Triangles(25, 26, 24, 0, 27, 26, 25, 0),
 	gsSP2Triangles(27, 28, 26, 0, 29, 28, 27, 0),
 	gsSP2Triangles(29, 30, 28, 0, 31, 30, 29, 0),
-	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_5 + 32, 12, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
-	gsSP2Triangles(3, 0, 4, 0, 4, 0, 5, 0),
-	gsSP2Triangles(3, 6, 1, 0, 6, 7, 1, 0),
-	gsSP2Triangles(8, 9, 10, 0, 10, 9, 11, 0),
-	gsSPEndDisplayList(),
-};
-
-
-Gfx mat_pc_windmill_WINDMILL_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
+	gsSP2Triangles(31, 32, 30, 0, 33, 32, 31, 0),
+	gsSP2Triangles(33, 31, 34, 0, 34, 31, 35, 0),
+	gsSP2Triangles(33, 36, 32, 0, 36, 37, 32, 0),
+	gsSP2Triangles(23, 24, 38, 0, 38, 24, 39, 0),
 	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, pc_windmill_kd_pc_yuka2_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 15),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, pc_windmill_kd_pc_yuka2_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_pc_windmill_WINDMILL_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(0, G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_pc_windmill_WINDMILL_sa2mdl_1_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, pc_windmill_kd_pc_hasira1_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 15),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, pc_windmill_kd_pc_hasira1_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_pc_windmill_WINDMILL_sa2mdl_1_f3d[] = {
-	gsSPGeometryMode(0, G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_pc_windmill_WINDMILL_sa2mdl_2_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, pc_windmill_dc_pc_crouchwall_pillar256_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 15),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, pc_windmill_dc_pc_crouchwall_pillar256_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_pc_windmill_WINDMILL_sa2mdl_2_f3d[] = {
-	gsSPGeometryMode(0, G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_pc_windmill_WINDMILL_sa2mdl_3_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, pc_windmill_dc_pc_hataa256_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 15),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, pc_windmill_dc_pc_hataa256_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_pc_windmill_WINDMILL_sa2mdl_3_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_pc_windmill_WINDMILL_sa2mdl_4_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, pc_windmill_dc_pc_hatab256_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 15),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, pc_windmill_dc_pc_hatab256_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_pc_windmill_WINDMILL_sa2mdl_4_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_pc_windmill_WINDMILL_sa2mdl_5_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, pc_windmill_dc_pc_hatac256_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, pc_windmill_dc_pc_hatac256_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_pc_windmill_WINDMILL_sa2mdl_5_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsSPVertex(pc_windmill_pc_windmill_mesh_layer_1_vtx_5 + 0, 40, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 3, 0, 0),
+	gsSP2Triangles(2, 4, 3, 0, 5, 4, 2, 0),
+	gsSP2Triangles(5, 6, 4, 0, 7, 6, 5, 0),
+	gsSP2Triangles(7, 8, 6, 0, 9, 8, 7, 0),
+	gsSP2Triangles(9, 10, 8, 0, 11, 10, 9, 0),
+	gsSP2Triangles(11, 12, 10, 0, 13, 12, 11, 0),
+	gsSP2Triangles(13, 11, 14, 0, 14, 11, 15, 0),
+	gsSP2Triangles(13, 16, 12, 0, 16, 17, 12, 0),
+	gsSP2Triangles(3, 4, 18, 0, 18, 4, 19, 0),
+	gsSP2Triangles(20, 21, 22, 0, 22, 23, 20, 0),
+	gsSP2Triangles(22, 24, 23, 0, 25, 24, 22, 0),
+	gsSP2Triangles(25, 26, 24, 0, 27, 26, 25, 0),
+	gsSP2Triangles(27, 28, 26, 0, 29, 28, 27, 0),
+	gsSP2Triangles(29, 30, 28, 0, 31, 30, 29, 0),
+	gsSP2Triangles(31, 32, 30, 0, 33, 32, 31, 0),
+	gsSP2Triangles(33, 31, 34, 0, 34, 31, 35, 0),
+	gsSP2Triangles(33, 36, 32, 0, 36, 37, 32, 0),
+	gsSP2Triangles(23, 24, 38, 0, 38, 24, 39, 0),
 	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx pc_windmill_pc_windmill_mesh_layer_1[] = {
-	gsSPDisplayList(mat_pc_windmill_WINDMILL_sa2mdl_0_f3d),
-	gsSPDisplayList(pc_windmill_pc_windmill_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_pc_windmill_WINDMILL_sa2mdl_0_f3d),
-	gsSPDisplayList(mat_pc_windmill_WINDMILL_sa2mdl_1_f3d),
-	gsSPDisplayList(pc_windmill_pc_windmill_mesh_layer_1_tri_1),
-	gsSPDisplayList(mat_revert_pc_windmill_WINDMILL_sa2mdl_1_f3d),
-	gsSPDisplayList(mat_pc_windmill_WINDMILL_sa2mdl_2_f3d),
-	gsSPDisplayList(pc_windmill_pc_windmill_mesh_layer_1_tri_2),
-	gsSPDisplayList(mat_revert_pc_windmill_WINDMILL_sa2mdl_2_f3d),
-	gsSPDisplayList(mat_pc_windmill_WINDMILL_sa2mdl_3_f3d),
-	gsSPDisplayList(pc_windmill_pc_windmill_mesh_layer_1_tri_3),
-	gsSPDisplayList(mat_revert_pc_windmill_WINDMILL_sa2mdl_3_f3d),
-	gsSPDisplayList(mat_pc_windmill_WINDMILL_sa2mdl_4_f3d),
-	gsSPDisplayList(pc_windmill_pc_windmill_mesh_layer_1_tri_4),
-	gsSPDisplayList(mat_revert_pc_windmill_WINDMILL_sa2mdl_4_f3d),
-	gsSPDisplayList(mat_pc_windmill_WINDMILL_sa2mdl_5_f3d),
-	gsSPDisplayList(pc_windmill_pc_windmill_mesh_layer_1_tri_5),
-	gsSPDisplayList(mat_revert_pc_windmill_WINDMILL_sa2mdl_5_f3d),
-	gsDPPipeSync(),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPClearGeometryMode(G_TEXTURE_GEN),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 0),
 	gsDPSetEnvColor(255, 255, 255, 255),
