@@ -6042,10 +6042,12 @@ const BehaviorScript bhvPcSandglass[] = {
     END_LOOP(),
 };
 
+extern void bhv_pc_sandglass_global_init();
 extern void bhv_pc_sandglass_global_loop();
 const BehaviorScript bhvPcSandglassGlobal[] = {
     BEGIN(OBJ_LIST_SURFACE),
     SET_HOME(),
+    CALL_NATIVE(bhv_pc_sandglass_global_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_pc_sandglass_global_loop),
     END_LOOP(),

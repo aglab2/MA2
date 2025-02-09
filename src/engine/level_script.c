@@ -363,6 +363,7 @@ static void level_cmd_alloc_level_pool(void) {
     sCameraCache = NULL;
 }
 
+extern void clear_scratch(void);
 static void level_cmd_free_level_pool(void) {
     s32 i;
 
@@ -373,6 +374,7 @@ static void level_cmd_free_level_pool(void) {
         }
     }
     main_pool_push_state();
+    clear_scratch();
 
     sCurrentCmd = CMD_NEXT;
 }

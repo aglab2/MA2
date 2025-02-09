@@ -87,9 +87,21 @@ void bhv_pc_sandglass_loop()
     o->oInteractStatus = 0;
 }
 
+void bhv_pc_sandglass_global_init()
+{
+    if (gCurrAreaIndex != 6)
+        return;
+
+    o->oTimer = aglabGlobalScratch[0];
+    o->oAction = aglabGlobalScratch[1];
+}
+
 void bhv_pc_sandglass_global_loop()
 {
     bhv_pc_sandglass_loop();
+
+    aglabGlobalScratch[0] = o->oTimer;
+    aglabGlobalScratch[1] = o->oAction;
 }
 
 void bhv_pc_key_enter_init()
@@ -127,6 +139,9 @@ void bhv_pc_key_enter_loop()
 void bhv_pc_move_init()
 {
     o->parentObj = cur_obj_nearest_object_with_behavior(bhvPcSandglass);
+    if (!o->parentObj)
+        o->parentObj = cur_obj_nearest_object_with_behavior(bhvPcSandglassGlobal);
+
     switch (o->oBehParams2ndByte)
     {
         case 0:

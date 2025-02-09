@@ -150,6 +150,7 @@ static SpringDesc spring_pc_area7[] = {
 static SpringDesc spring_pc_area8[] = {
     pc_area_8_spline_NurbsCurve_Spring_007,
     pc_area_8_spline_NurbsCurve_Spring_009,
+    pc_area_8_spline_NurbsCurve_Spring_012,
     NULL,
 };
 

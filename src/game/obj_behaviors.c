@@ -793,3 +793,7 @@ static int aglabGlobalScratch[0x10];
 #include "behaviors/aglab_shutter.inc.c"
 #include "behaviors/aglab_gravflip.inc.c"
 #include "behaviors/aglab_speeder.inc.c"
+
+void clear_scratch(void) {
+    bzero(aglabGlobalScratch, sizeof(aglabGlobalScratch));
+}
