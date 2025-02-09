@@ -6042,6 +6042,15 @@ const BehaviorScript bhvPcSandglass[] = {
     END_LOOP(),
 };
 
+extern void bhv_pc_sandglass_global_loop();
+const BehaviorScript bhvPcSandglassGlobal[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    SET_HOME(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_pc_sandglass_global_loop),
+    END_LOOP(),
+};
+
 extern void bhv_pc_move_init();
 extern void bhv_pc_move_loop();
 extern const Collision pc_door_b_collision[];
@@ -6052,9 +6061,24 @@ const BehaviorScript bhvPcMove[] = {
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     CALL_NATIVE(bhv_pc_move_init),
     SET_FLOAT(oDrawingDistance, 10000),
-    SET_HOME(),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_pc_move_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern void bhv_pc_move2_init();
+extern void bhv_pc_move2_loop();
+extern const Collision pc_move_collision[];
+const BehaviorScript bhvPcMove2[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    LOAD_COLLISION_DATA(pc_move_collision),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    CALL_NATIVE(bhv_pc_move2_init),
+    SET_FLOAT(oDrawingDistance, 10000),
+    SET_HOME(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_pc_move2_loop),
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };

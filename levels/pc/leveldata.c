@@ -224,3 +224,5 @@ const SpringLinkDesc spring_links_pc[] = {
 #include "levels/pc/pc_sandglass_sandf/model.inc.c"
 #include "levels/pc/pc_sandglass_spring/model.inc.c"
 #include "levels/pc/pc_keydoor_blue/collision.inc.c"
+#include "levels/pc/pc_move/model.inc.c"
+#include "levels/pc/pc_move/collision.inc.c"

@@ -430,6 +430,9 @@ void thread3_main(UNUSED void *arg) {
         osViSetSpecialFeatures(OS_VI_GAMMA_OFF);
 #endif
     } else {
+#if 0
+        change_vi(&VI, 304, 224);
+#endif
         gBorderHeight = BORDER_HEIGHT_CONSOLE;
     }
 #ifdef DEBUG

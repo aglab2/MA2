@@ -3,6 +3,8 @@
 
 #include "config.h"
 
+#define SURFACE_SPEEDER SURFACE_SPEEDUP
+
 // Surface Types
 enum SurfaceTypes {
     SURFACE_NULL = -1,

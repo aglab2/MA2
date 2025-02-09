@@ -53,4 +53,8 @@ void bhv_flame_init()
     {
         obj_scale(o, 2.5f);
     }
+    if (gCurrCourseNum == COURSE_PC)
+    {
+        obj_scale(o, 10.f);
+    }
 }

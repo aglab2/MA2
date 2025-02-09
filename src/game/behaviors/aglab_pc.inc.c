@@ -17,9 +17,8 @@ void bhv_pc_sandglass_loop()
 {
     struct Object** parts = &o->oObjF4;
 
-    if (0 == o->oF4)
+    if (NULL == *parts)
     {
-        o->oF4 = 1;
         o->oPosY += 100.f;
         for (int i = 0; i < 5; i++)
         {
@@ -86,6 +85,11 @@ void bhv_pc_sandglass_loop()
         parts[i]->oFaceAngleYaw = o->oFaceAngleYaw;
     }
     o->oInteractStatus = 0;
+}
+
+void bhv_pc_sandglass_global_loop()
+{
+    bhv_pc_sandglass_loop();
 }
 
 void bhv_pc_key_enter_init()
@@ -191,4 +195,14 @@ void bhv_pc_move_loop()
         pc_sandglass_modify_coord(&o->oPosZ, o->oHomeZ, -1.f);
         break;
     }
+}
+
+void bhv_pc_move2_init()
+{
+
+}
+
+void bhv_pc_move2_loop()
+{
+    o->oPosY = o->oHomeY + 100.f * sins(o->oTimer * 0x156);
 }

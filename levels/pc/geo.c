@@ -37,3 +37,4 @@
 #include "levels/pc/pc_sandglass_sand/geo.inc.c"
 #include "levels/pc/pc_sandglass_sandf/geo.inc.c"
 #include "levels/pc/pc_sandglass_spring/geo.inc.c"
+#include "levels/pc/pc_move/geo.inc.c"

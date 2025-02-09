@@ -1,0 +1,17 @@
+extern const GeoLayout pc_move_geo[];
+extern u8 pc_move_kd_pc_kabe4_ci4[];
+extern u8 pc_move_kd_pc_kabe4_pal_rgba16[];
+extern u8 pc_move_kd_pc_kabe2_ci4[];
+extern u8 pc_move_kd_pc_kabe2_pal_rgba16[];
+extern u8 pc_move_kd_pc_mon1_ci4[];
+extern u8 pc_move_kd_pc_mon1_pal_rgba16[];
+extern u8 pc_move_dz_pc_marukage64_ia16[];
+extern u8 pc_move_dc_pc_torch_burner16_ci8[];
+extern u8 pc_move_dc_pc_torch_burner16_pal_rgba16[];
+extern Vtx pc_move_pc_move_mesh_layer_1_vtx_0[16];
+extern Vtx pc_move_pc_move_mesh_layer_1_vtx_1[16];
+extern Vtx pc_move_pc_move_mesh_layer_1_vtx_2[36];
+extern Vtx pc_move_pc_move_mesh_layer_5_vtx_0[4];
+extern Vtx pc_move_pc_move_mesh_layer_5_vtx_1[12];
+extern Gfx pc_move_pc_move_mesh_layer_1[];
+extern Gfx pc_move_pc_move_mesh_layer_5[];
