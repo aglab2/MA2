@@ -6,9 +6,9 @@
 #include "config.h"
 #include "types.h"
 
-extern RGBA16 gFramebuffer0[SCREEN_WIDTH * SCREEN_HEIGHT];
-extern RGBA16 gFramebuffer1[SCREEN_WIDTH * SCREEN_HEIGHT];
-extern RGBA16 gFramebuffer2[SCREEN_WIDTH * SCREEN_HEIGHT];
+extern RGBA16 gFramebuffer0[324 * SCREEN_HEIGHT];
+extern RGBA16 gFramebuffer1[324 * SCREEN_HEIGHT];
+extern RGBA16 gFramebuffer2[324 * SCREEN_HEIGHT];
 
 static inline RGBA16* getFramebuffer(int i)
 {

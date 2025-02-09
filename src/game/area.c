@@ -270,8 +270,9 @@ typedef struct
 
 extern __OSViContext *__osViNext __attribute__((section(".data")));
 
-void set_vi_mode(int enabled)
+void set_vi_mode(void)
 {
+    const int enabled = 7;
     register u32 saveMask = __osDisableInt();
     if (enabled & 1)
     {
@@ -304,7 +305,7 @@ void set_vi_mode(int enabled)
 }
 
 void load_area(s32 index) {
-    set_vi_mode(6);
+    set_vi_mode();
 
     if (gCurrentArea == NULL && gAreaData[index].graphNode != NULL) {
         gCurrentArea = &gAreaData[index];
@@ -466,6 +467,7 @@ void play_transition_after_delay(s16 transType, s16 time, u8 red, u8 green, u8 b
     play_transition(transType, time, red, green, blue);
 }
 
+extern u16 gScreenWidth __attribute__((section(".bss")));
 void render_game(void) {
     PROFILER_GET_SNAPSHOT_TYPE(PROFILER_DELTA_COLLISION);
     if (gCurrentArea != NULL && !gWarpTransition.pauseRendering) {
@@ -478,11 +480,11 @@ void render_game(void) {
 
         gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gViewport));
 
-        gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, gBorderHeight, SCREEN_WIDTH,
+        gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, gBorderHeight, gScreenWidth,
                       SCREEN_HEIGHT - gBorderHeight);
         render_hud();
 
-        gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, gBorderHeight, SCREEN_WIDTH,
+        gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, gBorderHeight, gScreenWidth,
                       SCREEN_HEIGHT - gBorderHeight);
         render_text_labels();
 #ifdef PUPPYPRINT
@@ -490,7 +492,7 @@ void render_game(void) {
 #endif
         do_cutscene_handler();
         print_displaying_credits_entry();
-        gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, gBorderHeight, SCREEN_WIDTH,
+        gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, gBorderHeight, gScreenWidth,
                       SCREEN_HEIGHT - gBorderHeight);
         gMenuOptSelectIndex = render_menus_and_dialogs();
 
@@ -501,7 +503,7 @@ void render_game(void) {
         if (gViewportClip != NULL) {
             make_viewport_clip_rect(gViewportClip);
         } else
-            gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, gBorderHeight, SCREEN_WIDTH,
+            gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, gBorderHeight, gScreenWidth,
                           SCREEN_HEIGHT - gBorderHeight);
 
         if (gWarpTransition.isActive) {

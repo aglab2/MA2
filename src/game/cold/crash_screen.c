@@ -438,9 +438,10 @@ void thread2_crash_screen(UNUSED void *arg) {
     }
 }
 
+extern u16 gScreenWidth __attribute__((section(".bss")));
 void crash_screen_init(void) {
     gCrashScreen.framebuffer = (RGBA16 *) getFramebuffer(sRenderedFramebuffer);
-    gCrashScreen.width = SCREEN_WIDTH;
+    gCrashScreen.width = gScreenWidth;
     gCrashScreen.height = SCREEN_HEIGHT;
     osCreateMesgQueue(&gCrashScreen.mesgQueue, &gCrashScreen.mesg, 1);
     osCreateThread(&gCrashScreen.thread, THREAD_2_CRASH_SCREEN, thread2_crash_screen, NULL,

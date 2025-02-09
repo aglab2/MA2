@@ -392,6 +392,7 @@ static void load_engine_code_segment(void) {
     osInvalDCache(startAddr, totalSize);
 }
 
+static void change_vi(OSViMode *mode, int width, int height);
 void thread3_main(UNUSED void *arg) {
     setgp();
     setup_mesg_queues();
@@ -403,9 +404,6 @@ void thread3_main(UNUSED void *arg) {
     puppyprint_calculate_ram_usage_dynamic();
 #endif
     detect_emulator();
-#ifndef UNF
-    crash_screen_init();
-#endif
 
 #ifdef UNF
     debug_initialize();
@@ -430,11 +428,14 @@ void thread3_main(UNUSED void *arg) {
         osViSetSpecialFeatures(OS_VI_GAMMA_OFF);
 #endif
     } else {
-#if 0
-        change_vi(&VI, 304, 224);
+#if 1
+        change_vi(&VI, 324, 240);
 #endif
         gBorderHeight = BORDER_HEIGHT_CONSOLE;
     }
+
+    crash_screen_init();
+
 #ifdef DEBUG
     gIdleThreadStack[0] = 0;
     gIdleThreadStack[THREAD1_STACK - 1] = 0;
@@ -542,7 +543,9 @@ void turn_off_audio(void) {
     }
 }
 
+u16 gScreenWidth;
 static void change_vi(OSViMode *mode, int width, int height) {
+    gScreenWidth = width;
     mode->comRegs.width  = width;
     mode->comRegs.xScale = ((width * 512) / 320);
     if (height > 240) {

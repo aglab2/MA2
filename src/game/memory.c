@@ -150,7 +150,7 @@ void main_pool_init() {
     // 80725800: decompression heap
     // 80800000 backwards - file select heap
     SET_REGION(0, _poolStart, 0x80500000);
-    SET_REGION(1, 0x80525800, 0x80700000 - 0x25800);
+    SET_REGION(1, 0x80525F80, 0x80700000 - 0x25F80);
 
 #undef SET_REGION
 
@@ -372,7 +372,7 @@ void *load_segment_decompress(s32 segment, u8 *srcStart, u8 *srcEnd) {
 #else
     u32 compSize = ALIGN16(srcEnd - srcStart);
 #endif
-    u8 *compressed = 0x80725800; // main_pool_alloc_aligned_freeable(compSize, 0);
+    u8 *compressed = 0x80725F80; // main_pool_alloc_aligned_freeable(compSize, 0);
 #ifdef GZIP
     // Decompressed size from end of gzip
     u32 *size = (u32 *) (compressed + compSize);
