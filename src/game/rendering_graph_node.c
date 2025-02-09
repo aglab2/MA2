@@ -1009,7 +1009,7 @@ static void geo_lvl_append_display_list(void *displayList, s32 layer) {
 }
 
 static void append_lvl_dl_and_return(struct GraphNodeDisplayList *node) {
-    if (node->displayList != NULL) {
+    if ((void*) 0x80000000 != node->displayList) {
         geo_lvl_append_display_list(node->displayList, GET_GRAPH_NODE_LAYER(node->node.flags));
     }
     if (node->node.children != NULL) {
