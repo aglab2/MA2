@@ -442,7 +442,8 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
     const struct RenderModeContainer *mode2List = &renderModeTable_2Cycle[enableZBuffer];
     Gfx *tempGfxHead = gDisplayListHead;
 
-    adjust_view_range();
+    if (enableZBuffer)
+        adjust_view_range();
 
     // Loop through the render phases
     for (phaseIndex = RENDER_PHASE_FIRST; phaseIndex < finalPhase; phaseIndex++) {
@@ -1088,7 +1089,7 @@ void geo_process_background(struct GraphNodeBackground *node) {
 #endif
         Gfx *gfx = gfxStart;
 
-        if (0 == node->background || 65537 == node->background)
+        if (1) // if (0 == node->background || 65537 == node->background)
         {
             gSPMemset(gfx++, (u8*) gPhysicalFramebuffers[sRenderingFramebuffer] + gBorderHeight  * SCREEN_WIDTH * 2, node->background, SCREEN_WIDTH * (SCREEN_HEIGHT - 2 * gBorderHeight) * 2);
         }
@@ -1532,17 +1533,18 @@ void geo_try_process_children(struct GraphNode *node) {
 extern f32 profiler_get_fps();
 static const f32 sViewRangeMax = 400000000.0f;
 static const f32 sViewRangeMin = 30000000.0f;
+static const f32 sViewRangeCut = 80000000.0f;
 static f32 sViewRange = 400000000.0f;
 static const f32 sViewRangeChangeRate = 0.0004f * 400000000.0f;
 
 static void adjust_view_range()
 {
     if (!gIsConsole)
-    {
         return;
-    }
 
     f32 fps = profiler_get_fps();
+    if (0 == fps)
+        return;
     
     print_text_fmt_int(20, 20, "FPS %d", fps * 100);
     print_text_fmt_int(20, 40, "VR: %d", sViewRange / 1000);
@@ -1550,8 +1552,15 @@ static void adjust_view_range()
     if (fps < 29.0f) 
     {
         sViewRange -= sViewRangeChangeRate * (30.f - fps);
-        if (sViewRange < sViewRangeMin)
-            sViewRange = sViewRangeMin;
+        if (sViewRange > sViewRangeCut)
+        {
+            sViewRange /= 1.5f;
+        }
+        else
+        {
+            if (sViewRange < sViewRangeMin)
+                sViewRange = sViewRangeMin;
+        }
     }
     else
     {

@@ -463,11 +463,14 @@ u32 get_area_terrain_size(TerrainData *data) {
  * Process the level file, loading in vertices, surfaces, some objects, and environmental
  * boxes (water, gas, JRB fog).
  */
+extern u8 fps_relax;
 void load_area_terrain(TerrainData *data, RoomData *surfaceRooms) {
     PUPPYPRINT_GET_SNAPSHOT();
     s32 terrainLoadType;
     TerrainData *vertexData = NULL;
     u32 surfacePoolData;
+
+    fps_relax = 65;
 
     // Initialize the data for this.
     gEnvironmentRegions = NULL;

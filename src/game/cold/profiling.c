@@ -8,6 +8,8 @@
 #include "game/fasttext.h"
 #include "game/puppyprint.h"
 
+u8 fps_relax = PROFILING_BUFFER_SIZE + 1;
+
 #ifdef USE_PROFILER
 
 #define RDP_CYCLE_CONV(x) ((10 * (x)) / 625) // 62.5 million cycles per frame
@@ -151,6 +153,9 @@ static void update_fps_timer() {
     u32 diff = cur_start - prev_start;
 
     buffer_update(&all_profiling_data[PROFILER_TIME_FPS], diff, profile_buffer_index);
+    if (fps_relax)
+        fps_relax--;
+
     prev_start = cur_start;
 }
 
@@ -181,10 +186,6 @@ static void update_rdp_timers() {
     buffer_update(&all_profiling_data[PROFILER_TIME_TMEM], tmem, profile_buffer_index);
     buffer_update(&all_profiling_data[PROFILER_TIME_CMD], cmd, profile_buffer_index);
     buffer_update(&all_profiling_data[PROFILER_TIME_PIPE], pipe, profile_buffer_index);
-}
-
-float profiler_get_fps() {
-    return (1000000.0f * PROFILING_BUFFER_SIZE) / (OS_CYCLES_TO_USEC(all_profiling_data[PROFILER_TIME_FPS].total));
 }
 
 u32 profiler_get_cpu_cycles() {
@@ -357,10 +358,8 @@ static void update_fps_timer() {
 
     buffer_update(&profiling_data_fps, diff, profile_buffer_index);
     prev_start = cur_start;
-}
-
-float profiler_get_fps() {
-    return (1000000.0f * PROFILING_BUFFER_SIZE) / (OS_CYCLES_TO_USEC(profiling_data_fps.total));
+    if (fps_relax)
+        fps_relax--;
 }
 
 void profiler_print_times() {
@@ -378,3 +377,10 @@ void profiler_frame_setup() {
 }
 
 #endif
+
+float profiler_get_fps() {
+    if (0 != fps_relax)
+        return 0.f;
+    else
+        return (1000000.0f * PROFILING_BUFFER_SIZE) / (OS_CYCLES_TO_USEC(all_profiling_data[PROFILER_TIME_FPS].total));
+}
