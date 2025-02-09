@@ -88,19 +88,34 @@ void bhv_pc_sandglass_loop()
     o->oInteractStatus = 0;
 }
 
-void bhv_pc_key_door_loop()
-{
-
-}
-
 void bhv_pc_key_enter_init()
 {
-
+    f32 v;
+    o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvPcKeyDoor, &v);
 }
 
 void bhv_pc_key_enter_loop()
 {
-
+    if (0 == o->oAction)
+    {
+        if (o->oDistanceToMario < 100.f && gMarioStates->heldObj)
+        {
+            gMarioStates->heldObj->activeFlags = 0;
+            o->oAction = 1;
+            obj_set_model(o, obj_get_model_id(gMarioStates->heldObj));
+            
+            mario_drop_held_object(gMarioStates);
+            set_mario_action(gMarioStates, ACT_WALKING, 0);
+        }
+    }
+    else
+    {
+        o->parentObj->oPosY += 10.f;
+        if (o->oTimer == 60)
+        {
+            o->oAction = 0;
+        }
+    }
 }
 
 #define PC_SANDGLASS_PROGRESS_MAX (360 + 40 * 5)

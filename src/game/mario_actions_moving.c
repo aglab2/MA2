@@ -925,8 +925,6 @@ s32 act_hold_walking(struct MarioState *m) {
         return drop_and_set_mario_action(m, ACT_CROUCH_SLIDE, 0);
     }
 
-    m->intendedMag *= 0.4f;
-
     update_walking_speed(m);
 
     switch (perform_ground_step(m)) {
@@ -943,7 +941,7 @@ s32 act_hold_walking(struct MarioState *m) {
 
     anim_and_audio_for_hold_walk(m);
 
-    if (0.4f * m->intendedMag - m->forwardVel > 10.0f) {
+    if (m->intendedMag - m->forwardVel > 10.0f) {
         m->particleFlags |= PARTICLE_DUST;
     }
 
@@ -1200,8 +1198,6 @@ s32 act_hold_decelerating(struct MarioState *m) {
     if (update_decelerating_speed(m)) {
         return set_mario_action(m, ACT_HOLD_IDLE, 0);
     }
-
-    m->intendedMag *= 0.4f;
 
     switch (perform_ground_step(m)) {
         case GROUND_STEP_LEFT_GROUND:

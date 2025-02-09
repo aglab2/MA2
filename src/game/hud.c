@@ -440,7 +440,7 @@ void render_hud_stars(void) {
     if (PLAY_MODE_NORMAL != sCurrPlayMode)
     {
         gHudDisplay.starsState = HUD_DISPLAY_STAR_WAIT;
-        gHudDisplay.starsTimer = 25;
+        gHudDisplay.starsTimer = 0;
         gHudDisplay.stars = gMarioState->numStars;
         gHudDisplay.starsY = 30;
     }
