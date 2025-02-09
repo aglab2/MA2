@@ -97,7 +97,7 @@ extern Gfx mat_pc_dl_KEYHOLE_sa1mdl_0_f3d[];
 extern Gfx mat_revert_pc_dl_KEYHOLE_sa1mdl_0_f3d[];
 extern Gfx mat_pc_dl_SNAKESTATUE_RIGHT_sa1mdl_0_f3d[];
 extern Gfx mat_revert_pc_dl_SNAKESTATUE_RIGHT_sa1mdl_0_f3d[];
-// extern Gfx mat_pc_dl_TORCHCUP_sa2mdl_0_f3d[];
+extern Gfx mat_pc_dl_TORCHCUP_sa2mdl_0_f3d[];
 extern Gfx mat_revert_pc_dl_TORCHCUP_sa2mdl_0_f3d[];
 extern Gfx mat_pc_dl_SNEAKRAIL_sa1mdl_0_f3d[];
 extern Gfx mat_revert_pc_dl_SNEAKRAIL_sa1mdl_0_f3d[];
