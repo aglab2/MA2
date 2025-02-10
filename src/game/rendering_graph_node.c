@@ -270,7 +270,9 @@ static const Mtx identityMatrixWorldScale = {{
 static ALWAYS_INLINE void render_lists(Gfx **ptempGfxHead, struct DisplayListNode* currList)
 {
 #define tempGfxHead (*ptempGfxHead)
+    u32 shift = ((u32) tempGfxHead) & 0xF;
     do {
+        __builtin_mips_cache(0xd, ((u8*) tempGfxHead) + shift);
         gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(currList->transform), (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
         _gSPDisplayListRaw(tempGfxHead++, currList->displayList, currList->hint);
         currList = currList->next;
@@ -309,12 +311,18 @@ static ALWAYS_INLINE void render_heap(Gfx **ptempGfxHead, Mtx **pprevMtx, struct
 {
 #define tempGfxHead (*ptempGfxHead)
 #define prevMtx (*pprevMtx)
+    u32 shift = ((u32) tempGfxHead) & 0xF;
     do {
+        __builtin_mips_cache(0xd, ((u8*) tempGfxHead) + shift);
         struct PairingHeapNodeDisplayList* dlNode = (struct PairingHeapNodeDisplayList*) pairingheap_remove_first(heap);
         if (prevMtx != dlNode->transform)
         {
             gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(dlNode->transform), (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
             prevMtx = dlNode->transform;
+        }
+        else
+        {
+            shift ^= 0x8;
         }
         _gSPDisplayListRaw(tempGfxHead++, dlNode->displayList, dlNode->hint);
     } while (!pairingheap_is_empty(heap));
