@@ -430,6 +430,8 @@ void thread3_main(UNUSED void *arg) {
     } else {
 #if 1
         change_vi(&VI, 324, 240);
+        VI.fldRegs[0].vStart = 0x002501ef;
+        VI.fldRegs[1].vStart = 0x002501ef;
 #endif
         gBorderHeight = BORDER_HEIGHT_CONSOLE;
     }
