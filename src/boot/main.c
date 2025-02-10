@@ -511,18 +511,16 @@ static void send_sp_task_message(OSMesg *msg) {
 }
 
 void dispatch_audio_sptask(struct SPTask *spTask) {
-    // TODO: AGLAB OPTIMIZE
     if (gAudioEnabled && spTask != NULL) {
         osWritebackDCache(gAudioHeap, gAudioHeapSize);
-        osWritebackDCacheAll();
         osSendMesg(&gSPTaskMesgQueue, spTask, OS_MESG_NOBLOCK);
     }
 }
 
 void exec_display_list(struct SPTask *spTask) {
     if (spTask != NULL) {
-        // AGLAB optimize?
-        osWritebackDCacheAll();
+        osWritebackDCache(0x80200000, 0x80400000 - 0x80200000);
+        osWritebackDCache(gGfxPool, sizeof(*gGfxPool));
         spTask->state = SPTASK_STATE_NOT_STARTED;
         if (sCurrentDisplaySPTask == NULL) {
             sCurrentDisplaySPTask = spTask;

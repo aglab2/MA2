@@ -1164,6 +1164,7 @@ void init_reverb_us(s32 presetId) {
 }
 #endif
 
+static const struct AudioSessionSettings gAudioSessionSettings = { 32000, MAX_SIMULTANEOUS_NOTES, 0x7FFF, PERSISTENT_SEQ_MEM, PERSISTENT_BANK_MEM, TEMPORARY_SEQ_MEM, TEMPORARY_BANK_MEM };
 
 #if defined(VERSION_JP) || defined(VERSION_US)
 void audio_reset_session(s32 reverbPresetId) {
