@@ -8,6 +8,8 @@
 #include "game/debug.h"
 #include "batch_ht.h"
 #include "flipbook.h"
+#include "game/area.h"
+#include "game/emutest.h"
 
 typedef void (*GeoLayoutCommandProc)(void);
 
@@ -653,7 +655,37 @@ void geo_layout_cmd_break_translation_rotation(void) {
 }
 
 void geo_layout_cmd_batchset_node_translation_rotation(void) {
-    geo_layout_cmd_node_translation_rotation_impl(GRAPH_NODE_TYPE_BATCHSET_TRANSLATION_ROTATION, 1);
+    struct GraphNodeBatchsetTranslationRotation *graphNode;
+
+    Vec3s translation, rotation;
+
+    void *displayList = NULL;
+    s16 drawingLayer = LAYER_FIRST;
+
+    s16 params = cur_geo_cmd_u8(0x01);
+    s16 *cmdPos = (s16 *) gGeoLayoutCommand;
+
+    cmdPos = read_vec3s(translation, &cmdPos[2]);
+    cmdPos = read_vec3s_angle(rotation, cmdPos);
+
+    if (params & 0x80) {
+        displayList = *(void **) &cmdPos[0];
+        drawingLayer = params & 0x7F;
+        cmdPos += 2 << CMD_SIZE_SHIFT;
+    }
+
+    graphNode = main_pool_alloc(sizeof(struct GraphNodeBatchsetTranslationRotation));
+    init_scene_graph_node_links(&graphNode->node, GRAPH_NODE_TYPE_BATCHSET_TRANSLATION_ROTATION);
+
+    vec3s_copy(graphNode->translation, translation);
+    vec3s_copy(graphNode->rotation, rotation);
+    SET_GRAPH_NODE_LAYER(graphNode->node.flags, drawingLayer);
+
+    register_scene_graph_node(&graphNode->node);
+
+    GRAPH_NODE_LVL_DL_ASSIGN(graphNode, segmented_to_virtual(displayList));
+
+    gGeoLayoutCommand = (u8 *) cmdPos;
 }
 
 /*
@@ -705,7 +737,34 @@ void geo_layout_cmd_obj_node_translation(void) {
 }
 
 void geo_layout_cmd_batchset_node_translation(void) {
-    geo_layout_cmd_node_translation_impl(GRAPH_NODE_TYPE_BATCHSET_TRANSLATION, 1);
+    struct GraphNodeBatchsetTranslation *graphNode;
+
+    Vec3s translation;
+
+    s16 drawingLayer = LAYER_FIRST;
+    s16 params = cur_geo_cmd_u8(0x01);
+    s16 *cmdPos = (s16 *) gGeoLayoutCommand;
+    void *displayList = NULL;
+
+    cmdPos = read_vec3s(translation, &cmdPos[1]);
+
+    if (params & 0x80) {
+        displayList = *(void **) &cmdPos[0];
+        drawingLayer = params & 0x7F;
+        cmdPos += 2 << CMD_SIZE_SHIFT;
+    }
+
+    graphNode = main_pool_alloc(sizeof(struct GraphNodeBatchsetTranslation));
+    init_scene_graph_node_links(&graphNode->node, GRAPH_NODE_TYPE_BATCHSET_TRANSLATION);
+
+    vec3s_copy(graphNode->translation, translation);
+    SET_GRAPH_NODE_LAYER(graphNode->node.flags, drawingLayer);
+
+    register_scene_graph_node(&graphNode->node);
+
+    GRAPH_NODE_LVL_DL_ASSIGN(graphNode, segmented_to_virtual(displayList));
+
+    gGeoLayoutCommand = (u8 *) cmdPos;
 }
 
 /*
@@ -883,52 +942,20 @@ void geo_layout_cmd_node_batch_display_list_anim(void) {
     gGeoLayoutCommand += 0x0C << CMD_SIZE_SHIFT;
 }
 
-enum DLType
-{
-    DLT_ENTER = -1,
-    DLT_EXIT,
-    DLT_DRAW,
-};
-
-static enum DLType decide_dl_type(void* segPtr)
-{
-    uint8_t* data = segmented_to_virtual(segPtr);
-    if (G_VTX == data[0] || G_RDPLOADSYNC == data[0])
-    {
-        return DLT_DRAW;
-    }
-
-    ASSERT_PRINTF(G_RDPPIPESYNC != data[0] || G_MOVEWORD != data[0] || G_GEOMETRYMODE != data[0], "%x: unk %d", segPtr, data[0]);
-
-    // need to distinguish between enter and exit - scan for a setcombiner command that indicates enter
-    for (int i = 0; i < 0x20; i++)
-    {
-        data += 8;
-        if (G_ENDDL == *data)
-        {
-            return DLT_EXIT;
-        }
-        if (G_SETCOMBINE == *data)
-        {
-            return DLT_ENTER;
-        }
-    }
-
-    // Reverts are usually very tiny, for now cause an assert
-    ASSERT_PRINTF(0, "%x: Scan overflow", segPtr);
-    return DLT_EXIT;
-}
-
-static void batch_cmd_yield(uint32_t** cmds, uint32_t cmd)
-{
-    *(*cmds) = cmd;
-    (*cmds)++;
-}
-
 void geo_layout_cmd_batchset_node(void) {
+    struct GraphNode *graphNode;
     s32 drawingLayer = cur_geo_cmd_u8(0x01);
     void *displayList = cur_geo_cmd_ptr(0x04);
-    return geo_layout_cmd_node_display_list_impl(GRAPH_NODE_TYPE_BATCHSET, 1);
+
+    graphNode = main_pool_alloc(sizeof(struct GraphNode));
+    init_scene_graph_node_links(graphNode, GRAPH_NODE_TYPE_BATCHSET);
+    SET_GRAPH_NODE_LAYER(graphNode->flags, drawingLayer);
+
+    register_scene_graph_node(graphNode);
+
+    GRAPH_NODE_LVL_DL_ASSIGN_RAW(graphNode,  segmented_to_virtual(displayList));
+
+    gGeoLayoutCommand += 0x08 << CMD_SIZE_SHIFT;
 }
 
 /*
@@ -1070,6 +1097,30 @@ void geo_layout_cmd_node_culling_radius(void) {
 
 #define next_s32_in_geo_script(src) (*(*src)++)
 
+extern u32 ce_dl_1848_object_00D228F4_mesh_layer_1[];
+extern u32 ce_dl_1139_object_00D2AED4_mesh_layer_1[];
+extern u32 ce_dl_2309_object_00C55280_mesh_layer_1[];
+extern u32 ce_dl_0083_object_00D383E4_mesh_layer_1[];
+static int dropped_for_console(void* dl)
+{
+    if (!gIsConsole)
+        return 0;
+
+    if (gCurrCourseNum == COURSE_CE)
+    {
+        if (dl == ce_dl_1848_object_00D228F4_mesh_layer_1)
+            return 1;
+        if (dl == ce_dl_2309_object_00C55280_mesh_layer_1)
+            return 1;
+        if (dl == ce_dl_0083_object_00D383E4_mesh_layer_1)
+            return 1;
+        if (dl == ce_dl_1139_object_00D2AED4_mesh_layer_1)
+            return 1;
+    }
+
+    return 0;
+}
+
 void geo_layout_cmd_lvl_translation_rotation(void) {
     struct GraphNodeLvlTranslationRotation *graphNode;
 
@@ -1094,9 +1145,13 @@ void geo_layout_cmd_lvl_translation_rotation(void) {
     drawingLayer = params & 0x7F;
     cmdPos += 2 << CMD_SIZE_SHIFT;
 
-    graphNode = init_graph_node_lvl_translation_rotation(NULL, drawingLayer, displayList,
-                                                     translation, rotation);
+    graphNode = init_graph_node_lvl_translation_rotation(NULL, drawingLayer, translation, rotation);
     register_scene_graph_node(&graphNode->node);
+
+    if (!dropped_for_console(displayList))
+        GRAPH_NODE_LVL_DL_ASSIGN(graphNode, segmented_to_virtual(displayList));
+    else
+        GRAPH_NODE_LVL_DL_ASSIGN(graphNode, NULL);
 
     gGeoLayoutCommand = (u8 *) cmdPos;
 }
@@ -1124,18 +1179,22 @@ void geo_layout_cmd_lvl_translation(void) {
         cmdPos += 2 << CMD_SIZE_SHIFT;
     }
 
-    graphNode =
-        init_graph_node_lvl_translation(NULL, drawingLayer, displayList, translation);
+    graphNode = init_graph_node_lvl_translation(NULL, drawingLayer, translation);
 
     register_scene_graph_node(&graphNode->node);
+
+    if (!dropped_for_console(displayList))
+        GRAPH_NODE_LVL_DL_ASSIGN(graphNode, segmented_to_virtual(displayList));
+    else
+        GRAPH_NODE_LVL_DL_ASSIGN(graphNode, NULL);
 
     gGeoLayoutCommand = (u8 *) cmdPos;
 }
 
 void geo_layout_cmd_break_translation(void) {
-    struct GraphNodeLvlTranslation *graphNode;
+    struct GraphNodeTranslation *graphNode;
 
-    Vec3f translation;
+    Vec3s translation;
 
     s16 drawingLayer = LAYER_FIRST;
     s16 params = cur_geo_cmd_u8(0x01);

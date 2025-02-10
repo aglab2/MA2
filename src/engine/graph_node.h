@@ -467,17 +467,31 @@ struct GraphNodeCoin {
 };
 
 struct GraphNodeLvlTranslationRotation {
-    /*0x00*/ struct GraphNode node;
-    /*0x14*/ void *displayListDevirt;
-    /*0x18*/ Vec3f translation;
-    /*0x1E*/ Vec3s rotation;
+    struct GraphNode node;
+    Vec3f translation;
+    Vec3s rotation;
 };
 
 struct GraphNodeLvlTranslation {
-    /*0x00*/ struct GraphNode node;
-    /*0x14*/ void *displayListDevirt;
-    /*0x18*/ Vec3f translation;
+    struct GraphNode node;
+    Vec3f translation;
 };
+
+struct GraphNodeBatchsetTranslation {
+    struct GraphNode node;
+    Vec3s translation;
+};
+
+struct GraphNodeBatchsetTranslationRotation {
+    struct GraphNode node;
+    Vec3s translation;
+    Vec3s rotation;
+};
+
+#define GRAPH_NODE_LVL_DL(n) ((void*) ((n)->node.parent))
+#define GRAPH_NODE_LVL_DL_RAW(n) ((void*) ((n)->parent))
+#define GRAPH_NODE_LVL_DL_ASSIGN(n, v) do{ (n)->node.parent = (struct GraphNode *) v; }while(0)
+#define GRAPH_NODE_LVL_DL_ASSIGN_RAW(n, v) do{ (n)->parent = (struct GraphNode *) v; }while(0)
 
 extern struct GraphNodeMasterList  *gCurGraphNodeMasterList;
 extern struct GraphNodePerspective *gCurGraphNodeCamFrustum;
@@ -523,8 +537,8 @@ struct GraphNodeCull                *init_graph_node_cull                (struct
                                                                           s16 z0, s16 z1, s16 style);
 struct GraphNodeCoin                *init_graph_node_coin                (struct GraphNodeCoin                *graphNode, s32 drawingLayer, void* displayList, void* displayList_r);
 
-struct GraphNodeLvlTranslationRotation *init_graph_node_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation *graphNode, s32 drawingLayer, void *displayList, Vec3f translation, Vec3s rotation);
-struct GraphNodeLvlTranslation         *init_graph_node_lvl_translation         (struct GraphNodeLvlTranslation         *graphNode, s32 drawingLayer, void *displayList, Vec3f translation);
+struct GraphNodeLvlTranslationRotation *init_graph_node_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation *graphNode, s32 drawingLayer, Vec3f translation, Vec3s rotation);
+struct GraphNodeLvlTranslation         *init_graph_node_lvl_translation         (struct GraphNodeLvlTranslation         *graphNode, s32 drawingLayer, Vec3f translation);
 struct GraphNodeTranslation            *init_graph_node_break_translation       (struct GraphNodeTranslation            *graphNode, s32 drawingLayer, void *displayList, Vec3s translation);
 
 struct GraphNodeHeldObject          *init_graph_node_held_object         (struct GraphNodeHeldObject          *graphNode, struct Object *objNode, Vec3s translation, GraphNodeFunc nodeFunc, s32 playerIndex);

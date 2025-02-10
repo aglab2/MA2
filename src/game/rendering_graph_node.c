@@ -1017,19 +1017,19 @@ static void geo_lvl_append_display_list(void *displayList, s32 layer) {
     }
 }
 
-static void append_lvl_dl_and_return(struct GraphNodeDisplayList *node) {
-    if ((void*) 0x80000000 != node->displayList) {
-        geo_lvl_append_display_list(node->displayList, GET_GRAPH_NODE_LAYER(node->node.flags));
+static void append_lvl_dl_and_return(struct GraphNode *node) {
+    void* displayList = GRAPH_NODE_LVL_DL_RAW(node);
+    if ((void*) 0x80000000 != displayList) {
+        geo_lvl_append_display_list(displayList, GET_GRAPH_NODE_LAYER(node->flags));
     }
-    if (node->node.children != NULL) {
-        geo_process_node_and_siblings_quick(node->node.children);
+    if (node->children != NULL) {
+        geo_process_node_and_siblings_quick(node->children);
     }
     gMatStackIndex--;
 }
 
-void geo_process_batchset(struct GraphNodeDisplayList *node) {
-    struct GraphNodeDisplayList *dlNode = node;
-    append_lvl_dl_and_return(dlNode);
+void geo_process_batchset(struct GraphNode *node) {
+    append_lvl_dl_and_return(node);
     gMatStackIndex++;
 }
 
@@ -1612,7 +1612,8 @@ static int is_far_from_mario(f32 l0, f32 l1, f32 l2)
 void geo_process_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation *node) {
     Vec3f translation;
     vec3_diff(translation, node->translation, gCurrentArea->renderOffset);
-    if (!node->displayListDevirt)
+    void* dl = GRAPH_NODE_LVL_DL(node);
+    if (!dl)
         return;
 
     if (is_far_from_mario(translation[0], translation[1], translation[2]))
@@ -1621,14 +1622,14 @@ void geo_process_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation
     mtxf_rotate_zxy_and_translate_and_mul(node->rotation[0], node->rotation[1], node->rotation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
 
     inc_mat_stack();
-    struct GraphNodeDisplayList *dlNode = (struct GraphNodeDisplayList *)node;
-    return append_lvl_dl_and_return(dlNode);
+    return append_lvl_dl_and_return(&node->node);
 }
 
 void geo_process_lvl_translation(struct GraphNodeLvlTranslation *node) {
     Vec3f translation;
     vec3_diff(translation, node->translation, gCurrentArea->renderOffset);
-    if (!node->displayListDevirt)
+    void* dl = GRAPH_NODE_LVL_DL(node);
+    if (!dl)
         return;
 
     if (is_far_from_mario(translation[0], translation[1], translation[2]))
@@ -1637,8 +1638,7 @@ void geo_process_lvl_translation(struct GraphNodeLvlTranslation *node) {
     mtxf_translate_and_mul(translation[0], translation[1], translation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
 
     inc_mat_stack();
-    struct GraphNodeDisplayList *dlNode = (struct GraphNodeDisplayList *)node;
-    return append_lvl_dl_and_return(dlNode);
+    return append_lvl_dl_and_return(&node->node);
 }
 
 void geo_process_break_translation(struct GraphNodeTranslation *node) {
@@ -1726,22 +1726,18 @@ void geo_process_obj_translation(struct GraphNodeTranslation *node) {
     append_dl_and_return((struct GraphNodeDisplayList *)node);
 }
 
-void geo_process_batchset_translation(struct GraphNodeTranslation *node) {
+void geo_process_batchset_translation(struct GraphNodeBatchsetTranslation *node) {
     Vec3f translation;
-    translation[0] = node->translation[0];
-    translation[1] = node->translation[1];
-    translation[2] = node->translation[2];
+    vec3_copy(node->translation, translation);
     mtxf_translate_and_mul(translation[0], translation[1], translation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
 
     inc_mat_stack();
     append_lvl_dl_and_return((struct GraphNodeDisplayList *)node);
 }
 
-void geo_process_batchset_translation_rotation(struct GraphNodeTranslationRotation* node) {
+void geo_process_batchset_translation_rotation(struct GraphNodeBatchsetTranslationRotation* node) {
     Vec3f translation;
-    translation[0] = node->translation[0];
-    translation[1] = node->translation[1];
-    translation[2] = node->translation[2];
+    vec3_copy(node->translation, translation);
     mtxf_rotate_zxy_and_translate_and_mul(node->rotation[0], node->rotation[1], node->rotation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
 
     inc_mat_stack();

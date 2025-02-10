@@ -10,8 +10,6 @@
 #include "geo_layout.h"
 #include "batch_list.h"
 
-#include "game/emutest.h"
-
 /**
  * Initialize a geo node with a given type. Sets all links such that there
  * are no siblings, parent or children for this node.
@@ -607,31 +605,7 @@ struct GraphNodeCoin *init_graph_node_coin(struct GraphNodeCoin *graphNode,
     return graphNode;
 }
 
-extern u32 ce_dl_1848_object_00D228F4_mesh_layer_1[];
-extern u32 ce_dl_1139_object_00D2AED4_mesh_layer_1[];
-extern u32 ce_dl_2309_object_00C55280_mesh_layer_1[];
-extern u32 ce_dl_0083_object_00D383E4_mesh_layer_1[];
-static int dropped_for_console(void* dl)
-{
-    if (!gIsConsole)
-        return 0;
-
-    if (gCurrCourseNum == COURSE_CE)
-    {
-        if (dl == ce_dl_1848_object_00D228F4_mesh_layer_1)
-            return 1;
-        if (dl == ce_dl_2309_object_00C55280_mesh_layer_1)
-            return 1;
-        if (dl == ce_dl_0083_object_00D383E4_mesh_layer_1)
-            return 1;
-        if (dl == ce_dl_1139_object_00D2AED4_mesh_layer_1)
-            return 1;
-    }
-
-    return 0;
-}
-
-struct GraphNodeLvlTranslationRotation *init_graph_node_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation *graphNode, s32 drawingLayer, void *displayList, Vec3f translation, Vec3s rotation)
+struct GraphNodeLvlTranslationRotation *init_graph_node_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation *graphNode, s32 drawingLayer, Vec3f translation, Vec3s rotation)
 {
     if (!graphNode) {
         graphNode = main_pool_alloc(sizeof(struct GraphNodeLvlTranslationRotation));
@@ -642,16 +616,12 @@ struct GraphNodeLvlTranslationRotation *init_graph_node_lvl_translation_rotation
         vec3_copy(graphNode->translation, translation);
         vec3s_copy(graphNode->rotation, rotation);
         SET_GRAPH_NODE_LAYER(graphNode->node.flags, drawingLayer);
-        if (!dropped_for_console(displayList))
-            graphNode->displayListDevirt = segmented_to_virtual(displayList);
-        else
-            graphNode->displayListDevirt = NULL;
     }
 
     return graphNode;
 }
 
-struct GraphNodeLvlTranslation         *init_graph_node_lvl_translation         (struct GraphNodeLvlTranslation         *graphNode, s32 drawingLayer, void *displayList, Vec3f translation)
+struct GraphNodeLvlTranslation         *init_graph_node_lvl_translation         (struct GraphNodeLvlTranslation         *graphNode, s32 drawingLayer, Vec3f translation)
 {
     if (!graphNode) {
         graphNode = main_pool_alloc(sizeof(struct GraphNodeLvlTranslation));
@@ -662,10 +632,6 @@ struct GraphNodeLvlTranslation         *init_graph_node_lvl_translation         
 
         vec3_copy(graphNode->translation, translation);
         SET_GRAPH_NODE_LAYER(graphNode->node.flags, drawingLayer);
-        if (!dropped_for_console(displayList))
-            graphNode->displayListDevirt = segmented_to_virtual(displayList);
-        else
-            graphNode->displayListDevirt = NULL;
     }
 
     return graphNode;
