@@ -54,18 +54,18 @@ OSMesg gSIEventMesgBuf[1];
 OSMesg gIntrMesgBuf[16];
 OSMesg gUnknownMesgBuf[16];
 
-OSViMode VI;
+static OSViMode VI;
 
 struct Config gConfig;
 
-struct VblankHandler *gVblankHandler1       = NULL;
-struct VblankHandler *gVblankHandler2       = NULL;
-struct VblankHandler *gVblankHandler3       = NULL;
-struct SPTask        *gActiveSPTask         = NULL;
-struct SPTask        *sCurrentAudioSPTask   = NULL;
-struct SPTask        *sCurrentDisplaySPTask = NULL;
-struct SPTask        *sNextAudioSPTask      = NULL;
-struct SPTask        *sNextDisplaySPTask    = NULL;
+static struct VblankHandler *gVblankHandler1       = NULL;
+static struct VblankHandler *gVblankHandler2       = NULL;
+static struct VblankHandler *gVblankHandler3       = NULL;
+static struct SPTask        *gActiveSPTask         = NULL;
+static struct SPTask        *sCurrentAudioSPTask   = NULL;
+static struct SPTask        *sCurrentDisplaySPTask = NULL;
+static struct SPTask        *sNextAudioSPTask      = NULL;
+static struct SPTask        *sNextDisplaySPTask    = NULL;
 s8  gAudioEnabled      = TRUE;
 u32 gNumVblanks        = 0;
 s8  gResetTimer        = 0;
@@ -511,6 +511,7 @@ static void send_sp_task_message(OSMesg *msg) {
 }
 
 void dispatch_audio_sptask(struct SPTask *spTask) {
+    // TODO: AGLAB OPTIMIZE
     if (gAudioEnabled && spTask != NULL) {
         osWritebackDCacheAll();
         osSendMesg(&gSPTaskMesgQueue, spTask, OS_MESG_NOBLOCK);

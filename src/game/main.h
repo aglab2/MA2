@@ -85,9 +85,6 @@ extern struct RumbleData gRumbleDataQueue[3] __attribute__((section(".data")));
 extern struct RumbleSettings gCurrRumbleSettings __attribute__((section(".data")));
 #endif
 
-extern struct VblankHandler *gVblankHandler1 __attribute__((section(".data")));
-extern struct VblankHandler *gVblankHandler2 __attribute__((section(".data")));
-extern struct SPTask *gActiveSPTask __attribute__((section(".data")));
 extern s8 gAudioEnabled __attribute__((section(".data")));
 extern u32 gNumVblanks __attribute__((section(".data")));
 extern s8 gResetTimer __attribute__((section(".data")));
