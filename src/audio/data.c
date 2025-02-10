@@ -903,9 +903,9 @@ u16 unk_sh_data_4[] = {
 #endif
 
 #ifndef VERSION_SH
-s16 gTatumsPerBeat = TATUMS_PER_BEAT;
-s32 gAudioHeapSize = DOUBLE_SIZE_ON_64_BIT(AUDIO_HEAP_SIZE);
-s32 gAudioInitPoolSize = DOUBLE_SIZE_ON_64_BIT(AUDIO_INIT_POOL_SIZE);
+// s16 gTatumsPerBeat = TATUMS_PER_BEAT;
+// s32 gAudioHeapSize = DOUBLE_SIZE_ON_64_BIT(AUDIO_HEAP_SIZE);
+// s32 gAudioInitPoolSize = DOUBLE_SIZE_ON_64_BIT(AUDIO_INIT_POOL_SIZE);
 volatile s32 gAudioLoadLock = AUDIO_LOCK_UNINITIALIZED;
 #endif
 

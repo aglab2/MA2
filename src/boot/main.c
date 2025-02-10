@@ -513,6 +513,7 @@ static void send_sp_task_message(OSMesg *msg) {
 void dispatch_audio_sptask(struct SPTask *spTask) {
     // TODO: AGLAB OPTIMIZE
     if (gAudioEnabled && spTask != NULL) {
+        osWritebackDCache(gAudioHeap, gAudioHeapSize);
         osWritebackDCacheAll();
         osSendMesg(&gSPTaskMesgQueue, spTask, OS_MESG_NOBLOCK);
     }

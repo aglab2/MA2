@@ -109,9 +109,9 @@ extern f32 gVolRampingLhs128[1 << VOL_RAMPING_EXPONENT] __attribute__((section("
 extern f32 gVolRampingRhs128[1 << VOL_RAMPING_EXPONENT] __attribute__((section(".data")));
 
 // non-constant .data
-extern s16 gTatumsPerBeat;
-extern s32 gAudioHeapSize; // AUDIO_HEAP_SIZE
-extern s32 gAudioInitPoolSize; // AUDIO_INIT_POOL_SIZE
+#define gTatumsPerBeat TATUMS_PER_BEAT
+#define gAudioHeapSize DOUBLE_SIZE_ON_64_BIT(AUDIO_HEAP_SIZE)
+#define gAudioInitPoolSize DOUBLE_SIZE_ON_64_BIT(AUDIO_INIT_POOL_SIZE)
 extern volatile s32 gAudioLoadLock;
 
 // .bss
