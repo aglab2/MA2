@@ -8,220 +8,503 @@ static const Vtx flame_seg3_vertex_030172E0[] = {
     {{{   -25,     25,      0}, 0, {     0,      0}, {0x00, 0x00, 0x00, 0x00}}},
 };
 
-// 0x03017320
-ALIGNED8 static const Texture flame_seg3_texture_03017320[] = {
-#include "actors/flame/flame_0.ia16.inc.c"
-};
-
-// 0x03017B20
-ALIGNED8 static const Texture flame_seg3_texture_03017B20[] = {
-#include "actors/flame/flame_1.ia16.inc.c"
-};
-
-// 0x03018320
-ALIGNED8 static const Texture flame_seg3_texture_03018320[] = {
-#include "actors/flame/flame_2.ia16.inc.c"
-};
-
-// 0x03018B20
-ALIGNED8 static const Texture flame_seg3_texture_03018B20[] = {
-#include "actors/flame/flame_3.ia16.inc.c"
-};
-
-// 0x03019320
-ALIGNED8 static const Texture flame_seg3_texture_03019320[] = {
-#include "actors/flame/flame_4.ia16.inc.c"
-};
-
-// 0x03019B20
-ALIGNED8 static const Texture flame_seg3_texture_03019B20[] = {
-#include "actors/flame/flame_5.ia16.inc.c"
-};
-
-// 0x0301A320
-ALIGNED8 static const Texture flame_seg3_texture_0301A320[] = {
-#include "actors/flame/flame_6.ia16.inc.c"
-};
-
 // 0x0301AB20
 ALIGNED8 static const Texture flame_seg3_texture_0301AB20[] = {
 #include "actors/flame/flame_7.ia16.inc.c"
 };
 
-ALIGNED8 static const Texture m_torch01[] = {
-#include "actors/flame/m_torch01.rgba16.inc.c"
-};
-
-ALIGNED8 static const Texture m_torch02[] = {
-#include "actors/flame/m_torch02.rgba16.inc.c"
-};
-
-ALIGNED8 static const Texture m_torch03[] = {
-#include "actors/flame/m_torch03.rgba16.inc.c"
-};
-
-ALIGNED8 static const Texture m_torch04[] = {
-#include "actors/flame/m_torch04.rgba16.inc.c"
-};
-
-ALIGNED8 static const Texture m_torch05[] = {
-#include "actors/flame/m_torch05.rgba16.inc.c"
-};
-
-ALIGNED8 static const Texture m_torch06[] = {
-#include "actors/flame/m_torch06.rgba16.inc.c"
-};
-
-ALIGNED8 static const Texture m_torch07[] = {
-#include "actors/flame/m_torch07.rgba16.inc.c"
-};
-
-ALIGNED8 static const Texture m_torch08[] = {
-#include "actors/flame/m_torch08.rgba16.inc.c"
-};
-
-ALIGNED8 static const Texture m_torch09[] = {
-#include "actors/flame/m_torch09.rgba16.inc.c"
-};
-
-ALIGNED8 static const Texture m_torch10[] = {
-#include "actors/flame/m_torch10.rgba16.inc.c"
-};
-
-ALIGNED8 static const Texture m_torch11[] = {
-#include "actors/flame/m_torch11.rgba16.inc.c"
-};
-
-ALIGNED8 static const Texture m_torch12[] = {
-#include "actors/flame/m_torch12.rgba16.inc.c"
-};
-
-ALIGNED8 static const Texture m_torch13[] = {
-#include "actors/flame/m_torch13.rgba16.inc.c"
-};
-
-ALIGNED8 static const Texture m_torch14[] = {
-#include "actors/flame/m_torch14.rgba16.inc.c"
-};
-
-ALIGNED8 static const Texture m_torch15[] = {
-#include "actors/flame/m_torch15.rgba16.inc.c"
-};
-
-ALIGNED8 static const Texture m_torch16[] = {
-#include "actors/flame/m_torch16.rgba16.inc.c"
-};
-
 static const Gfx flame_v2_common[] = {
     gsSPClearGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
-    gsDPSetCombineMode(G_CC_FADEA, G_CC_FADEA),
-    gsDPSetEnvColor(255, 255, 255, 200),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
 	gsDPSetAlphaDither(G_AD_NOISE),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
-	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 256),
-	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0),
+	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_32b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 1023, 128),
+	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_32b, 8, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 5, 0),
 	gsDPSetTileSize(0, 0, 0, 124, 124),
 	gsSPEndDisplayList(),
 };
 
-const Gfx flame_v2_dl_render01[] = {
+ALIGNED8 static const Texture red01[] = {
+#include "actors/flame/dz_dc_hi_red01.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture red02[] = {
+#include "actors/flame/dz_dc_hi_red02.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture red03[] = {
+#include "actors/flame/dz_dc_hi_red03.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture red04[] = {
+#include "actors/flame/dz_dc_hi_red04.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture red05[] = {
+#include "actors/flame/dz_dc_hi_red05.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture red06[] = {
+#include "actors/flame/dz_dc_hi_red06.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture red07[] = {
+#include "actors/flame/dz_dc_hi_red07.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture red08[] = {
+#include "actors/flame/dz_dc_hi_red08.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture red09[] = {
+#include "actors/flame/dz_dc_hi_red09.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture red10[] = {
+#include "actors/flame/dz_dc_hi_red10.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture red11[] = {
+#include "actors/flame/dz_dc_hi_red11.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture red12[] = {
+#include "actors/flame/dz_dc_hi_red12.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture red13[] = {
+#include "actors/flame/dz_dc_hi_red13.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture red14[] = {
+#include "actors/flame/dz_dc_hi_red14.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture red15[] = {
+#include "actors/flame/dz_dc_hi_red15.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture red16[] = {
+#include "actors/flame/dz_dc_hi_red16.rgba32.inc.c"
+};
+    
+const Gfx flame_v2_dl_red01[] = {
 	gsDPPipeSync(),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, m_torch01),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, red01),
     gsSPBranchList(flame_v2_common),
 };
 
-const Gfx flame_v2_dl_render02[] = {
+const Gfx flame_v2_dl_red02[] = {
 	gsDPPipeSync(),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, m_torch02),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, red02),
     gsSPBranchList(flame_v2_common),
 };
 
-const Gfx flame_v2_dl_render03[] = {
+const Gfx flame_v2_dl_red03[] = {
 	gsDPPipeSync(),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, m_torch03),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, red03),
     gsSPBranchList(flame_v2_common),
 };
 
-const Gfx flame_v2_dl_render04[] = {
+const Gfx flame_v2_dl_red04[] = {
 	gsDPPipeSync(),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, m_torch04),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, red04),
     gsSPBranchList(flame_v2_common),
 };
 
-const Gfx flame_v2_dl_render05[] = {
+const Gfx flame_v2_dl_red05[] = {
 	gsDPPipeSync(),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, m_torch05),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, red05),
     gsSPBranchList(flame_v2_common),
 };
 
-const Gfx flame_v2_dl_render06[] = {
+const Gfx flame_v2_dl_red06[] = {
 	gsDPPipeSync(),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, m_torch06),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, red06),
     gsSPBranchList(flame_v2_common),
 };
 
-const Gfx flame_v2_dl_render07[] = {
+const Gfx flame_v2_dl_red07[] = {
 	gsDPPipeSync(),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, m_torch07),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, red07),
     gsSPBranchList(flame_v2_common),
 };
 
-const Gfx flame_v2_dl_render08[] = {
+const Gfx flame_v2_dl_red08[] = {
 	gsDPPipeSync(),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, m_torch08),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, red08),
     gsSPBranchList(flame_v2_common),
 };
 
-const Gfx flame_v2_dl_render09[] = {
+const Gfx flame_v2_dl_red09[] = {
 	gsDPPipeSync(),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, m_torch09),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, red09),
     gsSPBranchList(flame_v2_common),
 };
 
-const Gfx flame_v2_dl_render10[] = {
+const Gfx flame_v2_dl_red10[] = {
 	gsDPPipeSync(),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, m_torch10),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, red10),
     gsSPBranchList(flame_v2_common),
 };
 
-const Gfx flame_v2_dl_render11[] = {
+const Gfx flame_v2_dl_red11[] = {
 	gsDPPipeSync(),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, m_torch11),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, red11),
     gsSPBranchList(flame_v2_common),
 };
 
-const Gfx flame_v2_dl_render12[] = {
+const Gfx flame_v2_dl_red12[] = {
 	gsDPPipeSync(),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, m_torch12),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, red12),
     gsSPBranchList(flame_v2_common),
 };
 
-const Gfx flame_v2_dl_render13[] = {
+const Gfx flame_v2_dl_red13[] = {
 	gsDPPipeSync(),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, m_torch13),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, red13),
     gsSPBranchList(flame_v2_common),
 };
 
-const Gfx flame_v2_dl_render14[] = {
+const Gfx flame_v2_dl_red14[] = {
 	gsDPPipeSync(),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, m_torch14),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, red14),
     gsSPBranchList(flame_v2_common),
 };
 
-const Gfx flame_v2_dl_render15[] = {
+const Gfx flame_v2_dl_red15[] = {
 	gsDPPipeSync(),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, m_torch15),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, red15),
     gsSPBranchList(flame_v2_common),
 };
 
-const Gfx flame_v2_dl_render16[] = {
+const Gfx flame_v2_dl_red16[] = {
 	gsDPPipeSync(),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, m_torch16),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, red16),
     gsSPBranchList(flame_v2_common),
 };
 
+ALIGNED8 static const Texture blue01[] = {
+#include "actors/flame/dz_dc_hi_blue01.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture blue02[] = {
+#include "actors/flame/dz_dc_hi_blue02.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture blue03[] = {
+#include "actors/flame/dz_dc_hi_blue03.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture blue04[] = {
+#include "actors/flame/dz_dc_hi_blue04.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture blue05[] = {
+#include "actors/flame/dz_dc_hi_blue05.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture blue06[] = {
+#include "actors/flame/dz_dc_hi_blue06.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture blue07[] = {
+#include "actors/flame/dz_dc_hi_blue07.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture blue08[] = {
+#include "actors/flame/dz_dc_hi_blue08.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture blue09[] = {
+#include "actors/flame/dz_dc_hi_blue09.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture blue10[] = {
+#include "actors/flame/dz_dc_hi_blue10.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture blue11[] = {
+#include "actors/flame/dz_dc_hi_blue11.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture blue12[] = {
+#include "actors/flame/dz_dc_hi_blue12.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture blue13[] = {
+#include "actors/flame/dz_dc_hi_blue13.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture blue14[] = {
+#include "actors/flame/dz_dc_hi_blue14.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture blue15[] = {
+#include "actors/flame/dz_dc_hi_blue15.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture blue16[] = {
+#include "actors/flame/dz_dc_hi_blue16.rgba32.inc.c"
+};
+    
+const Gfx flame_v2_dl_blue01[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, blue01),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_blue02[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, blue02),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_blue03[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, blue03),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_blue04[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, blue04),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_blue05[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, blue05),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_blue06[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, blue06),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_blue07[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, blue07),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_blue08[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, blue08),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_blue09[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, blue09),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_blue10[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, blue10),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_blue11[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, blue11),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_blue12[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, blue12),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_blue13[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, blue13),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_blue14[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, blue14),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_blue15[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, blue15),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_blue16[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, blue16),
+    gsSPBranchList(flame_v2_common),
+};
+
+ALIGNED8 static const Texture green01[] = {
+#include "actors/flame/dz_eq_hi_green01.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture green02[] = {
+#include "actors/flame/dz_eq_hi_green02.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture green03[] = {
+#include "actors/flame/dz_eq_hi_green03.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture green04[] = {
+#include "actors/flame/dz_eq_hi_green04.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture green05[] = {
+#include "actors/flame/dz_eq_hi_green05.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture green06[] = {
+#include "actors/flame/dz_eq_hi_green06.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture green07[] = {
+#include "actors/flame/dz_eq_hi_green07.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture green08[] = {
+#include "actors/flame/dz_eq_hi_green08.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture green09[] = {
+#include "actors/flame/dz_eq_hi_green09.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture green10[] = {
+#include "actors/flame/dz_eq_hi_green10.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture green11[] = {
+#include "actors/flame/dz_eq_hi_green11.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture green12[] = {
+#include "actors/flame/dz_eq_hi_green12.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture green13[] = {
+#include "actors/flame/dz_eq_hi_green13.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture green14[] = {
+#include "actors/flame/dz_eq_hi_green14.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture green15[] = {
+#include "actors/flame/dz_eq_hi_green15.rgba32.inc.c"
+};
+
+ALIGNED8 static const Texture green16[] = {
+#include "actors/flame/dz_eq_hi_green16.rgba32.inc.c"
+};
+    
+const Gfx flame_v2_dl_green01[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, green01),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_green02[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, green02),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_green03[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, green03),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_green04[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, green04),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_green05[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, green05),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_green06[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, green06),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_green07[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, green07),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_green08[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, green08),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_green09[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, green09),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_green10[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, green10),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_green11[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, green11),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_green12[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, green12),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_green13[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, green13),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_green14[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, green14),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_green15[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, green15),
+    gsSPBranchList(flame_v2_common),
+};
+
+const Gfx flame_v2_dl_green16[] = {
+    gsDPPipeSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 1, green16),
+    gsSPBranchList(flame_v2_common),
+};
+    
 const Gfx flame_v2_dl_revert[] = {
 	gsSPGeometryMode(0, G_LIGHTING),
 	gsDPPipeSync(),
@@ -242,74 +525,4 @@ const Gfx flame_seg3_dl_end[] = {
     gsDPSetEnvColor(255, 255, 255, 255),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPEndDisplayList(),
-};
-
-// 0x0301B320 - 0x0301B3B0
-const Gfx flame_seg3_dl_0301B320[] = {
-    gsSPClearGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
-    gsDPSetEnvColor(255, 50, 0, 200),
-    gsDPSetCombineMode(G_CC_FADEA, G_CC_FADEA),
-    gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_CLAMP, 5, G_TX_NOLOD),
-    gsDPLoadSync(),
-    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
-    gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 8, 0, G_TX_RENDERTILE, 0, G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_CLAMP, 5, G_TX_NOLOD),
-    gsDPSetTileSize(0, 0, 0, (32 - 1) << G_TEXTURE_IMAGE_FRAC, (32 - 1) << G_TEXTURE_IMAGE_FRAC),
-    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
-    gsSPEndDisplayList(),
-};
-
-// 0x0301B3B0 - 0x0301B3C8
-const Gfx flame_seg3_dl_0301B3B0[] = {
-    gsDPPipeSync(),
-    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, flame_seg3_texture_03017320),
-    gsSPBranchList(flame_seg3_dl_0301B320),
-};
-
-// 0x0301B3C8 - 0x0301B3E0
-const Gfx flame_seg3_dl_0301B3C8[] = {
-    gsDPPipeSync(),
-    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, flame_seg3_texture_03017B20),
-    gsSPBranchList(flame_seg3_dl_0301B320),
-};
-
-// 0x0301B3E0 - 0x0301B3F8
-const Gfx flame_seg3_dl_0301B3E0[] = {
-    gsDPPipeSync(),
-    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, flame_seg3_texture_03018320),
-    gsSPBranchList(flame_seg3_dl_0301B320),
-};
-
-// 0x0301B3F8 - 0x0301B410
-const Gfx flame_seg3_dl_0301B3F8[] = {
-    gsDPPipeSync(),
-    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, flame_seg3_texture_03018B20),
-    gsSPBranchList(flame_seg3_dl_0301B320),
-};
-
-// 0x0301B410 - 0x0301B428
-const Gfx flame_seg3_dl_0301B410[] = {
-    gsDPPipeSync(),
-    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, flame_seg3_texture_03019320),
-    gsSPBranchList(flame_seg3_dl_0301B320),
-};
-
-// 0x0301B428 - 0x0301B440
-const Gfx flame_seg3_dl_0301B428[] = {
-    gsDPPipeSync(),
-    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, flame_seg3_texture_03019B20),
-    gsSPBranchList(flame_seg3_dl_0301B320),
-};
-
-// 0x0301B440 - 0x0301B458
-const Gfx flame_seg3_dl_0301B440[] = {
-    gsDPPipeSync(),
-    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, flame_seg3_texture_0301A320),
-    gsSPBranchList(flame_seg3_dl_0301B320),
-};
-
-// 0x0301B458 - 0x0301B470
-const Gfx flame_seg3_dl_0301B458[] = {
-    gsDPPipeSync(),
-    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, flame_seg3_texture_0301AB20),
-    gsSPBranchList(flame_seg3_dl_0301B320),
 };

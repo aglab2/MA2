@@ -15,22 +15,56 @@ extern const Gfx dl_shadow_circle_end[];
 extern const Gfx mist_dl[];
 extern const Gfx mist_dl_end[];
 
-extern const Gfx flame_v2_dl_render01[];
-extern const Gfx flame_v2_dl_render02[];
-extern const Gfx flame_v2_dl_render03[];
-extern const Gfx flame_v2_dl_render04[];
-extern const Gfx flame_v2_dl_render05[];
-extern const Gfx flame_v2_dl_render06[];
-extern const Gfx flame_v2_dl_render07[];
-extern const Gfx flame_v2_dl_render08[];
-extern const Gfx flame_v2_dl_render09[];
-extern const Gfx flame_v2_dl_render10[];
-extern const Gfx flame_v2_dl_render11[];
-extern const Gfx flame_v2_dl_render12[];
-extern const Gfx flame_v2_dl_render13[];
-extern const Gfx flame_v2_dl_render14[];
-extern const Gfx flame_v2_dl_render15[];
-extern const Gfx flame_v2_dl_render16[];
+extern const Gfx flame_v2_dl_red01[];
+extern const Gfx flame_v2_dl_red02[];
+extern const Gfx flame_v2_dl_red03[];
+extern const Gfx flame_v2_dl_red04[];
+extern const Gfx flame_v2_dl_red05[];
+extern const Gfx flame_v2_dl_red06[];
+extern const Gfx flame_v2_dl_red07[];
+extern const Gfx flame_v2_dl_red08[];
+extern const Gfx flame_v2_dl_red09[];
+extern const Gfx flame_v2_dl_red10[];
+extern const Gfx flame_v2_dl_red11[];
+extern const Gfx flame_v2_dl_red12[];
+extern const Gfx flame_v2_dl_red13[];
+extern const Gfx flame_v2_dl_red14[];
+extern const Gfx flame_v2_dl_red15[];
+extern const Gfx flame_v2_dl_red16[];
+
+extern const Gfx flame_v2_dl_blue01[];
+extern const Gfx flame_v2_dl_blue02[];
+extern const Gfx flame_v2_dl_blue03[];
+extern const Gfx flame_v2_dl_blue04[];
+extern const Gfx flame_v2_dl_blue05[];
+extern const Gfx flame_v2_dl_blue06[];
+extern const Gfx flame_v2_dl_blue07[];
+extern const Gfx flame_v2_dl_blue08[];
+extern const Gfx flame_v2_dl_blue09[];
+extern const Gfx flame_v2_dl_blue10[];
+extern const Gfx flame_v2_dl_blue11[];
+extern const Gfx flame_v2_dl_blue12[];
+extern const Gfx flame_v2_dl_blue13[];
+extern const Gfx flame_v2_dl_blue14[];
+extern const Gfx flame_v2_dl_blue15[];
+extern const Gfx flame_v2_dl_blue16[];
+
+extern const Gfx flame_v2_dl_green01[];
+extern const Gfx flame_v2_dl_green02[];
+extern const Gfx flame_v2_dl_green03[];
+extern const Gfx flame_v2_dl_green04[];
+extern const Gfx flame_v2_dl_green05[];
+extern const Gfx flame_v2_dl_green06[];
+extern const Gfx flame_v2_dl_green07[];
+extern const Gfx flame_v2_dl_green08[];
+extern const Gfx flame_v2_dl_green09[];
+extern const Gfx flame_v2_dl_green10[];
+extern const Gfx flame_v2_dl_green11[];
+extern const Gfx flame_v2_dl_green12[];
+extern const Gfx flame_v2_dl_green13[];
+extern const Gfx flame_v2_dl_green14[];
+extern const Gfx flame_v2_dl_green15[];
+extern const Gfx flame_v2_dl_green16[];
 
 extern const Gfx flame_v2_dl_revert[];
 
@@ -72,30 +106,57 @@ struct BatchArray* batch_list_objects_alloc_xlu()
     static const struct BatchDisplayLists Batches[] = {
         [ LAYER_TRANSPARENT_SMOKE ] = { burn_smoke_seg4_sub_dl_begin_translucent, burn_smoke_seg4_sub_dl_end },
         [ LAYER_TRANSPARENT_MIST ] = { mist_dl, mist_dl_end },
-        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 0 ] = { flame_seg3_dl_0301B3B0, flame_seg3_dl_end },
-        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 1 ] = { flame_seg3_dl_0301B3C8, flame_seg3_dl_end },
-        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 2 ] = { flame_seg3_dl_0301B3E0, flame_seg3_dl_end },
-        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 3 ] = { flame_seg3_dl_0301B3F8, flame_seg3_dl_end },
-        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 4 ] = { flame_seg3_dl_0301B410, flame_seg3_dl_end },
-        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 5 ] = { flame_seg3_dl_0301B428, flame_seg3_dl_end },
-        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 6 ] = { flame_seg3_dl_0301B440, flame_seg3_dl_end },
-        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 7 ] = { flame_seg3_dl_0301B458, flame_seg3_dl_end },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 0  ] = { flame_v2_dl_render01, flame_v2_dl_revert },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 1  ] = { flame_v2_dl_render02, flame_v2_dl_revert },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 2  ] = { flame_v2_dl_render03, flame_v2_dl_revert },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 3  ] = { flame_v2_dl_render04, flame_v2_dl_revert },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 4  ] = { flame_v2_dl_render05, flame_v2_dl_revert },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 5  ] = { flame_v2_dl_render06, flame_v2_dl_revert },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 6  ] = { flame_v2_dl_render07, flame_v2_dl_revert },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 7  ] = { flame_v2_dl_render08, flame_v2_dl_revert },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 8  ] = { flame_v2_dl_render09, flame_v2_dl_revert },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 9  ] = { flame_v2_dl_render10, flame_v2_dl_revert },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 10 ] = { flame_v2_dl_render11, flame_v2_dl_revert },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 11 ] = { flame_v2_dl_render12, flame_v2_dl_revert },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 12 ] = { flame_v2_dl_render13, flame_v2_dl_revert },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 13 ] = { flame_v2_dl_render14, flame_v2_dl_revert },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 14 ] = { flame_v2_dl_render15, flame_v2_dl_revert },
-        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 15 ] = { flame_v2_dl_render16, flame_v2_dl_revert },
+
+        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 0  ] = { flame_v2_dl_red01, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 1  ] = { flame_v2_dl_red02, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 2  ] = { flame_v2_dl_red03, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 3  ] = { flame_v2_dl_red04, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 4  ] = { flame_v2_dl_red05, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 5  ] = { flame_v2_dl_red06, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 6  ] = { flame_v2_dl_red07, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 7  ] = { flame_v2_dl_red08, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 8  ] = { flame_v2_dl_red09, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 9  ] = { flame_v2_dl_red10, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 10 ] = { flame_v2_dl_red11, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 11 ] = { flame_v2_dl_red12, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 12 ] = { flame_v2_dl_red13, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 13 ] = { flame_v2_dl_red14, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 14 ] = { flame_v2_dl_red15, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_RED_FLAMES_FIRST + 15 ] = { flame_v2_dl_red16, flame_v2_dl_revert },
+
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 0  ] = { flame_v2_dl_blue01, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 1  ] = { flame_v2_dl_blue02, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 2  ] = { flame_v2_dl_blue03, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 3  ] = { flame_v2_dl_blue04, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 4  ] = { flame_v2_dl_blue05, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 5  ] = { flame_v2_dl_blue06, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 6  ] = { flame_v2_dl_blue07, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 7  ] = { flame_v2_dl_blue08, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 8  ] = { flame_v2_dl_blue09, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 9  ] = { flame_v2_dl_blue10, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 10 ] = { flame_v2_dl_blue11, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 11 ] = { flame_v2_dl_blue12, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 12 ] = { flame_v2_dl_blue13, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 13 ] = { flame_v2_dl_blue14, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 14 ] = { flame_v2_dl_blue15, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_BLUE_FLAMES_FIRST + 15 ] = { flame_v2_dl_blue16, flame_v2_dl_revert },
+
+        [ LAYER_TRANSPARENT_GREEN_FLAMES_FIRST + 0  ] = { flame_v2_dl_green01, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_GREEN_FLAMES_FIRST + 1  ] = { flame_v2_dl_green02, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_GREEN_FLAMES_FIRST + 2  ] = { flame_v2_dl_green03, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_GREEN_FLAMES_FIRST + 3  ] = { flame_v2_dl_green04, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_GREEN_FLAMES_FIRST + 4  ] = { flame_v2_dl_green05, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_GREEN_FLAMES_FIRST + 5  ] = { flame_v2_dl_green06, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_GREEN_FLAMES_FIRST + 6  ] = { flame_v2_dl_green07, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_GREEN_FLAMES_FIRST + 7  ] = { flame_v2_dl_green08, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_GREEN_FLAMES_FIRST + 8  ] = { flame_v2_dl_green09, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_GREEN_FLAMES_FIRST + 9  ] = { flame_v2_dl_green10, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_GREEN_FLAMES_FIRST + 10 ] = { flame_v2_dl_green11, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_GREEN_FLAMES_FIRST + 11 ] = { flame_v2_dl_green12, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_GREEN_FLAMES_FIRST + 12 ] = { flame_v2_dl_green13, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_GREEN_FLAMES_FIRST + 13 ] = { flame_v2_dl_green14, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_GREEN_FLAMES_FIRST + 14 ] = { flame_v2_dl_green15, flame_v2_dl_revert },
+        [ LAYER_TRANSPARENT_GREEN_FLAMES_FIRST + 15 ] = { flame_v2_dl_green16, flame_v2_dl_revert },
     };
     STATIC_ASSERT(LAYER_TRANSPARENT_BATCHES_COUNT == sizeof(Batches) / sizeof(*Batches), "Mismatch");
 
