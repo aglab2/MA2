@@ -62,13 +62,16 @@ class RenderNode(GeoNode):
                 return f"{super().__str__()}GEO_BATCH({self.dl_reference.layer}, {self.dl_reference.name}),"
         else:
             assert translations
-            if rotations:
-                return f"{super().__str__()}GEO_LVL_BATCH_TRANSLATE_ROTATE({self.dl_reference.layer}, {translations}, {rotations}, {self.dl_reference.name}),"
-            else:
-                if not self.dl_reference:
-                    return f"{super().__str__()}GEO_LVL_TRANSLATE_NODE(LAYER_OPAQUE, {translations}),"
+            if self.dl_reference:
+                if rotations:
+                    return f"{super().__str__()}GEO_LVL_BATCH_TRANSLATE_ROTATE({self.dl_reference.layer}, {translations}, {rotations}, {self.dl_reference.name}),"
                 else:
                     return f"{super().__str__()}GEO_LVL_BATCH_TRANSLATE_NODE({self.dl_reference.layer}, {translations}, {self.dl_reference.name}),"
+            else:
+                if rotations:
+                    return f"{super().__str__()}GEO_LVL_TRANSLATE_ROTATE_NODE(LAYER_OPAQUE, {translations}, {rotations}),"
+                else:
+                    return f"{super().__str__()}GEO_LVL_TRANSLATE_NODE(LAYER_OPAQUE, {translations}),"
 
 class ModelEntry:
     def __init__(self, decl, data = None, batched = False):
@@ -148,6 +151,9 @@ def parse_geo(geo_path):
         def translate_empty(self, layer, x, y, z):
             self._make_render_object((x, y, z), None, None)
 
+        def translate_rotate_empty(self, layer, x, y, z, rx, ry, rz):
+            self._make_render_object((x, y, z), (rx, ry, rz), None)
+
     geo: GeoLayout = None
     area: GeoLayout = None
 
@@ -206,7 +212,12 @@ def parse_geo(geo_path):
                     line = peek_line(f_geo)
                     if 'GEO_OPEN_NODE(' in line:
                         area_geolayout_parser.translate_empty(*get_args(translate_line))
-
+                    continue
+                if 'GEO_TRANSLATE_ROTATE(' in line:
+                    rotate_line = line
+                    line = peek_line(f_geo)
+                    if 'GEO_OPEN_NODE(' in line:
+                        area_geolayout_parser.translate_rotate_empty(*get_args(rotate_line))
                     continue
                 if 'GEO_RETURN(' in line:
                     curr_geolayout = None

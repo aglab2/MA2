@@ -1141,9 +1141,12 @@ void geo_layout_cmd_lvl_translation_rotation(void) {
     translation[1] = GEO_INT_TO_FLOAT(next_s32_in_geo_script(&cmdPos_f));
     translation[2] = GEO_INT_TO_FLOAT(next_s32_in_geo_script(&cmdPos_f));
     cmdPos = (s16*)cmdPos_f;
-    displayList = *(void **) &cmdPos[0];
     drawingLayer = params & 0x7F;
-    cmdPos += 2 << CMD_SIZE_SHIFT;
+    if (!(params & 0x80))
+    {
+        displayList = *(void **) &cmdPos[0];
+        cmdPos += 2 << CMD_SIZE_SHIFT;
+    }
 
     graphNode = init_graph_node_lvl_translation_rotation(NULL, drawingLayer, translation, rotation);
     register_scene_graph_node(&graphNode->node);

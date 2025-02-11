@@ -13,8 +13,12 @@
 
 #include "levels/dc/header.h"
 
-
+#if 0
 #include "levels/dc/geo.inc.c"
+#else
+#include "levels/dc/visual/geo_lvl.inc.c"
+#endif
+
 #include "levels/dc/dc_door_b/geo.inc.c"
 #include "levels/dc/dc_door_g/geo.inc.c"
 #include "levels/dc/dc_door_n/geo.inc.c"

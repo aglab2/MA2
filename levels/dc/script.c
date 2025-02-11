@@ -15,6 +15,7 @@
 #include "levels/dc/header.h"
 
 /* Fast64 begin persistent block [scripts] */
+#include "levels/dc/area_1/collision.inc.c"
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_dc_entry[] = {
@@ -113,7 +114,7 @@ const LevelScript level_dc_entry[] = {
 		OBJECT(MODEL_DC_DOOR_R, 7196, -300, 9786, 0, 90, 0, 0x00000000, bhvDcMove),
 		OBJECT(MODEL_DC_DOOR_G, -9793, -300, 7124, 0, 90, 0, 0x00000000, bhvDcMove),
 		OBJECT(MODEL_DC_DOOR_B, 6387, 200, -7089, 0, -135, 0, 0x00000000, bhvDcMove),
-		OBJECT(MODEL_DC_DOOR_N, -2293, -2050, -2290, 0, 135, 0, 0x00000000, bhvDcMove),
+		OBJECT(MODEL_DC_DOOR_N, -2293, -2050, -2290, 0, -135, 0, 0x00000000, bhvDcMove),
 		OBJECT(MODEL_NONE, 7942, 200, 7940, 0, -46, 0, 0x00000000, bhvPcSandglass),
 		OBJECT(MODEL_NONE, -6544, 201, 5229, 0, -46, 0, 0x00000000, bhvPcSandglass),
 		OBJECT(MODEL_NONE, 7724, -300, -9803, 0, -46, 0, 0x00000000, bhvPcSandglass),
