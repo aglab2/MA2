@@ -3498,6 +3498,7 @@ void create_camera(struct GraphNodeCamera *gc) {
     c->yaw = 0;
     c->camCollisionProgress = (struct CamCollisionProgress){};
     vec3f_copy(c->pos, gc->pos);
+    vec3_copy(c->paraCamOrigPos, gc->pos);
     vec3f_copy(c->focus, gc->focus);
 }
 

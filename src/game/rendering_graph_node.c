@@ -1597,6 +1597,8 @@ static int is_far_from_mario(f32 l0, f32 l1, f32 l2)
     }
     if (gCurrCourseNum == COURSE_AQ)
         range /= 2.f;
+    if (gCurrCourseNum == COURSE_DC)
+        range /= 2.f;
 
     if (dist > range)
     {
