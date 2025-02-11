@@ -16,6 +16,8 @@
 
 /* Fast64 begin persistent block [scripts] */
 #include "levels/dc/area_1/collision.inc.c"
+
+#define SEQ_LEVEL_GRASS 0x27
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_dc_entry[] = {
