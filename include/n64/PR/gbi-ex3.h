@@ -2350,7 +2350,7 @@ _DW({                                               \
 /**
  * Normal control flow commands; same as @ref gsSPBranchListHint but with hint of 0
  */
-#define gsSPBranchList(    dl)  _gsSPBranchListRaw(     dl, 0)
+#define gsSPBranchList(    dl)  _gsSPBranchListRaw(     dl, _DLHINTVALUE(sizeof(dl) / 8))
 
 /**
  * Normal control flow commands; same as @ref gSPEndDisplayListHint but with hint of 0
