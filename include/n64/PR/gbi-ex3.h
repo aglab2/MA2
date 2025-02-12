@@ -3718,10 +3718,15 @@ _DW({                                                       \
 #define gsDPSetColorDither(mode)        \
     gsSPSetOtherMode(    G_SETOTHERMODE_H, G_MDSFT_RGBDITHER, 2, mode)
 
+#if 0
 #define gDPSetAlphaDither(pkt, mode)    \
     gSPSetOtherMode(pkt, G_SETOTHERMODE_H, G_MDSFT_ALPHADITHER, 2, mode)
 #define gsDPSetAlphaDither(mode)        \
     gsSPSetOtherMode(    G_SETOTHERMODE_H, G_MDSFT_ALPHADITHER, 2, mode)
+#else
+#define gDPSetAlphaDither(...) gSPNoOp(pkt)
+#define gsDPSetAlphaDither(...) gsSPNoOp()
+#endif
 
 /**
  * 'blendmask' is not supported anymore.

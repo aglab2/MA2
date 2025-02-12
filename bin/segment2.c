@@ -2473,6 +2473,9 @@ const Gfx dl_hud_img_begin[] = {
 
 // 0x0200EC98 - 0x0200ECC8
 const Gfx dl_hud_img_load_tex_block[] = {
+    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, (G_TX_WRAP | G_TX_NOMIRROR), 4, G_TX_NOLOD, (G_TX_WRAP | G_TX_NOMIRROR), 4, G_TX_NOLOD),
+    gsDPLoadSync(),
+    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, ((16 * 16) - 1), CALC_DXT(16, G_IM_SIZ_16b_BYTES)),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 4, 0, G_TX_RENDERTILE, 0, (G_TX_WRAP | G_TX_NOMIRROR), 4, G_TX_NOLOD, (G_TX_WRAP | G_TX_NOMIRROR), 4, G_TX_NOLOD),
     gsDPSetTileSize(0, 0, 0, ((16 - 1) << G_TEXTURE_IMAGE_FRAC), ((16 - 1) << G_TEXTURE_IMAGE_FRAC)),
     gsSPEndDisplayList(),

@@ -128,7 +128,8 @@ const Gfx init_rdp[] = {
     gsDPSetRenderMode(G_RM_OPA_SURF, G_RM_OPA_SURF2),
     gsDPSetColorDither(G_CD_MAGICSQ),
     gsDPSetCycleType(G_CYC_FILL),
-    gsDPSetAlphaDither(G_AD_PATTERN),
+    // Explicitly set the initial value of the alpha compare
+    gsSPSetOtherMode(G_SETOTHERMODE_H, G_MDSFT_ALPHADITHER, 2, G_AD_PATTERN),
     gsSPEndDisplayList(),
 };
 
@@ -389,8 +390,8 @@ void create_gfx_task_structure(void) {
  */
 void init_rcp(s32 resetZB) {
     move_segment_table_to_dmem();
-    gSPDisplayList(gDisplayListHead++, init_rdp);
-    gSPDisplayList(gDisplayListHead++, init_rsp);
+    gSPDisplayList(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(init_rdp));
+    gSPDisplayList(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(init_rsp));
     init_z_buffer(resetZB);
     select_framebuffer();
 }
