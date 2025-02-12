@@ -8,11 +8,6 @@ static const Vtx flame_seg3_vertex_030172E0[] = {
     {{{   -25,     25,      0}, 0, {     0,      0}, {0x00, 0x00, 0x00, 0x00}}},
 };
 
-// 0x0301AB20
-ALIGNED8 static const Texture flame_seg3_texture_0301AB20[] = {
-#include "actors/flame/flame_7.ia16.inc.c"
-};
-
 static const Gfx flame_v2_common[] = {
     gsSPClearGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
 	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),

@@ -161,11 +161,8 @@ GCC_MAIN_OPT_FLAGS = \
   -fno-align-labels \
   -fno-align-loops \
   -fno-prefetch-loop-arrays \
-  -fweb \
-  -frename-registers \
   -freciprocal-math \
-  -fdelete-null-pointer-checks \
-  -free
+  -fdelete-null-pointer-checks
 
 # Surface Collision
 GCC_COLLISION_OPT_FLAGS = \

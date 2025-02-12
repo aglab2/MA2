@@ -88,7 +88,11 @@ extern "C" {
 /* Printf */
 
 extern int		sprintf(char *s, const char *fmt, ...);
+#if 0
 extern void		osSyncPrintf(const char *fmt, ...);
+#else
+#define osSyncPrintf(...) do{}while(0)
+#endif
 
 
 #endif  /* defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS) */
