@@ -275,7 +275,9 @@ static ALWAYS_INLINE void render_lists(Gfx **ptempGfxHead, struct DisplayListNod
         __builtin_mips_cache(0xd, ((u8*) tempGfxHead) + shift);
         gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(currList->transform), (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
         _gSPDisplayListRaw(tempGfxHead++, currList->displayList, currList->hint);
+        void* to_free = currList;
         currList = currList->next;
+        __builtin_mips_cache(0x11, to_free);
     } while (currList != NULL);
 #undef tempGfxHead
 }
@@ -325,6 +327,9 @@ static ALWAYS_INLINE void render_heap(Gfx **ptempGfxHead, Mtx **pprevMtx, struct
             shift ^= 0x8;
         }
         _gSPDisplayListRaw(tempGfxHead++, dlNode->displayList, dlNode->hint);
+
+        __builtin_mips_cache(0x11, ((u8*) dlNode) + 0x0);
+        __builtin_mips_cache(0x11, ((u8*) dlNode) + 0x10);
     } while (!pairingheap_is_empty(heap));
 #undef prevMtx
 #undef tempGfxHead
@@ -367,6 +372,9 @@ static int render_course_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32
     {
         struct PairingHeapNodeBatch* batchNode = (struct PairingHeapNodeBatch*) pairingheap_remove_first(&arr->mat_heap);
         int batch = batchNode->idx;
+        // TODO: pack idx inside the priority
+        __builtin_mips_cache(0x11, ((u8*) batchNode) + 0x0);
+        __builtin_mips_cache(0x11, ((u8*) batchNode) + 0x10);
 #if 0
         if (idx < 24 && currLayer == LAYER_OPAQUE)
             print_text_fmt_int(20 + 140 * (idx / 12), (idx % 12) * 20, "%d", batch);
