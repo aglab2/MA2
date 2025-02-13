@@ -3740,10 +3740,20 @@ _DW({                                                       \
  */
 #define gsDPSetBlendMask(mask)      gsSPNoOp()
 
+#if 0
 #define gDPSetAlphaCompare(pkt, type)   \
     gSPSetOtherMode(pkt, G_SETOTHERMODE_L, G_MDSFT_ALPHACOMPARE, 2, type)
 #define gsDPSetAlphaCompare(type)       \
     gsSPSetOtherMode(    G_SETOTHERMODE_L, G_MDSFT_ALPHACOMPARE, 2, type)
+#else
+#define gDPSetAlphaCompare(pkt, type) gSPNoOp(pkt)
+#define gsDPSetAlphaCompare(type) gsSPNoOp()
+
+#define gDPSetAlphaCompareReal(pkt, type)   \
+    gSPSetOtherMode(pkt, G_SETOTHERMODE_L, G_MDSFT_ALPHACOMPARE, 2, type)
+#define gsDPSetAlphaCompareReal(type)       \
+    gsSPSetOtherMode(    G_SETOTHERMODE_L, G_MDSFT_ALPHACOMPARE, 2, type)
+#endif
 
 #define gDPSetDepthSource(pkt, src) \
     gSPSetOtherMode(pkt, G_SETOTHERMODE_L, G_MDSFT_ZSRCSEL, 1, src)

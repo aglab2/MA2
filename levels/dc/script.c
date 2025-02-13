@@ -137,6 +137,7 @@ const LevelScript level_dc_entry[] = {
 		OBJECT(MODEL_RED_FLAME, 7716, 346, 8997, 0, -136, 0, 0x00000000, bhvFlame),
 		OBJECT(MODEL_NONE, 8020, -300, -9871, 0, 90, 0, 0x00000000, bhvGoombaTripletSpawner),
 		OBJECT(MODEL_NONE, 9672, -300, -7702, 0, 90, 0, 0x00000000, bhvGoombaTripletSpawner),
+		OBJECT(MODEL_NONE, 9506, -100, 9517, 0, -46, 0, (0xa << 16), bhvInstantActiveWarp),
 		OBJECT(MODEL_DC_DOOR_R, 7082, 200, 6388, 0, -46, 0, 0x00000000, bhvDcMove),
 		OBJECT(MODEL_DC_DOOR_R, 7196, -300, 9786, 0, 90, 0, 0x00000000, bhvDcMove),
 		OBJECT(MODEL_DC_DOOR_G, -9793, -300, 7124, 0, 90, 0, 0x00000000, bhvDcMove),

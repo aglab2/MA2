@@ -124,7 +124,7 @@ const Gfx init_rdp[] = {
     gsDPSetTextureConvert(G_TC_FILT),
 
     gsDPSetCombineKey(G_CK_NONE),
-    gsDPSetAlphaCompare(G_AC_NONE),
+    gsDPSetAlphaCompareReal(G_AC_NONE),
     gsDPSetRenderMode(G_RM_OPA_SURF, G_RM_OPA_SURF2),
     gsDPSetColorDither(G_CD_MAGICSQ),
     gsDPSetCycleType(G_CYC_FILL),

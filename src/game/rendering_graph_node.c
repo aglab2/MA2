@@ -259,6 +259,34 @@ static const Mtx identityMatrixWorldScale = {{
      0x00000000,                            LOWER_FIXED(1.0f)               <<  0}
 }};
 
+static void set_render_mode(Gfx **ptempGfxHead, int zb, int layer)
+{
+#define tempGfxHead (*ptempGfxHead)
+    u32 wantMode1 = renderModeTable_1Cycle[zb].modes[layer];
+    u32 wantMode2 = renderModeTable_2Cycle[zb].modes[layer];
+    gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
+#if 0
+    if (LAYER_ALPHA == layer)
+    {
+        gDPSetAlphaCompareReal(tempGfxHead++, G_AC_THRESHOLD);
+        gDPSetBlendColor(tempGfxHead++, 0, 0, 0, 127);
+    }
+#endif
+#undef tempGfxHead
+}
+
+static void clear_render_mode(Gfx **ptempGfxHead, int layer)
+{
+#define tempGfxHead (*ptempGfxHead)
+#if 0
+    if (LAYER_ALPHA == layer)
+    {
+        gDPSetAlphaCompare(tempGfxHead++, G_AC_NONE);
+    }
+#endif
+#undef tempGfxHead
+}
+
 /**
  * Process a master list node. This has been modified, so now it runs twice, for each microcode.
  * It iterates through the first 5 layers of if the first index using F3DLX2.Rej, then it switches
@@ -282,7 +310,7 @@ static ALWAYS_INLINE void render_lists(Gfx **ptempGfxHead, struct DisplayListNod
 #undef tempGfxHead
 }
 
-static int render_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32 wantMode1, u32 wantMode2)
+static int render_batches(Gfx **ptempGfxHead, struct BatchArray* arr, int currLayer)
 {
 #define tempGfxHead (*ptempGfxHead)
     int amountRendered = 0;
@@ -290,7 +318,7 @@ static int render_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32 wantMo
         return 0;
 
     // Some "fun" display lists before may decide to change the render mode, so we need to reset it.
-    gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
+    set_render_mode(&tempGfxHead, 1, currLayer);
 
     for (int batch = 0; batch < arr->count; batch++) {
         struct DisplayListLinks* batchLinks = &arr->batches[batch].list;
@@ -354,7 +382,7 @@ static ALWAYS_INLINE void render_course_lists(Gfx **ptempGfxHead, Mtx **pprevMtx
 #endif
 
 extern const Gfx dl_course_common_revert[];
-static int render_course_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32 wantMode1, u32 wantMode2, int currLayer)
+static int render_course_batches(Gfx **ptempGfxHead, struct BatchArray* arr, int currLayer)
 {
     (void) currLayer;
 #define tempGfxHead (*ptempGfxHead)
@@ -363,7 +391,7 @@ static int render_course_batches(Gfx **ptempGfxHead, struct BatchArray* arr, u32
         return 0;
 
     Mtx* prevMtx = NULL;
-    gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
+    set_render_mode(&tempGfxHead, 1, currLayer);
 
 #ifdef ENABLE_HEAP_BATCHES
     // It is would be extremely weird if mat_heap is empty initially but i'd rather check it
@@ -454,8 +482,6 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
     s32 phaseIndex    = RENDER_PHASE_FIRST;
     s32 enableZBuffer = (node->node.flags & GRAPH_RENDER_Z_BUFFER) != 0;
     s32 finalPhase    = enableZBuffer ? RENDER_PHASE_END : 1;
-    const struct RenderModeContainer *mode1List = &renderModeTable_1Cycle[enableZBuffer];
-    const struct RenderModeContainer *mode2List = &renderModeTable_2Cycle[enableZBuffer];
     Gfx *tempGfxHead = gDisplayListHead;
 
     if (enableZBuffer)
@@ -481,8 +507,6 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
             struct MasterLayer* masterLayer = &node->layers[currLayer];
             apply_flipbooks(masterLayer);
             struct DisplayListNode *currList = masterLayer->list.head;
-            u32 wantMode1 = mode1List->modes[currLayer];
-            u32 wantMode2 = mode2List->modes[currLayer];
             if (currList)
             {
                 // Set the render mode for the current layer.
@@ -494,7 +518,7 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
                     wantMode2 &= ~IM_RD;
                 }
     #endif
-                gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
+                set_render_mode(&tempGfxHead, enableZBuffer, currLayer);
 
                 // Iterate through all the displaylists on the current layer.
                 do {
@@ -521,15 +545,19 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
                 while (currList != NULL);
             }
 
-            gDPPipeSync(tempGfxHead++);
-            gDPPipelineMode(tempGfxHead++, G_PM_NPRIMITIVE);
-            int amt = render_course_batches(&tempGfxHead, masterLayer->course, wantMode1, wantMode2, currLayer);
-            (void) amt;
-            // if (amt)
-            //     print_text_fmt_int(20, 20 + currLayer * 20, "%d", amt);
-            render_batches(&tempGfxHead, masterLayer->objects, wantMode1, wantMode2);
-            gDPPipeSync(tempGfxHead++);
-            gDPPipelineMode(tempGfxHead++, G_PM_1PRIMITIVE);
+            if (masterLayer->course || masterLayer->objects)
+            {
+                gDPPipeSync(tempGfxHead++);
+                gDPPipelineMode(tempGfxHead++, G_PM_NPRIMITIVE);
+                int amt = render_course_batches(&tempGfxHead, masterLayer->course, currLayer);
+                (void) amt;
+                // if (amt)
+                //     print_text_fmt_int(20, 20 + currLayer * 20, "%d", amt);
+                render_batches(&tempGfxHead, masterLayer->objects, currLayer);
+                gDPPipeSync(tempGfxHead++);
+                gDPPipelineMode(tempGfxHead++, G_PM_1PRIMITIVE);
+                clear_render_mode(&tempGfxHead, currLayer);    
+            }
         }
     }
 

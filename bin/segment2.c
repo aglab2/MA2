@@ -2464,7 +2464,7 @@ const Gfx dl_hud_img_begin[] = {
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_COPY),
     gsDPSetTexturePersp(G_TP_NONE),
-    gsDPSetAlphaCompare(G_AC_THRESHOLD),
+    gsDPSetAlphaCompareReal(G_AC_THRESHOLD),
     gsDPSetBlendColor(255, 255, 255, 255),
     gsDPSetRenderMode(G_RM_NOOP, G_RM_NOOP2),
     gsDPSetTextureFilter(G_TF_POINT),
@@ -2485,7 +2485,7 @@ const Gfx dl_hud_img_end[] = {
     gsDPPipeSync(),
     gsDPSetTexturePersp(G_TP_PERSP),
     gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
-    gsDPSetAlphaCompare(G_AC_NONE),
+    gsDPSetAlphaCompareReal(G_AC_NONE),
     gsDPSetTextureFilter(G_TF_BILERP),
     gsDPSetCycleType(G_CYC_1CYCLE),
     gsSPEndDisplayList(),
@@ -3242,7 +3242,7 @@ const Gfx dl_course_common_revert[] = {
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 0),
 	gsDPSetEnvColor(255, 255, 255, 255),
-	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPSetAlphaCompareReal(G_AC_NONE),
 	gsSPEndDisplayList(),
 };
 
