@@ -657,7 +657,7 @@ struct GraphNodeTranslation         *init_graph_node_break_translation        (s
 /**
  * Adds 'childNode' to the end of the list children from 'parent'
  */
-struct GraphNode *geo_add_child(struct GraphNode *parent, struct GraphNode *childNode) {
+void geo_add_child(struct GraphNode *parent, struct GraphNode *childNode) {
     struct GraphNode *parentFirstChild;
     struct GraphNode *parentLastChild;
 
@@ -677,8 +677,6 @@ struct GraphNode *geo_add_child(struct GraphNode *parent, struct GraphNode *chil
             parentLastChild->next = childNode;
         }
     }
-
-    return childNode;
 }
 
 /**
@@ -687,9 +685,12 @@ struct GraphNode *geo_add_child(struct GraphNode *parent, struct GraphNode *chil
  * since geo nodes are allocated in a pointer-bumping pool that
  * gets thrown out when changing areas.
  */
-struct GraphNode *geo_remove_child(struct GraphNode *graphNode) {
+void geo_remove_child(struct GraphNode *graphNode) {
     struct GraphNode *parent = graphNode->parent;
     struct GraphNode **firstChild = &parent->children;
+
+    if (!graphNode->parent)
+        return;
 
     // Remove link with siblings
     graphNode->prev->next = graphNode->next;
@@ -705,7 +706,11 @@ struct GraphNode *geo_remove_child(struct GraphNode *graphNode) {
         }
     }
 
-    return parent;
+    // Sever links with other nodes in the list and link with itself
+    // Logic is similar to 'init_scene_graph_node_links' so next 'geo_add_child' works
+    graphNode->parent = NULL;
+    graphNode->prev = graphNode;
+    graphNode->next = graphNode;
 }
 
 /**
@@ -818,7 +823,8 @@ void geo_call_global_function_nodes(struct GraphNode *graphNode, s32 callContext
 void geo_reset_object_node(struct GraphNodeObject *graphNode) {
     init_graph_node_object(graphNode, 0, gVec3fZero, gVec3sZero, gVec3fOne);
 
-    geo_add_child(&gObjParentGraphNode, &graphNode->node);
+    // geo_add_child(&gObjParentGraphNode, &graphNode->node);
+
     graphNode->node.flags &= ~GRAPH_RENDER_ACTIVE;
 }
 

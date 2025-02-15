@@ -543,8 +543,8 @@ struct GraphNodeTranslation            *init_graph_node_break_translation       
 
 struct GraphNodeHeldObject          *init_graph_node_held_object         (struct GraphNodeHeldObject          *graphNode, struct Object *objNode, Vec3s translation, GraphNodeFunc nodeFunc, s32 playerIndex);
 
-struct GraphNode *geo_add_child       (struct GraphNode *parent, struct GraphNode *childNode);
-struct GraphNode *geo_remove_child    (struct GraphNode *graphNode);
+void geo_add_child       (struct GraphNode *parent, struct GraphNode *childNode);
+void geo_remove_child    (struct GraphNode *graphNode);
 struct GraphNode *geo_make_first_child(struct GraphNode *newFirstChild);
 void geo_call_global_function_nodes_helper(struct GraphNode *graphNode, s32 callContext);
 void geo_call_global_function_nodes       (struct GraphNode *graphNode, s32 callContext);

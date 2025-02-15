@@ -98,7 +98,7 @@ void unload_object(struct Object *obj) {
     obj->header.gfx.throwMatrix = NULL;
     stop_sounds_from_source(obj->header.gfx.cameraToObject);
     geo_remove_child(&obj->header.gfx.node);
-    geo_add_child(&gObjParentGraphNode, &obj->header.gfx.node);
+    // geo_add_child(&gObjParentGraphNode, &obj->header.gfx.node);
 
     obj->header.gfx.node.flags &= ~(GRAPH_RENDER_BILLBOARD | GRAPH_RENDER_ACTIVE);
 
