@@ -209,7 +209,7 @@ struct FlipbookDls {
     u8 offCI4;
     u8 offPal;
     u8 offTile;
-    u8 filler;
+    u8 offPrimColor;
 };
 
 struct FlipbookArray {

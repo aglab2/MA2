@@ -314,6 +314,7 @@ struct CloneResult
     u8 offCI4;
     u8 offPal;
     u8 offTile;
+    u8 offPrimColor;
 };
 
 static struct CloneResult clone_dl(const void* _dl)
@@ -340,6 +341,10 @@ static struct CloneResult clone_dl(const void* _dl)
         if (G_SETTILESIZE == *dl)
         {
             result.offTile = dl - start;
+        }
+        if (G_SETPRIMCOLOR == *dl)
+        {
+            result.offPrimColor = dl - start;
         }
 
         dl += 8;
@@ -376,6 +381,7 @@ static struct FlipbookArray* make_flipbooks(struct FlipbookLayer* flipbooksLayer
         flipDls->offCI4 = cloneResult.offCI4;
         flipDls->offPal = cloneResult.offPal;
         flipDls->offTile = cloneResult.offTile;
+        flipDls->offPrimColor = cloneResult.offPrimColor;
     }
 
     return flipbooks;

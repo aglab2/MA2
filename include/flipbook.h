@@ -15,6 +15,8 @@ struct FlipbookData
     // speed of tile scrolling on Y
     s8 tileScrollY;
 
+    u16 shading;
+
     // the flipbook data, 2048 bytes per flip
     u8* ci4s;
     // the flipbook palette, 32 bytes per flip

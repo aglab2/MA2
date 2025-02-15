@@ -1,5 +1,4 @@
-Gfx ee_dl_et128_1_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 ee_dl_et128_1_ci4[] = {
+ALIGNED8 u8 ee_dl_et128_1_ci4[] = {
 	0x01, 0x10, 0x10, 0x10, 0x20, 0x34, 0x12, 0x21, 
 	0x00, 0x00, 0x11, 0x01, 0x12, 0x10, 0x11, 0x01, 
 	0x10, 0x13, 0x10, 0x11, 0x01, 0x10, 0x15, 0x62, 
@@ -259,8 +258,7 @@ u8 ee_dl_et128_1_ci4[] = {
 	
 };
 
-Gfx ee_dl_et128_1_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 ee_dl_et128_1_pal_rgba16[] = {
+ALIGNED8 u8 ee_dl_et128_1_pal_rgba16[] = {
 	0x55, 0xb1, 0x6d, 0xf5, 0x4d, 0xad, 0x96, 0xb9, 
 	0x35, 0x29, 0x24, 0x1d, 0x1b, 0x13, 0x45, 0x67, 
 	0x12, 0x0d, 0x34, 0xe3, 0x2c, 0x1b, 0x3a, 0xdd, 
@@ -268,8 +266,7 @@ u8 ee_dl_et128_1_pal_rgba16[] = {
 	
 };
 
-Gfx ee_dl_miu64_cg020_001_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 ee_dl_miu64_cg020_001_ci4[] = {
+ALIGNED8 u8 ee_dl_miu64_cg020_001_ci4[] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
 	0x11, 0x11, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
@@ -529,16 +526,14 @@ u8 ee_dl_miu64_cg020_001_ci4[] = {
 	
 };
 
-Gfx ee_dl_miu64_cg020_001_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 ee_dl_miu64_cg020_001_pal_rgba16[] = {
+ALIGNED8 u8 ee_dl_miu64_cg020_001_pal_rgba16[] = {
 	0x00, 0x01, 0x08, 0x85, 0x42, 0x99, 0x29, 0x8d, 
 	0x53, 0x5d, 0x32, 0x13, 0x8c, 0xeb, 0x21, 0x8d, 
 	0x19, 0x4b, 0x11, 0x09, 0x21, 0x91, 0x74, 0xa9, 
 	0xae, 0xbd, 0x64, 0x25, 0x8d, 0x73, 
 };
 
-Gfx ee_dl_miu256_cg006_001_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 ee_dl_miu256_cg006_001_ci4[] = {
+ALIGNED8 u8 ee_dl_miu256_cg006_001_ci4[] = {
 	0x00, 0x00, 0x00, 0x12, 0x23, 0x33, 0x32, 0x24, 
 	0x23, 0x33, 0x33, 0x31, 0x15, 0x15, 0x55, 0x00, 
 	0x00, 0x01, 0x50, 0x33, 0x33, 0x62, 0x23, 0x42, 
@@ -798,8 +793,7 @@ u8 ee_dl_miu256_cg006_001_ci4[] = {
 	
 };
 
-Gfx ee_dl_miu256_cg006_001_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 ee_dl_miu256_cg006_001_pal_rgba16[] = {
+ALIGNED8 u8 ee_dl_miu256_cg006_001_pal_rgba16[] = {
 	0x9d, 0x6f, 0x84, 0xa7, 0xbe, 0x75, 0x00, 0x01, 
 	0x94, 0xa3, 0x74, 0x23, 0x42, 0x53, 0x6b, 0x9f, 
 	0x63, 0x1b, 0x84, 0x23, 0x8b, 0x5b, 0x91, 0x4b, 
@@ -807,8 +801,7 @@ u8 ee_dl_miu256_cg006_001_pal_rgba16[] = {
 	
 };
 
-Gfx ee_dl_miu256_cg004_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 ee_dl_miu256_cg004_ci4[] = {
+ALIGNED8 u8 ee_dl_miu256_cg004_ci4[] = {
 	0x01, 0x11, 0x00, 0x00, 0x11, 0x00, 0x00, 0x00, 
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
@@ -1068,16 +1061,14 @@ u8 ee_dl_miu256_cg004_ci4[] = {
 	
 };
 
-Gfx ee_dl_miu256_cg004_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 ee_dl_miu256_cg004_pal_rgba16[] = {
+ALIGNED8 u8 ee_dl_miu256_cg004_pal_rgba16[] = {
 	0x21, 0x0b, 0x31, 0x8f, 0x42, 0x13, 0x52, 0x97, 
 	0x00, 0x01, 0xa5, 0x6d, 0x94, 0xa9, 0x84, 0x21, 
 	0x84, 0x23, 0x6b, 0x5d, 0x94, 0xa5, 0xce, 0xb7, 
 	0xbd, 0xf1, 0xa5, 0x69, 0xb5, 0xf3, 
 };
 
-Gfx ee_dl_miu128_cg010_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 ee_dl_miu128_cg010_ci4[] = {
+ALIGNED8 u8 ee_dl_miu128_cg010_ci4[] = {
 	0x00, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 
 	0x11, 0x11, 0x11, 0x11, 0x00, 0x00, 0x22, 0x22, 
 	0x22, 0x22, 0x00, 0x11, 0x11, 0x11, 0x11, 0x11, 
@@ -1337,8 +1328,7 @@ u8 ee_dl_miu128_cg010_ci4[] = {
 	
 };
 
-Gfx ee_dl_miu128_cg010_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 ee_dl_miu128_cg010_pal_rgba16[] = {
+ALIGNED8 u8 ee_dl_miu128_cg010_pal_rgba16[] = {
 	0x00, 0x01, 0x18, 0xc7, 0x40, 0x01, 0xb6, 0x31, 
 	0x4a, 0x53, 0x63, 0x5b, 0x88, 0x81, 0xdc, 0x01, 
 	0x8c, 0x65, 0x94, 0xe9, 0x29, 0x4b, 0xfe, 0x81, 
@@ -1346,8 +1336,7 @@ u8 ee_dl_miu128_cg010_pal_rgba16[] = {
 	
 };
 
-Gfx ee_dl_miu128_cg009_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 ee_dl_miu128_cg009_ci4[] = {
+ALIGNED8 u8 ee_dl_miu128_cg009_ci4[] = {
 	0x00, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 
 	0x11, 0x11, 0x11, 0x11, 0x00, 0x00, 0x22, 0x22, 
 	0x22, 0x22, 0x00, 0x11, 0x11, 0x11, 0x11, 0x11, 
@@ -1607,8 +1596,7 @@ u8 ee_dl_miu128_cg009_ci4[] = {
 	
 };
 
-Gfx ee_dl_miu128_cg009_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 ee_dl_miu128_cg009_pal_rgba16[] = {
+ALIGNED8 u8 ee_dl_miu128_cg009_pal_rgba16[] = {
 	0x00, 0x01, 0x18, 0xc7, 0x40, 0x01, 0xbe, 0x73, 
 	0x4a, 0x55, 0x88, 0xc1, 0xdc, 0x01, 0x71, 0x81, 
 	0x6b, 0x5d, 0x8c, 0x65, 0x29, 0x8d, 0xfe, 0x81, 
@@ -1616,8 +1604,7 @@ u8 ee_dl_miu128_cg009_pal_rgba16[] = {
 	
 };
 
-Gfx ee_dl_miu64_cg003_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 ee_dl_miu64_cg003_ci4[] = {
+ALIGNED8 u8 ee_dl_miu64_cg003_ci4[] = {
 	0x00, 0x11, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 
 	0x33, 0x33, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 
 	0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 
@@ -1877,8 +1864,7 @@ u8 ee_dl_miu64_cg003_ci4[] = {
 	
 };
 
-Gfx ee_dl_miu64_cg003_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 ee_dl_miu64_cg003_pal_rgba16[] = {
+ALIGNED8 u8 ee_dl_miu64_cg003_pal_rgba16[] = {
 	0x1a, 0x8b, 0x85, 0xa1, 0x33, 0xcf, 0x5d, 0x19, 
 	0x21, 0x83, 0xb6, 0x6b, 0x9f, 0x69, 0xcf, 0x6d, 
 	0xd7, 0xb5, 0xff, 0xff, 0x53, 0x13, 0x00, 0x01, 
@@ -1886,8 +1872,7 @@ u8 ee_dl_miu64_cg003_pal_rgba16[] = {
 	
 };
 
-Gfx ee_dl_miu128_cg017_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 ee_dl_miu128_cg017_ci4[] = {
+ALIGNED8 u8 ee_dl_miu128_cg017_ci4[] = {
 	0x01, 0x22, 0x11, 0x31, 0x40, 0x00, 0x11, 0x11, 
 	0x22, 0x50, 0x00, 0x02, 0x11, 0x11, 0x14, 0x00, 
 	0x00, 0x11, 0x11, 0x11, 0x00, 0x00, 0x56, 0x55, 
@@ -2147,8 +2132,7 @@ u8 ee_dl_miu128_cg017_ci4[] = {
 	
 };
 
-Gfx ee_dl_miu128_cg017_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 ee_dl_miu128_cg017_pal_rgba16[] = {
+ALIGNED8 u8 ee_dl_miu128_cg017_pal_rgba16[] = {
 	0x00, 0x01, 0x63, 0x57, 0x6b, 0x13, 0x8c, 0x1d, 
 	0x18, 0xc7, 0x29, 0x89, 0x3a, 0x51, 0x29, 0x8d, 
 	0x4a, 0x95, 0x52, 0x4d, 0x5b, 0x5b, 0x7c, 0x63, 
@@ -2156,8 +2140,7 @@ u8 ee_dl_miu128_cg017_pal_rgba16[] = {
 	
 };
 
-Gfx ee_dl_miu256_cg001_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 ee_dl_miu256_cg001_ci4[] = {
+ALIGNED8 u8 ee_dl_miu256_cg001_ci4[] = {
 	0x01, 0x21, 0x11, 0x11, 0x11, 0x12, 0x11, 0x11, 
 	0x22, 0x32, 0x21, 0x22, 0x22, 0x20, 0x22, 0x00, 
 	0x32, 0x02, 0x40, 0x22, 0x21, 0x31, 0x11, 0x11, 
@@ -2417,8 +2400,7 @@ u8 ee_dl_miu256_cg001_ci4[] = {
 	
 };
 
-Gfx ee_dl_miu256_cg001_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 ee_dl_miu256_cg001_pal_rgba16[] = {
+ALIGNED8 u8 ee_dl_miu256_cg001_pal_rgba16[] = {
 	0x29, 0x8b, 0x00, 0x01, 0x11, 0x09, 0x19, 0x05, 
 	0x21, 0x09, 0x3a, 0x0f, 0x32, 0x11, 0x5b, 0x19, 
 	0x3a, 0x0d, 0x29, 0x89, 0x4a, 0x93, 0x42, 0x95, 
@@ -2426,8 +2408,7 @@ u8 ee_dl_miu256_cg001_pal_rgba16[] = {
 	
 };
 
-Gfx ee_dl_miu64_cg009_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 ee_dl_miu64_cg009_ci4[] = {
+ALIGNED8 u8 ee_dl_miu64_cg009_ci4[] = {
 	0x00, 0x00, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 
 	0x11, 0x11, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 
 	0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 0x22, 
@@ -2687,8 +2668,7 @@ u8 ee_dl_miu64_cg009_ci4[] = {
 	
 };
 
-Gfx ee_dl_miu64_cg009_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 ee_dl_miu64_cg009_pal_rgba16[] = {
+ALIGNED8 u8 ee_dl_miu64_cg009_pal_rgba16[] = {
 	0x4a, 0xd5, 0x5b, 0x9b, 0x6c, 0x1f, 0x5b, 0x97, 
 	0x29, 0xcd, 0x32, 0x51, 0x00, 0x01, 0x19, 0x09, 
 	0xcf, 0xb7, 0xd7, 0xf5, 0xb7, 0x33, 0x7c, 0xe5, 
@@ -2997,7 +2977,7 @@ Gfx ee_dl_C_ee_step_mesh_layer_1_tri_0[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx ee_dl_C_ee_stepb_mesh_layer_1_vtx_0[46] = {
+Vtx ee_dl_C_ee_stepb_mesh_layer_1_vtx_0[36] = {
 	{{ {296, 120, 461}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {296, 0, 379}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {296, 0, 461}, 0, {-16, -16}, {255, 255, 255, 255} }},
@@ -3031,23 +3011,13 @@ Vtx ee_dl_C_ee_stepb_mesh_layer_1_vtx_0[46] = {
 	{{ {-296, 120, 461}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {-398, 120, 277}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {-296, 120, 379}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {-398, 120, 277}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {-296, 120, 461}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {-296, 0, 461}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {-296, 0, 379}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {-398, 0, 277}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {-398, 0, -277}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {-296, 0, -379}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {-398, 120, -277}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {-296, 120, -379}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {-461, 120, -296}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {-461, 120, 296}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {-461, -125, 296}, 0, {-16, -16}, {255, 255, 255, 255} }},
-	{{ {-461, -125, -296}, 0, {-16, -16}, {255, 255, 255, 255} }},
 };
 
 Gfx ee_dl_C_ee_stepb_mesh_layer_1_tri_0[] = {
-	gsSPVertex(ee_dl_C_ee_stepb_mesh_layer_1_vtx_0 + 0, 32, 0),
+	gsSPVertex(ee_dl_C_ee_stepb_mesh_layer_1_vtx_0 + 0, 36, 0),
 	gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
 	gsSP2Triangles(0, 4, 3, 0, 0, 5, 4, 0),
 	gsSP2Triangles(6, 5, 0, 0, 6, 7, 5, 0),
@@ -3072,15 +3042,14 @@ Gfx ee_dl_C_ee_stepb_mesh_layer_1_tri_0[] = {
 	gsSP2Triangles(17, 27, 24, 0, 17, 28, 27, 0),
 	gsSP2Triangles(18, 28, 17, 0, 18, 29, 28, 0),
 	gsSP2Triangles(30, 29, 18, 0, 30, 31, 29, 0),
-	gsSPVertex(ee_dl_C_ee_stepb_mesh_layer_1_vtx_0 + 32, 14, 0),
-	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
-	gsSP2Triangles(3, 4, 0, 0, 0, 4, 5, 0),
-	gsSP2Triangles(4, 6, 5, 0, 4, 7, 6, 0),
-	gsSP2Triangles(6, 7, 8, 0, 8, 7, 9, 0),
-	gsSP2Triangles(9, 10, 8, 0, 8, 10, 1, 0),
-	gsSP2Triangles(11, 1, 10, 0, 11, 10, 12, 0),
-	gsSP2Triangles(12, 10, 13, 0, 8, 1, 6, 0),
-	gsSP2Triangles(5, 6, 1, 0, 5, 1, 0, 0),
+	gsSP2Triangles(32, 31, 30, 0, 32, 30, 19, 0),
+	gsSP2Triangles(19, 20, 32, 0, 32, 20, 33, 0),
+	gsSP2Triangles(20, 34, 33, 0, 20, 15, 34, 0),
+	gsSP2Triangles(34, 15, 35, 0, 35, 15, 25, 0),
+	gsSP2Triangles(25, 26, 35, 0, 35, 26, 31, 0),
+	gsSP2Triangles(29, 31, 26, 0, 29, 26, 28, 0),
+	gsSP2Triangles(28, 26, 27, 0, 35, 31, 34, 0),
+	gsSP2Triangles(33, 34, 31, 0, 33, 31, 32, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -3467,7 +3436,7 @@ Vtx ee_dl_ee_cont_mesh_layer_1_vtx_8[42] = {
 };
 
 Gfx ee_dl_ee_cont_mesh_layer_1_tri_8[] = {
-	gsSPVertex(ee_dl_ee_cont_mesh_layer_1_vtx_8 + 0, 30, 0),
+	gsSPVertex(ee_dl_ee_cont_mesh_layer_1_vtx_8 + 0, 42, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
 	gsSP2Triangles(3, 2, 4, 0, 3, 4, 5, 0),
 	gsSP2Triangles(5, 4, 6, 0, 5, 6, 7, 0),
@@ -3480,11 +3449,10 @@ Gfx ee_dl_ee_cont_mesh_layer_1_tri_8[] = {
 	gsSP2Triangles(23, 22, 24, 0, 23, 24, 25, 0),
 	gsSP2Triangles(25, 24, 26, 0, 25, 26, 27, 0),
 	gsSP2Triangles(27, 26, 28, 0, 27, 28, 29, 0),
-	gsSPVertex(ee_dl_ee_cont_mesh_layer_1_vtx_8 + 30, 12, 0),
-	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
-	gsSP2Triangles(3, 2, 4, 0, 3, 4, 5, 0),
-	gsSP2Triangles(6, 7, 8, 0, 7, 6, 9, 0),
-	gsSP2Triangles(10, 9, 11, 0, 9, 10, 0, 0),
+	gsSP2Triangles(30, 31, 32, 0, 30, 32, 33, 0),
+	gsSP2Triangles(33, 32, 34, 0, 33, 34, 35, 0),
+	gsSP2Triangles(36, 37, 38, 0, 37, 36, 39, 0),
+	gsSP2Triangles(40, 39, 41, 0, 39, 40, 30, 0),
 	gsSPEndDisplayList(),
 };
 

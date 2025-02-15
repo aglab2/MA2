@@ -75,7 +75,7 @@ extern Vtx ee_dl_a1_003_mesh_layer_1_vtx_0[24];
 extern Gfx ee_dl_a1_003_mesh_layer_1_tri_0[];
 extern Vtx ee_dl_C_ee_step_mesh_layer_1_vtx_0[16];
 extern Gfx ee_dl_C_ee_step_mesh_layer_1_tri_0[];
-extern Vtx ee_dl_C_ee_stepb_mesh_layer_1_vtx_0[46];
+extern Vtx ee_dl_C_ee_stepb_mesh_layer_1_vtx_0[36];
 extern Gfx ee_dl_C_ee_stepb_mesh_layer_1_tri_0[];
 extern Vtx ee_dl_Plane_010_mesh_layer_1_vtx_0[4];
 extern Gfx ee_dl_Plane_010_mesh_layer_1_tri_0[];

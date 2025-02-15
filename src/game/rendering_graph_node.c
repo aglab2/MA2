@@ -457,6 +457,12 @@ static void apply_flipbooks(struct MasterLayer* masterLayer)
             *(u8**) &startDl[flipDls->offPal] = flipData->pals + frame * 32;
         }
 
+        if (flipData->shading)
+        {
+            u8* primColorCmd = (u8*) &startDl[flipDls->offPrimColor];
+            primColorCmd[7] = 0x80 + 0x50 * sins(gGlobalTimer * 0x223 + flipData->shading);
+        }
+
         SetTileSize* tile = (SetTileSize*) &startDl[flipDls->offTile];
         // tile->u += gGlobalTimer * flipData->tileScrollX;
         // tile->v += gGlobalTimer * flipData->tileScrollY;

@@ -49,12 +49,12 @@ ALIGNED8 u8 cg_poisons_pal[] = {
 };
 
 static struct FlipbookData flipbooks_opaque[] = {
-    { LVL_BATCH_LAYER_OPAQUE_CG_DL_TX_LIGHT001_PAL_RGBA16, 5, 10, -5, 0, cg_matrixs_ci4, cg_matrixs_pal },
+    { LVL_BATCH_LAYER_OPAQUE_CG_DL_TX_LIGHT001_PAL_RGBA16, 5, 10, -5, 0, 0, cg_matrixs_ci4, cg_matrixs_pal },
 };
 
 static struct FlipbookData flipbooks_xlu[] = {
-    { LVL_BATCH_LAYER_TRANSPARENT_CG_DL_TX_POISON001_PAL_RGBA16  , 13, 2, 0, 0, cg_poisons_ci4, cg_poisons_pal },
-    { LVL_BATCH_LAYER_TRANSPARENT_CG_DL_TX_POISON001_PAL_RGBA16_1, 13, 2, 0, 0, cg_poisons_ci4, cg_poisons_pal },
+    { LVL_BATCH_LAYER_TRANSPARENT_CG_DL_TX_POISON001_PAL_RGBA16  , 13, 2, 0, 0, 0, cg_poisons_ci4, cg_poisons_pal },
+    { LVL_BATCH_LAYER_TRANSPARENT_CG_DL_TX_POISON001_PAL_RGBA16_1, 13, 2, 0, 0, 0, cg_poisons_ci4, cg_poisons_pal },
 };
 
 const struct FlipbookLayer cg_flipbooks[LAYER_COUNT] = {

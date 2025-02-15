@@ -35,7 +35,7 @@ static ALIGNED8 u8 waters_pal[] = {
 };
 
 static struct FlipbookData flipbooks_xlu[] = {
-    { LVL_BATCH_LAYER_TRANSPARENT_GF_DL_TX_JUNGLE001_PAL_RGBA16, 14, 2, 0, 0, waters_ci4, waters_pal },
+    { LVL_BATCH_LAYER_TRANSPARENT_GF_DL_TX_JUNGLE001_PAL_RGBA16, 14, 2, 0, 0, 0, waters_ci4, waters_pal },
 };
 
 const struct FlipbookLayer gf_flipbooks[LAYER_COUNT] = {
