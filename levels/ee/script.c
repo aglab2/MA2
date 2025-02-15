@@ -26,6 +26,11 @@ extern const GeoLayout ee_area_visual[];
 #define ee_area_8 ee_area_visual
 #define ee_area_9 ee_area_visual
 #define ee_area_10 ee_area_visual
+#include "levels/ee/area_1/collision.inc.c"
+#include "levels/ee/area_2/collision.inc.c"
+#include "levels/ee/area_3/collision.inc.c"
+#include "levels/ee/area_4/collision.inc.c"
+#include "levels/ee/area_5/collision.inc.c"
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_ee_entry[] = {

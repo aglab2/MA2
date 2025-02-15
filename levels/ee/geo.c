@@ -15,7 +15,7 @@
 
 #define ee_area_1 ee_area_visual
 #define ee_area_1_geo ee_area_geo_visual
-#include "levels/ee/visual/geo.inc.c"
+#include "levels/ee/visual/geo_lvl.inc.c"
 
 #if 0
 #include "levels/ee/geo.inc.c"
@@ -31,4 +31,3 @@
 #include "levels/ee/ee_stepb/geo.inc.c"
 #include "levels/ee/ee_tank/geo.inc.c"
 #include "levels/ee/ee_tank_break/geo.inc.c"
-#include "levels/ee/ee_skybox1/geo.inc.c"

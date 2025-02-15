@@ -3936,7 +3936,7 @@ Gfx mat_revert_ee_dl_f3dlite_material_017[] = {
 };
 
 Gfx mat_ee_dl_EECONT_A_sa2bmdl_0_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -3954,7 +3954,7 @@ Gfx mat_ee_dl_EECONT_A_sa2bmdl_0_f3d[] = {
 };
 
 Gfx mat_revert_ee_dl_EECONT_A_sa2bmdl_0_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsSPGeometryMode(0, G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
@@ -3962,7 +3962,7 @@ Gfx mat_revert_ee_dl_EECONT_A_sa2bmdl_0_f3d[] = {
 };
 
 Gfx mat_ee_dl_EECONT_A_sa2bmdl_1_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -3980,7 +3980,7 @@ Gfx mat_ee_dl_EECONT_A_sa2bmdl_1_f3d[] = {
 };
 
 Gfx mat_revert_ee_dl_EECONT_A_sa2bmdl_1_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsSPGeometryMode(0, G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
@@ -3988,7 +3988,7 @@ Gfx mat_revert_ee_dl_EECONT_A_sa2bmdl_1_f3d[] = {
 };
 
 Gfx mat_ee_dl_EECONT_A_sa2bmdl_2_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -4006,7 +4006,7 @@ Gfx mat_ee_dl_EECONT_A_sa2bmdl_2_f3d[] = {
 };
 
 Gfx mat_revert_ee_dl_EECONT_A_sa2bmdl_2_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsSPGeometryMode(0, G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
@@ -4014,7 +4014,7 @@ Gfx mat_revert_ee_dl_EECONT_A_sa2bmdl_2_f3d[] = {
 };
 
 Gfx mat_ee_dl_EECONT_A_sa2bmdl_3_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -4032,7 +4032,7 @@ Gfx mat_ee_dl_EECONT_A_sa2bmdl_3_f3d[] = {
 };
 
 Gfx mat_revert_ee_dl_EECONT_A_sa2bmdl_3_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsSPGeometryMode(0, G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
@@ -4040,7 +4040,7 @@ Gfx mat_revert_ee_dl_EECONT_A_sa2bmdl_3_f3d[] = {
 };
 
 Gfx mat_ee_dl_EECONT_A_sa2bmdl_4_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -4058,7 +4058,7 @@ Gfx mat_ee_dl_EECONT_A_sa2bmdl_4_f3d[] = {
 };
 
 Gfx mat_revert_ee_dl_EECONT_A_sa2bmdl_4_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsSPGeometryMode(0, G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
@@ -4066,7 +4066,7 @@ Gfx mat_revert_ee_dl_EECONT_A_sa2bmdl_4_f3d[] = {
 };
 
 Gfx mat_ee_dl_EECONT_A_sa2bmdl_5_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -4084,7 +4084,7 @@ Gfx mat_ee_dl_EECONT_A_sa2bmdl_5_f3d[] = {
 };
 
 Gfx mat_revert_ee_dl_EECONT_A_sa2bmdl_5_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsSPGeometryMode(0, G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
@@ -4092,7 +4092,7 @@ Gfx mat_revert_ee_dl_EECONT_A_sa2bmdl_5_f3d[] = {
 };
 
 Gfx mat_ee_dl_EECONT_A_sa2bmdl_6_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -4110,7 +4110,7 @@ Gfx mat_ee_dl_EECONT_A_sa2bmdl_6_f3d[] = {
 };
 
 Gfx mat_revert_ee_dl_EECONT_A_sa2bmdl_6_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsSPGeometryMode(0, G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
@@ -4118,7 +4118,7 @@ Gfx mat_revert_ee_dl_EECONT_A_sa2bmdl_6_f3d[] = {
 };
 
 Gfx mat_ee_dl_EECONT_A_sa2bmdl_7_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -4136,7 +4136,7 @@ Gfx mat_ee_dl_EECONT_A_sa2bmdl_7_f3d[] = {
 };
 
 Gfx mat_revert_ee_dl_EECONT_A_sa2bmdl_7_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsSPGeometryMode(0, G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
@@ -4144,7 +4144,7 @@ Gfx mat_revert_ee_dl_EECONT_A_sa2bmdl_7_f3d[] = {
 };
 
 Gfx mat_ee_dl_EECONT_A_sa2bmdl_8_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -4162,7 +4162,7 @@ Gfx mat_ee_dl_EECONT_A_sa2bmdl_8_f3d[] = {
 };
 
 Gfx mat_revert_ee_dl_EECONT_A_sa2bmdl_8_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsSPGeometryMode(0, G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
