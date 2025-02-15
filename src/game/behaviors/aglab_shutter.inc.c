@@ -57,8 +57,10 @@ void bhv_shutter_loop()
         if (o->oTimer < period)
         {
             o->oShutterLeft->oOpacity = o->oTimer * 255 / period;
-            o->oShutterLeft->oPosX -= 4 * 2.f;
-            o->oShutterRight->oPosX += 4 * 7.f;
+            o->oShutterLeft->oPosX -= 4 * 2.f * coss(-o->oFaceAngleYaw);
+            o->oShutterLeft->oPosZ -= 4 * 2.f * sins(-o->oFaceAngleYaw);
+            o->oShutterRight->oPosX += 4 * 7.f * coss(-o->oFaceAngleYaw);
+            o->oShutterRight->oPosZ += 4 * 7.f * sins(-o->oFaceAngleYaw);
         }
         else
         {
