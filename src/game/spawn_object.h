@@ -5,7 +5,7 @@
 
 void init_free_object_list(void);
 void clear_object_lists(struct ObjectNode *objLists);
-void unload_object(struct Object *obj);
+void unload_object(struct Object *obj, int fullUnload);
 struct Object *create_object(const BehaviorScript *bhvScript);
 
 #endif // SPAWN_OBJECT_H

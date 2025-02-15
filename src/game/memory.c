@@ -27,9 +27,6 @@
 
 #include "memory_layout.h"
 
-#define	DOWN(s, align)	(((u32)(s)) & ~((align)-1))
-#define DOWN4(s) DOWN(s, 4)
-
 struct MainPoolState {
     struct MainPoolContext ctx;
     struct MainPoolState* prev;
@@ -124,6 +121,7 @@ void move_segment_table_to_dmem(void) {
 #endif
 
 extern u8 _poolStart[];
+extern u8 _engineSegmentBssEnd[];
 
 /**
  * Initialize the main memory pool. This pool is conceptually regions
@@ -151,6 +149,7 @@ void main_pool_init() {
     // 80800000 backwards - file select heap
     SET_REGION(0, _poolStart, 0x80500000);
     SET_REGION(1, 0x80525F80, 0x80700000 - 0x25F80);
+    SET_REGION(3, _engineSegmentBssEnd, 0x80200000);
 
 #undef SET_REGION
 
@@ -210,6 +209,21 @@ static void *main_pool_alloc_aligned_freeable(int region, u32 size, u32 alignmen
 
     size = ALIGN4(size);
     return main_pool_region_try_alloc_from_end_freeable(&sMainPool.regions[region], region, size, MAIN_POOL_ALIGNMENT_DISABLE);
+}
+
+struct Object* main_pool_alloc_object(void)
+{
+    size_t size = sizeof(struct Object);
+    struct Object* obj = NULL;    
+    obj = main_pool_region_alloc_from_start(&sMainPool.regions[3], size, MAIN_POOL_ALIGNMENT_DISABLE, MAIN_POOL_ALLOC_TRY);
+    if (obj)
+        return obj;
+
+    obj = main_pool_region_alloc_from_start(&sMainPool.regions[2], size, MAIN_POOL_ALIGNMENT_DISABLE, MAIN_POOL_ALLOC_TRY);
+    if (obj)
+        return obj;
+
+    return main_pool_region_alloc_from_end(&sMainPool.regions[0], size, MAIN_POOL_ALIGNMENT_DISABLE, MAIN_POOL_ALLOC_FORCE);
 }
 
 /**

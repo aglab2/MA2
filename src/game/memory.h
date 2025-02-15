@@ -42,7 +42,7 @@ struct MainPoolRegion {
     u8* end;
 };
 
-#define MAIN_POOL_REGIONS_COUNT 3
+#define MAIN_POOL_REGIONS_COUNT 4
 
 struct MainPoolContext {
     struct MainPoolRegion regions[MAIN_POOL_REGIONS_COUNT];
@@ -54,6 +54,9 @@ extern struct MainPoolContext sMainPool;
 #define MAIN_POOL_ALIGNMENT_DISABLE -1
 #define MAIN_POOL_ALLOC_TRY TRUE
 #define MAIN_POOL_ALLOC_FORCE FALSE
+
+#define	DOWN(s, align)	(((u32)(s)) & ~((align)-1))
+#define DOWN4(s) DOWN(s, 4)
 
 // takes the first 'size' bytes from 'region'
 static ALWAYS_INLINE void* main_pool_region_alloc_from_start(struct MainPoolRegion* region, u32 size, s32 alignment, int try) {
@@ -67,6 +70,24 @@ static ALWAYS_INLINE void* main_pool_region_alloc_from_start(struct MainPoolRegi
     region->start = newStart;
     if (!ret) __builtin_unreachable();
     return ret;
+}
+
+static ALWAYS_INLINE void* main_pool_region_alloc_from_end(struct MainPoolRegion* region, u32 size, int alignment, int try) {
+    u8* region_end = region->end;
+    u8* new_end;
+    if (alignment > 0)
+        new_end = (u8*) DOWN(region_end - size, alignment);
+    else
+        new_end = region_end - size;
+
+    if (try) {
+        if (new_end < region->start)
+            return NULL;
+    }
+
+    region->end = new_end;
+    if (!new_end) __builtin_unreachable();
+    return new_end;
 }
 
 /*
@@ -85,6 +106,14 @@ static ALWAYS_INLINE void *main_pool_alloc(u32 size) {
     if (!buf) __builtin_unreachable();
     return buf;
 }
+
+static ALWAYS_INLINE void *main_pool_allow_lowprio(u32 size) {
+    void* buf = main_pool_region_alloc_from_start(&sMainPool.regions[1], ALIGN4(size), MAIN_POOL_ALIGNMENT_DISABLE, MAIN_POOL_ALLOC_FORCE);
+    if (!buf) __builtin_unreachable();
+    return buf;
+}
+
+struct Object* main_pool_alloc_object(void);
 
 void *main_pool_alloc_ex(int region, u32 size, u32 alignment);
 static inline void *main_pool_alloc_aligned(int region, u32 size, u32 alignment)

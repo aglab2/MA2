@@ -5963,6 +5963,7 @@ const BehaviorScript bhvMsBreak[] = {
 };
 
 extern void bhv_aq_ctls_init();
+extern void bhv_aq_lift_init();
 
 extern const Collision aq_milift_collision[];
 extern void bhv_aq_lift_loop();
@@ -5970,7 +5971,7 @@ const BehaviorScript bhvAqLift[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO)),
     LOAD_COLLISION_DATA(aq_milift_collision),
-    CALL_NATIVE(bhv_aq_ctls_init),
+    CALL_NATIVE(bhv_aq_lift_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_aq_lift_loop),
     END_LOOP(),

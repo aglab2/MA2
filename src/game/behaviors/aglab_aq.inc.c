@@ -1,6 +1,7 @@
 #define oAqLiftActive OBJECT_FIELD_S16(0x1B, 0)
 #define oAqLiftReload OBJECT_FIELD_S16(0x1B, 1)
-#define oAqLiftSwitches oObjF8
+#define oAqLiftMemory oF8
+#define oAqLiftSwitches oObjFC
 
 void bhv_aq_ctls_init()
 {
@@ -29,13 +30,28 @@ static void bhv_aq_ctls_loop()
 
 #define SWITCH_ACTIVE(idx) (2 == objs[idx]->oAction)
 
+void bhv_aq_lift_init()
+{
+    bhv_aq_ctls_init();
+    o->oAqLiftMemory = 0;
+}
+
 void bhv_aq_lift_loop()
 {
     bhv_aq_ctls_loop();
     if (o->oAqLiftReload && o->oDistanceToMario < 2500.f)
     {
-        main_pool_pop_state();
-        main_pool_push_state();
+#if 1
+        if (0 == o->oAqLiftMemory)
+        {
+            o->oAqLiftMemory = sMainPool.regions[0].start;
+        }
+        else
+        {
+            sMainPool.regions[0].start = o->oAqLiftMemory;
+        }
+#endif
+
         obj_build_transform_from_pos_and_angle(o, O_POS_INDEX, O_FACE_ANGLE_INDEX);
         load_area_terrain(gCurrentArea->terrainData, gCurrentArea->surfaceRooms);
         load_object_static_model();

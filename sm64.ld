@@ -327,12 +327,12 @@ SECTIONS
    }
    END_NOLOAD(engine)
 
+   . = 0x80200000;
    BEGIN_NOLOAD(zbuffer)
    {
       BUILD_DIR/src/buffers/zbuffer.o(.bss*);
    }
    END_NOLOAD(zbuffer)
-   
    _poolStart = .;
 
    . = 0x80500000;

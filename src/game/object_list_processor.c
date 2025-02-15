@@ -66,11 +66,6 @@ s16 gDebugInfoOverwrite[16][8];
 u32 gTimeStopState;
 
 /**
- * The pool that objects are allocated from.
- */
-struct Object gObjectPool[OBJECT_POOL_CAPACITY];
-
-/**
  * A pointer to gObjectListArray.
  * Given an object list index idx, gObjectLists[idx] is the head of a doubly
  * linked list of all currently spawned objects in the list.
@@ -85,7 +80,7 @@ struct ObjectNode gFreeObjectList;
 /**
  * The object representing Mario.
  */
-struct Object *gMarioObject;
+struct Object _gMarioObject;
 
 /**
  * An object variable that may have been used to represent the planned
@@ -392,7 +387,7 @@ static s32 unload_deactivated_objects_in_list(struct ObjectNode *objList) {
                 set_object_respawn_info_bits(anObject, RESPAWN_INFO_DONT_RESPAWN);
             }
 
-            unload_object(anObject);
+            unload_object(anObject, 0 /* !fullUnload */);
         }
     }
 
@@ -429,7 +424,7 @@ void unload_objects_from_area(UNUSED s32 unused, s32 areaIndex) {
             node = node->next;
 
             if (obj->header.gfx.activeAreaIndex == areaIndex) {
-                unload_object(obj);
+                unload_object(obj, 1 /* fullUnload */);
             }
         }
     }
@@ -481,7 +476,6 @@ void spawn_objects_from_info(UNUSED s32 unused, struct SpawnInfo *spawnInfo) {
             // Usually this checks if bparam4 is 1 to decide if this is mario
             // This change allows any object to use that param
             if (object->behavior == segmented_to_virtual(bhvMario)) {
-                gMarioObject = object;
                 geo_make_first_child(&object->header.gfx.node);
             }
 
@@ -504,11 +498,8 @@ void spawn_objects_from_info(UNUSED s32 unused, struct SpawnInfo *spawnInfo) {
  * Clear objects, dynamic surfaces, and some miscellaneous level data used by objects.
  */
 void clear_objects(void) {
-    s32 i;
-
     gTHIWaterDrained = 0;
     gTimeStopState = 0;
-    gMarioObject = NULL;
     gMarioCurrentRoom = 0;
 
     bzero(gDoorAdjacentRooms, sizeof(gDoorAdjacentRooms));
@@ -517,11 +508,6 @@ void clear_objects(void) {
 
     init_free_object_list();
     clear_object_lists(gObjectListArray);
-
-    for (i = 0; i < OBJECT_POOL_CAPACITY; i++) {
-        gObjectPool[i].activeFlags = ACTIVE_FLAG_DEACTIVATED;
-        geo_reset_object_node(&gObjectPool[i].header.gfx);
-    }
 
     gObjectMemoryPool = mem_pool_init(OBJECT_MEMORY_POOL);
     gObjectLists = gObjectListArray;
@@ -614,11 +600,15 @@ UNUSED static u16 unused_get_elapsed_time(u64 *cycleCounts, s32 index) {
  * Change this function to use a linked list instead if you add any additional logic here whatsoever.
  */
 void clear_dynamic_surface_references(void) {
-    for (s32 i = 0; i < OBJECT_POOL_CAPACITY; i++) {
-        if (gObjectPool[i].oFloor && gObjectPool[i].oFloor->flags & SURFACE_FLAG_DYNAMIC) {
-            gObjectPool[i].oFloor = NULL;
-        }
-    }
+    struct Object *children = (struct Object *) gObjParentGraphNode.children;
+    if (!children) return;
+
+    do {
+        struct Object *obj = children;
+        if (obj->oFloor && obj->oFloor->flags & SURFACE_FLAG_DYNAMIC)
+            obj->oFloor = NULL;
+    } while ((children = (struct Object *) children->header.gfx.node.next)
+             != (struct Object *) gObjParentGraphNode.children);
 }
 
 /**

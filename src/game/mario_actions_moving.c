@@ -1767,7 +1767,8 @@ s32 act_ground_bonk(struct MarioState *m) {
     return FALSE;
 }
 
-extern struct Object *gMarioObject;
+extern struct Object _gMarioObject;
+#define gMarioObject (&_gMarioObject)
 s32 act_death_exit_land(struct MarioState *m) {
     s32 animFrame;
 

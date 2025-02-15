@@ -14,7 +14,9 @@ void bhv_tree_snow_or_leaf_loop(void) {
         o->oPosY < o->oFloorHeight
         || o->oFloorHeight < FLOOR_LOWER_LIMIT
         || o->oTimer > 100
+#if 0
         || gPrevFrameObjectCount > OBJECT_POOL_CAPACITY - 28
+#endif
     ) {
         obj_mark_for_deletion(o);
     }

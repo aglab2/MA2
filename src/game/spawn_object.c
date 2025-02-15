@@ -18,25 +18,38 @@
  * to the end of destList (doubly linked). Return the object, or NULL if
  * freeList is empty.
  */
-struct Object *try_allocate_object(struct ObjectNode *destList, struct ObjectNode *freeList) {
+static struct Object *try_allocate_object(struct ObjectNode *destList, struct ObjectNode *freeList, s32 mario) {
     struct ObjectNode *nextObj;
 
-    if ((nextObj = freeList->next) != NULL) {
-        // Remove from free list
-        freeList->next = nextObj->next;
-
-        // Insert at end of destination list
-        nextObj->prev = destList->prev;
-        nextObj->next = destList;
-        destList->prev->next = nextObj;
-        destList->prev = nextObj;
-    } else {
-        return NULL;
+    if (mario)
+    {
+        nextObj = &gMarioObject->header;
+        gMarioObject->activeFlags = ACTIVE_FLAG_DEACTIVATED;
+        geo_reset_object_node(&gMarioObject->header.gfx);
     }
+    else
+    {
+        if ((nextObj = freeList->next) != NULL) {
+            // Remove from free list
+            freeList->next = nextObj->next;
+        } else {
+            struct Object* freshObject = main_pool_alloc_object();
+            freshObject->activeFlags = ACTIVE_FLAG_DEACTIVATED;
+            geo_reset_object_node(&freshObject->header.gfx);
+            nextObj = &freshObject->header;
+        }
+    }
+
+    // Insert at end of destination list
+    nextObj->prev = destList->prev;
+    nextObj->next = destList;
+    destList->prev->next = nextObj;
+    destList->prev = nextObj;
 
     geo_remove_child(&nextObj->gfx.node);
     geo_add_child(&gObjParentGraphNode, &nextObj->gfx.node);
 
+    if (!nextObj) __builtin_unreachable();
     return (struct Object *) nextObj;
 }
 
@@ -44,35 +57,24 @@ struct Object *try_allocate_object(struct ObjectNode *destList, struct ObjectNod
  * Remove the given object from the object list that it's currently in, and
  * insert it at the beginning of the free list (singly linked).
  */
-static void deallocate_object(struct ObjectNode *freeList, struct ObjectNode *obj) {
+static void deallocate_object(struct ObjectNode *freeList, struct ObjectNode *obj, int fullUnload) {
     // Remove from object list
     obj->next->prev = obj->prev;
     obj->prev->next = obj->next;
 
-    // Insert at beginning of free list
-    obj->next = freeList->next;
-    freeList->next = obj;
+    if (!fullUnload)
+    {
+        // Insert at beginning of free list
+        obj->next = freeList->next;
+        freeList->next = obj;
+    }
 }
 
 /**
  * Add every object in the pool to the free object list.
  */
 void init_free_object_list(void) {
-    s32 i;
-    s32 poolLength = OBJECT_POOL_CAPACITY;
-
-    // Add the first object in the pool to the free list
-    struct Object *obj = &gObjectPool[0];
-    gFreeObjectList.next = (struct ObjectNode *) obj;
-
-    // Link each object in the pool to the following object
-    for (i = 0; i < poolLength - 1; i++) {
-        obj->header.next = &(obj + 1)->header;
-        obj++;
-    }
-
-    // End the list
-    obj->header.next = NULL;
+    gFreeObjectList.next = NULL;
 }
 
 /**
@@ -90,7 +92,7 @@ void clear_object_lists(struct ObjectNode *objLists) {
 /**
  * Free the given object.
  */
-void unload_object(struct Object *obj) {
+void unload_object(struct Object *obj, int fullUnload) {
     obj->activeFlags = ACTIVE_FLAG_DEACTIVATED;
     obj->prevObj = NULL;
     obj->oFloor = NULL;
@@ -101,8 +103,7 @@ void unload_object(struct Object *obj) {
     // geo_add_child(&gObjParentGraphNode, &obj->header.gfx.node);
 
     obj->header.gfx.node.flags &= ~(GRAPH_RENDER_BILLBOARD | GRAPH_RENDER_ACTIVE);
-
-    deallocate_object(&gFreeObjectList, &obj->header);
+    deallocate_object(&gFreeObjectList, &obj->header, fullUnload);
 }
 
 /**
@@ -110,10 +111,11 @@ void unload_object(struct Object *obj) {
  * an unimportant object if necessary. If this is not possible, hang using an
  * infinite loop.
  */
-struct Object *allocate_object(struct ObjectNode *objList) {
+static struct Object *allocate_object(struct ObjectNode *objList, s32 mario) {
     s32 i;
-    struct Object *obj = try_allocate_object(objList, &gFreeObjectList);
+    struct Object *obj =  try_allocate_object(objList, &gFreeObjectList, mario);
 
+#if 0
     // The object list is full if the newly created pointer is NULL.
     // If this happens, we first attempt to unload unimportant objects
     // in order to finish allocating the object.
@@ -138,6 +140,7 @@ struct Object *allocate_object(struct ObjectNode *objList) {
             }
         }
     }
+#endif
 
     // Initialize object fields
 
@@ -196,6 +199,7 @@ struct Object *allocate_object(struct ObjectNode *objList) {
 /**
  * Spawn an object at the origin with the behavior script at virtual address bhvScript.
  */
+extern const BehaviorScript bhvMario[];
 struct Object *create_object(const BehaviorScript *bhvScript) {
     s32 objListIndex;
     struct Object *obj;
@@ -210,7 +214,7 @@ struct Object *create_object(const BehaviorScript *bhvScript) {
     }
 
     objList = &gObjectLists[objListIndex];
-    obj = allocate_object(objList);
+    obj = allocate_object(objList, bhvScript == segmented_to_virtual(bhvMario));
 
     obj->curBhvCommand = bhvScript;
     obj->behavior = bhvScript;

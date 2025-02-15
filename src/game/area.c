@@ -313,6 +313,9 @@ void load_area(s32 index) {
         main_pool_pop_state();
         main_pool_push_state();
 
+        // Doing pop/push above will murder all objects and surfaces so drop the free list
+        gFreeObjectList.next = NULL;
+
         gMarioCurrentRoom = 0;
 
         if (gCurrentArea->terrainData != NULL) {

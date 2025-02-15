@@ -19,6 +19,7 @@ static void puffAt(struct Object* obj, float size, int numParticles)
     f32 velYBase = 30.f;
     f32 velYRange = 20.f;
 
+#if 0
     if ((gPrevFrameObjectCount > (OBJECT_POOL_CAPACITY - 90)) && numParticles > 10) {
         numParticles = 10;
     }
@@ -26,6 +27,7 @@ static void puffAt(struct Object* obj, float size, int numParticles)
     if (gPrevFrameObjectCount > (OBJECT_POOL_CAPACITY - 30)) {
         numParticles = 0;
     }
+#endif
 
     for (int i = 0; i < numParticles; i++) {
         f32 scale = random_float() * (sizeRange * 0.1f) + sizeBase * 0.1f;

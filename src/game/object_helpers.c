@@ -1768,6 +1768,7 @@ void cur_obj_spawn_particles(struct SpawnParticlesInfo *info) {
     f32 scale;
     s32 numParticles = info->count;
 
+#if 0
     // If there are a lot of objects already, limit the number of particles
     if ((gPrevFrameObjectCount > (OBJECT_POOL_CAPACITY - 90)) && numParticles > 10) {
         numParticles = 10;
@@ -1778,6 +1779,7 @@ void cur_obj_spawn_particles(struct SpawnParticlesInfo *info) {
     if (gPrevFrameObjectCount > (OBJECT_POOL_CAPACITY - 30)) {
         numParticles = 0;
     }
+#endif
 
     for (i = 0; i < numParticles; i++) {
         scale = random_float() * (info->sizeRange * 0.1f) + info->sizeBase * 0.1f;

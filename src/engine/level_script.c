@@ -300,7 +300,7 @@ static void level_cmd_load_yay0(void) {
 static void level_cmd_load_mario_head(void) {
 #ifdef KEEP_MARIO_HEAD
     // TODO: Fix these hardcoded sizes
-    void *addr = main_pool_alloc(DOUBLE_SIZE_ON_64_BIT(0xE1000));
+    void *addr = main_pool_allow_lowprio(DOUBLE_SIZE_ON_64_BIT(0xE1000));
     if (addr != NULL) {
         gdm_init(addr, DOUBLE_SIZE_ON_64_BIT(0xE1000));
         gd_add_to_heap(gZBuffer, sizeof(gZBuffer)); // 0x25800
@@ -483,7 +483,7 @@ static void level_cmd_init_mario(void) {
 }
 
 static void register_checkpoint_warp(int id) {
-    struct ObjectWarpNode *warpNode = main_pool_alloc(sizeof(struct ObjectWarpNode));
+    struct ObjectWarpNode *warpNode = main_pool_allow_lowprio(sizeof(struct ObjectWarpNode));
 
     warpNode->node.id = id;
     warpNode->node.destLevel = gCurrLevelNum;
@@ -523,7 +523,7 @@ static void level_cmd_place_object(void) {
         && (CMD_GET(u8, 2) & (1 << (gCurrActNum - 1)))
     ) {
         ModelID16 model = CMD_GET(u32, 0x18);
-        struct SpawnInfo *spawnInfo = main_pool_alloc(sizeof(struct SpawnInfo));
+        struct SpawnInfo *spawnInfo = main_pool_allow_lowprio(sizeof(struct SpawnInfo));
 
         vec3s_set(spawnInfo->startPos, CMD_GET(s16, 4),
                                        CMD_GET(s16, 6),
@@ -553,7 +553,7 @@ static void level_cmd_place_object(void) {
 static void level_cmd_create_warp_node(void) {
     if (sCurrAreaIndex != -1) {
         struct ObjectWarpNode *warpNode =
-            main_pool_alloc(sizeof(struct ObjectWarpNode));
+        main_pool_allow_lowprio(sizeof(struct ObjectWarpNode));
 
         warpNode->node.id = CMD_GET(u8, 2);
         warpNode->node.destLevel = CMD_GET(u8, 3) + CMD_GET(u8, 6);
@@ -574,7 +574,7 @@ static void level_cmd_create_instant_warp(void) {
     if (sCurrAreaIndex != -1) {
         if (gAreas[sCurrAreaIndex].instantWarps == NULL) {
             gAreas[sCurrAreaIndex].instantWarps =
-                main_pool_alloc(INSTANT_WARP_INDEX_STOP * sizeof(struct InstantWarp));
+            main_pool_allow_lowprio(INSTANT_WARP_INDEX_STOP * sizeof(struct InstantWarp));
 
             for (i = INSTANT_WARP_INDEX_START; i < INSTANT_WARP_INDEX_STOP; i++) {
                 gAreas[sCurrAreaIndex].instantWarps[i].id = 0;
@@ -609,7 +609,7 @@ static void level_cmd_create_painting_warp_node(void) {
     if (sCurrAreaIndex != -1) {
         if (gAreas[sCurrAreaIndex].paintingWarpNodes == NULL) {
             gAreas[sCurrAreaIndex].paintingWarpNodes =
-                main_pool_alloc(NUM_PAINTINGS * sizeof(struct WarpNode));
+            main_pool_allow_lowprio(NUM_PAINTINGS * sizeof(struct WarpNode));
 
             for (i = 0; i < NUM_PAINTINGS; i++) {
                 gAreas[sCurrAreaIndex].paintingWarpNodes[i].id = 0;
@@ -633,7 +633,7 @@ static void level_cmd_3A(void) {
     if (sCurrAreaIndex != -1) {
         if ((val4 = gAreas[sCurrAreaIndex].unused) == NULL) {
             val4 = gAreas[sCurrAreaIndex].unused =
-                main_pool_alloc(sizeof(struct UnusedArea28));
+            main_pool_allow_lowprio(sizeof(struct UnusedArea28));
         }
 
         val4->unk00 = CMD_GET(s16, 2);
@@ -656,7 +656,7 @@ static void level_cmd_create_whirlpool(void) {
         && (CMD_GET(u8, 3) & (1 << (gCurrActNum - 1)))
     ) {
         if ((whirlpool = gAreas[sCurrAreaIndex].whirlpools[index]) == NULL) {
-            whirlpool = main_pool_alloc(sizeof(struct Whirlpool));
+            whirlpool = main_pool_allow_lowprio(sizeof(struct Whirlpool));
             gAreas[sCurrAreaIndex].whirlpools[index] = whirlpool;
         }
 
@@ -685,7 +685,7 @@ static void level_cmd_set_terrain_data(void) {
         // The game modifies the terrain data and must be reset upon level reload.
         Collision *data = segmented_to_virtual(CMD_GET(void *, 4));
         u32 size = get_area_terrain_size(data) * sizeof(Collision);
-        gAreas[sCurrAreaIndex].terrainData = main_pool_alloc(size);
+        gAreas[sCurrAreaIndex].terrainData = main_pool_allow_lowprio(size);
         memcpy(gAreas[sCurrAreaIndex].terrainData, data, size);
 #endif
     }
