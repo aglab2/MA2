@@ -4,6 +4,7 @@
 #include "moving_texture_macros.h"
 #include "textures.h"
 #include "dialog_ids.h"
+#include "spring_desc.h"
 
 #include "make_const_nonconst.h"
 
@@ -15,6 +16,7 @@
 #include "levels/dc/area_1/spline.inc.c"
 #include "levels/dc/visual/model_lvl.inc.c"
 #include "levels/dc/flipbook.inc.c"
+#include "levels/dc/rails.inc.c"
 #endif
 
 #include "levels/dc/dc_door_b/collision.inc.c"

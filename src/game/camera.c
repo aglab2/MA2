@@ -1273,7 +1273,11 @@ void mode_8_directions_camera(struct Camera *c) {
     }
 #endif
 
-    lakitu_zoom(400.f, 0x900);
+    f32 range = 400.f;
+    if (gCurrCourseNum == COURSE_DC)
+        range = 300.f;
+
+    lakitu_zoom(range, 0x900);
     c->nextYaw = update_8_directions_camera(c, c->focus, pos);
     set_camera_height(c, pos[1]);
     c->pos[0] = pos[0];

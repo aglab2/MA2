@@ -121,7 +121,7 @@ struct DebugVert {
     Vec3f normal;
 };
 
-struct DebugBox sBoxes[MAX_DEBUG_BOXES] __attribute__((section(".bss")));
+#define sBoxes ((struct DebugBox *) 0x80730000)
 s16 sNumBoxes = 0;
 
 /**
