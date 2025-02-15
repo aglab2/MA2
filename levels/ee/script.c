@@ -38,6 +38,10 @@ const LevelScript level_ee_entry[] = {
 	LOAD_MIO0(0x7, _ee_segment_7SegmentRomStart, _ee_segment_7SegmentRomEnd), 
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
+	LOAD_MODEL_FROM_GEO(MODEL_EE_SHUTTER_LEFT, ee_shutter_left_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_EE_SHUTTER_RIGHT, ee_shutter_right_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_EE_TANK, ee_tank_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_EE_TANK_BREAK, ee_tank_break_geo),
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
 
