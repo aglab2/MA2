@@ -1,0 +1,14 @@
+const Trajectory dc_area_1_spline_Spring_Curve[] = {
+	TRAJECTORY_POS( 0, -1987, -1300, 6682),
+	TRAJECTORY_POS( 1, -2338, -548, 6682),
+	TRAJECTORY_POS( 2, -2654, -159, 6682),
+	TRAJECTORY_POS( 3, -3066, -105, 6682),
+	TRAJECTORY_END(),
+};
+const Trajectory dc_area_1_spline_Spring_Curve_001[] = {
+	TRAJECTORY_POS( 0, 1933, -1300, 6682),
+	TRAJECTORY_POS( 1, 2284, -548, 6682),
+	TRAJECTORY_POS( 2, 2599, -159, 6682),
+	TRAJECTORY_POS( 3, 3011, -105, 6682),
+	TRAJECTORY_END(),
+};

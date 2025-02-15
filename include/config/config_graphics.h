@@ -30,7 +30,7 @@
 /**
  * Enables widescreen (16:9) support.
  */
-#define WIDE
+// #define WIDE
 
 /**
  * Skybox size modifier, changing this will add support for larger skybox images. NOTE: Vanilla skyboxes may break if you change this option. Be sure to rescale them accordingly.
