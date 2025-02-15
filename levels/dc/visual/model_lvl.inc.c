@@ -47710,13 +47710,16 @@ Gfx mat_dc_dl_objLandTable0025_sa2blvl_88_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-Gfx mat_dc_dl_objLandTable0025_sa2blvl_89_f3d[] = {
+Gfx mat_dc_dl_objLandTable0025_sa2blvl_89_f3d_layer1[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, COMBINED, 0, PRIMITIVE_ALPHA, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetCycleType(G_CYC_2CYCLE),
+	gsDPSetRenderMode(G_RM_PASS, G_RM_AA_ZB_OPA_SURF2),
 	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, dc_dl_kd_dc_yuka3_pal_rgba16),
 	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadTLUTCmd(5, 15),
@@ -47725,6 +47728,16 @@ Gfx mat_dc_dl_objLandTable0025_sa2blvl_89_f3d[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsSPEndDisplayListHint(4),
+};
+
+Gfx mat_revert_dc_dl_objLandTable0025_sa2blvl_89_f3d_layer1[] = {
+	gsSPGeometryMode(0, G_LIGHTING),
+	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
+	gsDPSetTextureLUT(G_TT_NONE),
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
 	gsSPEndDisplayListHint(4),
 };
 
@@ -47956,13 +47969,16 @@ Gfx mat_dc_dl_MOUTH_BLUE_sa2bmdl_1_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-Gfx mat_dc_dl_FloorLight1_sa2mdl_0_f3d[] = {
+Gfx mat_dc_dl_FloorLight1_sa2mdl_0_f3d_layer1[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, COMBINED, 0, PRIMITIVE_ALPHA, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsDPSetCycleType(G_CYC_2CYCLE),
+	gsDPSetRenderMode(G_RM_PASS, G_RM_AA_ZB_OPA_SURF2),
 	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, dc_dl_kd_dc_yuka4_pal_rgba16),
 	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadTLUTCmd(5, 15),
@@ -49920,7 +49936,7 @@ static struct BatchDisplayLists batch_lvl_dls_LAYER_OPAQUE[] = {
 	[LVL_BATCH_LAYER_OPAQUE_DC_DL_KD_DC_GC121_RGBA16_2] = { mat_dc_dl_objLandTable0025_sa2blvl_83_f3d, mat_revert_dc_dl_objLandTable0025_sa2blvl_83_f3d, DL_HINT(mat_dc_dl_objLandTable0025_sa2blvl_83_f3d), DL_HINT(mat_revert_dc_dl_objLandTable0025_sa2blvl_83_f3d), },
 	[LVL_BATCH_LAYER_OPAQUE_DC_DL_KD_DC_GC191_PAL_RGBA16] = { mat_dc_dl_objLandTable0025_sa2blvl_86_f3d, mat_revert_dc_dl_objLandTable0025_sa2blvl_86_f3d, DL_HINT(mat_dc_dl_objLandTable0025_sa2blvl_86_f3d), DL_HINT(mat_revert_dc_dl_objLandTable0025_sa2blvl_86_f3d), },
 	[LVL_BATCH_LAYER_OPAQUE_DC_DL_KD_DC_CKABE3_PAL_RGBA16_1] = { mat_dc_dl_objLandTable0025_sa2blvl_88_f3d, mat_revert_dc_dl_objLandTable0025_sa2blvl_88_f3d, DL_HINT(mat_dc_dl_objLandTable0025_sa2blvl_88_f3d), DL_HINT(mat_revert_dc_dl_objLandTable0025_sa2blvl_88_f3d), },
-	[LVL_BATCH_LAYER_OPAQUE_DC_DL_KD_DC_YUKA3_PAL_RGBA16] = { mat_dc_dl_objLandTable0025_sa2blvl_89_f3d, mat_revert_dc_dl_objLandTable0025_sa2blvl_89_f3d, DL_HINT(mat_dc_dl_objLandTable0025_sa2blvl_89_f3d), DL_HINT(mat_revert_dc_dl_objLandTable0025_sa2blvl_89_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_DC_DL_KD_DC_YUKA3_PAL_RGBA16] = { mat_dc_dl_objLandTable0025_sa2blvl_89_f3d_layer1, mat_revert_dc_dl_objLandTable0025_sa2blvl_89_f3d_layer1, DL_HINT(mat_dc_dl_objLandTable0025_sa2blvl_89_f3d_layer1), DL_HINT(mat_revert_dc_dl_objLandTable0025_sa2blvl_89_f3d_layer1), },
 	[LVL_BATCH_LAYER_OPAQUE_DC_DL_DZ_DC_BUGORNAMENT128_PAL_RGBA16] = { mat_dc_dl_BUG_RED_sa2bmdl_0_f3d, mat_revert_dc_dl_BUG_RED_sa2bmdl_0_f3d, DL_HINT(mat_dc_dl_BUG_RED_sa2bmdl_0_f3d), DL_HINT(mat_revert_dc_dl_BUG_RED_sa2bmdl_0_f3d), },
 	[LVL_BATCH_LAYER_OPAQUE_DC_DL_DZ_DC_TORCH_STICK128_PAL_RGBA16] = { mat_dc_dl_TORCH_BLUE_sa2bmdl_0_f3d, mat_revert_dc_dl_TORCH_BLUE_sa2bmdl_0_f3d, DL_HINT(mat_dc_dl_TORCH_BLUE_sa2bmdl_0_f3d), DL_HINT(mat_revert_dc_dl_TORCH_BLUE_sa2bmdl_0_f3d), },
 	[LVL_BATCH_LAYER_OPAQUE_DC_DL_KD_DC_HASIRA10_PAL_RGBA16_1] = { mat_dc_dl_SCORPION_RED_sa2bmdl_0_f3d, mat_revert_dc_dl_SCORPION_RED_sa2bmdl_0_f3d, DL_HINT(mat_dc_dl_SCORPION_RED_sa2bmdl_0_f3d), DL_HINT(mat_revert_dc_dl_SCORPION_RED_sa2bmdl_0_f3d), },
@@ -49932,7 +49948,7 @@ static struct BatchDisplayLists batch_lvl_dls_LAYER_OPAQUE[] = {
 	[LVL_BATCH_LAYER_OPAQUE_DC_DL_DZ_DC_WALLPAINT_LION256_PAL_RGBA16] = { mat_dc_dl_PAINTING_RED_sa2bmdl_0_f3d, mat_revert_dc_dl_PAINTING_RED_sa2bmdl_0_f3d, DL_HINT(mat_dc_dl_PAINTING_RED_sa2bmdl_0_f3d), DL_HINT(mat_revert_dc_dl_PAINTING_RED_sa2bmdl_0_f3d), },
 	[LVL_BATCH_LAYER_OPAQUE_DC_DL_DZ_DC_FIREMOUTH256_PAL_RGBA16] = { mat_dc_dl_MOUTH_BLUE_sa2bmdl_0_f3d, mat_revert_dc_dl_MOUTH_BLUE_sa2bmdl_0_f3d, DL_HINT(mat_dc_dl_MOUTH_BLUE_sa2bmdl_0_f3d), DL_HINT(mat_revert_dc_dl_MOUTH_BLUE_sa2bmdl_0_f3d), },
 	[LVL_BATCH_LAYER_OPAQUE_DC_DL_DZ_DC_MECHANIX64D_PAL_RGBA16] = { mat_dc_dl_MOUTH_BLUE_sa2bmdl_1_f3d, mat_revert_dc_dl_MOUTH_BLUE_sa2bmdl_1_f3d, DL_HINT(mat_dc_dl_MOUTH_BLUE_sa2bmdl_1_f3d), DL_HINT(mat_revert_dc_dl_MOUTH_BLUE_sa2bmdl_1_f3d), },
-	[LVL_BATCH_LAYER_OPAQUE_DC_DL_KD_DC_YUKA4_PAL_RGBA16] = { mat_dc_dl_FloorLight1_sa2mdl_0_f3d, mat_revert_dc_dl_FloorLight1_sa2mdl_0_f3d, DL_HINT(mat_dc_dl_FloorLight1_sa2mdl_0_f3d), DL_HINT(mat_revert_dc_dl_FloorLight1_sa2mdl_0_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_DC_DL_KD_DC_YUKA4_PAL_RGBA16] = { mat_dc_dl_FloorLight1_sa2mdl_0_f3d_layer1, mat_revert_dc_dl_FloorLight1_sa2mdl_0_f3d_layer1, DL_HINT(mat_dc_dl_FloorLight1_sa2mdl_0_f3d_layer1), DL_HINT(mat_revert_dc_dl_FloorLight1_sa2mdl_0_f3d_layer1), },
 };
 
 static struct BatchDisplayLists batch_lvl_dls_LAYER_ALPHA[] = {

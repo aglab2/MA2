@@ -18,6 +18,8 @@
 #include "levels/dc/area_1/collision.inc.c"
 
 #define SEQ_LEVEL_GRASS 0x27
+
+extern const GeoLayout green_flame_geo[];
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_dc_entry[] = {
@@ -55,6 +57,7 @@ const LevelScript level_dc_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_DC_TREASURE_GREEN_BREAK, dc_treasure_green_break_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_DC_TREASURE_RED, dc_treasure_red_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_DC_TREASURE_RED_BREAK, dc_treasure_red_break_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_GREEN_FLAME, green_flame_geo), 
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
 
@@ -144,11 +147,8 @@ const LevelScript level_dc_entry[] = {
 		OBJECT(MODEL_NONE, 4952, 1000, -5656, 0, -46, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_NONE, 5635, 1000, -4920, 0, -46, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_NONE, 3063, 800, 3058, 0, -136, 0, 0x00000000, bhvCoinFormation),
-		OBJECT(MODEL_NONE, -1943, 0, 1921, 0, 44, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_NONE, -2553, 0, 46, 0, 89, 0, 0x00000000, bhvCoinFormation),
-		OBJECT(MODEL_NONE, -9, 0, -2545, 0, 179, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_NONE, 2029, 0, -1943, 0, 44, 0, 0x00000000, bhvCoinFormation),
-		OBJECT(MODEL_NONE, 2568, 0, -25, 0, -177, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_NONE, 2054, 1500, 2061, 0, -46, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_NONE, 2072, 1500, -2072, 0, -131, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_NONE, 3487, -277, 8346, 0, -178, 0, 0x00000000, bhvCoinFormation),
@@ -163,7 +163,6 @@ const LevelScript level_dc_entry[] = {
 		OBJECT(MODEL_NONE, 4446, 500, -4443, 0, -136, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 9806, 800, -3647, 0, -136, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 5192, 200, -5188, 0, -136, 0, (2 << 16), bhvCoinFormation),
-		OBJECT(MODEL_NONE, 9510, -300, 9520, 0, -136, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 5172, 200, 5177, 0, -136, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 3736, 800, 3724, 0, -136, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -7946, 200, 7964, 0, -136, 0, (2 << 16), bhvCoinFormation),
