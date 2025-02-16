@@ -118,7 +118,6 @@ const LevelScript level_mhe_entry[] = {
 		OBJECT(MODEL_NONE, -3424, 17990, 3440, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_MHE_SHUT, 2100, -11400, 600, 0, 90, 0, (MODEL_MHE_SHUT_BREAK << 16), bhvBreakable),
 		OBJECT(MODEL_MHE_SHUT, 2100, -11400, -600, 0, 90, 0, (MODEL_MHE_SHUT_BREAK << 16), bhvBreakable),
-		OBJECT(MODEL_MHE_SHUT, 0, -11400, -2100, 0, -100, 0, (MODEL_MHE_SHUT_BREAK << 16), bhvBreakable),
 		OBJECT(MODEL_MHE_SHUT, 0, -11400, 2100, 0, 0, 0, (MODEL_MHE_SHUT_BREAK << 16), bhvBreakable),
 		OBJECT(MODEL_MHE_SHUT, -2093, -11400, 599, 0, -90, 0, (MODEL_MHE_SHUT_BREAK << 16), bhvBreakable),
 		OBJECT(MODEL_MHE_SHUT, -2098, -11400, -603, 0, -90, 0, (MODEL_MHE_SHUT_BREAK << 16), bhvBreakable),
