@@ -31,3 +31,4 @@
 #include "levels/mhe/mhe_meteoshut/geo.inc.c"
 #include "levels/mhe/mhe_tank/geo.inc.c"
 #include "levels/mhe/mhe_tank_break/geo.inc.c"
+#include "levels/mhe/mhe_meteoshut_break/geo.inc.c"

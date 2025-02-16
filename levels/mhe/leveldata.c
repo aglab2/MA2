@@ -4,6 +4,9 @@
 #include "moving_texture_macros.h"
 #include "textures.h"
 #include "dialog_ids.h"
+#include "rail_desc.h"
+#include "spring_desc.h"
+#include "flipbook.h"
 
 #include "make_const_nonconst.h"
 
@@ -13,6 +16,8 @@
 #include "levels/mhe/header.h"
 #include "levels/mhe/area_1/spline.inc.c"
 #include "levels/mhe/visual/model_lvl.inc.c"
+#include "levels/mhe/rails.inc.c"
+#include "levels/mhe/flipbook.inc.c"
 #endif
 
 #include "levels/mhe/mhe_skybox/model.inc.c"
@@ -30,3 +35,4 @@
 #include "levels/mhe/mhe_meteoshut/collision.inc.c"
 #include "levels/mhe/mhe_tank/model.inc.c"
 #include "levels/mhe/mhe_tank_break/model.inc.c"
+#include "levels/mhe/mhe_meteoshut_break/model.inc.c"

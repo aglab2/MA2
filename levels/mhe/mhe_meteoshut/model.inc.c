@@ -1,5 +1,4 @@
-Gfx mhe_meteoshut_meteo128_5_001_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 mhe_meteoshut_meteo128_5_001_ci4[] = {
+ALIGNED8 u8 mhe_meteoshut_meteo128_5_001_ci4[] = {
 	0x01, 0x12, 0x33, 0x24, 0x02, 0x55, 0x00, 0x26, 
 	0x67, 0x83, 0x08, 0x34, 0x41, 0x55, 0x29, 0x11, 
 	0x45, 0x14, 0x19, 0x42, 0x14, 0x11, 0x14, 0x92, 
@@ -259,8 +258,7 @@ u8 mhe_meteoshut_meteo128_5_001_ci4[] = {
 	
 };
 
-Gfx mhe_meteoshut_meteo128_5_001_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 mhe_meteoshut_meteo128_5_001_pal_rgba16[] = {
+ALIGNED8 u8 mhe_meteoshut_meteo128_5_001_pal_rgba16[] = {
 	0x8c, 0x23, 0x9c, 0xe7, 0x94, 0x65, 0xa4, 0xa5, 
 	0xad, 0x2b, 0x9c, 0xa9, 0x00, 0x01, 0x31, 0x09, 
 	0x5a, 0x97, 0xb5, 0xaf, 0x94, 0x63, 0x49, 0xcf, 
@@ -268,8 +266,7 @@ u8 mhe_meteoshut_meteo128_5_001_pal_rgba16[] = {
 	
 };
 
-Gfx mhe_meteoshut_meteo128_11_001_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 mhe_meteoshut_meteo128_11_001_ci4[] = {
+ALIGNED8 u8 mhe_meteoshut_meteo128_11_001_ci4[] = {
 	0x01, 0x20, 0x23, 0x45, 0x67, 0x77, 0x78, 0x68, 
 	0x89, 0x66, 0x67, 0x68, 0x76, 0x96, 0x77, 0x97, 
 	0x77, 0x67, 0x77, 0x77, 0x99, 0x77, 0x77, 0x77, 
@@ -529,8 +526,7 @@ u8 mhe_meteoshut_meteo128_11_001_ci4[] = {
 	
 };
 
-Gfx mhe_meteoshut_meteo128_11_001_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 mhe_meteoshut_meteo128_11_001_pal_rgba16[] = {
+ALIGNED8 u8 mhe_meteoshut_meteo128_11_001_pal_rgba16[] = {
 	0x84, 0x1f, 0x94, 0xa3, 0x73, 0x9d, 0x8c, 0xa7, 
 	0xce, 0x73, 0x18, 0xc5, 0x29, 0x4d, 0x31, 0x8f, 
 	0x18, 0xc9, 0x42, 0x13, 0x84, 0x23, 0x31, 0x49, 
@@ -538,8 +534,7 @@ u8 mhe_meteoshut_meteo128_11_001_pal_rgba16[] = {
 	
 };
 
-Gfx mhe_meteoshut_meteo64_2_001_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 mhe_meteoshut_meteo64_2_001_ci4[] = {
+ALIGNED8 u8 mhe_meteoshut_meteo64_2_001_ci4[] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x11, 0x11, 
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
@@ -799,16 +794,14 @@ u8 mhe_meteoshut_meteo64_2_001_ci4[] = {
 	
 };
 
-Gfx mhe_meteoshut_meteo64_2_001_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 mhe_meteoshut_meteo64_2_001_pal_rgba16[] = {
+ALIGNED8 u8 mhe_meteoshut_meteo64_2_001_pal_rgba16[] = {
 	0x18, 0x85, 0x41, 0x4d, 0x5a, 0x13, 0x6a, 0x97, 
 	0x83, 0x5d, 0x9c, 0x23, 0xac, 0xa9, 0x6a, 0x99, 
 	0xb4, 0xe9, 0xbd, 0x6d, 0xa4, 0xa9, 0xde, 0x35, 
 	0xb4, 0xeb, 0xb5, 0x2b, 0xac, 0xab, 
 };
 
-Gfx mhe_meteoshut_miu128_meh006_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 mhe_meteoshut_miu128_meh006_ci4[] = {
+ALIGNED8 u8 mhe_meteoshut_miu128_meh006_ci4[] = {
 	0x01, 0x11, 0x12, 0x00, 0x01, 0x00, 0x00, 0x00, 
 	0x00, 0x01, 0x34, 0x44, 0x45, 0x66, 0x66, 0x66, 
 	0x66, 0x77, 0x66, 0x66, 0x66, 0x77, 0x77, 0x77, 
@@ -1068,8 +1061,7 @@ u8 mhe_meteoshut_miu128_meh006_ci4[] = {
 	
 };
 
-Gfx mhe_meteoshut_miu128_meh006_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 mhe_meteoshut_miu128_meh006_pal_rgba16[] = {
+ALIGNED8 u8 mhe_meteoshut_miu128_meh006_pal_rgba16[] = {
 	0xe3, 0xc1, 0xfc, 0x81, 0xc2, 0xc1, 0xab, 0x81, 
 	0x00, 0x01, 0x66, 0x35, 0x24, 0x67, 0x2c, 0xe9, 
 	0x29, 0x4b, 0x94, 0xa5, 0x32, 0x53, 0x23, 0x9f, 
@@ -1077,8 +1069,7 @@ u8 mhe_meteoshut_miu128_meh006_pal_rgba16[] = {
 	
 };
 
-Gfx mhe_meteoshut_miu128_meh008_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 mhe_meteoshut_miu128_meh008_ci4[] = {
+ALIGNED8 u8 mhe_meteoshut_miu128_meh008_ci4[] = {
 	0x00, 0x00, 0x00, 0x11, 0x11, 0x00, 0x00, 0x00, 
 	0x02, 0x00, 0x00, 0x13, 0x13, 0x33, 0x13, 0x33, 
 	0x13, 0x11, 0x11, 0x31, 0x33, 0x10, 0x00, 0x22, 
@@ -1338,8 +1329,7 @@ u8 mhe_meteoshut_miu128_meh008_ci4[] = {
 	
 };
 
-Gfx mhe_meteoshut_miu128_meh008_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 mhe_meteoshut_miu128_meh008_pal_rgba16[] = {
+ALIGNED8 u8 mhe_meteoshut_miu128_meh008_pal_rgba16[] = {
 	0x00, 0x01, 0x4a, 0x95, 0x20, 0x85, 0x84, 0xa3, 
 	0x68, 0x87, 0xe9, 0x49, 0xe1, 0xcd, 0x91, 0xc3, 
 	0xc0, 0x83, 0xce, 0xf5, 0xb4, 0xd9, 0x7a, 0xc9, 
@@ -1347,8 +1337,7 @@ u8 mhe_meteoshut_miu128_meh008_pal_rgba16[] = {
 	
 };
 
-Gfx mhe_meteoshut_miu128_meh004_001_ci4_aligner[] = {gsSPEndDisplayList()};
-u8 mhe_meteoshut_miu128_meh004_001_ci4[] = {
+ALIGNED8 u8 mhe_meteoshut_miu128_meh004_001_ci4[] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
@@ -1608,8 +1597,7 @@ u8 mhe_meteoshut_miu128_meh004_001_ci4[] = {
 	
 };
 
-Gfx mhe_meteoshut_miu128_meh004_001_pal_rgba16_aligner[] = {gsSPEndDisplayList()};
-u8 mhe_meteoshut_miu128_meh004_001_pal_rgba16[] = {
+ALIGNED8 u8 mhe_meteoshut_miu128_meh004_001_pal_rgba16[] = {
 	0x00, 0x01, 0x42, 0x95, 0x5b, 0x5b, 0x7c, 0x63, 
 	0x29, 0x8d, 0xcf, 0xbd, 0xff, 0xff, 0x95, 0x29, 
 	0x00, 0xc1, 0xaf, 0x2f, 0x42, 0x91, 0x5b, 0x15, 
@@ -1626,24 +1614,11 @@ Vtx mhe_meteoshut_mhe_meteoshut_mesh_layer_1_vtx_0[6] = {
 	{{ {-55, 465, 3}, 0, {940, -1719}, {25, 20, 35, 255} }},
 };
 
-Gfx mhe_meteoshut_mhe_meteoshut_mesh_layer_1_tri_0[] = {
-	gsSPVertex(mhe_meteoshut_mhe_meteoshut_mesh_layer_1_vtx_0 + 0, 6, 0),
-	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
-	gsSP2Triangles(3, 2, 4, 0, 3, 4, 5, 0),
-	gsSPEndDisplayList(),
-};
-
 Vtx mhe_meteoshut_mhe_meteoshut_mesh_layer_1_vtx_1[4] = {
 	{{ {-190, 60, 0}, 0, {-16, -2072}, {120, 120, 150, 255} }},
 	{{ {190, 740, 0}, 0, {4096, 2032}, {90, 80, 60, 255} }},
 	{{ {-190, 740, 0}, 0, {-16, 2032}, {100, 80, 50, 255} }},
 	{{ {190, 60, 0}, 0, {4096, -2072}, {110, 130, 150, 255} }},
-};
-
-Gfx mhe_meteoshut_mhe_meteoshut_mesh_layer_1_tri_1[] = {
-	gsSPVertex(mhe_meteoshut_mhe_meteoshut_mesh_layer_1_vtx_1 + 0, 4, 0),
-	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
-	gsSPEndDisplayList(),
 };
 
 Vtx mhe_meteoshut_mhe_meteoshut_mesh_layer_1_vtx_2[12] = {
@@ -1661,15 +1636,7 @@ Vtx mhe_meteoshut_mhe_meteoshut_mesh_layer_1_vtx_2[12] = {
 	{{ {-300, 800, 0}, 0, {-16, -16}, {106, 85, 53, 255} }},
 };
 
-Gfx mhe_meteoshut_mhe_meteoshut_mesh_layer_1_tri_2[] = {
-	gsSPVertex(mhe_meteoshut_mhe_meteoshut_mesh_layer_1_vtx_2 + 0, 12, 0),
-	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 9, 8, 11, 0),
-	gsSPEndDisplayList(),
-};
-
-Vtx mhe_meteoshut_mhe_meteoshut_mesh_layer_1_vtx_3[48] = {
+Vtx mhe_meteoshut_mhe_meteoshut_mesh_layer_1_vtx_3[44] = {
 	{{ {55, 335, 3}, 0, {787, 1116}, {81, 98, 100, 255} }},
 	{{ {112, 400, 0}, 0, {161, 40}, {66, 83, 85, 255} }},
 	{{ {92, 400, 3}, 0, {787, 153}, {66, 83, 85, 255} }},
@@ -1702,40 +1669,18 @@ Vtx mhe_meteoshut_mhe_meteoshut_mesh_layer_1_vtx_3[48] = {
 	{{ {-240, 60, 0}, 0, {145, 1968}, {79, 91, 104, 255} }},
 	{{ {-240, 0, 0}, 0, {145, 1341}, {119, 130, 155, 255} }},
 	{{ {-190, 60, 0}, 0, {627, 1968}, {79, 91, 104, 255} }},
-	{{ {190, 60, 0}, 0, {627, 1968}, {55, 56, 61, 255} }},
 	{{ {240, 0, 0}, 0, {145, 1341}, {119, 130, 155, 255} }},
 	{{ {240, 60, 0}, 0, {145, 1968}, {79, 91, 104, 255} }},
-	{{ {190, 0, 0}, 0, {627, 1341}, {119, 130, 155, 255} }},
 	{{ {190, 740, 0}, 0, {675, 1968}, {119, 130, 155, 255} }},
 	{{ {240, 680, 0}, 0, {145, 1341}, {79, 91, 104, 255} }},
 	{{ {240, 740, 0}, 0, {145, 1968}, {119, 130, 155, 255} }},
 	{{ {190, 680, 0}, 0, {675, 1341}, {79, 91, 104, 255} }},
 	{{ {-190, 60, -20}, 0, {353, 1968}, {43, 53, 57, 255} }},
-	{{ {-190, 0, 0}, 0, {627, 1341}, {119, 130, 155, 255} }},
 	{{ {-190, 0, -20}, 0, {353, 1341}, {43, 53, 57, 255} }},
-	{{ {-190, 60, 0}, 0, {627, 1968}, {79, 91, 104, 255} }},
 	{{ {-190, 680, 0}, 0, {675, 1341}, {79, 91, 104, 255} }},
 	{{ {-240, 740, 0}, 0, {145, 1968}, {119, 130, 155, 255} }},
 	{{ {-240, 680, 0}, 0, {145, 1341}, {79, 91, 104, 255} }},
 	{{ {-190, 740, 0}, 0, {675, 1968}, {119, 130, 155, 255} }},
-};
-
-Gfx mhe_meteoshut_mhe_meteoshut_mesh_layer_1_tri_3[] = {
-	gsSPVertex(mhe_meteoshut_mhe_meteoshut_mesh_layer_1_vtx_3 + 0, 32, 0),
-	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 9, 8, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 13, 12, 15, 0),
-	gsSP2Triangles(16, 17, 18, 0, 17, 16, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 21, 20, 23, 0),
-	gsSP2Triangles(24, 25, 26, 0, 25, 24, 27, 0),
-	gsSP2Triangles(28, 29, 30, 0, 29, 28, 31, 0),
-	gsSPVertex(mhe_meteoshut_mhe_meteoshut_mesh_layer_1_vtx_3 + 32, 16, 0),
-	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 9, 8, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 13, 12, 15, 0),
-	gsSPEndDisplayList(),
 };
 
 Vtx mhe_meteoshut_mhe_meteoshut_mesh_layer_1_vtx_4[6] = {
@@ -1745,13 +1690,6 @@ Vtx mhe_meteoshut_mhe_meteoshut_mesh_layer_1_vtx_4[6] = {
 	{{ {-190, 60, -20}, 0, {6425, 827}, {43, 53, 57, 255} }},
 	{{ {190, 0, -20}, 0, {1767, 2032}, {43, 53, 57, 255} }},
 	{{ {-190, 0, -20}, 0, {6425, 2032}, {43, 53, 57, 255} }},
-};
-
-Gfx mhe_meteoshut_mhe_meteoshut_mesh_layer_1_tri_4[] = {
-	gsSPVertex(mhe_meteoshut_mhe_meteoshut_mesh_layer_1_vtx_4 + 0, 6, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
-	gsSP2Triangles(3, 4, 1, 0, 4, 3, 5, 0),
-	gsSPEndDisplayList(),
 };
 
 Vtx mhe_meteoshut_001_object_00D44468_mesh_layer_1_vtx_0[48] = {
@@ -1805,8 +1743,93 @@ Vtx mhe_meteoshut_001_object_00D44468_mesh_layer_1_vtx_0[48] = {
 	{{ {-240, 280, -20}, 0, {-16, 265}, {255, 255, 255, 255} }},
 };
 
-Gfx mhe_meteoshut_001_object_00D44468_mesh_layer_1_tri_0[] = {
-	gsSPVertex(mhe_meteoshut_001_object_00D44468_mesh_layer_1_vtx_0 + 0, 32, 0),
+Vtx mhe_meteoshut_002_object_00D43FCC_mesh_layer_5_vtx_0[4] = {
+	{{ {60, 20, 0}, 0, {-16, -16}, {255, 0, 0, 255} }},
+	{{ {-60, -20, 0}, 0, {-16, -16}, {255, 0, 0, 255} }},
+	{{ {60, -20, 0}, 0, {-16, -16}, {255, 0, 0, 255} }},
+	{{ {-60, 20, 0}, 0, {-16, -16}, {255, 0, 0, 255} }},
+};
+
+
+Gfx mhe_meteoshut_mhe_meteoshut_mesh_layer_1[] = {
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
+	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mhe_meteoshut_meteo128_5_001_pal_rgba16),
+	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, mhe_meteoshut_meteo128_5_001_ci4),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_MIRROR, 6, 0, G_TX_CLAMP | G_TX_MIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 508, 508),
+	gsSPVertex(mhe_meteoshut_mhe_meteoshut_mesh_layer_1_vtx_0 + 0, 6, 0),
+	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
+	gsSP2Triangles(3, 2, 4, 0, 3, 4, 5, 0),
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mhe_meteoshut_meteo128_11_001_pal_rgba16),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, mhe_meteoshut_meteo128_11_001_ci4),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_MIRROR, 6, 0, G_TX_CLAMP | G_TX_MIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 508, 252),
+	gsSPVertex(mhe_meteoshut_mhe_meteoshut_mesh_layer_1_vtx_1 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mhe_meteoshut_meteo64_2_001_pal_rgba16),
+	gsDPLoadTLUTCmd(5, 14),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, mhe_meteoshut_meteo64_2_001_ci4),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_MIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsSPVertex(mhe_meteoshut_mhe_meteoshut_mesh_layer_1_vtx_2 + 0, 12, 0),
+	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
+	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
+	gsSP2Triangles(8, 9, 10, 0, 9, 8, 11, 0),
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mhe_meteoshut_miu128_meh006_pal_rgba16),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, mhe_meteoshut_miu128_meh006_ci4),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
+	gsSPVertex(mhe_meteoshut_mhe_meteoshut_mesh_layer_1_vtx_3 + 0, 44, 0),
+	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
+	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
+	gsSP2Triangles(8, 9, 10, 0, 9, 8, 11, 0),
+	gsSP2Triangles(12, 13, 14, 0, 13, 12, 15, 0),
+	gsSP2Triangles(16, 17, 18, 0, 17, 16, 19, 0),
+	gsSP2Triangles(20, 21, 22, 0, 21, 20, 23, 0),
+	gsSP2Triangles(24, 25, 26, 0, 25, 24, 27, 0),
+	gsSP2Triangles(28, 29, 30, 0, 29, 28, 31, 0),
+	gsSP2Triangles(25, 32, 33, 0, 32, 25, 27, 0),
+	gsSP2Triangles(34, 35, 36, 0, 35, 34, 37, 0),
+	gsSP2Triangles(38, 28, 39, 0, 28, 38, 31, 0),
+	gsSP2Triangles(40, 41, 42, 0, 41, 40, 43, 0),
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mhe_meteoshut_miu128_meh008_pal_rgba16),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, mhe_meteoshut_miu128_meh008_ci4),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0),
+	gsSPVertex(mhe_meteoshut_mhe_meteoshut_mesh_layer_1_vtx_4 + 0, 6, 0),
+	gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
+	gsSP2Triangles(3, 4, 1, 0, 4, 3, 5, 0),
+	gsDPPipeSync(),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPEndDisplayList(),
+};
+
+Gfx mhe_meteoshut_001_object_00D44468_mesh_layer_1[] = {
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mhe_meteoshut_miu128_meh004_001_pal_rgba16),
+	gsDPLoadTLUTCmd(5, 15),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, mhe_meteoshut_miu128_meh004_001_ci4),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsSPVertex(mhe_meteoshut_001_object_00D44468_mesh_layer_1_vtx_0 + 0, 48, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
 	gsSP2Triangles(3, 2, 4, 0, 3, 4, 5, 0),
 	gsSP2Triangles(5, 4, 6, 0, 5, 6, 7, 0),
@@ -1817,190 +1840,25 @@ Gfx mhe_meteoshut_001_object_00D44468_mesh_layer_1_tri_0[] = {
 	gsSP2Triangles(20, 21, 22, 0, 21, 20, 23, 0),
 	gsSP2Triangles(24, 25, 26, 0, 25, 24, 27, 0),
 	gsSP2Triangles(28, 29, 30, 0, 29, 28, 31, 0),
-	gsSPVertex(mhe_meteoshut_001_object_00D44468_mesh_layer_1_vtx_0 + 32, 16, 0),
-	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 9, 8, 11, 0),
-	gsSP2Triangles(12, 13, 14, 0, 13, 12, 15, 0),
-	gsSPEndDisplayList(),
-};
-
-Vtx mhe_meteoshut_002_object_00D43FCC_mesh_layer_5_vtx_0[4] = {
-	{{ {60, 20, 0}, 0, {-16, -16}, {255, 0, 0, 255} }},
-	{{ {-60, -20, 0}, 0, {-16, -16}, {255, 0, 0, 255} }},
-	{{ {60, -20, 0}, 0, {-16, -16}, {255, 0, 0, 255} }},
-	{{ {-60, 20, 0}, 0, {-16, -16}, {255, 0, 0, 255} }},
-};
-
-Gfx mhe_meteoshut_002_object_00D43FCC_mesh_layer_5_tri_0[] = {
-	gsSPVertex(mhe_meteoshut_002_object_00D43FCC_mesh_layer_5_vtx_0 + 0, 4, 0),
-	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
-	gsSPEndDisplayList(),
-};
-
-
-Gfx mat_mhe_meteoshut_METEOSHUT_sa2bmdl_0_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+	gsSP2Triangles(32, 33, 34, 0, 33, 32, 35, 0),
+	gsSP2Triangles(36, 37, 38, 0, 37, 36, 39, 0),
+	gsSP2Triangles(40, 41, 42, 0, 41, 40, 43, 0),
+	gsSP2Triangles(44, 45, 46, 0, 45, 44, 47, 0),
 	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mhe_meteoshut_meteo128_5_001_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 15),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, mhe_meteoshut_meteo128_5_001_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_MIRROR, 6, 0, G_TX_CLAMP | G_TX_MIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 508, 508),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
+	gsSPTexture(65535, 65535, 0, 0, 0),
+	gsDPSetEnvColor(255, 255, 255, 255),
+	gsDPSetAlphaCompare(G_AC_NONE),
 	gsSPEndDisplayList(),
 };
 
-Gfx mat_revert_mhe_meteoshut_METEOSHUT_sa2bmdl_0_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_mhe_meteoshut_METEOSHUT_sa2bmdl_1_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mhe_meteoshut_meteo128_11_001_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 15),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, mhe_meteoshut_meteo128_11_001_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_MIRROR, 6, 0, G_TX_CLAMP | G_TX_MIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 508, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_mhe_meteoshut_METEOSHUT_sa2bmdl_1_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_mhe_meteoshut_METEOSHUT_sa2bmdl_2_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mhe_meteoshut_meteo64_2_001_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 14),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, mhe_meteoshut_meteo64_2_001_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_MIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_mhe_meteoshut_METEOSHUT_sa2bmdl_2_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_mhe_meteoshut_METEOSHUT_sa2bmdl_3_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mhe_meteoshut_miu128_meh006_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 15),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, mhe_meteoshut_miu128_meh006_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_mhe_meteoshut_METEOSHUT_sa2bmdl_3_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_mhe_meteoshut_METEOSHUT_sa2bmdl_4_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mhe_meteoshut_miu128_meh008_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 15),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, mhe_meteoshut_miu128_meh008_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_mhe_meteoshut_METEOSHUT_sa2bmdl_4_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_mhe_meteoshut_METEOSHUT_sa2bmdl_5_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mhe_meteoshut_miu128_meh004_001_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 15),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, mhe_meteoshut_miu128_meh004_001_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_mhe_meteoshut_METEOSHUT_sa2bmdl_5_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_mhe_meteoshut_METEOSHUT_sa2bmdl_6_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
-	gsDPPipeSync(),
+Gfx mhe_meteoshut_002_object_00D43FCC_mesh_layer_5[] = {
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mhe_meteoshut_meteo128_11_001_pal_rgba16),
@@ -2011,57 +1869,11 @@ Gfx mat_mhe_meteoshut_METEOSHUT_sa2bmdl_6_f3d[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_mhe_meteoshut_METEOSHUT_sa2bmdl_6_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsSPVertex(mhe_meteoshut_002_object_00D43FCC_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
 	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mhe_meteoshut_mhe_meteoshut_mesh_layer_1[] = {
-	gsSPDisplayList(mat_mhe_meteoshut_METEOSHUT_sa2bmdl_0_f3d),
-	gsSPDisplayList(mhe_meteoshut_mhe_meteoshut_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_mhe_meteoshut_METEOSHUT_sa2bmdl_0_f3d),
-	gsSPDisplayList(mat_mhe_meteoshut_METEOSHUT_sa2bmdl_1_f3d),
-	gsSPDisplayList(mhe_meteoshut_mhe_meteoshut_mesh_layer_1_tri_1),
-	gsSPDisplayList(mat_revert_mhe_meteoshut_METEOSHUT_sa2bmdl_1_f3d),
-	gsSPDisplayList(mat_mhe_meteoshut_METEOSHUT_sa2bmdl_2_f3d),
-	gsSPDisplayList(mhe_meteoshut_mhe_meteoshut_mesh_layer_1_tri_2),
-	gsSPDisplayList(mat_revert_mhe_meteoshut_METEOSHUT_sa2bmdl_2_f3d),
-	gsSPDisplayList(mat_mhe_meteoshut_METEOSHUT_sa2bmdl_3_f3d),
-	gsSPDisplayList(mhe_meteoshut_mhe_meteoshut_mesh_layer_1_tri_3),
-	gsSPDisplayList(mat_revert_mhe_meteoshut_METEOSHUT_sa2bmdl_3_f3d),
-	gsSPDisplayList(mat_mhe_meteoshut_METEOSHUT_sa2bmdl_4_f3d),
-	gsSPDisplayList(mhe_meteoshut_mhe_meteoshut_mesh_layer_1_tri_4),
-	gsSPDisplayList(mat_revert_mhe_meteoshut_METEOSHUT_sa2bmdl_4_f3d),
-	gsSPEndDisplayList(),
-};
-
-Gfx mhe_meteoshut_001_object_00D44468_mesh_layer_1[] = {
-	gsSPDisplayList(mat_mhe_meteoshut_METEOSHUT_sa2bmdl_5_f3d),
-	gsSPDisplayList(mhe_meteoshut_001_object_00D44468_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_mhe_meteoshut_METEOSHUT_sa2bmdl_5_f3d),
-	gsDPPipeSync(),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPClearGeometryMode(G_TEXTURE_GEN),
-	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
-	gsSPTexture(65535, 65535, 0, 0, 0),
-	gsDPSetEnvColor(255, 255, 255, 255),
-	gsDPSetAlphaCompare(G_AC_NONE),
-	gsSPEndDisplayList(),
-};
-
-Gfx mhe_meteoshut_002_object_00D43FCC_mesh_layer_5[] = {
-	gsSPDisplayList(mat_mhe_meteoshut_METEOSHUT_sa2bmdl_6_f3d),
-	gsSPDisplayList(mhe_meteoshut_002_object_00D43FCC_mesh_layer_5_tri_0),
-	gsSPDisplayList(mat_revert_mhe_meteoshut_METEOSHUT_sa2bmdl_6_f3d),
-	gsDPPipeSync(),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPClearGeometryMode(G_TEXTURE_GEN),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 0),
 	gsDPSetEnvColor(255, 255, 255, 255),

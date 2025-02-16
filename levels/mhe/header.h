@@ -42,4 +42,6 @@ extern const LevelScript level_mhe_entry[];
 
 #include "levels/mhe/mhe_skybox/header.h"
 
+#include "levels/mhe/mhe_meteoshut_break/geo_header.h"
+
 #endif

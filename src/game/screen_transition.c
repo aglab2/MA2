@@ -190,8 +190,8 @@ Vtx *vertex_transition_color() {
     if (verts != NULL) {
         make_simple_vertex(verts, 0, GFX_DIMENSIONS_FROM_LEFT_EDGE(0), 0, -1, 0, 0);
         make_simple_vertex(verts, 1, GFX_DIMENSIONS_FROM_RIGHT_EDGE(0), 0, -1, 0, 0);
-        make_simple_vertex(verts, 2, GFX_DIMENSIONS_FROM_RIGHT_EDGE(0), SCREEN_HEIGHT, -1, 0, 0);
-        make_simple_vertex(verts, 3, GFX_DIMENSIONS_FROM_LEFT_EDGE(0), SCREEN_HEIGHT, -1, 0, 0);
+        make_simple_vertex(verts, 2, GFX_DIMENSIONS_FROM_RIGHT_EDGE(0) + 1, SCREEN_HEIGHT + 1, -1, 0, 0);
+        make_simple_vertex(verts, 3, GFX_DIMENSIONS_FROM_LEFT_EDGE(0) + 1, SCREEN_HEIGHT + 1, -1, 0, 0);
     }
     return verts;
 }

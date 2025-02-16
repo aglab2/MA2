@@ -1542,7 +1542,7 @@ void shade_screen(void) {
 
     gSPDisplayList(dlHead++, dl_shade_screen_begin);
     gDPFillRectangle(dlHead++, GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), gBorderHeight,
-        (GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1), ((SCREEN_HEIGHT - gBorderHeight) - 1));
+        (GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) + 1), ((SCREEN_HEIGHT - gBorderHeight) + 1));
     gSPDisplayList(dlHead++, dl_shade_screen_end);
 
     gDisplayListHead = dlHead;
