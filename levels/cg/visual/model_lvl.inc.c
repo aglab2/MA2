@@ -45299,7 +45299,7 @@ Gfx mat_cg_dl_GSWITCH2_sa2bmdl_6_f3d[] = {
 };
 
 Gfx mat_cg_dl_GSWITCH2_sa2bmdl_8_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
+	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -45313,6 +45313,14 @@ Gfx mat_cg_dl_GSWITCH2_sa2bmdl_8_f3d[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsSPEndDisplayListHint(4),
+};
+
+Gfx mat_revert_cg_dl_GSWITCH2_sa2bmdl_8_f3d[] = {
+	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
+	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayListHint(4),
 };
 

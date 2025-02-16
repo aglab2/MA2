@@ -30,6 +30,7 @@ extern const GeoLayout cg_area_visual[];
 #include "levels/cg/area_2/collision.inc.c"
 #include "levels/cg/area_3/collision.inc.c"
 #include "levels/cg/area_4/collision.inc.c"
+#define SEQ_LEVEL_GRASS 0x28
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_cg_entry[] = {
