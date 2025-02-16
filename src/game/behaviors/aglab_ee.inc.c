@@ -1,9 +1,13 @@
 int succ_within_region()
 {
     if (1 == o->oBehParams2ndByte)
-    {
-        return -4000.f < gMarioStates->pos[2] && gMarioStates->pos[2] < -500.f && -15500.f < gMarioStates->pos[0] && gMarioStates->pos[0] < -8300.f;
-    }
+        return -4000.f  < gMarioStates->pos[2] && gMarioStates->pos[2] < -500.f    && -15500.f < gMarioStates->pos[0] && gMarioStates->pos[0] < -8300.f;
+    if (2 == o->oBehParams2ndByte)
+        return -3300.f  < gMarioStates->pos[2] && gMarioStates->pos[2] < -500.f    && -15000.f < gMarioStates->pos[0] && gMarioStates->pos[0] < -18000.f;
+    if (3 == o->oBehParams2ndByte)
+        return -4000.f  < gMarioStates->pos[2] && gMarioStates->pos[2] < -500.f    && -21000.f < gMarioStates->pos[0] && gMarioStates->pos[0] < -17800.f;
+    if (4 == o->oBehParams2ndByte)
+        return -18000.f < gMarioStates->pos[0] && gMarioStates->pos[0] < -15000.f  && -17500.f < gMarioStates->pos[2] && gMarioStates->pos[2] < -11500.f;
 
     return 0;
 }
@@ -51,7 +55,7 @@ void bhv_succ_loop()
         dz /= dist;
 
         f32 dist = sqrtf(o->oDistanceToMario);
-        f32 mult = 300.f / dist;
+        f32 mult = 200.f / dist;
         dx *= mult;
         dz *= mult;
 

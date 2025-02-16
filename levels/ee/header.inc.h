@@ -4,6 +4,7 @@ extern const Collision ee_area_1_collision[];
 extern const MacroObject ee_area_1_macro_objs[];
 extern const Trajectory ee_area_1_spline_NurbsCurve_Spring_001[];
 extern const Trajectory ee_area_1_spline_NurbsCurve_Spring_007[];
+extern const Trajectory ee_area_1_spline_NurbsCurve_Spring_008[];
 extern const GeoLayout ee_area_2_geo[];
 extern const GeoLayout ee_area_2[];
 extern const Collision ee_area_2_collision[];

@@ -1,6 +1,7 @@
 static const SpringDesc spring_area1[] = {
 	ee_area_1_spline_NurbsCurve_Spring_001,
 	ee_area_1_spline_NurbsCurve_Spring_007,
+	ee_area_1_spline_NurbsCurve_Spring_008,
 	NULL
 };
 
