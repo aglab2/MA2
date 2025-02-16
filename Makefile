@@ -162,7 +162,8 @@ GCC_MAIN_OPT_FLAGS = \
   -fno-align-loops \
   -fno-prefetch-loop-arrays \
   -freciprocal-math \
-  -fdelete-null-pointer-checks
+  -fdelete-null-pointer-checks \
+  -fshort-enums
 
 # Surface Collision
 GCC_COLLISION_OPT_FLAGS = \
