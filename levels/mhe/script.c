@@ -15,6 +15,7 @@
 #include "levels/mhe/header.h"
 
 /* Fast64 begin persistent block [scripts] */
+#include "levels/mhe/area_1/collision.inc.c"
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_mhe_entry[] = {
@@ -75,6 +76,9 @@ const LevelScript level_mhe_entry[] = {
 		OBJECT(MODEL_STAR, 30, -5122, -1934, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 1898, 8243, -4407, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 4313, 12748, -243, 0, 0, 0, 0x00000000, bhvStar),
+		OBJECT(MODEL_STAR, 1173, 753, 33, 0, 0, 0, 0x00000000, bhvStar),
+		OBJECT(MODEL_STAR, 1149, 2503, -3295, 0, 0, 0, 0x00000000, bhvStar),
+		OBJECT(MODEL_STAR, 1105, -10986, 611, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_MHE_TANK, 507, 3250, 5011, 0, 0, 0, (MODEL_MHE_TANK_BREAK << 16), bhvBreakable),
 		OBJECT(MODEL_MHE_TANK, 19, 3250, 5011, 0, 0, 0, (MODEL_MHE_TANK_BREAK << 16), bhvBreakable),
 		OBJECT(MODEL_MHE_TANK, -560, 3250, 5011, 0, 0, 0, (MODEL_MHE_TANK_BREAK << 16), bhvBreakable),

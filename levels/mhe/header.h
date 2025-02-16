@@ -6,9 +6,11 @@
 
 extern const LevelScript level_mhe_entry[];
 
-
+#if 0
 #include "levels/mhe/header.inc.h"
-#include "levels/mhe/mhe_skybox/geo_header.h"
+#else
+#include "levels/mhe/visual/header_lvl.inc.h"
+#endif
 
 #include "levels/mhe/mhe_bigshutter/geo_header.h"
 
@@ -37,5 +39,7 @@ extern const LevelScript level_mhe_entry[];
 #include "levels/mhe/mhe_tank/geo_header.h"
 
 #include "levels/mhe/mhe_tank_break/geo_header.h"
+
+#include "levels/mhe/mhe_skybox/header.h"
 
 #endif

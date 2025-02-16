@@ -7,8 +7,14 @@
 
 #include "make_const_nonconst.h"
 
-
+#if 0
 #include "levels/mhe/leveldata.inc.c"
+#else
+#include "levels/mhe/header.h"
+#include "levels/mhe/area_1/spline.inc.c"
+#include "levels/mhe/visual/model_lvl.inc.c"
+#endif
+
 #include "levels/mhe/mhe_skybox/model.inc.c"
 #include "levels/mhe/mhe_bigshutter/model.inc.c"
 #include "levels/mhe/mhe_bigshutter/collision.inc.c"

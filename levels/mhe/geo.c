@@ -13,9 +13,12 @@
 
 #include "levels/mhe/header.h"
 
-
+#if 0
 #include "levels/mhe/geo.inc.c"
-#include "levels/mhe/mhe_skybox/geo.inc.c"
+#else
+#include "levels/mhe/visual/geo_lvl.inc.c"
+#endif
+
 #include "levels/mhe/mhe_bigshutter/geo.inc.c"
 #include "levels/mhe/mhe_fireball/geo.inc.c"
 #include "levels/mhe/mhe_fireball_break/geo.inc.c"
