@@ -23,10 +23,4 @@ struct FlipbookData
     u8* pals;
 };
 
-struct PrimColorShading
-{
-    u16 shift;
-};
-
 #define FLIPBOOK_LAYER_DECL(name) { sizeof(name) / sizeof(*name), name } 
-#define FLIPBOOK_PRIM_COLOR_SHADING_DECL(shift) (void*) (shift), NULL

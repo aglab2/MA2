@@ -474,8 +474,6 @@ static void apply_flipbooks(struct MasterLayer* masterLayer)
         // this bending constness rules a bit but trust me, it's fine
         struct BatchDisplayLists* batchDLs = (struct BatchDisplayLists*) masterLayer->course->batchDLs;
         batchDLs[flipData->batchId].startDl = (const void*) VIRTUAL_TO_PHYSICAL(startDl);
-
-        return;
     }
 }
 

@@ -30171,6 +30171,7 @@ Gfx mat_mhe_dl_objLandTable0032_tani_sa2lvl_0_001_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
+#if 0
 Gfx mat_mhe_dl_objLandTable0032_uv_sa2lvl_0_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
@@ -30225,6 +30226,7 @@ Gfx mat_mhe_dl_objLandTable0032_uv_sa2lvl_2_f3d[] = {
 	gsDPSetTileSize(0, 0, 0, 124, 124),
 	gsSPEndDisplayListHint(4),
 };
+#endif
 
 Gfx mat_mhe_dl_objLandTable0032_sa2blvl_15_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
