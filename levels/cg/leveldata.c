@@ -13,13 +13,9 @@
 #if 0
 #include "levels/cg/leveldata.inc.c"
 #else
-#include "levels/cg/area_1/collision.inc.c"
 #include "levels/cg/area_1/spline.inc.c"
-#include "levels/cg/area_2/collision.inc.c"
 #include "levels/cg/area_2/spline.inc.c"
-#include "levels/cg/area_3/collision.inc.c"
 #include "levels/cg/area_3/spline.inc.c"
-#include "levels/cg/area_4/collision.inc.c"
 #include "levels/cg/area_4/spline.inc.c"
 #endif
 
