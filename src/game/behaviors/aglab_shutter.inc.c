@@ -1,6 +1,7 @@
 #define oShutterLeft oObjF4
 #define oShutterRight oObjF8
 #define oShutterInitialize oFC
+#define oShutterSwitch oObj100
 
 struct ShutterConfig
 {
@@ -31,6 +32,28 @@ static const struct ShutterConfig* get_shutter_config()
     return NULL;
 }
 
+static int shutter_can_open()
+{
+    if (0 == o->oBehParams2ndByte)
+    {
+        return o->oDistanceToMario < 500.f;
+    }
+    else if (1 == o->oBehParams2ndByte)
+    {
+        return o->oShutterSwitch->oAction != 0;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+void bhv_shutter_init()
+{
+    f32 d;
+    o->oShutterSwitch = cur_obj_find_nearest_object_with_behavior(bhvFloorSwitchHardcodedModel, &d);
+}
+
 void bhv_shutter_loop()
 {
     const struct ShutterConfig* cfg = get_shutter_config();
@@ -46,7 +69,7 @@ void bhv_shutter_loop()
 
     if (0 == o->oAction)
     {
-        if (o->oDistanceToMario < 500.f)
+        if (shutter_can_open())
         {
             o->oAction = 1;
         }

@@ -7,8 +7,8 @@ const Trajectory ee_area_4_spline_NurbsCurve_Spring_003[] = {
 };
 const Trajectory ee_area_4_spline_NurbsCurve_Spring_006[] = {
 	TRAJECTORY_POS( 0, 16325, 3343, 8321),
-	TRAJECTORY_POS( 1, 16740, 3837, 8102),
-	TRAJECTORY_POS( 2, 17527, 4295, 7688),
-	TRAJECTORY_POS( 3, 18036, 4330, 7420),
+	TRAJECTORY_POS( 1, 16607, 3941, 8205),
+	TRAJECTORY_POS( 2, 17081, 4205, 7947),
+	TRAJECTORY_POS( 3, 17423, 4245, 7744),
 	TRAJECTORY_END(),
 };

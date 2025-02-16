@@ -6133,10 +6133,12 @@ const BehaviorScript bhvCollision[] = {
     END_LOOP(),
 };
 
+extern void bhv_shutter_init();
 extern void bhv_shutter_loop();
 const BehaviorScript bhvShutter[] = {
     BEGIN(OBJ_LIST_SPAWNER),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO)),
+    CALL_NATIVE(bhv_shutter_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_shutter_loop),
     END_LOOP(),
