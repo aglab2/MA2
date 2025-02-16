@@ -403,7 +403,7 @@ void thread3_main(UNUSED void *arg) {
     puppyprint_calculate_ram_usage_static();
     puppyprint_calculate_ram_usage_dynamic();
 #endif
-    detect_emulator();
+    gEmulator = detect_emulator();
 
 #ifdef UNF
     debug_initialize();
