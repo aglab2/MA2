@@ -1880,9 +1880,9 @@ void geo_process_root(struct GraphNodeRoot *node, Vp *b, Vp *c, s32 clearColor) 
         Mtx *initialMatrix;
         Vp *viewport = alloc_display_list(sizeof(*viewport));
 
-        main_pool_push_state();
+        u8* savedStart = sMainPool.regions[0].start;
         // required for CDE optimization 
-        sMainPool.regions[0].start = (void*) ALIGN16(sMainPool.regions[0].start);
+        sMainPool.regions[0].start = (void*) ALIGN16(savedStart);
 
         initialMatrix = alloc_display_list(sizeof(*initialMatrix));
         gCurLookAt = (LookAt*)alloc_display_list(sizeof(LookAt));
@@ -1930,7 +1930,8 @@ void geo_process_root(struct GraphNodeRoot *node, Vp *b, Vp *c, s32 clearColor) 
             print_text_fmt_int(180, 36, "MEM %d", gDisplayListHeap->totalSpace - gDisplayListHeap->usedSpace);
         }
 #endif
-        main_pool_pop_state();
+
+        sMainPool.regions[0].start = savedStart;
     }
 }
 
