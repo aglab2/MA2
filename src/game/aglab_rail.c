@@ -291,6 +291,7 @@ static void prepare_mario_for_zipline_drop_loop(Vec3f trajDirection)
 
 int zipline_step()
 {
+    gMarioStates->extraAirAction = 1;
     if (sTrajectoryArea != gCurrAreaIndex)
     {
         f32 fv = sForwardVel;

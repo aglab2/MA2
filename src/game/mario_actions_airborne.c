@@ -208,7 +208,7 @@ void update_air_without_turn(struct MarioState *m) {
 
     if (!check_horizontal_wind(m)) {
         dragThreshold = m->action == ACT_LONG_JUMP ? 48.0f : 32.0f;
-        if (m->prevAction == ACT_RAIL_GRIND || m->extraGravityEnabled) {
+        if (m->extraGravityEnabled) {
             dragThreshold = 101.0f;
         }
         m->forwardVel = approach_f32(m->forwardVel, 0.0f, 0.35f, 0.35f);
@@ -218,7 +218,11 @@ void update_air_without_turn(struct MarioState *m) {
             intendedMag = m->intendedMag / 32.0f;
 
             m->forwardVel += intendedMag * coss(intendedDYaw) * 1.5f;
-            sidewaysSpeed = intendedMag * sins(intendedDYaw) * 10.0f;
+            f32 sidewaysMag = 10.f;
+            if (m->extraAirAction)
+                sidewaysMag = 30.f;
+
+            sidewaysSpeed = intendedMag * sins(intendedDYaw) * sidewaysMag;
         }
 
         //! Uncapped air speed. Net positive when moving forward.
@@ -1939,7 +1943,17 @@ s32 act_vertical_wind(struct MarioState *m) {
         set_mario_animation(m, MARIO_ANIM_AIRBORNE_ON_STOMACH);
     }
 
+#if 0
     update_air_without_turn(m);
+#else
+    {
+        m->forwardVel = intendedMag * coss(intendedDYaw);
+        m->slideVelX = m->intendedMag * sins(m->intendedYaw);
+        m->slideVelZ = m->intendedMag * coss(m->intendedYaw);
+        m->vel[0] = m->slideVelX;
+        m->vel[2] = m->slideVelZ;
+    }
+#endif
 
     switch (perform_air_step(m, 0)) {
         case AIR_STEP_LANDED:

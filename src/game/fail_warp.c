@@ -31,6 +31,7 @@ static void fail_warp_set_safe_pos(struct MarioState *m)
     sSafePosArea = gCurrAreaIndex;
     sSafePosLevel = gCurrLevelNum;
     m->extraGravityEnabled = 0;
+    m->extraAirAction = 0;
     sSafeWarpId = WARP_NODE_FAIL_WARP;
 }
 
@@ -52,6 +53,7 @@ void fail_warp_mario_set_safe_pos(struct MarioState *m, struct Surface *floor)
     }
 
     m->extraGravityEnabled = 0;
+    m->extraAirAction = 0;
 #if 0
     bool slideTerrain = (m->area->terrainType & TERRAIN_MASK) == TERRAIN_SLIDE;
     if (slideTerrain)

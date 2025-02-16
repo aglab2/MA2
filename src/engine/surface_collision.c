@@ -376,9 +376,11 @@ static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 
 static int ban_fast_collision_ground(void)
 {
     if (gCurrLevelNum == LEVEL_GF && 1 == gCurrAreaIndex)
-    {
         return gMarioStates->pos[2] > 13000.f;
-    }
+    if (gCurrLevelNum == LEVEL_PH)
+        return 1;
+    if (gCurrLevelNum == LEVEL_EE && 5 == gCurrAreaIndex)
+        return 1;
 
     return 0;
 }
