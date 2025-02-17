@@ -1771,7 +1771,7 @@ void geo_process_obj_translation(struct GraphNodeTranslation *node) {
 
 void geo_process_batchset_translation(struct GraphNodeBatchsetTranslation *node) {
     Vec3f translation;
-    vec3_copy(node->translation, translation);
+    vec3_copy(translation, node->translation);
     mtxf_translate_and_mul(translation[0], translation[1], translation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
 
     inc_mat_stack();
@@ -1780,7 +1780,7 @@ void geo_process_batchset_translation(struct GraphNodeBatchsetTranslation *node)
 
 void geo_process_batchset_translation_rotation(struct GraphNodeBatchsetTranslationRotation* node) {
     Vec3f translation;
-    vec3_copy(node->translation, translation);
+    vec3_copy(translation, node->translation);
     mtxf_rotate_zxy_and_translate_and_mul(node->rotation[0], node->rotation[1], node->rotation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
 
     inc_mat_stack();
