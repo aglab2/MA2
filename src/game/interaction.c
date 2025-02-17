@@ -516,6 +516,9 @@ u32 bully_knock_back_mario(struct MarioState *mario) {
 
 void bounce_off_object(struct MarioState *m, struct Object *obj, f32 velY) {
     m->pos[1] = obj->oPosY + obj->hitboxHeight;
+    if (gIsGravityFlipped)
+        m->pos[1] = 9000.f - m->pos[1];
+
     m->vel[1] = velY;
 
     m->flags &= ~MARIO_JUMPING;

@@ -117,7 +117,7 @@ void bhv_snufit_loop(void) {
 
         // Face Mario if he is within range.
         if (o->oDistanceToMario < 800.0f) {
-            obj_turn_pitch_toward_mario(120.0f, 2000);
+            obj_turn_pitch_toward_mario(gIsGravityFlipped ? -120.0f : 120.f, 2000);
 
             if ((s16) o->oMoveAnglePitch > 0x2000) {
                 o->oMoveAnglePitch = 0x2000;
