@@ -50,6 +50,10 @@ extern const f32 gSineTable[];
 #define cots(x) (coss(x) / sins(x))
 #define atans(x) gArctanTable[(s32)((((x) * 1024) + 0.5f))] // is this correct? used for atan2_lookup
 
+#define sinf(x) (sins(radians_to_angle(x)))
+#define cosf(x) (coss(radians_to_angle(x)))
+#define acosf(x) ((M_PI/2.f) - sinf(x))
+
 // Angle conversion macros
 
 #define RAD_PER_DEG (M_PI / 180.0f)
@@ -518,6 +522,12 @@ void min_max_3s(s16 a, s16 b, s16 c, s16 *min, s16 *max);
 #define vec3f_get_dist vec3_get_dist
 #define vec3s_get_dist vec3_get_dist
 
+#define vec3f_get_dist_squared(from, to, dist) { \
+    Vec3f _d;                           \
+    vec3_diff(_d, (to), (from));        \
+    *(dist) = vec3_sumsq((_d));           \
+}
+
 /// Finds the horizontal distance between two vectors
 #define vec3_get_lateral_dist(from, to, lateralDist) { \
     Vec3f _d;                                          \
@@ -630,8 +640,6 @@ void mtxf_translate_and_mul(f32 trans0, f32 trans1, f32 trans2, Mat4 dest, Mat4 
 void mtxf_rotate_xyz_and_translate_and_mul(Vec3s rot, Vec3f trans, Mat4 dest, Mat4 src);
 void mtxf_billboard(Mat4 dest, Mat4 mtx, Vec3f position, Vec3f scale, s16 angle);
 void mtxf_shadow(Mat4 dest, Vec3f upDir, Vec3f pos, Vec3f scale, s16 yaw);
-void mtxf_align_terrain_normal(Mat4 dest, Vec3f upDir, Vec3f pos, s16 yaw);
-void mtxf_align_terrain_triangle(Mat4 mtx, Vec3f pos, s16 yaw, f32 radius);
 void mtxf_mul(Mat4 dest, Mat4 a, Mat4 b);
 void mtxf_scale_vec3f(Mat4 dest, Mat4 mtx, Vec3f s);
 void mtxf_mul_vec3s(Mat4 mtx, Vec3s b);
@@ -672,6 +680,21 @@ s32  anim_spline_poll(Vec3f result);
 f32 get_relative_position_between_ranges(f32 x, f32 fromA, f32 toA, f32 fromB, f32 toB);
 s16 approach_yaw(s16 curYaw, s16 target, f32 speed);
 f32 find_surface_on_ray(Vec3f orig, Vec3f dir, struct Surface **hit_surface, Vec3f hit_pos, s32 flags);
+
+void vec3f_quat_look(Vec3f dest, Quat input);
+void mtxf_from_quat(Quat q, Mat4 dest);
+f32 quat_dot(Quat q1, Quat q2);
+void quat_identity(Quat dest);
+void quat_copy(Quat dest, Quat src);
+void quat_mul(Quat dest, Quat a, Quat b);
+void quat_normalize(Quat quat);
+void quat_from_zxy_euler(Quat result, Vec3s angle);
+void quat_from_xyz_euler(Quat result, Vec3s angle);
+void quat_inverse(Quat dest, Quat q);
+void quat_slerp(Quat qr, Quat q1, Quat q2 , f32 lambda);
+void quat_fromto(Quat dest, Vec3f from, Vec3f to);
+void quat_align_with_floor(Quat dest, Vec3f floorNormal);
+void quat_align_with_floor_fancy(Quat dest, Vec3f pos, s16 yaw);
 
 ALWAYS_INLINE f32 remap(f32 x, f32 fromA, f32 toA, f32 fromB, f32 toB) {
     return (x - fromA) / (toA - fromA) * (toB - fromB) + fromB;

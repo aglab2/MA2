@@ -31,6 +31,8 @@
 #include "vc_ultra.h"
 #include "profiling.h"
 #include "emutest.h"
+#include "lerp.h"
+#include "level_update.h"
 
 #include "hacktice/cfg.h"
 #include "hacktice/main.h"
@@ -102,6 +104,10 @@ struct Controller* const gPlayer4Controller = &gControllers[3];
 struct DemoInput *gCurrDemoInput = NULL;
 u16 gDemoInputListID = 0;
 struct DemoInput gRecordedDemoInput = { 0 };
+
+//60 fps variables
+u8 _60fps_on = TRUE;
+u8 _60fps_midframe = FALSE;
 
 // Display
 // ----------------------------------------------------------------------------------------------------
@@ -489,15 +495,16 @@ void display_and_vsync(void) {
         gGoddardVblankCallback = NULL;
     }
     exec_display_list(&gGfxPool->spTask);
-#ifndef UNLOCK_FPS
-    osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
-#endif
-    osViSwapBuffer((void *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[sRenderedFramebuffer]));
-#ifndef UNLOCK_FPS
-    osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
-#endif
 
-    // Skip swapping buffers on some inaccurate emulators so that they display immediately as the Gfx task finishes
+    if (!_60fps_on) {
+        osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
+    }
+
+    osViSwapBuffer((void *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[sRenderedFramebuffer]));
+
+    osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
+
+    // Skip swapping buffers on inaccurate emulators other than VC so that they display immediately as the Gfx task finishes
     if (!(gEmulator & INSTANT_INPUT_WHITELIST)) {
         if (++sRenderedFramebuffer == 3) {
             sRenderedFramebuffer = 0;
@@ -505,8 +512,17 @@ void display_and_vsync(void) {
         if (++sRenderingFramebuffer == 3) {
             sRenderingFramebuffer = 0;
         }
+    } else {
+        if (++sRenderedFramebuffer == 2) {
+            sRenderedFramebuffer = 0;
+        }
+        if (++sRenderingFramebuffer == 2) {
+            sRenderingFramebuffer = 0;
+        }
     }
-    gGlobalTimer++;
+    if (!_60fps_midframe) {
+        gGlobalTimer++;
+    }
 }
 
 #if !defined(DISABLE_DEMO) && defined(KEEP_MARIO_HEAD)
@@ -854,6 +870,17 @@ void thread5_game_loop(UNUSED void *arg) {
     render_init();
 
     while (TRUE) {
+        if (_60fps_on)
+        {
+            gFrameLerpDeltaTime = 0.5f;
+            gFrameLerpRenderFrame = 1;    
+        }
+        else
+        {
+            gFrameLerpDeltaTime = 1.f;
+            gFrameLerpRenderFrame = 0;
+        }
+
         profiler_frame_setup();
         // If the reset timer is active, run the process to reset the game.
         if (gResetTimer != 0) {
@@ -874,17 +901,10 @@ void thread5_game_loop(UNUSED void *arg) {
 
         audio_game_loop_tick();
         select_gfx_pool();
-        read_controller_inputs(THREAD_5_GAME_LOOP);
-
-        if (Hacktice_gEnabled)
-        {
-            Hacktice_onFrame();
+        if (!_60fps_midframe) {
+            read_controller_inputs(THREAD_5_GAME_LOOP);
         }
-        const int ResetCombo = L_TRIG | Z_TRIG;
-        if (Hacktice_gConfig.softReset)
-        {
-            SoftReset_onFrame();
-        }
+        print_text_fmt_int(20, 20, "%d", _60fps_midframe);
         profiler_update(PROFILER_TIME_CONTROLLERS, 0);
         profiler_collision_reset();
         addr = level_script_execute(addr);

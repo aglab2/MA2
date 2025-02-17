@@ -9,6 +9,7 @@
 #include "game/area.h"
 #include "geo_layout.h"
 #include "batch_list.h"
+#include "game/lerp.h"
 
 /**
  * Initialize a geo node with a given type. Sets all links such that there
@@ -217,6 +218,8 @@ struct GraphNodeCamera *init_graph_node_camera(struct GraphNodeCamera *graphNode
         init_scene_graph_node_links(&graphNode->fnNode.node, GRAPH_NODE_TYPE_CAMERA);
         vec3f_copy(graphNode->pos, pos);
         vec3f_copy(graphNode->focus, focus);
+        vec3f_copy(graphNode->posLerp, pos);
+        vec3f_copy(graphNode->focLerp, focus);
         graphNode->fnNode.func = func;
         graphNode->config.mode = mode;
         graphNode->roll = 0;
@@ -325,8 +328,12 @@ struct GraphNodeObject *init_graph_node_object(struct GraphNodeObject *graphNode
     if (graphNode != NULL) {
         init_scene_graph_node_links(&graphNode->node, GRAPH_NODE_TYPE_OBJECT);
         vec3f_copy(graphNode->pos, pos);
+        vec3f_copy(graphNode->posLerp, pos);
         vec3f_copy(graphNode->scale, scale);
         vec3s_copy(graphNode->angle, angle);
+        vec3f_copy(graphNode->scaleLerp, scale);
+        quat_identity(graphNode->throwRotation);
+        quat_from_zxy_euler(graphNode->rotLerp, angle);
         graphNode->sharedChild = sharedChild;
         graphNode->throwMatrix = NULL;
         graphNode->animInfo.animID = 0;
@@ -336,6 +343,8 @@ struct GraphNodeObject *init_graph_node_object(struct GraphNodeObject *graphNode
         graphNode->animInfo.animAccel = 0x10000;
         graphNode->animInfo.animTimer = 0;
         graphNode->node.flags |= GRAPH_RENDER_HAS_ANIMATION;
+        graphNode->animInfo.animFrameF = 0.0f;
+        graphNode->animInfo.animAccelF = 1.0f;
     }
 
     return graphNode;
@@ -833,8 +842,12 @@ void geo_reset_object_node(struct GraphNodeObject *graphNode) {
  */
 void geo_obj_init(struct GraphNodeObject *graphNode, void *sharedChild, Vec3f pos, Vec3s angle) {
     vec3_same(graphNode->scale, 1.0f);
+    vec3_same(graphNode->scaleLerp, 1.0f);
     vec3f_copy(graphNode->pos, pos);
     vec3s_copy(graphNode->angle, angle);
+    quat_identity(graphNode->throwRotation);
+    quat_from_zxy_euler(graphNode->rotLerp,angle);
+    vec3f_copy(graphNode->posLerp, pos);
 
     graphNode->sharedChild = sharedChild;
     graphNode->spawnInfo = 0;
@@ -881,13 +894,15 @@ void geo_obj_init_animation(struct GraphNodeObject *graphNode, struct Animation 
         graphNode->animInfo.animFrame = anim->startFrame + ((anim->flags & ANIM_FLAG_FORWARD) ? 1 : -1);
         graphNode->animInfo.animAccel = 0;
         graphNode->animInfo.animYTrans = 0;
+        graphNode->animInfo.animFrameF = graphNode->animInfo.animFrame;
+        graphNode->animInfo.animAccelF = 1.0f;
     }
 }
 
 /**
  * Initialize the animation of an object node
  */
-void geo_obj_init_animation_accel(struct GraphNodeObject *graphNode, struct Animation **animPtrAddr, u32 animAccel) {
+void geo_obj_init_animation_accel(struct GraphNodeObject *graphNode, struct Animation **animPtrAddr, f32 animAccel) {
     struct Animation **animSegmented = segmented_to_virtual(animPtrAddr);
     struct Animation *anim = segmented_to_virtual(*animSegmented);
 
@@ -899,7 +914,8 @@ void geo_obj_init_animation_accel(struct GraphNodeObject *graphNode, struct Anim
         graphNode->animInfo.animFrame = graphNode->animInfo.animFrameAccelAssist >> 16;
     }
 
-    graphNode->animInfo.animAccel = animAccel;
+    graphNode->animInfo.animAccel = (s32)(animAccel * 65536.0f);
+    graphNode->animInfo.animAccelF = animAccel;
 }
 
 /**
@@ -975,6 +991,35 @@ s32 geo_update_animation_frame(struct AnimInfo *obj, s32 *accelAssist) {
     }
 
     return GET_HIGH_S16_OF_32(result);
+}
+
+f32 geo_update_animation_frame_float(struct AnimInfo *updateAnimInfo) {
+    struct Animation *anim = updateAnimInfo->curAnim;
+    f32 animFrame = updateAnimInfo->animFrameF;
+    f32 result;
+    if (anim->flags & ANIM_FLAG_FORWARD) {
+        result = animFrame - (gFrameLerpDeltaTime * updateAnimInfo->animAccelF);
+        if (result < anim->loopStart) {
+            if (anim->flags & ANIM_FLAG_NOLOOP) {
+                result = anim->loopStart;
+            } else {
+                result = anim->loopEnd;
+            }
+        }
+    } else {
+        result = animFrame + (gFrameLerpDeltaTime * updateAnimInfo->animAccelF);
+        if (result < 0.f) {
+            result = 0.f;
+        }
+        if (result > anim->loopEnd) {
+            if (anim->flags & ANIM_FLAG_NOLOOP) {
+                result = anim->loopEnd;
+            } else {
+                result = anim->loopStart;
+            }
+        }
+    }
+    return result;
 }
 
 /**

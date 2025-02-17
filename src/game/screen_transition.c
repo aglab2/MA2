@@ -23,9 +23,11 @@ void *sTextureTransitionID[] = {
     texture_transition_bowser_half,
 };
 
-
+extern f32 lerp_menu_stack[];
 s32 set_and_reset_transition_fade_timer(u8 transTime) {
-    sTransitionFadeTimer++;
+    if (!_60fps_midframe) {
+        sTransitionFadeTimer++;
+    }
 
     if (sTransitionFadeTimer >= transTime) {
         sTransitionFadeTimer = 0;

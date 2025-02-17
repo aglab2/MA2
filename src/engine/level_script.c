@@ -961,18 +961,38 @@ static void (*LevelScriptJumpTable[])(void) = {
     /*LEVEL_CMD_SET_ECHO                    */ level_cmd_set_echo,
 };
 
+static u8 ran_game_logic_once_before_rendering = FALSE;
 struct LevelCommand *level_script_execute(struct LevelCommand *cmd) {
     sScriptStatus = SCRIPT_RUNNING;
     sCurrentCmd = cmd;
 
-    while (sScriptStatus == SCRIPT_RUNNING) {
-        LevelScriptJumpTable[sCurrentCmd->type]();
+    if (_60fps_midframe) {
+        // AGLAB WHY
+        gPlayer1Controller->buttonPressed  = 0x0000;
     }
 
     init_rcp(CLEAR_ZBUFFER);
-    render_game();
+    if (ran_game_logic_once_before_rendering) {
+        render_game();
+    }
     end_master_display_list();
     alloc_display_list(0);
+
+    // AGLAB PULL SETTINGS
+    _60fps_on = 0;
+
+    if (!_60fps_midframe) {
+        while (sScriptStatus == SCRIPT_RUNNING) {
+            LevelScriptJumpTable[sCurrentCmd->type]();
+            ran_game_logic_once_before_rendering = TRUE;
+        }
+    }
+
+    if (_60fps_on) {
+        _60fps_midframe = !_60fps_midframe;
+    } else {
+        _60fps_midframe = FALSE;
+    }
 
     return sCurrentCmd;
 }

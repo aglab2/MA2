@@ -891,6 +891,9 @@ void print_credits_string_aligned(s16 x, s16 y, const char *str, u32 alignment) 
 }
 
 void handle_menu_scrolling(s8 scrollDirection, s8 *currentIndex, s8 minIndex, s8 maxIndex) {
+    if (_60fps_midframe)
+        return;
+
     static u8 gMenuHoldKeyIndices[2];
     static u8 gMenuHoldKeyTimers[2];
 
@@ -1288,22 +1291,25 @@ void render_dialog_entries(void) {
     switch (gDialogBoxState) {
         case DIALOG_STATE_OPENING:
             if (gDialogBoxOpenTimer == DEFAULT_DIALOG_BOX_ANGLE) {
-                play_dialog_sound(dialog->voice);
+                play_dialog_sound(gDialogID);
                 play_sound(SOUND_MENU_MESSAGE_APPEAR, gGlobalSoundSource);
             }
 
-            if (gDialogBoxType == DIALOG_TYPE_ROTATE) {
-                gDialogBoxOpenTimer -= 7.5f;
-                gDialogBoxScale -= 1.5f;
-            } else {
-                gDialogBoxOpenTimer -= 10.0f;
-                gDialogBoxScale -= 2.0f;
+            if (!_60fps_midframe) {
+                if (gDialogBoxType == DIALOG_TYPE_ROTATE) {
+                    gDialogBoxOpenTimer -= 7.5f;
+                    gDialogBoxScale -= 1.5f;
+                } else {
+                    gDialogBoxOpenTimer -= 10.0f;
+                    gDialogBoxScale -= 2.0f;
+                }
+
+                if (gDialogBoxOpenTimer == 0.0f) {
+                    gDialogBoxState = DIALOG_STATE_VERTICAL;
+                    gDialogLineNum = 1;
+                }
             }
 
-            if (gDialogBoxOpenTimer == 0.0f) {
-                gDialogBoxState = DIALOG_STATE_VERTICAL;
-                gDialogLineNum = 1;
-            }
             break;
 
         case DIALOG_STATE_VERTICAL:
@@ -1320,7 +1326,11 @@ void render_dialog_entries(void) {
             }
             break;
         case DIALOG_STATE_HORIZONTAL: // scrolling
-            gDialogScrollOffsetY += (dialog->linesPerBox * 2);
+            if (_60fps_on) {
+                gDialogScrollOffsetY += (dialog->linesPerBox);
+            } else {
+                gDialogScrollOffsetY += (dialog->linesPerBox * 2);
+            }
 
             if (gDialogScrollOffsetY >= dialog->linesPerBox * DIALOG_LINE_HEIGHT) {
                 gDialogTextPos = gLastDialogPageStrPos;
@@ -1339,8 +1349,10 @@ void render_dialog_entries(void) {
                 gDialogResponse = gDialogLineNum;
             }
 
-            gDialogBoxOpenTimer = gDialogBoxOpenTimer + 10.0f;
-            gDialogBoxScale = gDialogBoxScale + 2.0f;
+            if (!_60fps_midframe) {
+                gDialogBoxOpenTimer = gDialogBoxOpenTimer + 10.0f;
+                gDialogBoxScale = gDialogBoxScale + 2.0f;
+            }
 
             if (gDialogBoxOpenTimer == DEFAULT_DIALOG_BOX_ANGLE) {
                 gDialogBoxState = DIALOG_STATE_OPENING;
@@ -2061,8 +2073,10 @@ s32 render_pause_courses_and_castle(void) {
         if (!Hacktice_gEnabled)
             render_widescreen_setting();
 #endif
-    gDialogTextAlpha += 25;
-    if (gDialogTextAlpha > 250) {
+    if (!_60fps_midframe) {
+        gDialogTextAlpha += 25;
+    }
+if (gDialogTextAlpha > 250) {
         gDialogTextAlpha = 250;
     }
 #ifdef PUPPYCAM
@@ -2306,7 +2320,9 @@ s32 render_course_complete_screen(void) {
             break;
     }
 
-    gDialogTextAlpha += 25;
+    if (!_60fps_midframe) {
+        gDialogTextAlpha += 25;
+    }
     if (gDialogTextAlpha > 250) {
         gDialogTextAlpha = 250;
     }
