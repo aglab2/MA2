@@ -7,8 +7,8 @@
 
 #include "config/config_world.h"
 
-extern u32 gGravityMode;
-extern u32 gIsGravityFlipped;
+extern u8 gGravityMode;
+extern u8 gIsGravityFlipped;
 
 // The y coord is moved upward by this amount when finding floors.
 // Vanilla value is 78.

@@ -93,7 +93,7 @@ void bhv_spring_init()
     }
 }
 
-extern u32 gIsGravityFlipped;
+extern u8 gIsGravityFlipped;
 void bhv_spring_loop()
 {
     if (0 == o->oAction)

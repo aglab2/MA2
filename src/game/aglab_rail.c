@@ -98,7 +98,7 @@ static f32 traj_length(const s16* traj)
     return length;
 }
 
-extern u32 gIsGravityFlipped;
+extern u8 gIsGravityFlipped;
 static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop, int it)
 {
     (void) it;

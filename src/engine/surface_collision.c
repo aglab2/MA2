@@ -10,8 +10,8 @@
 #include "surface_load.h"
 #include "game/puppyprint.h"
 
-u32 gGravityMode = FALSE; // Is flipped gravity currently being applied (only when Mario is updated)
-u32 gIsGravityFlipped = FALSE; // Is gravity flipped
+u8 gGravityMode = FALSE; // Is flipped gravity currently being applied (only when Mario is updated)
+u8 gIsGravityFlipped = FALSE; // Is gravity flipped
 struct Surface gCeilingDeathPlane = {
     SURFACE_DEATH_PLANE, 0, 0, 0, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 },
     { 0.0f, -1.0f, 0.0f },  0.0f, NULL,
