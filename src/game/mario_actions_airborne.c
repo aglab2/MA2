@@ -220,7 +220,7 @@ void update_air_without_turn(struct MarioState *m) {
             m->forwardVel += intendedMag * coss(intendedDYaw) * 1.5f;
             f32 sidewaysMag = 10.f;
             if (m->extraAirAction)
-                sidewaysMag = 30.f;
+                sidewaysMag = 20.f;
 
             sidewaysSpeed = intendedMag * sins(intendedDYaw) * sidewaysMag;
         }
