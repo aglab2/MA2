@@ -378,7 +378,11 @@ int zipline_step()
 
                 sForwardVel *= 0.97f;
                 sForwardVel += dot / 12.0f;
-                sForwardVel -= trajDirection[1] / dirMag * 5.f;
+                int grav = trajDirection[1] / dirMag * 5.f;
+                if (gIsGravityFlipped)
+                    grav = -grav;
+
+                sForwardVel -= grav;
                 sForwardVel = CLAMP(sForwardVel, -sForwardVelLimit, sForwardVelLimit);
             }
 

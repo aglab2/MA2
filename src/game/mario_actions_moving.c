@@ -1292,6 +1292,9 @@ s32 act_rail_grind(struct MarioState *m)
 
     if (zipline_step()) {
         int butt = 0;
+        if (gIsGravityFlipped)
+            m->pos[1] = 9000.f - m->pos[1];
+
         if (onLoop)
         {
             f32 floorHeight = find_floor_height(m->pos[0], m->pos[1], m->pos[2]);
@@ -1306,6 +1309,9 @@ s32 act_rail_grind(struct MarioState *m)
 
     m->marioObj->header.gfx.pos[0] = m->pos[0];
     m->marioObj->header.gfx.pos[1] = m->pos[1] - 45.f;
+    if (gIsGravityFlipped)
+        m->marioObj->header.gfx.pos[1] = 9000.f + 45.f - m->pos[1];
+
     m->marioObj->header.gfx.pos[2] = m->pos[2];
     set_mario_animation(m, onLoop ? MARIO_ANIM_SLIDE : MARIO_ANIM_RIDING_SHELL);
     tilt_body_ground_shell(m, startYaw);
