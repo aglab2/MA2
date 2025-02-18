@@ -11,7 +11,6 @@ static const RailDesc rails_area1[] = {
 };
 
 static const RailDesc rails_area2[] = {
-	RAIL_TRAJ(cg_area_2_spline_NurbsCurve_Rail_003),
 	RAIL_TRAJ(cg_area_2_spline_NurbsCurve_Rail_004),
 	RAIL_TRAJ(cg_area_2_spline_NurbsCurve_Rail_005),
 	LOOP_TRAJ(cg_area_2_spline_NurbsCurve_Loop, loop_desc_cg_area_2_spline_NurbsCurve_Loop),
