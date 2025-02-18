@@ -44,6 +44,9 @@ IWDHeader* iw_descs_cg[] = {
     &iw_area4.header,
 };
 
+static const LDLDesc loop_desc1 = { 0, 0 };
+#define loop_desc_cg_area_2_spline_NurbsCurve_Loop &loop_desc1
+
 #include "levels/cg/rails.inc.c"
 
 #include "levels/cg/visual/header_lvl.inc.h"
