@@ -19,7 +19,7 @@ void bhv_gravflip_loop()
         gMarioStates->pos[2] = o->oPosZ;
         gMarioStates->vel[0] = 0;
         gMarioStates->vel[2] = 0;
-        if (30 == o->oTimer)
+        if (30 == o->oTimer || gMarioStates->floorHeight == gMarioStates->pos[1] || gCurrAreaIndex == 1)
         {
             o->oAction = 0;
         }
