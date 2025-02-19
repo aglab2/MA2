@@ -1,18 +1,27 @@
 extern void set_gravity(u32 grav);
 void bhv_gravflip_loop()
 {
-    f32 dst = GET_BPARAM1(o->oBehParams) ? 1000.f : 100.f;
-    if (o->oDistanceToMario < dst)
+    if (0 == o->oAction)
     {
-        if (gIsGravityFlipped == !!o->oBehParams2ndByte)
+        f32 dst = GET_BPARAM1(o->oBehParams) ? 1000.f : 100.f;
+        if (o->oDistanceToMario < dst)
         {
-            gMarioStates->pos[0] = o->oPosX;
-            gMarioStates->pos[1] = o->oPosY;
-            gMarioStates->pos[2] = o->oPosZ;
-            gMarioStates->vel[0] = 0;
-            gMarioStates->vel[1] = 0;
-            gMarioStates->vel[2] = 0;
+            if (gIsGravityFlipped == !!o->oBehParams2ndByte)
+            {
+                o->oAction = 1;
+                set_gravity(!o->oBehParams2ndByte);
+            }
         }
-        set_gravity(!o->oBehParams2ndByte);
+    }
+    else
+    {
+        gMarioStates->pos[0] = o->oPosX;
+        gMarioStates->pos[2] = o->oPosZ;
+        gMarioStates->vel[0] = 0;
+        gMarioStates->vel[2] = 0;
+        if (30 == o->oTimer)
+        {
+            o->oAction = 0;
+        }
     }
 }

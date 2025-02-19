@@ -20,6 +20,7 @@ static const RailDesc rails_area2[] = {
 static const SpringDesc spring_area3[] = {
 	cg_area_3_spline_NurbsCurve_Spring_003,
 	cg_area_3_spline_NurbsCurve_Spring_005,
+	cg_area_3_spline_NurbsCurve_Spring_006,
 	NULL
 };
 
