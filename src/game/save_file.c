@@ -77,7 +77,7 @@ static s32 read_eeprom_data(void *buffer, s32 size) {
             block_until_rumble_pak_free();
 #endif
             triesLeft--;
-            status = (gEmulator & EMU_WIIVC)
+            status = gIsVC
                    ? osEepromLongReadVC(&gSIEventMesgQueue, offset, buffer, size)
                    : osEepromLongRead  (&gSIEventMesgQueue, offset, buffer, size);
 #if ENABLE_RUMBLE
@@ -107,7 +107,7 @@ static s32 write_eeprom_data(void *buffer, s32 size) {
             block_until_rumble_pak_free();
 #endif
             triesLeft--;
-            status = (gEmulator & EMU_WIIVC)
+            status = gIsVC
                    ? osEepromLongWriteVC(&gSIEventMesgQueue, offset, buffer, size)
                    : osEepromLongWrite  (&gSIEventMesgQueue, offset, buffer, size);
 #if ENABLE_RUMBLE

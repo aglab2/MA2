@@ -789,7 +789,7 @@ static f32 get_dist_from_camera(Vec3f pos) {
  */
 void geo_process_level_of_detail(struct GraphNodeLevelOfDetail *node) {
 #ifdef AUTO_LOD
-    f32 distanceFromCam = (gEmulator & EMU_CONSOLE) ? get_dist_from_camera(gMatStack[gMatStackIndex][3]) : 50.0f;
+    f32 distanceFromCam = gIsConsole ? get_dist_from_camera(gMatStack[gMatStackIndex][3]) : 50.0f;
 #else
     f32 distanceFromCam = get_dist_from_camera(gMatStack[gMatStackIndex][3]);
 #endif
@@ -1354,8 +1354,6 @@ void geo_process_shadow(struct GraphNodeShadow *node) {
  * Since (0,0,0) is unaffected by rotation, columns 0, 1 and 2 are ignored.
  */
 
- #define NO_CULLING_EMULATOR_WHITELIST (EMU_PROJECT64 | EMU_PARALLEL_LAUNCHER | EMU_MUPEN)
-
 s32 obj_is_in_view(struct GraphNodeObject *node) {
     struct GraphNode *geo = node->sharedChild;
 
@@ -1382,7 +1380,7 @@ s32 obj_is_in_view(struct GraphNodeObject *node) {
 
 #ifndef CULLING_ON_EMULATOR
     // If certain emulators are detected, skip any other culling.
-    if(gEmulator & NO_CULLING_EMULATOR_WHITELIST) {
+    if (gHasPerformance) {
         return TRUE;
     }
 #endif
@@ -1962,6 +1960,9 @@ extern s16 gMatStackIndex;
 extern Mat4 gMatStack[32];
 extern Mtx *gMatStackFixed[32];
 Gfx *geo_render_backdrop(s32 callContext, struct GraphNode *node, UNUSED f32 b[4][4]) {
+    if (gIsConsole && gCurrLevelNum == LEVEL_CG)
+        return 0;
+
     Mat4 mat;
     Mtx *mtx = alloc_display_list(sizeof(*mtx));
     if (callContext == GEO_CONTEXT_RENDER) {

@@ -1172,7 +1172,7 @@ void audio_reset_session(s32 reverbPresetId) {
         if (gAudioLoadLock != AUDIO_LOCK_UNINITIALIZED) {
             gAudioLoadLock = AUDIO_LOCK_LOADING;
 
-            if (!(gEmulator & EMU_WIIVC)) {
+            if (!gIsVC) {
                 gAudioFrameCount = 0;
                 while (gAudioFrameCount < 1) {
                     // spin
@@ -1326,7 +1326,7 @@ void audio_reset_session(void) {
     gAudioBufferParameters.minAiBufferLength *= gAudioBufferParameters.presetUnk4;
     gAudioBufferParameters.updatesPerFrame *= gAudioBufferParameters.presetUnk4;
 
-    if (gEmulator & EMU_CONSOLE)
+    if (gIsConsole)
         gMaxSimultaneousNotes = MAX_SIMULTANEOUS_NOTES_CONSOLE;
     else
         gMaxSimultaneousNotes = MAX_SIMULTANEOUS_NOTES_EMULATOR;
@@ -1353,7 +1353,7 @@ void audio_reset_session(void) {
     gMinAiBufferLength = gSamplesPerFrameTarget - 0x10;
     gAudioUpdatesPerFrame = updatesPerFrame = gSamplesPerFrameTarget / 160 + 1;
 
-    if (gEmulator & EMU_CONSOLE)
+    if (gIsConsole)
         gMaxSimultaneousNotes = MAX_SIMULTANEOUS_NOTES_CONSOLE;
     else
         gMaxSimultaneousNotes = MAX_SIMULTANEOUS_NOTES_EMULATOR;

@@ -403,7 +403,15 @@ void thread3_main(UNUSED void *arg) {
     puppyprint_calculate_ram_usage_static();
     puppyprint_calculate_ram_usage_dynamic();
 #endif
-    gEmulator = detect_emulator();
+    u8 emulatorCfg = detect_emulator();
+    gHasEmulator = !(EMU_CONSOLE & emulatorCfg);
+    gIsVC = EMU_WIIVC & emulatorCfg;
+
+#define INSTANT_INPUT_WHITELIST (EMU_PARALLEL_LAUNCHER | EMU_PROJECT64 | EMU_MUPEN)
+    gHasInstantInput = INSTANT_INPUT_WHITELIST & emulatorCfg;
+    
+#define NO_CULLING_EMULATOR_WHITELIST (EMU_PROJECT64 | EMU_PARALLEL_LAUNCHER | EMU_MUPEN)
+    gHasPerformance = NO_CULLING_EMULATOR_WHITELIST & emulatorCfg;
 
 #ifdef UNF
     debug_initialize();
@@ -418,7 +426,7 @@ void thread3_main(UNUSED void *arg) {
     osSyncPrintf("Linker  : %s\n", __linker__);
 #endif
 
-    if (!(gEmulator & EMU_CONSOLE)) {
+    if (!gIsConsole) {
         gBorderHeight = BORDER_HEIGHT_EMULATOR;
 #ifdef RCVI_HACK
         VI.comRegs.vSync = 525*20;   

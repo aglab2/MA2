@@ -14,30 +14,13 @@ enum Emulator {
     EMU_OTHER                = (1 << 6), // Any other emulator
 };
 
-// initializes gEmulator
 extern u32 detect_emulator();
 
-/* gEmulator is an enum that identifies the current emulator.
- * The enum values work as a bitfield, so you can use the & and | operators
- * to test for multiple emulators or versions at once.
- * 
- * Examples:
- * 
- * Test for any version of PJ64:
- * if (gEmulator & EMU_PROJECT64)
- * 
- * Test for only PJ64 < 2.4:
- * if (gEmulator & EMU_PROJECT64_1_OR_2)
- * 
- * Test for Console or Parallel Launcher:
- * if (gEmulator & (EMU_CONSOLE | EMU_PARALLEL_LAUNCHER))
- */
-extern u8 gEmulator;
+extern u8 gHasEmulator;
+extern u8 gHasInstantInput;
+extern u8 gHasPerformance;
+extern u8 gIsVC;
 
-// determines whether libpl is safe to use
-extern u8 gSupportsLibpl;
-
-// Included for backwards compatibility when upgrading from HackerSM64 2.0
-#define gIsConsole ((gEmulator & EMU_CONSOLE) != 0)
+#define gIsConsole !gHasEmulator
 
 #endif

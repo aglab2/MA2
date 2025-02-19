@@ -765,7 +765,7 @@ static void level_cmd_set_music(void) {
     if (sCurrAreaIndex != -1) {
         gAreas[sCurrAreaIndex].musicParam = CMD_GET(s16, 2);
 #ifdef BETTER_REVERB
-        if (gEmulator & EMU_CONSOLE)
+        if (gIsConsole)
             gAreas[sCurrAreaIndex].betterReverbPreset = CMD_GET(u8, 4);
         else
             gAreas[sCurrAreaIndex].betterReverbPreset = CMD_GET(u8, 5);
@@ -778,7 +778,7 @@ static void level_cmd_set_music(void) {
 static void level_cmd_set_menu_music(void) {
 #ifdef BETTER_REVERB
     // Must come before set_background_music()
-    if (gEmulator & EMU_CONSOLE)
+    if (gIsConsole)
         gBetterReverbPresetValue = CMD_GET(u8, 4);
     else
         gBetterReverbPresetValue = CMD_GET(u8, 5);
@@ -886,7 +886,7 @@ static void level_cmd_puppyvolume(void) {
 static void level_cmd_set_echo(void) {
     if (sCurrAreaIndex >= 0 && sCurrAreaIndex < AREA_COUNT) {
         gAreaData[sCurrAreaIndex].useEchoOverride = TRUE;
-        if (gEmulator & EMU_CONSOLE)
+        if (gIsConsole)
             gAreaData[sCurrAreaIndex].echoOverride = CMD_GET(s8, 2);
         else
             gAreaData[sCurrAreaIndex].echoOverride = CMD_GET(s8, 3);

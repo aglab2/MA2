@@ -36,9 +36,6 @@
 #include "hacktice/main.h"
 #include "hacktice/soft_reset.h"
 
-// Emulators that the Instant Input patch should be applied to
-#define INSTANT_INPUT_WHITELIST (EMU_PARALLEL_LAUNCHER | EMU_PROJECT64 | EMU_MUPEN)
-
 // Gfx handlers
 struct SPTask *gGfxSPTask;
 Gfx *gDisplayListHead;
@@ -458,7 +455,7 @@ void render_init(void) {
 
     // Skip incrementing the initial framebuffer index on certain emulators so that they display immediately as the Gfx task finishes
     // This will break accurate emulators, so only enable on Project64, Parallel Launcher and Mupen.
-    if (!(gEmulator & INSTANT_INPUT_WHITELIST)) {
+    if (!gHasInstantInput) {
         sRenderingFramebuffer++;
     }
     gGlobalTimer++;
@@ -498,7 +495,7 @@ void display_and_vsync(void) {
 #endif
 
     // Skip swapping buffers on some inaccurate emulators so that they display immediately as the Gfx task finishes
-    if (!(gEmulator & INSTANT_INPUT_WHITELIST)) {
+    if (!gHasInstantInput) {
         if (++sRenderedFramebuffer == 3) {
             sRenderedFramebuffer = 0;
         }
@@ -711,7 +708,7 @@ void init_controllers(void) {
 #ifdef EEP
     // strangely enough, the EEPROM probe for save data is done in this function.
     // save pak detection?
-    gEepromProbe = (gEmulator & EMU_WIIVC)
+    gEepromProbe = gIsVC
                  ? osEepromProbeVC(&gSIEventMesgQueue)
                  : osEepromProbe  (&gSIEventMesgQueue);
 #endif
@@ -743,7 +740,7 @@ void init_controllers(void) {
     //! Some flashcarts (eg. ED64p) don't let you start a ROM with a GameCube controller in port 1,
     //   so if port 1 is an N64 controller and port 2 is a GC controller, swap them.
     if (
-        (gEmulator & EMU_CONSOLE) &&
+        gIsConsole &&
         ((gControllerBits & 0b11) == 0b11) && // Only swap if the first two ports both have controllers plugged in.
         ((gControllerStatuses[0].type & CONT_CONSOLE_MASK) == CONT_CONSOLE_N64) && // If the 1st port's controller is N64.
         ((gControllerStatuses[1].type & CONT_CONSOLE_MASK) == CONT_CONSOLE_GCN)    // If the 2nd port's controller is GCN.
