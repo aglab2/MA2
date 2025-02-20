@@ -155,6 +155,7 @@ static const RailDesc rails_area9[] = {
 static const SpringDesc spring_area10[] = {
 	fr_area_10_spline_Spring_NurbsCurve_018,
 	fr_area_10_spline_Spring_NurbsCurve_019,
+	fr_area_10_spline_Spring_NurbsCurve_020,
 	fr_area_10_spline_Spring_NurbsCurve_021,
 	NULL
 };

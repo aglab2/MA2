@@ -100,7 +100,7 @@ const Trajectory fr_area_2_spline_Rail_0402_object_01244FC4_001[] = {
 	TRAJECTORY_POS( 15, 8278, 11674, -11526),
 	TRAJECTORY_POS( 16, 8219, 11918, -11955),
 	TRAJECTORY_POS( 17, 8174, 13024, -14030),
-	TRAJECTORY_POS( 18, 8170, 13481, -14901),
+	TRAJECTORY_POS( 18, 8170, 13481, -14900),
 	TRAJECTORY_END(),
 };
 const Trajectory fr_area_2_spline_Spring_NurbsCurve_003[] = {

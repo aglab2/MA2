@@ -29,6 +29,7 @@ static const LDLDesc loop_desc2 = { -0x4000, 0 };
 
 #include "levels/fr/header.inc.h"
 #include "levels/fr/rails.inc.c"
+#include "levels/fr/flipbook.inc.c"
 
 #if 0
 #include "levels/fr/leveldata.inc.c"

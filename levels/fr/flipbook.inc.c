@@ -1,0 +1,30 @@
+#include "flipbook.h"
+
+static struct FlipbookData flipbooks_opaque[] = {    
+    { LVL_BATCH_LAYER_OPAQUE_FR_DL_SPACE64_1_PAL_RGBA16_1, .tileScrollX = 8, },
+    { LVL_BATCH_LAYER_OPAQUE_FR_DL_SPACE64_1_PAL_RGBA16_2, .tileScrollX = 8, },
+    
+    { LVL_BATCH_LAYER_OPAQUE_FR_DL_SPACE64_13_PAL_RGBA16, .tileScrollX = 8, },
+    { LVL_BATCH_LAYER_OPAQUE_FR_DL_SPACE64_13_PAL_RGBA16_1, .tileScrollX = 8, },
+    
+    { LVL_BATCH_LAYER_OPAQUE_FR_DL_SPACE64_5_PAL_RGBA16, .tileScrollX = 8, },
+    { LVL_BATCH_LAYER_OPAQUE_FR_DL_SPACE64_5_PAL_RGBA16_1, .tileScrollX = 8, },
+    
+    { LVL_BATCH_LAYER_OPAQUE_FR_DL_SPACE64_12_PAL_RGBA16, .tileScrollX = 8, },
+    { LVL_BATCH_LAYER_OPAQUE_FR_DL_SPACE64_12_PAL_RGBA16_1, .tileScrollX = 8, },
+    
+    { LVL_BATCH_LAYER_OPAQUE_FR_DL_SPACE64_16_PAL_RGBA16, .tileScrollX = 8, },
+    
+    { LVL_BATCH_LAYER_OPAQUE_FR_DL_SPACE64_6_PAL_RGBA16, .tileScrollX = 8, },
+    { LVL_BATCH_LAYER_OPAQUE_FR_DL_SPACE64_6_PAL_RGBA16_1, .tileScrollX = 8, },
+    
+    { LVL_BATCH_LAYER_OPAQUE_FR_DL_SPACE64_4_PAL_RGBA16, .tileScrollX = 8, },
+    { LVL_BATCH_LAYER_OPAQUE_FR_DL_SPACE64_8_PAL_RGBA16, .tileScrollX = 8, },
+
+    { LVL_BATCH_LAYER_OPAQUE_FR_DL_SPACE64_20_PAL_RGBA16, .shading = 1 },
+    { LVL_BATCH_LAYER_OPAQUE_FR_DL_SPACE32_3_RGBA16, .shading = 1 },
+};
+
+const struct FlipbookLayer fr_flipbooks[LAYER_COUNT] = {
+    [ LAYER_OPAQUE ] = FLIPBOOK_LAYER_DECL(flipbooks_opaque),
+};
