@@ -90,11 +90,21 @@ typedef enum { noDictCtx, usingDictCtxHc } dictCtx_directive;
 #ifdef LZ4T
 extern uint32_t LZ4T_hashMask;
 #define LZ4T_HASH_MASK LZ4T_hashMask
+static U32 LZ4HC_hashPtr(const void* ptr)
+{
+    // LZ4T patch, implementation taken from zstd
+    U32 i = LZ4_read32(ptr);
+    if (MINMATCH == 3) {
+        return (((i << 8) * 506832829U) >> ((4*8)-LZ4HC_HASH_LOG));
+    } else {
+        return ((i * 2654435761U) >> ((4*8)-LZ4HC_HASH_LOG));
+    }
+}
 #else
 #define LZ4T_HASH_MASK 0xffffffffU
-#endif
-#define HASH_FUNCTION(i)         (((i & 0x00ffffff) * 2654435761U) >> ((4*8)-LZ4HC_HASH_LOG))
+#define HASH_FUNCTION(i)      (((i) * 2654435761U) >> ((MINMATCH*8)-LZ4HC_HASH_LOG))
 static U32 LZ4HC_hashPtr(const void* ptr) { return HASH_FUNCTION(LZ4_read32(ptr)); }
+#endif
 
 #if defined(LZ4_FORCE_MEMORY_ACCESS) && (LZ4_FORCE_MEMORY_ACCESS==2)
 /* lie to the compiler about data alignment; use with caution */
