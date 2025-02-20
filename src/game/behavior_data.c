@@ -6196,3 +6196,11 @@ extern const BehaviorScript bhvSucc[] = {
         CALL_NATIVE(bhv_succ_loop),
     END_LOOP(),
 };
+
+extern void bhv_fr_drop();
+extern const BehaviorScript bhvFRDrop[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_fr_drop),
+    END_LOOP(),
+};

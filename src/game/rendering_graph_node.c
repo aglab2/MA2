@@ -465,12 +465,16 @@ static void apply_flipbooks(struct MasterLayer* masterLayer)
         }
 
         SetTileSize* tile = (SetTileSize*) &startDl[flipDls->offTile];
-        // tile->u += gGlobalTimer * flipData->tileScrollX;
-        // tile->v += gGlobalTimer * flipData->tileScrollY;
         if (flipData->tileScrollX)
+        {
             tile->t = gGlobalTimer * flipData->tileScrollX;
+            // tile->u = gGlobalTimer * flipData->tileScrollX;
+        }
         if (flipData->tileScrollY)
+        {
             tile->s = gGlobalTimer * flipData->tileScrollY;
+            // tile->v = gGlobalTimer * flipData->tileScrollY;
+        }
 
         // this bending constness rules a bit but trust me, it's fine
         struct BatchDisplayLists* batchDLs = (struct BatchDisplayLists*) masterLayer->course->batchDLs;

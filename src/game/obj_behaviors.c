@@ -786,6 +786,7 @@ static int aglabGlobalScratch[0x10];
 #include "behaviors/aglab_hb.inc.c"
 #include "behaviors/aglab_pc.inc.c"
 #include "behaviors/aglab_ee.inc.c"
+#include "behaviors/aglab_fr.inc.c"
 #include "behaviors/aglab_breakable.inc.c"
 
 #include "behaviors/aglab_starmove.inc.c"

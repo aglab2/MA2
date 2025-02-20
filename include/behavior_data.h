@@ -579,6 +579,7 @@ extern const BehaviorScript bhvCeTimer[];
 extern const BehaviorScript bhvCETimerStar[];
 extern const BehaviorScript bhvPushOut[];
 extern const BehaviorScript bhvSucc[];
+extern const BehaviorScript bhvFRDrop[];
 #define bhvBooster bhvSpeeder
 #define bhvBooaster bhvSpeeder
 
