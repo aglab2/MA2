@@ -41,5 +41,7 @@
     "26_ce": [ "0C_extended_bank" ],
     "27_dc": [ "0C_extended_bank" ],
     "28_cg": [ "0C_extended_bank" ],
-    "29_fr": [ "0C_extended_bank" ]
+    "29_fr": [ "0C_extended_bank" ],
+    "2A_ow": [ "0C_extended_bank" ],
+    "2B_wc": [ "0C_extended_bank" ]
 }

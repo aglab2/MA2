@@ -243,15 +243,10 @@ void init_door_warp(struct SpawnInfo *spawnInfo, u32 warpDestFlags) {
     spawnInfo->startPos[2] += 300.0f * coss(spawnInfo->startAngle[1]);
 }
 
-void set_mario_initial_cap_powerup(struct MarioState *m) {
-    if (gCurrCourseNum == COURSE_WC)
-    {
-        m->flags |= MARIO_WING_CAP | MARIO_CAP_ON_HEAD;
-        m->capTimer = 600;
-    }
+static void set_mario_initial_cap_powerup(struct MarioState *m) {
 }
 
-void set_mario_initial_action(struct MarioState *m, u32 spawnType, u32 actionArg) {
+static void set_mario_initial_action(struct MarioState *m, u32 spawnType, u32 actionArg) {
     switch (spawnType) {
         case MARIO_SPAWN_DOOR_WARP:
             set_mario_action(m, ACT_WARP_DOOR_SPAWN, actionArg);

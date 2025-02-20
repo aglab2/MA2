@@ -16,6 +16,7 @@
 #include "levels/castle_grounds/header.h"
 
 /* Fast64 begin persistent block [scripts] */
+#define SEQ_LEVEL_GRASS 0x2A
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_castle_grounds_entry[] = {
