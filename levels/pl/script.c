@@ -17,6 +17,7 @@
 /* Fast64 begin persistent block [scripts] */
 extern const BehaviorScript bhvPLRoll[];
 #include "levels/pl/area_1/collision.inc.c"
+#define SEQ_LEVEL_GRASS 0x2C
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_pl_entry[] = {
