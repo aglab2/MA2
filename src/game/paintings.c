@@ -1182,6 +1182,7 @@ void floor_painting_update(struct Painting *painting, struct Painting *paintingG
  * Use PAINTING_ID(id, group) to set the right parameter in a level's geo layout.
  */
 Gfx *geo_painting_draw(s32 callContext, struct GraphNode *node, UNUSED void *context) {
+    return NULL;
     struct GraphNodeGenerated *gen = (struct GraphNodeGenerated *) node;
     s32 group = (gen->parameter >> 8) & 0xFF;
     s32 id = gen->parameter & 0xFF;
@@ -1220,6 +1221,7 @@ Gfx *geo_painting_draw(s32 callContext, struct GraphNode *node, UNUSED void *con
  * Update the painting system's local copy of Mario's current floor and position.
  */
 Gfx *geo_painting_update(s32 callContext, UNUSED struct GraphNode *node, UNUSED Mat4 mtx) {
+    return NULL;
     struct Surface *surface;
 
     // Reset the update counter
