@@ -1782,7 +1782,7 @@ void sequence_channel_process_script(struct SequenceChannel *seqChannel) {
 #endif
 
                     case 0xd4: // chan_setreverb
-                        seqChannel->reverbVol = m64_read_u8(state);
+                        (void) m64_read_u8(state);
                         break;
 
                     case 0xc6: // chan_setbank; switch bank within set
