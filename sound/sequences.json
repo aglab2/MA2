@@ -49,5 +49,6 @@
     "2E_gf": [ "0C_extended_bank" ],
     "2F_ph": [ "0C_extended_bank" ],
     "30_ms": [ "0C_extended_bank" ],
-    "31_ee": [ "0C_extended_bank" ]
+    "31_ee": [ "0C_extended_bank" ],
+    "32_mh": [ "0C_extended_bank" ]
 }
