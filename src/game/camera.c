@@ -6211,6 +6211,7 @@ s16 camera_course_processing(struct Camera *c) {
         level = LEVEL_COUNT + 1;
     }
 
+#if 0
     if (sCameraTriggers[level] != NULL) {
         b = 0;
 
@@ -6252,6 +6253,8 @@ s16 camera_course_processing(struct Camera *c) {
             b++;
         }
     }
+#endif
+
 #if defined(ENABLE_VANILLA_CAM_PROCESSING) && !defined(FORCED_CAMERA_MODE) && !defined(USE_COURSE_DEFAULT_MODE)
     // Area-specific camera processing
     if (!(sStatusFlags & CAM_FLAG_BLOCK_AREA_PROCESSING)) {

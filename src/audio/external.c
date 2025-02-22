@@ -101,7 +101,7 @@ u8 sBackgroundMusicForDynamics = SEQUENCE_NONE;
 #define DEFINE_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8, leveldyn, _10) leveldyn,
 
 #define _ sDynNone
-s16 *sLevelDynamics[LEVEL_COUNT] = {
+static const s16 *sLevelDynamics[LEVEL_COUNT] = {
     _, // LEVEL_NONE
 #include "levels/level_defines.h"
 };
@@ -118,7 +118,7 @@ struct MusicDynamic {
     /*0xA*/ s16 dur2;
 }; // size = 0xC
 
-struct MusicDynamic sMusicDynamics[8] = {
+static const struct MusicDynamic sMusicDynamics[8] = {
     { 0x0000, 127, 100, 0x0e43, 0, 100 }, // SEQ_LEVEL_WATER
     { 0x0003, 127, 100, 0x0e40, 0, 100 }, // SEQ_LEVEL_WATER
     { 0x0e43, 127, 200, 0x0000, 0, 200 }, // SEQ_LEVEL_WATER
@@ -142,7 +142,7 @@ s8 sLevelAreaReverbs[LEVEL_COUNT][3] = {
 #define STUB_LEVEL(_0, _1, _2, volume, _4, _5, _6, _7, _8) volume,
 #define DEFINE_LEVEL(_0, _1, _2, _3, _4, volume, _6, _7, _8, _9, _10) volume,
 
-u16 sLevelAcousticReaches[LEVEL_COUNT] = {
+static const u16 sLevelAcousticReaches[LEVEL_COUNT] = {
     20000, // LEVEL_NONE
 #include "levels/level_defines.h"
 };
@@ -986,7 +986,7 @@ static f32 get_sound_volume(u8 bank, u8 soundIndex, f32 volumeRange) {
         if (sSoundBanks[bank][soundIndex].distance > AUDIO_MAX_DISTANCE) {
             intensity = 0.0f;
         } else {
-            f32 maxSoundDistance = sLevelAcousticReaches[gCurrLevelNum] / div;
+            f32 maxSoundDistance = 20000 / div;
             if (maxSoundDistance < sSoundBanks[bank][soundIndex].distance) {
                 intensity = ((AUDIO_MAX_DISTANCE - sSoundBanks[bank][soundIndex].distance)
                              / (AUDIO_MAX_DISTANCE - maxSoundDistance))
@@ -1052,7 +1052,7 @@ static u32 get_sound_reverb(UNUSED u8 bank, UNUSED u8 soundIndex, u8 channelInde
         }
     }
 
-    areaEcho = sLevelAreaReverbs[level][area];
+    areaEcho = 0; // sLevelAreaReverbs[level][area];
 
     if (gAreaData[gCurrAreaIndex].useEchoOverride && !(sSoundBanks[bank][soundIndex].soundBits & SOUND_NO_ECHO)) {
         areaEcho = gAreaData[gCurrAreaIndex].echoOverride;
@@ -1674,6 +1674,7 @@ void process_level_music_dynamics(void) {
         conditionBits = tempBits;
     }
 
+#if 0
     if (sCurrentMusicDynamic != musicDynIndex) {
         tempBits = 1;
         if (sCurrentMusicDynamic == 0xff) {
@@ -1700,6 +1701,7 @@ void process_level_music_dynamics(void) {
 
         sCurrentMusicDynamic = musicDynIndex;
     }
+#endif
 }
 
 UNUSED void unused_8031FED0(u8 player, u32 bits, s8 arg2) {
