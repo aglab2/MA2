@@ -12,9 +12,11 @@ static void ce_timer_print()
     int sec = diff / 30;
     int ms = diff % 30;
 
-    sprintf(sCeTimerLine, "%d:%02d", sec, ms);
+    sprintf(sCeTimerLine, "%d %02d", sec, ms);
     print_text_aligned(160, 20, sCeTimerLine, TEXT_ALIGN_CENTER);
 }
+
+extern void seq_player_play_sequence(u8 player, u8 seqId, u16 arg2);
 
 void bhv_ce_timer_loop()
 {
@@ -26,6 +28,7 @@ void bhv_ce_timer_loop()
     {
         if (gMarioStates->pos[1] < o->oPosY && gMarioStates->pos[2] > 3000.f)
         {
+            seq_player_play_sequence(0, 0x33, 0);
             sCeTimerDeadline = gGlobalTimer + 60 * 30;
         }
     }
