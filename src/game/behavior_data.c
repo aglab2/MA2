@@ -6204,3 +6204,12 @@ extern const BehaviorScript bhvFRDrop[] = {
         CALL_NATIVE(bhv_fr_drop),
     END_LOOP(),
 };
+
+extern void bhv_mh_music_loop();
+const BehaviorScript bhvMHMusic[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_mh_music_loop),
+    END_LOOP(),
+};

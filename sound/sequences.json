@@ -51,5 +51,6 @@
     "30_ms": [ "0C_extended_bank" ],
     "31_ee": [ "0C_extended_bank" ],
     "32_mh": [ "0C_extended_bank" ],
-    "33_ce2": [ "0C_extended_bank" ]
+    "33_ce2": [ "0C_extended_bank" ],
+    "34_mh2": [ "0C_extended_bank" ]
 }
