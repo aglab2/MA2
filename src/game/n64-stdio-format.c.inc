@@ -419,10 +419,10 @@ static inline void n64_format_float(
 
 	const ryu_floating_decimal_32 decimal = ryu_float_to_decimal( m, e );
 	switch( format->type ) {
-		case 'e':
+		case 6:
 			n64_format_float_exp( buffer, format, decimal, format->precision, value < 0.f, false );
 			break;
-		case 'f':
+		case 5:
 			n64_format_float_fixed( buffer, format, decimal, format->precision, value < 0.f, false );
 			break;
 		default: {
@@ -455,10 +455,10 @@ static inline void n64_format_double(
 
 	const ryu_floating_decimal_64 decimal = ryu_double_to_decimal( m, e );
 	switch( format->type ) {
-		case 'e':
+		case 6:
 			n64_format_double_exp( buffer, format, decimal, format->precision, value < 0.0, false );
 			break;
-		case 'f':
+		case 5:
 			n64_format_double_fixed( buffer, format, decimal, format->precision, value < 0.0, false );
 			break;
 		default: {

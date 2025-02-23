@@ -14,6 +14,16 @@ typedef enum {
 	CSI_FORMAT
 } n64_csi;
 
+enum {
+	FMT_CHAR,
+	FMT_STRING,
+	FMT_DEC,
+	FMT_UDEC,
+	FMT_HEX,
+	FMT_FLOAT,
+	FMT_EFLOAT,
+};
+
 #define PCS_VARIABLE 0xAAAAAAAAu
 #define PCS_DEFAULT 0xBBBBBBBBu
 
@@ -147,42 +157,46 @@ static const char *parse_conversion_specifier( const char *format, n64_format_ar
 			case CSI_FORMAT:
 				switch( *format ) {
 					case 'c':
-						args->type = 'c';
+						args->type = FMT_CHAR;
 						args->dataSize = 1;
 						break;
 					case 's':
-						args->type = 's';
+						args->type = FMT_STRING;
 						args->dataSize = 1;
 						args->defaultPrecision = 0xFFFFFFFFu;
 						break;
 					case 'd':
 					case 'i':
-						args->type = 'd';
+						args->type = FMT_DEC;
 						if( args->precision != PCS_DEFAULT ) args->padchar = ' ';
 						break;
+#if 0
 					case 'o':
 						args->type = 'o';
 						args->poschar = '\0';
 						if( args->precision != PCS_DEFAULT ) args->padchar = ' ';
 						break;
+#endif
 					case 'X':
 						args->capitalize = true;
 						__attribute__((fallthrough));
 					case 'x':
-						args->type = 'x';
+						args->type = FMT_HEX;
 						args->poschar = '\0';
 						if( args->precision != PCS_DEFAULT ) args->padchar = ' ';
 						break;
 					case 'B':
 						args->capitalize = true;
 						__attribute__((fallthrough));
+#if 0
 					case 'b':
 						args->type = 'b';
 						args->poschar = '\0';
 						if( args->precision != PCS_DEFAULT ) args->padchar = ' ';
 						break;
+#endif
 					case 'u':
-						args->type = 'u';
+						args->type = FMT_UDEC;
 						args->poschar = '\0';
 						if( args->precision != PCS_DEFAULT ) args->padchar = ' ';
 						break;
@@ -190,7 +204,7 @@ static const char *parse_conversion_specifier( const char *format, n64_format_ar
 						args->capitalize = true;
 						__attribute__((fallthrough));
 					case 'f':
-						args->type = 'f';
+						args->type = FMT_FLOAT;
 						args->dataSize = 4u;
 						args->defaultPrecision = 6u;
 						break;
@@ -198,13 +212,14 @@ static const char *parse_conversion_specifier( const char *format, n64_format_ar
 						args->capitalize = true;
 						__attribute__((fallthrough));
 					case 'e':
-						args->type = 'e';
+						args->type = FMT_EFLOAT;
 						args->dataSize = 4u;
 						args->defaultPrecision = 6u;
 						break;
 					case 'A':
 						args->capitalize = true;
 						__attribute__((fallthrough));
+#if 0
 					case 'a':
 						args->type = 'a';
 						args->dataSize = 4u;
@@ -225,6 +240,7 @@ static const char *parse_conversion_specifier( const char *format, n64_format_ar
 						args->type = 'p';
 						args->dataSize = 4u;
 						break;
+#endif
 					default:
 						return NULL;
 				}
@@ -280,17 +296,17 @@ static int n64_vbprintf( char *_buffer, void *state, const char *format, __built
 		}
 
 		switch( fmt.type ) {
-			case 'c': {
+			case FMT_CHAR: {
 				const char c = (char)__builtin_va_arg( args, int );
 				n64_format_char( &buff, &fmt, c );
 				break;
 			}
-			case 's': {
+			case FMT_STRING: {
 				const char *str = (const char*)__builtin_va_arg( args, const char* );
 				n64_format_string( &buff, &fmt, str );
 				break;
 			}
-			case 'd': {
+			case FMT_DEC: {
 				{
 					int val = __builtin_va_arg( args, int );
 					if( fmt.dataSize == 2 ) {
@@ -302,7 +318,7 @@ static int n64_vbprintf( char *_buffer, void *state, const char *format, __built
 				}
 				break;
 			}
-			case 'u': {
+			case FMT_UDEC: {
 				{
 					unsigned int val = __builtin_va_arg( args, unsigned int );
 					if( fmt.dataSize == 2 ) {
@@ -328,7 +344,7 @@ static int n64_vbprintf( char *_buffer, void *state, const char *format, __built
 				break;
 			}
 #endif
-			case 'x': {
+			case FMT_HEX: {
 				{
 					unsigned int val = __builtin_va_arg( args, unsigned int );
 					if( fmt.dataSize == 2 ) {
@@ -340,7 +356,8 @@ static int n64_vbprintf( char *_buffer, void *state, const char *format, __built
 				}
 				break;
 			}
-			case 'f': {
+			case FMT_FLOAT:
+			case FMT_EFLOAT: {
 				const double val = __builtin_va_arg( args, double );
 				n64_format_float( &buff, &fmt, (float)val );
 				break;
