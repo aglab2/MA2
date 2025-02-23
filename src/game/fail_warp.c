@@ -83,7 +83,7 @@ struct ObjectWarpNode* fail_warp_area_get_warp_node(int id)
         gFailWarpSpoofedWarpObject.oPosZ = sSafePos[2];
         gFailWarpSpoofedWarpObject.oFaceAngleYaw = sSafePosAngle;
         gFailWarpSpoofedWarpObject.oMoveAngleYaw = sSafePosAngle;
-        gFailWarpSpoofedWarpObject.behavior = bhvInstantActiveWarp;
+        gFailWarpSpoofedWarpObject.behavior = bhvDeathWarp;
         
         return &sSpoofedWarpNode;
     }
@@ -100,11 +100,11 @@ static void spoof_warp(struct MarioState *m)
     gFailWarpSpoofedWarpObject.oBehParams2ndByte = sSafeWarpId;
 }
 
-void fail_warp_pre_level_trigger_warp(struct MarioState *m, s32* warpOp)
+s32 fail_warp_pre_level_trigger_warp(struct MarioState *m, s32* warpOp)
 {
     if (*warpOp != WARP_OP_DEATH && *warpOp != WARP_OP_WARP_FLOOR)
     {
-        return;
+        return 0;
     }
 
     m->health = (m->health & (~0xff)) + 0x80;
@@ -115,6 +115,7 @@ void fail_warp_pre_level_trigger_warp(struct MarioState *m, s32* warpOp)
 
     *warpOp = WARP_OP_TELEPORT;
     spoof_warp(m);
+    return 1;
 }
 
 void fail_warp_init_mario_after_quick_warp(struct MarioState *m)

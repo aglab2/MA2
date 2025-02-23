@@ -22,9 +22,6 @@ void bhv_ce_timer_loop()
 {
     if (0 == o->oTimer && gMarioStates->pos[1] > o->oPosY)
     {
-        if (sCeTimerDeadline)
-            seq_player_play_sequence(0, 0x26, 0);
-
         sCeTimerDeadline = 0;
     }
     else if (0 == sCeTimerDeadline)
