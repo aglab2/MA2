@@ -125,10 +125,7 @@ void crash_screen_draw_glyph(s32 x, s32 y, s32 glyph) {
     }
 }
 
-static char *write_to_buf(char *buffer, const char *data, size_t size) {
-    return (char *) memcpy(buffer, data, size) + size;
-}
-
+int vsprintf( char *buffer, const char *format, __builtin_va_list args );
 void crash_screen_print(s32 x, s32 y, const char *fmt, ...) {
     char *ptr;
     u32 glyph;
@@ -137,10 +134,10 @@ void crash_screen_print(s32 x, s32 y, const char *fmt, ...) {
     char buf[0x108];
     bzero(&buf, sizeof(buf));
 
-    va_list args;
-    va_start(args, fmt);
+    __builtin_va_list args;
+    __builtin_va_start(args, fmt);
 
-    size = _Printf(write_to_buf, buf, fmt, args);
+    size = vsprintf(buf, fmt, args);
 
     if (size > 0) {
         ptr = buf;
@@ -160,7 +157,7 @@ void crash_screen_print(s32 x, s32 y, const char *fmt, ...) {
         }
     }
 
-    va_end(args);
+    __builtin_va_end(args);
 }
 
 void crash_screen_sleep(s32 ms) {
