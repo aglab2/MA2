@@ -45,8 +45,6 @@ extern const GeoLayout ce_area_visual[];
 const LevelScript level_ce_entry[] = {
 	INIT_LEVEL(),
 	LOAD_MIO0(0x7, _ce_segment_7SegmentRomStart, _ce_segment_7SegmentRomEnd), 
-	LOAD_YAY0(0x06, _group17_yay0SegmentRomStart, _group17_yay0SegmentRomEnd), 
-	LOAD_RAW(0x0D, _group17_geoSegmentRomStart, _group17_geoSegmentRomEnd), 
 	LOAD_YAY0(0x08, _common0_yay0SegmentRomStart, _common0_yay0SegmentRomEnd), 
 	LOAD_RAW(0x0F, _common0_geoSegmentRomStart, _common0_geoSegmentRomEnd), 
 	LOAD_YAY0(0x05, _group1_yay0SegmentRomStart, _group1_yay0SegmentRomEnd), 
@@ -56,7 +54,6 @@ const LevelScript level_ce_entry[] = {
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
 	JUMP_LINK(script_func_global_1), 
 	JUMP_LINK(script_func_global_2), 
-	JUMP_LINK(script_func_global_18), 
 	LOAD_MODEL_FROM_GEO(MODEL_CE_HAMMER, ce_hammer_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CE_CAR1, ce_car1_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CE_CAR2, ce_car2_geo), 

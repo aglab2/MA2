@@ -23,6 +23,8 @@ static struct FlipbookData flipbooks_opaque[] = {
     { LVL_BATCH_LAYER_OPAQUE_FR_DL_SPACE64_4_PAL_RGBA16, .tileScrollY = -8, },
     { LVL_BATCH_LAYER_OPAQUE_FR_DL_SPACE64_8_PAL_RGBA16, .tileScrollY = -8, },
 
+    { LVL_BATCH_LAYER_OPAQUE_FR_DL_MIU32_FR001_PAL_RGBA16, .tileScrollY = -8, },
+
     { LVL_BATCH_LAYER_OPAQUE_FR_DL_SPACE64_20_PAL_RGBA16, .shading = 1 },
     { LVL_BATCH_LAYER_OPAQUE_FR_DL_SPACE32_3_RGBA16, .shading = 1 },
 
