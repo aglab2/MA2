@@ -6233,3 +6233,13 @@ const BehaviorScript bhvMHMusic[] = {
         CALL_NATIVE(bhv_mh_music_loop),
     END_LOOP(),
 };
+
+extern void bhv_ow_ctl_init();
+extern void bhv_ow_ctl_loop();
+const BehaviorScript bhvOwCtl[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    CALL_NATIVE(bhv_ow_ctl_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ow_ctl_loop),
+    END_LOOP(),
+};

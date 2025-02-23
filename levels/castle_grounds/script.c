@@ -24,6 +24,7 @@ const LevelScript level_castle_grounds_entry[] = {
 	LOAD_MIO0(0x7, _castle_grounds_segment_7SegmentRomStart, _castle_grounds_segment_7SegmentRomEnd), 
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
+	LOAD_MODEL_FROM_GEO(MODEL_OW_CE, ow_ce_geo), 
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
 
@@ -80,6 +81,7 @@ const LevelScript level_castle_grounds_entry[] = {
 		WARP_NODE(0x4e, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0x4f, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		MARIO_POS(0x01, 0, 0, 0, 7202),
+		OBJECT(MODEL_NONE, -1, 0, 7177, 0, 0, 0, 0x00000000, bhvOwCtl),
 		OBJECT(MODEL_NONE, 297, 603, 7217, 0, 0, 0, (0xa << 16), bhvInstantActiveWarp),
 		OBJECT(MODEL_THI_WARP_PIPE, -585, 0, 7238, 0, -90, 0, (0x20 << 16), bhvWarpPipe),
 		OBJECT(MODEL_THI_WARP_PIPE, -585, 0, 6238, 0, -90, 0, (0x21 << 16), bhvWarpPipe),
