@@ -1,42 +1,50 @@
+// #define OW_LEVEL_COUNT 15
+#define OW_LEVEL_COUNT 2
 
 void bhv_ow_ctl_init()
 {
     struct Object** objs = (struct Object**) aglabGlobalScratch;
-    objs[0] = spawn_object(o, MODEL_OW_CE, bhvStaticObject);
-    objs[0]->oPosX = -585.f;
-    objs[0]->oPosY = 0.f;
-    objs[0]->oPosZ = 7238.f;
-    objs[0]->oOpacity = 0;
+    for (int i = 0; i < OW_LEVEL_COUNT; i++)
+    {
+        objs[i] = spawn_object(o, MODEL_OW_CE + i, bhvStaticObject);
+        struct Object* obj = objs[i];
+        obj->oPosX = -585.f;
+        obj->oPosY = 0.f;
+        obj->oPosZ = 7238.f - 1000 * i;
+        obj->oOpacity = 0;
+    }
 }
 
 void bhv_ow_ctl_loop()
 {
     struct Object** objs = (struct Object**) aglabGlobalScratch;
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < OW_LEVEL_COUNT; i++)
     {
-        f32 diff = gMarioStates->pos[2] - objs[i]->oPosZ;
-        if (absf(diff) > 700)
+        struct Object* obj = objs[i];
+
+        f32 diff = gMarioStates->pos[2] - obj->oPosZ;
+        if (absf(diff) > 400)
         {
-            if (objs[0]->oOpacity > 0)
+            if (obj->oOpacity > 0)
             {
-                objs[0]->oOpacity -= 17;
+                obj->oOpacity -= 17;
             }
         }
         else
         {
-            if (objs[0]->oOpacity < 255)
+            if (obj->oOpacity < 255)
             {
-                objs[0]->oOpacity += 17;
+                obj->oOpacity += 17;
             }
         }
 
-        if (0 == objs[0]->oOpacity)
+        if (0 == obj->oOpacity)
         {
-            objs[0]->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
+            obj->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
         }
         else
         {
-            objs[0]->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
+            obj->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
         }
     }
 }
