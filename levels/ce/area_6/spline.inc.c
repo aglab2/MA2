@@ -3,6 +3,11 @@ const Trajectory ce_area_6_spline_0870_object_00D2DB3C_001[] = {
 	TRAJECTORY_POS( 1, -3400, -18871, 9345),
 	TRAJECTORY_END(),
 };
+const Trajectory ce_area_6_spline_0969_object_00CD1C78_002[] = {
+	TRAJECTORY_POS( 0, -20250, 16769, -2750),
+	TRAJECTORY_POS( 1, -20250, 17769, -4250),
+	TRAJECTORY_END(),
+};
 const Trajectory ce_area_6_spline_2443_object_00D39804_002[] = {
 	TRAJECTORY_POS( 0, -19600, -29881, 28695),
 	TRAJECTORY_POS( 1, -19600, -29881, 28595),

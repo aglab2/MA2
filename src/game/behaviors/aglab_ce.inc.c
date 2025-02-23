@@ -46,3 +46,13 @@ void bhv_ce_timer_star_loop()
         sCeTimerDeadline = 0;
     }
 }
+
+void bhv_ce_car_loop()
+{
+    o->activeFlags = 0;
+}
+
+void bhv_ce_car_move_loop()
+{
+
+}

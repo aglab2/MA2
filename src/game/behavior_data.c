@@ -6172,6 +6172,22 @@ extern const BehaviorScript bhvCeTimer[] = {
     END_LOOP(),
 };
 
+extern void bhv_ce_car_loop();
+extern const BehaviorScript bhvCeCar[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ce_car_loop),
+    END_LOOP(),
+};
+
+extern void bhv_ce_car_move_loop();
+extern const BehaviorScript bhvCeCarMove[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ce_car_move_loop),
+    END_LOOP(),
+};
+
 extern void bhv_ce_timer_star_loop();
 extern const BehaviorScript bhvCETimerStar[] = {
     BEGIN(OBJ_LIST_SPAWNER),
