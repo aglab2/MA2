@@ -143,6 +143,7 @@ extern const Trajectory fr_area_8_spline_Rail_0203_object_0124775C_002[];
 extern const Trajectory fr_area_8_spline_Spring_NurbsCurve_013[];
 extern const Trajectory fr_area_8_spline_Spring_NurbsCurve_014[];
 extern const Trajectory fr_area_8_spline_Spring_NurbsCurve_015[];
+extern const Trajectory fr_area_8_spline_Spring_NurbsCurve_024[];
 extern const GeoLayout fr_area_9_geo[];
 extern const GeoLayout fr_area_9[];
 extern const Collision fr_area_9_collision[];

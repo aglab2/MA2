@@ -117,6 +117,7 @@ static const SpringDesc spring_area8[] = {
 	fr_area_8_spline_Spring_NurbsCurve_013,
 	fr_area_8_spline_Spring_NurbsCurve_014,
 	fr_area_8_spline_Spring_NurbsCurve_015,
+	fr_area_8_spline_Spring_NurbsCurve_024,
 	NULL
 };
 
