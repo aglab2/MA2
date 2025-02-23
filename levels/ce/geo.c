@@ -23,3 +23,8 @@
 #include "levels/ce/visual/geo_lvl.inc.c"
 
 #include "levels/ce/ce_hammer/geo.inc.c"
+#include "levels/ce/ce_car1/geo.inc.c"
+#include "levels/ce/ce_car2/geo.inc.c"
+#include "levels/ce/ce_car3/geo.inc.c"
+#include "levels/ce/ce_car4/geo.inc.c"
+#include "levels/ce/ce_car5/geo.inc.c"

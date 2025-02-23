@@ -17,4 +17,24 @@ extern const LevelScript level_ce_entry[];
 
 #include "levels/ce/ce_skybox/header.h"
 
+#include "levels/ce/ce_car1/geo_header.h"
+
+#include "levels/ce/ce_car2/geo_header.h"
+
+#include "levels/ce/ce_car3/geo_header.h"
+
+#include "levels/ce/ce_car4/geo_header.h"
+
+#include "levels/ce/ce_car5/geo_header.h"
+
+#include "levels/ce/ce_car1/collision_header.h"
+
+#include "levels/ce/ce_car2/collision_header.h"
+
+#include "levels/ce/ce_car3/collision_header.h"
+
+#include "levels/ce/ce_car4/collision_header.h"
+
+#include "levels/ce/ce_car5/collision_header.h"
+
 #endif

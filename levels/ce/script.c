@@ -39,6 +39,7 @@ extern const GeoLayout ce_area_visual[];
 #include "levels/ce/area_9/collision.inc.c"
 
 #define SEQ_LEVEL_GRASS 0x26
+#define MODEL_CE_CAMERA 0
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_ce_entry[] = {
@@ -57,6 +58,11 @@ const LevelScript level_ce_entry[] = {
 	JUMP_LINK(script_func_global_2), 
 	JUMP_LINK(script_func_global_18), 
 	LOAD_MODEL_FROM_GEO(MODEL_CE_HAMMER, ce_hammer_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CE_CAR1, ce_car1_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CE_CAR2, ce_car2_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CE_CAR3, ce_car3_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CE_CAR4, ce_car4_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CE_CAR5, ce_car5_geo), 
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
 
@@ -295,8 +301,8 @@ const LevelScript level_ce_entry[] = {
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(2, LEVEL_CE, 7, 1, WARP_NO_CHECKPOINT),
 		WARP_NODE(1, LEVEL_CE, 7, 2, WARP_NO_CHECKPOINT),
-		OBJECT(MODEL_NONE, -15403, -3447, 9594, 0, 0, 0, 0x00000000, bhvCeCar),
-		OBJECT(MODEL_NONE, -15856, -6295, 13795, 0, 0, 0, 0x00000000, bhvCeCar),
+		OBJECT(MODEL_CE_CAMERA, -15265, -6127, 13547, 0, -180, 0, 0x00000000, bhvCeCar),
+		OBJECT(MODEL_CE_CAMERA, -15766, -8565, 17143, 0, -180, 0, 0x00000000, bhvCeCar),
 		OBJECT(MODEL_NONE, -15602, -2660, 8434, 0, 0, 0, (21 << 24), bhvCeTimer),
 		OBJECT(MODEL_CHECKPOINT, -15600, -2328, 224, 0, 0, 0, (7 << 24), bhvCheckpoint),
 		OBJECT(MODEL_NONE, -15600, -2208, 3513, 0, 0, 0, (2 << 16), bhvCoinFormation),
@@ -332,12 +338,12 @@ const LevelScript level_ce_entry[] = {
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		OBJECT(MODEL_NONE, -15624, -2217, -1183, 0, 0, 0, (4 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -15635, -12507, 16512, 0, 0, 0, (4 << 16), bhvCoinFormation),
-		OBJECT(MODEL_NONE, -15579, 3760, -11640, 0, 0, 0, 0x00000000, bhvCeCar),
-		OBJECT(MODEL_NONE, -15628, -5029, 4042, 0, 90, 0, 0x00000000, bhvCeCar),
-		OBJECT(MODEL_NONE, -15845, -6586, 6320, 0, 90, 0, 0x00000000, bhvCeCar),
-		OBJECT(MODEL_NONE, -15370, -9086, 10008, 0, 90, 0, 0x00000000, bhvCeCar),
+		OBJECT(MODEL_CE_CAMERA, -15579, 3760, -11640, 0, -180, 0, 0x00000000, bhvCeCar),
+		OBJECT(MODEL_CE_CAMERA, -15628, -5029, 4042, 0, -180, 0, 0x00000000, bhvCeCar),
+		OBJECT(MODEL_CE_CAMERA, -15845, -6586, 6320, 0, -180, 0, 0x00000000, bhvCeCar),
+		OBJECT(MODEL_CE_CAMERA, -15370, -9086, 10008, 0, -180, 0, 0x00000000, bhvCeCar),
 		OBJECT(MODEL_NONE, -15864, -2400, -1212, 0, 0, 0, 0x00000000, bhvCeCarMove),
-		OBJECT(MODEL_NONE, -15607, -12500, 16327, 0, 0, 0, 0x00000000, bhvCeCarMove),
+		OBJECT(MODEL_NONE, -15607, -12500, 16327, 0, 0, 0, (1 << 16), bhvCeCarMove),
 		OBJECT(MODEL_NONE, -5822, 13866, -2710, 0, 0, 0, (8 << 24), bhvCETimerStar),
 		TERRAIN(ce_area_8_collision),
 		MACRO_OBJECTS(ce_area_8_macro_objs),
@@ -351,12 +357,12 @@ const LevelScript level_ce_entry[] = {
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		OBJECT(MODEL_SPEEDER, 2057, -540, -12795, 0, -180, 0, (4 << 16), bhvSpeeder),
-		OBJECT(MODEL_NONE, -13028, 8745, -13313, 0, 0, 0, 0x00000000, bhvCeCar),
-		OBJECT(MODEL_NONE, -8787, 5857, -13113, 0, 0, 0, 0x00000000, bhvCeCar),
-		OBJECT(MODEL_NONE, -6861, 4551, -13483, 0, 0, 0, 0x00000000, bhvCeCar),
-		OBJECT(MODEL_NONE, -3557, 2322, -13273, 0, 0, 0, 0x00000000, bhvCeCar),
-		OBJECT(MODEL_NONE, -1876, 1183, -13273, 0, 0, 0, 0x00000000, bhvCeCar),
-		OBJECT(MODEL_NONE, -14853, -10639, -9905, 0, 0, 0, 0x00000000, bhvCeCar),
+		OBJECT(MODEL_NONE, -13028, 8745, -13313, 0, -90, 0, 0x00000000, bhvCeCar),
+		OBJECT(MODEL_NONE, -8787, 5857, -13113, 0, -90, 0, 0x00000000, bhvCeCar),
+		OBJECT(MODEL_NONE, -6861, 4551, -13483, 0, -90, 0, 0x00000000, bhvCeCar),
+		OBJECT(MODEL_NONE, -3557, 2322, -13273, 0, -90, 0, 0x00000000, bhvCeCar),
+		OBJECT(MODEL_NONE, -1876, 1183, -13273, 0, -90, 0, 0x00000000, bhvCeCar),
+		OBJECT(MODEL_NONE, -14853, -10639, -9775, 0, 0, 0, 0x00000000, bhvCeCar),
 		OBJECT(MODEL_NONE, -15969, -10640, -9274, 0, 0, 0, 0x00000000, bhvCeCar),
 		OBJECT(MODEL_NONE, 831, 16486, -343, 0, 0, 0, (8 << 24), bhvCETimerStar),
 		OBJECT(MODEL_SNUFIT, -91, -890, -9177, 0, 0, 0, 0x00000000, bhvSnufit),

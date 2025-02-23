@@ -111,3 +111,13 @@ const SpringDesc* spring_descs_ce[] = {
 #include "levels/ce/ce_hammer/collision.inc.c"
 
 #include "levels/ce/ce_skybox/model.inc.c"
+#include "levels/ce/ce_car1/model.inc.c"
+#include "levels/ce/ce_car2/model.inc.c"
+#include "levels/ce/ce_car3/model.inc.c"
+#include "levels/ce/ce_car4/model.inc.c"
+#include "levels/ce/ce_car5/model.inc.c"
+#include "levels/ce/ce_car1/collision.inc.c"
+#include "levels/ce/ce_car2/collision.inc.c"
+#include "levels/ce/ce_car3/collision.inc.c"
+#include "levels/ce/ce_car4/collision.inc.c"
+#include "levels/ce/ce_car5/collision.inc.c"
