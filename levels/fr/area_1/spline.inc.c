@@ -433,7 +433,7 @@ const Trajectory fr_area_1_spline_Spring_NurbsCurve[] = {
 	TRAJECTORY_POS( 0, -23551, 12129, -9998),
 	TRAJECTORY_POS( 1, -21093, 13575, -9998),
 	TRAJECTORY_POS( 2, -18514, 13442, -9998),
-	TRAJECTORY_POS( 3, -15545, 11776, -9998),
+	TRAJECTORY_POS( 3, -16383, 12122, -9998),
 	TRAJECTORY_END(),
 };
 const Trajectory fr_area_1_spline_Spring_NurbsCurve_001[] = {
