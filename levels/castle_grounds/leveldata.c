@@ -8,3 +8,5 @@
 #include "levels/castle_grounds/areas/1/movtext.inc.c"
 
 #include "levels/castle_grounds/leveldata.inc.c"
+
+#include "levels/castle_grounds/ow_ce/model.inc.c"
