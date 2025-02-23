@@ -25,15 +25,7 @@ static struct ObjectHitbox sRedCoinHitbox = {
  */
 void bhv_red_coin_init(void) {
     // Set the red coins to have a parent of the closest red coin star.
-    struct Object *hiddenRedCoinStar = cur_obj_nearest_object_with_behavior(bhvHiddenRedCoinStar);
-    if (hiddenRedCoinStar != NULL) {
-        o->parentObj = hiddenRedCoinStar;
-    } else if ((hiddenRedCoinStar = cur_obj_nearest_object_with_behavior(bhvBowserCourseRedCoinStar)) != NULL) {
-        o->parentObj = hiddenRedCoinStar;
-    } else {
-        o->parentObj = NULL;
-    }
-
+    o->parentObj = cur_obj_nearest_object_with_behavior(bhvHiddenRedCoinStar);
     obj_set_hitbox(o, &sRedCoinHitbox);
 }
 
@@ -51,18 +43,7 @@ void bhv_red_coin_loop(void) {
 
             // Spawn the orange number counter, as long as it isn't the last coin.
             if (o->parentObj->oHiddenStarTriggerCounter != o->parentObj->oHiddenStarTriggerTotal) {
-                // Cap visible count to 99
-                if (o->parentObj->oHiddenStarTriggerCounter > 99) {
-                    spawn_orange_number(9, 28, 0, 0);
-                    spawn_orange_number(9, -28, 0, 0);
-                }
-                else if (o->parentObj->oHiddenStarTriggerCounter >= 10) {
-                    spawn_orange_number(o->parentObj->oHiddenStarTriggerCounter % 10, 28, 0, 0);
-                    spawn_orange_number(o->parentObj->oHiddenStarTriggerCounter / 10, -28, 0, 0);
-                }
-                else {
-                    spawn_orange_number(o->parentObj->oHiddenStarTriggerCounter, 0, 0, 0);
-                }
+                spawn_orange_number(o->parentObj->oHiddenStarTriggerCounter, 0, 0, 0);
             }
 
 #ifdef JP_RED_COIN_SOUND
