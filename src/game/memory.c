@@ -149,8 +149,8 @@ void main_pool_init() {
     // 80700000: fb3
     // 80725800: decompression heap
     // 80800000 backwards - file select heap
-    SET_REGION(0, _poolStart, 0x80500000);
-    SET_REGION(1, 0x80525F80, 0x80700000 - 0x25F80);
+    SET_REGION(0, _poolStart, 0x80580000);
+    SET_REGION(1, 0x80580000 + 0x25F80, 0x80700000 - 0x25F80);
 
 #undef SET_REGION
 

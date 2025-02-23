@@ -333,7 +333,7 @@ SECTIONS
    
    _poolStart = .;
 
-   . = 0x80500000;
+   . = 0x80580000;
    BEGIN_NOLOAD(framebuffer0)
    {
       BUILD_DIR/src/buffers/framebuffer0.o(.bss*);
