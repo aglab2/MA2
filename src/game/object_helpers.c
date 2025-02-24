@@ -117,10 +117,9 @@ Gfx *geo_update_alpha_compare(s32 callContext, struct GraphNode *node, UNUSED vo
             // ---
         } else {
             // if (objectGraphNode->activeFlags & ACTIVE_FLAG_DITHERED_ALPHA) {
-                // gDPSetAlphaCompareReal(dlHead++, G_AC_DITHER);
+            gDPSetAlphaCompareReal(dlHead++, G_AC_DITHER);
             // }
         }
-        gDPSetAlphaCompareReal(dlHead++, G_AC_DITHER);
         gDPSetEnvColor(dlHead++, 255, 255, 255, objectOpacity);
         gSPEndDisplayList(dlHead);
     }

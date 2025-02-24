@@ -12,3 +12,4 @@
 #include "levels/castle_grounds/ow_ce/model.inc.c"
 #include "levels/castle_grounds/ow_wc/model.inc.c"
 #include "levels/castle_grounds/ow_pl/model.inc.c"
+#include "levels/castle_grounds/ow_mh/model.inc.c"

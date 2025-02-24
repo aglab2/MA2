@@ -1,10 +1,10 @@
 #include "src/game/envfx_snow.h"
 
-const GeoLayout ow_wc_geo[] = {
+const GeoLayout ow_mh_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
 		GEO_ASM(LAYER_ALPHA, geo_update_alpha_compare),
-		GEO_DISPLAY_LIST(LAYER_ALPHA, ow_wc_ow_wc_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_ALPHA, ow_mh_ow_mh_mesh_layer_1),
 	GEO_CLOSE_NODE(),
 	GEO_END(),
 };
