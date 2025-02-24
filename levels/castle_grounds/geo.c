@@ -26,3 +26,4 @@
 #include "levels/castle_grounds/ow_hb/geo.inc.c"
 #include "levels/castle_grounds/ow_pc/geo.inc.c"
 #include "levels/castle_grounds/ow_dc/geo.inc.c"
+#include "levels/castle_grounds/ow_ee/geo.inc.c"

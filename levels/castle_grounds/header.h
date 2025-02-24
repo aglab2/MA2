@@ -34,4 +34,6 @@ extern Movtex castle_grounds_movtex_tris_waterfall[];
 
 #include "levels/castle_grounds/ow_dc/geo_header.h"
 
+#include "levels/castle_grounds/ow_ee/geo_header.h"
+
 #endif
