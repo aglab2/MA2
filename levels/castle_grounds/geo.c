@@ -20,3 +20,4 @@
 #include "levels/castle_grounds/ow_pl/geo.inc.c"
 #include "levels/castle_grounds/ow_mh/geo.inc.c"
 #include "levels/castle_grounds/ow_gf/geo.inc.c"
+#include "levels/castle_grounds/ow_ph/geo.inc.c"
