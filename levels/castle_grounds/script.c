@@ -32,6 +32,7 @@ const LevelScript level_castle_grounds_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_OW_PH, ow_ph_geo),
 	LOAD_MODEL_FROM_GEO(MODEL_OW_MS, ow_ms_geo),
 	LOAD_MODEL_FROM_GEO(MODEL_OW_AM, ow_am_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_OW_HB, ow_hb_geo),
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
 
