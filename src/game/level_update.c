@@ -314,6 +314,7 @@ static void set_mario_initial_action(struct MarioState *m, u32 spawnType, u32 ac
     set_mario_initial_cap_powerup(m);
 }
 
+extern void fail_warp_set_safe_pos(f32* pos, s16 angle);
 void init_mario_after_warp(void) {
     struct Object *object = get_destination_warp_object(sWarpDest.nodeId);
 
@@ -324,6 +325,11 @@ void init_mario_after_warp(void) {
         error(errorMsg);
     }
 #endif
+
+    if (0xa == sWarpDest.nodeId) {
+        fail_warp_set_safe_pos(&object->oPosX, object->oFaceAngleYaw);
+    }
+
     u32 marioSpawnType = get_mario_spawn_type(object);
 
     if (gMarioState->action != ACT_UNINITIALIZED) {

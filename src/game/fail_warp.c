@@ -18,20 +18,18 @@ static s16 sSafePosCameraYaw;
 u8 sSafeWarpId;
 static void* sCheckpointNodes[16];
 
-static void fail_warp_set_safe_pos(struct MarioState *m)
+void fail_warp_set_safe_pos(f32* pos, s16 angle)
 {
     // print_text_fmt_int(20, 20, "X %d", (int) m->pos[0]);
     // print_text_fmt_int(20, 40, "Y %d", (int) m->pos[1]);
     // print_text_fmt_int(20, 60, "Z %d", (int) m->pos[2]);
-    sSafePos[0] = m->pos[0];
-    sSafePos[1] = m->pos[1];
-    sSafePos[2] = m->pos[2];
-    sSafePosAngle = m->faceAngle[1];
-    sSafePosCameraYaw = s8DirModeYawOffset;
+    sSafePos[0] = pos[0];
+    sSafePos[1] = pos[1];
+    sSafePos[2] = pos[2];
+    sSafePosAngle = angle;
+    sSafePosCameraYaw = angle + 0x8000;
     sSafePosArea = gCurrAreaIndex;
     sSafePosLevel = gCurrLevelNum;
-    m->extraGravityEnabled = 0;
-    m->extraAirAction = 0;
     sSafeWarpId = WARP_NODE_FAIL_WARP;
 }
 
@@ -46,11 +44,6 @@ void fail_warp_mario_set_safe_pos(struct MarioState *m, struct Surface *floor)
     // object generated floors might be unsafe so avoid them
     if (floor->object)
         return;
-
-    if (sSafePosLevel != gCurrLevelNum) 
-    {
-        return fail_warp_set_safe_pos(m);
-    }
 
     m->extraGravityEnabled = 0;
     m->extraAirAction = 0;
@@ -83,7 +76,7 @@ struct ObjectWarpNode* fail_warp_area_get_warp_node(int id)
         gFailWarpSpoofedWarpObject.oPosZ = sSafePos[2];
         gFailWarpSpoofedWarpObject.oFaceAngleYaw = sSafePosAngle;
         gFailWarpSpoofedWarpObject.oMoveAngleYaw = sSafePosAngle;
-        gFailWarpSpoofedWarpObject.behavior = bhvDeathWarp;
+        gFailWarpSpoofedWarpObject.behavior = bhvCheckpoint;
         
         return &sSpoofedWarpNode;
     }
