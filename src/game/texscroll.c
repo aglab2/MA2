@@ -33,16 +33,8 @@ void scroll_textures() {
 		scroll_textures_ph();
 	}
 
-	if(SCROLL_CONDITION(sSegmentROMTable[0x7] == (uintptr_t)_ms_segment_7SegmentRomStart)) {
-		scroll_textures_ms();
-	}
-
 	if(SCROLL_CONDITION(sSegmentROMTable[0x7] == (uintptr_t)_hb_segment_7SegmentRomStart)) {
 		scroll_textures_hb();
-	}
-
-	if(SCROLL_CONDITION(sSegmentROMTable[0x7] == (uintptr_t)_castle_grounds_segment_7SegmentRomStart)) {
-		scroll_textures_castle_grounds();
 	}
 
 }

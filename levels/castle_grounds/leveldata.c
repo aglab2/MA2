@@ -23,3 +23,4 @@
 #include "levels/castle_grounds/ow_ee/model.inc.c"
 #include "levels/castle_grounds/ow_mhe/model.inc.c"
 #include "levels/castle_grounds/ow_cg/model.inc.c"
+#include "levels/castle_grounds/ow_fr/model.inc.c"
