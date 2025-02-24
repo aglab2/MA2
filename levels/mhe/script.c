@@ -135,6 +135,7 @@ const LevelScript level_mhe_entry[] = {
 		OBJECT(MODEL_NONE, -5, -11400, 1903, 0, 0, 0, 0x00000000, bhvHiddenStarTrigger),
 		OBJECT(MODEL_NONE, -1944, -11400, 583, 0, 0, 0, 0x00000000, bhvHiddenStarTrigger),
 		OBJECT(MODEL_NONE, -1905, -11400, -613, 0, 0, 0, 0x00000000, bhvHiddenStarTrigger),
+		OBJECT(MODEL_NONE, 39, -12196, 11136, 0, -180, 0, (0xa << 16), bhvInstantActiveWarp),
 		OBJECT(MODEL_MHE_FIREBALL, -2822, 3520, 366, 0, 0, 0, (MODEL_MHE_FIREBALL_BREAK << 16), bhvBreakable),
 		OBJECT(MODEL_ROCKET_SPAWNER, -62, -15053, 82, 0, 0, 0, 0x00000000, bhvRocketSpawner),
 		OBJECT(MODEL_ROCKET_SPAWNER, 14, 3250, -4203, 0, 0, 0, 0x00000000, bhvRocketSpawner),
