@@ -1,5 +1,5 @@
 // #define OW_LEVEL_COUNT 15
-#define OW_LEVEL_COUNT 6
+#define OW_LEVEL_COUNT 7
 
 void bhv_ow_ctl_init()
 {
