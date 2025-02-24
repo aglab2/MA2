@@ -1,0 +1,17 @@
+extern const GeoLayout ow_pc_geo[];
+extern u8 ow_pc_kd_pc_hasira4_ci4[];
+extern u8 ow_pc_kd_pc_hasira4_pal_rgba16[];
+extern u8 ow_pc_kd_pc_ehasira1_ci4[];
+extern u8 ow_pc_kd_pc_ehasira1_pal_rgba16[];
+extern u8 ow_pc_kd_pc_yuka3_ci4[];
+extern u8 ow_pc_kd_pc_yuka3_pal_rgba16[];
+extern u8 ow_pc_kd_pc_yuka1_ci4[];
+extern u8 ow_pc_kd_pc_yuka1_pal_rgba16[];
+extern u8 ow_pc_kd_pc_yuka2_ci4[];
+extern u8 ow_pc_kd_pc_yuka2_pal_rgba16[];
+extern Vtx ow_pc_ow_pc_mesh_layer_1_vtx_0[329];
+extern Vtx ow_pc_ow_pc_mesh_layer_1_vtx_1[96];
+extern Vtx ow_pc_ow_pc_mesh_layer_1_vtx_2[10];
+extern Vtx ow_pc_ow_pc_mesh_layer_1_vtx_3[35];
+extern Vtx ow_pc_ow_pc_mesh_layer_1_vtx_4[36];
+extern Gfx ow_pc_ow_pc_mesh_layer_1[];

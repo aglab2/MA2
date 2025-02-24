@@ -18,3 +18,4 @@
 #include "levels/castle_grounds/ow_ms/model.inc.c"
 #include "levels/castle_grounds/ow_am/model.inc.c"
 #include "levels/castle_grounds/ow_hb/model.inc.c"
+#include "levels/castle_grounds/ow_pc/model.inc.c"
