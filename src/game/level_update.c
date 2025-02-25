@@ -252,7 +252,7 @@ static void set_mario_initial_action(struct MarioState *m, u32 spawnType, u32 ac
             set_mario_action(m, ACT_WARP_DOOR_SPAWN, actionArg);
             break;
         case MARIO_SPAWN_IDLE:
-            fail_warp_init_mario_after_quick_warp(m);
+            set_mario_action(m, ACT_IDLE, 0);
             break;
         case MARIO_SPAWN_PIPE:
             set_mario_action(m, ACT_EMERGE_FROM_PIPE, 0);
@@ -261,7 +261,7 @@ static void set_mario_initial_action(struct MarioState *m, u32 spawnType, u32 ac
             set_mario_action(m, ACT_TELEPORT_FADE_IN, 0);
             break;
         case MARIO_SPAWN_INSTANT_ACTIVE:
-            fail_warp_init_mario_after_quick_warp(m);
+            set_mario_action(m, ACT_IDLE, 0);
             break;
         case MARIO_SPAWN_AIRBORNE:
             set_mario_action(m, ACT_SPAWN_NO_SPIN_AIRBORNE, 0);
@@ -314,7 +314,7 @@ static void set_mario_initial_action(struct MarioState *m, u32 spawnType, u32 ac
     set_mario_initial_cap_powerup(m);
 }
 
-extern void fail_warp_set_safe_pos(f32* pos, s16 angle);
+extern void fail_warp_set_safe_pos(f32* pos, s16 angle, int areaIndex, int levelNum);
 void init_mario_after_warp(void) {
     struct Object *object = get_destination_warp_object(sWarpDest.nodeId);
 
@@ -326,8 +326,8 @@ void init_mario_after_warp(void) {
     }
 #endif
 
-    if (0xa == sWarpDest.nodeId) {
-        fail_warp_set_safe_pos(&object->oPosX, object->oFaceAngleYaw);
+    if (0xa == sWarpDest.nodeId && 1 == sWarpDest.areaIdx) {
+        fail_warp_set_safe_pos(&object->oPosX, object->oFaceAngleYaw, sWarpDest.areaIdx, sWarpDest.levelNum);
     }
 
     u32 marioSpawnType = get_mario_spawn_type(object);
@@ -359,7 +359,7 @@ void init_mario_after_warp(void) {
         gMarioState->usedObj = object;
     }
 
-    fail_warp_init_mario_after_quick_warp_reset_camera(object);
+    reset_camera(gCurrentArea->camera);
     sWarpDest.type = WARP_TYPE_NOT_WARPING;
     sDelayedWarpOp = WARP_OP_NONE;
 

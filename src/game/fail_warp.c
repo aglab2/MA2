@@ -18,7 +18,7 @@ static s16 sSafePosCameraYaw;
 u8 sSafeWarpId;
 static void* sCheckpointNodes[16];
 
-void fail_warp_set_safe_pos(f32* pos, s16 angle)
+void fail_warp_set_safe_pos(f32* pos, s16 angle, int areaIndex, int levelNum)
 {
     // print_text_fmt_int(20, 20, "X %d", (int) m->pos[0]);
     // print_text_fmt_int(20, 40, "Y %d", (int) m->pos[1]);
@@ -28,8 +28,8 @@ void fail_warp_set_safe_pos(f32* pos, s16 angle)
     sSafePos[2] = pos[2];
     sSafePosAngle = angle;
     sSafePosCameraYaw = angle + 0x8000;
-    sSafePosArea = gCurrAreaIndex;
-    sSafePosLevel = gCurrLevelNum;
+    sSafePosArea = areaIndex;
+    sSafePosLevel = levelNum;
     sSafeWarpId = WARP_NODE_FAIL_WARP;
 }
 
@@ -128,6 +128,7 @@ void fail_warp_init_mario_after_quick_warp(struct MarioState *m)
 
 void fail_warp_init_mario_after_quick_warp_reset_camera(struct Object* spawnObject)
 {
+    return;
     if (spawnObject != &gFailWarpSpoofedWarpObject)
     {
         reset_camera(gCurrentArea->camera);
