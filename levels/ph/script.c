@@ -121,6 +121,7 @@ const LevelScript level_ph_entry[] = {
 		OBJECT(MODEL_PH_DRUM, 8194, -13000, -5709, 0, 0, 0, (MODEL_PH_DRUM_BREAK << 16), bhvBreakable),
 		OBJECT(MODEL_PH_DRUM, 8604, -13000, -5792, 0, 0, 0, (MODEL_PH_DRUM_BREAK << 16), bhvBreakable),
 		OBJECT(MODEL_PH_DRUM, 8663, -13000, -6246, 0, 0, 0, (MODEL_PH_DRUM_BREAK << 16), bhvBreakable),
+		OBJECT(MODEL_NONE, 1971, -13473, -10303, 0, 125, 0, (0xa << 16), bhvInstantActiveWarp),
 		OBJECT(MODEL_MAD_PIANO, 10201, -13583, -2836, 0, 0, 0, 0x00000000, bhvMadPiano),
 		OBJECT(MODEL_MAD_PIANO, 995, -12560, -1871, 0, 0, 0, 0x00000000, bhvMadPiano),
 		OBJECT(MODEL_MAD_PIANO, 4672, -13643, -12582, 0, 0, 0, 0x00000000, bhvMadPiano),
