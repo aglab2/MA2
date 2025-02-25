@@ -14,4 +14,5 @@ extern Vtx ow_pc_ow_pc_mesh_layer_1_vtx_1[96];
 extern Vtx ow_pc_ow_pc_mesh_layer_1_vtx_2[10];
 extern Vtx ow_pc_ow_pc_mesh_layer_1_vtx_3[35];
 extern Vtx ow_pc_ow_pc_mesh_layer_1_vtx_4[36];
+extern Vtx ow_pc_ow_pc_mesh_layer_1_vtx_5[19];
 extern Gfx ow_pc_ow_pc_mesh_layer_1[];
