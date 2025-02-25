@@ -129,7 +129,7 @@ const LevelScript level_pl_entry[] = {
 		OBJECT(MODEL_GOOMBA, 20347, -30, -311, 0, 0, 0, 0x00000000, bhvGoomba),
 		OBJECT(MODEL_GOOMBA, 21091, -30, -700, 0, 0, 0, 0x00000000, bhvGoomba),
 		OBJECT(MODEL_GOOMBA, 21091, -30, 2156, 0, 0, 0, 0x00000000, bhvGoomba),
-		OBJECT(MODEL_NONE, 21119, 176, 40, 0, 0, 0, (0xa << 16), bhvInstantActiveWarp),
+		OBJECT(MODEL_NONE, 21078, 111, 41, 0, -90, 0, (0xa << 16), bhvInstantActiveWarp),
 		OBJECT(MODEL_PL_MLIFT, -15503, 7600, 3702, 0, 0, 0, (3 << 16), bhvPLLift),
 		OBJECT(MODEL_PL_MLIFT, 16500, 470, 4693, 0, 0, 0, (3 << 16), bhvPLLift),
 		OBJECT(MODEL_PL_MLIFT, 9750, 1370, 6492, 0, 0, 0, (1 << 16), bhvPLLift),
@@ -192,7 +192,7 @@ const LevelScript level_pl_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 	FREE_LEVEL_POOL(),
-	MARIO_POS(0x01, 0, 21081, 145, 21),
+	MARIO_POS(0x01, -90, 21081, 145, 21),
 	CALL(0, lvl_init_or_update),
 	CALL_LOOP(1, lvl_init_or_update),
 	CLEAR_LEVEL(),
