@@ -42,7 +42,7 @@ static const SpringLinkDesc* kSpringsLinkDescs[] = {
 
 // Curve is a singleton to ensure that 2 springs wont try to pull mario at the same time
 static s16 sSpringBezierLevelNum = 0;
-static const s16* sSpringBezier = NULL;
+const s16* sSpringBezier = NULL;
 static int sSpringTimer = 0;
 
 #define oSpringBezier OBJECT_FIELD_VPTR(0x1B)

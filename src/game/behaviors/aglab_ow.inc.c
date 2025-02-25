@@ -1,5 +1,7 @@
 #define OW_LEVEL_COUNT 15
 
+extern const Trajectory* sTrajectory;
+extern const s16* sSpringBezier;
 void bhv_ow_ctl_init()
 {
     struct Object** objs = (struct Object**) aglabGlobalScratch;
@@ -12,6 +14,9 @@ void bhv_ow_ctl_init()
         obj->oPosZ = 7238.f - 1000 * i;
         obj->oOpacity = 0;
     }
+
+    sSpringBezier = NULL;
+    sTrajectory = NULL;
 }
 
 void bhv_ow_ctl_loop()

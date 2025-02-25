@@ -4,5 +4,6 @@ extern const Collision castle_grounds_area_1_collision[];
 extern const MacroObject castle_grounds_area_1_macro_objs[];
 extern u8 castle_grounds_dl_Material_ia16[];
 extern Vtx castle_grounds_dl_Untitled_mesh_layer_5_vtx_cull[8];
-extern Vtx castle_grounds_dl_Untitled_mesh_layer_5_vtx_0[50];
+extern Vtx castle_grounds_dl_Untitled_mesh_layer_5_vtx_0[823];
+extern Vtx castle_grounds_dl_Untitled_mesh_layer_5_vtx_1[552];
 extern Gfx castle_grounds_dl_Untitled_mesh_layer_5[];
