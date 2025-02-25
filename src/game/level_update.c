@@ -246,6 +246,7 @@ void init_door_warp(struct SpawnInfo *spawnInfo, u32 warpDestFlags) {
 static void set_mario_initial_cap_powerup(struct MarioState *m) {
 }
 
+extern s16 s8DirModeYawOffset;
 static void set_mario_initial_action(struct MarioState *m, u32 spawnType, u32 actionArg) {
     switch (spawnType) {
         case MARIO_SPAWN_DOOR_WARP:
@@ -360,6 +361,7 @@ void init_mario_after_warp(void) {
     }
 
     reset_camera(gCurrentArea->camera);
+    s8DirModeYawOffset = (gMarioStates->faceAngle[1] + 0x9000) & 0xe000;
     sWarpDest.type = WARP_TYPE_NOT_WARPING;
     sDelayedWarpOp = WARP_OP_NONE;
 
