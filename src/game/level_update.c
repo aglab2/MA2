@@ -1020,6 +1020,7 @@ void initiate_delayed_warp(void) {
                                   warpNode->node.destNode, sDelayedWarpArg);
                     if (sSourceWarpNodeId == WARP_NODE_FAIL_WARP || (0xe0 <= sSourceWarpNodeId && sSourceWarpNodeId < 0xf0))
                     {
+                        sSafeWarpId = sSourceWarpNodeId;
                         sWarpDest.type = WARP_TYPE_CHANGE_LEVEL;
                     }
 
