@@ -2423,6 +2423,27 @@ Vtx ow_ms_ow_ms_mesh_layer_1_vtx_6[32] = {
 	{{ {-918, 99, 520}, 0, {4096, -16}, {206, 200, 202, 255} }},
 };
 
+Vtx ow_ms_ow_ms_mesh_layer_1_vtx_7[18] = {
+	{{ {925, -26, 465}, 0, {-16, -1044}, {248, 248, 129, 255} }},
+	{{ {924, 112, 484}, 0, {3068, -16}, {42, 150, 199, 255} }},
+	{{ {924, 112, 520}, 0, {12320, 1008}, {63, 64, 166, 255} }},
+	{{ {926, -164, 520}, 0, {2040, 1008}, {160, 16, 174, 255} }},
+	{{ {925, -26, 5}, 0, {972, -1044}, {226, 121, 231, 255} }},
+	{{ {926, -164, -511}, 0, {2040, 1008}, {160, 18, 81, 255} }},
+	{{ {925, -26, -455}, 0, {1964, -1044}, {247, 113, 57, 255} }},
+	{{ {924, 112, -474}, 0, {-16, -16}, {16, 95, 83, 255} }},
+	{{ {924, 112, -511}, 0, {2040, -16}, {5, 225, 133, 255} }},
+	{{ {-2759, 87, -474}, 0, {12320, -16}, {170, 243, 92, 255} }},
+	{{ {-2759, 87, -511}, 0, {12320, 1008}, {32, 89, 172, 255} }},
+	{{ {-2757, -189, -511}, 0, {2040, 1008}, {230, 0, 124, 255} }},
+	{{ {-2758, -51, -455}, 0, {-16, 1008}, {251, 5, 127, 255} }},
+	{{ {-2757, -189, 520}, 0, {2040, 1008}, {223, 0, 133, 255} }},
+	{{ {-2758, -51, 465}, 0, {-16, 1008}, {43, 90, 178, 255} }},
+	{{ {-2759, 87, 484}, 0, {-16, -16}, {46, 89, 178, 255} }},
+	{{ {-2759, 87, 520}, 0, {-16, 1008}, {31, 87, 87, 255} }},
+	{{ {-2758, -51, 5}, 0, {1012, 1008}, {166, 89, 0, 255} }},
+};
+
 
 Gfx ow_ms_ow_ms_mesh_layer_1[] = {
 	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH),
@@ -2746,8 +2767,19 @@ Gfx ow_ms_ow_ms_mesh_layer_1[] = {
 	gsSP2Triangles(20, 21, 22, 0, 21, 20, 23, 0),
 	gsSP2Triangles(24, 25, 26, 0, 25, 24, 27, 0),
 	gsSP2Triangles(28, 29, 30, 0, 29, 28, 31, 0),
-	gsDPPipeSync(),
 	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsDPPipeSync(),
+	gsDPSetCombineLERP(0, 0, 0, 0, 0, 0, 0, ENVIRONMENT, 0, 0, 0, 0, 0, 0, 0, ENVIRONMENT),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPVertex(ow_ms_ow_ms_mesh_layer_1_vtx_7 + 0, 18, 0),
+	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
+	gsSP2Triangles(4, 0, 3, 0, 4, 3, 5, 0),
+	gsSP2Triangles(5, 6, 4, 0, 5, 7, 6, 0),
+	gsSP2Triangles(5, 8, 7, 0, 9, 10, 11, 0),
+	gsSP2Triangles(12, 9, 11, 0, 11, 13, 12, 0),
+	gsSP2Triangles(13, 14, 12, 0, 13, 15, 14, 0),
+	gsSP2Triangles(13, 16, 15, 0, 14, 17, 12, 0),
+	gsDPPipeSync(),
 	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 0),

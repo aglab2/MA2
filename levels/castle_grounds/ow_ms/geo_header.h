@@ -20,4 +20,5 @@ extern Vtx ow_ms_ow_ms_mesh_layer_1_vtx_3[89];
 extern Vtx ow_ms_ow_ms_mesh_layer_1_vtx_4[56];
 extern Vtx ow_ms_ow_ms_mesh_layer_1_vtx_5[32];
 extern Vtx ow_ms_ow_ms_mesh_layer_1_vtx_6[32];
+extern Vtx ow_ms_ow_ms_mesh_layer_1_vtx_7[18];
 extern Gfx ow_ms_ow_ms_mesh_layer_1[];
