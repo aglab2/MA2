@@ -793,7 +793,7 @@ enum StarGrabStyle
 static enum StarGrabStyle get_star_grab_style(struct Object *obj)
 {
     if (obj_has_model(obj, MODEL_CHECKPOINT))
-        return STAR_GRAB_CHECKPOINT;
+        return STAR_GRAB_NONSTOP;
 
     if (obj_has_model(obj, MODEL_GOAL))
         return STAR_GRAB_EXIT;

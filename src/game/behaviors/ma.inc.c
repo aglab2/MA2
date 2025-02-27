@@ -12,6 +12,8 @@ static struct ObjectHitbox sCheckpointGoalInteract = {
     /* hurtboxHeight:     */ 0,
 };
 
+extern s8 gDialogCameraAngleIndex;
+
 void bhv_checkpoint_init()
 {
     u8 starId = GET_BPARAM1(o->oBehParams);
@@ -22,31 +24,52 @@ void bhv_checkpoint_init()
 #else
     if (currentLevelStarFlags & (1ULL << starId)) {
 #endif
-        o->oInteractStatus = INT_STATUS_INTERACTED;
-        o->oGeoRoll = 0;
         o->oOpacity = 255;
     }
     else
     {
-        o->oGeoRoll = 0x4000;
         o->oOpacity = 0;
+    }
+
+    if (gDialogCameraAngleIndex == 1 + 0xef - GET_BPARAM2(o->oBehParams))
+    {
+        o->oGeoRoll = 0;
+        o->oInteractStatus = INT_STATUS_INTERACTED;
+    }
+    else
+    {
+        o->oGeoRoll = 0x4000;
     }
 }
 
-extern s8 gDialogCameraAngleIndex;
 void bhv_checkpoint_loop()
 {
-    if (o->oInteractStatus & INT_STATUS_INTERACTED) {
+    if (o->oAction)
+    {
         if (0 != o->oGeoRoll)
         {
             o->oGeoRoll -= 0x200;
-            o->oOpacity = 255 - o->oGeoRoll * 255 / 0x4000;
+            if (255 != o->oOpacity)
+                o->oOpacity = 255 - o->oGeoRoll * 255 / 0x4000;
+        }
+        else
+        {
+            if (gDialogCameraAngleIndex != 1 + 0xef - GET_BPARAM2(o->oBehParams))
+            {
+                o->oAction = 0;
+                o->oGeoRoll = 0x4000;
+                o->oInteractStatus = 0;
+            }
         }
     }
-
-    if (o->oDistanceToMario < 100.0f) {
-        sSafeWarpId = GET_BPARAM2(o->oBehParams);
-        gDialogCameraAngleIndex = 1 + 0xef - sSafeWarpId;
+    else
+    {
+        if (o->oInteractStatus & INT_STATUS_INTERACTED)
+        {
+            sSafeWarpId = GET_BPARAM2(o->oBehParams);
+            gDialogCameraAngleIndex = 1 + 0xef - sSafeWarpId;
+            o->oAction = 1;
+        }
     }
 }
 
