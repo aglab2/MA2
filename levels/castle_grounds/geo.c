@@ -31,3 +31,4 @@
 #include "levels/castle_grounds/ow_cg/geo.inc.c"
 #include "levels/castle_grounds/ow_fr/geo.inc.c"
 #include "levels/castle_grounds/ow_lock/geo.inc.c"
+#include "levels/castle_grounds/ow_number/geo.inc.c"

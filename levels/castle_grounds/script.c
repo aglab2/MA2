@@ -17,6 +17,7 @@
 
 /* Fast64 begin persistent block [scripts] */
 #define SEQ_LEVEL_GRASS 0x2A
+extern const GeoLayout ow_number_geo[];
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_castle_grounds_entry[] = {
@@ -40,6 +41,7 @@ const LevelScript level_castle_grounds_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_OW_CG, ow_cg_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_OW_FR, ow_fr_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_OW_LOCK, ow_lock_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_OW_NUMBER, ow_number_geo),
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
 
