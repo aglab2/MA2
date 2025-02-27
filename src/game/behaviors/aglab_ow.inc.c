@@ -160,6 +160,8 @@ void bhv_ow_lock_loop()
         }
         else
         {
+            struct Object* obj = spawn_object_relative(0, 0, 380, 32, o, MODEL_OW_CLEAR, bhvOwNumber);
+            obj_scale(obj, 1.5f);
         }
     }
 
