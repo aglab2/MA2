@@ -950,6 +950,7 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
 /**
  * If a delayed warp is ready, initiate it.
  */
+extern s8 gDialogCameraAngleIndex;
 void initiate_delayed_warp(void) {
     struct ObjectWarpNode *warpNode;
     s32 destWarpNode;
@@ -1023,6 +1024,7 @@ void initiate_delayed_warp(void) {
                     if (sSourceWarpNodeId == WARP_NODE_FAIL_WARP || (0xe0 <= sSourceWarpNodeId && sSourceWarpNodeId < 0xf0))
                     {
                         sSafeWarpId = sSourceWarpNodeId;
+                        gDialogCameraAngleIndex = sSourceWarpNodeId == WARP_NODE_FAIL_WARP ? 1 : 1 + 0xef - sSourceWarpNodeId;
                         sWarpDest.type = WARP_TYPE_CHANGE_LEVEL;
                     }
 

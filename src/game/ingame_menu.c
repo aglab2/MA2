@@ -1268,11 +1268,11 @@ LangArray *gEndCutsceneStringsEn[] = {
     &textEndCutscene9
 };
 
-u16 gCutsceneMsgFade        =  0;
-s16 gCutsceneMsgIndex       = -1;
-s16 gCutsceneMsgDuration    = -1;
-s16 gCutsceneMsgTimer       =  0;
-s8  gDialogCameraAngleIndex = CAM_SELECTION_MARIO;
+static u16 gCutsceneMsgFade        =  0;
+static s16 gCutsceneMsgIndex       = -1;
+static s16 gCutsceneMsgDuration    = -1;
+static s16 gCutsceneMsgTimer       =  0;
+s8  gDialogCameraAngleIndex =  1;
 s8  gDialogCourseActNum     =  1;
 
 void render_dialog_entries(void) {
@@ -1648,6 +1648,8 @@ static void render_star_at(int enabled, int x, int y)
     print_generic_string_aligned(x, y, enabled ? "★" : "☆", TEXT_ALIGN_RIGHT);
 }
 
+extern const int gLevelWithHardModes;
+
 void render_pause_my_score_coins(void) {
     char str[20];
 
@@ -1676,7 +1678,10 @@ void render_pause_my_score_coins(void) {
             {
                 render_star_at(!!(starFlags & (1ULL << i)), PAUSE_MENU_LEFT_X + 3 + (62 - i) * 16 - 30, y);
             }
-            render_star_at(!!(starFlags & (1ULL << 63)), PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30, y);
+            if (gLevelWithHardModes & (1 << (gCurrLevelNum - LEVEL_CE)))
+            {
+                render_star_at(!!(starFlags & (1ULL << 63)), PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30, y);
+            }
 
             y = PAUSE_MENU_MY_SCORE_Y + 5;
             print_generic_string_aligned(PAUSE_MENU_LEFT_X + 3 - 45, y, textStars, TEXT_ALIGN_RIGHT);
@@ -1710,15 +1715,11 @@ void render_pause_my_score_coins(void) {
 
 extern const Gfx dl_draw_triangle_down[];
 static void render_quick_warp(s16 x, s16 y, s8 *index, s16 xIndex) {
-    handle_menu_scrolling(MENU_SCROLL_HORIZONTAL, index, 1, 64 - sCheckpointIds);
+    handle_menu_scrolling(MENU_SCROLL_HORIZONTAL, index, 1, 64 - sCheckpointIds - 1);
     if (*index == 1)
         return;
 
-    int xoff;
-    if (64 - sCheckpointIds != gDialogCameraAngleIndex)
-        xoff = PAUSE_MENU_LEFT_X - 57 + *index * 16;
-    else
-        xoff = PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30 + 2;
+    int xoff = PAUSE_MENU_LEFT_X - 57 + *index * 16;
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     set_text_color(255, 255, 255);
@@ -1767,8 +1768,6 @@ void render_pause_course_options(s16 x, s16 y, s8 *index, s16 yIndex) {
         {
             if (1 == gDialogCameraAngleIndex)
                 lastLine = warpToStart;
-            else if (64 - sCheckpointIds == gDialogCameraAngleIndex)
-                lastLine = warpToGoal;
             else
                 lastLine = warpToCheckpoint;
         }

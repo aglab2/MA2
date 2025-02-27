@@ -33,6 +33,7 @@ void bhv_checkpoint_init()
     }
 }
 
+extern s8 gDialogCameraAngleIndex;
 void bhv_checkpoint_loop()
 {
     if (o->oInteractStatus & INT_STATUS_INTERACTED) {
@@ -45,6 +46,7 @@ void bhv_checkpoint_loop()
 
     if (o->oDistanceToMario < 100.0f) {
         sSafeWarpId = GET_BPARAM2(o->oBehParams);
+        gDialogCameraAngleIndex = 1 + 0xef - sSafeWarpId;
     }
 }
 
