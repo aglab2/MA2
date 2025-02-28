@@ -36,14 +36,16 @@ void bhv_ow_ctl_init()
             struct Object* obj = spawn_object(o, MODEL_OW_LOCK, bhvOwLock);
             obj->oPosX = -585.f;
             obj->oPosY = 0.f;
-            obj->oPosZ = 7238.f - 1000.f * i - 400.f;
+            obj->oPosZ = 7238.f - 1000.f * i - 600.f;
             if (!withExtraMode)
             {
                 obj->oBehParams2ndByte = off++;
+                SET_BPARAM1(obj->oBehParams, 0);
             }
             else
             {
                 obj->oBehParams2ndByte = i;
+                SET_BPARAM1(obj->oBehParams, 0);
             }
         }
         if (withExtraMode)
@@ -54,6 +56,7 @@ void bhv_ow_ctl_init()
             obj->oPosZ = 7238.f - 1000.f * i;
             obj->oFaceAngleYaw = 0x4000;
             obj->oBehParams2ndByte = i;
+            SET_BPARAM1(obj->oBehParams, 1);
         }
     }
 
@@ -65,7 +68,7 @@ void bhv_ow_ctl_loop()
 {
 }
 
-static void hide_if_invislble()
+static void hide_if_invisible()
 {
     if (0 == o->oOpacity)
     {
@@ -95,7 +98,7 @@ void bhv_ow_visual_loop()
         }
     }
 
-    hide_if_invislble();
+    hide_if_invisible();
 }
 
 void bhv_ow_lock_loop()
@@ -142,11 +145,11 @@ void bhv_ow_lock_loop()
                 test /= 10;
             }
             
-            int shift = len * 130 / 2;
+            int shift = len * 110 / 2;
             {
                 struct Object* obj = spawn_object_relative(ORANGE_NUMBER_0 + 10, shift, 280, 32, o, MODEL_OW_NUMBER, bhvOwNumber);
                 obj_scale(obj, 2.f);
-                shift -= 130;
+                shift -= 110;
             }
 
             test = starRequirement / 10;
@@ -155,13 +158,16 @@ void bhv_ow_lock_loop()
                 struct Object* obj = spawn_object_relative(ORANGE_NUMBER_0 + (test % 10), shift, 280, 32, o, MODEL_OW_NUMBER, bhvOwNumber);
                 obj_scale(obj, 2.f);
                 test /= 10;
-                shift -= 130;
+                shift -= 110;
             }
         }
         else
         {
-            struct Object* obj = spawn_object_relative(0, 0, 380, 32, o, MODEL_OW_CLEAR, bhvOwNumber);
-            obj_scale(obj, 1.5f);
+            if (0 == GET_BPARAM1(o->oBehParams))
+            {
+                struct Object* obj = spawn_object_relative(0, 0, 380, 32, o, MODEL_OW_CLEAR, bhvOwNumber);
+                obj_scale(obj, 1.5f);    
+            }
         }
     }
 
@@ -172,5 +178,5 @@ void bhv_ow_number_loop(void)
 {
     o->oAnimState = o->oBehParams2ndByte;
     o->oOpacity = o->parentObj->oOpacity;
-    hide_if_invislble();
+    hide_if_invisible();
 }
