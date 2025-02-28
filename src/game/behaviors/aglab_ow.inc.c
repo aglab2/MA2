@@ -127,46 +127,52 @@ void bhv_ow_lock_loop()
                     starRequirement = 150;
                     break;
             }
-    
-#if 0
+
             if (gMarioStates->numStars >= starRequirement)
             {
                 o->activeFlags = 0;
             }
             else
-#endif
-
-            int len = 1;
-            starRequirement = 100;
-            int test = starRequirement / 10;
-            while (test)
             {
-                len++;
-                test /= 10;
-            }
-            
-            int shift = len * 110 / 2;
-            {
-                struct Object* obj = spawn_object_relative(ORANGE_NUMBER_0 + 10, shift, 280, 32, o, MODEL_OW_NUMBER, bhvOwNumber);
-                obj_scale(obj, 2.f);
-                shift -= 110;
-            }
-
-            test = starRequirement / 10;
-            while (test)
-            {
-                struct Object* obj = spawn_object_relative(ORANGE_NUMBER_0 + (test % 10), shift, 280, 32, o, MODEL_OW_NUMBER, bhvOwNumber);
-                obj_scale(obj, 2.f);
-                test /= 10;
-                shift -= 110;
+                int len = 1;
+                starRequirement = 100;
+                int test = starRequirement / 10;
+                while (test)
+                {
+                    len++;
+                    test /= 10;
+                }
+                
+                int shift = len * 110 / 2;
+                {
+                    struct Object* obj = spawn_object_relative(ORANGE_NUMBER_0 + 10, shift, 280, 32, o, MODEL_OW_NUMBER, bhvOwNumber);
+                    obj_scale(obj, 2.f);
+                    shift -= 110;
+                }
+    
+                test = starRequirement / 10;
+                while (test)
+                {
+                    struct Object* obj = spawn_object_relative(ORANGE_NUMBER_0 + (test % 10), shift, 280, 32, o, MODEL_OW_NUMBER, bhvOwNumber);
+                    obj_scale(obj, 2.f);
+                    test /= 10;
+                    shift -= 110;
+                }    
             }
         }
         else
         {
-            if (0 == GET_BPARAM1(o->oBehParams))
+            if ((1ULL << 63) && save_file_get_star_flags(gCurrSaveFileNum - 1, o->oBehParams2ndByte))
             {
-                struct Object* obj = spawn_object_relative(0, 0, 380, 32, o, MODEL_OW_CLEAR, bhvOwNumber);
-                obj_scale(obj, 1.5f);    
+                o->activeFlags = 0;
+            }
+            else
+            {
+                if (0 == GET_BPARAM1(o->oBehParams))
+                {
+                    struct Object* obj = spawn_object_relative(0, 0, 380, 32, o, MODEL_OW_CLEAR, bhvOwNumber);
+                    obj_scale(obj, 1.5f);    
+                }
             }
         }
     }
