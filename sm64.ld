@@ -620,6 +620,13 @@ SECTIONS
 	END_SEG(capcom)
 #endif
 
+   BEGIN_SEG(f3dzex, __romPos)
+   {
+      KEEP(BUILD_DIR/lib/gspF3DZEX2.NoN_PosLight.fifo.o(.text));
+      KEEP(BUILD_DIR/lib/gspF3DZEX2.NoN_PosLight.fifo.o(.data));
+   }
+   END_SEG(f3dzex)
+
 #ifdef DEBUG_MAP_STACKTRACE
    BEGIN_SEG(mapData, (RAM_END - 0x00100000)) {
       KEEP(BUILD_DIR/asm/debug/map.o(.data*));

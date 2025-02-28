@@ -392,12 +392,21 @@ static void load_engine_code_segment(void) {
     osInvalDCache(startAddr, totalSize);
 }
 
+extern u8 _f3dzexSegmentRomStart[];
+extern u8 _f3dzexSegmentRomEnd[];
+static void load_f3dex2(void) {
+    void *startAddr = (void *) (0x80700000 - 0x28000);
+    u32 totalSize = 0x2000;
+    dma_read(startAddr, _f3dzexSegmentRomStart, _f3dzexSegmentRomEnd);
+}
+
 static void change_vi(OSViMode *mode, int width, int height);
 void thread3_main(UNUSED void *arg) {
     setgp();
     setup_mesg_queues();
     load_sdata();
     load_engine_code_segment();
+    load_f3dex2();
     alloc_pool();
 #ifdef PUPPYPRINT_DEBUG
     puppyprint_calculate_ram_usage_static();
