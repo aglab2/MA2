@@ -159,15 +159,15 @@ enum ActiveParticleFlags {
 #define CLEARED_BPARAM(behParams, index, num) ((behParams) & ~BPARAM_SHIFTED_MASK((index), (num)))
 
 // Get a u8 bparam from oBehParams
-#define GET_BPARAM1(behParams) GET_BPARAMS((behParams), 1, 1)
-#define GET_BPARAM2(behParams) GET_BPARAMS((behParams), 2, 1)
-#define GET_BPARAM3(behParams) GET_BPARAMS((behParams), 3, 1)
-#define GET_BPARAM4(behParams) GET_BPARAMS((behParams), 4, 1)
+#define GET_BPARAM1(behParams) *(((uint8_t*) &(behParams)) + 0)
+#define GET_BPARAM2(behParams) *(((uint8_t*) &(behParams)) + 1)
+#define GET_BPARAM3(behParams) *(((uint8_t*) &(behParams)) + 2)
+#define GET_BPARAM4(behParams) *(((uint8_t*) &(behParams)) + 3)
 
 // Read 2 bparams as a single value
-#define GET_BPARAM12(behParams) GET_BPARAMS((behParams), 1, 2)
+#define GET_BPARAM12(behParams) *(((uint16_t*) &(behParams)) + 0)
 #define GET_BPARAM23(behParams) GET_BPARAMS((behParams), 2, 2)
-#define GET_BPARAM34(behParams) GET_BPARAMS((behParams), 3, 2)
+#define GET_BPARAM34(behParams) *(((uint16_t*) &(behParams)) + 1)
 
 // Read 3 bparams as a single value
 #define GET_BPARAM123(behParams) GET_BPARAMS((behParams), 1, 3)
@@ -175,10 +175,10 @@ enum ActiveParticleFlags {
 
 // Set a bparam in oBehParams without overwriting other bparams
 #define SET_BPARAM(behParams, val, index, num) (behParams) = (CLEARED_BPARAM((behParams), (index), (num)) | SHIFTED_BPARAM((val), (index), (num)))
-#define SET_BPARAM1(behParams, val) SET_BPARAM((behParams), (val), 1, 1)
-#define SET_BPARAM2(behParams, val) SET_BPARAM((behParams), (val), 2, 1)
-#define SET_BPARAM3(behParams, val) SET_BPARAM((behParams), (val), 3, 1)
-#define SET_BPARAM4(behParams, val) SET_BPARAM((behParams), (val), 4, 1)
+#define SET_BPARAM1(behParams, val) do{ *(((uint8_t*) &(behParams)) + 0) = val; } while(0)
+#define SET_BPARAM2(behParams, val) do{ *(((uint8_t*) &(behParams)) + 1) = val; } while(0)
+#define SET_BPARAM3(behParams, val) do{ *(((uint8_t*) &(behParams)) + 2) = val; } while(0)
+#define SET_BPARAM4(behParams, val) do{ *(((uint8_t*) &(behParams)) + 3) = val; } while(0)
 
 // Set a bparam in oBehParams, clearing other bparams
 #define SET_FULL_BPARAM(behParams, val, index, num) (behParams) = SHIFTED_BPARAM((val), (index), (num))
