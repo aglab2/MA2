@@ -6,6 +6,7 @@ extern const Trajectory wc_area_1_spline_Spring_NurbsCurve[];
 extern const Trajectory wc_area_1_spline_Spring_NurbsCurve_001[];
 extern const Trajectory wc_area_1_spline_Spring_NurbsCurve_002[];
 extern const Trajectory wc_area_1_spline_Spring_NurbsCurve_003[];
+extern const Trajectory wc_area_1_spline_Spring_NurbsCurve_004[];
 extern u8 wc_dl_kd_nde_yuka2_vq_ci4[];
 extern u8 wc_dl_kd_nde_yuka2_vq_pal_rgba16[];
 extern u8 wc_dl_kd_nde_hasira3_vq_ci4[];
