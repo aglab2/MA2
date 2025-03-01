@@ -579,6 +579,7 @@ extern const BehaviorScript bhvCeTimer[];
 extern const BehaviorScript bhvCeCar[];
 extern const BehaviorScript bhvCeCarMove[]; 
 extern const BehaviorScript bhvCETimerStar[];
+extern const BehaviorScript bhvCETimerStarCtl[];
 extern const BehaviorScript bhvPushOut[];
 extern const BehaviorScript bhvSucc[];
 extern const BehaviorScript bhvFRDrop[];

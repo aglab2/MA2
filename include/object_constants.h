@@ -159,15 +159,15 @@ enum ActiveParticleFlags {
 #define CLEARED_BPARAM(behParams, index, num) ((behParams) & ~BPARAM_SHIFTED_MASK((index), (num)))
 
 // Get a u8 bparam from oBehParams
-#define GET_BPARAM1(behParams) *(((uint8_t*) &(behParams)) + 0)
-#define GET_BPARAM2(behParams) *(((uint8_t*) &(behParams)) + 1)
-#define GET_BPARAM3(behParams) *(((uint8_t*) &(behParams)) + 2)
-#define GET_BPARAM4(behParams) *(((uint8_t*) &(behParams)) + 3)
+#define GET_BPARAM1(behParams) (*(((uint8_t*) &(behParams)) + 0))
+#define GET_BPARAM2(behParams) (*(((uint8_t*) &(behParams)) + 1))
+#define GET_BPARAM3(behParams) (*(((uint8_t*) &(behParams)) + 2))
+#define GET_BPARAM4(behParams) (*(((uint8_t*) &(behParams)) + 3))
 
 // Read 2 bparams as a single value
-#define GET_BPARAM12(behParams) *(((uint16_t*) &(behParams)) + 0)
+#define GET_BPARAM12(behParams) (*(((uint16_t*) &(behParams)) + 0))
 #define GET_BPARAM23(behParams) GET_BPARAMS((behParams), 2, 2)
-#define GET_BPARAM34(behParams) *(((uint16_t*) &(behParams)) + 1)
+#define GET_BPARAM34(behParams) (*(((uint16_t*) &(behParams)) + 1))
 
 // Read 3 bparams as a single value
 #define GET_BPARAM123(behParams) GET_BPARAMS((behParams), 1, 3)

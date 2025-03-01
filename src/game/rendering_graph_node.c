@@ -1679,8 +1679,8 @@ static void adjust_view_range()
     if (0 == fps)
         return;
     
-    print_text_fmt_int(20, 20, "FPS %d", fps * 100);
-    print_text_fmt_int(20, 40, "VR: %d", sViewRange / 1000);
+    // print_text_fmt_int(20, 20, "FPS %d", fps * 100);
+    // print_text_fmt_int(20, 40, "VR: %d", sViewRange / 1000);
 
     if (fps < 29.0f) 
     {

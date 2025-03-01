@@ -17,6 +17,7 @@
 #include "engine/math_util.h"
 #include "puppycam2.h"
 #include "puppyprint.h"
+#include "object_list_processor.h"
 
 #include "config.h"
 
@@ -489,6 +490,122 @@ void render_hud_timer(void) {
     print_text_aligned(160, 205, str, TEXT_ALIGN_CENTER);
 }
 
+extern BehaviorScript bhvStar[];
+extern BehaviorScript bhvHiddenStar[];
+extern BehaviorScript bhvHiddenRedCoinStar[];
+extern BehaviorScript bhvCETimerStar[];
+
+extern const Texture dark_outline_tex[];
+
+extern const Texture gray_hud_radar_texs[];
+extern const Texture red_hud_radar_texs[];
+extern const Texture yellow_hud_radar_texs[];
+extern const Texture blue_hud_radar_texs[];
+
+extern struct Object *gMarioObject;
+extern struct ObjectNode *gObjectLists;
+
+static struct Object *nearest_star_object_with_bparam1(u64 mask) {
+    uintptr_t *behavior1 = segmented_to_virtual(bhvStar);
+    uintptr_t *behavior2 = segmented_to_virtual(bhvHiddenStar);
+    uintptr_t *behavior3 = segmented_to_virtual(bhvHiddenRedCoinStar);
+    uintptr_t *behavior4 = segmented_to_virtual(bhvCETimerStar);
+
+    struct ObjectNode *listHead = &gObjectLists[OBJ_LIST_LEVEL];
+    struct Object *obj = (struct Object *) listHead->next;
+    struct Object *closestObj = NULL;
+    f32 minDist = 0x20000;
+
+    while (obj != (struct Object *) listHead) {
+        if ((obj->behavior == behavior1 || obj->behavior == behavior2 || obj->behavior == behavior3 || obj->behavior == behavior4)
+            && !((1ULL << GET_BPARAM1(obj->oBehParams)) & mask)
+            && obj->activeFlags != ACTIVE_FLAG_DEACTIVATED
+        ) {
+            f32 objDist = dist_between_objects(gMarioObject, obj);
+            if (objDist < minDist) {
+                closestObj = obj;
+                minDist = objDist;
+            }
+        }
+
+        obj = (struct Object *) obj->header.next;
+    }
+
+    return closestObj;
+}
+
+extern u8 sStarIds;
+static void render_star_display()
+{
+    if (!gMarioObject)
+        return;
+
+    // print_text_fmt_int(20, 80, "F %d", (int) gMarioState->floorHeight);
+    // print_text_fmt_int(20, 60, "X %d", (int) gMarioState->pos[0]);
+    // print_text_fmt_int(20, 40, "Y %d", (int) gMarioState->pos[1]);
+    // print_text_fmt_int(20, 20, "Z %d", (int) gMarioState->pos[2]);
+
+    static f32 sTimer = 0;
+    Texture* tex;
+    Texture* gray = gray_hud_radar_texs;
+    Texture* yellow = yellow_hud_radar_texs;
+    Texture* red = red_hud_radar_texs;
+    Texture* blue = blue_hud_radar_texs;
+
+    if (gCurrCourseNum == COURSE_NONE)
+        return;
+
+    gSPDisplayList(gDisplayListHead++, dl_hud_img_begin);
+    {
+        u64 collectedMask = save_file_get_star_flags(gCurrSaveFileNum - 1, gCurrCourseNum - 1);
+        int id = 0;
+        while (id < sStarIds)
+        {
+            if (collectedMask & (1ULL << id))
+                break;
+
+            id++;
+        }
+
+        if (id != sStarIds)
+        {
+            struct Object* star = nearest_star_object_with_bparam1(collectedMask);
+            if (star)
+            {
+                f32 x = star->oPosX - gMarioObject->oPosX;
+                f32 y = star->oPosY - gMarioObject->oPosY;
+                f32 z = star->oPosZ - gMarioObject->oPosZ;
+
+                f32 d = sqrtf(x * x + y * y * 3.f + z * z);
+                if (d < 100.f)
+                    d = 100.f;
+
+                f32 spd = 800.f / d;
+                sTimer += spd;
+
+                int amt = ((unsigned) sTimer) % 17;
+                tex = gray + amt * 0x200;
+
+                if (spd > 0.11f)
+                    tex = blue + amt * 0x200;
+
+                if (spd > 0.3f)
+                    tex = yellow + amt * 0x200;
+
+                if (spd > 1.f)
+                    tex = red + amt * 0x200;
+            }
+            else
+            {
+                tex = dark_outline_tex;
+            }
+
+            render_hud_tex_lut(20, 210 - 16, tex);
+        }
+    }
+    gSPDisplayList(gDisplayListHead++, dl_hud_img_end); 
+}
+
 /**
  * Sets HUD status camera value depending of the actions
  * defined in update_camera_status.
@@ -611,6 +728,8 @@ void render_hud(void) {
         if (hudDisplayFlags & HUD_DISPLAY_FLAG_TIMER) {
             render_hud_timer();
         }
+
+        render_star_display();
 
 #ifdef VANILLA_STYLE_CUSTOM_DEBUG
         if (gCustomDebugMode) {

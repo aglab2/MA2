@@ -354,8 +354,8 @@ int zipline_step()
         f32 dirMag = vec3_mag(trajDirection);
         // Calculate velocity
         {
-            print_text_fmt_int(20, 20, "L %d", (int) sForwardVelLimit);
-            print_text_fmt_int(20, 40, "V %d", (int) sForwardVel);
+            // print_text_fmt_int(20, 20, "L %d", (int) sForwardVelLimit);
+            // print_text_fmt_int(20, 40, "V %d", (int) sForwardVel);
             if (sLoopDesc)
             {
                 sForwardVel += 5.f;

@@ -3844,3 +3844,151 @@ const s16 seg2_painting_mesh_neighbor_tris[] = {
       3, 240, 242, 244,
       1, 243,
 };
+
+ALIGNED8 const Texture dark_outline_tex[] = {
+    #include "textures/segment2/dark_outline.rgba16.inc.c"
+};
+
+ALIGNED8 const Texture gray_hud_radar_texs[] = {
+    #include "textures/segment2/gray0.rgba16.inc.c"
+    ,
+    #include "textures/segment2/gray1.rgba16.inc.c"
+    ,
+    #include "textures/segment2/gray2.rgba16.inc.c"
+    ,
+    #include "textures/segment2/gray3.rgba16.inc.c"
+    ,
+    #include "textures/segment2/gray4.rgba16.inc.c"
+    ,
+    #include "textures/segment2/gray5.rgba16.inc.c"
+    ,
+    #include "textures/segment2/gray6.rgba16.inc.c"
+    ,
+    #include "textures/segment2/gray7.rgba16.inc.c"
+    ,
+    #include "textures/segment2/gray8.rgba16.inc.c"
+    ,
+    #include "textures/segment2/gray9.rgba16.inc.c"
+    ,
+    #include "textures/segment2/gray10.rgba16.inc.c"
+    ,
+    #include "textures/segment2/gray11.rgba16.inc.c"
+    ,
+    #include "textures/segment2/gray12.rgba16.inc.c"
+    ,
+    #include "textures/segment2/gray13.rgba16.inc.c"
+    ,
+    #include "textures/segment2/gray14.rgba16.inc.c"
+    ,
+    #include "textures/segment2/gray15.rgba16.inc.c"
+    ,
+    #include "textures/segment2/gray16.rgba16.inc.c"
+};
+
+ALIGNED8 const Texture red_hud_radar_texs[] = {
+    #include "textures/segment2/red0.rgba16.inc.c"
+    ,
+    #include "textures/segment2/red1.rgba16.inc.c"
+    ,
+    #include "textures/segment2/red2.rgba16.inc.c"
+    ,
+    #include "textures/segment2/red3.rgba16.inc.c"
+    ,
+    #include "textures/segment2/red4.rgba16.inc.c"
+    ,
+    #include "textures/segment2/red5.rgba16.inc.c"
+    ,
+    #include "textures/segment2/red6.rgba16.inc.c"
+    ,
+    #include "textures/segment2/red7.rgba16.inc.c"
+    ,
+    #include "textures/segment2/red8.rgba16.inc.c"
+    ,
+    #include "textures/segment2/red9.rgba16.inc.c"
+    ,
+    #include "textures/segment2/red10.rgba16.inc.c"
+    ,
+    #include "textures/segment2/red11.rgba16.inc.c"
+    ,
+    #include "textures/segment2/red12.rgba16.inc.c"
+    ,
+    #include "textures/segment2/red13.rgba16.inc.c"
+    ,
+    #include "textures/segment2/red14.rgba16.inc.c"
+    ,
+    #include "textures/segment2/red15.rgba16.inc.c"
+    ,
+    #include "textures/segment2/red16.rgba16.inc.c"
+};
+
+ALIGNED8 const Texture yellow_hud_radar_texs[] = {
+    #include "textures/segment2/yellow0.rgba16.inc.c"
+    ,
+    #include "textures/segment2/yellow1.rgba16.inc.c"
+    ,
+    #include "textures/segment2/yellow2.rgba16.inc.c"
+    ,
+    #include "textures/segment2/yellow3.rgba16.inc.c"
+    ,
+    #include "textures/segment2/yellow4.rgba16.inc.c"
+    ,
+    #include "textures/segment2/yellow5.rgba16.inc.c"
+    ,
+    #include "textures/segment2/yellow6.rgba16.inc.c"
+    ,
+    #include "textures/segment2/yellow7.rgba16.inc.c"
+    ,
+    #include "textures/segment2/yellow8.rgba16.inc.c"
+    ,
+    #include "textures/segment2/yellow9.rgba16.inc.c"
+    ,
+    #include "textures/segment2/yellow10.rgba16.inc.c"
+    ,
+    #include "textures/segment2/yellow11.rgba16.inc.c"
+    ,
+    #include "textures/segment2/yellow12.rgba16.inc.c"
+    ,
+    #include "textures/segment2/yellow13.rgba16.inc.c"
+    ,
+    #include "textures/segment2/yellow14.rgba16.inc.c"
+    ,
+    #include "textures/segment2/yellow15.rgba16.inc.c"
+    ,
+    #include "textures/segment2/yellow16.rgba16.inc.c"
+};
+
+ALIGNED8 const Texture blue_hud_radar_texs[] = {
+    #include "textures/segment2/blue0.rgba16.inc.c"
+    ,
+    #include "textures/segment2/blue1.rgba16.inc.c"
+    ,
+    #include "textures/segment2/blue2.rgba16.inc.c"
+    ,
+    #include "textures/segment2/blue3.rgba16.inc.c"
+    ,
+    #include "textures/segment2/blue4.rgba16.inc.c"
+    ,
+    #include "textures/segment2/blue5.rgba16.inc.c"
+    ,
+    #include "textures/segment2/blue6.rgba16.inc.c"
+    ,
+    #include "textures/segment2/blue7.rgba16.inc.c"
+    ,
+    #include "textures/segment2/blue8.rgba16.inc.c"
+    ,
+    #include "textures/segment2/blue9.rgba16.inc.c"
+    ,
+    #include "textures/segment2/blue10.rgba16.inc.c"
+    ,
+    #include "textures/segment2/blue11.rgba16.inc.c"
+    ,
+    #include "textures/segment2/blue12.rgba16.inc.c"
+    ,
+    #include "textures/segment2/blue13.rgba16.inc.c"
+    ,
+    #include "textures/segment2/blue14.rgba16.inc.c"
+    ,
+    #include "textures/segment2/blue15.rgba16.inc.c"
+    ,
+    #include "textures/segment2/blue16.rgba16.inc.c"
+};
