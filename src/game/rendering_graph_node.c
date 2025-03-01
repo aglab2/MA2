@@ -899,6 +899,30 @@ typedef struct {
 	gSPLightEX2(pkt,&name.a,2);					\
 }
 
+static Gfx* gLightReset;
+void f3dex3_bug_fixup()
+{
+    if (!gHasEX3)
+        return;
+
+    {
+        struct MasterLayer* masterLayer = &gCurGraphNodeMasterList->layers[LAYER_OPAQUE];
+        append_dl_with_hint(&masterLayer->list, gLightReset, 2 * 8);    
+    }
+    {
+        struct MasterLayer* masterLayer = &gCurGraphNodeMasterList->layers[LAYER_OPAQUE_DECAL];
+        append_dl_with_hint(&masterLayer->list, gLightReset, 2 * 8);    
+    }
+    {
+        struct MasterLayer* masterLayer = &gCurGraphNodeMasterList->layers[LAYER_ALPHA];
+        append_dl_with_hint(&masterLayer->list, gLightReset, 2 * 8);    
+    }
+    {
+        struct MasterLayer* masterLayer = &gCurGraphNodeMasterList->layers[LAYER_TRANSPARENT];
+        append_dl_with_hint(&masterLayer->list, gLightReset, 2 * 8);    
+    }
+}
+
 static void setup_global_light() {
     Lights1* curLight = (Lights1*)alloc_display_list(sizeof(Lights1EX2));
     *curLight = defaultLight;
@@ -922,6 +946,13 @@ static void setup_global_light() {
     else
     {
         gSPSetLights1EX2(gDisplayListHead++, (*curLight));
+    }
+
+    {
+        gLightReset = alloc_display_list(0x10);
+        Gfx* cur = gLightReset;
+        gSPSetLights1(cur++, (*curLight));
+        gSPEndDisplayList(cur++);    
     }
 }
 

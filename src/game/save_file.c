@@ -479,6 +479,8 @@ void save_file_collect_star_or_key(s16 coinScore, s16 starIndex) {
             }
             break;
     }
+
+    save_file_do_save(fileIndex);
 }
 
 s32 save_file_exists(s32 fileIndex) {

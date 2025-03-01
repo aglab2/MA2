@@ -9,7 +9,7 @@ struct ObjectHitbox sBreakableBoxHitbox = {
     /* radius:            */ 150,
     /* height:            */ 200,
     /* hurtboxRadius:     */ 150,
-    /* hurtboxHeight:     */ 200,
+    /* hurtboxHeight:     */ 150,
 };
 
 void breakable_box_init(void) {

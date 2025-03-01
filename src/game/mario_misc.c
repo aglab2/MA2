@@ -621,23 +621,33 @@ Gfx *geo_render_mirror_mario(s32 callContext, struct GraphNode *node, UNUSED Mat
  * Since Mirror Mario has an x scale of -1, the mesh becomes inside out.
  * This node corrects that by changing the culling mode accordingly.
  */
+extern void f3dex3_bug_fixup();
+
 Gfx *geo_mirror_mario_backface_culling(s32 callContext, struct GraphNode *node, UNUSED Mat4 *mtx) {
     struct GraphNodeGenerated *asGenerated = (struct GraphNodeGenerated *) node;
     Gfx *gfx = NULL;
 
-    if (callContext == GEO_CONTEXT_RENDER && gCurGraphNodeObject == &gMirrorMario) {
-        gfx = alloc_display_list(3 * sizeof(*gfx));
-
-        if (asGenerated->parameter == 0) {
-            gSPClearGeometryMode(&gfx[0], G_CULL_BACK);
-            gSPSetGeometryMode(&gfx[1], G_CULL_FRONT);
-            gSPEndDisplayList(&gfx[2]);
-        } else {
-            gSPClearGeometryMode(&gfx[0], G_CULL_FRONT);
-            gSPSetGeometryMode(&gfx[1], G_CULL_BACK);
-            gSPEndDisplayList(&gfx[2]);
+    if (callContext == GEO_CONTEXT_RENDER) {
+        if (1 == asGenerated->parameter)
+        {
+            f3dex3_bug_fixup();
         }
-        SET_GRAPH_NODE_LAYER(asGenerated->fnNode.node.flags, LAYER_OPAQUE);
+  
+        if (gCurGraphNodeObject == &gMirrorMario)
+        {
+            gfx = alloc_display_list(3 * sizeof(*gfx));
+
+            if (asGenerated->parameter == 0) {
+                gSPClearGeometryMode(&gfx[0], G_CULL_BACK);
+                gSPSetGeometryMode(&gfx[1], G_CULL_FRONT);
+                gSPEndDisplayList(&gfx[2]);
+            } else {
+                gSPClearGeometryMode(&gfx[0], G_CULL_FRONT);
+                gSPSetGeometryMode(&gfx[1], G_CULL_BACK);
+                gSPEndDisplayList(&gfx[2]);
+            }
+            SET_GRAPH_NODE_LAYER(asGenerated->fnNode.node.flags, LAYER_OPAQUE);    
+        }
     }
     return gfx;
 }
