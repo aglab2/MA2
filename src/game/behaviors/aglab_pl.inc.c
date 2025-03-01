@@ -25,19 +25,19 @@ void bhv_pl_cage_loop()
                 active = 0 == count_objects_with_behavior(bhvScuttlebug);
                 break;
             case 3:
-                active = 0 == count_objects_with_behavior(bhvSnufit);
+                active = 0 == count_objects_with_behavior(bhvFlyGuy);
                 break;
             case 4:
                 active = 0 == count_objects_with_behavior(bhvChuckya);
                 break;
             case 5:
-                active = 3 > count_objects_with_behavior(bhvFlyGuy);
+                active = 3 > count_objects_with_behavior(bhvSnufit);
                 break;
             case 6:
-                active = 2 > count_objects_with_behavior(bhvFlyGuy);
+                active = 2 > count_objects_with_behavior(bhvSnufit);
                 break;
             case 7:
-                active = 1 > count_objects_with_behavior(bhvFlyGuy);
+                active = 1 > count_objects_with_behavior(bhvSnufit);
                 break;
             case 8:
                 active = 0 == count_objects_with_behavior(bhvBoo);

@@ -160,7 +160,7 @@ extern Vtx pl_dl_0011_object_00B67BDC_mesh_layer_1_vtx_6[12];
 extern Gfx pl_dl_0011_object_00B67BDC_mesh_layer_1_tri_6[];
 extern Vtx pl_dl_0011_object_00B67BDC_mesh_layer_1_vtx_7[16];
 extern Gfx pl_dl_0011_object_00B67BDC_mesh_layer_1_tri_7[];
-extern Vtx pl_dl_0011_object_00B67BDC_mesh_layer_1_vtx_8[4];
+extern Vtx pl_dl_0011_object_00B67BDC_mesh_layer_1_vtx_8[8];
 extern Gfx pl_dl_0011_object_00B67BDC_mesh_layer_1_tri_8[];
 extern Vtx pl_dl_0014_object_00B64064_mesh_layer_1_vtx_0[9];
 extern Gfx pl_dl_0014_object_00B64064_mesh_layer_1_tri_0[];

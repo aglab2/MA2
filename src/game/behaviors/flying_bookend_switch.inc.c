@@ -85,6 +85,11 @@ void flying_bookend_act_2(void) {
         }
     }
 
+    if (o->oTimer > 300)
+    {
+        o->activeFlags = 0;
+    }
+
     cur_obj_move_standard(78);
 }
 
