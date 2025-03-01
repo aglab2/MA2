@@ -42,9 +42,9 @@ static const LevelScript script_inside_castle_area_1_macro_objects[] = {
     OBJECT(/*model*/ MODEL_CASTLE_DOOR_1_STAR,        /*pos*/   644,   614, -1476, /*angle*/ 0, 315, 0, /*behParam*/ (1 << 24), /*beh*/ bhvDoor),
     OBJECT(/*model*/ MODEL_CASTLE_DOOR_3_STARS,       /*pos*/  1075,   205,  -229, /*angle*/ 0, 270, 0, /*behParam*/ (3 << 24), /*beh*/ bhvDoor),
     OBJECT(/*model*/ MODEL_CASTLE_DOOR_3_STARS,       /*pos*/ -2303,     0, -1074, /*angle*/ 0,   0, 0, /*behParam*/ (3 << 24), /*beh*/ bhvDoor),
-    PAINTING_WARP_NODE(/*id*/ 0x00, /*destLevel*/ LEVEL_CE, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
-    PAINTING_WARP_NODE(/*id*/ 0x01, /*destLevel*/ LEVEL_CE, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
-    PAINTING_WARP_NODE(/*id*/ 0x02, /*destLevel*/ LEVEL_CE, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
+    PAINTING_WARP_NODE(/*id*/ 0x00, /*destLevel*/ LEVEL_BOB, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
+    PAINTING_WARP_NODE(/*id*/ 0x01, /*destLevel*/ LEVEL_BOB, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
+    PAINTING_WARP_NODE(/*id*/ 0x02, /*destLevel*/ LEVEL_BOB, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
     RETURN(),
 };
 

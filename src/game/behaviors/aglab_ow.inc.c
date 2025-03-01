@@ -195,3 +195,34 @@ void bhv_ow_number_loop(void)
     o->oOpacity = o->parentObj->oOpacity;
     hide_if_invisible();
 }
+
+extern Gfx bob_dl_Shape_IndexedFaceSet_065_mesh_layer_1[];
+extern Gfx bob_dl_Shape_IndexedFaceSet_065_mesh_layer_4[];
+void bhv_bob_fakeout_loop()
+{
+    if (0 == o->oAction)
+    {
+        if (1000.f < o->oDistanceToMario && o->oDistanceToMario < 3000.f)
+        {
+            o->oAction = 1;
+        }    
+    }
+    else
+    {
+        if (100 == o->oTimer)
+        {
+            gMarioStates->usedObj = o;
+            SET_BPARAM2(o->oBehParams, 0xa);
+            level_trigger_warp(gMarioStates, WARP_OP_TELEPORT);
+        }
+
+        {
+            u8* ptr = segmented_to_virtual(bob_dl_Shape_IndexedFaceSet_065_mesh_layer_1);
+            ptr[0x50 + 7] = 255 - 2 * o->oTimer;
+        }
+        {
+            u8* ptr = segmented_to_virtual(bob_dl_Shape_IndexedFaceSet_065_mesh_layer_4);
+            ptr[0x50+ 7] = 255 - 2 * o->oTimer;
+        }    
+    }
+}

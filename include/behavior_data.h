@@ -586,5 +586,6 @@ extern const BehaviorScript bhvMHMusic[];
 extern const BehaviorScript bhvOwCtl[];
 #define bhvBooster bhvSpeeder
 #define bhvBooaster bhvSpeeder
+extern const BehaviorScript bhvBobFakeout[];
 
 #endif // BEHAVIOR_DATA_H

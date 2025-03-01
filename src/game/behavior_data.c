@@ -6273,3 +6273,12 @@ const BehaviorScript bhvOwLock[] = {
         CALL_NATIVE(bhv_ow_lock_loop),
     END_LOOP(),
 };
+
+extern void bhv_bob_fakeout_loop();
+const BehaviorScript bhvBobFakeout[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO)),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_bob_fakeout_loop),
+    END_LOOP(),
+};
