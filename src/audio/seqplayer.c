@@ -19,7 +19,7 @@ s32 seq_channel_layer_process_script_part4(struct SequenceChannelLayer *layer, s
 s32 seq_channel_layer_process_script_part5(struct SequenceChannelLayer *layer, s32 cmd);
 #endif
 void seq_channel_layer_process_script(struct SequenceChannelLayer *layer);
-void sequence_channel_process_script(struct SequenceChannel *seqChannel);
+void sequence_channel_process_script(struct SequenceChannel *seqChannel, int i);
 u32 get_instrument(struct SequenceChannel *seqChannel, u8 instId, struct Instrument **instOut,
                    struct AdsrSettings *adsr);
 
@@ -1447,7 +1447,7 @@ void sequence_channel_set_volume(struct SequenceChannel *seqChannel, u8 volume) 
     Music_setVolumeHook(seqChannel, volume);
 }
 
-void sequence_channel_process_script(struct SequenceChannel *seqChannel) {
+void sequence_channel_process_script(struct SequenceChannel *seqChannel, int seqChannelIdx) {
     struct M64ScriptState *state;
     struct SequencePlayer *seqPlayer;
     u8 cmd;
@@ -1697,9 +1697,21 @@ void sequence_channel_process_script(struct SequenceChannel *seqChannel) {
                     case 0xd3: // chan_pitchbend; pitch bend by <= 1 octave in either direction (-127..127)
                         // (m64_read_u8(state) is really s8 here)
                         cmd = m64_read_u8(state) + 128;
+                        int ignore = 0;
                         extern s16 gCurrCourseNum;
-                        if (gCurrCourseNum != 7 /*ms*/ && gCurrCourseNum != 3)
+                        {
+                            if (gCurrCourseNum == 7 /*COURSE_MS*/)
+                            {
+                                ignore = 1;
+                            }
+                            if (gCurrCourseNum == 3 /*COURSE_PL*/)
+                            {
+                                ignore = seqChannelIdx == 3 || seqChannelIdx == 6 || seqChannelIdx == 7 || seqChannelIdx == 15;
+                            }
+                        }
+                        if (!ignore)
                             seqChannel->freqScale = gPitchBendFrequencyScale[cmd] * gConfig.audioFrequency;
+
 #if defined(VERSION_EU) || defined(VERSION_SH)
                         seqChannel->changes.as_bitfields.freqScale = TRUE;
 #endif
@@ -2679,11 +2691,11 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
     for (i = 0; i < CHANNELS_MAX; i++) {
 #if defined(VERSION_EU) || defined(VERSION_SH)
         if (IS_SEQUENCE_CHANNEL_VALID(seqPlayer->channels[i]) == TRUE) {
-            sequence_channel_process_script(seqPlayer->channels[i]);
+            sequence_channel_process_script(seqPlayer->channels[i], i);
         }
 #else
         if (seqPlayer->channels[i] != &gSequenceChannelNone) {
-            sequence_channel_process_script(seqPlayer->channels[i]);
+            sequence_channel_process_script(seqPlayer->channels[i], i);
         }
 #endif
     }

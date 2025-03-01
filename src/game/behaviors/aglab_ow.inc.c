@@ -144,7 +144,6 @@ void bhv_ow_lock_loop()
             else
             {
                 int len = 1;
-                starRequirement = 100;
                 int test = starRequirement / 10;
                 while (test)
                 {
