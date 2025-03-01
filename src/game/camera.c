@@ -6106,8 +6106,7 @@ struct CutsceneSplinePoint sIntroStartToPipeFocus[] = {
  * camera's position.
  */
 struct CutsceneSplinePoint sIntroPipeToDialogPosition[] = {
-    { 0, 0, { -785, 625, 4527 } },  { 1, 0, { -785, 625, 4527 } },  { 2, 0, { -1286, 644, 4376 } },
-    { 3, 0, { -1286, 623, 4387 } }, { 4, 0, { -1286, 388, 3963 } }, { 5, 0, { -1286, 358, 4093 } },
+    { 5, 0, { -1286, 358, 4093 } },
     { 6, 0, { -1386, 354, 4159 } }, { 7, 0, { -1477, 306, 4223 } }, { 8, 0, { -1540, 299, 4378 } },
     { 9, 0, { -1473, 316, 4574 } }, { 0, 0, { -1328, 485, 5017 } }, { 0, 0, { -1328, 485, 5017 } },
     { 0, 0, { -1328, 485, 5017 } }, { -1, 0, { -1328, 485, 5017 } }
@@ -6126,9 +6125,8 @@ struct CutsceneSplinePoint sIntroPipeToDialogFocus[] = {
 };
 #else
 struct CutsceneSplinePoint sIntroPipeToDialogFocus[] = {
-    { 0, 20, { -1248, 450, 4596 } }, { 1, 59, { -1258, 485, 4606 } }, { 2, 59, { -1379, 344, 4769 } },
-    { 3, 20, { -1335, 366, 4815 } }, { 4, 23, { -1315, 370, 4450 } }, { 5, 40, { -1322, 333, 4591 } },
-    { 6, 25, { -1185, 329, 4616 } }, { 7, 21, { -1059, 380, 4487 } }, { 8, 14, { -1086, 421, 4206 } },
+    { 5, 40, { -1322, 333, 4591 } },
+    { 6, 25, { -1185, 329, 4616 } }, { 7, 23, { -1059, 380, 4487 } }, { 8, 14, { -1086, 421, 4206 } },
     { 9, 21, { -1321, 346, 4098 } }, { 0, 0, { -1328, 385, 4354 } },  { 0, 0, { -1328, 385, 4354 } },
     { 0, 0, { -1328, 385, 4354 } },  { -1, 0, { -1328, 385, 4354 } }
 };
@@ -9199,8 +9197,7 @@ void cutscene_intro_peach_mario_appears(struct Camera *c) {
     sMarioCamState->cameraEvent = 0;
     cutscene_event(cutscene_intro_peach_reset_spline, c, 0, 0);
     cutscene_event(cutscene_intro_peach_follow_pipe_spline, c, 0, -1);
-    cutscene_event(cutscene_intro_peach_handheld_shake_off, c, 70, 70);
-    cutscene_event(intro_pipe_exit_text, c, 250, 250);
+    cutscene_event(intro_pipe_exit_text, c, 250 - 170, 250 - 170);
 
     approach_f32_asymptotic_bool(&sCutsceneVars[1].point[1], 80.f + sMarioGeometry.currFloorHeight +
                                  (sMarioCamState->pos[1] - sMarioGeometry.currFloorHeight) * 1.1f, 0.4f);
@@ -10004,14 +10001,7 @@ struct Cutscene sCutsceneUnusedExit[] = {
  * The intro of the game. Peach reads her letter and Lakitu flies down to Mario's warp pipe.
  */
 struct Cutscene sCutsceneIntroPeach[] = {
-    { cutscene_intro_peach_letter, CUTSCENE_LOOP },
-    { cutscene_intro_peach_reset_fov, 35 },
-#ifdef VERSION_EU
-    { cutscene_intro_peach_fly_to_pipe, 675 },
-#else
-    { cutscene_intro_peach_fly_to_pipe, 820 },
-#endif
-    { cutscene_intro_peach_mario_appears, 270 },
+    { cutscene_intro_peach_mario_appears, 270 - 170 },
     { cutscene_intro_peach_dialog, CUTSCENE_LOOP }
 };
 

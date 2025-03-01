@@ -11,7 +11,7 @@
 /**
  * Skips the peach letter cutscene.
  */
-#define PEACH_SKIP
+// #define PEACH_SKIP
 
 /**
  * Skips the title/splash screen (Super Mario 64 logo).
