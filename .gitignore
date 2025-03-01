@@ -1232,7 +1232,6 @@ sound/sequences/sh/20_cutscene_ending.m64
 sound/sequences/sh/21_menu_file_select.m64
 sound/sequences/sh/22_cutscene_lakitu.m64
 sound/sequences/us/01_cutscene_collect_star.m64
-sound/sequences/us/02_menu_title_screen.m64
 sound/sequences/us/03_level_grass.m64
 sound/sequences/us/04_level_inside_castle.m64
 sound/sequences/us/05_level_water.m64
@@ -1263,7 +1262,6 @@ sound/sequences/us/1D_event_peach_message.m64
 sound/sequences/us/1E_cutscene_intro.m64
 sound/sequences/us/1F_cutscene_victory.m64
 sound/sequences/us/20_cutscene_ending.m64
-sound/sequences/us/21_menu_file_select.m64
 sound/sequences/us/22_cutscene_lakitu.m64
 textures/cave/hmc_textures.00000.rgba16.png
 textures/cave/hmc_textures.01000.rgba16.png
