@@ -1704,11 +1704,11 @@ You may use the radar\n\
 to locate the stars.\n")
 
 DEFINE_DIALOG(DIALOG_142, NO_SOUND, 5, 150, 200, "\
-Some courses do not contain\n\
-the final Goal Ring.\n\
-You may collect the stars\n\
-with help of radar to unlock\n\
-the star requirements.\n")
+Certain courses do not\n\
+contain the Goal Ring.\n\
+Radar is always active\n\
+you have full freedom\n\
+to scavenge the course.")
 
 DEFINE_DIALOG(DIALOG_143, NO_SOUND, 6, 150, 200, "\
 You've recovered eight of\n\

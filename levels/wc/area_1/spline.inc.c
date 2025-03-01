@@ -26,3 +26,10 @@ const Trajectory wc_area_1_spline_Spring_NurbsCurve_003[] = {
 	TRAJECTORY_POS( 3, 9500, 10332, 290),
 	TRAJECTORY_END(),
 };
+const Trajectory wc_area_1_spline_Spring_NurbsCurve_004[] = {
+	TRAJECTORY_POS( 0, 7036, 10111, -147),
+	TRAJECTORY_POS( 1, 7551, 10637, -80),
+	TRAJECTORY_POS( 2, 8670, 11170, 49),
+	TRAJECTORY_POS( 3, 9333, 11080, 129),
+	TRAJECTORY_END(),
+};
