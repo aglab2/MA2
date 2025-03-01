@@ -290,7 +290,7 @@ Now scram--\n\
 and don't come back!\n\
 Gwa ha ha!")
 
-DEFINE_DIALOG(DIALOG_022, SOUND_OBJ_BOWSER_INTRO_LAUGH, 2, 95, 200, "\
+DEFINE_DIALOG(DIALOG_022, NO_SOUND, 2, 95, 200, "\
 You need a key to open\n\
 this door.")
 
@@ -299,12 +299,8 @@ This key doesn't fit!\n\
 Maybe it's for the\n\
 basement...")
 
-DEFINE_DIALOG(DIALOG_024, SOUND_OBJ_BOWSER_INTRO_LAUGH, 5, 95, 200, "\
-You need Star power to\n\
-open this door. Recover a\n\
-Power Star from an enemy\n\
-inside one of the castle's\n\
-paintings.")
+DEFINE_DIALOG(DIALOG_024, NO_SOUND, 1, 95, 200, "\
+This door is locked.")
 
 DEFINE_DIALOG(DIALOG_025, SOUND_OBJ_BOWSER_INTRO_LAUGH, 4, 95, 200, "\
 It takes the power of\n\
@@ -388,19 +384,9 @@ Use the Ⓒ Buttons to look\n\
 around while flying, and\n\
 press Ⓩ to land.")
 
-DEFINE_DIALOG(DIALOG_033, NO_SOUND, 6, 30, 200, "\
-Ciao! You've reached\n\
-Princess Toadstool's\n\
-castle via a warp pipe.\n\
-Using the controller is a\n\
-piece of cake. Press Ⓐ to\n\
-jump and Ⓑ to attack.\n\
-Press Ⓑ to read signs,\n\
-too. Use the Control Stick\n\
-in the center of the\n\
-controller to move Mario\n\
-around. Now, head for\n\
-the castle.")
+DEFINE_DIALOG(DIALOG_033, NO_SOUND, 2, 30, 200, "\
+Decades later, it\n\
+was time to go home.")
 
 DEFINE_DIALOG(DIALOG_034, NO_SOUND, 6, 30, 200, "\
 Good afternoon. The\n\
@@ -1971,34 +1957,10 @@ fast to do a Body Slide\n\
 attack. To stand while\n\
 sliding, press Ⓐ or Ⓑ.")
 
-DEFINE_DIALOG(DIALOG_161, SOUND_GENERAL_YOSHI_TALK, 4, 30, 200, "\
-Mario!!!\n\
-It that really you???\n\
-It has been so long since\n\
-our last adventure!\n\
-They told me that I might\n\
-see you if I waited here,\n\
-but I'd just about given\n\
-up hope!\n\
-Is it true? Have you\n\
-really beaten Bowser? And\n\
-restored the Stars to the\n\
-castle?\n\
-And saved the Princess?\n\
-I knew you could do it!\n\
-Now I have a very special\n\
-message for you.\n\
-“Thanks for playing Super\n\
-Mario 64! This is the\n\
-end of the game, but not\n\
-the end of the fun.\n\
-We want you to keep on\n\
-playing, so we have a\n\
-little something for you.\n\
-We hope that you like it!\n\
-Enjoy!!!”\n\
-\n\
-The Super Mario 64 Team")
+DEFINE_DIALOG(DIALOG_161, SOUND_GENERAL_YOSHI_TALK, 3, 30, 200, "\
+Sorry Mario, but you\n\
+already got your presents,\n\
+I got nothing for ya!")
 
 DEFINE_DIALOG(DIALOG_162, NO_SOUND, 4, 30, 200, "\
 No, no, no! Not you\n\

@@ -2169,6 +2169,11 @@ Gfx *geo_file_select_strings_and_menu_cursor(s32 callContext, UNUSED struct Grap
     return NULL;
 }
 
+s32 lvl_set_start_level(UNUSED s32 arg, UNUSED s32 unused)
+{
+    return save_file_exists(gCurrSaveFileNum - 1) ? START_LEVEL : LEVEL_CASTLE_COURTYARD;
+}
+
 /**
  * Initiates file select values after Mario Screen.
  * Relocates cursor position of the last save if the game goes back to the Mario Screen

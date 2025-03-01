@@ -20,6 +20,7 @@
 #include "make_const_nonconst.h"
 #include "levels/menu/header.h"
 
+extern s32 lvl_set_start_level(UNUSED s32 arg, UNUSED s32 unused);
 const LevelScript level_main_menu_entry_file_select[] = {
 #ifndef SKIP_FILE_SELECT
     INIT_LEVEL(),
@@ -57,7 +58,7 @@ const LevelScript level_main_menu_entry_file_select[] = {
     CLEAR_LEVEL(),
     SLEEP_BEFORE_EXIT(/*frames*/ 1),
 #endif // SKIP_FILE_SELECT
-    SET_REG(/*value*/ START_LEVEL),
+    CALL(0, lvl_set_start_level),
     EXIT_AND_EXECUTE(/*seg*/ SEGMENT_GLOBAL_LEVEL_SCRIPT, _scriptsSegmentRomStart, _scriptsSegmentRomEnd, level_main_scripts_entry),
 };
 

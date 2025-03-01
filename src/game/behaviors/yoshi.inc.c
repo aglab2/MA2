@@ -49,34 +49,10 @@ void yoshi_walk_loop(void) {
 }
 
 void yoshi_idle_loop(void) {
-    if (o->oTimer > 90) {
-        s16 chosenHome = random_float() * 3.99f;
-
-        if (o->oYoshiChosenHome == chosenHome) {
-            return;
-        } else {
-            o->oYoshiChosenHome = chosenHome;
-        }
-
-        o->oHomeX = sYoshiHomeLocations[o->oYoshiChosenHome * 2];
-        o->oHomeZ = sYoshiHomeLocations[o->oYoshiChosenHome * 2 + 1];
-        o->oYoshiTargetYaw = atan2s(o->oHomeZ - o->oPosZ, o->oHomeX - o->oPosX);
-        o->oAction = YOSHI_ACT_WALK;
-    }
-
     cur_obj_init_animation(0);
 
     if (o->oInteractStatus == INT_STATUS_INTERACTED) {
         o->oAction = YOSHI_ACT_TALK;
-    }
-
-    // Credits; Yoshi appears at this position overlooking the castle near the end of the credits
-    if (gPlayerCameraState->cameraEvent == CAM_EVENT_START_ENDING ||
-        gPlayerCameraState->cameraEvent == CAM_EVENT_START_END_WAVING) {
-        o->oAction = YOSHI_ACT_CREDITS;
-        o->oPosX = -1798.0f;
-        o->oPosY = 3174.0f;
-        o->oPosZ = -3644.0f;
     }
 }
 
@@ -88,10 +64,9 @@ void yoshi_talk_loop(void) {
             if (cutscene_object_with_dialog(CUTSCENE_DIALOG, o, DIALOG_161) != 0) {
                 o->activeFlags &= ~ACTIVE_FLAG_INITIATED_TIME_STOP;
                 o->oInteractStatus = INT_STATUS_NONE;
-                o->oHomeX = sYoshiHomeLocations[2];
-                o->oHomeZ = sYoshiHomeLocations[3];
-                o->oYoshiTargetYaw = atan2s(o->oHomeZ - o->oPosZ, o->oHomeX - o->oPosX);
-                o->oAction = YOSHI_ACT_GIVE_PRESENT;
+                o->oAction = YOSHI_ACT_IDLE;
+                set_mario_npc_dialog(MARIO_DIALOG_STOP);
+                gObjCutsceneDone = TRUE;
             }
         }
     } else {
@@ -180,15 +155,12 @@ void bhv_yoshi_loop(void) {
             break;
 
         case YOSHI_ACT_WALK_JUMP_OFF_ROOF:
-            yoshi_walk_and_jump_off_roof_loop();
             break;
 
         case YOSHI_ACT_FINISH_JUMPING_AND_DESPAWN:
-            yoshi_finish_jumping_and_despawn_loop();
             break;
 
         case YOSHI_ACT_GIVE_PRESENT:
-            yoshi_give_present_loop();
             break;
 
         case YOSHI_ACT_CREDITS:

@@ -163,13 +163,14 @@ const LevelScript level_intro_entry_level_select[] = {
 
 // These should be static, but C doesn't allow non-sized forward declarations of static arrays
 
+extern s32 lvl_set_start_level(UNUSED s32 arg, UNUSED s32 unused);
 const LevelScript script_intro_file_select[] = {
     STOP_MUSIC(/*fadeOutTime*/ 0x00BE),
     TRANSITION(/*transType*/ WARP_TRANSITION_FADE_INTO_COLOR, /*time*/ 16, /*color*/ 0xFF, 0xFF, 0xFF),
     SLEEP(/*frames*/ 16),
     CLEAR_LEVEL(),
     SLEEP(/*frames*/ 2),
-    SET_REG(/*value*/ START_LEVEL),
+    CALL(0, lvl_set_start_level),
     EXIT_AND_EXECUTE(/*seg*/ SEGMENT_MENU_INTRO, _menuSegmentRomStart, _menuSegmentRomEnd, level_main_menu_entry_file_select),
 };
 

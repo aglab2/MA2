@@ -1,0 +1,3 @@
+extern void scroll_gfx_castle_courtyard_dl_Shape_IndexedFaceSet_009_Shape_IndexedFaceSet_001_mesh_layer_5();
+extern void scroll_gfx_castle_courtyard_dl_Shape_IndexedFaceSet_009_Shape_IndexedFaceSet_002_mesh_layer_5();
+extern void scroll_castle_courtyard();
