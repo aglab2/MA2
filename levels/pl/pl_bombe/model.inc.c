@@ -1744,7 +1744,7 @@ Vtx pl_bombe_pl_bombe_mesh_layer_1_vtx_3[32] = {
 	{{ {-15, 245, -26}, 0, {24, 1823}, {128, 122, 107, 255} }},
 };
 
-Vtx pl_bombe_pl_bombe_mesh_layer_5_vtx_cull[8] = {
+Vtx pl_bombe_pl_bombe_mesh_layer_6_vtx_cull[8] = {
 	{{ {-55, 0, 55}, 0, {0, 0}, {0, 0, 0, 0} }},
 	{{ {-55, 252, 55}, 0, {0, 0}, {0, 0, 0, 0} }},
 	{{ {-55, 252, -55}, 0, {0, 0}, {0, 0, 0, 0} }},
@@ -1755,14 +1755,14 @@ Vtx pl_bombe_pl_bombe_mesh_layer_5_vtx_cull[8] = {
 	{{ {55, 0, -55}, 0, {0, 0}, {0, 0, 0, 0} }},
 };
 
-Vtx pl_bombe_pl_bombe_mesh_layer_5_vtx_0[4] = {
+Vtx pl_bombe_pl_bombe_mesh_layer_6_vtx_0[4] = {
 	{{ {55, 0, -55}, 0, {-4, -1032}, {255, 255, 255, 255} }},
 	{{ {-55, 0, 55}, 0, {2028, 996}, {255, 255, 255, 255} }},
 	{{ {55, 0, 55}, 0, {2028, -1032}, {255, 255, 255, 255} }},
 	{{ {-55, 0, -55}, 0, {-4, 996}, {255, 255, 255, 255} }},
 };
 
-Vtx pl_bombe_pl_bombe_mesh_layer_5_vtx_1[6] = {
+Vtx pl_bombe_pl_bombe_mesh_layer_6_vtx_1[6] = {
 	{{ {31, 184, 31}, 0, {2008, 8}, {62, 62, 62, 255} }},
 	{{ {0, 129, 44}, 0, {1012, 2000}, {178, 178, 178, 255} }},
 	{{ {31, 129, 31}, 0, {2008, 2000}, {62, 62, 62, 255} }},
@@ -1867,9 +1867,9 @@ Gfx pl_bombe_pl_bombe_mesh_layer_1[] = {
 	gsSPEndDisplayList(),
 };
 
-Gfx pl_bombe_pl_bombe_mesh_layer_5[] = {
+Gfx pl_bombe_pl_bombe_mesh_layer_6[] = {
 	gsSPClearGeometryMode(G_LIGHTING),
-	gsSPVertex(pl_bombe_pl_bombe_mesh_layer_5_vtx_cull + 0, 8, 0),
+	gsSPVertex(pl_bombe_pl_bombe_mesh_layer_6_vtx_cull + 0, 8, 0),
 	gsSPSetGeometryMode(G_LIGHTING),
 	gsSPCullDisplayList(0, 7),
 	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH),
@@ -1883,7 +1883,7 @@ Gfx pl_bombe_pl_bombe_mesh_layer_5[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 256),
 	gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 8, 0, 0, 0, G_TX_CLAMP | G_TX_MIRROR, 5, 0, G_TX_CLAMP | G_TX_MIRROR, 5, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPVertex(pl_bombe_pl_bombe_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSPVertex(pl_bombe_pl_bombe_mesh_layer_6_vtx_0 + 0, 4, 0),
 	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
 	gsDPPipeSync(),
 	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
@@ -1894,7 +1894,7 @@ Gfx pl_bombe_pl_bombe_mesh_layer_5[] = {
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
-	gsSPVertex(pl_bombe_pl_bombe_mesh_layer_5_vtx_1 + 0, 6, 0),
+	gsSPVertex(pl_bombe_pl_bombe_mesh_layer_6_vtx_1 + 0, 6, 0),
 	gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
 	gsSP2Triangles(3, 4, 1, 0, 4, 3, 5, 0),
 	gsDPPipeSync(),
