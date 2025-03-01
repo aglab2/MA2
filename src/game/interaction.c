@@ -1924,6 +1924,7 @@ void check_lava_boost(struct MarioState *m) {
     }
 }
 
+#if 0
 void pss_begin_slide(UNUSED struct MarioState *m) {
     if (!(gHudDisplay.flags & HUD_DISPLAY_FLAG_TIMER)) {
         level_control_timer(TIMER_CONTROL_SHOW);
@@ -1943,6 +1944,7 @@ void pss_end_slide(struct MarioState *m) {
         sPssSlideStarted = FALSE;
     }
 }
+#endif
 
 void mario_handle_special_floors(struct MarioState *m) {
     if ((m->action & ACT_GROUP_MASK) == ACT_GROUP_CUTSCENE) {
@@ -1962,11 +1964,11 @@ void mario_handle_special_floors(struct MarioState *m) {
                 break;
 
             case SURFACE_TIMER_START:
-                pss_begin_slide(m);
+                // pss_begin_slide(m);
                 break;
 
             case SURFACE_TIMER_END:
-                pss_end_slide(m);
+                // pss_end_slide(m);
                 break;
         }
 

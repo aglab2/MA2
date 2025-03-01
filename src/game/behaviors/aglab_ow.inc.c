@@ -19,6 +19,7 @@ const int gLevelWithHardModes = 1 << (LEVEL_CE - LEVEL_CE)
                               | 1 << (LEVEL_FR - LEVEL_CE)
                               ;
 
+extern u8 gIsHardMode;
 void bhv_ow_ctl_init()
 {
     int off = 0x80;
@@ -48,6 +49,7 @@ void bhv_ow_ctl_init()
                 SET_BPARAM1(obj->oBehParams, 0);
             }
         }
+#if 0
         if (withExtraMode)
         {
             struct Object* obj = spawn_object(o, MODEL_OW_LOCK, bhvOwLock);
@@ -58,10 +60,17 @@ void bhv_ow_ctl_init()
             obj->oBehParams2ndByte = i;
             SET_BPARAM1(obj->oBehParams, 1);
         }
+#endif
     }
 
     sSpringBezier = NULL;
     sTrajectory = NULL;
+#if 0
+    gIsHardMode = 0;
+
+    level_control_timer(TIMER_CONTROL_STOP);
+    level_control_timer(TIMER_CONTROL_HIDE);
+#endif
 }
 
 void bhv_ow_ctl_loop()

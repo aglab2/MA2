@@ -132,12 +132,16 @@ u8 g100CoinStarSpawned = FALSE;
 // struct MarioState *gMarioState = &gMarioStates[0];
 s8 sWarpCheckpointActive = FALSE;
 
+static const u16 kTimes[] = {
+    [ COURSE_CE ] = 30 * 60 * 3,
+};
+
 u16 level_control_timer(s32 timerOp) {
     switch (timerOp) {
         case TIMER_CONTROL_SHOW:
             gHudDisplay.flags |= HUD_DISPLAY_FLAG_TIMER;
             sTimerRunning = FALSE;
-            gHudDisplay.timer = 0;
+            gHudDisplay.timer = kTimes[COURSE_CE];
             break;
 
         case TIMER_CONTROL_START:
@@ -150,7 +154,7 @@ u16 level_control_timer(s32 timerOp) {
 
         case TIMER_CONTROL_HIDE:
             gHudDisplay.flags &= ~HUD_DISPLAY_FLAG_TIMER;
-            sTimerRunning = Hacktice_gEnabled;
+            sTimerRunning = FALSE;
             gHudDisplay.timer = 0;
             break;
     }
@@ -315,6 +319,10 @@ static void set_mario_initial_action(struct MarioState *m, u32 spawnType, u32 ac
     set_mario_initial_cap_powerup(m);
 }
 
+#if 0
+extern u8 gIsHardMode;
+#endif
+
 extern void fail_warp_set_safe_pos(f32* pos, s16 angle, int areaIndex, int levelNum);
 void init_mario_after_warp(void) {
     struct Object *object = get_destination_warp_object(sWarpDest.nodeId);
@@ -328,6 +336,14 @@ void init_mario_after_warp(void) {
 #endif
 
     if (0xa == sWarpDest.nodeId && 1 == sWarpDest.areaIdx) {
+#if 0
+        if (gIsHardMode)
+        {
+            level_control_timer(TIMER_CONTROL_SHOW);
+            level_control_timer(TIMER_CONTROL_START);    
+        }
+#endif
+
         fail_warp_set_safe_pos(&object->oPosX, object->oFaceAngleYaw, sWarpDest.areaIdx, sWarpDest.levelNum);
     }
 
@@ -425,9 +441,6 @@ void init_mario_after_warp(void) {
 void warp_area(void) {
     if (sWarpDest.type != WARP_TYPE_NOT_WARPING) {
         if (sWarpDest.type == WARP_TYPE_CHANGE_AREA) {
-            if (!Hacktice_gEnabled)
-                level_control_timer(TIMER_CONTROL_HIDE);
-
             unload_mario_area();
             load_area(sWarpDest.areaIdx);
         }
@@ -441,6 +454,13 @@ void warp_level(void) {
     gCurrLevelNum = sWarpDest.levelNum;
 
     level_control_timer(TIMER_CONTROL_HIDE);
+#if 0
+    if (gIsHardMode)
+    {
+        level_control_timer(TIMER_CONTROL_SHOW);
+        level_control_timer(TIMER_CONTROL_START);
+    }
+#endif
 
     load_area(sWarpDest.areaIdx);
     init_mario_after_warp();
@@ -717,7 +737,7 @@ s16 music_unchanged_through_warp(s16 arg) {
 /**
  * Set the current warp type and destination level/area/node.
  */
-void initiate_warp(s16 destLevel, s16 destArea, s16 destWarpNode, s32 warpFlags) {
+static void initiate_warp(s16 destLevel, s16 destArea, s16 destWarpNode, s32 warpFlags) {
     if (destWarpNode >= WARP_NODE_CREDITS_MIN) {
         sWarpDest.type = WARP_TYPE_CHANGE_LEVEL;
     } else if (warpFlags == WARP_FLAG_EXIT_COURSE) {
@@ -950,6 +970,10 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
 /**
  * If a delayed warp is ready, initiate it.
  */
+#if 0
+u8 gIsHardMode = 0;
+#endif
+
 extern s8 gDialogCameraAngleIndex;
 void initiate_delayed_warp(void) {
     struct ObjectWarpNode *warpNode;
@@ -1027,6 +1051,12 @@ void initiate_delayed_warp(void) {
                         gDialogCameraAngleIndex = sSourceWarpNodeId == WARP_NODE_FAIL_WARP ? 1 : 1 + 0xef - sSourceWarpNodeId;
                         sWarpDest.type = WARP_TYPE_CHANGE_LEVEL;
                     }
+#if 0
+                    if (LEVEL_CASTLE_GROUNDS == gCurrLevelNum)
+                    {
+                        gIsHardMode = sSourceWarpNodeId > 0x80;
+                    }
+#endif
 
                     check_if_should_set_warp_checkpoint(&warpNode->node);
                     if (sWarpDest.type != WARP_TYPE_CHANGE_LEVEL) {
@@ -1200,14 +1230,18 @@ s32 play_mode_normal(void) {
 #else
     if (sPPDebugPage != PUPPYPRINT_PAGE_RAM && sPPDebugPage != PUPPYPRINT_PAGE_LEVEL_SELECT) {
 #endif
-        if (sTimerRunning && gHudDisplay.timer < 17999) {
-            gHudDisplay.timer++;
+        if (sTimerRunning && gHudDisplay.timer > 0) {
+            gHudDisplay.timer--;
         }
         area_update_objects();
     }
 #else
-    if (sTimerRunning && gHudDisplay.timer < 17999) {
-        gHudDisplay.timer++;
+    if (sTimerRunning && gHudDisplay.timer > 0) {
+        gHudDisplay.timer--;
+        if (0 == gHudDisplay.timer)
+        {
+            gMarioStates->health = 0;
+        }
     }
     area_update_objects();
 #endif
