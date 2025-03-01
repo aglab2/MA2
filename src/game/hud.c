@@ -535,6 +535,8 @@ static struct Object *nearest_star_object_with_bparam1(u64 mask) {
 }
 
 extern u8 sStarIds;
+extern const int gLevelWithHardModes;
+
 static void render_star_display()
 {
     if (!gMarioObject)
@@ -555,9 +557,15 @@ static void render_star_display()
     if (gCurrCourseNum == COURSE_NONE)
         return;
 
+    u64 collectedMask = save_file_get_star_flags(gCurrSaveFileNum - 1, gCurrCourseNum - 1);
+    if (gLevelWithHardModes & (1 << (gCurrLevelNum - LEVEL_CE)))
+    {
+        if (!(collectedMask & (1ULL << 63)))
+            return;
+    }
+
     gSPDisplayList(gDisplayListHead++, dl_hud_img_begin);
     {
-        u64 collectedMask = save_file_get_star_flags(gCurrSaveFileNum - 1, gCurrCourseNum - 1);
         int id = 0;
         while (id < sStarIds)
         {
