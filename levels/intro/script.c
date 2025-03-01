@@ -64,7 +64,7 @@ const LevelScript level_intro_splash_screen[] = {
 #else
     // Load "Super Mario 64" logo
     ALLOC_LEVEL_POOL(),
-    AREA(/*index*/ 1, intro_geo_splash_screen),
+    AREA(/*index*/ 1, intro_geo_splash_screen, 0, 0, 0),
     END_AREA(),
     FREE_LEVEL_POOL(),
 

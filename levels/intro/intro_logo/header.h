@@ -1,0 +1,14 @@
+extern u8 intro_logo___ci8[];
+extern u8 intro_logo___pal_rgba16[];
+extern u8 intro_logo__1_ci8[];
+extern u8 intro_logo__1_pal_rgba16[];
+extern u8 intro_logo__2_ia16[];
+extern u8 intro_logo__2_ia16_copy[];
+extern u8 intro_logo__2_ia16_copy_copy[];
+extern Vtx intro_logo_title_mesh_vtx_cull[8];
+extern Vtx intro_logo_title_mesh_vtx_0[124];
+extern Vtx intro_logo_title_mesh_vtx_1[67];
+extern Vtx intro_logo_title_mesh_vtx_2[14];
+extern Vtx intro_logo_title_mesh_vtx_3[311];
+extern Vtx intro_logo_title_mesh_vtx_4[10];
+extern Gfx intro_logo_title_mesh[];
