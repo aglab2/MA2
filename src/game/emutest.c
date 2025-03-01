@@ -27,6 +27,7 @@ u8 gHasInstantInput = 0;
 u8 gHasPerformance = 0;
 u8 gIsVC = 0;
 u8 gSupportsLibpl = FALSE;
+u8 gHasEX3 = 0;
 
 static inline u32 get_pj64_version() {
     // When calling this function, we know that the emulator is some version of Project 64,

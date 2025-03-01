@@ -400,6 +400,8 @@ static void load_f3dex2(void) {
     dma_read(startAddr, _f3dzexSegmentRomStart, _f3dzexSegmentRomEnd);
 }
 
+extern Vp gViewport;
+
 static void change_vi(OSViMode *mode, int width, int height);
 void thread3_main(UNUSED void *arg) {
     setgp();
@@ -421,6 +423,14 @@ void thread3_main(UNUSED void *arg) {
     
 #define NO_CULLING_EMULATOR_WHITELIST (EMU_PROJECT64 | EMU_PARALLEL_LAUNCHER | EMU_MUPEN)
     gHasPerformance = NO_CULLING_EMULATOR_WHITELIST & emulatorCfg;
+
+    gHasEX3 = ((EMU_PARALLEL_LAUNCHER | EMU_CONSOLE) & emulatorCfg);
+    if (!gHasEX3)
+    {
+        gViewport.vp.vscale[1] = (SCREEN_HEIGHT/2)*4;
+        gViewport.vp.vscale[2] = 511;
+        gViewport.vp.vtrans[2] = 511;
+    }
 
 #ifdef UNF
     debug_initialize();

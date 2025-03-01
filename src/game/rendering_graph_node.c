@@ -860,14 +860,47 @@ static const Lights1 defaultLight = gdSPDefLights1(
     0x3F, 0x3F, 0x3F, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00
 );
 
-#ifdef F3DEX3
-Vec3f globalLightDirection = { 0x49, 0x49, 0x49 };
-#else
-Vec3f globalLightDirection = { 0x28, 0x28, 0x28 };
-#endif
+static const Vec3f globalLightDirection = { 0x28, 0x28, 0x28 };
 
-void setup_global_light() {
-    Lights1* curLight = (Lights1*)alloc_display_list(sizeof(Lights1));
+typedef struct {
+    Light	l[2];
+} LookAtEX2;
+
+typedef struct {
+    Ambient	a;
+    Light	l[1];
+} Lights1EX2;
+
+# define G_MVO_LOOKATX	(0*24)
+# define G_MVO_LOOKATY	(1*24)
+
+# define gSPLookAtXEX2(pkt, l)	\
+	 gDma2p((pkt),G_MOVEMEM,(l),sizeof(Light),G_MV_LIGHT,G_MVO_LOOKATX)
+# define gSPLookAtYEX2(pkt, l)	\
+	 gDma2p((pkt),G_MOVEMEM,(l),sizeof(Light),G_MV_LIGHT,G_MVO_LOOKATY)
+#define gSPLookAtEX2(pkt, la)						\
+{									\
+	gSPLookAtXEX2(pkt,la)						\
+	gSPLookAtYEX2(pkt,(char *)(la)+16)					\
+}
+
+#define NUMLEX2(n)	((n)*24)
+
+#define gSPNumLightsEX2(pkt, n)						\
+	gMoveWd(pkt, G_MW_NUMLIGHT, G_MWO_NUMLIGHT, NUMLEX2(n))
+
+#define gSPLightEX2(pkt, l, n)	\
+    gDma2p((pkt),G_MOVEMEM,(l),sizeof(Light),G_MV_LIGHT,(n)*24+24)
+
+#define gSPSetLights1EX2(pkt,name)						\
+{									\
+	gSPNumLightsEX2(pkt,NUMLIGHTS_1);					\
+	gSPLightEX2(pkt,&name.l[0],1);					\
+	gSPLightEX2(pkt,&name.a,2);					\
+}
+
+static void setup_global_light() {
+    Lights1* curLight = (Lights1*)alloc_display_list(sizeof(Lights1EX2));
     *curLight = defaultLight;
 
 #ifdef WORLDSPACE_LIGHTING
@@ -882,7 +915,14 @@ void setup_global_light() {
     curLight->l->l.dir[2] = (s8)(transformedLightDirection[2]);
 #endif
 
-    gSPSetLights1(gDisplayListHead++, (*curLight));
+    if (gHasEX3)
+    {
+        gSPSetLights1(gDisplayListHead++, (*curLight));
+    }
+    else
+    {
+        gSPSetLights1EX2(gDisplayListHead++, (*curLight));
+    }
 }
 
 /**
@@ -907,18 +947,28 @@ void geo_process_camera(struct GraphNodeCamera *node) {
     // As a result, environment mapping is broken on Fast3DEX2 without the
     // changes below.
     Mat4* cameraMatrix = &gCameraTransform;
-    /**
-    * HackerSM64 2.1: Now uses the correct "up" vector for the guLookAtReflect call in geo_process_master_list_sub.
-    * It was originally sideways in vanilla, with vanilla's environment map textures sideways to accommodate, but those
-    * textures are now rotated automatically on extraction to allow for this to be fixed.
-    */
-    gCurLookAt->l[0].l.dir[0] = (s8)(127.0f * (*cameraMatrix)[0][0]);
-    gCurLookAt->l[0].l.dir[1] = (s8)(127.0f * (*cameraMatrix)[1][0]);
-    gCurLookAt->l[0].l.dir[2] = (s8)(127.0f * (*cameraMatrix)[2][0]);
-    gCurLookAt->l[1].l.dir[0] = (s8)(127.0f * -(*cameraMatrix)[0][1]);
-    gCurLookAt->l[1].l.dir[1] = (s8)(127.0f * -(*cameraMatrix)[1][1]);
-    gCurLookAt->l[1].l.dir[2] = (s8)(127.0f * -(*cameraMatrix)[2][1]);
-    gSPLookAt(gDisplayListHead++, gCurLookAt);
+
+    if (gHasEX3)
+    {
+        gCurLookAt->l[0].l.dir[0] = (s8)(127.0f * (*cameraMatrix)[0][0]);
+        gCurLookAt->l[0].l.dir[1] = (s8)(127.0f * (*cameraMatrix)[1][0]);
+        gCurLookAt->l[0].l.dir[2] = (s8)(127.0f * (*cameraMatrix)[2][0]);
+        gCurLookAt->l[1].l.dir[0] = (s8)(127.0f * -(*cameraMatrix)[0][1]);
+        gCurLookAt->l[1].l.dir[1] = (s8)(127.0f * -(*cameraMatrix)[1][1]);
+        gCurLookAt->l[1].l.dir[2] = (s8)(127.0f * -(*cameraMatrix)[2][1]);
+        gSPLookAt(gDisplayListHead++, gCurLookAt);    
+    }
+    else
+    {
+        LookAtEX2* curLookAtEX2 = (LookAtEX2*)gCurLookAt;
+        curLookAtEX2->l[0].l.dir[0] = (s8)(127.0f * (*cameraMatrix)[0][0]);
+        curLookAtEX2->l[0].l.dir[1] = (s8)(127.0f * (*cameraMatrix)[1][0]);
+        curLookAtEX2->l[0].l.dir[2] = (s8)(127.0f * (*cameraMatrix)[2][0]);
+        curLookAtEX2->l[1].l.dir[0] = (s8)(127.0f * -(*cameraMatrix)[0][1]);
+        curLookAtEX2->l[1].l.dir[1] = (s8)(127.0f * -(*cameraMatrix)[1][1]);
+        curLookAtEX2->l[1].l.dir[2] = (s8)(127.0f * -(*cameraMatrix)[2][1]);
+        gSPLookAtEX2(gDisplayListHead++, curLookAtEX2);    
+    }
 #endif // F3DEX_GBI_2
 
 #if WORLD_SCALE > 1
@@ -1143,7 +1193,7 @@ void geo_process_background(struct GraphNodeBackground *node) {
 #endif
         Gfx *gfx = gfxStart;
 
-        if (1) // if (0 == node->background || 65537 == node->background)
+        if (gHasEX3)
         {
             gSPMemset(gfx++, (u8*) gPhysicalFramebuffers[sRenderingFramebuffer] + gBorderHeight  * gScreenWidth * 2, node->background, gScreenWidth * (SCREEN_HEIGHT - 2 * gBorderHeight) * 2);
         }
@@ -1152,8 +1202,8 @@ void geo_process_background(struct GraphNodeBackground *node) {
             gDPPipeSync(gfx++);
             gDPSetCycleType(gfx++, G_CYC_FILL);
             gDPSetFillColor(gfx++, node->background);
-            gDPFillRectangle(gfx++, GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), gBorderHeight,
-            GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - gBorderHeight - 1);
+            gDPFillRectangle(gfx++, GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), 0,
+            GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - 0 - 1);
             gDPPipeSync(gfx++);
             gDPSetCycleType(gfx++, G_CYC_1CYCLE);
         }
@@ -1523,7 +1573,7 @@ void geo_process_held_object(struct GraphNodeHeldObject *node) {
     Vec3f translation;
     Mat4 tempMtx;
 
-#ifdef F3DEX_GBI_2
+#if 0
     gSPLookAt(gDisplayListHead++, gCurLookAt);
 #endif
 
@@ -1886,23 +1936,18 @@ void geo_process_root(struct GraphNodeRoot *node, Vp *b, Vp *c, s32 clearColor) 
         sMainPool.regions[0].start = (void*) ALIGN16(savedStart);
 
         initialMatrix = alloc_display_list(sizeof(*initialMatrix));
-        gCurLookAt = (LookAt*)alloc_display_list(sizeof(LookAt));
+        gCurLookAt = (LookAt*)alloc_display_list(sizeof(LookAtEX2));
         bzero(gCurLookAt, sizeof(LookAt));
 
         gMatStackIndex = 0;
         gCurrAnimType = ANIM_TYPE_NONE;
-#ifdef F3DEX3
-        const int maxz = G_NEW_MAXZ / 2;
-#else
-        const int maxz = 511;
-#endif
+        const int maxz = gHasEX3 ? (G_NEW_MAXZ / 2) : 511;
         vec3s_set(viewport->vp.vtrans, node->x * 4, node->y * 4, maxz);
         viewport->vp.vtrans[3] = 0;
         vec3s_set(viewport->vp.vscale, node->width * 4, node->height * 4, maxz);
         viewport->vp.vscale[3] = 0;
-#ifdef F3DEX3
-        viewport->vp.vscale[1] = -viewport->vp.vscale[1];
-#endif
+        if (gHasEX3)
+            viewport->vp.vscale[1] = -viewport->vp.vscale[1];
 
         if (b != NULL) {
             clear_framebuffer(clearColor);

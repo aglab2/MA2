@@ -172,16 +172,18 @@ void init_z_buffer(s32 resetZB) {
     if (!resetZB)
         return;
 
-#ifdef F3DEX_GBI_3
-    gSPMemset(tempGfxHead++, (u8*) gPhysicalZBuffer + gBorderHeight  * gScreenWidth * 2, GPACK_ZDZ(G_MAXFBZ, 0), gScreenWidth * (SCREEN_HEIGHT - 2 * gBorderHeight) * 2);
-#else
-    gDPSetColorImage(tempGfxHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gScreenWidth, gPhysicalZBuffer);
-    gDPSetFillColor(tempGfxHead++,
-                    GPACK_ZDZ(G_MAXFBZ, 0) << 16 | GPACK_ZDZ(G_MAXFBZ, 0));
-
-    gDPFillRectangle(tempGfxHead++, 0, gBorderHeight, gScreenWidth - 1,
-                     SCREEN_HEIGHT - 1 - gBorderHeight);
-#endif
+    if (gHasEX3)
+    {
+        gSPMemset(tempGfxHead++, (u8*) gPhysicalZBuffer + gBorderHeight  * gScreenWidth * 2, GPACK_ZDZ(G_MAXFBZ, 0), gScreenWidth * (SCREEN_HEIGHT - 2 * gBorderHeight) * 2);
+    }
+    else
+    {
+        gDPSetColorImage(tempGfxHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, gPhysicalZBuffer);
+        gDPSetFillColor(tempGfxHead++,
+                        GPACK_ZDZ(G_MAXFBZ, 0) << 16 | GPACK_ZDZ(G_MAXFBZ, 0));
+    
+        gDPFillRectangle(tempGfxHead++, 0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1 - 0);    
+    }
 
     gDisplayListHead = tempGfxHead;
 }
@@ -209,7 +211,7 @@ void select_framebuffer(void) {
  */
 void clear_framebuffer(s32 color) {
 
-    if (0 == color || 1 == color)
+    if (gHasEX3)
     {
         gSPMemset(gDisplayListHead++, (u8*) gPhysicalFramebuffers[sRenderingFramebuffer] + gBorderHeight * gScreenWidth * 2, color, gScreenWidth * (SCREEN_HEIGHT - 2 * gBorderHeight) * 2);
     }
@@ -223,8 +225,8 @@ void clear_framebuffer(s32 color) {
     
         gDPSetFillColor(tempGfxHead++, color);
         gDPFillRectangle(tempGfxHead++,
-                         GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), gBorderHeight,
-                         GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - gBorderHeight - 1);
+                         GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), 0,
+                         GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - 0 - 1);
     
         gDPPipeSync(tempGfxHead++);
     
@@ -239,9 +241,9 @@ void clear_framebuffer(s32 color) {
  */
 void clear_viewport(Vp *viewport, s32 color) {
     int vscale1 = viewport->vp.vscale[1];
-#ifdef F3DEX3
-    vscale1 = -vscale1;
-#endif
+    if (gHasEX3)
+        vscale1 = -vscale1;
+
     s16 vpUlx = (viewport->vp.vtrans[0] - viewport->vp.vscale[0]) / 4 + 1;
     s16 vpUly = (viewport->vp.vtrans[1] - vscale1) / 4 + 1;
     s16 vpLrx = (viewport->vp.vtrans[0] + viewport->vp.vscale[0]) / 4 - 2;
@@ -302,9 +304,9 @@ void draw_screen_borders(void) {
 void make_viewport_clip_rect(Vp *viewport) {
     s16 vpUlx = (viewport->vp.vtrans[0] - viewport->vp.vscale[0]) / 4 + 1;
     int vscale1 = viewport->vp.vscale[1];
-#ifdef F3DEX3
-    vscale1 = -vscale1;
-#endif
+    if (gHasEX3)
+        vscale1 = -vscale1;
+
     s16 vpPly = (viewport->vp.vtrans[1] - vscale1) / 4 + 1;
     s16 vpLrx = (viewport->vp.vtrans[0] + viewport->vp.vscale[0]) / 4 - 1;
     s16 vpLry = (viewport->vp.vtrans[1] + vscale1) / 4 - 1;
@@ -324,53 +326,12 @@ void create_gfx_task_structure(void) {
     gGfxSPTask->task.t.type = M_GFXTASK;
     gGfxSPTask->task.t.ucode_boot = rspbootTextStart;
     gGfxSPTask->task.t.ucode_boot_size = ((u8 *) rspbootTextEnd - (u8 *) rspbootTextStart);
-    gGfxSPTask->task.t.flags = (OS_TASK_LOADABLE | OS_TASK_DP_WAIT);
-#ifdef  L3DEX2_ALONE
-    gGfxSPTask->task.t.ucode = gspL3DEX2_fifoTextStart;
-    gGfxSPTask->task.t.ucode_data = gspL3DEX2_fifoDataStart;
-    gGfxSPTask->task.t.ucode_size = ((u8 *) gspL3DEX2_fifoTextEnd - (u8 *) gspL3DEX2_fifoTextStart);
-    gGfxSPTask->task.t.ucode_data_size = ((u8 *) gspL3DEX2_fifoDataEnd - (u8 *) gspL3DEX2_fifoDataStart);
-#elif F3DEX3
-    gGfxSPTask->task.t.ucode = gspF3DEX3_fifoTextStart;
-    gGfxSPTask->task.t.ucode_data = gspF3DEX3_fifoDataStart;
-    gGfxSPTask->task.t.ucode_size = ((u8 *) gspF3DEX3_fifoTextEnd - (u8 *) gspF3DEX3_fifoTextStart);
-    gGfxSPTask->task.t.ucode_data_size = ((u8 *) gspF3DEX3_fifoDataEnd - (u8 *) gspF3DEX3_fifoDataStart);
-#elif  F3DZEX_GBI_2
-    gGfxSPTask->task.t.ucode = gspF3DZEX2_PosLight_fifoTextStart;
-    gGfxSPTask->task.t.ucode_data = gspF3DZEX2_PosLight_fifoDataStart;
-    gGfxSPTask->task.t.ucode_size = ((u8 *) gspF3DZEX2_PosLight_fifoTextEnd - (u8 *) gspF3DZEX2_PosLight_fifoTextStart);
-    gGfxSPTask->task.t.ucode_data_size = ((u8 *) gspF3DZEX2_PosLight_fifoDataEnd - (u8 *) gspF3DZEX2_PosLight_fifoDataStart);
-#elif  F3DZEX_NON_GBI_2
-    gGfxSPTask->task.t.ucode = gspF3DZEX2_NoN_PosLight_fifoTextStart;
-    gGfxSPTask->task.t.ucode_data = gspF3DZEX2_NoN_PosLight_fifoDataStart;
-    gGfxSPTask->task.t.ucode_size = ((u8 *) gspF3DZEX2_NoN_PosLight_fifoTextEnd - (u8 *) gspF3DZEX2_NoN_PosLight_fifoTextStart);
-    gGfxSPTask->task.t.ucode_data_size = ((u8 *) gspF3DZEX2_NoN_PosLight_fifoDataEnd - (u8 *) gspF3DZEX2_NoN_PosLight_fifoDataStart);
-#elif   F3DEX2PL_GBI
-    gGfxSPTask->task.t.ucode = gspF3DEX2_PosLight_fifoTextStart;
-    gGfxSPTask->task.t.ucode_data = gspF3DEX2_PosLight_fifoDataStart;
-    gGfxSPTask->task.t.ucode_size = ((u8 *) gspF3DEX2_PosLight_fifoTextEnd - (u8 *) gspF3DEX2_PosLight_fifoTextStart);
-    gGfxSPTask->task.t.ucode_data_size = ((u8 *) gspF3DEX2_PosLight_fifoDataEnd - (u8 *) gspF3DEX2_PosLight_fifoDataStart);
-#elif   F3DEX_GBI_2
-    gGfxSPTask->task.t.ucode = gspF3DEX2_fifoTextStart;
-    gGfxSPTask->task.t.ucode_data = gspF3DEX2_fifoDataStart;
-    gGfxSPTask->task.t.ucode_size = ((u8 *) gspF3DEX2_fifoTextEnd - (u8 *) gspF3DEX2_fifoTextStart);
-    gGfxSPTask->task.t.ucode_data_size = ((u8 *) gspF3DEX2_fifoDataEnd - (u8 *) gspF3DEX2_fifoDataStart);
-#elif   F3DEX_GBI
-    gGfxSPTask->task.t.ucode = gspF3DEX_fifoTextStart;
-    gGfxSPTask->task.t.ucode_data = gspF3DEX_fifoDataStart;
-    gGfxSPTask->task.t.ucode_size = ((u8 *) gspF3DEX_fifoTextEnd - (u8 *) gspF3DEX_fifoTextStart);
-    gGfxSPTask->task.t.ucode_data_size = ((u8 *) gspF3DEX_fifoDataEnd - (u8 *) gspF3DEX_fifoDataStart);
-#elif   SUPER3D_GBI
-    gGfxSPTask->task.t.ucode = gspSuper3DTextStart;
-    gGfxSPTask->task.t.ucode_data = gspSuper3DDataStart;
-    gGfxSPTask->task.t.ucode_size = ((u8 *) gspSuper3DTextEnd - (u8 *) gspSuper3DTextStart);
-    gGfxSPTask->task.t.ucode_data_size = ((u8 *) gspSuper3DDataEnd - (u8 *) gspSuper3DDataStart);
-#else
-    gGfxSPTask->task.t.ucode = gspFast3D_fifoTextStart;
-    gGfxSPTask->task.t.ucode_data = gspFast3D_fifoDataStart;
-    gGfxSPTask->task.t.ucode_size = ((u8 *) gspFast3D_fifoTextEnd - (u8 *) gspFast3D_fifoTextStart);
-    gGfxSPTask->task.t.ucode_data_size = ((u8 *) gspFast3D_fifoDataEnd - (u8 *) gspFast3D_fifoDataStart);
-#endif
+    gGfxSPTask->task.t.flags = OS_TASK_DP_WAIT;
+    gGfxSPTask->task.t.ucode = gHasEX3 ? gspF3DEX3_fifoTextStart : (u64*) (0x80700000 - 0x28000);
+    gGfxSPTask->task.t.ucode_data = gHasEX3 ? gspF3DEX3_fifoDataStart : (u64*) (0x80700000 - 0x28000 + 0x1630);
+    gGfxSPTask->task.t.ucode_size = gHasEX3 ? ((u8 *) gspF3DEX3_fifoTextEnd - (u8 *) gspF3DEX3_fifoTextStart) : 0x1630;
+    gGfxSPTask->task.t.ucode_data_size = gHasEX3 ? ((u8 *) gspF3DEX3_fifoDataEnd - (u8 *) gspF3DEX3_fifoDataStart) : 0x420;
+
     gGfxSPTask->task.t.dram_stack = (u64 *) gGfxSPTaskStack;
     gGfxSPTask->task.t.dram_stack_size = SP_DRAM_STACK_SIZE8;
     gGfxSPTask->task.t.output_buff = gGfxSPTaskOutputBuffer;

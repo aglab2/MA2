@@ -20,6 +20,7 @@ extern u8 gHasEmulator;
 extern u8 gHasInstantInput;
 extern u8 gHasPerformance;
 extern u8 gIsVC;
+extern u8 gHasEX3;
 
 #define gIsConsole !gHasEmulator
 
