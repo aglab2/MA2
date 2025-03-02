@@ -65,10 +65,11 @@ IWDHeader* iw_descs_pc[] = {
     &iw_pc_area8.header,
 };
 
+static const LDLDesc loop_desc_rot = { -0x4000, 0 };
 static const LDLDesc loop_desc1 = { 0, 0 };
 
 static const RailDesc rail_pc_area3[] = {
-    LOOP_TRAJ(pc_area_3_spline_NurbsCurve_Loop, &loop_desc1),
+    LOOP_TRAJ(pc_area_3_spline_NurbsCurve_Loop, &loop_desc_rot),
     RAIL_END,
 };
 
@@ -93,7 +94,7 @@ static const RailDesc rail_pc_area6[] = {
 };
 
 static const RailDesc rail_pc_area7[] = {
-    LOOP_TRAJ(pc_area_7_spline_NurbsCurve_Loop_001, &loop_desc1),
+    LOOP_TRAJ(pc_area_7_spline_NurbsCurve_Loop_001, &loop_desc_rot),
     LOOP_TRAJ(pc_area_7_spline_NurbsCurve_Loop_002, &loop_desc1),
     RAIL_TRAJ(pc_area_7_spline_NurbsCurve_Rail_008),
     RAIL_END,
@@ -101,7 +102,7 @@ static const RailDesc rail_pc_area7[] = {
 
 static const RailDesc rail_pc_area8[] = {
     LOOP_TRAJ(pc_area_8_spline_NurbsCurve_Loop_003, &loop_desc1),
-    LOOP_TRAJ(pc_area_8_spline_NurbsCurve_Loop_004, &loop_desc1),
+    LOOP_TRAJ(pc_area_8_spline_NurbsCurve_Loop_004, &loop_desc_rot),
     RAIL_TRAJ(pc_area_8_spline_NurbsCurve_Rail_009),
     RAIL_END,
 };

@@ -377,7 +377,7 @@ s32 perform_ground_step(struct MarioState *m) {
 
 static struct Surface *check_ledge_grab(struct MarioState *m, struct Surface *prevWall, struct Surface *wall, Vec3f intendedPos, Vec3f nextPos, Vec3f ledgePos, struct Surface **ledgeFloor) {
     struct Surface *returnedWall = wall;
-    if (m->vel[1] > 0.0f || wall == NULL) {
+    if (m->vel[1] > 0.0f || wall == NULL || m->heldObj) {
         return NULL;
     }
 
