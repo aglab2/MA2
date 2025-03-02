@@ -78,16 +78,10 @@ waiting for you. Be sure\n\
 to talk to them--they'll\n\
 set up cannons for you.")
 
-DEFINE_DIALOG(DIALOG_004, SOUND_OBJ_BOBOMB_BUDDY_TALK, 3, 95, 200, "\
-We're peace-loving\n\
-Bob-ombs, so we don't use\n\
-cannons.\n\
-But if you'd like\n\
-to blast off, we don't\n\
-mind. Help yourself.\n\
-We'll prepare all of the\n\
-cannons in this course for\n\
-you to use. Bon Voyage!")
+DEFINE_DIALOG(DIALOG_004, NO_SOUND, 3, 95, 200, "\
+I wanted to place a star\n\
+at this spot but I failed\n\
+to get here. Neat!")
 
 DEFINE_DIALOG(DIALOG_005, SOUND_OBJ_KOOPA_TALK, 3, 30, 200, "\
 Hey, Mario! Is it true\n\

@@ -6,6 +6,9 @@ static struct FlipbookData flipbooks_opa[] = {
 
 static struct FlipbookData flipbooks_xlu[] = {
     { LVL_BATCH_LAYER_TRANSPARENT_DC_DL_KD_DC_HASIRA92_PAL_RGBA16, 0, 0, 0, 0, 1 },
+    { LVL_BATCH_LAYER_TRANSPARENT_DC_DL_KD_DC_WATER01_PAL_RGBA16, 0, 0, .tileScrollX = 2, },
+    { LVL_BATCH_LAYER_TRANSPARENT_DC_DL_KD_DC_WATER01_PAL_RGBA16_1, 0, 0, .tileScrollX = 2, },
+    { LVL_BATCH_LAYER_TRANSPARENT_DC_DL_KD_DC_WATER01_PAL_RGBA16_2, 0, 0, .tileScrollX = 2, },
 };
 
 const struct FlipbookLayer dc_flipbooks[LAYER_COUNT] = {
