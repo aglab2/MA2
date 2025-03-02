@@ -10,7 +10,7 @@ struct ObjectHitbox sWCStoneHeadBoxHitbox = {
     /* hurtboxHeight:     */ 400,
 };
 
-static void puffAt(struct Object* obj, float size, int numParticles)
+static void puffAt(struct Object* obj, float size, int numParticles, f32 yoff)
 {
     f32 sizeBase = size;
     f32 sizeRange = size / 20.f;
@@ -37,7 +37,7 @@ static void puffAt(struct Object* obj, float size, int numParticles)
         particle->oDragStrength = 1.0f;
         particle->oForwardVel = random_float() * forwardVelRange + forwardVelBase;
         particle->oPosX = obj->oPosX;
-        particle->oPosY = obj->oPosY;
+        particle->oPosY = obj->oPosY - yoff;
         particle->oPosZ = obj->oPosZ;
         particle->oVelX = 0.f;
         particle->oVelY = random_float() * velYRange + velYBase;
@@ -81,7 +81,7 @@ void bhv_breakable_shrinking_loop()
         if (o->oDistanceToMario < 400.f)
         {
             cur_obj_play_sound_2(SOUND_GENERAL_POUND_ROCK);
-            puffAt(o, 100.f, 10);
+            puffAt(o, 100.f, 10, 0.f);
             o->oAction = 1;
             obj_set_model(o, o->oBehParams2ndByte);
         }

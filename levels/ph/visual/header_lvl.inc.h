@@ -9,6 +9,8 @@ extern const Trajectory ph_area_1_spline_NurbsCurve_Spring_003[];
 extern const Trajectory ph_area_1_spline_NurbsCurve_Spring_004[];
 extern const Trajectory ph_area_1_spline_NurbsCurve_Spring_005[];
 extern const Trajectory ph_area_1_spline_NurbsCurve_Spring_006[];
+extern const Trajectory ph_area_1_spline_NurbsCurve_Spring_007[];
+extern const Trajectory ph_area_1_spline_NurbsCurve_Spring_008[];
 extern const Trajectory ph_area_1_spline_NurbsCurve_StarMove[];
 extern const Trajectory ph_area_1_spline_NurbsCurve_StarMove_001[];
 extern const Trajectory ph_area_1_spline_NurbsCurve_StarMove_002[];

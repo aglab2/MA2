@@ -40,6 +40,12 @@ void bhv_rocket_loop()
             o->oPosX += 70.f * sins(o->oFaceAngleYaw);
             o->oPosZ += 70.f * coss(o->oFaceAngleYaw);
         }
+
+        puffAt(o, 10.f, 1, 50.f);
+        if (0 == (o->oTimer % 4))
+        {
+            cur_obj_play_sound_1(SOUND_OBJ_FLAME_BLOWN);
+        }
         
         if (o->oTimer > 110)
         {
@@ -62,6 +68,8 @@ void bhv_rocket_spawner_loop()
                 o->parentObj = spawn_object(o, MODEL_ROCKET, bhvRocket);
                 if (0 == o->oBehParams2ndByte)
                     o->parentObj->oFaceAngleYaw += 0x8000;
+
+                cur_obj_play_sound_1(SOUND_OBJ_CANNON_RISE);
             }
         }
         break;

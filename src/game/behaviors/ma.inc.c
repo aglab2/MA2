@@ -25,20 +25,19 @@ void bhv_checkpoint_init()
     if (currentLevelStarFlags & (1ULL << starId)) {
 #endif
         o->oOpacity = 255;
+        if (gDialogCameraAngleIndex == 1 + 0xef - GET_BPARAM2(o->oBehParams))
+        {
+            o->oGeoRoll = 0;
+            o->oInteractStatus = INT_STATUS_INTERACTED;
+        }
+        else
+        {
+            o->oGeoRoll = 0x4000;
+        }
     }
     else
     {
         o->oOpacity = 0;
-    }
-
-    if (gDialogCameraAngleIndex == 1 + 0xef - GET_BPARAM2(o->oBehParams))
-    {
-        o->oGeoRoll = 0;
-        o->oInteractStatus = INT_STATUS_INTERACTED;
-    }
-    else
-    {
-        o->oGeoRoll = 0x4000;
     }
 }
 

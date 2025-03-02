@@ -1667,7 +1667,7 @@ extern f32 profiler_get_fps();
 static const f32 sViewRangeMax = 400000000.0f;
 static const f32 sViewRangeMin = 30000000.0f;
 static const f32 sViewRangeCut = 80000000.0f;
-static f32 sViewRange = 400000000.0f;
+f32 sViewRange = 400000000.0f;
 static const f32 sViewRangeChangeRate = 0.0004f * 400000000.0f;
 
 static void adjust_view_range()
