@@ -36,7 +36,7 @@ static int shutter_can_open()
 {
     if (0 == o->oBehParams2ndByte)
     {
-        return o->oDistanceToMario < 500.f;
+        return o->oDistanceToMario < 600.f;
     }
     else if (1 == o->oBehParams2ndByte)
     {
@@ -72,6 +72,7 @@ void bhv_shutter_loop()
         if (shutter_can_open())
         {
             o->oAction = 1;
+            cur_obj_play_sound_1(SOUND_GENERAL_OPEN_IRON_DOOR);
         }
     }
     else

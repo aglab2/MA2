@@ -1107,6 +1107,11 @@ extern u32 ce_dl_1848_object_00D228F4_mesh_layer_1[];
 extern u32 ce_dl_1139_object_00D2AED4_mesh_layer_1[];
 extern u32 ce_dl_2309_object_00C55280_mesh_layer_1[];
 extern u32 ce_dl_0083_object_00D383E4_mesh_layer_1[];
+
+extern u32 dc_dl_object_007AF9CC_mesh_layer_1[];
+extern u32 dc_dl_object_007AE93C_mesh_layer_1[];
+extern u32 dc_dl_0273_object_0104E10C_mesh_layer_1[];
+
 static int dropped_for_console(void* dl)
 {
     if (!gIsConsole)
@@ -1121,6 +1126,15 @@ static int dropped_for_console(void* dl)
         if (dl == ce_dl_0083_object_00D383E4_mesh_layer_1)
             return 1;
         if (dl == ce_dl_1139_object_00D2AED4_mesh_layer_1)
+            return 1;
+    }
+    if (gCurrCourseNum == COURSE_DC)
+    {
+        if (dl == dc_dl_object_007AF9CC_mesh_layer_1)
+            return 1;
+        if (dl == dc_dl_object_007AE93C_mesh_layer_1)
+            return 1;
+        if (dl == dc_dl_0273_object_0104E10C_mesh_layer_1)
             return 1;
     }
 

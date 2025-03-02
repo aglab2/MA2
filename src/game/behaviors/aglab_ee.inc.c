@@ -27,6 +27,8 @@ void bhv_succ_loop()
         return;
     }
 
+    cur_obj_play_sound_1(SOUND_ENV_WIND2);
+
     {
         f32 size = 30.f;
         f32 sizeBase = size;
