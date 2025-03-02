@@ -14,6 +14,8 @@
 
 #include "levels/pc/visual/header_lvl.inc.h"
 
+#include "levels/pc/flipbook.inc.c"
+
 static IWDirectionAreasDesc iw_pc_area1 = {
     { IWDT_DIRECTIONS },
     { .z_low = 2, },
