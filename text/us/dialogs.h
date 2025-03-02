@@ -57,22 +57,10 @@ Use Mario Cam in an\n\
 upcoming section.\n")
 
 DEFINE_DIALOG(DIALOG_002, SOUND_OBJ_BOBOMB_BUDDY_TALK, 4, 95, 200, "\
-Hey, you! It's dangerous\n\
-ahead, so listen up! Take\n\
-my advice.\n\
-\n\
-Cross the two\n\
-bridges ahead, then\n\
-watch for falling\n\
-water bombs.\n\
-The Big Bob-omb at the\n\
-top of the mountain is\n\
-very powerful--don't let\n\
-him grab you!\n\
-We're Bob-omb Buddies,\n\
-and we're on your side.\n\
-You can talk to us\n\
-whenever you'd like to!")
+Point of no return!\n\
+If you have water raised,\n\
+you will not be able to\n\
+escape the lower area.")
 
 DEFINE_DIALOG(DIALOG_003, SOUND_OBJ_BOBOMB_BUDDY_TALK, 5, 95, 200, "\
 Thank you, Mario! The Big\n\

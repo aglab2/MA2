@@ -328,6 +328,7 @@ extern const BehaviorScript bhvCannonClosed[];
 extern const BehaviorScript bhvWhirlpool[];
 extern const BehaviorScript bhvJetStream[];
 extern const BehaviorScript bhvMessagePanel[];
+extern const BehaviorScript bhvMessagePanelDynamic[];
 extern const BehaviorScript bhvSignOnWall[];
 extern const BehaviorScript bhvHomingAmp[];
 extern const BehaviorScript bhvCirclingAmp[];

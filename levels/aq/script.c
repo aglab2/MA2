@@ -178,6 +178,7 @@ const LevelScript level_aq_entry[] = {
 		OBJECT(MODEL_STAR, -4255, -868, -197, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 1574, -1062, 1568, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -2541, -427, -2453, 0, 0, 0, 0x00000000, bhvStar),
+		OBJECT(MODEL_WOODEN_SIGNPOST, -1585, 3100, -804, 0, 90, 0, (2 << 24) | (2 << 16), bhvMessagePanelDynamic),
 		OBJECT(MODEL_AQ_MITRUCK, 1682, -2500, 262, 0, -22, 0, (MODEL_AQ_MITRUCK_BREAK << 16), bhvBreakable),
 		OBJECT(MODEL_AQ_MITRUCK, 3204, -850, -1562, 0, 14, 0, (MODEL_AQ_MITRUCK_BREAK << 16), bhvBreakable),
 		OBJECT(MODEL_AQ_MITRUCK, 1658, -2446, -2517, 0, -17, 0, (MODEL_AQ_MITRUCK_BREAK << 16), bhvBreakable),

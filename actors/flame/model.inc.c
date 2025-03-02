@@ -10,7 +10,8 @@ static const Vtx flame_seg3_vertex_030172E0[] = {
 
 static const Gfx flame_v2_common[] = {
     gsSPClearGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
-	gsDPSetCombineLERP(0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0, 0, 0, 0, TEXEL0),
+	gsDPSetCombineLERP(0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0),
+    gsDPSetPrimColor(0, 0, 255, 255, 255, 200),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_32b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 128),

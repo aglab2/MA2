@@ -85,5 +85,5 @@ void bhv_goal_loop()
     }
 
 
-    o->oFaceAngleYaw += 0x100;
+    o->oFaceAngleYaw += 0x180;
 }
