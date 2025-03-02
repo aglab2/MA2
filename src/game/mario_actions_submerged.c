@@ -996,9 +996,12 @@ static s32 act_water_death(struct MarioState *m) {
     return FALSE;
 }
 
+extern u8 gWaterTutorial;
 static s32 act_water_plunge(struct MarioState *m) {
     u32 stepResult;
     s32 stateFlags = m->heldObj != NULL;
+    if (!gWaterTutorial)
+        gWaterTutorial = 1;
 
     f32 endVSpeed;
     if (swimming_near_surface(m)) {

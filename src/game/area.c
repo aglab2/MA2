@@ -467,6 +467,7 @@ void play_transition_after_delay(s16 transType, s16 time, u8 red, u8 green, u8 b
     play_transition(transType, time, red, green, blue);
 }
 
+u8 gWaterTutorial;
 extern u16 gScreenWidth __attribute__((section(".bss")));
 void render_game(void) {
     PROFILER_GET_SNAPSHOT_TYPE(PROFILER_DELTA_COLLISION);
@@ -483,6 +484,30 @@ void render_game(void) {
         gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, gBorderHeight, gScreenWidth,
                       SCREEN_HEIGHT - gBorderHeight);
         render_hud();
+
+        if (gWaterTutorial && gWaterTutorial < 255)
+        {
+            if (gWaterTutorial != 230)
+                gWaterTutorial++;
+
+            gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
+            if (gWaterTutorial < 120)
+            {
+                gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, CLAMP((int) gWaterTutorial * 16, 0, 255));
+            }
+            else
+            {
+                gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, CLAMP((int) (255 - gWaterTutorial) * 16, 0, 255));
+            }
+            
+            print_generic_string_aligned(150, 40, "In water press A to go up, B to go down", TEXT_ALIGN_CENTER);
+            gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
+
+            if (gPlayer1Controller->buttonPressed & (A_BUTTON | B_BUTTON))
+            {
+                gWaterTutorial = 231;
+            }
+        }
 
         gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, gBorderHeight, gScreenWidth,
                       SCREEN_HEIGHT - gBorderHeight);
