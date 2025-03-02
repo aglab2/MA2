@@ -25,7 +25,6 @@ extern f32 sViewRange;
 void bhv_ow_ctl_init()
 {
     int off = 0x80;
-    sViewRange = 400000000.0f;
     for (int i = 0; i < OW_LEVEL_COUNT; i++)
     {
         int withExtraMode = gLevelWithHardModes & (1 << i);
@@ -69,6 +68,7 @@ void bhv_ow_ctl_init()
     sSpringBezier = NULL;
     sTrajectory = NULL;
     gDialogCameraAngleIndex = 1;
+    sViewRange = 400000000.0f;
 
 #if 0
     gIsHardMode = 0;

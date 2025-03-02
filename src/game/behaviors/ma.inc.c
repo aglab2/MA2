@@ -37,6 +37,7 @@ void bhv_checkpoint_init()
     }
     else
     {
+        o->oGeoRoll = 0x4000;
         o->oOpacity = 0;
     }
 }
@@ -82,4 +83,7 @@ void bhv_goal_loop()
     if (o->oInteractStatus & INT_STATUS_INTERACTED) {
         o->activeFlags = 0;
     }
+
+
+    o->oFaceAngleYaw += 0x100;
 }

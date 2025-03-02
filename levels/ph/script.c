@@ -119,6 +119,7 @@ const LevelScript level_ph_entry[] = {
 		OBJECT(MODEL_NONE, 9216, -7954, -10639, 0, -41, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 8028, -13292, -11609, 0, -41, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 1047, -8898, 1684, 0, -41, 0, (17 << 16), bhvCoinFormation),
+		OBJECT(MODEL_NONE, -1071, -11888, -17515, 0, -41, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_PH_DRUM, 8194, -13000, -5709, 0, 0, 0, (MODEL_PH_DRUM_BREAK << 16), bhvBreakable),
 		OBJECT(MODEL_PH_DRUM, 8604, -13000, -5792, 0, 0, 0, (MODEL_PH_DRUM_BREAK << 16), bhvBreakable),
 		OBJECT(MODEL_PH_DRUM, 8663, -13000, -6246, 0, 0, 0, (MODEL_PH_DRUM_BREAK << 16), bhvBreakable),
