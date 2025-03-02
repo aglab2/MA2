@@ -10,6 +10,7 @@ extern const GeoLayout hb_area_3_geo[];
 extern const GeoLayout hb_area_3[];
 extern const Collision hb_area_3_collision[];
 extern const MacroObject hb_area_3_macro_objs[];
+extern const Trajectory hb_area_3_spline_Spring_NurbsCurve[];
 extern u8 hb_dl_dz_hb_ryuusa_0001_ci4[];
 extern u8 hb_dl_dz_hb_ryuusa_0001_pal_rgba16[];
 extern Vtx hb_dl_a1_mesh_layer_1_vtx_0[24];

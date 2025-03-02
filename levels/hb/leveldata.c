@@ -5,6 +5,7 @@
 #include "textures.h"
 #include "dialog_ids.h"
 #include "instant_warp_desc.h"
+#include "spring_desc.h"
 
 #include "make_const_nonconst.h"
 
@@ -33,6 +34,7 @@ IWDHeader* iw_descs_hb[] = {
 };
 
 #include "levels/hb/visual/model_lvl.inc.c"
+#include "levels/hb/rails.inc.c"
 #include "levels/hb/flipbook.inc.c"
 
 #if 0
