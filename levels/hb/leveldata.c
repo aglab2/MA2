@@ -33,6 +33,7 @@ IWDHeader* iw_descs_hb[] = {
 };
 
 #include "levels/hb/visual/model_lvl.inc.c"
+#include "levels/hb/flipbook.inc.c"
 
 #if 0
 #include "levels/hb/leveldata.inc.c"
