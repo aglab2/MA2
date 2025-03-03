@@ -1168,7 +1168,7 @@ Gfx mat_ee_skybox1_TransparentSpace_sa2mdl_1_f3d_layer1[] = {
 	gsDPPipelineMode(G_PM_NPRIMITIVE),
 	gsDPSetRenderMode(GBL_c1(G_BL_CLR_IN, G_BL_0, G_BL_CLR_IN, G_BL_1) | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_A_MEM), CVG_DST_CLAMP | ZMODE_OPA | ALPHA_CVG_SEL),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetPrimColor(0, 0, 196, 196, 196, 129),
+	gsDPSetPrimColor(0, 0, 196, 196, 196, 60),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, ee_skybox1_spacenbg128_001_x_spacenbg128_001_pal_rgba16),
 	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadTLUTCmd(5, 15),
