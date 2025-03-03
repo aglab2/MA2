@@ -1,7 +1,8 @@
 extern u8 mhe_skybox_SPACENBG64_ci4[];
 extern u8 mhe_skybox_SPACENBG64_pal_rgba16[];
 extern u8 mhe_skybox_SPACENBG128_ci4[];
-extern u8 mhe_skybox_SPACENBG128_pal_rgba16[];
+extern u8 mhe_skybox_SPACENBG128_x_SPACENBG128_pal_rgba16[];
+extern u8 mhe_skybox_SPACENBG128_ci4_copy[];
 extern u8 mhe_skybox_space256_7_001_ci4[];
 extern u8 mhe_skybox_space256_7_001_pal_rgba16[];
 extern u8 mhe_skybox_SPACE64_19_ci4[];
