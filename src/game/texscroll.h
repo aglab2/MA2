@@ -9,6 +9,7 @@
 #include "src/game/texscroll/castle_grounds_texscroll.inc.h"
 #include "src/game/texscroll/aq_texscroll.inc.h"
 #include "src/game/texscroll/castle_courtyard_texscroll.inc.h"
+#include "src/game/texscroll/ee_texscroll.inc.h"
 extern void scroll_textures();
 
 #endif

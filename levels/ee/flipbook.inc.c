@@ -50,6 +50,7 @@ ALIGNED8 u8 ee_poisons_pal[] = {
 
 static struct FlipbookData flipbooks_opaque[] = {
     { LVL_BATCH_LAYER_OPAQUE_EE_DL_TX_LIGHT001_PAL_RGBA16, 5, 10, -2, 0, 0, ee_matrixs_ci4, ee_matrixs_pal },
+    { LVL_BATCH_LAYER_OPAQUE_EE_DL_SPACENBG64_PAL_RGBA16, .tileScrollX = 1, }
 };
 
 static struct FlipbookData flipbooks_xlu[] = {

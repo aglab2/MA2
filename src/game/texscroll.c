@@ -22,6 +22,7 @@
 #include "src/game/texscroll/castle_grounds_texscroll.inc.c"
 #include "src/game/texscroll/aq_texscroll.inc.c"
 #include "src/game/texscroll/castle_courtyard_texscroll.inc.c"
+#include "src/game/texscroll/ee_texscroll.inc.c"
 void scroll_textures() {
 	if(SCROLL_CONDITION(sSegmentROMTable[0x7] == (uintptr_t)_wc_segment_7SegmentRomStart)) {
 		scroll_textures_wc();
@@ -52,4 +53,8 @@ void scroll_textures() {
 		scroll_textures_hb();
 	}
 #endif
+	if(SCROLL_CONDITION(sSegmentROMTable[0x7] == (uintptr_t)_ee_segment_7SegmentRomStart)) {
+		scroll_textures_ee();
+	}
+
 }

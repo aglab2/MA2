@@ -1,0 +1,4 @@
+extern void scroll_gfx_mat_ee_skybox1_TransparentSpace_sa2mdl_0_f3d_layer1();
+extern void scroll_gfx_mat_ee_skybox1_TransparentSpace_sa2mdl_1_f3d_layer1();
+extern void scroll_gfx_mat_ee_skybox1_TransparentSpace_sa2mdl_2_f3d_layer1();
+extern void scroll_ee_level_dl_ee_skybox1();
