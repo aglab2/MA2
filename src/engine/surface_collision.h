@@ -18,11 +18,15 @@ extern u8 gIsGravityFlipped;
 #define FLOOR_LOWER_LIMIT           -27000
 #define FLOOR_LOWER_LIMIT_MISC      (FLOOR_LOWER_LIMIT + 1000)
 
+#if 0
 #define is_outside_level_bounds(xPos, zPos) \
     (((xPos) <= -LEVEL_BOUNDARY_MAX) ||     \
      ((xPos) >=  LEVEL_BOUNDARY_MAX) ||     \
      ((zPos) <= -LEVEL_BOUNDARY_MAX) ||     \
      ((zPos) >=  LEVEL_BOUNDARY_MAX))
+#else
+#define is_outside_level_bounds(xPos, zPos) 0
+#endif
 
 #define get_surface_height_at_location(xPos, zPos, surf) (-(((xPos) * (surf)->normal.x) + ((zPos) * (surf)->normal.z) + (surf)->originOffset) / (surf)->normal.y)
 

@@ -30175,7 +30175,6 @@ Gfx mat_mhe_dl_objLandTable0032_tani_sa2lvl_0_001_f3d[] = {
 Gfx mat_mhe_dl_objLandTable0032_uv_sa2lvl_0_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
-	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),

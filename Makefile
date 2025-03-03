@@ -152,7 +152,8 @@ GCC_MAIN_OPT_FLAGS = \
   -fdelete-null-pointer-checks \
   -fgcse-after-reload \
   -fpredictive-commoning \
-  -ftree-partial-pre
+  -ftree-partial-pre \
+  -fno-semantic-interposition
 
 # Surface Collision
 GCC_COLLISION_OPT_FLAGS = \
