@@ -146,35 +146,23 @@ SAFETY_OPT_FLAGS =
 # Main opt flags
 GCC_MAIN_OPT_FLAGS = \
   $(DEFAULT_OPT_FLAGS) $(SAFETY_OPT_FLAGS) \
-  -freorder-blocks-algorithm=simple  \
   -ffunction-sections \
   -fdata-sections \
-  -fno-loop-unroll-and-jam \
-  -fno-peel-loops \
-  -fno-split-loops \
-  -fno-split-paths \
-  -fno-tree-loop-distribution \
-  -fno-unswitch-loops \
-  -fno-ipa-cp-clone \
-  -fno-align-functions \
-  -fno-align-jumps \
-  -fno-align-labels \
-  -fno-align-loops \
-  -fno-prefetch-loop-arrays \
   -freciprocal-math \
-  -fdelete-null-pointer-checks
+  -fdelete-null-pointer-checks \
+  -fgcse-after-reload \
+  -fpredictive-commoning \
+  -ftree-partial-pre
 
 # Surface Collision
 GCC_COLLISION_OPT_FLAGS = \
   -Os -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division $(GCC_MAIN_OPT_FLAGS) \
-  -freorder-blocks-algorithm=simple  \
   -ffunction-sections \
   -fdata-sections \
   -falign-functions=32
 
 AUDIO_COLLISION_OPT_FLAGS = \
   -Os -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division $(GCC_MAIN_OPT_FLAGS) \
-  -freorder-blocks-algorithm=simple  \
   -ffunction-sections \
   -fdata-sections
 
@@ -193,7 +181,6 @@ GCC_GRAPH_NODE_OPT_FLAGS = \
   --param case-values-threshold=20 \
   --param max-completely-peeled-insns=100 \
   --param max-unrolled-insns=100 \
-  -freorder-blocks-algorithm=simple  \
   -ffunction-sections \
   -fdata-sections \
   -falign-functions=32
