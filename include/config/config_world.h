@@ -60,6 +60,7 @@
 #elif EXTENDED_BOUNDS_MODE == 3 // 4x, normal cell size
     #define LEVEL_BOUNDARY_MAX 0x8000L // 32768
     #define CELL_SIZE          0x400   //  1024, NUM_CELLS = 64
+    #define CELLED_COORD_SHIFT 2
     #ifndef WORLD_SCALE
         #define WORLD_SCALE 4
     #endif
@@ -75,4 +76,4 @@ STATIC_ASSERT(((EXTENDED_BOUNDS_MODE >= 0) && (EXTENDED_BOUNDS_MODE <= 3)), "You
 /**
  * Use this to convert game units to cell coordinates.
  */
-#define GET_CELL_COORD(p)   ((((s32)(p) + LEVEL_BOUNDARY_MAX) / CELL_SIZE) & (NUM_CELLS - 1))
+#define GET_CELL_COORD(p)   ((((s32)(p) + LEVEL_BOUNDARY_MAX) / CELL_SIZE))

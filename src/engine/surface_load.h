@@ -19,6 +19,13 @@
 struct SurfaceNode {
     s16 lowerY;
     s16 upperY;
+    // these coordinates are relative to the cell shifted to fit in cell from 0 to 0xff
+    // In my case CELL_SIZE is 0x400 so shifted by 2.
+    // To avoid the potential errors, there is 1 "cell unit" shift in the calculation of the cell coordinates.
+    u8 lowerCellX;
+    u8 upperCellX;
+    u8 lowerCellZ;
+    u8 upperCellZ;
     uintptr_t packed;
     // TerrainData type;
     // u8 flags;
