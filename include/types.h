@@ -344,16 +344,16 @@ struct Normal {
 };
 
 struct Surface {
-    TerrainData type;
-    TerrainData force;
-    s8 flags;
-    RoomData room;
-    Vec3t vertex1;
-    Vec3t vertex2;
-    Vec3t vertex3;
-    struct Normal normal;
-    f32 originOffset;
-    struct Object *object;
+    /*0x00*/ TerrainData type;
+    /*0x02*/ TerrainData force;
+    /*0x04*/ s8 flags;
+    /*0x05*/ RoomData room;
+    /*0x06*/ Vec3t vertex1;
+    /*0x0C*/ Vec3t vertex2;
+    /*0x12*/ Vec3t vertex3;
+    /*0x18*/ struct Normal normal;
+    /*0x24*/ f32 originOffset;
+    /*0x28*/ struct Object *object;
 };
 
 #define PUNCH_STATE_TIMER_MASK          0b00111111

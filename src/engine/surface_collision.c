@@ -282,15 +282,15 @@ static void add_ceil_margin(s32 *x, s32 *z, Vec3s target1, Vec3s target2, f32 ma
 }
 
 static s32 check_within_ceil_triangle_bounds(s32 x, s32 z, struct Surface *surf, f32 margin) {
-    s32 addMargin = surf->type != SURFACE_HANGABLE && !FLT_IS_NONZERO(margin);
+    // s32 addMargin = surf->type != SURFACE_HANGABLE && !FLT_IS_NONZERO(margin);
     Vec3i vx, vz;
     vx[0] = surf->vertex1[0];
     vz[0] = surf->vertex1[2];
-    if (addMargin) add_ceil_margin(&vx[0], &vz[0], surf->vertex2, surf->vertex3, margin);
+    // if (addMargin) add_ceil_margin(&vx[0], &vz[0], surf->vertex2, surf->vertex3, margin);
 
     vx[1] = surf->vertex2[0];
     vz[1] = surf->vertex2[2];
-    if (addMargin) add_ceil_margin(&vx[1], &vz[1], surf->vertex3, surf->vertex1, margin);
+    // if (addMargin) add_ceil_margin(&vx[1], &vz[1], surf->vertex3, surf->vertex1, margin);
 
     // Checking if point is in bounds of the triangle laterally.
     if (((vz[0] - z) * (vx[1] - vx[0]) - (vx[0] - x) * (vz[1] - vz[0])) > 0) return FALSE;
@@ -298,7 +298,7 @@ static s32 check_within_ceil_triangle_bounds(s32 x, s32 z, struct Surface *surf,
     // Slight optimization by checking these later.
     vx[2] = surf->vertex3[0];
     vz[2] = surf->vertex3[2];
-    if (addMargin) add_ceil_margin(&vx[2], &vz[2], surf->vertex1, surf->vertex2, margin);
+    // if (addMargin) add_ceil_margin(&vx[2], &vz[2], surf->vertex1, surf->vertex2, margin);
 
     if (((vz[1] - z) * (vx[2] - vx[1]) - (vx[1] - x) * (vz[2] - vz[1])) > 0) return FALSE;
     if (((vz[2] - z) * (vx[0] - vx[2]) - (vx[2] - x) * (vz[0] - vz[2])) > 0) return FALSE;
@@ -346,7 +346,7 @@ static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 
         if (gGravityMode) {
             if (!check_within_floor_triangle_bounds(x, z, surf)) continue;
         } else {
-            if (!check_within_ceil_triangle_bounds(x, z, surf, 1.5f)) continue;
+            if (!check_within_ceil_triangle_bounds(x, z, surf, 0.f)) continue;
         }
 
         // Find the height of the ceil at the given location
