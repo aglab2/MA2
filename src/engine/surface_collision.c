@@ -77,14 +77,16 @@ static s32 find_wall_collisions_from_list(struct SurfaceNode *surfaceNode, struc
 
     // Stay in this loop until out of walls.
     for (; surfaceNode != NULL; surfaceNode = surfaceNode->next) {
-        TerrainData type = surfaceNode->type;
+        uintptr_t packed = surfaceNode->packed;
 
         // Exclude a large number of walls immediately to optimize.
         if (pos[1] < surfaceNode->lowerY || pos[1] > surfaceNode->upperY) continue;
 
         // Determine if checking for the camera or not.
+        TerrainData type = SURFACE_NODE_TYPE(packed);
+        uintptr_t flags = SURFACE_NODE_FLAGS(packed);
         if (flagCamera) {
-            if (surfaceNode->flags & SURFACE_FLAG_NO_CAM_COLLISION) continue;
+            if (flags & SURFACE_FLAG_NO_CAM_COLLISION) continue;
         } else {
             // Ignore camera only surfaces.
             if (type == SURFACE_CAMERA_BOUNDARY) continue;
@@ -98,7 +100,7 @@ static s32 find_wall_collisions_from_list(struct SurfaceNode *surfaceNode, struc
             }
         }
 
-        struct Surface *surf = surfaceNode->surf;
+        struct Surface *surf = SURFACE_NODE_SURF(packed);
 
         // Dot of normal and pos, + origin offset
         offset = (surf->normal.x * pos[0])
@@ -320,7 +322,7 @@ static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 
 
     // Stay in this loop until out of ceilings.
     for (; surfaceNode != NULL; surfaceNode = surfaceNode->next) {
-        SurfaceType type = surfaceNode->type;
+        uintptr_t packed = surfaceNode->packed;
 
         // Exclude all ceilings below the point
         if (gGravityMode) {
@@ -330,9 +332,11 @@ static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 
             if (y > surfaceNode->upperY) continue;
         }
 
+        SurfaceType type = SURFACE_NODE_TYPE(packed);
+        uintptr_t flags = SURFACE_NODE_FLAGS(packed);
         // Determine if checking for the camera or not
         if (flagCamera) {
-            if (surfaceNode->flags & SURFACE_FLAG_NO_CAM_COLLISION) {
+            if (flags & SURFACE_FLAG_NO_CAM_COLLISION) {
                 continue;
             }
         } else if (type == SURFACE_CAMERA_BOUNDARY) {
@@ -340,7 +344,7 @@ static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 
             continue;
         }
 
-        struct Surface* surf = surfaceNode->surf;
+        struct Surface* surf = SURFACE_NODE_SURF(packed);
 
         // Check that the point is within the triangle bounds
         if (gGravityMode) {
@@ -485,18 +489,20 @@ static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32
 
     // Iterate through the list of floors until there are no more floors.
     for (; surfaceNode != NULL; surfaceNode = surfaceNode->next) {
-        SurfaceType type = surfaceNode->type;
+        uintptr_t packed = surfaceNode->packed;
 
         // To prevent the Merry-Go-Round room from loading when Mario passes above the hole that leads
         // there, SURFACE_INTANGIBLE is used. This prevent the wrong room from loading, but can also allow
         // Mario to pass through.
+        SurfaceType type = SURFACE_NODE_TYPE(packed);
+        uintptr_t flags = SURFACE_NODE_FLAGS(packed);
         if (excludeIntangible && (type == SURFACE_INTANGIBLE)) {
             continue;
         }
 
         // Determine if we are checking for the camera or not.
         if (flagCamera) {
-            if (surfaceNode->flags & SURFACE_FLAG_NO_CAM_COLLISION) {
+            if (flags & SURFACE_FLAG_NO_CAM_COLLISION) {
                 continue;
             }
         } else if (type == SURFACE_CAMERA_BOUNDARY) {
@@ -512,7 +518,7 @@ static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32
         }
 
         // Check that the point is within the triangle bounds.
-        struct Surface *surf = surfaceNode->surf;
+        struct Surface *surf = SURFACE_NODE_SURF(packed);
         if (gGravityMode) {
             if (!check_within_ceil_triangle_bounds(x, z, surf, 0.0f)) continue;
         } else {

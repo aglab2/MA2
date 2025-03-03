@@ -54,11 +54,9 @@ static struct SurfaceNode *alloc_surface_node(u8** pend, struct Surface* surface
     *pend = (void*) ((u8*) end + 0x10);
 
     gSurfaceNodesAllocated++;
-    node->type = surface->type;
-    node->flags = surface->flags;
     node->lowerY = lowerY;
     node->upperY = upperY;
-    node->surf = surface;
+    node->packed = SURFACE_NODE_PACK(surface, surface->type, surface->flags);
     node->next = NULL;
 
     return node;

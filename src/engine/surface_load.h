@@ -19,11 +19,18 @@
 struct SurfaceNode {
     s16 lowerY;
     s16 upperY;
-    TerrainData type;
-    u8 flags;
-    struct Surface *surf;
+    uintptr_t packed;
+    // TerrainData type;
+    // u8 flags;
+    // struct Surface *surf;
     struct SurfaceNode *next;
 };
+
+#define SURFACE_NODE_TYPE(pack) (pack >> 24)
+#define SURFACE_NODE_FLAGS(pack) (pack)
+#define SURFACE_NODE_SURF(pack) ((struct Surface *)(0x80000000U | (pack & 0xFFFFF0)))
+
+#define SURFACE_NODE_PACK(surf, type, flags) (((uintptr_t)(surf) & 0xFFFFF0) | ((uintptr_t)(type) << 24) | (uintptr_t)(flags))
 
 enum SpatialPartitions {
     SPATIAL_PARTITION_FLOORS,
