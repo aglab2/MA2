@@ -335,11 +335,11 @@ static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 
         uintptr_t packed = surfaceNode->packed;
 
         // Exclude all ceilings below the point
-        if (gm) {
+        if (!gm) {
+            if (y > surfaceNode->upperY) continue;
+        } else {
             // TODO: uncba
             // if (y < surf->lowerY) continue;
-        } else {
-            if (y > surfaceNode->upperY) continue;
         }
 
         {
@@ -362,10 +362,10 @@ static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 
         struct Surface* surf = SURFACE_NODE_SURF(packed);
 
         // Check that the point is within the triangle bounds
-        if (gm) {
-            if (!check_within_floor_triangle_bounds(x, z, surf)) continue;
-        } else {
+        if (!gm) {
             if (!check_within_ceil_triangle_bounds(x, z, surf)) continue;
+        } else {
+            if (!check_within_floor_triangle_bounds(x, z, surf)) continue;
         }
 
         // Find the height of the ceil at the given location
@@ -502,7 +502,7 @@ int gSlowLookups = 0;
 /**
  * Iterate through the list of floors and find the first floor under a given point.
  */
-static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32 x, s32 y, s32 z, u32 celled, f32 *pheight) {
+static struct Surface *find_floor_from_list(const struct SurfaceNode *surfaceNode, s32 x, s32 y, s32 z, u32 celled, f32 *pheight) {
     register struct Surface *floor = NULL;
     register f32 height;
     register s32 bufferY = y + FIND_FLOOR_BUFFER;
@@ -543,11 +543,11 @@ static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32
         }
 
         // Exclude all floors above the point.
-        if (gm) {
+        if (!gm) {
+            if (bufferY < surfaceNode->lowerY) continue;
+        } else {
             // TODO: uncba
             // if (bufferY > surf->upperY) continue;
-        } else {
-            if (bufferY < surfaceNode->lowerY) continue;
         }
 
         {
@@ -561,10 +561,10 @@ static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32
 #endif
 
         struct Surface *surf = SURFACE_NODE_SURF(packed);
-        if (gm) {
-            if (!check_within_ceil_triangle_bounds(x, z, surf)) continue;
-        } else {
+        if (!gm) {
             if (!check_within_floor_triangle_bounds(x, z, surf)) continue;
+        } else {
+            if (!check_within_ceil_triangle_bounds(x, z, surf)) continue;
         }
 
         // Get the height of the floor under the current location.
