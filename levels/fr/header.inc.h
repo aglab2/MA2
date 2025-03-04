@@ -159,6 +159,7 @@ extern const Trajectory fr_area_9_spline_Rail_0174_object_0123E2F4_002[];
 extern const Trajectory fr_area_9_spline_Rail_0190_object_0123C544_002[];
 extern const Trajectory fr_area_9_spline_Spring_NurbsCurve_016[];
 extern const Trajectory fr_area_9_spline_Spring_NurbsCurve_017[];
+extern const Trajectory fr_area_9_spline_Spring_NurbsCurve_025[];
 extern u8 fr_dl_cosmic64_1_ci4[];
 extern u8 fr_dl_cosmic64_1_pal_rgba16[];
 extern Vtx fr_dl_a1_002_mesh_layer_1_vtx_0[24];
