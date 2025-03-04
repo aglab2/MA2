@@ -12,10 +12,6 @@
 
 u8 gGravityMode = FALSE; // Is flipped gravity currently being applied (only when Mario is updated)
 u8 gIsGravityFlipped = FALSE; // Is gravity flipped
-struct Surface gCeilingDeathPlane = {
-    SURFACE_DEATH_PLANE, 0, 0, 0, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 },
-    { 0.0f, -1.0f, 0.0f },  0.0f, NULL,
-};
 
 /**************************************************
  *                      WALLS                     *
@@ -283,7 +279,7 @@ static void add_ceil_margin(s32 *x, s32 *z, Vec3s target1, Vec3s target2, f32 ma
     *z += diff_z * invDenom;
 }
 
-static s32 check_within_ceil_triangle_bounds(s32 x, s32 z, struct Surface *surf, f32 margin) {
+static s32 check_within_ceil_triangle_bounds(s32 x, s32 z, struct Surface *surf) {
     // s32 addMargin = surf->type != SURFACE_HANGABLE && !FLT_IS_NONZERO(margin);
     Vec3i vx, vz;
     vx[0] = surf->vertex1[0];
@@ -326,13 +322,14 @@ static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 
     *pheight = CELL_HEIGHT_LIMIT;
     s32 flagCamera = gCollisionFlags & COLLISION_FLAG_CAMERA;
     s32 flagRetFirst = gCollisionFlags & COLLISION_FLAG_RETURN_FIRST;
+    const u32 gm = gGravityMode;
 
     // Stay in this loop until out of ceilings.
     for (; surfaceNode != NULL; surfaceNode = surfaceNode->next) {
         uintptr_t packed = surfaceNode->packed;
 
         // Exclude all ceilings below the point
-        if (gGravityMode) {
+        if (gm) {
             // TODO: uncba
             // if (y < surf->lowerY) continue;
         } else {
@@ -364,17 +361,17 @@ static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 
         struct Surface* surf = SURFACE_NODE_SURF(packed);
 
         // Check that the point is within the triangle bounds
-        if (gGravityMode) {
+        if (gm) {
             if (!check_within_floor_triangle_bounds(x, z, surf)) continue;
         } else {
-            if (!check_within_ceil_triangle_bounds(x, z, surf, 0.f)) continue;
+            if (!check_within_ceil_triangle_bounds(x, z, surf)) continue;
         }
 
         // Find the height of the ceil at the given location
         height = get_surface_height_at_location(x, z, surf);
 
         // Transform ceiling height
-        if (gGravityMode) height = 9000.f - height;
+        if (gm) height = 9000.f - height;
 
         // Exclude ceilings above the previous lowest ceiling
         if (height > *pheight) continue;
@@ -510,8 +507,7 @@ static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32
     s32 excludeIntangible = !(gCollisionFlags & COLLISION_FLAG_INCLUDE_INTANGIBLE);
     s32 flagCamera = gCollisionFlags & COLLISION_FLAG_CAMERA;
     s32 flagRetFirst = gCollisionFlags & COLLISION_FLAG_RETURN_FIRST;
-
-    if (gGravityMode) floor = &gCeilingDeathPlane;
+    const u32 gm = gGravityMode;
 
     // Iterate through the list of floors until there are no more floors.
     for (; surfaceNode != NULL; surfaceNode = surfaceNode->next) {
@@ -540,7 +536,7 @@ static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32
         }
 
         // Exclude all floors above the point.
-        if (gGravityMode) {
+        if (gm) {
             // TODO: uncba
             // if (bufferY > surf->upperY) continue;
         } else {
@@ -563,8 +559,8 @@ static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32
 #endif
 
         struct Surface *surf = SURFACE_NODE_SURF(packed);
-        if (gGravityMode) {
-            if (!check_within_ceil_triangle_bounds(x, z, surf, 0.0f)) continue;
+        if (gm) {
+            if (!check_within_ceil_triangle_bounds(x, z, surf)) continue;
         } else {
             if (!check_within_floor_triangle_bounds(x, z, surf)) continue;
         }
@@ -573,7 +569,7 @@ static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32
         height = get_surface_height_at_location(x, z, surf);
 
         // Transform floor height
-        if (gGravityMode) height = 9000.f - height;
+        if (gm) height = 9000.f - height;
 
         // Exclude floors lower than the previous highest floor.
         if (height <= *pheight) continue;
@@ -595,7 +591,7 @@ static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32
 // Generic triangle bounds func
 ALWAYS_INLINE static s32 check_within_bounds_y_norm(s32 x, s32 z, struct Surface *surf) {
     if (surf->normal.y >= NORMAL_FLOOR_THRESHOLD) return check_within_floor_triangle_bounds(x, z, surf);
-    return check_within_ceil_triangle_bounds(x, z, surf, 0);
+    return check_within_ceil_triangle_bounds(x, z, surf);
 }
 
 /**
