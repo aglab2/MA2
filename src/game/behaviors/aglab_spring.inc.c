@@ -166,11 +166,17 @@ static void spring_transition_area()
         return;
 
     if (gCurrLevelNum >= (int) (sizeof(kSpringsLinkDescs) / sizeof(kSpringsLinkDescs[0])))
-        return;
+    {
+        sSpringBezier = NULL;
+        return;        
+    }
 
     const SpringLinkDesc* descs = kSpringsLinkDescs[gCurrLevelNum];
     if (!descs)
+    {
+        sSpringBezier = NULL;
         return;
+    }
 
     descs = segmented_to_virtual(descs);
     while (descs->from)
