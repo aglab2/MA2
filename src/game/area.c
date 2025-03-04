@@ -467,6 +467,9 @@ void play_transition_after_delay(s16 transType, s16 time, u8 red, u8 green, u8 b
     play_transition(transType, time, red, green, blue);
 }
 
+extern int gQuickLookups;
+extern int gSlowLookups;
+
 u8 gWaterTutorial;
 extern u16 gScreenWidth __attribute__((section(".bss")));
 void render_game(void) {
@@ -546,6 +549,14 @@ void render_game(void) {
                 gWarpTransDelay--;
             }
         }
+
+#ifdef DEBUG_SURF
+        print_text_fmt_int(20, 20, "Q %d", gQuickLookups);
+        print_text_fmt_int(20, 40, "S %d", gSlowLookups);
+        gQuickLookups = 0;
+        gSlowLookups = 0;
+#endif
+
 #ifdef S2DEX_TEXT_ENGINE
         s2d_init();
 

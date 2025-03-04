@@ -1050,14 +1050,12 @@ void obj_become_tangible(struct Object *obj) {
 }
 
 void cur_obj_update_floor_height(void) {
-    struct Surface *floor;
-    o->oFloorHeight = find_floor(o->oPosX, o->oPosY, o->oPosZ, &floor);
+    o->oFloorHeight = find_floor(o->oPosX, o->oPosY, o->oPosZ, &o->oFloor);
 }
 
 struct Surface *cur_obj_update_floor_height_and_get_floor(void) {
-    struct Surface *floor;
-    o->oFloorHeight = find_floor(o->oPosX, o->oPosY, o->oPosZ, &floor);
-    return floor;
+    o->oFloorHeight = find_floor(o->oPosX, o->oPosY, o->oPosZ, &o->oFloor);
+    return o->oFloor;
 }
 
 static void apply_drag_to_value(f32 *value, f32 dragStrength) {

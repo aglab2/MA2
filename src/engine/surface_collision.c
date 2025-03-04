@@ -493,6 +493,13 @@ static s32 check_within_floor_triangle_bounds(s32 x, s32 z, struct Surface *surf
     return TRUE;
 }
 
+#define DEBUG_SURF
+
+#ifdef DEBUG_SURF
+int gQuickLookups = 0;
+int gSlowLookups = 0;
+#endif
+
 /**
  * Iterate through the list of floors and find the first floor under a given point.
  */
@@ -508,6 +515,10 @@ static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32
 
     // Iterate through the list of floors until there are no more floors.
     for (; surfaceNode != NULL; surfaceNode = surfaceNode->next) {
+#ifdef DEBUG_SURF
+        gQuickLookups++;
+#endif
+
         uintptr_t packed = surfaceNode->packed;
 
         // To prevent the Merry-Go-Round room from loading when Mario passes above the hole that leads
@@ -547,6 +558,10 @@ static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32
         }
 
         // Check that the point is within the triangle bounds.
+#ifdef DEBUG_SURF
+        gSlowLookups++;
+#endif
+
         struct Surface *surf = SURFACE_NODE_SURF(packed);
         if (gGravityMode) {
             if (!check_within_ceil_triangle_bounds(x, z, surf, 0.0f)) continue;
