@@ -44327,26 +44327,26 @@ Gfx cg_dl_0975_object_00EF1390_mesh_layer_1_tri_0[] = {
 };
 
 Vtx cg_dl_a1_005_mesh_layer_1_vtx_0[20] = {
-	{{ {15470, 5669, -16659}, 0, {877, 85}, {0, 129, 0, 255} }},
-	{{ {15470, 5669, -1868}, 0, {877, 450}, {0, 129, 0, 255} }},
-	{{ {426, 5669, -1868}, 0, {506, 450}, {0, 129, 0, 255} }},
-	{{ {426, 5669, -16659}, 0, {506, 85}, {0, 129, 0, 255} }},
-	{{ {426, 5669, -1868}, 0, {506, 450}, {0, 0, 129, 255} }},
-	{{ {15470, 5669, -1868}, 0, {877, 450}, {0, 0, 129, 255} }},
-	{{ {15470, -5278, -1868}, 0, {877, 450}, {0, 0, 129, 255} }},
-	{{ {426, -5278, -1868}, 0, {506, 450}, {0, 0, 129, 255} }},
-	{{ {15470, 5669, -16659}, 0, {877, 85}, {0, 0, 127, 255} }},
-	{{ {426, 5669, -16659}, 0, {506, 85}, {0, 0, 127, 255} }},
-	{{ {426, -5278, -16659}, 0, {506, 85}, {0, 0, 127, 255} }},
-	{{ {15470, -5278, -16659}, 0, {877, 85}, {0, 0, 127, 255} }},
-	{{ {15470, 5669, -1868}, 0, {871, 450}, {129, 0, 0, 255} }},
-	{{ {15470, 5669, -16659}, 0, {871, 85}, {129, 0, 0, 255} }},
-	{{ {15470, -5278, -16659}, 0, {871, 85}, {129, 0, 0, 255} }},
-	{{ {15470, -5278, -1868}, 0, {871, 450}, {129, 0, 0, 255} }},
-	{{ {15470, -5278, -1868}, 0, {877, 450}, {0, 127, 0, 255} }},
-	{{ {15470, -5278, -16659}, 0, {877, 85}, {0, 127, 0, 255} }},
-	{{ {426, -5278, -16659}, 0, {506, 85}, {0, 127, 0, 255} }},
-	{{ {426, -5278, -1868}, 0, {506, 450}, {0, 127, 0, 255} }},
+	{{ {7522, 5474, -7395}, 0, {877, 85}, {0, 129, 0, 255} }},
+	{{ {7522, 5474, 7395}, 0, {877, 450}, {0, 129, 0, 255} }},
+	{{ {-7522, 5474, 7395}, 0, {506, 450}, {0, 129, 0, 255} }},
+	{{ {-7522, 5474, -7395}, 0, {506, 85}, {0, 129, 0, 255} }},
+	{{ {-7522, 5474, 7395}, 0, {506, 450}, {0, 0, 129, 255} }},
+	{{ {7522, 5474, 7395}, 0, {877, 450}, {0, 0, 129, 255} }},
+	{{ {7522, -5474, 7395}, 0, {877, 450}, {0, 0, 129, 255} }},
+	{{ {-7522, -5474, 7395}, 0, {506, 450}, {0, 0, 129, 255} }},
+	{{ {7522, 5474, -7395}, 0, {877, 85}, {0, 0, 127, 255} }},
+	{{ {-7522, 5474, -7395}, 0, {506, 85}, {0, 0, 127, 255} }},
+	{{ {-7522, -5474, -7395}, 0, {506, 85}, {0, 0, 127, 255} }},
+	{{ {7522, -5474, -7395}, 0, {877, 85}, {0, 0, 127, 255} }},
+	{{ {7522, 5474, 7395}, 0, {871, 450}, {129, 0, 0, 255} }},
+	{{ {7522, 5474, -7395}, 0, {871, 85}, {129, 0, 0, 255} }},
+	{{ {7522, -5474, -7395}, 0, {871, 85}, {129, 0, 0, 255} }},
+	{{ {7522, -5474, 7395}, 0, {871, 450}, {129, 0, 0, 255} }},
+	{{ {7522, -5474, 7395}, 0, {877, 450}, {0, 127, 0, 255} }},
+	{{ {7522, -5474, -7395}, 0, {877, 85}, {0, 127, 0, 255} }},
+	{{ {-7522, -5474, -7395}, 0, {506, 85}, {0, 127, 0, 255} }},
+	{{ {-7522, -5474, 7395}, 0, {506, 450}, {0, 127, 0, 255} }},
 };
 
 Gfx cg_dl_a1_005_mesh_layer_1_tri_0[] = {
@@ -47220,9 +47220,6 @@ u32 cg_dl_0006_object_00F3B4A8_mesh_layer_1[] = {
 	BATCH_END(),
 };
 
-#undef LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU128_CG003_PAL_RGBA16
-#define LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU128_CG003_PAL_RGBA16 LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU128_CG003_PAL_RGBA16_1
-
 u32 cg_dl_0007_object_00F5DED4_mesh_layer_1[] = {
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU128_CG003_PAL_RGBA16, cg_dl_0007_object_00F5DED4_mesh_layer_1_tri_0),
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU128_CG004_PAL_RGBA16, cg_dl_0007_object_00F5DED4_mesh_layer_1_tri_1),
@@ -47333,9 +47330,6 @@ u32 cg_dl_0017_object_00F5DCA4_mesh_layer_1[] = {
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU128_CG008_PAL_RGBA16, cg_dl_0017_object_00F5DCA4_mesh_layer_1_tri_0),
 	BATCH_END(),
 };
-
-#undef LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU128_CG002_PAL_RGBA16_1
-#define LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU128_CG002_PAL_RGBA16_1 LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU128_CG002_PAL_RGBA16
 
 u32 cg_dl_0018_object_00F72594_mesh_layer_1[] = {
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU128_CG002_PAL_RGBA16_1, cg_dl_0018_object_00F72594_mesh_layer_1_tri_0),
@@ -48233,7 +48227,7 @@ static struct BatchDisplayLists batch_lvl_dls_LAYER_OPAQUE[] = {
 	[LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU256_CG003_PAL_RGBA16] = { mat_cg_dl_objLandTable0022_sa2blvl_5_f3d, mat_revert_cg_dl_objLandTable0022_sa2blvl_5_f3d, DL_HINT(mat_cg_dl_objLandTable0022_sa2blvl_5_f3d), DL_HINT(mat_revert_cg_dl_objLandTable0022_sa2blvl_5_f3d), },
 	[LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU256_CG002_PAL_RGBA16_1] = { mat_cg_dl_objLandTable0022_sa2blvl_7_f3d, mat_revert_cg_dl_objLandTable0022_sa2blvl_7_f3d, DL_HINT(mat_cg_dl_objLandTable0022_sa2blvl_7_f3d), DL_HINT(mat_revert_cg_dl_objLandTable0022_sa2blvl_7_f3d), },
 	[LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU256_CG002_PAL_RGBA16_2] = { mat_cg_dl_objLandTable0022_sa2blvl_10_f3d, mat_revert_cg_dl_objLandTable0022_sa2blvl_10_f3d, DL_HINT(mat_cg_dl_objLandTable0022_sa2blvl_10_f3d), DL_HINT(mat_revert_cg_dl_objLandTable0022_sa2blvl_10_f3d), },
-	[LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU256_CG002_PAL_RGBA16_2+1] = { mat_cg_dl_objLandTable0022_sa2blvl_12_f3d, mat_revert_cg_dl_objLandTable0022_sa2blvl_12_f3d, DL_HINT(mat_cg_dl_objLandTable0022_sa2blvl_12_f3d), DL_HINT(mat_revert_cg_dl_objLandTable0022_sa2blvl_12_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU128_CG003_PAL_RGBA16] = { mat_cg_dl_objLandTable0022_sa2blvl_12_f3d, mat_revert_cg_dl_objLandTable0022_sa2blvl_12_f3d, DL_HINT(mat_cg_dl_objLandTable0022_sa2blvl_12_f3d), DL_HINT(mat_revert_cg_dl_objLandTable0022_sa2blvl_12_f3d), },
 	[LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU128_CG004_PAL_RGBA16] = { mat_cg_dl_objLandTable0022_sa2blvl_13_f3d, mat_revert_cg_dl_objLandTable0022_sa2blvl_13_f3d, DL_HINT(mat_cg_dl_objLandTable0022_sa2blvl_13_f3d), DL_HINT(mat_revert_cg_dl_objLandTable0022_sa2blvl_13_f3d), },
 	[LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU64_CG009_PAL_RGBA16] = { mat_cg_dl_objLandTable0022_sa2blvl_14_f3d, mat_revert_cg_dl_objLandTable0022_sa2blvl_14_f3d, DL_HINT(mat_cg_dl_objLandTable0022_sa2blvl_14_f3d), DL_HINT(mat_revert_cg_dl_objLandTable0022_sa2blvl_14_f3d), },
 	[LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU64_CG020_PAL_RGBA16] = { mat_cg_dl_DITCH_sa2bmdl_1_f3d, mat_revert_cg_dl_DITCH_sa2bmdl_1_f3d, DL_HINT(mat_cg_dl_DITCH_sa2bmdl_1_f3d), DL_HINT(mat_revert_cg_dl_DITCH_sa2bmdl_1_f3d), },
@@ -48264,7 +48258,7 @@ static struct BatchDisplayLists batch_lvl_dls_LAYER_OPAQUE[] = {
 	[LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU128_CG016_PAL_RGBA16] = { mat_cg_dl_TUBE_ENTER_sa2mdl_10_f3d, mat_revert_cg_dl_TUBE_ENTER_sa2mdl_10_f3d, DL_HINT(mat_cg_dl_TUBE_ENTER_sa2mdl_10_f3d), DL_HINT(mat_revert_cg_dl_TUBE_ENTER_sa2mdl_10_f3d), },
 	[LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU128_CG003_PAL_RGBA16_1] = { mat_cg_dl_objLandTable0022_x_sa2lvl_2_f3d_layer1, mat_revert_cg_dl_objLandTable0022_x_sa2lvl_2_f3d_layer1, DL_HINT(mat_cg_dl_objLandTable0022_x_sa2lvl_2_f3d_layer1), DL_HINT(mat_revert_cg_dl_objLandTable0022_x_sa2lvl_2_f3d_layer1), },
 	[LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU128_CG008_PAL_RGBA16] = { mat_cg_dl_objLandTable0022_sa2blvl_15_f3d, mat_revert_cg_dl_objLandTable0022_sa2blvl_15_f3d, DL_HINT(mat_cg_dl_objLandTable0022_sa2blvl_15_f3d), DL_HINT(mat_revert_cg_dl_objLandTable0022_sa2blvl_15_f3d), },
-	[LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU128_CG008_PAL_RGBA16+1] = { mat_cg_dl_objLandTable0022_x_sa2lvl_3_f3d, mat_revert_cg_dl_objLandTable0022_x_sa2lvl_3_f3d, DL_HINT(mat_cg_dl_objLandTable0022_x_sa2lvl_3_f3d), DL_HINT(mat_revert_cg_dl_objLandTable0022_x_sa2lvl_3_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU128_CG002_PAL_RGBA16_1] = { mat_cg_dl_objLandTable0022_x_sa2lvl_3_f3d, mat_revert_cg_dl_objLandTable0022_x_sa2lvl_3_f3d, DL_HINT(mat_cg_dl_objLandTable0022_x_sa2lvl_3_f3d), DL_HINT(mat_revert_cg_dl_objLandTable0022_x_sa2lvl_3_f3d), },
 	[LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU64_CG007_PAL_RGBA16_1] = { mat_cg_dl_objLandTable0022_sa2blvl_16_f3d, mat_revert_cg_dl_objLandTable0022_sa2blvl_16_f3d, DL_HINT(mat_cg_dl_objLandTable0022_sa2blvl_16_f3d), DL_HINT(mat_revert_cg_dl_objLandTable0022_sa2blvl_16_f3d), },
 	[LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU512_CG001_PAL_RGBA16] = { mat_cg_dl_objLandTable0022_sa2blvl_17_f3d, mat_revert_cg_dl_objLandTable0022_sa2blvl_17_f3d, DL_HINT(mat_cg_dl_objLandTable0022_sa2blvl_17_f3d), DL_HINT(mat_revert_cg_dl_objLandTable0022_sa2blvl_17_f3d), },
 	[LVL_BATCH_LAYER_OPAQUE_CG_DL_MIU128_CG005_PAL_RGBA16] = { mat_cg_dl_objLandTable0022_sa2blvl_18_f3d, mat_revert_cg_dl_objLandTable0022_sa2blvl_18_f3d, DL_HINT(mat_cg_dl_objLandTable0022_sa2blvl_18_f3d), DL_HINT(mat_revert_cg_dl_objLandTable0022_sa2blvl_18_f3d), },

@@ -295,7 +295,6 @@ const LevelScript level_cg_entry[] = {
 		OBJECT(MODEL_STAR, -9517, -1381, -9957, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -10607, -2069, -12030, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 9749, 2864, -5553, 0, 0, 0, 0x00000000, bhvStar),
-		OBJECT(MODEL_STAR, 5275, 290, -13210, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_NONE, 13509, -693, -9033, 0, 0, 0, 0x00000000, bhvHiddenRedCoinStar),
 		TERRAIN(cg_area_3_collision),
 		MACRO_OBJECTS(cg_area_3_macro_objs),

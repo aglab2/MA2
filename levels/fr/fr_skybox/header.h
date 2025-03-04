@@ -1,7 +1,8 @@
 extern u8 fr_skybox_spacenbg64_ci4[];
 extern u8 fr_skybox_spacenbg64_pal_rgba16[];
 extern u8 fr_skybox_spacenbg128_ci4[];
-extern u8 fr_skybox_spacenbg128_pal_rgba16[];
+extern u8 fr_skybox_spacenbg128_x_spacenbg128_pal_rgba16[];
+extern u8 fr_skybox_spacenbg128_ci4_copy[];
 extern u8 fr_skybox_space256_7_ci4[];
 extern u8 fr_skybox_space256_7_pal_rgba16[];
 extern u8 fr_skybox_space64_19_ci4[];
