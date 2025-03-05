@@ -34,10 +34,7 @@ void bhv_aq_lift_loop()
     bhv_aq_ctls_loop();
     if (o->oAqLiftReload && o->oDistanceToMario < 2500.f)
     {
-        main_pool_pop_state();
-        main_pool_push_state();
         obj_build_transform_from_pos_and_angle(o, O_POS_INDEX, O_FACE_ANGLE_INDEX);
-        load_area_terrain(gCurrentArea->terrainData, gCurrentArea->surfaceRooms);
         load_object_static_model();
         o->oAqLiftReload = 0;
     }
@@ -59,6 +56,10 @@ void bhv_aq_lift_loop()
     {
         o->oAqLiftReload = 1;
         o->oAqLiftActive = wanted_height;
+
+        main_pool_pop_state();
+        main_pool_push_state();
+        load_area_terrain(gCurrentArea->terrainData, gCurrentArea->surfaceRooms);
     }
 }
 
