@@ -26,6 +26,43 @@
 #include "config/config_world.h"
 #include "actors/common1.h"
 
+typedef struct {
+    Light	l[2];
+} LookAtEX2;
+
+typedef struct {
+    Ambient	a;
+    Light	l[1];
+} Lights1EX2;
+
+# define G_MVO_LOOKATX	(0*24)
+# define G_MVO_LOOKATY	(1*24)
+
+# define gSPLookAtXEX2(pkt, l)	\
+	 gDma2p((pkt),G_MOVEMEM,(l),sizeof(Light),G_MV_LIGHT,G_MVO_LOOKATX)
+# define gSPLookAtYEX2(pkt, l)	\
+	 gDma2p((pkt),G_MOVEMEM,(l),sizeof(Light),G_MV_LIGHT,G_MVO_LOOKATY)
+#define gSPLookAtEX2(pkt, la)						\
+{									\
+	gSPLookAtXEX2(pkt,la)						\
+	gSPLookAtYEX2(pkt,(char *)(la)+16)					\
+}
+
+#define NUMLEX2(n)	((n)*24)
+
+#define gSPNumLightsEX2(pkt, n)						\
+	gMoveWd(pkt, G_MW_NUMLIGHT, G_MWO_NUMLIGHT, NUMLEX2(n))
+
+#define gSPLightEX2(pkt, l, n)	\
+    gDma2p((pkt),G_MOVEMEM,(l),sizeof(Light),G_MV_LIGHT,(n)*24+24)
+
+#define gSPSetLights1EX2(pkt,name)						\
+{									\
+	gSPNumLightsEX2(pkt,NUMLIGHTS_1);					\
+	gSPLightEX2(pkt,&name.l[0],1);					\
+	gSPLightEX2(pkt,&name.a,2);					\
+}
+
 #define ENABLE_HEAP_BATCHES 1
 
 static void geo_process_node_and_siblings(struct GraphNode *firstNode);
@@ -85,6 +122,8 @@ static s16 gCurrAnimFrame;
 static f32 gCurrAnimTranslationMultiplier;
 static u16 *gCurrAnimAttribute;
 static s16 *gCurrAnimData;
+
+static Gfx* gLightReset;
 
 /* Rendermode settings for cycle 1 for all 8 or 13 layers. */
 static const struct RenderModeContainer renderModeTable_1Cycle[2] = { 
@@ -482,6 +521,36 @@ static void apply_flipbooks(struct MasterLayer* masterLayer)
     }
 }
 
+static const uint32_t kAmbientLight     = 0x3F3F3F00;
+static const uint32_t kDirectionalLight = 0xFFFFFF00;
+
+#define SET_LIGHT_COLOR(light, c) do{ *(u32*) &((light).l.col[0]) = c; *(u32*) &((light).l.colc[0]) = c; }while(0)
+
+static void apply_ig_lighting(Gfx **ptempGfxHead)
+{
+#define tempGfxHead (*ptempGfxHead)
+    static const uint32_t kAmbientLight     = 0x1F1F1F00;
+    static const uint32_t kDirectionalLight = 0x7F7F7F00;
+
+    Lights1* curLight = (Lights1*)alloc_display_list(32);
+    SET_LIGHT_COLOR(curLight->a   , kAmbientLight);
+    SET_LIGHT_COLOR(curLight->l[0], kDirectionalLight);
+
+    curLight->l->l.dir[0] = 105 * sins(gGlobalTimer * 0x234);
+    curLight->l->l.dir[1] = 0x49;
+    curLight->l->l.dir[2] = 105 * coss(gGlobalTimer * 0x234);
+
+    if (gHasEX3)
+    {
+        gSPSetLights1(tempGfxHead++, (*curLight));
+    }
+    else
+    {
+        gSPSetLights1EX2(tempGfxHead++, (*curLight));
+    }
+#undef tempGfxHead
+}
+
 static void adjust_view_range();
 static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
     const struct RenderPhase *renderPhase;
@@ -556,6 +625,11 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
 
             if (masterLayer->course || masterLayer->objects)
             {
+                if (LEVEL_IG == gCurrLevelNum)
+                {
+                    apply_ig_lighting(&tempGfxHead);
+                }
+
                 gDPPipeSync(tempGfxHead++);
                 gDPPipelineMode(tempGfxHead++, G_PM_NPRIMITIVE);
                 int amt = render_course_batches(&tempGfxHead, masterLayer->course, currLayer);
@@ -565,7 +639,12 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
                 render_batches(&tempGfxHead, masterLayer->objects, currLayer);
                 gDPPipeSync(tempGfxHead++);
                 gDPPipelineMode(tempGfxHead++, G_PM_1PRIMITIVE);
-                clear_render_mode(&tempGfxHead, currLayer);    
+                clear_render_mode(&tempGfxHead, currLayer);
+
+                if (LEVEL_IG == gCurrLevelNum)
+                {
+                    gSPDisplayList(tempGfxHead++, gLightReset);
+                }
             }
         }
     }
@@ -856,50 +935,8 @@ void geo_process_switch(struct GraphNodeSwitchCase *node) {
 
 Mat4 gCameraTransform;
 
-static const Lights1 defaultLight = gdSPDefLights1(
-    0x3F, 0x3F, 0x3F, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00
-);
+static const Vec3f globalLightDirection = { 0x49, 0x49, 0x49 };
 
-static const Vec3f globalLightDirection = { 0x28, 0x28, 0x28 };
-
-typedef struct {
-    Light	l[2];
-} LookAtEX2;
-
-typedef struct {
-    Ambient	a;
-    Light	l[1];
-} Lights1EX2;
-
-# define G_MVO_LOOKATX	(0*24)
-# define G_MVO_LOOKATY	(1*24)
-
-# define gSPLookAtXEX2(pkt, l)	\
-	 gDma2p((pkt),G_MOVEMEM,(l),sizeof(Light),G_MV_LIGHT,G_MVO_LOOKATX)
-# define gSPLookAtYEX2(pkt, l)	\
-	 gDma2p((pkt),G_MOVEMEM,(l),sizeof(Light),G_MV_LIGHT,G_MVO_LOOKATY)
-#define gSPLookAtEX2(pkt, la)						\
-{									\
-	gSPLookAtXEX2(pkt,la)						\
-	gSPLookAtYEX2(pkt,(char *)(la)+16)					\
-}
-
-#define NUMLEX2(n)	((n)*24)
-
-#define gSPNumLightsEX2(pkt, n)						\
-	gMoveWd(pkt, G_MW_NUMLIGHT, G_MWO_NUMLIGHT, NUMLEX2(n))
-
-#define gSPLightEX2(pkt, l, n)	\
-    gDma2p((pkt),G_MOVEMEM,(l),sizeof(Light),G_MV_LIGHT,(n)*24+24)
-
-#define gSPSetLights1EX2(pkt,name)						\
-{									\
-	gSPNumLightsEX2(pkt,NUMLIGHTS_1);					\
-	gSPLightEX2(pkt,&name.l[0],1);					\
-	gSPLightEX2(pkt,&name.a,2);					\
-}
-
-static Gfx* gLightReset;
 void f3dex3_bug_fixup()
 {
     if (!gHasEX3)
@@ -907,25 +944,26 @@ void f3dex3_bug_fixup()
 
     {
         struct MasterLayer* masterLayer = &gCurGraphNodeMasterList->layers[LAYER_OPAQUE];
-        append_dl_with_hint(&masterLayer->list, gLightReset, 2 * 8);    
+        append_dl_with_hint(&masterLayer->list, gLightReset, 2 * 8);
     }
     {
         struct MasterLayer* masterLayer = &gCurGraphNodeMasterList->layers[LAYER_OPAQUE_DECAL];
-        append_dl_with_hint(&masterLayer->list, gLightReset, 2 * 8);    
+        append_dl_with_hint(&masterLayer->list, gLightReset, 2 * 8);
     }
     {
         struct MasterLayer* masterLayer = &gCurGraphNodeMasterList->layers[LAYER_ALPHA];
-        append_dl_with_hint(&masterLayer->list, gLightReset, 2 * 8);    
+        append_dl_with_hint(&masterLayer->list, gLightReset, 2 * 8);
     }
     {
         struct MasterLayer* masterLayer = &gCurGraphNodeMasterList->layers[LAYER_TRANSPARENT];
-        append_dl_with_hint(&masterLayer->list, gLightReset, 2 * 8);    
+        append_dl_with_hint(&masterLayer->list, gLightReset, 2 * 8);
     }
 }
 
-static void setup_global_light() {
+void setup_global_light() {
     Lights1* curLight = (Lights1*)alloc_display_list(sizeof(Lights1EX2));
-    *curLight = defaultLight;
+    SET_LIGHT_COLOR(curLight->a   , kAmbientLight);
+    SET_LIGHT_COLOR(curLight->l[0], kDirectionalLight);
 
 #ifdef WORLDSPACE_LIGHTING
     curLight->l->l.dir[0] = (s8)(globalLightDirection[0]);
@@ -949,8 +987,8 @@ static void setup_global_light() {
     }
 
     {
-        gLightReset = alloc_display_list(0x10);
-        Gfx* cur = gLightReset;
+        Gfx* cur = alloc_display_list(0x10);
+        gLightReset = VIRTUAL_TO_PHYSICAL2(cur);
         gSPSetLights1(cur++, (*curLight));
         gSPEndDisplayList(cur++);    
     }

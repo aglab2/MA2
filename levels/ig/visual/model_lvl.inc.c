@@ -20642,8 +20642,8 @@ Gfx mat_revert_ig_dl_objLandTable0011_sa2blvl_0_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_1_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -20668,8 +20668,8 @@ Gfx mat_revert_ig_dl_objLandTable0011_sa2blvl_1_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_2_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -20687,8 +20687,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_2_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_3_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -20706,8 +20706,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_3_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_4_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -20725,8 +20725,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_4_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_5_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -20744,8 +20744,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_5_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_6_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -20763,8 +20763,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_6_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_7_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -20800,8 +20800,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_8_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_9_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -20819,8 +20819,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_9_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_10_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -20838,8 +20838,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_10_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_11_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -20857,8 +20857,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_11_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_12_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -20894,8 +20894,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_13_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_14_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -20915,8 +20915,8 @@ Gfx mat_revert_ig_dl_objLandTable0011_sa2blvl_14_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_15_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -20952,8 +20952,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_16_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_17_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -20971,8 +20971,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_17_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_18_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -20990,8 +20990,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_18_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_19_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21009,8 +21009,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_19_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_20_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21028,8 +21028,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_20_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_21_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21047,8 +21047,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_21_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_22_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21066,8 +21066,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_22_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_23_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21085,8 +21085,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_23_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_24_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21122,8 +21122,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_25_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_26_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21141,8 +21141,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_26_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_27_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21160,8 +21160,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_27_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_28_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21179,8 +21179,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_28_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_29_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21198,8 +21198,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_29_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_30_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21217,8 +21217,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_30_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_31_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21236,8 +21236,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_31_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_32_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21255,8 +21255,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_32_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_33_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21274,8 +21274,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_33_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_34_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21293,8 +21293,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_34_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_35_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21334,8 +21334,8 @@ Gfx mat_revert_ig_dl_objLandTable0011_sa2blvl_36_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_37_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21353,8 +21353,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_37_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_38_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21444,8 +21444,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_42_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_43_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21495,8 +21495,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_45_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_46_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21514,8 +21514,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_46_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_47_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21533,8 +21533,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_47_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_48_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21552,8 +21552,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_48_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_49_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21589,8 +21589,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_50_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_51_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21608,8 +21608,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_51_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_52_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21627,8 +21627,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_52_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_53_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21682,8 +21682,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_55_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_56_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21701,8 +21701,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_56_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_57_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21720,8 +21720,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_57_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_58_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21739,8 +21739,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_58_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_59_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21758,8 +21758,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_59_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_60_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21777,8 +21777,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_60_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_61_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21796,8 +21796,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_61_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_62_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21815,8 +21815,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_62_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_63_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21834,8 +21834,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_63_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_64_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -21943,8 +21943,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_69_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_70_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -22228,8 +22228,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_87_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_88_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -22445,8 +22445,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_100_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_101_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -22500,8 +22500,8 @@ Gfx mat_ig_dl_objLandTable0011_sa2blvl_103_f3d[] = {
 };
 
 Gfx mat_ig_dl_objLandTable0011_sa2blvl_104_f3d[] = {
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	// gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
+	// gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
