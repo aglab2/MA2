@@ -492,7 +492,7 @@ static s32 check_within_floor_triangle_bounds(s32 x, s32 z, struct Surface *surf
     return TRUE;
 }
 
-#define DEBUG_SURF
+// #define DEBUG_SURF
 
 #ifdef DEBUG_SURF
 int gQuickLookups = 0;

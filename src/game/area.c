@@ -550,6 +550,7 @@ void render_game(void) {
             }
         }
 
+// #define DEBUG_SURF
 #ifdef DEBUG_SURF
         print_text_fmt_int(20, 20, "Q %d", gQuickLookups);
         print_text_fmt_int(20, 40, "S %d", gSlowLookups);
