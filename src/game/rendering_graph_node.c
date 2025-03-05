@@ -1333,6 +1333,13 @@ void geo_set_animation_globals(struct AnimInfo *node, s32 hasAnimation) {
     }
 }
 
+extern f32 profiler_get_fps();
+static const f32 sViewRangeMax = 400000000.0f;
+static const f32 sViewRangeMin = 30000000.0f;
+static const f32 sViewRangeCut = 80000000.0f;
+f32 sViewRange = 400000000.0f;
+static const f32 sViewRangeChangeRate = 0.0004f * 400000000.0f;
+
 /**
  * Process a shadow node. Renders a shadow under an object offset by the
  * translation of the first animated component and rotated according to
@@ -1340,7 +1347,7 @@ void geo_set_animation_globals(struct AnimInfo *node, s32 hasAnimation) {
  */
 void geo_process_shadow(struct GraphNodeShadow *node) {
 #ifndef DISABLE_SHADOWS
-    if (gCurGraphNodeCamera != NULL && gCurGraphNodeObject != NULL) {
+    if (sViewRange != sViewRangeMin && gCurGraphNodeCamera != NULL && gCurGraphNodeObject != NULL) {
         Vec3f shadowPos;
         f32 shadowScale;
 
@@ -1439,7 +1446,7 @@ void geo_process_shadow(struct GraphNodeShadow *node) {
  * Since (0,0,0) is unaffected by rotation, columns 0, 1 and 2 are ignored.
  */
 
-s32 obj_is_in_view(struct GraphNodeObject *node) {
+static s32 obj_is_in_view(struct GraphNodeObject *node) {
     struct GraphNode *geo = node->sharedChild;
 
     s16 cullingRadius;
@@ -1662,13 +1669,6 @@ void geo_try_process_children(struct GraphNode *node) {
         geo_process_node_and_siblings(node->children);
     }
 }
-
-extern f32 profiler_get_fps();
-static const f32 sViewRangeMax = 400000000.0f;
-static const f32 sViewRangeMin = 30000000.0f;
-static const f32 sViewRangeCut = 80000000.0f;
-f32 sViewRange = 400000000.0f;
-static const f32 sViewRangeChangeRate = 0.0004f * 400000000.0f;
 
 static void adjust_view_range()
 {
