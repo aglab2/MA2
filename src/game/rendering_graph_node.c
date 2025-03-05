@@ -960,7 +960,7 @@ void f3dex3_bug_fixup()
     }
 }
 
-void setup_global_light() {
+static void setup_global_light() {
     Lights1* curLight = (Lights1*)alloc_display_list(sizeof(Lights1EX2));
     SET_LIGHT_COLOR(curLight->a   , kAmbientLight);
     SET_LIGHT_COLOR(curLight->l[0], kDirectionalLight);
