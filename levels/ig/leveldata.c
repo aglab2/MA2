@@ -32,3 +32,6 @@ IWDHeader* iw_descs_ig[] = {
 #include "levels/ig/area_2/spline.inc.c"
 #include "levels/ig/visual/model_lvl.inc.c"
 #endif
+
+#include "levels/ig/ig_bombe/model.inc.c"
+#include "levels/ig/ig_bomb_break/model.inc.c"

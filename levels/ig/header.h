@@ -12,4 +12,8 @@ extern const LevelScript level_ig_entry[];
 #include "levels/ig/visual/header_lvl.inc.h"
 #endif
 
+#include "levels/ig/ig_bombe/geo_header.h"
+
+#include "levels/ig/ig_bomb_break/geo_header.h"
+
 #endif

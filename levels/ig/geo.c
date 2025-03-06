@@ -18,3 +18,6 @@
 #endif
 
 #include "levels/ig/visual/geo_lvl.inc.c"
+
+#include "levels/ig/ig_bombe/geo.inc.c"
+#include "levels/ig/ig_bomb_break/geo.inc.c"
