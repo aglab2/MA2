@@ -26,6 +26,11 @@ const LevelScript level_ig_entry[] = {
 	LOAD_MIO0(0x7, _ig_segment_7SegmentRomStart, _ig_segment_7SegmentRomEnd), 
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
+	LOAD_MODEL_FROM_GEO(MODEL_IG_BOMB, ig_bombe_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_IG_BOMB_BREAK, ig_bomb_break_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_IG_LIFT, ig_lift_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_IG_SHELF, ig_shelt_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_IG_SIREN, ig_siren_geo),
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
 

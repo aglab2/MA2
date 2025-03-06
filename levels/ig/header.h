@@ -20,4 +20,8 @@ extern const LevelScript level_ig_entry[];
 
 #include "levels/ig/ig_lift/collision_header.h"
 
+#include "levels/ig/ig_shelt/geo_header.h"
+
+#include "levels/ig/ig_siren/geo_header.h"
+
 #endif

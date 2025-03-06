@@ -1,0 +1,17 @@
+#include "src/game/envfx_snow.h"
+
+const GeoLayout ig_shelt_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_OPAQUE, ig_shelt_ig_shelt_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)-165.0, (s16)447.5, (s16)40.0, ig_shelt_001_object_007F1674_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)165.0, (s16)32.5, (s16)40.0, ig_shelt_002_object_007F1494_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)-165.0, (s16)32.5, (s16)40.0, ig_shelt_003_object_007F12C4_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)165.0, (s16)447.5, (s16)40.0, ig_shelt_004_object_007F10FC_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)80.0, (s16)75.0, (s16)50.4998779296875, ig_shelt_005_object_007F0F3C_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)-80.0, (s16)75.0, (s16)50.4998779296875, ig_shelt_006_object_007F0E7C_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)80.0, (s16)402.9998779296875, (s16)50.4998779296875, ig_shelt_007_object_007F0DBC_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)-80.0, (s16)402.9998779296875, (s16)50.4998779296875, ig_shelt_008_object_007F0CFC_mesh_layer_1),
+	GEO_CLOSE_NODE(),
+	GEO_END(),
+};

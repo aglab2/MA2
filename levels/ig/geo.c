@@ -22,3 +22,5 @@
 #include "levels/ig/ig_bombe/geo.inc.c"
 #include "levels/ig/ig_bomb_break/geo.inc.c"
 #include "levels/ig/ig_lift/geo.inc.c"
+#include "levels/ig/ig_shelt/geo.inc.c"
+#include "levels/ig/ig_siren/geo.inc.c"

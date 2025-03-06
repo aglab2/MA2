@@ -37,3 +37,5 @@ IWDHeader* iw_descs_ig[] = {
 #include "levels/ig/ig_bomb_break/model.inc.c"
 #include "levels/ig/ig_lift/model.inc.c"
 #include "levels/ig/ig_lift/collision.inc.c"
+#include "levels/ig/ig_shelt/model.inc.c"
+#include "levels/ig/ig_siren/model.inc.c"
