@@ -884,8 +884,8 @@ extern Vtx pl_dl_pl_mecha_mesh_layer_1_vtx_1[4];
 extern Gfx pl_dl_pl_mecha_mesh_layer_1_tri_1[];
 extern Vtx pl_dl_pl_mecha_mesh_layer_1_vtx_2[16];
 extern Gfx pl_dl_pl_mecha_mesh_layer_1_tri_2[];
-extern Vtx pl_dl_001_object_00C3D03C_mesh_layer_5_vtx_0[4];
-extern Gfx pl_dl_001_object_00C3D03C_mesh_layer_5_tri_0[];
+extern Vtx pl_dl_001_object_00C3D03C_mesh_layer_6_vtx_0[4];
+extern Gfx pl_dl_001_object_00C3D03C_mesh_layer_6_tri_0[];
 extern u32 pl_dl_0000_object_00B67E0C_mesh_layer_1[];
 extern u32 pl_dl_0003_object_00B67D64_mesh_layer_1[];
 extern u32 pl_dl_0010_object_00B64724_mesh_layer_1[];
@@ -965,7 +965,7 @@ extern u32 pl_dl_pl_fluo_mesh_layer_1[];
 extern u32 pl_dl_pl_fluo_mesh_layer_6[];
 extern u32 pl_dl_001_object_00C4A5C0_mesh_layer_1[];
 extern u32 pl_dl_pl_mecha_mesh_layer_1[];
-extern u32 pl_dl_001_object_00C3D03C_mesh_layer_5[];
+extern u32 pl_dl_001_object_00C3D03C_mesh_layer_6[];
 #define LVL_BATCH_LAYER_OPAQUE_PL_DL_PR64_12_PAL_RGBA16 0
 #define LVL_BATCH_LAYER_OPAQUE_PL_DL_PR128_8_PAL_RGBA16 1
 #define LVL_BATCH_LAYER_OPAQUE_PL_DL_PR128_15_PAL_RGBA16 2
@@ -1067,8 +1067,8 @@ extern u32 pl_dl_001_object_00C3D03C_mesh_layer_5[];
 #define LVL_BATCH_LAYER_TRANSPARENT_PL_DL_MIU64_IG007_PAL_RGBA16 0
 #define LVL_BATCH_LAYER_TRANSPARENT_PL_DL_MIU64_IG019_PAL_RGBA16 1
 #define LVL_BATCH_LAYER_TRANSPARENT_PL_DL_MIU64_IG007_PAL_RGBA16_1 2
-#define LVL_BATCH_LAYER_TRANSPARENT_PL_DL_MIU32_PL001_PAL_RGBA16 3
 #define LVL_BATCH_LAYER_TRANSPARENT_DECAL_PL_DL_PR_KAGE32_IA8 0
+#define LVL_BATCH_LAYER_TRANSPARENT_DECAL_PL_DL_MIU32_PL001_PAL_RGBA16 1
 extern struct BatchLevelDisplayLists batch_lvl_dls_pl[LAYER_COUNT];
 #define pl_dl_0180_object_00B65FDC_mesh_layer_1_vtx_0 pl_dl_0173_object_00B66084_mesh_layer_1_vtx_0
 #define pl_dl_0180_object_00B65FDC_mesh_layer_1_vtx_1 pl_dl_0173_object_00B66084_mesh_layer_1_vtx_1
@@ -1190,3 +1190,4 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_pl[LAYER_COUNT];
 #define pl_dl_pl_fences_010_mesh_layer_1_tri_3 pl_dl_pl_fences_mesh_layer_1_tri_3
 #define pl_dl_0180_object_00B65FDC_mesh_layer_1 pl_dl_0173_object_00B66084_mesh_layer_1
 #define pl_dl_pl_fences_010_mesh_layer_1 pl_dl_pl_fences_mesh_layer_1
+extern const struct FlipbookLayer pl_flipbooks[LAYER_COUNT];

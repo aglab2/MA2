@@ -25229,15 +25229,15 @@ Gfx pl_dl_pl_mecha_mesh_layer_1_tri_2[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-Vtx pl_dl_001_object_00C3D03C_mesh_layer_5_vtx_0[4] = {
+Vtx pl_dl_001_object_00C3D03C_mesh_layer_6_vtx_0[4] = {
 	{{ {29, 24, 0}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {-29, -24, 0}, 0, {1012, 1008}, {255, 255, 255, 255} }},
 	{{ {29, -24, 0}, 0, {-16, 1008}, {255, 255, 255, 255} }},
 	{{ {-29, 24, 0}, 0, {1012, -16}, {255, 255, 255, 255} }},
 };
 
-Gfx pl_dl_001_object_00C3D03C_mesh_layer_5_tri_0[] = {
-	gsSPVertex(pl_dl_001_object_00C3D03C_mesh_layer_5_vtx_0 + 0, 4, 0),
+Gfx pl_dl_001_object_00C3D03C_mesh_layer_6_tri_0[] = {
+	gsSPVertex(pl_dl_001_object_00C3D03C_mesh_layer_6_vtx_0 + 0, 4, 0),
 	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
 	gsSPEndDisplayListHint(4),
 };
@@ -27752,8 +27752,8 @@ u32 pl_dl_pl_mecha_mesh_layer_1[] = {
 	BATCH_END(),
 };
 
-u32 pl_dl_001_object_00C3D03C_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_PL_DL_MIU32_PL001_PAL_RGBA16, pl_dl_001_object_00C3D03C_mesh_layer_5_tri_0),
+u32 pl_dl_001_object_00C3D03C_mesh_layer_6[] = {
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_DECAL_PL_DL_MIU32_PL001_PAL_RGBA16, pl_dl_001_object_00C3D03C_mesh_layer_6_tri_0),
 	BATCH_END(),
 };
 
@@ -27862,15 +27862,15 @@ static struct BatchDisplayLists batch_lvl_dls_LAYER_TRANSPARENT[] = {
 	[LVL_BATCH_LAYER_TRANSPARENT_PL_DL_MIU64_IG007_PAL_RGBA16] = { mat_pl_dl_BRIDGE_sa2bmdl_6_f3d, mat_revert_pl_dl_BRIDGE_sa2bmdl_6_f3d, DL_HINT(mat_pl_dl_BRIDGE_sa2bmdl_6_f3d), DL_HINT(mat_revert_pl_dl_BRIDGE_sa2bmdl_6_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_PL_DL_MIU64_IG019_PAL_RGBA16] = { mat_pl_dl_CAGEB_sa2bmdl_4_f3d, mat_revert_pl_dl_CAGEB_sa2bmdl_4_f3d, DL_HINT(mat_pl_dl_CAGEB_sa2bmdl_4_f3d), DL_HINT(mat_revert_pl_dl_CAGEB_sa2bmdl_4_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_PL_DL_MIU64_IG007_PAL_RGBA16_1] = { mat_pl_dl_FENCEL_sa2bmdl_5_f3d, mat_revert_pl_dl_FENCEL_sa2bmdl_5_f3d, DL_HINT(mat_pl_dl_FENCEL_sa2bmdl_5_f3d), DL_HINT(mat_revert_pl_dl_FENCEL_sa2bmdl_5_f3d), },
-	[LVL_BATCH_LAYER_TRANSPARENT_PL_DL_MIU32_PL001_PAL_RGBA16] = { mat_pl_dl_MECHA_sa2bmdl_3_f3d, mat_revert_pl_dl_MECHA_sa2bmdl_3_f3d, DL_HINT(mat_pl_dl_MECHA_sa2bmdl_3_f3d), DL_HINT(mat_revert_pl_dl_MECHA_sa2bmdl_3_f3d), },
 };
 
 static struct BatchDisplayLists batch_lvl_dls_LAYER_TRANSPARENT_DECAL[] = {
 	[LVL_BATCH_LAYER_TRANSPARENT_DECAL_PL_DL_PR_KAGE32_IA8] = { mat_pl_dl_FLUO_sa2bmdl_2_f3d, mat_revert_pl_dl_FLUO_sa2bmdl_2_f3d, DL_HINT(mat_pl_dl_FLUO_sa2bmdl_2_f3d), DL_HINT(mat_revert_pl_dl_FLUO_sa2bmdl_2_f3d), },
+	[LVL_BATCH_LAYER_TRANSPARENT_DECAL_PL_DL_MIU32_PL001_PAL_RGBA16] = { mat_pl_dl_MECHA_sa2bmdl_3_f3d, mat_revert_pl_dl_MECHA_sa2bmdl_3_f3d, DL_HINT(mat_pl_dl_MECHA_sa2bmdl_3_f3d), DL_HINT(mat_revert_pl_dl_MECHA_sa2bmdl_3_f3d), },
 };
 
 struct BatchLevelDisplayLists batch_lvl_dls_pl[LAYER_COUNT] = {
 	[ LAYER_OPAQUE ] = { 98, batch_lvl_dls_LAYER_OPAQUE },
-	[ LAYER_TRANSPARENT ] = { 4, batch_lvl_dls_LAYER_TRANSPARENT },
-	[ LAYER_TRANSPARENT_DECAL ] = { 1, batch_lvl_dls_LAYER_TRANSPARENT_DECAL },
+	[ LAYER_TRANSPARENT ] = { 3, batch_lvl_dls_LAYER_TRANSPARENT },
+	[ LAYER_TRANSPARENT_DECAL ] = { 2, batch_lvl_dls_LAYER_TRANSPARENT_DECAL },
 };

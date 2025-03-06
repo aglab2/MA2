@@ -25775,15 +25775,15 @@ Gfx pl_dl_pl_mecha_mesh_layer_1_tri_2[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx pl_dl_001_object_00C3D03C_mesh_layer_5_vtx_0[4] = {
+Vtx pl_dl_001_object_00C3D03C_mesh_layer_6_vtx_0[4] = {
 	{{ {29, 24, 0}, 0, {-16, -16}, {255, 255, 255, 255} }},
 	{{ {-29, -24, 0}, 0, {1012, 1008}, {255, 255, 255, 255} }},
 	{{ {29, -24, 0}, 0, {-16, 1008}, {255, 255, 255, 255} }},
 	{{ {-29, 24, 0}, 0, {1012, -16}, {255, 255, 255, 255} }},
 };
 
-Gfx pl_dl_001_object_00C3D03C_mesh_layer_5_tri_0[] = {
-	gsSPVertex(pl_dl_001_object_00C3D03C_mesh_layer_5_vtx_0 + 0, 4, 0),
+Gfx pl_dl_001_object_00C3D03C_mesh_layer_6_tri_0[] = {
+	gsSPVertex(pl_dl_001_object_00C3D03C_mesh_layer_6_vtx_0 + 0, 4, 0),
 	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
 	gsSPEndDisplayList(),
 };
@@ -30182,6 +30182,13 @@ Gfx pl_dl_pl_fencel_mesh_layer_5[] = {
 	gsSPDisplayList(mat_pl_dl_FENCEL_sa2bmdl_5_f3d),
 	gsSPDisplayList(pl_dl_pl_fencel_mesh_layer_5_tri_0),
 	gsSPDisplayList(mat_revert_pl_dl_FENCEL_sa2bmdl_5_f3d),
+	gsDPPipeSync(),
+	gsSPSetGeometryMode(G_LIGHTING),
+	gsSPClearGeometryMode(G_TEXTURE_GEN),
+	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
+	gsSPTexture(65535, 65535, 0, 0, 0),
+	gsDPSetEnvColor(255, 255, 255, 255),
+	gsDPSetAlphaCompare(G_AC_NONE),
 	gsSPEndDisplayList(),
 };
 
@@ -30231,13 +30238,6 @@ Gfx pl_dl_pl_fluo_mesh_layer_6[] = {
 	gsSPDisplayList(mat_pl_dl_FLUO_sa2bmdl_2_f3d),
 	gsSPDisplayList(pl_dl_pl_fluo_mesh_layer_6_tri_0),
 	gsSPDisplayList(mat_revert_pl_dl_FLUO_sa2bmdl_2_f3d),
-	gsDPPipeSync(),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPClearGeometryMode(G_TEXTURE_GEN),
-	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
-	gsSPTexture(65535, 65535, 0, 0, 0),
-	gsDPSetEnvColor(255, 255, 255, 255),
-	gsDPSetAlphaCompare(G_AC_NONE),
 	gsSPEndDisplayList(),
 };
 
@@ -30268,9 +30268,9 @@ Gfx pl_dl_pl_mecha_mesh_layer_1[] = {
 	gsSPEndDisplayList(),
 };
 
-Gfx pl_dl_001_object_00C3D03C_mesh_layer_5[] = {
+Gfx pl_dl_001_object_00C3D03C_mesh_layer_6[] = {
 	gsSPDisplayList(mat_pl_dl_MECHA_sa2bmdl_3_f3d),
-	gsSPDisplayList(pl_dl_001_object_00C3D03C_mesh_layer_5_tri_0),
+	gsSPDisplayList(pl_dl_001_object_00C3D03C_mesh_layer_6_tri_0),
 	gsSPDisplayList(mat_revert_pl_dl_MECHA_sa2bmdl_3_f3d),
 	gsDPPipeSync(),
 	gsSPSetGeometryMode(G_LIGHTING),
