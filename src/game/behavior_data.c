@@ -6306,3 +6306,15 @@ const BehaviorScript bhvBobFakeout[] = {
         CALL_NATIVE(bhv_bob_fakeout_loop),
     END_LOOP(),
 };
+
+extern const Collision ig_shelt_collision[];
+extern void bhv_ig_shelf_loop();
+const BehaviorScript bhvIgShelf[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO)),
+    LOAD_COLLISION_DATA(ig_shelt_collision),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ig_shelf_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
