@@ -16,6 +16,7 @@
 #include "paintings.h"
 #include "save_file.h"
 #include "segment2.h"
+#include "engine/gut.h"
 
 /**
  * @file paintings.c
@@ -904,8 +905,8 @@ Gfx *painting_model_view_transform(struct Painting *painting) {
     Gfx *gfx = dlist;
 
     guTranslate(translate, painting->posX, painting->posY, painting->posZ);
-    guRotate(rotX, painting->pitch, 1.0f, 0.0f, 0.0f);
-    guRotate(rotY, painting->yaw, 0.0f, 1.0f, 0.0f);
+    guRotateX(rotX, painting->pitch / 360.f * 0x10000);
+    guRotateY(rotY, painting->yaw / 360.f * 0x10000);
     guScale(scale, sizeRatio, sizeRatio, sizeRatio);
 
     gSPMatrix(gfx++, translate, G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_PUSH);

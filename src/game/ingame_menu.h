@@ -265,7 +265,6 @@ extern s8  gRedCoinsCollected;
 void create_dl_identity_matrix(void);
 void create_dl_translation_matrix(s8 pushOp, f32 x, f32 y, f32 z);
 void create_dl_ortho_matrix(void);
-void create_dl_scale_matrix(s8 pushOp, f32 x, f32 y, f32 z);
 
 void set_text_color(u32 r, u32 g, u32 b);
 s32 get_string_width(const char *str, const struct AsciiCharLUTEntry *asciiLut, const struct Utf8LUT *utf8LUT);
