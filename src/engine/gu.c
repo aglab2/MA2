@@ -200,3 +200,49 @@ void guRotateZ(Mtx* m, u16 a)
     AsS16P[4+16] = -s_int;
     AsS16P[5+16] = c_int;
 }
+
+extern u16 guPerspectiveA(Mtx *m, u16 fovy, float aspect, float near, float far, float scale)
+{
+    const float gscale = 65536.f;
+    scale *= gscale;
+
+    bzero4(m, sizeof(kIdentityMatrixS16));
+	float cot = coss (fovy/2) / sins (fovy/2);
+    
+    s16* AsS16P = m;
+
+	f32 mf00 = cot / aspect * scale;
+	f32 mf11 = cot * scale;
+	f32 mf22 = (near + far) / (near - far) * scale;
+	f32 mf23 = -scale;
+	f32 mf32 = (2 * near * far) / (near - far) * scale;
+
+    s32 mi00 = (s32)mf00;
+    s32 mi11 = (s32)mf11;
+    s32 mi22 = (s32)mf22;
+    s32 mi23 = (s32)mf23;
+    s32 mi32 = (s32)mf32;
+
+    AsS16P[0] = mi00 >> 16;
+    AsS16P[5] = mi11 >> 16;
+    AsS16P[10] = mi22 >> 16;
+    AsS16P[11] = mi23 >> 16;
+    AsS16P[14] = mi32 >> 16;
+
+    AsS16P[0+16] = mi00;
+    AsS16P[5+16] = mi11;
+    AsS16P[10+16] = mi22;
+    AsS16P[11+16] = mi23;
+    AsS16P[14+16] = mi32;
+
+    u16 perspNorm;
+    if (near+far<=2.0) {
+		perspNorm = (u16) 0xFFFF;
+    } else {
+		perspNorm = (u16) ((2.0*65536.0)/(near+far));
+		if (perspNorm<=0) 
+		    perspNorm = (u16) 0x0001;
+    }
+
+    return perspNorm;
+}
