@@ -54,7 +54,57 @@ OSMesg gSIEventMesgBuf[1];
 OSMesg gIntrMesgBuf[16];
 OSMesg gUnknownMesgBuf[16];
 
-static OSViMode VI;
+#define VI_CTRL_PIXEL_ADV_3         0x03000 /* Bit [15:12] pixel advance mode? */
+
+#define BURST(hsync_width, color_width, vsync_width, color_start) \
+    (hsync_width | (color_width << 8) | (vsync_width << 16) | (color_start << 20))
+#define WIDTH(v) v
+#define VSYNC(v) v
+#define HSYNC(duration, leap) (duration | (leap << 16))
+#define LEAP(upper, lower) ((upper << 16) | lower)
+#define START(start, end) ((start << 16) | end)
+
+#define VCURRENT(v) v //seemingly unused
+#define ORIGIN(v) v
+#define VINTR(v) v
+#define HSTART START
+
+#define FTOFIX(val, i, f) ((u32)(val * (f32)(1 << f)) & ((1 << (i + f)) - 1))
+
+#define F210(val) FTOFIX(val, 2, 10)
+#define SCALE(scaleup, off) (F210((1.0f / (f32)scaleup)) | (F210((f32)off) << 16))
+
+static OSViMode VI = {    
+    OS_VI_NTSC_LAN1,  // type
+    { // comRegs
+        VI_CTRL_TYPE_16 | VI_CTRL_GAMMA_DITHER_ON | VI_CTRL_GAMMA_ON |
+            VI_CTRL_DIVOT_ON | VI_CTRL_ANTIALIAS_MODE_3 | VI_CTRL_PIXEL_ADV_3,  // ctrl
+        WIDTH(320),                                                // width
+        BURST(57, 34, 5, 62),                                      // burst
+        VSYNC(525),                                                // vSync
+        HSYNC(3093, 0),                                            // hSync
+        LEAP(3093, 3093),                                          // leap
+        HSTART(108, 748),                                          // hStart
+        SCALE(2, 0),                                               // xScale
+        VCURRENT(0),                                               // vCurrent
+    },
+    { // fldRegs
+        { // [0]
+            ORIGIN(640),         // origin
+            SCALE(1, 0),         // yScale
+            HSTART(37, 511),     // vStart
+            BURST(4, 2, 14, 0),  // vBurst
+            VINTR(2),            // vIntr
+        },
+        { // [1]
+            ORIGIN(640),         // origin
+            SCALE(1, 0),         // yScale
+            HSTART(37, 511),     // vStart
+            BURST(4, 2, 14, 0),  // vBurst
+            VINTR(2),            // vIntr
+        }
+    }
+};
 
 struct Config gConfig;
 
@@ -615,17 +665,14 @@ void thread1_idle(UNUSED void *arg) {
     switch (osTvType) {
         case OS_TV_NTSC:
             //osViSetMode(&osViModeTable[OS_VI_NTSC_LAN1]);
-            VI = osViModeTable[OS_VI_NTSC_LAN1];
             gConfig.tvType = MODE_NTSC;
             break;
         case OS_TV_MPAL:
             //osViSetMode(&osViModeTable[OS_VI_MPAL_LAN1]);
-            VI = osViModeTable[OS_VI_NTSC_LAN1];
             gConfig.tvType = MODE_MPAL;
             break;
         case OS_TV_PAL:
             //osViSetMode(&osViModeTable[OS_VI_PAL_LAN1]);
-            VI = osViModeTable[OS_VI_NTSC_LAN1];
             gConfig.tvType = MODE_PAL;
             break;
     }
