@@ -2084,8 +2084,8 @@ Gfx *geo_render_backdrop(s32 callContext, struct GraphNode *node, UNUSED f32 b[4
         return 0;
 
     Mat4 mat;
-    Mtx *mtx = alloc_display_list(sizeof(*mtx));
     if (callContext == GEO_CONTEXT_RENDER) {
+        Mtx *mtx = alloc_display_list(sizeof(*mtx));
         mtxf_translate(mat, gCurGraphNodeCamera->pos);
         mtxf_mul(gMatStack[gMatStackIndex + 1], mat, gMatStack[gMatStackIndex]);
         gMatStackIndex++;
