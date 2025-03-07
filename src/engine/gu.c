@@ -232,11 +232,14 @@ extern u16 guPerspectiveA(Mtx *m, u16 fovy, float aspect, float near, float far,
     return perspNorm;
 }
 
+#if 1
 void guOrtho(Mtx *m, float l, float r, float b, float t, float n, float f, float scale)
 {
     bzero4(m, sizeof(kIdentityMatrixS16) - 2*4);
 
     const float gscale = 65536.f;
+    scale *= gscale;
+
 	f32 mf00 = 2/(r-l)*scale;
 	f32 mf11 = 2/(t-b)*scale;
 	f32 mf22 = -2/(f-n)*scale;
@@ -271,3 +274,4 @@ void guOrtho(Mtx *m, float l, float r, float b, float t, float n, float f, float
     AsS16P[14+16] = mi32;
     AsS16P[15+16] = mi33;
 }
+#endif

@@ -619,7 +619,7 @@ u16 random_u16(void);
 f32 random_float(void);
 s32 random_sign(void);
 
-static ALWAYS_INLINE void memcpy4(void* dst, void* src, int n)
+static ALWAYS_INLINE void memcpy4(void* dst, const void* src, int n)
 {
     unsigned int* dst_u32 = (unsigned int*)dst;
     unsigned int* src_u32 = (unsigned int*)src;
