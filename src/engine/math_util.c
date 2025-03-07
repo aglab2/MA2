@@ -80,16 +80,6 @@ void min_max_3f(f32 a, f32 b, f32 c, f32 *min, f32 *max) { min_max_3_func(a, b, 
 void min_max_3i(s32 a, s32 b, s32 c, s32 *min, s32 *max) { min_max_3_func(a, b, c, min, max); }
 void min_max_3s(s16 a, s16 b, s16 c, s16 *min, s16 *max) { min_max_3_func(a, b, c, min, max); }
 
-/// Struct the same data size as a Mat4
-struct CopyMat4 {
-    f32 a[0x10];
-};
-
-/// Copy matrix 'src' to 'dest' by casting to a struct CopyMat4 pointer.
-void mtxf_copy(Mat4 dest, Mat4 src) {
-    *((struct CopyMat4 *) dest) = *((struct CopyMat4 *) src);
-}
-
 /// Set mtx to the identity matrix.
 
 void mtxf_identity(Mat4 mtx) {

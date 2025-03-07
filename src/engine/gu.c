@@ -9,21 +9,6 @@ static ALIGNED16 const Mtx kIdentityMatrixS16 = { { { 0x00010000, 0x00000000, 0x
                                                    { 0x00000000, 0x00000000, 0x00000000, 0x00000000 } } };
  
 
-// requires 4 bytes alignment and an n that is a multiple of 8!
-static ALWAYS_INLINE void memcpy4(void* dst, void* src, int n)
-{
-    unsigned int* dst_u32 = (unsigned int*)dst;
-    unsigned int* src_u32 = (unsigned int*)src;
-    unsigned int* end_u32 = ((unsigned int*)src) + (n / 4); // compiler optimizes the div out
- 
-    while (end_u32 != src_u32) {
-        *dst_u32 = *src_u32;
-        dst_u32++;
-        src_u32++;
-        n -= 4;
-    }
-}
- 
 /*
 [ 1, 0, 0, 0 ]
 [ 0, 1, 0, 0 ]

@@ -619,7 +619,25 @@ u16 random_u16(void);
 f32 random_float(void);
 s32 random_sign(void);
 
-void mtxf_copy(Mat4 dest, Mat4 src);
+static ALWAYS_INLINE void memcpy4(void* dst, void* src, int n)
+{
+    unsigned int* dst_u32 = (unsigned int*)dst;
+    unsigned int* src_u32 = (unsigned int*)src;
+    unsigned int* end_u32 = ((unsigned int*)src) + (n / 4); // compiler optimizes the div out
+ 
+    while (end_u32 != src_u32) {
+        *dst_u32 = *src_u32;
+        dst_u32++;
+        src_u32++;
+        n -= 4;
+    }
+}
+
+static inline void mtxf_copy(Mat4 dest, Mat4 src)
+{
+    memcpy4(dest, src, sizeof(Mat4));
+}
+
 void mtxf_identity(Mat4 mtx);
 void mtxf_translate(Mat4 dest, Vec3f b);
 void mtxf_lookat(Mat4 mtx, Vec3f from, Vec3f to, s16 roll);
