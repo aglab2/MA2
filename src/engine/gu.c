@@ -246,3 +246,43 @@ extern u16 guPerspectiveA(Mtx *m, u16 fovy, float aspect, float near, float far,
 
     return perspNorm;
 }
+
+void guOrtho(Mtx *m, float l, float r, float b, float t, float n, float f, float scale)
+{
+    bzero4(m, sizeof(kIdentityMatrixS16) - 2*4);
+
+    const float gscale = 65536.f;
+	f32 mf00 = 2/(r-l)*scale;
+	f32 mf11 = 2/(t-b)*scale;
+	f32 mf22 = -2/(f-n)*scale;
+	f32 mf30 = -(r+l)/(r-l)*scale;
+	f32 mf31 = -(t+b)/(t-b)*scale;
+	f32 mf32 = -(f+n)/(f-n)*scale;
+	f32 mf33 = scale;
+
+    s32 mi00 = (s32)mf00;
+    s32 mi11 = (s32)mf11;
+    s32 mi22 = (s32)mf22;
+    s32 mi30 = (s32)mf30;
+    s32 mi31 = (s32)mf31;
+    s32 mi32 = (s32)mf32;
+    s32 mi33 = (s32)mf33;
+
+    s16* AsS16P = m;
+
+    AsS16P[0] = mi00 >> 16;
+    AsS16P[5] = mi11 >> 16;
+    AsS16P[10] = mi22 >> 16;
+    AsS16P[12] = mi30 >> 16;
+    AsS16P[13] = mi31 >> 16;
+    AsS16P[14] = mi32 >> 16;
+    AsS16P[15] = mi33 >> 16;
+
+    AsS16P[0+16] = mi00;
+    AsS16P[5+16] = mi11;
+    AsS16P[10+16] = mi22;
+    AsS16P[12+16] = mi30;
+    AsS16P[13+16] = mi31;
+    AsS16P[14+16] = mi32;
+    AsS16P[15+16] = mi33;
+}

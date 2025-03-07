@@ -1050,9 +1050,9 @@ void geo_process_camera(struct GraphNodeCamera *node) {
     }
 
     // Convert the scaled matrix to fixed-point and integrate it into the projection matrix stack
-    guMtxF2L(scaledCamera, viewMtx);
+    mtxf_to_mtx(viewMtx, scaledCamera);
 #else
-    guMtxF2L(gCameraTransform, viewMtx);
+    mtxf_to_mtx(viewMtx, gCameraTransform);
 #endif
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(viewMtx), G_MTX_PROJECTION | G_MTX_MUL | G_MTX_NOPUSH);
     setup_global_light();
