@@ -216,8 +216,11 @@ void update_air_without_turn(struct MarioState *m) {
         if (m->input & INPUT_NONZERO_ANALOG) {
             intendedDYaw = m->intendedYaw - m->faceAngle[1];
             intendedMag = m->intendedMag / 32.0f;
+            f32 mult = 1.5;
+            if (m->extraAirAction)
+                mult = 2.f;
 
-            m->forwardVel += intendedMag * coss(intendedDYaw) * 1.5f;
+            m->forwardVel += intendedMag * coss(intendedDYaw) * mult;
             f32 sidewaysMag = 10.f;
             if (m->extraAirAction)
                 sidewaysMag = 13.f;
