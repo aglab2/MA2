@@ -31,6 +31,11 @@ extern const GeoLayout cg_area_visual[];
 #include "levels/cg/area_3/collision.inc.c"
 #include "levels/cg/area_4/collision.inc.c"
 #define SEQ_LEVEL_GRASS 0x28
+
+extern const RailDesc* rail_descs_cg[];
+static struct LevelConfig cfg = {
+	.railDesc = rail_descs_cg,
+};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_cg_entry[] = {
@@ -50,6 +55,7 @@ const LevelScript level_cg_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_CG_SHUTTER_LEFT, cg_shutter_left_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CG_SHUTTER_RIGHT, cg_shutter_right_geo), 
 	/* Fast64 begin persistent block [level commands] */
+	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, cg_area_1, -2000, 89, -2000),

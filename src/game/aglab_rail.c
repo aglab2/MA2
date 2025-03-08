@@ -5,21 +5,6 @@
 #include "rail_desc.h"
 #include "engine/math_util.h"
 
-extern const RailDesc* rail_descs_ce[];
-extern const RailDesc* rail_descs_mh[];
-extern const RailDesc* rail_descs_gf[];
-extern const RailDesc* rail_descs_pc[];
-extern const RailDesc* rail_descs_cg[];
-extern const RailDesc* rail_descs_fr[];
-static const RailDesc** kRails[] = {
-    [ LEVEL_CE ] = rail_descs_ce,
-    [ LEVEL_MH ] = rail_descs_mh,
-    [ LEVEL_GF ] = rail_descs_gf,
-    [ LEVEL_PC ] = rail_descs_pc,
-    [ LEVEL_CG ] = rail_descs_cg,
-    [ LEVEL_FR ] = rail_descs_fr,
-};
-
 const Trajectory* sTrajectory;
 static const LDLDesc* sLoopDesc;
 static Vec3f sTrajectoryMiddle;
@@ -36,6 +21,7 @@ static f32 sForwardVel = 0;
 static u8 sCancelTimeout = 0;
 static u8 sAngleFlipped = 0;
 static u8 sTrajectoryArea = 0;
+const RailDesc** gRailDesc;
 
 static inline float point_to_segment_distance(Vec3f Q, Vec3f P1, Vec3f P2, Vec3f closest_point) {
     Vec3f P1P2;
@@ -211,14 +197,10 @@ int zipline_cancel()
         sCancelTimeout--;
     }
 
-    if (gCurrLevelNum >= (int) (sizeof(kRails) / sizeof(kRails[0])))
-        return 0;
-
-    const RailDesc** areaTrajectories = kRails[gCurrLevelNum];
+    const RailDesc** areaTrajectories = gRailDesc;
     if (!areaTrajectories)
         return 0;
 
-    areaTrajectories = segmented_to_virtual(areaTrajectories);
     const RailDesc* trajectories = areaTrajectories[gCurrAreaIndex - 1];
     if (!trajectories)
         return 0;

@@ -31,6 +31,11 @@ extern const GeoLayout mh_area_visual[];
 #include "levels/mh/area_3/collision.inc.c"
 #include "levels/mh/area_4/collision.inc.c"
 #define SEQ_LEVEL_GRASS 0x2d
+
+extern const RailDesc* rail_descs_mh[];
+static struct LevelConfig cfg = {
+	.railDesc = rail_descs_mh,
+};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_mh_entry[] = {
@@ -46,6 +51,7 @@ const LevelScript level_mh_entry[] = {
 	JUMP_LINK(script_func_global_1), 
 	JUMP_LINK(script_func_global_14), 
 	/* Fast64 begin persistent block [level commands] */
+	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, mh_area_1, 2000, 0, -900),

@@ -5,6 +5,7 @@
 
 #include "level_table.h"
 #include "config.h"
+#include "rail_desc.h"
 
 enum LevelCommands {
     /*0x00*/ LEVEL_CMD_LOAD_AND_EXECUTE,
@@ -76,6 +77,7 @@ enum LevelCommands {
 struct LevelConfig
 {
     f32 viewRangeMult;
+    const RailDesc** railDesc;
 };
 
 enum LevelActs {

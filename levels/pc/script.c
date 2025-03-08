@@ -27,6 +27,11 @@ extern const GeoLayout pc_area_visual[];
 #define pc_area_9 pc_area_visual
 #define pc_area_10 pc_area_visual
 #define SEQ_LEVEL_GRASS 0x25
+
+extern const RailDesc* rail_descs_pc[];
+static struct LevelConfig cfg = {
+	.railDesc = rail_descs_pc,
+};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_pc_entry[] = {
@@ -55,6 +60,7 @@ const LevelScript level_pc_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_PC_SANDGLASS_SPRING, pc_sandglass_spring_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_PC_MOVE, pc_move_geo), 
 	/* Fast64 begin persistent block [level commands] */
+	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, pc_area_1, 1000, -726, -1000),

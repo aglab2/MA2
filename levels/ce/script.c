@@ -40,6 +40,11 @@ extern const GeoLayout ce_area_visual[];
 
 #define SEQ_LEVEL_GRASS 0x26
 #define MODEL_CE_CAMERA 0
+
+extern const RailDesc* rail_descs_ce[];
+static struct LevelConfig cfg = {
+	.railDesc = rail_descs_ce,
+};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_ce_entry[] = {
@@ -61,6 +66,7 @@ const LevelScript level_ce_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_CE_CAR4, ce_car4_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CE_CAR5, ce_car5_geo), 
 	/* Fast64 begin persistent block [level commands] */
+	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, ce_area_1, 0, -1236, 1000),

@@ -47,8 +47,10 @@ extern const GeoLayout fr_area_visual[];
 #include "levels/fr/iw.inc.c"
 #define SEQ_LEVEL_GRASS 0x29
 
+extern const RailDesc* rail_descs_fr[];
 static struct LevelConfig cfg = {
 	.viewRangeMult = 3.f,
+	.railDesc = rail_descs_fr,
 };
 /* Fast64 end persistent block [scripts] */
 
