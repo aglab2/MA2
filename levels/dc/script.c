@@ -20,6 +20,10 @@
 #define SEQ_LEVEL_GRASS 0x27
 
 extern const GeoLayout green_flame_geo[];
+
+static struct LevelConfig cfg = {
+	.viewRangeMult = 0.5f,
+};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_dc_entry[] = {
@@ -59,6 +63,7 @@ const LevelScript level_dc_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_DC_TREASURE_RED_BREAK, dc_treasure_red_break_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_GREEN_FLAME, green_flame_geo), 
 	/* Fast64 begin persistent block [level commands] */
+	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, dc_area_1, 0, 0, 0),

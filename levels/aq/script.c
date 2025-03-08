@@ -16,6 +16,10 @@
 
 /* Fast64 begin persistent block [scripts] */
 #include "levels/aq/area_1/collision.inc.c"
+
+static struct LevelConfig cfg = {
+	.viewRangeMult = 0.5f,
+};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_aq_entry[] = {
@@ -40,6 +44,7 @@ const LevelScript level_aq_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_AQ_UKIASIBA, aq_ukiasiba_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_AQ_WATER, aq_water_geo), 
 	/* Fast64 begin persistent block [level commands] */
+	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, aq_area_1, 0, 0, 0),

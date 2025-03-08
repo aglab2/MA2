@@ -17,6 +17,10 @@
 /* Fast64 begin persistent block [scripts] */
 #include "levels/mhe/area_1/collision.inc.c"
 #define SEQ_LEVEL_GRASS 0x32
+
+static struct LevelConfig cfg = {
+	.viewRangeMult = 2.5f,
+};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_mhe_entry[] = {
@@ -40,6 +44,7 @@ const LevelScript level_mhe_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_MHE_SHUT, mhe_meteoshut_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_MHE_SHUT_BREAK, mhe_meteoshut_break_geo), 
 	/* Fast64 begin persistent block [level commands] */
+	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, mhe_area_1, 0, 0, 0),

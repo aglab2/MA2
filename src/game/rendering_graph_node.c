@@ -1742,6 +1742,7 @@ static void adjust_view_range()
     }
 }
 
+f32 gViewRangeMult;
 static int is_far_from_mario(f32 l0, f32 l1, f32 l2)
 {
     Vec3f loc = { l0, l1, l2 };
@@ -1751,19 +1752,12 @@ static int is_far_from_mario(f32 l0, f32 l1, f32 l2)
 
     f32 range = sViewRange;
     u32 priority = range;
-    if (gCurrCourseNum == COURSE_FR)
-        range *= 3.f;
+    range *= gViewRangeMult;
     if (gCurrCourseNum == COURSE_CE)
     {
         if (gMarioStates->floor && gMarioStates->floor->type == SURFACE_VERY_SLIPPERY)
             range *= 3.f;
     }
-    if (gCurrCourseNum == COURSE_AQ)
-        range /= 2.f;
-    if (gCurrCourseNum == COURSE_DC)
-        range /= 2.f;
-    if (gCurrCourseNum == COURSE_MHE)
-        range *= 2.5f;
 
     if (dist > range)
     {

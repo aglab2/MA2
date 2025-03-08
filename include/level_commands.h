@@ -42,7 +42,7 @@ enum LevelCommands {
     /*0x20*/ LEVEL_CMD_END_AREA,
     /*0x21*/ LEVEL_CMD_LOAD_MODEL_FROM_DL,
     /*0x22*/ LEVEL_CMD_LOAD_MODEL_FROM_GEO,
-    /*0x23*/ LEVEL_CMD_23,
+    /*0x23*/ LEVEL_CMD_LVL_CONFIG,
     /*0x24*/ LEVEL_CMD_PLACE_OBJECT,
     /*0x25*/ LEVEL_CMD_INIT_MARIO,
     /*0x26*/ LEVEL_CMD_CREATE_WARP_NODE,
@@ -71,6 +71,11 @@ enum LevelCommands {
     /*0x3D*/ LEVEL_CMD_PUPPYVOLUME,
     /*0x3E*/ LEVEL_CMD_CHANGE_AREA_SKYBOX,
     /*0x3F*/ LEVEL_CMD_SET_ECHO,
+};
+
+struct LevelConfig
+{
+    f32 viewRangeMult;
 };
 
 enum LevelActs {
@@ -342,10 +347,9 @@ enum GoddardScene {
     CMD_PTR(geo)
 
 // unk8 is float, but doesn't really matter since CMD23 is unused
-#define CMD23(model, unk4, unk8) \
-    CMD_BBH(LEVEL_CMD_23, 0x08, 0), \
-    CMD_PTR(unk4), \
-    CMD_W(unk8)
+#define LVL_CONFIG(cfg) \
+    CMD_BBH(LEVEL_CMD_LVL_CONFIG, 0x8, 0), \
+    CMD_PTR(cfg)
 
 #define OBJECT_WITH_ACTS(model, posX, posY, posZ, angleX, angleY, angleZ, behParam, beh, acts) \
     CMD_BBBB(LEVEL_CMD_PLACE_OBJECT, 0x1C, acts, 0x00), \

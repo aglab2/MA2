@@ -440,20 +440,10 @@ static void level_cmd_load_model_from_geo(void) {
     sCurrentCmd = CMD_NEXT;
 }
 
-static void level_cmd_23(void) {
-    ModelID16 model = (CMD_GET(ModelID16, 2) & 0x0FFF);
-    s16 layer = (((u16)CMD_GET(s16, 2)) >> 12);
-    void *dl  = CMD_GET(void *, 4);
-    s32 scale = CMD_GET(s32, 8);
-
-    assert(model < MODEL_ID_COUNT, "Tried to load an invalid model ID.");
-    if (model < MODEL_ID_COUNT) {
-        // GraphNodeScale has a GraphNode at the top. This
-        // is being stored to the array, so cast the pointer.
-        gLoadedGraphNodes[model] =
-            (struct GraphNode *) init_graph_node_scale(0, layer, dl, scale);
-    }
-
+extern f32 gViewRangeMult;
+static void level_cmd_lvl_config(void) {
+    struct LevelConfig *dl = segmented_to_virtual(CMD_GET(void *, 4));
+    gViewRangeMult = dl->viewRangeMult ? dl->viewRangeMult : 1.0f;
     sCurrentCmd = CMD_NEXT;
 }
 
@@ -930,7 +920,7 @@ static void (*LevelScriptJumpTable[])(void) = {
     /*LEVEL_CMD_END_AREA                    */ level_cmd_end_area,
     /*LEVEL_CMD_LOAD_MODEL_FROM_DL          */ level_cmd_load_model_from_dl,
     /*LEVEL_CMD_LOAD_MODEL_FROM_GEO         */ level_cmd_load_model_from_geo,
-    /*LEVEL_CMD_23                          */ level_cmd_23,
+    /*LEVEL_CMD_LVL_CONFIG                  */ level_cmd_lvl_config,
     /*LEVEL_CMD_PLACE_OBJECT                */ level_cmd_place_object,
     /*LEVEL_CMD_INIT_MARIO                  */ level_cmd_init_mario,
     /*LEVEL_CMD_CREATE_WARP_NODE            */ level_cmd_create_warp_node,

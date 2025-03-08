@@ -46,6 +46,10 @@ extern const GeoLayout fr_area_visual[];
 
 #include "levels/fr/iw.inc.c"
 #define SEQ_LEVEL_GRASS 0x29
+
+static struct LevelConfig cfg = {
+	.viewRangeMult = 3.f,
+};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_fr_entry[] = {
@@ -60,6 +64,7 @@ const LevelScript level_fr_entry[] = {
 	JUMP_LINK(script_func_global_1), 
 	JUMP_LINK(script_func_global_18), 
 	/* Fast64 begin persistent block [level commands] */
+	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, fr_area_1, 3500, -1213, 1000),
