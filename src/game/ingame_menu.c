@@ -1652,6 +1652,9 @@ static void render_star_at(int enabled, int x, int y)
 
 extern const int gLevelWithHardModes;
 
+static const char kCollectTheGoalRing[] = "Objective: Collect the Goal Ring";
+static const char kCollectTheStars[] = "Objective: Find all the stars";
+
 void render_pause_my_score_coins(void) {
     char str[20];
 
@@ -1682,7 +1685,14 @@ void render_pause_my_score_coins(void) {
             }
             if (gLevelWithHardModes & (1 << (gCurrLevelNum - LEVEL_CE)))
             {
-                render_star_at(!!(starFlags & (1ULL << 63)), PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30, y);
+                bool enabled = !!(starFlags & (1ULL << 63));
+                render_star_at(enabled, PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30, y);
+                
+                print_generic_string_aligned(160, y + 55, enabled ? kCollectTheStars : kCollectTheGoalRing, TEXT_ALIGN_CENTER);
+            }
+            else
+            {
+                print_generic_string_aligned(160, y + 55, kCollectTheStars, TEXT_ALIGN_CENTER);
             }
 
             y = PAUSE_MENU_MY_SCORE_Y + 5;
