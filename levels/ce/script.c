@@ -41,10 +41,12 @@ extern const GeoLayout ce_area_visual[];
 #define SEQ_LEVEL_GRASS 0x26
 #define MODEL_CE_CAMERA 0
 
+extern const SpringDesc* spring_descs_ce[];
 extern const RailDesc* rail_descs_ce[];
 static struct LevelConfig cfg = {
 	.railDesc = rail_descs_ce,
 	.skybox = ce_skybox_object_00CDC390_mesh,
+	.springDescs = spring_descs_ce,
 };
 /* Fast64 end persistent block [scripts] */
 

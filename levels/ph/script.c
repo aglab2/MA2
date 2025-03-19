@@ -17,8 +17,10 @@
 /* Fast64 begin persistent block [scripts] */
 #include "levels/ph/area_1/collision.inc.c"
 #define SEQ_LEVEL_GRASS 0x2f
+extern const SpringDesc* spring_descs_ph[];
 static struct LevelConfig cfg = {
 	.skybox = ph_skybox_ph_skybox_mesh,
+	.springDescs = spring_descs_ph,
 };
 /* Fast64 end persistent block [scripts] */
 

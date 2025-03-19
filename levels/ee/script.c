@@ -32,8 +32,10 @@ extern const GeoLayout ee_area_visual[];
 #include "levels/ee/area_4/collision.inc.c"
 #include "levels/ee/area_5/collision.inc.c"
 #define SEQ_LEVEL_GRASS 0x31
+extern const SpringDesc* spring_descs_ee[];
 static struct LevelConfig cfg = {
 	.skybox = ee_skybox1_ee_skybox1_mesh,
+	.springDescs = spring_descs_ee,
 };
 /* Fast64 end persistent block [scripts] */
 

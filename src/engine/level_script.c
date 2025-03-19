@@ -443,11 +443,15 @@ static void level_cmd_load_model_from_geo(void) {
 extern f32 gViewRangeMult;
 extern const RailDesc** gRailDesc;
 extern const Gfx* gSkybox;
+extern const SpringDesc** gSpringDescs;
+extern const SpringLinkDesc* gSpringLinks;
 static void level_cmd_lvl_config(void) {
     struct LevelConfig *dl = segmented_to_virtual(CMD_GET(void *, 4));
     gViewRangeMult = dl->viewRangeMult ? dl->viewRangeMult : 1.0f;
     gRailDesc = dl->railDesc ? segmented_to_virtual(dl->railDesc) : NULL;
     gSkybox = dl->skybox;
+    gSpringDescs = dl->springDescs ? segmented_to_virtual(dl->springDescs) : NULL;
+    gSpringLinks = dl->springLinks ? segmented_to_virtual(dl->springLinks) : NULL;
     sCurrentCmd = CMD_NEXT;
 }
 

@@ -18,9 +18,11 @@
 #include "levels/mhe/area_1/collision.inc.c"
 #define SEQ_LEVEL_GRASS 0x32
 
+extern const SpringDesc* spring_descs_mhe[];
 static struct LevelConfig cfg = {
 	.viewRangeMult = 2.5f,
 	.skybox = mhe_skybox_mhe_skybox_mesh,
+	.springDescs = spring_descs_mhe,
 };
 /* Fast64 end persistent block [scripts] */
 

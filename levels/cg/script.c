@@ -33,9 +33,11 @@ extern const GeoLayout cg_area_visual[];
 #define SEQ_LEVEL_GRASS 0x28
 
 extern const RailDesc* rail_descs_cg[];
+extern const SpringDesc* spring_descs_cg[];
 static struct LevelConfig cfg = {
 	.railDesc = rail_descs_cg,
 	.skybox = cg_skybox_cg_skybox_mesh,
+	.springDescs = spring_descs_cg,
 };
 /* Fast64 end persistent block [scripts] */
 

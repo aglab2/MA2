@@ -17,6 +17,10 @@
 /* Fast64 begin persistent block [scripts] */
 #include "levels/wc/area_1/collision.inc.c"
 #define SEQ_LEVEL_GRASS 0x2B
+extern const SpringDesc* spring_descs_wc[];
+static struct LevelConfig cfg = {
+	.springDescs = spring_descs_wc,
+};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_wc_entry[] = {
@@ -45,6 +49,7 @@ const LevelScript level_wc_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_WC_STONEHEAD, wc_stonehead_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_WC_STONEHEAD_PATH, wc_stonehead_path_geo), 
 	/* Fast64 begin persistent block [level commands] */
+	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, wc_area_1, 0, 0, 0),

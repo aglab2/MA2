@@ -2,45 +2,8 @@
 
 #define DEBUG_QUANT
 
-extern const SpringDesc* spring_descs_mh[];
-extern const SpringDesc* spring_descs_gf[];
-extern const SpringDesc* spring_descs_ph[];
-extern const SpringDesc* spring_descs_ms[];
-extern const SpringDesc* spring_descs_pc[];
-extern const SpringDesc* spring_descs_ee[];
-extern const SpringDesc* spring_descs_cg[];
-extern const SpringDesc* spring_descs_fr[];
-extern const SpringDesc* spring_descs_ce[];
-extern const SpringDesc* spring_descs_wc[];
-extern const SpringDesc* spring_descs_aq[];
-extern const SpringDesc* spring_descs_dc[];
-extern const SpringDesc* spring_descs_mhe[];
-extern const SpringDesc* spring_descs_hb[];
-static const SpringDesc** kSpringDescs[] = {
-    [ LEVEL_CE ] = spring_descs_ce,
-    [ LEVEL_WC ] = spring_descs_wc,
-    [ LEVEL_MH ] = spring_descs_mh,
-    [ LEVEL_GF ] = spring_descs_gf,
-    [ LEVEL_PH ] = spring_descs_ph,
-    [ LEVEL_MS ] = spring_descs_ms,
-    [ LEVEL_PC ] = spring_descs_pc,
-    [ LEVEL_EE ] = spring_descs_ee,
-    [ LEVEL_CG ] = spring_descs_cg,
-    [ LEVEL_FR ] = spring_descs_fr,
-    [ LEVEL_AQ ] = spring_descs_aq,
-    [ LEVEL_DC ] = spring_descs_dc,
-    [ LEVEL_MHE ] = spring_descs_mhe,
-    [ LEVEL_HB ] = spring_descs_hb,  
-};
-
-extern const SpringLinkDesc spring_links_mh[]; 
-extern const SpringLinkDesc spring_links_ms[];
-extern const SpringLinkDesc spring_links_pc[];
-static const SpringLinkDesc* kSpringsLinkDescs[] = {
-    [ LEVEL_MH ] = spring_links_mh,
-    [ LEVEL_MS ] = spring_links_ms,
-    [ LEVEL_PC ] = spring_links_pc,
-};
+const SpringDesc** gSpringDescs;
+const SpringLinkDesc* gSpringLinks;
 
 // Curve is a singleton to ensure that 2 springs wont try to pull mario at the same time
 static s16 sSpringBezierLevelNum = 0;
@@ -165,20 +128,13 @@ static void spring_transition_area()
     if (!sSpringBezier)
         return;
 
-    if (gCurrLevelNum >= (int) (sizeof(kSpringsLinkDescs) / sizeof(kSpringsLinkDescs[0])))
-    {
-        sSpringBezier = NULL;
-        return;        
-    }
-
-    const SpringLinkDesc* descs = kSpringsLinkDescs[gCurrLevelNum];
+    const SpringLinkDesc* descs = gSpringLinks;
     if (!descs)
     {
         sSpringBezier = NULL;
         return;
     }
 
-    descs = segmented_to_virtual(descs);
     while (descs->from)
     {
         if (segmented_to_virtual(descs->from) == sSpringBezier)
@@ -194,14 +150,10 @@ static void spring_transition_area()
 
 static void spring_spawn()
 {
-    if (gCurrLevelNum >= (int) (sizeof(kSpringDescs) / sizeof(kSpringDescs[0])))
-        return;
-
-    const SpringDesc** areaDescs = kSpringDescs[gCurrLevelNum];
+    const SpringDesc** areaDescs = gSpringDescs;
     if (!areaDescs)
         return;
 
-    areaDescs = segmented_to_virtual(areaDescs);
     const SpringDesc* descs = areaDescs[gCurrAreaIndex - 1];
     if (!descs)
         return;
