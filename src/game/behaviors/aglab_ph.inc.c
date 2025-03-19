@@ -52,4 +52,11 @@ void bhv_ph_terminal_loop()
     }
 
     obj_face_yaw_approach(target, 0x100);
+
+    if (gMarioStates->action != ACT_FLYING && gMarioStates->action != ACT_SOFT_BONK && gMarioStates->action != ACT_BACKWARD_AIR_KB && gMarioStates->pos[1] < -14400.f)
+    {
+        set_mario_action(gMarioStates, ACT_FLYING, 0);
+        gMarioStates->angleVel[0] = 0x800;
+        gMarioStates->forwardVel = 80.f;
+    }
 }
