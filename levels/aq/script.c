@@ -19,7 +19,7 @@
 
 extern const SpringDesc* spring_descs_aq[];
 static struct LevelConfig cfg = {
-	.viewRangeMult = 0.5f,
+	.viewRangeMult = 0.53f,
 	.springDescs = spring_descs_aq,
 };
 /* Fast64 end persistent block [scripts] */
