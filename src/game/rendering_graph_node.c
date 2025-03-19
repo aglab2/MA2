@@ -2047,29 +2047,7 @@ void geo_process_root(struct GraphNodeRoot *node, Vp *b, Vp *c, s32 clearColor) 
     }
 }
 
-extern Gfx ce_skybox_object_00CDC390_mesh[];
-extern Gfx mh_skybox_mh_skybox_mesh[];
-extern Gfx gf_skybox_gf_skybox_mesh[];
-extern Gfx ph_skybox_ph_skybox_mesh[];
-extern Gfx ms_skybox_ms_skybox_mesh[];
-extern Gfx mhe_skybox_mhe_skybox_mesh[];
-extern Gfx cg_skybox_cg_skybox_mesh[];
-extern Gfx fr_skybox_fr_skybox_mesh[];
-extern Gfx hb_skybox_hb_skybox_mesh[];
-extern Gfx ee_skybox1_ee_skybox1_mesh[];
-static const Gfx* k_skyboxes[] = {
-    [ LEVEL_CE ] = ce_skybox_object_00CDC390_mesh,
-    [ LEVEL_MH ] = mh_skybox_mh_skybox_mesh,
-    [ LEVEL_GF ] = gf_skybox_gf_skybox_mesh,
-    [ LEVEL_PH ] = ph_skybox_ph_skybox_mesh,
-    [ LEVEL_MS ] = ms_skybox_ms_skybox_mesh,
-    [ LEVEL_HB ] = hb_skybox_hb_skybox_mesh,
-    [ LEVEL_EE ] = ee_skybox1_ee_skybox1_mesh,
-    [ LEVEL_MHE ] = mhe_skybox_mhe_skybox_mesh,
-    [ LEVEL_CG ] = cg_skybox_cg_skybox_mesh,  
-    [ LEVEL_FR ] = fr_skybox_fr_skybox_mesh,
-};
-
+const Gfx* gSkybox;
 extern void geo_append_display_list(void *displayList, s32 layer);
 extern s16 gMatStackIndex;
 extern Mat4 gMatStack[32];
@@ -2086,7 +2064,7 @@ Gfx *geo_render_backdrop(s32 callContext, struct GraphNode *node, UNUSED f32 b[4
         gMatStackIndex++;
         mtxf_to_mtx(mtx, gMatStack[gMatStackIndex]);
         gMatStackFixed[gMatStackIndex] = mtx;
-        geo_append_display_list(k_skyboxes[gCurrLevelNum], 0); // DL pointer
+        geo_append_display_list(gSkybox, 0); // DL pointer
         
         gMatStackIndex--;
     }

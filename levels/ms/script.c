@@ -30,6 +30,9 @@ extern const GeoLayout ms_area_visual[];
 #include "levels/ms/area_2/collision.inc.c"
 #include "levels/ms/area_3/collision.inc.c"
 #define SEQ_LEVEL_GRASS 0x30
+static struct LevelConfig cfg = {
+	.skybox = ms_skybox_ms_skybox_mesh,
+};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_ms_entry[] = {
@@ -52,6 +55,7 @@ const LevelScript level_ms_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_MS_BREAK, ms_slane_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_MS_SLANE_BREAK, ms_slane_break_geo), 
 	/* Fast64 begin persistent block [level commands] */
+	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, ms_area_1, 1000, 0, -1800),

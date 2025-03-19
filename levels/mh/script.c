@@ -35,6 +35,7 @@ extern const GeoLayout mh_area_visual[];
 extern const RailDesc* rail_descs_mh[];
 static struct LevelConfig cfg = {
 	.railDesc = rail_descs_mh,
+	.skybox = mh_skybox_mh_skybox_mesh,
 };
 /* Fast64 end persistent block [scripts] */
 

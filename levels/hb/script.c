@@ -31,6 +31,9 @@ extern const GeoLayout hb_area_visual[];
 #include "levels/hb/area_2/collision.inc.c"
 #include "levels/hb/area_3/collision.inc.c"
 #define SEQ_LEVEL_GRASS 0x24
+static struct LevelConfig cfg = {
+	.skybox = hb_skybox_hb_skybox_mesh,
+};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_hb_entry[] = {
@@ -56,6 +59,7 @@ const LevelScript level_hb_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_HB_WALL, hb_wall_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_HB_WALL_BREAK, hb_wall_break_geo), 
 	/* Fast64 begin persistent block [level commands] */
+	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, hb_area_1, -500, 0, -1500),

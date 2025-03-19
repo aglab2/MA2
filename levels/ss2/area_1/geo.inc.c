@@ -3,6 +3,7 @@
 const GeoLayout ss2_area_1_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
+		GEO_ASM(0, geo_render_backdrop),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, ss2_dl_object_01251C70_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)-3000.0, (s16)0.0, (s16)0.0, ss2_dl_object_01251C70_001_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)3000.0, (s16)2.384185791015625e-06, (s16)5.245208740234375e-05, ss2_dl_object_01251C70_002_mesh_layer_1),
@@ -14,7 +15,7 @@ const GeoLayout ss2_area_1[] = {
 	GEO_OPEN_NODE(),
 		GEO_ZBUFFER(1),
 		GEO_OPEN_NODE(),
-			GEO_CAMERA_FRUSTUM_WITH_FUNC(45.0000, 100, 30000, geo_camera_fov),
+			GEO_CAMERA_FRUSTUM_WITH_FUNC(45.0000, 200, 50000, geo_camera_fov),
 			GEO_OPEN_NODE(),
 				GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 0, 0, 0, 0, -10, 0, geo_camera_main),
 				GEO_OPEN_NODE(),

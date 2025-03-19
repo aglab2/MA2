@@ -17,6 +17,9 @@
 /* Fast64 begin persistent block [scripts] */
 #include "levels/ph/area_1/collision.inc.c"
 #define SEQ_LEVEL_GRASS 0x2f
+static struct LevelConfig cfg = {
+	.skybox = ph_skybox_ph_skybox_mesh,
+};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_ph_entry[] = {
@@ -36,6 +39,7 @@ const LevelScript level_ph_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_PH_SHED_BREAK, ph_ppshed_break_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_PH_TERMINAL, ph_terminal_geo), 
 	/* Fast64 begin persistent block [level commands] */
+	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, ph_area_1, 0, 0, 0),

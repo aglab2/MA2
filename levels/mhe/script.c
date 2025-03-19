@@ -20,6 +20,7 @@
 
 static struct LevelConfig cfg = {
 	.viewRangeMult = 2.5f,
+	.skybox = mhe_skybox_mhe_skybox_mesh,
 };
 /* Fast64 end persistent block [scripts] */
 

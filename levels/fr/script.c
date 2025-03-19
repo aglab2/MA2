@@ -51,6 +51,7 @@ extern const RailDesc* rail_descs_fr[];
 static struct LevelConfig cfg = {
 	.viewRangeMult = 3.f,
 	.railDesc = rail_descs_fr,
+	.skybox = fr_skybox_fr_skybox_mesh,
 };
 /* Fast64 end persistent block [scripts] */
 

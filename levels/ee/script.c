@@ -32,6 +32,9 @@ extern const GeoLayout ee_area_visual[];
 #include "levels/ee/area_4/collision.inc.c"
 #include "levels/ee/area_5/collision.inc.c"
 #define SEQ_LEVEL_GRASS 0x31
+static struct LevelConfig cfg = {
+	.skybox = ee_skybox1_ee_skybox1_mesh,
+};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_ee_entry[] = {
@@ -50,6 +53,7 @@ const LevelScript level_ee_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_EE_TANK, ee_tank_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_EE_TANK_BREAK, ee_tank_break_geo), 
 	/* Fast64 begin persistent block [level commands] */
+	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, ee_area_1, 1000, 632, -2000),

@@ -16,6 +16,9 @@
 
 /* Fast64 begin persistent block [scripts] */
 #define SEQ_LEVEL_GRASS 0x35
+static struct LevelConfig cfg = {
+	.skybox = ss2_skybox_fr_skybox_mesh,
+};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_ss2_entry[] = {
@@ -24,6 +27,7 @@ const LevelScript level_ss2_entry[] = {
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
 	/* Fast64 begin persistent block [level commands] */
+	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, ss2_area_1, 0, 0, 0),

@@ -78,6 +78,7 @@ struct LevelConfig
 {
     f32 viewRangeMult;
     const RailDesc** railDesc;
+    const Gfx* skybox;
 };
 
 enum LevelActs {

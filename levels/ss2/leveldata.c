@@ -9,3 +9,4 @@
 
 
 #include "levels/ss2/leveldata.inc.c"
+#include "levels/ss2/ss2_skybox/model.inc.c"
