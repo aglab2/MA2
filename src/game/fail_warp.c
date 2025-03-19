@@ -15,7 +15,7 @@ static int sSafePosLevel = 0;
 static Vec3s sSafePos = {};
 static s16 sSafePosAngle;
 static s16 sSafePosCameraYaw;
-u8 sSafeWarpId;
+u8 sSafeWarpId = 0;
 static void* sCheckpointNodes[16];
 
 void fail_warp_set_safe_pos(f32* pos, s16 angle, int areaIndex, int levelNum)
@@ -95,6 +95,9 @@ static void spoof_warp(struct MarioState *m)
 
 s32 fail_warp_pre_level_trigger_warp(struct MarioState *m, s32* warpOp)
 {
+    if (!sSafeWarpId)
+        return 0;
+
     if (*warpOp != WARP_OP_DEATH && *warpOp != WARP_OP_WARP_FLOOR)
     {
         return 0;

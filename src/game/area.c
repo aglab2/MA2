@@ -165,7 +165,7 @@ struct ObjectWarpNode *area_get_warp_node(u8 id) {
         node->node.destLevel = LEVEL_CASTLE_GROUNDS;
         node->node.destNode = 0x50 + gCurrLevelNum - LEVEL_CE;
     }
-    if (id == WARP_NODE_DEATH) {
+    if (id == WARP_NODE_DEATH && gCurrCourseNum != COURSE_NONE) {
         node->node.destArea = 1;
         node->node.destLevel = LEVEL_CASTLE_GROUNDS;
         node->node.destNode = 0x80 + gCurrLevelNum - LEVEL_CE;

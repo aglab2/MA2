@@ -213,7 +213,7 @@ void bhv_bob_fakeout_loop()
     }
     else
     {
-        if (100 == o->oTimer)
+        if (60 == o->oTimer)
         {
             gMarioStates->usedObj = o;
             SET_BPARAM2(o->oBehParams, 0xa);
@@ -222,11 +222,11 @@ void bhv_bob_fakeout_loop()
 
         {
             u8* ptr = segmented_to_virtual(bob_dl_Shape_IndexedFaceSet_065_mesh_layer_1);
-            ptr[0x50 + 7] = 255 - 4 * o->oTimer;
+            ptr[0x50 + 7] = 255 - 3 * o->oTimer;
         }
         {
             u8* ptr = segmented_to_virtual(bob_dl_Shape_IndexedFaceSet_065_mesh_layer_4);
-            ptr[0x50+ 7] = 255 - 4 * o->oTimer;
+            ptr[0x50+ 7] = 255 - 3 * o->oTimer;
         }    
     }
 }

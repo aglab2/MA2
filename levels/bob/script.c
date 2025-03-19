@@ -26,7 +26,7 @@ const LevelScript level_bob_entry[] = {
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, bob_area_1, 0, 0, 0),
-		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		WARP_NODE(0x0A, LEVEL_PRELUDE, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		OBJECT(MODEL_NONE, 6524, 102, -6317, 0, 0, 0, 0x00000000, bhvBobFakeout),
 		OBJECT(MODEL_NONE, 6524, 409, -6317, 0, 0, 0, (0xa << 16), bhvInstantActiveWarp),
 		TERRAIN(bob_area_1_collision),
