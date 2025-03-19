@@ -18,7 +18,7 @@ extern u8 gIsGravityFlipped;
 #define FLOOR_LOWER_LIMIT           -27000
 #define FLOOR_LOWER_LIMIT_MISC      (FLOOR_LOWER_LIMIT + 1000)
 
-#if 0
+#if 1
 #define is_outside_level_bounds(xPos, zPos) \
     (((xPos) <= -LEVEL_BOUNDARY_MAX) ||     \
      ((xPos) >=  LEVEL_BOUNDARY_MAX) ||     \
