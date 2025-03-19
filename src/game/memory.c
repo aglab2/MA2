@@ -188,7 +188,7 @@ static ALWAYS_INLINE void* main_pool_region_try_alloc_from_end_freeable(struct M
     return header->data;
 }
 
-void *main_pool_alloc_ex(int region, u32 size, u32 alignment) {
+void *main_pool_alloc_ex(int region, u32 size, s32 alignment) {
     if (0 == region)
     {
         return main_pool_region_alloc_from_start(&sMainPool.regions[0], size, alignment, MAIN_POOL_ALLOC_FORCE);
@@ -249,7 +249,7 @@ void main_pool_push_state(void) {
     struct MainPoolState *prevState = gMainPoolState;
     struct MainPoolContext ctx = sMainPool;
 
-    gMainPoolState = main_pool_alloc(sizeof(*gMainPoolState));
+    gMainPoolState = main_pool_alloc_lowprio(sizeof(*gMainPoolState));
     gMainPoolState->ctx = ctx;
     gMainPoolState->prev = prevState;
 }

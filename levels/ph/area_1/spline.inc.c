@@ -6,10 +6,10 @@ const Trajectory ph_area_1_spline_NurbsCurve_Spring[] = {
 	TRAJECTORY_END(),
 };
 const Trajectory ph_area_1_spline_NurbsCurve_Spring_001[] = {
-	TRAJECTORY_POS( 0, 404, -5993, -2138),
-	TRAJECTORY_POS( 1, 191, -5302, -2177),
-	TRAJECTORY_POS( 2, -125, -4538, -2251),
-	TRAJECTORY_POS( 3, -513, -4391, -2278),
+	TRAJECTORY_POS( 0, 404, -5993, -2164),
+	TRAJECTORY_POS( 1, 183, -5289, -2153),
+	TRAJECTORY_POS( 2, -116, -4516, -2161),
+	TRAJECTORY_POS( 3, -452, -4346, -2097),
 	TRAJECTORY_END(),
 };
 const Trajectory ph_area_1_spline_NurbsCurve_Spring_002[] = {

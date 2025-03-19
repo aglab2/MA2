@@ -86,8 +86,8 @@ static ALWAYS_INLINE void *main_pool_alloc(u32 size) {
     return buf;
 }
 
-void *main_pool_alloc_ex(int region, u32 size, u32 alignment);
-static inline void *main_pool_alloc_aligned(int region, u32 size, u32 alignment)
+void *main_pool_alloc_ex(int region, u32 size, s32 alignment);
+static inline void *main_pool_alloc_aligned(int region, u32 size, s32 alignment)
 {
     if (!alignment)
         alignment = 16;
@@ -95,6 +95,11 @@ static inline void *main_pool_alloc_aligned(int region, u32 size, u32 alignment)
     void* buf = main_pool_alloc_ex(region, ALIGN4(size), alignment);
     if (!buf) __builtin_unreachable();
     return buf;
+}
+
+static inline void* main_pool_alloc_lowprio(u32 size)
+{
+    return main_pool_alloc_ex(1, size, MAIN_POOL_ALIGNMENT_DISABLE);
 }
 
 /*

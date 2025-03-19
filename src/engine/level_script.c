@@ -481,7 +481,7 @@ static void level_cmd_init_mario(void) {
 }
 
 static void register_checkpoint_warp(int id) {
-    struct ObjectWarpNode *warpNode = main_pool_alloc(sizeof(struct ObjectWarpNode));
+    struct ObjectWarpNode *warpNode = main_pool_alloc_lowprio(sizeof(struct ObjectWarpNode));
 
     warpNode->node.id = id;
     warpNode->node.destLevel = gCurrLevelNum;
@@ -551,7 +551,7 @@ static void level_cmd_place_object(void) {
 static void level_cmd_create_warp_node(void) {
     if (sCurrAreaIndex != -1) {
         struct ObjectWarpNode *warpNode =
-            main_pool_alloc(sizeof(struct ObjectWarpNode));
+            main_pool_alloc_lowprio(sizeof(struct ObjectWarpNode));
 
         warpNode->node.id = CMD_GET(u8, 2);
         warpNode->node.destLevel = CMD_GET(u8, 3) + CMD_GET(u8, 6);
@@ -572,7 +572,7 @@ static void level_cmd_create_instant_warp(void) {
     if (sCurrAreaIndex != -1) {
         if (gAreas[sCurrAreaIndex].instantWarps == NULL) {
             gAreas[sCurrAreaIndex].instantWarps =
-                main_pool_alloc(INSTANT_WARP_INDEX_STOP * sizeof(struct InstantWarp));
+                main_pool_alloc_lowprio(INSTANT_WARP_INDEX_STOP * sizeof(struct InstantWarp));
 
             for (i = INSTANT_WARP_INDEX_START; i < INSTANT_WARP_INDEX_STOP; i++) {
                 gAreas[sCurrAreaIndex].instantWarps[i].id = 0;
@@ -607,7 +607,7 @@ static void level_cmd_create_painting_warp_node(void) {
     if (sCurrAreaIndex != -1) {
         if (gAreas[sCurrAreaIndex].paintingWarpNodes == NULL) {
             gAreas[sCurrAreaIndex].paintingWarpNodes =
-                main_pool_alloc(NUM_PAINTINGS * sizeof(struct WarpNode));
+                main_pool_alloc_lowprio(NUM_PAINTINGS * sizeof(struct WarpNode));
 
             for (i = 0; i < NUM_PAINTINGS; i++) {
                 gAreas[sCurrAreaIndex].paintingWarpNodes[i].id = 0;
@@ -631,7 +631,7 @@ static void level_cmd_3A(void) {
     if (sCurrAreaIndex != -1) {
         if ((val4 = gAreas[sCurrAreaIndex].unused) == NULL) {
             val4 = gAreas[sCurrAreaIndex].unused =
-                main_pool_alloc(sizeof(struct UnusedArea28));
+               main_pool_alloc_lowprio(sizeof(struct UnusedArea28));
         }
 
         val4->unk00 = CMD_GET(s16, 2);
