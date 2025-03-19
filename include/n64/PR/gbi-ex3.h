@@ -661,9 +661,11 @@ between a manually written rendermode using IM_RD for transparency and one using
 it for antialiasing. */
 #define AA_DEF 0
 #define RD_DEF 0
+#define AA_XLU_DEF AA_EN
 #else
 #define AA_DEF AA_EN
 #define RD_DEF IM_RD
+#define AA_XLU_DEF AA_EN
 #endif
 
 /* G_SETOTHERMODE_L gSetRenderMode */
@@ -713,7 +715,7 @@ it for antialiasing. */
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_A_MEM)
 
 #define RM_AA_ZB_XLU_SURF(clk)                                  \
-    AA_DEF | Z_CMP | IM_RD | CVG_DST_WRAP | CLR_ON_CVG |        \
+    AA_XLU_DEF | Z_CMP | IM_RD | CVG_DST_WRAP | CLR_ON_CVG |        \
     FORCE_BL | ZMODE_XLU |                                      \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
@@ -728,7 +730,7 @@ it for antialiasing. */
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_A_MEM)
 
 #define RM_AA_ZB_XLU_DECAL(clk)                                 \
-    AA_DEF | Z_CMP | IM_RD | CVG_DST_WRAP | CLR_ON_CVG |        \
+    AA_XLU_DEF | Z_CMP | IM_RD | CVG_DST_WRAP | CLR_ON_CVG |        \
     FORCE_BL | ZMODE_DEC |                                      \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
@@ -743,12 +745,12 @@ it for antialiasing. */
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_A_MEM)
 
 #define RM_AA_ZB_XLU_INTER(clk)                                 \
-    AA_DEF | Z_CMP | IM_RD | CVG_DST_WRAP | CLR_ON_CVG |        \
+    AA_XLU_DEF | Z_CMP | IM_RD | CVG_DST_WRAP | CLR_ON_CVG |        \
     FORCE_BL | ZMODE_INTER |                                    \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
 #define RM_AA_ZB_XLU_LINE(clk)                                  \
-    AA_DEF | Z_CMP | IM_RD | CVG_DST_CLAMP | CVG_X_ALPHA |      \
+    AA_XLU_DEF | Z_CMP | IM_RD | CVG_DST_CLAMP | CVG_X_ALPHA |      \
     ALPHA_CVG_SEL | FORCE_BL | ZMODE_XLU |                      \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
@@ -805,12 +807,12 @@ it for antialiasing. */
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_A_MEM)
 
 #define RM_AA_XLU_SURF(clk)                                     \
-    AA_DEF | IM_RD | CVG_DST_WRAP | CLR_ON_CVG | FORCE_BL |     \
+    AA_XLU_DEF | IM_RD | CVG_DST_WRAP | CLR_ON_CVG | FORCE_BL |     \
     ZMODE_OPA |                                                 \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
 #define RM_AA_XLU_LINE(clk)                                     \
-    AA_DEF | IM_RD | CVG_DST_CLAMP | CVG_X_ALPHA |              \
+    AA_XLU_DEF | IM_RD | CVG_DST_CLAMP | CVG_X_ALPHA |              \
     ALPHA_CVG_SEL | FORCE_BL | ZMODE_OPA |                      \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
@@ -869,7 +871,7 @@ it for antialiasing. */
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
 #define RM_ZB_CLD_SURF(clk)                                     \
-    Z_CMP | IM_RD | CVG_DST_SAVE | FORCE_BL | ZMODE_XLU |       \
+    AA_XLU_DEF | Z_CMP | IM_RD | CVG_DST_SAVE | FORCE_BL | ZMODE_XLU |       \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
 #define RM_ZB_OVL_SURF(clk)                                     \
@@ -896,7 +898,7 @@ it for antialiasing. */
     GBL_c##clk(G_BL_CLR_IN, G_BL_0, G_BL_CLR_IN, G_BL_1)
 
 #define RM_CLD_SURF(clk)                                        \
-    IM_RD | CVG_DST_SAVE | FORCE_BL | ZMODE_OPA |               \
+    AA_XLU_DEF | IM_RD | CVG_DST_SAVE | FORCE_BL | ZMODE_OPA |               \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
 #define RM_PCL_SURF(clk)                                        \
