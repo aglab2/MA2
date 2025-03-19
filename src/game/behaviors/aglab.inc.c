@@ -49,13 +49,10 @@ void bhv_push_out_loop()
 
 void bhv_flame_init()
 {
+    obj_scale(o, 4.5f);
     if (gCurrCourseNum == COURSE_AQ)
     {
         obj_scale(o, 2.5f);
-    }
-    if (gCurrCourseNum == COURSE_DC)
-    {
-        obj_scale(o, 4.5f);
     }
     if (gCurrCourseNum == COURSE_PC)
     {

@@ -439,6 +439,7 @@ void bowser_act_idle(void) {
     }
 }
 
+static void bowser_clean_attack();
 /**
  * Default Bowser act that doesn't last very long
  */
@@ -455,8 +456,15 @@ void bowser_act_default(void) {
     o->oInteractType = INTERACT_BOUNCE_TOP;
     if (o->oInteractStatus & INT_STATUS_WAS_ATTACKED)
     {
-        o->oInteractStatus = INT_STATUS_NONE;
-        o->oAction = BOWSER_ACT_HIT_MINE;
+        o->oHealth--;
+        if (o->oHealth <= 0) {
+            o->oAction = BOWSER_ACT_DEAD;
+        } else {
+            o->oAction = BOWSER_ACT_HIT_MINE;
+            o->oInteractStatus = INT_STATUS_NONE;
+        }
+        
+        bowser_clean_attack();
     }
 #if 0
     // Set level specific actions
@@ -613,6 +621,126 @@ void bowser_act_spit_fire_into_sky(void) {
     o->oBowserStatus |= BOWSER_STATUS_FIRE_SKY;
 }
 
+static u8 sAttackOrder[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+static void attacks_shuffle()
+{
+    for (int i = 0; i < sizeof(sAttackOrder); i++)
+    {
+        int j = random_u16() % 10;
+        int temp = sAttackOrder[i];
+        sAttackOrder[i] = sAttackOrder[j];
+        sAttackOrder[j] = temp;
+    }
+}
+
+void puffAt(struct Object* obj, float size, int numParticles, f32 yoff);
+static void bowser_spawn_attack()
+{
+    const f32 xMin = -3500.f;
+    const f32 xMax = 4000.f;
+    const f32 zMin = -400.f;
+    const f32 zMax = 400.f;
+
+    int model = MODEL_GOOMBA;
+    const BehaviorScript* behavior = bhvGoomba;
+    f32 yoff = 0;
+
+    switch (sAttackOrder[o->oHealth])
+    {
+        case 0:
+            model = MODEL_GOOMBA;
+            behavior = bhvGoomba;
+            break;
+        case 1:
+            model = MODEL_AMP;
+            behavior = bhvCirclingAmp;
+            yoff = 10.f;
+            break;
+        case 2:
+            model = MODEL_RED_FLAME;
+            behavior = bhvFlame;
+            yoff = 50.f;
+            break;
+        case 3:
+            model = MODEL_BOWSER_BOMB;
+            behavior = bhvBowserBomb;
+            yoff = 90.f;
+            break;
+        case 4:
+            model = MODEL_HEAVE_HO;
+            behavior = bhvHeaveHo;
+            break;
+        case 5:
+            model = MODEL_SNUFIT;
+            behavior = bhvSnufit;
+            break;
+        case 6:
+            model = MODEL_BOO;
+            behavior = bhvBoo;
+            yoff = 10.f;
+            break;
+        case 7:
+            model = MODEL_SPEEDER;
+            behavior = bhvSpeeder;
+            yoff = 10.f;
+            break;
+        case 8:
+            model = MODEL_FLYGUY;
+            behavior = bhvFlyGuy;
+            yoff = 10.f;
+            break;
+    }
+
+    for (int i = 0; i < 20; i++)
+    {
+        struct Object* enemy = spawn_object(o, model, behavior);
+        enemy->oPosX = random_float() * (xMax - xMin) + xMin;
+        enemy->oPosY += yoff;
+        enemy->oPosZ = random_float() * (zMax - zMin) + zMin;
+        enemy->parentObj = enemy;
+        enemy->oMoveAngleYaw = enemy->oFaceAngleYaw = random_u16();
+        puffAt(enemy, 20.f, 1, 0.f);
+    }
+}
+
+static void despawn_all(const BehaviorScript* behavior)
+{
+    uintptr_t *behaviorAddr = segmented_to_virtual(behavior);
+    struct ObjectNode *listHead = &gObjectLists[get_object_list_from_behavior(behaviorAddr)];
+    struct Object *obj = (struct Object *) listHead->next;
+    while (obj != (struct Object *) listHead) {
+        if (obj->behavior == behaviorAddr
+            && obj->activeFlags != ACTIVE_FLAG_DEACTIVATED
+            && obj != o
+        ) {
+            obj->activeFlags = ACTIVE_FLAG_DEACTIVATED;
+            puffAt(obj, 20.f, 1, 0.f);
+        }
+
+        obj = (struct Object *) obj->header.next;
+    }
+}
+
+static void bowser_clean_attack()
+{
+    despawn_all(bhvGoomba);
+    despawn_all(bhvCirclingAmp);
+    despawn_all(bhvFlame);
+    despawn_all(bhvBowserBomb);
+    despawn_all(bhvHeaveHo);
+    despawn_all(bhvSnufit);
+    despawn_all(bhvBoo);
+    despawn_all(bhvSpeeder);
+    despawn_all(bhvFlyGuy);
+    despawn_all(bhvCoinInsideBoo);
+}
+
+static void bowser_kill_mario_on_hit()
+{
+    if (gMarioStates->health > 0x180)
+        gMarioStates->health = 0x180;
+}
+
 /**
  * Flips Bowser back on stage if he hits a mine with more than 1 health
  */
@@ -647,6 +775,7 @@ void bowser_act_hit_mine(void) {
             // Makes Bowser dance at one health (in BitS)
             o->oAction = BOWSER_ACT_DANCE;
             o->oBowserEyesShut = FALSE; // open eyes
+            bowser_spawn_attack();
         }
     }
 
@@ -1131,6 +1260,13 @@ void bowser_fly_back_dead(void) {
     o->oMoveAngleYaw = o->oBowserAngleToCenter + 0x8000;
     o->oBowserTimer = 0;
     o->oSubAction++; // BOWSER_SUB_ACT_DEAD_BOUNCE
+    gMarioStates->pos[0] = o->oPosX;
+    gMarioStates->pos[1] = o->oPosY;
+    gMarioStates->pos[2] = o->oPosZ;
+    gMarioStates->faceAngle[1] = 0x8000 + o->oMoveAngleYaw;
+    gMarioStates->forwardVel = 100.f;
+    gMarioStates->vel[1] = 50.f;
+    set_mario_action(gMarioStates, ACT_THROWN_BACKWARD, 0);
 }
 
 /**
@@ -1689,6 +1825,7 @@ void bhv_bowser_loop(void) {
     }
 
     bhv_bowser_body_anchor_loop();
+    bowser_kill_mario_on_hit();
 }
 
 /**
@@ -1713,7 +1850,7 @@ void bhv_bowser_init(void) {
     o->oBehParams2ndByte = level;
     // Set health and rainbow light depending of the level
     o->oBowserRainbowLight = sBowserRainbowLight[level];
-    o->oHealth = sBowserHealth[level];
+    o->oHealth = 6;
     // Start camera event, this event is not defined so maybe
     // the "start arena" cutscene was originally called this way
     cur_obj_start_cam_event(o, CAM_EVENT_BOWSER_INIT);
@@ -1721,6 +1858,8 @@ void bhv_bowser_init(void) {
     // Set eyes status
     o->oBowserEyesTimer = 0;
     o->oBowserEyesShut = FALSE;
+
+    attacks_shuffle();
 }
 
 Gfx *geo_update_body_rot_from_parent(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx) {

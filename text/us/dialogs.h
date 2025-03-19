@@ -1145,20 +1145,14 @@ Now, return those Stars!\n\
 My troops in the walls\n\
 need them! Bwa ha ha!")
 
-DEFINE_DIALOG(DIALOG_093, SOUND_OBJ_BOWSER_LAUGH, 5, 30, 200, "\
-Mario! You again! Well\n\
-that's just fine--I've\n\
-been looking for something\n\
-to fry with my fire\n\
-breath!\n\
-Your Star Power is\n\
-useless against me!\n\
-Your friends are all\n\
-trapped within the\n\
-walls...\n\
-And you'll never see the\n\
-Princess again!\n\
-Bwa ha ha ha!")
+DEFINE_DIALOG(DIALOG_093, SOUND_OBJ_BOWSER_LAUGH, 4, 30, 200, "\
+Ha! I cannot believe you\n\
+managed to find me!\n\
+My trap was almost\n\
+perfect but this is the\n\
+end for you! My minions\n\
+will get you! Don't even\n\
+try to jump on me!")
 
 DEFINE_DIALOG(DIALOG_094, NO_SOUND, 4, 30, 200, "\
 Get a good run up the\n\
@@ -1398,19 +1392,12 @@ For today...\n\
 Now, take Star of Power.\n\
 We...sleep...darkness.")
 
-DEFINE_DIALOG(DIALOG_119, NO_SOUND, 6, 30, 200, "\
-Grrr! I was a bit\n\
-careless. This is not as I\n\
-had planned...but I still\n\
-hold the power of the\n\
-Stars, and I still have\n\
-Peach.\n\
-Bwa ha ha! You'll get no\n\
-more Stars from me! I'm\n\
-not finished with you yet,\n\
-but I'll let you go for\n\
-now. You'll pay for this...\n\
-later!")
+DEFINE_DIALOG(DIALOG_119, NO_SOUND, 5, 30, 200, "\
+No way! But this isn't\n\
+the end! I will never\n\
+admit defeat! I will\n\
+return and have my\n\
+revenge! Mark my words!")
 
 DEFINE_DIALOG(DIALOG_120, NO_SOUND, 4, 30, 200, "\
 Ooowaah! Can it be that\n\

@@ -44,7 +44,7 @@ const LevelScript level_ss2_entry[] = {
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		OBJECT(MODEL_BOWSER, 4416, 0, -4, 0, -90, 0, 0x00000000, bhvBowser),
-		OBJECT(MODEL_NONE, -4372, 280, 4, 0, 90, 0, (0xa << 16), bhvInstantActiveWarp),
+		OBJECT(MODEL_NONE, 3021, 280, 4, 0, 90, 0, (0xa << 16), bhvInstantActiveWarp),
 		TERRAIN(ss2_area_1_collision),
 		MACRO_OBJECTS(ss2_area_1_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),

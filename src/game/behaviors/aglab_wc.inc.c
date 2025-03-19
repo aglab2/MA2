@@ -10,7 +10,7 @@ struct ObjectHitbox sWCStoneHeadBoxHitbox = {
     /* hurtboxHeight:     */ 400,
 };
 
-static void puffAt(struct Object* obj, float size, int numParticles, f32 yoff)
+void puffAt(struct Object* obj, float size, int numParticles, f32 yoff)
 {
     f32 sizeBase = size;
     f32 sizeRange = size / 20.f;

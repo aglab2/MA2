@@ -1699,7 +1699,10 @@ void render_pause_my_score_coins(void) {
 
                 render_star_at(!!(starFlags & (1ULL << i)), sx, sy);
             }
-            render_star_at(!!(starFlags & (1ULL << 48)), PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30, PAUSE_MENU_MY_SCORE_Y + 5 - 12);
+            if (gCurrLevelNum != LEVEL_SS2)
+                render_star_at(!!(starFlags & (1ULL << 48)), PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30, PAUSE_MENU_MY_SCORE_Y + 5 - 12);
+            else
+                render_star_at(!!(starFlags & (1ULL << 0)), PAUSE_MENU_LEFT_X + 3 - 30, PAUSE_MENU_MY_SCORE_Y + 5);
         } else {
             print_generic_string_aligned(SCREEN_CENTER_X, PAUSE_MENU_COURSE_Y, courseName, TEXT_ALIGN_CENTER);
         }
@@ -2155,9 +2158,9 @@ static void play_star_fanfare_and_flash_hud(s32 arg, u64 starNum) {
 }
 
 LangArray textClear = DEFINE_LANGUAGE_ARRAY(
-    "CLEAR",
-    "CLEAR",
-    "CLEAR",
+    "Clear",
+    "Clear",
+    "Clear",
     "クリア！",
     "HECHO");
 
@@ -2224,21 +2227,21 @@ void render_course_complete_lvl_info_and_hud_str(void) {
 }
 
 LangArray textSaveAndContinue = DEFINE_LANGUAGE_ARRAY(
-    "SAVE & CONTINUE",
+    "Save & Continue",
     "SAUVEGARDER & CONTINUER",
     "SPEICHERN & WEITER",
     "セーブしてつづける？",
     "GUARDAR Y CONTINUAR");
 
 LangArray textSaveAndQuit = DEFINE_LANGUAGE_ARRAY(
-    "SAVE & QUIT",
+    "Save & Quit",
     "SAUVEGARDER & QUITTER",
     "SPEICHERN & ENDE",
     "セーブしておわる？",
     "GUARDAR Y SALIR");
 
 LangArray textContinueWithoutSave = DEFINE_LANGUAGE_ARRAY(
-    "CONTINUE, DON'T SAVE",
+    "Continue, Don't Save",
     "CONTINUER SANS SAUVEGARDER",
     "WEITER OHNE ZU SPEICHERN",
     "セーブしないでつづける？",
