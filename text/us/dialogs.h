@@ -119,18 +119,9 @@ Here you go--you've won\n\
 it, fair and square!")
 
 DEFINE_DIALOG(DIALOG_008, NO_SOUND, 4, 30, 200, "\
-BEWARE OF CHAIN CHOMP\n\
-Extreme Danger!\n\
-Get close and press Ⓒ▲\n\
-for a better look.\n\
-Scary, huh?\n\
-See the Red Coin on top\n\
-of the stake?\n\
-\n\
-When you collect eight of\n\
-them, a Power Star will\n\
-appear in the meadow\n\
-across the bridge.")
+If you cannot see the path\n\
+ahead of you, enable\n\
+noise emulation.")
 
 DEFINE_DIALOG(DIALOG_009, SOUND_OBJ_KOOPA_TALK, 5, 30, 200, "\
 Long time, no see! Wow,\n\
@@ -206,15 +197,9 @@ Do you want to Save?\n\
 \n\
 \tYou Bet\tNot Now")
 
-DEFINE_DIALOG(DIALOG_015, NO_SOUND, 4, 30, 200, "\
-You can punch enemies to\n\
-knock them down. Press Ⓐ\n\
-to jump, Ⓑ to punch.\n\
-Press Ⓐ then Ⓑ to Kick.\n\
-To pick something up,\n\
-press Ⓑ, too. To throw\n\
-something you're holding,\n\
-press Ⓑ again.")
+DEFINE_DIALOG(DIALOG_015, NO_SOUND, 2, 30, 200, "\
+Dark Story is not\n\
+available in the demo.")
 
 DEFINE_DIALOG(DIALOG_016, NO_SOUND, 3, 30, 200, "\
 Hop on the shiny shell and\n\

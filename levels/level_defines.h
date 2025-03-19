@@ -36,4 +36,5 @@ DEFINE_LEVEL("CG", LEVEL_CG, COURSE_CG, cg, generic, 20000, 0x00, 0x00, 0x00, _,
 DEFINE_LEVEL("FR", LEVEL_FR, COURSE_FR, fr, generic, 20000, 0x00, 0x00, 0x00, _, sCamFr) 
 DEFINE_LEVEL("SS2", LEVEL_SS2, COURSE_SS2, ss2, generic, 20000, 0x00, 0x00, 0x00, _, sCamSs2) 
 DEFINE_LEVEL("BOB", LEVEL_BOB, COURSE_NONE, bob, generic, 20000, 0x00, 0x00, 0x00, _, sCamBOB) 
+DEFINE_LEVEL("PRELUDE", LEVEL_PRELUDE, COURSE_NONE, prelude, generic, 20000, 0x00, 0x00, 0x00, _, sCamPrelude) 
 DEFINE_LEVEL("IG", LEVEL_IG, COURSE_IG, ig, generic, 20000, 0x00, 0x00, 0x00, _, sCamIg) 
