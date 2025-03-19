@@ -55,6 +55,7 @@ struct MainMenuSaveData {
     // on the high score screen.
     u32 coinScoreAges[NUM_SAVE_FILES];
     u8 soundMode: 2;
+    u8 camCollisionOff: 1;
 #ifdef WIDE
     u8 wideMode: 1;
 #endif
@@ -190,6 +191,11 @@ u32 save_file_get_widescreen_mode(void);
 void save_file_set_widescreen_mode(u8 mode);
 #endif
 void save_file_move_cap_to_default_location(void);
+
+static inline u32 save_file_get_cam_collision(void) {
+    return !gSaveBuffer.menuData.camCollisionOff;
+}
+void save_file_set_cam_collision(u8 mode);
 
 void disable_warp_checkpoint(void);
 void check_if_should_set_warp_checkpoint(struct WarpNode *warpNode);

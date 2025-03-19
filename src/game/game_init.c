@@ -778,6 +778,8 @@ void set_gravity(u32 grav)
     gMarioObject->hitboxDownOffset = (gIsGravityFlipped ? 160.f : 0.f); // Adjust hitbox when upside down
 }
 
+u8 gCamCollision;
+
 /**
  * Main game loop thread. Runs forever as long as the game continues.
  */
@@ -809,6 +811,7 @@ void thread5_game_loop(UNUSED void *arg) {
 #ifdef WIDE
     gConfig.widescreen = save_file_get_widescreen_mode();
 #endif
+    gCamCollision = save_file_get_cam_collision();
     render_init();
 
     while (TRUE) {

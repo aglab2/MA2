@@ -1610,6 +1610,7 @@ void render_widescreen_setting(void) {
 
 void render_hacktice_setting(int x, int y)
 {
+    return;
     bool hackticeAllowed = save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1) >= STARS_TO_ENABLE_HACKTICE;
     if (hackticeAllowed)
     {
@@ -1618,6 +1619,22 @@ void render_hacktice_setting(int x, int y)
 
         if (gPlayer1Controller->buttonPressed & B_BUTTON)
             Hacktice_gEnabled = !Hacktice_gEnabled;
+    }
+}
+
+void render_cam_collision_settings()
+{
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
+    set_text_color(255, 255, 255);
+    if (!gCamCollision) {
+        print_generic_string(20, 34, "R to enable camera collision");
+    } else {
+        print_generic_string(20, 34, "R to disable camera collision");
+    }
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
+    if (gPlayer1Controller->buttonPressed & L_TRIG){
+        gCamCollision ^= 1;
+        save_file_set_cam_collision(gCamCollision);
     }
 }
 
@@ -2074,6 +2091,7 @@ s32 render_pause_courses_and_castle(void) {
         if (!Hacktice_gEnabled)
             render_widescreen_setting();
 #endif
+    render_cam_collision_settings();
     gDialogTextAlpha += 25;
     if (gDialogTextAlpha > 250) {
         gDialogTextAlpha = 250;

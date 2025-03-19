@@ -24,6 +24,7 @@
 #define SCREEN_CENTER_X (SCREEN_WIDTH  / 2)
 #define SCREEN_CENTER_Y (SCREEN_HEIGHT / 2)
 
+extern u8 gCamCollision;
 struct Config {
     f32 audioFrequency;
 #ifdef WIDE

@@ -1286,7 +1286,15 @@ void mode_8_directions_camera(struct Camera *c) {
     c->paraCamOrigPos[1] = c->pos[1];
     c->paraCamOrigPos[2] = c->pos[2];
     sAreaYawChange = sAreaYaw - oldAreaYaw;
-    eight_dir_collision_handler(c);
+    if (!gCamCollision)
+    {
+        c->camCollisionProgress.y = 1.f;
+        c->camCollisionProgress.xz = 1.f;
+    }
+    else
+    {
+        eight_dir_collision_handler(c);
+    }
 }
 
 /**
