@@ -133,7 +133,7 @@ void bhv_bowser_body_anchor_loop(void) {
         }
     } else {
         // Do damage if Mario touches Bowser
-        o->oInteractType = INTERACT_DAMAGE;
+        o->oInteractType = INTERACT_BOUNCE_TOP;
         // Make body intangible while is transparent
         // in BitFS (Teleporting)
         if (o->parentObj->oOpacity < 100) {
@@ -146,6 +146,7 @@ void bhv_bowser_body_anchor_loop(void) {
     if (o->parentObj->oHeldState != HELD_FREE) {
         cur_obj_become_intangible();
     }
+
     o->oInteractStatus = INT_STATUS_NONE;
 }
 
@@ -450,6 +451,14 @@ void bowser_act_default(void) {
     o->oAngleVelYaw = 0;
     o->oForwardVel = 0.0f;
     o->oVelY = 0.0f;
+
+    o->oInteractType = INTERACT_BOUNCE_TOP;
+    if (o->oInteractStatus & INT_STATUS_WAS_ATTACKED)
+    {
+        o->oInteractStatus = INT_STATUS_NONE;
+        o->oAction = BOWSER_ACT_HIT_MINE;
+    }
+#if 0
     // Set level specific actions
     if (o->oBehParams2ndByte == BOWSER_BP_BITDW) {
         bowser_bitdw_actions();
@@ -458,6 +467,7 @@ void bowser_act_default(void) {
     } else { // BOWSER_BP_BITS
         bowser_bits_actions();
     }
+#endif
 }
 
 /**
@@ -609,9 +619,9 @@ void bowser_act_spit_fire_into_sky(void) {
 void bowser_act_hit_mine(void) {
     // Similar vel values from bowser_fly_back_dead
     if (o->oTimer == 0) {
-        o->oForwardVel = -400.0f;
+        // o->oForwardVel = -400.0f;
         o->oVelY = 100.0f;
-        o->oMoveAngleYaw = o->oBowserAngleToCenter + 0x8000;
+        // o->oMoveAngleYaw = o->oBowserAngleToCenter + 0x8000;
         o->oBowserEyesShut = TRUE; // close eyes
     }
     // Play flip animation
@@ -635,13 +645,17 @@ void bowser_act_hit_mine(void) {
     } else if (o->oSubAction == BOWSER_SUB_ACT_HIT_MINE_STOP) {
         if (cur_obj_check_if_near_animation_end()) {
             // Makes Bowser dance at one health (in BitS)
-            if (o->oHealth == 1) {
-                o->oAction = BOWSER_ACT_DANCE;
-            } else {
-                o->oAction = BOWSER_ACT_DEFAULT;
-            }
+            o->oAction = BOWSER_ACT_DANCE;
             o->oBowserEyesShut = FALSE; // open eyes
         }
+    }
+
+    if (o->oSubAction < BOWSER_SUB_ACT_HIT_MINE_STOP)
+    {
+        gMarioStates->pos[0] = o->oPosX - 90.f * o->oTimer;
+        gMarioStates->pos[1] = o->oPosY;
+        gMarioStates->pos[2] = o->oPosZ;
+        gMarioStates->faceAngle[1] = 0x8000 + o->oMoveAngleYaw;
     }
 }
 
@@ -1673,6 +1687,8 @@ void bhv_bowser_loop(void) {
             }
         }
     }
+
+    bhv_bowser_body_anchor_loop();
 }
 
 /**

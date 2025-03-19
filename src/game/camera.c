@@ -3326,6 +3326,7 @@ void init_camera(struct Camera *c) {
         // Note: This replaced an "old" way to call these cutscenes using
         // a camEvent value: CAM_EVENT_BOWSER_INIT
         case LEVEL_BOWSER_1:
+        case LEVEL_SS2:
             // Since Bowser 1 has a demo entry, check for it
             // If it is, then set CamAct to the end to directly activate Bowser
             // If it isn't, then start cutscene

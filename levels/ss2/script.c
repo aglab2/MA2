@@ -24,8 +24,17 @@ static struct LevelConfig cfg = {
 const LevelScript level_ss2_entry[] = {
 	INIT_LEVEL(),
 	LOAD_MIO0(0x7, _ss2_segment_7SegmentRomStart, _ss2_segment_7SegmentRomEnd), 
+	LOAD_YAY0(0x06, _group12_yay0SegmentRomStart, _group12_yay0SegmentRomEnd), 
+	LOAD_RAW(0x0D, _group12_geoSegmentRomStart, _group12_geoSegmentRomEnd), 
+	LOAD_YAY0(0x05, _group1_yay0SegmentRomStart, _group1_yay0SegmentRomEnd), 
+	LOAD_RAW(0x0C, _group1_geoSegmentRomStart, _group1_geoSegmentRomEnd), 
+	LOAD_YAY0(0x08, _common0_yay0SegmentRomStart, _common0_yay0SegmentRomEnd), 
+	LOAD_RAW(0x0F, _common0_geoSegmentRomStart, _common0_geoSegmentRomEnd), 
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
+	JUMP_LINK(script_func_global_13), 
+	JUMP_LINK(script_func_global_2), 
+	JUMP_LINK(script_func_global_1), 
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
@@ -34,6 +43,8 @@ const LevelScript level_ss2_entry[] = {
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		OBJECT(MODEL_BOWSER, 4416, 0, -4, 0, -90, 0, 0x00000000, bhvBowser),
+		OBJECT(MODEL_NONE, -4372, 280, 4, 0, 90, 0, (0xa << 16), bhvInstantActiveWarp),
 		TERRAIN(ss2_area_1_collision),
 		MACRO_OBJECTS(ss2_area_1_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
