@@ -1313,7 +1313,16 @@ s32 act_rail_grind(struct MarioState *m)
         m->marioObj->header.gfx.pos[1] = 9000.f + 45.f - m->pos[1];
 
     m->marioObj->header.gfx.pos[2] = m->pos[2];
-    set_mario_animation(m, onLoop ? MARIO_ANIM_SLIDE : MARIO_ANIM_RIDING_SHELL);
+    int anim;
+    if (gCurrCourseNum == COURSE_CG)
+    {
+        anim = gIsGravityFlipped ? MARIO_ANIM_RIDING_SHELL : MARIO_ANIM_HANG_ON_OWL;
+    }
+    else
+    {
+        anim = onLoop ? MARIO_ANIM_SLIDE : MARIO_ANIM_RIDING_SHELL;
+    }
+    set_mario_animation(m, anim);
     tilt_body_ground_shell(m, startYaw);
     m->marioObj->header.gfx.angle[0] = m->faceAngle[0];
     m->marioObj->header.gfx.angle[1] = m->faceAngle[1];
