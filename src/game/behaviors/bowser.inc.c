@@ -1850,7 +1850,7 @@ void bhv_bowser_init(void) {
     o->oBehParams2ndByte = level;
     // Set health and rainbow light depending of the level
     o->oBowserRainbowLight = sBowserRainbowLight[level];
-    o->oHealth = 6;
+    o->oHealth = 7;
     // Start camera event, this event is not defined so maybe
     // the "start arena" cutscene was originally called this way
     cur_obj_start_cam_event(o, CAM_EVENT_BOWSER_INIT);
