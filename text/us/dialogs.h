@@ -1655,7 +1655,10 @@ DEFINE_DIALOG(DIALOG_141, NO_SOUND, 4, 150, 200, "\
 Clearing the course\n\
 unlocks the star radar.\n\
 You may use the radar\n\
-to locate the stars.")
+to locate the stars.\n\
+In pause menu you can\n\
+warp to any collected\n\
+checkpoint.")
 
 DEFINE_DIALOG(DIALOG_142, NO_SOUND, 5, 150, 200, "\
 Certain courses do not\n\

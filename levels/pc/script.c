@@ -307,7 +307,6 @@ const LevelScript level_pc_entry[] = {
 		OBJECT(MODEL_SNUFIT, 4901, -4999, -11763, 0, 0, 0, (17 << 16), bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 3791, -4999, -11763, 0, 0, 0, (17 << 16), bhvSnufit),
 		OBJECT(MODEL_STAR, 2473, -4324, -15633, 0, 0, 0, 0x00000000, bhvStar),
-		OBJECT(MODEL_STAR, 4386, -4565, -1090, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 4440, -4829, -9286, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 2479, -3810, -8024, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_NONE, 4391, -5957, -18182, 0, 0, 0, 0x00000000, bhvHiddenRedCoinStar),
