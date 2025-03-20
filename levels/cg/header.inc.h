@@ -2,6 +2,7 @@ extern const GeoLayout cg_area_1_geo[];
 extern const GeoLayout cg_area_1[];
 extern const Collision cg_area_1_collision[];
 extern const MacroObject cg_area_1_macro_objs[];
+extern const Trajectory cg_area_1_spline_NurbsCurve_Loop_001[];
 extern const Trajectory cg_area_1_spline_NurbsCurve_Rail[];
 extern const Trajectory cg_area_1_spline_NurbsCurve_Rail_001[];
 extern const Trajectory cg_area_1_spline_NurbsCurve_Spring[];

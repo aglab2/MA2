@@ -72,7 +72,7 @@ const LevelScript level_cg_entry[] = {
 		OBJECT(MODEL_CHECKPOINT, -8114, 614, 14498, 0, -90, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_CHUCKYA, 16006, -1683, 15709, 0, 0, 0, 0x00000000, bhvChuckya),
 		OBJECT(MODEL_CHUCKYA, 14990, -2191, 16516, 0, 0, 0, 0x00000000, bhvChuckya),
-		OBJECT(MODEL_NONE, -18935, 4650, 6407, 0, 90, 0, (20 << 16), bhvCoinFormation),
+		OBJECT(MODEL_NONE, -18935, 4650, 6407, 0, -90, 0, (20 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -18081, 916, 14451, 0, 90, 0, (4 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 17997, -1186, 16003, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 20030, -1186, 18000, 0, 90, 0, 0x00000000, bhvCoinFormation),

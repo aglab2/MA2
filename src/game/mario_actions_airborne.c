@@ -926,7 +926,7 @@ s32 act_ground_pound(struct MarioState *m) {
             if (m->pos[1] + yOffset + 160.0f < m->ceilHeight) {
                 m->pos[1] += yOffset;
                 m->peakHeight = m->pos[1];
-                vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
+                vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
                 // Ground pound explicitly sets GFX position, so undo the transform
                 if (gGravityMode)
                     m->marioObj->header.gfx.pos[1] = 9000.f - m->marioObj->header.gfx.pos[1];
