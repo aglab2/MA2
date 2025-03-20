@@ -72,7 +72,7 @@ void bhv_spring_loop()
                  gMarioStates->pos[1] = 9000.f - gMarioStates->pos[1];
 
             gMarioStates->pos[2] = o->oPosZ;
-            gMarioStates->faceAngle[1] = o->oFaceAngleYaw;
+            gMarioStates->faceAngle[1] = o->oFaceAnglePitch < 0 ? o->oFaceAngleYaw - 0x8000 : o->oFaceAngleYaw;
             set_mario_action(gMarioStates, ACT_JUMP, 0);
             sSpringBezier = (s16*)o->oSpringBezier;
             calculate_quant();
@@ -179,6 +179,9 @@ static void spring_spawn()
 
         spring->oFaceAnglePitch = atan2s(sqrtf(diff[0] * diff[0] + diff[2] * diff[2]), diff[1]);
         spring->oFaceAngleYaw = atan2s(diff[2], diff[0]);
+        if (spring->oFaceAnglePitch < 0)
+            spring->oFaceAngleYaw = 0x8000 + spring->oFaceAngleYaw;
+
         spring->oSpringBezier = bezier;
         if (sSpringBezier == spring->oSpringBezier)
         {
