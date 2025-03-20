@@ -50,7 +50,7 @@ extern const GeoLayout fr_area_visual[];
 extern const RailDesc* rail_descs_fr[];
 extern const SpringDesc* spring_descs_fr[];
 static struct LevelConfig cfg = {
-	.viewRangeMult = 3.f,
+	.viewRangeMult = 3.5f,
 	.railDesc = rail_descs_fr,
 	.skybox = fr_skybox_fr_skybox_mesh,
 	.springDescs = spring_descs_fr,
@@ -211,7 +211,7 @@ const LevelScript level_fr_entry[] = {
 		OBJECT(MODEL_GOOMBA, -8147, -14922, -2773, 0, 90, 0, 0x00000000, bhvGoomba),
 		OBJECT(MODEL_RED_COIN, 2870, 14507, -15745, 0, 0, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_RED_COIN, 3183, 13831, -13208, 0, 0, 0, 0x00000000, bhvRedCoin),
-		OBJECT(MODEL_RED_COIN, 2870, 14216, -14770, 0, 0, 0, 0x00000000, bhvRedCoin),
+		OBJECT(MODEL_RED_COIN, 2870, 14216, -14769, 0, 0, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_RED_COIN, 3372, 14149, -14576, 0, 0, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_RED_COIN, 3210, 14364, -15336, 0, 0, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_RED_COIN, 2870, 13652, -12603, 0, 0, 0, 0x00000000, bhvRedCoin),
@@ -258,7 +258,7 @@ const LevelScript level_fr_entry[] = {
 		OBJECT(MODEL_CHUCKYA, -19509, 9246, 16241, 0, -180, 0, 0x00000000, bhvChuckya),
 		OBJECT(MODEL_CHUCKYA, -9632, -6318, 6225, 0, 0, 0, 0x00000000, bhvChuckya),
 		OBJECT(MODEL_CHUCKYA, -10920, -2819, 7588, 0, 0, 0, 0x00000000, bhvChuckya),
-		OBJECT(MODEL_CHUCKYA, -8592, -8818, 9522, 0, 0, 0, 0x00000000, bhvChuckya),
+		OBJECT(MODEL_CHUCKYA, -8592, -8818, 9521, 0, 0, 0, 0x00000000, bhvChuckya),
 		OBJECT(MODEL_NONE, -8073, -5318, 9176, 0, -90, 0, (0 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -8701, -7224, 9159, 0, -90, 0, (0 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -18689, 9197, 16245, 0, -37, 0, (4 << 16), bhvCoinFormation),
@@ -365,7 +365,7 @@ const LevelScript level_fr_entry[] = {
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0x20, LEVEL_CG, 0x01, 0x21, WARP_NO_CHECKPOINT),
 		WARP_NODE(0x21, LEVEL_CG, 0x01, 0x20, WARP_NO_CHECKPOINT),
-		OBJECT(MODEL_BLACK_BOBOMB, -8634, -8371, -13005, 0, -89, 0, 0x00000000, bhvBobomb),
+		OBJECT(MODEL_BLACK_BOBOMB, -8634, -8370, -13005, 0, -89, 0, 0x00000000, bhvBobomb),
 		OBJECT(MODEL_BLACK_BOBOMB, -10111, -9171, -12584, 0, -89, 0, 0x00000000, bhvBobomb),
 		OBJECT(MODEL_BLACK_BOBOMB, -4967, -6970, -14177, 0, -89, 0, 0x00000000, bhvBobomb),
 		OBJECT(MODEL_CHECKPOINT, 1054, -1761, 6849, 0, -89, 0, 0x00000000, bhvCheckpoint),
