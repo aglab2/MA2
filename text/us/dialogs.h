@@ -201,10 +201,48 @@ DEFINE_DIALOG(DIALOG_015, NO_SOUND, 2, 30, 200, "\
 Dark Story is not\n\
 available in the demo.")
 
-DEFINE_DIALOG(DIALOG_016, NO_SOUND, 3, 30, 200, "\
-Hop on the shiny shell and\n\
-ride wherever you want to\n\
-go! Shred those enemies!")
+DEFINE_DIALOG(DIALOG_016, NO_SOUND, 7, 30, 200, "\
+Mario Adventure 2\n\
+\n\n\n\n\n\
+     Made by aglab2\n\
+Huge thanks to\n\
+HackerSM64 team\n\
+and maintainers:\n\
+ArcticJaguar &\n\
+Arthurtilly\n\
+\n\n\
+Tools used:\n\
+fast64\n\
+SAIO\n\
+Blender\n\
+seq64\n\
+F3DEX3 - Sauraen\n\n\
+Special thanks:\n\
+Reonu\n\
+  Camera collision\n\
+thecozies\n\
+  Better swimming\n\
+Render96\n\
+  New instruments\n\
+Wiseguy\n\
+  eabi libultra\n\
+gonetz & falcobuster\n\
+  Emulators support\n\
+Tharo\n\
+  Improved gcc\n\
+Fazana\n\
+Special hatred goes to\n\
+supreme-network.com/midis\n\
+for failing to deliver\n\
+midis I commissioned.\n\
+\n\
+Avoid those scammers.\n\
+\n\
+This project would be\n\
+impossible without\n\
+N64 hacking community.\n\
+I appreciate all of you.\n\n\
+Hope you enjoy the demo!")
 
 DEFINE_DIALOG(DIALOG_017, SOUND_OBJ_KING_BOBOMB_TALK, 4, 30, 200, "\
 I'm the Big Bob-omb, lord\n\

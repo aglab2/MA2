@@ -25,12 +25,15 @@ const LevelScript level_castle_courtyard_entry[] = {
 	LOAD_MIO0(0xa, _water_skybox_mio0SegmentRomStart, _water_skybox_mio0SegmentRomEnd), 
 	LOAD_YAY0(0x05, _group10_yay0SegmentRomStart, _group10_yay0SegmentRomEnd), 
 	LOAD_RAW(0x0C, _group10_geoSegmentRomStart, _group10_geoSegmentRomEnd), 
+	LOAD_YAY0(0x08, _common0_yay0SegmentRomStart, _common0_yay0SegmentRomEnd), 
+	LOAD_RAW(0x0F, _common0_geoSegmentRomStart, _common0_geoSegmentRomEnd), 
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
+	JUMP_LINK(script_func_global_1), 
 	JUMP_LINK(script_func_global_11), 
 	LOAD_MODEL_FROM_GEO(MODEL_CASTLE_GROUNDS_BUBBLY_TREE, bubbly_tree_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CASTLE_CASTLE_DOOR, castle_door_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CASTLE_GROUNDS_METAL_DOOR,   metal_door_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_CASTLE_GROUNDS_METAL_DOOR, metal_door_geo), 
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
 
@@ -59,6 +62,7 @@ const LevelScript level_castle_courtyard_entry[] = {
 		OBJECT(MODEL_CASTLE_GROUNDS_BUBBLY_TREE, -7842, 1073, 16022, 0, 0, 0, 0x00000000, bhvTree),
 		OBJECT(MODEL_CASTLE_GROUNDS_BUBBLY_TREE, -7542, 994, 14696, 0, 0, 0, 0x00000000, bhvTree),
 		OBJECT(MODEL_CASTLE_GROUNDS_BUBBLY_TREE, -1939, 1147, 11298, 0, 0, 0, 0x00000000, bhvTree),
+		OBJECT(MODEL_WOODEN_SIGNPOST, -30, 815, 10080, 0, -180, 0, (16 << 24) | (16 << 16), bhvMessagePanel),
 		OBJECT(MODEL_YOSHI, -1201, 3728, 19558, 0, 0, 0, 0x00000000, bhvYoshi),
 		TERRAIN(castle_courtyard_area_1_collision),
 		MACRO_OBJECTS(castle_courtyard_area_1_macro_objs),
