@@ -673,6 +673,7 @@ static void bowser_spawn_attack()
         case 5:
             model = MODEL_SNUFIT;
             behavior = bhvSnufit;
+            yoff = 30.f;
             break;
         case 6:
             model = MODEL_BOO;
