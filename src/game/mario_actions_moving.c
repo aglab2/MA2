@@ -1288,9 +1288,25 @@ s32 act_rail_grind(struct MarioState *m)
         if (m->input & INPUT_A_PRESSED) {
             return set_mario_action(m, ACT_JUMP, 0);
         }
+        
+        if (0 == m->actionTimer)
+        {
+            if (m->input & INPUT_B_PRESSED)
+            {
+                m->actionTimer++;
+            }
+        }
+        else
+        {
+            m->actionTimer++;
+            if (m->actionTimer > 10)
+            {
+                m->actionTimer = 0;
+            }
+        }
     }
 
-    if (zipline_step()) {
+    if (zipline_step(m->actionTimer)) {
         int butt = 0;
         if (gIsGravityFlipped)
             m->pos[1] = 9000.f - m->pos[1];
@@ -1309,9 +1325,13 @@ s32 act_rail_grind(struct MarioState *m)
 
     m->marioObj->header.gfx.pos[0] = m->pos[0];
     if (gIsGravityFlipped)
-        m->marioObj->header.gfx.pos[1] = 9000.f - m->pos[1];
+    {
+        m->marioObj->header.gfx.pos[1] = 9000.f - m->pos[1] - m->actionTimer * (10 - m->actionTimer);
+    }
     else
-        m->marioObj->header.gfx.pos[1] = m->pos[1];
+    {
+        m->marioObj->header.gfx.pos[1] = m->pos[1] + m->actionTimer * (10 - m->actionTimer);
+    }
 
     m->marioObj->header.gfx.pos[2] = m->pos[2];
     f32 dist = 45.f;
@@ -1329,7 +1349,7 @@ s32 act_rail_grind(struct MarioState *m)
     set_mario_animation(m, anim);
     tilt_body_ground_shell(m, startYaw);
     m->marioObj->header.gfx.angle[0] = m->faceAngle[0];
-    m->marioObj->header.gfx.angle[1] = m->faceAngle[1];
+    m->marioObj->header.gfx.angle[1] = m->faceAngle[1] + 0x10000 / 10 * m->actionTimer;
     m->marioObj->header.gfx.angle[2] = m->faceAngle[2];
     play_sound(SOUND_MOVING_TERRAIN_RIDING_SHELL + m->terrainSoundAddend,
                 m->marioObj->header.gfx.cameraToObject);

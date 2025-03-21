@@ -271,8 +271,12 @@ static void prepare_mario_for_zipline_drop_loop(Vec3f trajDirection)
     }
 }
 
-int zipline_step()
+int zipline_step(int exSpeed)
 {
+    int exSpeedBoost = exSpeed ? (100 - exSpeed * exSpeed) / 3 : 0;
+    sForwardVel += exSpeedBoost;
+    f32 velLimit = sForwardVelLimit + exSpeedBoost;
+
     gMarioStates->extraAirAction = 1;
     if (sTrajectoryArea != gCurrAreaIndex)
     {
@@ -341,7 +345,7 @@ int zipline_step()
             if (sLoopDesc)
             {
                 sForwardVel += 5.f;
-                sForwardVel = CLAMP(sForwardVel, 0.f, sForwardVelLimit);
+                sForwardVel = CLAMP(sForwardVel, 0.f, velLimit);
             }
             else
             {
@@ -367,7 +371,7 @@ int zipline_step()
                     grav = -grav;
 
                 sForwardVel -= grav;
-                sForwardVel = CLAMP(sForwardVel, -sForwardVelLimit, sForwardVelLimit);
+                sForwardVel = CLAMP(sForwardVel, -velLimit, velLimit);
             }
 
 #if 0
