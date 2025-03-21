@@ -1096,47 +1096,56 @@ s32 mario_execute_stationary_action(struct MarioState *m) {
         return TRUE;
     }
 
-    /* clang-format off */
-    switch (m->action) {
-        case ACT_IDLE:                    cancel = act_idle(m);                             break;
-        case ACT_START_SLEEPING:          cancel = act_start_sleeping(m);                   break;
-        case ACT_SLEEPING:                cancel = act_sleeping(m);                         break;
-        case ACT_WAKING_UP:               cancel = act_waking_up(m);                        break;
-        case ACT_PANTING:                 cancel = act_panting(m);                          break;
-        case ACT_HOLD_PANTING_UNUSED:     cancel = act_hold_panting_unused(m);              break;
-        case ACT_HOLD_IDLE:               cancel = act_hold_idle(m);                        break;
-        case ACT_HOLD_HEAVY_IDLE:         cancel = act_hold_heavy_idle(m);                  break;
-        case ACT_IN_QUICKSAND:            cancel = act_in_quicksand(m);                     break;
-        case ACT_STANDING_AGAINST_WALL:   cancel = act_standing_against_wall(m);            break;
-        case ACT_COUGHING:                cancel = act_coughing(m);                         break;
-        case ACT_SHIVERING:               cancel = act_shivering(m);                        break;
-        case ACT_CROUCHING:               cancel = act_crouching(m);                        break;
-        case ACT_START_CROUCHING:         cancel = act_start_crouching(m);                  break;
-        case ACT_STOP_CROUCHING:          cancel = act_stop_crouching(m);                   break;
-        case ACT_START_CRAWLING:          cancel = act_start_crawling(m);                   break;
-        case ACT_STOP_CRAWLING:           cancel = act_stop_crawling(m);                    break;
-        case ACT_SLIDE_KICK_SLIDE_STOP:   cancel = act_slide_kick_slide_stop(m);            break;
-        case ACT_SHOCKWAVE_BOUNCE:        cancel = act_shockwave_bounce(m);                 break;
-        case ACT_FIRST_PERSON:            cancel = act_first_person(m);                     break;
-        case ACT_JUMP_LAND_STOP:          cancel = act_jump_land_stop(m);                   break;
-        case ACT_DOUBLE_JUMP_LAND_STOP:   cancel = act_double_jump_land_stop(m);            break;
-        case ACT_FREEFALL_LAND_STOP:      cancel = act_freefall_land_stop(m);               break;
-        case ACT_SIDE_FLIP_LAND_STOP:     cancel = act_side_flip_land_stop(m);              break;
-        case ACT_HOLD_JUMP_LAND_STOP:     cancel = act_hold_jump_land_stop(m);              break;
-        case ACT_HOLD_FREEFALL_LAND_STOP: cancel = act_hold_freefall_land_stop(m);          break;
-        case ACT_AIR_THROW_LAND:          cancel = act_air_throw_land(m);                   break;
-        case ACT_LAVA_BOOST_LAND:         cancel = act_lava_boost_land(m);                  break;
-        case ACT_TWIRL_LAND:              cancel = act_twirl_land(m);                       break;
-        case ACT_TRIPLE_JUMP_LAND_STOP:   cancel = act_triple_jump_land_stop(m);            break;
-        case ACT_BACKFLIP_LAND_STOP:      cancel = act_backflip_land_stop(m);               break;
-        case ACT_LONG_JUMP_LAND_STOP:     cancel = act_long_jump_land_stop(m);              break;
-        case ACT_GROUND_POUND_LAND:       cancel = act_ground_pound_land(m);                break;
-        case ACT_BRAKING_STOP:            cancel = act_braking_stop(m);                     break;
-        case ACT_BUTT_SLIDE_STOP:         cancel = act_butt_slide_stop(m);                  break;
-        case ACT_HOLD_BUTT_SLIDE_STOP:    cancel = act_hold_butt_slide_stop(m);             break;
-        default:                          cancel = TRUE;                                    break;
+    typedef s32 (*MarioActionFunc)(struct MarioState *);
+    static const MarioActionFunc kFuncs[] = {
+        [ 0xff & ACT_IDLE ]                    = act_idle,
+        [ 0xff & ACT_START_SLEEPING ]          = act_start_sleeping,
+        [ 0xff & ACT_SLEEPING ]                = act_sleeping,
+        [ 0xff & ACT_WAKING_UP ]               = act_waking_up,
+        [ 0xff & ACT_PANTING ]                 = act_panting,
+        [ 0xff & ACT_HOLD_PANTING_UNUSED ]     = act_hold_panting_unused,
+        [ 0xff & ACT_HOLD_IDLE ]               = act_hold_idle,
+        [ 0xff & ACT_HOLD_HEAVY_IDLE ]         = act_hold_heavy_idle,
+        [ 0xff & ACT_IN_QUICKSAND ]            = act_in_quicksand,
+        [ 0xff & ACT_STANDING_AGAINST_WALL ]   = act_standing_against_wall,
+        [ 0xff & ACT_COUGHING ]                = act_coughing,
+        [ 0xff & ACT_SHIVERING ]               = act_shivering,
+        [ 0xff & ACT_CROUCHING ]               = act_crouching,
+        [ 0xff & ACT_START_CROUCHING ]         = act_start_crouching,
+        [ 0xff & ACT_STOP_CROUCHING ]          = act_stop_crouching,
+        [ 0xff & ACT_START_CRAWLING ]          = act_start_crawling,
+        [ 0xff & ACT_STOP_CRAWLING ]           = act_stop_crawling,
+        [ 0xff & ACT_SLIDE_KICK_SLIDE_STOP ]   = act_slide_kick_slide_stop,
+        [ 0xff & ACT_SHOCKWAVE_BOUNCE ]        = act_shockwave_bounce,
+        [ 0xff & ACT_FIRST_PERSON ]            = act_first_person,
+        [ 0xff & ACT_JUMP_LAND_STOP ]          = act_jump_land_stop,
+        [ 0xff & ACT_DOUBLE_JUMP_LAND_STOP ]   = act_double_jump_land_stop,
+        [ 0xff & ACT_FREEFALL_LAND_STOP ]      = act_freefall_land_stop,
+        [ 0xff & ACT_SIDE_FLIP_LAND_STOP ]     = act_side_flip_land_stop,
+        [ 0xff & ACT_HOLD_JUMP_LAND_STOP ]     = act_hold_jump_land_stop,
+        [ 0xff & ACT_HOLD_FREEFALL_LAND_STOP ] = act_hold_freefall_land_stop,
+        [ 0xff & ACT_AIR_THROW_LAND ]          = act_air_throw_land,
+        [ 0xff & ACT_LAVA_BOOST_LAND ]         = act_lava_boost_land,
+        [ 0xff & ACT_TWIRL_LAND ]              = act_twirl_land,
+        [ 0xff & ACT_TRIPLE_JUMP_LAND_STOP ]   = act_triple_jump_land_stop,
+        [ 0xff & ACT_BACKFLIP_LAND_STOP ]      = act_backflip_land_stop,
+        [ 0xff & ACT_LONG_JUMP_LAND_STOP ]     = act_long_jump_land_stop,
+        [ 0xff & ACT_GROUND_POUND_LAND ]       = act_ground_pound_land,
+        [ 0xff & ACT_BRAKING_STOP ]            = act_braking_stop,
+        [ 0xff & ACT_BUTT_SLIDE_STOP ]         = act_butt_slide_stop,
+        [ 0xff & ACT_HOLD_BUTT_SLIDE_STOP ]    = act_hold_butt_slide_stop,
+    };
+    int idx = m->action & 0xff;
+    if (idx < sizeof(kFuncs) / sizeof(kFuncs[0])) {
+        MarioActionFunc func = kFuncs[idx];
+        if (func) {
+            cancel = func(m);
+        } else {
+            cancel = TRUE;
+        }
+    } else {
+        cancel = TRUE;
     }
-    /* clang-format on */
 
     if (!cancel && (m->input & INPUT_IN_WATER)) {
         m->particleFlags |= PARTICLE_IDLE_WATER_WAVE;
