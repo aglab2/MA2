@@ -15,7 +15,9 @@ void bhv_purple_switch_loop(void) {
          */
         case PURPLE_SWITCH_ACT_IDLE:
             cur_obj_set_model(MODEL_PURPLE_SWITCH);
-            cur_obj_scale(1.5f);
+            o->oGeoYaw += 0x100;
+            o->oHomeY = 0;
+            o->oOpacity = 255;
             if (
                 gMarioObject->platform == o
                 && !(gMarioStates[0].action & MARIO_NO_PURPLE_SWITCH)
@@ -30,7 +32,9 @@ void bhv_purple_switch_loop(void) {
          * Immediately transition to the ticking state.
          */
         case PURPLE_SWITCH_ACT_PRESSED:
-            cur_obj_scale_over_time(SCALE_AXIS_Y, 3, 1.5f, 0.2f);
+           o->oHomeY -= 5;
+           o->oGeoYaw += 0x100 - o->oTimer * 0x40;
+           o->oOpacity = 0xff - o->oTimer * 0x30;
             if (o->oTimer == 3) {
                 cur_obj_play_sound_2(SOUND_GENERAL2_PURPLE_SWITCH);
                 o->oAction = PURPLE_SWITCH_ACT_TICKING;
@@ -67,7 +71,9 @@ void bhv_purple_switch_loop(void) {
          * idle state.
          */
         case PURPLE_SWITCH_ACT_UNPRESSED:
-            cur_obj_scale_over_time(SCALE_AXIS_Y, 3, 0.2f, 1.5f);
+            o->oHomeY += 5;
+            o->oGeoYaw += 0x40 + o->oTimer * 0x40;
+            o->oOpacity = 0xff - 4 * 0x30 + o->oTimer * 0x30; 
             if (o->oTimer == 3) {
                 o->oAction = PURPLE_SWITCH_ACT_IDLE;
             }

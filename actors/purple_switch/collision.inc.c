@@ -25,7 +25,7 @@ const Collision purple_switch_collision[] = {
 	COL_VERTEX(-62, 0, -62),
 	COL_VERTEX(-87, 0, 0),
 	COL_VERTEX(0, 3, 56),
-	COL_TRI_INIT(SURFACE_DEFAULT, 38),
+	COL_TRI_INIT(SURFACE_NOT_SLIPPERY, 38),
 	COL_TRI(0, 1, 2),
 	COL_TRI(0, 2, 3),
 	COL_TRI(4, 5, 3),
