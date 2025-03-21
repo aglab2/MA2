@@ -58,6 +58,5 @@ const Gfx burn_smoke_seg4_sub_dl_end[] = {
 const Gfx burn_smoke_seg4_dl[] = {
     gsSPVertex(burn_smoke_seg4_vertex, 4, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
-    gsDPPipeSync(),
     gsSPEndDisplayList(),
 };
