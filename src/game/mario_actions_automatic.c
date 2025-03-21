@@ -869,28 +869,27 @@ s32 mario_execute_automatic_action(struct MarioState *m) {
     }
 
     m->quicksandDepth = 0.0f;
-
-    /* clang-format off */
-    switch (m->action) {
-        case ACT_HOLDING_POLE:           cancel = act_holding_pole(m);           break;
-        case ACT_GRAB_POLE_SLOW:         cancel = act_grab_pole_slow(m);         break;
-        case ACT_GRAB_POLE_FAST:         cancel = act_grab_pole_fast(m);         break;
-        case ACT_CLIMBING_POLE:          cancel = act_climbing_pole(m);          break;
-        case ACT_TOP_OF_POLE_TRANSITION: cancel = act_top_of_pole_transition(m); break;
-        case ACT_TOP_OF_POLE:            cancel = act_top_of_pole(m);            break;
-        case ACT_START_HANGING:          cancel = act_start_hanging(m);          break;
-        case ACT_HANGING:                cancel = act_hanging(m);                break;
-        case ACT_HANG_MOVING:            cancel = act_hang_moving(m);            break;
-        case ACT_LEDGE_GRAB:             cancel = act_ledge_grab(m);             break;
-        case ACT_LEDGE_CLIMB_SLOW_1:     cancel = act_ledge_climb_slow(m);       break;
-        case ACT_LEDGE_CLIMB_SLOW_2:     cancel = act_ledge_climb_slow(m);       break;
-        case ACT_LEDGE_CLIMB_DOWN:       cancel = act_ledge_climb_down(m);       break;
-        case ACT_LEDGE_CLIMB_FAST:       cancel = act_ledge_climb_fast(m);       break;
-        case ACT_GRABBED:                cancel = act_grabbed(m);                break;
-        case ACT_IN_CANNON:              cancel = act_in_cannon(m);              break;
-        case ACT_TORNADO_TWIRLING:       cancel = act_tornado_twirling(m);       break;
-    }
-    /* clang-format on */
+    typedef s32 (*MarioActionFunc)(struct MarioState *);
+    static const MarioActionFunc kFuncs[] = {
+        [ 0xff & ACT_HOLDING_POLE ]           = act_holding_pole,
+        [ 0xff & ACT_GRAB_POLE_SLOW ]         = act_grab_pole_slow,
+        [ 0xff & ACT_GRAB_POLE_FAST ]         = act_grab_pole_fast,
+        [ 0xff & ACT_CLIMBING_POLE ]          = act_climbing_pole,
+        [ 0xff & ACT_TOP_OF_POLE_TRANSITION ] = act_top_of_pole_transition,
+        [ 0xff & ACT_TOP_OF_POLE ]            = act_top_of_pole,
+        [ 0xff & ACT_START_HANGING ]          = act_start_hanging,
+        [ 0xff & ACT_HANGING ]                = act_hanging,
+        [ 0xff & ACT_HANG_MOVING ]            = act_hang_moving,
+        [ 0xff & ACT_LEDGE_GRAB ]             = act_ledge_grab,
+        [ 0xff & ACT_LEDGE_CLIMB_SLOW_1 ]     = act_ledge_climb_slow,
+        [ 0xff & ACT_LEDGE_CLIMB_SLOW_2 ]     = act_ledge_climb_slow,
+        [ 0xff & ACT_LEDGE_CLIMB_DOWN ]       = act_ledge_climb_down,
+        [ 0xff & ACT_LEDGE_CLIMB_FAST ]       = act_ledge_climb_fast,
+        [ 0xff & ACT_GRABBED ]                = act_grabbed,
+        [ 0xff & ACT_IN_CANNON ]              = act_in_cannon,
+        [ 0xff & ACT_TORNADO_TWIRLING ]       = act_tornado_twirling,
+    };
+    cancel = kFuncs[m->action & 0xff](m);
 
     return cancel;
 }

@@ -461,20 +461,20 @@ s32 mario_execute_object_action(struct MarioState *m) {
         return TRUE;
     }
 
-    /* clang-format off */
-    switch (m->action) {
-        case ACT_PUNCHING:           cancel = act_punching(m);           break;
-        case ACT_PICKING_UP:         cancel = act_picking_up(m);         break;
-        case ACT_DIVE_PICKING_UP:    cancel = act_dive_picking_up(m);    break;
-        case ACT_STOMACH_SLIDE_STOP: cancel = act_stomach_slide_stop(m); break;
-        case ACT_PLACING_DOWN:       cancel = act_placing_down(m);       break;
-        case ACT_THROWING:           cancel = act_throwing(m);           break;
-        case ACT_HEAVY_THROW:        cancel = act_heavy_throw(m);        break;
-        case ACT_PICKING_UP_BOWSER:  cancel = act_picking_up_bowser(m);  break;
-        case ACT_HOLDING_BOWSER:     cancel = act_holding_bowser(m);     break;
-        case ACT_RELEASING_BOWSER:   cancel = act_releasing_bowser(m);   break;
-    }
-    /* clang-format on */
+    typedef s32 (*MarioActionFunc)(struct MarioState *);
+    static const MarioActionFunc kFuncs[] = {
+        [ 0xff & ACT_PUNCHING ]           = act_punching,
+        [ 0xff & ACT_PICKING_UP ]         = act_picking_up,
+        [ 0xff & ACT_DIVE_PICKING_UP ]    = act_dive_picking_up,
+        [ 0xff & ACT_STOMACH_SLIDE_STOP ] = act_stomach_slide_stop,
+        [ 0xff & ACT_PLACING_DOWN ]       = act_placing_down,
+        [ 0xff & ACT_THROWING ]           = act_throwing,
+        [ 0xff & ACT_HEAVY_THROW ]        = act_heavy_throw,
+        [ 0xff & ACT_PICKING_UP_BOWSER ]  = act_picking_up_bowser,
+        [ 0xff & ACT_HOLDING_BOWSER ]     = act_holding_bowser,
+        [ 0xff & ACT_RELEASING_BOWSER ]   = act_releasing_bowser,
+    };
+    cancel = kFuncs[0xff & m->action](m);
 
     if (!cancel && (m->input & INPUT_IN_WATER)) {
         m->particleFlags |= PARTICLE_IDLE_WATER_WAVE;

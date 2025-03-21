@@ -1591,44 +1591,44 @@ s32 mario_execute_submerged_action(struct MarioState *m) {
 
     m->marioBodyState->headAngle[1] = 0;
     m->marioBodyState->headAngle[2] = 0;
-
-    /* clang-format off */
-    switch (m->action) {
-        case ACT_WATER_IDLE:                 cancel = act_water_idle(m);                 break;
-        case ACT_HOLD_WATER_IDLE:            cancel = act_hold_water_idle(m);            break;
-        case ACT_WATER_ACTION_END:           cancel = act_water_action_end(m);           break;
-        case ACT_HOLD_WATER_ACTION_END:      cancel = act_hold_water_action_end(m);      break;
-        case ACT_DROWNING:                   cancel = act_drowning(m);                   break;
-        case ACT_BACKWARD_WATER_KB:          cancel = act_backward_water_kb(m);          break;
-        case ACT_FORWARD_WATER_KB:           cancel = act_forward_water_kb(m);           break;
-        case ACT_WATER_DEATH:                cancel = act_water_death(m);                break;
-        case ACT_WATER_SHOCKED:              cancel = act_water_shocked(m);              break;
-        case ACT_BREASTSTROKE:               cancel = act_breaststroke(m);               break;
-        case ACT_SWIMMING_END:               cancel = act_swimming_end(m);               break;
-        case ACT_FLUTTER_KICK:               cancel = act_flutter_kick(m);               break;
-        case ACT_HOLD_BREASTSTROKE:          cancel = act_hold_breaststroke(m);          break;
-        case ACT_HOLD_SWIMMING_END:          cancel = act_hold_swimming_end(m);          break;
-        case ACT_HOLD_FLUTTER_KICK:          cancel = act_hold_flutter_kick(m);          break;
-        case ACT_WATER_SHELL_SWIMMING:       cancel = act_water_shell_swimming(m);       break;
-        case ACT_WATER_THROW:                cancel = act_water_throw(m);                break;
-        case ACT_WATER_PUNCH:                cancel = act_water_punch(m);                break;
-        case ACT_WATER_PLUNGE:               cancel = act_water_plunge(m);               break;
-        case ACT_CAUGHT_IN_WHIRLPOOL:        cancel = act_caught_in_whirlpool(m);        break;
-        case ACT_METAL_WATER_STANDING:       cancel = act_metal_water_standing(m);       break;
-        case ACT_METAL_WATER_WALKING:        cancel = act_metal_water_walking(m);        break;
-        case ACT_METAL_WATER_FALLING:        cancel = act_metal_water_falling(m);        break;
-        case ACT_METAL_WATER_FALL_LAND:      cancel = act_metal_water_fall_land(m);      break;
-        case ACT_METAL_WATER_JUMP:           cancel = act_metal_water_jump(m);           break;
-        case ACT_METAL_WATER_JUMP_LAND:      cancel = act_metal_water_jump_land(m);      break;
-        case ACT_HOLD_METAL_WATER_STANDING:  cancel = act_hold_metal_water_standing(m);  break;
-        case ACT_HOLD_METAL_WATER_WALKING:   cancel = act_hold_metal_water_walking(m);   break;
-        case ACT_HOLD_METAL_WATER_FALLING:   cancel = act_hold_metal_water_falling(m);   break;
-        case ACT_HOLD_METAL_WATER_FALL_LAND: cancel = act_hold_metal_water_fall_land(m); break;
-        case ACT_HOLD_METAL_WATER_JUMP:      cancel = act_hold_metal_water_jump(m);      break;
-        case ACT_HOLD_METAL_WATER_JUMP_LAND: cancel = act_hold_metal_water_jump_land(m); break;
-        case ACT_WATER_GROUND_POUND:         cancel = act_water_ground_pound(m);         break;
-    }
-    /* clang-format on */
+    
+    typedef s32 (*MarioActionFunc)(struct MarioState *);
+    static const MarioActionFunc kFuncs[] = {
+        [ 0xff & ACT_WATER_IDLE ]                 = act_water_idle,
+        [ 0xff & ACT_HOLD_WATER_IDLE ]            = act_hold_water_idle,
+        [ 0xff & ACT_WATER_ACTION_END ]           = act_water_action_end,
+        [ 0xff & ACT_HOLD_WATER_ACTION_END ]      = act_hold_water_action_end,
+        [ 0xff & ACT_DROWNING ]                   = act_drowning,
+        [ 0xff & ACT_BACKWARD_WATER_KB ]          = act_backward_water_kb,
+        [ 0xff & ACT_FORWARD_WATER_KB ]           = act_forward_water_kb,
+        [ 0xff & ACT_WATER_DEATH ]                = act_water_death,
+        [ 0xff & ACT_WATER_SHOCKED ]              = act_water_shocked,
+        [ 0xff & ACT_BREASTSTROKE ]               = act_breaststroke,
+        [ 0xff & ACT_SWIMMING_END ]               = act_swimming_end,
+        [ 0xff & ACT_FLUTTER_KICK ]               = act_flutter_kick,
+        [ 0xff & ACT_HOLD_BREASTSTROKE ]          = act_hold_breaststroke,
+        [ 0xff & ACT_HOLD_SWIMMING_END ]          = act_hold_swimming_end,
+        [ 0xff & ACT_HOLD_FLUTTER_KICK ]          = act_hold_flutter_kick,
+        [ 0xff & ACT_WATER_SHELL_SWIMMING ]       = act_water_shell_swimming,
+        [ 0xff & ACT_WATER_THROW ]                = act_water_throw,
+        [ 0xff & ACT_WATER_PUNCH ]                = act_water_punch,
+        [ 0xff & ACT_WATER_PLUNGE ]               = act_water_plunge,
+        [ 0xff & ACT_CAUGHT_IN_WHIRLPOOL ]        = act_caught_in_whirlpool,
+        [ 0xff & ACT_METAL_WATER_STANDING ]       = act_metal_water_standing,
+        [ 0xff & ACT_METAL_WATER_WALKING ]        = act_metal_water_walking,
+        [ 0xff & ACT_METAL_WATER_FALLING ]        = act_metal_water_falling,
+        [ 0xff & ACT_METAL_WATER_FALL_LAND ]      = act_metal_water_fall_land,
+        [ 0xff & ACT_METAL_WATER_JUMP ]           = act_metal_water_jump,
+        [ 0xff & ACT_METAL_WATER_JUMP_LAND ]      = act_metal_water_jump_land,
+        [ 0xff & ACT_HOLD_METAL_WATER_STANDING ]  = act_hold_metal_water_standing,
+        [ 0xff & ACT_HOLD_METAL_WATER_WALKING ]   = act_hold_metal_water_walking,
+        [ 0xff & ACT_HOLD_METAL_WATER_FALLING ]   = act_hold_metal_water_falling,
+        [ 0xff & ACT_HOLD_METAL_WATER_FALL_LAND ] = act_hold_metal_water_fall_land,
+        [ 0xff & ACT_HOLD_METAL_WATER_JUMP ]      = act_hold_metal_water_jump,
+        [ 0xff & ACT_HOLD_METAL_WATER_JUMP_LAND ] = act_hold_metal_water_jump_land,
+        [ 0xff & ACT_WATER_GROUND_POUND ]         = act_water_ground_pound,
+    };
+    cancel = kFuncs[m->action & 0xff](m);
 
     return cancel;
 }

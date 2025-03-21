@@ -2046,55 +2046,56 @@ s32 mario_execute_airborne_action(struct MarioState *m) {
     play_far_fall_sound(m);
 #endif
 
-    /* clang-format off */
-    switch (m->action) {
-        case ACT_JUMP:                 cancel = act_jump(m);                 break;
-        case ACT_DOUBLE_JUMP:          cancel = act_double_jump(m);          break;
-        case ACT_FREEFALL:             cancel = act_freefall(m);             break;
-        case ACT_HOLD_JUMP:            cancel = act_hold_jump(m);            break;
-        case ACT_HOLD_FREEFALL:        cancel = act_hold_freefall(m);        break;
-        case ACT_SIDE_FLIP:            cancel = act_side_flip(m);            break;
-        case ACT_WALL_KICK_AIR:        cancel = act_wall_kick_air(m);        break;
-        case ACT_TWIRLING:             cancel = act_twirling(m);             break;
-        case ACT_WATER_JUMP:           cancel = act_water_jump(m);           break;
-        case ACT_HOLD_WATER_JUMP:      cancel = act_hold_water_jump(m);      break;
-        case ACT_STEEP_JUMP:           cancel = act_steep_jump(m);           break;
-        case ACT_BURNING_JUMP:         cancel = act_burning_jump(m);         break;
-        case ACT_BURNING_FALL:         cancel = act_burning_fall(m);         break;
-        case ACT_TRIPLE_JUMP:          cancel = act_triple_jump(m);          break;
-        case ACT_BACKFLIP:             cancel = act_backflip(m);             break;
-        case ACT_LONG_JUMP:            cancel = act_long_jump(m);            break;
-        case ACT_RIDING_SHELL_JUMP:
-        case ACT_RIDING_SHELL_FALL:    cancel = act_riding_shell_air(m);     break;
-        case ACT_DIVE:                 cancel = act_dive(m);                 break;
-        case ACT_AIR_THROW:            cancel = act_air_throw(m);            break;
-        case ACT_BACKWARD_AIR_KB:      cancel = act_backward_air_kb(m);      break;
-        case ACT_FORWARD_AIR_KB:       cancel = act_forward_air_kb(m);       break;
-        case ACT_HARD_FORWARD_AIR_KB:  cancel = act_hard_forward_air_kb(m);  break;
-        case ACT_HARD_BACKWARD_AIR_KB: cancel = act_hard_backward_air_kb(m); break;
-        case ACT_SOFT_BONK:            cancel = act_soft_bonk(m);            break;
-        case ACT_AIR_HIT_WALL:         cancel = act_air_hit_wall(m);         break;
-        case ACT_FORWARD_ROLLOUT:      cancel = act_forward_rollout(m);      break;
-        case ACT_SHOT_FROM_CANNON:     cancel = act_shot_from_cannon(m);     break;
-        case ACT_BUTT_SLIDE_AIR:       cancel = act_butt_slide_air(m);       break;
-        case ACT_HOLD_BUTT_SLIDE_AIR:  cancel = act_hold_butt_slide_air(m);  break;
-        case ACT_LAVA_BOOST:           cancel = act_lava_boost(m);           break;
-        case ACT_GETTING_BLOWN:        cancel = act_getting_blown(m);        break;
-        case ACT_BACKWARD_ROLLOUT:     cancel = act_backward_rollout(m);     break;
-        case ACT_CRAZY_BOX_BOUNCE:     cancel = act_crazy_box_bounce(m);     break;
-        case ACT_SPECIAL_TRIPLE_JUMP:  cancel = act_special_triple_jump(m);  break;
-        case ACT_GROUND_POUND:         cancel = act_ground_pound(m);         break;
-        case ACT_THROWN_FORWARD:       cancel = act_thrown_forward(m);       break;
-        case ACT_THROWN_BACKWARD:      cancel = act_thrown_backward(m);      break;
-        case ACT_FLYING_TRIPLE_JUMP:   cancel = act_flying_triple_jump(m);   break;
-        case ACT_SLIDE_KICK:           cancel = act_slide_kick(m);           break;
-        case ACT_JUMP_KICK:            cancel = act_jump_kick(m);            break;
-        case ACT_FLYING:               cancel = act_flying(m);               break;
-        case ACT_RIDING_HOOT:          cancel = act_riding_hoot(m);          break;
-        case ACT_TOP_OF_POLE_JUMP:     cancel = act_top_of_pole_jump(m);     break;
-        case ACT_VERTICAL_WIND:        cancel = act_vertical_wind(m);        break;
-    }
-    /* clang-format on */
+    typedef s32 (*MarioActionFunc)(struct MarioState *);
+    static const MarioActionFunc kFuncs[] = {
+        [ 0xff & ACT_JUMP ]                 = act_jump,
+        [ 0xff & ACT_DOUBLE_JUMP ]          = act_double_jump,
+        [ 0xff & ACT_FREEFALL ]             = act_freefall,
+        [ 0xff & ACT_HOLD_JUMP ]            = act_hold_jump,
+        [ 0xff & ACT_HOLD_FREEFALL ]        = act_hold_freefall,
+        [ 0xff & ACT_SIDE_FLIP ]            = act_side_flip,
+        [ 0xff & ACT_WALL_KICK_AIR ]        = act_wall_kick_air,
+        [ 0xff & ACT_TWIRLING ]             = act_twirling,
+        [ 0xff & ACT_WATER_JUMP ]           = act_water_jump,
+        [ 0xff & ACT_HOLD_WATER_JUMP ]      = act_hold_water_jump,
+        [ 0xff & ACT_STEEP_JUMP ]           = act_steep_jump,
+        [ 0xff & ACT_BURNING_JUMP ]         = act_burning_jump,
+        [ 0xff & ACT_BURNING_FALL ]         = act_burning_fall,
+        [ 0xff & ACT_TRIPLE_JUMP ]          = act_triple_jump,
+        [ 0xff & ACT_BACKFLIP ]             = act_backflip,
+        [ 0xff & ACT_LONG_JUMP ]            = act_long_jump,
+        [ 0xff & ACT_RIDING_SHELL_JUMP ]    = act_riding_shell_air,
+        [ 0xff & ACT_RIDING_SHELL_FALL ]    = act_riding_shell_air,
+        [ 0xff & ACT_DIVE ]                 = act_dive,
+        [ 0xff & ACT_AIR_THROW ]            = act_air_throw,
+        [ 0xff & ACT_BACKWARD_AIR_KB ]      = act_backward_air_kb,
+        [ 0xff & ACT_FORWARD_AIR_KB ]       = act_forward_air_kb,
+        [ 0xff & ACT_HARD_FORWARD_AIR_KB ]  = act_hard_forward_air_kb,
+        [ 0xff & ACT_HARD_BACKWARD_AIR_KB ] = act_hard_backward_air_kb,
+        [ 0xff & ACT_SOFT_BONK ]            = act_soft_bonk,
+        [ 0xff & ACT_AIR_HIT_WALL ]         = act_air_hit_wall,
+        [ 0xff & ACT_FORWARD_ROLLOUT ]      = act_forward_rollout,
+        [ 0xff & ACT_SHOT_FROM_CANNON ]     = act_shot_from_cannon,
+        [ 0xff & ACT_BUTT_SLIDE_AIR ]       = act_butt_slide_air,
+        [ 0xff & ACT_HOLD_BUTT_SLIDE_AIR ]  = act_hold_butt_slide_air,
+        [ 0xff & ACT_LAVA_BOOST ]           = act_lava_boost,
+        [ 0xff & ACT_GETTING_BLOWN ]        = act_getting_blown,
+        [ 0xff & ACT_BACKWARD_ROLLOUT ]     = act_backward_rollout,
+        [ 0xff & ACT_CRAZY_BOX_BOUNCE ]     = act_crazy_box_bounce,
+        [ 0xff & ACT_SPECIAL_TRIPLE_JUMP ]  = act_special_triple_jump,
+        [ 0xff & ACT_GROUND_POUND ]         = act_ground_pound,
+        [ 0xff & ACT_THROWN_FORWARD ]       = act_thrown_forward,
+        [ 0xff & ACT_THROWN_BACKWARD ]      = act_thrown_backward,
+        [ 0xff & ACT_FLYING_TRIPLE_JUMP ]   = act_flying_triple_jump,
+        [ 0xff & ACT_SLIDE_KICK ]           = act_slide_kick,
+        [ 0xff & ACT_JUMP_KICK ]            = act_jump_kick,
+        [ 0xff & ACT_FLYING ]               = act_flying,
+        [ 0xff & ACT_RIDING_HOOT ]          = act_riding_hoot,
+        [ 0xff & ACT_TOP_OF_POLE_JUMP ]     = act_top_of_pole_jump,
+        [ 0xff & ACT_VERTICAL_WIND ]        = act_vertical_wind,
+    };
+
+    cancel = kFuncs[m->action & 0xff](m);
 
     return cancel;
 }

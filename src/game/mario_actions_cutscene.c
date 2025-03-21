@@ -2642,62 +2642,62 @@ s32 mario_execute_cutscene_action(struct MarioState *m) {
     if (check_for_instant_quicksand(m)) {
         return TRUE;
     }
-
-    /* clang-format off */
-    switch (m->action) {
-        case ACT_DISAPPEARED:                cancel = act_disappeared(m);                break;
-        case ACT_INTRO_CUTSCENE:             cancel = act_intro_cutscene(m);             break;
-        case ACT_STAR_DANCE_EXIT:            cancel = act_star_dance(m);                 break;
-        case ACT_STAR_DANCE_NO_EXIT:         cancel = act_star_dance(m);                 break;
-        case ACT_STAR_DANCE_WATER:           cancel = act_star_dance_water(m);           break;
-        case ACT_FALL_AFTER_STAR_GRAB:       cancel = act_fall_after_star_grab(m);       break;
-        case ACT_READING_AUTOMATIC_DIALOG:   cancel = act_reading_automatic_dialog(m);   break;
-        case ACT_READING_NPC_DIALOG:         cancel = act_reading_npc_dialog(m);         break;
-        case ACT_DEBUG_FREE_MOVE:            cancel = act_debug_free_move(m);            break;
-        case ACT_READING_SIGN:               cancel = act_reading_sign(m);               break;
-        case ACT_JUMBO_STAR_CUTSCENE:        cancel = act_jumbo_star_cutscene(m);        break;
-        case ACT_WAITING_FOR_DIALOG:         cancel = act_waiting_for_dialog(m);         break;
-        case ACT_STANDING_DEATH:             cancel = act_standing_death(m);             break;
-        case ACT_QUICKSAND_DEATH:            cancel = act_quicksand_death(m);            break;
-        case ACT_ELECTROCUTION:              cancel = act_electrocution(m);              break;
-        case ACT_SUFFOCATION:                cancel = act_suffocation(m);                break;
-        case ACT_DEATH_ON_STOMACH:           cancel = act_death_on_stomach(m);           break;
-        case ACT_DEATH_ON_BACK:              cancel = act_death_on_back(m);              break;
-        case ACT_EATEN_BY_BUBBA:             cancel = act_eaten_by_bubba(m);             break;
-        case ACT_END_PEACH_CUTSCENE:         cancel = act_end_peach_cutscene(m);         break;
-        case ACT_CREDITS_CUTSCENE:           cancel = act_credits_cutscene(m);           break;
-        case ACT_END_WAVING_CUTSCENE:        cancel = act_end_waving_cutscene(m);        break;
-        case ACT_PULLING_DOOR:
-        case ACT_PUSHING_DOOR:               cancel = act_going_through_door(m);         break;
-        case ACT_WARP_DOOR_SPAWN:            cancel = act_warp_door_spawn(m);            break;
-        case ACT_EMERGE_FROM_PIPE:           cancel = act_emerge_from_pipe(m);           break;
-        case ACT_SPAWN_SPIN_AIRBORNE:        cancel = act_spawn_spin_airborne(m);        break;
-        case ACT_SPAWN_SPIN_LANDING:         cancel = act_spawn_spin_landing(m);         break;
-        case ACT_EXIT_AIRBORNE:              cancel = act_exit_airborne(m);              break;
-        case ACT_EXIT_LAND_SAVE_DIALOG:      cancel = act_exit_land_save_dialog(m);      break;
-        case ACT_DEATH_EXIT:                 cancel = act_death_exit(m);                 break;
-        case ACT_UNUSED_DEATH_EXIT:          cancel = act_unused_death_exit(m);          break;
-        case ACT_FALLING_DEATH_EXIT:         cancel = act_falling_death_exit(m);         break;
-        case ACT_SPECIAL_EXIT_AIRBORNE:      cancel = act_special_exit_airborne(m);      break;
-        case ACT_SPECIAL_DEATH_EXIT:         cancel = act_special_death_exit(m);         break;
-        case ACT_FALLING_EXIT_AIRBORNE:      cancel = act_falling_exit_airborne(m);      break;
-        case ACT_UNLOCKING_KEY_DOOR:         cancel = act_unlocking_key_door(m);         break;
-        case ACT_UNLOCKING_STAR_DOOR:        cancel = act_unlocking_star_door(m);        break;
-        case ACT_ENTERING_STAR_DOOR:         cancel = act_entering_star_door(m);         break;
-        case ACT_SPAWN_NO_SPIN_AIRBORNE:     cancel = act_spawn_no_spin_airborne(m);     break;
-        case ACT_SPAWN_NO_SPIN_LANDING:      cancel = act_spawn_no_spin_landing(m);      break;
-        case ACT_BBH_ENTER_JUMP:             cancel = act_bbh_enter_jump(m);             break;
-        case ACT_BBH_ENTER_SPIN:             cancel = act_bbh_enter_spin(m);             break;
-        case ACT_TELEPORT_FADE_OUT:          cancel = act_teleport_fade_out(m);          break;
-        case ACT_TELEPORT_FADE_IN:           cancel = act_teleport_fade_in(m);           break;
-        case ACT_SHOCKED:                    cancel = act_shocked(m);                    break;
-        case ACT_SQUISHED:                   cancel = act_squished(m);                   break;
-        case ACT_HEAD_STUCK_IN_GROUND:       cancel = act_head_stuck_in_ground(m);       break;
-        case ACT_BUTT_STUCK_IN_GROUND:       cancel = act_butt_stuck_in_ground(m);       break;
-        case ACT_FEET_STUCK_IN_GROUND:       cancel = act_feet_stuck_in_ground(m);       break;
-        case ACT_PUTTING_ON_CAP:             cancel = act_putting_on_cap(m);             break;
-    }
-    /* clang-format on */
+    
+    typedef s32 (*MarioActionFunc)(struct MarioState *);
+    static const MarioActionFunc kFuncs[] = {
+        [ 0xff & ACT_DISAPPEARED ]              = act_disappeared,
+        [ 0xff & ACT_INTRO_CUTSCENE ]           = act_intro_cutscene,
+        [ 0xff & ACT_STAR_DANCE_EXIT ]          = act_star_dance,
+        [ 0xff & ACT_STAR_DANCE_NO_EXIT ]       = act_star_dance,
+        [ 0xff & ACT_STAR_DANCE_WATER ]         = act_star_dance_water,
+        [ 0xff & ACT_FALL_AFTER_STAR_GRAB ]     = act_fall_after_star_grab,
+        [ 0xff & ACT_READING_AUTOMATIC_DIALOG ] = act_reading_automatic_dialog,
+        [ 0xff & ACT_READING_NPC_DIALOG ]       = act_reading_npc_dialog,
+        [ 0xff & ACT_DEBUG_FREE_MOVE ]          = act_debug_free_move,
+        [ 0xff & ACT_READING_SIGN ]             = act_reading_sign,
+        [ 0xff & ACT_JUMBO_STAR_CUTSCENE ]      = act_jumbo_star_cutscene,
+        [ 0xff & ACT_WAITING_FOR_DIALOG ]       = act_waiting_for_dialog,
+        [ 0xff & ACT_STANDING_DEATH ]           = act_standing_death,
+        [ 0xff & ACT_QUICKSAND_DEATH ]          = act_quicksand_death,
+        [ 0xff & ACT_ELECTROCUTION ]            = act_electrocution,
+        [ 0xff & ACT_SUFFOCATION ]              = act_suffocation,
+        [ 0xff & ACT_DEATH_ON_STOMACH ]         = act_death_on_stomach,
+        [ 0xff & ACT_DEATH_ON_BACK ]            = act_death_on_back,
+        [ 0xff & ACT_EATEN_BY_BUBBA ]           = act_eaten_by_bubba,
+        [ 0xff & ACT_END_PEACH_CUTSCENE ]       = act_end_peach_cutscene,
+        [ 0xff & ACT_CREDITS_CUTSCENE ]         = act_credits_cutscene,
+        [ 0xff & ACT_END_WAVING_CUTSCENE ]      = act_end_waving_cutscene,
+        [ 0xff & ACT_PULLING_DOOR ]             = act_going_through_door,
+        [ 0xff & ACT_PUSHING_DOOR ]             = act_going_through_door,
+        [ 0xff & ACT_WARP_DOOR_SPAWN ]          = act_warp_door_spawn,
+        [ 0xff & ACT_EMERGE_FROM_PIPE ]         = act_emerge_from_pipe,
+        [ 0xff & ACT_SPAWN_SPIN_AIRBORNE ]      = act_spawn_spin_airborne,
+        [ 0xff & ACT_SPAWN_SPIN_LANDING ]       = act_spawn_spin_landing,
+        [ 0xff & ACT_EXIT_AIRBORNE ]            = act_exit_airborne,
+        [ 0xff & ACT_EXIT_LAND_SAVE_DIALOG ]    = act_exit_land_save_dialog,
+        [ 0xff & ACT_DEATH_EXIT ]               = act_death_exit,
+        [ 0xff & ACT_UNUSED_DEATH_EXIT ]        = act_unused_death_exit,
+        [ 0xff & ACT_FALLING_DEATH_EXIT ]       = act_falling_death_exit,
+        [ 0xff & ACT_SPECIAL_EXIT_AIRBORNE ]    = act_special_exit_airborne,
+        [ 0xff & ACT_SPECIAL_DEATH_EXIT ]       = act_special_death_exit,
+        [ 0xff & ACT_FALLING_EXIT_AIRBORNE ]    = act_falling_exit_airborne,
+        [ 0xff & ACT_UNLOCKING_KEY_DOOR ]       = act_unlocking_key_door,
+        [ 0xff & ACT_UNLOCKING_STAR_DOOR ]      = act_unlocking_star_door,
+        [ 0xff & ACT_ENTERING_STAR_DOOR ]       = act_entering_star_door,
+        [ 0xff & ACT_SPAWN_NO_SPIN_AIRBORNE ]   = act_spawn_no_spin_airborne,
+        [ 0xff & ACT_SPAWN_NO_SPIN_LANDING ]    = act_spawn_no_spin_landing,
+        [ 0xff & ACT_BBH_ENTER_JUMP ]           = act_bbh_enter_jump,
+        [ 0xff & ACT_BBH_ENTER_SPIN ]           = act_bbh_enter_spin,
+        [ 0xff & ACT_TELEPORT_FADE_OUT ]        = act_teleport_fade_out,
+        [ 0xff & ACT_TELEPORT_FADE_IN ]         = act_teleport_fade_in,
+        [ 0xff & ACT_SHOCKED ]                  = act_shocked,
+        [ 0xff & ACT_SQUISHED ]                 = act_squished,
+        [ 0xff & ACT_HEAD_STUCK_IN_GROUND ]     = act_head_stuck_in_ground,
+        [ 0xff & ACT_BUTT_STUCK_IN_GROUND ]     = act_butt_stuck_in_ground,
+        [ 0xff & ACT_FEET_STUCK_IN_GROUND ]     = act_feet_stuck_in_ground,
+        [ 0xff & ACT_PUTTING_ON_CAP ]           = act_putting_on_cap,
+    };
+    cancel = kFuncs[m->action & 0xff](m);
 
     if (!cancel && (m->input & INPUT_IN_WATER)) {
         m->particleFlags |= PARTICLE_IDLE_WATER_WAVE;
