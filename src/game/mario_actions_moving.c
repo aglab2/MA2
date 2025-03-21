@@ -1290,23 +1290,25 @@ s32 act_rail_grind(struct MarioState *m)
         }
         
         if (0 == m->actionTimer)
-        {
-            if (m->input & INPUT_B_PRESSED)
+        {        
+            if (m->input & INPUT_B_PRESSED && absf(m->forwardVel) > 30.0f)
             {
+                play_sound(SOUND_MARIO_HOOHOO, m->marioObj->header.gfx.cameraToObject);
                 m->actionTimer++;
             }
         }
         else
         {
             m->actionTimer++;
-            if (m->actionTimer > 10)
+            if (m->actionTimer > 15)
             {
                 m->actionTimer = 0;
             }
         }
     }
 
-    if (zipline_step(m->actionTimer)) {
+    int clampedTimer = m->actionTimer > 10 ? 10 : m->actionTimer;
+    if (zipline_step(clampedTimer)) {
         int butt = 0;
         if (gIsGravityFlipped)
             m->pos[1] = 9000.f - m->pos[1];
@@ -1326,11 +1328,11 @@ s32 act_rail_grind(struct MarioState *m)
     m->marioObj->header.gfx.pos[0] = m->pos[0];
     if (gIsGravityFlipped)
     {
-        m->marioObj->header.gfx.pos[1] = 9000.f - m->pos[1] - m->actionTimer * (10 - m->actionTimer);
+        m->marioObj->header.gfx.pos[1] = 9000.f - m->pos[1] - clampedTimer * (10 - clampedTimer) * 3.f;
     }
     else
     {
-        m->marioObj->header.gfx.pos[1] = m->pos[1] + m->actionTimer * (10 - m->actionTimer);
+        m->marioObj->header.gfx.pos[1] = m->pos[1] + clampedTimer * (10 - clampedTimer) * 3.f;
     }
 
     m->marioObj->header.gfx.pos[2] = m->pos[2];
@@ -1349,7 +1351,7 @@ s32 act_rail_grind(struct MarioState *m)
     set_mario_animation(m, anim);
     tilt_body_ground_shell(m, startYaw);
     m->marioObj->header.gfx.angle[0] = m->faceAngle[0];
-    m->marioObj->header.gfx.angle[1] = m->faceAngle[1] + 0x10000 / 10 * m->actionTimer;
+    m->marioObj->header.gfx.angle[1] = m->faceAngle[1] + 0x10000 / 10 * clampedTimer;
     m->marioObj->header.gfx.angle[2] = m->faceAngle[2];
     play_sound(SOUND_MOVING_TERRAIN_RIDING_SHELL + m->terrainSoundAddend,
                 m->marioObj->header.gfx.cameraToObject);
