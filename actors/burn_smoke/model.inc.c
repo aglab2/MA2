@@ -38,7 +38,7 @@ Gfx burn_smoke_seg4_sub_dl_begin_alpha[] = {
     gsDPSetCombineMode(G_CC_MODULATERGBA, G_CC_MODULATERGBA),
 #endif
     gsSPClearGeometryMode(G_LIGHTING),
-    gsDPSetAlphaCompare(G_AC_DITHER),
+    gsDPSetAlphaCompareReal(G_AC_DITHER),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPLoadTextureBlock(burn_smoke_seg4_sub_dl_texture, G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
     gsSPEndDisplayList(),
@@ -50,7 +50,7 @@ const Gfx burn_smoke_seg4_sub_dl_end[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPSetGeometryMode(G_LIGHTING),
-    gsDPSetAlphaCompare(G_AC_NONE),
+    gsDPSetAlphaCompareReal(G_AC_NONE),
     gsSPEndDisplayList(),
 };
 
