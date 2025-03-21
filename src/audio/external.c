@@ -61,10 +61,10 @@ s32 gAudioErrorFlags2 = 0;
 #else
 s32 gAudioErrorFlags = 0;
 #endif
-s32 sGameLoopTicked = 0;
+static s32 sGameLoopTicked = 0;
 
-u8 sNumProcessedSoundRequests = 0;
-u8 sSoundRequestCount = 0;
+static u8 sNumProcessedSoundRequests = 0;
+static u8 sSoundRequestCount = 0;
 
 // Music dynamic tables. A dynamic describes which volumes to apply to which
 // channels of a sequence (I think?), and different parts of a level can have
@@ -92,10 +92,10 @@ enum MusicDynConditionTypes {
 #define DYN3(cond1, val1, cond2, val2, cond3, val3, res)                                               \
     (s16)(1 << (15 - cond1) | 1 << (15 - cond2) | 1 << (15 - cond3) | res), val1, val2, val3
 
-s16 sDynNone[] = { SEQ_SOUND_PLAYER, 0 };
+static s16 sDynNone[] = { SEQ_SOUND_PLAYER, 0 };
 
-u8 sCurrentMusicDynamic = 0xff;
-u8 sBackgroundMusicForDynamics = SEQUENCE_NONE;
+static u8 sCurrentMusicDynamic = 0xff;
+static u8 sBackgroundMusicForDynamics = SEQUENCE_NONE;
 
 #define STUB_LEVEL(_0, _1, _2, _3, _4, _5, _6, leveldyn, _8) leveldyn,
 #define DEFINE_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8, leveldyn, _10) leveldyn,
