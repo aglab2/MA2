@@ -267,17 +267,20 @@ SECTIONS
       BUILD_DIR/src/engine/graph_node.o(.text*);
       BUILD_DIR/src/engine*.o(.text*);
       BUILD_DIR/src/hacktice*.o(.text*);
+      *ltrans.o(.text*);
       _engineSegmentTextEnd = .;
       /* data */
       BUILD_DIR/src/game*.o(.data*);
       BUILD_DIR/src/engine*.o(.data*);
       BUILD_DIR/src/usb*.o(.data*);
       BUILD_DIR/src/hacktice*.o(.data*);
+      *ltrans.o(.data*);
       /* rodata */
       BUILD_DIR/src/game*.o(.rodata*);
       BUILD_DIR/src/engine*.o(.rodata*);
       BUILD_DIR/src/usb*.o(.rodata*);
       BUILD_DIR/src/hacktice*.o(.rodata*);
+      *ltrans.o(.rodata*);
       . = ALIGN(0x10);
    }
    END_SEG(engine)
@@ -291,6 +294,7 @@ SECTIONS
       BUILD_DIR/src/usb*.o(.sdata*);
       BUILD_DIR/src/menu*.o(.sdata*);
       BUILD_DIR/src/hacktice*.o(.sdata*);
+      *ltrans.o(.sdata*);
    }
    END_SEG(sdata)
    BEGIN_NOLOAD(sbss)
@@ -307,6 +311,7 @@ SECTIONS
       BUILD_DIR/src/menu*.o(.sbss*);
       BUILD_DIR/src/hacktice*.o(.sbss*);
       BUILD_DIR/src/game/cold*.o(.sbss*);
+      *ltrans.o(.sbss*);
       . = ALIGN(0x40);
    }
    END_NOLOAD(sbss)
@@ -321,6 +326,7 @@ SECTIONS
       _hackticeStateDataEnd0 = .;
       BUILD_DIR/src/hacktice*.o(.bss*);
       BUILD_DIR/src/game/cold*.o(.bss*);
+      *ltrans.o(.bss*);
       . = ALIGN(0x40);
    }
    END_NOLOAD(engine)

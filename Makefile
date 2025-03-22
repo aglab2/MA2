@@ -479,8 +479,10 @@ else
 endif
 ifneq ($(call find-command,mips-n64-ld),)
 LD        := mips-n64-ld
+GOLD      := mips-n64-ld
 else
 LD        := tools/mips64-elf-ld
+GOLD      := tools/mips64-elf-ld
 endif
 AR        := $(CROSS)ar
 OBJDUMP   := $(CROSS)objdump
@@ -860,9 +862,12 @@ $(BUILD_DIR)/src/game/texscroll.o: src/game/texscroll.c
 $(BUILD_DIR)/src/game/behavior_data.o: src/game/behavior_data.c
 	$(call print,Compiling behavior_data:,$<,$@)
 	$(V)$(CC) -gdwarf-4 -c -G 0 $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/$*.d  -o $@ $<
+$(BUILD_DIR)/src/game/gcc.o: src/game/gcc.c
+	$(call print,Compiling gcc with sdata no lto:,$<,$@)
+	$(V)$(CC) -gdwarf-4 -c -G 21000 $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/$*.d  -o $@ $<
 $(BUILD_DIR)/src/%.o: src/%.c
 	$(call print,Compiling with sdata:,$<,$@)
-	$(V)$(CC) -gdwarf-4 -c -G 21000 $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/$*.d  -o $@ $<
+	$(V)$(CC) -gdwarf-4 -c -G 21000 -flto $(CFLAGS) -MMD -MF $(BUILD_DIR)/src/$*.d  -o $@ $<
 
 $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
@@ -906,7 +911,7 @@ $(BUILD_DIR)/sm64_prelim.ld: sm64.ld $(O_FILES) $(YAY0_OBJ_FILES) $(SEG_FILES) $
 
 $(BUILD_DIR)/sm64_prelim.elf: $(BUILD_DIR)/sm64_prelim.ld
 	@$(PRINT) "$(GREEN)Linking Preliminary ELF file:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(LD) --gc-sections -L $(BUILD_DIR) -T $< -Map $(BUILD_DIR)/sm64_prelim.map --no-check-sections $(addprefix -R ,$(SEG_FILES)) -o $@ $(O_FILES) -L$(LIBS_DIR) -l$(ULTRALIB) -Llib $(LINK_LIBRARIES) -u sprintf -u osMapTLB
+	$(V)$(GOLD) -plugin=D:\crash\sdk\libexec\gcc\mips-elf\12.2.0\liblto_plugin.dll --plugin-opt=D:\crash\gcc_compile\gcc\lto-wrapper.exe --plugin-opt=-fresolution=ma2 --gc-sections -L $(BUILD_DIR) -T $< -Map $(BUILD_DIR)/sm64_prelim.map --no-check-sections $(addprefix -R ,$(SEG_FILES)) -o $@ $(O_FILES) -L$(LIBS_DIR) -l$(ULTRALIB) -Llib $(LINK_LIBRARIES) -u sprintf -u osMapTLB
 
 $(BUILD_DIR)/goddard.txt: $(BUILD_DIR)/sm64_prelim.elf
 	$(call print,Getting Goddard size...)
@@ -920,7 +925,7 @@ $(BUILD_DIR)/asm/debug/map.o: asm/debug/map.s $(BUILD_DIR)/sm64_prelim.elf
 # Link SM64 ELF file
 $(ELF): $(BUILD_DIR)/sm64_prelim.elf $(BUILD_DIR)/asm/debug/map.o $(O_FILES) $(YAY0_OBJ_FILES) $(SEG_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/libz.a $(BUILD_DIR)/libgoddard.a
 	@$(PRINT) "$(GREEN)Linking ELF file:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(LD) --gc-sections -L $(BUILD_DIR) -T $(BUILD_DIR)/$(LD_SCRIPT) -T goddard.txt -Map $(BUILD_DIR)/sm64.$(VERSION).map --no-check-sections $(addprefix -R ,$(SEG_FILES)) -o $@ $(O_FILES) -L$(LIBS_DIR) -l$(ULTRALIB) -Llib $(LINK_LIBRARIES) -u sprintf -u osMapTLB
+	$(V)$(GOLD) -plugin=D:\crash\sdk\libexec\gcc\mips-elf\12.2.0\liblto_plugin.dll --plugin-opt=D:\crash\gcc_compile\gcc\lto-wrapper.exe --plugin-opt=-fresolution=ma2 --gc-sections -L $(BUILD_DIR) -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(BUILD_DIR)/sm64.$(VERSION).map --no-check-sections $(addprefix -R ,$(SEG_FILES)) -o $@ $(O_FILES) -L$(LIBS_DIR) -l$(ULTRALIB) -Llib $(LINK_LIBRARIES) -u sprintf -u osMapTLB
 
 # Build ROM
 ifeq (n,$(findstring n,$(firstword -$(MAKEFLAGS))))
