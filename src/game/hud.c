@@ -566,16 +566,8 @@ static void render_star_display()
 
     gSPDisplayList(gDisplayListHead++, dl_hud_img_begin);
     {
-        int id = 0;
-        while (id < sStarIds)
-        {
-            if (collectedMask & (1ULL << id))
-                break;
-
-            id++;
-        }
-
-        if (id != sStarIds)
+        const u64 fullClearMask = (1ULL << sStarIds) - 1;
+        if (fullClearMask != (collectedMask & fullClearMask))
         {
             struct Object* star = nearest_star_object_with_bparam1(collectedMask);
             if (star)
