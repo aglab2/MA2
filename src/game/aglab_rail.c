@@ -85,7 +85,7 @@ static f32 traj_length(const s16* traj)
 }
 
 extern u8 gIsGravityFlipped;
-static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop, int it, int* hasTraj)
+static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop, int it)
 {
     (void) it;
     if (sCancelTimeout && traj == sTrajectory && sTrajectoryArea == gCurrAreaIndex)
@@ -140,12 +140,6 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
 
     if (minPoint >= 0)
     {
-        *hasTraj = 1;
-        if (traj == sTrajectory && sTrajectoryArea == gCurrAreaIndex)
-        {
-            return 0;
-        }
-
         sPosX = closestPoint[0];
         sPosY = closestPoint[1];
         sPosZ = closestPoint[2];
@@ -213,19 +207,15 @@ int zipline_cancel()
 
     trajectories = segmented_to_virtual(trajectories);
     int it = 0;
-    int hasTraj = 0;
     while (trajectories->rail)
     {
         const Trajectory* traj = segmented_to_virtual(trajectories->rail);
         const LDLDesc* loop = trajectories->loop;
-        if (handle_trajectory_cancel(traj, loop, it++, &hasTraj))
+        if (handle_trajectory_cancel(traj, loop, it++))
             return 1;
 
         trajectories++;
     }
-
-    //if (!hasTraj)
-    //    sTrajectory = NULL;
 
 #if 0
     print_text_fmt_int(20, 20, "%d", it);

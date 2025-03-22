@@ -1946,11 +1946,9 @@ s32 act_vertical_wind(struct MarioState *m) {
         set_mario_animation(m, MARIO_ANIM_AIRBORNE_ON_STOMACH);
     }
 
-    if (gCurrCourseNum != COURSE_EE)
-    {
-        update_air_without_turn(m);
-    }
-    else
+#if 0
+    update_air_without_turn(m);
+#else
     {
         m->forwardVel = intendedMag * coss(intendedDYaw);
         m->slideVelX = m->intendedMag * sins(m->intendedYaw);
@@ -1958,6 +1956,7 @@ s32 act_vertical_wind(struct MarioState *m) {
         m->vel[0] = m->slideVelX;
         m->vel[2] = m->slideVelZ;
     }
+#endif
 
     switch (perform_air_step(m, 0)) {
         case AIR_STEP_LANDED:
