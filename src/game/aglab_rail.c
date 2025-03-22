@@ -97,7 +97,7 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
 
     Vec3f Q = { gMarioStates->pos[0], gIsGravityFlipped ? 9000.f - (40.f + gMarioStates->pos[1]) : (40.f + gMarioStates->pos[1]), gMarioStates->pos[2] };
     loop = loop ? segmented_to_virtual(loop) : NULL;
-    f32 minDist = (loop && loop->dontFlip) ? (300.f * 300.f) : (90.f * 90.f);
+    f32 minDist = (loop && loop->dontFlip) ? (500.f * 500.f) : (90.f * 90.f);
     f32 DBGminDist = 100000000000.f;
     Vec3f closestPoint = {0, 0, 0};
     f32 minT = 0;
