@@ -4,7 +4,7 @@ extern const Trajectory* sTrajectory;
 void bhv_gf_vine_loop()
 {
     if (0 == o->oAction)
-    {        
+    {
         s16* traj = segmented_to_virtual(gf_area_2_spline_NurbsCurve_VineLoop_005);
         f32 x, y, z;
         if (gMarioStates->action == ACT_RAIL_GRIND && sTrajectory == traj)
@@ -24,6 +24,15 @@ void bhv_gf_vine_loop()
             x = traj[1];
             y = traj[2];
             z = traj[3];
+
+            f32 dx = x - gMarioStates->pos[0];
+            f32 dy = y - gMarioStates->pos[1];
+            f32 dz = z - gMarioStates->pos[2];
+            f32 dist = dx * dx + dy * dy + dz * dz;
+            if (dist < 100.f * 100.f)
+            {
+                set_mario_action(gMarioStates, ACT_JUMP, 0);
+            }
         }
 
         o->oPosY = y;
