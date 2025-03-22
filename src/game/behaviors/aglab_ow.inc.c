@@ -175,7 +175,7 @@ void bhv_ow_lock_loop()
         }
         else
         {
-            if ((1ULL << 63) && save_file_get_star_flags(gCurrSaveFileNum - 1, o->oBehParams2ndByte))
+            if (((1ULL << 63) & save_file_get_star_flags(gCurrSaveFileNum - 1, o->oBehParams2ndByte)))
             {
                 o->activeFlags = 0;
             }
