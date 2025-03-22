@@ -1257,7 +1257,7 @@ void print_save_file_star_count(s8 fileIndex, s16 x, s16 y) {
                                                        COURSE_NUM_TO_INDEX(COURSE_MIN),
                                                        COURSE_NUM_TO_INDEX(COURSE_MAX));
 
-        sprintf(starCountText, "%d.%02d%%", starCount / 100, starCount % 10);
+        sprintf(starCountText, "%d.%01d%%", starCount / 10, starCount % 10);
         print_hud_lut_string(x, y, starCountText);
     } else {
         // Print "new" text

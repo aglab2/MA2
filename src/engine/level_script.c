@@ -455,6 +455,8 @@ static void level_cmd_lvl_config(void) {
     sCurrentCmd = CMD_NEXT;
 }
 
+// as translated from area coordinates to global coordinates
+Vec3f gGlobalStarLocations[48] __attribute__((section(".bss.gGlobalStarLocations")));
 u8 sStarIds;
 u8 sCheckpointIds;
 
@@ -498,6 +500,7 @@ static void patch_behav_params(struct SpawnInfo *spawnInfo) {
      || spawnInfo->behaviorScript == bhvCETimerStar
     ) {
         u32 rawArgs = spawnInfo->behaviorArg & 0x00ffffff;
+        vec3_sum(gGlobalStarLocations[sStarIds], spawnInfo->startPos, gAreas[sCurrAreaIndex].renderOffset);
         spawnInfo->behaviorArg = rawArgs | ((u32) (sStarIds++)) << 24;
     }
 

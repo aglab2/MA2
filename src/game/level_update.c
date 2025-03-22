@@ -545,16 +545,15 @@ static const IWDHeader** kWarpHeaders[] = {
     [ LEVEL_IG ] = iw_descs_ig,
 };
 
-static void handle_iw_area_desc(int* newArea, const IWDirectionAreas* desc)
+static void handle_iw_area_desc(int* newArea, const IWDirectionAreas* desc, f32 warpDistance)
 {
-    const f32 kWarpDistance = 21000.f;
-    if (desc->x_low && gMarioStates->pos[0] < -kWarpDistance)
+    if (desc->x_low && gMarioStates->pos[0] < -warpDistance)
         *newArea = desc->x_low;
-    if (desc->x_high && gMarioStates->pos[0] > kWarpDistance)
+    if (desc->x_high && gMarioStates->pos[0] > warpDistance)
         *newArea = desc->x_high;
-    if (desc->z_low && gMarioStates->pos[2] < -kWarpDistance)
+    if (desc->z_low && gMarioStates->pos[2] < -warpDistance)
         *newArea = desc->z_low;
-    if (desc->z_high && gMarioStates->pos[2] > kWarpDistance)
+    if (desc->z_high && gMarioStates->pos[2] > warpDistance)
         *newArea = desc->z_high;
 }
 
@@ -587,18 +586,19 @@ void check_instant_warp(void) {
             switch (header->type)
             {
                 case IWDT_DIRECTIONS:
+                case IWDT_DIRECTIONS_HALF:
                 {
                     const IWDirectionAreasDesc* desc = (const IWDirectionAreasDesc*)header;
-                    handle_iw_area_desc(&newArea, &desc->areas);
+                    handle_iw_area_desc(&newArea, &desc->areas, header->type == IWDT_DIRECTIONS_HALF ? 20100.f : 21000.f);
                     break;
                 }
                 case IWDT_UP_DOWN_DIRECTIONS:
                 {
                     const IWDirectionUpDownDirectionsAreasDesc* desc = (const IWDirectionUpDownDirectionsAreasDesc*)header;
                     if (gMarioStates->pos[1] > 0)
-                        handle_iw_area_desc(&newArea, &desc->areas.y_high);
+                        handle_iw_area_desc(&newArea, &desc->areas.y_high, 21000.f);
                     else
-                        handle_iw_area_desc(&newArea, &desc->areas.y_low);
+                        handle_iw_area_desc(&newArea, &desc->areas.y_low, 21000.f);
 
                     break;
                 }

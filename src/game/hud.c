@@ -505,6 +505,9 @@ extern const Texture blue_hud_radar_texs[];
 extern struct Object *gMarioObject;
 extern struct ObjectNode *gObjectLists;
 
+extern Vec3f gGlobalStarLocations[48] __attribute__((section(".bss.gGlobalStarLocations")));
+
+#if 0
 static struct Object *nearest_star_object_with_bparam1(u64 mask) {
     uintptr_t *behavior1 = segmented_to_virtual(bhvStar);
     uintptr_t *behavior2 = segmented_to_virtual(bhvHiddenStar);
@@ -533,6 +536,30 @@ static struct Object *nearest_star_object_with_bparam1(u64 mask) {
 
     return closestObj;
 }
+#else
+static int nearest_star_location(int scanAmount, u64 mask, f32 mgx, f32 mgy, f32 mgz)
+{
+    Vec3f marioPos = { mgx, mgy, mgz };
+    int closestId = -1;
+    f32 minDist = 20000.f;
+    for (int i = 0; i < scanAmount; i++)
+    {
+        if (((1ULL << i) & mask))
+            continue;
+
+        Vec3f diff;
+        vec3_diff(diff, marioPos, gGlobalStarLocations[i]);
+        f32 d = vec3_mag(diff);
+        if (d < minDist)
+        {
+            minDist = d;
+            closestId = i;
+        }
+    }
+
+    return closestId;
+}
+#endif
 
 extern u8 sStarIds;
 extern const int gLevelWithHardModes;
@@ -569,14 +596,25 @@ static void render_star_display()
         const u64 fullClearMask = (1ULL << sStarIds) - 1;
         if (fullClearMask != (collectedMask & fullClearMask))
         {
+#if 1
+            Vec3f marioGlobalPos;
+            // translate coordinated to global space - from u16 area to f32 area render offsetted
+            vec3_sum(marioGlobalPos, &gMarioObject->oPosVec, gCurrentArea->renderOffset);
+            int closestId = nearest_star_location(sStarIds, collectedMask, marioGlobalPos[0], marioGlobalPos[1], marioGlobalPos[2]);
+            if (closestId >= 0)
+#else
             struct Object* star = nearest_star_object_with_bparam1(collectedMask);
             if (star)
+#endif
             {
-                f32 x = star->oPosX - gMarioObject->oPosX;
-                f32 y = star->oPosY - gMarioObject->oPosY;
-                f32 z = star->oPosZ - gMarioObject->oPosZ;
+                Vec3f diff;
+#if 1
+                vec3_diff(diff, marioGlobalPos, gGlobalStarLocations[closestId]);
+#else
+                vec3_diff(diff, &gMarioObject->oPosVec, &star->oPosVec);
+#endif
+                f32 d = sqrtf(diff[0] * diff[0] + diff[1] * diff[1] * 3.f + diff[2] * diff[2]);
 
-                f32 d = sqrtf(x * x + y * y * 3.f + z * z);
                 if (d < 100.f)
                     d = 100.f;
 

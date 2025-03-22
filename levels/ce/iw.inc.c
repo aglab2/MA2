@@ -27,7 +27,7 @@ static IWDirectionAreasDesc iw_ce_area5 = {
 };
 
 static IWDirectionAreasDesc iw_ce_area6 = {
-    { IWDT_DIRECTIONS },
+    { IWDT_DIRECTIONS_HALF },
     { .x_low = 5, .z_high = 7, },
 };
 
