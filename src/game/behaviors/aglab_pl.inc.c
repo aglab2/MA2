@@ -1,3 +1,53 @@
+extern s8 gDialogCameraAngleIndex;
+void bhv_pl_cage_init()
+{
+    int active = 0;
+    int checkpointTaken = gDialogCameraAngleIndex;
+    switch (o->oBehParams2ndByte)
+    {
+        case 0:
+            active = checkpointTaken > 1;
+            break;
+        case 1:
+            active = checkpointTaken > 2;
+            break;
+        case 2:
+            active = checkpointTaken > 3;
+            break;
+        case 3:
+            active = checkpointTaken > 3;
+            break;
+        case 4:
+            active = checkpointTaken > 4;
+            break;
+        case 5:
+            active = checkpointTaken > 4;
+            break;
+        case 6:
+            active = checkpointTaken > 4;
+            break;
+        case 7:
+            active = checkpointTaken > 4;
+            break;
+        case 8:
+            active = checkpointTaken > 5;
+            break;
+        case 9:
+            break;
+        case 10:
+            break;
+        case 11:
+            break;
+        case 12:
+            break;
+    }
+
+    if (active)
+    {
+        o->oAction = 1;
+    }
+}
+
 void bhv_pl_cage_loop()
 {
     if (0 == o->oAction)

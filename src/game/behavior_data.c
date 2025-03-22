@@ -5858,11 +5858,13 @@ const BehaviorScript bhvPLElv[] = {
 };
 
 extern const Collision pl_cage_collision[]; 
+extern void bhv_pl_cage_init();
 extern void bhv_pl_cage_loop();
 const BehaviorScript bhvPLCage[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     LOAD_COLLISION_DATA(pl_cage_collision),
+    CALL_NATIVE(bhv_pl_cage_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_pl_cage_loop),
         CALL_NATIVE(load_object_collision_model),
