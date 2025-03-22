@@ -1,6 +1,7 @@
 #include <PR/ultratypes.h>
 #include "types.h"
 #include "game/area.h"
+#include "game/game_init.h"
 #include "game/level_update.h"
 #include "rail_desc.h"
 #include "engine/math_util.h"
@@ -18,6 +19,7 @@ static f32 sPosY;
 static f32 sPosZ;
 static f32 sForwardVelLimit = 0;
 static f32 sForwardVel = 0;
+static u32 sCancelDeadline = 0;
 static u8 sCancelTimeout = 0;
 static u8 sAngleFlipped = 0;
 static u8 sTrajectoryArea = 0;
@@ -88,7 +90,7 @@ extern u8 gIsGravityFlipped;
 static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop, int it)
 {
     (void) it;
-    if (sCancelTimeout && traj == sTrajectory && sTrajectoryArea == gCurrAreaIndex)
+    if (sCancelDeadline > gGlobalTimer && traj == sTrajectory && sTrajectoryArea == gCurrAreaIndex)
     {
         return 0;
     }
@@ -194,7 +196,8 @@ int zipline_cancel()
 
     if (sCancelTimeout)
     {
-        sCancelTimeout--;
+        sCancelDeadline = gGlobalTimer + sCancelTimeout;
+        sCancelTimeout = 0;
     }
 
     const RailDesc** areaTrajectories = gRailDesc;
