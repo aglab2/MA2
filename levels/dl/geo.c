@@ -21,3 +21,7 @@
 
 #include "levels/dl/dl_vase/geo.inc.c"
 #include "levels/dl/dl_vase_break/geo.inc.c"
+#include "levels/dl/dl_crate/geo.inc.c"
+#include "levels/dl/dl_crate_dark/geo.inc.c"
+#include "levels/dl/dl_crate_break/geo.inc.c"
+#include "levels/dl/dl_cratedark_break/geo.inc.c"

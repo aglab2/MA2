@@ -9,7 +9,7 @@
 
 #include "config.h"
 
-#define TEST_LEVEL LEVEL_DC
+#define TEST_LEVEL LEVEL_DL
 
 extern const LevelScript level_main_scripts_entry[];
 const LevelScript level_script_entry[] = {

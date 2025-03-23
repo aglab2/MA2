@@ -1,0 +1,11 @@
+extern const GeoLayout dl_crate_geo[];
+extern u8 dl_crate_dz_dl_kanoe_tri128_ci4[];
+extern u8 dl_crate_dz_dl_kanoe_tri128_pal_rgba16[];
+extern u8 dl_crate_dz_dl_kanoe_deck64_ci4[];
+extern u8 dl_crate_dz_dl_kanoe_deck64_pal_rgba16[];
+extern u8 dl_crate_dz_dl_kanoe_blueline64_ci4[];
+extern u8 dl_crate_dz_dl_kanoe_blueline64_pal_rgba16[];
+extern Vtx dl_crate_dl_crate_mesh_layer_1_vtx_0[16];
+extern Vtx dl_crate_dl_crate_mesh_layer_1_vtx_1[4];
+extern Vtx dl_crate_dl_crate_mesh_layer_1_vtx_2[80];
+extern Gfx dl_crate_dl_crate_mesh_layer_1[];

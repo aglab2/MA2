@@ -17,4 +17,12 @@ extern const LevelScript level_dl_entry[];
 
 #include "levels/dl/dl_vase_break/geo_header.h"
 
+#include "levels/dl/dl_crate/geo_header.h"
+
+#include "levels/dl/dl_crate_dark/geo_header.h"
+
+#include "levels/dl/dl_crate_break/geo_header.h"
+
+#include "levels/dl/dl_cratedark_break/geo_header.h"
+
 #endif
