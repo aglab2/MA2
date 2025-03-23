@@ -1063,16 +1063,16 @@ static void apply_drag_to_value(f32 *value, f32 dragStrength) {
 
     if (*value != 0) {
         //! Can overshoot if |*value| > 1 / (dragStrength * 0.0001)
-        decel = sqr(*value) * (dragStrength * 0.0001L);
+        decel = sqr(*value) * (dragStrength * 0.0001f);
 
         if (*value > 0) {
             *value -= decel;
-            if (*value < 0.001L) {
+            if (*value < 0.001f) {
                 *value = 0;
             }
         } else {
             *value += decel;
-            if (*value > -0.001L) {
+            if (*value > -0.001f) {
                 *value = 0;
             }
         }
@@ -1134,7 +1134,7 @@ static void cur_obj_move_xz(f32 steepSlopeNormalY, s32 careAboutEdgesAndSteepSlo
 }
 
 static void cur_obj_move_update_underwater_flags(void) {
-    f32 decelY = (f32)(sqrtf(o->oVelY * o->oVelY) * (o->oDragStrength * 7.0f)) / 100.0L;
+    f32 decelY = (f32)(sqrtf(o->oVelY * o->oVelY) * (o->oDragStrength * 7.0f)) / 100.0f;
 
     if (o->oVelY > 0) {
         o->oVelY -= decelY;

@@ -54,5 +54,6 @@
     "33_ce2": [ "0C_extended_bank" ],
     "34_mh2": [ "0C_extended_bank" ],
     "35_fts": [ "0C_extended_bank" ],
-    "36_ig": [ "0C_extended_bank" ]
+    "36_ig": [ "0C_extended_bank" ],
+    "37_dl": [ "0C_extended_bank" ]
 }

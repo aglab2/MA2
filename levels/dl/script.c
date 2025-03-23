@@ -20,6 +20,7 @@ extern Gfx dl_skybox_skybox_mesh[];
 static struct LevelConfig cfg = {
 	.skybox = dl_skybox_skybox_mesh,
 };
+#define SEQ_LEVEL_GRASS 0x37
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_dl_entry[] = {
