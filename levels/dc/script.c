@@ -25,6 +25,7 @@ static struct LevelConfig cfg = {
 	.viewRangeMult = 0.5f,
 	.springDescs = spring_descs_dc,
 };
+#define bhvBreakable bhvBreakableShrinking
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_dc_entry[] = {

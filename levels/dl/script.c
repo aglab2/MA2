@@ -37,6 +37,8 @@ const LevelScript level_dl_entry[] = {
 	JUMP_LINK(script_func_global_1), 
 	JUMP_LINK(script_func_global_6), 
 	JUMP_LINK(script_func_global_14), 
+	LOAD_MODEL_FROM_GEO(MODEL_DL_VASE, dl_vase_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_DL_VASE_BREAK, dl_vase_break_geo),
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */

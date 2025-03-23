@@ -16,3 +16,5 @@
 #endif
 
 #include "levels/dl/dl_skybox/model.inc.c"
+#include "levels/dl/dl_vase/model.inc.c"
+#include "levels/dl/dl_vase_break/model.inc.c"

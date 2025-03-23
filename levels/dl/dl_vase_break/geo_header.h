@@ -1,0 +1,17 @@
+extern const GeoLayout dl_vase_break_geo[];
+extern u8 dl_vase_break_dz_dl_palmetto_leaf128_ci4[];
+extern u8 dl_vase_break_dz_dl_palmetto_leaf128_pal_rgba16[];
+extern u8 dl_vase_break_dz_dl_kanoe_deck64_ci4[];
+extern u8 dl_vase_break_dz_dl_kanoe_deck64_pal_rgba16[];
+extern Vtx dl_vase_break_001_object_00A26C84_mesh_layer_1_vtx_0[50];
+extern Vtx dl_vase_break_002_object_00A2682C_mesh_layer_1_vtx_0[13];
+extern Vtx dl_vase_break_003_object_00A26654_mesh_layer_1_vtx_0[32];
+extern Vtx dl_vase_break_004_object_00A26384_mesh_layer_1_vtx_0[37];
+extern Vtx dl_vase_break_005_object_00A26014_mesh_layer_1_vtx_0[16];
+extern Vtx dl_vase_break_006_object_00A25E6C_mesh_layer_1_vtx_0[55];
+extern Gfx dl_vase_break_001_object_00A26C84_mesh_layer_1[];
+extern Gfx dl_vase_break_002_object_00A2682C_mesh_layer_1[];
+extern Gfx dl_vase_break_003_object_00A26654_mesh_layer_1[];
+extern Gfx dl_vase_break_004_object_00A26384_mesh_layer_1[];
+extern Gfx dl_vase_break_005_object_00A26014_mesh_layer_1[];
+extern Gfx dl_vase_break_006_object_00A25E6C_mesh_layer_1[];

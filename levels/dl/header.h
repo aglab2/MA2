@@ -13,4 +13,8 @@ extern const LevelScript level_dl_entry[];
 #endif
 #include "levels/dl/dl_skybox/header.h"
 
+#include "levels/dl/dl_vase/geo_header.h"
+
+#include "levels/dl/dl_vase_break/geo_header.h"
+
 #endif

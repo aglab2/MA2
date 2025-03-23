@@ -18,3 +18,6 @@
 #else
 #include "levels/dl/visual/geo_lvl.inc.c"
 #endif
+
+#include "levels/dl/dl_vase/geo.inc.c"
+#include "levels/dl/dl_vase_break/geo.inc.c"
