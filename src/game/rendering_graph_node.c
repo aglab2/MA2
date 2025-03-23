@@ -500,7 +500,8 @@ static void apply_flipbooks(struct MasterLayer* masterLayer)
             }
             else
             {
-                *(u8**) &startDl[flipDls->offCI4] = flipData->ci4s + frame * 4096;
+                // offPal will correspond to the first entry for loadblock which we will need to use
+                *(u8**) &startDl[flipDls->offPal] = flipData->ci4s + frame * 4096;
             }
         }
 

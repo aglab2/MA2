@@ -77,8 +77,8 @@ static ALIGNED8 u8 water[] = {
 static struct FlipbookData flipbooks_xlu[] = {
     { LVL_BATCH_LAYER_TRANSPARENT_DL_DL_KD_DL_MIZU_001_PAL_RGBA16, 14, 2, .ci4s=mizu_ci4, .pals=mizu_pal, },
     { LVL_BATCH_LAYER_TRANSPARENT_DL_DL_KD_DL_MIZU_001_PAL_RGBA16_1, 14, 2, .ci4s=mizu_ci4, .pals=mizu_pal, },
-    // { LVL_BATCH_LAYER_TRANSPARENT_DL_DL_KD_DL_MIZU2_001_RGBA32, 14, 2, .ci4s=mizu2 },
-    // { LVL_BATCH_LAYER_TRANSPARENT_DL_DL_DZ_DL_WATER256A_RGBA32, 4, 4, .ci4s=water, .tileScrollX = 2 },
+    { LVL_BATCH_LAYER_TRANSPARENT_DL_DL_KD_DL_MIZU2_001_RGBA32, 14, 8, .ci4s=mizu2, .tileScrollY = 1  },
+    { LVL_BATCH_LAYER_TRANSPARENT_DL_DL_DZ_DL_WATER256A_RGBA32, 4, 4, .ci4s=water, .tileScrollX = 2 },
 };
 
 const struct FlipbookLayer dl_flipbooks[LAYER_COUNT] = {
