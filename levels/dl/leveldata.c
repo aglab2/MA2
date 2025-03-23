@@ -7,5 +7,12 @@
 
 #include "make_const_nonconst.h"
 
-
+#if 0
 #include "levels/dl/leveldata.inc.c"
+#else
+#include "levels/dl/visual/header_lvl.inc.h"
+#include "levels/dl/area_1/spline.inc.c"
+#include "levels/dl/visual/model_lvl.inc.c"
+#endif
+
+#include "levels/dl/dl_skybox/model.inc.c"

@@ -287,6 +287,7 @@ static void set_mario_initial_action(struct MarioState *m, u32 spawnType, u32 ac
             set_mario_action(m, ACT_FLYING, 2);
             break;
         case MARIO_SPAWN_SWIMMING:
+            m->marioObj->header.gfx.node.flags |= GRAPH_RENDER_ACTIVE;
             set_mario_action(m, ACT_WATER_IDLE, 1);
             break;
         case MARIO_SPAWN_PAINTING_STAR_COLLECT:

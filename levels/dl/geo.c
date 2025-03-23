@@ -13,5 +13,8 @@
 
 #include "levels/dl/header.h"
 
-
+#if 0
 #include "levels/dl/geo.inc.c"
+#else
+#include "levels/dl/visual/geo_lvl.inc.c"
+#endif
