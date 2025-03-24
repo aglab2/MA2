@@ -56,6 +56,8 @@ void bhv_spring_init()
         o->oTimer = sSpringTimer;
         calculate_quant();
     }
+    o->oDrawingDistance = 10000.f;
+    o->oCollisionDistance = 10000.f;
 }
 
 extern u8 gIsGravityFlipped;
