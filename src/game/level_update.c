@@ -359,7 +359,8 @@ void init_mario_after_warp(void) {
         gPlayerSpawnInfos[0].startAngle[1] = object->oMoveAngleYaw;
         gPlayerSpawnInfos[0].startAngle[2] = 0;
 
-        gIsGravityFlipped = 0;
+        if (sWarpDest.nodeId != WARP_NODE_FAIL_WARP2)
+            gIsGravityFlipped = 0;
 
         if (marioSpawnType == MARIO_SPAWN_DOOR_WARP) {
             init_door_warp(&gPlayerSpawnInfos[0], sWarpDest.arg);
@@ -378,7 +379,11 @@ void init_mario_after_warp(void) {
     }
 
     reset_camera(gCurrentArea->camera);
-    s8DirModeYawOffset = (gMarioStates->faceAngle[1] + 0x9000) & 0xe000;
+    if (sWarpDest.nodeId != WARP_NODE_FAIL_WARP2)
+        s8DirModeYawOffset = (gMarioStates->faceAngle[1] + 0x9000) & 0xe000;
+    else
+        fail_warp_init_mario_after_quick_warp_reset_camera();
+
     sWarpDest.type = WARP_TYPE_NOT_WARPING;
     sDelayedWarpOp = WARP_OP_NONE;
 
@@ -1048,6 +1053,7 @@ void initiate_delayed_warp(void) {
 
                     initiate_warp(warpNode->node.destLevel & 0x7F, warpNode->node.destArea,
                                   warpNode->node.destNode, sDelayedWarpArg);
+                    // Note that WARP2 is not handled here because I do not need to reset anything
                     if (sSourceWarpNodeId == WARP_NODE_FAIL_WARP || (0xe0 <= sSourceWarpNodeId && sSourceWarpNodeId < 0xf0))
                     {
                         sSafeWarpId = sSourceWarpNodeId;

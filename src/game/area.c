@@ -147,7 +147,7 @@ u32 get_mario_spawn_type(struct Object *obj) {
 
 extern void LevelReset_markObjectsForRespawn();
 struct ObjectWarpNode *area_get_warp_node(u8 id) {
-    if (id == WARP_NODE_FAIL_WARP || (0xe0 <= id && id < 0xf0))
+    if (id == WARP_NODE_FAIL_WARP || id == WARP_NODE_FAIL_WARP2 || (0xe0 <= id && id < 0xf0))
     {
         return fail_warp_area_get_warp_node(id);
     }
@@ -175,7 +175,7 @@ struct ObjectWarpNode *area_get_warp_node(u8 id) {
 }
 
 struct Object *get_destination_warp_object(u8 warpDestId) {
-    if (warpDestId == WARP_NODE_FAIL_WARP)
+    if (warpDestId == WARP_NODE_FAIL_WARP || warpDestId == WARP_NODE_FAIL_WARP2)
     {
         return &gFailWarpSpoofedWarpObject;
     }
