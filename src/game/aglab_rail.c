@@ -244,7 +244,9 @@ static void prepare_mario_for_zipline_drop_rail(Vec3f trajDirection)
     gMarioStates->vel[1] = 0;
     gMarioStates->vel[2] = trajDirection[2];
     gMarioStates->forwardVel = sqrtf(gMarioStates->vel[0] * gMarioStates->vel[0] + gMarioStates->vel[2] * gMarioStates->vel[2]);
-    
+    gMarioStates->slideVelX = gMarioStates->vel[0];
+    gMarioStates->slideVelZ = gMarioStates->vel[2];
+
     s16 angle = atan2s(trajDirection[2], trajDirection[0]);
     if (abs_angle_diff(gMarioStates->faceAngle[1], angle) > 0x4000)
     {
@@ -266,6 +268,8 @@ static void prepare_mario_for_zipline_drop_loop(Vec3f trajDirection)
     gMarioStates->vel[1] = trajDirection[1];
     gMarioStates->vel[2] = trajDirection[2];
     gMarioStates->forwardVel = sqrtf(gMarioStates->vel[0] * gMarioStates->vel[0] + gMarioStates->vel[2] * gMarioStates->vel[2]);
+    gMarioStates->slideVelX = gMarioStates->vel[0];
+    gMarioStates->slideVelZ = gMarioStates->vel[2];
     
     s16 angle = atan2s(trajDirection[2], trajDirection[0]);
     if (abs_angle_diff(gMarioStates->faceAngle[1], angle) > 0x4000)
@@ -326,7 +330,7 @@ int zipline_step(int exSpeed)
             gMarioStates->faceAngle[sLoopDesc->m0] = sLoopDesc->angleOffset + sLoopDesc->mult * atan2s(loopDiff[sLoopDesc->c0], loopDiff[sLoopDesc->c1]);
 #else
             if (sLoopDesc->angleOffset)
-                gMarioStates->faceAngle[1] = sZiplineLoopYaw + sLoopDesc->angleOffset * sZiplineCurPoint / sZiplineSegmentCount;
+                gMarioStates->faceAngle[1] = sZiplineLoopYaw + sLoopDesc->angleOffset * (1 + sZiplineCurPoint) / sZiplineSegmentCount;
 
             if (abs_angle_diff(gMarioState->faceAngle[1], sLoopFaceAngle) < 0x4000)
                 gMarioStates->faceAngle[0] = atan2s(trajDirection[1], sqrtf(trajDirection[0] * trajDirection[0] + trajDirection[2] * trajDirection[2])) - 0x4000;
