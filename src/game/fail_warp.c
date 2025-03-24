@@ -149,7 +149,7 @@ s32 fail_warp_pre_level_trigger_warp(struct MarioState *m, s32* warpOp)
     }
 
     *warpOp = WARP_OP_TELEPORT;
-    if (warpOpOg == WARP_OP_WARP_FLOOR && (gCurrCourseNum == COURSE_FR || gCurrCourseNum == COURSE_CG))
+    if (warpOpOg == WARP_OP_WARP_FLOOR && (gCurrCourseNum == COURSE_FR || (gCurrCourseNum == COURSE_CG && gCurrAreaIndex == 3)))
     {
         sCamAngleToSet = sSafe2PosCameraYaw;
         spoof_warp2(m);
@@ -181,6 +181,7 @@ void fail_warp_init_mario_after_quick_warp(struct MarioState *m)
 void fail_warp_init_mario_after_quick_warp_reset_camera()
 {
     s8DirModeYawOffset = sCamAngleToSet & 0xe000;
+    gMarioStates->invincTimer = 120;
 }
 
 void fail_warp_trigger(struct MarioState* m)
