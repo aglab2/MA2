@@ -22,6 +22,12 @@ static const SpringDesc spring_area3[] = {
 	cg_area_3_spline_NurbsCurve_Spring_003,
 	cg_area_3_spline_NurbsCurve_Spring_005,
 	cg_area_3_spline_NurbsCurve_Spring_006,
+	cg_area_3_spline_NurbsCurve_Spring_007,
+	cg_area_3_spline_NurbsCurve_Spring_008,
+	cg_area_3_spline_NurbsCurve_Spring_009,
+	cg_area_3_spline_NurbsCurve_Spring_010,
+	cg_area_3_spline_NurbsCurve_Spring_011,
+	cg_area_3_spline_NurbsCurve_Spring_012,
 	NULL
 };
 
