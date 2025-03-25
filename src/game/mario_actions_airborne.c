@@ -383,7 +383,7 @@ u32 common_air_action_step(struct MarioState *m, u32 landAction, s32 animation, 
         case AIR_STEP_HIT_WALL:
             set_mario_animation(m, animation);
 
-            if (m->forwardVel > 16.0f) {
+            if (!m->extraAirAction && m->forwardVel > 16.0f) {
 #if ENABLE_RUMBLE
                 queue_rumble_data(5, 40);
 #endif
@@ -1308,6 +1308,7 @@ s32 act_air_hit_wall(struct MarioState *m) {
         if (m->forwardVel > 8.0f) {
             mario_set_forward_vel(m, -8.0f);
         }
+
         return set_mario_action(m, ACT_SOFT_BONK, 0);
     }
 
