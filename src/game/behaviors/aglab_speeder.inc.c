@@ -15,6 +15,6 @@ void bhv_speeder_loop()
         gMarioStates->faceAngle[1] = 0x8000 + o->oFaceAngleYaw;
         gMarioStates->forwardVelOverrideDeadline = gGlobalTimer + 200/8;
         set_mario_action(gMarioStates, ACT_WALKING, 0);
-        play_sound(SOUND_ACTION_FLYING_FAST, gMarioStates->marioObj->header.gfx.cameraToObject);
+        cur_obj_play_sound_1(SOUND_ENV_WIND1);
     }
 }

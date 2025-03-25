@@ -1,12 +1,12 @@
 #include "game/fail_warp.h"
 
-static struct ObjectHitbox sCheckpointGoalInteract = {
+static struct ObjectHitbox sCheckpointInteract = {
     /* interactType:      */ INTERACT_STAR_OR_KEY,
     /* downOffset:        */ 0,
     /* damageOrCoinValue: */ 0,
     /* health:            */ 0,
     /* numLootCoins:      */ 0,
-    /* radius:            */ 150,
+    /* radius:            */ 140,
     /* height:            */ 50,
     /* hurtboxRadius:     */ 0,
     /* hurtboxHeight:     */ 0,
@@ -17,7 +17,7 @@ extern s8 gDialogCameraAngleIndex;
 void bhv_checkpoint_init()
 {
     u8 starId = GET_BPARAM1(o->oBehParams);
-    obj_set_hitbox(o, &sCheckpointGoalInteract);
+    obj_set_hitbox(o, &sCheckpointInteract);
     u64 currentLevelStarFlags = save_file_get_star_flags((gCurrSaveFileNum - 1), COURSE_NUM_TO_INDEX(gCurrCourseNum));
 #if 0
     if (0) { 
@@ -75,9 +75,21 @@ void bhv_checkpoint_loop()
     }
 }
 
+static struct ObjectHitbox sGoalInteract = {
+    /* interactType:      */ INTERACT_STAR_OR_KEY,
+    /* downOffset:        */ 200,
+    /* damageOrCoinValue: */ 0,
+    /* health:            */ 0,
+    /* numLootCoins:      */ 0,
+    /* radius:            */ 250,
+    /* height:            */ 500,
+    /* hurtboxRadius:     */ 0,
+    /* hurtboxHeight:     */ 0,
+};
+
 void bhv_goal_init()
 {
-    obj_set_hitbox(o, &sCheckpointGoalInteract);
+    obj_set_hitbox(o, &sGoalInteract);
 }
 
 void bhv_goal_loop()

@@ -1154,7 +1154,7 @@ void update_hud_values(void) {
                         gHudDisplay.stars++;
                         gHudDisplay.starsTimer = 0;
                         gHudDisplay.starsState = HUD_DISPLAY_STAR_JUMP;
-                        play_sound(SOUND_GENERAL_COIN, gMarioState->marioObj->header.gfx.cameraToObject);
+                        play_sound(SOUND_GENERAL_SHORT_STAR, gMarioState->marioObj->header.gfx.cameraToObject);
                     }
                     else
                     {
