@@ -6,7 +6,7 @@ static struct ObjectHitbox sCheckpointGoalInteract = {
     /* damageOrCoinValue: */ 0,
     /* health:            */ 0,
     /* numLootCoins:      */ 0,
-    /* radius:            */ 80,
+    /* radius:            */ 150,
     /* height:            */ 50,
     /* hurtboxRadius:     */ 0,
     /* hurtboxHeight:     */ 0,
@@ -40,6 +40,8 @@ void bhv_checkpoint_init()
         o->oGeoRoll = 0x4000;
         o->oOpacity = 0;
     }
+
+    o->oDrawingDistance = 10000.0f;
 }
 
 void bhv_checkpoint_loop()
