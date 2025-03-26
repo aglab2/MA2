@@ -780,11 +780,22 @@ void set_gravity(u32 grav)
 
 u8 gCamCollision;
 
+#include "config/config_world.h"
+
+static inline void load_scale_into_f31() {
+    asm volatile (
+        "mov.s $f31, %0\n\t" // Move the float value into $f30
+        :
+        : "f" (65536.0f / WORLD_SCALE)
+    );
+}
+
 /**
  * Main game loop thread. Runs forever as long as the game continues.
  */
 void thread5_game_loop(UNUSED void *arg) {
     setgp();
+    load_scale_into_f31();
     setup_game_memory();
 #if ENABLE_RUMBLE
     init_rumble_pak_scheduler_queue();

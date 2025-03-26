@@ -1066,7 +1066,11 @@ OPTIMIZE_OS void mtxf_to_mtx_fast(s16* dst, float* src) {
     invalidateMatrixMemory(dst);
 #endif
     PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);
+#if 0
     float scale = 65536.0f / WORLD_SCALE;
+#else
+    register float scale asm("f31");
+#endif
     // Iterate over pairs of values in the input matrix
     for (int i = 0; i < 8; i++)
     {

@@ -505,7 +505,7 @@ endif
 C_DEFINES := $(foreach d,$(DEFINES),-D$(d))
 DEF_INC_CFLAGS := $(foreach i,$(INCLUDE_DIRS),-I$(i)) $(C_DEFINES)
 # ABI := -mabi32
-ABI := -mabi=eabi -mgp32 -mfp32 -Wdouble-promotion -fsingle-precision-constant -msingle-float -modd-spreg
+ABI := -mabi=eabi -mgp32 -mfp32 -Wdouble-promotion -fsingle-precision-constant -msingle-float -modd-spreg -fcall-used-f31 -ffixed-f31 -fcall-used-f30 -ffixed-f30
 
 # C compiler options
 CFLAGS = $(OPT_FLAGS) $(TARGET_CFLAGS) $(MIPSISET) $(DEF_INC_CFLAGS)
