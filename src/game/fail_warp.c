@@ -54,6 +54,8 @@ void fail_warp_set_safe_pos(f32* pos, s16 angle, int areaIndex, int levelNum)
     sSafeWarpId = WARP_NODE_FAIL_WARP;
 }
 
+extern s16 sDelayedWarpOp;
+
 void fail_warp_mario_set_safe_pos(struct MarioState *m, struct Surface *floor)
 {
     // print_text(20, 80, "POS CHECK");
@@ -64,6 +66,9 @@ void fail_warp_mario_set_safe_pos(struct MarioState *m, struct Surface *floor)
 
     // object generated floors might be unsafe so avoid them
     if (floor->object)
+        return;
+
+    if (sDelayedWarpOp != WARP_OP_NONE)
         return;
 
     m->extraGravityEnabled = 0;
@@ -172,10 +177,6 @@ void fail_warp_init_mario_after_quick_warp(struct MarioState *m)
     s8DirModeYawOffset = sCamAngleToSet & 0xe000;
     // makes paracam not trigger after escaping water
     // *((u32*) 0x80286d20) = 0x80286CC4U;
-
-    bool slideTerrain = (m->area->terrainType & TERRAIN_MASK) == TERRAIN_SLIDE;
-    if (slideTerrain)
-        level_control_timer(TIMER_CONTROL_HIDE);
 }
 
 void fail_warp_init_mario_after_quick_warp_reset_camera()
@@ -184,10 +185,11 @@ void fail_warp_init_mario_after_quick_warp_reset_camera()
     gMarioStates->invincTimer = 120;
 }
 
-void fail_warp_trigger(struct MarioState* m)
+s16 fail_warp_trigger(struct MarioState* m)
 {
+    sCamAngleToSet = sSafe2PosCameraYaw;
     spoof_warp2(m);
-    level_trigger_warp(m, WARP_OP_TELEPORT);
+    return level_trigger_warp(m, WARP_OP_TELEPORT);
 }
 
 void fail_warp_register_checkpoint_node(void* node, int id)

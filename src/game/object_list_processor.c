@@ -246,7 +246,7 @@ static void spawn_particle(u32 activeParticleFlag, ModelID16 model, const Behavi
 /**
  * Mario's primary behavior update function.
  */
-extern void fail_warp_trigger(struct MarioState* m);
+extern s16 fail_warp_trigger(struct MarioState* m);
 void bhv_mario_update(void) {
     u32 particleFlags = 0;
     s32 i;
@@ -274,7 +274,8 @@ void bhv_mario_update(void) {
             if (realY < safeY - 9000.f)
             {
                 spawn_object(gMarioObject, MODEL_RED_FLAME, bhvBlackSmokeMario);
-                fail_warp_trigger(gMarioStates);
+                if (20 == fail_warp_trigger(gMarioStates))
+                    play_sound(SOUND_MARIO_WAAAOOOW, gMarioObject->header.gfx.cameraToObject);
             }
         }
     }

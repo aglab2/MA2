@@ -9,7 +9,7 @@ void fail_warp_init_mario_after_quick_warp_reset_camera();
 void fail_warp_mario_set_safe_pos(struct MarioState *m, struct Surface *floor);
 
 // Extra hook that can be used for custom coding
-void fail_warp_trigger(struct MarioState* m);
+s16 fail_warp_trigger(struct MarioState* m);
 
 void fail_warp_register_checkpoint_node(void* node, int id);
 
