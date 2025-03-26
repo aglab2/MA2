@@ -1,0 +1,21 @@
+const Trajectory fr_area_13_spline_Spring_NurbsCurve_030[] = {
+	TRAJECTORY_POS( 0, -9687, -3869, -6129),
+	TRAJECTORY_POS( 1, -9687, -2403, -8582),
+	TRAJECTORY_POS( 2, -9687, -3005, -11333),
+	TRAJECTORY_POS( 3, -9687, -5358, -13594),
+	TRAJECTORY_END(),
+};
+const Trajectory fr_area_13_spline_Spring_NurbsCurve_031[] = {
+	TRAJECTORY_POS( 0, -9487, -3869, -6129),
+	TRAJECTORY_POS( 1, -9487, -2403, -8582),
+	TRAJECTORY_POS( 2, -9487, -3005, -11333),
+	TRAJECTORY_POS( 3, -9487, -5358, -13594),
+	TRAJECTORY_END(),
+};
+const Trajectory fr_area_13_spline_Spring_NurbsCurve_032[] = {
+	TRAJECTORY_POS( 0, -9887, -3869, -6129),
+	TRAJECTORY_POS( 1, -9887, -2403, -8582),
+	TRAJECTORY_POS( 2, -9887, -3005, -11333),
+	TRAJECTORY_POS( 3, -9887, -5358, -13594),
+	TRAJECTORY_END(),
+};

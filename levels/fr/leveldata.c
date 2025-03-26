@@ -38,6 +38,7 @@ static const LDLDesc loop_desc2 = { -0x4000, 0 };
 #include "levels/fr/area_10/spline.inc.c"
 #include "levels/fr/area_11/spline.inc.c"
 #include "levels/fr/area_12/spline.inc.c"
+#include "levels/fr/area_13/spline.inc.c"
 #include "levels/fr/area_2/spline.inc.c"
 #include "levels/fr/area_3/spline.inc.c"
 #include "levels/fr/area_4/spline.inc.c"
