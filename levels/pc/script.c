@@ -364,7 +364,6 @@ const LevelScript level_pc_entry[] = {
 		OBJECT(MODEL_NONE, -16833, -4787, -4258, 0, -180, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_NONE, -16858, -4209, -12009, 0, -180, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_NONE, -16844, -5315, 15512, 0, 0, 0, (2 << 16), bhvCoinFormation),
-		OBJECT(MODEL_NONE, -16855, -7578, 4141, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -16892, -6078, 1840, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -16855, -6178, 18814, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -16856, -7578, 5742, 0, 0, 0, (2 << 16), bhvCoinFormation),
