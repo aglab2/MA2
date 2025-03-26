@@ -215,7 +215,7 @@ void draw_crash_context(OSThread *thread, s32 cause) {
     crash_screen_print_fpcsr(tc->fpcsr);
 
     osWritebackDCacheAll();
-#if 1
+#if 0
     crash_screen_print_float_reg( 30, 170,  0, &tc->fp0.f.f_even);
     crash_screen_print_float_reg(120, 170,  2, &tc->fp2.f.f_even);
     crash_screen_print_float_reg(210, 170,  4, &tc->fp4.f.f_even);
