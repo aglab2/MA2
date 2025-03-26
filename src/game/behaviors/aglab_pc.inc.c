@@ -122,6 +122,8 @@ void bhv_pc_key_enter_loop()
             
             mario_drop_held_object(gMarioStates);
             set_mario_action(gMarioStates, ACT_WALKING, 0);
+
+            play_sound(SOUND_GENERAL2_RIGHT_ANSWER, gGlobalSoundSource);
         }
     }
     else
