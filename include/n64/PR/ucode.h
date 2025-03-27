@@ -40,7 +40,7 @@ extern "C" {
  * by the graphics ucode. This stack is used primarily for the
  * matrix stack, so it needs to be AT LEAST (10 * 64bytes) in size.
  */
-#define	SP_DRAM_STACK_SIZE8	(1024)
+#define	SP_DRAM_STACK_SIZE8	(128)
 #define	SP_DRAM_STACK_SIZE64	(SP_DRAM_STACK_SIZE8 >> 3)
 
 /*

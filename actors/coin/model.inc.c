@@ -105,6 +105,7 @@ ALIGNED8 static const Texture coin_seg3_texture_90_ia8[] = {
 // 0x03007780 - 0x030077D0
 const Gfx coin_seg3_dl_start[] = {
     gsDPPipeSync(),
+    gsDPPipelineMode(G_PM_NPRIMITIVE),
     gsSPClearGeometryMode(G_LIGHTING),
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
     gsSPTexture(32767, 32767, 0, G_TX_RENDERTILE, G_ON),
@@ -120,6 +121,7 @@ const Gfx coin_seg3_dl_start[] = {
 
 const Gfx dl_coin_end[] = {
     gsDPPipeSync(),
+    gsDPPipelineMode(G_PM_1PRIMITIVE),
     gsSPTexture(0x0001, 0x0001, 0, G_TX_RENDERTILE, G_OFF),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPSetGeometryMode(G_LIGHTING),

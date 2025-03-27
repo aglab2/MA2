@@ -2974,6 +2974,7 @@ const Gfx dl_shadow_begin[] = {
 
 const Gfx dl_shadow_circle_end[] = {
     gsDPPipeSync(),
+    gsDPPipelineMode(G_PM_1PRIMITIVE),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsSPSetGeometryMode(G_LIGHTING | G_CULL_BACK),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
@@ -2983,6 +2984,7 @@ const Gfx dl_shadow_circle_end[] = {
 #ifdef HD_SHADOWS
 const Gfx dl_shadow_circle[] = {
     gsSPDisplayList(dl_shadow_begin),
+    gsDPPipelineMode(G_PM_NPRIMITIVE),
     gsDPLoadTextureBlock(texture_shadow_quarter_circle_64, G_IM_FMT_IA, G_IM_SIZ_8b, 64, 64, 0, (G_TX_WRAP | G_TX_MIRROR), (G_TX_WRAP | G_TX_MIRROR), 6, 6, G_TX_NOLOD, G_TX_NOLOD),
     gsSPEndDisplayList(),
 };
