@@ -6,6 +6,7 @@ extern const GeoLayout hb_area_2_geo[];
 extern const GeoLayout hb_area_2[];
 extern const Collision hb_area_2_collision[];
 extern const MacroObject hb_area_2_macro_objs[];
+extern const Trajectory hb_area_2_spline_Spring_NurbsCurve_001[];
 extern const GeoLayout hb_area_3_geo[];
 extern const GeoLayout hb_area_3[];
 extern const Collision hb_area_3_collision[];

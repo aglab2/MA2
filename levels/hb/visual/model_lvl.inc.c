@@ -60579,6 +60579,19 @@ Gfx hb_dl_Plane_012_mesh_layer_4_tri_0[] = {
 	gsSPEndDisplayListHint(4),
 };
 
+Vtx hb_dl_Plane_019_mesh_layer_4_vtx_0[4] = {
+	{{ {-74, -74, 0}, 0, {-16, 2032}, {0, 0, 127, 255} }},
+	{{ {74, -74, 0}, 0, {2032, 2032}, {0, 0, 127, 255} }},
+	{{ {74, 74, 0}, 0, {2032, -16}, {0, 0, 127, 255} }},
+	{{ {-74, 74, 0}, 0, {-16, -16}, {0, 0, 127, 255} }},
+};
+
+Gfx hb_dl_Plane_019_mesh_layer_4_tri_0[] = {
+	gsSPVertex(hb_dl_Plane_019_mesh_layer_4_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
+	gsSPEndDisplayListHint(4),
+};
+
 Gfx mat_hb_dl_objLandTable0023_sa2blvl_0_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
@@ -63278,6 +63291,11 @@ u32 hb_dl_Plane_011_mesh_layer_1[] = {
 
 u32 hb_dl_Plane_012_mesh_layer_4[] = {
 	BATCH_DL(LVL_BATCH_LAYER_ALPHA_HB_DL_NOPE_PAL_RGBA16, hb_dl_Plane_012_mesh_layer_4_tri_0),
+	BATCH_END(),
+};
+
+u32 hb_dl_Plane_019_mesh_layer_4[] = {
+	BATCH_DL(LVL_BATCH_LAYER_ALPHA_HB_DL_NOPE_PAL_RGBA16, hb_dl_Plane_019_mesh_layer_4_tri_0),
 	BATCH_END(),
 };
 

@@ -1,0 +1,7 @@
+const Trajectory hb_area_2_spline_Spring_NurbsCurve_001[] = {
+	TRAJECTORY_POS( 0, 3933, 3013, -15850),
+	TRAJECTORY_POS( 1, 3686, 3933, -15850),
+	TRAJECTORY_POS( 2, 3293, 4584, -15850),
+	TRAJECTORY_POS( 3, 3066, 4464, -15850),
+	TRAJECTORY_END(),
+};

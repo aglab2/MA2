@@ -61413,6 +61413,58 @@ Gfx hb_dl_Plane_015_mesh_layer_4_tri_0[] = {
 	gsSPEndDisplayList(),
 };
 
+Vtx hb_dl_Plane_016_mesh_layer_4_vtx_0[4] = {
+	{{ {-48, -48, 0}, 0, {-16, 2032}, {0, 0, 127, 255} }},
+	{{ {48, -48, 0}, 0, {2032, 2032}, {0, 0, 127, 255} }},
+	{{ {48, 48, 0}, 0, {2032, -16}, {0, 0, 127, 255} }},
+	{{ {-48, 48, 0}, 0, {-16, -16}, {0, 0, 127, 255} }},
+};
+
+Gfx hb_dl_Plane_016_mesh_layer_4_tri_0[] = {
+	gsSPVertex(hb_dl_Plane_016_mesh_layer_4_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
+	gsSPEndDisplayList(),
+};
+
+Vtx hb_dl_Plane_017_mesh_layer_4_vtx_0[4] = {
+	{{ {-48, -48, 0}, 0, {-16, 2032}, {0, 0, 127, 255} }},
+	{{ {48, -48, 0}, 0, {2032, 2032}, {0, 0, 127, 255} }},
+	{{ {48, 48, 0}, 0, {2032, -16}, {0, 0, 127, 255} }},
+	{{ {-48, 48, 0}, 0, {-16, -16}, {0, 0, 127, 255} }},
+};
+
+Gfx hb_dl_Plane_017_mesh_layer_4_tri_0[] = {
+	gsSPVertex(hb_dl_Plane_017_mesh_layer_4_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
+	gsSPEndDisplayList(),
+};
+
+Vtx hb_dl_Plane_018_mesh_layer_4_vtx_0[4] = {
+	{{ {-48, -48, 0}, 0, {-16, 2032}, {0, 0, 127, 255} }},
+	{{ {48, -48, 0}, 0, {2032, 2032}, {0, 0, 127, 255} }},
+	{{ {48, 48, 0}, 0, {2032, -16}, {0, 0, 127, 255} }},
+	{{ {-48, 48, 0}, 0, {-16, -16}, {0, 0, 127, 255} }},
+};
+
+Gfx hb_dl_Plane_018_mesh_layer_4_tri_0[] = {
+	gsSPVertex(hb_dl_Plane_018_mesh_layer_4_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
+	gsSPEndDisplayList(),
+};
+
+Vtx hb_dl_Plane_019_mesh_layer_4_vtx_0[4] = {
+	{{ {-74, -74, 0}, 0, {-16, 2032}, {0, 0, 127, 255} }},
+	{{ {74, -74, 0}, 0, {2032, 2032}, {0, 0, 127, 255} }},
+	{{ {74, 74, 0}, 0, {2032, -16}, {0, 0, 127, 255} }},
+	{{ {-74, 74, 0}, 0, {-16, -16}, {0, 0, 127, 255} }},
+};
+
+Gfx hb_dl_Plane_019_mesh_layer_4_tri_0[] = {
+	gsSPVertex(hb_dl_Plane_019_mesh_layer_4_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
+	gsSPEndDisplayList(),
+};
+
 Gfx mat_hb_dl_objLandTable0023_sa2blvl_0_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
@@ -66420,6 +66472,34 @@ Gfx hb_dl_Plane_014_mesh_layer_4[] = {
 Gfx hb_dl_Plane_015_mesh_layer_4[] = {
 	gsSPDisplayList(mat_hb_dl_f3dlite_material_027),
 	gsSPDisplayList(hb_dl_Plane_015_mesh_layer_4_tri_0),
+	gsSPDisplayList(mat_revert_hb_dl_f3dlite_material_027),
+	gsSPEndDisplayList(),
+};
+
+Gfx hb_dl_Plane_016_mesh_layer_4[] = {
+	gsSPDisplayList(mat_hb_dl_f3dlite_material_027),
+	gsSPDisplayList(hb_dl_Plane_016_mesh_layer_4_tri_0),
+	gsSPDisplayList(mat_revert_hb_dl_f3dlite_material_027),
+	gsSPEndDisplayList(),
+};
+
+Gfx hb_dl_Plane_017_mesh_layer_4[] = {
+	gsSPDisplayList(mat_hb_dl_f3dlite_material_027),
+	gsSPDisplayList(hb_dl_Plane_017_mesh_layer_4_tri_0),
+	gsSPDisplayList(mat_revert_hb_dl_f3dlite_material_027),
+	gsSPEndDisplayList(),
+};
+
+Gfx hb_dl_Plane_018_mesh_layer_4[] = {
+	gsSPDisplayList(mat_hb_dl_f3dlite_material_027),
+	gsSPDisplayList(hb_dl_Plane_018_mesh_layer_4_tri_0),
+	gsSPDisplayList(mat_revert_hb_dl_f3dlite_material_027),
+	gsSPEndDisplayList(),
+};
+
+Gfx hb_dl_Plane_019_mesh_layer_4[] = {
+	gsSPDisplayList(mat_hb_dl_f3dlite_material_027),
+	gsSPDisplayList(hb_dl_Plane_019_mesh_layer_4_tri_0),
 	gsSPDisplayList(mat_revert_hb_dl_f3dlite_material_027),
 	gsDPPipeSync(),
 	gsSPSetGeometryMode(G_LIGHTING),

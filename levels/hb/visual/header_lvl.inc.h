@@ -1276,6 +1276,14 @@ extern Vtx hb_dl_Plane_014_mesh_layer_4_vtx_0[4];
 extern Gfx hb_dl_Plane_014_mesh_layer_4_tri_0[];
 extern Vtx hb_dl_Plane_015_mesh_layer_4_vtx_0[4];
 extern Gfx hb_dl_Plane_015_mesh_layer_4_tri_0[];
+extern Vtx hb_dl_Plane_016_mesh_layer_4_vtx_0[4];
+extern Gfx hb_dl_Plane_016_mesh_layer_4_tri_0[];
+extern Vtx hb_dl_Plane_017_mesh_layer_4_vtx_0[4];
+extern Gfx hb_dl_Plane_017_mesh_layer_4_tri_0[];
+extern Vtx hb_dl_Plane_018_mesh_layer_4_vtx_0[4];
+extern Gfx hb_dl_Plane_018_mesh_layer_4_tri_0[];
+extern Vtx hb_dl_Plane_019_mesh_layer_4_vtx_0[4];
+extern Gfx hb_dl_Plane_019_mesh_layer_4_tri_0[];
 extern u32 hb_dl_0000_object_00FDF234_mesh_layer_1[];
 extern u32 hb_dl_0001_object_00FDEC64_mesh_layer_1[];
 extern u32 hb_dl_0002_object_00FDE77C_mesh_layer_1[];
@@ -1535,6 +1543,10 @@ extern u32 hb_dl_Plane_012_mesh_layer_4[];
 extern u32 hb_dl_Plane_013_mesh_layer_4[];
 extern u32 hb_dl_Plane_014_mesh_layer_4[];
 extern u32 hb_dl_Plane_015_mesh_layer_4[];
+extern u32 hb_dl_Plane_016_mesh_layer_4[];
+extern u32 hb_dl_Plane_017_mesh_layer_4[];
+extern u32 hb_dl_Plane_018_mesh_layer_4[];
+extern u32 hb_dl_Plane_019_mesh_layer_4[];
 #define LVL_BATCH_LAYER_OPAQUE_HB_DL_KD_HB_SEKIHI1_PAL_RGBA16 0
 #define LVL_BATCH_LAYER_OPAQUE_HB_DL_KD_HB_HASIRA5_PAL_RGBA16 1
 #define LVL_BATCH_LAYER_OPAQUE_HB_DL_KD_HB_KABE2_PAL_RGBA16 2
@@ -1622,6 +1634,9 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_hb[LAYER_COUNT];
 #define hb_dl_Plane_013_mesh_layer_4_vtx_0 hb_dl_Plane_012_mesh_layer_4_vtx_0
 #define hb_dl_Plane_014_mesh_layer_4_vtx_0 hb_dl_Plane_012_mesh_layer_4_vtx_0
 #define hb_dl_Plane_015_mesh_layer_4_vtx_0 hb_dl_Plane_012_mesh_layer_4_vtx_0
+#define hb_dl_Plane_016_mesh_layer_4_vtx_0 hb_dl_Plane_012_mesh_layer_4_vtx_0
+#define hb_dl_Plane_017_mesh_layer_4_vtx_0 hb_dl_Plane_012_mesh_layer_4_vtx_0
+#define hb_dl_Plane_018_mesh_layer_4_vtx_0 hb_dl_Plane_012_mesh_layer_4_vtx_0
 #define mat_revert_hb_dl_objLandTable0023_sa2blvl_1_f3d mat_revert_hb_dl_objLandTable0023_sa2blvl_0_f3d
 #define mat_revert_hb_dl_objLandTable0023_sa2blvl_2_f3d mat_revert_hb_dl_objLandTable0023_sa2blvl_0_f3d
 #define mat_revert_hb_dl_objLandTable0023_sa2blvl_3_f3d mat_revert_hb_dl_objLandTable0023_sa2blvl_0_f3d
@@ -1702,6 +1717,9 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_hb[LAYER_COUNT];
 #define hb_dl_Plane_013_mesh_layer_4_tri_0 hb_dl_Plane_012_mesh_layer_4_tri_0
 #define hb_dl_Plane_014_mesh_layer_4_tri_0 hb_dl_Plane_012_mesh_layer_4_tri_0
 #define hb_dl_Plane_015_mesh_layer_4_tri_0 hb_dl_Plane_012_mesh_layer_4_tri_0
+#define hb_dl_Plane_016_mesh_layer_4_tri_0 hb_dl_Plane_012_mesh_layer_4_tri_0
+#define hb_dl_Plane_017_mesh_layer_4_tri_0 hb_dl_Plane_012_mesh_layer_4_tri_0
+#define hb_dl_Plane_018_mesh_layer_4_tri_0 hb_dl_Plane_012_mesh_layer_4_tri_0
 #define mat_hb_dl_FENCE_BRIGHT_sa2mdl_0_f3d mat_hb_dl_objLandTable0023_sa2blvl_18_f3d
 #define hb_dl_0518_object_00F8526C_mesh_layer_1 hb_dl_0474_object_00F8E3EC_mesh_layer_1
 #define hb_dl_Plane_001_mesh_layer_1 hb_dl_Plane_mesh_layer_1
@@ -1710,4 +1728,7 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_hb[LAYER_COUNT];
 #define hb_dl_Plane_013_mesh_layer_4 hb_dl_Plane_012_mesh_layer_4
 #define hb_dl_Plane_014_mesh_layer_4 hb_dl_Plane_012_mesh_layer_4
 #define hb_dl_Plane_015_mesh_layer_4 hb_dl_Plane_012_mesh_layer_4
+#define hb_dl_Plane_016_mesh_layer_4 hb_dl_Plane_012_mesh_layer_4
+#define hb_dl_Plane_017_mesh_layer_4 hb_dl_Plane_012_mesh_layer_4
+#define hb_dl_Plane_018_mesh_layer_4 hb_dl_Plane_012_mesh_layer_4
 extern const struct FlipbookLayer hb_flipbooks[LAYER_COUNT];
