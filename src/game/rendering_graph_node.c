@@ -1759,12 +1759,14 @@ static int is_far_from_mario(f32 l0, f32 l1, f32 l2)
     f32 dist = d[0]*d[0] + d[1]*d[1] + d[2]*d[2];
 
     f32 range = sViewRange;
-    u32 priority = range;
+    s32 priority = range;
     range *= gViewRangeMult;
     if (gCurrCourseNum == COURSE_CE)
     {
         if (gMarioStates->floor && gMarioStates->floor->type == SURFACE_VERY_SLIPPERY)
-            range *= 3.f;
+        {
+            range = range + range + range;
+        }
     }
 
     if (dist > range)

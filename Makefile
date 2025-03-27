@@ -178,10 +178,7 @@ GCC_MATH_UTIL_OPT_FLAGS = \
 
 # Rendering graph node
 GCC_GRAPH_NODE_OPT_FLAGS = \
-  $(GCC_MAIN_OPT_FLAGS) -Ofast -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division \
-  --param case-values-threshold=20 \
-  --param max-completely-peeled-insns=100 \
-  --param max-unrolled-insns=100 \
+  $(GCC_MAIN_OPT_FLAGS) -Os -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division \
   -ffunction-sections \
   -fdata-sections \
   -falign-functions=32
