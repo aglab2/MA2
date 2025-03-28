@@ -77,7 +77,7 @@ const Trajectory fr_area_5_spline_Rail_0380_object_01245344_001[] = {
 	TRAJECTORY_END(),
 };
 const Trajectory fr_area_5_spline_Rail_0380_object_01245344_002[] = {
-	TRAJECTORY_POS( 0, 3210, 13553, -12219),
+	TRAJECTORY_POS( 0, 3210, 13552, -12219),
 	TRAJECTORY_POS( 1, 3210, 15078, -18077),
 	TRAJECTORY_END(),
 };
@@ -143,7 +143,7 @@ const Trajectory fr_area_5_spline_Rail_23_ini[] = {
 	TRAJECTORY_POS( 5, -7974, -14347, 12066),
 	TRAJECTORY_POS( 6, -7991, -14325, 12021),
 	TRAJECTORY_POS( 7, -8006, -14290, 11920),
-	TRAJECTORY_POS( 8, -8013, -13364, 8320),
+	TRAJECTORY_POS( 8, -8013, -13364, 8321),
 	TRAJECTORY_POS( 9, -8020, -12743, 5951),
 	TRAJECTORY_END(),
 };

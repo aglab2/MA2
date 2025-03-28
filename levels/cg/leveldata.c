@@ -44,7 +44,7 @@ IWDHeader* iw_descs_cg[] = {
     &iw_area4.header,
 };
 
-static const LDLDesc loop_desc1 = { 0, 0 };
+static const LDLDesc loop_desc1 = { 0, .canSnapBackwards = 1 };
 #define loop_desc_cg_area_1_spline_NurbsCurve_Loop_001 &loop_desc1
 #define loop_desc_cg_area_2_spline_NurbsCurve_Loop &loop_desc1
 

@@ -33,7 +33,7 @@ static const RailDesc rail_ce_area5[] = {
     RAIL_END,
 };
 
-static const LDLDesc loop_desc1 = { 0, 0 };
+static const LDLDesc loop_desc1 = { 0 };
 static const RailDesc rail_ce_area6[] = {
     RAIL_TRAJ(ce_area_6_spline_2443_object_00D39804_002),
     RAIL_TRAJ(ce_area_6_spline_2480_object_00D39A6C_001),

@@ -8,6 +8,7 @@ typedef struct
     // offset that will be added to mario face angle during the progression
     s16 angleOffset;
     u8 dontFlip;
+    u8 canSnapBackwards;
 } LDLDesc;
 
 typedef struct
