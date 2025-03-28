@@ -28,4 +28,6 @@ extern const LevelScript level_castle_inside_entry[];
 
 #include "levels/castle_inside/header.inc.h"
 
+#include "levels/castle_inside/ow_plane/geo_header.h"
+
 #endif

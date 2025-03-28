@@ -237,8 +237,10 @@ const LevelScript level_castle_inside_entry[] = {
     ALLOC_LEVEL_POOL(),
     MARIO(/*model*/ MODEL_MARIO, /*behParam*/ 0x00000001, /*beh*/ bhvMario),
 #include "levels/castle_inside/areas/script_vanilla.inc.c"
+    LOAD_MODEL_FROM_GEO(MODEL_LEVEL_GEOMETRY_16, ow_plane_geo),
 
     AREA(/*index*/ 1, castle_geo_001400 ,0,0,0),
+        OBJECT(MODEL_LEVEL_GEOMETRY_16, -5200, 700+10, 4100-4571+10, 0, 0, 0, 0, bhvStaticObject),
         OBJECT(/*model*/ MODEL_NONE,       /*pos*/ -5513,  717, -4324, /*angle*/ 0,  45, 0, /*behParam*/ 0x00140000, /*beh*/ bhvCastleFloorTrap),
         OBJECT(/*model*/ MODEL_NONE,       /*pos*/  2477,  307, -2000, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvFishGroup),
         OBJECT(/*model*/ MODEL_NONE,       /*pos*/  2774,  507, -1716, /*angle*/ 0,  90, 0, /*behParam*/ 0x00000000, /*beh*/ bhvTankFishGroup),

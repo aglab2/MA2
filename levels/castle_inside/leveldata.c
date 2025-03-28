@@ -11,3 +11,5 @@
 #include "levels/castle_inside/areas/3/movtext.inc.c"
 
 #include "levels/castle_inside/leveldata.inc.c"
+
+#include "levels/castle_inside/ow_plane/model.inc.c"
