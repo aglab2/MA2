@@ -65,4 +65,6 @@ extern Gfx dl_menu_texture_nivel_upper[];
 extern const LevelScript level_main_menu_entry_file_select[];
 extern const LevelScript level_main_menu_entry_act_select[];
 
+#include "levels/menu/fs_plane/geo_header.h"
+
 #endif

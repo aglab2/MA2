@@ -1024,7 +1024,22 @@ void check_main_menu_clicked_buttons(void) {
  * sSelectedButtonID is MENU_BUTTON_NONE when the file select
  * is loaded, and that checks what buttonID is clicked in the main menu.
  */
+#define PACK_TILESIZE(w, d) ((w << 2) + d)
+static void scroll_gfx_fs_plane_fs_plane_mesh_layer_1() {
+	Gfx *mat = segmented_to_virtual(fs_plane_fs_plane_mesh_layer_1);
+
+
+	shift_t(mat, 17, PACK_TILESIZE(0, 1));
+	shift_s(mat, 22, PACK_TILESIZE(0, 1));
+
+};
+
+static void scroll_menu_level_geo_fs_plane() {
+	scroll_gfx_fs_plane_fs_plane_mesh_layer_1();
+};
+
 void bhv_menu_button_manager_loop(void) {
+    scroll_menu_level_geo_fs_plane();
     switch (sSelectedButtonID) {
         case MENU_BUTTON_NONE: check_main_menu_clicked_buttons(); break;
 

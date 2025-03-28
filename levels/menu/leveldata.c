@@ -2014,3 +2014,5 @@ const char *(*course_strings_language_table[])[] = DEFINE_LANGUAGE_ARRAY(
 );
 
 #endif
+
+#include "levels/menu/fs_plane/model.inc.c"
