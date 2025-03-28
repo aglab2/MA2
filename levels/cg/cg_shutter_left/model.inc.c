@@ -2045,7 +2045,7 @@ Vtx cg_shutter_left_005_object_005A9718_mesh_layer_1_vtx_3[4] = {
 
 
 Gfx cg_shutter_left_001_object_005AAA38_mesh_layer_5[] = {
-	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 3, G_AC_NONE | G_ZS_PIXEL),
@@ -2114,7 +2114,7 @@ Gfx cg_shutter_left_002_object_005AA8A8_mesh_layer_1[] = {
 };
 
 Gfx cg_shutter_left_004_object_005A984C_mesh_layer_5[] = {
-	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_CULL_BACK | G_SHADE | G_SHADING_SMOOTH),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 1, ENVIRONMENT, TEXEL0, 0, TEXEL0, 0, SHADE, 0, 1, ENVIRONMENT, TEXEL0, 0),
 	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsSPVertex(cg_shutter_left_004_object_005A984C_mesh_layer_5_vtx_0 + 0, 4, 0),
