@@ -1182,7 +1182,7 @@ static void geo_lvl_append_display_list(void *displayList, s32 layer) {
     {
         int batchIdx = -data->idx - 1;
 #ifdef ENABLE_HEAP_BATCHES
-        append_dl_with_hint_course(&task->mat_heap, &task->batches[batchIdx].heap, data->data, data->hint, gPriority, batchIdx);
+        append_dl_with_hint_course(&task->mat_heap, &task->batches[batchIdx].heap, data->data, data->hint, gPriority + batchIdx, batchIdx);
 #else
         append_dl_with_hint(&task->batches[batchIdx].list, data->data, data->hint);
 #endif

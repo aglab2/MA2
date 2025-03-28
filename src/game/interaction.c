@@ -28,7 +28,7 @@
 #include "hacktice/death_floor.h"
 
 u8  sDelayInvincTimer;
-s16 sInvulnerable;
+static s16 sInvulnerable;
 u32 interact_coin          (struct MarioState *m, u32 interactType, struct Object *obj);
 u32 interact_water_ring    (struct MarioState *m, u32 interactType, struct Object *obj);
 u32 interact_star_or_key   (struct MarioState *m, u32 interactType, struct Object *obj);
@@ -1660,6 +1660,9 @@ u32 interact_cap(struct MarioState *m, UNUSED u32 interactType, struct Object *o
 }
 
 u32 interact_grabbable(struct MarioState *m, u32 interactType, struct Object *obj) {
+    if (sInvulnerable)
+        return FALSE;
+
     const BehaviorScript *script = obj->behavior;
 
     if (obj->oInteractionSubtype & INT_SUBTYPE_KICKABLE) {
