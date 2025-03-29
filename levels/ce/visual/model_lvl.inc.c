@@ -41865,8 +41865,8 @@ Vtx ce_dl_0016_object_00D391E4_mesh_layer_1_vtx_0[44] = {
 	{{ {-1090, -340, 160}, 0, {4016, -8240}, {255, 255, 255, 255} }},
 	{{ {-1060, -340, 180}, 0, {4136, -8096}, {176, 176, 172, 255} }},
 	{{ {-1090, 200, -520}, 0, {-16, -8240}, {102, 102, 104, 255} }},
-	{{ {-1090, 200, 520}, 0, {6152, -8240}, {102, 102, 104, 255} }},
 	{{ {-840, 200, 470}, 0, {5855, -7060}, {102, 102, 104, 255} }},
+	{{ {-1090, 200, 520}, 0, {6152, -8240}, {102, 102, 104, 255} }},
 	{{ {-840, 200, -520}, 0, {-16, -7060}, {102, 102, 104, 255} }},
 	{{ {-1090, 200, 520}, 0, {6152, -8240}, {206, 220, 255, 255} }},
 	{{ {1090, 200, 470}, 0, {5855, 2032}, {206, 220, 255, 255} }},
@@ -41907,7 +41907,7 @@ Gfx ce_dl_0016_object_00D391E4_mesh_layer_1_tri_0[] = {
 	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
 	gsSP2Triangles(3, 2, 4, 0, 3, 4, 5, 0),
 	gsSP2Triangles(5, 4, 6, 0, 5, 6, 7, 0),
-	gsSP2Triangles(8, 9, 10, 0, 10, 11, 8, 0),
+	gsSP2Triangles(8, 9, 10, 0, 9, 8, 11, 0),
 	gsSP2Triangles(12, 13, 14, 0, 13, 12, 15, 0),
 	gsSP2Triangles(16, 17, 18, 0, 17, 16, 19, 0),
 	gsSP2Triangles(20, 21, 22, 0, 21, 20, 23, 0),
@@ -48466,6 +48466,14 @@ Gfx ce_dl_0084_object_00D383AC_mesh_layer_1_tri_0[] = {
 	gsSP2Triangles(16, 15, 18, 0, 19, 20, 21, 0),
 	gsSP2Triangles(20, 19, 22, 0, 21, 23, 24, 0),
 	gsSP1Triangle(23, 21, 25, 0),
+	gsSPVertex(ce_dl_0084_object_00D383AC_mesh_layer_1_vtx_5 + 0, 18, 0),
+	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
+	gsSP2Triangles(6, 7, 8, 0, 7, 6, 9, 0),
+	gsSP2Triangles(10, 11, 12, 0, 11, 10, 13, 0),
+	gsSP2Triangles(14, 15, 16, 0, 15, 14, 17, 0),
+	gsSPVertex(ce_dl_0084_object_00D383AC_mesh_layer_1_vtx_11 + 0, 8, 0),
+	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
+	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
 	gsSPEndDisplayListHint(4),
 };
 
@@ -48570,18 +48578,6 @@ Vtx ce_dl_0084_object_00D383AC_mesh_layer_1_vtx_5[18] = {
 	{{ {970, -282, 140}, 0, {-16, -2072}, {178, 178, 178, 255} }},
 	{{ {970, -768, 140}, 0, {-16, 2032}, {178, 178, 178, 255} }},
 	{{ {820, -282, 140}, 0, {4096, -2072}, {55, 55, 51, 255} }},
-};
-
-Gfx ce_dl_0084_object_00D383AC_mesh_layer_1_tri_5[] = {
-	gsSPVertex(ce_dl_0084_object_00D383AC_mesh_layer_1_vtx_5 + 0, 18, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
-	gsSP2Triangles(6, 7, 8, 0, 7, 6, 9, 0),
-	gsSP2Triangles(10, 11, 12, 0, 11, 10, 13, 0),
-	gsSP2Triangles(14, 15, 16, 0, 15, 14, 17, 0),
-	gsSPVertex(ce_dl_0084_object_00D383AC_mesh_layer_1_vtx_11 + 0, 8, 0),
-	gsSP2Triangles(0, 1, 2, 0, 1, 0, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 5, 4, 7, 0),
-	gsSPEndDisplayListHint(4),
 };
 
 Vtx ce_dl_0084_object_00D383AC_mesh_layer_1_vtx_6[13] = {
@@ -84719,7 +84715,7 @@ Gfx ce_dl_Plane_mesh_layer_4_tri_0[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_0_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_0_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -84737,7 +84733,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_0_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_revert_ce_dl_objLandTable0013_sa2blvl_0_f3d[] = {
+Gfx mat_revert_ce_dl_objLandTable0013_sa2blvl_0_f3d[] = {
 	gsSPGeometryMode(0, G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
@@ -84745,7 +84741,7 @@ UNUSED static Gfx mat_revert_ce_dl_objLandTable0013_sa2blvl_0_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_1_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_1_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -84763,7 +84759,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_1_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_2_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_2_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
@@ -84782,7 +84778,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_2_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_3_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_3_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -84800,8 +84796,8 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_3_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_4_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_4_f3d[] = {
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -84818,15 +84814,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_4_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_revert_ce_dl_objLandTable0013_sa2blvl_4_f3d[] = {
-	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayListHint(4),
-};
-
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_5_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_5_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -84844,7 +84832,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_5_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_6_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_6_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -84862,7 +84850,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_6_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_7_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_7_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -84880,7 +84868,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_7_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_8_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_8_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -84898,7 +84886,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_8_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_9_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_9_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -84916,7 +84904,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_9_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_10_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_10_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -84934,7 +84922,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_10_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_11_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_11_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -84952,7 +84940,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_11_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_12_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_12_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -84970,7 +84958,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_12_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_13_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_13_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -84988,7 +84976,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_13_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_14_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_14_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
@@ -85003,14 +84991,14 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_14_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_revert_ce_dl_objLandTable0013_sa2blvl_14_f3d[] = {
+Gfx mat_revert_ce_dl_objLandTable0013_sa2blvl_14_f3d[] = {
 	gsSPGeometryMode(0, G_LIGHTING),
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_15_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_15_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85028,7 +85016,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_15_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_16_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_16_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85046,7 +85034,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_16_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_17_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_17_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, SHADE, 0, 0, 0, 0, TEXEL0),
@@ -85064,7 +85052,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_17_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_0_f3d[] = {
+Gfx mat_ce_dl_GUNTruck_sa2bmdl_0_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85078,7 +85066,7 @@ UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_0_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_1_f3d[] = {
+Gfx mat_ce_dl_GUNTruck_sa2bmdl_1_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85096,7 +85084,7 @@ UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_1_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_2_f3d[] = {
+Gfx mat_ce_dl_GUNTruck_sa2bmdl_2_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85110,7 +85098,7 @@ UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_2_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_3_f3d[] = {
+Gfx mat_ce_dl_GUNTruck_sa2bmdl_3_f3d[] = {
 	gsSPGeometryMode(0, G_TEXTURE_GEN),
 	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
 	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
@@ -85130,7 +85118,7 @@ UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_3_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_revert_ce_dl_GUNTruck_sa2bmdl_3_f3d[] = {
+Gfx mat_revert_ce_dl_GUNTruck_sa2bmdl_3_f3d[] = {
 	gsSPGeometryMode(G_TEXTURE_GEN, 0),
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
@@ -85138,7 +85126,7 @@ UNUSED static Gfx mat_revert_ce_dl_GUNTruck_sa2bmdl_3_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_4_f3d[] = {
+Gfx mat_ce_dl_GUNTruck_sa2bmdl_4_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
@@ -85157,7 +85145,7 @@ UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_4_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_5_f3d[] = {
+Gfx mat_ce_dl_GUNTruck_sa2bmdl_5_f3d[] = {
 	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
 	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
@@ -85172,13 +85160,13 @@ UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_5_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_revert_ce_dl_GUNTruck_sa2bmdl_5_f3d[] = {
+Gfx mat_revert_ce_dl_GUNTruck_sa2bmdl_5_f3d[] = {
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_6_f3d[] = {
+Gfx mat_ce_dl_GUNTruck_sa2bmdl_6_f3d[] = {
 	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
 	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
@@ -85193,7 +85181,7 @@ UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_6_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_8_f3d[] = {
+Gfx mat_ce_dl_GUNTruck_sa2bmdl_8_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85207,7 +85195,7 @@ UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_8_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_9_f3d[] = {
+Gfx mat_ce_dl_GUNTruck_sa2bmdl_9_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85221,7 +85209,7 @@ UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_9_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_10_f3d[] = {
+Gfx mat_ce_dl_GUNTruck_sa2bmdl_10_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85235,7 +85223,7 @@ UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_10_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_12_f3d[] = {
+Gfx mat_ce_dl_GUNTruck_sa2bmdl_12_f3d[] = {
 	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
 	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
@@ -85250,7 +85238,7 @@ UNUSED static Gfx mat_ce_dl_GUNTruck_sa2bmdl_12_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_18_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_18_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85268,7 +85256,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_18_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_19_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_19_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85286,7 +85274,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_19_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_20_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_20_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85304,7 +85292,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_20_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_21_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_21_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85322,7 +85310,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_21_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_22_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_22_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85340,7 +85328,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_22_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_23_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_23_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85358,7 +85346,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_23_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_24_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_24_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85376,7 +85364,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_24_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_25_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_25_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85394,7 +85382,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_25_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_26_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_26_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85412,7 +85400,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_26_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_27_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_27_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85430,8 +85418,8 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_27_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_28_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_28_f3d[] = {
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -85448,7 +85436,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_28_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_29_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_29_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85466,7 +85454,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_29_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_30_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_30_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85484,8 +85472,8 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_30_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_31_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_31_f3d[] = {
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -85502,7 +85490,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_31_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_32_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_32_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85520,7 +85508,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_32_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_33_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_33_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85538,8 +85526,8 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_33_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_34_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_34_f3d[] = {
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -85556,7 +85544,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_34_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_35_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_35_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85574,7 +85562,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_35_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_36_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_36_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85592,7 +85580,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_36_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_37_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_37_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85610,7 +85598,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_37_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_38_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_38_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85628,8 +85616,8 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_38_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_39_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_39_f3d[] = {
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -85646,7 +85634,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_39_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_40_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_40_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85664,7 +85652,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_40_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_41_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_41_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85682,7 +85670,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_41_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_42_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_42_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85700,7 +85688,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_42_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_43_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_43_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85718,7 +85706,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_43_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_44_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_44_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85736,7 +85724,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_44_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_45_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_45_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85754,7 +85742,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_45_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_46_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_46_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85772,7 +85760,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_46_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_47_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_47_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85790,7 +85778,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_47_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_48_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_48_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85808,8 +85796,8 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_48_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_49_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_49_f3d[] = {
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -85826,7 +85814,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_49_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_50_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_50_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85844,7 +85832,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_50_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_51_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_51_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85862,7 +85850,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_51_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_52_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_52_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85875,12 +85863,12 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_52_f3d[] = {
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, ce_dl_scity128_17_ci4),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_MIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 508, 252),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_MIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 252),
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_53_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_53_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85898,7 +85886,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_53_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_54_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_54_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85916,7 +85904,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_54_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_55_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_55_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85934,7 +85922,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_55_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_56_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_56_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85952,7 +85940,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_56_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_57_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_57_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85970,7 +85958,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_57_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_58_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_58_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -85988,7 +85976,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_58_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_59_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_59_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86006,7 +85994,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_59_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_60_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_60_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86024,7 +86012,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_60_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_61_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_61_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86042,7 +86030,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_61_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_62_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_62_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86060,7 +86048,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_62_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_63_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_63_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86078,7 +86066,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_63_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_64_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_64_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86096,7 +86084,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_64_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_65_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_65_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
@@ -86111,7 +86099,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_65_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_66_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_66_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86129,7 +86117,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_66_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_67_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_67_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86147,7 +86135,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_67_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_68_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_68_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86165,7 +86153,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_68_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_69_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_69_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86183,7 +86171,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_69_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_70_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_70_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86201,7 +86189,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_70_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_71_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_71_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86219,7 +86207,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_71_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_72_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_72_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86232,12 +86220,12 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_72_f3d[] = {
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, ce_dl_scity64_29_ci4),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_MIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 508, 252),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_MIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 252),
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_73_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_73_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86255,7 +86243,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_73_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_74_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_74_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86273,7 +86261,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_74_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_75_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_75_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86291,7 +86279,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_75_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_76_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_76_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86309,7 +86297,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_76_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_77_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_77_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86327,7 +86315,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_77_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_78_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_78_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86345,8 +86333,8 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_78_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_79_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_79_f3d[] = {
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -86363,8 +86351,8 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_79_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_80_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_80_f3d[] = {
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -86381,7 +86369,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_80_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_81_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_81_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86399,7 +86387,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_81_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_82_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_82_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86417,8 +86405,8 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_82_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_83_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_83_f3d[] = {
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -86435,7 +86423,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_83_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_84_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_84_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86453,7 +86441,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_84_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_85_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_85_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86471,7 +86459,15 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_85_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_86_f3d[] = {
+Gfx mat_revert_ce_dl_objLandTable0013_sa2blvl_85_f3d[] = {
+	gsSPGeometryMode(0, G_CULL_BACK | G_LIGHTING),
+	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
+	gsDPSetTextureLUT(G_TT_NONE),
+	gsSPEndDisplayListHint(4),
+};
+
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_86_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86489,7 +86485,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_86_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_87_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_87_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86507,7 +86503,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_87_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_88_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_88_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86525,7 +86521,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_88_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_89_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_89_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86543,7 +86539,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_89_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_90_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_90_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86561,7 +86557,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_90_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_91_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_91_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86579,7 +86575,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_91_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_92_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_92_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86597,7 +86593,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_92_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_93_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_93_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86615,7 +86611,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_93_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_94_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_94_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86628,12 +86624,12 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_94_f3d[] = {
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, ce_dl_scity128_8_ci4),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_MIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 508, 252),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_MIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 252),
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_95_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_95_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86651,7 +86647,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_95_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_96_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_96_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86669,7 +86665,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_96_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_97_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_97_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86687,8 +86683,8 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_97_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_98_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_98_f3d[] = {
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -86705,7 +86701,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_98_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_99_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_99_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86723,7 +86719,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_99_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_100_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_100_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86741,7 +86737,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_100_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_101_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_101_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86759,7 +86755,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_101_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_102_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_102_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86777,7 +86773,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_102_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_103_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_103_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86795,7 +86791,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_103_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_104_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_104_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86813,7 +86809,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_104_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_105_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_105_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86831,7 +86827,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_105_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_106_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_106_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86849,7 +86845,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_106_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_107_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_107_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86867,8 +86863,8 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_107_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_108_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_108_f3d[] = {
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -86885,7 +86881,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_108_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_109_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_109_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86903,7 +86899,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_109_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_110_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_110_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86921,7 +86917,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_110_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_111_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_111_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86939,7 +86935,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_111_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_112_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_112_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86957,7 +86953,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_112_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_113_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_113_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86975,7 +86971,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_113_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_114_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_114_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -86993,7 +86989,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_114_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_116_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_116_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87011,7 +87007,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_116_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_117_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_117_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87029,7 +87025,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_117_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_118_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_118_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87047,7 +87043,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_118_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_120_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_120_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87065,7 +87061,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_120_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_121_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_121_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87083,7 +87079,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_121_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_122_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_122_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87101,7 +87097,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_122_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_123_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_123_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87119,7 +87115,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_123_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_124_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_124_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87137,7 +87133,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_124_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_125_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_125_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87155,7 +87151,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_125_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_126_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_126_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87173,7 +87169,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_126_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_127_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_127_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87191,7 +87187,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_127_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_128_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_128_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87209,7 +87205,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_128_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_129_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_129_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87227,7 +87223,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_129_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_130_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_130_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87245,7 +87241,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_130_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_131_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_131_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87263,7 +87259,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_131_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_132_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_132_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87281,7 +87277,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_132_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_133_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_133_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87299,7 +87295,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_133_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_134_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_134_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87317,7 +87313,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_134_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_135_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_135_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87335,7 +87331,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_135_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_136_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_136_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87353,7 +87349,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_136_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_137_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_137_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87371,8 +87367,8 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_137_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_138_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_138_f3d[] = {
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -87389,7 +87385,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_138_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_139_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_139_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87407,7 +87403,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_139_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_140_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_140_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87425,7 +87421,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_140_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_141_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_141_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87443,7 +87439,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_141_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_142_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_142_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, SHADE, 0, 0, 0, 0, TEXEL0),
@@ -87461,7 +87457,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_142_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_143_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_143_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87479,7 +87475,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_143_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_144_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_144_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87497,7 +87493,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_144_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_145_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_145_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87515,7 +87511,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_145_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_146_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_146_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87533,7 +87529,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_146_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_147_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_147_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87551,7 +87547,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_147_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_148_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_148_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87569,7 +87565,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_148_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_149_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_149_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87587,7 +87583,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_149_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_150_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_150_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87605,7 +87601,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_150_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_151_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_151_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
@@ -87624,7 +87620,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_151_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_152_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_152_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
@@ -87639,8 +87635,8 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_152_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_153_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_153_f3d[] = {
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -87657,7 +87653,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_153_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_154_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_154_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87675,25 +87671,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_154_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_155_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, ce_dl_scity128_35_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 15),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, ce_dl_scity128_35_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_MIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayListHint(4),
-};
-
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_156_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_156_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87711,7 +87689,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_156_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_157_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_157_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87729,7 +87707,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_157_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_158_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_158_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87747,7 +87725,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_158_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_159_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_159_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87765,7 +87743,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_159_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_160_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_160_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87783,7 +87761,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_160_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_161_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_161_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87801,7 +87779,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_161_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_162_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_162_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87819,7 +87797,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_162_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_163_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_163_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87837,7 +87815,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_163_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_164_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_164_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87855,7 +87833,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_164_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_165_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_165_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87873,7 +87851,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_165_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_166_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_166_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87891,7 +87869,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_166_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_167_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_167_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87909,7 +87887,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_167_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_168_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_168_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87927,7 +87905,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_168_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_169_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_169_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87945,7 +87923,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_169_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_170_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_170_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87963,7 +87941,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_170_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_171_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_171_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87981,7 +87959,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_171_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_172_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_172_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -87999,7 +87977,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_172_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_173_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_173_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88017,7 +87995,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_173_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_174_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_174_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88035,7 +88013,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_174_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_175_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_175_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88053,7 +88031,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_175_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_176_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_176_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88071,7 +88049,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_176_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_177_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_177_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88089,7 +88067,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_177_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_178_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_178_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88107,7 +88085,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_178_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_179_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_179_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88125,7 +88103,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_179_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_180_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_180_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88143,7 +88121,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_180_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_181_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_181_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88161,7 +88139,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_181_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_182_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_182_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88179,7 +88157,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_182_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_183_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_183_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88197,7 +88175,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_183_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_184_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_184_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88215,7 +88193,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_184_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_185_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_185_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88233,7 +88211,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_185_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_186_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_186_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88251,8 +88229,8 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_186_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_187_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_187_f3d[] = {
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -88269,7 +88247,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_187_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_188_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_188_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88287,7 +88265,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_188_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_189_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_189_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88305,7 +88283,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_189_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_190_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_190_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88323,7 +88301,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_190_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_191_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_191_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88341,7 +88319,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_191_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_192_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_192_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88359,7 +88337,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_192_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_193_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_193_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88377,7 +88355,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_193_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_194_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_194_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88395,7 +88373,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_194_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_195_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_195_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88413,7 +88391,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_195_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_196_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_196_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88431,7 +88409,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_196_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_197_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_197_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88449,8 +88427,8 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_197_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_198_f3d[] = {
-	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_198_f3d[] = {
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -88467,7 +88445,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_198_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_199_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_199_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88485,7 +88463,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_199_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_200_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_200_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88503,7 +88481,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_200_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_201_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_201_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88521,7 +88499,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_201_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_202_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_202_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88539,7 +88517,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_202_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_203_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_203_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88557,7 +88535,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_203_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_204_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_204_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88575,7 +88553,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_204_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_205_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_205_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88593,7 +88571,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_205_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_206_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_206_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88611,7 +88589,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_206_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_208_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_208_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88629,7 +88607,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_208_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_209_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_209_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88647,7 +88625,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_209_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_210_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_210_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88665,7 +88643,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_210_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_211_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_211_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88683,7 +88661,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_211_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_212_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_212_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88701,7 +88679,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_212_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_213_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_213_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88719,7 +88697,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_213_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_214_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_214_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88737,7 +88715,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_214_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_216_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_216_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88755,7 +88733,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_216_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_217_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_217_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88773,7 +88751,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_217_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_220_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_220_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88791,7 +88769,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_220_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_221_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_221_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, SHADE, 0, 0, 0, 0, TEXEL0),
@@ -88809,7 +88787,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_221_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_222_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_222_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88827,7 +88805,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_222_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_223_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_223_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88845,7 +88823,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_223_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_224_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_224_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88863,7 +88841,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_224_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_225_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_225_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88881,7 +88859,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_225_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_226_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_226_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88899,7 +88877,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_226_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_227_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_227_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88917,7 +88895,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_227_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_228_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_228_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88935,7 +88913,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_228_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_229_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_229_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88953,7 +88931,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_229_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_230_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_230_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88971,7 +88949,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_230_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_231_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_231_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -88989,7 +88967,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_231_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_232_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_232_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89007,7 +88985,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_232_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_233_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_233_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89025,7 +89003,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_233_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_234_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_234_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89043,7 +89021,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_234_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_235_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_235_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89061,7 +89039,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_235_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_236_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_236_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89079,7 +89057,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_236_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_237_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_237_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89097,7 +89075,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_237_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_238_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_238_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89115,7 +89093,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_238_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_240_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_240_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89133,7 +89111,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_240_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_241_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_241_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89151,7 +89129,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_241_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_242_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_242_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89169,7 +89147,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_242_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_243_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_243_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89187,7 +89165,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_243_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_244_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_244_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89205,7 +89183,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_244_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_245_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_245_f3d[] = {
 	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
@@ -89224,7 +89202,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_245_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_246_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_246_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
@@ -89239,7 +89217,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_246_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_247_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_247_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89257,7 +89235,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_247_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_248_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_248_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89275,7 +89253,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_248_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_249_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_249_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89293,7 +89271,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_249_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_250_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_250_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89311,7 +89289,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_250_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_252_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_252_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89329,7 +89307,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_252_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_253_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_253_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89347,7 +89325,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_253_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_254_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_254_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89365,7 +89343,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_254_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_255_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_255_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89383,7 +89361,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_255_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_256_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_256_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89401,7 +89379,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_256_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_258_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_258_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89419,7 +89397,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_258_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_259_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_259_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89437,7 +89415,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_259_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_260_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_260_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89455,7 +89433,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_260_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_261_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_261_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89473,7 +89451,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_261_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_262_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_262_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89491,7 +89469,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_262_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_263_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_263_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89509,7 +89487,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_263_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_264_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_264_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89527,25 +89505,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_264_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_265_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, ce_dl_scity128_4_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 14),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, ce_dl_scity128_4_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayListHint(4),
-};
-
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_266_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_266_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89563,7 +89523,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_266_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_267_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_267_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89581,7 +89541,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_267_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_268_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_268_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89599,7 +89559,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_268_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_269_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_269_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89617,7 +89577,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_269_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_273_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_273_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89635,7 +89595,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_273_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_275_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_275_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89653,7 +89613,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_275_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_277_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_277_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89671,7 +89631,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_277_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_278_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_278_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89689,7 +89649,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_278_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_f3dlite_material_026[] = {
+Gfx mat_ce_dl_f3dlite_material_026[] = {
 	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
 	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
@@ -89708,14 +89668,14 @@ UNUSED static Gfx mat_ce_dl_f3dlite_material_026[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_revert_ce_dl_f3dlite_material_026[] = {
+Gfx mat_revert_ce_dl_f3dlite_material_026[] = {
 	gsDPPipeSync(),
 	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsDPSetTextureLUT(G_TT_NONE),
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_279_f3d[] = {
+Gfx mat_ce_dl_objLandTable0013_sa2blvl_279_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89733,7 +89693,7 @@ UNUSED static Gfx mat_ce_dl_objLandTable0013_sa2blvl_279_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_0_f3d[] = {
+Gfx mat_ce_dl_TROLLEY_sa2bmdl_0_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89747,7 +89707,7 @@ UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_0_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_1_f3d[] = {
+Gfx mat_ce_dl_TROLLEY_sa2bmdl_1_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89765,7 +89725,7 @@ UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_1_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_2_f3d[] = {
+Gfx mat_ce_dl_TROLLEY_sa2bmdl_2_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89783,7 +89743,7 @@ UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_2_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_3_f3d[] = {
+Gfx mat_ce_dl_TROLLEY_sa2bmdl_3_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89801,7 +89761,7 @@ UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_3_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_4_f3d[] = {
+Gfx mat_ce_dl_TROLLEY_sa2bmdl_4_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89819,7 +89779,7 @@ UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_4_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_5_f3d[] = {
+Gfx mat_ce_dl_TROLLEY_sa2bmdl_5_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89837,7 +89797,7 @@ UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_5_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_6_f3d[] = {
+Gfx mat_ce_dl_TROLLEY_sa2bmdl_6_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89855,7 +89815,7 @@ UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_6_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_7_f3d[] = {
+Gfx mat_ce_dl_TROLLEY_sa2bmdl_7_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89873,7 +89833,7 @@ UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_7_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_8_f3d[] = {
+Gfx mat_ce_dl_TROLLEY_sa2bmdl_8_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89891,7 +89851,7 @@ UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_8_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_9_f3d[] = {
+Gfx mat_ce_dl_TROLLEY_sa2bmdl_9_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89909,7 +89869,7 @@ UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_9_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_12_f3d[] = {
+Gfx mat_ce_dl_TROLLEY_sa2bmdl_12_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
@@ -89923,7 +89883,7 @@ UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_12_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_13_f3d[] = {
+Gfx mat_ce_dl_TROLLEY_sa2bmdl_13_f3d[] = {
 	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
@@ -89938,7 +89898,7 @@ UNUSED static Gfx mat_ce_dl_TROLLEY_sa2bmdl_13_f3d[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-UNUSED static Gfx mat_ce_dl_f3dlite_material_027[] = {
+Gfx mat_ce_dl_f3dlite_material_027[] = {
 	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
 	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
 	gsDPPipeSync(),
@@ -90523,13 +90483,12 @@ u32 ce_dl_0084_object_00D383AC_mesh_layer_1[] = {
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_11_PAL_RGBA16, ce_dl_0084_object_00D383AC_mesh_layer_1_tri_2),
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_24_PAL_RGBA16, ce_dl_0084_object_00D383AC_mesh_layer_1_tri_3),
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_39_PAL_RGBA16, ce_dl_0084_object_00D383AC_mesh_layer_1_tri_4),
-	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_35_PAL_RGBA16_1, ce_dl_0084_object_00D383AC_mesh_layer_1_tri_5),
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_T_WIN128_4_PAL_RGBA16, ce_dl_0084_object_00D383AC_mesh_layer_1_tri_6),
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_19_PAL_RGBA16, ce_dl_0084_object_00D383AC_mesh_layer_1_tri_8),
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_6_PAL_RGBA16, ce_dl_0084_object_00D383AC_mesh_layer_1_tri_10),
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_37_PAL_RGBA16_1, ce_dl_0084_object_00D383AC_mesh_layer_1_tri_12),
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_38_PAL_RGBA16_1, ce_dl_0084_object_00D383AC_mesh_layer_1_tri_15),
-	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_35_PAL_RGBA16_2, ce_dl_0084_object_00D383AC_mesh_layer_1_tri_16),
+	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_35_PAL_RGBA16_1, ce_dl_0084_object_00D383AC_mesh_layer_1_tri_16),
 	BATCH_END(),
 };
 
@@ -91815,7 +91774,7 @@ u32 ce_dl_0935_object_00CDC150_mesh_layer_1[] = {
 };
 
 u32 ce_dl_0936_object_00CDAF18_mesh_layer_1[] = {
-	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_4_PAL_RGBA16_4, ce_dl_0936_object_00CDAF18_mesh_layer_1_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_4_PAL_RGBA16, ce_dl_0936_object_00CDAF18_mesh_layer_1_tri_0),
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_23_PAL_RGBA16_1, ce_dl_0936_object_00CDAF18_mesh_layer_1_tri_1),
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_53_PAL_RGBA16_1, ce_dl_0936_object_00CDAF18_mesh_layer_1_tri_2),
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_18_PAL_RGBA16, ce_dl_0936_object_00CDAF18_mesh_layer_1_tri_3),
@@ -91903,8 +91862,8 @@ u32 ce_dl_0963_object_00CD4B18_mesh_layer_1[] = {
 u32 ce_dl_0965_object_00D2CFA4_mesh_layer_1[] = {
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_6_PAL_RGBA16, ce_dl_0965_object_00D2CFA4_mesh_layer_1_tri_0),
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_36_PAL_RGBA16_1, ce_dl_0965_object_00D2CFA4_mesh_layer_1_tri_1),
-	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_35_PAL_RGBA16_1, ce_dl_0965_object_00D2CFA4_mesh_layer_1_tri_2),
-	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_35_PAL_RGBA16_2, ce_dl_0965_object_00D2CFA4_mesh_layer_1_tri_3),
+	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_35_PAL_RGBA16, ce_dl_0965_object_00D2CFA4_mesh_layer_1_tri_2),
+	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_35_PAL_RGBA16_1, ce_dl_0965_object_00D2CFA4_mesh_layer_1_tri_3),
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_44_PAL_RGBA16, ce_dl_0965_object_00D2CFA4_mesh_layer_1_tri_4),
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_15_PAL_RGBA16_1, ce_dl_0965_object_00D2CFA4_mesh_layer_1_tri_6),
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_43_PAL_RGBA16, ce_dl_0965_object_00D2CFA4_mesh_layer_1_tri_8),
@@ -92354,7 +92313,7 @@ u32 ce_dl_1751_object_00CA9858_mesh_layer_1[] = {
 };
 
 u32 ce_dl_1754_object_00CA7CE8_mesh_layer_1[] = {
-	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_4_PAL_RGBA16_4, ce_dl_1754_object_00CA7CE8_mesh_layer_1_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_4_PAL_RGBA16, ce_dl_1754_object_00CA7CE8_mesh_layer_1_tri_0),
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_22_PAL_RGBA16, ce_dl_1754_object_00CA7CE8_mesh_layer_1_tri_1),
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_51_PAL_RGBA16, ce_dl_1754_object_00CA7CE8_mesh_layer_1_tri_2),
 	BATCH_DL(LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_23_PAL_RGBA16_1, ce_dl_1754_object_00CA7CE8_mesh_layer_1_tri_3),
@@ -92576,311 +92535,309 @@ u32 ce_dl_Plane_mesh_layer_4[] = {
 };
 
 static struct BatchDisplayLists batch_lvl_dls_LAYER_OPAQUE[] = {
-	{ mat_ce_dl_objLandTable0013_sa2blvl_0_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_0_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_0_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_0_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_1_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_1_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_1_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_1_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_3_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_3_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_3_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_3_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_4_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_4_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_4_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_4_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_5_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_5_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_5_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_5_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_6_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_6_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_6_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_6_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_7_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_7_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_7_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_7_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_8_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_8_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_8_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_8_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_9_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_9_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_9_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_9_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_10_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_10_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_10_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_10_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_11_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_11_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_11_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_11_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_12_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_12_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_12_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_12_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_13_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_13_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_13_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_13_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_15_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_15_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_15_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_15_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_16_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_16_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_16_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_16_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_17_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_17_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_17_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_17_f3d), },
-	{ mat_ce_dl_GUNTruck_sa2bmdl_0_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_0_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_0_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_0_f3d), },
-	{ mat_ce_dl_GUNTruck_sa2bmdl_1_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_1_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_1_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_1_f3d), },
-	{ mat_ce_dl_GUNTruck_sa2bmdl_2_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_2_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_2_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_2_f3d), },
-	{ mat_ce_dl_GUNTruck_sa2bmdl_3_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_3_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_3_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_3_f3d), },
-	{ mat_ce_dl_GUNTruck_sa2bmdl_5_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_5_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_5_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_5_f3d), },
-	{ mat_ce_dl_GUNTruck_sa2bmdl_8_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_8_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_8_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_8_f3d), },
-	{ mat_ce_dl_GUNTruck_sa2bmdl_9_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_9_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_9_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_9_f3d), },
-	{ mat_ce_dl_GUNTruck_sa2bmdl_10_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_10_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_10_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_10_f3d), },
-	{ mat_ce_dl_GUNTruck_sa2bmdl_12_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_12_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_12_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_12_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_18_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_18_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_18_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_18_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_19_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_19_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_19_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_19_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_20_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_20_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_20_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_20_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_21_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_21_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_21_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_21_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_22_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_22_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_22_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_22_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_23_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_23_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_23_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_23_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_24_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_24_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_24_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_24_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_25_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_25_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_25_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_25_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_26_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_26_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_26_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_26_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_27_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_27_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_27_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_27_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_28_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_28_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_28_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_28_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_29_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_29_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_29_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_29_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_30_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_30_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_30_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_30_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_31_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_31_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_31_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_31_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_32_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_32_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_32_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_32_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_33_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_33_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_33_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_33_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_34_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_34_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_34_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_34_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_35_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_35_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_35_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_35_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_36_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_36_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_36_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_36_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_37_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_37_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_37_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_37_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_38_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_38_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_38_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_38_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_39_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_39_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_39_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_39_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_40_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_40_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_40_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_40_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_41_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_41_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_41_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_41_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_42_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_42_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_42_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_42_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_43_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_43_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_43_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_43_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_44_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_44_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_44_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_44_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_45_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_45_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_45_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_45_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_46_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_46_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_46_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_46_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_47_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_47_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_47_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_47_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_48_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_48_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_48_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_48_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_49_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_49_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_49_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_49_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_50_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_50_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_50_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_50_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_51_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_51_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_51_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_51_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_52_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_52_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_52_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_52_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_53_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_53_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_53_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_53_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_54_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_54_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_54_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_54_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_55_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_55_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_55_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_55_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_56_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_56_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_56_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_56_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_57_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_57_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_57_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_57_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_58_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_58_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_58_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_58_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_59_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_59_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_59_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_59_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_60_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_60_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_60_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_60_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_61_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_61_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_61_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_61_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_62_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_62_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_62_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_62_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_63_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_63_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_63_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_63_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_64_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_64_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_64_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_64_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_66_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_66_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_66_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_66_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_67_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_67_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_67_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_67_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_68_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_68_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_68_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_68_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_69_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_69_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_69_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_69_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_70_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_70_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_70_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_70_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_71_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_71_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_71_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_71_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_72_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_72_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_72_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_72_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_73_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_73_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_73_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_73_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_74_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_74_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_74_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_74_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_75_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_75_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_75_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_75_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_76_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_76_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_76_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_76_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_77_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_77_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_77_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_77_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_78_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_78_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_78_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_78_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_79_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_79_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_79_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_79_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_80_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_80_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_80_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_80_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_81_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_81_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_81_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_81_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_82_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_82_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_82_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_82_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_83_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_83_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_83_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_83_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_84_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_84_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_84_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_84_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_85_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_85_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_85_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_85_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_86_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_86_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_86_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_86_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_87_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_87_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_87_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_87_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_88_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_88_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_88_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_88_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_89_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_89_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_89_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_89_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_90_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_90_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_90_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_90_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_91_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_91_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_91_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_91_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_92_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_92_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_92_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_92_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_93_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_93_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_93_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_93_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_94_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_94_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_94_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_94_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_95_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_95_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_95_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_95_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_96_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_96_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_96_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_96_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_97_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_97_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_97_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_97_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_98_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_98_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_98_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_98_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_99_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_99_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_99_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_99_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_100_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_100_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_100_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_100_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_101_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_101_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_101_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_101_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_102_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_102_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_102_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_102_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_103_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_103_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_103_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_103_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_104_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_104_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_104_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_104_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_105_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_105_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_105_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_105_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_106_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_106_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_106_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_106_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_107_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_107_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_107_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_107_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_108_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_108_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_108_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_108_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_109_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_109_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_109_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_109_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_110_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_110_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_110_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_110_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_111_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_111_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_111_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_111_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_112_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_112_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_112_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_112_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_113_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_113_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_113_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_113_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_114_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_114_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_114_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_114_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_116_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_116_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_116_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_116_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_117_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_117_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_117_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_117_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_118_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_118_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_118_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_118_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_120_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_120_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_120_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_120_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_121_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_121_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_121_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_121_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_122_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_122_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_122_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_122_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_123_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_123_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_123_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_123_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_124_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_124_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_124_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_124_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_125_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_125_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_125_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_125_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_126_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_126_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_126_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_126_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_127_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_127_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_127_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_127_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_128_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_128_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_128_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_128_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_129_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_129_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_129_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_129_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_130_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_130_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_130_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_130_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_131_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_131_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_131_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_131_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_132_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_132_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_132_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_132_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_133_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_133_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_133_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_133_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_134_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_134_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_134_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_134_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_135_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_135_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_135_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_135_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_136_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_136_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_136_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_136_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_137_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_137_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_137_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_137_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_138_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_138_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_138_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_138_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_139_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_139_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_139_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_139_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_140_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_140_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_140_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_140_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_141_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_141_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_141_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_141_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_143_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_143_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_143_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_143_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_144_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_144_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_144_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_144_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_145_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_145_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_145_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_145_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_146_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_146_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_146_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_146_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_147_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_147_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_147_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_147_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_148_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_148_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_148_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_148_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_149_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_149_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_149_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_149_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_150_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_150_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_150_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_150_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_153_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_153_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_153_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_153_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_154_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_154_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_154_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_154_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_155_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_155_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_155_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_155_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_156_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_156_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_156_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_156_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_157_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_157_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_157_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_157_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_158_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_158_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_158_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_158_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_159_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_159_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_159_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_159_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_160_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_160_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_160_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_160_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_161_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_161_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_161_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_161_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_162_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_162_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_162_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_162_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_163_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_163_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_163_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_163_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_164_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_164_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_164_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_164_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_166_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_166_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_166_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_166_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_167_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_167_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_167_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_167_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_168_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_168_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_168_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_168_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_169_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_169_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_169_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_169_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_170_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_170_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_170_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_170_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_171_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_171_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_171_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_171_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_172_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_172_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_172_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_172_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_173_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_173_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_173_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_173_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_174_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_174_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_174_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_174_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_175_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_175_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_175_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_175_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_176_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_176_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_176_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_176_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_177_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_177_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_177_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_177_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_178_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_178_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_178_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_178_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_179_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_179_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_179_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_179_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_180_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_180_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_180_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_180_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_181_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_181_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_181_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_181_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_182_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_182_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_182_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_182_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_183_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_183_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_183_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_183_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_184_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_184_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_184_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_184_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_185_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_185_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_185_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_185_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_186_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_186_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_186_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_186_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_187_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_187_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_187_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_187_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_188_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_188_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_188_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_188_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_189_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_189_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_189_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_189_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_190_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_190_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_190_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_190_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_191_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_191_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_191_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_191_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_192_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_192_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_192_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_192_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_193_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_193_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_193_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_193_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_194_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_194_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_194_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_194_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_195_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_195_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_195_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_195_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_196_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_196_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_196_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_196_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_197_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_197_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_197_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_197_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_198_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_198_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_198_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_198_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_199_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_199_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_199_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_199_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_200_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_200_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_200_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_200_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_201_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_201_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_201_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_201_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_202_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_202_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_202_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_202_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_203_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_203_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_203_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_203_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_204_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_204_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_204_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_204_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_205_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_205_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_205_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_205_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_206_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_206_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_206_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_206_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_208_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_208_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_208_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_208_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_209_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_209_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_209_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_209_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_210_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_210_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_210_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_210_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_211_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_211_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_211_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_211_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_212_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_212_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_212_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_212_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_213_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_213_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_213_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_213_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_214_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_214_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_214_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_214_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_216_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_216_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_216_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_216_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_217_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_217_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_217_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_217_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_220_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_220_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_220_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_220_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_221_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_221_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_221_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_221_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_222_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_222_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_222_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_222_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_223_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_223_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_223_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_223_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_224_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_224_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_224_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_224_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_225_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_225_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_225_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_225_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_226_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_226_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_226_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_226_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_227_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_227_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_227_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_227_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_228_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_228_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_228_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_228_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_229_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_229_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_229_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_229_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_230_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_230_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_230_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_230_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_231_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_231_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_231_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_231_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_232_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_232_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_232_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_232_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_233_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_233_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_233_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_233_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_234_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_234_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_234_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_234_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_235_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_235_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_235_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_235_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_236_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_236_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_236_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_236_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_237_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_237_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_237_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_237_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_238_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_238_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_238_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_238_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_240_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_240_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_240_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_240_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_241_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_241_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_241_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_241_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_242_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_242_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_242_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_242_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_243_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_243_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_243_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_243_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_244_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_244_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_244_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_244_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_247_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_247_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_247_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_247_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_248_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_248_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_248_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_248_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_249_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_249_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_249_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_249_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_250_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_250_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_250_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_250_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_252_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_252_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_252_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_252_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_253_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_253_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_253_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_253_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_254_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_254_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_254_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_254_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_255_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_255_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_255_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_255_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_256_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_256_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_256_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_256_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_258_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_258_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_258_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_258_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_259_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_259_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_259_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_259_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_261_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_261_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_261_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_261_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_262_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_262_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_262_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_262_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_263_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_263_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_263_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_263_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_264_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_264_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_264_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_264_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_265_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_265_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_265_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_265_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_266_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_266_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_266_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_266_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_267_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_267_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_267_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_267_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_268_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_268_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_268_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_268_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_269_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_269_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_269_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_269_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_273_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_273_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_273_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_273_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_275_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_275_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_275_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_275_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_277_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_277_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_277_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_277_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_278_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_278_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_278_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_278_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_279_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_279_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_279_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_279_f3d), },
-	{ mat_ce_dl_TROLLEY_sa2bmdl_0_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_0_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_0_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_0_f3d), },
-	{ mat_ce_dl_TROLLEY_sa2bmdl_1_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_1_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_1_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_1_f3d), },
-	{ mat_ce_dl_TROLLEY_sa2bmdl_2_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_2_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_2_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_2_f3d), },
-	{ mat_ce_dl_TROLLEY_sa2bmdl_3_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_3_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_3_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_3_f3d), },
-	{ mat_ce_dl_TROLLEY_sa2bmdl_4_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_4_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_4_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_4_f3d), },
-	{ mat_ce_dl_TROLLEY_sa2bmdl_5_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_5_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_5_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_5_f3d), },
-	{ mat_ce_dl_TROLLEY_sa2bmdl_6_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_6_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_6_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_6_f3d), },
-	{ mat_ce_dl_TROLLEY_sa2bmdl_7_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_7_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_7_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_7_f3d), },
-	{ mat_ce_dl_TROLLEY_sa2bmdl_8_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_8_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_8_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_8_f3d), },
-	{ mat_ce_dl_TROLLEY_sa2bmdl_9_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_9_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_9_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_9_f3d), },
-	{ mat_ce_dl_TROLLEY_sa2bmdl_12_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_12_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_12_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_12_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_MIU128_CE005_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_0_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_0_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_0_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_0_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_14_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_1_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_1_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_1_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_1_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_37_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_3_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_3_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_3_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_3_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_4_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_4_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_4_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_4_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_4_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_53_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_5_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_5_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_5_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_5_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_21_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_6_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_6_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_6_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_6_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_45_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_7_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_7_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_7_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_7_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY256_6_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_8_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_8_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_8_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_8_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_5_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_9_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_9_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_9_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_9_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_18_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_10_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_10_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_10_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_10_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY256_6_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_11_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_11_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_11_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_11_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_30_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_12_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_12_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_12_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_12_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_30_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_13_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_13_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_13_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_13_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_35_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_15_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_15_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_15_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_15_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_35_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_16_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_16_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_16_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_16_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_10_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_17_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_17_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_17_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_17_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_LIGHT1_RGBA16] = { mat_ce_dl_GUNTruck_sa2bmdl_0_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_0_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_0_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_0_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_TRUCK3_PAL_RGBA16] = { mat_ce_dl_GUNTruck_sa2bmdl_1_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_1_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_1_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_1_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_MIU32_CE006_RGBA16] = { mat_ce_dl_GUNTruck_sa2bmdl_2_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_2_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_2_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_2_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_TRUCK3_PAL_RGBA16_1] = { mat_ce_dl_GUNTruck_sa2bmdl_3_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_3_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_3_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_3_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_MIU32_CE002_RGBA16] = { mat_ce_dl_GUNTruck_sa2bmdl_5_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_5_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_5_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_5_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_TRUCK2_RGBA16] = { mat_ce_dl_GUNTruck_sa2bmdl_8_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_8_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_8_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_8_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_TRUCK1_RGBA16] = { mat_ce_dl_GUNTruck_sa2bmdl_9_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_9_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_9_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_9_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_LIGHT2_RGBA16] = { mat_ce_dl_GUNTruck_sa2bmdl_10_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_10_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_10_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_10_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_MIU32_CE002_RGBA16_1] = { mat_ce_dl_GUNTruck_sa2bmdl_12_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_12_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_12_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_12_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_4_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_18_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_18_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_18_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_18_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_17_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_19_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_19_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_19_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_19_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_25_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_20_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_20_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_20_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_20_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_9_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_21_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_21_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_21_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_21_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_12_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_22_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_22_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_22_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_22_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_32_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_23_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_23_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_23_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_23_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_13_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_24_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_24_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_24_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_24_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_33_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_25_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_25_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_25_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_25_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_17_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_26_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_26_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_26_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_26_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_13_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_27_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_27_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_27_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_27_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_4_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_28_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_28_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_28_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_28_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_22_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_29_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_29_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_29_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_29_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_9_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_30_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_30_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_30_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_30_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_44_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_31_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_31_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_31_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_31_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_26_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_32_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_32_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_32_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_32_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_5_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_33_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_33_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_33_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_33_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_3_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_34_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_34_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_34_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_34_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_47_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_35_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_35_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_35_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_35_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_47_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_36_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_36_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_36_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_36_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_37_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_37_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_37_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_37_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_37_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_42_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_38_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_38_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_38_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_38_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_6_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_39_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_39_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_39_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_39_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_6_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_40_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_40_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_40_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_40_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_5_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_41_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_41_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_41_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_41_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_6_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_42_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_42_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_42_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_42_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_28_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_43_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_43_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_43_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_43_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_28_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_44_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_44_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_44_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_44_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_44_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_45_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_45_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_45_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_45_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_5_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_46_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_46_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_46_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_46_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_4_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_47_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_47_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_47_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_47_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_28_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_48_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_48_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_48_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_48_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_24_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_49_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_49_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_49_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_49_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_T_WIN128_4_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_50_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_50_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_50_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_50_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_17_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_51_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_51_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_51_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_51_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_17_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_52_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_52_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_52_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_52_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_20_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_53_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_53_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_53_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_53_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_43_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_54_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_54_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_54_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_54_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_34_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_55_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_55_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_55_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_55_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_9_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_56_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_56_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_56_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_56_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_39_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_57_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_57_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_57_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_57_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_40_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_58_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_58_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_58_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_58_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_10_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_59_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_59_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_59_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_59_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_8_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_60_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_60_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_60_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_60_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_41_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_61_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_61_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_61_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_61_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_49_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_62_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_62_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_62_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_62_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_20_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_63_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_63_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_63_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_63_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_3_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_64_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_64_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_64_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_64_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY256_1_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_66_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_66_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_66_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_66_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_6_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_67_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_67_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_67_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_67_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_MIU128_CE001_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_68_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_68_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_68_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_68_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_16_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_69_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_69_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_69_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_69_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_25_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_70_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_70_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_70_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_70_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_15_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_71_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_71_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_71_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_71_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_29_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_72_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_72_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_72_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_72_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_1_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_73_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_73_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_73_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_73_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY256_1_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_74_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_74_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_74_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_74_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_4_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_75_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_75_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_75_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_75_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_43_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_76_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_76_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_76_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_76_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_51_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_77_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_77_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_77_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_77_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_43_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_78_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_78_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_78_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_78_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_50_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_79_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_79_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_79_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_79_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_19_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_80_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_80_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_80_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_80_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_9_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_81_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_81_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_81_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_81_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_12_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_82_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_82_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_82_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_82_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_20_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_83_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_83_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_83_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_83_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_23_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_84_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_84_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_84_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_84_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_24_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_85_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_85_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_85_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_85_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_22_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_86_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_86_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_86_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_86_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_10_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_87_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_87_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_87_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_87_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_31_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_88_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_88_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_88_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_88_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_18_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_89_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_89_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_89_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_89_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_10_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_90_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_90_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_90_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_90_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_21_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_91_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_91_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_91_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_91_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_2_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_92_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_92_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_92_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_92_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_34_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_93_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_93_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_93_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_93_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_8_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_94_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_94_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_94_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_94_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_9_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_95_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_95_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_95_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_95_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_32_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_96_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_96_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_96_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_96_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_23_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_97_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_97_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_97_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_97_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_2_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_98_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_98_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_98_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_98_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_37_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_99_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_99_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_99_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_99_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_T_LOWER128_8_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_100_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_100_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_100_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_100_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_10_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_101_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_101_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_101_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_101_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_10_PAL_RGBA16_3] = { mat_ce_dl_objLandTable0013_sa2blvl_102_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_102_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_102_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_102_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_31_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_103_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_103_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_103_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_103_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_T_WIN128_5_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_104_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_104_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_104_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_104_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_31_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_105_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_105_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_105_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_105_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_T_WIN128_9_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_106_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_106_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_106_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_106_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_T_WIN128_9_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_107_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_107_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_107_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_107_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_24_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_108_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_108_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_108_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_108_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_12_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_109_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_109_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_109_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_109_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_7_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_110_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_110_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_110_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_110_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_7_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_111_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_111_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_111_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_111_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_7_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_112_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_112_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_112_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_112_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_25_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_113_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_113_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_113_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_113_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_19_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_114_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_114_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_114_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_114_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_18_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_116_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_116_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_116_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_116_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_52_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_117_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_117_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_117_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_117_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_4_PAL_RGBA16_3] = { mat_ce_dl_objLandTable0013_sa2blvl_118_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_118_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_118_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_118_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_20_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_120_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_120_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_120_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_120_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_23_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_121_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_121_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_121_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_121_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_15_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_122_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_122_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_122_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_122_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_12_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_123_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_123_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_123_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_123_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_11_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_124_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_124_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_124_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_124_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_11_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_125_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_125_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_125_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_125_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_1_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_126_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_126_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_126_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_126_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY256_1_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_127_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_127_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_127_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_127_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_17_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_128_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_128_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_128_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_128_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_12_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_129_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_129_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_129_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_129_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_12_PAL_RGBA16_3] = { mat_ce_dl_objLandTable0013_sa2blvl_130_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_130_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_130_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_130_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_8_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_131_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_131_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_131_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_131_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_10_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_132_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_132_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_132_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_132_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_8_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_133_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_133_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_133_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_133_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_38_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_134_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_134_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_134_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_134_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_37_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_135_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_135_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_135_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_135_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_48_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_136_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_136_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_136_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_136_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_15_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_137_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_137_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_137_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_137_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_6_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_138_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_138_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_138_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_138_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_30_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_139_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_139_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_139_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_139_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_T_WIN128_9_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_140_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_140_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_140_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_140_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_24_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_141_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_141_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_141_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_141_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_38_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_143_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_143_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_143_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_143_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_39_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_144_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_144_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_144_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_144_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_39_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_145_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_145_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_145_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_145_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_45_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_146_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_146_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_146_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_146_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_40_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_147_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_147_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_147_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_147_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_11_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_148_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_148_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_148_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_148_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_38_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_149_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_149_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_149_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_149_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_MIU32_CE003_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_150_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_150_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_150_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_150_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_35_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_153_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_153_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_153_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_153_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_36_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_154_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_154_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_154_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_154_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_37_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_156_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_156_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_156_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_156_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_38_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_157_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_157_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_157_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_157_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_35_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_158_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_158_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_158_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_158_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_8_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_159_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_159_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_159_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_159_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_19_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_160_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_160_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_160_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_160_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_7_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_161_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_161_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_161_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_161_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_11_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_162_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_162_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_162_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_162_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_33_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_163_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_163_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_163_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_163_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_11_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_164_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_164_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_164_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_164_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_25_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_166_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_166_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_166_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_166_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_20_PAL_RGBA16_3] = { mat_ce_dl_objLandTable0013_sa2blvl_167_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_167_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_167_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_167_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_12_PAL_RGBA16_4] = { mat_ce_dl_objLandTable0013_sa2blvl_168_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_168_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_168_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_168_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_3_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_169_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_169_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_169_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_169_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_20_PAL_RGBA16_4] = { mat_ce_dl_objLandTable0013_sa2blvl_170_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_170_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_170_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_170_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_22_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_171_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_171_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_171_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_171_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_37_PAL_RGBA16_3] = { mat_ce_dl_objLandTable0013_sa2blvl_172_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_172_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_172_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_172_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_T_LOWER128_11_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_173_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_173_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_173_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_173_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY256_5_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_174_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_174_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_174_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_174_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_28_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_175_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_175_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_175_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_175_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY256_4_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_176_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_176_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_176_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_176_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_2_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_177_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_177_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_177_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_177_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_2_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_178_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_178_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_178_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_178_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_29_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_179_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_179_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_179_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_179_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_21_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_180_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_180_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_180_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_180_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_21_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_181_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_181_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_181_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_181_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_21_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_182_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_182_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_182_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_182_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY256_4_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_183_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_183_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_183_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_183_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_2_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_184_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_184_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_184_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_184_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_1_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_185_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_185_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_185_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_185_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_10_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_186_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_186_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_186_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_186_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_27_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_187_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_187_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_187_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_187_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_9_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_188_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_188_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_188_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_188_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_T_WIN128_5_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_189_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_189_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_189_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_189_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_T_WIN128_5_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_190_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_190_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_190_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_190_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_9_PAL_RGBA16_3] = { mat_ce_dl_objLandTable0013_sa2blvl_191_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_191_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_191_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_191_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_19_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_192_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_192_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_192_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_192_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_29_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_193_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_193_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_193_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_193_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_8_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_194_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_194_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_194_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_194_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_21_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_195_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_195_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_195_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_195_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_25_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_196_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_196_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_196_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_196_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_15_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_197_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_197_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_197_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_197_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_43_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_198_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_198_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_198_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_198_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_16_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_199_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_199_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_199_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_199_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_16_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_200_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_200_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_200_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_200_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_3_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_201_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_201_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_201_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_201_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_T_LOWER128_5_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_202_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_202_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_202_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_202_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_16_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_203_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_203_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_203_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_203_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_16_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_204_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_204_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_204_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_204_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_11_PAL_RGBA16_3] = { mat_ce_dl_objLandTable0013_sa2blvl_205_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_205_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_205_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_205_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_5_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_206_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_206_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_206_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_206_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_43_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_208_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_208_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_208_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_208_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_24_PAL_RGBA16_3] = { mat_ce_dl_objLandTable0013_sa2blvl_209_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_209_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_209_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_209_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_29_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_210_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_210_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_210_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_210_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_3_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_211_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_211_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_211_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_211_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_26_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_212_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_212_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_212_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_212_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_25_PAL_RGBA16_3] = { mat_ce_dl_objLandTable0013_sa2blvl_213_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_213_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_213_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_213_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_16_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_214_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_214_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_214_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_214_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_11_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_216_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_216_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_216_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_216_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_14_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_217_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_217_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_217_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_217_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_26_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_220_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_220_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_220_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_220_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_T_SENRO128_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_221_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_221_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_221_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_221_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_33_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_222_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_222_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_222_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_222_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_26_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_223_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_223_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_223_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_223_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_15_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_224_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_224_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_224_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_224_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_5_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_225_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_225_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_225_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_225_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_T_SENRO128_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_226_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_226_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_226_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_226_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_3_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_227_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_227_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_227_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_227_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_3_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_228_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_228_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_228_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_228_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_10_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_229_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_229_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_229_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_229_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_T_WIN128_4_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_230_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_230_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_230_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_230_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_5_PAL_RGBA16_3] = { mat_ce_dl_objLandTable0013_sa2blvl_231_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_231_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_231_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_231_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_T_WIN128_4_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_232_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_232_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_232_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_232_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_14_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_233_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_233_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_233_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_233_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_14_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_234_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_234_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_234_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_234_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_53_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_235_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_235_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_235_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_235_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_22_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_236_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_236_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_236_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_236_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY256_4_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_237_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_237_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_237_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_237_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_14_PAL_RGBA16_3] = { mat_ce_dl_objLandTable0013_sa2blvl_238_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_238_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_238_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_238_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_49_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_240_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_240_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_240_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_240_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_21_PAL_RGBA16_3] = { mat_ce_dl_objLandTable0013_sa2blvl_241_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_241_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_241_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_241_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_18_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_242_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_242_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_242_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_242_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_15_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_243_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_243_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_243_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_243_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_21_PAL_RGBA16_4] = { mat_ce_dl_objLandTable0013_sa2blvl_244_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_244_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_244_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_244_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_46_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_247_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_247_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_247_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_247_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_39_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_248_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_248_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_248_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_248_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_39_PAL_RGBA16_3] = { mat_ce_dl_objLandTable0013_sa2blvl_249_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_249_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_249_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_249_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_38_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_250_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_250_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_250_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_250_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_37_PAL_RGBA16_4] = { mat_ce_dl_objLandTable0013_sa2blvl_252_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_252_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_252_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_252_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_31_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_253_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_253_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_253_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_253_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_6_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_254_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_254_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_254_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_254_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_7_PAL_RGBA16_3] = { mat_ce_dl_objLandTable0013_sa2blvl_255_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_255_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_255_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_255_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_12_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_256_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_256_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_256_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_256_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_46_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_258_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_258_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_258_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_258_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_47_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_259_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_259_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_259_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_259_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY32_13_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_261_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_261_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_261_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_261_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_6_PAL_RGBA16_3] = { mat_ce_dl_objLandTable0013_sa2blvl_262_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_262_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_262_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_262_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_22_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_263_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_263_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_263_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_263_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_44_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_264_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_264_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_264_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_264_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_53_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_266_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_266_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_266_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_266_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_36_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_267_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_267_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_267_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_267_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY256_4_PAL_RGBA16_3] = { mat_ce_dl_objLandTable0013_sa2blvl_268_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_268_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_268_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_268_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_43_PAL_RGBA16_3] = { mat_ce_dl_objLandTable0013_sa2blvl_269_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_269_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_269_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_269_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_2_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_273_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_273_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_273_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_273_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_21_PAL_RGBA16_3] = { mat_ce_dl_objLandTable0013_sa2blvl_275_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_275_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_275_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_275_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_17_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_277_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_277_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_277_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_277_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY64_35_PAL_RGBA16_2] = { mat_ce_dl_objLandTable0013_sa2blvl_278_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_278_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_278_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_278_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_SCITY128_45_PAL_RGBA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_279_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_279_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_279_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_279_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_MIU32_CE006_RGBA16_COPY] = { mat_ce_dl_TROLLEY_sa2bmdl_0_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_0_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_0_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_0_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_MIU64_CE008_PAL_RGBA16] = { mat_ce_dl_TROLLEY_sa2bmdl_1_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_1_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_1_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_1_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_MIU64_CE004_PAL_RGBA16] = { mat_ce_dl_TROLLEY_sa2bmdl_2_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_2_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_2_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_2_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_MIU64_CE006_PAL_RGBA16] = { mat_ce_dl_TROLLEY_sa2bmdl_3_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_3_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_3_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_3_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_MIU64_CE009_PAL_RGBA16] = { mat_ce_dl_TROLLEY_sa2bmdl_4_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_4_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_4_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_4_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_MIU128_CE002_PAL_RGBA16] = { mat_ce_dl_TROLLEY_sa2bmdl_5_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_5_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_5_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_5_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_MIU64_CE007_PAL_RGBA16] = { mat_ce_dl_TROLLEY_sa2bmdl_6_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_6_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_6_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_6_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_MIU64_CE005_PAL_RGBA16] = { mat_ce_dl_TROLLEY_sa2bmdl_7_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_7_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_7_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_7_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_TEX1_64X64_D5CF037CCD0EE8D6_12_PAL_RGBA16] = { mat_ce_dl_TROLLEY_sa2bmdl_8_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_8_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_8_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_8_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_TEX1_64X64_961F7C7B927C738E_12_PAL_RGBA16] = { mat_ce_dl_TROLLEY_sa2bmdl_9_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_9_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_9_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_9_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_CE_DL_MIU32_CE007_RGBA16] = { mat_ce_dl_TROLLEY_sa2bmdl_12_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_12_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_12_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_12_f3d), },
 };
 
 static struct BatchDisplayLists batch_lvl_dls_LAYER_ALPHA[] = {
-	{ mat_ce_dl_objLandTable0013_sa2blvl_2_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_2_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_2_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_2_f3d), },
-	{ mat_ce_dl_GUNTruck_sa2bmdl_4_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_4_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_4_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_4_f3d), },
-	{ mat_ce_dl_GUNTruck_sa2bmdl_6_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_6_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_6_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_6_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_151_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_151_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_151_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_151_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_245_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_245_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_245_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_245_f3d), },
-	{ mat_ce_dl_f3dlite_material_026, mat_revert_ce_dl_f3dlite_material_026, DL_HINT(mat_ce_dl_f3dlite_material_026), DL_HINT(mat_revert_ce_dl_f3dlite_material_026), },
-	{ mat_ce_dl_TROLLEY_sa2bmdl_13_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_13_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_13_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_13_f3d), },
-	{ mat_ce_dl_f3dlite_material_027, mat_revert_ce_dl_f3dlite_material_027, DL_HINT(mat_ce_dl_f3dlite_material_027), DL_HINT(mat_revert_ce_dl_f3dlite_material_027), },
+	[LVL_BATCH_LAYER_ALPHA_CE_DL_MIU64_CE049_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_2_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_2_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_2_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_2_f3d), },
+	[LVL_BATCH_LAYER_ALPHA_CE_DL_GUN_T1_PAL_RGBA16] = { mat_ce_dl_GUNTruck_sa2bmdl_4_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_4_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_4_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_4_f3d), },
+	[LVL_BATCH_LAYER_ALPHA_CE_DL_WHEEL1_RGBA16] = { mat_ce_dl_GUNTruck_sa2bmdl_6_f3d, mat_revert_ce_dl_GUNTruck_sa2bmdl_6_f3d, DL_HINT(mat_ce_dl_GUNTruck_sa2bmdl_6_f3d), DL_HINT(mat_revert_ce_dl_GUNTruck_sa2bmdl_6_f3d), },
+	[LVL_BATCH_LAYER_ALPHA_CE_DL_MIU256_CE001_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_151_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_151_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_151_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_151_f3d), },
+	[LVL_BATCH_LAYER_ALPHA_CE_DL_MIU128_CE001_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_245_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_245_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_245_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_245_f3d), },
+	[LVL_BATCH_LAYER_ALPHA_CE_DL_MIU64_CE049_PAL_RGBA16_COPY] = { mat_ce_dl_f3dlite_material_026, mat_revert_ce_dl_f3dlite_material_026, DL_HINT(mat_ce_dl_f3dlite_material_026), DL_HINT(mat_revert_ce_dl_f3dlite_material_026), },
+	[LVL_BATCH_LAYER_ALPHA_CE_DL_MIU32_CE005_RGBA16] = { mat_ce_dl_TROLLEY_sa2bmdl_13_f3d, mat_revert_ce_dl_TROLLEY_sa2bmdl_13_f3d, DL_HINT(mat_ce_dl_TROLLEY_sa2bmdl_13_f3d), DL_HINT(mat_revert_ce_dl_TROLLEY_sa2bmdl_13_f3d), },
+	[LVL_BATCH_LAYER_ALPHA_CE_DL_NOPE_PAL_RGBA16] = { mat_ce_dl_f3dlite_material_027, mat_revert_ce_dl_f3dlite_material_027, DL_HINT(mat_ce_dl_f3dlite_material_027), DL_HINT(mat_revert_ce_dl_f3dlite_material_027), },
 };
 
 static struct BatchDisplayLists batch_lvl_dls_LAYER_TRANSPARENT[] = {
-	{ mat_ce_dl_objLandTable0013_sa2blvl_14_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_14_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_14_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_14_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_65_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_65_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_65_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_65_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_152_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_152_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_152_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_152_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_246_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_246_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_246_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_246_f3d), },
+	[LVL_BATCH_LAYER_TRANSPARENT_CE_DL_SCITY_KAGE32_IA16] = { mat_ce_dl_objLandTable0013_sa2blvl_14_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_14_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_14_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_14_f3d), },
+	[LVL_BATCH_LAYER_TRANSPARENT_CE_DL_SCITY_KAGE32_IA16_1] = { mat_ce_dl_objLandTable0013_sa2blvl_65_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_65_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_65_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_65_f3d), },
+	[LVL_BATCH_LAYER_TRANSPARENT_CE_DL_MIU64_CE001_IA16] = { mat_ce_dl_objLandTable0013_sa2blvl_152_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_152_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_152_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_152_f3d), },
+	[LVL_BATCH_LAYER_TRANSPARENT_CE_DL_MIU128_CE012_IA16] = { mat_ce_dl_objLandTable0013_sa2blvl_246_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_246_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_246_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_246_f3d), },
 };
 
 static struct BatchDisplayLists batch_lvl_dls_LAYER_OPAQUE_DECAL[] = {
-	{ mat_ce_dl_objLandTable0013_sa2blvl_142_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_142_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_142_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_142_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_165_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_165_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_165_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_165_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_260_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_260_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_260_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_260_f3d), },
-	{ mat_ce_dl_objLandTable0013_sa2blvl_10_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_10_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_10_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_10_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_DECAL_CE_DL_SCITY32_11_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_142_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_142_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_142_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_142_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_DECAL_CE_DL_SCITY64_1_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_165_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_165_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_165_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_165_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_DECAL_CE_DL_SCITY64_51_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_260_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_260_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_260_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_260_f3d), },
+	[LVL_BATCH_LAYER_OPAQUE_DECAL_CE_DL_SCITY128_18_PAL_RGBA16] = { mat_ce_dl_objLandTable0013_sa2blvl_10_f3d, mat_revert_ce_dl_objLandTable0013_sa2blvl_10_f3d, DL_HINT(mat_ce_dl_objLandTable0013_sa2blvl_10_f3d), DL_HINT(mat_revert_ce_dl_objLandTable0013_sa2blvl_10_f3d), },
 };
 
 struct BatchLevelDisplayLists batch_lvl_dls_ce[LAYER_COUNT] = {
-	[ LAYER_OPAQUE ] = { 276, batch_lvl_dls_LAYER_OPAQUE },
+	[ LAYER_OPAQUE ] = { 274, batch_lvl_dls_LAYER_OPAQUE },
 	[ LAYER_ALPHA ] = { 8, batch_lvl_dls_LAYER_ALPHA },
 	[ LAYER_TRANSPARENT ] = { 4, batch_lvl_dls_LAYER_TRANSPARENT },
 	[ LAYER_OPAQUE_DECAL ] = { 4, batch_lvl_dls_LAYER_OPAQUE_DECAL },
