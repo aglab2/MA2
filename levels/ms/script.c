@@ -32,10 +32,12 @@ extern const GeoLayout ms_area_visual[];
 #define SEQ_LEVEL_GRASS 0x30
 extern const SpringDesc* spring_descs_ms[];
 extern const SpringLinkDesc spring_links_ms[];
+extern IWDHeader* iw_descs_gf[];
 static struct LevelConfig cfg = {
 	.skybox = ms_skybox_ms_skybox_mesh,
 	.springDescs = spring_descs_ms,
 	.springLinks = spring_links_ms,
+	.iwds = iw_descs_gf,
 };
 /* Fast64 end persistent block [scripts] */
 

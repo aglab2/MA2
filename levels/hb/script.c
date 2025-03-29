@@ -32,9 +32,11 @@ extern const GeoLayout hb_area_visual[];
 #include "levels/hb/area_3/collision.inc.c"
 #define SEQ_LEVEL_GRASS 0x24
 extern const SpringDesc* spring_descs_hb[];
+extern IWDHeader* iw_descs_hb[];
 static struct LevelConfig cfg = {
 	.skybox = hb_skybox_hb_skybox_mesh,
 	.springDescs = spring_descs_hb,
+	.iwds = iw_descs_hb,
 };
 /* Fast64 end persistent block [scripts] */
 

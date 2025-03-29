@@ -35,11 +35,13 @@ extern const GeoLayout mh_area_visual[];
 extern const RailDesc* rail_descs_mh[];
 extern const SpringDesc* spring_descs_mh[];
 extern const SpringLinkDesc spring_links_mh[];
+extern IWDHeader* iw_descs_mh[];
 static struct LevelConfig cfg = {
 	.railDesc = rail_descs_mh,
 	.skybox = mh_skybox_mh_skybox_mesh,
 	.springDescs = spring_descs_mh,
 	.springLinks = spring_links_mh,
+	.iwds = iw_descs_mh,
 };
 /* Fast64 end persistent block [scripts] */
 

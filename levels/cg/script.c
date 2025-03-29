@@ -34,10 +34,12 @@ extern const GeoLayout cg_area_visual[];
 
 extern const RailDesc* rail_descs_cg[];
 extern const SpringDesc* spring_descs_cg[];
+extern const IWDHeader* iw_descs_cg[];
 static struct LevelConfig cfg = {
 	.railDesc = rail_descs_cg,
 	.skybox = cg_skybox_cg_skybox_mesh,
 	.springDescs = spring_descs_cg,
+	.iwds = iw_descs_cg,
 };
 /* Fast64 end persistent block [scripts] */
 

@@ -31,6 +31,7 @@ extern const GeoLayout gf_area_visual[];
 #include "levels/gf/area_3/collision.inc.c"
 #include "levels/gf/area_4/collision.inc.c"
 #define SEQ_LEVEL_GRASS 0x2e
+extern IWDHeader* iw_descs_gf[];
 
 extern const RailDesc* rail_descs_gf[];
 extern const SpringDesc* spring_descs_gf[];
@@ -38,6 +39,7 @@ static struct LevelConfig cfg = {
 	.railDesc = rail_descs_gf,
 	.skybox = gf_skybox_gf_skybox_mesh,
 	.springDescs = spring_descs_gf,
+	.iwds = iw_descs_gf,
 };
 /* Fast64 end persistent block [scripts] */
 

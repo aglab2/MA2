@@ -445,6 +445,7 @@ extern const RailDesc** gRailDesc;
 extern const Gfx* gSkybox;
 extern const SpringDesc** gSpringDescs;
 extern const SpringLinkDesc* gSpringLinks;
+extern const IWDHeader** gIWDs;
 static void level_cmd_lvl_config(void) {
     struct LevelConfig *dl = segmented_to_virtual(CMD_GET(void *, 4));
     gViewRangeMult = dl->viewRangeMult ? dl->viewRangeMult : 1.0f;
@@ -452,6 +453,7 @@ static void level_cmd_lvl_config(void) {
     gSkybox = dl->skybox;
     gSpringDescs = dl->springDescs ? segmented_to_virtual(dl->springDescs) : NULL;
     gSpringLinks = dl->springLinks ? segmented_to_virtual(dl->springLinks) : NULL;
+    gIWDs = dl->iwds ? segmented_to_virtual(dl->iwds) : NULL;
     sCurrentCmd = CMD_NEXT;
 }
 

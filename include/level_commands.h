@@ -7,6 +7,7 @@
 #include "config.h"
 #include "rail_desc.h"
 #include "spring_desc.h"
+#include "instant_warp_desc.h"
 
 enum LevelCommands {
     /*0x00*/ LEVEL_CMD_LOAD_AND_EXECUTE,
@@ -81,7 +82,8 @@ struct LevelConfig
     const RailDesc** railDesc;
     const Gfx* skybox;
     const SpringDesc** springDescs;
-    const SpringLinkDesc* springLinks; 
+    const SpringLinkDesc* springLinks;
+    const IWDHeader** iwds;
 };
 
 enum LevelActs {

@@ -19,8 +19,10 @@
 #include "levels/so/area_2/collision.inc.c"
 #define so_area_2 so_area_1
 extern Gfx so_skybox_so_skybox_mesh[];
+extern IWDHeader* iw_descs_so[];
 static struct LevelConfig cfg = {
 	.skybox = so_skybox_so_skybox_mesh,
+	.iwds = iw_descs_so,
 };
 /* Fast64 end persistent block [scripts] */
 

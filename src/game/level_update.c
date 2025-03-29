@@ -528,31 +528,7 @@ void warp_credits(void) {
     }
 }
 
-extern const IWDHeader* iw_descs_ce[];
-extern const IWDHeader* iw_descs_mh[];
-extern const IWDHeader* iw_descs_gf[];
-extern const IWDHeader* iw_descs_ms[];
-extern const IWDHeader* iw_descs_hb[];
-extern const IWDHeader* iw_descs_pc[];
-extern const IWDHeader* iw_descs_ee[];
-extern const IWDHeader* iw_descs_cg[];
-extern const IWDHeader* iw_descs_fr[];
-extern const IWDHeader* iw_descs_ig[];
-extern const IWDHeader* iw_descs_so[];
-static const IWDHeader** kWarpHeaders[] = {
-    [ LEVEL_CE ] = iw_descs_ce,
-    [ LEVEL_MH ] = iw_descs_mh,
-    [ LEVEL_GF ] = iw_descs_gf,
-    [ LEVEL_MS ] = iw_descs_ms,
-    [ LEVEL_HB ] = iw_descs_hb,
-    [ LEVEL_PC ] = iw_descs_pc,
-    [ LEVEL_EE ] = iw_descs_ee,
-    [ LEVEL_CG ] = iw_descs_cg,
-    [ LEVEL_FR ] = iw_descs_fr,
-    [ LEVEL_IG ] = iw_descs_ig,
-    [ LEVEL_SO ] = iw_descs_so,
-};
-
+const IWDHeader** gIWDs;
 static void handle_iw_area_desc(int* newArea, const IWDirectionAreas* desc, f32 warpDistance)
 {
     if (desc->x_low && gMarioStates->pos[0] < -warpDistance)
@@ -579,14 +555,10 @@ void check_instant_warp(void) {
     }
 #endif // ENABLE_VANILLA_LEVEL_SPECIFIC_CHECKS
 
-    const IWDHeader** headers = NULL;
-    if ((unsigned int) gCurrLevelNum < sizeof(kWarpHeaders) / sizeof(kWarpHeaders[0]))
-        headers = kWarpHeaders[gCurrLevelNum];
-
+    const IWDHeader** headers = gIWDs;
     int newArea = 0;
     if (headers)
     {
-        headers = segmented_to_virtual(headers);
         const IWDHeader* header = headers[gCurrAreaIndex - 1];
         if (header)
         {
