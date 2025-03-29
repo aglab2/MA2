@@ -39,3 +39,4 @@ DEFINE_LEVEL("BOB", LEVEL_BOB, COURSE_NONE, bob, generic, 20000, 0x00, 0x00, 0x0
 DEFINE_LEVEL("PRELUDE", LEVEL_PRELUDE, COURSE_NONE, prelude, generic, 20000, 0x00, 0x00, 0x00, _, sCamPrelude) 
 DEFINE_LEVEL("IG", LEVEL_IG, COURSE_IG, ig, generic, 20000, 0x00, 0x00, 0x00, _, sCamIg) 
 DEFINE_LEVEL("DL", LEVEL_DL, COURSE_DL, dl, generic, 20000, 0x00, 0x00, 0x00, _, sCamDl) 
+DEFINE_LEVEL("SO", LEVEL_SO, COURSE_SO, so, generic, 20000, 0x00, 0x00, 0x00, _, sCamSo) 
