@@ -8,4 +8,6 @@ extern const LevelScript level_so_entry[];
 
 
 #include "levels/so/header.inc.h"
+#include "levels/so/so_skybox/header.h"
+
 #endif

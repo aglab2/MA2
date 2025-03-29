@@ -1,0 +1,10 @@
+extern u8 so_skybox_kd_so_gc02_rgba16[];
+extern u8 so_skybox_kd_so_gc03_ci4[];
+extern u8 so_skybox_kd_so_gc03_pal_rgba16[];
+extern u8 so_skybox_kd_so_tuki1_rgba16[];
+extern u8 so_skybox_kd_so_pyramid1_rgba16[];
+extern Vtx so_skybox_so_skybox_mesh_vtx_0[597];
+extern Vtx so_skybox_so_skybox_mesh_vtx_1[49];
+extern Vtx so_skybox_so_skybox_mesh_vtx_2[64];
+extern Vtx so_skybox_so_skybox_mesh_vtx_3[48];
+extern Gfx so_skybox_so_skybox_mesh[];

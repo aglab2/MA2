@@ -18,7 +18,10 @@
 #include "levels/so/area_1/collision.inc.c"
 #include "levels/so/area_2/collision.inc.c"
 #define so_area_2 so_area_1
-static struct LevelConfig cfg = {};
+extern Gfx so_skybox_so_skybox_mesh[];
+static struct LevelConfig cfg = {
+	.skybox = so_skybox_so_skybox_mesh,
+};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_so_entry[] = {

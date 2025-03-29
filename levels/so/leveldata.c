@@ -13,3 +13,5 @@
 #include "levels/so/visual/header_lvl.inc.h"
 #include "levels/so/visual/model_lvl.inc.c"
 #endif
+
+#include "levels/so/so_skybox/model.inc.c"
