@@ -1869,40 +1869,6 @@ Gfx so_dl_object_008ED5F4_006_mesh_layer_1_tri_0[] = {
 	gsSPEndDisplayList(),
 };
 
-Vtx so_dl_object_008EDE74_001_mesh_layer_1_vtx_0[16] = {
-	{{ {33600, -1300, -60800}, 0, {10264, -1590}, {28, 36, 68, 255} }},
-	{{ {33500, -1300, -61300}, 0, {9935, 217}, {19, 19, 32, 255} }},
-	{{ {33000, -1300, -61300}, 0, {8305, 217}, {28, 36, 68, 255} }},
-	{{ {33300, -1300, -60350}, 0, {9284, -3221}, {94, 98, 132, 255} }},
-	{{ {32700, -1300, -61550}, 0, {7325, 1124}, {60, 60, 120, 255} }},
-	{{ {33000, -1300, -61800}, 0, {8305, 2032}, {19, 19, 32, 255} }},
-	{{ {31775, -1300, -61800}, 0, {4305, 2032}, {23, 27, 50, 255} }},
-	{{ {31775, -1300, -61550}, 0, {4305, 1124}, {60, 60, 120, 255} }},
-	{{ {30550, -1300, -61800}, 0, {313, 2032}, {28, 36, 68, 255} }},
-	{{ {30850, -1300, -61550}, 0, {1293, 1124}, {60, 60, 120, 255} }},
-	{{ {30450, -1300, -60800}, 0, {-16, -1590}, {28, 36, 68, 255} }},
-	{{ {30750, -1300, -60350}, 0, {964, -3221}, {60, 60, 120, 255} }},
-	{{ {30450, -1300, -60100}, 0, {-16, -4128}, {19, 19, 32, 255} }},
-	{{ {32025, -1300, -60100}, 0, {5124, -4128}, {19, 19, 32, 255} }},
-	{{ {32025, -1300, -60350}, 0, {5124, -3221}, {77, 79, 126, 255} }},
-	{{ {33600, -1300, -60100}, 0, {10264, -4128}, {19, 19, 32, 255} }},
-};
-
-Gfx so_dl_object_008EDE74_001_mesh_layer_1_tri_0[] = {
-	gsSPVertex(so_dl_object_008EDE74_001_mesh_layer_1_vtx_0 + 0, 16, 0),
-	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
-	gsSP2Triangles(3, 2, 4, 0, 5, 4, 2, 0),
-	gsSP2Triangles(6, 4, 5, 0, 6, 7, 4, 0),
-	gsSP2Triangles(8, 7, 6, 0, 8, 9, 7, 0),
-	gsSP2Triangles(10, 9, 8, 0, 11, 9, 10, 0),
-	gsSP2Triangles(12, 11, 10, 0, 13, 11, 12, 0),
-	gsSP2Triangles(13, 14, 11, 0, 15, 14, 13, 0),
-	gsSP2Triangles(15, 3, 14, 0, 0, 3, 15, 0),
-	gsSP2Triangles(3, 4, 14, 0, 14, 4, 7, 0),
-	gsSP2Triangles(14, 7, 11, 0, 11, 7, 9, 0),
-	gsSPEndDisplayList(),
-};
-
 Gfx mat_so_dl_f3dlite_material_002[] = {
 	gsSPLightColor(LIGHT_1, 0x656565FF),
 	gsSPLightColor(LIGHT_2, 0x2E2E2EFF),
@@ -2076,32 +2042,6 @@ Gfx mat_revert_so_dl_Quicksand6_sa2mdl_0_f3d[] = {
 	gsSPEndDisplayList(),
 };
 
-Gfx mat_so_dl_Quicksand7_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0, TEXEL0, 0, SHADE, 0, ENVIRONMENT, 0, SHADE, 0),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, so_dl_dz_so_ryuusa_0001_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 15),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, so_dl_dz_so_ryuusa_0001_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 1023, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_so_dl_Quicksand7_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(0, G_LIGHTING),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsSPEndDisplayList(),
-};
-
 Gfx so_dl_a3_001_mesh_layer_5[] = {
 	gsSPDisplayList(mat_so_dl_f3dlite_material_002),
 	gsSPDisplayList(so_dl_a3_001_mesh_layer_5_tri_0),
@@ -2253,13 +2193,6 @@ Gfx so_dl_object_008ED5F4_006_mesh_layer_1[] = {
 	gsSPDisplayList(mat_so_dl_Quicksand6_sa2mdl_0_f3d),
 	gsSPDisplayList(so_dl_object_008ED5F4_006_mesh_layer_1_tri_0),
 	gsSPDisplayList(mat_revert_so_dl_Quicksand6_sa2mdl_0_f3d),
-	gsSPEndDisplayList(),
-};
-
-Gfx so_dl_object_008EDE74_001_mesh_layer_1[] = {
-	gsSPDisplayList(mat_so_dl_Quicksand7_sa2mdl_0_f3d),
-	gsSPDisplayList(so_dl_object_008EDE74_001_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_so_dl_Quicksand7_sa2mdl_0_f3d),
 	gsDPPipeSync(),
 	gsSPSetGeometryMode(G_LIGHTING),
 	gsSPClearGeometryMode(G_TEXTURE_GEN),
