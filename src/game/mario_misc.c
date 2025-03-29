@@ -621,18 +621,11 @@ Gfx *geo_render_mirror_mario(s32 callContext, struct GraphNode *node, UNUSED Mat
  * Since Mirror Mario has an x scale of -1, the mesh becomes inside out.
  * This node corrects that by changing the culling mode accordingly.
  */
-extern void f3dex3_bug_fixup();
-
 Gfx *geo_mirror_mario_backface_culling(s32 callContext, struct GraphNode *node, UNUSED Mat4 *mtx) {
     struct GraphNodeGenerated *asGenerated = (struct GraphNodeGenerated *) node;
     Gfx *gfx = NULL;
 
-    if (callContext == GEO_CONTEXT_RENDER) {
-        if (1 == asGenerated->parameter)
-        {
-            f3dex3_bug_fixup();
-        }
-  
+    if (callContext == GEO_CONTEXT_RENDER) {  
         if (gCurGraphNodeObject == &gMirrorMario)
         {
             gfx = alloc_display_list(3 * sizeof(*gfx));
