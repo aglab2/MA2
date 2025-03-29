@@ -176,7 +176,7 @@ void bhv_pl_lift_loop()
                 return;
             }
             cur_obj_play_sound_2(SOUND_ENV_ELEVATOR1);
-            o->oPosY += 18.f;
+            o->oPosY += 17.f;
         }
         break;
         case 2:
@@ -193,7 +193,7 @@ void bhv_pl_lift_loop()
                 return;
             }
             cur_obj_play_sound_2(SOUND_ENV_ELEVATOR1);
-            o->oPosY -= 54.f;
+            o->oPosY -= 51.f;
         }
     };
 }
