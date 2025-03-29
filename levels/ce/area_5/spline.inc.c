@@ -43,10 +43,10 @@ const Trajectory ce_area_5_spline_2561_object_00D05490_001[] = {
 	TRAJECTORY_END(),
 };
 const Trajectory ce_area_5_spline_Spring_NurbsCurve[] = {
-	TRAJECTORY_POS( 0, -7572, 10570, 13336),
-	TRAJECTORY_POS( 1, -7036, 10701, 13575),
-	TRAJECTORY_POS( 2, -6375, 10358, 13870),
-	TRAJECTORY_POS( 3, -6253, 9890, 13924),
+	TRAJECTORY_POS( 0, 4333, 2576, 14161),
+	TRAJECTORY_POS( 1, 4869, 2708, 13922),
+	TRAJECTORY_POS( 2, 5530, 2365, 13628),
+	TRAJECTORY_POS( 3, 5652, 1896, 13573),
 	TRAJECTORY_END(),
 };
 const Trajectory ce_area_5_spline_Spring_NurbsCurve_001[] = {
