@@ -8,7 +8,7 @@ extern const LevelScript level_gf_entry[];
 
 #define gf_area_1 gf_area_visual
 #define gf_area_1_geo gf_area_geo_visual
-#include "levels/gf/visual/header_lvlopt.inc.h"
+#include "levels/gf/visual/header_lvl.inc.h"
 #undef gf_area_1_geo
 #undef gf_area_1
 

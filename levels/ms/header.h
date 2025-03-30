@@ -8,7 +8,7 @@ extern const LevelScript level_ms_entry[];
 
 #define ms_area_1 ms_area_visual
 #define ms_area_1_geo ms_area_geo_visual
-#include "levels/ms/visual/header_lvlopt.inc.h"
+#include "levels/ms/visual/header_lvl.inc.h"
 #undef ms_area_1_geo
 #undef ms_area_1
 

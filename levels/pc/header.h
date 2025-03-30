@@ -8,7 +8,7 @@ extern const LevelScript level_pc_entry[];
 
 #define pc_area_1 pc_area_visual
 #define pc_area_1_geo pc_area_geo_visual
-#include "levels/pc/visual/header_lvlopt.inc.h"
+#include "levels/pc/visual/header_lvl.inc.h"
 #undef pc_area_1_geo
 #undef pc_area_1
 

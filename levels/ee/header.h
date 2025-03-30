@@ -8,7 +8,7 @@ extern const LevelScript level_ee_entry[];
 
 #define ee_area_1 ee_area_visual
 #define ee_area_1_geo ee_area_geo_visual
-#include "levels/ee/visual/header_lvlopt.inc.h"
+#include "levels/ee/visual/header_lvl.inc.h"
 #undef ee_area_1_geo
 #undef ee_area_1
 
