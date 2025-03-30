@@ -49,7 +49,7 @@ class UsagePricer:
             for vtx in tri:
                 if vtx not in self._vertices_to_triangle:
                     self._vertices_to_triangle[vtx] = set()
-                self._vertices_to_triangle[vtx].add(tuple(tri))
+                self._vertices_to_triangle[vtx].add(tri)
 
         for vtx, tris in self._vertices_to_triangle.items():
             usage = self._tris_cost(tris)
@@ -59,6 +59,9 @@ class UsagePricer:
 
     def vtx_to_tris(self, vtx):
         return self._vertices_to_triangle[vtx]
+
+    def vtx_to_tris_optional(self, vtx):
+        return self._vertices_to_triangle.get(vtx)
 
     def add(self, tri):
         # Add vtx for the given triangle and rescale the usage
@@ -70,7 +73,7 @@ class UsagePricer:
                 self._vertices_to_triangle[vtx] = set()
 
             old_usage = self._tris_cost(self._vertices_to_triangle[vtx])
-            self._vertices_to_triangle[vtx].add(tuple(tri))
+            self._vertices_to_triangle[vtx].add(tri)
             new_usage = self._tris_cost(self._vertices_to_triangle[vtx])
 
             assert new_usage
@@ -88,13 +91,16 @@ class UsagePricer:
     def remove(self, tri):
         # Remove vtx for the given triangle and rescale the usage
         for vtx in tri:
-            if vtx not in self._vertices_to_triangle:
-                continue
             if vtx in self._banned_vertices:
                 continue
+            if not self._banned_vertices:
+                assert vtx in self._vertices_to_triangle
+            else:
+                if vtx not in self._vertices_to_triangle:
+                    continue
 
             old_usage = self._tris_cost(self._vertices_to_triangle[vtx])
-            self._vertices_to_triangle[vtx].remove(tuple(tri))
+            self._vertices_to_triangle[vtx].remove(tri)
             if not self._vertices_to_triangle[vtx]:
                 del self._vertices_to_triangle[vtx]
                 new_usage = 0
@@ -189,17 +195,89 @@ class ModelMeshEntry(ModelEntry):
     def _tri_trivial(tri):
         return tri[0] == tri[1] or tri[0] == tri[2] or tri[1] == tri[2]
 
+    @staticmethod
+    def _tri_rotate(tri, vtx):
+        if tri[0] == vtx:
+            return tri[0], tri[1], tri[2]
+        if tri[1] == vtx:
+            return tri[1], tri[2], tri[0]
+        if tri[2] == vtx:
+            return tri[2], tri[0], tri[1]
+
+        assert False, "triangle does not contain the vertex"
+
+    @staticmethod
+    def _tri_normalize(tri):
+        # There is a single representation of a 'tri' if minimal vertex is the first one
+        # This will allow to have a convenient lookups in sets
+        vtx = min(tri)
+        return ModelMeshEntry._tri_rotate(tri, vtx)
+
+    @staticmethod
+    def _tris_rotate(tris, vtx):
+        return [ ModelMeshEntry._tri_rotate(tri, vtx) for tri in tris ]
+
     def _tri(self, tri_indices):
         if self._tri_trivial(tri_indices):
             return
 
-        tri = [ self._vtx(self._parser_vbo[i]) for i in tri_indices ]
+        tri = self._tri_normalize([ self._vtx(self._parser_vbo[i]) for i in tri_indices ])
         if self._tri_trivial(tri):
             return
+    
+        if tri in self._triangles_lookup:
+            return
 
-        assert tuple(tri) not in self._triangles_lookup, "duplicate triangle found"
         self._triangles.append(tri)
-        self._triangles_lookup.add(tuple(tri))
+        self._triangles_lookup.add(tri)
+
+    @staticmethod
+    def _tri_index_next(idx):
+        return (idx + 1) % 3
+
+    @staticmethod
+    def _longest_link(links, links_end):
+        starting_vtxs     = [ vtx for vtx in links if vtx not in links_end ]
+        intermediate_vtxs = [ vtx for vtx in links if vtx     in links_end ]
+
+        # Fire DFS search preferring 'starting_vtxs' and 'intermediate_vtxs'
+        # Note that at most recursion can go 5 levels so doing something like this is fine
+        def dfs(vtx, visited_links):
+            if len(visited_links) == 5:
+                return visited_links
+            if vtx not in links:
+                return visited_links
+
+            for vtx_next in links[vtx]:
+                link = vtx, vtx_next
+                if link in visited_links:
+                    continue
+
+                visited_links_copy = visited_links[:]
+                visited_links_copy.append(link)
+                new_visited_links = dfs(vtx_next, visited_links_copy)
+                if new_visited_links:
+                    return new_visited_links
+
+            return visited_links
+
+        longest_link = []
+        for vtx in starting_vtxs:
+            link = dfs(vtx, [])
+            if len(link) > len(longest_link):
+                longest_link = link
+            if 5 == len(longest_link):
+                return longest_link
+
+        for vtx in intermediate_vtxs:
+            link = dfs(vtx, [])
+            if len(link) > len(longest_link):
+                longest_link = link
+            if 5 == len(longest_link):
+                return longest_link
+
+        return longest_link
+
 
     def add(self, data):
         if 'gsSPVertex' in data:
@@ -276,14 +354,64 @@ class ModelMeshEntry(ModelEntry):
             # This is a primitive greedy algorithm for drawing vertices
             loaded_vertices = {}
             loaded_vertex_buffer = []
-            rendered_triangles = []
-            start_offset = 0
+            def load_vertex(vtx):
+                loaded_vertex_buffer.append(self._vertices[vtx])
+                loaded_vertices[vtx] = len(loaded_vertex_buffer) - 1
+                print(f"load vertex {vtx} -> {len(loaded_vertex_buffer) - 1}")
+                return len(loaded_vertex_buffer) - 1
+
+            def load_or_find_vertex(vtx):
+                if vtx in loaded_vertices:
+                    return loaded_vertices[vtx]
+                else:
+                    return load_vertex(vtx)
+
             total_pricer = UsagePricer(self._triangles)
+            fanstrip_vtx_to_check = []
+
+            def fanstrip_tri_check():
+                nonlocal fanstrip_vtx_to_check
+                rendered = False
+                # This is needed when there were loads for fans and strips
+                # There might be triangles that we can render relatively "for free" by using existing loaded vertices
+                for fanstrip_vtx in fanstrip_vtx_to_check:
+                    fanstrip_tris = total_pricer.vtx_to_tris_optional(fanstrip_vtx)
+                    if not fanstrip_tris:
+                        continue
+
+                    for tri in list(fanstrip_tris):
+                        loaded_tri = [ loaded_vertices.get(vtx) for vtx in tri ]
+                        if None in loaded_tri:
+                            continue
+
+                        print(f"fanstrip tri check -> render {tri} as {loaded_tri}")
+                        rendered_triangles.append(loaded_tri)
+                        total_pricer.remove(tri)
+                        rendered = True
+
+                fanstrip_vtx_to_check = []
+                print(f"fanstrip_tri_check -> {rendered}")
+                return rendered
+            
+            def load_or_find_fanstrip_vtx(vtx):
+                if vtx in loaded_vertices:
+                    return loaded_vertices[vtx]
+                else:
+                    print(f"load fanstrip vertex {vtx}")
+                    fanstrip_vtx_to_check.append(vtx)
+                    return load_vertex(vtx)
+
+            rendered_triangles = []
+            rendered_fan_strips = []
+            start_offset = 0
             vtx_entry.vertices = []
 
             while True:
-                if (len(loaded_vertices) and total_pricer.completed()) or len(loaded_vertices) >= 54:
+                # We flush when 'loaded_vertices' becomes 49 somewhat arbitrarily - we need to consume at most 7 for a fan/strip
+                if (len(loaded_vertices) and total_pricer.completed()) or len(loaded_vertices) > 48:
                     # Flush vertices
+                    fanstrip_tri_check()
+                    print("+ flush +")
                     cur_vtx_start_offset = start_offset
                     cur_vtx_load_amount = len(loaded_vertex_buffer)
                     for vertex in loaded_vertex_buffer:
@@ -301,29 +429,139 @@ class ModelMeshEntry(ModelEntry):
                             tri1 = triangles.popleft()
                             dl_entry.data.append(f"\tgsSP2Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, 0, {tri1[0]}, {tri1[1]}, {tri1[2]}, 0),\n")
 
+                    for fanstrip in rendered_fan_strips:
+                        dl_entry.data.append(fanstrip)
+
                     loaded_vertices = {}
                     loaded_vertex_buffer = []
                     rendered_triangles = []
+                    rendered_fan_strips = []
 
                 if total_pricer.completed():
                     break
 
                 highest_usage, highest_usage_vtx = next(total_pricer.highest_usage())
-                loaded_vertex_buffer.append(self._vertices[highest_usage_vtx])
-                loaded_vertices[highest_usage_vtx] = len(loaded_vertex_buffer) - 1
+
+                # Strip of fan requires to have a vertex that has at least weight of 12
+                if highest_usage >= 12:
+                    highest_usage_vtx_triangles = list(total_pricer.vtx_to_tris(highest_usage_vtx))
+
+                    # Try to represent as fan or as strip
+                    # Both require at least 3 triangles to be worth it and looks like this:
+                    #   3 - 4
+                    #  / \ / \ 
+                    # 2 - 1 - 5
+                    # In my case greedily assume that 1 is the highest_usage_vtx.
+                    # This means we need to find the path that looks like 2 -> 3 -> 4 -> 5.
+                    rotated_vtx_triangles = self._tris_rotate(highest_usage_vtx_triangles, highest_usage_vtx)
+                    links = {}
+                    links_end = set()
+                    for tri in rotated_vtx_triangles:
+                        if tri[1] not in links:
+                            links[tri[1]] = []
+
+                        links[tri[1]].append(tri[2])
+                        links_end.add(tri[2])
+                    
+                    longest_link = self._longest_link(links, links_end)
+                    if len(longest_link) >= 4:
+                        # Yield a fan command and break - we have depleted the triangles from "highest_usage_vtx"
+                        # Arrangement is v1-v2-v3, v1-v3-v4, v1-v4-v5, v1-v5-v6, v1-v6-v7
+                        fan_vertices = [ highest_usage_vtx, longest_link[0][0], longest_link[0][1], longest_link[1][1], longest_link[2][1], longest_link[3][1], longest_link[4][1] if len(longest_link) == 5 else None ]
+                        loaded_fan_vertices = [load_or_find_fanstrip_vtx(vtx) if vtx is not None else -1 for vtx in fan_vertices]
+                        total_pricer.remove(self._tri_normalize([ fan_vertices[0], fan_vertices[1], fan_vertices[2] ]))
+                        total_pricer.remove(self._tri_normalize([ fan_vertices[0], fan_vertices[2], fan_vertices[3] ]))
+                        total_pricer.remove(self._tri_normalize([ fan_vertices[0], fan_vertices[3], fan_vertices[4] ]))
+                        total_pricer.remove(self._tri_normalize([ fan_vertices[0], fan_vertices[4], fan_vertices[5] ]))
+                        if fan_vertices[6] is not None:
+                            total_pricer.remove(self._tri_normalize([ fan_vertices[0], fan_vertices[5], fan_vertices[6] ]))
+
+                        print(f"fan {fan_vertices} -> {loaded_fan_vertices}")
+                        rendered_fan_strips.append(f"\tgsSPTriFan({', '.join(map(str, loaded_fan_vertices))}),\n")
+                        continue
+                    
+                    if len(longest_link) == 3:
+                        # Yield a strip command while attempting to continue the steep, greedily
+                        # Arrangement is v1-v2-v3, v3-v2-v4, v3-v4-v5, v5-v4-v6, v5-v6-v7
+                        strip_vertices = [ longest_link[0][0], longest_link[0][1], highest_usage_vtx, longest_link[1][1], longest_link[2][1], None, None ]
+
+                        # Try to continue the strip by triangles 5->4->6 and 5->6->7
+                        # Because both of those have vertex '5', we can just do a single query to total_pricer:
+                        v5_tris = total_pricer.vtx_to_tris(strip_vertices[4])
+
+                        # Now try find a triangle that has v4 that we can render. Mind that it must be _after_ v5
+                        # TODO: We can dfs this by 2 triangles but I cannot care enough to do that. I am not even sure it matters
+                        v5_tri = None
+                        for tri in v5_tris:
+                            v5_tri_index = tri.index(strip_vertices[4])
+                            assert -1 != v5_tri_index, "v5 not in v5_tris?"
+                            v4_tri_index = self._tri_index_next(v5_tri_index)
+                            if tri[v4_tri_index] == strip_vertices[3]:
+                                v5_tri = tri
+                                strip_vertices[5] = tri[self._tri_index_next(v4_tri_index)]
+                                break
+
+                        # Technically v6_tri is useless but it is convenient for debugging
+                        v6_tri = None
+                        if v5_tri:
+                            # We have a triangle that has v5 and v4, now we need to find the last vertex
+                            # We can do this by just checking if we have a triangle that has v5 and v6
+                            for tri in v5_tris:
+                                v5_tri_index = tri.index(strip_vertices[4])
+                                v6_tri_index = self._tri_index_next(v5_tri_index)
+                                if tri[v6_tri_index] == strip_vertices[5]:
+                                    v6_tri = tri
+                                    strip_vertices[6] = tri[self._tri_index_next(v6_tri_index)]
+                                    break
+
+                        loaded_strip_vertices = [load_or_find_fanstrip_vtx(vtx) if vtx is not None else -1 for vtx in strip_vertices]
+
+                        total_pricer.remove(self._tri_normalize([ strip_vertices[0], strip_vertices[1], strip_vertices[2] ]))
+                        total_pricer.remove(self._tri_normalize([ strip_vertices[2], strip_vertices[1], strip_vertices[3] ]))
+                        total_pricer.remove(self._tri_normalize([ strip_vertices[2], strip_vertices[3], strip_vertices[4] ]))
+                        if strip_vertices[5] is not None:
+                            total_pricer.remove(self._tri_normalize([ strip_vertices[4], strip_vertices[3], strip_vertices[5] ]))
+                        if strip_vertices[6] is not None:
+                            total_pricer.remove(self._tri_normalize([ strip_vertices[4], strip_vertices[5], strip_vertices[6] ]))                            
+
+                        print(f"strip {strip_vertices} -> {loaded_strip_vertices}")
+                        rendered_fan_strips.append(f"\tgsSPTriStrip({', '.join(map(str, loaded_strip_vertices))}),\n")
+                        continue
+
+                # Explicitly check for fanstrip vertices here - needed because algo expects no matching vertices
+                # Mind that if any vertex were written by 'fanstrip_tri_check', highest_usage_vtx might become invalid hence 'continue'
+                if fanstrip_tri_check():
+                    continue
+
+                # Classic algorithm that finds the best triangles that match given
+                # highest_usage_vtx might already exist if fan or strip has loaded it already
+                load_or_find_vertex(highest_usage_vtx)
+
+                # Explicitly check for vertices that might have become active
+                # 'candidate_to_load_pricer' will be empty so need to do this explicitly
+                # TODO: Ideally total_pricer should consider vertices currently loaded in and raise the usage...
+                for tri in list(total_pricer.vtx_to_tris(highest_usage_vtx)):
+                    loaded_tri = [ loaded_vertices.get(vtx) for vtx in tri ]
+                    if None in loaded_tri:
+                        continue
+
+                    print(f"pre render {tri} as {loaded_tri}")
+                    rendered_triangles.append(loaded_tri)
+                    total_pricer.remove(tri)
 
                 candidate_to_load_pricer = UsagePricer(None)
                 candidate_vtxs = set()
                 candidate_tris = set()
+                print("")
                 while True:
-                    # print(f"{loaded_vertices}")
+                    print(f"{loaded_vertices}")
                     candidate_to_load_pricer.ban(highest_usage_vtx)
                     highest_usage_vtx_triangles = list(total_pricer.vtx_to_tris(highest_usage_vtx))
                     for tri in highest_usage_vtx_triangles:
                         loaded_tri = [ loaded_vertices.get(vtx) for vtx in tri ]
-                        # print(f"{tri} -> {loaded_tri}")
+                        print(f"{tri} -> {loaded_tri}")
                         if not None in loaded_tri:
-                            # print(f"render {tri} as {loaded_tri}")
+                            print(f"render {tri} as {loaded_tri}")
                             rendered_triangles.append(loaded_tri)
                             candidate_to_load_pricer.remove(tri)
                             total_pricer.remove(tri)
@@ -340,18 +578,17 @@ class ModelMeshEntry(ModelEntry):
                             candidate_vtxs.add(candidate_vtx)
                             candidate_vtx_tris = total_pricer.vtx_to_tris(candidate_vtx)
                             for candidate_tri in candidate_vtx_tris:
-                                if tuple(candidate_tri) in candidate_tris:
+                                if candidate_tri in candidate_tris:
                                     continue
 
-                                candidate_tris.add(tuple(candidate_tri))
+                                candidate_tris.add(candidate_tri)
                                 candidate_to_load_pricer.add(candidate_tri)
 
                     if candidate_to_load_pricer.completed() or len(loaded_vertices) == 56:
                         break
 
                     highest_usage, highest_usage_vtx = next(candidate_to_load_pricer.highest_usage())
-                    loaded_vertex_buffer.append(self._vertices[highest_usage_vtx])
-                    loaded_vertices[highest_usage_vtx] = len(loaded_vertex_buffer) - 1
+                    load_vertex(highest_usage_vtx)
 
             vtx_entry.vertices.append("};\n")
 
