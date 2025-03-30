@@ -276,9 +276,29 @@ I'm sleeping because...\n\
 like being disturbed.\n\
 Please walk quietly.")
 
-DEFINE_DIALOG(DIALOG_019, NO_SOUND, 2, 30, 200, "\
-Shhh! Please walk\n\
-quietly in the hallway!")
+DEFINE_DIALOG(DIALOG_019, NO_SOUND, 5, 30, 200, "\
+\n\
+\n\
+    - Demo Clear! -\n\
+\n\
+\n\
+Thank you for playing!\n\
+I hope you enjoyed it\n\
+despite all the issues\n\
+I tried to sweep under\n\
+the rug for this demo!\n\
+This is by far my biggest\n\
+project I have worked on\n\
+while trying to push the\n\
+boundaries of SM64 Engine\n\
+and N64 Console.\n\
+I will try my best to\n\
+finish this hack. Currently\n\
+only 51.5%% of the game is\n\
+obtainable, try to find\n\
+all the stars!\n\
+\n\n\
+Thank you for your time!")
 
 DEFINE_DIALOG(DIALOG_020, NO_SOUND, 6, 95, 150, "\
 Dear Mario:\n\

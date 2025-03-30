@@ -94,6 +94,7 @@ const LevelScript level_end_entry[] = {
 		OBJECT(MODEL_THI_WARP_PIPE, -9157, -124, 328, 0, 90, 0, (0x11 << 16), bhvWarpPipe),
 		OBJECT(MODEL_THI_WARP_PIPE, -9157, -124, -398, 0, 90, 0, (0x12 << 16), bhvWarpPipe),
 		OBJECT(MODEL_THI_WARP_PIPE, -6902, -124, 1, 0, 90, 0, (0x13 << 16), bhvWarpPipe),
+		OBJECT(MODEL_WOODEN_SIGNPOST, -7381, -124, 1, 0, 270, 0, (19 << 24) | (19 << 16), bhvMessagePanel),
 		TERRAIN(end_area_1_collision),
 		MACRO_OBJECTS(end_area_1_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
