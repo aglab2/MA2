@@ -1,7 +1,7 @@
 #include "src/game/envfx_snow.h"
 
 const GeoLayout gf_vine_geo[] = {
-   GEO_CULLING_RADIUS(4000),
+   GEO_CULLING_RADIUS(20000),
 	GEO_OPEN_NODE(),
 		GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, 0, 0, 0, -90, 0, 0),
 		GEO_OPEN_NODE(),
