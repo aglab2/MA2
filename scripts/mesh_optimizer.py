@@ -1,6 +1,8 @@
 from collections import deque
 import sys
 
+HAS_EX3_COMMANDS = False
+
 def get_args(line):
     bracket_open = line.find('(')
     bracket_close = line.rfind(')')
@@ -37,10 +39,11 @@ class ModelVtxEntry(ModelEntry):
         return f"ModelVtxEntry(name={self.name})"
 
 class UsagePricer:
-    def __init__(self, req_tris):
+    def __init__(self, req_tris, loaded_vertices):
         self._vertices_to_triangle = {}
         self._usage_to_vertices = {}
         self._banned_vertices = set()
+        self._loaded_vertices = loaded_vertices
 
         if not req_tris:
             return
@@ -136,8 +139,11 @@ class UsagePricer:
 
             self.add(tri)
 
+    def _vtx_cost(self, vtx):
+        return 100 if vtx in self._loaded_vertices else 1
+
     def _tri_cost(self, tri):
-        return len([vtx for vtx in tri if vtx not in self._banned_vertices])
+        return sum([self._vtx_cost(tri) for vtx in tri])
 
     def _tris_cost(self, tris):
         return sum([self._tri_cost(tri) for tri in tris])
@@ -366,7 +372,7 @@ class ModelMeshEntry(ModelEntry):
                 else:
                     return load_vertex(vtx)
 
-            total_pricer = UsagePricer(self._triangles)
+            total_pricer = UsagePricer(self._triangles, loaded_vertices)
             fanstrip_vtx_to_check = []
 
             def fanstrip_tri_check():
@@ -405,10 +411,15 @@ class ModelMeshEntry(ModelEntry):
             rendered_fan_strips = []
             start_offset = 0
             vtx_entry.vertices = []
+            highest_usage = 0
+            # We flush when 'loaded_vertices' becomes 49 somewhat arbitrarily - we need to consume at most 7 for a fan/strip
 
             while True:
-                # We flush when 'loaded_vertices' becomes 49 somewhat arbitrarily - we need to consume at most 7 for a fan/strip
-                if (len(loaded_vertices) and total_pricer.completed()) or len(loaded_vertices) > 48:
+                if not total_pricer.completed():
+                    highest_usage, highest_usage_vtx = next(total_pricer.highest_usage())
+
+                limit = 52 if highest_usage < 4 else 48
+                if (len(loaded_vertices) and total_pricer.completed()) or len(loaded_vertices) > limit:
                     # Flush vertices
                     fanstrip_tri_check()
                     print("+ flush +")
@@ -432,7 +443,7 @@ class ModelMeshEntry(ModelEntry):
                     for fanstrip in rendered_fan_strips:
                         dl_entry.data.append(fanstrip)
 
-                    loaded_vertices = {}
+                    loaded_vertices.clear()
                     loaded_vertex_buffer = []
                     rendered_triangles = []
                     rendered_fan_strips = []
@@ -441,11 +452,10 @@ class ModelMeshEntry(ModelEntry):
                     break
 
                 highest_usage, highest_usage_vtx = next(total_pricer.highest_usage())
+                highest_usage_vtx_triangles = list(total_pricer.vtx_to_tris(highest_usage_vtx))
 
-                # Strip of fan requires to have a vertex that has at least weight of 12
-                if highest_usage >= 12:
-                    highest_usage_vtx_triangles = list(total_pricer.vtx_to_tris(highest_usage_vtx))
-
+                # Strip of fan requires to have a vertex that has at least 4 triangles
+                if HAS_EX3_COMMANDS and len(highest_usage_vtx_triangles) >= 4:
                     # Try to represent as fan or as strip
                     # Both require at least 3 triangles to be worth it and looks like this:
                     #   3 - 4
@@ -554,7 +564,7 @@ class ModelMeshEntry(ModelEntry):
                 if not total_pricer.vtx_to_tris_optional(highest_usage_vtx):
                     continue
 
-                candidate_to_load_pricer = UsagePricer(None)
+                candidate_to_load_pricer = UsagePricer(None, loaded_vertices)
                 candidate_vtxs = set()
                 candidate_tris = set()
                 print("")
