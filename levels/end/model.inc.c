@@ -789,11 +789,15 @@ Vtx end_dl_fs_plane_mesh_layer_1_vtx_cull[8] = {
 	{{ {-1753, -1180, -1549}, 0, {0, 0}, {0, 0, 0, 0} }},
 };
 
-Vtx end_dl_fs_plane_mesh_layer_1_vtx_0[4] = {
-	{{ {-1753, 1855, -1549}, 0, {172, 6114}, {129, 0, 0, 255} }},
-	{{ {-1753, -1180, -1549}, 0, {6114, 820}, {129, 0, 0, 255} }},
-	{{ {-1753, -1180, 1203}, 0, {820, -5122}, {129, 0, 0, 255} }},
-	{{ {-1753, 1855, 1203}, 0, {-5122, 172}, {129, 0, 0, 255} }},
+Vtx end_dl_fs_plane_mesh_layer_1_vtx_0[8] = {
+	{{ {-1753, 1459, -1153}, 0, {185, 4569}, {255, 255, 255, 255} }},
+	{{ {-1753, 1855, 1203}, 0, {-5122, 172}, {0, 0, 0, 255} }},
+	{{ {-1753, 1855, -1549}, 0, {172, 6114}, {0, 0, 0, 255} }},
+	{{ {-1753, 1459, 807}, 0, {-3586, 336}, {255, 255, 255, 255} }},
+	{{ {-1753, -784, 807}, 0, {807, -3577}, {255, 255, 255, 255} }},
+	{{ {-1753, -784, -1153}, 0, {4578, 656}, {255, 255, 255, 255} }},
+	{{ {-1753, -1180, -1549}, 0, {6114, 820}, {0, 0, 0, 255} }},
+	{{ {-1753, -1180, 1203}, 0, {820, -5122}, {0, 0, 0, 255} }},
 };
 
 Vtx end_dl_Untitled_002_mesh_layer_5_vtx_cull[8] = {
@@ -928,9 +932,7 @@ Gfx end_dl_fs_plane_mesh_layer_1[] = {
 	gsSPVertex(end_dl_fs_plane_mesh_layer_1_vtx_cull + 0, 8, 0),
 	gsSPSetGeometryMode(G_LIGHTING),
 	gsSPCullDisplayList(0, 7),
-	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
-	gsSPLightColor(LIGHT_1, 0xFFFFFFFF),
-	gsSPLightColor(LIGHT_2, 0x7F7F7FFF),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH),
 	gsDPSetCombineLERP(TEXEL0, 0, TEXEL1, 0, 0, 0, 0, ENVIRONMENT, COMBINED, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_2CYCLE | G_PM_NPRIMITIVE),
 	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_ZS_PIXEL | G_RM_PASS | G_RM_AA_ZB_OPA_SURF2),
@@ -945,9 +947,14 @@ Gfx end_dl_fs_plane_mesh_layer_1[] = {
 	gsDPLoadBlock(6, 0, 0, 1023, 256),
 	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 256, 1, 0, G_TX_WRAP | G_TX_NOMIRROR, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 5, 0),
 	gsDPSetTileSize(1, 0, 0, 124, 124),
-	gsSPVertex(end_dl_fs_plane_mesh_layer_1_vtx_0 + 0, 4, 0),
-	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
+	gsSPVertex(end_dl_fs_plane_mesh_layer_1_vtx_0 + 0, 8, 0),
+	gsSP2Triangles(0, 1, 2, 0, 0, 3, 1, 0),
+	gsSP2Triangles(0, 4, 3, 0, 0, 5, 4, 0),
+	gsSP2Triangles(5, 0, 2, 0, 5, 2, 6, 0),
+	gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),
+	gsSP2Triangles(3, 4, 7, 0, 3, 7, 1, 0),
 	gsDPPipeSync(),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
 	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
 	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_ZS_PIXEL | G_RM_AA_ZB_OPA_SURF | G_RM_AA_ZB_OPA_SURF2),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
