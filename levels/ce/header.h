@@ -6,7 +6,7 @@
 
 extern const LevelScript level_ce_entry[];
 
-#include "levels/ce/visual/header_lvl.inc.h"
+#include "levels/ce/visual/header_lvlopt.inc.h"
 
 
 #include "levels/ce/header.inc.h"

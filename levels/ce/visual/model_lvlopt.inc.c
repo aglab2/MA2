@@ -62839,7 +62839,6 @@ Vtx ce_dl_0668_object_00D30654_mesh_layer_1_vtx_0[] = {
 };
 
 Gfx ce_dl_0668_object_00D30654_mesh_layer_1_tri_0[] = {
-	gsSPVertex(ce_dl_0668_object_00D30654_mesh_layer_1_vtx_0, 0, 0),
 	gsSPEndDisplayListHint(4),
 };
 
@@ -63222,7 +63221,6 @@ Vtx ce_dl_0670_object_00D305E4_mesh_layer_1_vtx_0[] = {
 };
 
 Gfx ce_dl_0670_object_00D305E4_mesh_layer_1_tri_0[] = {
-	gsSPVertex(ce_dl_0670_object_00D305E4_mesh_layer_1_vtx_0, 0, 0),
 	gsSPEndDisplayListHint(4),
 };
 
@@ -64523,7 +64521,6 @@ Vtx ce_dl_0700_object_00D2FF54_mesh_layer_1_vtx_0[] = {
 };
 
 Gfx ce_dl_0700_object_00D2FF54_mesh_layer_1_tri_0[] = {
-	gsSPVertex(ce_dl_0700_object_00D2FF54_mesh_layer_1_vtx_0, 0, 0),
 	gsSPEndDisplayListHint(4),
 };
 

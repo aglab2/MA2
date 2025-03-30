@@ -90,7 +90,7 @@ const SpringDesc* spring_descs_ce[] = {
     NULL,
 };
 
-#include "levels/ce/visual/header_lvl.inc.h"
+#include "levels/ce/visual/header_lvlopt.inc.h"
 #include "levels/ce/visual/model_lvlopt.inc.c"
 #if 0
 #include "levels/ce/leveldata.inc.c"

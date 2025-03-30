@@ -260,7 +260,9 @@ class ModelMeshEntry(ModelEntry):
             vtx_entry.vertices.append("};\n")
 
             # Make a basic dl that just draws the vertices
-            dl_entry.data.append(f"\tgsSPVertex({vtx_entry.name}, {len(self._vertices)}, 0),\n")
+            if (len(self._vertices)):
+                dl_entry.data.append(f"\tgsSPVertex({vtx_entry.name}, {len(self._vertices)}, 0),\n")
+
             triangles = deque(self._triangles)
             while triangles:
                 if 1 == len(triangles):
@@ -280,7 +282,7 @@ class ModelMeshEntry(ModelEntry):
             vtx_entry.vertices = []
 
             while True:
-                if total_pricer.completed() or len(loaded_vertices) >= 54:
+                if (len(loaded_vertices) and total_pricer.completed()) or len(loaded_vertices) >= 54:
                     # Flush vertices
                     cur_vtx_start_offset = start_offset
                     cur_vtx_load_amount = len(loaded_vertex_buffer)
@@ -439,17 +441,30 @@ def serialize_model(model, path):
 
             f_model.write('\n')
 
+def patch_header(header_path, header_patched_path):
+    with open(header_path, "r") as f_header:
+        lines = f_header.readlines()
+
+    with open(header_patched_path, "w") as f_header:
+        for line in lines:
+            if 'Vtx' in line:
+                continue
+            f_header.write(line)
+
 if '__main__' in __name__:
     path = f"{sys.argv[1]}/visual"
     slash_idx = sys.argv[1].rfind('/')
     name = sys.argv[1][slash_idx+1:]
 
     header_path = f"{path}/header_lvl.inc.h"
+    header_patched_path = f"{path}/header_lvlopt.inc.h"
     model_path = f"{path}/model_lvl.inc.c"   
     model_patched_path = f"{path}/model_lvlopt.inc.c"
  
     model = load_model(model_path)
     optimize_model(model)
     serialize_model(model, model_patched_path)
+
+    patch_header(header_path, header_patched_path)
 
     a = 0
