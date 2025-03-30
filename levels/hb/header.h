@@ -8,7 +8,7 @@ extern const LevelScript level_hb_entry[];
 
 #define hb_area_1 hb_area_visual
 #define hb_area_1_geo hb_area_geo_visual
-#include "levels/hb/visual/header_lvl.inc.h"
+#include "levels/hb/visual/header_lvlopt.inc.h"
 #undef hb_area_1_geo
 #undef hb_area_1
 

@@ -548,6 +548,11 @@ class ModelMeshEntry(ModelEntry):
                     print(f"pre render {tri} as {loaded_tri}")
                     rendered_triangles.append(loaded_tri)
                     total_pricer.remove(tri)
+                
+                # It might just happen that this operation will use literally all tris for 'highest_usage_vtx'
+                # In that case we can just break and continue with the next highest usage vertex
+                if not total_pricer.vtx_to_tris_optional(highest_usage_vtx):
+                    continue
 
                 candidate_to_load_pricer = UsagePricer(None)
                 candidate_vtxs = set()
