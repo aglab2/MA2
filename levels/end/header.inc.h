@@ -1,0 +1,16 @@
+extern const GeoLayout end_area_1_geo[];
+extern const GeoLayout end_area_1[];
+extern const Collision end_area_1_collision[];
+extern const MacroObject end_area_1_macro_objs[];
+extern u8 end_dl___rgba16[];
+extern u8 end_dl__1_rgba16[];
+extern u8 end_dl_Material_ia16[];
+extern Vtx end_dl_fs_plane_mesh_layer_1_vtx_cull[8];
+extern Vtx end_dl_fs_plane_mesh_layer_1_vtx_0[4];
+extern Vtx end_dl_Untitled_002_mesh_layer_5_vtx_cull[8];
+extern Vtx end_dl_Untitled_002_mesh_layer_5_vtx_0[49];
+extern Vtx end_dl_Untitled_005_mesh_layer_5_vtx_cull[8];
+extern Vtx end_dl_Untitled_005_mesh_layer_5_vtx_0[50];
+extern Gfx end_dl_fs_plane_mesh_layer_1[];
+extern Gfx end_dl_Untitled_002_mesh_layer_5[];
+extern Gfx end_dl_Untitled_005_mesh_layer_5[];

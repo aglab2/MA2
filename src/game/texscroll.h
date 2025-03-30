@@ -15,6 +15,7 @@
 #include "src/game/texscroll/ss2_texscroll.inc.h"
 #include "src/game/texscroll/castle_inside_texscroll.inc.h"
 #include "src/game/texscroll/menu_texscroll.inc.h"
+#include "src/game/texscroll/end_texscroll.inc.h"
 extern void scroll_textures();
 
 #endif

@@ -36,7 +36,7 @@ static const LevelScript script_inside_castle_area_1_macro_objects[] = {
     OBJECT(/*model*/ MODEL_CASTLE_WOODEN_DOOR_UNUSED, /*pos*/ -1775,     0,  -824, /*angle*/ 0, 315, 0, /*behParam*/ (1 << 24), /*beh*/ bhvDoor),
     OBJECT(/*model*/ MODEL_CASTLE_CASTLE_DOOR,        /*pos*/ -1100,     0,  2202, /*angle*/ 0,   0, 0, /*behParam*/ (0 << 16), /*beh*/ bhvDoorWarp),
     OBJECT(/*model*/ MODEL_CASTLE_CASTLE_DOOR,        /*pos*/  -946,     0,  2202, /*angle*/ 0, 180, 0, /*behParam*/ (1 << 16), /*beh*/ bhvDoorWarp),
-    OBJECT(/*model*/ MODEL_CASTLE_WOODEN_DOOR,        /*pos*/ -1023,  -101, -5170, /*angle*/ 0,   0, 0, /*behParam*/ (2 << 16), /*beh*/ bhvDoorWarp),
+    OBJECT(/*model*/ MODEL_CASTLE_WOODEN_DOOR,        /*pos*/ -1023,  -101, -5170, /*angle*/ 0,   0, 0, /*behParam*/ (2 << 16), /*beh*/ bhvDoor),
     OBJECT(/*model*/ MODEL_CASTLE_DOOR_0_STARS,       /*pos*/ -3122,   205,  -793, /*angle*/ 0,  90, 0, /*behParam*/ (0 << 24), /*beh*/ bhvDoor),
     OBJECT(/*model*/ MODEL_CASTLE_DOOR_1_STAR,        /*pos*/   256,     0, -1074, /*angle*/ 0,   0, 0, /*behParam*/ (1 << 24), /*beh*/ bhvDoor),
     OBJECT(/*model*/ MODEL_CASTLE_DOOR_1_STAR,        /*pos*/   644,   614, -1476, /*angle*/ 0, 315, 0, /*behParam*/ (1 << 24), /*beh*/ bhvDoor),
@@ -72,7 +72,7 @@ static const LevelScript script_inside_castle_area_3_macro_objects[] = {
     OBJECT(/*model*/ MODEL_CASTLE_WOODEN_DOOR_UNUSED, /*pos*/  -332,  -767,   205, /*angle*/ 0,   0, 0, /*behParam*/ (0 << 24), /*beh*/ bhvDoor),
     OBJECT(/*model*/ MODEL_CASTLE_WOODEN_DOOR_UNUSED, /*pos*/   717, -1177,  -869, /*angle*/ 0, 270, 0, /*behParam*/ (0 << 24), /*beh*/ bhvDoor),
     OBJECT(/*model*/ MODEL_CASTLE_DOOR_0_STARS,       /*pos*/  1126, -1074, -2661, /*angle*/ 0, 270, 0, /*behParam*/ (0 << 24), /*beh*/ bhvDoor),
-    OBJECT(/*model*/ MODEL_CASTLE_METAL_DOOR,         /*pos*/  7885, -1586,  -511, /*angle*/ 0, 270, 0, /*behParam*/ (2 << 16), /*beh*/ bhvDoorWarp),
+    OBJECT(/*model*/ MODEL_CASTLE_METAL_DOOR,         /*pos*/  7885, -1586,  -511, /*angle*/ 0, 270, 0, /*behParam*/ (2 << 16), /*beh*/ bhvDoor),
     RETURN(),
 };
 
@@ -82,10 +82,10 @@ static const LevelScript script_castle_inside_area_1_objects_1[] = {
     WARP_NODE(/*id*/ 0x02, /*destLevel*/ LEVEL_CASTLE_COURTYARD, /*destArea*/ 0x01, /*destNode*/ 0x01, /*flags*/ WARP_NO_CHECKPOINT),
     OBJECT(/*model*/ MODEL_CASTLE_STAR_DOOR_8_STARS, /*pos*/ -2706,   512, -1409, /*angle*/ 0,  45, 0, /*behParam*/ 0x08000000, /*beh*/ bhvStarDoor),
     OBJECT(/*model*/ MODEL_CASTLE_STAR_DOOR_8_STARS, /*pos*/ -2598,   512, -1517, /*angle*/ 0, 225, 0, /*behParam*/ 0x08000000, /*beh*/ bhvStarDoor),
-    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR,          /*pos*/ -1100,   512, -1074, /*angle*/ 0,   0, 0, /*behParam*/ 0x01030000, /*beh*/ bhvDoorWarp),
-    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR,          /*pos*/  -946,   512, -1074, /*angle*/ 0, 180, 0, /*behParam*/ 0x01040000, /*beh*/ bhvDoorWarp),
-    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR,          /*pos*/ -1100, -1074,   922, /*angle*/ 0,   0, 0, /*behParam*/ 0x02050000, /*beh*/ bhvDoorWarp),
-    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR,          /*pos*/  -946, -1074,   922, /*angle*/ 0, 180, 0, /*behParam*/ 0x02060000, /*beh*/ bhvDoorWarp),
+    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR,          /*pos*/ -1100,   512, -1074, /*angle*/ 0,   0, 0, /*behParam*/ 0x01030000, /*beh*/ bhvDoor),
+    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR,          /*pos*/  -946,   512, -1074, /*angle*/ 0, 180, 0, /*behParam*/ 0x01040000, /*beh*/ bhvDoor),
+    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR,          /*pos*/ -1100, -1074,   922, /*angle*/ 0,   0, 0, /*behParam*/ 0x01050000, /*beh*/ bhvDoor),
+    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR,          /*pos*/  -946, -1074,   922, /*angle*/ 0, 180, 0, /*behParam*/ 0x01060000, /*beh*/ bhvDoor),
     WARP_NODE(/*id*/ 0x03, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x02, /*destNode*/ 0x00, /*flags*/ WARP_NO_CHECKPOINT),
     WARP_NODE(/*id*/ 0x04, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x02, /*destNode*/ 0x01, /*flags*/ WARP_NO_CHECKPOINT),
     WARP_NODE(/*id*/ 0x05, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x03, /*destNode*/ 0x00, /*flags*/ WARP_NO_CHECKPOINT),
@@ -135,8 +135,8 @@ static const LevelScript script_castle_inside_area_1_objects_1[] = {
 };
 
 static const LevelScript script_castle_inside_area_2_objects_1[] = {
-    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR, /*pos*/ -1100, 512, 3021, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvDoorWarp),
-    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR, /*pos*/  -946, 512, 3021, /*angle*/ 0, 180, 0, /*behParam*/ 0x00010000, /*beh*/ bhvDoorWarp),
+    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR, /*pos*/ -1100, 512, 3021, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvDoor),
+    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR, /*pos*/  -946, 512, 3021, /*angle*/ 0, 180, 0, /*behParam*/ 0x00010000, /*beh*/ bhvDoor),
     WARP_NODE(/*id*/ 0x00, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x01, /*destNode*/ 0x03, /*flags*/ WARP_NO_CHECKPOINT),
     WARP_NODE(/*id*/ 0x01, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x01, /*destNode*/ 0x04, /*flags*/ WARP_NO_CHECKPOINT),
     OBJECT(/*model*/ MODEL_CASTLE_STAR_DOOR_50_STARS, /*pos*/ -281, 2253, 4762, /*angle*/ 0,   0, 0, /*behParam*/ 0x32000000, /*beh*/ bhvStarDoor),
@@ -183,8 +183,8 @@ static const LevelScript script_castle_inside_area_2_objects_1[] = {
 };
 
 static const LevelScript script_castle_inside_area_3_objects_1[] = {
-    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR, /*pos*/ -1100, -1074, 922, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvDoorWarp),
-    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR, /*pos*/  -946, -1074, 922, /*angle*/ 0, 180, 0, /*behParam*/ 0x00010000, /*beh*/ bhvDoorWarp),
+    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR, /*pos*/ -1100, -1074, 922, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvDoor),
+    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR, /*pos*/  -946, -1074, 922, /*angle*/ 0, 180, 0, /*behParam*/ 0x00010000, /*beh*/ bhvDoor),
     WARP_NODE(/*id*/ 0x00, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x01, /*destNode*/ 0x05, /*flags*/ WARP_NO_CHECKPOINT),
     WARP_NODE(/*id*/ 0x01, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x01, /*destNode*/ 0x06, /*flags*/ WARP_NO_CHECKPOINT),
     WARP_NODE(/*id*/ 0x02, /*destLevel*/ LEVEL_CASTLE_COURTYARD, /*destArea*/ 0x01, /*destNode*/ 0x02, /*flags*/ WARP_NO_CHECKPOINT),

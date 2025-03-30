@@ -296,7 +296,7 @@ and don't come back!\n\
 Gwa ha ha!")
 
 DEFINE_DIALOG(DIALOG_022, NO_SOUND, 2, 95, 200, "\
-You need a key to open\n\
+You need 2 keys to open\n\
 this door.")
 
 DEFINE_DIALOG(DIALOG_023, SOUND_OBJ_BOWSER_INTRO_LAUGH, 3, 95, 200, "\
