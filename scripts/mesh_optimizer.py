@@ -39,10 +39,10 @@ class ModelVtxEntry(ModelEntry):
         return f"ModelVtxEntry(name={self.name})"
 
 class UsagePricer:
-    def __init__(self, req_tris, loaded_vertices):
+    def __init__(self, req_tris, loaded_vertices, banned_vertices):
         self._vertices_to_triangle = {}
         self._usage_to_vertices = {}
-        self._banned_vertices = set()
+        self._banned_vertices = banned_vertices
         self._loaded_vertices = loaded_vertices
 
         if not req_tris:
@@ -50,6 +50,9 @@ class UsagePricer:
 
         for tri in req_tris:
             for vtx in tri:
+                if vtx in self._banned_vertices:
+                    continue
+
                 if vtx not in self._vertices_to_triangle:
                     self._vertices_to_triangle[vtx] = set()
                 self._vertices_to_triangle[vtx].add(tri)
@@ -134,7 +137,7 @@ class UsagePricer:
 
         for tri in affected_triangles:
             # If all vertices are banned then we can skip this triangle
-            if 0 == self._tri_cost(tri):
+            if all(vtx in self._banned_vertices for vtx in tri):
                 continue
 
             self.add(tri)
@@ -143,7 +146,8 @@ class UsagePricer:
         return 100 if vtx in self._loaded_vertices else 1
 
     def _tri_cost(self, tri):
-        return sum([self._vtx_cost(tri) for vtx in tri])
+        cost = sum([self._vtx_cost(vtx) for vtx in tri])
+        return cost
 
     def _tris_cost(self, tris):
         return sum([self._tri_cost(tri) for tri in tris])
@@ -372,7 +376,10 @@ class ModelMeshEntry(ModelEntry):
                 else:
                     return load_vertex(vtx)
 
-            total_pricer = UsagePricer(self._triangles, loaded_vertices)
+            # Currently UsagePricer is agnostic to currently loaded weights for performance reasons - sync needs to be done for changed tris
+            # It does not matter in case of !HAS_EX3_COMMANDS but will matter for HAS_EX3_COMMANDS
+            assert not HAS_EX3_COMMANDS
+            total_pricer = UsagePricer(self._triangles, set(), set())
             fanstrip_vtx_to_check = []
 
             def fanstrip_tri_check():
@@ -564,13 +571,13 @@ class ModelMeshEntry(ModelEntry):
                 if not total_pricer.vtx_to_tris_optional(highest_usage_vtx):
                     continue
 
-                candidate_to_load_pricer = UsagePricer(None, loaded_vertices)
                 candidate_vtxs = set()
                 candidate_tris = set()
+                banned_vertices = set()
                 print("")
                 while True:
                     print(f"{loaded_vertices}")
-                    candidate_to_load_pricer.ban(highest_usage_vtx)
+                    banned_vertices.add(highest_usage_vtx)
                     highest_usage_vtx_triangles = list(total_pricer.vtx_to_tris(highest_usage_vtx))
                     for tri in highest_usage_vtx_triangles:
                         loaded_tri = [ loaded_vertices.get(vtx) for vtx in tri ]
@@ -578,7 +585,6 @@ class ModelMeshEntry(ModelEntry):
                         if not None in loaded_tri:
                             print(f"render {tri} as {loaded_tri}")
                             rendered_triangles.append(loaded_tri)
-                            candidate_to_load_pricer.remove(tri)
                             total_pricer.remove(tri)
                             continue
                     
@@ -597,8 +603,8 @@ class ModelMeshEntry(ModelEntry):
                                     continue
 
                                 candidate_tris.add(candidate_tri)
-                                candidate_to_load_pricer.add(candidate_tri)
 
+                    candidate_to_load_pricer = UsagePricer(candidate_tris, loaded_vertices, banned_vertices)
                     if candidate_to_load_pricer.completed() or len(loaded_vertices) == 56:
                         break
 

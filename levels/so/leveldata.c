@@ -11,8 +11,8 @@
 #if 0
 #include "levels/so/leveldata.inc.c"
 #else
-#include "levels/so/visual/header_lvl.inc.h"
-#include "levels/so/visual/model_lvl.inc.c"
+#include "levels/so/visual/header_lvlopt.inc.h"
+#include "levels/so/visual/model_lvlopt.inc.c"
 #endif
 
 static IWDirectionAreasDesc iw_area1 = {

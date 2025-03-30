@@ -11,7 +11,7 @@
 #include "make_const_nonconst.h"
 
 #include "levels/ms/header.inc.h"
-#include "levels/ms/visual/header_lvl.inc.h"
+#include "levels/ms/visual/header_lvlopt.inc.h"
 
 static IWDirectionAreasDesc iw_ms_area1 = {
     { IWDT_DIRECTIONS },
@@ -60,7 +60,7 @@ const SpringDesc* spring_descs_ms[] = {
     NULL,
 };
 
-#include "levels/ms/visual/model_lvl.inc.c"
+#include "levels/ms/visual/model_lvlopt.inc.c"
 
 #if 0
 #include "levels/ms/leveldata.inc.c"

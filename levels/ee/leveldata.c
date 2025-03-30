@@ -13,7 +13,7 @@
 #define ee_dl_miu128_cg005_001_pal_rgba16_copy ee_dl_miu128_cg005_001_pal_rgba16
 #define ee_dl_miu128_cg005_001_ci4_copy ee_dl_miu128_cg005_001_ci4
 
-#include "levels/ee/visual/model_lvl.inc.c"
+#include "levels/ee/visual/model_lvlopt.inc.c"
 #include "levels/ee/flipbook.inc.c"
 
 static IWDirectionAreasDesc iw_ee_area1 = {

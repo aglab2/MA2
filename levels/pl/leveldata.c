@@ -25,8 +25,8 @@ const BehaviorScript bhvPLRoll[] = {
 #if 0
 #include "levels/pl/leveldata.inc.c"
 #else
-#include "levels/pl/visual/header_lvl.inc.h"
-#include "levels/pl/visual/model_lvl.inc.c"
+#include "levels/pl/visual/header_lvlopt.inc.h"
+#include "levels/pl/visual/model_lvlopt.inc.c"
 #include "levels/pl/flipbook.inc.c"
 #endif
 

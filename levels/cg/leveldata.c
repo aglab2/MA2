@@ -50,8 +50,8 @@ static const LDLDesc loop_desc1 = { 0, .canSnapBackwards = 1 };
 
 #include "levels/cg/rails.inc.c"
 
-#include "levels/cg/visual/header_lvl.inc.h"
-#include "levels/cg/visual/model_lvl.inc.c"
+#include "levels/cg/visual/header_lvlopt.inc.h"
+#include "levels/cg/visual/model_lvlopt.inc.c"
 
 #include "levels/cg/flipbook.inc.c"
 

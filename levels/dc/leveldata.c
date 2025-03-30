@@ -14,7 +14,7 @@
 #include "levels/dc/header.h"
 #include "levels/dc/area_1/macro.inc.c"
 #include "levels/dc/area_1/spline.inc.c"
-#include "levels/dc/visual/model_lvl.inc.c"
+#include "levels/dc/visual/model_lvlopt.inc.c"
 #include "levels/dc/flipbook.inc.c"
 #include "levels/dc/rails.inc.c"
 #endif

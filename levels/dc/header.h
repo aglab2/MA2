@@ -9,7 +9,7 @@ extern const LevelScript level_dc_entry[];
 #if 0
 #include "levels/dc/header.inc.h"
 #else
-#include "levels/dc/visual/header_lvl.inc.h"
+#include "levels/dc/visual/header_lvlopt.inc.h"
 #endif
 
 #include "levels/dc/dc_door_b/collision_header.h"

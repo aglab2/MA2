@@ -7,7 +7,7 @@
 extern const LevelScript level_pl_entry[];
 
 
-#include "levels/pl/visual/header_lvl.inc.h"
+#include "levels/pl/visual/header_lvlopt.inc.h"
 #include "levels/pl/pl_bombe/geo_header.h"
 
 #include "levels/pl/pl_bombe_break/geo_header.h"

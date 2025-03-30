@@ -16,6 +16,6 @@
 #if 0
 #include "levels/so/geo.inc.c"
 #else
-#include "levels/so/visual/header_lvl.inc.h"
+#include "levels/so/visual/header_lvlopt.inc.h"
 #include "levels/so/visual/geo_lvl.inc.c"
 #endif

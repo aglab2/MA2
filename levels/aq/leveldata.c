@@ -12,9 +12,9 @@
 #if 0
 #include "levels/aq/leveldata.inc.c"
 #else
-#include "levels/aq/visual/header_lvl.inc.h"
+#include "levels/aq/visual/header_lvlopt.inc.h"
 #include "levels/aq/area_1/spline.inc.c"
-#include "levels/aq/visual/model_lvl.inc.c"
+#include "levels/aq/visual/model_lvlopt.inc.c"
 #endif
 
 #include "levels/aq/rails.inc.c"

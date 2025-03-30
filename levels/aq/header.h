@@ -6,7 +6,7 @@
 
 extern const LevelScript level_aq_entry[];
 
-#include "levels/aq/visual/header_lvl.inc.h"
+#include "levels/aq/visual/header_lvlopt.inc.h"
 
 #include "levels/aq/aq_milkin_door/geo_header.h"
 
