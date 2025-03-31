@@ -1,4 +1,5 @@
 // flame_mario.inc.c
+#include "game/emutest.h"
 
 extern Gfx burn_smoke_seg4_sub_dl_begin[];
 
@@ -39,10 +40,16 @@ void bhv_black_smoke_mario_loop(void) {
 }
 
 void bhv_flame_mario_loop(void) {
-    cur_obj_scale(2.0f);
-
-    if (o->oTimer & 1) {
-        spawn_object(o, MODEL_BURN_SMOKE, bhvBlackSmokeMario);
+    if (gCurrCourseNum == COURSE_CE)
+    {
+        cur_obj_hide();
+    }
+    else
+    {
+        cur_obj_scale(2.0f);
+        if (o->oTimer & 1) {
+            spawn_object(o, MODEL_BURN_SMOKE, bhvBlackSmokeMario);
+        }
     }
 
     gMarioObject->prevObj = o; // weird?

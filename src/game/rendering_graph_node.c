@@ -1740,7 +1740,7 @@ static int is_far_from_mario(f32 l0, f32 l1, f32 l2)
     range *= gViewRangeMult;
     if (gCurrCourseNum == COURSE_CE)
     {
-        if (gMarioStates->floor && gMarioStates->floor->type == SURFACE_VERY_SLIPPERY)
+        if (gMarioStates->floor && (gMarioStates->floor->type == SURFACE_VERY_SLIPPERY || gMarioStates->floor->type == SURFACE_BURNING))
         {
             range = range + range + range;
         }
