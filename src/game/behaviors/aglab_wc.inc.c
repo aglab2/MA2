@@ -97,4 +97,10 @@ void bhv_breakable_shrinking_loop()
             obj_mark_for_deletion(o);
         }
     }
+
+    if (gCurrLevelNum == LEVEL_WC)
+    {
+        o->oFaceAngleYaw += 0x42;
+        o->oFaceAngleRoll += 0x73;
+    }
 }

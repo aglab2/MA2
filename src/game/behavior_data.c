@@ -533,6 +533,14 @@ const BehaviorScript bhvFadingWarp[] = {
     END_LOOP(),
 };
 
+extern void bhv_sparkler_loop();
+const BehaviorScript bhvSparkler[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_sparkler_loop),
+    END_LOOP(),
+};
+
 const BehaviorScript bhvWarp[] = {
     BEGIN(OBJ_LIST_LEVEL),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),

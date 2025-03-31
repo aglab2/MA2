@@ -29,10 +29,14 @@ void bhv_hidden_star_loop(void) {
     }
 }
 
-void bhv_hidden_star_trigger_loop(void) {
+void bhv_sparkler_loop()
+{
     if (0 == (o->oTimer % 16))
         bhv_golden_coin_sparkles_loop();
+}
 
+void bhv_hidden_star_trigger_loop(void) {
+    bhv_sparkler_loop();
     if (obj_check_if_collided_with_object(o, gMarioObject)) {
         struct Object *hiddenStar = cur_obj_nearest_object_with_behavior(bhvHiddenStar);
 

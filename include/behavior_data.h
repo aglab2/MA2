@@ -590,5 +590,6 @@ extern const BehaviorScript bhvOwCtl[];
 #define bhvBooaster bhvSpeeder
 extern const BehaviorScript bhvBobFakeout[];
 extern const BehaviorScript bhvIgShelf[];
+extern const BehaviorScript bhvSparkler[];
 
 #endif // BEHAVIOR_DATA_H
