@@ -474,7 +474,9 @@ void thread3_main(UNUSED void *arg) {
 #define NO_CULLING_EMULATOR_WHITELIST (EMU_PROJECT64 | EMU_PARALLEL_LAUNCHER | EMU_MUPEN)
     gHasPerformance = NO_CULLING_EMULATOR_WHITELIST & emulatorCfg;
 
+#if 0
     gHasEX3 = 1; // ((EMU_PARALLEL_LAUNCHER | EMU_CONSOLE) & emulatorCfg);
+#endif
     if (!gHasEX3)
     {
         gViewport.vp.vscale[1] = (SCREEN_HEIGHT/2)*4;

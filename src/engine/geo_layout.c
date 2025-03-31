@@ -948,10 +948,13 @@ void geo_layout_cmd_node_batch_display_list_anim(void) {
     gGeoLayoutCommand += 0x0C << CMD_SIZE_SHIFT;
 }
 
+static int dropped_for_console(void* dl, s32 layer);
 void geo_layout_cmd_batchset_node(void) {
     struct GraphNode *graphNode;
     s32 drawingLayer = cur_geo_cmd_u8(0x01);
     void *displayList = cur_geo_cmd_ptr(0x04);
+    if (dropped_for_console(displayList, drawingLayer))
+        goto fini;
 
     graphNode = main_pool_alloc(sizeof(struct GraphNode));
     init_scene_graph_node_links(graphNode, GRAPH_NODE_TYPE_BATCHSET);
@@ -961,6 +964,7 @@ void geo_layout_cmd_batchset_node(void) {
 
     GRAPH_NODE_LVL_DL_ASSIGN_RAW(graphNode,  segmented_to_virtual(displayList));
 
+fini:
     gGeoLayoutCommand += 0x08 << CMD_SIZE_SHIFT;
 }
 
@@ -1107,26 +1111,47 @@ extern u32 ce_dl_1848_object_00D228F4_mesh_layer_1[];
 extern u32 ce_dl_1139_object_00D2AED4_mesh_layer_1[];
 extern u32 ce_dl_2309_object_00C55280_mesh_layer_1[];
 extern u32 ce_dl_0083_object_00D383E4_mesh_layer_1[];
+extern u32 ce_dl_0530_object_00D3236C_mesh_layer_1[];
+extern u32 ce_dl_0463_object_00D331DC_mesh_layer_1[];
+extern u32 ce_dl_0236_object_00CF0DD4_mesh_layer_1[];
+extern u32 ce_dl_0211_object_00D3681C_mesh_layer_1[];
+extern u32 ce_dl_0208_object_00D368C4_mesh_layer_1[];
+extern u32 ce_dl_0058_object_00D3895C_mesh_layer_1[];
+
+static const u32* kCEBannedDls[] = {
+    ce_dl_0530_object_00D3236C_mesh_layer_1,
+    ce_dl_0463_object_00D331DC_mesh_layer_1,
+    ce_dl_0236_object_00CF0DD4_mesh_layer_1,
+    ce_dl_0211_object_00D3681C_mesh_layer_1,
+    ce_dl_0208_object_00D368C4_mesh_layer_1,
+    ce_dl_0058_object_00D3895C_mesh_layer_1,
+    ce_dl_1848_object_00D228F4_mesh_layer_1,
+    ce_dl_2309_object_00C55280_mesh_layer_1,
+    ce_dl_0083_object_00D383E4_mesh_layer_1,
+    ce_dl_1139_object_00D2AED4_mesh_layer_1,
+};
 
 extern u32 dc_dl_object_007AF9CC_mesh_layer_1[];
 extern u32 dc_dl_object_007AE93C_mesh_layer_1[];
 extern u32 dc_dl_0273_object_0104E10C_mesh_layer_1[];
 
-static int dropped_for_console(void* dl)
+static int dropped_for_console(void* dl, s32 layer)
 {
     if (!gIsConsole)
         return 0;
 
     if (gCurrCourseNum == COURSE_CE)
     {
-        if (dl == ce_dl_1848_object_00D228F4_mesh_layer_1)
+        if (LAYER_OPAQUE_DECAL == layer || LAYER_TRANSPARENT == layer)
             return 1;
-        if (dl == ce_dl_2309_object_00C55280_mesh_layer_1)
-            return 1;
-        if (dl == ce_dl_0083_object_00D383E4_mesh_layer_1)
-            return 1;
-        if (dl == ce_dl_1139_object_00D2AED4_mesh_layer_1)
-            return 1;
+
+        for (int i = 0; i < ARRAY_COUNT(kCEBannedDls); i++)
+        {
+            if (dl == kCEBannedDls[i])
+                return 1;
+        }
+
+        return 0;
     }
     if (gCurrCourseNum == COURSE_DC)
     {
@@ -1171,7 +1196,7 @@ void geo_layout_cmd_lvl_translation_rotation(void) {
     graphNode = init_graph_node_lvl_translation_rotation(NULL, drawingLayer, translation, rotation);
     register_scene_graph_node(&graphNode->node);
 
-    if (!dropped_for_console(displayList))
+    if (!dropped_for_console(displayList, drawingLayer))
         GRAPH_NODE_LVL_DL_ASSIGN(graphNode, segmented_to_virtual(displayList));
     else
         GRAPH_NODE_LVL_DL_ASSIGN(graphNode, NULL);
@@ -1206,7 +1231,7 @@ void geo_layout_cmd_lvl_translation(void) {
 
     register_scene_graph_node(&graphNode->node);
 
-    if (!dropped_for_console(displayList))
+    if (!dropped_for_console(displayList, drawingLayer))
         GRAPH_NODE_LVL_DL_ASSIGN(graphNode, segmented_to_virtual(displayList));
     else
         GRAPH_NODE_LVL_DL_ASSIGN(graphNode, NULL);
