@@ -9,7 +9,7 @@ extern const LevelScript level_mhe_entry[];
 #if 0
 #include "levels/mhe/header.inc.h"
 #else
-#include "levels/mhe/visual/header_lvl.inc.h"
+#include "levels/mhe/visual/header_lvlopt.inc.h"
 #endif
 
 #include "levels/mhe/mhe_bigshutter/geo_header.h"

@@ -20,7 +20,7 @@
 
 extern const SpringDesc* spring_descs_mhe[];
 static struct LevelConfig cfg = {
-	.viewRangeMult = 2.5f,
+	.viewRangeMult = 2.f,
 	.skybox = mhe_skybox_mhe_skybox_mesh,
 	.springDescs = spring_descs_mhe,
 };

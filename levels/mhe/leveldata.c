@@ -97,7 +97,7 @@ static Gfx mat_revert_2cycle[] = {
 #else
 #include "levels/mhe/header.h"
 #include "levels/mhe/area_1/spline.inc.c"
-#include "levels/mhe/visual/model_lvl.inc.c"
+#include "levels/mhe/visual/model_lvlopt.inc.c"
 #include "levels/mhe/rails.inc.c"
 #include "levels/mhe/flipbook.inc.c"
 #endif
