@@ -1,4 +1,4 @@
-!!! Make sure you are using latest versions of emulators. Luna PJ64 3.5.5, RMG v0.7.2, Parallel Launcher 2.21.2 or lower will not work. !!!
+This is a demo for my upcoming project featuring a bit over half of the planned content. I hope you will enjoy!
 
 This romhack uses F3DEX3 features and requires modern emulator supporting it.
 
@@ -18,6 +18,6 @@ RMG v0.7.3 or higher with GLideN64
   FB emulation (Settings > Graphics > Frame buffer > check Emulate frame buffer)
 
 Android: Luna Mupen64PlusAE https://github.com/aglab2/mupen64plus-ae/releases/tag/1.3
-  Support is limited. I am not great at mobile development to guarantee it works on every phone but it worked on mine.
+  This worked on my phone which is pretty good. Likely requires modern hardware.
 
 !!! Make sure you are using latest versions of emulators. Luna PJ64 3.5.5, RMG v0.7.2, Parallel Launcher 2.21.2 or lower will not work. !!!
