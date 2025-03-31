@@ -3672,9 +3672,10 @@ s32 set_cam_angle(s32 mode) {
     // Switch to Mario mode
     if (mode == CAM_ANGLE_MARIO && !(sSelectionFlags & CAM_MODE_MARIO_ACTIVE)) {
         sSelectionFlags |= CAM_MODE_MARIO_ACTIVE;
-        if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
+        if (!(gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT)) {
+            gCameraMovementFlags &= CAM_MOVE_ZOOMED_OUT;
+        } else {
             sSelectionFlags |= CAM_MODE_LAKITU_WAS_ZOOMED_OUT;
-            gCameraMovementFlags &= ~CAM_MOVE_ZOOMED_OUT;
         }
         sCameraSoundFlags |= CAM_SOUND_MARIO_ACTIVE;
     }
