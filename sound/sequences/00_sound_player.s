@@ -5264,7 +5264,7 @@ chan_setlayer 0, .layer_2061
 chan_end
 
 .layer_2061:
-layer_note1 39, 0xd2, 127
+layer_note1 39, 0xa2, 127
 layer_end
 
 .sound_obj_cannon2:
