@@ -358,30 +358,15 @@ stairs, you need 70\n\
 Stars.\n\
 Bwa ha ha!")
 
-DEFINE_DIALOG(DIALOG_030, NO_SOUND, 6, 30, 200, "\
-Hello! The Lakitu Bros.,\n\
-cutting in with a live\n\
-update on Mario's\n\
-progress. He's about to\n\
-learn a technique for\n\
-sneaking up on enemies.\n\
-The trick is this: He has\n\
-to walk very slowly in\n\
-order to walk quietly.\n\
-\n\
-\n\
-\n\
-And wrapping up filming\n\
-techniques reported on\n\
-earlier, you can take a\n\
-look around using Ⓒ▶ and\n\
-Ⓒ◀. Press Ⓒ▼ to view the\n\
-action from a distance.\n\
-When you can't move the\n\
-camera any farther, the\n\
-buzzer will sound. This is\n\
-the Lakitu Bros.,\n\
-signing off.")
+DEFINE_DIALOG(DIALOG_030, NO_SOUND, 4, 30, 200, "\
+Be careful wandering\n\
+around the Death Chamber.\n\
+You may find ways to get\n\
+yourself locked up...\n\
+Use pause menu warping\n\
+functionality to escape\n\
+the sticky situations,\n\
+but you pay the coin price.")
 
 DEFINE_DIALOG(DIALOG_031, NO_SOUND, 5, 30, 200, "\
 No way! You beat me...\n\

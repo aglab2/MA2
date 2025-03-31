@@ -1820,7 +1820,7 @@ s32 act_riding_hoot(struct MarioState *m) {
     if (m->usedObj->behavior == bhvRocket)
     {
         m->pos[0] = m->usedObj->oPosX + 40.f * sins(0x4000 + m->usedObj->oFaceAngleYaw);
-        m->pos[1] = m->usedObj->oPosY - 192.5f;
+        m->pos[1] = m->usedObj->oPosY - 172.5f;
         m->pos[2] = m->usedObj->oPosZ + 40.f * coss(0x4000 + m->usedObj->oFaceAngleYaw);
         m->faceAngle[1] = 0xC000 + m->usedObj->oFaceAngleYaw;
     }
