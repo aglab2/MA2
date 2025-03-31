@@ -210,7 +210,8 @@ HackerSM64 team\n\
 and maintainers:\n\
 ArcticJaguar &\n\
 Arthurtilly\n\
-\n\n\
+Testers:\n\
+Mushie64 & Nobbie\n\
 Tools used:\n\
 fast64\n\
 SAIO\n\

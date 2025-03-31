@@ -1,4 +1,4 @@
-This is a demo for my upcoming project featuring a bit over half of the planned content. I hope you will enjoy!
+This is a demo for my upcoming project featuring a bit over half of the planned content. Please enjoy!
 
 This romhack uses F3DEX3 features and requires modern emulator supporting it.
 
