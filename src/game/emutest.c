@@ -105,6 +105,7 @@ u32 detect_emulator() {
      * Exponent=01111111110, Mantissa=1111111111111111111111111111111111111111111111111111
      * RZ will output not 1.0f, RN will output exactly 1.0f
     */
+#if 0
     const FloatRoundingMode roundingMode = fcr_get_rounding_mode();
     fcr_set_rounding_mode(FCR_RM_ROUND_TO_NEAREST);
     if (1.0f != round_double_to_float(0.9999999999999999)) {
@@ -112,6 +113,7 @@ u32 detect_emulator() {
         return EMU_WIIVC;
     }
     fcr_set_rounding_mode(roundingMode);
+#endif
 
     // If cache is emulated, then this is likely Simple64, or some other accurate emulator.
     if (check_cache_emulation()) {
