@@ -11,6 +11,7 @@ extern const Trajectory mhe_area_1_spline_Spring_NurbsCurve_005[];
 extern const Trajectory mhe_area_1_spline_Spring_NurbsCurve_006[];
 extern const Trajectory mhe_area_1_spline_Spring_NurbsCurve_007[];
 extern const Trajectory mhe_area_1_spline_Spring_NurbsCurve_008[];
+extern const Trajectory mhe_area_1_spline_Spring_NurbsCurve_009[];
 extern u8 mhe_dl_miu128_meh013_ci4[];
 extern u8 mhe_dl_miu128_meh013_pal_rgba16[];
 extern u8 mhe_dl_miu128_meh010_ci4[];

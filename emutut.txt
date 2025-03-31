@@ -3,10 +3,10 @@
 This romhack uses F3DEX3 features and requires modern emulator supporting it.
 
 Supported platforms:
-N64 Console + SummerCart
+N64 Console + SummerCart/EverDrive X7
   Culling features are used to ensure high performance which can lead to occasional flickering. Sorry for inconvenience.
 
-Parallel Launcher with Parallel core + OGRE
+Parallel Launcher with Parallel core v2.21.2 or higher + OGRE
 
 Luna Project64 v3.5.6 or higher with ANGLE GLideN64 4.3.16
   Options > Configuration > Plugins > Video plugin > ANGLE GLideN64
