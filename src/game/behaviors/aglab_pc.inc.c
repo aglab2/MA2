@@ -173,6 +173,9 @@ static inline int pc_sandglass_progress(void)
 
 static void pc_sandglass_modify_coord(f32* coord, f32 home, f32 mult)
 {
+    if (!o->parentObj)
+        return;
+
     switch (o->parentObj->oAction)
     {
         case 0:
