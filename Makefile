@@ -169,7 +169,7 @@ AUDIO_COLLISION_OPT_FLAGS = \
 
 # Math Util
 GCC_MATH_UTIL_OPT_FLAGS = \
-  $(GCC_MAIN_OPT_FLAGS) -Ofast -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division \
+  $(GCC_MAIN_OPT_FLAGS) -Os -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division \
   -ffunction-sections \
   -fdata-sections \
   -falign-functions=32

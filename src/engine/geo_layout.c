@@ -1135,6 +1135,26 @@ extern u32 dc_dl_object_007AF9CC_mesh_layer_1[];
 extern u32 dc_dl_object_007AE93C_mesh_layer_1[];
 extern u32 dc_dl_0273_object_0104E10C_mesh_layer_1[];
 
+extern u32 cg_dl_0000_object_00F72984_mesh_layer_1[];
+extern u32 cg_dl_0013_object_00F726AC_mesh_layer_1[];
+extern u32 cg_dl_0018_object_00F72594_mesh_layer_1[];
+extern u32 cg_dl_0019_object_00F7255C_mesh_layer_1[];
+extern u32 cg_dl_0209_object_00F5B49C_mesh_layer_1[];
+extern u32 cg_dl_0213_object_00F5B3BC_mesh_layer_1[];
+extern u32 cg_dl_0284_object_00F5A514_mesh_layer_1[];
+extern u32 cg_dl_0286_object_00F5A4A4_mesh_layer_1[];
+
+static const u32* kCGBannedDls[] = {
+    cg_dl_0000_object_00F72984_mesh_layer_1,
+    // cg_dl_0013_object_00F726AC_mesh_layer_1,
+    cg_dl_0018_object_00F72594_mesh_layer_1,
+    cg_dl_0019_object_00F7255C_mesh_layer_1,
+    // cg_dl_0209_object_00F5B49C_mesh_layer_1,
+    // cg_dl_0213_object_00F5B3BC_mesh_layer_1,
+    // cg_dl_0284_object_00F5A514_mesh_layer_1,
+    // cg_dl_0286_object_00F5A4A4_mesh_layer_1,
+};
+
 static int dropped_for_console(void* dl, s32 layer)
 {
     if (!gIsConsole)
@@ -1161,6 +1181,19 @@ static int dropped_for_console(void* dl, s32 layer)
             return 1;
         if (dl == dc_dl_0273_object_0104E10C_mesh_layer_1)
             return 1;
+
+        return 0;
+    }
+    
+    if (gCurrCourseNum == COURSE_CG)
+    {
+        for (int i = 0; i < ARRAY_COUNT(kCGBannedDls); i++)
+        {
+            if (dl == kCGBannedDls[i])
+                return 1;
+        }
+
+        return 0;
     }
 
     return 0;
