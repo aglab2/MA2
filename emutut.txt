@@ -1,23 +1,26 @@
 This is a demo for my upcoming project featuring a bit over half of the planned content. Please enjoy!
 
-This romhack uses F3DEX3 features and requires modern emulator supporting it.
+This romhack uses F3DEX3 features and requires modern emulator supporting it. Any unsupported emulator visuals will crash or have broken visuals (black screen).
+
+!!! Make sure you are using latest versions of emulators. Luna PJ64 3.5.5 and older, original PJ64 any version, RMG v0.7.2 or older, Parallel Launcher 2.21.2 or older will not work. !!!
 
 Supported platforms:
 N64 Console + SummerCart/EverDrive X7
   Culling features are used to ensure high performance which can lead to occasional flickering. Sorry for inconvenience.
 
+Luna Project64 v3.5.6 or higher with ANGLE GLideN64 4.3.16 https://github.com/Luna-Project64/Luna-Project64/releases
+  Options - Configuration - Plugins - Video plugin - ANGLE GLideN64
+  No FB emulation (Options - Graphics Settings - Frame buffer - uncheck Emulate frame buffer) 
+  Enable Noise (Options - Graphics Settings - Emulation - check Enable Noise)
+
 Parallel Launcher with Parallel core v2.21.2 or higher + OGRE
+  Check for updates with Settings - Updaters - Check for Updates
 
-Luna Project64 v3.5.6 or higher with ANGLE GLideN64 4.3.16
-  Options > Configuration > Plugins > Video plugin > ANGLE GLideN64
-  No FB emulation (Options > Graphics Settings > Frame buffer > uncheck Emulate frame buffer) 
-  Enable Noise (Options > Graphics Settings > Emulation > check Enable Noise)
+RMG v0.7.3 or higher with GLideN64 https://github.com/Rosalie241/RMG/releases
+  Settings - Settings - Plugins - Video Plugin - GLideN64
+  FB emulation (Settings - Graphics - Frame buffer - check Emulate frame buffer)
 
-RMG v0.7.3 or higher with GLideN64
-  Settings > Settings > Plugins > Video Plugin > GLideN64
-  FB emulation (Settings > Graphics > Frame buffer > check Emulate frame buffer)
-
-Android: Luna Mupen64PlusAE https://github.com/aglab2/mupen64plus-ae/releases/tag/1.3
+Android: Luna Mupen64PlusAE https://github.com/aglab2/mupen64plus-ae/releases
   This worked on my phone but I expect support to be sporadic. Best use emulators above on PC.
 
-!!! Make sure you are using latest versions of emulators. Luna PJ64 3.5.5, RMG v0.7.2, Parallel Launcher 2.21.2 or lower will not work. !!!
+!!! Make sure you are using latest versions of emulators. Luna PJ64 3.5.5 and older, original PJ64 any version, RMG v0.7.2 or older, Parallel Launcher 2.21.2 or older will not work. !!!
