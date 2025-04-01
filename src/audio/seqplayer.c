@@ -2575,7 +2575,7 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
                         break;
 
                     case 0xd3: // seq_setmutebhv
-                        seqPlayer->muteBehavior = m64_read_u8(state);
+                        seqPlayer->muteBehavior = MUTE_BEHAVIOR_SOFTEN; m64_read_u8(state);
                         break;
 
                     case 0xd2: // seq_setshortnotevelocitytable
