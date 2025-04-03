@@ -1,0 +1,11 @@
+extern const GeoLayout hb_ashibaf2_geo[];
+extern u8 hb_ashibaf2_kd_so_hasira3_ci4[];
+extern u8 hb_ashibaf2_kd_so_hasira3_pal_rgba16[];
+extern u8 hb_ashibaf2_kd_so_hasira5_ci4[];
+extern u8 hb_ashibaf2_kd_so_hasira5_pal_rgba16[];
+extern u8 hb_ashibaf2_kd_so_kabe2_ci4[];
+extern u8 hb_ashibaf2_kd_so_kabe2_pal_rgba16[];
+extern Vtx hb_ashibaf2_hb_ashibaf2_mesh_layer_1_vtx_0[4];
+extern Vtx hb_ashibaf2_hb_ashibaf2_mesh_layer_1_vtx_1[16];
+extern Vtx hb_ashibaf2_hb_ashibaf2_mesh_layer_1_vtx_2[13];
+extern Gfx hb_ashibaf2_hb_ashibaf2_mesh_layer_1[];

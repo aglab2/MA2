@@ -1,0 +1,11 @@
+extern const GeoLayout so_pillar_geo[];
+extern u8 so_pillar_kd_so_sekihi1_ci4[];
+extern u8 so_pillar_kd_so_sekihi1_pal_rgba16[];
+extern u8 so_pillar_kd_so_sekihi2_ci4[];
+extern u8 so_pillar_kd_so_sekihi2_pal_rgba16[];
+extern u8 so_pillar_kd_so_sekihi3_ci4[];
+extern u8 so_pillar_kd_so_sekihi3_pal_rgba16[];
+extern Vtx so_pillar_so_pillar_mesh_layer_1_vtx_0[42];
+extern Vtx so_pillar_so_pillar_mesh_layer_1_vtx_1[4];
+extern Vtx so_pillar_so_pillar_mesh_layer_1_vtx_2[8];
+extern Gfx so_pillar_so_pillar_mesh_layer_1[];

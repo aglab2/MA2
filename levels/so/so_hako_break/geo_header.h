@@ -1,0 +1,11 @@
+extern const GeoLayout so_hako_break_geo[];
+extern u8 so_hako_break_kd_so_sekihi5_ci4[];
+extern u8 so_hako_break_kd_so_sekihi5_pal_rgba16[];
+extern u8 so_hako_break_kd_so_mikosi1_ci4[];
+extern u8 so_hako_break_kd_so_mikosi1_pal_rgba16[];
+extern u8 so_hako_break_kd_so_kabe2_ci4[];
+extern u8 so_hako_break_kd_so_kabe2_pal_rgba16[];
+extern Vtx so_hako_break_so_hako_break_mesh_layer_1_vtx_0[9];
+extern Vtx so_hako_break_so_hako_break_mesh_layer_1_vtx_1[22];
+extern Vtx so_hako_break_so_hako_break_mesh_layer_1_vtx_2[3];
+extern Gfx so_hako_break_so_hako_break_mesh_layer_1[];

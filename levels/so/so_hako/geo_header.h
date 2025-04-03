@@ -1,0 +1,12 @@
+extern const GeoLayout so_hako_geo[];
+extern u8 so_hako_kd_so_hasira5_ci4[];
+extern u8 so_hako_kd_so_hasira5_pal_rgba16[];
+extern u8 so_hako_kd_so_mikosi1_ci4[];
+extern u8 so_hako_kd_so_mikosi1_pal_rgba16[];
+extern u8 so_hako_kd_so_kabe2_ci4[];
+extern u8 so_hako_kd_so_kabe2_pal_rgba16[];
+extern Vtx so_hako_so_hako_mesh_layer_1_vtx_0[25];
+extern Vtx so_hako_so_hako_mesh_layer_1_vtx_1[16];
+extern Vtx so_hako_so_hako_mesh_layer_1_vtx_2[44];
+extern Vtx so_hako_so_hako_mesh_layer_1_vtx_3[12];
+extern Gfx so_hako_so_hako_mesh_layer_1[];
