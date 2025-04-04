@@ -1,0 +1,7 @@
+const Trajectory so_area_2_spline_Spring[] = {
+	TRAJECTORY_POS( 0, 19594, 300, -4139),
+	TRAJECTORY_POS( 1, 19594, 2404, -7058),
+	TRAJECTORY_POS( 2, 19594, 2895, -11617),
+	TRAJECTORY_POS( 3, 19594, 943, -15049),
+	TRAJECTORY_END(),
+};
