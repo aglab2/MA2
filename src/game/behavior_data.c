@@ -6387,6 +6387,7 @@ const BehaviorScript bhvSoMove[] = {
 };
 
 extern const Collision so_pillar_base_collision[];
+extern void bhv_so_pillarbase_init();
 extern void bhv_so_pillarbase_loop();
 const BehaviorScript bhvSoPillarBase[] = {
     BEGIN(OBJ_LIST_SURFACE),
@@ -6395,6 +6396,7 @@ const BehaviorScript bhvSoPillarBase[] = {
     LOAD_COLLISION_DATA(so_pillar_base_collision),
     SET_INT(oInteractType, INTERACT_BREAKABLE),
     SET_INT(oInteractionSubtype, INT_SUBTYPE_KICKABLE),
+    CALL_NATIVE(bhv_so_pillarbase_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_so_pillarbase_loop),
         CALL_NATIVE(load_object_collision_model),

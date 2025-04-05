@@ -5,6 +5,7 @@ void bhv_so_pillar_init()
     o->parentObj = spawn_object(o, MODEL_SO_PILLAR_BASE, bhvSoPillarBase);
     o->oHomeY = o->oPosY;
     o->oPosY += 700.f;
+    o->oDrawingDistance = 10000.f;
 }
 
 void bhv_so_pillar_loop()
@@ -14,27 +15,29 @@ void bhv_so_pillar_loop()
 
     if (0 == o->oAction)
     {
-        o->oVelY -= 1.f;
+        o->oVelY -= 2.f;
         o->oPosY += o->oVelY;
         if (o->oPosY < o->oHomeY)
         {
             o->oPosY = o->oHomeY;
-            o->oHomeY += 200.f;
+            o->oHomeY += 400.f;
             o->oVelY = -o->oVelY;
             o->oAction = 1;
+            create_sound_spawner(SOUND_GENERAL2_BOBOMB_EXPLOSION);
         }
     }
     else if (1 == o->oAction)
     {
-        o->oVelY -= 1.f;
+        o->oVelY -= 2.f;
         o->oPosY += o->oVelY;
-        o->oFaceAnglePitch += 0x100;
+        o->oFaceAnglePitch += 0x180;
         if (o->oVelY < 0 && o->oPosY < o->oHomeY)
         {
             o->oAction = 2;
             o->oVelY = 0.f;
             o->oPosY = o->oHomeY;
             o->oFaceAnglePitch = 0x4000;
+            create_sound_spawner(SOUND_GENERAL2_BOBOMB_EXPLOSION);
         }
     }
 }
@@ -121,10 +124,19 @@ struct ObjectHitbox sSoSupportHitbox = {
     /* hurtboxHeight:     */ 1,
 };
 
+#define oSoPillarBaseSwitch oObjF4
+
+void bhv_so_pillarbase_init()
+{
+    o->oDrawingDistance = 10000.f;
+    f32 d;
+    o->oSoPillarBaseSwitch = cur_obj_find_nearest_object_with_behavior(bhvFloorSwitchGrills, &d);
+}
+
 void bhv_so_pillarbase_loop()
 {
     obj_set_hitbox(o, &sSoSupportHitbox);
-    if (cur_obj_was_attacked_or_ground_pounded()) {
+    if (cur_obj_was_attacked_or_ground_pounded() || (o->oSoPillarBaseSwitch && o->oSoPillarBaseSwitch->oAction > 1)) {
         obj_explode_and_spawn_coins(46.0f, COIN_TYPE_YELLOW);
         create_sound_spawner(SOUND_GENERAL_BREAK_BOX);
         if (o->parentObj)
