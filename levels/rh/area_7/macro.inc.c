@@ -1,0 +1,4 @@
+const MacroObject rh_area_7_macro_objs[] = {
+	MACRO_OBJECT_END(),
+};
+

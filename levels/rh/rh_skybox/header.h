@@ -1,0 +1,8 @@
+extern u8 rh_skybox_st1_nbg2_ci4[];
+extern u8 rh_skybox_st1_nbg2_pal_rgba16[];
+extern u8 rh_skybox_shcitynbg_rgba16[];
+extern u8 rh_skybox_shcitynbg2_ia16[];
+extern Vtx rh_skybox_rh_skybox_mesh_vtx_0[49];
+extern Vtx rh_skybox_rh_skybox_mesh_vtx_1[665];
+extern Vtx rh_skybox_rh_skybox_mesh_vtx_2[49];
+extern Gfx rh_skybox_rh_skybox_mesh[];

@@ -23,4 +23,6 @@ RMG v0.7.3 or higher with GLideN64 https://github.com/Rosalie241/RMG/releases
 Android: Luna Mupen64PlusAE https://github.com/aglab2/mupen64plus-ae/releases
   This worked on my phone but I expect support to be sporadic. Best use emulators above on PC.
 
+Most of the testing was done on Luna PJ64 and N64.
+
 !!! Make sure you are using latest versions of emulators. Luna PJ64 3.5.5 and older, original PJ64 any version, RMG v0.7.2 or older, Parallel Launcher 2.21.2 or older will not work. !!!
