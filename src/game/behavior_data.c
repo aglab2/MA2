@@ -6347,11 +6347,13 @@ const BehaviorScript bhvIgShelf[] = {
 };
 
 extern const Collision so_pillar_collision[];
+extern void bhv_so_pillar_init();
 extern void bhv_so_pillar_loop();
 const BehaviorScript bhvSoPillar[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_COLLISION_DATA(so_pillar_collision),
+    CALL_NATIVE(bhv_so_pillar_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_so_pillar_loop),
         CALL_NATIVE(load_object_collision_model),
@@ -6359,13 +6361,42 @@ const BehaviorScript bhvSoPillar[] = {
 };
 
 extern const Collision so_kaiten_collision[];
+extern void bhv_so_hako_init();
 extern void bhv_so_hako_loop();
 const BehaviorScript bhvSoHako[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_COLLISION_DATA(so_kaiten_collision),
+    CALL_NATIVE(bhv_so_hako_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_so_hako_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern void bhv_so_move_init();
+extern void bhv_so_move_loop();
+const BehaviorScript bhvSoMove[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    CALL_NATIVE(bhv_so_move_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_so_move_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern const Collision so_pillar_base_collision[];
+extern void bhv_so_pillarbase_loop();
+const BehaviorScript bhvSoPillarBase[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    SET_FLOAT(oDrawingDistance, 10000),
+    LOAD_COLLISION_DATA(so_pillar_base_collision),
+    SET_INT(oInteractType, INTERACT_BREAKABLE),
+    SET_INT(oInteractionSubtype, INT_SUBTYPE_KICKABLE),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_so_pillarbase_loop),
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };

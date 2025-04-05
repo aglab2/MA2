@@ -48,4 +48,6 @@ extern const LevelScript level_so_entry[];
 
 #include "levels/so/so_pillar_break/geo_header.h"
 
+#include "levels/so/hb_ashiba3/collision_header.h"
+
 #endif

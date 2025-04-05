@@ -50,3 +50,4 @@ IWDHeader* iw_descs_so[] = {
 #include "levels/so/so_pillar_base/model.inc.c"
 #include "levels/so/so_pillar_base/collision.inc.c"
 #include "levels/so/so_pillar_break/model.inc.c"
+#include "levels/so/hb_ashiba3/collision.inc.c"

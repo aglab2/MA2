@@ -594,5 +594,6 @@ extern const BehaviorScript bhvIgShelf[];
 extern const BehaviorScript bhvSparkler[];
 extern const BehaviorScript bhvSoPillar[];
 extern const BehaviorScript bhvSoHako[];
+extern const BehaviorScript bhvSoMove[];
 
 #endif // BEHAVIOR_DATA_H
