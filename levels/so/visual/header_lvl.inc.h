@@ -578,6 +578,8 @@ extern Vtx so_dl_object_008CFC78_010_mesh_layer_1_vtx_0[4];
 extern Gfx so_dl_object_008CFC78_010_mesh_layer_1_tri_0[];
 extern Vtx so_dl_object_008CFC78_010_mesh_layer_1_vtx_1[13];
 extern Gfx so_dl_object_008CFC78_010_mesh_layer_1_tri_1[];
+extern Vtx so_dl_object_008D451C_004_mesh_layer_1_vtx_0[514];
+extern Gfx so_dl_object_008D451C_004_mesh_layer_1_tri_0[];
 extern Vtx so_dl_object_008D4EA4_mesh_layer_1_vtx_0[8];
 extern Gfx so_dl_object_008D4EA4_mesh_layer_1_tri_0[];
 extern Vtx so_dl_object_008E077C_mesh_layer_1_vtx_0[71];
@@ -694,8 +696,10 @@ extern Vtx so_dl_object_008ED5F4_001_mesh_layer_1_vtx_0[7];
 extern Gfx so_dl_object_008ED5F4_001_mesh_layer_1_tri_0[];
 extern Vtx so_dl_object_008ED5F4_002_mesh_layer_1_vtx_0[12];
 extern Gfx so_dl_object_008ED5F4_002_mesh_layer_1_tri_0[];
-extern Vtx so_dl_object_008ED5F4_003_mesh_layer_1_vtx_0[15];
+extern Vtx so_dl_object_008ED5F4_003_mesh_layer_1_vtx_0[13];
 extern Gfx so_dl_object_008ED5F4_003_mesh_layer_1_tri_0[];
+extern Vtx so_dl_object_008ED5F4_005_mesh_layer_1_vtx_0[10];
+extern Gfx so_dl_object_008ED5F4_005_mesh_layer_1_tri_0[];
 extern Vtx so_dl_object_008EDE74_mesh_layer_1_vtx_0[16];
 extern Gfx so_dl_object_008EDE74_mesh_layer_1_tri_0[];
 extern Vtx so_dl_object_008F9FB4_mesh_layer_1_vtx_0[24];
@@ -873,6 +877,7 @@ extern u32 so_dl_object_008CEF7C_mesh_layer_5[];
 extern u32 so_dl_object_008CFC78_001_mesh_layer_1[];
 extern u32 so_dl_object_008CFC78_004_mesh_layer_1[];
 extern u32 so_dl_object_008CFC78_010_mesh_layer_1[];
+extern u32 so_dl_object_008D451C_004_mesh_layer_1[];
 extern u32 so_dl_object_008D4EA4_mesh_layer_1[];
 extern u32 so_dl_object_008E077C_mesh_layer_1[];
 extern u32 so_dl_object_008E077C_mesh_layer_5[];
@@ -913,6 +918,7 @@ extern u32 so_dl_object_008EC1DC_010_mesh_layer_1[];
 extern u32 so_dl_object_008ED5F4_001_mesh_layer_1[];
 extern u32 so_dl_object_008ED5F4_002_mesh_layer_1[];
 extern u32 so_dl_object_008ED5F4_003_mesh_layer_1[];
+extern u32 so_dl_object_008ED5F4_005_mesh_layer_1[];
 extern u32 so_dl_object_008EDE74_mesh_layer_1[];
 extern u32 so_dl_object_008F9FB4_mesh_layer_1[];
 extern u32 so_dl_object_008F9FB4_mesh_layer_5[];
@@ -959,15 +965,15 @@ extern u32 so_dl_object_008FE88C_mesh_layer_5[];
 #define LVL_BATCH_LAYER_OPAQUE_SO_DL_KD_SO_MIKOSI1_PAL_RGBA16 27
 #define LVL_BATCH_LAYER_OPAQUE_SO_DL_KD_SO_SEKIHI5_PAL_RGBA16 28
 #define LVL_BATCH_LAYER_OPAQUE_SO_DL_KD_SO_SEKIHI4_PAL_RGBA16 29
-#define LVL_BATCH_LAYER_OPAQUE_SO_DL_KD_SO_MIKOSI1_PAL_RGBA16_1 30
-#define LVL_BATCH_LAYER_OPAQUE_SO_DL_KD_SO_MIKOSI1_PAL_RGBA16_2 31
-#define LVL_BATCH_LAYER_OPAQUE_SO_DL_KD_SO_SEKIHI3_PAL_RGBA16_1 32
-#define LVL_BATCH_LAYER_OPAQUE_SO_DL_KD_SO_SARA1_PAL_RGBA16 33
-#define LVL_BATCH_LAYER_OPAQUE_SO_DL_KD_SO_SARA1_PAL_RGBA16_1 34
-#define LVL_BATCH_LAYER_OPAQUE_SO_DL_KD_SO_SEKIHI4_PAL_RGBA16_1 35
-#define LVL_BATCH_LAYER_OPAQUE_SO_DL_KD_SO_SEKIHI5_PAL_RGBA16_1 36
-#define LVL_BATCH_LAYER_OPAQUE_SO_DL_DZ_SO_RYUUSA_0001_PAL_RGBA16 37
-#define LVL_BATCH_LAYER_OPAQUE_SO_DL_KD_SO_SAKU1_PAL_RGBA16_1 38
+#define LVL_BATCH_LAYER_OPAQUE_SO_DL_KD_SO_SAKU1_PAL_RGBA16_1 30
+#define LVL_BATCH_LAYER_OPAQUE_SO_DL_KD_SO_MIKOSI1_PAL_RGBA16_1 31
+#define LVL_BATCH_LAYER_OPAQUE_SO_DL_KD_SO_MIKOSI1_PAL_RGBA16_2 32
+#define LVL_BATCH_LAYER_OPAQUE_SO_DL_KD_SO_SEKIHI3_PAL_RGBA16_1 33
+#define LVL_BATCH_LAYER_OPAQUE_SO_DL_KD_SO_SARA1_PAL_RGBA16 34
+#define LVL_BATCH_LAYER_OPAQUE_SO_DL_KD_SO_SARA1_PAL_RGBA16_1 35
+#define LVL_BATCH_LAYER_OPAQUE_SO_DL_KD_SO_SEKIHI4_PAL_RGBA16_1 36
+#define LVL_BATCH_LAYER_OPAQUE_SO_DL_KD_SO_SEKIHI5_PAL_RGBA16_1 37
+#define LVL_BATCH_LAYER_OPAQUE_SO_DL_DZ_SO_RYUUSA_0001_PAL_RGBA16 38
 #define LVL_BATCH_LAYER_TRANSPARENT_SO_DL_KD_SO_MADO1_PAL_RGBA16 0
 #define LVL_BATCH_LAYER_TRANSPARENT_SO_DL_KD_SO_KAGE3_IA16 1
 #define LVL_BATCH_LAYER_TRANSPARENT_SO_DL_KD_SO_KAGE1_IA16 2
@@ -1061,6 +1067,7 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_so[LAYER_COUNT];
 #define mat_revert_so_dl_HATADAI_sa2mdl_1_f3d mat_revert_so_dl_objLandTable0021_sa2blvl_0_f3d
 #define mat_revert_so_dl_PILLAR_BASEB_sa2bmdl_0_f3d mat_revert_so_dl_objLandTable0021_sa2blvl_0_f3d
 #define mat_revert_so_dl_PILLAR_BASEB_sa2bmdl_1_f3d mat_revert_so_dl_objLandTable0021_sa2blvl_0_f3d
+#define mat_revert_so_dl_CORNER_sa2mdl_0_f3d mat_revert_so_dl_objLandTable0021_sa2blvl_0_f3d
 #define mat_revert_so_dl_GRAVE_sa2mdl_1_f3d mat_revert_so_dl_objLandTable0021_sa2blvl_0_f3d
 #define mat_revert_so_dl_GRAVE_sa2mdl_3_f3d mat_revert_so_dl_objLandTable0021_sa2blvl_0_f3d
 #define mat_revert_so_dl_GRAVE_sa2mdl_4_f3d mat_revert_so_dl_objLandTable0021_sa2blvl_0_f3d
@@ -1071,7 +1078,6 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_so[LAYER_COUNT];
 #define mat_revert_so_dl_HAKO_BASE_sa2mdl_1_f3d mat_revert_so_dl_objLandTable0021_sa2blvl_0_f3d
 #define mat_revert_so_dl_HAKO_BASE_sa2mdl_2_f3d mat_revert_so_dl_objLandTable0021_sa2blvl_0_f3d
 #define mat_revert_so_dl_Quicksand1_sa2mdl_0_f3d mat_revert_so_dl_objLandTable0021_sa2blvl_0_f3d
-#define mat_revert_so_dl_FENCE_BRIGHT_sa2mdl_0_f3d mat_revert_so_dl_objLandTable0021_sa2blvl_0_f3d
 #define so_dl_0089_object_00ECC6E8_mesh_layer_1_tri_0 so_dl_0088_object_00ECCB80_mesh_layer_1_tri_0
 #define so_dl_0089_object_00ECC6E8_mesh_layer_1_tri_1 so_dl_0088_object_00ECCB80_mesh_layer_1_tri_1
 #define so_dl_0091_object_00ECBDD0_mesh_layer_1_tri_0 so_dl_0090_object_00ECC250_mesh_layer_1_tri_0

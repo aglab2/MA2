@@ -67,7 +67,7 @@ void bhv_so_hako_loop()
 void bhv_so_move_init()
 {
     obj_set_collision_data(o, kSoMoveCollisions[o->oBehParams2ndByte]);
-    o->oDrawingDistance = 3000.f;
+    o->oDrawingDistance = 7000.f;
 }
 
 void bhv_so_move_loop()

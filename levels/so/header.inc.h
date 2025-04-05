@@ -117,7 +117,7 @@ extern Vtx so_dl_object_008EC1DC_021_mesh_layer_1_vtx_0[12];
 extern Gfx so_dl_object_008EC1DC_021_mesh_layer_1_tri_0[];
 extern Vtx so_dl_object_008ED5F4_004_mesh_layer_1_vtx_0[7];
 extern Gfx so_dl_object_008ED5F4_004_mesh_layer_1_tri_0[];
-extern Vtx so_dl_object_008ED5F4_006_mesh_layer_1_vtx_0[15];
+extern Vtx so_dl_object_008ED5F4_006_mesh_layer_1_vtx_0[13];
 extern Gfx so_dl_object_008ED5F4_006_mesh_layer_1_tri_0[];
 extern Vtx so_dl_object_008FE4F4_001_mesh_layer_1_vtx_0[8];
 extern Gfx so_dl_object_008FE4F4_001_mesh_layer_1_tri_0[];

@@ -9,7 +9,7 @@ const Collision so_pillar_collision[] = {
 	COL_VERTEX(-250, 0, 0),
 	COL_VERTEX(-250, 0, 400),
 	COL_VERTEX(250, 0, 400),
-	COL_TRI_INIT(SURFACE_DEFAULT, 10),
+	COL_TRI_INIT(SURFACE_DEFAULT, 12),
 	COL_TRI(0, 1, 2),
 	COL_TRI(0, 2, 3),
 	COL_TRI(0, 4, 5),
@@ -20,6 +20,8 @@ const Collision so_pillar_collision[] = {
 	COL_TRI(4, 3, 7),
 	COL_TRI(2, 6, 7),
 	COL_TRI(2, 7, 3),
+	COL_TRI(4, 7, 6),
+	COL_TRI(4, 6, 5),
 	COL_TRI_STOP(),
 	COL_END()
 };

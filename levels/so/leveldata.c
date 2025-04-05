@@ -7,12 +7,15 @@
 
 #include "make_const_nonconst.h"
 #include "instant_warp_desc.h"
+#include "spring_desc.h"
 
 #if 0
 #include "levels/so/leveldata.inc.c"
 #else
 #include "levels/so/visual/header_lvl.inc.h"
 #include "levels/so/visual/model_lvl.inc.c"
+#include "levels/so/area_1/spline.inc.c"
+#include "levels/so/area_2/spline.inc.c"
 #endif
 
 static IWDirectionAreasDesc iw_area1 = {
@@ -29,6 +32,9 @@ IWDHeader* iw_descs_so[] = {
     &iw_area1.header,
     &iw_area2.header,
 };
+
+#include "levels/so/header.h"
+#include "levels/so/rails.inc.c"
 
 #include "levels/so/so_skybox/model.inc.c"
 #include "levels/so/hb_ashiba/model.inc.c"
