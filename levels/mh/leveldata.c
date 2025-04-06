@@ -10,7 +10,7 @@
 
 #include "make_const_nonconst.h"
 
-#include "levels/mh/visual/header_lvl.inc.h"
+#include "levels/mh/visual/header_lvlopt.inc.h"
 #include "levels/mh/header.h"
 
 static IWDirectionAreasDesc iw_mh_area1 = {
@@ -63,7 +63,7 @@ const SpringLinkDesc spring_links_mh[] = {
 #include "levels/mh/area_4/spline.inc.c"
 #endif
 
-#include "levels/mh/visual/model_lvl.inc.c"
+#include "levels/mh/visual/model_lvlopt.inc.c"
 #include "levels/mh/flipbook.inc.c"
 
 #include "levels/mh/mh_skybox/model.inc.c"

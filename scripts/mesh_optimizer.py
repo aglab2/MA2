@@ -27,6 +27,18 @@ class ModelRawEntry(ModelEntry):
     def __repr__(self):
         return f"ModelRawEntry(name={self.name})"
 
+class ModelRawOptEntry(ModelEntry):
+    def __init__(self, line, optvtx):
+        super().__init__(line)
+        self.data = [line]
+        self.optvtx = optvtx
+
+    def add(self, line):
+        self.data.append(line)
+
+    def __repr__(self):
+        return f"ModelRawOptEntry(name={self.name})"
+
 class ModelVtxEntry(ModelEntry):
     def __init__(self, line):
         super().__init__(line)
@@ -176,8 +188,7 @@ class ModelMeshEntry(ModelEntry):
         vtx_arg = vtx_args[0]
         vtx_arg_split = vtx_arg.split(' ')
 
-        self._base_vertices_model_name = vtx_arg_split[0]
-        self._base_vertices_model_index, self._base_vertices_model_entry = model.find(self._base_vertices_model_name)
+        self._base_vertices_model_entry = ModelVtxEntry(f'static Vtx {self.name}_vtxopt[] = {{\n')
         assert '+' == vtx_arg_split[1], "offset must be 0"
         assert '0' == vtx_arg_split[2], "offset must be 0"
 
@@ -299,13 +310,8 @@ class ModelMeshEntry(ModelEntry):
             vertices_model_name = vtx_arg_split[0]
             if self._parser_vertices_model_name != vertices_model_name:
                 self._parser_vertices_model_name = vertices_model_name
-                if self._base_vertices_model_name == vertices_model_name:
-                    self._parser_vertices_model_entry = self._base_vertices_model_entry 
-                else:
-                    # Consume the entry - those will end up being filled in the base entry model
-                    model_index, model_entry = self._model.find(vertices_model_name)
-                    model.erase(model_index)
-                    self._parser_vertices_model_entry = model_entry
+                _, model_entry = self._model.find(vertices_model_name)
+                self._parser_vertices_model_entry = model_entry
 
             vtx_offset = int(vtx_arg_split[2])
             num = int(args[1])
@@ -334,11 +340,8 @@ class ModelMeshEntry(ModelEntry):
         assert False, f"unknown command: {data}"
 
     def compile(self):
-        dl_entry = ModelRawEntry(self.raw_name)
-
-        # Mangle the raw_name - we will likely modify the vertices size so need to just use var sized array instead
-        self._base_vertices_model_entry.raw_name = f"""Vtx {self._base_vertices_model_entry.name}[] = {{\n"""
-
+        assert self._base_vertices_model_entry, "compile() called twice"
+        dl_entry = ModelRawOptEntry(self.raw_name, self._base_vertices_model_entry)
         vtx_entry = self._base_vertices_model_entry
 
         # For a grand majority of cases "just draw" will be good enough - that's when all vertices fit in the buffer
@@ -690,12 +693,17 @@ def serialize_model(model, path):
 
         for entry in model.entries:
             if isinstance(entry, ModelVtxEntry):
-                f_model.write(entry.raw_name)
-                for line in entry.vertices:
+                continue
+            
+            if isinstance(entry, ModelRawOptEntry):
+                entry_vertices = entry.optvtx
+                f_model.write(entry_vertices.raw_name)
+                for line in entry_vertices.vertices:
                     f_model.write(line)
-            else:
-                for line in entry.data:
-                    f_model.write(line)
+                f_model.write('\n')
+
+            for line in entry.data:
+                f_model.write(line)
 
             f_model.write('\n')
 

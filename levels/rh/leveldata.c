@@ -65,6 +65,8 @@ static const LDLDesc loop_desc1 = { 0 };
 #define loop_desc_rh_area_6_spline_Loop_NurbsCurve_004 &loop_desc1
 #define loop_desc_rh_area_6_spline_Loop_NurbsCurve_005 &loop_desc1
 #define loop_desc_rh_area_6_spline_Loop_NurbsCurve_006 &loop_desc1
+#define loop_desc_rh_area_3_spline_Loop_NurbsCurve_007 &loop_desc1
+#define loop_desc_rh_area_3_spline_Loop_NurbsCurve_008 &loop_desc1
 
 #include "levels/rh/rails.inc.c"
 
