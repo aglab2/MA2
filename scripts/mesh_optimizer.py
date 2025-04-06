@@ -355,11 +355,123 @@ class ModelMeshEntry(ModelEntry):
 
         # For a grand majority of cases "just draw" will be good enough - that's when all vertices fit in the buffer
         if len(self._vertices) < 56:
+            total_pricer = UsagePricer(self._triangles, set(), set())
+            rendered_triangles = self._triangles[:]
+            rendered_fan_strips = []
+            while HAS_EX3_COMMANDS:
+                # done here means done checking for all fan/strip
+                # sometimes scanning in 'total_pricer' will need to be restarted due to changing its contents
+                done = True
+                if total_pricer.completed():
+                    break
+
+                for highest_usage, highest_usage_vtx in total_pricer.highest_usage():
+                    highest_usage_vtx_triangles = list(total_pricer.vtx_to_tris(highest_usage_vtx))
+
+                    def remove_fanstrip_tri(tri):
+                        tri_norm = self._tri_normalize([ tri[0], tri[1], tri[2] ])
+                        rendered_triangles.remove(tri_norm)
+                        total_pricer.remove(tri_norm)
+
+                    # Strip of fan requires to have a vertex that has at least 4 triangles
+                    if len(highest_usage_vtx_triangles) >= 4:
+                        # Try to represent as fan or as strip
+                        # Both require at least 3 triangles to be worth it and looks like this:
+                        #   3 - 4
+                        #  / \ / \ 
+                        # 2 - 1 - 5
+                        # In my case greedily assume that 1 is the highest_usage_vtx.
+                        # This means we need to find the path that looks like 2 -> 3 -> 4 -> 5.
+                        rotated_vtx_triangles = self._tris_rotate(highest_usage_vtx_triangles, highest_usage_vtx)
+                        links = {}
+                        links_end = set()
+                        for tri in rotated_vtx_triangles:
+                            if tri[1] not in links:
+                                links[tri[1]] = []
+
+                            links[tri[1]].append(tri[2])
+                            links_end.add(tri[2])
+                        
+                        longest_link = self._longest_link(links, links_end)
+                        if len(longest_link) >= 4:
+                            # Yield a fan command and break - we have depleted the triangles from "highest_usage_vtx"
+                            # Arrangement is v1-v2-v3, v1-v3-v4, v1-v4-v5, v1-v5-v6, v1-v6-v7
+                            fan_vertices = [ highest_usage_vtx, longest_link[0][0], longest_link[0][1], longest_link[1][1], longest_link[2][1], longest_link[3][1], longest_link[4][1] if len(longest_link) == 5 else None ]
+                            loaded_fan_vertices = [ vtx if vtx is not None else -1 for vtx in fan_vertices]
+                            remove_fanstrip_tri([ fan_vertices[0], fan_vertices[1], fan_vertices[2] ])
+                            remove_fanstrip_tri([ fan_vertices[0], fan_vertices[2], fan_vertices[3] ])
+                            remove_fanstrip_tri([ fan_vertices[0], fan_vertices[3], fan_vertices[4] ])
+                            remove_fanstrip_tri([ fan_vertices[0], fan_vertices[4], fan_vertices[5] ])
+                            if fan_vertices[6] is not None:
+                                remove_fanstrip_tri([ fan_vertices[0], fan_vertices[5], fan_vertices[6] ])
+
+                            print(f"fan {fan_vertices} -> {loaded_fan_vertices}")
+                            rendered_fan_strips.append(f"\tgsSPTriFan({', '.join(map(str, loaded_fan_vertices))}),\n")
+                            done = False
+                            break
+                        
+                        if len(longest_link) == 3:
+                            # Yield a strip command while attempting to continue the steep, greedily
+                            # Arrangement is v1-v2-v3, v3-v2-v4, v3-v4-v5, v5-v4-v6, v5-v6-v7
+                            strip_vertices = [ longest_link[0][0], longest_link[0][1], highest_usage_vtx, longest_link[1][1], longest_link[2][1], None, None ]
+
+                            # Try to continue the strip by triangles 5->4->6 and 5->6->7
+                            # Because both of those have vertex '5', we can just do a single query to total_pricer:
+                            v5_tris = total_pricer.vtx_to_tris(strip_vertices[4])
+
+                            # Now try find a triangle that has v4 that we can render. Mind that it must be _after_ v5
+                            # TODO: We can dfs this by 2 triangles but I cannot care enough to do that. I am not even sure it matters
+                            v5_tri = None
+                            for tri in v5_tris:
+                                v5_tri_index = tri.index(strip_vertices[4])
+                                assert -1 != v5_tri_index, "v5 not in v5_tris?"
+                                v4_tri_index = self._tri_index_next(v5_tri_index)
+                                if tri[v4_tri_index] == strip_vertices[3]:
+                                    v5_tri = tri
+                                    strip_vertices[5] = tri[self._tri_index_next(v4_tri_index)]
+                                    break
+
+                            # Technically v6_tri is useless but it is convenient for debugging
+                            v6_tri = None
+                            if v5_tri:
+                                # We have a triangle that has v5 and v4, now we need to find the last vertex
+                                # We can do this by just checking if we have a triangle that has v5 and v6
+                                for tri in v5_tris:
+                                    v5_tri_index = tri.index(strip_vertices[4])
+                                    v6_tri_index = self._tri_index_next(v5_tri_index)
+                                    if tri[v6_tri_index] == strip_vertices[5]:
+                                        v6_tri = tri
+                                        strip_vertices[6] = tri[self._tri_index_next(v6_tri_index)]
+                                        break
+
+                            loaded_strip_vertices = [ vtx if vtx is not None else -1 for vtx in strip_vertices]
+
+                            remove_fanstrip_tri([ strip_vertices[0], strip_vertices[1], strip_vertices[2] ])
+                            remove_fanstrip_tri([ strip_vertices[2], strip_vertices[1], strip_vertices[3] ])
+                            remove_fanstrip_tri([ strip_vertices[2], strip_vertices[3], strip_vertices[4] ])
+                            if strip_vertices[5] is not None:
+                                remove_fanstrip_tri([ strip_vertices[4], strip_vertices[3], strip_vertices[5] ])
+                            if strip_vertices[6] is not None:
+                                remove_fanstrip_tri([ strip_vertices[4], strip_vertices[5], strip_vertices[6] ])                            
+
+                            print(f"strip {strip_vertices} -> {loaded_strip_vertices}")
+                            rendered_fan_strips.append(f"\tgsSPTriStrip({', '.join(map(str, loaded_strip_vertices))}),\n")
+                            done = False
+                            break
+
+                        continue
+                        # ... continue to next vtx to check its dfs neighbours
+                    else: # no tri to build a fan or strip
+                        break
+
+                if done:
+                    break
+
             passthru_vertices = {}
             for i in range(len(self._vertices)):
                 passthru_vertices[i] = i
 
-            render_passes.append(RenderPass(passthru_vertices, self._triangles[:], []))
+            render_passes.append(RenderPass(passthru_vertices, rendered_triangles, rendered_fan_strips))
         else:
             # This is a primitive greedy algorithm for drawing vertices
             loaded_vertices = {}
@@ -427,7 +539,7 @@ class ModelMeshEntry(ModelEntry):
                     fanstrip_tri_check()
                     print("+ flush +")
 
-                    render_passes.append(RenderPass(loaded_vertices.copy(), rendered_triangles[:], rendered_fan_strips))
+                    render_passes.append(RenderPass(loaded_vertices.copy(), rendered_triangles[:], rendered_fan_strips[:]))
 
                     loaded_vertices.clear()
                     rendered_triangles = []
