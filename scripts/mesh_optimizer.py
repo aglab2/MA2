@@ -179,6 +179,12 @@ class UsagePricer:
     def completed(self):
         return not self._usage_to_vertices
 
+class RenderPass:
+    def __init__(self, vertices, triangles, fanstrips):
+        self.vertices = vertices
+        self.triangles = triangles
+        self.fanstrips = fanstrips
+
 class ModelMeshEntry(ModelEntry):
     def __init__(self, line, next_line, model):
         super().__init__(line)
@@ -366,12 +372,10 @@ class ModelMeshEntry(ModelEntry):
         else:
             # This is a primitive greedy algorithm for drawing vertices
             loaded_vertices = {}
-            loaded_vertex_buffer = []
             def load_vertex(vtx):
-                loaded_vertex_buffer.append(self._vertices[vtx])
-                loaded_vertices[vtx] = len(loaded_vertex_buffer) - 1
-                print(f"load vertex {vtx} -> {len(loaded_vertex_buffer) - 1}")
-                return len(loaded_vertex_buffer) - 1
+                loaded_vertices[vtx] = len(loaded_vertices)
+                print(f"load vertex {vtx} -> {len(loaded_vertices) - 1}")
+                return len(loaded_vertices) - 1
 
             def load_or_find_vertex(vtx):
                 if vtx in loaded_vertices:
@@ -419,8 +423,7 @@ class ModelMeshEntry(ModelEntry):
 
             rendered_triangles = []
             rendered_fan_strips = []
-            start_offset = 0
-            vtx_entry.vertices = []
+            render_passes = []
             highest_usage = 0
             # We flush when 'loaded_vertices' becomes 49 somewhat arbitrarily - we need to consume at most 7 for a fan/strip
 
@@ -433,28 +436,10 @@ class ModelMeshEntry(ModelEntry):
                     # Flush vertices
                     fanstrip_tri_check()
                     print("+ flush +")
-                    cur_vtx_start_offset = start_offset
-                    cur_vtx_load_amount = len(loaded_vertex_buffer)
-                    for vertex in loaded_vertex_buffer:
-                        vtx_entry.vertices.append(vertex)
-                        start_offset += 1
 
-                    dl_entry.data.append(f"\tgsSPVertex({vtx_entry.name} + {cur_vtx_start_offset}, {cur_vtx_load_amount}, 0),\n")
-                    triangles = deque(rendered_triangles)
-                    while triangles:
-                        if 1 == len(triangles):
-                            tri = triangles.popleft()
-                            dl_entry.data.append(f"\tgsSP1Triangle({tri[0]}, {tri[1]}, {tri[2]}, 0),\n")
-                        else:
-                            tri0 = triangles.popleft()
-                            tri1 = triangles.popleft()
-                            dl_entry.data.append(f"\tgsSP2Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, 0, {tri1[0]}, {tri1[1]}, {tri1[2]}, 0),\n")
-
-                    for fanstrip in rendered_fan_strips:
-                        dl_entry.data.append(fanstrip)
+                    render_passes.append(RenderPass(loaded_vertices.copy(), rendered_triangles[:], rendered_fan_strips))
 
                     loaded_vertices.clear()
-                    loaded_vertex_buffer = []
                     rendered_triangles = []
                     rendered_fan_strips = []
 
@@ -613,6 +598,33 @@ class ModelMeshEntry(ModelEntry):
 
                     highest_usage, highest_usage_vtx = next(candidate_to_load_pricer.highest_usage())
                     load_vertex(highest_usage_vtx)
+
+            vtx_entry.vertices = []
+            start_offset = 0
+            for render_pass in render_passes:
+                cur_vtx_start_offset = start_offset
+                cur_vtx_load_amount = len(render_pass.vertices)
+
+                for _ in range(len(render_pass.vertices)):
+                    vtx_entry.vertices.append(None)
+                for vtx in render_pass.vertices:
+                    vtx_entry.vertices[start_offset + render_pass.vertices[vtx]] = self._vertices[vtx]
+
+                start_offset += len(render_pass.vertices)
+
+                dl_entry.data.append(f"\tgsSPVertex({vtx_entry.name} + {cur_vtx_start_offset}, {cur_vtx_load_amount}, 0),\n")
+                triangles = deque(render_pass.triangles)
+                while triangles:
+                    if 1 == len(triangles):
+                        tri = triangles.popleft()
+                        dl_entry.data.append(f"\tgsSP1Triangle({tri[0]}, {tri[1]}, {tri[2]}, 0),\n")
+                    else:
+                        tri0 = triangles.popleft()
+                        tri1 = triangles.popleft()
+                        dl_entry.data.append(f"\tgsSP2Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, 0, {tri1[0]}, {tri1[1]}, {tri1[2]}, 0),\n")
+
+                for fanstrip in render_pass.fanstrips:
+                    dl_entry.data.append(fanstrip)
 
             vtx_entry.vertices.append("};\n")
 
