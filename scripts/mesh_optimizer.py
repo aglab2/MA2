@@ -1,7 +1,7 @@
 from collections import deque
 import sys
 
-HAS_EX3_COMMANDS = False
+HAS_EX3_COMMANDS = True
 
 def get_args(line):
     bracket_open = line.find('(')
@@ -346,6 +346,7 @@ class ModelMeshEntry(ModelEntry):
         assert False, f"unknown command: {data}"
 
     def compile(self):
+        print(f"compiling {self.name}")
         assert self._base_vertices_model_entry, "compile() called twice"
         dl_entry = ModelRawOptEntry(self.raw_name, self._base_vertices_model_entry)
         vtx_entry = self._base_vertices_model_entry
@@ -561,7 +562,7 @@ class ModelMeshEntry(ModelEntry):
 
                 candidate_vtxs = set()
                 candidate_tris = set()
-                banned_vertices = set()
+                banned_vertices = set(loaded_vertices.keys())
                 print("")
                 while True:
                     print(f"{loaded_vertices}")
@@ -573,6 +574,7 @@ class ModelMeshEntry(ModelEntry):
                         if not None in loaded_tri:
                             print(f"render {tri} as {loaded_tri}")
                             rendered_triangles.append(loaded_tri)
+                            candidate_tris.remove(tri)
                             total_pricer.remove(tri)
                             continue
                     
@@ -601,15 +603,24 @@ class ModelMeshEntry(ModelEntry):
 
             vtx_entry.vertices = []
             start_offset = 0
+            prev_vertices = {}
             for render_pass in render_passes:
                 cur_vtx_start_offset = start_offset
                 cur_vtx_load_amount = len(render_pass.vertices)
+
+                if prev_vertices:
+                    common_vertices = prev_vertices.intersection(set(render_pass.vertices.keys()))
+                    if common_vertices:
+                        print(f"common vertices {common_vertices}, length {len(common_vertices)}")
+
+                prev_vertices = set(render_pass.vertices.keys())
 
                 for _ in range(len(render_pass.vertices)):
                     vtx_entry.vertices.append(None)
                 for vtx in render_pass.vertices:
                     vtx_entry.vertices[start_offset + render_pass.vertices[vtx]] = self._vertices[vtx]
 
+                assert None not in vtx_entry.vertices[start_offset:start_offset + len(render_pass.vertices)], "vtx_entry is not filled correctly"
                 start_offset += len(render_pass.vertices)
 
                 dl_entry.data.append(f"\tgsSPVertex({vtx_entry.name} + {cur_vtx_start_offset}, {cur_vtx_load_amount}, 0),\n")
