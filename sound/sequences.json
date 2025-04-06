@@ -58,5 +58,6 @@
     "37_dl": [ "0C_extended_bank" ],
     "38_3bn": [ "0C_extended_bank" ],
     "39_st": [ "0C_extended_bank" ],
-    "3A_so": [ "0C_extended_bank" ]
+    "3A_so": [ "0C_extended_bank" ],
+    "3B_rh": [ "0C_extended_bank" ]
 }

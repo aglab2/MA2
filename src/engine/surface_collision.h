@@ -14,9 +14,22 @@ extern u8 gIsGravityFlipped;
 // Vanilla value is 78.
 #define FIND_FLOOR_BUFFER 78
 
-#define CELL_HEIGHT_LIMIT            22000
-#define FLOOR_LOWER_LIMIT           -27000
-#define FLOOR_LOWER_LIMIT_MISC      (FLOOR_LOWER_LIMIT + 1000)
+#define CELL_HEIGHT_LIMIT_VALUE      22000
+#define FLOOR_LOWER_LIMIT_VALUE      -27000
+
+#define CELL_HEIGHT_LIMIT_VALUE_F      22000.f
+#define FLOOR_LOWER_LIMIT_VALUE_F      -27000.f
+
+#if 1
+register float _gCeilHeight asm("f30");
+register float _gFloorHeight asm("f29");
+#define CELL_HEIGHT_LIMIT _gCeilHeight
+#define FLOOR_LOWER_LIMIT _gFloorHeight
+#else
+#define CELL_HEIGHT_LIMIT            CELL_HEIGHT_LIMIT_VALUE
+#define FLOOR_LOWER_LIMIT            FLOOR_LOWER_LIMIT_VALUE
+#endif
+#define FLOOR_LOWER_LIMIT_MISC      (-27000 + 1000)
 
 #if 1
 #define is_outside_level_bounds(xPos, zPos) \

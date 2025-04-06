@@ -38,6 +38,7 @@ static struct LevelConfig cfg = {
 	.railDesc = rail_descs_rh,
 	.springDescs = spring_descs_rh,
 };
+#define SEQ_LEVEL_GRASS 0x3B
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_rh_entry[] = {

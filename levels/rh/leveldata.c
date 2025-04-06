@@ -27,7 +27,7 @@ static IWDirectionAreasDesc iw_rh_area3 = {
 
 static IWDirectionAreasDesc iw_rh_area4 = {
     { IWDT_DIRECTIONS },
-    { .x_low = 5, .z_low = 3, },
+    { .x_low = 5, .z_high = 3, },
 };
 
 static IWDirectionAreasDesc iw_rh_area5 = {

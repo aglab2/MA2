@@ -790,12 +790,34 @@ static inline void load_scale_into_f31() {
     );
 }
 
+#include "engine/surface_collision.h"
+
+static inline void load_cell_height_into_f30() {
+    const f32 v = CELL_HEIGHT_LIMIT_VALUE;
+    asm volatile (
+        "mov.s $f30, %0\n\t" // Move the float value into $f30
+        :
+        : "f" (v)
+    );
+}
+
+static inline void load_floor_height_into_f29() {
+    const f32 v = FLOOR_LOWER_LIMIT_VALUE;
+    asm volatile (
+        "mov.s $f29, %0\n\t" // Move the float value into $f30
+        :
+        : "f" (v)
+    );
+}
+
 /**
  * Main game loop thread. Runs forever as long as the game continues.
  */
 void thread5_game_loop(UNUSED void *arg) {
     setgp();
     load_scale_into_f31();
+    load_cell_height_into_f30();
+    load_floor_height_into_f29();
     setup_game_memory();
 #if ENABLE_RUMBLE
     init_rumble_pak_scheduler_queue();
