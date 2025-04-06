@@ -351,25 +351,15 @@ class ModelMeshEntry(ModelEntry):
         dl_entry = ModelRawOptEntry(self.raw_name, self._base_vertices_model_entry)
         vtx_entry = self._base_vertices_model_entry
 
+        render_passes = []
+
         # For a grand majority of cases "just draw" will be good enough - that's when all vertices fit in the buffer
         if len(self._vertices) < 56:
-            # Place vertices as is
-            vtx_entry.vertices = self._vertices[:]
-            vtx_entry.vertices.append("};\n")
+            passthru_vertices = {}
+            for i in range(len(self._vertices)):
+                passthru_vertices[i] = i
 
-            # Make a basic dl that just draws the vertices
-            if (len(self._vertices)):
-                dl_entry.data.append(f"\tgsSPVertex({vtx_entry.name}, {len(self._vertices)}, 0),\n")
-
-            triangles = deque(self._triangles)
-            while triangles:
-                if 1 == len(triangles):
-                    tri = triangles.popleft()
-                    dl_entry.data.append(f"\tgsSP1Triangle({tri[0]}, {tri[1]}, {tri[2]}, 0),\n")
-                else:
-                    tri0 = triangles.popleft()
-                    tri1 = triangles.popleft()
-                    dl_entry.data.append(f"\tgsSP2Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, 0, {tri1[0]}, {tri1[1]}, {tri1[2]}, 0),\n")
+            render_passes.append(RenderPass(passthru_vertices, self._triangles[:], []))
         else:
             # This is a primitive greedy algorithm for drawing vertices
             loaded_vertices = {}
@@ -424,7 +414,6 @@ class ModelMeshEntry(ModelEntry):
 
             rendered_triangles = []
             rendered_fan_strips = []
-            render_passes = []
             highest_usage = 0
             # We flush when 'loaded_vertices' becomes 49 somewhat arbitrarily - we need to consume at most 7 for a fan/strip
 
@@ -601,43 +590,48 @@ class ModelMeshEntry(ModelEntry):
                     highest_usage, highest_usage_vtx = next(candidate_to_load_pricer.highest_usage())
                     load_vertex(highest_usage_vtx)
 
-            vtx_entry.vertices = []
-            start_offset = 0
-            prev_vertices = {}
-            for render_pass in render_passes:
-                cur_vtx_start_offset = start_offset
-                cur_vtx_load_amount = len(render_pass.vertices)
+        vtx_entry.vertices = []
+        start_offset = 0
+        prev_vertices = {}
+        for render_pass in render_passes:
+            cur_vtx_start_offset = start_offset
+            cur_vtx_load_amount = len(render_pass.vertices)
 
-                if prev_vertices:
-                    common_vertices = prev_vertices.intersection(set(render_pass.vertices.keys()))
-                    if common_vertices:
-                        print(f"common vertices {common_vertices}, length {len(common_vertices)}")
+            if prev_vertices:
+                common_vertices = prev_vertices.intersection(set(render_pass.vertices.keys()))
+                if common_vertices:
+                    print(f"common vertices {common_vertices}, length {len(common_vertices)}")
 
-                prev_vertices = set(render_pass.vertices.keys())
+            prev_vertices = set(render_pass.vertices.keys())
 
-                for _ in range(len(render_pass.vertices)):
-                    vtx_entry.vertices.append(None)
-                for vtx in render_pass.vertices:
-                    vtx_entry.vertices[start_offset + render_pass.vertices[vtx]] = self._vertices[vtx]
+            for _ in range(len(render_pass.vertices)):
+                vtx_entry.vertices.append(None)
+            for vtx in render_pass.vertices:
+                vtx_entry.vertices[start_offset + render_pass.vertices[vtx]] = self._vertices[vtx]
 
-                assert None not in vtx_entry.vertices[start_offset:start_offset + len(render_pass.vertices)], "vtx_entry is not filled correctly"
-                start_offset += len(render_pass.vertices)
+            assert None not in vtx_entry.vertices[start_offset:start_offset + len(render_pass.vertices)], "vtx_entry is not filled correctly"
+            start_offset += len(render_pass.vertices)
 
-                dl_entry.data.append(f"\tgsSPVertex({vtx_entry.name} + {cur_vtx_start_offset}, {cur_vtx_load_amount}, 0),\n")
-                triangles = deque(render_pass.triangles)
-                while triangles:
-                    if 1 == len(triangles):
-                        tri = triangles.popleft()
-                        dl_entry.data.append(f"\tgsSP1Triangle({tri[0]}, {tri[1]}, {tri[2]}, 0),\n")
-                    else:
-                        tri0 = triangles.popleft()
-                        tri1 = triangles.popleft()
-                        dl_entry.data.append(f"\tgsSP2Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, 0, {tri1[0]}, {tri1[1]}, {tri1[2]}, 0),\n")
+            if cur_vtx_load_amount:
+                if 1 == len(render_passes):
+                    dl_entry.data.append(f"\tgsSPVertex({vtx_entry.name}, {cur_vtx_load_amount}, 0),\n")
+                else:
+                    dl_entry.data.append(f"\tgsSPVertex({vtx_entry.name} + {cur_vtx_start_offset}, {cur_vtx_load_amount}, 0),\n")
 
-                for fanstrip in render_pass.fanstrips:
-                    dl_entry.data.append(fanstrip)
+            triangles = deque(render_pass.triangles)
+            while triangles:
+                if 1 == len(triangles):
+                    tri = triangles.popleft()
+                    dl_entry.data.append(f"\tgsSP1Triangle({tri[0]}, {tri[1]}, {tri[2]}, 0),\n")
+                else:
+                    tri0 = triangles.popleft()
+                    tri1 = triangles.popleft()
+                    dl_entry.data.append(f"\tgsSP2Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, 0, {tri1[0]}, {tri1[1]}, {tri1[2]}, 0),\n")
 
-            vtx_entry.vertices.append("};\n")
+            for fanstrip in render_pass.fanstrips:
+                dl_entry.data.append(fanstrip)
+
+        vtx_entry.vertices.append("};\n")
 
         dl_entry.data.append(f"\tgsSPEndDisplayListHint(4),\n")
         dl_entry.data.append("};\n")
