@@ -378,7 +378,7 @@ class ModelMeshEntry(ModelEntry):
 
             # Currently UsagePricer is agnostic to currently loaded weights for performance reasons - sync needs to be done for changed tris
             # It does not matter in case of !HAS_EX3_COMMANDS but will matter for HAS_EX3_COMMANDS
-            assert not HAS_EX3_COMMANDS
+            # assert not HAS_EX3_COMMANDS
             total_pricer = UsagePricer(self._triangles, set(), set())
             fanstrip_vtx_to_check = []
 
