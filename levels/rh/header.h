@@ -12,4 +12,8 @@ extern const LevelScript level_rh_entry[];
 
 #include "levels/rh/rh_skybox/header.h"
 
+#include "levels/rh/rh_hammer/collision_header.h"
+
+#include "levels/rh/rh_hammer/geo_header.h"
+
 #endif

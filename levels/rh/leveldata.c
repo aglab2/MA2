@@ -85,3 +85,5 @@ static const LDLDesc loop_desc1 = { 0 };
 #endif
 
 #include "levels/rh/rh_skybox/model.inc.c"
+#include "levels/rh/rh_hammer/collision.inc.c"
+#include "levels/rh/rh_hammer/model.inc.c"

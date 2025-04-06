@@ -1,0 +1,15 @@
+extern const GeoLayout rh_hammer_geo[];
+extern u8 rh_hammer_miu128_ce002_ci4[];
+extern u8 rh_hammer_miu128_ce002_pal_rgba16[];
+extern u8 rh_hammer_miu64_rh012_ci4[];
+extern u8 rh_hammer_miu64_rh012_pal_rgba16[];
+extern u8 rh_hammer_miu32_rh001_ci8[];
+extern u8 rh_hammer_miu32_rh001_pal_rgba16[];
+extern u8 rh_hammer_miu32_rh005_ci8[];
+extern u8 rh_hammer_miu32_rh005_pal_rgba16[];
+extern Vtx rh_hammer_rh_hammer_mesh_layer_1_vtx_0[71];
+extern Vtx rh_hammer_rh_hammer_mesh_layer_1_vtx_1[24];
+extern Vtx rh_hammer_rh_hammer_mesh_layer_1_vtx_2[12];
+extern Vtx rh_hammer_001_object_011742F0_mesh_layer_5_vtx_0[24];
+extern Gfx rh_hammer_rh_hammer_mesh_layer_1[];
+extern Gfx rh_hammer_001_object_011742F0_mesh_layer_5[];

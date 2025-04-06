@@ -18,3 +18,5 @@
 #else
 #include "levels/rh/visual/geo_lvl.inc.c"
 #endif
+
+#include "levels/rh/rh_hammer/geo.inc.c"
