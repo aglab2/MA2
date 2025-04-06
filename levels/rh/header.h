@@ -16,4 +16,10 @@ extern const LevelScript level_rh_entry[];
 
 #include "levels/rh/rh_hammer/geo_header.h"
 
+#include "levels/rh/rh_cone/geo_header.h"
+
+#include "levels/rh/rh_slane/geo_header.h"
+
+#include "levels/rh/rh_slane/collision_header.h"
+
 #endif
