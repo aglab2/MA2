@@ -595,5 +595,7 @@ extern const BehaviorScript bhvSparkler[];
 extern const BehaviorScript bhvSoPillar[];
 extern const BehaviorScript bhvSoHako[];
 extern const BehaviorScript bhvSoMove[];
+extern const BehaviorScript bhvRhSlane[];
+extern const BehaviorScript bhvRhHammer[];
 
 #endif // BEHAVIOR_DATA_H

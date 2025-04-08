@@ -6402,3 +6402,32 @@ const BehaviorScript bhvSoPillarBase[] = {
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
+
+extern const Collision rh_slane_collision[];
+extern void bhv_rh_slane_init();
+extern void bhv_rh_slane_loop();
+const BehaviorScript bhvRhSlane[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    SET_FLOAT(oDrawingDistance, 20000),
+    LOAD_COLLISION_DATA(rh_slane_collision),
+    CALL_NATIVE(bhv_rh_slane_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_rh_slane_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern const Collision rh_hammer_collision[];
+extern void bhv_rh_hammer_init();
+extern void bhv_rh_hammer_loop();
+const BehaviorScript bhvRhHammer[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    CALL_NATIVE(bhv_rh_hammer_init),
+    LOAD_COLLISION_DATA(rh_hammer_collision),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_rh_hammer_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
