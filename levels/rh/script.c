@@ -46,6 +46,10 @@ const LevelScript level_rh_entry[] = {
 	LOAD_MIO0(0x7, _rh_segment_7SegmentRomStart, _rh_segment_7SegmentRomEnd), 
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
+	LOAD_MODEL_FROM_GEO(MODEL_RH_HAMMER, rh_hammer_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_RH_CONE, rh_cone_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_RH_SLANE, rh_slane_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_RH_SLANE_BREAK, rh_slane_break_geo),
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
@@ -128,6 +132,10 @@ const LevelScript level_rh_entry[] = {
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		OBJECT(MODEL_NONE, -9733, -7065, 6940, 0, -90, 0, (2 << 16), bhvCoinFormation),
+		OBJECT(MODEL_NONE, -9723, -7065, 9750, 0, -90, 0, (2 << 16), bhvCoinFormation),
+		OBJECT(MODEL_GOAL, -9734, -6799, 5737, 0, -90, 0, 0x00000000, bhvGoal),
+		OBJECT(MODEL_NONE, -9614, -7065, 8770, 0, -90, 0, 0x00000000, bhvGoombaTripletSpawner),
 		TERRAIN(rh_area_7_collision),
 		MACRO_OBJECTS(rh_area_7_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),

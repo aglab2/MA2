@@ -22,3 +22,4 @@
 #include "levels/rh/rh_hammer/geo.inc.c"
 #include "levels/rh/rh_cone/geo.inc.c"
 #include "levels/rh/rh_slane/geo.inc.c"
+#include "levels/rh/rh_slane_break/geo.inc.c"

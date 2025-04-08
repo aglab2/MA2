@@ -80,8 +80,8 @@ static const LDLDesc loop_desc1 = { 0 };
 #include "levels/rh/area_5/spline.inc.c"
 #include "levels/rh/area_6/spline.inc.c"
 #include "levels/rh/area_7/spline.inc.c"
-#include "levels/rh/visual/header_lvl.inc.h"
-#include "levels/rh/visual/model_lvl.inc.c"
+#include "levels/rh/visual/header_lvlopt.inc.h"
+#include "levels/rh/visual/model_lvlopt.inc.c"
 #endif
 
 #include "levels/rh/rh_skybox/model.inc.c"
@@ -90,3 +90,4 @@ static const LDLDesc loop_desc1 = { 0 };
 #include "levels/rh/rh_cone/model.inc.c"
 #include "levels/rh/rh_slane/model.inc.c"
 #include "levels/rh/rh_slane/collision.inc.c"
+#include "levels/rh/rh_slane_break/model.inc.c"
