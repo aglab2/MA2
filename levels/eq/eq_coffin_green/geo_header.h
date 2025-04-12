@@ -1,0 +1,11 @@
+extern const GeoLayout eq_coffin_green_geo[];
+extern u8 eq_coffin_green_dz_eq_coffin128_ci4[];
+extern u8 eq_coffin_green_dz_eq_coffin128_pal_rgba16[];
+extern u8 eq_coffin_green_dz_eq_coffin_side128_ci4[];
+extern u8 eq_coffin_green_dz_eq_coffin_side128_pal_rgba16[];
+extern u8 eq_coffin_green_dz_eq_coffin_top128_ci4[];
+extern u8 eq_coffin_green_dz_eq_coffin_top128_pal_rgba16[];
+extern Vtx eq_coffin_green_eq_coffin_green_mesh_layer_1_vtx_0[69];
+extern Vtx eq_coffin_green_eq_coffin_green_mesh_layer_1_vtx_1[8];
+extern Vtx eq_coffin_green_eq_coffin_green_mesh_layer_1_vtx_2[46];
+extern Gfx eq_coffin_green_eq_coffin_green_mesh_layer_1[];
