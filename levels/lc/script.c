@@ -22,6 +22,7 @@ extern IWDHeader* iw_descs_lc[];
 static struct LevelConfig cfg = {
 	.iwds = iw_descs_lc,
 };
+#define SEQ_LEVEL_GRASS 0x3c
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_lc_entry[] = {
