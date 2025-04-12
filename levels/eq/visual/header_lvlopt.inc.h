@@ -214,7 +214,7 @@ extern Gfx eq_dl_0064_object_010C9994_mesh_layer_1_tri_2[];
 extern Gfx eq_dl_0064_object_010C9994_mesh_layer_1_tri_3[];
 extern Gfx eq_dl_0064_object_010C9994_mesh_layer_1_tri_4[];
 extern Gfx eq_dl_0064_object_010C9994_mesh_layer_1_tri_5[];
-extern Gfx eq_dl_0064_object_010C9994_mesh_layer_5_tri_0[];
+extern Gfx eq_dl_0064_object_010C9994_mesh_layer_4_tri_0[];
 extern Gfx eq_dl_0066_object_010C8E70_mesh_layer_1_tri_0[];
 extern Gfx eq_dl_0067_object_010C8CF8_mesh_layer_1_tri_0[];
 extern Gfx eq_dl_0067_object_010C8CF8_mesh_layer_1_tri_1[];
@@ -300,11 +300,11 @@ extern Gfx eq_dl_0101_object_010B9718_mesh_layer_1_tri_3[];
 extern Gfx eq_dl_0101_object_010B9718_mesh_layer_1_tri_4[];
 extern Gfx eq_dl_0101_object_010B9718_mesh_layer_1_tri_5[];
 extern Gfx eq_dl_0101_object_010B9718_mesh_layer_1_tri_6[];
-extern Gfx eq_dl_0102_object_010E8428_mesh_layer_5_tri_0[];
+extern Gfx eq_dl_0102_object_010E8428_mesh_layer_4_tri_0[];
 extern Gfx eq_dl_0104_object_010E83F0_mesh_layer_1_tri_0[];
 extern Gfx eq_dl_0104_object_010E83F0_mesh_layer_1_tri_1[];
 extern Gfx eq_dl_0104_object_010E83F0_mesh_layer_1_tri_2[];
-extern Gfx eq_dl_0106_object_010E83B8_mesh_layer_5_tri_0[];
+extern Gfx eq_dl_0106_object_010E83B8_mesh_layer_4_tri_0[];
 extern Gfx eq_dl_0108_object_010E8380_mesh_layer_1_tri_0[];
 extern Gfx eq_dl_0108_object_010E8380_mesh_layer_1_tri_1[];
 extern Gfx eq_dl_0108_object_010E8380_mesh_layer_1_tri_2[];
@@ -400,7 +400,7 @@ extern Gfx eq_dl_0222_object_010A7A38_mesh_layer_1_tri_0[];
 extern Gfx eq_dl_0222_object_010A7A38_mesh_layer_1_tri_1[];
 extern Gfx eq_dl_0222_object_010A7A38_mesh_layer_1_tri_2[];
 extern Gfx eq_dl_0222_object_010A7A38_mesh_layer_1_tri_3[];
-extern Gfx eq_dl_0222_object_010A7A38_mesh_layer_5_tri_0[];
+extern Gfx eq_dl_0222_object_010A7A38_mesh_layer_4_tri_0[];
 extern Gfx eq_dl_0224_object_010A6C38_mesh_layer_1_tri_0[];
 extern Gfx eq_dl_0224_object_010A6C38_mesh_layer_1_tri_1[];
 extern Gfx eq_dl_0225_object_010A6628_mesh_layer_1_tri_0[];
@@ -431,8 +431,8 @@ extern Gfx eq_dl_object_008107E0_mesh_layer_1_tri_1[];
 extern Gfx eq_dl_object_008107E0_mesh_layer_1_tri_2[];
 extern Gfx eq_dl_object_008107E0_mesh_layer_1_tri_3[];
 extern Gfx eq_dl_object_008107E0_mesh_layer_1_tri_4[];
-extern Gfx eq_dl_object_00812AF8_mesh_layer_5_tri_0[];
-extern Gfx eq_dl_object_00812AF8_mesh_layer_5_tri_1[];
+extern Gfx eq_dl_object_00812AF8_mesh_layer_4_tri_0[];
+extern Gfx eq_dl_object_00812AF8_mesh_layer_4_tri_1[];
 extern Gfx eq_dl_object_00812FA8_mesh_layer_1_tri_0[];
 extern Gfx eq_dl_object_00812FA8_mesh_layer_5_tri_0[];
 extern Gfx eq_dl_object_008133B8_mesh_layer_1_tri_0[];
@@ -535,7 +535,7 @@ extern u32 eq_dl_0059_object_010CBC78_mesh_layer_1[];
 extern u32 eq_dl_0060_object_010CB788_mesh_layer_1[];
 extern u32 eq_dl_0061_object_010CA9D4_mesh_layer_1[];
 extern u32 eq_dl_0064_object_010C9994_mesh_layer_1[];
-extern u32 eq_dl_0064_object_010C9994_mesh_layer_5[];
+extern u32 eq_dl_0064_object_010C9994_mesh_layer_4[];
 extern u32 eq_dl_0066_object_010C8E70_mesh_layer_1[];
 extern u32 eq_dl_0067_object_010C8CF8_mesh_layer_1[];
 extern u32 eq_dl_0068_object_010C87A0_mesh_layer_1[];
@@ -570,9 +570,9 @@ extern u32 eq_dl_0098_object_010BAB40_mesh_layer_1[];
 extern u32 eq_dl_0099_object_010BA468_mesh_layer_1[];
 extern u32 eq_dl_0100_object_010BA260_mesh_layer_1[];
 extern u32 eq_dl_0101_object_010B9718_mesh_layer_1[];
-extern u32 eq_dl_0102_object_010E8428_mesh_layer_5[];
+extern u32 eq_dl_0102_object_010E8428_mesh_layer_4[];
 extern u32 eq_dl_0104_object_010E83F0_mesh_layer_1[];
-extern u32 eq_dl_0106_object_010E83B8_mesh_layer_5[];
+extern u32 eq_dl_0106_object_010E83B8_mesh_layer_4[];
 extern u32 eq_dl_0108_object_010E8380_mesh_layer_1[];
 extern u32 eq_dl_0110_object_010B7130_mesh_layer_1[];
 extern u32 eq_dl_0111_object_010B6530_mesh_layer_1[];
@@ -610,7 +610,7 @@ extern u32 eq_dl_0216_object_010A8F88_mesh_layer_1[];
 extern u32 eq_dl_0217_object_010E7318_mesh_layer_1[];
 extern u32 eq_dl_0221_object_010A83D0_mesh_layer_1[];
 extern u32 eq_dl_0222_object_010A7A38_mesh_layer_1[];
-extern u32 eq_dl_0222_object_010A7A38_mesh_layer_5[];
+extern u32 eq_dl_0222_object_010A7A38_mesh_layer_4[];
 extern u32 eq_dl_0224_object_010A6C38_mesh_layer_1[];
 extern u32 eq_dl_0225_object_010A6628_mesh_layer_1[];
 extern u32 eq_dl_0226_object_010A5FD0_mesh_layer_1[];
@@ -624,7 +624,7 @@ extern u32 eq_dl_object_00805380_mesh_layer_5[];
 extern u32 eq_dl_object_00805BE0_mesh_layer_1[];
 extern u32 eq_dl_object_00805BE0_mesh_layer_5[];
 extern u32 eq_dl_object_008107E0_mesh_layer_1[];
-extern u32 eq_dl_object_00812AF8_mesh_layer_5[];
+extern u32 eq_dl_object_00812AF8_mesh_layer_4[];
 extern u32 eq_dl_object_00812FA8_mesh_layer_1[];
 extern u32 eq_dl_object_00812FA8_mesh_layer_5[];
 extern u32 eq_dl_object_008133B8_mesh_layer_1[];
@@ -755,15 +755,15 @@ extern u32 eq_dl_object_0084BC84_mesh_layer_1[];
 #define LVL_BATCH_LAYER_OPAQUE_EQ_DL_DZ_EQ_FIREPOT128_PAL_RGBA16 75
 #define LVL_BATCH_LAYER_OPAQUE_EQ_DL_DZ_EQ_PATBUG256_PAL_RGBA16 76
 #define LVL_BATCH_LAYER_OPAQUE_EQ_DL_KD_EQ_OTHER5_PAL_RGBA16 77
-#define LVL_BATCH_LAYER_TRANSPARENT_EQ_DL_KD_EQ_AMI1_001_PAL_RGBA16 0
-#define LVL_BATCH_LAYER_TRANSPARENT_EQ_DL_KD_EQ_OTHER3_001_PAL_RGBA16 1
-#define LVL_BATCH_LAYER_TRANSPARENT_EQ_DL_DZ_EQ_MARUKAGE64_IA16 2
-#define LVL_BATCH_LAYER_TRANSPARENT_EQ_DL_KD_EQ_OBJ11_PAL_RGBA16 3
-#define LVL_BATCH_LAYER_TRANSPARENT_EQ_DL_KD_EQ_OBJ12_PAL_RGBA16 4
-#define LVL_BATCH_LAYER_TRANSPARENT_EQ_DL_DZ_EQ_HANE_RGBA32 5
-#define LVL_BATCH_LAYER_TRANSPARENT_EQ_DL_DZ_EQ_HANE_PAL_RGBA16 6
-#define LVL_BATCH_LAYER_TRANSPARENT_EQ_DL_DZ_EQ_MARUKAGE32_IA16 7
-#define LVL_BATCH_LAYER_TRANSPARENT_EQ_DL_KD_EQ_HASIRA92_PAL_RGBA16 8
+#define LVL_BATCH_LAYER_ALPHA_EQ_DL_KD_EQ_AMI1_001_PAL_RGBA16 0
+#define LVL_BATCH_LAYER_ALPHA_EQ_DL_KD_EQ_OTHER3_001_PAL_RGBA16 1
+#define LVL_BATCH_LAYER_ALPHA_EQ_DL_KD_EQ_OBJ11_PAL_RGBA16 2
+#define LVL_BATCH_LAYER_ALPHA_EQ_DL_KD_EQ_OBJ12_PAL_RGBA16 3
+#define LVL_BATCH_LAYER_TRANSPARENT_EQ_DL_DZ_EQ_MARUKAGE64_IA16 0
+#define LVL_BATCH_LAYER_TRANSPARENT_EQ_DL_DZ_EQ_HANE_RGBA32 1
+#define LVL_BATCH_LAYER_TRANSPARENT_EQ_DL_DZ_EQ_HANE_PAL_RGBA16 2
+#define LVL_BATCH_LAYER_TRANSPARENT_EQ_DL_DZ_EQ_MARUKAGE32_IA16 3
+#define LVL_BATCH_LAYER_TRANSPARENT_EQ_DL_KD_EQ_HASIRA92_PAL_RGBA16 4
 #define LVL_BATCH_LAYER_OPAQUE_DECAL_EQ_DL_DZ_EQ_TRI_PAL_RGBA16 0
 extern struct BatchLevelDisplayLists batch_lvl_dls_eq[LAYER_COUNT];
 #define eq_dl_0037_object_010E8738_mesh_layer_1_vtx_0 eq_dl_0034_object_010E87A8_mesh_layer_1_vtx_0
