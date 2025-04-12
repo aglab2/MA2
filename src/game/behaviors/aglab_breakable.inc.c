@@ -8,6 +8,10 @@ void bhv_breakable_loop()
             o->oAction = 1;
             puffAt(o, 100.f, 10, 0.f);
             obj_set_model(o, o->oBehParams2ndByte);
+            if (0 == o->oBehParams2ndByte)
+            {
+                o->activeFlags = 0;
+            }
         }
     }
 }

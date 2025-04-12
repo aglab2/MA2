@@ -84,6 +84,10 @@ void bhv_breakable_shrinking_loop()
             puffAt(o, 100.f, 10, 0.f);
             o->oAction = 1;
             obj_set_model(o, o->oBehParams2ndByte);
+            if (0 == o->oBehParams2ndByte)
+            {
+                o->activeFlags = 0;
+            }
         }
     }
     else
@@ -94,7 +98,7 @@ void bhv_breakable_shrinking_loop()
         obj_scale(o, 1.f - o->oTimer / 70.f);
         if (50 == o->oTimer)
         {
-            obj_mark_for_deletion(o);
+            o->activeFlags = 0;
         }
     }
 
