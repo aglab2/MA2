@@ -9,10 +9,11 @@
 #include "make_const_nonconst.h"
 
 #include "levels/lc/iw.inc.c"
+#include "levels/lc/visual/header_lvlopt.inc.h"
+#include "levels/lc/flipbook.inc.c"
 
 #if 0
 #include "levels/lc/leveldata.inc.c"
 #else
-#include "levels/lc/visual/header_lvlopt.inc.h"
 #include "levels/lc/visual/model_lvlopt.inc.c"
 #endif

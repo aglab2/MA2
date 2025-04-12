@@ -508,7 +508,7 @@ static void apply_flipbooks(struct MasterLayer* masterLayer)
         if (flipData->shading)
         {
             u8* primColorCmd = (u8*) &startDl[flipDls->offPrimColor];
-            int mul = gCurrCourseNum == COURSE_CG ? 0x424 : 0x223;
+            int mul = (gCurrCourseNum == COURSE_CG || gCurrCourseNum == COURSE_LC) ? 0x424 : 0x223;
             primColorCmd[7] = 0x80 + 0x50 * sins(gGlobalTimer * 0x223 + flipData->shading);
         }
 

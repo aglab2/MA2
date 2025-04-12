@@ -35,6 +35,7 @@ ALIGNED8 u8 lc_poisons_pal[] = {
 static struct FlipbookData flipbooks_opaque[] = {
     { LVL_BATCH_LAYER_OPAQUE_LC_DL_MIU256_LC001_PAL_RGBA16_1, .shading = 1 },
     { LVL_BATCH_LAYER_OPAQUE_LC_DL_MIU256_LC001_PAL_RGBA16_2, .shading = 1 },
+    { LVL_BATCH_LAYER_OPAQUE_LC_DL_TX_POISON001_PAL_RGBA16, 13, 2, 0, 0, 0, lc_poisons_ci4, lc_poisons_pal },
 };
 
 static struct FlipbookData flipbooks_xlu[] = {
