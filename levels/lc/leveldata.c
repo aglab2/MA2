@@ -4,8 +4,11 @@
 #include "moving_texture_macros.h"
 #include "textures.h"
 #include "dialog_ids.h"
+#include "instant_warp_desc.h"
 
 #include "make_const_nonconst.h"
+
+#include "levels/lc/iw.inc.c"
 
 #if 0
 #include "levels/lc/leveldata.inc.c"

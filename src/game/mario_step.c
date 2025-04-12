@@ -672,7 +672,13 @@ static void apply_vertical_wind(struct MarioState *m) {
     f32 maxVelY;
 
     if (m->action != ACT_GROUND_POUND) {
-        f32 lim = gCurrCourseNum == COURSE_WC ? 10000.f : -19000.f;
+        f32 lim = -19000.f;
+        if (gCurrCourseNum == COURSE_WC) {
+            lim = 10000.f;
+        }
+        if (gCurrCourseNum == COURSE_LC) {
+            lim = 19500.f;
+        }
         f32 offsetY = m->pos[1] - lim;
 
         if (m->floor->type == SURFACE_VERTICAL_WIND && offsetY < 2000.0f) {
