@@ -78,6 +78,8 @@ extern u8 lc_dl_miu128_cg012_ci4[];
 extern u8 lc_dl_miu128_cg012_pal_rgba16[];
 extern u8 lc_dl_et256_2_ci4[];
 extern u8 lc_dl_et256_2_pal_rgba16[];
+extern u8 lc_dl_miu64_cg007_ci4[];
+extern u8 lc_dl_miu64_cg007_pal_rgba16[];
 extern Gfx lc_dl_0000_object_0112642C_mesh_layer_1_tri_0[];
 extern Gfx lc_dl_0000_object_0112642C_mesh_layer_1_tri_1[];
 extern Gfx lc_dl_0000_object_0112642C_mesh_layer_1_tri_2[];
@@ -417,6 +419,20 @@ extern Gfx lc_dl_0199_object_0112F3E0_mesh_layer_1_tri_2[];
 extern Gfx lc_dl_0223_object_0112EEA0_mesh_layer_1_tri_0[];
 extern Gfx lc_dl_0223_object_0112EEA0_mesh_layer_1_tri_1[];
 extern Gfx lc_dl_0223_object_0112EEA0_mesh_layer_1_tri_2[];
+extern Gfx lc_dl_object_005F9FA8_mesh_layer_1_tri_0[];
+extern Gfx lc_dl_object_005F9FA8_mesh_layer_1_tri_1[];
+extern Gfx lc_dl_object_005F9FA8_mesh_layer_1_tri_2[];
+extern Gfx lc_dl_object_005F9FA8_mesh_layer_1_tri_3[];
+extern Gfx lc_dl_object_005FAFF0_mesh_layer_1_tri_0[];
+extern Gfx lc_dl_object_005FAFF0_mesh_layer_1_tri_1[];
+extern Gfx lc_dl_object_005FAFF0_mesh_layer_1_tri_2[];
+extern Gfx lc_dl_object_005FAFF0_mesh_layer_1_tri_3[];
+extern Gfx lc_dl_object_005FAFF0_mesh_layer_1_tri_4[];
+extern Gfx lc_dl_object_005FAFF0_mesh_layer_1_tri_5[];
+extern Gfx lc_dl_object_005FB7CC_mesh_layer_5_tri_0[];
+extern Gfx lc_dl_object_005FB7CC_mesh_layer_5_tri_1[];
+extern Gfx lc_dl_object_005FB7CC_mesh_layer_5_tri_2[];
+extern Gfx lc_dl_object_005FB7CC_mesh_layer_5_tri_3[];
 extern u32 lc_dl_0000_object_0112642C_mesh_layer_1[];
 extern u32 lc_dl_0000_object_01134954_mesh_layer_1[];
 extern u32 lc_dl_0000_object_011370DC_mesh_layer_1[];
@@ -499,6 +515,9 @@ extern u32 lc_dl_0181_object_010FC490_mesh_layer_1[];
 extern u32 lc_dl_0182_object_010FBE04_mesh_layer_1[];
 extern u32 lc_dl_0199_object_0112F3E0_mesh_layer_1[];
 extern u32 lc_dl_0223_object_0112EEA0_mesh_layer_1[];
+extern u32 lc_dl_object_005F9FA8_mesh_layer_1[];
+extern u32 lc_dl_object_005FAFF0_mesh_layer_1[];
+extern u32 lc_dl_object_005FB7CC_mesh_layer_5[];
 #define LVL_BATCH_LAYER_OPAQUE_LC_DL_MIU64_CG004_PAL_RGBA16 0
 #define LVL_BATCH_LAYER_OPAQUE_LC_DL_MIU256_CG001_PAL_RGBA16 1
 #define LVL_BATCH_LAYER_OPAQUE_LC_DL_MIU128_CG008_PAL_RGBA16 2
@@ -569,7 +588,13 @@ extern u32 lc_dl_0223_object_0112EEA0_mesh_layer_1[];
 #define LVL_BATCH_LAYER_OPAQUE_LC_DL_MIU512_CG003_PAL_RGBA16_3 67
 #define LVL_BATCH_LAYER_OPAQUE_LC_DL_ET256_2_PAL_RGBA16 68
 #define LVL_BATCH_LAYER_OPAQUE_LC_DL_ET256_2_PAL_RGBA16_1 69
+#define LVL_BATCH_LAYER_OPAQUE_LC_DL_MIU64_CG007_PAL_RGBA16 70
+#define LVL_BATCH_LAYER_OPAQUE_LC_DL_MIU128_CG005_PAL_RGBA16_1 71
 #define LVL_BATCH_LAYER_TRANSPARENT_LC_DL_TX_POISON001_PAL_RGBA16 0
+#define LVL_BATCH_LAYER_TRANSPARENT_LC_DL_MIU512_CG003_PAL_RGBA16 1
+#define LVL_BATCH_LAYER_TRANSPARENT_LC_DL_ET64_4_PAL_RGBA16 2
+#define LVL_BATCH_LAYER_TRANSPARENT_LC_DL_MIU64_CG010_PAL_RGBA16 3
+#define LVL_BATCH_LAYER_TRANSPARENT_LC_DL_MIU64_CG007_PAL_RGBA16 4
 extern struct BatchLevelDisplayLists batch_lvl_dls_lc[LAYER_COUNT];
 #define lc_dl_0001_object_011254D8_mesh_layer_1_vtx_0 lc_dl_0000_object_0112642C_mesh_layer_1_vtx_0
 #define lc_dl_0001_object_011254D8_mesh_layer_1_vtx_2 lc_dl_0000_object_0112642C_mesh_layer_1_vtx_2
@@ -751,6 +776,12 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_lc[LAYER_COUNT];
 #define mat_revert_lc_dl_objLandTable0027_sa2blvl_64_f3d_layer1_area1 mat_revert_lc_dl_objLandTable0027_sa2blvl_0_f3d_layer1_area1
 #define mat_revert_lc_dl_objLandTable0027_sa2blvl_65_f3d_layer1_area1 mat_revert_lc_dl_objLandTable0027_sa2blvl_0_f3d_layer1_area1
 #define mat_revert_lc_dl_objLandTable0027_sa2blvl_67_f3d_layer1_area1 mat_revert_lc_dl_objLandTable0027_sa2blvl_0_f3d_layer1_area1
+#define mat_revert_lc_dl_STEP_LIGHT_sa2bmdl_1_f3d_layer1_area1 mat_revert_lc_dl_objLandTable0027_sa2blvl_0_f3d_layer1_area1
+#define mat_revert_lc_dl_STEP_LIGHT_sa2bmdl_2_f3d_layer1_area1 mat_revert_lc_dl_objLandTable0027_sa2blvl_0_f3d_layer1_area1
+#define mat_revert_lc_dl_BRIDGE_LIGHT_sa2bmdl_0_f3d mat_revert_lc_dl_objLandTable0027_poison_sa2lvl_0_f3d
+#define mat_revert_lc_dl_BRIDGE_LIGHT_sa2bmdl_1_f3d mat_revert_lc_dl_objLandTable0027_poison_sa2lvl_0_f3d
+#define mat_revert_lc_dl_BRIDGE_LIGHT_sa2bmdl_2_f3d mat_revert_lc_dl_objLandTable0027_poison_sa2lvl_0_f3d
+#define mat_revert_lc_dl_BRIDGE_LIGHT_sa2bmdl_3_f3d mat_revert_lc_dl_objLandTable0027_poison_sa2lvl_0_f3d
 #define lc_dl_0001_object_011254D8_mesh_layer_1_tri_0 lc_dl_0000_object_0112642C_mesh_layer_1_tri_0
 #define lc_dl_0001_object_011254D8_mesh_layer_1_tri_2 lc_dl_0000_object_0112642C_mesh_layer_1_tri_2
 #define lc_dl_0001_object_011254D8_mesh_layer_1_tri_3 lc_dl_0000_object_0112642C_mesh_layer_1_tri_3
