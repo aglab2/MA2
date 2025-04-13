@@ -356,11 +356,13 @@ static void level_cmd_clear_level(void) {
     sCurrentCmd = CMD_NEXT;
 }
 
+extern struct GraphNodeStart* gBatchNode;
 extern struct GraphNodeCamera* sCameraCache;
 static void level_cmd_alloc_level_pool(void) {
     sCurrentCmd = CMD_NEXT;
     // drop cache, we just loaded bunch of bytes in
     sCameraCache = NULL;
+    gBatchNode = NULL;
 }
 
 extern void clear_scratch(void);

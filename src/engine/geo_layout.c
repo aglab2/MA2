@@ -387,6 +387,7 @@ static struct FlipbookArray* make_flipbooks(struct FlipbookLayer* flipbooksLayer
     return flipbooks;
 }
 
+struct GraphNodeStart* gBatchNode = NULL;
 void geo_layout_cmd_node_batch_start(void) {
     struct BatchLevelDisplayLists* dls = (struct BatchLevelDisplayLists*) cur_geo_cmd_ptr(0x04);
     struct FlipbookLayer* flipbooksLayers = (struct FlipbookLayer*) cur_geo_cmd_ptr(0x08);
@@ -395,6 +396,7 @@ void geo_layout_cmd_node_batch_start(void) {
         flipbooksLayers = segmented_to_virtual(flipbooksLayers);
 
     struct GraphNodeStart *graphNode = init_graph_node_start(NULL);
+    gBatchNode = graphNode;
 
     register_scene_graph_node(&graphNode->node);
 

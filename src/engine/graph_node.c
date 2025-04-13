@@ -104,6 +104,7 @@ struct GraphNodeStart *init_graph_node_start(struct GraphNodeStart *graphNode) {
         init_scene_graph_node_links(&graphNode->node, GRAPH_NODE_TYPE_START);
     }
 
+    graphNode->node.parent = NULL;
     return graphNode;
 }
 
