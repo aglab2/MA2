@@ -22,3 +22,6 @@
 #include "levels/lc/lc_shutter_left/collision.inc.c"
 #include "levels/lc/lc_shutter_right/model.inc.c"
 #include "levels/lc/lc_shutter_right/collision.inc.c"
+
+#include "levels/lc/lc_step/collision.inc.c"
+#include "levels/lc/lc_step/model.inc.c"

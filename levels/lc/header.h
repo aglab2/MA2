@@ -13,4 +13,8 @@ extern const LevelScript level_lc_entry[];
 
 #include "levels/lc/lc_shutter_right/geo_header.h"
 
+#include "levels/lc/lc_step/collision_header.h"
+
+#include "levels/lc/lc_step/geo_header.h"
+
 #endif

@@ -1,9 +1,11 @@
 extern const Collision ce_hammer_collision[];
 extern const Collision ms_hammer_collision[];
+extern const Collision lc_step_collision[];
 
 static const Collision *const k_hammer_collisions[] = {
     [ LEVEL_CE ] = ce_hammer_collision,
     [ LEVEL_MS ] = ms_hammer_collision,
+    [ LEVEL_LC ] = lc_step_collision,
 };
 
 void bhv_up_down_init()

@@ -21,3 +21,4 @@
 
 #include "levels/lc/lc_shutter_left/geo.inc.c"
 #include "levels/lc/lc_shutter_right/geo.inc.c"
+#include "levels/lc/lc_step/geo.inc.c"
