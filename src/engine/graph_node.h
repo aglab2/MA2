@@ -479,6 +479,31 @@ struct GraphNodeLvlTranslation {
     Vec3f translation;
 };
 
+struct LightGraphLvlNodeTranslation {
+    u8 type;
+    u8 size;
+    s16 flags;
+    f32 x; // replacing prev/next
+    f32 y;
+    void* batchSet; // parent must be fixed here
+    struct GraphNode *children;
+
+    f32 z;
+};
+
+struct LightGraphLvlNodeTranslationRotation {
+    u8 type;
+    u8 size;
+    s16 flags;
+    f32 x;
+    f32 y;
+    void* batchSet;
+    struct GraphNode *children;
+
+    f32 z;
+    Vec3s rotation;
+};
+
 struct GraphNodeBatchsetTranslation {
     struct GraphNode node;
     Vec3s translation;

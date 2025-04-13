@@ -1785,28 +1785,38 @@ static int is_far_from_mario(f32 l0, f32 l1, f32 l2)
     }
 }
 
-void geo_process_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation *node) {
-    Vec3f translation;
-    vec3_diff(translation, node->translation, gCurrentArea->renderOffset);
-    void* dl = GRAPH_NODE_LVL_DL(node);
+void geo_process_lvl_translation_rotation(struct LightGraphLvlNodeTranslationRotation *lvlNode) {
+    struct GraphNode *node = (struct GraphNode *) lvlNode;
+    void* dl = GRAPH_NODE_LVL_DL_RAW(node);
     if (!dl)
         return;
+
+    Vec3f translation;
+    translation[0] = lvlNode->x;
+    translation[1] = lvlNode->y;
+    translation[2] = lvlNode->z;
+    vec3_sub(translation, gCurrentArea->renderOffset);
 
     if (is_far_from_mario(translation[0], translation[1], translation[2]))
         return;
 
-    mtxf_rotate_zxy_and_translate_and_mul(node->rotation[0], node->rotation[1], node->rotation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
+    mtxf_rotate_zxy_and_translate_and_mul(lvlNode->rotation[0], lvlNode->rotation[1], lvlNode->rotation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
 
     inc_mat_stack();
-    return append_lvl_dl_and_return(&node->node);
+    return append_lvl_dl_and_return(node);
 }
 
-void geo_process_lvl_translation(struct GraphNodeLvlTranslation *node) {
-    Vec3f translation;
-    vec3_diff(translation, node->translation, gCurrentArea->renderOffset);
-    void* dl = GRAPH_NODE_LVL_DL(node);
+void geo_process_lvl_translation(struct LightGraphLvlNodeTranslation *lvlNode) {
+    struct GraphNode *node = (struct GraphNode *) lvlNode;
+    void* dl = GRAPH_NODE_LVL_DL_RAW(node);
     if (!dl)
         return;
+
+    Vec3f translation;
+    translation[0] = lvlNode->x;
+    translation[1] = lvlNode->y;
+    translation[2] = lvlNode->z;
+    vec3_sub(translation, gCurrentArea->renderOffset);
 
     if (is_far_from_mario(translation[0], translation[1], translation[2]))
         return;
@@ -1814,7 +1824,7 @@ void geo_process_lvl_translation(struct GraphNodeLvlTranslation *node) {
     mtxf_translate_and_mul(translation[0], translation[1], translation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
 
     inc_mat_stack();
-    return append_lvl_dl_and_return(&node->node);
+    return append_lvl_dl_and_return(node);
 }
 
 void geo_process_break_translation(struct GraphNodeTranslation *node) {

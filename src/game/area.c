@@ -327,11 +327,11 @@ static void warm_up_batch_node(void)
             switch (curGraphNode->type)
             {
                 case GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION:
-                    size = sizeof(struct GraphNodeLvlTranslationRotation);
+                    size = sizeof(struct LightGraphLvlNodeTranslationRotation);
                     lvlNode = (struct GraphNodeLvlTranslation*) curGraphNode;
                     break;
                 case GRAPH_NODE_TYPE_LVL_TRANSLATION:
-                    size = sizeof(struct GraphNodeLvlTranslation);
+                    size = sizeof(struct LightGraphLvlNodeTranslation);
                     lvlNode = (struct GraphNodeLvlTranslation*) curGraphNode;
                     break;
                 case GRAPH_NODE_TYPE_GENERATED_LIST:
@@ -368,20 +368,23 @@ static void warm_up_batch_node(void)
         struct GraphNode *curGraphNode = firstNode;
         do
         {
-            struct GraphNodeLvlTranslation* lvlNode = NULL;
-            int size = 0;
+            struct GraphNodeLvlTranslationRotation* lvlNode = NULL;
+            int copySize = 0;
+            int freshNodeSize = 0;
             switch (curGraphNode->type)
             {
                 case GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION:
-                    size = sizeof(struct GraphNodeLvlTranslationRotation);
-                    lvlNode = (struct GraphNodeLvlTranslation*) curGraphNode;
+                    copySize = sizeof(struct GraphNode);
+                    freshNodeSize = sizeof(struct LightGraphLvlNodeTranslationRotation);
+                    lvlNode = (struct GraphNodeLvlTranslationRotation*) curGraphNode;
                     break;
                 case GRAPH_NODE_TYPE_LVL_TRANSLATION:
-                    size = sizeof(struct GraphNodeLvlTranslation);
-                    lvlNode = (struct GraphNodeLvlTranslation*) curGraphNode;
+                    copySize = sizeof(struct GraphNode);
+                    freshNodeSize = sizeof(struct LightGraphLvlNodeTranslation);
+                    lvlNode = (struct GraphNodeLvlTranslationRotation*) curGraphNode;
                     break;
                 case GRAPH_NODE_TYPE_GENERATED_LIST:
-                    size = sizeof(struct GraphNodeGenerated);
+                    copySize = freshNodeSize = sizeof(struct GraphNodeGenerated);
                     break;
             }
 
@@ -391,17 +394,30 @@ static void warm_up_batch_node(void)
                 f32 dy = lvlNode->translation[1] - areaY;
                 f32 dz = lvlNode->translation[2] - areaZ;
                 f32 dist = dx * dx + dy * dy + dz * dz;
-                // this is incredibly far - the furthest point on 30k units + 20k max range
+                // this is incredibly far - the furthest point on 30k units (*sqrt(3)) + 20k max range
                 if (dist > (65000.f * 65000.f))
                 {
                     continue;
                 }   
             }
 
-            memcpy(buf, curGraphNode, size);
+            memcpy(buf, curGraphNode, copySize);
             struct GraphNode* freshNode = (struct GraphNode*) buf;
-            freshNode->size = size;
-            buf += size;
+            freshNode->size = freshNodeSize;
+            if (lvlNode)
+            {
+                struct LightGraphLvlNodeTranslationRotation* freshLvlNode = (struct LightGraphLvlNodeTranslationRotation*) freshNode;
+                freshLvlNode->x = lvlNode->translation[0];
+                freshLvlNode->y = lvlNode->translation[1];
+                freshLvlNode->z = lvlNode->translation[2];
+                if (GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION == curGraphNode->type)
+                {
+                    freshLvlNode->rotation[0] = lvlNode->rotation[0];
+                    freshLvlNode->rotation[1] = lvlNode->rotation[1];
+                    freshLvlNode->rotation[2] = lvlNode->rotation[2];
+                }
+            }
+            buf += freshNodeSize;
         } while ((curGraphNode = curGraphNode->next) != firstNode);
     }
 }
