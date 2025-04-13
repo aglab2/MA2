@@ -1698,7 +1698,9 @@ typedef void (*GeoProcessFunc)();
 static const GeoProcessFunc GeoProcessJumpTable[];
 void geo_process_lvl_start(struct GraphNode* node)
 {
+#if 0
     if (node->parent)
+#endif
     {
         u8* content = (u8*) node->parent;
         int nodesCount = *(int*) content;
@@ -1712,10 +1714,12 @@ void geo_process_lvl_start(struct GraphNode* node)
             nodesCount--;
         }
     }
+#if 0
     else
     {
         geo_process_node_and_siblings_quick(node->children);
     }
+#endif
 }
 
 static void adjust_view_range()

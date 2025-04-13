@@ -307,67 +307,102 @@ void set_vi_mode(void)
 extern struct GraphNodeStart* gBatchNode;
 static void warm_up_batch_node(void)
 {
-    if (gBatchNode)
+    if (!gBatchNode)
+        return;
+
+    f32 areaX = gCurrentArea->renderOffset[0];
+    f32 areaY = gCurrentArea->renderOffset[1];
+    f32 areaZ = gCurrentArea->renderOffset[2];
+
+    // Pass 1: calculate the size for allocations and amount of nodes
+    int allocSize = sizeof(int);
+    int amount = 0;
     {
-        // Pass 1: calculate the size for allocations and amount of nodes
-        int allocSize = sizeof(int);
-        int amount = 0;
+        struct GraphNode *firstNode = gBatchNode->node.children;
+        struct GraphNode *curGraphNode = firstNode;
+        do
         {
-            struct GraphNode *firstNode = gBatchNode->node.children;
-            struct GraphNode *curGraphNode = firstNode;
-            do
+            struct GraphNodeLvlTranslation* lvlNode = NULL;
+            int size = 0;
+            switch (curGraphNode->type)
             {
-                int size = 0;
-                switch (curGraphNode->type)
+                case GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION:
+                    size = sizeof(struct GraphNodeLvlTranslationRotation);
+                    lvlNode = (struct GraphNodeLvlTranslation*) curGraphNode;
+                    break;
+                case GRAPH_NODE_TYPE_LVL_TRANSLATION:
+                    size = sizeof(struct GraphNodeLvlTranslation);
+                    lvlNode = (struct GraphNodeLvlTranslation*) curGraphNode;
+                    break;
+                case GRAPH_NODE_TYPE_GENERATED_LIST:
+                    size = sizeof(struct GraphNodeGenerated);
+                    break;
+            }
+
+            if (lvlNode)
+            {
+                f32 dx = lvlNode->translation[0] - areaX;
+                f32 dy = lvlNode->translation[1] - areaY;
+                f32 dz = lvlNode->translation[2] - areaZ;
+                f32 dist = dx * dx + dy * dy + dz * dz;
+                // this is incredibly far - the furthest point on 30k units + 20k max range
+                if (dist > (65000.f * 65000.f))
                 {
-                    case GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION:
-                        size = sizeof(struct GraphNodeLvlTranslationRotation);
-                        break;
-                    case GRAPH_NODE_TYPE_LVL_TRANSLATION:
-                        size = sizeof(struct GraphNodeLvlTranslation);
-                        break;
-                    case GRAPH_NODE_TYPE_GENERATED_LIST:
-                        size = sizeof(struct GraphNodeGenerated);
-                        break;
-                }
-                DEBUG_ASSERT(size != 0);
-                
-                amount++;
-                allocSize += size;
-            } while ((curGraphNode = curGraphNode->next) != firstNode);
-        }
+                    continue;
+                }   
+            }
+            
+            amount++;
+            allocSize += size;
+        } while ((curGraphNode = curGraphNode->next) != firstNode);
+    }
 
-        int* content = (int*) main_pool_alloc(allocSize);
-        gBatchNode->node.parent = content;
-        *content = amount;
+    int* content = (int*) main_pool_alloc(allocSize);
+    gBatchNode->node.parent = content;
+    *content = amount;
 
-        // Pass 2: copy in the data
+    // Pass 2: copy in the data
+    {
+        void* buf = (void*) ((u8*) content + sizeof(int));
+        struct GraphNode *firstNode = gBatchNode->node.children;
+        struct GraphNode *curGraphNode = firstNode;
+        do
         {
-            void* buf = (void*) ((u8*) content + sizeof(int));
-            struct GraphNode *firstNode = gBatchNode->node.children;
-            struct GraphNode *curGraphNode = firstNode;
-            do
+            struct GraphNodeLvlTranslation* lvlNode = NULL;
+            int size = 0;
+            switch (curGraphNode->type)
             {
-                int size = 0;
-                switch (curGraphNode->type)
-                {
-                    case GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION:
-                        size = sizeof(struct GraphNodeLvlTranslationRotation);
-                        break;
-                    case GRAPH_NODE_TYPE_LVL_TRANSLATION:
-                        size = sizeof(struct GraphNodeLvlTranslation);
-                        break;
-                    case GRAPH_NODE_TYPE_GENERATED_LIST:
-                        size = sizeof(struct GraphNodeGenerated);
-                        break;
-                }
+                case GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION:
+                    size = sizeof(struct GraphNodeLvlTranslationRotation);
+                    lvlNode = (struct GraphNodeLvlTranslation*) curGraphNode;
+                    break;
+                case GRAPH_NODE_TYPE_LVL_TRANSLATION:
+                    size = sizeof(struct GraphNodeLvlTranslation);
+                    lvlNode = (struct GraphNodeLvlTranslation*) curGraphNode;
+                    break;
+                case GRAPH_NODE_TYPE_GENERATED_LIST:
+                    size = sizeof(struct GraphNodeGenerated);
+                    break;
+            }
 
-                memcpy(buf, curGraphNode, size);
-                struct GraphNode* freshNode = (struct GraphNode*) buf;
-                freshNode->size = size;
-                buf += size;
-            } while ((curGraphNode = curGraphNode->next) != firstNode);
-        }
+            if (lvlNode)
+            {
+                f32 dx = lvlNode->translation[0] - areaX;
+                f32 dy = lvlNode->translation[1] - areaY;
+                f32 dz = lvlNode->translation[2] - areaZ;
+                f32 dist = dx * dx + dy * dy + dz * dz;
+                // this is incredibly far - the furthest point on 30k units + 20k max range
+                if (dist > (65000.f * 65000.f))
+                {
+                    continue;
+                }   
+            }
+
+            memcpy(buf, curGraphNode, size);
+            struct GraphNode* freshNode = (struct GraphNode*) buf;
+            freshNode->size = size;
+            buf += size;
+        } while ((curGraphNode = curGraphNode->next) != firstNode);
     }
 }
 
