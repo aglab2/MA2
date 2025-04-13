@@ -104,7 +104,18 @@ struct GraphNodeStart *init_graph_node_start(struct GraphNodeStart *graphNode) {
         init_scene_graph_node_links(&graphNode->node, GRAPH_NODE_TYPE_START);
     }
 
-    graphNode->node.parent = NULL;
+    return graphNode;
+}
+
+struct GraphNodeStart *init_graph_lvl_node_start(struct GraphNodeStart *graphNode) {
+    if (!graphNode) {
+        graphNode = main_pool_alloc(sizeof(struct GraphNodeStart));
+    }
+
+    if (graphNode != NULL) {
+        init_scene_graph_node_links(&graphNode->node, GRAPH_NODE_TYPE_LVL_START);
+    }
+
     return graphNode;
 }
 
@@ -609,7 +620,7 @@ struct GraphNodeCoin *init_graph_node_coin(struct GraphNodeCoin *graphNode,
 struct GraphNodeLvlTranslationRotation *init_graph_node_lvl_translation_rotation(struct GraphNodeLvlTranslationRotation *graphNode, s32 drawingLayer, Vec3f translation, Vec3s rotation)
 {
     if (!graphNode) {
-        graphNode = main_pool_alloc(sizeof(struct GraphNodeLvlTranslationRotation));
+        graphNode = main_pool_alloc_lowprio(sizeof(struct GraphNodeLvlTranslationRotation));
     }
 
     if (graphNode != NULL) {
@@ -625,7 +636,7 @@ struct GraphNodeLvlTranslationRotation *init_graph_node_lvl_translation_rotation
 struct GraphNodeLvlTranslation         *init_graph_node_lvl_translation         (struct GraphNodeLvlTranslation         *graphNode, s32 drawingLayer, Vec3f translation)
 {
     if (!graphNode) {
-        graphNode = main_pool_alloc(sizeof(struct GraphNodeLvlTranslation));
+        graphNode = main_pool_alloc_lowprio(sizeof(struct GraphNodeLvlTranslation));
     }
 
     if (graphNode != NULL) {

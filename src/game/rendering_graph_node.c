@@ -1694,6 +1694,30 @@ void geo_try_process_children(struct GraphNode *node) {
     }
 }
 
+typedef void (*GeoProcessFunc)();
+static const GeoProcessFunc GeoProcessJumpTable[];
+void geo_process_lvl_start(struct GraphNode* node)
+{
+    if (node->parent)
+    {
+        u8* content = (u8*) node->parent;
+        int nodesCount = *(int*) content;
+        content += 4;
+
+        while (nodesCount)
+        {
+            struct GraphNode* child = (struct GraphNode*) content;
+            GeoProcessJumpTable[child->type](child);            
+            content += child->size;
+            nodesCount--;
+        }
+    }
+    else
+    {
+        geo_process_node_and_siblings_quick(node->children);
+    }
+}
+
 static void adjust_view_range()
 {
     if (!gIsConsole)
@@ -1892,8 +1916,6 @@ void geo_process_batchset_translation_rotation(struct GraphNodeBatchsetTranslati
     append_lvl_dl_and_return((struct GraphNodeDisplayList *)node);
 }
 
-typedef void (*GeoProcessFunc)();
-
 // See enum 'GraphNodeTypes' in 'graph_node.h'.
 static const GeoProcessFunc GeoProcessJumpTable[] = {
     [GRAPH_NODE_TYPE_ORTHO_PROJECTION    ] = geo_process_ortho_projection,
@@ -1934,6 +1956,7 @@ static const GeoProcessFunc GeoProcessJumpTable[] = {
     [GRAPH_NODE_TYPE_BATCH_ANIM_DISPLAY_LIST]  = geo_process_batch_anim_display_list,
     [GRAPH_NODE_TYPE_BATCHSET_TRANSLATION]     = geo_process_batchset_translation,
     [GRAPH_NODE_TYPE_BATCHSET_TRANSLATION_ROTATION] = geo_process_batchset_translation_rotation,
+    [GRAPH_NODE_TYPE_LVL_START]                = geo_process_lvl_start,
 };
 
 /**

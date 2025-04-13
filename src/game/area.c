@@ -305,6 +305,72 @@ void set_vi_mode(void)
 }
 
 extern struct GraphNodeStart* gBatchNode;
+static void warm_up_batch_node(void)
+{
+    if (gBatchNode)
+    {
+        // Pass 1: calculate the size for allocations and amount of nodes
+        int allocSize = sizeof(int);
+        int amount = 0;
+        {
+            struct GraphNode *firstNode = gBatchNode->node.children;
+            struct GraphNode *curGraphNode = firstNode;
+            do
+            {
+                int size = 0;
+                switch (curGraphNode->type)
+                {
+                    case GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION:
+                        size = sizeof(struct GraphNodeLvlTranslationRotation);
+                        break;
+                    case GRAPH_NODE_TYPE_LVL_TRANSLATION:
+                        size = sizeof(struct GraphNodeLvlTranslation);
+                        break;
+                    case GRAPH_NODE_TYPE_GENERATED_LIST:
+                        size = sizeof(struct GraphNodeGenerated);
+                        break;
+                }
+                DEBUG_ASSERT(size != 0);
+                
+                amount++;
+                allocSize += size;
+            } while ((curGraphNode = curGraphNode->next) != firstNode);
+        }
+
+        int* content = (int*) main_pool_alloc(allocSize);
+        gBatchNode->node.parent = content;
+        *content = amount;
+
+        // Pass 2: copy in the data
+        {
+            void* buf = (void*) ((u8*) content + sizeof(int));
+            struct GraphNode *firstNode = gBatchNode->node.children;
+            struct GraphNode *curGraphNode = firstNode;
+            do
+            {
+                int size = 0;
+                switch (curGraphNode->type)
+                {
+                    case GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION:
+                        size = sizeof(struct GraphNodeLvlTranslationRotation);
+                        break;
+                    case GRAPH_NODE_TYPE_LVL_TRANSLATION:
+                        size = sizeof(struct GraphNodeLvlTranslation);
+                        break;
+                    case GRAPH_NODE_TYPE_GENERATED_LIST:
+                        size = sizeof(struct GraphNodeGenerated);
+                        break;
+                }
+
+                memcpy(buf, curGraphNode, size);
+                struct GraphNode* freshNode = (struct GraphNode*) buf;
+                freshNode->size = size;
+                buf += size;
+            } while ((curGraphNode = curGraphNode->next) != firstNode);
+        }
+    }
+}
+
 void load_area(s32 index) {
     set_vi_mode();
 
@@ -314,6 +380,7 @@ void load_area(s32 index) {
         main_pool_pop_state();
         main_pool_push_state();
 
+        warm_up_batch_node();
         gMarioCurrentRoom = 0;
 
         if (gCurrentArea->terrainData != NULL) {

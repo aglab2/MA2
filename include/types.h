@@ -222,7 +222,8 @@ struct Animation {
 #define ANIMINDEX_NUMPARTS(animindex) (sizeof(animindex) / sizeof(u16) / 6 - 1)
 
 struct GraphNode {
-    /*0x00*/ s16 type; // structure type
+    u8 type;
+    u8 size;
     /*0x02*/ s16 flags; // hi = drawing layer, lo = rendering modes
     /*0x04*/ struct GraphNode *prev;
     /*0x08*/ struct GraphNode *next;

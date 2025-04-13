@@ -81,6 +81,8 @@ enum GraphNodeTypes {
     GRAPH_NODE_TYPE_BATCH_ANIM_DISPLAY_LIST,
     GRAPH_NODE_TYPE_BATCHSET_TRANSLATION,
     GRAPH_NODE_TYPE_BATCHSET_TRANSLATION_ROTATION,
+
+    GRAPH_NODE_TYPE_LVL_START,
 };
 
 // Passed as first argument to a GraphNodeFunc to give information about in
@@ -511,6 +513,7 @@ struct GraphNodeRoot                *init_graph_node_root                (struct
 struct GraphNodeOrthoProjection     *init_graph_node_ortho_projection    (struct GraphNodeOrthoProjection     *graphNode, f32 scale);
 struct GraphNodePerspective         *init_graph_node_perspective         (struct GraphNodePerspective         *graphNode, f32 fov, u16 near, u16 far, GraphNodeFunc nodeFunc);
 struct GraphNodeStart               *init_graph_node_start               (struct GraphNodeStart               *graphNode);
+struct GraphNodeStart               *init_graph_node_lvl_start           (struct GraphNodeStart               *graphNode);
 struct GraphNodeMasterList          *init_graph_node_master_list         (struct GraphNodeMasterList          *graphNode, s16 on);
 struct GraphNodeLevelOfDetail       *init_graph_node_render_range        (struct GraphNodeLevelOfDetail       *graphNode, s16 minDistance, s16 maxDistance);
 struct GraphNodeSwitchCase          *init_graph_node_switch_case         (struct GraphNodeSwitchCase          *graphNode, s16 numCases, s16 selectedCase, GraphNodeFunc nodeFunc, s32 unused);

@@ -395,10 +395,11 @@ void geo_layout_cmd_node_batch_start(void) {
     if (flipbooksLayers)
         flipbooksLayers = segmented_to_virtual(flipbooksLayers);
 
-    struct GraphNodeStart *graphNode = init_graph_node_start(NULL);
+    struct GraphNodeStart *graphNode = init_graph_lvl_node_start(NULL);
     gBatchNode = graphNode;
 
     register_scene_graph_node(&graphNode->node);
+    graphNode->node.parent = NULL;
 
     for (int layer = LAYER_FIRST; layer < LAYER_COUNT; layer++)
     {
