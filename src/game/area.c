@@ -304,6 +304,7 @@ void set_vi_mode(void)
     __osRestoreInt(saveMask);
 }
 
+extern struct GraphNodeStart* gBatchNode;
 void load_area(s32 index) {
     set_vi_mode();
 

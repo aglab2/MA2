@@ -279,8 +279,7 @@ enum GeoLayoutCommands {
 #define GEO_FLOAT_TO_INT(fv) ((s32) ((fv) * GEO_FLOAT_DELIMITER))
 #define GEO_INT_TO_FLOAT(iv) ((f32) ((iv) / GEO_FLOAT_DELIMITER))
 
-#define GEO_LVL_BATCH_TRANSLATE_ROTATE GEO_LVL_TRANSLATE_ROTATE_WITH_DL
-#define GEO_LVL_TRANSLATE_ROTATE_WITH_DL(layer, tx, ty, tz, rx, ry, rz, displayList) \
+#define GEO_LVL_BATCH_TRANSLATE_ROTATE(layer, tx, ty, tz, rx, ry, rz, displayList) \
     CMD_BBH(GEO_CMD_LVL_NODE_TRANSLATION_ROTATION, (0x00 | layer), (s16) (rx / 360. * 0x10000)), \
     CMD_HH((s16) (ry / 360. * 0x10000), (s16) (rz / 360. * 0x10000)), \
     CMD_W(GEO_FLOAT_TO_INT(tx)), \
@@ -384,8 +383,7 @@ enum GeoLayoutCommands {
     CMD_W(GEO_FLOAT_TO_INT(ux)), \
     CMD_W(GEO_FLOAT_TO_INT(uy)), \
     CMD_W(GEO_FLOAT_TO_INT(uz))
-#define GEO_LVL_BATCH_TRANSLATE_NODE GEO_LVL_TRANSLATE_NODE_WITH_DL
-#define GEO_LVL_TRANSLATE_NODE_WITH_DL(layer, ux, uy, uz, displayList) \
+#define GEO_LVL_BATCH_TRANSLATE_NODE(layer, ux, uy, uz, displayList) \
     CMD_BBH(GEO_CMD_LVL_NODE_TRANSLATION, (layer | 0x80), 0), \
     CMD_W(GEO_FLOAT_TO_INT(ux)), \
     CMD_W(GEO_FLOAT_TO_INT(uy)), \
@@ -457,8 +455,7 @@ enum GeoLayoutCommands {
     CMD_BBH(GEO_CMD_NODE_BATCH_DISPLAY_LIST, layer, batch), \
     CMD_PTR(displayList)
 
-#define GEO_BATCH GEO_LVL_DISPLAY_LIST
-#define GEO_LVL_DISPLAY_LIST(layer, displayList) \
+#define GEO_BATCH(layer, displayList) \
     CMD_BBH(GEO_CMD_BATCHSET_NODE, layer, 0x0000), \
     CMD_PTR(displayList)
 
