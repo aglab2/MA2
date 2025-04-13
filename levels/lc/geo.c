@@ -18,3 +18,6 @@
 #else
 #include "levels/lc/visual/geo_lvl.inc.c"
 #endif
+
+#include "levels/lc/lc_shutter_left/geo.inc.c"
+#include "levels/lc/lc_shutter_right/geo.inc.c"

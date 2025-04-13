@@ -16,6 +16,9 @@ extern const Collision cg_shutter_right_collision[];
 extern const Collision ee_shutter_left_collision[];
 extern const Collision ee_shutter_right_collision[];
 
+extern const Collision lc_shutter_left_collision[];
+extern const Collision lc_shutter_right_collision[];
+
 static const struct ShutterConfig* get_shutter_config()
 {
     if (gCurrLevelNum == LEVEL_CG)
@@ -26,6 +29,11 @@ static const struct ShutterConfig* get_shutter_config()
     if (gCurrLevelNum == LEVEL_EE)
     {
         static struct ShutterConfig config = { MODEL_EE_SHUTTER_BASE, ee_shutter_left_collision, ee_shutter_right_collision };
+        return &config;    
+    }
+    if (gCurrLevelNum == LEVEL_LC)
+    {
+        static struct ShutterConfig config = { MODEL_LC_SHUTTER_BASE, lc_shutter_left_collision, lc_shutter_right_collision };
         return &config;    
     }
 

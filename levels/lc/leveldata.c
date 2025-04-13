@@ -17,3 +17,8 @@
 #else
 #include "levels/lc/visual/model_lvlopt.inc.c"
 #endif
+
+#include "levels/lc/lc_shutter_left/model.inc.c"
+#include "levels/lc/lc_shutter_left/collision.inc.c"
+#include "levels/lc/lc_shutter_right/model.inc.c"
+#include "levels/lc/lc_shutter_right/collision.inc.c"
