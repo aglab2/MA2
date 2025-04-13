@@ -14,6 +14,7 @@
 #include "levels/wb/area_2/spline.inc.c"
 #include "levels/wb/visual/header_lvlopt.inc.h"
 #include "levels/wb/visual/model_lvlopt.inc.c"
+#include "levels/wb/flipbook.inc.c"
 #endif
 
 #include "levels/wb/wb_skybox/model.inc.c"
