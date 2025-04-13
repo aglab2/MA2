@@ -1,0 +1,9 @@
+extern u8 wb_skybox_prnbg8_1_ci4[];
+extern u8 wb_skybox_prnbg8_1_pal_rgba16[];
+extern u8 wb_skybox_neoweponnbg_rgba16[];
+extern u8 wb_skybox_neoweponnbg2_ci4[];
+extern u8 wb_skybox_neoweponnbg2_pal_rgba16[];
+extern Vtx wb_skybox_object_005ED684_mesh_vtx_0[40];
+extern Vtx wb_skybox_object_005ED684_mesh_vtx_1[256];
+extern Vtx wb_skybox_object_005ED684_mesh_vtx_2[17];
+extern Gfx wb_skybox_object_005ED684_mesh[];

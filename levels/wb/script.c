@@ -19,6 +19,7 @@
 #include "levels/wb/area_2/collision.inc.c"
 #define wb_area_2 wb_area_1
 static struct LevelConfig cfg = {
+	.skybox = &wb_skybox_object_005ED684_mesh,
 };
 /* Fast64 end persistent block [scripts] */
 

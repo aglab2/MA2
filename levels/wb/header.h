@@ -9,4 +9,6 @@ extern const LevelScript level_wb_entry[];
 
 #include "levels/wb/header.inc.h"
 #include "levels/wb/visual/header_lvlopt.inc.h"
+#include "levels/wb/wb_skybox/header.h"
+
 #endif

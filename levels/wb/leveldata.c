@@ -15,3 +15,5 @@
 #include "levels/wb/visual/header_lvlopt.inc.h"
 #include "levels/wb/visual/model_lvlopt.inc.c"
 #endif
+
+#include "levels/wb/wb_skybox/model.inc.c"
