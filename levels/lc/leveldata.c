@@ -5,6 +5,8 @@
 #include "textures.h"
 #include "dialog_ids.h"
 #include "instant_warp_desc.h"
+#include "rail_desc.h"
+#include "spring_desc.h"
 
 #include "make_const_nonconst.h"
 
@@ -12,9 +14,13 @@
 #include "levels/lc/visual/header_lvlopt.inc.h"
 #include "levels/lc/flipbook.inc.c"
 
+#include "levels/lc/header.h"
+#include "levels/lc/rails.inc.c"
+
 #if 0
 #include "levels/lc/leveldata.inc.c"
 #else
+#include "levels/lc/area_1/spline.inc.c"
 #include "levels/lc/visual/model_lvlopt.inc.c"
 #endif
 

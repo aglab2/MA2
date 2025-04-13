@@ -19,8 +19,10 @@
 #include "levels/lc/area_2/collision.inc.c"
 #define lc_area_2 lc_area_1
 extern IWDHeader* iw_descs_lc[];
+extern const SpringDesc* spring_descs_lc[];
 static struct LevelConfig cfg = {
 	.iwds = iw_descs_lc,
+	.springDescs = spring_descs_lc,
 };
 #define SEQ_LEVEL_GRASS 0x3c
 /* Fast64 end persistent block [scripts] */
@@ -170,7 +172,7 @@ const LevelScript level_lc_entry[] = {
 		OBJECT(MODEL_STAR, 14818, 18893, -4017, 0, 90, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_NONE, -26017, -6037, -490, 0, 0, 0, 0x00000000, bhvHiddenStar),
 		OBJECT(MODEL_STAR, -15747, -4954, -1311, 0, 90, 0, 0x00000000, bhvStar),
-		OBJECT(MODEL_STAR, -4801, -4502, -6831, 0, 90, 0, 0x00000000, bhvStar),
+		OBJECT(MODEL_STAR, -3781, -4502, -2243, 0, 90, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_WOODEN_SIGNPOST, 15049, -9180, -3981, 0, 90, 0, (1 << 24) | (1 << 16), bhvMessagePanel),
 		TERRAIN(lc_area_1_collision),
 		MACRO_OBJECTS(lc_area_1_macro_objs),
