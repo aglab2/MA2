@@ -6431,3 +6431,15 @@ const BehaviorScript bhvRhHammer[] = {
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
+
+extern void bhv_wb_move_init();
+extern void bhv_wb_move_loop();
+const BehaviorScript bhvWbMove[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    CALL_NATIVE(bhv_wb_move_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_wb_move_loop),
+        // CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};

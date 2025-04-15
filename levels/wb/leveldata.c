@@ -4,6 +4,8 @@
 #include "moving_texture_macros.h"
 #include "textures.h"
 #include "dialog_ids.h"
+#include "spring_desc.h"
+#include "instant_warp_desc.h"
 
 #include "make_const_nonconst.h"
 
@@ -15,6 +17,8 @@
 #include "levels/wb/visual/header_lvlopt.inc.h"
 #include "levels/wb/visual/model_lvlopt.inc.c"
 #include "levels/wb/flipbook.inc.c"
+#include "levels/wb/rails.inc.c"
+#include "levels/wb/iw.inc.c"
 #endif
 
 #include "levels/wb/wb_skybox/model.inc.c"

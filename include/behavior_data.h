@@ -597,5 +597,6 @@ extern const BehaviorScript bhvSoHako[];
 extern const BehaviorScript bhvSoMove[];
 extern const BehaviorScript bhvRhSlane[];
 extern const BehaviorScript bhvRhHammer[];
+extern const BehaviorScript bhvWbMove[];
 
 #endif // BEHAVIOR_DATA_H
