@@ -1,0 +1,14 @@
+extern const GeoLayout wb_shuts_geo[];
+extern u8 wb_shuts_miu128_wb002_ci4[];
+extern u8 wb_shuts_miu128_wb002_pal_rgba16[];
+extern u8 wb_shuts_miu64_wb002_ci4[];
+extern u8 wb_shuts_miu64_wb002_pal_rgba16[];
+extern Vtx wb_shuts_wb_shuts_mesh_layer_1_vtx_0[4];
+extern Gfx wb_shuts_wb_shuts_mesh_layer_1_tri_0[];
+extern Vtx wb_shuts_wb_shuts_mesh_layer_1_vtx_1[4];
+extern Gfx wb_shuts_wb_shuts_mesh_layer_1_tri_1[];
+extern Gfx mat_wb_shuts_SHUTS_sa2bmdl_0_f3d[];
+extern Gfx mat_revert_wb_shuts_SHUTS_sa2bmdl_0_f3d[];
+extern Gfx mat_wb_shuts_SHUTS_sa2bmdl_1_f3d[];
+extern Gfx mat_revert_wb_shuts_SHUTS_sa2bmdl_1_f3d[];
+extern Gfx wb_shuts_wb_shuts_mesh_layer_1[];

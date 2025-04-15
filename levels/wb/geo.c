@@ -18,3 +18,14 @@
 #else
 #include "levels/wb/visual/geo_lvl.inc.c"
 #endif
+
+#include "levels/wb/wb_cont/geo.inc.c"
+#include "levels/wb/wb_cont_break/geo.inc.c"
+#include "levels/wb/wb_contb/geo.inc.c"
+#include "levels/wb/wb_contc/geo.inc.c"
+#include "levels/wb/wb_fig_ai/geo.inc.c"
+#include "levels/wb/wb_fig_ai2/geo.inc.c"
+#include "levels/wb/wb_shut/geo.inc.c"
+#include "levels/wb/wb_shut_break/geo.inc.c"
+#include "levels/wb/wb_shuts/geo.inc.c"
+#include "levels/wb/wb_shuts_break/geo.inc.c"

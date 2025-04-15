@@ -18,3 +18,18 @@
 #endif
 
 #include "levels/wb/wb_skybox/model.inc.c"
+#include "levels/wb/wb_cont/model.inc.c"
+#include "levels/wb/wb_cont_break/model.inc.c"
+#include "levels/wb/wb_contb/model.inc.c"
+#include "levels/wb/wb_contc/model.inc.c"
+#include "levels/wb/wb_fig_ai/model.inc.c"
+#include "levels/wb/wb_fig_ai2/model.inc.c"
+#include "levels/wb/wb_contb/collision.inc.c"
+#include "levels/wb/wb_contc/collision.inc.c"
+#include "levels/wb/wb_contc_stand/collision.inc.c"
+#include "levels/wb/wb_shut/model.inc.c"
+#include "levels/wb/wb_shut/collision.inc.c"
+#include "levels/wb/wb_shut_break/model.inc.c"
+#include "levels/wb/wb_shuts/collision.inc.c"
+#include "levels/wb/wb_shuts/model.inc.c"
+#include "levels/wb/wb_shuts_break/model.inc.c"
