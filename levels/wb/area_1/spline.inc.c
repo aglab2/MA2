@@ -6,9 +6,9 @@ const Trajectory wb_area_1_spline_Spring_NurbsCurve[] = {
 	TRAJECTORY_END(),
 };
 const Trajectory wb_area_1_spline_Spring_NurbsCurve_001[] = {
-	TRAJECTORY_POS( 0, -3367, -2900, -2774),
-	TRAJECTORY_POS( 1, -3332, -1756, -2755),
-	TRAJECTORY_POS( 2, -3005, -707, -2755),
-	TRAJECTORY_POS( 3, -2481, -490, -2755),
+	TRAJECTORY_POS( 0, -3394, -2900, -2721),
+	TRAJECTORY_POS( 1, -3359, -1756, -2726),
+	TRAJECTORY_POS( 2, -3100, -707, -2761),
+	TRAJECTORY_POS( 3, -2581, -490, -2833),
 	TRAJECTORY_END(),
 };

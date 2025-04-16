@@ -41,4 +41,6 @@ extern const LevelScript level_wb_entry[];
 
 #include "levels/wb/wb_shuts_break/geo_header.h"
 
+#include "levels/wb/wb_ont/collision_header.h"
+
 #endif

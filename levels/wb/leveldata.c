@@ -37,3 +37,4 @@
 #include "levels/wb/wb_shuts/collision.inc.c"
 #include "levels/wb/wb_shuts/model.inc.c"
 #include "levels/wb/wb_shuts_break/model.inc.c"
+#include "levels/wb/wb_ont/collision.inc.c"
