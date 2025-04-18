@@ -25,6 +25,7 @@ static struct LevelConfig cfg = {
 	.springDescs = spring_descs_wb,
 	.iwds = &iw_descs_wb,
 };
+#define SEQ_LEVEL_GRASS 0x3d
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_wb_entry[] = {
@@ -230,7 +231,7 @@ const LevelScript level_wb_entry[] = {
 		OBJECT(MODEL_BLACK_BOBOMB, -1666, -2900, 3565, 0, 0, 0, 0x00000000, bhvBobomb),
 		OBJECT(MODEL_BLACK_BOBOMB, -1795, -2900, 2472, 0, 0, 0, 0x00000000, bhvBobomb),
 		OBJECT(MODEL_BLACK_BOBOMB, -751, -2900, -1262, 0, 0, 0, 0x00000000, bhvBobomb),
-		OBJECT(MODEL_BLACK_BOBOMB, 18910, -2700, -32261, 0, 0, 0, 0x00000000, bhvBobomb),
+		OBJECT(MODEL_BLACK_BOBOMB, 17803, -2700, -32261, 0, 0, 0, 0x00000000, bhvBobomb),
 		OBJECT(MODEL_BLACK_BOBOMB, 17996, -2400, -31375, 0, 0, 0, 0x00000000, bhvBobomb),
 		OBJECT(MODEL_BOOSTER, 15177, -1600, -17840, 0, -90, 0, 0x00000000, bhvBooster),
 		OBJECT(MODEL_BOOSTER, 15177, -1600, -15324, 0, 90, 0, 0x00000000, bhvBooster),
@@ -292,7 +293,7 @@ const LevelScript level_wb_entry[] = {
 		OBJECT(MODEL_WB_FIG_AI2, 14803, -1597, -10953, 0, 0, 0, 0x00000000, bhvBreakable),
 		OBJECT(MODEL_WB_FIG_AI2, 15203, -1597, -10953, 0, 0, 0, 0x00000000, bhvBreakable),
 		OBJECT(MODEL_CHECKPOINT, -776, -2700, 9332, 0, -180, 0, 0x00000000, bhvCheckpoint),
-		OBJECT(MODEL_CHECKPOINT, 14643, -1600, -2384, 0, 0, 0, 0x00000000, bhvCheckpoint),
+		OBJECT(MODEL_CHECKPOINT, 14643, -1600, -2384, 0, -180, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_CHUCKYA, 14082, -1598, -21557, 0, 0, 0, 0x00000000, bhvChuckya),
 		OBJECT(MODEL_CHUCKYA, 15003, -1600, -21558, 0, 0, 0, 0x00000000, bhvChuckya),
 		OBJECT(MODEL_NONE, -3584, -2358, 9917, 0, 90, 0, 0x00000000, bhvCoinFormation),
@@ -338,14 +339,14 @@ const LevelScript level_wb_entry[] = {
 		OBJECT(MODEL_WB_CONT_B, 8026, -3100, -1681, 0, -180, 0, (1 << 16), bhvWbMove),
 		OBJECT(MODEL_WB_CONT_B, 11048, -2900, -2584, 0, -180, 0, (1 << 16), bhvWbMove),
 		OBJECT(MODEL_WB_CONT_C, 11283, -3003, -2975, 0, 0, 0, (2 << 16), bhvWbMove),
-		OBJECT(MODEL_WB_CONT, 14788, -2900, -30325, 0, -180, 0, 0x00000000, bhvWbMove),
-		OBJECT(MODEL_WB_CONT, 14485, -2900, -31885, 0, -180, 0, 0x00000000, bhvWbMove),
-		OBJECT(MODEL_WB_CONT_C, 16138, -2927, -31745, 0, 90, 0, (2 << 16), bhvWbMove),
-		OBJECT(MODEL_WB_CONT_B, 16440, -2900, -32476, 0, 90, 0, (1 << 16), bhvWbMove),
-		OBJECT(MODEL_WB_CONT_B, 18670, -2700, -32265, 0, 90, 0, (1 << 16), bhvWbMove),
-		OBJECT(MODEL_WB_CONT_B, 18681, -2400, -31387, 0, 90, 0, (1 << 16), bhvWbMove),
-		OBJECT(MODEL_WB_CONT, 21332, -2400, -31185, 0, -180, 0, 0x00000000, bhvWbMove),
-		OBJECT(MODEL_WB_CONT_C, 21156, -2475, -31945, 0, 90, 0, (2 << 16), bhvWbMove),
+		OBJECT(MODEL_WB_CONT, 14788, -2900, -30325, 0, -90, 0, 0x00000000, bhvWbMove),
+		OBJECT(MODEL_WB_CONT, 14485, -2900, -30918, 0, 90, 0, 0x00000000, bhvWbMove),
+		OBJECT(MODEL_WB_CONT_C, 16138, -2927, -31945, 0, -180, 0, (2 << 16), bhvWbMove),
+		OBJECT(MODEL_WB_CONT_B, 15690, -2900, -32476, 0, -180, 0, (1 << 16), bhvWbMove),
+		OBJECT(MODEL_WB_CONT_B, 18670, -2700, -32265, 0, -180, 0, (1 << 16), bhvWbMove),
+		OBJECT(MODEL_WB_CONT_B, 18681, -2400, -31387, 0, -180, 0, (1 << 16), bhvWbMove),
+		OBJECT(MODEL_WB_CONT, 19666, -2400, -31185, 0, -180, 0, 0x00000000, bhvWbMove),
+		OBJECT(MODEL_WB_CONT_C, 19707, -2475, -31945, 0, -180, 0, (2 << 16), bhvWbMove),
 		OBJECT(MODEL_RED_COIN, 15177, -1486, -17840, 0, -90, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_RED_COIN, 15177, -1486, -15324, 0, 90, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_RED_COIN, 13919, -1486, -16582, 0, 0, 0, 0x00000000, bhvRedCoin),
