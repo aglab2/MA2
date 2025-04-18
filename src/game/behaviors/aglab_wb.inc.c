@@ -25,12 +25,32 @@ void bhv_wb_move_loop()
 extern const Collision wb_shut_collision[];
 extern const Collision wb_shuts_collision[];
 
+extern const BehaviorScript bhvWbDoorCheckBreak[];
+
 void bhv_wb_door_init()
 {
     obj_set_collision_data(o, o->oBehParams2ndByte ? wb_shuts_collision : wb_shut_collision);
+    o->parentObj = spawn_object(o, 0, bhvWbDoorCheckBreak);
 }
 
 void bhv_wb_door_loop()
 {
 
+}
+
+void bhv_wb_door_check_break_loop()
+{
+    struct Surface* surf = gMarioStates->wall;
+    if (!surf)
+        return;
+
+    if (surf->object != o->parentObj)
+        return;
+
+    if (gMarioStates->action == ACT_JUMP_KICK)
+    {
+        o->parentObj->activeFlags = 0;
+        o->activeFlags = 0;
+        spawn_object(o, o->oBehParams2ndByte ? MODEL_WB_SHUTS_BREAK : MODEL_WB_SHUT_BREAK, bhvStaticObject);
+    }
 }

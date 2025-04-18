@@ -6455,3 +6455,11 @@ const BehaviorScript bhvWbDoor[] = {
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
+
+extern void bhv_wb_door_check_break_loop();
+const BehaviorScript bhvWbDoorCheckBreak[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_wb_door_check_break_loop),
+    END_LOOP(),
+};

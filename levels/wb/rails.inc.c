@@ -1,6 +1,7 @@
 static const SpringDesc spring_area1[] = {
 	wb_area_1_spline_Spring_NurbsCurve,
 	wb_area_1_spline_Spring_NurbsCurve_001,
+	wb_area_1_spline_Spring_NurbsCurve_009,
 	NULL
 };
 
@@ -12,6 +13,7 @@ static const SpringDesc spring_area2[] = {
 	wb_area_2_spline_Spring_NurbsCurve_006,
 	wb_area_2_spline_Spring_NurbsCurve_007,
 	wb_area_2_spline_Spring_NurbsCurve_008,
+	wb_area_2_spline_Spring_NurbsCurve_010,
 	NULL
 };
 
