@@ -61,5 +61,6 @@
     "3A_so": [ "0C_extended_bank" ],
     "3B_rh": [ "0C_extended_bank" ],
     "3C_lc": [ "0C_extended_bank" ],
-    "3D_wb": [ "0C_extended_bank" ]
+    "3D_wb": [ "0C_extended_bank" ],
+    "3E_sh": [ "0C_extended_bank" ]
 }
