@@ -1,0 +1,14 @@
+extern const GeoLayout sh_tank_break_geo[];
+extern u8 sh_tank_break_pr128_14_ci4[];
+extern u8 sh_tank_break_pr128_14_pal_rgba16[];
+extern u8 sh_tank_break_miu128_ig009_ci4[];
+extern u8 sh_tank_break_miu128_ig009_pal_rgba16[];
+extern Vtx sh_tank_break_sh_tank_break_mesh_layer_1_vtx_0[4];
+extern Gfx sh_tank_break_sh_tank_break_mesh_layer_1_tri_0[];
+extern Vtx sh_tank_break_sh_tank_break_mesh_layer_1_vtx_1[16];
+extern Gfx sh_tank_break_sh_tank_break_mesh_layer_1_tri_1[];
+extern Gfx mat_sh_tank_break_TANK_BREAKA_sa2mdl_0_f3d[];
+extern Gfx mat_revert_sh_tank_break_TANK_BREAKA_sa2mdl_0_f3d[];
+extern Gfx mat_sh_tank_break_TANK_BREAKA_sa2mdl_1_f3d[];
+extern Gfx mat_revert_sh_tank_break_TANK_BREAKA_sa2mdl_1_f3d[];
+extern Gfx sh_tank_break_sh_tank_break_mesh_layer_1[];

@@ -13,3 +13,15 @@
 #include "levels/sh/visual/header_lvlopt.inc.h"
 #include "levels/sh/visual/model_lvlopt.inc.c"
 #endif
+
+#include "levels/sh/sh_bombe/model.inc.c"
+#include "levels/sh/sh_bombe_break/model.inc.c"
+#include "levels/sh/sh_fun/model.inc.c"
+#include "levels/sh/sh_lb/model.inc.c"
+#include "levels/sh/sh_lr/model.inc.c"
+#include "levels/sh/sh_ly/model.inc.c"
+#include "levels/sh/sh_rb/model.inc.c"
+#include "levels/sh/sh_rr/model.inc.c"
+#include "levels/sh/sh_ry/model.inc.c"
+#include "levels/sh/sh_tank/model.inc.c"
+#include "levels/sh/sh_tank_break/model.inc.c"

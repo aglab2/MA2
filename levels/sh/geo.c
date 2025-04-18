@@ -18,3 +18,15 @@
 #else
 #include "levels/sh/visual/geo_lvl.inc.c"
 #endif
+
+#include "levels/sh/sh_bombe/geo.inc.c"
+#include "levels/sh/sh_bombe_break/geo.inc.c"
+#include "levels/sh/sh_fun/geo.inc.c"
+#include "levels/sh/sh_lb/geo.inc.c"
+#include "levels/sh/sh_lr/geo.inc.c"
+#include "levels/sh/sh_ly/geo.inc.c"
+#include "levels/sh/sh_rb/geo.inc.c"
+#include "levels/sh/sh_rr/geo.inc.c"
+#include "levels/sh/sh_ry/geo.inc.c"
+#include "levels/sh/sh_tank/geo.inc.c"
+#include "levels/sh/sh_tank_break/geo.inc.c"
