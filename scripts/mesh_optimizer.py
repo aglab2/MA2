@@ -1,7 +1,7 @@
 from collections import deque
 import sys
 
-HAS_EX3_COMMANDS = False
+HAS_EX3_COMMANDS = True
 
 def get_args(line):
     bracket_open = line.find('(')
