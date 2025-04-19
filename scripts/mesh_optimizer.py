@@ -189,37 +189,89 @@ class RenderPass:
 
 class FanStrip:
     def __init__(self, is_strip, vertices):
-        self._is_strip = is_strip
-        self._vertices = vertices
+        self.is_strip = is_strip
+        self.vertices = vertices
 
     def stringify(self):
-        name = 'gsSPTriStrip' if self._is_strip else 'gsSPTriFan'
-        return f"\t{name}({', '.join(map(str, self._vertices))}),\n"
+        name = 'gsSPTriStrip' if self.is_strip else 'gsSPTriFan'
+        return f"\t{name}({', '.join(map(str, self.vertices))}),\n"
 
     def __repr__(self):
-        return f"FanStrip(is_strip={self._is_strip}, vertices={self._vertices})"
-
-class VtxShuffle:
-    def __init__(self, transform):
-        self._transform = transform
+        return f"FanStrip(is_strip={self.is_strip}, vertices={self.vertices})"
 
 # Generate a shuffle that pins 'shared' vertices to the first 'len(shared)' indices
 def make_shuffle_pinning_shared(glo_to_loc, glo_shared):
-    # Pin shared vertices to indices from 0 to len(shared) - 1
+    # Pin shared vertices to indices from 0 to len(glo_shared) - 1
+    glo_shared_to_loc = {}
+    for glo in glo_shared:
+        glo_shared_to_loc[glo] = len(glo_shared_to_loc)
+
     shuffle = {}
-    loc_pinned_start = 0
     loc_unpinned_start = len(glo_shared)
 
     for glo in glo_to_loc:
         loc = glo_to_loc[glo]
-        if glo in glo_shared:
-            shuffle[loc] = loc_pinned_start
-            loc_pinned_start += 1
+        if glo in glo_shared_to_loc:
+            shuffle[loc] = glo_shared_to_loc[glo]
         else:
             shuffle[loc] = loc_unpinned_start
             loc_unpinned_start += 1
 
     return shuffle
+
+# Generate a shuffle that pins 'shared' vertices to the first 'len(shared)' indices
+# Only the first 'lim' vertices are modified by the shuffle.
+def make_shuffle_pinning_shared_limited(glo_to_loc, glo_shared, lim):
+    assert lim >= len(glo_shared), "lim must be greater than or equal to len(glo_shared)"
+    glo_shared_to_loc = {}
+    for glo in glo_shared:
+        glo_shared_to_loc[glo] = len(glo_shared_to_loc)
+
+    shuffle = {}
+    loc_unpinned_start = len(glo_shared)
+
+    for glo in glo_to_loc:
+        loc = glo_to_loc[glo]
+        if loc >= lim:
+            continue
+
+        if glo in glo_shared_to_loc:
+            shuffle[loc] = glo_shared_to_loc[glo]
+        else:
+            shuffle[loc] = loc_unpinned_start
+            loc_unpinned_start += 1
+
+    return shuffle
+
+def apply_shuffle(render_pass: RenderPass, shuffle):
+    for glo_vtx in render_pass.vertices:
+        loc_vtx = render_pass.vertices[glo_vtx]
+        render_pass.vertices[glo_vtx] = shuffle[loc_vtx]
+    for tri in render_pass.triangles:
+        for i, loc_vtx in enumerate(tri):
+            tri[i] = shuffle[loc_vtx]
+    for fanstrip in render_pass.fanstrips:
+        for i, loc_vtx in enumerate(fanstrip.vertices):
+            fanstrip.vertices[i] = -1 if loc_vtx == -1 else shuffle[loc_vtx]
+
+def apply_shuffle_limited(render_pass: RenderPass, shuffle, limit):
+    for glo_vtx in render_pass.vertices:
+        loc_vtx = render_pass.vertices[glo_vtx]
+        if loc_vtx >= limit:
+            continue
+        render_pass.vertices[glo_vtx] = shuffle[loc_vtx]
+
+    for tri in render_pass.triangles:
+        for i, loc_vtx in enumerate(tri):
+            if loc_vtx >= limit:
+                continue
+            tri[i] = shuffle[loc_vtx]
+
+    for fanstrip in render_pass.fanstrips:
+        for i, loc_vtx in enumerate(fanstrip.vertices):
+            if loc_vtx >= limit:
+                continue
+            fanstrip.vertices[i] = -1 if loc_vtx == -1 else shuffle[loc_vtx]
 
 class ModelMeshEntry(ModelEntry):
     def __init__(self, line, next_line, model):
@@ -738,26 +790,51 @@ class ModelMeshEntry(ModelEntry):
                     highest_usage, highest_usage_vtx = next(candidate_to_load_pricer.highest_usage())
                     load_vertex(highest_usage_vtx)
 
-        vtx_shuffles = []
         prev_render_pass = None
-        pinned_vertices = None
+        pinned_vertices_left = None
+        altered_render_passes = []
         for i, render_pass in enumerate(render_passes):
-            vtx_shuffles.append(None)
             curr_vertices = set(render_pass.vertices.keys())
             print(f"render pass {i} -> {curr_vertices}")
             if prev_render_pass:
                 prev_vertices = prev_render_pass.vertices
                 common_vertices = set(prev_vertices.keys()).intersection(curr_vertices)
                 if common_vertices:
-                    # Technically this is not a requirement but it makes it easier to debug when ordering is fixed
-                    common_vertices = list(common_vertices)
                     print(f"common vertices {common_vertices}, length {len(common_vertices)}")
-                    if not pinned_vertices:
-                        prev_shuffle = make_shuffle_pinning_shared(prev_vertices, common_vertices)
-                        curr_shuffle = make_shuffle_pinning_shared(render_pass.vertices, common_vertices)
-                        pinned_vertices = common_vertices
+                    if not pinned_vertices_left:
+                        # Perform the first shuffling and pin the common vertices on the left vbo
+                        common_vertices = list(common_vertices)
+                        altered_render_passes.append(prev_render_pass)
+                        altered_render_passes.append(render_pass)
+                        for render_pass in altered_render_passes:
+                            shuffle = make_shuffle_pinning_shared(render_pass.vertices, common_vertices)
+                            apply_shuffle(render_pass, shuffle)
+
+                        pinned_vertices_left = common_vertices
                     else:
-                        pass
+                        # There is already a pinned buffer on the left side.
+                        # We might be able to reuse some of the common vertices, all other vertices
+                        # can be repinned to the right side of the buffer.
+                        repinned_vertices_left = common_vertices.intersection(pinned_vertices_left)
+                        unpinned_vertices_right = common_vertices.difference(pinned_vertices_left)
+                        if repinned_vertices_left:
+                            # Shrink the left buffer to only contain the common vertices...
+                            for render_pass in altered_render_passes:
+                                shuffle = make_shuffle_pinning_shared_limited(render_pass.vertices, repinned_vertices_left, len(pinned_vertices_left))
+                                apply_shuffle_limited(render_pass, shuffle, len(pinned_vertices_left))
+                            pinned_vertices_left = list(repinned_vertices_left)
+
+                            shuffle = make_shuffle_pinning_shared(render_pass.vertices, pinned_vertices_left)
+                            apply_shuffle(render_pass, shuffle)
+                            altered_render_passes.append(render_pass)
+                        else:
+                            # There is nothing else left to repin, drop left buffer
+                            pinned_vertices_left = None
+                            altered_render_passes = []
+                        # ...and potentially pin the right buffer to the right side of the buffer - todo!
+                else:
+                    pinned_vertices_left = None
+                    altered_render_passes = []
 
             prev_render_pass = render_pass
 
