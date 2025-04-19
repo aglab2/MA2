@@ -184,6 +184,42 @@ class RenderPass:
         self.vertices = vertices
         self.triangles = triangles
         self.fanstrips = fanstrips
+        if self.fanstrips:
+            print(f"fanstrips {self.fanstrips}")
+
+class FanStrip:
+    def __init__(self, is_strip, vertices):
+        self._is_strip = is_strip
+        self._vertices = vertices
+
+    def stringify(self):
+        name = 'gsSPTriStrip' if self._is_strip else 'gsSPTriFan'
+        return f"\t{name}({', '.join(map(str, self._vertices))}),\n"
+
+    def __repr__(self):
+        return f"FanStrip(is_strip={self._is_strip}, vertices={self._vertices})"
+
+class VtxShuffle:
+    def __init__(self, transform):
+        self._transform = transform
+
+# Generate a shuffle that pins 'shared' vertices to the first 'len(shared)' indices
+def make_shuffle_pinning_shared(glo_to_loc, glo_shared):
+    # Pin shared vertices to indices from 0 to len(shared) - 1
+    shuffle = {}
+    loc_pinned_start = 0
+    loc_unpinned_start = len(glo_shared)
+
+    for glo in glo_to_loc:
+        loc = glo_to_loc[glo]
+        if glo in glo_shared:
+            shuffle[loc] = loc_pinned_start
+            loc_pinned_start += 1
+        else:
+            shuffle[loc] = loc_unpinned_start
+            loc_unpinned_start += 1
+
+    return shuffle
 
 class ModelMeshEntry(ModelEntry):
     def __init__(self, line, next_line, model):
@@ -406,7 +442,7 @@ class ModelMeshEntry(ModelEntry):
                                 remove_fanstrip_tri([ fan_vertices[0], fan_vertices[5], fan_vertices[6] ])
 
                             print(f"fan {fan_vertices} -> {loaded_fan_vertices}")
-                            rendered_fan_strips.append(f"\tgsSPTriFan({', '.join(map(str, loaded_fan_vertices))}),\n")
+                            rendered_fan_strips.append(FanStrip(is_strip=False, vertices=loaded_fan_vertices))
                             done = False
                             break
                         
@@ -455,7 +491,7 @@ class ModelMeshEntry(ModelEntry):
                                 remove_fanstrip_tri([ strip_vertices[4], strip_vertices[5], strip_vertices[6] ])                            
 
                             print(f"strip {strip_vertices} -> {loaded_strip_vertices}")
-                            rendered_fan_strips.append(f"\tgsSPTriStrip({', '.join(map(str, loaded_strip_vertices))}),\n")
+                            rendered_fan_strips.append(FanStrip(is_strip=True, vertices=loaded_strip_vertices))
                             done = False
                             break
 
@@ -584,7 +620,7 @@ class ModelMeshEntry(ModelEntry):
                             total_pricer.remove(self._tri_normalize([ fan_vertices[0], fan_vertices[5], fan_vertices[6] ]))
 
                         print(f"fan {fan_vertices} -> {loaded_fan_vertices}")
-                        rendered_fan_strips.append(f"\tgsSPTriFan({', '.join(map(str, loaded_fan_vertices))}),\n")
+                        rendered_fan_strips.append(FanStrip(is_strip=False, vertices=loaded_fan_vertices))
                         continue
                     
                     if len(longest_link) == 3:
@@ -632,7 +668,7 @@ class ModelMeshEntry(ModelEntry):
                             total_pricer.remove(self._tri_normalize([ strip_vertices[4], strip_vertices[5], strip_vertices[6] ]))                            
 
                         print(f"strip {strip_vertices} -> {loaded_strip_vertices}")
-                        rendered_fan_strips.append(f"\tgsSPTriStrip({', '.join(map(str, loaded_strip_vertices))}),\n")
+                        rendered_fan_strips.append(FanStrip(is_strip=True, vertices=loaded_strip_vertices))
                         continue
 
                 # Explicitly check for fanstrip vertices here - needed because algo expects no matching vertices
@@ -702,19 +738,34 @@ class ModelMeshEntry(ModelEntry):
                     highest_usage, highest_usage_vtx = next(candidate_to_load_pricer.highest_usage())
                     load_vertex(highest_usage_vtx)
 
+        vtx_shuffles = []
+        prev_render_pass = None
+        pinned_vertices = None
+        for i, render_pass in enumerate(render_passes):
+            vtx_shuffles.append(None)
+            curr_vertices = set(render_pass.vertices.keys())
+            print(f"render pass {i} -> {curr_vertices}")
+            if prev_render_pass:
+                prev_vertices = prev_render_pass.vertices
+                common_vertices = set(prev_vertices.keys()).intersection(curr_vertices)
+                if common_vertices:
+                    # Technically this is not a requirement but it makes it easier to debug when ordering is fixed
+                    common_vertices = list(common_vertices)
+                    print(f"common vertices {common_vertices}, length {len(common_vertices)}")
+                    if not pinned_vertices:
+                        prev_shuffle = make_shuffle_pinning_shared(prev_vertices, common_vertices)
+                        curr_shuffle = make_shuffle_pinning_shared(render_pass.vertices, common_vertices)
+                        pinned_vertices = common_vertices
+                    else:
+                        pass
+
+            prev_render_pass = render_pass
+
         vtx_entry.vertices = []
         start_offset = 0
-        prev_vertices = {}
         for render_pass in render_passes:
             cur_vtx_start_offset = start_offset
             cur_vtx_load_amount = len(render_pass.vertices)
-
-            if prev_vertices:
-                common_vertices = prev_vertices.intersection(set(render_pass.vertices.keys()))
-                if common_vertices:
-                    print(f"common vertices {common_vertices}, length {len(common_vertices)}")
-
-            prev_vertices = set(render_pass.vertices.keys())
 
             for _ in range(len(render_pass.vertices)):
                 vtx_entry.vertices.append(None)
@@ -741,7 +792,7 @@ class ModelMeshEntry(ModelEntry):
                     dl_entry.data.append(f"\tgsSP2Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, 0, {tri1[0]}, {tri1[1]}, {tri1[2]}, 0),\n")
 
             for fanstrip in render_pass.fanstrips:
-                dl_entry.data.append(fanstrip)
+                dl_entry.data.append(fanstrip.stringify())
 
         vtx_entry.vertices.append("};\n")
 
