@@ -668,7 +668,7 @@ static void apply_gravity(struct MarioState *m) {
     }
 }
 
-static void apply_vertical_wind(struct MarioState *m) {
+static void apply_vertical_wind(struct MarioState *m) {\
     f32 maxVelY;
 
     if (m->action != ACT_GROUND_POUND) {
@@ -681,7 +681,18 @@ static void apply_vertical_wind(struct MarioState *m) {
         }
         f32 offsetY = m->pos[1] - lim;
 
+        if (gCurrCourseNum == COURSE_SH)
+        {
+            offsetY = m->floorHeight + 400.f;            
+        }
+
         if (m->floor->type == SURFACE_VERTICAL_WIND && offsetY < 2000.0f) {
+            if (gCurrCourseNum == COURSE_SH)
+            {
+                if (m->pos[1] > m->floorHeight + 1000.f)
+                    return;
+            }
+
             if (offsetY >= 0.0f) {
                 maxVelY = lim / (offsetY + 200.0f);
             } else {
