@@ -790,6 +790,7 @@ class ModelMeshEntry(ModelEntry):
                     highest_usage, highest_usage_vtx = next(candidate_to_load_pricer.highest_usage())
                     load_vertex(highest_usage_vtx)
 
+        render_pass_vtx_load_offsets = []
         prev_render_pass = None
         pinned_vertices_left = None
         altered_render_passes = []
@@ -836,27 +837,31 @@ class ModelMeshEntry(ModelEntry):
                     pinned_vertices_left = None
                     altered_render_passes = []
 
+            render_pass_vtx_load_offsets.append(0 if not pinned_vertices_left else len(pinned_vertices_left))
             prev_render_pass = render_pass
 
         vtx_entry.vertices = []
         start_offset = 0
-        for render_pass in render_passes:
+        for render_pass, vtx_load_offset in zip(render_passes, render_pass_vtx_load_offsets):
             cur_vtx_start_offset = start_offset
-            cur_vtx_load_amount = len(render_pass.vertices)
+            cur_vtx_load_amount = len(render_pass.vertices) - vtx_load_offset
 
-            for _ in range(len(render_pass.vertices)):
+            for _ in range(cur_vtx_load_amount):
                 vtx_entry.vertices.append(None)
             for vtx in render_pass.vertices:
-                vtx_entry.vertices[start_offset + render_pass.vertices[vtx]] = self._vertices[vtx]
+                if render_pass.vertices[vtx] < vtx_load_offset:
+                    continue
 
-            assert None not in vtx_entry.vertices[start_offset:start_offset + len(render_pass.vertices)], "vtx_entry is not filled correctly"
-            start_offset += len(render_pass.vertices)
+                vtx_entry.vertices[start_offset + render_pass.vertices[vtx] - vtx_load_offset] = self._vertices[vtx]
+
+            assert None not in vtx_entry.vertices[start_offset:start_offset + cur_vtx_load_amount], "vtx_entry is not filled correctly"
+            start_offset += cur_vtx_load_amount
 
             if cur_vtx_load_amount:
                 if 1 == len(render_passes):
-                    dl_entry.data.append(f"\tgsSPVertex({vtx_entry.name}, {cur_vtx_load_amount}, 0),\n")
+                    dl_entry.data.append(f"\tgsSPVertex({vtx_entry.name}, {cur_vtx_load_amount}, {vtx_load_offset}),\n")
                 else:
-                    dl_entry.data.append(f"\tgsSPVertex({vtx_entry.name} + {cur_vtx_start_offset}, {cur_vtx_load_amount}, 0),\n")
+                    dl_entry.data.append(f"\tgsSPVertex({vtx_entry.name} + {cur_vtx_start_offset}, {cur_vtx_load_amount}, {vtx_load_offset}),\n")
 
             triangles = deque(render_pass.triangles)
             while triangles:
