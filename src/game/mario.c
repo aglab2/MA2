@@ -1829,10 +1829,20 @@ s32 execute_mario_action(UNUSED struct Object *obj) {
         }
 
         if (gMarioState->floor->type == SURFACE_VERTICAL_WIND) {
+                
+            if (gCurrCourseNum == COURSE_SH)
+            {
+                if (gMarioState->floorHeight + 1000.f < gMarioState->pos[1])
+                {
+                    goto end;
+                }
+            }
+            
             spawn_wind_particles(1, 0);
             play_sound(SOUND_ENV_WIND2, gMarioState->marioObj->header.gfx.cameraToObject);
         }
 
+end:
         play_infinite_stairs_music();
         gMarioState->marioObj->oInteractStatus = INT_STATUS_NONE;
 #if ENABLE_RUMBLE

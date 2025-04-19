@@ -1923,7 +1923,7 @@ s32 act_top_of_pole_jump(struct MarioState *m) {
 }
 
 s32 act_vertical_wind(struct MarioState *m) {
-    if (m->floor && m->floor->type != SURFACE_VERTICAL_WIND) {
+    if (gCurrCourseNum != COURSE_SH && m->floor && m->floor->type != SURFACE_VERTICAL_WIND) {
         return set_mario_action(m, ACT_FLYING, 0);
     }
 
@@ -2030,9 +2030,18 @@ s32 check_common_airborne_cancels(struct MarioState *m) {
     }
 
     if (m->floor->type == SURFACE_VERTICAL_WIND && (m->action & ACT_FLAG_ALLOW_VERTICAL_WIND_ACTION)) {
+        if (gCurrCourseNum == COURSE_SH)
+        {
+            if (m->floorHeight + 1000.f < m->pos[1])
+            {
+                goto end;
+            }
+        }
+
         return drop_and_set_mario_action(m, ACT_VERTICAL_WIND, 0);
     }
 
+end:
     m->quicksandDepth = 0.0f;
     return FALSE;
 }

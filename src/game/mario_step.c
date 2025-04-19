@@ -689,8 +689,10 @@ static void apply_vertical_wind(struct MarioState *m) {\
         if (m->floor->type == SURFACE_VERTICAL_WIND && offsetY < 2000.0f) {
             if (gCurrCourseNum == COURSE_SH)
             {
-                if (m->pos[1] > m->floorHeight + 1000.f)
+                if (m->floorHeight + 1000.f < m->pos[1])
+                {
                     return;
+                }
             }
 
             if (offsetY >= 0.0f) {
