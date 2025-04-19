@@ -4,6 +4,7 @@
 #include "moving_texture_macros.h"
 #include "textures.h"
 #include "dialog_ids.h"
+#include "spring_desc.h"
 
 #include "make_const_nonconst.h"
 
@@ -12,6 +13,8 @@
 #else
 #include "levels/sh/visual/header_lvlopt.inc.h"
 #include "levels/sh/visual/model_lvlopt.inc.c"
+#include "levels/sh/area_1/spline.inc.c"
+#include "levels/sh/rails.inc.c"
 #endif
 
 #include "levels/sh/sh_bombe/model.inc.c"

@@ -599,5 +599,6 @@ extern const BehaviorScript bhvRhSlane[];
 extern const BehaviorScript bhvRhHammer[];
 extern const BehaviorScript bhvWbMove[];
 extern const BehaviorScript bhvWbDoor[];
+extern const BehaviorScript bhvShDoor[];
 
 #endif // BEHAVIOR_DATA_H

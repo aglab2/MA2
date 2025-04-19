@@ -6463,3 +6463,14 @@ const BehaviorScript bhvWbDoorCheckBreak[] = {
         CALL_NATIVE(bhv_wb_door_check_break_loop),
     END_LOOP(),
 };
+
+extern void bhv_sh_door_init();
+extern void bhv_sh_door_loop();
+const BehaviorScript bhvShDoor[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    OR_INT(oFlags, OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    CALL_NATIVE(bhv_sh_door_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_sh_door_loop),
+    END_LOOP(),
+};

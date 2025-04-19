@@ -842,8 +842,9 @@ class ModelMeshEntry(ModelEntry):
 
         vtx_entry.vertices = []
         start_offset = 0
-        for render_pass, vtx_load_offset in zip(render_passes, render_pass_vtx_load_offsets):
+        for render_pass, _ in zip(render_passes, render_pass_vtx_load_offsets):
             cur_vtx_start_offset = start_offset
+            vtx_load_offset = 0
             cur_vtx_load_amount = len(render_pass.vertices) - vtx_load_offset
 
             for _ in range(cur_vtx_load_amount):
