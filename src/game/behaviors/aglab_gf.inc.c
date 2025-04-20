@@ -1,7 +1,10 @@
 extern const Trajectory gf_area_2_spline_NurbsCurve_VineLoop_005[];
-extern const Trajectory wj_area_1_spline_NurbsCurve_VineLoop_005[];
 
-static const Trajectory* getVineTraj(void)
+extern const Trajectory wj_area_1_spline_NurbsCurve_VineLoop_005[];
+extern const Trajectory wj_area_3_spline_NurbsCurve_VineLoop_001[];
+extern const Trajectory wj_area_5_spline_NurbsCurve_VineLoop_002[];
+
+static const Trajectory* vine_traj(void)
 {
     if (gCurrCourseNum == COURSE_GF)
     {
@@ -9,8 +12,15 @@ static const Trajectory* getVineTraj(void)
     }
     else
     {
-        return wj_area_1_spline_NurbsCurve_VineLoop_005;
+        if (1 == gCurrAreaIndex)
+            return wj_area_1_spline_NurbsCurve_VineLoop_005;
+        if (3 == gCurrAreaIndex)
+            return wj_area_3_spline_NurbsCurve_VineLoop_001;
+        if (5 == gCurrAreaIndex)
+            return wj_area_5_spline_NurbsCurve_VineLoop_002;
     }
+
+    return NULL;
 }
 
 extern const Trajectory* sTrajectory;
@@ -18,7 +28,7 @@ void bhv_gf_vine_loop()
 {
     if (0 == o->oAction)
     {
-        s16* traj = segmented_to_virtual(getVineTraj());
+        s16* traj = segmented_to_virtual(vine_traj());
         f32 x, y, z;
         if (gMarioStates->action == ACT_RAIL_GRIND && sTrajectory == traj)
         {

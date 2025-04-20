@@ -6474,3 +6474,25 @@ const BehaviorScript bhvShDoor[] = {
         CALL_NATIVE(bhv_sh_door_loop),
     END_LOOP(),
 };
+
+extern void bhv_wj_up_init();
+extern void bhv_wj_up_loop();
+const BehaviorScript bhvWjUp[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    CALL_NATIVE(bhv_wj_up_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_wj_up_loop),
+    END_LOOP(),
+};
+
+extern void bhv_wj_side_init();
+extern void bhv_wj_side_loop();
+const BehaviorScript bhvWjSide[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    CALL_NATIVE(bhv_wj_side_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_wj_side_loop),
+    END_LOOP(),
+};
