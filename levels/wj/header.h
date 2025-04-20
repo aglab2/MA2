@@ -24,4 +24,6 @@ extern const LevelScript level_wj_entry[];
 
 #include "levels/wj/wj_side_hook/geo_header.h"
 
+#include "levels/wj/wj_vine/geo_header.h"
+
 #endif

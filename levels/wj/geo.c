@@ -24,3 +24,4 @@
 #include "levels/wj/wj_up_vine/geo.inc.c"
 #include "levels/wj/wj_side_vine/geo.inc.c"
 #include "levels/wj/wj_side_hook/geo.inc.c"
+#include "levels/wj/wj_vine/geo.inc.c"

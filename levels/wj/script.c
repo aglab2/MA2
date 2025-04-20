@@ -25,9 +25,13 @@
 #define wj_area_4 wj_area_1
 #define wj_area_5 wj_area_1
 extern Gfx wj_skybox_wj_sklybox_mesh[];
+extern IWDHeader* iw_descs_wj[];
+extern const RailDesc* rail_descs_wj[];
 #define SEQ_LEVEL_GRASS 0x3f
 static struct LevelConfig cfg = {
 	.skybox = wj_skybox_wj_sklybox_mesh,
+	.iwds = iw_descs_wj,
+	.railDesc = rail_descs_wj,
 };
 /* Fast64 end persistent block [scripts] */
 
@@ -36,6 +40,7 @@ const LevelScript level_wj_entry[] = {
 	LOAD_MIO0(0x7, _wj_segment_7SegmentRomStart, _wj_segment_7SegmentRomEnd), 
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
+	LOAD_MODEL_FROM_GEO(MODEL_WJ_VINE, wj_vine_geo),
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
@@ -45,6 +50,7 @@ const LevelScript level_wj_entry[] = {
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		MARIO_POS(0x01, 0, -19933, 4847, 1460),
+		OBJECT(MODEL_WJ_VINE, -14094, -11073, 11499, 0, 0, 0, 0x00000000, bhvGfVine),
 		TERRAIN(wj_area_1_collision),
 		MACRO_OBJECTS(wj_area_1_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),

@@ -2,6 +2,7 @@ extern const GeoLayout wj_area_1_geo[];
 extern const GeoLayout wj_area_1[];
 extern const Collision wj_area_1_collision[];
 extern const MacroObject wj_area_1_macro_objs[];
+extern const Trajectory wj_area_1_spline_NurbsCurve_VineLoop_005[];
 extern const GeoLayout wj_area_2_geo[];
 extern const GeoLayout wj_area_2[];
 extern const Collision wj_area_2_collision[];
