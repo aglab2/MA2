@@ -25,6 +25,7 @@
 #define wj_area_4 wj_area_1
 #define wj_area_5 wj_area_1
 extern Gfx wj_skybox_wj_sklybox_mesh[];
+#define SEQ_LEVEL_GRASS 0x3f
 static struct LevelConfig cfg = {
 	.skybox = wj_skybox_wj_sklybox_mesh,
 };
