@@ -237,7 +237,7 @@ void bhv_coin_formation_init(void) {
 void bhv_coin_formation_loop(void) {
     s32 bitIndex;
     f32 dist = COIN_FORMATION_DISTANCE;
-    if (gCurrCourseNum == COURSE_AQ || gCurrCourseNum == COURSE_WC)
+    if (gCurrCourseNum == COURSE_AQ || gCurrCourseNum == COURSE_WC || gCurrCourseNum == COURSE_SH)
     {
         dist = COIN_FORMATION_DISTANCE * 0.5f;
     }
