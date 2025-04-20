@@ -1,0 +1,12 @@
+extern const GeoLayout wj_up_hook_geo[];
+extern u8 wj_up_hook_miu64_green008_ci4[];
+extern u8 wj_up_hook_miu64_green008_pal_rgba16[];
+extern Vtx wj_up_hook_000_object_00A92924_005_mesh_layer_1_vtx_0[56];
+extern Gfx wj_up_hook_000_object_00A92924_005_mesh_layer_1_tri_0[];
+extern Vtx wj_up_hook_000_object_00A92924_005_mesh_layer_1_vtx_1[12];
+extern Gfx wj_up_hook_000_object_00A92924_005_mesh_layer_1_tri_1[];
+extern Gfx mat_wj_up_hook_TATETUTA_sa2mdl_0_f3d_layer1[];
+extern Gfx mat_revert_wj_up_hook_TATETUTA_sa2mdl_0_f3d_layer1[];
+extern Gfx mat_wj_up_hook_TATETUTA_sa2mdl_1_f3d_layer1[];
+extern Gfx mat_revert_wj_up_hook_TATETUTA_sa2mdl_1_f3d_layer1[];
+extern Gfx wj_up_hook_000_object_00A92924_005_mesh_layer_1[];

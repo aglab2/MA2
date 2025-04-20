@@ -1,0 +1,18 @@
+extern const GeoLayout wj_side_vine_geo[];
+extern u8 wj_side_vine_miu64_green008_ci4[];
+extern u8 wj_side_vine_miu64_green008_pal_rgba16[];
+extern u8 wj_side_vine_miu64_green006_ci4[];
+extern u8 wj_side_vine_miu64_green006_pal_rgba16[];
+extern Vtx wj_side_vine_001_object_00A97F8C_003_mesh_layer_1_vtx_0[19];
+extern Gfx wj_side_vine_001_object_00A97F8C_003_mesh_layer_1_tri_0[];
+extern Vtx wj_side_vine_001_object_00A97F8C_003_mesh_layer_1_vtx_1[12];
+extern Gfx wj_side_vine_001_object_00A97F8C_003_mesh_layer_1_tri_1[];
+extern Vtx wj_side_vine_001_object_00A97F8C_003_mesh_layer_1_vtx_2[26];
+extern Gfx wj_side_vine_001_object_00A97F8C_003_mesh_layer_1_tri_2[];
+extern Gfx mat_wj_side_vine_YOKOTUTA_sa2mdl_0_f3d[];
+extern Gfx mat_revert_wj_side_vine_YOKOTUTA_sa2mdl_0_f3d[];
+extern Gfx mat_wj_side_vine_YOKOTUTA_sa2mdl_3_f3d[];
+extern Gfx mat_revert_wj_side_vine_YOKOTUTA_sa2mdl_3_f3d[];
+extern Gfx mat_wj_side_vine_YOKOTUTA_sa2mdl_4_f3d[];
+extern Gfx mat_revert_wj_side_vine_YOKOTUTA_sa2mdl_4_f3d[];
+extern Gfx wj_side_vine_001_object_00A97F8C_003_mesh_layer_1[];

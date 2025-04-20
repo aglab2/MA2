@@ -14,4 +14,14 @@ extern const LevelScript level_wj_entry[];
 
 #include "levels/wj/wj_skybox/header.h"
 
+#include "levels/wj/wj_platform/geo_header.h"
+
+#include "levels/wj/wj_up_hook/geo_header.h"
+
+#include "levels/wj/wj_up_vine/geo_header.h"
+
+#include "levels/wj/wj_side_vine/geo_header.h"
+
+#include "levels/wj/wj_side_hook/geo_header.h"
+
 #endif

@@ -18,3 +18,9 @@
 #else
 #include "levels/wj/visual/geo_lvl.inc.c"
 #endif
+
+#include "levels/wj/wj_platform/geo.inc.c"
+#include "levels/wj/wj_up_hook/geo.inc.c"
+#include "levels/wj/wj_up_vine/geo.inc.c"
+#include "levels/wj/wj_side_vine/geo.inc.c"
+#include "levels/wj/wj_side_hook/geo.inc.c"

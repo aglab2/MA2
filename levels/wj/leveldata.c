@@ -16,3 +16,8 @@
 #endif
 
 #include "levels/wj/wj_skybox/model.inc.c"
+#include "levels/wj/wj_platform/model.inc.c"
+#include "levels/wj/wj_up_hook/model.inc.c"
+#include "levels/wj/wj_up_vine/model.inc.c"
+#include "levels/wj/wj_side_vine/model.inc.c"
+#include "levels/wj/wj_side_hook/model.inc.c"
