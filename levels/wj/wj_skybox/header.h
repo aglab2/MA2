@@ -1,0 +1,10 @@
+extern u8 wj_skybox_T_junglenbg_rgba16[];
+extern u8 wj_skybox_T_junglenbg2_ci4[];
+extern u8 wj_skybox_T_junglenbg2_pal_rgba16[];
+extern u8 wj_skybox_jungle64_6_ci4[];
+extern u8 wj_skybox_jungle64_6_pal_rgba16[];
+extern Vtx wj_skybox_wj_sklybox_mesh_vtx_0[426];
+extern Vtx wj_skybox_wj_sklybox_mesh_vtx_1[52];
+extern Vtx wj_skybox_wj_sklybox_mesh_vtx_2[9];
+extern Vtx wj_skybox_wj_sklybox_mesh_vtx_3[9];
+extern Gfx wj_skybox_wj_sklybox_mesh[];

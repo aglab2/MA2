@@ -46,3 +46,4 @@ DEFINE_LEVEL("EQ", LEVEL_EQ, COURSE_EQ, eq, generic, 20000, 0x00, 0x00, 0x00, _,
 DEFINE_LEVEL("LC", LEVEL_LC, COURSE_LC, lc, generic, 20000, 0x00, 0x00, 0x00, _, sCamLc) 
 DEFINE_LEVEL("WB", LEVEL_WB, COURSE_WB, wb, generic, 20000, 0x00, 0x00, 0x00, _, sCamWb) 
 DEFINE_LEVEL("SH", LEVEL_SH, COURSE_SH, sh, generic, 20000, 0x00, 0x00, 0x00, _, sCamSh) 
+DEFINE_LEVEL("WJ", LEVEL_WJ, COURSE_WJ, wj, generic, 20000, 0x00, 0x00, 0x00, _, sCamWj) 
