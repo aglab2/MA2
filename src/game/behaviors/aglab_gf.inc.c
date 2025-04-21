@@ -1,7 +1,7 @@
 extern const Trajectory gf_area_2_spline_NurbsCurve_VineLoop_005[];
 
 extern const Trajectory wj_area_1_spline_NurbsCurve_VineLoop_005[];
-extern const Trajectory wj_area_3_spline_NurbsCurve_VineLoop_001[];
+extern const Trajectory wj_area_4_spline_NurbsCurve_VineLoop_001[];
 extern const Trajectory wj_area_5_spline_NurbsCurve_VineLoop_002[];
 
 static const Trajectory* vine_traj(void)
@@ -14,8 +14,8 @@ static const Trajectory* vine_traj(void)
     {
         if (1 == gCurrAreaIndex)
             return wj_area_1_spline_NurbsCurve_VineLoop_005;
-        if (3 == gCurrAreaIndex)
-            return wj_area_3_spline_NurbsCurve_VineLoop_001;
+        if (4 == gCurrAreaIndex)
+            return wj_area_4_spline_NurbsCurve_VineLoop_001;
         if (5 == gCurrAreaIndex)
             return wj_area_5_spline_NurbsCurve_VineLoop_002;
     }

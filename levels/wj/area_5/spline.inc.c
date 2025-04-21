@@ -70,6 +70,13 @@ const Trajectory wj_area_5_spline_NurbsCurve_005_Spring[] = {
 	TRAJECTORY_POS( 3, 27701, -2885, 6249),
 	TRAJECTORY_END(),
 };
+const Trajectory wj_area_5_spline_NurbsCurve_005_Spring_001[] = {
+	TRAJECTORY_POS( 0, 21930, -3288, 1859),
+	TRAJECTORY_POS( 1, 21905, -2321, 2509),
+	TRAJECTORY_POS( 2, 21877, -1722, 3439),
+	TRAJECTORY_POS( 3, 21920, -1835, 4383),
+	TRAJECTORY_END(),
+};
 const Trajectory wj_area_5_spline_NurbsCurve_006_Spring[] = {
 	TRAJECTORY_POS( 0, 28918, -3288, 7313),
 	TRAJECTORY_POS( 1, 29546, -1949, 9007),
