@@ -27,7 +27,7 @@ static ALIGNED8 u8 wb_waters_pal[] = {
 };
 
 static struct FlipbookData flipbooks_xlu[] = {
-    { LVL_BATCH_LAYER_TRANSPARENT_WJ_DL_TX_WHITERAIN001_PAL_RGBA16, 10, 2, 0, 0, 0, wb_waters_ci4, wb_waters_pal },
+    { LVL_BATCH_LAYER_TRANSPARENT_WJ_DL_TX_WHITERAIN001_PAL_RGBA16, .tileScrollX = 1 },
     { LVL_BATCH_LAYER_TRANSPARENT_WJ_DL_MIU128_WJ001_RGBA32, .tileScrollX = 5 },
 };
 
