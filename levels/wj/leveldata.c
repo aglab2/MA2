@@ -31,6 +31,7 @@ static const LDLDesc loop_desc2 = { 0, .dontFlip = 1, .canSnapBackwards = 1 };
 #include "levels/wj/visual/model_lvlopt.inc.c"
 #include "levels/wj/iw.inc.c"
 #include "levels/wj/rails.inc.c"
+#include "levels/wj/flipbook.inc.c"
 #endif
 
 #include "levels/wj/wj_skybox/model.inc.c"

@@ -802,7 +802,7 @@ ALIGNED8 u8 wj_platform_miu64_green006_pal_rgba16[] = {
 	
 };
 
-Vtx wj_platform_002_object_00A91F3C_006_mesh_layer_1_vtx_0[22] = {
+Vtx wj_platform_002_object_00A91F3C_002_mesh_layer_1_vtx_0[22] = {
 	{{ {30, 10, -75}, 0, {56, 1968}, {91, 74, 19, 255} }},
 	{{ {20, 145, -55}, 0, {137, 353}, {91, 74, 19, 255} }},
 	{{ {35, 10, -40}, 0, {353, 1968}, {91, 74, 19, 255} }},
@@ -827,18 +827,7 @@ Vtx wj_platform_002_object_00A91F3C_006_mesh_layer_1_vtx_0[22] = {
 	{{ {-225, 13, 108}, 0, {4859, -2072}, {251, 238, 152, 255} }},
 };
 
-Gfx wj_platform_002_object_00A91F3C_006_mesh_layer_1_tri_0[] = {
-	gsSPVertex(wj_platform_002_object_00A91F3C_006_mesh_layer_1_vtx_0 + 0, 22, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
-	gsSP2Triangles(1, 6, 7, 0, 8, 9, 1, 0),
-	gsSP2Triangles(10, 3, 11, 0, 3, 12, 13, 0),
-	gsSP2Triangles(14, 15, 16, 0, 17, 16, 15, 0),
-	gsSP2Triangles(17, 15, 18, 0, 18, 15, 19, 0),
-	gsSP2Triangles(18, 19, 20, 0, 20, 19, 21, 0),
-	gsSPEndDisplayList(),
-};
-
-Vtx wj_platform_002_object_00A91F3C_006_mesh_layer_1_vtx_1[26] = {
+Vtx wj_platform_002_object_00A91F3C_002_mesh_layer_1_vtx_1[26] = {
 	{{ {4, 227, -193}, 0, {16, 313}, {255, 255, 255, 255} }},
 	{{ {-52, 162, -110}, 0, {-8, 1341}, {255, 255, 255, 255} }},
 	{{ {53, 195, -101}, 0, {731, 1060}, {255, 255, 255, 255} }},
@@ -867,19 +856,7 @@ Vtx wj_platform_002_object_00A91F3C_006_mesh_layer_1_vtx_1[26] = {
 	{{ {7, 227, 195}, 0, {16, 24}, {255, 255, 255, 255} }},
 };
 
-Gfx wj_platform_002_object_00A91F3C_006_mesh_layer_1_tri_1[] = {
-	gsSPVertex(wj_platform_002_object_00A91F3C_006_mesh_layer_1_vtx_1 + 0, 26, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
-	gsSP2Triangles(6, 7, 8, 0, 8, 7, 9, 0),
-	gsSP2Triangles(10, 11, 12, 0, 10, 12, 13, 0),
-	gsSP2Triangles(13, 12, 14, 0, 13, 14, 15, 0),
-	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
-	gsSP2Triangles(20, 21, 22, 0, 20, 22, 23, 0),
-	gsSP2Triangles(23, 22, 24, 0, 23, 24, 25, 0),
-	gsSPEndDisplayList(),
-};
-
-Vtx wj_platform_002_object_00A91F3C_006_mesh_layer_1_vtx_2[18] = {
+Vtx wj_platform_002_object_00A91F3C_002_mesh_layer_1_vtx_2[18] = {
 	{{ {100, 0, -199}, 0, {1462, -6184}, {205, 185, 106, 255} }},
 	{{ {75, 13, -175}, 0, {2040, -6184}, {255, 255, 255, 255} }},
 	{{ {75, 13, 175}, 0, {2040, -4281}, {255, 255, 255, 255} }},
@@ -900,30 +877,14 @@ Vtx wj_platform_002_object_00A91F3C_006_mesh_layer_1_vtx_2[18] = {
 	{{ {100, 0, -199}, 0, {1462, 2032}, {205, 185, 106, 255} }},
 };
 
-Gfx wj_platform_002_object_00A91F3C_006_mesh_layer_1_tri_2[] = {
-	gsSPVertex(wj_platform_002_object_00A91F3C_006_mesh_layer_1_vtx_2 + 0, 18, 0),
-	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
-	gsSP2Triangles(3, 2, 4, 0, 3, 4, 5, 0),
-	gsSP2Triangles(5, 4, 6, 0, 5, 6, 7, 0),
-	gsSP2Triangles(7, 6, 8, 0, 7, 8, 9, 0),
-	gsSP2Triangles(9, 8, 10, 0, 9, 10, 11, 0),
-	gsSP2Triangles(11, 10, 12, 0, 11, 12, 13, 0),
-	gsSP2Triangles(13, 12, 14, 0, 13, 14, 15, 0),
-	gsSP2Triangles(15, 14, 16, 0, 15, 16, 17, 0),
-	gsSPEndDisplayList(),
-};
 
-
-Gfx mat_wj_platform_TATETUTA_sa2mdl_4_f3d_layer1[] = {
-	gsSPGeometryMode(G_LIGHTING, G_FOG),
-	gsDPPipeSync(),
+Gfx wj_platform_002_object_00A91F3C_002_mesh_layer_1[] = {
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_FOG | G_SHADING_SMOOTH),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
-	gsDPSetFogColor(0, 0, 0, 255),
-	gsSPFogPosition(985, 1000),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsDPSetCycleType(G_CYC_2CYCLE),
-	gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),
+	gsDPSetFogColor(97, 95, 116, 255),
+	gsSPFogPosition(900, 1000),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_2CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_ZS_PIXEL | G_RM_FOG_SHADE_A | G_RM_AA_ZB_OPA_SURF2),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wj_platform_miu64_green008_pal_rgba16),
 	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
@@ -933,96 +894,46 @@ Gfx mat_wj_platform_TATETUTA_sa2mdl_4_f3d_layer1[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_wj_platform_TATETUTA_sa2mdl_4_f3d_layer1[] = {
-	gsSPGeometryMode(G_FOG, G_LIGHTING),
+	gsSPVertex(wj_platform_002_object_00A91F3C_002_mesh_layer_1_vtx_0 + 0, 22, 0),
+	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
+	gsSP2Triangles(1, 6, 7, 0, 8, 9, 1, 0),
+	gsSP2Triangles(10, 3, 11, 0, 3, 12, 13, 0),
+	gsSP2Triangles(14, 15, 16, 0, 17, 16, 15, 0),
+	gsSP2Triangles(17, 15, 18, 0, 18, 15, 19, 0),
+	gsSP2Triangles(18, 19, 20, 0, 20, 19, 21, 0),
 	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsDPSetCycleType(G_CYC_1CYCLE),
-	gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_wj_platform_TATETUTA_sa2mdl_5_f3d_layer1[] = {
-	gsSPGeometryMode(G_LIGHTING, G_FOG),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
-	gsDPSetFogColor(0, 0, 0, 255),
-	gsSPFogPosition(985, 1000),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsDPSetCycleType(G_CYC_2CYCLE),
-	gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),
-	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wj_platform_jungle128_13_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, wj_platform_jungle128_13_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_wj_platform_TATETUTA_sa2mdl_5_f3d_layer1[] = {
-	gsSPGeometryMode(G_FOG, G_LIGHTING),
+	gsSPVertex(wj_platform_002_object_00A91F3C_002_mesh_layer_1_vtx_1 + 0, 26, 0),
+	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
+	gsSP2Triangles(6, 7, 8, 0, 8, 7, 9, 0),
+	gsSP2Triangles(10, 11, 12, 0, 10, 12, 13, 0),
+	gsSP2Triangles(13, 12, 14, 0, 13, 14, 15, 0),
+	gsSP2Triangles(16, 17, 18, 0, 18, 17, 19, 0),
+	gsSP2Triangles(20, 21, 22, 0, 20, 22, 23, 0),
+	gsSP2Triangles(23, 22, 24, 0, 23, 24, 25, 0),
 	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsDPSetCycleType(G_CYC_1CYCLE),
-	gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_wj_platform_TATETUTA_sa2mdl_6_f3d_layer1[] = {
-	gsSPGeometryMode(G_LIGHTING, G_FOG),
-	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
-	gsDPSetFogColor(0, 0, 0, 255),
-	gsSPFogPosition(985, 1000),
-	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
-	gsDPSetCycleType(G_CYC_2CYCLE),
-	gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),
-	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wj_platform_miu64_green006_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadTLUTCmd(5, 15),
 	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, wj_platform_miu64_green006_ci4),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_MIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
-	gsDPSetTileSize(0, 0, 0, 252, 252),
-	gsSPEndDisplayList(),
-};
-
-Gfx mat_revert_wj_platform_TATETUTA_sa2mdl_6_f3d_layer1[] = {
-	gsSPGeometryMode(G_FOG, G_LIGHTING),
+	gsSPVertex(wj_platform_002_object_00A91F3C_002_mesh_layer_1_vtx_2 + 0, 18, 0),
+	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
+	gsSP2Triangles(3, 2, 4, 0, 3, 4, 5, 0),
+	gsSP2Triangles(5, 4, 6, 0, 5, 6, 7, 0),
+	gsSP2Triangles(7, 6, 8, 0, 7, 8, 9, 0),
+	gsSP2Triangles(9, 8, 10, 0, 9, 10, 11, 0),
+	gsSP2Triangles(11, 10, 12, 0, 11, 12, 13, 0),
+	gsSP2Triangles(13, 12, 14, 0, 13, 14, 15, 0),
+	gsSP2Triangles(15, 14, 16, 0, 15, 16, 17, 0),
 	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
-	gsDPSetTextureLUT(G_TT_NONE),
-	gsDPSetCycleType(G_CYC_1CYCLE),
-	gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
-	gsSPEndDisplayList(),
-};
-
-Gfx wj_platform_002_object_00A91F3C_006_mesh_layer_1[] = {
-	gsSPDisplayList(mat_wj_platform_TATETUTA_sa2mdl_4_f3d_layer1),
-	gsSPDisplayList(wj_platform_002_object_00A91F3C_006_mesh_layer_1_tri_0),
-	gsSPDisplayList(mat_revert_wj_platform_TATETUTA_sa2mdl_4_f3d_layer1),
-	gsSPDisplayList(mat_wj_platform_TATETUTA_sa2mdl_5_f3d_layer1),
-	gsSPDisplayList(wj_platform_002_object_00A91F3C_006_mesh_layer_1_tri_1),
-	gsSPDisplayList(mat_revert_wj_platform_TATETUTA_sa2mdl_5_f3d_layer1),
-	gsSPDisplayList(mat_wj_platform_TATETUTA_sa2mdl_6_f3d_layer1),
-	gsSPDisplayList(wj_platform_002_object_00A91F3C_006_mesh_layer_1_tri_2),
-	gsSPDisplayList(mat_revert_wj_platform_TATETUTA_sa2mdl_6_f3d_layer1),
-	gsDPPipeSync(),
-	gsSPSetGeometryMode(G_LIGHTING),
-	gsSPClearGeometryMode(G_TEXTURE_GEN),
+	gsSPLoadGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
+	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_CD_MAGICSQ | G_AD_DISABLE | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_NONE | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_1CYCLE | G_PM_1PRIMITIVE),
+	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_NONE | G_ZS_PIXEL | G_RM_AA_ZB_OPA_SURF | G_RM_AA_ZB_OPA_SURF2),
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 0),
 	gsDPSetEnvColor(255, 255, 255, 255),

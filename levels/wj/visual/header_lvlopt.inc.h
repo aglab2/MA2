@@ -96,6 +96,8 @@ extern u8 wj_dl_miu32_gf004_ci8[];
 extern u8 wj_dl_miu32_gf004_pal_rgba16[];
 extern u8 wj_dl_miu128_green008_ci4[];
 extern u8 wj_dl_miu128_green008_pal_rgba16[];
+extern u8 wj_dl_tx_whiterain001_ci4[];
+extern u8 wj_dl_tx_whiterain001_pal_rgba16[];
 extern Gfx wj_dl_0000_object_00A8FE18_mesh_layer_1_tri_0[];
 extern Gfx wj_dl_0000_object_00A8FE18_mesh_layer_1_tri_1[];
 extern Gfx wj_dl_0000_object_00A8FE18_mesh_layer_1_tri_2[];
@@ -511,6 +513,16 @@ extern Gfx wj_dl_object_00AAB350_008_mesh_layer_1_tri_0[];
 extern Gfx wj_dl_object_00AAB350_008_mesh_layer_4_tri_0[];
 extern Gfx wj_dl_object_00AABCD8_mesh_layer_1_tri_0[];
 extern Gfx wj_dl_object_00AABCD8_mesh_layer_4_tri_0[];
+extern Gfx wj_dl_shade_mesh_layer_5_tri_0[];
+extern Gfx wj_dl_shade_001_mesh_layer_5_tri_0[];
+extern Gfx wj_dl_shade_002_mesh_layer_5_tri_0[];
+extern Gfx wj_dl_shade_003_mesh_layer_5_tri_0[];
+extern Gfx wj_dl_shade_004_mesh_layer_5_tri_0[];
+extern Gfx wj_dl_shade_005_mesh_layer_5_tri_0[];
+extern Gfx wj_dl_shade_006_mesh_layer_5_tri_0[];
+extern Gfx wj_dl_shade_007_mesh_layer_5_tri_0[];
+extern Gfx wj_dl_shade_008_mesh_layer_5_tri_0[];
+extern Gfx wj_dl_shade_009_mesh_layer_5_tri_0[];
 extern u32 wj_dl_0000_object_00A8FE18_mesh_layer_1[];
 extern u32 wj_dl_0002_object_00A775D8_mesh_layer_1[];
 extern u32 wj_dl_0004_object_00A8FD70_mesh_layer_1[];
@@ -655,6 +667,16 @@ extern u32 wj_dl_object_00AAB350_008_mesh_layer_1[];
 extern u32 wj_dl_object_00AAB350_008_mesh_layer_4[];
 extern u32 wj_dl_object_00AABCD8_mesh_layer_1[];
 extern u32 wj_dl_object_00AABCD8_mesh_layer_4[];
+extern u32 wj_dl_shade_mesh_layer_5[];
+extern u32 wj_dl_shade_001_mesh_layer_5[];
+extern u32 wj_dl_shade_002_mesh_layer_5[];
+extern u32 wj_dl_shade_003_mesh_layer_5[];
+extern u32 wj_dl_shade_004_mesh_layer_5[];
+extern u32 wj_dl_shade_005_mesh_layer_5[];
+extern u32 wj_dl_shade_006_mesh_layer_5[];
+extern u32 wj_dl_shade_007_mesh_layer_5[];
+extern u32 wj_dl_shade_008_mesh_layer_5[];
+extern u32 wj_dl_shade_009_mesh_layer_5[];
 #define LVL_BATCH_LAYER_OPAQUE_WJ_DL_JUNGLE64_5_PAL_RGBA16 0
 #define LVL_BATCH_LAYER_OPAQUE_WJ_DL_JUNGLE256_2_PAL_RGBA16 1
 #define LVL_BATCH_LAYER_OPAQUE_WJ_DL_JUNGLE256_6_PAL_RGBA16 2
@@ -722,6 +744,7 @@ extern u32 wj_dl_object_00AABCD8_mesh_layer_4[];
 #define LVL_BATCH_LAYER_TRANSPARENT_WJ_DL_MIU128_WJ001_RGBA32 0
 #define LVL_BATCH_LAYER_TRANSPARENT_WJ_DL_MIU32_KAGE001_IA16 1
 #define LVL_BATCH_LAYER_TRANSPARENT_WJ_DL_JUNGLE128_1_PAL_RGBA16 2
+#define LVL_BATCH_LAYER_TRANSPARENT_WJ_DL_TX_WHITERAIN001_PAL_RGBA16 3
 #define LVL_BATCH_LAYER_ALPHA_WJ_DL_JUNGLE128_10_PAL_RGBA16 0
 #define LVL_BATCH_LAYER_ALPHA_WJ_DL_MIU128_GREEN007_PAL_RGBA16 1
 #define LVL_BATCH_LAYER_ALPHA_WJ_DL_MIU128_GREEN011_PAL_RGBA16 2
@@ -870,6 +893,7 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_wj[LAYER_COUNT];
 #define mat_revert_wj_dl_TREE_L2_sa2bmdl_3_f3d_layer4_area1 mat_revert_wj_dl_JP_Shrubbery2_sa2bmdl_0_f3d_layer4_area1
 #define mat_revert_wj_dl_TREE_L2_sa2bmdl_4_f3d_layer4_area1 mat_revert_wj_dl_JP_Shrubbery2_sa2bmdl_0_f3d_layer4_area1
 #define mat_revert_wj_dl_TREE_H_sa2bmdl_1_f3d_layer4_area1 mat_revert_wj_dl_objLandTable0004_sa2blvl_23_f3d_layer4_area1
+#define mat_revert_wj_dl_f3dlite_material_012 mat_revert_wj_dl_objLandTable0004_sa2blvl_5_f3d
 #define wj_dl_0044_object_00A74210_mesh_layer_1_tri_0 wj_dl_0043_object_00A748E8_mesh_layer_1_tri_0
 #define wj_dl_0044_object_00A74210_mesh_layer_1_tri_1 wj_dl_0043_object_00A748E8_mesh_layer_1_tri_1
 #define wj_dl_0055_object_00A71AF8_mesh_layer_1_tri_0 wj_dl_0046_object_00A73B10_mesh_layer_1_tri_0
@@ -967,3 +991,4 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_wj[LAYER_COUNT];
 #define wj_dl_object_00AAB350_007_mesh_layer_4 wj_dl_object_00AAB350_mesh_layer_4
 #define wj_dl_object_00AAB350_008_mesh_layer_1 wj_dl_object_00AAB350_mesh_layer_1
 #define wj_dl_object_00AAB350_008_mesh_layer_4 wj_dl_object_00AAB350_mesh_layer_4
+extern const struct FlipbookLayer wj_flipbooks[LAYER_COUNT];
