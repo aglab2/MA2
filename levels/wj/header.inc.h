@@ -19,6 +19,7 @@ extern const Collision wj_area_3_collision[];
 extern const MacroObject wj_area_3_macro_objs[];
 extern const Trajectory wj_area_3_spline_NurbsCurve_001_Loop[];
 extern const Trajectory wj_area_3_spline_NurbsCurve_002_Spring[];
+extern const Trajectory wj_area_3_spline_NurbsCurve_Loop_001[];
 extern const GeoLayout wj_area_4_geo[];
 extern const GeoLayout wj_area_4[];
 extern const Collision wj_area_4_collision[];

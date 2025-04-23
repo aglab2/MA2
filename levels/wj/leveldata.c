@@ -15,6 +15,7 @@ static const LDLDesc loop_desc2 = { 0, .dontFlip = 1, .canSnapBackwards = 1 };
 #define loop_desc_wj_area_1_spline_NurbsCurve_Loop &loop_desc1
 #define loop_desc_wj_area_3_spline_NurbsCurve_001_Loop &loop_desc1
 #define loop_desc_wj_area_5_spline_NurbsCurve_003_Loop &loop_desc1
+#define loop_desc_wj_area_3_spline_NurbsCurve_Loop_001 &loop_desc1
 #define loop_desc_wj_area_1_spline_NurbsCurve_VineLoop_005 &loop_desc2
 #define loop_desc_wj_area_4_spline_NurbsCurve_VineLoop_001 &loop_desc2
 #define loop_desc_wj_area_5_spline_NurbsCurve_VineLoop_002 &loop_desc2

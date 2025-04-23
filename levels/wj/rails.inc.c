@@ -20,6 +20,7 @@ static const SpringDesc spring_area3[] = {
 
 static const RailDesc rails_area3[] = {
 	LOOP_TRAJ(wj_area_3_spline_NurbsCurve_001_Loop, loop_desc_wj_area_3_spline_NurbsCurve_001_Loop),
+	LOOP_TRAJ(wj_area_3_spline_NurbsCurve_Loop_001, loop_desc_wj_area_3_spline_NurbsCurve_Loop_001),
 	RAIL_END
 };
 
