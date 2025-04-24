@@ -18,3 +18,9 @@
 #else
 #include "levels/sr/visual/geo_lvl.inc.c"
 #endif
+
+#include "levels/sr/sr_drum/geo.inc.c"
+#include "levels/sr/sr_drum_break/geo.inc.c"
+#include "levels/sr/sr_pnp/geo.inc.c"
+#include "levels/sr/sr_pnp_ground/geo.inc.c"
+#include "levels/sr/sr_pnp_limit/geo.inc.c"

@@ -12,4 +12,16 @@ extern const LevelScript level_sr_entry[];
 #include "levels/sr/visual/header_lvlopt.inc.h"
 #endif
 
+#include "levels/sr/sr_skybox/header.h"
+
+#include "levels/sr/sr_drum/geo_header.h"
+
+#include "levels/sr/sr_drum_break/geo_header.h"
+
+#include "levels/sr/sr_pnp/geo_header.h"
+
+#include "levels/sr/sr_pnp_ground/geo_header.h"
+
+#include "levels/sr/sr_pnp_limit/geo_header.h"
+
 #endif

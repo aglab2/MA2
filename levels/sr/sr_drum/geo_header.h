@@ -1,0 +1,18 @@
+extern const GeoLayout sr_drum_geo[];
+extern u8 sr_drum_miu64_mo004_ci4[];
+extern u8 sr_drum_miu64_mo004_pal_rgba16[];
+extern u8 sr_drum_pum32_1_ci8[];
+extern u8 sr_drum_pum32_1_pal_rgba16[];
+extern u8 sr_drum_miu64_mo014_ci4[];
+extern u8 sr_drum_miu64_mo014_pal_rgba16[];
+extern u8 sr_drum_miu64_loco004_ci4[];
+extern u8 sr_drum_miu64_loco004_pal_rgba16[];
+extern u8 sr_drum_miu32_ms001_ci4[];
+extern u8 sr_drum_miu32_ms001_pal_rgba16[];
+extern Vtx sr_drum_sr_drum_mesh_layer_1_vtx_0[37];
+extern Vtx sr_drum_sr_drum_mesh_layer_1_vtx_1[18];
+extern Vtx sr_drum_sr_drum_mesh_layer_1_vtx_2[20];
+extern Vtx sr_drum_sr_drum_mesh_layer_1_vtx_3[8];
+extern Vtx sr_drum_sr_drum_mesh_layer_5_vtx_0[6];
+extern Gfx sr_drum_sr_drum_mesh_layer_1[];
+extern Gfx sr_drum_sr_drum_mesh_layer_5[];

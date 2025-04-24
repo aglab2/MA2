@@ -14,3 +14,10 @@
 #include "levels/sr/visual/model_lvlopt.inc.c"
 #include "levels/sr/area_1/spline.inc.c"
 #endif
+
+#include "levels/sr/sr_skybox/model.inc.c"
+#include "levels/sr/sr_drum/model.inc.c"
+#include "levels/sr/sr_drum_break/model.inc.c"
+#include "levels/sr/sr_pnp/model.inc.c"
+#include "levels/sr/sr_pnp_ground/model.inc.c"
+#include "levels/sr/sr_pnp_limit/model.inc.c"

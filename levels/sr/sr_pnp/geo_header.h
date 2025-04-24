@@ -1,0 +1,18 @@
+extern const GeoLayout sr_pnp_geo[];
+extern u8 sr_pnp_miu64_mo005_ci4[];
+extern u8 sr_pnp_miu64_mo005_pal_rgba16[];
+extern u8 sr_pnp_miu128_loco001_ci4[];
+extern u8 sr_pnp_miu128_loco001_pal_rgba16[];
+extern u8 sr_pnp_miu64_mo006_ci4[];
+extern u8 sr_pnp_miu64_mo006_pal_rgba16[];
+extern u8 sr_pnp_miu64_mo004_ci4[];
+extern u8 sr_pnp_miu64_mo004_pal_rgba16[];
+extern Vtx sr_pnp_sr_pnp_mesh_layer_1_vtx_0[48];
+extern Vtx sr_pnp_sr_pnp_mesh_layer_1_vtx_1[38];
+extern Vtx sr_pnp_001_object_00D76AE8_mesh_layer_1_vtx_0[21];
+extern Vtx sr_pnp_001_object_00D76AE8_mesh_layer_1_vtx_1[26];
+extern Vtx sr_pnp_002_object_00D764CC_mesh_layer_1_vtx_0[9];
+extern Vtx sr_pnp_002_object_00D764CC_mesh_layer_1_vtx_1[33];
+extern Gfx sr_pnp_sr_pnp_mesh_layer_1[];
+extern Gfx sr_pnp_001_object_00D76AE8_mesh_layer_1[];
+extern Gfx sr_pnp_002_object_00D764CC_mesh_layer_1[];
