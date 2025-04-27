@@ -21,8 +21,12 @@
 #define sr_area_2 sr_area_1
 #define sr_area_3 sr_area_1
 extern Gfx sr_skybox_sr_skybox_mesh[];
+extern const RailDesc* rail_descs_sr[];
+extern IWDHeader* iw_descs_sr[];
 static struct LevelConfig cfg = {
 	.skybox = sr_skybox_sr_skybox_mesh,
+	.railDesc = &rail_descs_sr,
+	.iwds = &iw_descs_sr,
 };
 /* Fast64 end persistent block [scripts] */
 
@@ -31,6 +35,11 @@ const LevelScript level_sr_entry[] = {
 	LOAD_MIO0(0x7, _sr_segment_7SegmentRomStart, _sr_segment_7SegmentRomEnd), 
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
+	LOAD_MODEL_FROM_GEO(MODEL_SR_DRUM, sr_drum_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_SR_DRUM_BREAK, sr_drum_break_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_SR_PNP, sr_pnp_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_SR_PNP_GROUND, sr_pnp_ground_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_SR_PNP_LIMIT, sr_pnp_limit_geo), 
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */

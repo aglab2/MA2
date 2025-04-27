@@ -4,6 +4,8 @@
 #include "moving_texture_macros.h"
 #include "textures.h"
 #include "dialog_ids.h"
+#include "rail_desc.h"
+#include "instant_warp_desc.h"
 
 #include "make_const_nonconst.h"
 
@@ -13,6 +15,10 @@
 #include "levels/sr/visual/header_lvlopt.inc.h"
 #include "levels/sr/visual/model_lvlopt.inc.c"
 #include "levels/sr/area_1/spline.inc.c"
+#include "levels/sr/area_2/spline.inc.c"
+#include "levels/sr/area_3/spline.inc.c"
+#include "levels/sr/rails.inc.c"
+#include "levels/sr/iw.inc.c"
 #endif
 
 #include "levels/sr/sr_skybox/model.inc.c"
