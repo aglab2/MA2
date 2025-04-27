@@ -6498,3 +6498,14 @@ const BehaviorScript bhvWjSide[] = {
         CALL_NATIVE(bhv_wj_side_loop),
     END_LOOP(),
 };
+
+extern void bhv_sr_jump_init();
+extern void bhv_sr_jump_loop();
+const BehaviorScript bhvSrJump[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    CALL_NATIVE(bhv_sr_jump_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_sr_jump_loop),
+    END_LOOP(),
+};

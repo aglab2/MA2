@@ -49,6 +49,7 @@ const LevelScript level_sr_entry[] = {
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		MARIO_POS(0x01, 0, 20410, -1837, 480),
+		OBJECT(MODEL_SR_PNP, 19117, -1837, 1964, 0, -32, 0, (200 << 16), bhvSrJump),
 		OBJECT(MODEL_NONE, 20121, -1837, 2052, 0, 0, 0, (2 << 24) | (25 << 16), bhvPushOut),
 		OBJECT(MODEL_NONE, 14235, 3165, 9573, 0, 0, 0, (2 << 24) | (25 << 16), bhvPushOut),
 		OBJECT(MODEL_NONE, 21098, -1835, 994, 0, 0, 0, (6 << 24) | (50 << 16), bhvPushOut),
