@@ -3,6 +3,7 @@
 const GeoLayout msp_area_1_geo[] = {
 	GEO_BATCH_NODE_START(batch_lvl_dls_msp),
 	GEO_OPEN_NODE(),
+		GEO_ASM(0, geo_render_backdrop),
 		GEO_LVL_BATCH_TRANSLATE_ROTATE(LAYER_OPAQUE, (f32)5100.0, (f32)39190.0, (f32)-300.0, (f32)-0.0, (f32)-134.99449520915164, (f32)0.0, msp_dl_0000_object_014C2D74_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_ROTATE(LAYER_OPAQUE, (f32)5100.0, (f32)39190.0, (f32)-300.0, (f32)-0.0, (f32)134.99998668124434, (f32)0.0, msp_dl_0000_object_014C2D74_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_ROTATE(LAYER_OPAQUE, (f32)5100.0, (f32)39190.0, (f32)-300.0, (f32)0.0, (f32)-45.00000125223908, (f32)0.0, msp_dl_0000_object_014C2D74_mesh_layer_1),
@@ -108,7 +109,7 @@ const GeoLayout msp_area_1[] = {
 	GEO_OPEN_NODE(),
 		GEO_ZBUFFER(1),
 		GEO_OPEN_NODE(),
-			GEO_CAMERA_FRUSTUM_WITH_FUNC(45.0000, 100, 30000, geo_camera_fov),
+			GEO_CAMERA_FRUSTUM_WITH_FUNC(45.0000, 200, 50000, geo_camera_fov),
 			GEO_OPEN_NODE(),
 				GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 0, 0, 0, 0, -10, 0, geo_camera_main),
 				GEO_OPEN_NODE(),

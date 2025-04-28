@@ -53,6 +53,6 @@ extern Vtx msp_skybox_ms_skybox_mesh_vtx_21[12];
 extern Vtx msp_skybox_ms_skybox_mesh_vtx_22[8];
 extern Vtx msp_skybox_ms_skybox_mesh_vtx_23[27];
 extern Vtx msp_skybox_ms_skybox_mesh_vtx_24[638];
-extern Vtx msp_skybox_ms_skybox_mesh_vtx_25[315];
+extern Vtx msp_skybox_ms_skybox_mesh_vtx_25[442];
 extern Vtx msp_skybox_ms_skybox_mesh_vtx_26[4];
 extern Gfx msp_skybox_ms_skybox_mesh[];
