@@ -30,6 +30,7 @@ static struct LevelConfig cfg = {
 	.iwds = &iw_descs_sr,
 	.springDescs = &spring_descs_sr,
 };
+#define SEQ_LEVEL_GRASS 0x40
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_sr_entry[] = {
