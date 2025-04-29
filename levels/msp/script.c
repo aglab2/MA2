@@ -34,7 +34,8 @@ const LevelScript level_msp_entry[] = {
 	AREA(1, msp_area_1, 0, 0, 0),
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
-		MARIO_POS(0x01, 0, -129, 6200, -17),
+		MARIO_POS(0x01, 0, -129, -17800, -17),
+		OBJECT(MODEL_ROCKET_SPAWNER, -2368, -17000, 1389, 0, 35, 0, 0x00000000, bhvRocketSpawner),
 		TERRAIN(msp_area_1_collision),
 		MACRO_OBJECTS(msp_area_1_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
@@ -43,7 +44,7 @@ const LevelScript level_msp_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 	FREE_LEVEL_POOL(),
-	MARIO_POS(0x01, 0, -129, 6200, -17),
+	MARIO_POS(0x01, 0, -129, -17800, -17),
 	CALL(0, lvl_init_or_update),
 	CALL_LOOP(1, lvl_init_or_update),
 	CLEAR_LEVEL(),

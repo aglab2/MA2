@@ -4,6 +4,7 @@
 #include "moving_texture_macros.h"
 #include "textures.h"
 #include "dialog_ids.h"
+#include "flipbook.h"
 
 #include "make_const_nonconst.h"
 
@@ -12,6 +13,7 @@
 #else
 #include "levels/msp/visual/header_lvlopt.inc.h"
 #include "levels/msp/visual/model_lvlopt.inc.c"
+#include "levels/msp/flipbook.inc.c"
 #endif
 
 #include "levels/msp/msp_skybox/model.inc.c"
