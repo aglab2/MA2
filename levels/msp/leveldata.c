@@ -17,3 +17,7 @@
 #endif
 
 #include "levels/msp/msp_skybox/model.inc.c"
+#include "levels/msp/msp_ore/model.inc.c"
+#include "levels/msp/msp_ore_break/model.inc.c"
+#include "levels/msp/msp_ore_b/model.inc.c"
+#include "levels/msp/msp_ore_b_break/model.inc.c"

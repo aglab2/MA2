@@ -18,3 +18,8 @@
 #else
 #include "levels/msp/visual/geo_lvl.inc.c"
 #endif
+
+#include "levels/msp/msp_ore/geo.inc.c"
+#include "levels/msp/msp_ore_break/geo.inc.c"
+#include "levels/msp/msp_ore_b/geo.inc.c"
+#include "levels/msp/msp_ore_b_break/geo.inc.c"

@@ -14,4 +14,12 @@ extern const LevelScript level_msp_entry[];
 
 #include "levels/msp/msp_skybox/header.h"
 
+#include "levels/msp/msp_ore/geo_header.h"
+
+#include "levels/msp/msp_ore_break/geo_header.h"
+
+#include "levels/msp/msp_ore_b/geo_header.h"
+
+#include "levels/msp/msp_ore_b_break/geo_header.h"
+
 #endif
