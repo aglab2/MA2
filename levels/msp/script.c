@@ -17,8 +17,10 @@
 /* Fast64 begin persistent block [scripts] */
 #include "levels/msp/area_1/collision.inc.c"
 extern Gfx msp_skybox_ms_skybox_mesh[];
+extern SpringDesc spring_descs_msp[];
 static struct LevelConfig cfg = {
 	.skybox = msp_skybox_ms_skybox_mesh,
+	.springDescs = spring_descs_msp,
 };
 #define SEQ_LEVEL_GRASS 0x41
 /* Fast64 end persistent block [scripts] */
@@ -26,13 +28,23 @@ static struct LevelConfig cfg = {
 const LevelScript level_msp_entry[] = {
 	INIT_LEVEL(),
 	LOAD_MIO0(0x7, _msp_segment_7SegmentRomStart, _msp_segment_7SegmentRomEnd), 
+	LOAD_YAY0(0x08, _common0_yay0SegmentRomStart, _common0_yay0SegmentRomEnd), 
+	LOAD_RAW(0x0F, _common0_geoSegmentRomStart, _common0_geoSegmentRomEnd), 
+	LOAD_YAY0(0x05, _group2_yay0SegmentRomStart, _group2_yay0SegmentRomEnd), 
+	LOAD_RAW(0x0C, _group2_geoSegmentRomStart, _group2_geoSegmentRomEnd), 
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
+	JUMP_LINK(script_func_global_1), 
+	JUMP_LINK(script_func_global_3), 
+	LOAD_MODEL_FROM_GEO(MODEL_MSP_ORE, msp_ore_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_MSP_ORE_BREAK, msp_ore_break_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_MSP_ORE_B, msp_ore_b_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_MSP_ORE_B_BREAK, msp_ore_b_break_geo), 
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
-	AREA(1, msp_area_1, 0, 2400, 0),
+	AREA(1, msp_area_1, 0, 0, 0),
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
@@ -41,15 +53,7 @@ const LevelScript level_msp_entry[] = {
 		OBJECT(MODEL_BLACK_BOBOMB, 6653, -990, -5524, 0, 77, 0, 0x00000000, bhvBobomb),
 		OBJECT(MODEL_BLACK_BOBOMB, 6986, -856, -3183, 0, 77, 0, 0x00000000, bhvBobomb),
 		OBJECT(MODEL_BLACK_BOBOMB, 4331, -981, -3435, 0, 77, 0, 0x00000000, bhvBobomb),
-		OBJECT(MODEL_BREAKABLE_BOX, 2, -17498, -3325, 0, 0, 0, 0x00000000, bhvHiddenObject),
-		OBJECT(MODEL_BREAKABLE_BOX, 1, -17103, -2194, 0, 0, 0, 0x00000000, bhvHiddenObject),
-		OBJECT(MODEL_BREAKABLE_BOX, 1, -16903, -1994, 0, 0, 0, 0x00000000, bhvHiddenObject),
-		OBJECT(MODEL_BREAKABLE_BOX, 1, -16703, -1794, 0, 0, 0, 0x00000000, bhvHiddenObject),
-		OBJECT(MODEL_BREAKABLE_BOX, 1, -16503, -1594, 0, 0, 0, 0x00000000, bhvHiddenObject),
-		OBJECT(MODEL_BREAKABLE_BOX, 1, -16303, -1394, 0, 0, 0, 0x00000000, bhvHiddenObject),
-		OBJECT(MODEL_BREAKABLE_BOX, 1, -16103, -1194, 0, 0, 0, 0x00000000, bhvHiddenObject),
-		OBJECT(MODEL_BREAKABLE_BOX, 1, -15903, -994, 0, 0, 0, 0x00000000, bhvHiddenObject),
-		OBJECT(MODEL_BREAKABLE_BOX, 1, -15703, -794, 0, 0, 0, 0x00000000, bhvHiddenObject),
+		OBJECT(MODEL_BREAKABLE_BOX, -2899, -17400, 1812, 0, 30, 0, 0x00000000, bhvHiddenObject),
 		OBJECT(MODEL_BULLY, 5730, 6250, 1032, 0, 77, 0, 0x00000000, bhvSmallBully),
 		OBJECT(MODEL_BULLY, 4534, 6250, 370, 0, 77, 0, 0x00000000, bhvSmallBully),
 		OBJECT(MODEL_BULLY, 4091, -838, -3026, 0, 77, 0, 0x00000000, bhvSmallBully),
@@ -60,7 +64,7 @@ const LevelScript level_msp_entry[] = {
 		OBJECT(MODEL_CHECKPOINT, -4498, -8710, -5691, 0, -179, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_CHECKPOINT, 5499, -1020, -5916, 0, 1, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_CHECKPOINT, 862, -19300, -499, 0, 31, 0, 0x00000000, bhvCheckpoint),
-		OBJECT(MODEL_CHUCKYA, -2774, -17800, 1828, 0, 77, 0, 0x00000000, bhvChuckya),
+		OBJECT(MODEL_CHUCKYA, 136, -17800, -3324, 0, 77, 0, 0x00000000, bhvChuckya),
 		OBJECT(MODEL_CHUCKYA, 2622, -17798, 1407, 0, 77, 0, 0x00000000, bhvChuckya),
 		OBJECT(MODEL_CHUCKYA, 7695, 3100, -2717, 0, 77, 0, 0x00000000, bhvChuckya),
 		OBJECT(MODEL_CHUCKYA, 6411, 3100, -2798, 0, 77, 0, 0x00000000, bhvChuckya),
@@ -104,7 +108,7 @@ const LevelScript level_msp_entry[] = {
 		OBJECT(MODEL_MSP_ORE_B, 5445, -748, -6766, 0, 74, 0, (MODEL_MSP_ORE_B_BREAK << 16), bhvBreakable),
 		OBJECT(MODEL_MSP_ORE_B, 2515, -418, -3965, 0, 30, 0, (MODEL_MSP_ORE_B_BREAK << 16), bhvBreakable),
 		OBJECT(MODEL_MSP_ORE_B, 8430, -428, -4969, 0, 77, 0, (MODEL_MSP_ORE_B_BREAK << 16), bhvBreakable),
-		OBJECT(MODEL_PURPLE_SWITCH, 2398, -17000, 1380, 0, 152, 0, 0x00000000, bhvPurpleSwitchHiddenBoxes),
+		OBJECT(MODEL_PURPLE_SWITCH, 2398, -17000, 1380, 0, 152, 0, 0x00000000, bhvFloorSwitchHiddenObjects),
 		OBJECT(MODEL_RED_COIN, -4645, -2149, 8746, 0, 77, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_RED_COIN, -1939, -3395, 9563, 0, 77, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_RED_COIN, -1093, -2510, 7848, 0, 77, 0, 0x00000000, bhvRedCoin),
@@ -127,7 +131,7 @@ const LevelScript level_msp_entry[] = {
 		OBJECT(MODEL_SNUFIT, 4510, 17195, 3855, 0, 77, 0, 0x00000000, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 5638, 17195, 3855, 0, 77, 0, 0x00000000, bhvSnufit),
 		OBJECT(MODEL_STAR, -305, -18318, -169, 0, 77, 0, 0x00000000, bhvStar),
-		OBJECT(MODEL_STAR, -54, -17277, -2709, 0, 77, 0, 0x00000000, bhvStar),
+		OBJECT(MODEL_STAR, -54, -16809, -2709, 0, 77, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -8, -15436, 3, 0, 77, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -2783, -17091, 1585, 0, 77, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -2003, -9191, -5767, 0, 77, 0, 0x00000000, bhvStar),

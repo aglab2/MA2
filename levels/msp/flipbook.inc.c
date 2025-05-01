@@ -1,15 +1,15 @@
 static ALIGNED8 u8 danger_ci4[] = {
-    #include "levels/mhe/tx_danger001.ci4.inc.c"
-    #include "levels/mhe/tx_danger002.ci4.inc.c"
-    #include "levels/mhe/tx_danger003.ci4.inc.c"
-    #include "levels/mhe/tx_danger004.ci4.inc.c"
+    #include "levels/msp/miu64_mad013.ci4.inc.c"
+    #include "levels/msp/miu64_mad014.ci4.inc.c"
+    #include "levels/msp/miu64_mad015.ci4.inc.c"
+    #include "levels/msp/miu64_mad016.ci4.inc.c"
 };
 
 static ALIGNED8 u8 danger_pal[] = {
-    #include "levels/mhe/tx_danger001.ci4.pal"
-    #include "levels/mhe/tx_danger002.ci4.pal"
-    #include "levels/mhe/tx_danger003.ci4.pal"
-    #include "levels/mhe/tx_danger004.ci4.pal"
+    #include "levels/msp/miu64_mad013.ci4.pal"
+    #include "levels/msp/miu64_mad014.ci4.pal"
+    #include "levels/msp/miu64_mad015.ci4.pal"
+    #include "levels/msp/miu64_mad016.ci4.pal"
 };
 
 

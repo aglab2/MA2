@@ -5,6 +5,7 @@
 #include "textures.h"
 #include "dialog_ids.h"
 #include "flipbook.h"
+#include "spring_desc.h"
 
 #include "make_const_nonconst.h"
 
@@ -14,6 +15,8 @@
 #include "levels/msp/visual/header_lvlopt.inc.h"
 #include "levels/msp/visual/model_lvlopt.inc.c"
 #include "levels/msp/flipbook.inc.c"
+#include "levels/msp/rails.inc.c"
+#include "levels/msp/area_1/spline.inc.c"
 #endif
 
 #include "levels/msp/msp_skybox/model.inc.c"
