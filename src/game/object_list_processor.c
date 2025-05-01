@@ -254,7 +254,7 @@ void bhv_mario_update(void) {
     gGravityMode = gIsGravityFlipped;
 
     particleFlags = execute_mario_action(gCurrentObject);
-    if (gCurrCourseNum == COURSE_FR)
+    if (gCurrCourseNum == COURSE_FR || gCurrCourseNum == COURSE_MSP)
     {
         static f32 safeY = 0;
         f32 realY = gMarioStates->pos[1] + gCurrentArea->renderOffset[1];
