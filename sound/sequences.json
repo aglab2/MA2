@@ -64,5 +64,6 @@
     "3D_wb": [ "0C_extended_bank" ],
     "3E_sh": [ "0C_extended_bank" ],
     "3F_wj": [ "0C_extended_bank" ],
-    "40_sr": [ "0C_extended_bank" ]
+    "40_sr": [ "0C_extended_bank" ],
+    "41_msp": [ "0C_extended_bank" ]
 }

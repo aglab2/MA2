@@ -22,4 +22,8 @@ extern const LevelScript level_msp_entry[];
 
 #include "levels/msp/msp_ore_b_break/geo_header.h"
 
+#include "levels/msp/msp_fire/geo_header.h"
+
+#include "levels/msp/msp_fireball_break/geo_header.h"
+
 #endif

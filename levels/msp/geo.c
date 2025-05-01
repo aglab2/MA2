@@ -23,3 +23,5 @@
 #include "levels/msp/msp_ore_break/geo.inc.c"
 #include "levels/msp/msp_ore_b/geo.inc.c"
 #include "levels/msp/msp_ore_b_break/geo.inc.c"
+#include "levels/msp/msp_fire/geo.inc.c"
+#include "levels/msp/msp_fireball_break/geo.inc.c"

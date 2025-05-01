@@ -21,3 +21,5 @@
 #include "levels/msp/msp_ore_break/model.inc.c"
 #include "levels/msp/msp_ore_b/model.inc.c"
 #include "levels/msp/msp_ore_b_break/model.inc.c"
+#include "levels/msp/msp_fire/model.inc.c"
+#include "levels/msp/msp_fireball_break/model.inc.c"
