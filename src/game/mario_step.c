@@ -620,8 +620,13 @@ static void apply_gravity(struct MarioState *m) {
         m->extraGravityEnabled = 1;
     }
 
-    const f32 terminalSpeed = m->extraGravityEnabled ? -110.f : - 75.f;
-    const f32 gravMult = gCurrCourseNum == COURSE_CW ? 0.3f: 1.0f;
+    f32 terminalSpeed = m->extraGravityEnabled ? -110.f : - 75.f;
+    f32 gravMult = 1.0f;
+    if (gCurrCourseNum == COURSE_CW)
+    {
+        gravMult = 0.3f;
+        terminalSpeed = -110.f;
+    }
 
     if (m->action == ACT_TWIRLING && m->vel[1] < 0.0f) {
         apply_twirl_gravity(m);
