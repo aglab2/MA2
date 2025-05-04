@@ -14,4 +14,16 @@ extern const LevelScript level_cw_entry[];
 
 #include "levels/cw/cw_skybox/header.h"
 
+#include "levels/cw/cw_meteolava/geo_header.h"
+
+#include "levels/cw/cw_meteo/geo_header.h"
+
+#include "levels/cw/cw_meteo2/geo_header.h"
+
+#include "levels/cw/cw_meteo2_break/geo_header.h"
+
+#include "levels/cw/cw_meteo_break/geo_header.h"
+
+#include "levels/cw/cw_meteolava_break/geo_header.h"
+
 #endif

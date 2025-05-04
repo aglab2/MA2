@@ -1,0 +1,14 @@
+extern const GeoLayout cw_meteo_geo[];
+extern u8 cw_meteo_miu256_fr001_003_ci4[];
+extern u8 cw_meteo_miu256_fr001_003_pal_rgba16[];
+extern u8 cw_meteo_miu128_fr002_003_ci4[];
+extern u8 cw_meteo_miu128_fr002_003_pal_rgba16[];
+extern Vtx cw_meteo_cw_meteo_mesh_layer_1_vtx_0[64];
+extern Gfx cw_meteo_cw_meteo_mesh_layer_1_tri_0[];
+extern Vtx cw_meteo_cw_meteo_mesh_layer_1_vtx_1[17];
+extern Gfx cw_meteo_cw_meteo_mesh_layer_1_tri_1[];
+extern Gfx mat_cw_meteo_METEOBULLET2_A_sa2mdl_0_f3d[];
+extern Gfx mat_revert_cw_meteo_METEOBULLET2_A_sa2mdl_0_f3d[];
+extern Gfx mat_cw_meteo_METEOBULLET2_A_sa2mdl_1_f3d[];
+extern Gfx mat_revert_cw_meteo_METEOBULLET2_A_sa2mdl_1_f3d[];
+extern Gfx cw_meteo_cw_meteo_mesh_layer_1[];

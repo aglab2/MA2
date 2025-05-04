@@ -18,3 +18,10 @@
 #else
 #include "levels/cw/visual/geo_lvl.inc.c"
 #endif
+
+#include "levels/cw/cw_meteolava/geo.inc.c"
+#include "levels/cw/cw_meteo/geo.inc.c"
+#include "levels/cw/cw_meteo2/geo.inc.c"
+#include "levels/cw/cw_meteo2_break/geo.inc.c"
+#include "levels/cw/cw_meteo_break/geo.inc.c"
+#include "levels/cw/cw_meteolava_break/geo.inc.c"

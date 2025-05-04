@@ -30,3 +30,9 @@
 #endif
 
 #include "levels/cw/cw_skybox/model.inc.c"
+#include "levels/cw/cw_meteolava/model.inc.c"
+#include "levels/cw/cw_meteo/model.inc.c"
+#include "levels/cw/cw_meteo2/model.inc.c"
+#include "levels/cw/cw_meteo2_break/model.inc.c"
+#include "levels/cw/cw_meteo_break/model.inc.c"
+#include "levels/cw/cw_meteolava_break/model.inc.c"
