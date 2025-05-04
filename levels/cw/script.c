@@ -34,9 +34,12 @@
 #define cw_area_9 cw_area_1
 extern Gfx cw_skybox_cw_skybox_mesh[];
 extern const IWDHeader* iw_descs_cw[];
+extern const SpringDesc* spring_descs_cw[];
 static struct LevelConfig cfg = {
+	.viewRangeMult = 3.f,
 	.skybox = cw_skybox_cw_skybox_mesh,
 	.iwds = iw_descs_cw,
+	.springDescs = spring_descs_cw,
 };
 /* Fast64 end persistent block [scripts] */
 
@@ -66,7 +69,7 @@ const LevelScript level_cw_entry[] = {
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		OBJECT(MODEL_YELLOW_COIN, -11984, -4383, -10005, 0, 0, 0, 0x00000000, bhvYellowCoin),
-		OBJECT(MODEL_YELLOW_COIN, -14550, -1286, -10006, 0, 0, 0, 0x00000000, bhvYellowCoin),
+		OBJECT(MODEL_YELLOW_COIN, -14550, -1586, -10006, 0, 0, 0, 0x00000000, bhvYellowCoin),
 		TERRAIN(cw_area_2_collision),
 		MACRO_OBJECTS(cw_area_2_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
