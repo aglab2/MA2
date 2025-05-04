@@ -1,11 +1,11 @@
 static IWDirectionAreasDesc iw_area1 = {
     { IWDT_DIRECTIONS },
-    { .x_low = 2, },
+    { .x_high = 2, },
 };
 
 static IWDirectionAreasDesc iw_area2 = {
     { IWDT_DIRECTIONS },
-    { .z_low = 3, .x_high = 1, },
+    { .z_low = 3, .x_low = 1, },
 };
 
 static IWDirectionAreasDesc iw_area3 = {
