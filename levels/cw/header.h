@@ -12,4 +12,6 @@ extern const LevelScript level_cw_entry[];
 #include "levels/cw/visual/header_lvlopt.inc.h"
 #endif
 
+#include "levels/cw/cw_skybox/header.h"
+
 #endif

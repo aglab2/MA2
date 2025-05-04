@@ -4,6 +4,8 @@
 #include "moving_texture_macros.h"
 #include "textures.h"
 #include "dialog_ids.h"
+#include "flipbook.h"
+#include "instant_warp_desc.h"
 
 #include "make_const_nonconst.h"
 
@@ -12,4 +14,8 @@
 #else
 #include "levels/cw/visual/header_lvlopt.inc.h"
 #include "levels/cw/visual/model_lvlopt.inc.c"
+#include "levels/cw/flipbook.inc.c"
+#include "levels/cw/iw.inc.c"
 #endif
+
+#include "levels/cw/cw_skybox/model.inc.c"

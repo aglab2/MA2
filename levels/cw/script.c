@@ -32,7 +32,11 @@
 #define cw_area_7 cw_area_1
 #define cw_area_8 cw_area_1
 #define cw_area_9 cw_area_1
+extern Gfx cw_skybox_cw_skybox_mesh[];
+extern const IWDHeader* iw_descs_cw[];
 static struct LevelConfig cfg = {
+	.skybox = cw_skybox_cw_skybox_mesh,
+	.iwds = iw_descs_cw,
 };
 /* Fast64 end persistent block [scripts] */
 

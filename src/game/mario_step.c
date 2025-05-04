@@ -621,21 +621,23 @@ static void apply_gravity(struct MarioState *m) {
     }
 
     const f32 terminalSpeed = m->extraGravityEnabled ? -110.f : - 75.f;
+    const f32 gravMult = gCurrCourseNum == COURSE_CW ? 0.3f: 1.0f;
+
     if (m->action == ACT_TWIRLING && m->vel[1] < 0.0f) {
         apply_twirl_gravity(m);
     } else if (m->action == ACT_SHOT_FROM_CANNON) {
-        m->vel[1] -= 1.0f;
+        m->vel[1] -= 1.0f * gravMult;
         if (m->vel[1] < terminalSpeed) {
             m->vel[1] = terminalSpeed;
         }
     } else if (m->action == ACT_LONG_JUMP || m->action == ACT_SLIDE_KICK
                || m->action == ACT_BBH_ENTER_SPIN) {
-        m->vel[1] -= 2.0f;
+        m->vel[1] -= 2.0f * gravMult;
         if (m->vel[1] < terminalSpeed) {
             m->vel[1] = terminalSpeed;
         }
     } else if (m->action == ACT_LAVA_BOOST || m->action == ACT_FALL_AFTER_STAR_GRAB) {
-        m->vel[1] -= 3.2f;
+        m->vel[1] -= 3.2f * gravMult;
         if (m->vel[1] < -65.0f) {
             m->vel[1] = -65.0f;
         }
@@ -645,23 +647,23 @@ static void apply_gravity(struct MarioState *m) {
             m->vel[1] = terminalSpeed;
         }
     } else if (should_strengthen_gravity_for_jump_ascent(m)) {
-        m->vel[1] /= 4.0f;
+        m->vel[1] /= 4.0f * gravMult;
     } else if (m->action & ACT_FLAG_METAL_WATER) {
-        m->vel[1] -= 1.6f;
+        m->vel[1] -= 1.6f * gravMult;
         if (m->vel[1] < -16.0f) {
             m->vel[1] = -16.0f;
         }
     } else if ((m->flags & MARIO_WING_CAP) && m->vel[1] < 0.0f && (m->input & INPUT_A_DOWN)) {
         m->marioBodyState->wingFlutter = TRUE;
 
-        m->vel[1] -= 2.0f;
+        m->vel[1] -= 2.0f * gravMult;
         if (m->vel[1] < -37.5f) {
             if ((m->vel[1] += 4.0f) > -37.5f) {
                 m->vel[1] = -37.5f;
             }
         }
     } else {
-        m->vel[1] -= 4.0f;
+        m->vel[1] -= 4.0f * gravMult;
         if (m->vel[1] < terminalSpeed) {
             m->vel[1] = terminalSpeed;
         }
