@@ -1283,9 +1283,14 @@ s32 act_rail_grind(struct MarioState *m)
 {
     s16 startYaw = m->faceAngle[1];
     int onLoop = zipline_on_loop();
+    int blocked = 0;
+    if (gCurrCourseNum == COURSE_CW)
+    {
+        blocked = m->floor->type == SURFACE_DEATH_PLANE;
+    }
 
     if (!onLoop) {
-        if (m->input & INPUT_A_PRESSED) {
+        if (!blocked && (m->input & INPUT_A_PRESSED)) {
             return set_mario_action(m, ACT_JUMP, 0);
         }
         

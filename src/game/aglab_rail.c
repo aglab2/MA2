@@ -355,6 +355,10 @@ int zipline_step(int exSpeed)
         Vec3s trajNextPoint = {traj[sZiplineCurPoint + 4 + 1], traj[sZiplineCurPoint + 4 + 2], traj[sZiplineCurPoint + 4 + 3]};
         Vec3f trajDirection;
         vec3f_diff(trajDirection, trajNextPoint, trajCurPoint);
+        if (gCurrCourseNum == COURSE_CW)
+        {
+            trajDirection[1] = 0.f;
+        }
 
 #if 0
         print_text_fmt_int(20, 100, "X %d", (int) trajDirection[0]);
