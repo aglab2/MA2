@@ -1,7 +1,9 @@
 extern const Trajectory* starmove_trajs_ph[];
+extern const Trajectory* starmove_trajs_cw[];
 static const Trajectory** k_starmove_trajectories[] = 
 {
     [ LEVEL_PH ] = starmove_trajs_ph,
+    [ LEVEL_CW ] = starmove_trajs_cw,
 };
 
 #define oStarMoveTraj OBJECT_FIELD_VPTR(0x1B)

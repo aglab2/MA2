@@ -18,6 +18,7 @@ if '__main__' in __name__:
     areas_count = 0
     have_rails = False
     have_springs = False
+    starmoves = []
     for i in range(1, 16):
         area_path = f"{lvl_path}/area_{i}"
         area_spline_path = f"{area_path}/spline.inc.c"
@@ -54,6 +55,9 @@ if '__main__' in __name__:
                     continue
 
                 spline_name = line.split(' ')[2].strip().strip('[]')
+                if 'StarMove' in spline_name:
+                    starmoves.append(spline_name)
+                    continue
                 if 'Rail' in spline_name:
                     area_rails.append(spline_name)
                     continue
@@ -137,4 +141,10 @@ if '__main__' in __name__:
                 else:
                     f.write(f"\tNULL,\n")
 
+            f.write("};\n\n")
+
+        if starmoves:
+            f.write(f"const Trajectory* starmove_trajs_{lvl_name}[] = {{\n")
+            for traj in starmoves:
+                f.write(f"\t{traj},\n")
             f.write("};\n\n")

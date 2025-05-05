@@ -7,6 +7,7 @@
 #include "flipbook.h"
 #include "instant_warp_desc.h"
 #include "spring_desc.h"
+#include "rail_desc.h"
 
 #include "make_const_nonconst.h"
 
