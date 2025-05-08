@@ -26,4 +26,8 @@ extern const LevelScript level_cw_entry[];
 
 #include "levels/cw/cw_meteolava_break/geo_header.h"
 
+#include "levels/cw/cw_updown/collision_header.h"
+
+#include "levels/cw/cw_updown/geo_header.h"
+
 #endif

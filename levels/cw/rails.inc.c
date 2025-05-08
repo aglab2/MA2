@@ -13,11 +13,16 @@ static const RailDesc rails_area3[] = {
 	RAIL_END
 };
 
+static const SpringDesc spring_area4[] = {
+	cw_area_4_spline_NurbsCurve_Spring_001,
+	NULL
+};
+
 const SpringDesc* spring_descs_cw[] = {
 	NULL,
 	spring_area2,
 	NULL,
-	NULL,
+	spring_area4,
 	NULL,
 	NULL,
 	NULL,

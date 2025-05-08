@@ -1,11 +1,13 @@
 extern const Collision ce_hammer_collision[];
 extern const Collision ms_hammer_collision[];
 extern const Collision lc_step_collision[];
+extern const Collision cw_updown_collision[];
 
 static const Collision *const k_hammer_collisions[] = {
     [ LEVEL_CE ] = ce_hammer_collision,
     [ LEVEL_MS ] = ms_hammer_collision,
     [ LEVEL_LC ] = lc_step_collision,
+    [ LEVEL_CW ] = cw_updown_collision,
 };
 
 void bhv_up_down_init()
@@ -16,6 +18,11 @@ void bhv_up_down_init()
 
 void bhv_up_down_loop()
 {
+    f32 vel = 5.f;
+    if (gCurrCourseNum == COURSE_CW)
+    {
+        vel = 15.f;
+    }
     if (o->oTimer == 240)
     {
         o->oTimer = 0;
@@ -23,11 +30,11 @@ void bhv_up_down_loop()
 
     if (o->oTimer < 120)
     {
-        o->oPosY += 5.0f;
+        o->oPosY += vel;
     }
     else
     {
-        o->oPosY -= 5.0f;
+        o->oPosY -= vel;
     }
 }
 

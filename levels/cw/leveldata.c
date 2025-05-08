@@ -37,3 +37,5 @@
 #include "levels/cw/cw_meteo2_break/model.inc.c"
 #include "levels/cw/cw_meteo_break/model.inc.c"
 #include "levels/cw/cw_meteolava_break/model.inc.c"
+#include "levels/cw/cw_updown/collision.inc.c"
+#include "levels/cw/cw_updown/model.inc.c"

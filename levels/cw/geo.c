@@ -25,3 +25,4 @@
 #include "levels/cw/cw_meteo2_break/geo.inc.c"
 #include "levels/cw/cw_meteo_break/geo.inc.c"
 #include "levels/cw/cw_meteolava_break/geo.inc.c"
+#include "levels/cw/cw_updown/geo.inc.c"

@@ -18,6 +18,7 @@ extern const GeoLayout cw_area_4_geo[];
 extern const GeoLayout cw_area_4[];
 extern const Collision cw_area_4_collision[];
 extern const MacroObject cw_area_4_macro_objs[];
+extern const Trajectory cw_area_4_spline_NurbsCurve_Spring_001[];
 extern const GeoLayout cw_area_5_geo[];
 extern const GeoLayout cw_area_5[];
 extern const Collision cw_area_5_collision[];
