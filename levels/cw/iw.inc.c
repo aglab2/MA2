@@ -13,14 +13,14 @@ static IWDirectionAreasDesc iw_area3 = {
     { .z_high = 4, .z_low = 2, },
 };
 
-static IWDirectionAreasDesc iw_area4 = {
-    { IWDT_DIRECTIONS },
-    { .z_high = 5, .z_low = 3, },
+static IWDirectionFullAreasDesc iw_area4 = {
+    { IWDT_FULL_DIRECTIONS },
+    { .y_high = 5, .z_low = 3, .z_high = 6, .z_low = 3, .y_value = 9000.f },
 };
 
-static IWDirectionAreasDesc iw_area5 = {
-    { IWDT_DIRECTIONS },
-    { .z_high = 6, .z_low = 4, },
+static IWDirectionFullAreasDesc iw_area5 = {
+    { IWDT_FULL_DIRECTIONS },
+    { .y_low = 4, .z_low = 4, .z_high = 6, .z_low = 3, .y_value = -11000.f },
 };
 
 static IWDirectionAreasDesc iw_area6 = {

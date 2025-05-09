@@ -22,8 +22,6 @@
 #include "levels/cw/area_5/collision.inc.c"
 #include "levels/cw/area_6/collision.inc.c"
 #include "levels/cw/area_7/collision.inc.c"
-#include "levels/cw/area_8/collision.inc.c"
-#include "levels/cw/area_9/collision.inc.c"
 #define cw_area_2 cw_area_1
 #define cw_area_3 cw_area_1
 #define cw_area_4 cw_area_1
@@ -204,7 +202,7 @@ const LevelScript level_cw_entry[] = {
 		OBJECT(MODEL_NONE, -9300, 8774, -11020, 0, -90, 0, 0x00000000, bhvHiddenRedCoinStar),
 		OBJECT(MODEL_STAR, -11583, 6879, -11364, 0, -90, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 15994, 1095, -15383, 0, -90, 0, (1 << 8), bhvStar),
-		OBJECT(MODEL_STAR, 6747, 6852, 40053, 0, -90, 0, (1 << 8), bhvStar),
+		OBJECT(MODEL_STAR, 6747, 6852, 40053, 0, -90, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_YELLOW_COIN, -11984, -4383, -10005, 0, 0, 0, 0x00000000, bhvYellowCoin),
 		OBJECT(MODEL_YELLOW_COIN, -14550, -1586, -10006, 0, 0, 0, 0x00000000, bhvYellowCoin),
 		TERRAIN(cw_area_2_collision),
@@ -242,6 +240,7 @@ const LevelScript level_cw_entry[] = {
 		OBJECT(MODEL_NONE, 5980, 6634, -2267, 0, -90, 0, 0x00000000, bhvGoombaTripletSpawner),
 		OBJECT(MODEL_CHUCKYA, 5968, 6634, -3439, 0, -90, 0, 0x00000000, bhvChuckya),
 		OBJECT(MODEL_CW_UP_DOWN, 5954, -5536, 16073, 0, -90, 0, 0x00000000, bhvHammerUpDown),
+		OBJECT(MODEL_CW_UP_DOWN, 15665, 26151, 51525, 0, -90, 0, 0x00000000, bhvHammerUpDown),
 		OBJECT(MODEL_SNUFIT, 6795, -4530, 6278, 0, 0, 0, 0x00000000, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 5185, -4530, 6278, 0, 0, 0, 0x00000000, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 6795, -4530, 12300, 0, 0, 0, 0x00000000, bhvSnufit),
@@ -250,9 +249,9 @@ const LevelScript level_cw_entry[] = {
 		OBJECT(MODEL_SNUFIT, 5185, -3626, 14334, 0, 0, 0, 0x00000000, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 6795, -4766, 15872, 0, 0, 0, 0x00000000, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 5185, -4766, 15872, 0, 0, 0, 0x00000000, bhvSnufit),
-		OBJECT(MODEL_STAR, 5992, 11888, -2448, 0, -90, 0, (1 << 8), bhvStar),
-		OBJECT(MODEL_STAR, 5998, 13288, 2844, 0, -90, 0, (1 << 8), bhvStar),
-		OBJECT(MODEL_STAR, 5918, -4762, 408, 0, -90, 0, (1 << 8), bhvStar),
+		OBJECT(MODEL_STAR, 5992, 11888, -2448, 0, -90, 0, 0x00000000, bhvStar),
+		OBJECT(MODEL_STAR, 5998, 13288, 2844, 0, -90, 0, 0x00000000, bhvStar),
+		OBJECT(MODEL_STAR, 5918, -4762, 408, 0, -90, 0, 0x00000000, bhvStar),
 		TERRAIN(cw_area_3_collision),
 		MACRO_OBJECTS(cw_area_3_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
@@ -285,7 +284,7 @@ const LevelScript level_cw_entry[] = {
 		OBJECT(MODEL_HEAVE_HO, 8398, -3374, -9726, 0, -90, 0, 0x00000000, bhvHeaveHo),
 		OBJECT(MODEL_HEAVE_HO, 11657, -3374, -9305, 0, -90, 0, 0x00000000, bhvHeaveHo),
 		OBJECT(MODEL_CW_UP_DOWN, 11633, -3374, -8433, 0, -90, 0, 0x00000000, bhvHammerUpDown),
-		OBJECT(MODEL_STAR, 6044, -5879, -14201, 0, -90, 0, (1 << 8), bhvStar),
+		OBJECT(MODEL_STAR, 6044, -5879, -14201, 0, -90, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_WHOMP, 15510, 5626, -1804, 0, -180, 0, 0x00000000, bhvThwomp2),
 		OBJECT(MODEL_WHOMP, 15510, 5626, 1464, 0, -180, 0, 0x00000000, bhvThwomp2),
 		OBJECT(MODEL_WHOMP, 16435, 5626, 8502, 0, -180, 0, 0x00000000, bhvThwomp2),
@@ -296,10 +295,25 @@ const LevelScript level_cw_entry[] = {
 		/* Fast64 begin persistent block [area commands] */
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
-	AREA(5, cw_area_5, 5000, 4120, 12000),
+	AREA(5, cw_area_5, 5000, 4687, 8000),
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		OBJECT(MODEL_CHECKPOINT, 16472, -3304, 17587, 0, 0, 0, 0x00000000, bhvCheckpoint),
+		OBJECT(MODEL_CHUCKYA, 17565, -3704, 14952, 0, -90, 0, 0x00000000, bhvChuckya),
+		OBJECT(MODEL_CHUCKYA, 15595, -3704, 14952, 0, -90, 0, 0x00000000, bhvChuckya),
+		OBJECT(MODEL_CHUCKYA, 15670, -3704, 13263, 0, -90, 0, 0x00000000, bhvChuckya),
+		OBJECT(MODEL_CHUCKYA, 17419, -3704, 13474, 0, -90, 0, 0x00000000, bhvChuckya),
+		OBJECT(MODEL_NONE, 16515, 5188, 12445, 0, 90, 0, 0x00000000, bhvCoinFormation),
+		OBJECT(MODEL_NONE, 17703, -3505, 14043, 0, -180, 0, 0x00000000, bhvCoinFormation),
+		OBJECT(MODEL_NONE, 15369, -3505, 14043, 0, -180, 0, 0x00000000, bhvCoinFormation),
+		OBJECT(MODEL_NONE, 16479, -3630, 16860, 0, -90, 0, 0x00000000, bhvCoinFormation),
+		OBJECT(MODEL_NONE, 16456, -3704, 13228, 0, -90, 0, (2 << 16), bhvCoinFormation),
+		OBJECT(MODEL_NONE, 16456, -3704, 14748, 0, -90, 0, (2 << 16), bhvCoinFormation),
+		OBJECT(MODEL_NONE, 17830, -3623, 12694, 0, -90, 0, (1 << 8), bhvHiddenStarTrigger),
+		OBJECT(MODEL_STAR, 16433, 4476, 15264, 0, -90, 0, 0x00000000, bhvStar),
+		OBJECT(MODEL_STAR, 17830, -1418, 12694, 0, -90, 0, 0x00000000, bhvHiddenStar),
+		OBJECT(MODEL_STAR, 17830, -870, 12694, 0, -90, 0, (1 << 8), bhvStar),
 		TERRAIN(cw_area_5_collision),
 		MACRO_OBJECTS(cw_area_5_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
@@ -307,7 +321,7 @@ const LevelScript level_cw_entry[] = {
 		/* Fast64 begin persistent block [area commands] */
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
-	AREA(6, cw_area_6, 5000, 3487, 16000),
+	AREA(6, cw_area_6, 5000, 4120, 12000),
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
@@ -318,34 +332,12 @@ const LevelScript level_cw_entry[] = {
 		/* Fast64 begin persistent block [area commands] */
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
-	AREA(7, cw_area_7, 5000, 1894, 20000),
+	AREA(7, cw_area_7, 5000, 3487, 16000),
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		TERRAIN(cw_area_7_collision),
 		MACRO_OBJECTS(cw_area_7_macro_objs),
-		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
-		TERRAIN_TYPE(TERRAIN_GRASS),
-		/* Fast64 begin persistent block [area commands] */
-		/* Fast64 end persistent block [area commands] */
-	END_AREA(),
-	AREA(8, cw_area_8, 5000, 306, 24000),
-		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
-		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
-		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
-		TERRAIN(cw_area_8_collision),
-		MACRO_OBJECTS(cw_area_8_macro_objs),
-		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
-		TERRAIN_TYPE(TERRAIN_GRASS),
-		/* Fast64 begin persistent block [area commands] */
-		/* Fast64 end persistent block [area commands] */
-	END_AREA(),
-	AREA(9, cw_area_9, 5000, -1204, 28000),
-		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
-		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
-		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
-		TERRAIN(cw_area_9_collision),
-		MACRO_OBJECTS(cw_area_9_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
 		TERRAIN_TYPE(TERRAIN_GRASS),
 		/* Fast64 begin persistent block [area commands] */

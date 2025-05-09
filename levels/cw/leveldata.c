@@ -11,6 +11,9 @@
 
 #include "make_const_nonconst.h"
 
+static const LDLDesc loop_desc1 = { 0 };
+#define loop_desc_cw_area_6_spline_NurbsCurve_Loop &loop_desc1
+
 #if 0
 #include "levels/cw/leveldata.inc.c"
 #else
@@ -25,8 +28,6 @@
 #include "levels/cw/area_5/spline.inc.c"
 #include "levels/cw/area_6/spline.inc.c"
 #include "levels/cw/area_7/spline.inc.c"
-#include "levels/cw/area_8/spline.inc.c"
-#include "levels/cw/area_9/spline.inc.c"
 #include "levels/cw/rails.inc.c"
 #endif
 

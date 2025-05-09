@@ -5,5 +5,3 @@
 #include "levels/cw/area_5/geo.inc.c"
 #include "levels/cw/area_6/geo.inc.c"
 #include "levels/cw/area_7/geo.inc.c"
-#include "levels/cw/area_8/geo.inc.c"
-#include "levels/cw/area_9/geo.inc.c"

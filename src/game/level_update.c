@@ -541,6 +541,16 @@ static void handle_iw_area_desc(int* newArea, const IWDirectionAreas* desc, f32 
         *newArea = desc->z_high;
 }
 
+static void handle_iw_area_desc_full(int* newArea, const IWDirectionFullAreas* desc)
+{
+    // this is valid because IWDirectionAreas has the same beginning as IWDirectionFullAreas
+    handle_iw_area_desc(newArea, (const IWDirectionAreas*) desc, 21000.f);
+    if (desc->y_high && gMarioStates->pos[1] > desc->y_value)
+        *newArea = desc->y_high;
+    if (desc->y_low && gMarioStates->pos[1] < desc->y_value)
+        *newArea = desc->y_low;
+}
+
 void check_instant_warp(void) {
     s16 cameraAngle;
 
@@ -598,6 +608,12 @@ void check_instant_warp(void) {
                             newArea = gCurrAreaIndex == 2 ? 3 : 13;
                         }
                     }
+                    break;
+                }
+                case IWDT_FULL_DIRECTIONS:
+                {
+                    const IWDirectionFullAreasDesc* desc = (const IWDirectionFullAreasDesc*)header;
+                    handle_iw_area_desc_full(&newArea, &desc->areas);
                     break;
                 }
             }
