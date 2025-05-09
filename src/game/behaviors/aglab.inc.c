@@ -21,6 +21,7 @@ void bhv_up_down_loop()
     f32 vel = 5.f;
     if (gCurrCourseNum == COURSE_CW)
     {
+        o->oDrawingDistance = 10000.f;
         vel = 15.f;
     }
     if (o->oTimer == 240)

@@ -29,6 +29,12 @@ static const LDLDesc loop_desc1 = { 0 };
 #include "levels/cw/area_6/spline.inc.c"
 #include "levels/cw/area_7/spline.inc.c"
 #include "levels/cw/rails.inc.c"
+
+const SpringLinkDesc spring_links_cw[] = {
+    { cw_area_4_spline_NurbsCurve_Spring_003, cw_area_5_spline_NurbsCurve_Spring_002, },
+    { NULL, NULL, }
+};
+
 #endif
 
 #include "levels/cw/cw_skybox/model.inc.c"

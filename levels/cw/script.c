@@ -33,12 +33,14 @@
 extern Gfx cw_skybox_cw_skybox_mesh[];
 extern const IWDHeader* iw_descs_cw[];
 extern const SpringDesc* spring_descs_cw[];
+extern const SpringLinkDesc spring_links_cw[];
 extern const RailDesc* rail_descs_cw[];
 static struct LevelConfig cfg = {
 	.viewRangeMult = 3.f,
 	.skybox = cw_skybox_cw_skybox_mesh,
 	.iwds = iw_descs_cw,
 	.springDescs = spring_descs_cw,
+	.springLinks = spring_links_cw,
 	.railDesc = rail_descs_cw,
 };
 /* Fast64 end persistent block [scripts] */
@@ -239,8 +241,7 @@ const LevelScript level_cw_entry[] = {
 		OBJECT(MODEL_NONE, 15737, 7827, 42304, 0, -78, -18, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 5980, 6634, -2267, 0, -90, 0, 0x00000000, bhvGoombaTripletSpawner),
 		OBJECT(MODEL_CHUCKYA, 5968, 6634, -3439, 0, -90, 0, 0x00000000, bhvChuckya),
-		OBJECT(MODEL_CW_UP_DOWN, 5954, -5536, 16073, 0, -90, 0, 0x00000000, bhvHammerUpDown),
-		OBJECT(MODEL_CW_UP_DOWN, 15665, 26151, 51525, 0, -90, 0, 0x00000000, bhvHammerUpDown),
+		OBJECT(MODEL_CW_UP_DOWN, 5954, -6901, 16073, 0, -90, 0, 0x00000000, bhvHammerUpDown),
 		OBJECT(MODEL_SNUFIT, 6795, -4530, 6278, 0, 0, 0, 0x00000000, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 5185, -4530, 6278, 0, 0, 0, 0x00000000, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 6795, -4530, 12300, 0, 0, 0, 0x00000000, bhvSnufit),
@@ -285,9 +286,9 @@ const LevelScript level_cw_entry[] = {
 		OBJECT(MODEL_HEAVE_HO, 11657, -3374, -9305, 0, -90, 0, 0x00000000, bhvHeaveHo),
 		OBJECT(MODEL_CW_UP_DOWN, 11633, -3374, -8433, 0, -90, 0, 0x00000000, bhvHammerUpDown),
 		OBJECT(MODEL_STAR, 6044, -5879, -14201, 0, -90, 0, 0x00000000, bhvStar),
-		OBJECT(MODEL_WHOMP, 15510, 5626, -1804, 0, -180, 0, 0x00000000, bhvThwomp2),
-		OBJECT(MODEL_WHOMP, 15510, 5626, 1464, 0, -180, 0, 0x00000000, bhvThwomp2),
-		OBJECT(MODEL_WHOMP, 16435, 5626, 8502, 0, -180, 0, 0x00000000, bhvThwomp2),
+		OBJECT(MODEL_WHOMP, 15510, 5626, -1804, 0, -180, 0, 0x00000000, bhvSmallWhomp),
+		OBJECT(MODEL_WHOMP, 15510, 5626, 1464, 0, -180, 0, 0x00000000, bhvSmallWhomp),
+		OBJECT(MODEL_WHOMP, 16435, 5626, 8502, 0, -180, 0, 0x00000000, bhvSmallWhomp),
 		TERRAIN(cw_area_4_collision),
 		MACRO_OBJECTS(cw_area_4_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
@@ -310,10 +311,12 @@ const LevelScript level_cw_entry[] = {
 		OBJECT(MODEL_NONE, 16479, -3630, 16860, 0, -90, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_NONE, 16456, -3704, 13228, 0, -90, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 16456, -3704, 14748, 0, -90, 0, (2 << 16), bhvCoinFormation),
+		OBJECT(MODEL_CW_UP_DOWN, 15665, 2490, 11525, 0, -90, 0, 0x00000000, bhvHammerUpDown),
 		OBJECT(MODEL_NONE, 17830, -3623, 12694, 0, -90, 0, (1 << 8), bhvHiddenStarTrigger),
 		OBJECT(MODEL_STAR, 16433, 4476, 15264, 0, -90, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 17830, -1418, 12694, 0, -90, 0, 0x00000000, bhvHiddenStar),
-		OBJECT(MODEL_STAR, 17830, -870, 12694, 0, -90, 0, (1 << 8), bhvStar),
+		OBJECT(MODEL_STAR, 16494, -7659, 12231, 0, -90, 0, 0x00000000, bhvStar),
+		OBJECT(MODEL_STAR, 15662, 2380, 11530, 0, -90, 0, 0x00000000, bhvStar),
 		TERRAIN(cw_area_5_collision),
 		MACRO_OBJECTS(cw_area_5_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
