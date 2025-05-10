@@ -11,7 +11,7 @@
 
 #include "make_const_nonconst.h"
 
-static const LDLDesc loop_desc1 = { 0 };
+static const LDLDesc loop_desc1 = { .angleOffset = -0x4000 };
 #define loop_desc_cw_area_6_spline_NurbsCurve_Loop &loop_desc1
 
 #if 0

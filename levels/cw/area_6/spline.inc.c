@@ -21,6 +21,7 @@ const Trajectory cw_area_6_spline_NurbsCurve_Loop[] = {
 	TRAJECTORY_POS( 19, 18026, -4520, -2000),
 	TRAJECTORY_POS( 20, 17929, -5222, -2000),
 	TRAJECTORY_POS( 21, 17622, -5697, -2000),
+	TRAJECTORY_POS( 22, 17079, -5986, -1993),
 	TRAJECTORY_END(),
 };
 const Trajectory cw_area_6_spline_NurbsCurve_Rail_001[] = {
