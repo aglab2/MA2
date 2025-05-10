@@ -46,3 +46,5 @@ const SpringLinkDesc spring_links_cw[] = {
 #include "levels/cw/cw_meteolava_break/model.inc.c"
 #include "levels/cw/cw_updown/collision.inc.c"
 #include "levels/cw/cw_updown/model.inc.c"
+#include "levels/cw/cw_drill_base/model.inc.c"
+#include "levels/cw/cw_drill/model.inc.c"

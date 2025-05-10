@@ -26,3 +26,5 @@
 #include "levels/cw/cw_meteo_break/geo.inc.c"
 #include "levels/cw/cw_meteolava_break/geo.inc.c"
 #include "levels/cw/cw_updown/geo.inc.c"
+#include "levels/cw/cw_drill_base/geo.inc.c"
+#include "levels/cw/cw_drill/geo.inc.c"
