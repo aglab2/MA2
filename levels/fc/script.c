@@ -32,6 +32,7 @@
 #define fc_area_7 fc_area_1
 #define fc_area_8 fc_area_1
 #define fc_area_9 fc_area_1
+#define SEQ_LEVEL_GRASS 0x42
 extern Gfx fc_skybox_fc_space_mesh[];
 extern const IWDHeader* iw_descs_fc[];
 static struct LevelConfig cfg = {
