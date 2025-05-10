@@ -50,3 +50,4 @@ DEFINE_LEVEL("B BATTLE3", LEVEL_BOWSER_3, COURSE_NONE, bowser_3, generic, 60000,
 DEFINE_LEVEL("SR", LEVEL_SR, COURSE_SR, sr, generic, 20000, 0x00, 0x00, 0x00, _, sCamSr) 
 DEFINE_LEVEL("MSP", LEVEL_MSP, COURSE_MSP, msp, generic, 20000, 0x00, 0x00, 0x00, _, sCamMsp) 
 DEFINE_LEVEL("CW", LEVEL_CW, COURSE_CW, cw, generic, 20000, 0x00, 0x00, 0x00, _, sCamCw) 
+DEFINE_LEVEL("FC", LEVEL_FC, COURSE_FC, fc, generic, 20000, 0x00, 0x00, 0x00, _, sCamFc) 
