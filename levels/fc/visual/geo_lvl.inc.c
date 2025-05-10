@@ -1,8 +1,9 @@
 #include "src/game/envfx_snow.h"
 
 const GeoLayout fc_area_1_geo[] = {
-	GEO_BATCH_NODE_START(batch_lvl_dls_fc),
+	GEO_BATCH_NODE_START_WITH_FLIPBOOK(batch_lvl_dls_fc, fc_flipbooks),
 	GEO_OPEN_NODE(),
+		GEO_ASM(0, geo_render_backdrop),
 		GEO_LVL_BATCH_TRANSLATE_ROTATE(LAYER_OPAQUE, (f32)-9199.998779296875, (f32)-111250.0, (f32)85580.0, (f32)-0.0, (f32)15.77635557696982, (f32)0.0, fc_dl_0000_object_01435908_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_ROTATE(LAYER_OPAQUE, (f32)7940.0152587890625, (f32)-72970.0, (f32)82370.0, (f32)0.0, (f32)-20.94543420309901, (f32)0.0, fc_dl_0000_object_014496F4_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_ROTATE(LAYER_OPAQUE, (f32)-9199.998779296875, (f32)-76980.0, (f32)85580.0, (f32)-0.0, (f32)-157.4450811241734, (f32)0.0, fc_dl_0001_object_014358D0_mesh_layer_1),
@@ -732,7 +733,7 @@ const GeoLayout fc_area_1[] = {
 	GEO_OPEN_NODE(),
 		GEO_ZBUFFER(1),
 		GEO_OPEN_NODE(),
-			GEO_CAMERA_FRUSTUM_WITH_FUNC(45.0000, 100, 30000, geo_camera_fov),
+			GEO_CAMERA_FRUSTUM_WITH_FUNC(45.0000, 200, 50000, geo_camera_fov),
 			GEO_OPEN_NODE(),
 				GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 0, 0, 0, 0, -10, 0, geo_camera_main),
 				GEO_OPEN_NODE(),

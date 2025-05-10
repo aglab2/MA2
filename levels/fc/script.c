@@ -32,7 +32,12 @@
 #define fc_area_7 fc_area_1
 #define fc_area_8 fc_area_1
 #define fc_area_9 fc_area_1
+extern Gfx fc_skybox_fc_space_mesh[];
+extern const IWDHeader* iw_descs_fc[];
 static struct LevelConfig cfg = {
+	.skybox = fc_skybox_fc_space_mesh,
+	.viewRangeMult = 3.5f,
+	.iwds = iw_descs_fc,
 };
 /* Fast64 end persistent block [scripts] */
 

@@ -12,4 +12,6 @@ extern const LevelScript level_fc_entry[];
 #include "levels/fc/visual/header_lvlopt.inc.h"
 #endif
 
+#include "levels/fc/fc_skybox/header.h"
+
 #endif
