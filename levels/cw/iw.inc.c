@@ -30,7 +30,7 @@ static IWDirectionAreasDesc iw_area6 = {
 
 static IWDirectionAreasDesc iw_area7 = {
     { IWDT_DIRECTIONS },
-    { .z_high = 8, .z_low = 6, }
+    { .z_low = 6, }
 };
 
 const IWDHeader* iw_descs_cw[] = {
