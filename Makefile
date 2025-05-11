@@ -45,14 +45,6 @@ COMPILER ?= gcc
 $(eval $(call validate-option,COMPILER,gcc clang))
 
 
-# LIBGCCDIR - selects the libgcc configuration for checking for dividing by zero
-#   trap - GCC default behavior, uses teq instructions which some emulators don't like
-#   divbreak - this is similar to IDO behavior, and is default.
-#   nocheck - never checks for dividing by 0. Technically fastest, but also UB so not recommended
-LIBGCCDIR ?= divbreak
-$(eval $(call validate-option,LIBGCCDIR,trap divbreak nocheck))
-
-
 # SAVETYPE - selects the save type
 #   eep4k - uses EEPROM 4kbit
 #   eep16k - uses EEPROM 16kbit (There aren't any differences in syntax, but this is provided just in case)

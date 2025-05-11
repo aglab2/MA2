@@ -221,10 +221,10 @@ extern u16 guPerspectiveA(Mtx *m, u16 fovy, float aspect, float near, float far,
     AsS16P[14+16] = mi32;
 
     u16 perspNorm;
-    if (near+far<=2.0) {
+    if (near+far<=2.0f) {
 		perspNorm = (u16) 0xFFFF;
     } else {
-		perspNorm = (u16) ((2.0*65536.0)/(near+far));
+		perspNorm = (u16) ((2.0f*65536.0f)/(near+far));
 		if (perspNorm<=0) 
 		    perspNorm = (u16) 0x0001;
     }
