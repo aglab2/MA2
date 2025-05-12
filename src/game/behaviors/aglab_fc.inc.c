@@ -117,7 +117,7 @@ int fcgr_spin(struct MarioState *m)
         sCylVel.z += m->controller->stickY * 0.4f;
     }
 
-    f32 rvel = (m->input & INPUT_A_DOWN) ? 2.f : 4.f;
+    f32 rvel = (m->input & INPUT_A_DOWN) ? 1.5f : 4.f;
     sCylVel.r -= rvel;
 
     // apply position relative to the object
