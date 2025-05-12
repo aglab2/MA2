@@ -6520,3 +6520,12 @@ const BehaviorScript bhvCWBreakable[] = {
         CALL_NATIVE(bhv_breakable_shrinking_loop),
     END_LOOP(),
 };
+
+extern void bhv_fc_grav_loop();
+const BehaviorScript bhvFCGrav[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    SET_FLOAT(oDrawingDistance, 20000),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_fc_grav_loop),
+    END_LOOP(),
+};

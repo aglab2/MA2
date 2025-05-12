@@ -604,5 +604,6 @@ extern const BehaviorScript bhvWjUp[];
 extern const BehaviorScript bhvWjSide[];
 extern const BehaviorScript bhvSrJump[];
 extern const BehaviorScript bhvCWBreakable[];
+extern const BehaviorScript bhvFCGrav[];
 
 #endif // BEHAVIOR_DATA_H

@@ -861,6 +861,27 @@ s32 act_walking(struct MarioState *m) {
     return FALSE;
 }
 
+#include "fcgr.h"
+
+s32 act_fcgr_walking(struct MarioState *m, int landed)
+{
+    switch (fcgr_spin(m))
+    {
+        case FCGR_BREAK:
+            return set_mario_action(m, ACT_JUMP, 0);
+    }
+
+    if (m->input & INPUT_A_PRESSED) {
+        return set_mario_action(m, ACT_FCGR_JUMP, 0);
+    }
+
+    vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
+    vec3s_set(m->marioObj->header.gfx.angle, 0, m->faceAngle[1], 0x4000);
+    anim_and_audio_for_hold_walk(m);
+
+    return FALSE;
+}
+
 s32 act_move_punching(struct MarioState *m) {
     if (should_begin_sliding(m)) {
         return set_mario_action(m, ACT_BEGIN_SLIDING, 0);
@@ -2148,6 +2169,7 @@ s32 mario_execute_moving_action(struct MarioState *m) {
         [ 0xff & ACT_HOLD_QUICKSAND_JUMP_LAND ] = act_hold_quicksand_jump_land,
         [ 0xff & ACT_LONG_JUMP_LAND ]           = act_long_jump_land,
         [ 0xff & ACT_RAIL_GRIND ]               = act_rail_grind,
+        [ 0xff & ACT_FCGR_WALKING ]             = act_fcgr_walking,
     };
     cancel = kFuncs[m->action & 0xff](m);
 

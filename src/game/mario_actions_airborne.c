@@ -455,6 +455,26 @@ s32 act_jump(struct MarioState *m) {
     return FALSE;
 }
 
+#include "fcgr.h"
+
+s32 act_fcgr_jump(struct MarioState *m)
+{
+    switch (fcgr_spin(m))
+    {
+        case FCGR_LAND:
+            return set_mario_action(m, ACT_FCGR_WALKING, 0);
+        case FCGR_BREAK:
+            return set_mario_action(m, ACT_FREEFALL, 0);
+    }
+
+    play_mario_sound(m, SOUND_ACTION_TERRAIN_JUMP, 0);
+    vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
+    vec3s_set(m->marioObj->header.gfx.angle, 0, m->faceAngle[1], 0x4000);
+    set_mario_animation(m, MARIO_ANIM_SINGLE_JUMP);
+
+    return FALSE;
+}
+
 s32 act_double_jump(struct MarioState *m) {
     s32 animation = (m->vel[1] >= 0.0f)
         ? MARIO_ANIM_DOUBLE_JUMP_RISE
@@ -2104,6 +2124,7 @@ s32 mario_execute_airborne_action(struct MarioState *m) {
         [ 0xff & ACT_RIDING_HOOT ]          = act_riding_hoot,
         [ 0xff & ACT_TOP_OF_POLE_JUMP ]     = act_top_of_pole_jump,
         [ 0xff & ACT_VERTICAL_WIND ]        = act_vertical_wind,
+        [ 0xff & ACT_FCGR_JUMP ]            = act_fcgr_jump,
     };
 
     cancel = kFuncs[m->action & 0xff](m);

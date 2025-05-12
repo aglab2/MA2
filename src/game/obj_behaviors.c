@@ -798,6 +798,7 @@ static int aglabGlobalScratch[0x10];
 #include "behaviors/aglab_wj.inc.c"
 #include "behaviors/aglab_sr.inc.c"
 #include "behaviors/aglab_cw.inc.c"
+#include "behaviors/aglab_fc.inc.c"
 
 #include "behaviors/aglab_starmove.inc.c"
 #include "behaviors/aglab_spring.inc.c"

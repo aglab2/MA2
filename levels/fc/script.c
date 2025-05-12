@@ -35,10 +35,12 @@
 #define SEQ_LEVEL_GRASS 0x42
 extern Gfx fc_skybox_fc_space_mesh[];
 extern const IWDHeader* iw_descs_fc[];
+extern const RailDesc* rail_descs_fc[];
 static struct LevelConfig cfg = {
 	.skybox = fc_skybox_fc_space_mesh,
 	.viewRangeMult = 3.5f,
 	.iwds = iw_descs_fc,
+	.railDesc = rail_descs_fc,
 };
 /* Fast64 end persistent block [scripts] */
 
@@ -68,6 +70,9 @@ const LevelScript level_fc_entry[] = {
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		OBJECT(MODEL_CHECKPOINT, -8084, -8259, 11926, 0, 0, 0, 0x00000000, bhvCheckpoint),
+		OBJECT(MODEL_NONE, -8104, -8259, 12761, 0, 0, 0, 0x00000000, bhvFCGrav),
+		OBJECT(MODEL_NONE, -4060, -6044, 20005, 90, 0, 0, 0x00000000, bhvFCGrav),
 		TERRAIN(fc_area_2_collision),
 		MACRO_OBJECTS(fc_area_2_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
@@ -79,6 +84,7 @@ const LevelScript level_fc_entry[] = {
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		OBJECT(MODEL_NONE, -4060, -6044, -19995, 90, 0, 0, (2 << 16), bhvFCGrav),
 		TERRAIN(fc_area_3_collision),
 		MACRO_OBJECTS(fc_area_3_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
@@ -119,7 +125,7 @@ const LevelScript level_fc_entry[] = {
 		/* Fast64 begin persistent block [area commands] */
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
-	AREA(7, fc_area_7, 0, -7795, 18000),
+	AREA(7, fc_area_7, 0, -7796, 18000),
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
