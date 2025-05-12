@@ -876,7 +876,7 @@ s32 act_fcgr_walking(struct MarioState *m, int landed)
     }
 
     vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
-    vec3s_set(m->marioObj->header.gfx.angle, 0, m->faceAngle[1], 0x4000);
+    vec3s_set(m->marioObj->header.gfx.angle, m->faceAngle[0], m->faceAngle[1], m->faceAngle[2]);
     anim_and_audio_for_hold_walk(m);
 
     return FALSE;

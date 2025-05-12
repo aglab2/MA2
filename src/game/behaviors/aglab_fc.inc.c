@@ -30,8 +30,10 @@ void bhv_fc_grav_loop()
         drop_and_set_mario_action(gMarioStates, ACT_FCGR_JUMP, 0);   
         gMarioStates->usedObj = o;
         sCylVel = to_cyl_vec(gMarioStates->vel, x_axis, y_axis, z_axis);
-        sCylVel.r = 0.f;
-        sCylVel.theta = 0x169;
+        sCylVel.theta = 0.f;
+        sCylVel.r = -sCylVel.r;
+        if (sCylVel.r < 0)
+            sCylVel.r = 0.f;
     }
 }
 
@@ -114,7 +116,18 @@ int fcgr_spin(struct MarioState *m)
     if (landed)
     {
         sCylVel.z = sCylVel.z * 0.2f;
-        sCylVel.z += m->controller->stickY * 0.4f;
+        sCylVel.theta = sCylVel.theta * 0.97f;
+        if (obj->oFaceAnglePitch)
+        {
+            s16 diff = m->intendedYaw - obj->oFaceAngleYaw;
+            sCylVel.z += m->intendedMag * coss(diff) * 0.8f;
+            sCylVel.theta -= m->intendedMag * sins(diff) * 1.5f;
+        }
+        else
+        {
+            sCylVel.z += m->controller->stickY * 0.4f;
+            sCylVel.theta += m->controller->stickX * 0.9f;
+        }
     }
 
     f32 rvel = (m->input & INPUT_A_DOWN) ? 1.5f : 4.f;
@@ -126,7 +139,28 @@ int fcgr_spin(struct MarioState *m)
     cyl.z += sCylVel.z;
     cyl.r += sCylVel.r;
 
-    m->faceAngle[1] = cyl.theta - 0x4000;
+    if (!obj->oFaceAnglePitch)
+    {
+        m->faceAngle[0] = 0;
+        m->faceAngle[1] = cyl.theta - 0x4000;
+        m->faceAngle[2] = 0x4000;
+        if (sCylVel.theta < 0)
+        {
+            m->faceAngle[1] += 0x8000;
+            m->faceAngle[2] += 0x8000;
+        }
+    }
+    else
+    {
+        m->faceAngle[0] = 0;
+        m->faceAngle[1] = obj->oFaceAngleYaw;
+        m->faceAngle[2] = cyl.theta;
+        if (sCylVel.z < 0)
+        {
+            m->faceAngle[1] += 0x8000;
+            m->faceAngle[2] += 0x8000;
+        }
+    }
 
     if (cyl.r < 280.f)
     {
@@ -138,7 +172,10 @@ int fcgr_spin(struct MarioState *m)
     if (!in_tube(&cyl, 900.f, obj->oBehParams2ndByte))
     {
         type = FCGR_BREAK;
-        m->faceAngle[1] = -0x8000 + cyl.theta;
+        if (0 == obj->oFaceAnglePitch)
+        {
+            m->faceAngle[1] = -0x8000 + cyl.theta;
+        }
     }
 
     to_xyz(m->pos, &obj->oPosVec, x_axis, y_axis, z_axis, cyl);
@@ -147,9 +184,9 @@ int fcgr_spin(struct MarioState *m)
     m->slideVelZ = m->vel[2];
     m->forwardVel = sqrtf(sqr(m->vel[0]) + sqr(m->vel[2]));
 
-    print_text_fmt_int(20, 20, "V0 %d", (int) m->vel[0]); 
-    print_text_fmt_int(20, 40, "V2 %d", (int) m->vel[2]);
-    print_text_fmt_int(20, 60, "V %d", (int) m->forwardVel);
+    print_text_fmt_int(20, 20, "0 %d", (int) m->faceAngle[0]); 
+    print_text_fmt_int(20, 40, "1 %d", (int)m->faceAngle[1]);
+    print_text_fmt_int(20, 60, "2 %d", (int) m->faceAngle[2]);
 
     return type;
 }

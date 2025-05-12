@@ -21,24 +21,51 @@ static const RailDesc rails_area5[] = {
 	RAIL_END
 };
 
+static const SpringDesc spring_area6[] = {
+	fc_area_6_spline_NurbsCurve_Spring,
+	NULL
+};
+
 static const RailDesc rails_area6[] = {
 	RAIL_TRAJ(fc_area_6_spline_0072_object_01448964_002_Rail),
 	RAIL_TRAJ(fc_area_6_spline_0073_object_01441884_001_Rail),
 	RAIL_TRAJ(fc_area_6_spline_0074_object_01440DDC_001_Rail),
+	LOOP_TRAJ(fc_area_6_spline_NurbsCurve_Loop, loop_desc_fc_area_6_spline_NurbsCurve_Loop),
 	RAIL_END
 };
 
 static const RailDesc rails_area7[] = {
+	RAIL_TRAJ(fc_area_7_spline_0042_object_01446BC4_001_Rail_001),
 	RAIL_TRAJ(fc_area_7_spline_0052_object_014445CC_002_Rail),
+	RAIL_TRAJ(fc_area_7_spline_0053_object_01443A64_001_Rail_001),
 	RAIL_TRAJ(fc_area_7_spline_0053_object_01443A64_002_Rail),
 	LOOP_TRAJ(fc_area_7_spline_0051_object_01445834_001_Loop, loop_desc_fc_area_7_spline_0051_object_01445834_001_Loop),
 	RAIL_END
+};
+
+static const SpringDesc spring_area8[] = {
+	fc_area_8_spline_NurbsCurve_Spring_001,
+	fc_area_8_spline_NurbsCurve_Spring_002,
+	fc_area_8_spline_NurbsCurve_Spring_003,
+	NULL
 };
 
 static const RailDesc rails_area8[] = {
 	RAIL_TRAJ(fc_area_8_spline_0042_object_01446BC4_001_Rail),
 	RAIL_TRAJ(fc_area_8_spline_0053_object_01443A64_001_Rail),
 	RAIL_END
+};
+
+const SpringDesc* spring_descs_fc[] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	spring_area6,
+	NULL,
+	spring_area8,
+	NULL,
 };
 
 const RailDesc* rail_descs_fc[] = {

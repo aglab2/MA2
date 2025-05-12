@@ -7,6 +7,7 @@
 #include "instant_warp_desc.h"
 #include "flipbook.h"
 #include "rail_desc.h"
+#include "spring_desc.h"
 
 #include "make_const_nonconst.h"
 
@@ -16,6 +17,8 @@
 static const LDLDesc loop_desc1 = { 0 };
 #define loop_desc_fc_area_2_spline_0167_object_0143E7FC_001_Loop &loop_desc1
 #define loop_desc_fc_area_7_spline_0051_object_01445834_001_Loop &loop_desc1
+#define loop_desc_fc_area_6_spline_NurbsCurve_Loop &loop_desc1
+
 #include "levels/fc/visual/header_lvlopt.inc.h"
 #include "levels/fc/visual/model_lvlopt.inc.c"
 #include "levels/fc/flipbook.inc.c"

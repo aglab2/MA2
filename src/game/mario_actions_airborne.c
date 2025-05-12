@@ -469,7 +469,7 @@ s32 act_fcgr_jump(struct MarioState *m)
 
     play_mario_sound(m, SOUND_ACTION_TERRAIN_JUMP, 0);
     vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
-    vec3s_set(m->marioObj->header.gfx.angle, 0, m->faceAngle[1], 0x4000);
+    vec3s_set(m->marioObj->header.gfx.angle, m->faceAngle[0], m->faceAngle[1], m->faceAngle[2]);
     set_mario_animation(m, MARIO_ANIM_SINGLE_JUMP);
 
     return FALSE;

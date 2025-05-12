@@ -91,3 +91,24 @@ const Trajectory fc_area_8_spline_0053_object_01443A64_001_Rail[] = {
 	TRAJECTORY_POS( 22, 1210, 198, 13812),
 	TRAJECTORY_END(),
 };
+const Trajectory fc_area_8_spline_NurbsCurve_Spring_001[] = {
+	TRAJECTORY_POS( 0, 1810, -5748, 4300),
+	TRAJECTORY_POS( 1, 1783, -4573, 3590),
+	TRAJECTORY_POS( 2, 1738, -3798, 2401),
+	TRAJECTORY_POS( 3, 1693, -3649, 1219),
+	TRAJECTORY_END(),
+};
+const Trajectory fc_area_8_spline_NurbsCurve_Spring_002[] = {
+	TRAJECTORY_POS( 0, 1190, 182, 13800),
+	TRAJECTORY_POS( 1, 843, -513, 11857),
+	TRAJECTORY_POS( 2, 562, -2048, 10356),
+	TRAJECTORY_POS( 3, 490, -3718, 9650),
+	TRAJECTORY_END(),
+};
+const Trajectory fc_area_8_spline_NurbsCurve_Spring_003[] = {
+	TRAJECTORY_POS( 0, 1460, 2732, -18600),
+	TRAJECTORY_POS( 1, 1458, 6429, -18698),
+	TRAJECTORY_POS( 2, 1458, 6429, -18765),
+	TRAJECTORY_POS( 3, 1460, 6370, -18834),
+	TRAJECTORY_END(),
+};
