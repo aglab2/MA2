@@ -9,9 +9,12 @@ static cyl_t to_cyl_vec(const Vec3f rel, const Vec3f x_axis, const Vec3f y_axis,
 static void to_xyz(Vec3f point, const Vec3f start, const Vec3f x_axis, const Vec3f y_axis, const Vec3f z_axis, cyl_t cyl);
 static void to_xyz_vec(Vec3f point, const Vec3f x_axis, const Vec3f y_axis, const Vec3f z_axis, cyl_t cyl);
 static void gen_axis(Vec3f x_axis, Vec3f y_axis, Vec3f z_axis, s16 yaw, s16 pitch);
+static void gen_axis_point_oriented(Vec3f x_axis_new, Vec3f y_axis_new, const Vec3f x_axis, const Vec3f y_axis, const Vec3f z_axis, const s16 theta);
 static int in_tube(const cyl_t* cyl, f32 lim, int len);
 
 static cyl_t sCylVel;
+
+#define IN_TUBE_R 900.f
 
 void bhv_fc_grav_loop()
 {
@@ -25,15 +28,25 @@ void bhv_fc_grav_loop()
 
     cyl_t cyl = to_cyl(gMarioStates[0].pos, &o->oPosVec, x_axis, y_axis, z_axis);
 
-    if (in_tube(&cyl, 800.f, o->oBehParams2ndByte))
+    if (in_tube(&cyl, IN_TUBE_R, o->oBehParams2ndByte))
     {
         drop_and_set_mario_action(gMarioStates, ACT_FCGR_JUMP, 0);   
         gMarioStates->usedObj = o;
-        sCylVel = to_cyl_vec(gMarioStates->vel, x_axis, y_axis, z_axis);
-        sCylVel.theta = 0.f;
-        sCylVel.r = -sCylVel.r;
-        if (sCylVel.r < 0)
-            sCylVel.r = 0.f;
+
+        // For velocity conversion, we cannot use generic 'to_cyl' function because
+        // angular speed depends on the location of the object, not just the velocity.
+
+        // We are performing the transformation manually, similarly to the 'to_cyl_vec' function
+
+        Vec3f x_axis_new;
+        Vec3f y_axis_new;
+        gen_axis_point_oriented(x_axis_new, y_axis_new, x_axis, y_axis, z_axis, cyl.theta);
+
+        // Our choice of x_axis_new and y_axis_new is such that the 'r' value is the distance from the object to the pole...
+        sCylVel.z = vec3_dot(gMarioStates->vel, z_axis);
+        sCylVel.r = vec3_dot(gMarioStates->vel, x_axis_new);
+        // ... and the 'theta' is angular speed around the pole projected on 'y_axis_new'
+        sCylVel.theta = vec3_dot(gMarioStates->vel, y_axis_new) / cyl.r;
     }
 }
 
@@ -92,6 +105,16 @@ static void gen_axis(Vec3f x_axis, Vec3f y_axis, Vec3f z_axis, s16 yaw, s16 pitc
     y_axis[2] = -coss(yaw) * coss(pitch);
 }
 
+static void gen_axis_point_oriented(Vec3f x_axis_new, Vec3f y_axis_new, const Vec3f x_axis, const Vec3f y_axis, const Vec3f z_axis, const s16 theta)
+{
+    {
+        cyl_t cyl_flat = { .r = 1.f, .z = 0.f, .theta = theta };
+        to_xyz_vec(x_axis_new, x_axis, y_axis, z_axis, cyl_flat);
+        vec3_normalize(x_axis_new);
+    }
+    vec3_cross(y_axis_new, z_axis, x_axis_new);
+}
+
 #define FCGR_CONTINUE 0
 #define FCGR_LAND 1
 #define FCGR_BREAK 2
@@ -113,24 +136,30 @@ int fcgr_spin(struct MarioState *m)
         sCylVel.r = 50.f;
     }
 
+    f32 friction = 0.90f;
     if (landed)
     {
-        sCylVel.z = sCylVel.z * 0.2f;
-        sCylVel.theta = sCylVel.theta * 0.97f;
+        friction = (m->input & INPUT_NONZERO_ANALOG) ? 0.95f : 0.1f;
+    }
+
+    sCylVel.z = CLAMP(sCylVel.z * friction, -50.f, 50.f);
+    sCylVel.theta = CLAMP(sCylVel.theta * friction, -0x1000, 0x1000);
+    if (landed)
+    {
         if (obj->oFaceAnglePitch)
         {
             s16 diff = m->intendedYaw - obj->oFaceAngleYaw;
-            sCylVel.z += m->intendedMag * coss(diff) * 0.8f;
-            sCylVel.theta -= m->intendedMag * sins(diff) * 1.5f;
+            sCylVel.z += m->intendedMag * coss(diff) * 0.05f * 1.5f;
+            sCylVel.theta -= m->intendedMag * sins(diff) * 0.8f * 1.5f;
         }
         else
         {
-            sCylVel.z += m->controller->stickY * 0.4f;
-            sCylVel.theta += m->controller->stickX * 0.9f;
+            sCylVel.z += m->controller->stickY * 0.05f;
+            sCylVel.theta += m->controller->stickX * 0.8f;
         }
     }
 
-    f32 rvel = (m->input & INPUT_A_DOWN) ? 1.5f : 4.f;
+    f32 rvel = (m->input & INPUT_A_DOWN) ? 1.f : 4.f;
     sCylVel.r -= rvel;
 
     // apply position relative to the object
@@ -158,7 +187,6 @@ int fcgr_spin(struct MarioState *m)
         if (sCylVel.z < 0)
         {
             m->faceAngle[1] += 0x8000;
-            m->faceAngle[2] += 0x8000;
         }
     }
 
@@ -169,7 +197,7 @@ int fcgr_spin(struct MarioState *m)
         type = FCGR_LAND;
     }
 
-    if (!in_tube(&cyl, 900.f, obj->oBehParams2ndByte))
+    if (!in_tube(&cyl, IN_TUBE_R + 100.f, obj->oBehParams2ndByte))
     {
         type = FCGR_BREAK;
         if (0 == obj->oFaceAnglePitch)
@@ -179,10 +207,23 @@ int fcgr_spin(struct MarioState *m)
     }
 
     to_xyz(m->pos, &obj->oPosVec, x_axis, y_axis, z_axis, cyl);
-    to_xyz_vec(m->vel, x_axis, y_axis, z_axis, sCylVel);
+
+    Vec3f x_axis_new;
+    Vec3f y_axis_new;
+    gen_axis_point_oriented(x_axis_new, y_axis_new, x_axis, y_axis, z_axis, cyl.theta);
+
+    // A reverse of transformation above
+    Vec3f rel;
+    vec3_scale_dest(rel, x_axis_new, sCylVel.r);
+    Vec3f tmp;
+    vec3_scale_dest(tmp, y_axis_new, cyl.r * sCylVel.theta);
+    vec3_add(rel, tmp);
+    vec3_scale_dest(m->vel, z_axis, sCylVel.z);
+
     m->slideVelX = m->vel[0];
     m->slideVelZ = m->vel[2];
     m->forwardVel = sqrtf(sqr(m->vel[0]) + sqr(m->vel[2]));
+    m->extraGravityEnabled = 1;
 
     print_text_fmt_int(20, 20, "0 %d", (int) m->faceAngle[0]); 
     print_text_fmt_int(20, 40, "1 %d", (int)m->faceAngle[1]);
@@ -194,7 +235,7 @@ int fcgr_spin(struct MarioState *m)
 static int in_tube(const cyl_t* cyl, f32 lim, int len)
 {
     f32 height = 1400.f + 1500.f * len;
-    int z_ok = 100.f < cyl->z && cyl->z < height;
+    int z_ok = 0.f < cyl->z && cyl->z < height;
     int r_ok = cyl->r < lim;
     return z_ok && r_ok;
 }
