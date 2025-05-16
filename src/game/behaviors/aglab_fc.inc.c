@@ -136,7 +136,7 @@ int fcgr_spin(struct MarioState *m)
         sCylVel.r = 50.f;
     }
 
-    f32 friction = 0.90f;
+    f32 friction = 0.99f;
     if (landed)
     {
         friction = (m->input & INPUT_NONZERO_ANALOG) ? 0.95f : 0.1f;
