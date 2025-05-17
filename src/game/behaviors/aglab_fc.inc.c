@@ -46,7 +46,8 @@ void bhv_fc_grav_loop()
         sCylVel.z = vec3_dot(gMarioStates->vel, z_axis);
         sCylVel.r = vec3_dot(gMarioStates->vel, x_axis_new);
         // ... and the 'theta' is angular speed around the pole projected on 'y_axis_new'
-        sCylVel.theta = vec3_dot(gMarioStates->vel, y_axis_new) / cyl.r;
+        // mind that angular speed is in radians, so we need to convert it to mario degrees
+        sCylVel.theta = vec3_dot(gMarioStates->vel, y_axis_new) / cyl.r / M_PI * 0x10000;
     }
 }
 
@@ -136,26 +137,28 @@ int fcgr_spin(struct MarioState *m)
         sCylVel.r = 50.f;
     }
 
-    f32 friction = 0.99f;
+    f32 frictionAngular = 0.96f;
+    f32 frictionPositional = 0.99f;
     if (landed)
     {
-        friction = (m->input & INPUT_NONZERO_ANALOG) ? 0.95f : 0.1f;
+        frictionPositional = (m->input & INPUT_NONZERO_ANALOG) ? 0.95f : 0.2f;
+        frictionAngular = (m->input & INPUT_NONZERO_ANALOG) ? 0.94f : 0.1f;
     }
 
-    sCylVel.z = CLAMP(sCylVel.z * friction, -50.f, 50.f);
-    sCylVel.theta = CLAMP(sCylVel.theta * friction, -0x1000, 0x1000);
+    sCylVel.z = CLAMP(sCylVel.z * frictionPositional, -50.f, 50.f);
+    sCylVel.theta = CLAMP(sCylVel.theta * frictionAngular, -0x1000, 0x1000);
     if (landed)
     {
         if (obj->oFaceAnglePitch)
         {
             s16 diff = m->intendedYaw - obj->oFaceAngleYaw;
             sCylVel.z += m->intendedMag * coss(diff) * 0.05f * 1.5f;
-            sCylVel.theta -= m->intendedMag * sins(diff) * 0.8f * 1.5f;
+            sCylVel.theta -= m->intendedMag * sins(diff) * 0.8f * 3.f;
         }
         else
         {
-            sCylVel.z += m->controller->stickY * 0.05f;
-            sCylVel.theta += m->controller->stickX * 0.8f;
+            sCylVel.z += m->controller->stickY * 0.04f;
+            sCylVel.theta += m->controller->stickX * 1.f;
         }
     }
 
@@ -187,6 +190,7 @@ int fcgr_spin(struct MarioState *m)
         if (sCylVel.z < 0)
         {
             m->faceAngle[1] += 0x8000;
+            m->faceAngle[2] = -m->faceAngle[2];
         }
     }
 
@@ -216,18 +220,16 @@ int fcgr_spin(struct MarioState *m)
     Vec3f rel;
     vec3_scale_dest(rel, x_axis_new, sCylVel.r);
     Vec3f tmp;
-    vec3_scale_dest(tmp, y_axis_new, cyl.r * sCylVel.theta);
+    f32 angularVel = cyl.r * sCylVel.theta * M_PI / 0x10000;
+    vec3_scale_dest(tmp, y_axis_new, angularVel);
     vec3_add(rel, tmp);
-    vec3_scale_dest(m->vel, z_axis, sCylVel.z);
+    vec3_scale_dest(tmp, z_axis, sCylVel.z);
+    vec3_sum(m->vel, tmp, rel);
 
     m->slideVelX = m->vel[0];
     m->slideVelZ = m->vel[2];
     m->forwardVel = sqrtf(sqr(m->vel[0]) + sqr(m->vel[2]));
     m->extraGravityEnabled = 1;
-
-    print_text_fmt_int(20, 20, "0 %d", (int) m->faceAngle[0]); 
-    print_text_fmt_int(20, 40, "1 %d", (int)m->faceAngle[1]);
-    print_text_fmt_int(20, 60, "2 %d", (int) m->faceAngle[2]);
 
     return type;
 }
