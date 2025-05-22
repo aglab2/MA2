@@ -134,10 +134,11 @@ int fcgr_spin(struct MarioState *m)
     int landed = m->action == ACT_FCGR_WALKING;
     if (landed && (m->input & INPUT_A_PRESSED))
     {
-        sCylVel.r = 50.f;
+        // this is not exactly sane to give theta to the speed but it will feel better
+        sCylVel.r = 50.f + absf(sCylVel.theta) * 0.01f;
     }
 
-    f32 frictionAngular = 0.96f;
+    f32 frictionAngular = 0.9f;
     f32 frictionPositional = 0.99f;
     if (landed)
     {
@@ -198,11 +199,6 @@ int fcgr_spin(struct MarioState *m)
     f32 za_forwardVel = sqrtf(sqr(vel_component_za[0]) + sqr(vel_component_za[2]));
     s16 zaAngle = atan2s(angularVel, sCylVel.z);
 
-    print_text_fmt_int(120, 20, "V0 %d", vel_component_za[0]);
-    print_text_fmt_int(120, 40, "V1 %d", vel_component_za[1]);
-    print_text_fmt_int(120, 60, "V2 %d", vel_component_za[2]);
-    print_text_fmt_int(120, 80, "VF %d", za_forwardVel);
-
     if (!obj->oFaceAnglePitch)
     {
         m->faceAngle[0] = 0;
@@ -225,7 +221,6 @@ int fcgr_spin(struct MarioState *m)
     else
     {
         int parts = ((int) ((u16) (cyl.theta + 0x2000))) / 0x4000;
-        print_text_fmt_int(120, 100, "P %d", parts);
         switch (parts)
         {
             case 0:
@@ -259,15 +254,6 @@ int fcgr_spin(struct MarioState *m)
         }
     }
 
-    if (!in_tube(&cyl, IN_TUBE_R + 100.f, obj->oBehParams2ndByte))
-    {
-        type = FCGR_BREAK;
-        if (0 == obj->oFaceAnglePitch)
-        {
-            m->faceAngle[1] = -0x8000 + cyl.theta;
-        }
-    }
-
     Vec3f vel_component_r;
     vec3_scale_dest(vel_component_r, x_axis_new, sCylVel.r);
     vec3_sum(m->vel, vel_component_r, vel_component_za);
@@ -275,6 +261,21 @@ int fcgr_spin(struct MarioState *m)
     m->slideVelX = m->vel[0];
     m->slideVelZ = m->vel[2];
     m->forwardVel = sqrtf(sqr(m->vel[0]) + sqr(m->vel[2]));
+
+    if (!in_tube(&cyl, IN_TUBE_R + 100.f, obj->oBehParams2ndByte))
+    {
+        type = FCGR_BREAK;
+        if (0 == obj->oFaceAnglePitch)
+        {
+            m->faceAngle[1] = atan2s(m->vel[2], m->vel[0]);
+        }
+        else
+        {
+            m->faceAngle[0] = 0;
+            m->faceAngle[1] = atan2s(m->vel[2], m->vel[0]);
+            m->faceAngle[2] = 0;
+        }
+    }
 
     m->extraGravityEnabled = 1;
 
