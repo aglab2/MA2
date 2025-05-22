@@ -171,34 +171,92 @@ int fcgr_spin(struct MarioState *m)
     cyl.z += sCylVel.z;
     cyl.r += sCylVel.r;
 
-    if (!obj->oFaceAnglePitch)
-    {
-        m->faceAngle[0] = 0;
-        m->faceAngle[1] = cyl.theta - 0x4000;
-        m->faceAngle[2] = 0x4000;
-        if (sCylVel.theta < 0)
-        {
-            m->faceAngle[1] += 0x8000;
-            m->faceAngle[2] += 0x8000;
-        }
-    }
-    else
-    {
-        m->faceAngle[0] = 0;
-        m->faceAngle[1] = obj->oFaceAngleYaw;
-        m->faceAngle[2] = cyl.theta;
-        if (sCylVel.z < 0)
-        {
-            m->faceAngle[1] += 0x8000;
-            m->faceAngle[2] = -m->faceAngle[2];
-        }
-    }
-
     if (cyl.r < 280.f)
     {
         cyl.r = 280.f;
         sCylVel.r = 0.f;
         type = FCGR_LAND;
+    }
+
+    to_xyz(m->pos, &obj->oPosVec, x_axis, y_axis, z_axis, cyl);
+
+    // A reverse of transformation above for velocity
+    Vec3f x_axis_new;
+    Vec3f y_axis_new;
+    gen_axis_point_oriented(x_axis_new, y_axis_new, x_axis, y_axis, z_axis, cyl.theta);
+
+    Vec3f vel_component_a;
+    f32 angularVel = cyl.r * sCylVel.theta * M_PI / 0x10000;
+    vec3_scale_dest(vel_component_a, y_axis_new, angularVel);
+
+    Vec3f vel_component_z;
+    vec3_scale_dest(vel_component_z, z_axis, sCylVel.z);
+
+    Vec3f vel_component_za;
+    vec3_sum(vel_component_za, vel_component_a, vel_component_z);
+
+    f32 za_forwardVel = sqrtf(sqr(vel_component_za[0]) + sqr(vel_component_za[2]));
+    s16 zaAngle = atan2s(angularVel, sCylVel.z);
+
+    print_text_fmt_int(120, 20, "V0 %d", vel_component_za[0]);
+    print_text_fmt_int(120, 40, "V1 %d", vel_component_za[1]);
+    print_text_fmt_int(120, 60, "V2 %d", vel_component_za[2]);
+    print_text_fmt_int(120, 80, "VF %d", za_forwardVel);
+
+    if (!obj->oFaceAnglePitch)
+    {
+        m->faceAngle[0] = 0;
+        if (za_forwardVel < 0.1f)
+            m->faceAngle[1] = cyl.theta - 0x4000;
+        else
+            m->faceAngle[1] = atan2s(vel_component_za[2], vel_component_za[0]);
+        
+        f32 mult = sCylVel.theta < 0 ? 0.5f : -0.5f;
+        if (za_forwardVel < 0.1f && absf(vel_component_za[1]) < 0.1f)
+            m->faceAngle[2] = 0x4000 + mult * atan2s(za_forwardVel, vel_component_za[1]);
+        else
+            m->faceAngle[2] = 0x4000;
+
+        if (sCylVel.theta < 0)
+        {
+            m->faceAngle[2] += 0x8000;
+        }
+    }
+    else
+    {
+        int parts = ((int) ((u16) (cyl.theta + 0x2000))) / 0x4000;
+        print_text_fmt_int(120, 100, "P %d", parts);
+        switch (parts)
+        {
+            case 0:
+            {
+                m->faceAngle[0] = cyl.theta;
+                m->faceAngle[1] = zaAngle - 0x4000;
+                m->faceAngle[2] = 0;
+            }
+            break;
+            case 1:
+            {
+                m->faceAngle[0] = -zaAngle + 0x4000;
+                m->faceAngle[1] = 0;
+                m->faceAngle[2] = 0x4000;
+            }
+            break;
+            case 2:
+            {
+                m->faceAngle[0] = cyl.theta;
+                m->faceAngle[1] = -zaAngle - 0x4000;
+                m->faceAngle[2] = 0;
+            }
+            break;
+            case 3:
+            {
+                m->faceAngle[0] = -zaAngle - 0x4000;
+                m->faceAngle[1] = 0;
+                m->faceAngle[2] = -0x4000;
+            }
+            break;
+        }
     }
 
     if (!in_tube(&cyl, IN_TUBE_R + 100.f, obj->oBehParams2ndByte))
@@ -210,25 +268,14 @@ int fcgr_spin(struct MarioState *m)
         }
     }
 
-    to_xyz(m->pos, &obj->oPosVec, x_axis, y_axis, z_axis, cyl);
-
-    Vec3f x_axis_new;
-    Vec3f y_axis_new;
-    gen_axis_point_oriented(x_axis_new, y_axis_new, x_axis, y_axis, z_axis, cyl.theta);
-
-    // A reverse of transformation above
-    Vec3f rel;
-    vec3_scale_dest(rel, x_axis_new, sCylVel.r);
-    Vec3f tmp;
-    f32 angularVel = cyl.r * sCylVel.theta * M_PI / 0x10000;
-    vec3_scale_dest(tmp, y_axis_new, angularVel);
-    vec3_add(rel, tmp);
-    vec3_scale_dest(tmp, z_axis, sCylVel.z);
-    vec3_sum(m->vel, tmp, rel);
+    Vec3f vel_component_r;
+    vec3_scale_dest(vel_component_r, x_axis_new, sCylVel.r);
+    vec3_sum(m->vel, vel_component_r, vel_component_za);
 
     m->slideVelX = m->vel[0];
     m->slideVelZ = m->vel[2];
     m->forwardVel = sqrtf(sqr(m->vel[0]) + sqr(m->vel[2]));
+
     m->extraGravityEnabled = 1;
 
     return type;
