@@ -279,7 +279,7 @@ static void *dynamic_dma_read(int region, u8 *srcStart, u8 *srcEnd, u32 alignmen
     return dest;
 }
 
-static void *dynamic_dma_read_freeable(int region, u8 *srcStart, u8 *srcEnd, u32 alignment, u32 bssLength) {
+static void *dynamic_dma_read_freeable(u8 *srcStart, u8 *srcEnd, u32 alignment, u32 bssLength) {
     u32 size = ALIGN16(srcEnd - srcStart);
     void* dest = main_pool_alloc_aligned_freeable(region, size + bssLength, alignment);
     if (dest != NULL) {
@@ -522,7 +522,7 @@ void mem_pool_free(struct MemoryPool *pool, void *addr) {
 }
 
 static struct DmaTable *load_dma_table_address(u8 *srcAddr) {
-    struct DmaTable *table = dynamic_dma_read_freeable(0, srcAddr, srcAddr + sizeof(u32), 0, 0);
+    struct DmaTable *table = dynamic_dma_read_freeable(srcAddr, srcAddr + sizeof(u32), 0, 0);
     u32 size = table->count * sizeof(struct OffsetSizePair) +
         sizeof(struct DmaTable) - sizeof(struct OffsetSizePair);
     main_pool_free(table);
