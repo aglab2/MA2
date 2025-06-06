@@ -281,7 +281,7 @@ static void *dynamic_dma_read(int region, u8 *srcStart, u8 *srcEnd, u32 alignmen
 
 static void *dynamic_dma_read_freeable(u8 *srcStart, u8 *srcEnd, u32 alignment, u32 bssLength) {
     u32 size = ALIGN16(srcEnd - srcStart);
-    void* dest = main_pool_alloc_aligned_freeable(region, size + bssLength, alignment);
+    void* dest = main_pool_alloc_aligned_freeable(0, size + bssLength, alignment);
     if (dest != NULL) {
         dma_read(((u8 *)dest), srcStart, srcEnd);
         if (bssLength) {

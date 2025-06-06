@@ -114,6 +114,10 @@ extern u8 fc_dl_space128_12_ci4[];
 extern u8 fc_dl_space128_12_pal_rgba16[];
 extern u8 fc_dl_space128_8_ci4[];
 extern u8 fc_dl_space128_8_pal_rgba16[];
+extern u8 fc_dl_miu256_fc001_ci4[];
+extern u8 fc_dl_miu256_fc001_pal_rgba16[];
+extern u8 fc_dl_miu64_fc006_ci4[];
+extern u8 fc_dl_miu64_fc006_pal_rgba16[];
 extern Vtx fc_dl_0000_object_01435908_mesh_layer_1_vtx_0[8];
 extern Gfx fc_dl_0000_object_01435908_mesh_layer_1_tri_0[];
 extern Vtx fc_dl_0000_object_01435908_mesh_layer_1_vtx_1[8];
@@ -3416,6 +3420,20 @@ extern Vtx fc_dl_0377_object_01413C08_mesh_layer_1_vtx_0[3];
 extern Gfx fc_dl_0377_object_01413C08_mesh_layer_1_tri_0[];
 extern Vtx fc_dl_0377_object_01413C08_mesh_layer_1_vtx_1[6];
 extern Gfx fc_dl_0377_object_01413C08_mesh_layer_1_tri_1[];
+extern Vtx fc_dl_object_0112F420_mesh_layer_4_vtx_0[4];
+extern Gfx fc_dl_object_0112F420_mesh_layer_4_tri_0[];
+extern Vtx fc_dl_object_0112F420_mesh_layer_4_vtx_1[32];
+extern Gfx fc_dl_object_0112F420_mesh_layer_4_tri_1[];
+extern Vtx fc_dl_object_0112F420_mesh_layer_4_vtx_2[4];
+extern Gfx fc_dl_object_0112F420_mesh_layer_4_tri_2[];
+extern Vtx fc_dl_object_0112F420_mesh_layer_4_vtx_3[4];
+extern Gfx fc_dl_object_0112F420_mesh_layer_4_tri_3[];
+extern Vtx fc_dl_object_0112F420_mesh_layer_1_vtx_0[199];
+extern Gfx fc_dl_object_0112F420_mesh_layer_1_tri_0[];
+extern Vtx fc_dl_object_0112F420_mesh_layer_1_vtx_1[14];
+extern Gfx fc_dl_object_0112F420_mesh_layer_1_tri_1[];
+extern Vtx fc_dl_object_0112F420_mesh_layer_1_vtx_2[8];
+extern Gfx fc_dl_object_0112F420_mesh_layer_1_tri_2[];
 extern u32 fc_dl_0000_object_01435908_mesh_layer_1[];
 extern u32 fc_dl_0000_object_014496F4_mesh_layer_1[];
 extern u32 fc_dl_0001_object_014358D0_mesh_layer_1[];
@@ -4024,6 +4042,8 @@ extern u32 fc_dl_0305_object_01414320_mesh_layer_1[];
 extern u32 fc_dl_0306_object_014319D0_mesh_layer_1[];
 extern u32 fc_dl_0370_object_01413FD0_mesh_layer_1[];
 extern u32 fc_dl_0377_object_01413C08_mesh_layer_1[];
+extern u32 fc_dl_object_0112F420_mesh_layer_4[];
+extern u32 fc_dl_object_0112F420_mesh_layer_1[];
 #define LVL_BATCH_LAYER_OPAQUE_FC_DL_SPACE128_4_PAL_RGBA16 0
 #define LVL_BATCH_LAYER_OPAQUE_FC_DL_SPACE128_3_PAL_RGBA16 1
 #define LVL_BATCH_LAYER_OPAQUE_FC_DL_SPACE64_18_PAL_RGBA16 2
@@ -4112,10 +4132,12 @@ extern u32 fc_dl_0377_object_01413C08_mesh_layer_1[];
 #define LVL_BATCH_LAYER_OPAQUE_FC_DL_SPACE256_7_PAL_RGBA16_1 85
 #define LVL_BATCH_LAYER_OPAQUE_FC_DL_SPACE128_3_PAL_RGBA16_2 86
 #define LVL_BATCH_LAYER_OPAQUE_FC_DL_SPACE32_2_PAL_RGBA16_1 87
+#define LVL_BATCH_LAYER_OPAQUE_FC_DL_MIU64_FC006_PAL_RGBA16 88
 #define LVL_BATCH_LAYER_TRANSPARENT_FC_DL_MIU64_FR012_RGBA32 0
 #define LVL_BATCH_LAYER_TRANSPARENT_FC_DL_MIU128_FC001_RGBA32 1
 #define LVL_BATCH_LAYER_TRANSPARENT_FC_DL_MIU128_FC004_PAL_RGBA16 2
 #define LVL_BATCH_LAYER_TRANSPARENT_FC_DL_MIU128_FC001_PAL_RGBA16 3
+#define LVL_BATCH_LAYER_ALPHA_FC_DL_MIU256_FC001_PAL_RGBA16 0
 extern struct BatchLevelDisplayLists batch_lvl_dls_fc[LAYER_COUNT];
 #define fc_dl_0002_object_01435898_mesh_layer_1_vtx_2 fc_dl_0001_object_014358D0_mesh_layer_1_vtx_2
 #define fc_dl_000_object_011259A0_003_mesh_layer_1_vtx_0 fc_dl_000_object_011259A0_mesh_layer_1_vtx_0
@@ -5563,6 +5585,7 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_fc[LAYER_COUNT];
 #define mat_revert_fc_dl_objLandTable0040_sa2blvl_59_f3d mat_revert_fc_dl_objLandTable0040_sa2blvl_0_f3d
 #define mat_revert_fc_dl_objLandTable0040_sa2blvl_60_f3d mat_revert_fc_dl_objLandTable0040_sa2blvl_0_f3d
 #define mat_revert_fc_dl_objLandTable0040_sa2blvl_61_f3d mat_revert_fc_dl_objLandTable0040_sa2blvl_0_f3d
+#define mat_revert_fc_dl_FCG_CYL_SPARK_sa2bmdl_2_f3d mat_revert_fc_dl_objLandTable0040_sa2blvl_0_f3d
 #define fc_dl_0002_object_01435898_mesh_layer_1_tri_2 fc_dl_0001_object_014358D0_mesh_layer_1_tri_2
 #define fc_dl_000_object_011259A0_003_mesh_layer_1_tri_0 fc_dl_000_object_011259A0_mesh_layer_1_tri_0
 #define fc_dl_000_object_011259A0_003_mesh_layer_1_tri_1 fc_dl_000_object_011259A0_mesh_layer_1_tri_1
