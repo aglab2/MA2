@@ -13,6 +13,7 @@ static void gen_axis_point_oriented(Vec3f x_axis_new, Vec3f y_axis_new, const Ve
 static int in_tube(const cyl_t* cyl, f32 lim, int len);
 
 static cyl_t sCylVel;
+static s16 sCylArea;
 
 #define IN_TUBE_R 900.f
 
@@ -32,6 +33,7 @@ void bhv_fc_grav_loop()
     {
         drop_and_set_mario_action(gMarioStates, ACT_FCGR_JUMP, 0);   
         gMarioStates->usedObj = o;
+        sCylArea = gCurrAreaIndex;
 
         // For velocity conversion, we cannot use generic 'to_cyl' function because
         // angular speed depends on the location of the object, not just the velocity.
@@ -122,6 +124,12 @@ static void gen_axis_point_oriented(Vec3f x_axis_new, Vec3f y_axis_new, const Ve
 
 int fcgr_spin(struct MarioState *m)
 {
+    if (gCurrAreaIndex != sCylArea)
+    {
+        m->usedObj = NULL;
+        return FCGR_BREAK;
+    }
+
     int type = FCGR_CONTINUE;
 
     // spin around the 'usedObj' object around the axis of the object
@@ -265,6 +273,7 @@ int fcgr_spin(struct MarioState *m)
     if (!in_tube(&cyl, IN_TUBE_R + 100.f, obj->oBehParams2ndByte))
     {
         type = FCGR_BREAK;
+        m->usedObj = NULL;
         if (0 == obj->oFaceAnglePitch)
         {
             m->faceAngle[1] = atan2s(m->vel[2], m->vel[0]);

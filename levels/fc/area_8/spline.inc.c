@@ -1,3 +1,10 @@
+const Trajectory fc_area_8_spline_0015_object_01447104_001_Rail[] = {
+	TRAJECTORY_POS( 0, 1460, 132, -12600),
+	TRAJECTORY_POS( 1, 1460, 132, -13600),
+	TRAJECTORY_POS( 2, 1460, 2732, -18600),
+	TRAJECTORY_POS( 3, 1460, 2732, -18790),
+	TRAJECTORY_END(),
+};
 const Trajectory fc_area_8_spline_0042_object_01446BC4_001_Rail[] = {
 	TRAJECTORY_POS( 0, 1710, 9042, 26299),
 	TRAJECTORY_POS( 1, 1710, 9036, 26126),

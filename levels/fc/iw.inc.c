@@ -25,22 +25,22 @@ static IWDirectionAreasDesc iw_area5 = {
 
 static IWDirectionAreasDesc iw_area6 = {
     { IWDT_DIRECTIONS },
-    { .z_high = 7, .z_low = 5, },
+    { .x_low = 7, .z_low = 5, },
 };
 
 static IWDirectionAreasDesc iw_area7 = {
     { IWDT_DIRECTIONS },
-    { .z_low = 6, }
+    { .x_high = 6, .z_low = 8, },
 };
 
 static IWDirectionAreasDesc iw_area8 = {
     { IWDT_DIRECTIONS },
-    { .z_low = 6, }
+    { .z_high = 7, .z_low = 9, }
 };
 
 static IWDirectionAreasDesc iw_area9 = {
     { IWDT_DIRECTIONS },
-    { .z_low = 6, }
+    { .z_high = 8, }
 };
 
 const IWDHeader* iw_descs_fc[] = {
