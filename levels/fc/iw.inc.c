@@ -13,14 +13,14 @@ static IWDirectionAreasDesc iw_area3 = {
     { .z_high = 4, .z_low = 2, },
 };
 
-static IWDirectionFullAreasDesc iw_area4 = {
-    { IWDT_FULL_DIRECTIONS },
-    { .y_high = 5, .z_high = 6, .z_low = 3, .y_value = 9000.f },
+static IWDirectionAreasDesc iw_area4 = {
+    { IWDT_DIRECTIONS },
+    { .z_high = 5, .z_low = 3, },
 };
 
-static IWDirectionFullAreasDesc iw_area5 = {
-    { IWDT_FULL_DIRECTIONS },
-    { .y_low = 4, .z_high = 6, .z_low = 3, .y_value = -11000.f },
+static IWDirectionAreasDesc iw_area5 = {
+    { IWDT_DIRECTIONS },
+    { .z_high = 6, .z_low = 4, },
 };
 
 static IWDirectionAreasDesc iw_area6 = {
@@ -33,6 +33,16 @@ static IWDirectionAreasDesc iw_area7 = {
     { .z_low = 6, }
 };
 
+static IWDirectionAreasDesc iw_area8 = {
+    { IWDT_DIRECTIONS },
+    { .z_low = 6, }
+};
+
+static IWDirectionAreasDesc iw_area9 = {
+    { IWDT_DIRECTIONS },
+    { .z_low = 6, }
+};
+
 const IWDHeader* iw_descs_fc[] = {
     &iw_area1.header,
     &iw_area2.header,
@@ -41,4 +51,6 @@ const IWDHeader* iw_descs_fc[] = {
     &iw_area5.header,
     &iw_area6.header,
     &iw_area7.header,
+    &iw_area8.header,
+    &iw_area9.header,
 };
