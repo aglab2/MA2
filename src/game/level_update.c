@@ -472,7 +472,6 @@ void warp_level(void) {
     init_mario_after_warp();
 }
 
-extern u16 gScreenWidth __attribute__((section(".bss")));
 void warp_credits(void) {
     s32 marioAction = ACT_UNINITIALIZED;
 
@@ -482,12 +481,12 @@ void warp_credits(void) {
             break;
 
         case WARP_NODE_CREDITS_NEXT:
-            sEndCutsceneVp.vp.vscale[0] = gScreenWidth * 2;
+            sEndCutsceneVp.vp.vscale[0] = SCREEN_WIDTH * 2;
             sEndCutsceneVp.vp.vscale[1] = SCREEN_HEIGHT * 2;
 #ifdef F3DEX3
             sEndCutsceneVp.vp.vscale[1] = -sEndCutsceneVp.vp.vtrans[1];
 #endif
-            sEndCutsceneVp.vp.vtrans[0] = gScreenWidth * 2;
+            sEndCutsceneVp.vp.vtrans[0] = SCREEN_WIDTH * 2;
             sEndCutsceneVp.vp.vtrans[1] = SCREEN_HEIGHT * 2;
             marioAction = ACT_CREDITS_CUTSCENE;
             break;
@@ -1604,6 +1603,7 @@ s32 lvl_init_from_save_file(UNUSED s16 initOrUpdate, s32 levelNum) {
     return levelNum;
 }
 
+extern void set_vi_mode();
 s32 lvl_set_current_level(UNUSED s16 initOrUpdate, s32 levelNum) {
     set_vi_mode();
     s32 warpCheckpointActive = sWarpCheckpointActive;

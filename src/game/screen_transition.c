@@ -283,7 +283,6 @@ s32 render_screen_transition(s8 transType, u8 transTime, struct WarpTransitionDa
     return FALSE;
 }
 
-extern u16 gScreenWidth __attribute__((section(".bss")));
 Gfx *render_cannon_circle_base(void) {
 #ifdef WIDESCREEN
     Vtx *verts = alloc_display_list(8 * sizeof(Vtx));
@@ -298,8 +297,8 @@ Gfx *render_cannon_circle_base(void) {
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0, 0, 0, 255);
 
         make_simple_vertex(verts, 0,            0,             0, -1, -1152, 1824);
-        make_simple_vertex(verts, 1, gScreenWidth,             0, -1,  1152, 1824);
-        make_simple_vertex(verts, 2, gScreenWidth, SCREEN_HEIGHT, -1,  1152,  192);
+        make_simple_vertex(verts, 1, SCREEN_WIDTH,             0, -1,  1152, 1824);
+        make_simple_vertex(verts, 2, SCREEN_WIDTH, SCREEN_HEIGHT, -1,  1152,  192);
         make_simple_vertex(verts, 3,            0, SCREEN_HEIGHT, -1, -1152,  192);
 
 #ifdef WIDESCREEN

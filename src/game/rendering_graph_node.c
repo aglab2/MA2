@@ -1230,7 +1230,6 @@ void geo_process_batch_generated_list(struct GraphNodeBatchGenerated *node) {
  * the function of the node. If that function is null or returns null, a black
  * rectangle is drawn instead.
  */
-extern u16 gScreenWidth __attribute__((section(".bss")));
 void geo_process_background(struct GraphNodeBackground *node) {
     Gfx *list = NULL;
 
@@ -1250,7 +1249,7 @@ void geo_process_background(struct GraphNodeBackground *node) {
 
         if (gHasEX3)
         {
-            gSPMemset(gfx++, (u8*) gPhysicalFramebuffers[sRenderingFramebuffer] + gBorderHeight  * gScreenWidth * 2, node->background, gScreenWidth * (SCREEN_HEIGHT - 2 * gBorderHeight) * 2);
+            gSPMemset(gfx++, (u8*) gPhysicalFramebuffers[sRenderingFramebuffer] + gBorderHeight  * SCREEN_WIDTH * 2, node->background, SCREEN_WIDTH * (SCREEN_HEIGHT - 2 * gBorderHeight) * 2);
         }
         else
         {

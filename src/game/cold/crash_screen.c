@@ -84,22 +84,20 @@ static struct {
     OSMesgQueue mesgQueue;
     OSMesg mesg;
     u16 *framebuffer;
-    u16 width;
-    u16 height;
 } gCrashScreen __attribute__((section(".bss")));
 
 void crash_screen_draw_rect(s32 x, s32 y, s32 w, s32 h) {
     u16 *ptr;
     s32 i, j;
 
-    ptr = gCrashScreen.framebuffer + gCrashScreen.width * y + x;
+    ptr = gCrashScreen.framebuffer + SCREEN_WIDTH * y + x;
     for (i = 0; i < h; i++) {
         for (j = 0; j < w; j++) {
             // 0xe738 = 0b1110011100111000
             *ptr = ((*ptr & 0xe738) >> 2) | 1;
             ptr++;
         }
-        ptr += gCrashScreen.width - w;
+        ptr += SCREEN_WIDTH - w;
     }
 }
 
@@ -111,7 +109,7 @@ void crash_screen_draw_glyph(s32 x, s32 y, s32 glyph) {
     s32 i, j;
 
     data = &gCrashScreenFont[glyph / 5 * 7];
-    ptr = gCrashScreen.framebuffer + gCrashScreen.width * y + x;
+    ptr = gCrashScreen.framebuffer + SCREEN_WIDTH * y + x;
 
     for (i = 0; i < 7; i++) {
         bit = 0x80000000U >> ((glyph % 5) * 6);
@@ -121,7 +119,7 @@ void crash_screen_draw_glyph(s32 x, s32 y, s32 glyph) {
             *ptr++ = (bit & rowMask) ? 0xffff : 1;
             bit >>= 1;
         }
-        ptr += gCrashScreen.width - 6;
+        ptr += SCREEN_WIDTH - 6;
     }
 }
 
@@ -437,11 +435,8 @@ void thread2_crash_screen(UNUSED void *arg) {
     }
 }
 
-extern u16 gScreenWidth __attribute__((section(".bss")));
 void crash_screen_init(void) {
     gCrashScreen.framebuffer = (RGBA16 *) getFramebuffer(sRenderedFramebuffer);
-    gCrashScreen.width = gScreenWidth;
-    gCrashScreen.height = SCREEN_HEIGHT;
     osCreateMesgQueue(&gCrashScreen.mesgQueue, &gCrashScreen.mesg, 1);
     osCreateThread(&gCrashScreen.thread, THREAD_2_CRASH_SCREEN, thread2_crash_screen, NULL,
                    (u8 *) gCrashScreen.stack + sizeof(gCrashScreen.stack),

@@ -209,7 +209,6 @@ static void create_dl_scale_matrix(s8 pushOp, f32 x, f32 y, f32 z) {
     }
 }
 
-extern u16 gScreenWidth __attribute__((section(".bss")));
 void create_dl_ortho_matrix(void) {
     Mtx *matrix = (Mtx *) alloc_display_list(sizeof(Mtx));
 
@@ -219,7 +218,7 @@ void create_dl_ortho_matrix(void) {
 
     create_dl_identity_matrix();
 
-    guOrtho(matrix, 0.0f, gScreenWidth, 0.0f, SCREEN_HEIGHT, -10.0f, 10.0f, 1.0f);
+    guOrtho(matrix, 0.0f, SCREEN_WIDTH, 0.0f, SCREEN_HEIGHT, -10.0f, 10.0f, 1.0f);
 
     // Should produce G_RDPHALF_1 in Fast3D
     gSPPerspNormalize(gDisplayListHead++, 0xFFFF);
@@ -1368,7 +1367,7 @@ void render_dialog_entries(void) {
     if (gLastDialogPageStrPos == -1 && gDialogHasResponse) {
         render_dialog_triangle_choice();
     }
-    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 2, 2, gScreenWidth - gBorderHeight / 2, SCREEN_HEIGHT - gBorderHeight / 2);
+    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 2, 2, SCREEN_WIDTH - gBorderHeight / 2, SCREEN_HEIGHT - gBorderHeight / 2);
     if (gLastDialogPageStrPos != -1 && gDialogBoxState == DIALOG_STATE_VERTICAL) {
         render_dialog_triangle_next(dialog->linesPerBox);
     }

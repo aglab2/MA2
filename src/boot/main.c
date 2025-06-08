@@ -507,11 +507,6 @@ void thread3_main(UNUSED void *arg) {
         osViSetSpecialFeatures(OS_VI_GAMMA_OFF);
 #endif
     } else {
-#if 1
-        change_vi(&VI, 324, 240);
-        VI.fldRegs[0].vStart = 0x002501ef;
-        VI.fldRegs[1].vStart = 0x002501ef;
-#endif
         gBorderHeight = BORDER_HEIGHT_CONSOLE;
     }
 
@@ -624,9 +619,7 @@ void turn_off_audio(void) {
     }
 }
 
-u16 gScreenWidth;
 static void change_vi(OSViMode *mode, int width, int height) {
-    gScreenWidth = width;
     mode->comRegs.width  = width;
     mode->comRegs.xScale = ((width * 512) / 320);
     if (height > 240) {

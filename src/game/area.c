@@ -27,6 +27,7 @@
 #include "debug_box.h"
 #include "engine/colors.h"
 #include "profiling.h"
+#include "emutest.h"
 #ifdef S2DEX_TEXT_ENGINE
 #include "s2d_engine/init.h"
 #endif
@@ -268,15 +269,31 @@ typedef struct
     /* 0x24 */ __OSViScale y;
 } __OSViContext; // 0x30 bytes
 
+#define VI_STATE_XSCALE_UPDATED 0x02
+
 extern __OSViContext *__osViNext __attribute__((section(".data")));
+
+static void osViSetXScaleRaw(u32 scale) {
+    register u32 nomValue;
+    register u32 saveMask = __osDisableInt();
+    
+    __osViNext->x.factor = 0;
+    __osViNext->state |= VI_STATE_XSCALE_UPDATED;
+    __osViNext->x.scale = scale;
+    __osRestoreInt(saveMask);
+}
 
 void set_vi_mode(void)
 {
+    if (!gIsConsole)
+        return;
+
     const int enabled = 7;
     register u32 saveMask = __osDisableInt();
     if (enabled & 1)
     {
         __osViNext->control |= VI_CTRL_ANTIALIAS_MODE_1;
+        osViSetXScaleRaw(0x201);
     }
     else
     {
@@ -423,8 +440,6 @@ static void warm_up_batch_node(void)
 }
 
 void load_area(s32 index) {
-    set_vi_mode();
-
     if (gCurrentArea == NULL && gAreaData[index].graphNode != NULL) {
         gCurrentArea = &gAreaData[index];
         gCurrAreaIndex = gCurrentArea->index;
@@ -590,7 +605,6 @@ extern int gQuickLookups;
 extern int gSlowLookups;
 
 u8 gWaterTutorial;
-extern u16 gScreenWidth __attribute__((section(".bss")));
 void render_game(void) {
     PROFILER_GET_SNAPSHOT_TYPE(PROFILER_DELTA_COLLISION);
     if (gCurrentArea != NULL && !gWarpTransition.pauseRendering) {
@@ -603,7 +617,7 @@ void render_game(void) {
 
         gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gViewport));
 
-        gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, gBorderHeight, gScreenWidth,
+        gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, gBorderHeight, SCREEN_WIDTH,
                       SCREEN_HEIGHT - gBorderHeight);
         render_hud();
 
@@ -631,7 +645,7 @@ void render_game(void) {
             }
         }
 
-        gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, gBorderHeight, gScreenWidth,
+        gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, gBorderHeight, SCREEN_WIDTH,
                       SCREEN_HEIGHT - gBorderHeight);
         render_text_labels();
 #ifdef PUPPYPRINT
@@ -639,7 +653,7 @@ void render_game(void) {
 #endif
         do_cutscene_handler();
         print_displaying_credits_entry();
-        gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, gBorderHeight, gScreenWidth,
+        gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, gBorderHeight, SCREEN_WIDTH,
                       SCREEN_HEIGHT - gBorderHeight);
         gMenuOptSelectIndex = render_menus_and_dialogs();
 
@@ -650,7 +664,7 @@ void render_game(void) {
         if (gViewportClip != NULL) {
             make_viewport_clip_rect(gViewportClip);
         } else
-            gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, gBorderHeight, gScreenWidth,
+            gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, gBorderHeight, SCREEN_WIDTH,
                           SCREEN_HEIGHT - gBorderHeight);
 
         if (gWarpTransition.isActive) {
