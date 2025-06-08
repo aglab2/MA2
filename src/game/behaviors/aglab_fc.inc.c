@@ -1,3 +1,5 @@
+#include "game/fcgr.h"
+
 typedef struct {
     float r;
     float z;
@@ -118,16 +120,12 @@ static void gen_axis_point_oriented(Vec3f x_axis_new, Vec3f y_axis_new, const Ve
     vec3_cross(y_axis_new, z_axis, x_axis_new);
 }
 
-#define FCGR_CONTINUE 0
-#define FCGR_LAND 1
-#define FCGR_BREAK 2
-
 int fcgr_spin(struct MarioState *m)
 {
     if (gCurrAreaIndex != sCylArea)
     {
         m->usedObj = NULL;
-        return FCGR_BREAK;
+        return FCGR_BREAK_AIR;
     }
 
     int type = FCGR_CONTINUE;
@@ -271,9 +269,23 @@ int fcgr_spin(struct MarioState *m)
     m->slideVelZ = m->vel[2];
     m->forwardVel = sqrtf(sqr(m->vel[0]) + sqr(m->vel[2]));
 
+    print_text_fmt_int(20, 20, "0 %d", (int) m->vel[0]);
+    print_text_fmt_int(20, 40, "1 %d", (int) m->vel[1]);
+    print_text_fmt_int(20, 60, "2 %d", (int) m->vel[2]);
+
     if (!in_tube(&cyl, IN_TUBE_R + 100.f, obj->oBehParams2ndByte))
     {
-        type = FCGR_BREAK;
+        if (obj->oFaceAnglePitch)
+        {
+            // If tube is rotated, it can be either still on the tube when cancelling the action,
+            // Check for radius to handle that properly.
+            type = cyl.r < 300.f ? FCGR_BREAK_LAND : FCGR_BREAK_AIR; 
+        }
+        else
+        {
+            // For vertical tube, always consider in the air.
+            type = FCGR_BREAK_AIR;
+        }
         m->usedObj = NULL;
         if (0 == obj->oFaceAnglePitch)
         {

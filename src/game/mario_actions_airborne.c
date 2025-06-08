@@ -463,8 +463,10 @@ s32 act_fcgr_jump(struct MarioState *m)
     {
         case FCGR_LAND:
             return set_mario_action(m, ACT_FCGR_WALKING, 0);
-        case FCGR_BREAK:
+        case FCGR_BREAK_AIR:
             return set_mario_action(m, ACT_FREEFALL, 0);
+        case FCGR_BREAK_LAND:
+            return set_mario_action(m, ACT_WALKING, 0);
     }
 
     play_mario_sound(m, SOUND_ACTION_TERRAIN_JUMP, 0);

@@ -17872,7 +17872,7 @@ Gfx fc_dl_000_object_0112AF84_mesh_layer_5_tri_0[] = {
 	gsSPEndDisplayListHint(4),
 };
 
-Vtx fc_dl_000_object_0112AF84_mesh_layer_5_vtx_1[8] = {
+Vtx fc_dl_000_object_0112AF84_mesh_layer_6_vtx_0[8] = {
 	{{ {120, -750, 120}, 0, {4096, -16}, {130, 106, 153, 255} }},
 	{{ {-120, -750, 120}, 0, {4096, 2032}, {62, 117, 108, 255} }},
 	{{ {120, -750, -120}, 0, {-16, -16}, {68, 138, 153, 255} }},
@@ -17883,8 +17883,8 @@ Vtx fc_dl_000_object_0112AF84_mesh_layer_5_vtx_1[8] = {
 	{{ {120, 750, 120}, 0, {-16, -16}, {68, 138, 153, 255} }},
 };
 
-Gfx fc_dl_000_object_0112AF84_mesh_layer_5_tri_1[] = {
-	gsSPVertex(fc_dl_000_object_0112AF84_mesh_layer_5_vtx_1 + 0, 8, 0),
+Gfx fc_dl_000_object_0112AF84_mesh_layer_6_tri_0[] = {
+	gsSPVertex(fc_dl_000_object_0112AF84_mesh_layer_6_vtx_0 + 0, 8, 0),
 	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
 	gsSP2Triangles(4, 5, 6, 0, 6, 5, 7, 0),
 	gsSPEndDisplayListHint(4),
@@ -31344,7 +31344,11 @@ u32 fc_dl_000_object_0112AF84_mesh_layer_1[] = {
 
 u32 fc_dl_000_object_0112AF84_mesh_layer_5[] = {
 	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_FC_DL_MIU128_FC001_RGBA32, fc_dl_000_object_0112AF84_mesh_layer_5_tri_0),
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_FC_DL_MIU128_FC004_PAL_RGBA16, fc_dl_000_object_0112AF84_mesh_layer_5_tri_1),
+	BATCH_END(),
+};
+
+u32 fc_dl_000_object_0112AF84_mesh_layer_6[] = {
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_DECAL_FC_DL_MIU128_FC004_PAL_RGBA16, fc_dl_000_object_0112AF84_mesh_layer_6_tri_0),
 	BATCH_END(),
 };
 
@@ -31930,7 +31934,6 @@ static struct BatchDisplayLists batch_lvl_dls_LAYER_OPAQUE[] = {
 static struct BatchDisplayLists batch_lvl_dls_LAYER_TRANSPARENT[] = {
 	[LVL_BATCH_LAYER_TRANSPARENT_FC_DL_MIU64_FR012_RGBA32] = { mat_fc_dl_FRSTAGE_sa2bmdl_8_f3d, mat_revert_fc_dl_FRSTAGE_sa2bmdl_8_f3d, DL_HINT(mat_fc_dl_FRSTAGE_sa2bmdl_8_f3d), DL_HINT(mat_revert_fc_dl_FRSTAGE_sa2bmdl_8_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_FC_DL_MIU128_FC001_RGBA32] = { mat_fc_dl_FCG_CYL0_sa2mdl_4_f3d, mat_revert_fc_dl_FCG_CYL0_sa2mdl_4_f3d, DL_HINT(mat_fc_dl_FCG_CYL0_sa2mdl_4_f3d), DL_HINT(mat_revert_fc_dl_FCG_CYL0_sa2mdl_4_f3d), },
-	[LVL_BATCH_LAYER_TRANSPARENT_FC_DL_MIU128_FC004_PAL_RGBA16] = { mat_fc_dl_FCG_CYL0_sa2mdl_5_f3d, mat_revert_fc_dl_FCG_CYL0_sa2mdl_5_f3d, DL_HINT(mat_fc_dl_FCG_CYL0_sa2mdl_5_f3d), DL_HINT(mat_revert_fc_dl_FCG_CYL0_sa2mdl_5_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_FC_DL_MIU128_FC001_PAL_RGBA16] = { mat_fc_dl_FCG_CYL1_sa2mdl_5_f3d, mat_revert_fc_dl_FCG_CYL1_sa2mdl_5_f3d, DL_HINT(mat_fc_dl_FCG_CYL1_sa2mdl_5_f3d), DL_HINT(mat_revert_fc_dl_FCG_CYL1_sa2mdl_5_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_FC_DL_SPACE64_2_PAL_RGBA16] = { mat_fc_dl_RINGKAZ_sa2bmdl_6_f3d, mat_revert_fc_dl_RINGKAZ_sa2bmdl_6_f3d, DL_HINT(mat_fc_dl_RINGKAZ_sa2bmdl_6_f3d), DL_HINT(mat_revert_fc_dl_RINGKAZ_sa2bmdl_6_f3d), },
 };
@@ -31945,7 +31948,7 @@ static struct BatchDisplayLists batch_lvl_dls_LAYER_ALPHA[] = {
 
 struct BatchLevelDisplayLists batch_lvl_dls_fc[LAYER_COUNT] = {
 	[ LAYER_OPAQUE ] = { 93, batch_lvl_dls_LAYER_OPAQUE },
-	[ LAYER_TRANSPARENT ] = { 5, batch_lvl_dls_LAYER_TRANSPARENT },
+	[ LAYER_TRANSPARENT ] = { 4, batch_lvl_dls_LAYER_TRANSPARENT },
 	[ LAYER_TRANSPARENT_DECAL ] = { 1, batch_lvl_dls_LAYER_TRANSPARENT_DECAL },
 	[ LAYER_ALPHA ] = { 1, batch_lvl_dls_LAYER_ALPHA },
 };

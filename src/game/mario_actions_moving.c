@@ -867,8 +867,10 @@ s32 act_fcgr_walking(struct MarioState *m, int landed)
 {
     switch (fcgr_spin(m))
     {
-        case FCGR_BREAK:
-            return set_mario_action(m, ACT_JUMP, 0);
+        case FCGR_BREAK_AIR:
+            return set_mario_action(m, ACT_FREEFALL, 0);
+        case FCGR_BREAK_LAND:
+            return set_mario_action(m, ACT_WALKING, 0);
     }
 
     if (m->input & INPUT_A_PRESSED) {
