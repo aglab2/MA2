@@ -203,61 +203,52 @@ int fcgr_spin(struct MarioState *m)
     vec3_sum(vel_component_za, vel_component_a, vel_component_z);
 
     f32 za_forwardVel = sqrtf(sqr(vel_component_za[0]) + sqr(vel_component_za[2]));
-    s16 zaAngle = atan2s(angularVel, sCylVel.z);
+    f32 totalSpeedSqr = sqr(angularVel) + sqr(sCylVel.z);
 
-    if (!obj->oFaceAnglePitch)
+    if (totalSpeedSqr > 1.f)
     {
-        m->faceAngle[0] = 0;
-        if (za_forwardVel < 0.1f)
+        s16 zaAngle = atan2s(angularVel, sCylVel.z);
+        if (!obj->oFaceAnglePitch)
+        {
+            m->faceAngle[0] = -zaAngle;
             m->faceAngle[1] = cyl.theta - 0x4000;
-        else
-            m->faceAngle[1] = atan2s(vel_component_za[2], vel_component_za[0]);
-        
-        f32 mult = sCylVel.theta < 0 ? 0.5f : -0.5f;
-        if (za_forwardVel < 0.1f && absf(vel_component_za[1]) < 0.1f)
-            m->faceAngle[2] = 0x4000 + mult * atan2s(za_forwardVel, vel_component_za[1]);
-        else
             m->faceAngle[2] = 0x4000;
-
-        if (sCylVel.theta < 0)
-        {
-            m->faceAngle[2] += 0x8000;
         }
-    }
-    else
-    {
-        int parts = ((int) ((u16) (cyl.theta + 0x2000))) / 0x4000;
-        int mult = obj->oFaceAngleYaw ? -1 : 1;
-        switch (parts)
+        else
         {
-            case 0:
+            int parts = ((int) ((u16) (cyl.theta + 0x2000))) / 0x4000;
+            int mult = obj->oFaceAngleYaw ? -1 : 1;
+            switch (parts)
             {
-                m->faceAngle[0] = cyl.theta;
-                m->faceAngle[1] = zaAngle - 0x4000 + obj->oFaceAngleYaw;
-                m->faceAngle[2] = 0;
+                case 0:
+                {
+                    m->faceAngle[0] = cyl.theta;
+                    m->faceAngle[1] = zaAngle - 0x4000 + obj->oFaceAngleYaw;
+                    m->faceAngle[2] = 0;
+                }
+                break;
+                case 1:
+                {
+                    m->faceAngle[0] = -mult * zaAngle + 0x4000;
+                    m->faceAngle[1] = -obj->oFaceAngleYaw;
+                    m->faceAngle[2] = 0x4000;
+                }
+                break;
+                case 2:
+                {
+                    m->faceAngle[0] = cyl.theta;
+                    m->faceAngle[1] = -zaAngle - 0x4000 + obj->oFaceAngleYaw;
+                    m->faceAngle[2] = 0;
+                }
+                break;
+                case 3:
+                {
+                    m->faceAngle[0] = mult * zaAngle - 0x4000;
+                    m->faceAngle[1] = obj->oFaceAngleYaw;
+                    m->faceAngle[2] = -0x4000;
+                }
+                break;
             }
-            break;
-            case 1:
-            {
-                m->faceAngle[0] = -mult * zaAngle + 0x4000;
-                m->faceAngle[1] = -obj->oFaceAngleYaw;
-                m->faceAngle[2] = 0x4000;
-            }
-            break;
-            case 2:
-            {
-                m->faceAngle[0] = cyl.theta;
-                m->faceAngle[1] = -zaAngle - 0x4000 + obj->oFaceAngleYaw;
-                m->faceAngle[2] = 0;
-            }
-            break;
-            case 3:
-            {
-                m->faceAngle[0] = -mult * zaAngle - 0x4000;
-                m->faceAngle[1] = obj->oFaceAngleYaw;
-                m->faceAngle[2] = -0x4000;
-            }
-            break;
         }
     }
 
@@ -268,10 +259,6 @@ int fcgr_spin(struct MarioState *m)
     m->slideVelX = m->vel[0];
     m->slideVelZ = m->vel[2];
     m->forwardVel = sqrtf(sqr(m->vel[0]) + sqr(m->vel[2]));
-
-    print_text_fmt_int(20, 20, "0 %d", (int) m->vel[0]);
-    print_text_fmt_int(20, 40, "1 %d", (int) m->vel[1]);
-    print_text_fmt_int(20, 60, "2 %d", (int) m->vel[2]);
 
     if (!in_tube(&cyl, IN_TUBE_R + 100.f, obj->oBehParams2ndByte))
     {
