@@ -1,0 +1,7 @@
+const Trajectory fc_area_9_spline_NurbsCurve_Spring_007[] = {
+	TRAJECTORY_POS( 0, 1332, 5644, 7408),
+	TRAJECTORY_POS( 1, 1225, 6514, 7408),
+	TRAJECTORY_POS( 2, 776, 7212, 7408),
+	TRAJECTORY_POS( 3, 196, 7563, 7408),
+	TRAJECTORY_END(),
+};

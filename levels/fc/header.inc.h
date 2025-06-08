@@ -61,6 +61,7 @@ extern const GeoLayout fc_area_9_geo[];
 extern const GeoLayout fc_area_9[];
 extern const Collision fc_area_9_collision[];
 extern const MacroObject fc_area_9_macro_objs[];
+extern const Trajectory fc_area_9_spline_NurbsCurve_Spring_007[];
 extern u8 fc_dl_miu128_fc003_ci4[];
 extern u8 fc_dl_miu128_fc003_pal_rgba16[];
 extern Vtx fc_dl_a3_009_mesh_layer_5_vtx_0[24];
