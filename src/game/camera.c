@@ -783,6 +783,7 @@ s16 look_down_slopes(s16 camYaw) {
  *
  * Since this function only affects the camera's focus, Mario's movement direction isn't affected.
  */
+extern s16 fcgr_angle_override(s16 yaw);
 void pan_ahead_of_player(struct Camera *c) {
     f32 dist;
     s16 pitch, yaw;
@@ -794,7 +795,13 @@ void pan_ahead_of_player(struct Camera *c) {
     // The camera will pan ahead up to about 30% of the camera's distance to Mario.
     pan[2] = sins(0xC00) * dist;
 
-    rotate_in_xz(pan, pan, sMarioCamState->faceAngle[1]);
+    s16 marioAngle = sMarioCamState->faceAngle[1];
+    if (sMarioCamState->action == ACT_FCGR_JUMP || sMarioCamState->action == ACT_FCGR_WALKING)
+    {
+        marioAngle = fcgr_angle_override(yaw);   
+    }
+
+    rotate_in_xz(pan, pan, marioAngle);
     // rotate in the opposite direction
     yaw = -yaw;
     rotate_in_xz(pan, pan, yaw);

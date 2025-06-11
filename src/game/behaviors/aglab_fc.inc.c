@@ -16,6 +16,7 @@ static int in_tube(const cyl_t* cyl, f32 lim, int len);
 
 static cyl_t sCylVel;
 static s16 sCylArea;
+static s16 sZAAngle;
 
 #define IN_TUBE_R 900.f
 
@@ -297,4 +298,19 @@ static int in_tube(const cyl_t* cyl, f32 lim, int len)
     int z_ok = 0.f < cyl->z && cyl->z < height;
     int r_ok = cyl->r < lim;
     return z_ok && r_ok;
+}
+
+s16 fcgr_angle_override(s16 yaw)
+{
+    s16 diff = yaw - sCylVel.theta;
+    s32 absDiff = abs(diff);
+    if (absDiff < 0x4000)
+    {
+        return sCylVel.theta;
+    }
+    else
+    {
+        return sZAAngle;
+    }
+    return sCylVel.theta;
 }
