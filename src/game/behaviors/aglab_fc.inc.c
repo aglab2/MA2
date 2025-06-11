@@ -303,7 +303,7 @@ static int in_tube(const cyl_t* cyl, f32 lim, int len)
 s16 fcgr_angle_override(s16 yaw)
 {
     s16 diff = yaw - sCylVel.theta;
-    s32 absDiff = abs(diff);
+    s32 absDiff = ABS(diff);
     if (absDiff < 0x4000)
     {
         return sCylVel.theta;
