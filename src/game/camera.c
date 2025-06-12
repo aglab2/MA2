@@ -29,6 +29,9 @@
 #include "puppyprint.h"
 #include "profiling.h"
 
+static void rotate_in_xz(Vec3f dst, Vec3f src, s16 yaw);
+static void rotate_in_yz(Vec3f dst, Vec3f src, s16 pitch);
+
 struct Object * const gCurrentObject;
 
 #define CBUTTON_MASK (U_CBUTTONS | D_CBUTTONS | L_CBUTTONS | R_CBUTTONS)
@@ -783,7 +786,7 @@ s16 look_down_slopes(s16 camYaw) {
  *
  * Since this function only affects the camera's focus, Mario's movement direction isn't affected.
  */
-extern s16 fcgr_angle_override(s16 yaw);
+extern int fcgr_angle_overriden(s16 yaw, s16 marioAngle, f32* pan);
 void pan_ahead_of_player(struct Camera *c) {
     f32 dist;
     s16 pitch, yaw;
@@ -795,16 +798,25 @@ void pan_ahead_of_player(struct Camera *c) {
     // The camera will pan ahead up to about 30% of the camera's distance to Mario.
     pan[2] = sins(0xC00) * dist;
 
+    int overriden = 0;
     s16 marioAngle = sMarioCamState->faceAngle[1];
     if (sMarioCamState->action == ACT_FCGR_JUMP || sMarioCamState->action == ACT_FCGR_WALKING)
     {
-        marioAngle = fcgr_angle_override(yaw);   
+        overriden = fcgr_angle_overriden(yaw, marioAngle, pan);
     }
 
-    rotate_in_xz(pan, pan, marioAngle);
-    // rotate in the opposite direction
-    yaw = -yaw;
-    rotate_in_xz(pan, pan, yaw);
+    if (!overriden)
+    {
+        rotate_in_xz(pan, pan, marioAngle);
+        // rotate in the opposite direction
+        yaw = -yaw;
+        rotate_in_xz(pan, pan, yaw);
+    }
+    else
+    {
+        yaw = -yaw;
+    }
+
     // Only pan left or right
     pan[2] = 0.f;
 
@@ -4419,11 +4431,11 @@ f32 calc_hor_dist(Vec3f a, Vec3f b) {
 /**
  * Rotates a vector in the horizontal plane and copies it to a new vector.
  */
-void rotate_in_xz(Vec3f dst, Vec3f src, s16 yaw) {
-    register f32 x = src[0];
-    register f32 z = src[2];
-    register f32 sy = sins(yaw);
-    register f32 cy = coss(yaw);
+static void rotate_in_xz(Vec3f dst, Vec3f src, s16 yaw) {
+    f32 x = src[0];
+    f32 z = src[2];
+    f32 sy = sins(yaw);
+    f32 cy = coss(yaw);
 
     dst[0] = z * sy + x * cy;
     dst[1] = src[1];
@@ -4436,7 +4448,7 @@ void rotate_in_xz(Vec3f dst, Vec3f src, s16 yaw) {
  * Note: This function also flips the Z axis, so +Z moves forward, not backward like it would in world
  * space. If possible, use vec3f_set_dist_and_angle()
  */
-void rotate_in_yz(Vec3f dst, Vec3f src, s16 pitch) {
+static void rotate_in_yz(Vec3f dst, Vec3f src, s16 pitch) {
     dst[2] = -(src[2] * coss(pitch) - src[1] * sins(pitch));
     dst[1] =   src[2] * sins(pitch) + src[1] * coss(pitch);
     dst[0] =   src[0];

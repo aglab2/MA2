@@ -727,8 +727,6 @@ void calculate_angles(Vec3f from, Vec3f to, s16 *pitch, s16 *yaw);
 f32 calc_abs_dist(Vec3f a, Vec3f b);
 f32 calc_abs_dist_squared(Vec3f a, Vec3f b);
 f32 calc_hor_dist(Vec3f a, Vec3f b);
-void rotate_in_xz(Vec3f dst, Vec3f src, s16 yaw);
-void rotate_in_yz(Vec3f dst, Vec3f src, s16 pitch);
 void set_camera_pitch_shake(s16 mag, s16 decay, s16 inc);
 void set_camera_yaw_shake(s16 mag, s16 decay, s16 inc);
 void set_camera_roll_shake(s16 mag, s16 decay, s16 inc);

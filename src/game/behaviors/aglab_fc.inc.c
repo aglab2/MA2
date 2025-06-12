@@ -15,8 +15,11 @@ static void gen_axis_point_oriented(Vec3f x_axis_new, Vec3f y_axis_new, const Ve
 static int in_tube(const cyl_t* cyl, f32 lim, int len);
 
 static cyl_t sCylVel;
+static cyl_t sCylPos;
 static s16 sCylArea;
 static s16 sZAAngle;
+static struct Object* sCylObj;
+static f32 sPanYOffset = 0.f;
 
 #define IN_TUBE_R 900.f
 
@@ -35,7 +38,7 @@ void bhv_fc_grav_loop()
     if (in_tube(&cyl, IN_TUBE_R, o->oBehParams2ndByte))
     {
         drop_and_set_mario_action(gMarioStates, ACT_FCGR_JUMP, 0);   
-        gMarioStates->usedObj = o;
+        sCylObj = o;
         sCylArea = gCurrAreaIndex;
 
         // For velocity conversion, we cannot use generic 'to_cyl' function because
@@ -125,14 +128,15 @@ int fcgr_spin(struct MarioState *m)
 {
     if (gCurrAreaIndex != sCylArea)
     {
-        m->usedObj = NULL;
+        sCylObj = NULL;
+        sPanYOffset = 0.f;
         return FCGR_BREAK_AIR;
     }
 
     int type = FCGR_CONTINUE;
 
-    // spin around the 'usedObj' object around the axis of the object
-    struct Object *obj = m->usedObj;
+    // spin around the 'sCylObj' object around the axis of the object
+    struct Object *obj = sCylObj;
 
     Vec3f x_axis, y_axis, z_axis;
     gen_axis(x_axis, y_axis, z_axis, obj->oFaceAngleYaw, obj->oFaceAnglePitch);
@@ -186,6 +190,7 @@ int fcgr_spin(struct MarioState *m)
         type = FCGR_LAND;
     }
 
+    sCylPos = cyl;
     to_xyz(m->pos, &obj->oPosVec, x_axis, y_axis, z_axis, cyl);
 
     // A reverse of transformation above for velocity
@@ -209,6 +214,7 @@ int fcgr_spin(struct MarioState *m)
     if (totalSpeedSqr > 1.f)
     {
         s16 zaAngle = atan2s(angularVel, sCylVel.z);
+        sZAAngle = zaAngle;
         if (!obj->oFaceAnglePitch)
         {
             m->faceAngle[0] = -zaAngle;
@@ -274,7 +280,8 @@ int fcgr_spin(struct MarioState *m)
             // For vertical tube, always consider in the air.
             type = FCGR_BREAK_AIR;
         }
-        m->usedObj = NULL;
+        sCylObj = NULL;
+        sPanYOffset = 0.f;
         if (0 == obj->oFaceAnglePitch)
         {
             m->faceAngle[1] = atan2s(m->vel[2], m->vel[0]);
@@ -300,17 +307,82 @@ static int in_tube(const cyl_t* cyl, f32 lim, int len)
     return z_ok && r_ok;
 }
 
-s16 fcgr_angle_override(s16 yaw)
+static void rotate_in_xz(Vec3f dst, Vec3f src, s16 yaw) {
+    register f32 x = src[0];
+    register f32 z = src[2];
+    register f32 sy = sins(yaw);
+    register f32 cy = coss(yaw);
+
+    dst[0] = z * sy + x * cy;
+    dst[1] = src[1];
+    dst[2] = z * cy - x * sy;
+}
+
+static void rotate_in_yz(Vec3f dst, Vec3f src, s16 pitch) {
+    f32 y = src[1];
+    f32 z = src[2];
+    f32 sp = sins(pitch);
+    f32 cp = coss(pitch);
+
+    dst[0] = src[0];
+    dst[1] = z * sp + y * cp;
+    dst[2] = z * cp - y * sp;
+}
+
+int fcgr_angle_overriden(s16 yaw, s16 marioAngle, f32* pan)
 {
-    s16 diff = yaw - sCylVel.theta;
-    s32 absDiff = ABS(diff);
-    if (absDiff < 0x4000)
+    if (sCylObj->oFaceAnglePitch)
     {
-        return sCylVel.theta;
+        // laying on the ground, can follow the vanilla logic
+        int parts = ((int) ((u16) (sCylPos.theta + 0x2000))) / 0x4000;
+        if (0 == (parts & 1))
+        {
+            // bottom or top of the tube, flip the panning but otherwise do vanilla logic
+            if (parts)
+                pan[2] = -pan[2];
+
+            return 0;
+        }
+        else
+        {
+            if (1 == parts)
+                pan[0] = -pan[2];
+            
+            yaw = -yaw;
+
+            Vec3f dir;
+            rotate_in_yz(dir, pan, sZAAngle - 0x4000);
+            rotate_in_xz(dir, dir, sCylObj->oFaceAngleYaw);
+            rotate_in_xz(dir, dir, yaw);
+
+            Vec3f pand = { 0, 0, 0 };
+            // rotate_in_xz(pand, pan, sCylObj->oFaceAngleYaw + 0x4000);
+            // rotate_in_xz(pand, pand, yaw);
+
+            pan[0] = dir[0] / 2.f - pand[0];
+            approach_f32_asymptotic_bool(&sPanYOffset, -dir[1] / 2.f, 0.025f);
+            pan[1] = sPanYOffset;
+
+            return 1;
+        }
     }
     else
     {
-        return sZAAngle;
+        yaw = -yaw;
+
+        Vec3f dir;
+        rotate_in_yz(dir, pan, sZAAngle);
+        rotate_in_xz(dir, dir, sCylPos.theta + 0x4000);
+        rotate_in_xz(dir, dir, yaw);
+
+        Vec3f pand;
+        rotate_in_xz(pand, pan, sCylPos.theta);
+        rotate_in_xz(pand, pand, yaw);
+
+        pan[0] = -dir[0] / 2.f - pand[0];
+        
+        approach_f32_asymptotic_bool(&sPanYOffset, dir[1] / 2.f, 0.025f);
+        pan[1] = sPanYOffset;
+        return 1;
     }
-    return sCylVel.theta;
 }
