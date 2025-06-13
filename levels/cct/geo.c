@@ -11,11 +11,11 @@
 
 #include "make_const_nonconst.h"
 
-#include "levels/cc_t/header.h"
+#include "levels/cct/header.h"
 
 #if 0
-#include "levels/cc_t/geo.inc.c"
+#include "levels/cct/geo.inc.c"
 #else
-#include "levels/cc_t/visual/header_lvlopt.inc.h"
-#include "levels/cc_t/visual/geo_lvl.inc.c"
+#include "levels/cct/visual/header_lvlopt.inc.h"
+#include "levels/cct/visual/geo_lvl.inc.c"
 #endif

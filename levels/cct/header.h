@@ -4,10 +4,10 @@
 #include "types.h"
 #include "game/moving_texture.h"
 
-extern const LevelScript level_cc_t_entry[];
+extern const LevelScript level_cct_entry[];
 
 #if 0
-#include "levels/cc_t/header.inc.h"
+#include "levels/cct/header.inc.h"
 #endif
 
 #endif

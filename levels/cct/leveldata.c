@@ -8,8 +8,9 @@
 #include "make_const_nonconst.h"
 
 #if 0
-#include "levels/cc_t/leveldata.inc.c"
+#include "levels/cct/leveldata.inc.c"
 #else
-#include "levels/cc_t/visual/header_lvlopt.inc.h"
-#include "levels/cc_t/visual/model_lvlopt.inc.c"
+#include "levels/cct/visual/header_lvlopt.inc.h"
+#include "levels/cct/visual/model_lvlopt.inc.c"
+#include "levels/cct/flipbook.inc.c"
 #endif
