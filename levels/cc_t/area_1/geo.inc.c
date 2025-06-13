@@ -1,7 +1,7 @@
 #include "src/game/envfx_snow.h"
 
 const GeoLayout cc_t_area_1_geo[] = {
-	GEO_NODE_START(),
+	GEO_BATCH_NODE_START_WITH_FLIPBOOK(batch_lvl_dls_cc_t, cc_t_flipbooks),
 	GEO_OPEN_NODE(),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)2800.0, (s16)7163.5540771484375, (s16)1509.9993896484375, cc_t_dl_0000_object_0139F410_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)10000.0, (s16)7455.894775390625, (s16)7499.9993896484375, cc_t_dl_0001_object_0139E1E8_mesh_layer_1),
