@@ -19,3 +19,5 @@
 #include "levels/cct/visual/header_lvlopt.inc.h"
 #include "levels/cct/visual/geo_lvl.inc.c"
 #endif
+
+#include "levels/cct/cct_goaldoor/geo.inc.c"

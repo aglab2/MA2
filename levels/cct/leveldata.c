@@ -14,3 +14,5 @@
 #include "levels/cct/visual/model_lvlopt.inc.c"
 #include "levels/cct/flipbook.inc.c"
 #endif
+
+#include "levels/cct/cct_goaldoor/model.inc.c"

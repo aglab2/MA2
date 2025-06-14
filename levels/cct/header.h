@@ -10,4 +10,6 @@ extern const LevelScript level_cct_entry[];
 #include "levels/cct/header.inc.h"
 #endif
 
+#include "levels/cct/cct_goaldoor/geo_header.h"
+
 #endif
