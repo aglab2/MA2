@@ -1,0 +1,5 @@
+extern const GeoLayout cct_goaldoor_breakb_geo[];
+extern u8 cct_goaldoor_breakb_dz_cc_goaldoor_mecha128_ci4[];
+extern u8 cct_goaldoor_breakb_dz_cc_goaldoor_mecha128_pal_rgba16[];
+extern Vtx cct_goaldoor_breakb_cct_goaldoor_breakb_mesh_layer_1_vtx_0[32];
+extern Gfx cct_goaldoor_breakb_cct_goaldoor_breakb_mesh_layer_1[];

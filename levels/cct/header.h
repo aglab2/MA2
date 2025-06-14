@@ -12,4 +12,16 @@ extern const LevelScript level_cct_entry[];
 
 #include "levels/cct/cct_goaldoor/geo_header.h"
 
+#include "levels/cct/cct_goaldoor_breaka/geo_header.h"
+
+#include "levels/cct/cct_goaldoor_breakb/geo_header.h"
+
+#include "levels/cct/cct_goaldoor_breakc/geo_header.h"
+
+#include "levels/cct/cct_goaldoor_break/geo_header.h"
+
+#include "levels/cct/cc_goaldoor_hit/geo_header.h"
+
+#include "levels/cct/cc_goaldoor_hitbreak/geo_header.h"
+
 #endif

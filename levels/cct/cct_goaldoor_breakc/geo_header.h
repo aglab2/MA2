@@ -1,0 +1,17 @@
+extern const GeoLayout cct_goaldoor_breakc_geo[];
+extern u8 cct_goaldoor_breakc_dz_cc_goaldoor_glass32_ci8[];
+extern u8 cct_goaldoor_breakc_dz_cc_goaldoor_glass32_pal_rgba16[];
+extern Vtx cct_goaldoor_breakc_001_object_0055BE1C_mesh_layer_5_vtx_0[3];
+extern Vtx cct_goaldoor_breakc_002_object_0055BD9C_mesh_layer_5_vtx_0[3];
+extern Vtx cct_goaldoor_breakc_003_object_0055BD1C_mesh_layer_5_vtx_0[3];
+extern Vtx cct_goaldoor_breakc_004_object_0055BC9C_mesh_layer_5_vtx_0[6];
+extern Vtx cct_goaldoor_breakc_005_object_0055BBAC_mesh_layer_5_vtx_0[3];
+extern Vtx cct_goaldoor_breakc_006_object_0055BB2C_mesh_layer_5_vtx_0[4];
+extern Vtx cct_goaldoor_breakc_007_object_0055BA8C_mesh_layer_5_vtx_0[6];
+extern Gfx cct_goaldoor_breakc_001_object_0055BE1C_mesh_layer_5[];
+extern Gfx cct_goaldoor_breakc_002_object_0055BD9C_mesh_layer_5[];
+extern Gfx cct_goaldoor_breakc_003_object_0055BD1C_mesh_layer_5[];
+extern Gfx cct_goaldoor_breakc_004_object_0055BC9C_mesh_layer_5[];
+extern Gfx cct_goaldoor_breakc_005_object_0055BBAC_mesh_layer_5[];
+extern Gfx cct_goaldoor_breakc_006_object_0055BB2C_mesh_layer_5[];
+extern Gfx cct_goaldoor_breakc_007_object_0055BA8C_mesh_layer_5[];

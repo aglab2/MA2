@@ -16,3 +16,9 @@
 #endif
 
 #include "levels/cct/cct_goaldoor/model.inc.c"
+#include "levels/cct/cct_goaldoor_breaka/model.inc.c"
+#include "levels/cct/cct_goaldoor_breakb/model.inc.c"
+#include "levels/cct/cct_goaldoor_breakc/model.inc.c"
+#include "levels/cct/cct_goaldoor_break/model.inc.c"
+#include "levels/cct/cc_goaldoor_hit/model.inc.c"
+#include "levels/cct/cc_goaldoor_hitbreak/model.inc.c"

@@ -21,3 +21,9 @@
 #endif
 
 #include "levels/cct/cct_goaldoor/geo.inc.c"
+#include "levels/cct/cct_goaldoor_breaka/geo.inc.c"
+#include "levels/cct/cct_goaldoor_breakb/geo.inc.c"
+#include "levels/cct/cct_goaldoor_breakc/geo.inc.c"
+#include "levels/cct/cct_goaldoor_break/geo.inc.c"
+#include "levels/cct/cc_goaldoor_hit/geo.inc.c"
+#include "levels/cct/cc_goaldoor_hitbreak/geo.inc.c"
