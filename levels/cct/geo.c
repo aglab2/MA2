@@ -27,3 +27,7 @@
 #include "levels/cct/cct_goaldoor_break/geo.inc.c"
 #include "levels/cct/cc_goaldoor_hit/geo.inc.c"
 #include "levels/cct/cc_goaldoor_hitbreak/geo.inc.c"
+#include "levels/cct/cct_stepb/geo.inc.c"
+#include "levels/cct/cct_step/geo.inc.c"
+#include "levels/cct/cct_shutter_left/geo.inc.c"
+#include "levels/cct/cct_shutter_right/geo.inc.c"
