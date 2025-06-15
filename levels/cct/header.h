@@ -40,4 +40,6 @@ extern const LevelScript level_cct_entry[];
 
 #include "levels/cct/cct_shutter_right/geo_header.h"
 
+#include "levels/cct/cct_switch/geo_header.h"
+
 #endif

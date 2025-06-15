@@ -30,3 +30,4 @@
 #include "levels/cct/cct_shutter_left/model.inc.c"
 #include "levels/cct/cct_shutter_right/collision.inc.c"
 #include "levels/cct/cct_shutter_right/model.inc.c"
+#include "levels/cct/cct_switch/model.inc.c"

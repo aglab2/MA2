@@ -31,3 +31,4 @@
 #include "levels/cct/cct_step/geo.inc.c"
 #include "levels/cct/cct_shutter_left/geo.inc.c"
 #include "levels/cct/cct_shutter_right/geo.inc.c"
+#include "levels/cct/cct_switch/geo.inc.c"
