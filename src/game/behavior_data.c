@@ -6529,3 +6529,57 @@ const BehaviorScript bhvFCGrav[] = {
         CALL_NATIVE(bhv_fc_grav_loop),
     END_LOOP(),
 };
+
+extern void bhv_cct_flames_loop();
+const BehaviorScript bhvCCTFlames[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_cct_flames_loop),
+    END_LOOP(),
+};
+
+extern void bhv_cct_gate_loop();
+const BehaviorScript bhvCCTGate[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_cct_gate_loop),
+    END_LOOP(),
+};
+
+extern void bhv_cct_platform_big_loop();
+const BehaviorScript bhvCCTPlatformBig[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(purple_switch_collision),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_cct_platform_big_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern void bhv_cct_platform_loop();
+const BehaviorScript bhvCCTPlatform[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(purple_switch_collision),
+    SET_HOME(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_cct_platform_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern void bhv_cc_timestop_loop();
+const BehaviorScript bhvCCTimestop[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(purple_switch_collision),
+    SET_HOME(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_cc_timestop_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+

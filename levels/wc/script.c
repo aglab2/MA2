@@ -26,7 +26,6 @@ static struct LevelConfig cfg = {
 const LevelScript level_wc_entry[] = {
 	INIT_LEVEL(),
 	LOAD_MIO0(0x7, _wc_segment_7SegmentRomStart, _wc_segment_7SegmentRomEnd), 
-	LOAD_MIO0(0xa, _water_skybox_mio0SegmentRomStart, _water_skybox_mio0SegmentRomEnd), 
 	LOAD_YAY0(0x06, _group17_yay0SegmentRomStart, _group17_yay0SegmentRomEnd), 
 	LOAD_RAW(0x0D, _group17_geoSegmentRomStart, _group17_geoSegmentRomEnd), 
 	LOAD_YAY0(0x05, _group5_yay0SegmentRomStart, _group5_yay0SegmentRomEnd), 

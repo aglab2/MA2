@@ -7,14 +7,13 @@
  * the environment.
  */
 
-void bhv_purple_switch_loop(void) {
+static void bhv_purple_switch_loop_impl(int timer) {
     switch (o->oAction) {
         /**
          * Set the switch's model and scale. If Mario is standing near the
          * switch's middle section, transition to the pressed state.
          */
         case PURPLE_SWITCH_ACT_IDLE:
-            cur_obj_set_model(MODEL_PURPLE_SWITCH);
             o->oGeoYaw += 0x100;
             o->oHomeY = 0;
             o->oOpacity = 255;
@@ -54,12 +53,12 @@ void bhv_purple_switch_loop(void) {
                 if (o->oBehParams2ndByte == 1 && gMarioObject->platform != o) {
                     o->oAction++;
                 } else {
-                    if (o->oTimer < 360) {
+                    if (o->oTimer < timer - 40) {
                         play_sound(SOUND_GENERAL2_SWITCH_TICK_FAST, gGlobalSoundSource);
                     } else {
                         play_sound(SOUND_GENERAL2_SWITCH_TICK_SLOW, gGlobalSoundSource);
                     }
-                    if (o->oTimer > 400) {
+                    if (o->oTimer > timer) {
                         o->oAction = PURPLE_SWITCH_ACT_WAIT_FOR_MARIO_TO_GET_OFF;
                     }
                 }
@@ -90,4 +89,8 @@ void bhv_purple_switch_loop(void) {
             }
             break;
     }
+}
+
+void bhv_purple_switch_loop(void) {
+    bhv_purple_switch_loop_impl(400);
 }

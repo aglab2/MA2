@@ -605,5 +605,10 @@ extern const BehaviorScript bhvWjSide[];
 extern const BehaviorScript bhvSrJump[];
 extern const BehaviorScript bhvCWBreakable[];
 extern const BehaviorScript bhvFCGrav[];
+extern const BehaviorScript bhvCCTFlames[];
+extern const BehaviorScript bhvCCTGate[];
+extern const BehaviorScript bhvCCTPlatformBig[];
+extern const BehaviorScript bhvCCTPlatform[];
+extern const BehaviorScript bhvCCTimestop[];
 
 #endif // BEHAVIOR_DATA_H
