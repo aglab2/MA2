@@ -317,7 +317,23 @@ void make_viewport_clip_rect(Vp *viewport) {
  * Initializes the Fast3D OSTask structure.
  * If you plan on using gSPLoadUcode, make sure to add OS_TASK_LOADABLE to the flags member.
  */
+
+// #define CR1_TEST
+
 void create_gfx_task_structure(void) {
+#ifdef CR1_TEST
+    static u8 sCR1 = 0;
+    if (gPlayer1Controller->buttonPressed & L_TRIG)
+    {
+        sCR1 = !sCR1;
+        u8* code = (u8*) gspF3DEX3_fifoTextStart;
+        code[0x8C1] = sCR1 ? 0x7C : 0x7F;
+        code[0xC31] = sCR1 ? 0x7C : 0x7F;
+        code[0xC39] = sCR1 ? 0x7C : 0x7F;
+    }
+    print_text_fmt_int(20, 20, "%d", sCR1);
+#endif
+
     s32 entries = gDisplayListHead - gGfxPool->buffer;
 
     gGfxSPTask->msgqueue = &gGfxVblankQueue;
