@@ -686,6 +686,9 @@ static void apply_vertical_wind(struct MarioState *m) {\
         if (gCurrCourseNum == COURSE_LC) {
             lim = 19500.f;
         }
+        if (gCurrCourseNum == COURSE_CCT) {
+            lim = 1500.f;
+        }
         f32 offsetY = m->pos[1] - lim;
 
         if (gCurrCourseNum == COURSE_SH)

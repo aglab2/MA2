@@ -50,6 +50,11 @@ static struct FlipbookData flipbooks_opaque[] = {
     { LVL_BATCH_LAYER_OPAQUE_CCT_DL_MIU128_CG006_PAL_RGBA16, .count=4, .frames=10, .tileScrollX=-5, .ci4s=cct_matrix_ci4, .pals=cct_matrix_pal },
 };
 
+static struct FlipbookData flipbooks_xlu[] = {
+    { LVL_BATCH_LAYER_TRANSPARENT_CCT_DL_DZ_CC_64WAVE0001_001_IA16, .count=4, .frames=15, .tileScrollX=2, .ci4s = cct_visuals_ia16,  },
+};
+
 const struct FlipbookLayer cct_flipbooks[LAYER_COUNT] = {
-    [ LAYER_OPAQUE ] = FLIPBOOK_LAYER_DECL(flipbooks_opaque),
+    [ LAYER_OPAQUE ]      = FLIPBOOK_LAYER_DECL(flipbooks_opaque),
+    [ LAYER_TRANSPARENT ] = FLIPBOOK_LAYER_DECL(flipbooks_xlu),
 };

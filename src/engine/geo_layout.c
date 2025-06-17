@@ -329,7 +329,7 @@ static struct CloneResult clone_dl(const void* _dl)
             u8 b1 = dl[1];
             int fmt = b1 >> 5;
             int texOff = dl - start + 4;
-            if (fmt == G_IM_FMT_CI)
+            if (fmt == G_IM_FMT_CI || fmt == G_IM_FMT_IA)
             {
                 result.offCI4 = texOff;
             }

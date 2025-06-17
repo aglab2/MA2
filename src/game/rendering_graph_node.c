@@ -493,10 +493,13 @@ static void apply_flipbooks(struct MasterLayer* masterLayer)
         // switch dl frames and patch the display list
         if (flipData->count)
         {
-            if (flipData->pals)
+            if (flipData->ci4s)
             {
                 *(u8**) &startDl[flipDls->offCI4] = flipData->ci4s + frame * 2048;
-                *(u8**) &startDl[flipDls->offPal] = flipData->pals + frame * 32;    
+                if (flipData->pals)
+                {
+                    *(u8**) &startDl[flipDls->offPal] = flipData->pals + frame * 32;
+                }
             }
             else
             {
