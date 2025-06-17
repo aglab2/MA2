@@ -7,14 +7,18 @@
  * the environment.
  */
 
-static void bhv_purple_switch_loop_impl(int timer) {
+static void bhv_purple_switch_loop_impl(int timer, int shift) {
+    int yawSpeed = 0x100 << shift;
+    int yawAccel = 0x40 << shift;
+    int homeSpeed = 5 << shift;
+
     switch (o->oAction) {
         /**
          * Set the switch's model and scale. If Mario is standing near the
          * switch's middle section, transition to the pressed state.
          */
         case PURPLE_SWITCH_ACT_IDLE:
-            o->oGeoYaw += 0x100;
+            o->oGeoYaw += yawSpeed;
             o->oHomeY = 0;
             o->oOpacity = 255;
             if (
@@ -31,8 +35,8 @@ static void bhv_purple_switch_loop_impl(int timer) {
          * Immediately transition to the ticking state.
          */
         case PURPLE_SWITCH_ACT_PRESSED:
-           o->oHomeY -= 5;
-           o->oGeoYaw += 0x100 - o->oTimer * 0x40;
+           o->oHomeY -= homeSpeed;
+           o->oGeoYaw += yawSpeed - o->oTimer * yawAccel;
            o->oOpacity = 0xff - o->oTimer * 0x30;
             if (o->oTimer == 3) {
                 cur_obj_play_sound_2(SOUND_GENERAL2_PURPLE_SWITCH);
@@ -70,8 +74,8 @@ static void bhv_purple_switch_loop_impl(int timer) {
          * idle state.
          */
         case PURPLE_SWITCH_ACT_UNPRESSED:
-            o->oHomeY += 5;
-            o->oGeoYaw += 0x40 + o->oTimer * 0x40;
+            o->oHomeY += homeSpeed;
+            o->oGeoYaw += yawAccel + o->oTimer * yawAccel;
             o->oOpacity = 0xff - 4 * 0x30 + o->oTimer * 0x30; 
             if (o->oTimer == 3) {
                 o->oAction = PURPLE_SWITCH_ACT_IDLE;
@@ -92,5 +96,5 @@ static void bhv_purple_switch_loop_impl(int timer) {
 }
 
 void bhv_purple_switch_loop(void) {
-    bhv_purple_switch_loop_impl(400);
+    bhv_purple_switch_loop_impl(400, 0);
 }

@@ -1,7 +1,11 @@
-static void bhv_purple_switch_loop_impl(int timer);
+static void bhv_purple_switch_loop_impl(int timer, int shift);
 void bhv_cc_timestop_loop()
 {
-    bhv_purple_switch_loop_impl(200);
+    o->oBehParams2ndByte = 2;
+    o->oHomeX = 0;
+    o->oHomeZ = 0;
+    bhv_purple_switch_loop_impl(200, 1);
+    print_text_fmt_int(10, 20, "%d", o->oAction);
 }
 
 extern ObjActionFunc sRotatingCwFireBarsActions[];
