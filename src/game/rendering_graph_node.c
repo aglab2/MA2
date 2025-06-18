@@ -476,6 +476,7 @@ static int render_course_batches(Gfx **ptempGfxHead, struct BatchArray* arr, int
     return amountRendered;
 }
 
+static int gFlipbookTimer = 0;
 static void apply_flipbooks(struct MasterLayer* masterLayer)
 {
     struct FlipbookArray* flipbooks = masterLayer->flipbooks;
@@ -487,8 +488,8 @@ static void apply_flipbooks(struct MasterLayer* masterLayer)
         const struct FlipbookData* flipData = &flipbooks->data[i];
         struct FlipbookDls* flipDls = &flipbooks->dls[i];
 
-        int frame = (gGlobalTimer / flipData->frames) % flipData->count;
-        u8* startDl = (u8*) flipDls->startDls[gGlobalTimer & 1];
+        int frame = (gFlipbookTimer / flipData->frames) % flipData->count;
+        u8* startDl = (u8*) flipDls->startDls[gFlipbookTimer & 1];
 
         // switch dl frames and patch the display list
         if (flipData->count)
@@ -512,19 +513,19 @@ static void apply_flipbooks(struct MasterLayer* masterLayer)
         {
             u8* primColorCmd = (u8*) &startDl[flipDls->offPrimColor];
             int mul = (gCurrCourseNum == COURSE_CG || gCurrCourseNum == COURSE_LC) ? 0x424 : 0x223;
-            primColorCmd[7] = 0x80 + 0x50 * sins(gGlobalTimer * 0x223 + flipData->shading);
+            primColorCmd[7] = 0x80 + 0x50 * sins(gFlipbookTimer * 0x223 + flipData->shading);
         }
 
         SetTileSize* tile = (SetTileSize*) &startDl[flipDls->offTile];
         if (flipData->tileScrollX)
         {
-            tile->t = gGlobalTimer * flipData->tileScrollX;
-            // tile->u = gGlobalTimer * flipData->tileScrollX;
+            tile->t = gFlipbookTimer * flipData->tileScrollX;
+            // tile->u = gFlipbookTimer * flipData->tileScrollX;
         }
         if (flipData->tileScrollY)
         {
-            tile->s = gGlobalTimer * flipData->tileScrollY;
-            // tile->v = gGlobalTimer * flipData->tileScrollY;
+            tile->s = gFlipbookTimer * flipData->tileScrollY;
+            // tile->v = gFlipbookTimer * flipData->tileScrollY;
         }
 
         // this bending constness rules a bit but trust me, it's fine
@@ -565,6 +566,8 @@ static void apply_ig_lighting(Gfx **ptempGfxHead)
 
 static void adjust_view_range();
 static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
+    gFlipbookTimer++;
+
     const struct RenderPhase *renderPhase;
     s32 currLayer     = LAYER_FIRST;
     s32 startLayer    = LAYER_FIRST;

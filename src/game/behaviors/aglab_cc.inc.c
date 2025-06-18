@@ -1,3 +1,5 @@
+u8 gTimeFrozen = 0;
+
 static void bhv_purple_switch_loop_impl(int timer, int shift);
 void bhv_cc_timestop_loop()
 {
