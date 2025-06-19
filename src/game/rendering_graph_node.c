@@ -564,9 +564,12 @@ static void apply_ig_lighting(Gfx **ptempGfxHead)
 #undef tempGfxHead
 }
 
+extern u8 gTimeFrozen;
 static void adjust_view_range();
 static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
-    gFlipbookTimer++;
+    u8 timeFrozen = gTimeFrozen;
+    if (!gTimeFrozen)
+        gFlipbookTimer++;
 
     const struct RenderPhase *renderPhase;
     s32 currLayer     = LAYER_FIRST;
@@ -598,7 +601,9 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
         for (currLayer = startLayer; currLayer <= endLayer; currLayer++) {
             // Set 'currList' to the first DisplayListNode on the current layer.
             struct MasterLayer* masterLayer = &node->layers[currLayer];
-            apply_flipbooks(masterLayer);
+            if (!timeFrozen)
+                apply_flipbooks(masterLayer);
+
             struct DisplayListNode *currList = masterLayer->list.head;
             if (currList)
             {

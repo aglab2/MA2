@@ -6571,12 +6571,13 @@ const BehaviorScript bhvCCTPlatform[] = {
     END_LOOP(),
 };
 
+extern void bhv_cc_timestop_init();
 extern void bhv_cc_timestop_loop();
 const BehaviorScript bhvCCTimestop[] = {
     BEGIN(OBJ_LIST_SURFACE),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
     LOAD_COLLISION_DATA(purple_switch_collision),
-    SET_HOME(),
+    CALL_NATIVE(bhv_cc_timestop_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_cc_timestop_loop),
         CALL_NATIVE(load_object_collision_model),

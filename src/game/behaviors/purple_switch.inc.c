@@ -35,7 +35,7 @@ static void bhv_purple_switch_loop_impl(int timer, int shift) {
          * Immediately transition to the ticking state.
          */
         case PURPLE_SWITCH_ACT_PRESSED:
-           o->oHomeY -= homeSpeed;
+           o->oHomeY = -o->oTimer * homeSpeed;
            o->oGeoYaw += yawSpeed - o->oTimer * yawAccel;
            o->oOpacity = 0xff - o->oTimer * 0x30;
             if (o->oTimer == 3) {
@@ -52,14 +52,23 @@ static void bhv_purple_switch_loop_impl(int timer, int shift) {
          * Play a continuous ticking sound that gets faster when time is almost
          * up. When time is up, move to a waiting-while-pressed state.
          */
-        case PURPLE_SWITCH_ACT_TICKING:
+        case PURPLE_SWITCH_ACT_TICKING:       
+            o->oHomeY = -3 * homeSpeed;
             if (o->oBehParams2ndByte != 0) {
                 if (o->oBehParams2ndByte == 1 && gMarioObject->platform != o) {
                     o->oAction++;
                 } else {
                     if (o->oTimer < timer - 40) {
-                        play_sound(SOUND_GENERAL2_SWITCH_TICK_FAST, gGlobalSoundSource);
+                        if (o->oTimer)
+                            play_sound(SOUND_GENERAL2_SWITCH_TICK_FAST, gGlobalSoundSource);
+
+                        int timeDiff = o->oTimer + 5;
+                        int zerod = (timeDiff % 16) > 8;
+                        o->oOpacity = zerod ? 0xff : (0xff - 3 * 0x30);
                     } else {
+                        int timeDiff = o->oTimer - (timer - 40);
+                        int zerod = (timeDiff % 5) > 2;
+                        o->oOpacity = zerod ? 0xff : (0xff - 3 * 0x30);
                         play_sound(SOUND_GENERAL2_SWITCH_TICK_SLOW, gGlobalSoundSource);
                     }
                     if (o->oTimer > timer) {
@@ -74,7 +83,7 @@ static void bhv_purple_switch_loop_impl(int timer, int shift) {
          * idle state.
          */
         case PURPLE_SWITCH_ACT_UNPRESSED:
-            o->oHomeY += homeSpeed;
+            o->oHomeY = -3 * homeSpeed + o->oTimer * homeSpeed;
             o->oGeoYaw += yawAccel + o->oTimer * yawAccel;
             o->oOpacity = 0xff - 4 * 0x30 + o->oTimer * 0x30; 
             if (o->oTimer == 3) {
