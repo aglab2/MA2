@@ -1,12 +1,16 @@
 // thwomp.inc.c
 
-void grindel_thwomp_act_on_ground(void) {
+void grindel_thwomp_act_on_ground_impl(int rng) {
     if (o->oTimer == 0) {
         o->oThwompRandomTimer = random_float() * 10.0f + 20.0f;
     }
     if (o->oTimer > o->oThwompRandomTimer) {
         o->oAction = GRINDEL_THWOMP_ACT_RISING;
     }
+}
+
+static void grindel_thwomp_act_on_ground(void) {
+    grindel_thwomp_act_on_ground_impl(1);
 }
 
 void grindel_thwomp_act_falling(void) {
@@ -29,13 +33,21 @@ void grindel_thwomp_act_land(void) {
     }
 }
 
-void grindel_thwomp_act_floating(void) {
+void grindel_thwomp_act_floating_impl(int rng) {
     if (o->oTimer == 0) {
-        o->oThwompRandomTimer = random_float() * 30.0f + 10.0f;
+        if (rng)
+            o->oThwompRandomTimer = random_float() * 30.0f + 10.0f;
+        else
+            o->oThwompRandomTimer = 1;
     }
     if (o->oTimer > o->oThwompRandomTimer) {
         o->oAction = GRINDEL_THWOMP_ACT_FALLING;
     }
+}
+
+static void grindel_thwomp_act_floating(void) 
+{
+    grindel_thwomp_act_floating_impl(1);
 }
 
 void grindel_thwomp_act_rising(void) {

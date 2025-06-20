@@ -34,14 +34,14 @@ void bhv_heave_ho_throw_mario_loop(void) {
     }
 }
 
-void heave_ho_act_1(void) {
+static void heave_ho_act_1(int buffed) {
     s32 i = 0;
 
     o->oForwardVel = 0.0f;
     cur_obj_reverse_animation();
 
     while (TRUE) {
-        if (sHeaveHoTimings[i][0] == -1) {
+        if (buffed || sHeaveHoTimings[i][0] == -1) {
             o->oAction = 2;
             break;
         }
@@ -55,19 +55,27 @@ void heave_ho_act_1(void) {
     }
 }
 
-void heave_ho_act_2(void) {
-    if (cur_obj_lateral_dist_from_mario_to_home() > 1000.0f) {
+static void heave_ho_act_2(int buffed) {
+    if (buffed)
+    {
         o->oAngleToMario = cur_obj_angle_to_home();
+        o->oHeaveHoTimedSpeed = 2.f;
     }
-
-    if (o->oTimer > 150) {
-        o->oHeaveHoTimedSpeed = (302 - o->oTimer) / 152.0f;
-        if (o->oHeaveHoTimedSpeed < 0.1f) {
-            o->oHeaveHoTimedSpeed = 0.1f;
-            o->oAction = 1;
+    else
+    {
+        if (cur_obj_lateral_dist_from_mario_to_home() > 1000.0f) {
+            o->oAngleToMario = cur_obj_angle_to_home();
         }
-    } else {
-        o->oHeaveHoTimedSpeed = 1.0f;
+
+        if (o->oTimer > 150) {
+            o->oHeaveHoTimedSpeed = (302 - o->oTimer) / 152.0f;
+            if (o->oHeaveHoTimedSpeed < 0.1f) {
+                o->oHeaveHoTimedSpeed = 0.1f;
+                o->oAction = 1;
+            }
+        } else {
+            o->oHeaveHoTimedSpeed = 1.0f;
+        }
     }
 
     cur_obj_init_animation_with_accel_and_sound(0, o->oHeaveHoTimedSpeed);
@@ -77,7 +85,7 @@ void heave_ho_act_2(void) {
     o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, o->oAngleToMario, angleVel);
 }
 
-void heave_ho_act_3(void) {
+static void heave_ho_act_3(void) {
     o->oForwardVel = 0.0f;
 
     if (o->oTimer == 0) {
@@ -94,7 +102,7 @@ void heave_ho_act_3(void) {
     }
 }
 
-void heave_ho_act_0(void) {
+static void heave_ho_act_0(void) {
     cur_obj_set_pos_to_home();
 
     if (find_water_level(o->oPosX, o->oPosZ) < o->oPosY && o->oDistanceToMario < 4000.0f) {
@@ -114,9 +122,22 @@ ObjActionFunc sHeaveHoActions[] = {
     heave_ho_act_3,
 };
 
-void heave_ho_move(void) {
+void heave_ho_move(int buffed) {
     cur_obj_update_floor_and_walls();
-    cur_obj_call_action_function(sHeaveHoActions);
+    switch (o->oAction) {
+        case 0:
+            heave_ho_act_0();
+            break;
+        case 1:
+            heave_ho_act_1(buffed);
+            break;
+        case 2:
+            heave_ho_act_2(buffed);
+            break;
+        case 3:
+            heave_ho_act_3();
+            break;
+    }
     cur_obj_move_standard(-78);
 
     if (o->oMoveFlags & OBJ_MOVE_MASK_IN_WATER) {
@@ -140,12 +161,12 @@ void heave_ho_move(void) {
     }
 }
 
-void bhv_heave_ho_loop(void) {
+void bhv_heave_ho_loop_impl(int buffed) {
     cur_obj_scale(2.0f);
 
     switch (o->oHeldState) {
         case HELD_FREE:
-            heave_ho_move();
+            heave_ho_move(buffed);
             break;
         case HELD_HELD:
             cur_obj_unrender_set_action_and_anim(0, 0);
@@ -159,4 +180,9 @@ void bhv_heave_ho_loop(void) {
     }
 
     o->oInteractStatus = INT_STATUS_NONE;
+}
+
+void bhv_heave_ho_loop(void)
+{
+    bhv_heave_ho_loop_impl(0);
 }

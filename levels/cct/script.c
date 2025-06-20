@@ -19,6 +19,13 @@
 extern const GeoLayout cct_area_1[];
 static struct LevelConfig cfg = { };
 #define SEQ_LEVEL_GRASS 0x43
+
+#define bhvCoinFormation bhvCoinFormationCC
+#define bhvGoombaTripletSpawner bhvGoombaTripletSpawnerCC
+#define bhvHeaveHo bhvHeaveHoCC
+#define bhvSnufit bhvSnufitCC
+#define bhvThwomp2 bhvThwomp2CC
+
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_cct_entry[] = {

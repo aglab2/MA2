@@ -1338,12 +1338,15 @@ void geo_process_animated_part(struct GraphNodeAnimatedPart *node) {
  * Initialize the animation-related global variables for the currently drawn
  * object's animation.
  */
-void geo_set_animation_globals(struct AnimInfo *node, s32 hasAnimation) {
+static void geo_set_animation_globals(struct AnimInfo *node, s32 hasAnimation, int frozen) {
     struct Animation *anim = node->curAnim;
 
-    if (hasAnimation) {
-        node->animFrame = geo_update_animation_frame(node, &node->animFrameAccelAssist);
+    if (frozen) {
+        if (hasAnimation) {
+            node->animFrame = geo_update_animation_frame(node, &node->animFrameAccelAssist);
+        }
     }
+
     node->animTimer = gAreaUpdateCounter;
     if (anim->flags & ANIM_FLAG_HOR_TRANS) {
         gCurrAnimType = ANIM_TYPE_VERTICAL_TRANSLATION;
@@ -1564,7 +1567,6 @@ void visualise_object_hitbox(struct Object *node) {
  * Process an object node.
  */
 void geo_process_object(struct Object *node) {
-    if (node->header.gfx.areaIndex == gCurGraphNodeRoot->areaIndex) {
         s32 isInvisible = (node->header.gfx.node.flags & GRAPH_RENDER_INVISIBLE);
         s32 noThrowMatrix = (node->header.gfx.throwMatrix == NULL);
         // Maintain throw matrix pointer if the game is paused as it won't be updated.
@@ -1593,7 +1595,7 @@ void geo_process_object(struct Object *node) {
 
         // FIXME: correct types
         if (node->header.gfx.animInfo.curAnim != NULL) {
-            geo_set_animation_globals(&node->header.gfx.animInfo, (node->header.gfx.node.flags & GRAPH_RENDER_HAS_ANIMATION) != 0);
+            geo_set_animation_globals(&node->header.gfx.animInfo, (node->header.gfx.node.flags & GRAPH_RENDER_HAS_ANIMATION) != 0, node->header.gfx.areaIndex == gCurGraphNodeRoot->areaIndex);
         }
 
         if (!isInvisible && obj_is_in_view(&node->header.gfx)) {
@@ -1618,7 +1620,6 @@ void geo_process_object(struct Object *node) {
         gMatStackIndex--;
         gCurrAnimType = ANIM_TYPE_NONE;
         node->header.gfx.throwMatrix = oldThrowMatrix;
-    }
 }
 
 /**
@@ -1676,7 +1677,7 @@ void geo_process_held_object(struct GraphNodeHeldObject *node) {
         gCurrAnimType = ANIM_TYPE_NONE;
         gCurGraphNodeHeldObject = (void *) node;
         if (node->objNode->header.gfx.animInfo.curAnim != NULL) {
-            geo_set_animation_globals(&node->objNode->header.gfx.animInfo, (node->objNode->header.gfx.node.flags & GRAPH_RENDER_HAS_ANIMATION) != 0);
+            geo_set_animation_globals(&node->objNode->header.gfx.animInfo, (node->objNode->header.gfx.node.flags & GRAPH_RENDER_HAS_ANIMATION) != 0, 0);
         }
 
         geo_process_node_and_siblings(node->objNode->header.gfx.sharedChild);

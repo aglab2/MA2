@@ -188,7 +188,7 @@ void bhv_coin_formation_spawned_coin_loop(void) {
     }
 }
 
-void spawn_coin_in_formation(s32 index, s32 shape) {
+static void spawn_coin_in_formation(s32 index, s32 shape, const BehaviorScript* coinBhv) {
     Vec3i pos = { 0, 0, 0 };
     s32 spawnCoin    = TRUE;
     s32 snapToGround = TRUE;
@@ -224,8 +224,7 @@ void spawn_coin_in_formation(s32 index, s32 shape) {
 
     if (spawnCoin) {
         struct Object *newCoin =
-            spawn_object_relative(index, pos[0], pos[1], pos[2], o,
-                                  MODEL_YELLOW_COIN, bhvCoinFormationSpawnedCoin);
+            spawn_object_relative(index, pos[0], pos[1], pos[2], o, MODEL_YELLOW_COIN, coinBhv);
         newCoin->oCoinSnapToGround = snapToGround;
     }
 }
@@ -234,7 +233,7 @@ void bhv_coin_formation_init(void) {
     o->oCoinRespawnBits = o->respawnInfo;
 }
 
-void bhv_coin_formation_loop(void) {
+void bhv_coin_formation_loop_impl(const BehaviorScript *coinBhv) {
     s32 bitIndex;
     f32 dist = COIN_FORMATION_DISTANCE;
     if (gCurrCourseNum == COURSE_AQ || gCurrCourseNum == COURSE_WC || gCurrCourseNum == COURSE_SH)
@@ -251,7 +250,7 @@ void bhv_coin_formation_loop(void) {
             if (o->oDistanceToMario < dist) {
                 for (bitIndex = 0; bitIndex < 8; bitIndex++) {
                     if (!(o->oCoinRespawnBits & (1 << bitIndex))) {
-                        spawn_coin_in_formation(bitIndex, o->oBehParams2ndByte);
+                        spawn_coin_in_formation(bitIndex, o->oBehParams2ndByte, coinBhv);
                     }
                 }
                 o->oAction = COIN_FORMATION_ACT_ACTIVE;
@@ -268,6 +267,10 @@ void bhv_coin_formation_loop(void) {
     }
 
     set_object_respawn_info_bits(o, o->oCoinRespawnBits);
+}
+
+void bhv_coin_formation_loop(void) {
+    bhv_coin_formation_loop_impl(bhvCoinFormationSpawnedCoin);
 }
 
 void coin_inside_boo_act_dropped(void) {

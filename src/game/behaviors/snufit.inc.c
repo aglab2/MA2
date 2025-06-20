@@ -110,7 +110,7 @@ void snufit_act_shoot(void) {
  * Primary loop behavior for snufit. Controls some generic movement
  * and the action brain of the object.
  */
-void bhv_snufit_loop(void) {
+void bhv_snufit_loop_impl(int buff) {
     // Only update if Mario is in the current room.
     if (!(o->activeFlags & ACTIVE_FLAG_IN_DIFFERENT_ROOM)) {
         o->oDeathSound = SOUND_OBJ_SNUFIT_SKEETER_DEATH;
@@ -163,6 +163,11 @@ void bhv_snufit_loop(void) {
         cur_obj_scale(o->oSnufitScale);
         obj_check_attacks(&sSnufitHitbox, o->oAction);
     }
+}
+
+void bhv_snufit_loop(void)
+{
+    return bhv_snufit_loop_impl(0);
 }
 
 /**

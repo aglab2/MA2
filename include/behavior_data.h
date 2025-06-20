@@ -611,4 +611,13 @@ extern const BehaviorScript bhvCCTPlatformBig[];
 extern const BehaviorScript bhvCCTPlatform[];
 extern const BehaviorScript bhvCCTimestop[];
 
+extern const BehaviorScript bhvCoinFormationCC[];
+extern const BehaviorScript bhvCoinFormationSpawnedCoinCC[];
+extern const BehaviorScript bhvYellowCoinCC[];
+extern const BehaviorScript bhvGoombaTripletSpawnerCC[];
+extern const BehaviorScript bhvGoombaCC[];
+extern const BehaviorScript bhvHeaveHoCC[];
+extern const BehaviorScript bhvSnufitCC[];
+extern const BehaviorScript bhvThwomp2CC[];
+
 #endif // BEHAVIOR_DATA_H
