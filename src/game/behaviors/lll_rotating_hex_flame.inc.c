@@ -1,15 +1,5 @@
 // lll_rotating_hex_flame.inc.c
 
-void bhv_lll_rotating_hex_flame_loop(void) {
-    cur_obj_set_pos_relative(o->parentObj, o->oLllRotatingHexFlameRelativePosX, o->oLllRotatingHexFlameRelativePosY, o->oLllRotatingHexFlameRelativePosZ);
-
-    o->oPosY = o->parentObj->oPosY + 100.0f;
-
-    if (o->parentObj->oAction == LLL_FIRE_BAR_ACT_REMOVE_FLAMES) {
-        obj_mark_for_deletion(o);
-    }
-}
-
 void fire_bar_spawn_flames(s16 yaw) {
     struct Object *flameObj;
     s32 i;
@@ -19,7 +9,7 @@ void fire_bar_spawn_flames(s16 yaw) {
 
     // Use the vanilla default value if the bparam is 0
     if (amt == 0) {
-        amt = 4;
+        amt = 6;
     }
 
     for (i = 0; i < amt; i++) {

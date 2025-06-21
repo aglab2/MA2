@@ -2,6 +2,19 @@ u8 gTimeFrozen = 0;
 static u32 gTimeFrozenTimerLoaded = 0;
 static struct Object* gTimeFrozenTimerObj = NULL;
 
+static void cc_freeze()
+{
+    o->oTimer--;
+    o->header.gfx.areaIndex = 2; 
+}
+
+static void cc_unfreeze()
+{
+    o->header.gfx.areaIndex = 1;
+}
+
+#define CC_FREEZE() if (gTimeFrozen) { return cc_freeze(); } else { cc_unfreeze(); }
+
 void bhv_cc_timestop_init()
 {
     if (gTimeFrozenTimerLoaded == gGlobalTimer)
@@ -40,7 +53,7 @@ void bhv_cc_timestop_loop()
     }
 
     int preAction = o->oAction;
-    bhv_purple_switch_loop_impl(200, 1, o != gTimeFrozenTimerObj);
+    bhv_purple_switch_loop_impl(200, 1, o == gTimeFrozenTimerObj);
     int postAction = o->oAction;
 
     if (preAction == 0 && postAction == 1)
@@ -54,7 +67,20 @@ extern ObjActionFunc sRotatingCwFireBarsActions[];
 
 void bhv_cct_flames_loop()
 {
+    CC_FREEZE();
     cur_obj_call_action_function(sRotatingCwFireBarsActions);
+}
+
+void bhv_lll_rotating_hex_flame_loop(void) {
+    CC_FREEZE();
+    o->oAnimState++;
+    cur_obj_set_pos_relative(o->parentObj, o->oLllRotatingHexFlameRelativePosX, o->oLllRotatingHexFlameRelativePosY, o->oLllRotatingHexFlameRelativePosZ);
+
+    o->oPosY = o->parentObj->oPosY + 100.0f;
+
+    if (o->parentObj->oAction == LLL_FIRE_BAR_ACT_REMOVE_FLAMES) {
+        obj_mark_for_deletion(o);
+    }
 }
 
 void bhv_cct_gate_loop()
@@ -78,19 +104,6 @@ extern void grindel_thwomp_act_floating_impl(int rng);
 extern void grindel_thwomp_act_falling();
 extern void grindel_thwomp_act_land();
 extern void grindel_thwomp_act_on_ground_impl(int rng);
-
-static void cc_freeze()
-{
-    o->oTimer--;
-    o->header.gfx.areaIndex = 2; 
-}
-
-static void cc_unfreeze()
-{
-    o->header.gfx.areaIndex = 1;
-}
-
-#define CC_FREEZE() if (gTimeFrozen) { return cc_freeze(); } else { cc_unfreeze(); }
 
 void bhv_grindel_thwomp_loop_cc()
 {

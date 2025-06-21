@@ -2035,7 +2035,6 @@ const BehaviorScript bhvLllRotatingHexFlame[] = {
     BILLBOARD(),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_lll_rotating_hex_flame_loop),
-        ADD_INT(oAnimState, 1),
     END_LOOP(),
 };
 
