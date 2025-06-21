@@ -24,13 +24,18 @@ void bhv_cc_timestop_init()
     gTimeFrozenTimerObj = o;
 }
 
-static void bhv_purple_switch_loop_impl(int timer, int shift, int main);
+static void bhv_purple_switch_loop_impl(int timer, int shift, f32 dist, int main);
 
-static inline void cc_timestop_sync(struct Object* obj)
+static inline void cc_timestop_sync_fun(struct Object* obj)
 {
     obj->oPrevAction = o->oPrevAction;
     obj->oAction = o->oAction;
     obj->oTimer = o->oTimer;
+}
+
+static inline void cc_timestop_sync(void)
+{
+    cur_obj_foreach(bhvCCTimestop, cc_timestop_sync_fun);
 }
 
 void bhv_cc_timestop_loop()
@@ -44,7 +49,8 @@ void bhv_cc_timestop_loop()
         gTimeFrozen = 1;
         if (o->oDistanceToMario < 200.f)
         {
-            gTimeFrozenTimerObj->oTimer = o->oTimer = 0;
+            o->oTimer = 0;
+            cc_timestop_sync();
         }
     }
     else
@@ -53,13 +59,14 @@ void bhv_cc_timestop_loop()
     }
 
     int preAction = o->oAction;
-    bhv_purple_switch_loop_impl(200, 1, o == gTimeFrozenTimerObj);
+    bhv_purple_switch_loop_impl(200, 1, 200.f, o == gTimeFrozenTimerObj);
     int postAction = o->oAction;
 
     if (preAction == 0 && postAction == 1)
     {
         // switch was pressed on, distribute that state to all other switches
-        cur_obj_foreach(bhvCCTimestop, cc_timestop_sync);
+        print_text_fmt_int(20, 20, "%d", __LINE__);
+        cc_timestop_sync();
     }
 }
 
@@ -85,17 +92,26 @@ void bhv_lll_rotating_hex_flame_loop(void) {
 
 void bhv_cct_gate_loop()
 {
-    // -
+    CC_FREEZE();
+    o->oVelY = 40.0f * coss(o->oTimer * 223);
+    o->oPosY += o->oVelY;
 }
 
 void bhv_cct_platform_big_loop()
 {
-    o->oPosX = o->oHomeX + 400.0f * coss(o->oFaceAngleYaw) * coss(o->oTimer * 123);
-    o->oPosZ = o->oHomeZ + 400.0f * sins(o->oFaceAngleYaw) * coss(o->oTimer * 123);
+    CC_FREEZE();
+
+    o->oVelX = 30.0f * sins(o->oFaceAngleYaw) * coss(o->oTimer * 423);
+    o->oVelZ = 30.0f * coss(o->oFaceAngleYaw) * coss(o->oTimer * 423);
+
+    o->oPosX += o->oVelX;
+    o->oPosZ += o->oVelZ;
 }
 
 void bhv_cct_platform_loop()
 {
+    CC_FREEZE();
+
     o->oPosY = o->oHomeY + 10.0f * sins(o->oTimer * 153);
 }
 
@@ -131,11 +147,13 @@ void bhv_heave_ho_loop_cc(void)
 {
     if (gTimeFrozen)
     {
+        o->oInteractionSubtype = INT_SUBTYPE_NOT_GRABBABLE;
         bhv_heave_ho_loop_frozen();
         return cc_freeze();
     }
     else
     {
+        o->oInteractionSubtype = INT_SUBTYPE_NOT_GRABBABLE | INT_SUBTYPE_GRABS_MARIO;
         cc_unfreeze();
         bhv_heave_ho_loop_impl(1);
     }

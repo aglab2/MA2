@@ -7,7 +7,19 @@
  * the environment.
  */
 
-static void bhv_purple_switch_loop_impl(int timer, int shift, int main) {
+static int purple_on_switch(int shift, f32 dist)
+{
+    if (shift)
+    {
+        return lateral_dist_between_objects(o, gMarioObject) < dist;
+    }
+    else
+    {
+        return gMarioObject->platform == o;
+    }
+}
+
+static void bhv_purple_switch_loop_impl(int timer, int shift, f32 dist, int main) {
     int yawSpeed = 0x100 << shift;
     int yawAccel = 0x40 << shift;
     int homeSpeed = 5 << shift;
@@ -21,11 +33,7 @@ static void bhv_purple_switch_loop_impl(int timer, int shift, int main) {
             o->oGeoYaw += yawSpeed;
             o->oHomeY = 0;
             o->oOpacity = 255;
-            if (
-                gMarioObject->platform == o
-                && !(gMarioStates[0].action & MARIO_NO_PURPLE_SWITCH)
-                && lateral_dist_between_objects(o, gMarioObject) < 127.5f
-            ) {
+            if (purple_on_switch(shift, dist)) {
                 o->oAction = PURPLE_SWITCH_ACT_PRESSED;
             }
             break;
@@ -107,5 +115,5 @@ static void bhv_purple_switch_loop_impl(int timer, int shift, int main) {
 }
 
 void bhv_purple_switch_loop(void) {
-    bhv_purple_switch_loop_impl(400, 0, 1);
+    bhv_purple_switch_loop_impl(400, 0, 150.f, 1);
 }
