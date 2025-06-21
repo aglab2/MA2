@@ -11,7 +11,15 @@ void bhv_cc_timestop_init()
     gTimeFrozenTimerObj = o;
 }
 
-static void bhv_purple_switch_loop_impl(int timer, int shift);
+static void bhv_purple_switch_loop_impl(int timer, int shift, int main);
+
+static inline void cc_timestop_sync(struct Object* obj)
+{
+    obj->oPrevAction = o->oPrevAction;
+    obj->oAction = o->oAction;
+    obj->oTimer = o->oTimer;
+}
+
 void bhv_cc_timestop_loop()
 {
     o->oBehParams2ndByte = 2;
@@ -23,15 +31,23 @@ void bhv_cc_timestop_loop()
         gTimeFrozen = 1;
         if (o->oDistanceToMario < 200.f)
         {
-            o->oTimer = 0;
+            gTimeFrozenTimerObj->oTimer = o->oTimer = 0;
         }
-        print_text_fmt_int(20, 20, "%d", (int) o->oDistanceToMario);
     }
     else
     {
         gTimeFrozen = 0;
     }
-    bhv_purple_switch_loop_impl(200, 1);
+
+    int preAction = o->oAction;
+    bhv_purple_switch_loop_impl(200, 1, o != gTimeFrozenTimerObj);
+    int postAction = o->oAction;
+
+    if (preAction == 0 && postAction == 1)
+    {
+        // switch was pressed on, distribute that state to all other switches
+        cur_obj_foreach(bhvCCTimestop, cc_timestop_sync);
+    }
 }
 
 extern ObjActionFunc sRotatingCwFireBarsActions[];
@@ -97,9 +113,19 @@ void bhv_snufit_loop_cc()
 }
 
 extern void bhv_heave_ho_loop_impl(int);
+extern void bhv_heave_ho_loop_frozen(void);
 void bhv_heave_ho_loop_cc(void)
 {
-    bhv_heave_ho_loop_impl(1);
+    if (gTimeFrozen)
+    {
+        bhv_heave_ho_loop_frozen();
+        return cc_freeze();
+    }
+    else
+    {
+        cc_unfreeze();
+        bhv_heave_ho_loop_impl(1);
+    }
 }
 
 extern void bhv_goomba_triplet_spawner_update_impl(const BehaviorScript* goombaBhv);

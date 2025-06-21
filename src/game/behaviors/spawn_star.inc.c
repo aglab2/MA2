@@ -28,12 +28,14 @@ void bhv_collect_star_init(void) {
         bhv_starmove_init();
 }
 
+extern u8 gTimeFrozen;
 static void bhv_starmove_loop();
 void bhv_collect_star_loop(void) {
     if (GET_BPARAM3(o->oBehParams))
         bhv_starmove_loop();
 
-    o->oFaceAngleYaw += 0x800;
+    if (!gTimeFrozen)
+        o->oFaceAngleYaw += 0x800;
 
     if (o->oInteractStatus & INT_STATUS_INTERACTED) {
         obj_mark_for_deletion(o);

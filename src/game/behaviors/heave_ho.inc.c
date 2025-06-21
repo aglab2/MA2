@@ -56,17 +56,16 @@ static void heave_ho_act_1(int buffed) {
 }
 
 static void heave_ho_act_2(int buffed) {
+    if (cur_obj_lateral_dist_from_mario_to_home() > 1000.0f) {
+        o->oAngleToMario = cur_obj_angle_to_home();
+    }
+
     if (buffed)
     {
-        o->oAngleToMario = cur_obj_angle_to_home();
         o->oHeaveHoTimedSpeed = 2.f;
     }
     else
     {
-        if (cur_obj_lateral_dist_from_mario_to_home() > 1000.0f) {
-            o->oAngleToMario = cur_obj_angle_to_home();
-        }
-
         if (o->oTimer > 150) {
             o->oHeaveHoTimedSpeed = (302 - o->oTimer) / 152.0f;
             if (o->oHeaveHoTimedSpeed < 0.1f) {
@@ -159,6 +158,45 @@ void heave_ho_move(int buffed) {
         o->oHeaveHoThrowState = 1;
         o->oAction = 3;
     }
+}
+
+void heave_ho_move_frozen()
+{
+    switch (o->oAction) {
+        case 0:
+            heave_ho_act_0();
+            break;
+        case 1:
+            // heave_ho_act_1(buffed);
+            break;
+        case 2:
+            // heave_ho_act_2(buffed);
+            break;
+        case 3:
+            // heave_ho_act_3();
+            break;
+    }
+}
+
+void bhv_heave_ho_loop_frozen(void) {
+    cur_obj_scale(2.0f);
+
+    switch (o->oHeldState) {
+        case HELD_FREE:
+            heave_ho_move_frozen();
+            break;
+        case HELD_HELD:
+            cur_obj_unrender_set_action_and_anim(0, 0);
+            break;
+        case HELD_THROWN:
+            cur_obj_get_dropped();
+            break;
+        case HELD_DROPPED:
+            cur_obj_get_dropped();
+            break;
+    }
+
+    o->oInteractStatus = INT_STATUS_NONE;
 }
 
 void bhv_heave_ho_loop_impl(int buffed) {

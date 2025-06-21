@@ -7,7 +7,7 @@
  * the environment.
  */
 
-static void bhv_purple_switch_loop_impl(int timer, int shift) {
+static void bhv_purple_switch_loop_impl(int timer, int shift, int main) {
     int yawSpeed = 0x100 << shift;
     int yawAccel = 0x40 << shift;
     int homeSpeed = 5 << shift;
@@ -60,7 +60,9 @@ static void bhv_purple_switch_loop_impl(int timer, int shift) {
                 } else {
                     if (o->oTimer < timer - 40) {
                         if (o->oTimer)
-                            play_sound(SOUND_GENERAL2_SWITCH_TICK_FAST, gGlobalSoundSource);
+                        {
+                            if (main) play_sound(SOUND_GENERAL2_SWITCH_TICK_FAST, gGlobalSoundSource);
+                        }
 
                         int timeDiff = o->oTimer + 5;
                         int zerod = (timeDiff % 16) > 8;
@@ -69,7 +71,7 @@ static void bhv_purple_switch_loop_impl(int timer, int shift) {
                         int timeDiff = o->oTimer - (timer - 40);
                         int zerod = (timeDiff % 5) > 2;
                         o->oOpacity = zerod ? 0xff : (0xff - 3 * 0x30);
-                        play_sound(SOUND_GENERAL2_SWITCH_TICK_SLOW, gGlobalSoundSource);
+                        if (main) play_sound(SOUND_GENERAL2_SWITCH_TICK_SLOW, gGlobalSoundSource);
                     }
                     if (o->oTimer > timer) {
                         o->oAction = PURPLE_SWITCH_ACT_WAIT_FOR_MARIO_TO_GET_OFF;
@@ -105,5 +107,5 @@ static void bhv_purple_switch_loop_impl(int timer, int shift) {
 }
 
 void bhv_purple_switch_loop(void) {
-    bhv_purple_switch_loop_impl(400, 0);
+    bhv_purple_switch_loop_impl(400, 0, 1);
 }

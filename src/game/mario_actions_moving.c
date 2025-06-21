@@ -1780,6 +1780,12 @@ s32 common_ground_knockback_action(struct MarioState *m, s32 animation, s32 chec
 }
 
 s32 act_hard_backward_ground_kb(struct MarioState *m) {
+    if (gCurrCourseNum == COURSE_CCT)
+    {
+        m->invincTimer = 60;
+        return set_mario_action(m, ACT_IDLE, 0);
+    }
+
     s32 animFrame =
         common_ground_knockback_action(m, MARIO_ANIM_FALL_OVER_BACKWARDS, 43, TRUE, m->actionArg);
     if (animFrame == 43 && m->health < 0x100) {

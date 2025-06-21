@@ -714,6 +714,24 @@ UNUSED s32 debug_sequence_tracker(s16 debugInputSequence[]) {
     return FALSE;
 }
 
+typedef void (*ObjectFunc)(struct Object *obj);
+static void ALWAYS_INLINE cur_obj_foreach(const BehaviorScript *behavior, ObjectFunc func) {
+    uintptr_t *behaviorAddr = segmented_to_virtual(behavior);
+    struct ObjectNode *listHead = &gObjectLists[get_object_list_from_behavior(behaviorAddr)];
+    struct Object *obj = (struct Object *) listHead->next;
+
+    while (obj != (struct Object *) listHead) {
+        if (obj->behavior == behaviorAddr
+            && obj->activeFlags != ACTIVE_FLAG_DEACTIVATED
+            && obj != o
+        ) {
+            func(obj);
+        }
+
+        obj = (struct Object *) obj->header.next;
+    }
+}
+
 #include "behaviors/moving_coin.inc.c"
 #include "behaviors/seaweed.inc.c"
 #include "behaviors/bobomb.inc.c"
