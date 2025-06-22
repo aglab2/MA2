@@ -91,27 +91,42 @@ void bhv_lll_rotating_hex_flame_loop(void) {
 
 void bhv_cct_gate_loop()
 {
-    CC_FREEZE();
-    o->oVelY = 40.0f * coss(o->oTimer * 223);
-    o->oPosY += o->oVelY;
 }
 
 void bhv_cct_platform_big_loop()
 {
     CC_FREEZE();
+    switch (o->oBehParams2ndByte)
+    {
+        case 0:
+        {                    
+            o->oVelX = 30.0f * sins(o->oFaceAngleYaw) * coss(o->oTimer * 423);
+            o->oVelZ = 30.0f * coss(o->oFaceAngleYaw) * coss(o->oTimer * 423);
 
-    o->oVelX = 30.0f * sins(o->oFaceAngleYaw) * coss(o->oTimer * 423);
-    o->oVelZ = 30.0f * coss(o->oFaceAngleYaw) * coss(o->oTimer * 423);
+            o->oPosX += o->oVelX;
+            o->oPosZ += o->oVelZ;
+        }
+        break;
+        case 1:
+        {
+            f32 pivotX = o->oHomeX;
+            f32 pivotZ = o->oHomeZ;
 
-    o->oPosX += o->oVelX;
-    o->oPosZ += o->oVelZ;
+            o->oPosX = pivotX + 1500.f * sins(o->oTimer * 423);
+            o->oPosZ = pivotZ + 1500.f * coss(o->oTimer * 423);
+            o->oMoveAngleYaw = o->oFaceAngleYaw = o->oTimer * 423;
+        }
+        break;
+        case 2:
+        break;
+    }
 }
 
 void bhv_cct_platform_loop()
 {
     CC_FREEZE();
-
-    o->oPosY = o->oHomeY + 10.0f * sins(o->oTimer * 153);
+    o->oVelY = 40.0f * coss(o->oTimer * 223);
+    o->oPosY += o->oVelY;
 }
 
 extern void grindel_thwomp_act_rising();

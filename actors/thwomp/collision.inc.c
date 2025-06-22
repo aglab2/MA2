@@ -25,7 +25,7 @@ const Collision thwomp_seg5_collision_0500B7D0[] = {
     COL_VERTEX(157, 3, -72),
     COL_VERTEX(157, 252, -78),
 
-    COL_TRI_INIT(SURFACE_NO_CAM_COLLISION, 36),
+    COL_TRI_INIT(SURFACE_NO_CAM_COLLISION_NOT_SLIPPERY, 36),
     COL_TRI(0, 1, 2),
     COL_TRI(0, 3, 1),
     COL_TRI(1, 4, 5),
@@ -91,7 +91,7 @@ const Collision thwomp_seg5_collision_0500B92C[] = {
     COL_VERTEX(157, 3, -72),
     COL_VERTEX(157, 252, -78),
 
-    COL_TRI_INIT(SURFACE_NO_CAM_COLLISION, 36),
+    COL_TRI_INIT(SURFACE_NO_CAM_COLLISION_NOT_SLIPPERY, 36),
     COL_TRI(0, 1, 2),
     COL_TRI(0, 3, 1),
     COL_TRI(1, 4, 5),

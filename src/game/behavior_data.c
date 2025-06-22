@@ -6566,7 +6566,6 @@ const BehaviorScript bhvCCTPlatform[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_COLLISION_DATA(cct_step_collision),
-    SET_HOME(),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_cct_platform_loop),
         CALL_NATIVE(load_object_collision_model),
