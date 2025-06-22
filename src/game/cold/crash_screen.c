@@ -27,7 +27,7 @@ enum crashPages {
     PAGE_COUNT
 };
 
-u8 gCrashScreenCharToGlyph[128] __attribute__((section(".data"))) = {
+static u8 gCrashScreenCharToGlyph[128] __attribute__((section(".data"))) = {
     -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
     -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 41, -1, -1, -1, 43, -1, -1, 37, 38, -1, 42,
     -1, 39, 44, -1,  0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 36, -1, -1, -1, -1, 40, -1, 10,
@@ -37,15 +37,15 @@ u8 gCrashScreenCharToGlyph[128] __attribute__((section(".data"))) = {
 };
 
 // A height of seven pixels for each Character * nine rows of characters + one row unused.
-u32 gCrashScreenFont[7 * 9 + 1] __attribute__((section(".data"))) = {
+static u32 gCrashScreenFont[7 * 9 + 1] __attribute__((section(".data"))) = {
     #include "textures/crash_custom/crash_screen_font.ia1.inc.c"
 };
 
-u8 crashPage = 0;
-u8 updateBuffer = TRUE;
+static u8 crashPage = 0;
+static u8 updateBuffer = TRUE;
 
 
-char *gCauseDesc[18] = {
+static char *gCauseDesc[18] = {
     "Interrupt",
     "TLB modification",
     "TLB exception on load",

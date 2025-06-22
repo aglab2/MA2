@@ -458,7 +458,7 @@ void thread3_main(UNUSED void *arg) {
     setup_mesg_queues();
     load_sdata();
     load_engine_code_segment();
-    load_f3dex2();
+    // load_f3dex2();
     alloc_pool();
 #ifdef PUPPYPRINT_DEBUG
     puppyprint_calculate_ram_usage_static();

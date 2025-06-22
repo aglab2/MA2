@@ -37,7 +37,7 @@ static u32 headless_pi_status(void)
 
 
 void map_data_init(void) {
-	headless_dma((u32)_mapDataSegmentRomStart, (u32*)(RAM_END - 0x100000), 0x100000);
+	headless_dma((u32)_mapDataSegmentRomStart, (u32*)(RAM_END - 0x100000 + 0x30000), 0x100000 - 0x30000);
 	while (headless_pi_status() & (PI_STATUS_DMA_BUSY | PI_STATUS_ERROR));
 }
 

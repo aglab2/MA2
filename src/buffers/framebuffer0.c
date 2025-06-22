@@ -4,4 +4,4 @@
 #include "framebuffers.h"
 
 // 0x25800
-RGBA16 gFramebuffer0[324 * SCREEN_HEIGHT];
+RGBA16 gFramebuffer0[SCREEN_WIDTH * SCREEN_HEIGHT];

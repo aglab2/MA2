@@ -340,7 +340,7 @@ SECTIONS
    }
    END_NOLOAD(framebuffer0)
 
-   . = 0x80700000 - 0x25F80;
+   . = 0x80700000 - 0x25800;
    BEGIN_NOLOAD(framebuffer1)
    {
       BUILD_DIR/src/buffers/framebuffer1.o(.bss*);
@@ -620,15 +620,8 @@ SECTIONS
 	END_SEG(capcom)
 #endif
 
-   BEGIN_SEG(f3dzex, __romPos)
-   {
-      KEEP(BUILD_DIR/lib/gspF3DZEX2.NoN_PosLight.fifo.o(.text));
-      KEEP(BUILD_DIR/lib/gspF3DZEX2.NoN_PosLight.fifo.o(.data));
-   }
-   END_SEG(f3dzex)
-
 #ifdef DEBUG_MAP_STACKTRACE
-   BEGIN_SEG(mapData, (RAM_END - 0x00100000)) {
+   BEGIN_SEG(mapData, (RAM_END - 0x00100000 + 0x30000)) {
       KEEP(BUILD_DIR/asm/debug/map.o(.data*));
    }
    END_SEG(mapData)
