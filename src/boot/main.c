@@ -74,7 +74,7 @@ OSMesg gUnknownMesgBuf[16];
 #define F210(val) FTOFIX(val, 2, 10)
 #define SCALE(scaleup, off) (F210((1.0f / (f32)scaleup)) | (F210((f32)off) << 16))
 
-static OSViMode VI = {    
+OSViMode VI = {    
     OS_VI_NTSC_LAN1,  // type
     { // comRegs
         VI_CTRL_TYPE_16 | VI_CTRL_GAMMA_DITHER_ON | VI_CTRL_GAMMA_ON |
