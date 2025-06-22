@@ -11,7 +11,7 @@ static int purple_on_switch(int shift, f32 dist)
 {
     if (shift)
     {
-        return lateral_dist_between_objects(o, gMarioObject) < dist;
+        return dist_between_objects(o, gMarioObject) < dist;
     }
     else
     {
