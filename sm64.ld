@@ -174,7 +174,6 @@ SECTIONS
       BUILD_DIR/src/boot*.o(.text*);
       BUILD_DIR/src/hvqm*.o(.text*);
       BUILD_DIR/src/usb*.o(.text*);
-      BUILD_DIR/src/audio*.o(.text*);
 #ifdef S2DEX_TEXT_ENGINE
       BUILD_DIR/src/s2d_engine*.o(.text*);
 #endif
@@ -196,7 +195,6 @@ SECTIONS
       /* data */
       BUILD_DIR/asm/n64_assert.o(.data*);
       BUILD_DIR/src/boot*.o(.data*);
-      BUILD_DIR/src/audio*.o(.data*);
 #ifdef S2DEX_TEXT_ENGINE
       BUILD_DIR/src/s2d_engine*.o(.data*);
 #endif
@@ -214,7 +212,6 @@ SECTIONS
       /* rodata */
       BUILD_DIR/src/boot*.o(.rodata*);
       BUILD_DIR/src/usb*.o(.rodata*);
-      BUILD_DIR/src/audio*.o(.rodata*);
 #ifdef S2DEX_TEXT_ENGINE
       BUILD_DIR/src/s2d_engine*.o(.rodata*);
 #endif
@@ -233,7 +230,6 @@ SECTIONS
       BUILD_DIR/src/boot*.o(.bss*);
       BUILD_DIR/src/hvqm*.o(.bss*);
       BUILD_DIR/src/usb*.o(.bss*);
-      BUILD_DIR/src/audio*.o(.bss*);
 #ifdef S2DEX_TEXT_ENGINE
       BUILD_DIR/src/s2d_engine*.o(.bss*);
 #endif
@@ -253,6 +249,7 @@ SECTIONS
 
    BEGIN_SEG(engine, .)
    {
+      BUILD_DIR/src/audio*.o(.text*);
       BUILD_DIR/src/game/lz4t_fast.o(.text*);
       BUILD_DIR/src/game/dma_async.o(.text*);
       BUILD_DIR/src/game*.o(.text*);
@@ -269,11 +266,13 @@ SECTIONS
       BUILD_DIR/src/hacktice*.o(.text*);
       _engineSegmentTextEnd = .;
       /* data */
+      BUILD_DIR/src/audio*.o(.data*);
       BUILD_DIR/src/game*.o(.data*);
       BUILD_DIR/src/engine*.o(.data*);
       BUILD_DIR/src/usb*.o(.data*);
       BUILD_DIR/src/hacktice*.o(.data*);
       /* rodata */
+      BUILD_DIR/src/audio*.o(.rodata*);
       BUILD_DIR/src/game*.o(.rodata*);
       BUILD_DIR/src/engine*.o(.rodata*);
       BUILD_DIR/src/usb*.o(.rodata*);
@@ -313,6 +312,7 @@ SECTIONS
 
    BEGIN_NOLOAD(engine)
    {
+      BUILD_DIR/src/audio*.o(.bss*);
       BUILD_DIR/src/engine*.o(.bss*);
       BUILD_DIR/src/game/game_init.o(.bss*);
       BUILD_DIR/src/game/sound_init.o(.bss*);
