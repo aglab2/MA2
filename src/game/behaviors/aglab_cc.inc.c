@@ -125,7 +125,7 @@ void bhv_cct_platform_big_loop()
 void bhv_cct_platform_loop()
 {
     CC_FREEZE();
-    o->oVelY = 40.0f * coss(o->oTimer * 223);
+    o->oVelY = 2.0f * coss(o->oTimer * 223);
     o->oPosY += o->oVelY;
 }
 
