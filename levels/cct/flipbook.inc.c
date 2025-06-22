@@ -48,6 +48,7 @@ ALIGNED8 u8 cct_matrix_pal[] = {
 
 static struct FlipbookData flipbooks_opaque[] = {
     { LVL_BATCH_LAYER_OPAQUE_CCT_DL_MIU128_CG006_PAL_RGBA16, .count=4, .frames=10, .tileScrollX=-5, .ci4s=cct_matrix_ci4, .pals=cct_matrix_pal },
+    { LVL_BATCH_LAYER_OPAQUE_CCT_DL_ET64_1_PAL_RGBA16, .shading = 1 },
 };
 
 static struct FlipbookData flipbooks_xlu[] = {
