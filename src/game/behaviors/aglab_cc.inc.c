@@ -65,7 +65,6 @@ void bhv_cc_timestop_loop()
     if (preAction == 0 && postAction == 1)
     {
         // switch was pressed on, distribute that state to all other switches
-        print_text_fmt_int(20, 20, "%d", __LINE__);
         cc_timestop_sync();
     }
 }
