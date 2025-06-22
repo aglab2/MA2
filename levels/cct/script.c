@@ -144,7 +144,7 @@ const LevelScript level_cct_entry[] = {
 		OBJECT(MODEL_CCT_TIMESTOP, 2801, 1076, -2784, 0, 0, 0, 0x00000000, bhvCCTimestop),
 		OBJECT(MODEL_CCT_TIMESTOP, -7368, -5924, -5401, 0, 0, 0, 0x00000000, bhvCCTimestop),
 		OBJECT(MODEL_CCT_TIMESTOP, -9880, -5026, -9900, 90, 0, 0, (100 << 24), bhvCCTimestop),
-		OBJECT(MODEL_CCT_TIMESTOP, -9918, -5397, -13930, 90, 0, 0, 0x00000000, bhvCCTimestop),
+		OBJECT(MODEL_CCT_TIMESTOP, -9918, -5397, -13930, 90, 0, 0, (255 << 16), bhvCCTimestop),
 		OBJECT(MODEL_CCT_TIMESTOP, 103, 1843, -5387, 90, 0, -90, (100 << 24), bhvCCTimestop),
 		OBJECT(MODEL_CCT_TIMESTOP, -3234, -5456, -5523, 0, 90, 0, (100 << 24), bhvCCTimestop),
 		TERRAIN(cct_area_1_collision),
