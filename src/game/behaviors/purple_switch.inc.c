@@ -7,11 +7,12 @@
  * the environment.
  */
 
+extern int cc_switch_mario_nearby();
 static int purple_on_switch(int shift, f32 dist)
 {
     if (shift)
     {
-        return dist_between_objects(o, gMarioObject) < dist;
+        return cc_switch_mario_nearby();
     }
     else
     {

@@ -55,7 +55,7 @@ static void grindel_thwomp_act_floating(void)
 }
 
 void grindel_thwomp_act_rising_impl(int normal) {
-    int time = normal ? 40 : 20;
+    int time = normal ? 40 : 30;
     if (o->oBehParams2ndByte + time < o->oTimer) {
         o->oAction = GRINDEL_THWOMP_ACT_FLOATING;
         o->oPosY += 5.0f;

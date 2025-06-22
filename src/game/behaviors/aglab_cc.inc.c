@@ -1,3 +1,5 @@
+#include "engine/math_util.h"
+
 u8 gTimeFrozen = 0;
 static u32 gTimeFrozenTimerLoaded = 0;
 static struct Object* gTimeFrozenTimerObj = NULL;
@@ -33,6 +35,26 @@ static inline void cc_timestop_sync(void)
     cur_obj_foreach(bhvCCTimestop, cc_timestop_sync_fun);
 }
 
+int cc_switch_mario_nearby()
+{
+    Vec3f marioPos;
+    vec3f_copy(marioPos, gMarioObject->header.gfx.pos);
+    marioPos[1] += 40.f;
+
+    Vec3f objPos;
+    vec3f_copy(objPos, o->header.gfx.pos);
+
+    Vec3f shift = { 0.f, 40.f, 0.f };
+    rotate_in_yz(shift, shift, o->oFaceAnglePitch);
+    rotate_in_xz(shift, shift, o->oFaceAngleRoll);
+
+    vec3_add(objPos, shift);
+
+    vec3_sub(objPos, marioPos);
+    f32 dist = vec3_mag(objPos);
+    return dist < 200.f; 
+}
+
 void bhv_cc_timestop_loop()
 {
     o->oBehParams2ndByte = 2;
@@ -41,7 +63,7 @@ void bhv_cc_timestop_loop()
     // this causes timer to stop ticking and refreshes the timer to 0.
     if (o->oAction > 1)
     {
-        if (o->oDistanceToMario < 200.f)
+        if (cc_switch_mario_nearby())
         {
             o->oTimer = 0;
             cc_timestop_sync();
@@ -70,6 +92,13 @@ void bhv_cc_timestop_loop()
             gTimeFrozen = 0;
         }
     }
+    else
+    {
+        if (o->oAction && !gTimeFrozen)
+        {
+            o->oAction = 0;
+        }
+    }
 }
 
 extern ObjActionFunc sRotatingCwFireBarsActions[];
@@ -94,6 +123,42 @@ void bhv_lll_rotating_hex_flame_loop(void) {
 
 void bhv_cct_gate_loop()
 {
+    if (o->oAction)
+    {
+        o->oHomeY += o->oTimer;
+        return;
+    }
+
+    if (gMarioStates->action != ACT_JUMP_KICK && gMarioStates->action != ACT_MOVE_PUNCHING)
+        return;
+
+    if (!(gMarioStates->particleFlags & PARTICLE_TRIANGLE))
+        return;
+
+    f32 x = gMarioStates->pos[0] - o->oPosX;
+    if (absf(x) > 300.f)
+        return;
+
+    f32 z = gMarioStates->pos[2] - o->oPosZ;
+    if (0 > z || z > 100.f)
+        return;
+
+    f32 y = gMarioStates->pos[1] - o->oPosY;
+    if (0 > y || y > 500.f)
+        return;
+
+    if (0 == o->oSubAction)
+        obj_set_model(o, MODEL_CCT_GATE_HIT);
+    o->oSubAction++;
+    
+    if (2 == o->oSubAction)
+    {
+        o->oBehParams2ndByte = 0xa;
+        SET_BPARAM2(o->oBehParams, 0xa);
+        gMarioStates->usedObj = o;
+        level_trigger_warp(gMarioStates, WARP_OP_SPIN_SHRINK);
+        o->oAction = 1;
+    }
 }
 
 void bhv_cct_platform_big_loop()
@@ -135,7 +200,7 @@ void bhv_cct_platform_loop()
 extern void grindel_thwomp_act_rising_impl(int normal);
 extern void grindel_thwomp_act_floating_impl(int rng);
 extern void grindel_thwomp_act_falling_impl(int normal);
-extern void grindel_thwomp_act_land_impl(int normal);
+extern void grindel_thwomp_act_land(void);
 extern void grindel_thwomp_act_on_ground_impl(int rng);
 
 void bhv_grindel_thwomp_loop_cc()
@@ -146,7 +211,7 @@ void bhv_grindel_thwomp_loop_cc()
         case 0: grindel_thwomp_act_rising_impl(0); break;
         case 1: grindel_thwomp_act_floating_impl(0); break;
         case 2: grindel_thwomp_act_falling_impl(0); break;
-        case 3: grindel_thwomp_act_land_impl(0); break;
+        case 3: grindel_thwomp_act_land(); break;
         case 4: grindel_thwomp_act_on_ground_impl(0); break;
     }
 }
