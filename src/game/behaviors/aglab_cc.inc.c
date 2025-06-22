@@ -16,13 +16,7 @@ static void cc_unfreeze()
 #define CC_FREEZE() if (gTimeFrozen) { return cc_freeze(); } else { cc_unfreeze(); }
 
 void bhv_cc_timestop_init()
-{
-    if (gTimeFrozenTimerLoaded == gGlobalTimer)
-        return;
-
-    gTimeFrozenTimerLoaded = gGlobalTimer;
-    gTimeFrozenTimerObj = o;
-}
+{ }
 
 static void bhv_purple_switch_loop_impl(int timer, int shift, f32 dist, int main);
 
@@ -35,6 +29,7 @@ static inline void cc_timestop_sync_fun(struct Object* obj)
 
 static inline void cc_timestop_sync(void)
 {
+    gTimeFrozenTimerObj = o;
     cur_obj_foreach(bhvCCTimestop, cc_timestop_sync_fun);
 }
 
@@ -46,26 +41,34 @@ void bhv_cc_timestop_loop()
     // this causes timer to stop ticking and refreshes the timer to 0.
     if (o->oAction > 1)
     {
-        gTimeFrozen = 1;
         if (o->oDistanceToMario < 200.f)
         {
             o->oTimer = 0;
             cc_timestop_sync();
         }
     }
-    else
-    {
-        gTimeFrozen = 0;
-    }
 
     int preAction = o->oAction;
-    bhv_purple_switch_loop_impl(200, 1, 200.f, o == gTimeFrozenTimerObj);
+    int time = GET_BPARAM1(o->oBehParams);
+    bhv_purple_switch_loop_impl(time ?: 200, 1, 200.f, o == gTimeFrozenTimerObj);
     int postAction = o->oAction;
 
     if (preAction == 0 && postAction == 1)
     {
         // switch was pressed on, distribute that state to all other switches
         cc_timestop_sync();
+    }
+
+    if (o == gTimeFrozenTimerObj)
+    {
+        if (o->oAction > 1)
+        {
+            gTimeFrozen = 1;
+        }
+        else
+        {
+            gTimeFrozen = 0;
+        }
     }
 }
 
@@ -132,7 +135,7 @@ void bhv_cct_platform_loop()
 extern void grindel_thwomp_act_rising_impl(int normal);
 extern void grindel_thwomp_act_floating_impl(int rng);
 extern void grindel_thwomp_act_falling_impl(int normal);
-extern void grindel_thwomp_act_land();
+extern void grindel_thwomp_act_land_impl(int normal);
 extern void grindel_thwomp_act_on_ground_impl(int rng);
 
 void bhv_grindel_thwomp_loop_cc()
@@ -140,10 +143,10 @@ void bhv_grindel_thwomp_loop_cc()
     CC_FREEZE();
 
     switch (o->oAction) {
-        case 0: grindel_thwomp_act_rising(0); break;
+        case 0: grindel_thwomp_act_rising_impl(0); break;
         case 1: grindel_thwomp_act_floating_impl(0); break;
         case 2: grindel_thwomp_act_falling_impl(0); break;
-        case 3: grindel_thwomp_act_land(0); break;
+        case 3: grindel_thwomp_act_land_impl(0); break;
         case 4: grindel_thwomp_act_on_ground_impl(0); break;
     }
 }
