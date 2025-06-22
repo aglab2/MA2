@@ -13,8 +13,8 @@ static void grindel_thwomp_act_on_ground(void) {
     grindel_thwomp_act_on_ground_impl(1);
 }
 
-void grindel_thwomp_act_falling(void) {
-    o->oVelY += -4.0f;
+void grindel_thwomp_act_falling_impl(int normal) {
+    o->oVelY += normal ? -10.f : -4.0f;
     o->oPosY += o->oVelY;
     if (o->oPosY < o->oHomeY) {
         o->oPosY = o->oHomeY;
@@ -22,6 +22,10 @@ void grindel_thwomp_act_falling(void) {
         o->oAction = GRINDEL_THWOMP_ACT_LAND;
     }
 }
+
+void grindel_thwomp_act_falling(void)  {
+    grindel_thwomp_act_falling_impl(0);
+}   
 
 void grindel_thwomp_act_land(void) {
     if (o->oTimer == 0 && o->oDistanceToMario < 1500.0f) {
@@ -50,13 +54,17 @@ static void grindel_thwomp_act_floating(void)
     grindel_thwomp_act_floating_impl(1);
 }
 
-void grindel_thwomp_act_rising(void) {
+void grindel_thwomp_act_rising_impl(int normal) {
     if (o->oBehParams2ndByte + 40 < o->oTimer) {
         o->oAction = GRINDEL_THWOMP_ACT_FLOATING;
         o->oPosY += 5.0f;
     } else {
-        o->oPosY += 10.0f;
+        o->oPosY += normal ? 20.f : 10.0f;
     }
+}
+
+void grindel_thwomp_act_rising(void) {
+    grindel_thwomp_act_rising_impl(1);
 }
 
 ObjActionFunc sGrindelThwompActions[] = {

@@ -129,9 +129,9 @@ void bhv_cct_platform_loop()
     o->oPosY += o->oVelY;
 }
 
-extern void grindel_thwomp_act_rising();
+extern void grindel_thwomp_act_rising_impl(int normal);
 extern void grindel_thwomp_act_floating_impl(int rng);
-extern void grindel_thwomp_act_falling();
+extern void grindel_thwomp_act_falling_impl(int normal);
 extern void grindel_thwomp_act_land();
 extern void grindel_thwomp_act_on_ground_impl(int rng);
 
@@ -140,10 +140,10 @@ void bhv_grindel_thwomp_loop_cc()
     CC_FREEZE();
 
     switch (o->oAction) {
-        case 0: grindel_thwomp_act_rising(); break;
+        case 0: grindel_thwomp_act_rising(0); break;
         case 1: grindel_thwomp_act_floating_impl(0); break;
-        case 2: grindel_thwomp_act_falling(); break;
-        case 3: grindel_thwomp_act_land(); break;
+        case 2: grindel_thwomp_act_falling_impl(0); break;
+        case 3: grindel_thwomp_act_land(0); break;
         case 4: grindel_thwomp_act_on_ground_impl(0); break;
     }
 }
