@@ -13,3 +13,15 @@
 #include "levels/cce/visual/header_lvlopt.inc.h"
 #include "levels/cce/visual/model_lvlopt.inc.c"
 #endif
+
+#include "levels/cce/cce_switch/model.inc.c"
+#include "levels/cce/cce_shutter_right/collision.inc.c"
+#include "levels/cce/cce_shutter_right/model.inc.c"
+#include "levels/cce/cce_shutter_left/collision.inc.c"
+#include "levels/cce/cce_shutter_left/model.inc.c"
+#include "levels/cce/cce_stepb/collision.inc.c"
+#include "levels/cce/cce_stepb/model.inc.c"
+#include "levels/cce/cce_step/collision.inc.c"
+#include "levels/cce/cce_step/model.inc.c"
+#include "levels/cce/cce_block/collision.inc.c"
+#include "levels/cce/cce_block/model.inc.c"

@@ -18,3 +18,10 @@
 #else
 #include "levels/cce/visual/geo_lvl.inc.c"
 #endif
+
+#include "levels/cce/cce_switch/geo.inc.c"
+#include "levels/cce/cce_shutter_right/geo.inc.c"
+#include "levels/cce/cce_shutter_left/geo.inc.c"
+#include "levels/cce/cce_stepb/geo.inc.c"
+#include "levels/cce/cce_step/geo.inc.c"
+#include "levels/cce/cce_block/geo.inc.c"
