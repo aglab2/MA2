@@ -6585,6 +6585,30 @@ const BehaviorScript bhvCCTimestop[] = {
     END_LOOP(),
 };
 
+extern const Collision cce_step_collision[];
+extern void bhv_cce_platform_fast_drop_loop();
+const BehaviorScript bhvCCTFastDrop[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(cce_step_collision),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_cce_platform_fast_drop_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern const Collision cce_block_collision[];
+extern void bhv_cce_block_loop();
+const BehaviorScript bhvCCSpawn[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    LOAD_COLLISION_DATA(cce_block_collision),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_cce_block_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
 extern void bhv_coin_formation_spawned_coin_loop_cc();
 const BehaviorScript bhvCoinFormationSpawnedCoinCC[] = {
     BEGIN(OBJ_LIST_LEVEL),

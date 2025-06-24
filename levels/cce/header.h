@@ -34,4 +34,8 @@ extern const LevelScript level_cce_entry[];
 
 #include "levels/cce/cce_block/geo_header.h"
 
+#include "levels/cce/cce_door/geo_header.h"
+
+#include "levels/cce/cce_doorhit/geo_header.h"
+
 #endif

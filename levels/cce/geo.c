@@ -25,3 +25,5 @@
 #include "levels/cce/cce_stepb/geo.inc.c"
 #include "levels/cce/cce_step/geo.inc.c"
 #include "levels/cce/cce_block/geo.inc.c"
+#include "levels/cce/cce_door/geo.inc.c"
+#include "levels/cce/cce_doorhit/geo.inc.c"

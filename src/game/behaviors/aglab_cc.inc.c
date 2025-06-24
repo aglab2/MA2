@@ -267,3 +267,13 @@ extern void bhv_coin_formation_spawned_coin_loop_cc()
     CC_FREEZE();
     bhv_coin_formation_spawned_coin_loop();
 }
+
+void bhv_cce_platform_fast_drop_loop()
+{
+
+}
+
+void bhv_cce_block_loop()
+{
+
+}

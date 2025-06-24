@@ -610,6 +610,8 @@ extern const BehaviorScript bhvCCTGate[];
 extern const BehaviorScript bhvCCTPlatformBig[];
 extern const BehaviorScript bhvCCTPlatform[];
 extern const BehaviorScript bhvCCTimestop[];
+extern const BehaviorScript bhvCCTFastDrop[];
+extern const BehaviorScript bhvCCSpawn[];
 
 extern const BehaviorScript bhvCoinFormationCC[];
 extern const BehaviorScript bhvCoinFormationSpawnedCoinCC[];
