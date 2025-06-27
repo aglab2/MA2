@@ -17,13 +17,14 @@
 /* Fast64 begin persistent block [scripts] */
 #include "levels/wb/area_1/collision.inc.c"
 #include "levels/wb/area_2/collision.inc.c"
+#include "level_config.h"
 #define wb_area_2 wb_area_1
 extern const SpringDesc* spring_descs_wb[];
 extern IWDHeader* iw_descs_wb[];
 static struct LevelConfig cfg = {
-	.skybox = &wb_skybox_object_005ED684_mesh,
+	.skybox = wb_skybox_object_005ED684_mesh,
 	.springDescs = spring_descs_wb,
-	.iwds = &iw_descs_wb,
+	.iwds = iw_descs_wb,
 };
 #define SEQ_LEVEL_GRASS 0x3d
 /* Fast64 end persistent block [scripts] */

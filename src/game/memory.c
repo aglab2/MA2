@@ -267,6 +267,7 @@ void main_pool_pop_state(void) {
  * Perform a DMA read from ROM, allocating space in the memory pool to write to.
  * Return the destination address.
  */
+extern void dma_read(u8 *dest, u8 *srcStart, u8 *srcEnd);
 static void *dynamic_dma_read(int region, u8 *srcStart, u8 *srcEnd, u32 alignment, u32 bssLength) {
     u32 size = ALIGN16(srcEnd - srcStart);
     void* dest = main_pool_alloc_aligned(region, size + bssLength, alignment);
@@ -372,7 +373,7 @@ void *load_segment_decompress(s32 segment, u8 *srcStart, u8 *srcEnd) {
 #else
     u32 compSize = ALIGN16(srcEnd - srcStart);
 #endif
-    u8 *compressed = 0x80725F80; // main_pool_alloc_aligned_freeable(compSize, 0);
+    u8 *compressed = (u8*) 0x80725F80; // main_pool_alloc_aligned_freeable(compSize, 0);
 #ifdef GZIP
     // Decompressed size from end of gzip
     u32 *size = (u32 *) (compressed + compSize);

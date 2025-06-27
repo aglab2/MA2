@@ -15,6 +15,7 @@
 #include "levels/pc/header.h"
 
 /* Fast64 begin persistent block [scripts] */
+#include "level_config.h"
 extern const GeoLayout pc_area_visual[];
 #define pc_area_1 pc_area_visual
 #define pc_area_2 pc_area_visual

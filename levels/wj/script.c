@@ -20,6 +20,7 @@
 #include "levels/wj/area_3/collision.inc.c"
 #include "levels/wj/area_4/collision.inc.c"
 #include "levels/wj/area_5/collision.inc.c"
+#include "level_config.h"
 #define wj_area_2 wj_area_1
 #define wj_area_3 wj_area_1
 #define wj_area_4 wj_area_1

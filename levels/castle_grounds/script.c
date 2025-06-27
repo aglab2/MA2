@@ -16,6 +16,7 @@
 #include "levels/castle_grounds/header.h"
 
 /* Fast64 begin persistent block [scripts] */
+#include "level_config.h"
 #define SEQ_LEVEL_GRASS 0x2A
 extern const GeoLayout ow_number_geo[];
 extern const GeoLayout ow_clear_geo[];

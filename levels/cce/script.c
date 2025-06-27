@@ -16,6 +16,7 @@
 
 /* Fast64 begin persistent block [scripts] */
 #include "levels/cce/area_1/collision.inc.c"
+#include "level_config.h"
 #define SEQ_LEVEL_GRASS 0x43
 static struct LevelConfig cfg = { };
 #define bhvCCSpawnUp bhvCCSpawn
@@ -39,7 +40,7 @@ const LevelScript level_cce_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_CCT_STEP, cce_step_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CCE_GATE, cce_door_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CCT_GATE_HIT, cce_doorhit_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCT_BLOCK, cce_block_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CCE_BLOCK, cce_block_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CCE_SHUTTER_LEFT, cce_shutter_left_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CCE_SHUTTER_RIGHT, cce_shutter_right_geo), 
 	/* Fast64 begin persistent block [level commands] */

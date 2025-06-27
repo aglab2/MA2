@@ -1342,7 +1342,7 @@ s32 play_mode_frame_advance(void) {
  */
 void level_set_transition(s16 length, void (*updateFunction)()) {
     sTransitionTimer = length;
-    sTransitionUpdate = updateFunction;
+    sTransitionUpdate = (typeof(sTransitionUpdate)) updateFunction;
 }
 
 /**
@@ -1635,6 +1635,8 @@ s32 lvl_set_current_level(UNUSED s16 initOrUpdate, s32 levelNum) {
 /**
  * Play the "thank you so much for to playing my game" sound.
  */
+
+extern void seq_player_play_sequence(u8 player, u8 seqId, u16 arg2);
 s32 lvl_play_the_end_screen_sound(UNUSED s16 initOrUpdate, UNUSED s32 levelNum) {
     play_sound(SOUND_MENU_THANK_YOU_PLAYING_MY_GAME, gGlobalSoundSource);
     seq_player_play_sequence(SEQ_PLAYER_ENV, 0x39, 0);

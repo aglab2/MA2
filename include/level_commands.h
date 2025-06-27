@@ -5,9 +5,6 @@
 
 #include "level_table.h"
 #include "config.h"
-#include "rail_desc.h"
-#include "spring_desc.h"
-#include "instant_warp_desc.h"
 
 enum LevelCommands {
     /*0x00*/ LEVEL_CMD_LOAD_AND_EXECUTE,
@@ -74,16 +71,6 @@ enum LevelCommands {
     /*0x3D*/ LEVEL_CMD_PUPPYVOLUME,
     /*0x3E*/ LEVEL_CMD_CHANGE_AREA_SKYBOX,
     /*0x3F*/ LEVEL_CMD_SET_ECHO,
-};
-
-struct LevelConfig
-{
-    f32 viewRangeMult;
-    const RailDesc** railDesc;
-    const Gfx* skybox;
-    const SpringDesc** springDescs;
-    const SpringLinkDesc* springLinks;
-    const IWDHeader** iwds;
 };
 
 enum LevelActs {

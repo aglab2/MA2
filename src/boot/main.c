@@ -595,7 +595,7 @@ void dispatch_audio_sptask(struct SPTask *spTask) {
 
 void exec_display_list(struct SPTask *spTask) {
     if (spTask != NULL) {
-        osWritebackDCache(0x80200000, 0x80400000 - 0x80200000);
+        osWritebackDCache((void*) 0x80200000, 0x80400000 - 0x80200000);
         osWritebackDCache(gGfxPool, sizeof(*gGfxPool));
         spTask->state = SPTASK_STATE_NOT_STARTED;
         if (sCurrentDisplaySPTask == NULL) {

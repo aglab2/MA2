@@ -985,7 +985,7 @@ static void setup_global_light() {
 
     {
         Gfx* cur = alloc_display_list(0x10);
-        gLightReset = VIRTUAL_TO_PHYSICAL2(cur);
+        gLightReset = (Gfx*) VIRTUAL_TO_PHYSICAL2(cur);
         gSPSetLights1(cur++, (*curLight));
         gSPEndDisplayList(cur++);    
     }
@@ -1705,7 +1705,7 @@ void geo_try_process_children(struct GraphNode *node) {
     }
 }
 
-typedef void (*GeoProcessFunc)();
+typedef void (*GeoProcessFunc)(struct GraphNode *node);
 static const GeoProcessFunc GeoProcessJumpTable[];
 void geo_process_lvl_start(struct GraphNode* node)
 {
@@ -1929,7 +1929,7 @@ void geo_process_batchset_translation(struct GraphNodeBatchsetTranslation *node)
     mtxf_translate_and_mul(translation[0], translation[1], translation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
 
     inc_mat_stack();
-    append_lvl_dl_and_return((struct GraphNodeDisplayList *)node);
+    append_lvl_dl_and_return(&node->node);
 }
 
 void geo_process_batchset_translation_rotation(struct GraphNodeBatchsetTranslationRotation* node) {
@@ -1938,50 +1938,50 @@ void geo_process_batchset_translation_rotation(struct GraphNodeBatchsetTranslati
     mtxf_rotate_zxy_and_translate_and_mul(node->rotation[0], node->rotation[1], node->rotation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
 
     inc_mat_stack();
-    append_lvl_dl_and_return((struct GraphNodeDisplayList *)node);
+    append_lvl_dl_and_return(&node->node);
 }
 
 // See enum 'GraphNodeTypes' in 'graph_node.h'.
 static const GeoProcessFunc GeoProcessJumpTable[] = {
-    [GRAPH_NODE_TYPE_ORTHO_PROJECTION    ] = geo_process_ortho_projection,
-    [GRAPH_NODE_TYPE_PERSPECTIVE         ] = geo_process_perspective,
-    [GRAPH_NODE_TYPE_MASTER_LIST         ] = geo_process_master_list,
-    [GRAPH_NODE_TYPE_LEVEL_OF_DETAIL     ] = geo_process_level_of_detail,
-    [GRAPH_NODE_TYPE_SWITCH_CASE         ] = geo_process_switch,
-    [GRAPH_NODE_TYPE_CAMERA              ] = geo_process_camera,
-    [GRAPH_NODE_TYPE_TRANSLATION_ROTATION] = geo_process_translation_rotation,
-    [GRAPH_NODE_TYPE_TRANSLATION         ] = geo_process_translation,
-    [GRAPH_NODE_TYPE_ROTATION            ] = geo_process_rotation,
-    [GRAPH_NODE_TYPE_OBJECT              ] = geo_process_object,
-    [GRAPH_NODE_TYPE_ANIMATED_PART       ] = geo_process_animated_part,
-    [GRAPH_NODE_TYPE_BILLBOARD           ] = geo_process_billboard,
-    [GRAPH_NODE_TYPE_DISPLAY_LIST        ] = geo_process_display_list,
-    [GRAPH_NODE_TYPE_SCALE               ] = geo_process_scale,
-    [GRAPH_NODE_TYPE_SHADOW              ] = geo_process_shadow,
-    [GRAPH_NODE_TYPE_OBJECT_PARENT       ] = geo_process_object_parent,
-    [GRAPH_NODE_TYPE_GENERATED_LIST      ] = geo_process_generated_list,
-    [GRAPH_NODE_TYPE_BACKGROUND          ] = geo_process_background,
-    [GRAPH_NODE_TYPE_HELD_OBJ            ] = geo_process_held_object,
-    [GRAPH_NODE_TYPE_CULLING_RADIUS      ] = geo_try_process_children,
-    [GRAPH_NODE_TYPE_ROOT                ] = geo_try_process_children,
-    [GRAPH_NODE_TYPE_START               ] = geo_try_process_children,
-    [GRAPH_NODE_TYPE_CULL                ] = geo_process_cull,
-    [GRAPH_NODE_TYPE_COIN                ] = geo_process_coin,
+    [GRAPH_NODE_TYPE_ORTHO_PROJECTION    ] = (GeoProcessFunc) geo_process_ortho_projection,
+    [GRAPH_NODE_TYPE_PERSPECTIVE         ] = (GeoProcessFunc) geo_process_perspective,
+    [GRAPH_NODE_TYPE_MASTER_LIST         ] = (GeoProcessFunc) geo_process_master_list,
+    [GRAPH_NODE_TYPE_LEVEL_OF_DETAIL     ] = (GeoProcessFunc) geo_process_level_of_detail,
+    [GRAPH_NODE_TYPE_SWITCH_CASE         ] = (GeoProcessFunc) geo_process_switch,
+    [GRAPH_NODE_TYPE_CAMERA              ] = (GeoProcessFunc) geo_process_camera,
+    [GRAPH_NODE_TYPE_TRANSLATION_ROTATION] = (GeoProcessFunc) geo_process_translation_rotation,
+    [GRAPH_NODE_TYPE_TRANSLATION         ] = (GeoProcessFunc) geo_process_translation,
+    [GRAPH_NODE_TYPE_ROTATION            ] = (GeoProcessFunc) geo_process_rotation,
+    [GRAPH_NODE_TYPE_OBJECT              ] = (GeoProcessFunc) geo_process_object,
+    [GRAPH_NODE_TYPE_ANIMATED_PART       ] = (GeoProcessFunc) geo_process_animated_part,
+    [GRAPH_NODE_TYPE_BILLBOARD           ] = (GeoProcessFunc) geo_process_billboard,
+    [GRAPH_NODE_TYPE_DISPLAY_LIST        ] = (GeoProcessFunc) geo_process_display_list,
+    [GRAPH_NODE_TYPE_SCALE               ] = (GeoProcessFunc) geo_process_scale,
+    [GRAPH_NODE_TYPE_SHADOW              ] = (GeoProcessFunc) geo_process_shadow,
+    [GRAPH_NODE_TYPE_OBJECT_PARENT       ] = (GeoProcessFunc) geo_process_object_parent,
+    [GRAPH_NODE_TYPE_GENERATED_LIST      ] = (GeoProcessFunc) geo_process_generated_list,
+    [GRAPH_NODE_TYPE_BACKGROUND          ] = (GeoProcessFunc) geo_process_background,
+    [GRAPH_NODE_TYPE_HELD_OBJ            ] = (GeoProcessFunc) geo_process_held_object,
+    [GRAPH_NODE_TYPE_CULLING_RADIUS      ] = (GeoProcessFunc) geo_try_process_children,
+    [GRAPH_NODE_TYPE_ROOT                ] = (GeoProcessFunc) geo_try_process_children,
+    [GRAPH_NODE_TYPE_START               ] = (GeoProcessFunc) geo_try_process_children,
+    [GRAPH_NODE_TYPE_CULL                ] = (GeoProcessFunc) geo_process_cull,
+    [GRAPH_NODE_TYPE_COIN                ] = (GeoProcessFunc) geo_process_coin,
 
-    [GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION] = geo_process_lvl_translation_rotation,
-    [GRAPH_NODE_TYPE_LVL_TRANSLATION         ] = geo_process_lvl_translation,
-    [GRAPH_NODE_TYPE_BREAK_TRANSLATION       ] = geo_process_break_translation,
-    [GRAPH_NODE_TYPE_OBJ_TRANSLATION_ROTATION] = geo_process_obj_translation_rotation,
-    [GRAPH_NODE_TYPE_OBJ_ROCKET_TRANSLATION  ] = geo_process_obj_rocket_translation,
-    [GRAPH_NODE_TYPE_OBJ_TRANSLATION  ]        = geo_process_obj_translation,
-    [GRAPH_NODE_TYPE_BREAK_TRANSLATION_ROTATION] = geo_process_break_translation_rotation,
-    [GRAPH_NODE_TYPE_BATCHSET]                 = geo_process_batchset,
-    [GRAPH_NODE_TYPE_BATCH_DISPLAY_LIST]       = geo_process_batch_display_list,
-    [GRAPH_NODE_TYPE_BATCH_GENERATED_LIST]     = geo_process_batch_generated_list,
-    [GRAPH_NODE_TYPE_BATCH_ANIM_DISPLAY_LIST]  = geo_process_batch_anim_display_list,
-    [GRAPH_NODE_TYPE_BATCHSET_TRANSLATION]     = geo_process_batchset_translation,
-    [GRAPH_NODE_TYPE_BATCHSET_TRANSLATION_ROTATION] = geo_process_batchset_translation_rotation,
-    [GRAPH_NODE_TYPE_LVL_START]                = geo_process_lvl_start,
+    [GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION] = (GeoProcessFunc) geo_process_lvl_translation_rotation,
+    [GRAPH_NODE_TYPE_LVL_TRANSLATION         ] = (GeoProcessFunc) geo_process_lvl_translation,
+    [GRAPH_NODE_TYPE_BREAK_TRANSLATION       ] = (GeoProcessFunc) geo_process_break_translation,
+    [GRAPH_NODE_TYPE_OBJ_TRANSLATION_ROTATION] = (GeoProcessFunc) geo_process_obj_translation_rotation,
+    [GRAPH_NODE_TYPE_OBJ_ROCKET_TRANSLATION  ] = (GeoProcessFunc) geo_process_obj_rocket_translation,
+    [GRAPH_NODE_TYPE_OBJ_TRANSLATION  ]        = (GeoProcessFunc) geo_process_obj_translation,
+    [GRAPH_NODE_TYPE_BREAK_TRANSLATION_ROTATION] = (GeoProcessFunc) geo_process_break_translation_rotation,
+    [GRAPH_NODE_TYPE_BATCHSET]                 = (GeoProcessFunc) geo_process_batchset,
+    [GRAPH_NODE_TYPE_BATCH_DISPLAY_LIST]       = (GeoProcessFunc) geo_process_batch_display_list,
+    [GRAPH_NODE_TYPE_BATCH_GENERATED_LIST]     = (GeoProcessFunc) geo_process_batch_generated_list,
+    [GRAPH_NODE_TYPE_BATCH_ANIM_DISPLAY_LIST]  = (GeoProcessFunc) geo_process_batch_anim_display_list,
+    [GRAPH_NODE_TYPE_BATCHSET_TRANSLATION]     = (GeoProcessFunc) geo_process_batchset_translation,
+    [GRAPH_NODE_TYPE_BATCHSET_TRANSLATION_ROTATION] = (GeoProcessFunc) geo_process_batchset_translation_rotation,
+    [GRAPH_NODE_TYPE_LVL_START]                = (GeoProcessFunc) geo_process_lvl_start,
 };
 
 /**

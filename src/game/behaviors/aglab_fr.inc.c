@@ -1,3 +1,4 @@
+extern int on_spring();
 void bhv_fr_drop()
 {
     // if (0 < o->oTimer && o->oTimer < 5)

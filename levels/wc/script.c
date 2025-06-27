@@ -16,6 +16,7 @@
 
 /* Fast64 begin persistent block [scripts] */
 #include "levels/wc/area_1/collision.inc.c"
+#include "level_config.h"
 #define SEQ_LEVEL_GRASS 0x2B
 extern const SpringDesc* spring_descs_wc[];
 static struct LevelConfig cfg = {

@@ -16,6 +16,7 @@
 
 /* Fast64 begin persistent block [scripts] */
 #include "levels/dl/area_1/collision.inc.c"
+#include "level_config.h"
 extern Gfx dl_skybox_skybox_mesh[];
 extern const SpringDesc* spring_descs_dl[];
 static struct LevelConfig cfg = {

@@ -18,7 +18,7 @@ static ALIGNED16 const Mtx kIdentityMatrixS16 = { { { 0x00010000, 0x00000000, 0x
 void guTranslate(Mtx* m, float x, float y, float z) {
     memcpy4(m, &kIdentityMatrixS16, sizeof(kIdentityMatrixS16) - 2 * 4);
     const float scale = 65536.f;
-    s16* AsS16P = m;
+    s16* AsS16P = (s16*) m;
     float x_scaled = x * scale;
     float y_scaled = y * scale;
     float z_scaled = z * scale;
@@ -60,7 +60,7 @@ void guScale(Mtx* m, float x, float y, float z)
 {
     bzero4(m, sizeof(kIdentityMatrixS16));
     const float scale = 65536.f;
-    s16* AsS16P = m;
+    s16* AsS16P = (s16*) m;
     float x_scaled = x * scale;
     float y_scaled = y * scale;
     float z_scaled = z * scale;
@@ -89,7 +89,7 @@ void guRotateX(Mtx* m, u16 a)
 {
     memcpy4(m, &kIdentityMatrixS16, sizeof(kIdentityMatrixS16));
     const float scale = 65536.f;
-    s16* AsS16P = m;
+    s16* AsS16P = (s16*) m;
     f32 s = sins(a);
     f32 c = coss(a);
 
@@ -120,7 +120,7 @@ void guRotateY(Mtx* m, u16 a)
 {
     memcpy4(m, &kIdentityMatrixS16, sizeof(kIdentityMatrixS16));
     const float scale = 65536.f;
-    s16* AsS16P = m;
+    s16* AsS16P = (s16*) m;
     f32 s = sins(a);
     f32 c = coss(a);
 
@@ -165,7 +165,7 @@ void guRotateZ(Mtx* m, u16 a)
 {
     memcpy4(((u32*)m) + 1, ((u32*) &kIdentityMatrixS16) + 1, sizeof(kIdentityMatrixS16) - 4);
     const float scale = 65536.f;
-    s16* AsS16P = m;
+    s16* AsS16P = (s16*) m;
     f32 s = sins(a);
     f32 c = coss(a);
 
@@ -194,7 +194,7 @@ extern u16 guPerspectiveA(Mtx *m, u16 fovy, float aspect, float near, float far,
     bzero4(m, sizeof(kIdentityMatrixS16));
 	float cot = coss (fovy/2) / sins (fovy/2);
     
-    s16* AsS16P = m;
+    s16* AsS16P = (s16*) m;
 
 	f32 mf00 = cot / aspect * scale;
 	f32 mf11 = cot * scale;
@@ -256,7 +256,7 @@ void guOrtho(Mtx *m, float l, float r, float b, float t, float n, float f, float
     s32 mi32 = (s32)mf32;
     s32 mi33 = (s32)mf33;
 
-    s16* AsS16P = m;
+    s16* AsS16P = (s16*) m;
 
     AsS16P[0] = mi00 >> 16;
     AsS16P[5] = mi11 >> 16;

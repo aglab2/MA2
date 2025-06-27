@@ -15,6 +15,7 @@
 #include "levels/ss2/header.h"
 
 /* Fast64 begin persistent block [scripts] */
+#include "level_config.h"
 #define SEQ_LEVEL_GRASS 0x35
 static struct LevelConfig cfg = {
 	.skybox = ss2_skybox_fr_skybox_mesh,

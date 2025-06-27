@@ -16,6 +16,7 @@
 
 /* Fast64 begin persistent block [scripts] */
 #include "levels/eq/area_1/collision.inc.c"
+#include "level_config.h"
 static struct LevelConfig cfg = {
 };
 /* Fast64 end persistent block [scripts] */

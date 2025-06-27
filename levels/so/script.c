@@ -17,6 +17,7 @@
 /* Fast64 begin persistent block [scripts] */
 #include "levels/so/area_1/collision.inc.c"
 #include "levels/so/area_2/collision.inc.c"
+#include "level_config.h"
 #define so_area_2 so_area_1
 extern Gfx so_skybox_so_skybox_mesh[];
 extern IWDHeader* iw_descs_so[];

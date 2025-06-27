@@ -16,7 +16,7 @@
 
 /* Fast64 begin persistent block [scripts] */
 #include "levels/aq/area_1/collision.inc.c"
-
+#include "level_config.h"
 extern const SpringDesc* spring_descs_aq[];
 static struct LevelConfig cfg = {
 	.viewRangeMult = 0.53f,

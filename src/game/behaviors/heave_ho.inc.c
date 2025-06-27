@@ -114,13 +114,6 @@ static void heave_ho_act_0(void) {
     }
 }
 
-ObjActionFunc sHeaveHoActions[] = {
-    heave_ho_act_0,
-    heave_ho_act_1,
-    heave_ho_act_2,
-    heave_ho_act_3,
-};
-
 void heave_ho_move(int buffed) {
     cur_obj_update_floor_and_walls();
     switch (o->oAction) {

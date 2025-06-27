@@ -848,6 +848,7 @@ s32 act_tornado_twirling(struct MarioState *m) {
     return FALSE;
 }
 
+extern int zipline_cancel();
 s32 check_common_automatic_cancels(struct MarioState *m) {
     if (zipline_cancel())
     {

@@ -863,7 +863,7 @@ s32 act_walking(struct MarioState *m) {
 
 #include "fcgr.h"
 
-s32 act_fcgr_walking(struct MarioState *m, int landed)
+s32 act_fcgr_walking(struct MarioState *m)
 {
     switch (fcgr_spin(m))
     {

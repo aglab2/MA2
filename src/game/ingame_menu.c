@@ -24,6 +24,7 @@
 #include "config.h"
 #include "puppycam2.h"
 #include "main.h"
+#include "engine/gut.h"
 
 #include "hacktice/main.h"
 

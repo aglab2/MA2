@@ -30,13 +30,14 @@ extern const GeoLayout cg_area_visual[];
 #include "levels/cg/area_2/collision.inc.c"
 #include "levels/cg/area_3/collision.inc.c"
 #include "levels/cg/area_4/collision.inc.c"
+#include "level_config.h"
 #define SEQ_LEVEL_GRASS 0x28
 
 extern const RailDesc* rail_descs_cg[];
 extern const SpringDesc* spring_descs_cg[];
 extern const IWDHeader* iw_descs_cg[];
 static struct LevelConfig cfg = {
-	.railDesc = rail_descs_cg,
+	.railDesc = (RailDesc**) rail_descs_cg,
 	.skybox = cg_skybox_cg_skybox_mesh,
 	.springDescs = spring_descs_cg,
 	.iwds = iw_descs_cg,

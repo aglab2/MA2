@@ -115,6 +115,7 @@ void bhv_ow_visual_loop()
     hide_if_invisible();
 }
 
+extern void load_object_collision_model();
 void bhv_ow_lock_loop()
 {
     bhv_ow_visual_loop();

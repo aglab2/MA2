@@ -64,11 +64,11 @@ const RailDesc* rail_descs_ce[] = {
 };
 
 static const SpringDesc spring_ce_area5[] = {
-    &ce_area_5_spline_Spring_NurbsCurve,
-    &ce_area_5_spline_Spring_NurbsCurve_001,
-    &ce_area_5_spline_Spring_NurbsCurve_002,
-    &ce_area_5_spline_Spring_NurbsCurve_003,
-    &ce_area_5_spline_Spring_NurbsCurve_004,
+    ce_area_5_spline_Spring_NurbsCurve,
+    ce_area_5_spline_Spring_NurbsCurve_001,
+    ce_area_5_spline_Spring_NurbsCurve_002,
+    ce_area_5_spline_Spring_NurbsCurve_003,
+    ce_area_5_spline_Spring_NurbsCurve_004,
     NULL,
 };
 
@@ -82,8 +82,8 @@ const SpringDesc* spring_descs_ce[] = {
     NULL,
     NULL,
     NULL,
-    &spring_ce_area5,
-    &spring_ce_area6,
+    spring_ce_area5,
+    spring_ce_area6,
     NULL,
     NULL,
     NULL,

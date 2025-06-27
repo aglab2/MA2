@@ -17,6 +17,7 @@
 /* Fast64 begin persistent block [scripts] */
 #include "levels/ig/area_1/collision.inc.c"
 #include "levels/ig/area_2/collision.inc.c"
+#include "level_config.h"
 extern const GeoLayout ig_area_1[];
 #define ig_area_2 ig_area_1
 #define SEQ_LEVEL_GRASS 0x36

@@ -97,6 +97,14 @@ static u32 celled_coord(s32 coord, s32 cell, int shift) {
     return CLAMP((celledCoord >> CELLED_COORD_SHIFT) - shift, 0, 255);
 }
 
+static inline u8** get_pend(int dynamic) {
+    if (dynamic) {
+        return (u8**) &gDynamicSurfacePoolEnd;
+    } else {
+        return (u8**) &sMainPool.regions[0].start;
+    }
+}
+
 /**
  * Add a surface to the correct cell list of surfaces.
  * @param dynamic Determines whether the surface is static or dynamic
@@ -123,7 +131,7 @@ static void add_surface_to_cell(s32 dynamic, s32 cellX, s32 cellZ, struct Surfac
         listIndex = SPATIAL_PARTITION_WALLS;
     }
 
-    u8** pend = dynamic ? &gDynamicSurfacePoolEnd : &sMainPool.regions[0].start;
+    u8** pend = get_pend(dynamic);
     struct SurfaceNode *newNode = alloc_surface_node(pend, surface, lowerXCelled, upperXCelled, lowerY, upperY, lowerZCelled, upperZCelled);
 
     if (dynamic) {
@@ -249,7 +257,7 @@ static struct Surface *read_surface_data(TerrainData *vertexData, TerrainData **
     mag = 1.0f / sqrtf(mag);
     vec3_scale(n, mag);
 
-    u8** pend = dynamic ? &gDynamicSurfacePoolEnd : &sMainPool.regions[0].start;
+    u8** pend = get_pend(dynamic);
     struct Surface *surface = alloc_surface(pend);
 
     vec3s_copy(surface->vertex1, v[0]);

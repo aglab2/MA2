@@ -30,6 +30,7 @@ extern const GeoLayout hb_area_visual[];
 #include "levels/hb/area_1/collision.inc.c"
 #include "levels/hb/area_2/collision.inc.c"
 #include "levels/hb/area_3/collision.inc.c"
+#include "level_config.h"
 #define SEQ_LEVEL_GRASS 0x24
 extern const SpringDesc* spring_descs_hb[];
 extern IWDHeader* iw_descs_hb[];

@@ -16,11 +16,12 @@
 
 /* Fast64 begin persistent block [scripts] */
 #include "levels/msp/area_1/collision.inc.c"
+#include "level_config.h"
 extern Gfx msp_skybox_ms_skybox_mesh[];
 extern SpringDesc spring_descs_msp[];
 static struct LevelConfig cfg = {
 	.skybox = msp_skybox_ms_skybox_mesh,
-	.springDescs = spring_descs_msp,
+	.springDescs = (void*) spring_descs_msp,
 };
 #define SEQ_LEVEL_GRASS 0x41
 /* Fast64 end persistent block [scripts] */

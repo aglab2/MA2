@@ -10,6 +10,7 @@
 #include "flipbook.h"
 #include "game/area.h"
 #include "game/emutest.h"
+#include <string.h>
 
 typedef void (*GeoLayoutCommandProc)(void);
 
@@ -387,6 +388,7 @@ static struct FlipbookArray* make_flipbooks(struct FlipbookLayer* flipbooksLayer
     return flipbooks;
 }
 
+extern struct GraphNodeStart *init_graph_lvl_node_start(struct GraphNodeStart *graphNode);
 struct GraphNodeStart* gBatchNode = NULL;
 void geo_layout_cmd_node_batch_start(void) {
     struct BatchLevelDisplayLists* dls = (struct BatchLevelDisplayLists*) cur_geo_cmd_ptr(0x04);

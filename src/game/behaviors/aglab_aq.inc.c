@@ -1,3 +1,5 @@
+#include "engine/surface_load.h"
+
 #define oAqLiftActive OBJECT_FIELD_S16(0x1B, 0)
 #define oAqLiftReload OBJECT_FIELD_S16(0x1B, 1)
 #define oAqLiftSwitches oObjF8
@@ -29,6 +31,7 @@ static void bhv_aq_ctls_loop()
 
 #define SWITCH_ACTIVE(idx) (2 == objs[idx]->oAction)
 
+extern void load_object_static_model();
 void bhv_aq_lift_loop()
 {
     bhv_aq_ctls_loop();

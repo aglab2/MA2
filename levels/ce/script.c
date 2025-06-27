@@ -37,6 +37,7 @@ extern const GeoLayout ce_area_visual[];
 #include "levels/ce/area_7/collision.inc.c"
 #include "levels/ce/area_8/collision.inc.c"
 #include "levels/ce/area_9/collision.inc.c"
+#include "level_config.h"
 
 #define SEQ_LEVEL_GRASS 0x26
 #define MODEL_CE_CAMERA 0

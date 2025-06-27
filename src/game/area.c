@@ -273,6 +273,9 @@ typedef struct
 
 extern __OSViContext *__osViNext __attribute__((section(".data")));
 
+extern void __osRestoreInt(u32);
+extern u32 __osDisableInt();
+
 static void osViSetXScaleRaw(u32 scale) {
     register u32 nomValue;
     register u32 saveMask = __osDisableInt();
@@ -321,6 +324,7 @@ void set_vi_mode(void)
     __osRestoreInt(saveMask);
 }
 
+extern void *memcpy(void *dst, const void *src, size_t size);
 extern struct GraphNodeStart* gBatchNode;
 static void warm_up_batch_node(void)
 {
@@ -375,7 +379,7 @@ static void warm_up_batch_node(void)
     }
 
     int* content = (int*) main_pool_alloc(allocSize);
-    gBatchNode->node.parent = content;
+    gBatchNode->node.parent = (struct GraphNode*) content;
     *content = amount;
 
     // Pass 2: copy in the data

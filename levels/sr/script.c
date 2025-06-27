@@ -18,6 +18,7 @@
 #include "levels/sr/area_1/collision.inc.c"
 #include "levels/sr/area_2/collision.inc.c"
 #include "levels/sr/area_3/collision.inc.c"
+#include "level_config.h"
 #define sr_area_2 sr_area_1
 #define sr_area_3 sr_area_1
 extern Gfx sr_skybox_sr_skybox_mesh[];
@@ -26,9 +27,9 @@ extern IWDHeader* iw_descs_sr[];
 extern const RailDesc* spring_descs_sr[];
 static struct LevelConfig cfg = {
 	.skybox = sr_skybox_sr_skybox_mesh,
-	.railDesc = &rail_descs_sr,
-	.iwds = &iw_descs_sr,
-	.springDescs = &spring_descs_sr,
+	.railDesc = rail_descs_sr,
+	.iwds = iw_descs_sr,
+	.springDescs = (void*) spring_descs_sr,
 };
 #define SEQ_LEVEL_GRASS 0x40
 /* Fast64 end persistent block [scripts] */

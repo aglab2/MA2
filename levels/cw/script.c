@@ -22,6 +22,7 @@
 #include "levels/cw/area_5/collision.inc.c"
 #include "levels/cw/area_6/collision.inc.c"
 #include "levels/cw/area_7/collision.inc.c"
+#include "level_config.h"
 #define cw_area_2 cw_area_1
 #define cw_area_3 cw_area_1
 #define cw_area_4 cw_area_1

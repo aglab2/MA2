@@ -226,7 +226,7 @@ static inline void *alloc_display_list(u32 size) {
     u8* newStart = ptr + size; \
     region->start = newStart; \
     if (!ptr) __builtin_unreachable(); \
-    ptr; \
+    (void*) ptr; \
 })
 
 #define alloc_display_list(_size) ({\
@@ -295,7 +295,7 @@ static inline void *alloc_display_list(u32 size) {
     gGfxPoolEnd = ptr; \
     if (!ptr) __builtin_unreachable(); \
     if (0 != (((uintptr_t) ptr) & 0xf)) __builtin_unreachable(); \
-    ptr; \
+    (void*) ptr; \
 })
 #endif
 

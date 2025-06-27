@@ -246,6 +246,7 @@ static void spawn_particle(u32 activeParticleFlag, ModelID16 model, const Behavi
 /**
  * Mario's primary behavior update function.
  */
+extern void play_sound(s32 soundBits, f32 *pos);
 extern s16 fail_warp_trigger(struct MarioState* m);
 void bhv_mario_update(void) {
     u32 particleFlags = 0;

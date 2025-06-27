@@ -22,6 +22,7 @@
 #include "levels/rh/area_5/collision.inc.c"
 #include "levels/rh/area_6/collision.inc.c"
 #include "levels/rh/area_7/collision.inc.c"
+#include "level_config.h"
 #define rh_area_2 rh_area_1
 #define rh_area_3 rh_area_1
 #define rh_area_4 rh_area_1

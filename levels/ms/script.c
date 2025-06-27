@@ -29,6 +29,7 @@ extern const GeoLayout ms_area_visual[];
 #include "levels/ms/area_1/collision.inc.c"
 #include "levels/ms/area_2/collision.inc.c"
 #include "levels/ms/area_3/collision.inc.c"
+#include "level_config.h"
 #define SEQ_LEVEL_GRASS 0x30
 extern const SpringDesc* spring_descs_ms[];
 extern const SpringLinkDesc spring_links_ms[];

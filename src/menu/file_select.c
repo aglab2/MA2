@@ -1024,6 +1024,10 @@ void check_main_menu_clicked_buttons(void) {
  * sSelectedButtonID is MENU_BUTTON_NONE when the file select
  * is loaded, and that checks what buttonID is clicked in the main menu.
  */
+
+extern void shift_t(Gfx *dl, u32 cmd, u16 t);
+extern void shift_s(Gfx *dl, u32 cmd, u16 t);
+
 #define PACK_TILESIZE(w, d) ((w << 2) + d)
 static void scroll_gfx_fs_plane_fs_plane_mesh_layer_1() {
 	Gfx *mat = segmented_to_virtual(fs_plane_fs_plane_mesh_layer_1);

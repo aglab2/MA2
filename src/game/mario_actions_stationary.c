@@ -1057,6 +1057,7 @@ s32 act_first_person(struct MarioState *m) {
     return FALSE;
 }
 
+extern int zipline_cancel(void);
 s32 check_common_stationary_cancels(struct MarioState *m) {
     if (zipline_cancel())
     {

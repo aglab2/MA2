@@ -30,6 +30,7 @@ extern const GeoLayout gf_area_visual[];
 #include "levels/gf/area_2/collision.inc.c"
 #include "levels/gf/area_3/collision.inc.c"
 #include "levels/gf/area_4/collision.inc.c"
+#include "level_config.h"
 #define SEQ_LEVEL_GRASS 0x2e
 extern IWDHeader* iw_descs_gf[];
 

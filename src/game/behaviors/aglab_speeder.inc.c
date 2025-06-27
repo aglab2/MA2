@@ -1,3 +1,4 @@
+extern void obj_update_gfx_pos_and_angle(struct Object* obj);
 void bhv_speeder_init()
 {
     struct Surface* floor = NULL;

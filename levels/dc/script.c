@@ -16,6 +16,7 @@
 
 /* Fast64 begin persistent block [scripts] */
 #include "levels/dc/area_1/collision.inc.c"
+#include "level_config.h"
 
 #define SEQ_LEVEL_GRASS 0x27
 

@@ -11,7 +11,7 @@ typedef struct
     u8 canSnapBackwards;
 } LDLDesc;
 
-typedef struct
+typedef struct _RailDesc
 {
     const Trajectory* rail;
     // If !loop, will be NULL

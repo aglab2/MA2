@@ -1006,6 +1006,7 @@ s32 act_emerge_from_pipe(struct MarioState *m) {
     return FALSE;
 }
 
+extern int zipline_cancel();
 s32 act_spawn_spin_airborne(struct MarioState *m) {
     if (zipline_cancel())
     {

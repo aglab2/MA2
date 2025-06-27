@@ -30,6 +30,7 @@ extern const GeoLayout mh_area_visual[];
 #include "levels/mh/area_2/collision.inc.c"
 #include "levels/mh/area_3/collision.inc.c"
 #include "levels/mh/area_4/collision.inc.c"
+#include "level_config.h"
 #define SEQ_LEVEL_GRASS 0x2d
 
 extern const RailDesc* rail_descs_mh[];

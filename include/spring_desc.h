@@ -1,11 +1,11 @@
 #pragma once
 
-typedef struct
+typedef struct _SpringDesc
 {
     const Trajectory* bezier;
 } SpringDesc;
 
-typedef struct
+typedef struct _SpringLinkDesc
 {
     const Trajectory* from;
     const Trajectory* to;

@@ -31,6 +31,7 @@
 #include "game/emutest.h"
 #include "behavior_data.h"
 #include "game/fail_warp.h"
+#include "level_config.h"
 
 #include "config.h"
 

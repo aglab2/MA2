@@ -2037,6 +2037,7 @@ s32 act_special_triple_jump(struct MarioState *m) {
     return FALSE;
 }
 
+extern int zipline_cancel();
 s32 check_common_airborne_cancels(struct MarioState *m) {
     if (zipline_cancel())
     {

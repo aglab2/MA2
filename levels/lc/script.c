@@ -17,6 +17,7 @@
 /* Fast64 begin persistent block [scripts] */
 #include "levels/lc/area_1/collision.inc.c"
 #include "levels/lc/area_2/collision.inc.c"
+#include "level_config.h"
 #define lc_area_2 lc_area_1
 extern IWDHeader* iw_descs_lc[];
 extern const SpringDesc* spring_descs_lc[];

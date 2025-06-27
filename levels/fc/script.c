@@ -24,6 +24,7 @@
 #include "levels/fc/area_7/collision.inc.c"
 #include "levels/fc/area_8/collision.inc.c"
 #include "levels/fc/area_9/collision.inc.c"
+#include "level_config.h"
 #define fc_area_2 fc_area_1
 #define fc_area_3 fc_area_1
 #define fc_area_4 fc_area_1

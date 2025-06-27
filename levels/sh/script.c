@@ -16,6 +16,7 @@
 
 /* Fast64 begin persistent block [scripts] */
 #include "levels/sh/area_1/collision.inc.c"
+#include "level_config.h"
 extern const SpringDesc* spring_descs_sh[];
 static struct LevelConfig cfg = {
 	.springDescs = spring_descs_sh
