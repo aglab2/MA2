@@ -64,18 +64,20 @@ Gfx *geo_snufit_scale_body(s32 callContext, struct GraphNode *node, UNUSED Mat4 
  * Snufit's idle action. It rotates in a circle until Mario is near,
  * then prepares to shoot after a period.
  */
-void snufit_act_idle(void) {
+void snufit_act_idle(int buff) {
     // This line would could cause a crash in certain PU situations,
     // if the game would not have already crashed.
     s32 marioDist = (s32)(o->oDistanceToMario / 10.0f);
+    if (buff)
+        marioDist = 0;
 
-    if (o->oTimer > marioDist && o->oDistanceToMario < 800.0f) {
+    if (o->oTimer > marioDist && o->oDistanceToMario < (buff ? 2000.f : 800.f)) {
 
         // Controls an alternating scaling factor in a cos.
         o->oSnufitBodyScalePeriod
             = approach_s16_symmetric(o->oSnufitBodyScalePeriod, 0, 1500);
         o->oSnufitBodyBaseScale
-            = approach_s16_symmetric(o->oSnufitBodyBaseScale, 600, 15);
+            = approach_s16_symmetric(o->oSnufitBodyBaseScale, 600, buff ? 45 : 15);
 
         if ((s16) o->oSnufitBodyScalePeriod == 0 && o->oSnufitBodyBaseScale == 600) {
             o->oAction = SNUFIT_ACT_SHOOT;
@@ -89,7 +91,7 @@ void snufit_act_idle(void) {
 /**
  * Controls the literal shooting action, spawning three bhvSnufitBalls.
  */
-void snufit_act_shoot(void) {
+void snufit_act_shoot(int buff) {
     o->oSnufitBodyScalePeriod
         = approach_s16_symmetric(o->oSnufitBodyScalePeriod, -0x8000, 3000);
     o->oSnufitBodyBaseScale
@@ -116,7 +118,8 @@ void bhv_snufit_loop_impl(int buff) {
         o->oDeathSound = SOUND_OBJ_SNUFIT_SKEETER_DEATH;
 
         // Face Mario if he is within range.
-        if (o->oDistanceToMario < 800.0f) {
+        f32 range = buff ? 2000.f : 800.f;
+        if (o->oDistanceToMario < range) {
             obj_turn_pitch_toward_mario(gIsGravityFlipped ? -120.0f : 120.f, 2000);
 
             if ((s16) o->oMoveAnglePitch > 0x2000) {
@@ -135,10 +138,10 @@ void bhv_snufit_loop_impl(int buff) {
 
         switch (o->oAction) {
             case SNUFIT_ACT_IDLE:
-                snufit_act_idle();
+                snufit_act_idle(buff);
                 break;
             case SNUFIT_ACT_SHOOT:
-                snufit_act_shoot();
+                snufit_act_shoot(buff);
                 break;
         }
 
