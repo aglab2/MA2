@@ -6599,14 +6599,11 @@ const BehaviorScript bhvCCTFastDrop[] = {
 
 extern const Collision cce_block_collision[];
 extern void bhv_cce_spawn_block_init();
-extern void bhv_cce_spawn_block_loop();
 const BehaviorScript bhvCCSpawn[] = {
     BEGIN(OBJ_LIST_SPAWNER),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
     CALL_NATIVE(bhv_cce_spawn_block_init),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_cce_spawn_block_loop),
-    END_LOOP(),
+    BREAK(),
 };
 
 extern void bhv_cce_block_init();

@@ -313,20 +313,85 @@ void bhv_cce_spawn_block_init()
                 block->oCCEBlocksMask = 127;
             }
             break;
+
         case 2:
+            for (int i = 0; i < 2; i++)
             {
                 struct Object* block = cc_spawn_block(bparam, &amountSpawned);
                 block->oVelZ = baseVel;
+                if (i)
+                {
+                    block->oPosZ += baseVel * 128;
+                    block->oTimer = 128;
+                }
                 block->oFaceAngleRoll = 0x4000;
                 block->oCCEBlocksMask = 255;
             }
             break;
         case 3:
+            for (int i = 0; i < 2; i++)
             {
                 struct Object* block = cc_spawn_block(bparam, &amountSpawned);
                 block->oVelZ = -baseVel;
+                if (i)
+                {
+                    block->oPosZ -= baseVel * 128;
+                    block->oTimer = 128;
+                }
                 block->oFaceAngleRoll = 0x4000;
                 block->oFaceAngleYaw = 0xC000;
+                block->oCCEBlocksMask = 255;
+            }
+            break;
+
+        case 5:
+            for (int i = 0; i < 2; i++)
+            {
+                struct Object* block = cc_spawn_block(bparam, &amountSpawned);
+                block->oVelY = baseVel;
+                block->oPosY += baseVel * 256 * i;
+                block->oTimer = 256 * i;
+                block->oCCEBlocksMask = 511;
+            }
+            break;
+        case 4:
+            for (int i = 0; i < 2; i++)
+            {
+                struct Object* block = cc_spawn_block(bparam, &amountSpawned);
+                block->oVelY = baseVel;
+                block->oPosY += baseVel * (128 + 256 * i);
+                block->oTimer = (128 + 256 * i);
+                block->oCCEBlocksMask = 511;
+            }
+            break;
+
+        case 6:
+            for (int i = 0; i < 2; i++)
+            {
+                struct Object* block = cc_spawn_block(bparam, &amountSpawned);
+                block->oVelX = -baseVel;
+                if (i)
+                {
+                    block->oPosX -= baseVel * 128;
+                    block->oTimer = 128;
+                }
+                block->oFaceAngleRoll = 0x4000;
+                block->oFaceAngleYaw = 0;
+                block->oCCEBlocksMask = 255;
+            }
+            break;
+        case 7:
+            for (int i = 0; i < 2; i++)
+            {
+                struct Object* block = cc_spawn_block(bparam, &amountSpawned);
+                block->oVelX = baseVel;
+                if (i)
+                {
+                    block->oPosX += baseVel * 128;
+                    block->oTimer = 128;
+                }
+                block->oFaceAngleRoll = 0x4000;
+                block->oFaceAngleYaw = 0x8000;
                 block->oCCEBlocksMask = 255;
             }
             break;
@@ -340,10 +405,8 @@ void bhv_cce_spawn_block_init()
         vec3_scale_dest(vel, &block->oVelVec, switchTimeV);
         vec3_sub(&block->oPosVec, vel);
     }
-}
 
-void bhv_cce_spawn_block_loop()
-{
+    o->oAction = 0;
 }
 
 void bhv_cce_block_init()

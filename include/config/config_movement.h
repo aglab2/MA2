@@ -140,4 +140,4 @@
  * Inertia defines; allow Mario to preserve his momemtum when leaving moving platforms.
  */
 #define MARIO_INERTIA_UPWARD
-// #define MARIO_INERTIA_LATERAL
+#define MARIO_INERTIA_LATERAL
