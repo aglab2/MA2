@@ -172,22 +172,14 @@ Gfx *geo_update_transparency(s32 callContext, struct GraphNode *node, UNUSED voi
     return dlStart;
 }
 
-Gfx *geo_update_primcolor(s32 callContext, struct GraphNode *node, UNUSED void *context) {
+static Gfx* geo_update_primcolor_impl(s32 callContext, struct GraphNode *node, int alpha) {
     Gfx *dlStart = NULL;
     struct GraphNodeGenerated *currentGraphNode = (struct GraphNodeGenerated *) node;
 
     if (callContext == GEO_CONTEXT_RENDER) {
-        struct Object *objectGraphNode = (struct Object *) gCurGraphNodeObject; // TODO: change this to object pointer?
-
-        if (gCurGraphNodeHeldObject != NULL) {
-            objectGraphNode = gCurGraphNodeHeldObject->objNode;
-        }
-
-        s32 objectOpacity = objectGraphNode->oOpacity;
-
         dlStart = alloc_display_list(sizeof(Gfx) * 2);
         Gfx *dlHead = dlStart;
-        gDPSetPrimColor(dlHead++, 0, 0, 255, 255, 255, objectOpacity);
+        gDPSetPrimColor(dlHead++, 0, 0, 255, 255, 255, alpha);
         gSPEndDisplayList(dlHead);
     }
     else
@@ -196,6 +188,36 @@ Gfx *geo_update_primcolor(s32 callContext, struct GraphNode *node, UNUSED void *
         SET_GRAPH_NODE_LAYER(currentGraphNode->fnNode.node.flags, parameter);
     }
     return dlStart;
+}
+
+Gfx *geo_update_primcolor(s32 callContext, struct GraphNode *node, UNUSED void *context) {
+    int alpha = 0;
+    if (callContext == GEO_CONTEXT_RENDER)
+    {
+        struct Object *objectGraphNode = (struct Object *) gCurGraphNodeObject; // TODO: change this to object pointer?
+        if (gCurGraphNodeHeldObject != NULL) {
+            objectGraphNode = gCurGraphNodeHeldObject->objNode;
+        }
+
+        alpha = objectGraphNode->oOpacity;
+    }
+
+    return geo_update_primcolor_impl(callContext, node, alpha);
+}
+
+Gfx *geo_update_primcolor_inv(s32 callContext, struct GraphNode *node, UNUSED void *context) {
+    int alpha = 0;
+    if (callContext == GEO_CONTEXT_RENDER)
+    {
+        struct Object *objectGraphNode = (struct Object *) gCurGraphNodeObject; // TODO: change this to object pointer?
+        if (gCurGraphNodeHeldObject != NULL) {
+            objectGraphNode = gCurGraphNodeHeldObject->objNode;
+        }
+
+        alpha = objectGraphNode->oDamageOrCoinValue;
+    }
+
+    return geo_update_primcolor_impl(callContext, node, alpha);
 }
 
 Gfx *geo_switch_anim_state(s32 callContext, struct GraphNode *node, UNUSED void *context) {

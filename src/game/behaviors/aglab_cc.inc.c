@@ -326,7 +326,7 @@ void bhv_cce_spawn_block_init()
                 struct Object* block = cc_spawn_block(bparam, &amountSpawned);
                 block->oVelZ = -baseVel;
                 block->oFaceAngleRoll = 0x4000;
-                block->oFaceAngleYaw = 0x8000;
+                block->oFaceAngleYaw = 0xC000;
                 block->oCCEBlocksMask = 255;
             }
             break;
@@ -353,6 +353,11 @@ void bhv_cce_block_init()
 
 void bhv_cce_block_loop()
 {
+    CC_FREEZE();
+    f32 amt = 100 * sins(o->oTimer * 0x800);
+    o->oOpacity = 150 + amt;
+    o->oDamageOrCoinValue = 150 - amt;
+
     const int switchTime = o->oCCEBlocksMask;
     if (switchTime == (o->oTimer & switchTime))
     {
