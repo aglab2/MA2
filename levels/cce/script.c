@@ -47,7 +47,7 @@ const LevelScript level_cce_entry[] = {
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
-	AREA(1, cce_area_1, 0,0,0),
+	AREA(1, cce_area_1, 0, -1000, -2000),
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
@@ -110,7 +110,7 @@ const LevelScript level_cce_entry[] = {
 		OBJECT(MODEL_NONE, -4997, 9700, 9256, 0, 0, 0, 0x00000000, bhvShutter),
 		OBJECT(MODEL_NONE, 6961, 11200, -1094, 0, 90, 0, 0x00000000, bhvShutter),
 		OBJECT(MODEL_NONE, 5699, 11200, -2364, 0, 0, 0, 0x00000000, bhvShutter),
-		OBJECT(MODEL_NONE, 5703, 11200, -5701, 0, -90, 0, 0x00000000, bhvShutter),
+		OBJECT(MODEL_NONE, 5703, 11200, -5701, 0, 0, 0, 0x00000000, bhvShutter),
 		OBJECT(MODEL_NONE, 5699, -17100, -8194, 0, 0, 0, 0x00000000, bhvShutter),
 		OBJECT(MODEL_NONE, 5705, -17100, -10698, 0, 0, 0, 0x00000000, bhvShutter),
 		OBJECT(MODEL_NONE, -37, 9700, 4309, 0, -90, 0, 0x00000000, bhvShutter),
@@ -173,6 +173,8 @@ const LevelScript level_cce_entry[] = {
 		OBJECT(MODEL_NONE, 3900, -17150, -11656, 0, 90, 0, (11 << 16), bhvCCSpawn),
 		OBJECT(MODEL_NONE, 4263, -16485, -15435, 0, 90, 0, (2 << 16), bhvCCSpawn),
 		OBJECT(MODEL_NONE, 7109, -16485, -15435, 0, 90, 0, (3 << 16), bhvCCSpawn),
+		OBJECT(MODEL_NONE, 4588, -17791, -6557, 0, 90, 0, 0x00000000, bhvCCSpawn),
+		OBJECT(MODEL_NONE, 6787, -17791, -6557, 0, 90, 0, (12 << 16), bhvCCSpawn),
 		OBJECT(MODEL_STAR, -3326, 10584, 12999, 0, 90, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -4998, 17126, 13744, 0, 90, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -4987, 10407, 6829, 0, 90, 0, 0x00000000, bhvStar),
