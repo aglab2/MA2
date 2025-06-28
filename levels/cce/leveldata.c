@@ -27,3 +27,4 @@
 #include "levels/cce/cce_block/model.inc.c"
 #include "levels/cce/cce_door/model.inc.c"
 #include "levels/cce/cce_doorhit/model.inc.c"
+#include "levels/cce/flipbook.inc.c"

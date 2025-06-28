@@ -47,7 +47,7 @@ const LevelScript level_cce_entry[] = {
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
-	AREA(1, cce_area_1, 0, -1000, -2000),
+	AREA(1, cce_area_1, 0,0,0),
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
@@ -61,6 +61,7 @@ const LevelScript level_cce_entry[] = {
 		OBJECT(MODEL_BLACK_BOBOMB, 6298, -16300, -15080, 0, 0, 0, 0x00000000, bhvBobomb),
 		OBJECT(MODEL_BOOSTER, -7, 9700, 16006, 0, -180, 0, 0x00000000, bhvBooster),
 		OBJECT(MODEL_BOOSTER, 2, 9700, 18999, 0, 0, 0, 0x00000000, bhvBooster),
+		OBJECT(MODEL_CHECKPOINT, 573, 9700, 4312, 0, 90, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_CHAIN_CHOMP, -4859, 9700, 6081, 0, 90, 0, 0x00000000, bhvChainChomp),
 		OBJECT(MODEL_CHAIN_CHOMP, -3189, 9700, 4424, 0, 90, 0, 0x00000000, bhvChainChomp),
 		OBJECT(MODEL_NONE, -25, 9825, 13823, 0, 90, 0, 0x00000000, bhvCoinFormation),
@@ -142,7 +143,6 @@ const LevelScript level_cce_entry[] = {
 		OBJECT(MODEL_SNUFIT, 4217, -16300, -14045, 0, -73, 0, 0x00000000, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 7165, -16300, -14045, 0, -73, 0, 0x00000000, bhvSnufit),
 		OBJECT(MODEL_NONE, 1500, 9660, 3741, 0, 90, 0, 0x00000000, bhvCCSpawn),
-		OBJECT(MODEL_NONE, 1500, 9660, 4876, 0, 90, 0, 0x00000000, bhvCCSpawnUp),
 		OBJECT(MODEL_NONE, 1500, 10707, 4876, 0, 90, 0, (1 << 16), bhvCCSpawnUp),
 		OBJECT(MODEL_NONE, 2696, 9660, 4310, 0, 90, 0, 0x00000000, bhvCCSpawn),
 		OBJECT(MODEL_NONE, 2696, 10725, 3910, 0, 90, 0, (1 << 16), bhvCCSpawn),

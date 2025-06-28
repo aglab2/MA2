@@ -1,10 +1,7 @@
 extern const GeoLayout cce_block_geo[];
-extern u8 cce_block_dz_cc_blackboxlightout128_ci8[];
-extern u8 cce_block_dz_cc_blackboxlightout128_pal_rgba16[];
-extern u8 cce_block_dz_cc_blackboxlight128_ci8[];
-extern u8 cce_block_dz_cc_blackboxlight128_pal_rgba16[];
-extern u8 cce_block_dz_cc_blackboxlightin128_ci8[];
-extern u8 cce_block_dz_cc_blackboxlightin128_pal_rgba16[];
+extern u8 cce_block_dz_cc_blackboxlightout128_ia16[];
+extern u8 cce_block_dz_cc_blackboxlight128_ia16[];
+extern u8 cce_block_dz_cc_blackboxlightin128_ia16[];
 extern u8 cce_block_dz_cc_blackbox256_ci4[];
 extern u8 cce_block_dz_cc_blackbox256_pal_rgba16[];
 extern u8 cce_block_dz_cc_blackboxside256_ci4[];

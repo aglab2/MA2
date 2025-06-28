@@ -273,7 +273,97 @@ void bhv_cce_platform_fast_drop_loop()
 
 }
 
-void bhv_cce_block_loop()
+#define oCCESpawnBlocks oObjF4
+#define oCCEBlocksMask oF8
+
+static struct Object* cc_spawn_block(int bparam, int* pidx)
+{
+    int idx = *pidx;
+    *pidx = idx + 1;
+    struct Object** blocks = &o->oCCESpawnBlocks;
+    struct Object* block = spawn_object(o, MODEL_CCE_BLOCK, bhvCCSpawnBlock);
+    block->oBehParams2ndByte = bparam;
+    blocks[idx] = block;
+
+    return block;
+}
+
+extern const BehaviorScript bhvCCSpawnBlock[];
+void bhv_cce_spawn_block_init()
+{
+    struct Object** blocks = &o->oCCESpawnBlocks;
+    int bparam = o->oBehParams2ndByte;
+    int amountSpawned = 0;
+    const f32 baseVel = 13.f;
+
+    switch (bparam)
+    {
+        case 0:
+            {
+                struct Object* block = cc_spawn_block(bparam, &amountSpawned);
+                block->oVelY = baseVel;
+                block->oCCEBlocksMask = 127;
+            }
+            break;
+        case 1:
+            {
+                struct Object* block = cc_spawn_block(bparam, &amountSpawned);
+                block->oVelY = -baseVel;
+                block->oFaceAngleRoll = 0x8000;
+                block->oCCEBlocksMask = 127;
+            }
+            break;
+        case 2:
+            {
+                struct Object* block = cc_spawn_block(bparam, &amountSpawned);
+                block->oVelZ = baseVel;
+                block->oFaceAngleRoll = 0x4000;
+                block->oCCEBlocksMask = 255;
+            }
+            break;
+        case 3:
+            {
+                struct Object* block = cc_spawn_block(bparam, &amountSpawned);
+                block->oVelZ = -baseVel;
+                block->oFaceAngleRoll = 0x4000;
+                block->oFaceAngleYaw = 0x8000;
+                block->oCCEBlocksMask = 255;
+            }
+            break;
+    }
+
+    for (int i = 0; i < amountSpawned; i++)
+    {
+        struct Object* block = blocks[i];
+        f32 switchTimeV = 13.f;
+        Vec3f vel;
+        vec3_scale_dest(vel, &block->oVelVec, switchTimeV);
+        vec3_sub(&block->oPosVec, vel);
+    }
+}
+
+void bhv_cce_spawn_block_loop()
+{
+}
+
+void bhv_cce_block_init()
 {
 
+}
+
+void bhv_cce_block_loop()
+{
+    const int switchTime = o->oCCEBlocksMask;
+    if (switchTime == (o->oTimer & switchTime))
+    {
+        Vec3f vel;
+        vec3_scale_dest(vel, &o->oVelVec, switchTime);
+        vec3_sub(&o->oPosVec, vel);
+    }
+    else
+    {
+        o->oPosX += o->oVelX;
+        o->oPosY += o->oVelY;
+        o->oPosZ += o->oVelZ;
+    }
 }
