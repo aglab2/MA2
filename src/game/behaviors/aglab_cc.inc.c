@@ -397,6 +397,19 @@ void bhv_cce_spawn_block_init()
             break;
         
         case 8:
+            {
+                struct Object* block = cc_spawn_block(bparam, &amountSpawned);
+                block->oVelX = -baseVel * sins(o->oFaceAngleYaw);
+                block->oVelZ = -baseVel * coss(o->oFaceAngleYaw);
+                block->oTimer = 64;
+                block->oPosX += 64 * block->oVelX;
+                block->oPosZ += 64 * block->oVelZ;
+                block->oFaceAngleRoll = 0x4000;
+                block->oFaceAngleYaw = -0x4000 + o->oFaceAngleYaw;
+                block->oCCEBlocksMask = 127;
+            }
+            break;
+
         case 9:
             {
                 struct Object* block = cc_spawn_block(bparam, &amountSpawned);
@@ -405,6 +418,45 @@ void bhv_cce_spawn_block_init()
                 block->oFaceAngleRoll = 0x4000;
                 block->oFaceAngleYaw = -0x4000 + o->oFaceAngleYaw;
                 block->oCCEBlocksMask = 127;
+            }
+            break;
+        
+        case 10:
+        case 13:
+            for (int i = 0; i < 2; i++)
+            {
+                struct Object* block = cc_spawn_block(bparam, &amountSpawned);
+                block->oVelY = -baseVel;
+                if (i)
+                {
+                    block->oPosY -= baseVel * 128;
+                    block->oTimer = 128;
+                }
+                block->oFaceAngleRoll = 0x8000;
+                block->oCCEBlocksMask = 255;
+            }
+            break;
+
+        case 11:
+            for (int i = 0; i < 4; i++)
+            {
+                struct Object* block = cc_spawn_block(bparam, &amountSpawned);
+                block->oVelX = baseVel;
+                block->oPosX += i * baseVel * 128;
+                block->oTimer = i * 128;
+                block->oFaceAngleRoll = 0x4000;
+                block->oFaceAngleYaw = 0x8000;
+                block->oCCEBlocksMask = 511;
+            }
+            break;
+
+        case 12:
+            {
+                struct Object* block = cc_spawn_block(bparam, &amountSpawned);
+                block->oVelY = baseVel;
+                block->oCCEBlocksMask = 127;
+                block->oTimer = 64;
+                block->oPosY += 64 * baseVel;
             }
             break;
     }
