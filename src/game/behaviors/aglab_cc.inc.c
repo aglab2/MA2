@@ -395,6 +395,18 @@ void bhv_cce_spawn_block_init()
                 block->oCCEBlocksMask = 255;
             }
             break;
+        
+        case 8:
+        case 9:
+            {
+                struct Object* block = cc_spawn_block(bparam, &amountSpawned);
+                block->oVelX = -baseVel * sins(o->oFaceAngleYaw);
+                block->oVelZ = -baseVel * coss(o->oFaceAngleYaw);
+                block->oFaceAngleRoll = 0x4000;
+                block->oFaceAngleYaw = -0x4000 + o->oFaceAngleYaw;
+                block->oCCEBlocksMask = 127;
+            }
+            break;
     }
 
     for (int i = 0; i < amountSpawned; i++)
