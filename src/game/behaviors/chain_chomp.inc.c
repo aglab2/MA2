@@ -335,6 +335,7 @@ static void chain_chomp_act_move(void) {
                         break;
                 }
                 break;
+#if 0
             case CHAIN_CHOMP_RELEASED_TRIGGER_CUTSCENE:
                 chain_chomp_released_trigger_cutscene();
                 break;
@@ -350,6 +351,7 @@ static void chain_chomp_act_move(void) {
             case CHAIN_CHOMP_RELEASED_END_CUTSCENE:
                 chain_chomp_released_end_cutscene();
                 break;
+#endif
         }
 
         cur_obj_move_standard(78);

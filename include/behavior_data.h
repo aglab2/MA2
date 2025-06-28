@@ -623,4 +623,9 @@ extern const BehaviorScript bhvHeaveHoCC[];
 extern const BehaviorScript bhvSnufitCC[];
 extern const BehaviorScript bhvThwomp2CC[];
 
+extern const BehaviorScript bhvChainChompCC[];
+extern const BehaviorScript bhvBobombCC[];
+extern const BehaviorScript bhvKoopaCC[];
+extern const BehaviorScript bhvSmallWhompCC[];
+
 #endif // BEHAVIOR_DATA_H

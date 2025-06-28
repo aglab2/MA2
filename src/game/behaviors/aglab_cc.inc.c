@@ -447,3 +447,35 @@ void bhv_cce_block_loop()
         o->oPosZ += o->oVelZ;
     }
 }
+
+void bhv_chain_chomp_update_cc()
+{
+    if (o->oAction)
+        CC_FREEZE();
+
+    bhv_chain_chomp_update();
+    bhv_chain_chomp_update();
+}
+
+void bhv_bobomb_loop_cc()
+{
+    CC_FREEZE();
+    bhv_bobomb_loop();
+    bhv_bobomb_loop();
+}
+
+void bhv_koopa_update_cc()
+{
+    CC_FREEZE();
+    bhv_koopa_update();
+    bhv_koopa_update();
+}
+
+void bhv_whomp_loop_cc()
+{
+    CC_FREEZE();
+    bhv_whomp_loop();
+    o->oTimer++;
+    bhv_whomp_loop();
+}
+

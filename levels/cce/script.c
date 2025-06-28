@@ -20,6 +20,15 @@
 #define SEQ_LEVEL_GRASS 0x43
 static struct LevelConfig cfg = { };
 #define bhvCCSpawnUp bhvCCSpawn
+
+#define bhvCoinFormation bhvCoinFormationCC
+#define bhvGoombaTripletSpawner bhvGoombaTripletSpawnerCC
+#define bhvSnufit bhvSnufitCC
+#define bhvBobomb bhvBobombCC
+#define bhvChainChomp bhvChainChompCC
+#define bhvKoopa bhvKoopaCC
+#define bhvSmallWhomp bhvSmallWhompCC
+
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_cce_entry[] = {
@@ -79,17 +88,18 @@ const LevelScript level_cce_entry[] = {
 		OBJECT(MODEL_NONE, 5699, 11200, -6950, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 5701, -17100, -9453, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 5682, -16300, -14517, 0, 0, 0, (2 << 16), bhvCoinFormation),
+		OBJECT(MODEL_NONE, 5672, -17801, -4519, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -4997, 15780, 9854, 0, 90, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -4997, 13449, 9854, 0, 90, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -4997, 11250, 9854, 0, 90, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 5695, 7589, -3397, 0, 90, 0, (17 << 16), bhvCoinFormation),
-		OBJECT(MODEL_NONE, 5695, 1155, -4850, 0, 90, 0, (17 << 16), bhvCoinFormation),
-		OBJECT(MODEL_NONE, 5695, -4969, -3397, 0, 90, 0, (17 << 16), bhvCoinFormation),
-		OBJECT(MODEL_NONE, 5695, -11340, -4850, 0, 90, 0, (17 << 16), bhvCoinFormation),
-		OBJECT(MODEL_NONE, 5695, -16150, -3397, 0, 90, 0, (17 << 16), bhvCoinFormation),
+		OBJECT(MODEL_NONE, 5695, 1155, -3748, 0, 90, 0, (17 << 16), bhvCoinFormation),
+		OBJECT(MODEL_NONE, 5695, -4969, -3955, 0, 90, 0, (17 << 16), bhvCoinFormation),
+		OBJECT(MODEL_NONE, 5695, -11340, -4415, 0, 90, 0, (17 << 16), bhvCoinFormation),
+		OBJECT(MODEL_NONE, 5695, -15581, -5098, 0, 90, 0, (17 << 16), bhvCoinFormation),
+		OBJECT(MODEL_NONE, 5695, 10741, -3397, 0, 90, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_CCE_GATE, 5691, -16300, -15461, 0, 0, 0, 0x00000000, bhvCCTGate),
-		OBJECT(MODEL_CCT_STEP, 5699, 11200, -3742, 0, -90, 0, 0x00000000, bhvCCTFastDrop),
-		OBJECT(MODEL_CCT_STEP, 5699, 11200, -4586, 0, -90, 0, 0x00000000, bhvCCTFastDrop),
+		OBJECT(MODEL_CCT_STEP, 5699, 11200, -4029, 0, 0, 0, 0x00000000, bhvCCTFastDrop),
 		OBJECT(MODEL_CCT_STEP, 5688, -17334, -5696, 0, -90, 0, 0x00000000, bhvCCTFastDrop),
 		OBJECT(MODEL_CCT_STEP, 5688, -17334, -7057, 0, -90, 0, 0x00000000, bhvCCTFastDrop),
 		OBJECT(MODEL_KOOPA_WITHOUT_SHELL, -323, 9700, 12999, 0, 0, 0, 0x00000000, bhvKoopa),
@@ -101,10 +111,10 @@ const LevelScript level_cce_entry[] = {
 		OBJECT(MODEL_KOOPA_WITHOUT_SHELL, 5693, -16300, -13827, 0, 0, 0, 0x00000000, bhvKoopa),
 		OBJECT(MODEL_NONE, 44, 10031, 14990, 0, 0, 0, (0xa << 16), bhvInstantActiveWarp),
 		OBJECT(MODEL_NONE, 5695, 7213, -3397, 0, 90, 0, 0x00000000, bhvHiddenStarTrigger),
-		OBJECT(MODEL_NONE, 5695, -16526, -3397, 0, 90, 0, 0x00000000, bhvHiddenStarTrigger),
-		OBJECT(MODEL_NONE, 5695, -11716, -4850, 0, 90, 0, 0x00000000, bhvHiddenStarTrigger),
-		OBJECT(MODEL_NONE, 5695, -5345, -3397, 0, 90, 0, 0x00000000, bhvHiddenStarTrigger),
-		OBJECT(MODEL_NONE, 5695, 779, -4850, 0, 90, 0, 0x00000000, bhvHiddenStarTrigger),
+		OBJECT(MODEL_NONE, 5695, -15957, -5098, 0, 90, 0, 0x00000000, bhvHiddenStarTrigger),
+		OBJECT(MODEL_NONE, 5695, -11716, -4415, 0, 90, 0, 0x00000000, bhvHiddenStarTrigger),
+		OBJECT(MODEL_NONE, 5695, -5345, -3955, 0, 90, 0, 0x00000000, bhvHiddenStarTrigger),
+		OBJECT(MODEL_NONE, 5695, 779, -3748, 0, 90, 0, 0x00000000, bhvHiddenStarTrigger),
 		OBJECT(MODEL_NONE, -1245, 9700, 13000, 0, 90, 0, 0x00000000, bhvShutter),
 		OBJECT(MODEL_NONE, -3752, 15780, 13004, 0, 90, 0, 0x00000000, bhvShutter),
 		OBJECT(MODEL_NONE, -4998, 15780, 11753, 0, 0, 0, 0x00000000, bhvShutter),
