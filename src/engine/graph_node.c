@@ -206,7 +206,6 @@ struct GraphNodeSwitchCase *init_graph_node_switch_case(struct GraphNodeSwitchCa
         graphNode->numCases = numCases;
         graphNode->selectedCase = selectedCase;
         graphNode->fnNode.func = nodeFunc;
-        graphNode->unused = unused;
 
         if (nodeFunc != NULL) {
             nodeFunc(GEO_CONTEXT_CREATE, &graphNode->fnNode.node, (void*) !graphNode);

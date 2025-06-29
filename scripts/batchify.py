@@ -5,7 +5,8 @@ class GeoLayout:
     def __init__(self, name):
         self.name = name
         self.contents = []
-    
+        self.line0 = None
+
     def __repr__(self):
         return f"GeoLayout({self.name}, {self.contents})"
 
@@ -35,6 +36,19 @@ class SimpleNode(GeoNode):
 
     def __str__(self):
         return f"{super().__str__()}{self.name}(),"
+
+class SimpleNodeWithArgs(GeoNode):
+    def __init__(self, name, args, subrender):
+        super().__init__(subrender)
+        self.name = name
+        self.args = args
+
+    def __repr__(self):
+        return f"SimpleNodeWithArgs({self.name}, {self.args})"
+
+    def __str__(self):
+        args_str = ', '.join(self.args)
+        return f"{super().__str__()}{self.name}({args_str}),"
 
 class RenderNode(GeoNode):
     def __init__(self, translation, rotation, dl, subrender):
@@ -118,6 +132,9 @@ def parse_geo(geo_path):
 
         def _make_generic_node(self, name):
             self._geolayout.contents.append(SimpleNode(name, self._subrender))
+        
+        def _make_generic_node_with_args(self, name, args):
+            self._geolayout.contents.append(SimpleNodeWithArgs(name, args, self._subrender))
 
         # This special cases handle nested translated render objects, with one indirection layer
         def enter(self):
@@ -150,11 +167,15 @@ def parse_geo(geo_path):
 
         def translate_empty(self, layer, x, y, z):
             self._make_render_object((x, y, z), None, None)
+        
+        def rotate_empty(self, layer, rx, ry, rz):
+            self._make_render_object(('0', '0', '0'), (rx, ry, rz), None)
 
         def translate_rotate_empty(self, layer, x, y, z, rx, ry, rz):
             self._make_render_object((x, y, z), (rx, ry, rz), None)
 
     geo: GeoLayout = None
+    geos: list[GeoLayout] = []
     area: GeoLayout = None
 
     with open(geo_path, "r") as f_geo:
@@ -172,11 +193,24 @@ def parse_geo(geo_path):
 
                 name = line.split(' ')[2].strip()
                 curr_geolayout = GeoLayout(name)
+
+                if geo:
+                    geos.append(geo)
+                    geo = None
+
                 if '_geo' in name:
                     area_geolayout_parser = AreaGeoLayoutParser(curr_geolayout)
                     geo = curr_geolayout
-                    f_geo.readline() #	GEO_NODE_START(),
-                    f_geo.readline() # 	GEO_OPEN_NODE(),
+                    line0 = f_geo.readline()
+                    # First area defining geo - must start with GEO_NODE_START()
+                    if not geos:
+                        assert 'GEO_NODE_START()' in line0, f"Expected GEO_NODE_START() in {line0}"
+                        geo.line0 = None
+                    else:
+                        geo.line0 = line0
+
+                    line1 = f_geo.readline()
+                    assert 'GEO_OPEN_NODE()' in line1, f"Expected GEO_OPEN_NODE() in {line1}"
                 else:
                     area = curr_geolayout
             else:
@@ -213,6 +247,12 @@ def parse_geo(geo_path):
                     if 'GEO_OPEN_NODE(' in line:
                         area_geolayout_parser.translate_empty(*get_args(translate_line))
                     continue
+                if 'GEO_ROTATION_NODE(' in line:
+                    rotate_line = line
+                    line = peek_line(f_geo)
+                    if 'GEO_OPEN_NODE(' in line:
+                        area_geolayout_parser.rotate_empty(*get_args(rotate_line))
+                    continue
                 if 'GEO_TRANSLATE_ROTATE(' in line:
                     rotate_line = line
                     line = peek_line(f_geo)
@@ -225,10 +265,16 @@ def parse_geo(geo_path):
                     continue
                 if 'GEO_ASM(' in line:
                     continue
+                if 'GEO_SWITCH_CASE(' in line:
+                    area_geolayout_parser._make_generic_node_with_args("GEO_SWITCH_CASE", get_args(line))
+                    continue
+                if 'GEO_BRANCH(' in line:
+                    area_geolayout_parser._make_generic_node_with_args("GEO_BRANCH", get_args(line))
+                    continue
 
                 raise Exception(f"Unknown geo node: {line}")
 
-    return geo, area
+    return geos, area
 
 def parse_header(header_path):
     header = []
@@ -434,7 +480,7 @@ class LayeredBatchIndexAllocator:
 
 # This procedure parses dls and converts them into batched textures
 # It also deduplicates the materials, currently on dl definition level
-def batchify(geo, model, header):
+def batchify(geos, model, header):
     # The main product of this function is the layered_batches
     layered_batches = {}
 
@@ -442,76 +488,77 @@ def batchify(geo, model, header):
     layered_batch_index_allocator = LayeredBatchIndexAllocator(layered_batches)
     mat_deduper = MatDeduper(model_indexer)
 
-    for content in geo.contents:
-        if content.batched:
-            continue
-
-        # Currently only render nodes are batched, so we can safely cast
-        node: RenderNode = content
-
-        curr_batched_data: list[str] = []
-        dl_ref = node.dl_reference
-        if not dl_ref:
-            continue
-
-        model_to_convert_idx, model_to_convert = model_indexer.lookup(dl_ref.name)
-        if model_to_convert.batched:
-            continue
-
-        batch_allocator = layered_batch_index_allocator.get_batch_allocator(dl_ref.layer)
-
-        curr_seen_batches = {}
-        curr_attached_batch_idx = None        
-        for data in model_to_convert.data:
-            if 'gsSPDisplayList(' in data:
-                dl = get_args(data)[0]
-                if dl.startswith('mat_'):
-                    mat_dl = dl
-                    revert = mat_dl.startswith('mat_revert_')
-                    if revert:
-                        continue
-
-                    mat_real_dl = mat_deduper.dedup(mat_dl)
-                    _, mat_entry = model_indexer.lookup(mat_real_dl)
-                    curr_attached_batch_idx = batch_allocator.allocate(mat_real_dl, mat_entry)
-                else:
-                    assert curr_attached_batch_idx is not None
-                    if curr_attached_batch_idx not in curr_seen_batches:
-                        curr_seen_batches[curr_attached_batch_idx] = dl
-                        batch = batch_allocator.get_batch(curr_attached_batch_idx)
-                        curr_batched_data.append(f"\tBATCH_DL({batch.idx}, {dl}),\n")
-                    else:
-                        # Append the dl to the batch that has been already seen, then clear it out
-                        seen_dl = curr_seen_batches[curr_attached_batch_idx]
-                        dl_idx, dl_entry = model_indexer.lookup(dl)
-                        append_dl(dl_entry, model_indexer.lookup(seen_dl)[1])
-                        model_indexer.delete(dl, dl_idx)
-
+    for geo in geos:
+        for content in geo.contents:
+            if content.batched:
                 continue
-            if 'gsSPEndDisplayList()' in data or 'gsDPPipeSync(' in data:
-                break
 
-            raise Exception(f"Unknown dl: {data}")
+            # Currently only render nodes are batched, so we can safely cast
+            node: RenderNode = content
 
-        # Delete the old dl entry and link in new batched data
-        model_indexer.delete(dl_ref.name, model_to_convert_idx)
+            curr_batched_data: list[str] = []
+            dl_ref = node.dl_reference
+            if not dl_ref:
+                continue
 
-        curr_batched_data.append(f"\tBATCH_END(),\n")
-        curr_batched_data.append('};\n')
+            model_to_convert_idx, model_to_convert = model_indexer.lookup(dl_ref.name)
+            if model_to_convert.batched:
+                continue
 
-        batched_decl = f'u32 {model_to_convert.name}[] = {{\n'
-        new_data = ModelEntry(batched_decl, curr_batched_data, True)
-        model_indexer.insert(new_data)
+            batch_allocator = layered_batch_index_allocator.get_batch_allocator(dl_ref.layer)
 
-        # Patch the header will the new name - switch Gfx for u32
-        replaced = False
-        for i, line in enumerate(header):
-            if model_to_convert.name + '[' in line:
-                assert not replaced    
-                header[i] = line.replace('Gfx', 'u32')
-                replaced = True
+            curr_seen_batches = {}
+            curr_attached_batch_idx = None        
+            for data in model_to_convert.data:
+                if 'gsSPDisplayList(' in data:
+                    dl = get_args(data)[0]
+                    if dl.startswith('mat_'):
+                        mat_dl = dl
+                        revert = mat_dl.startswith('mat_revert_')
+                        if revert:
+                            continue
 
-        assert replaced
+                        mat_real_dl = mat_deduper.dedup(mat_dl)
+                        _, mat_entry = model_indexer.lookup(mat_real_dl)
+                        curr_attached_batch_idx = batch_allocator.allocate(mat_real_dl, mat_entry)
+                    else:
+                        assert curr_attached_batch_idx is not None
+                        if curr_attached_batch_idx not in curr_seen_batches:
+                            curr_seen_batches[curr_attached_batch_idx] = dl
+                            batch = batch_allocator.get_batch(curr_attached_batch_idx)
+                            curr_batched_data.append(f"\tBATCH_DL({batch.idx}, {dl}),\n")
+                        else:
+                            # Append the dl to the batch that has been already seen, then clear it out
+                            seen_dl = curr_seen_batches[curr_attached_batch_idx]
+                            dl_idx, dl_entry = model_indexer.lookup(dl)
+                            append_dl(dl_entry, model_indexer.lookup(seen_dl)[1])
+                            model_indexer.delete(dl, dl_idx)
+
+                    continue
+                if 'gsSPEndDisplayList()' in data or 'gsDPPipeSync(' in data:
+                    break
+
+                raise Exception(f"Unknown dl: {data}")
+
+            # Delete the old dl entry and link in new batched data
+            model_indexer.delete(dl_ref.name, model_to_convert_idx)
+
+            curr_batched_data.append(f"\tBATCH_END(),\n")
+            curr_batched_data.append('};\n')
+
+            batched_decl = f'u32 {model_to_convert.name}[] = {{\n'
+            new_data = ModelEntry(batched_decl, curr_batched_data, True)
+            model_indexer.insert(new_data)
+
+            # Patch the header will the new name - switch Gfx for u32
+            replaced = False
+            for i, line in enumerate(header):
+                if model_to_convert.name + '[' in line:
+                    assert not replaced    
+                    header[i] = line.replace('Gfx', 'u32')
+                    replaced = True
+
+            assert replaced
 
     return layered_batches
 
@@ -519,27 +566,32 @@ def deduce_level_name(name):
     idx = name.find('_')
     return name[0:idx]
 
-def serialize_geo(geo, area, path, has_flipbooks, has_skybox):
-    lvl_name = deduce_level_name(geo.name)
+def serialize_geo(geos, area, path, has_flipbooks, has_skybox):
+    lvl_name = deduce_level_name(geos[0].name)
     with open(path, "w") as f_geo:
         f_geo.write('''#include "src/game/envfx_snow.h"\n\n''')
-        f_geo.write(f'''const GeoLayout {geo.name} = {{\n''')
-        if has_flipbooks:
-            f_geo.write(f'''\tGEO_BATCH_NODE_START_WITH_FLIPBOOK(batch_lvl_dls_{lvl_name}, {lvl_name}_flipbooks),\n''')
-        else:
-            f_geo.write(f'''\tGEO_BATCH_NODE_START(batch_lvl_dls_{lvl_name}),\n''')
+        for geo in geos:
+            f_geo.write(f'''const GeoLayout {geo.name} = {{\n''')
 
-        f_geo.write('''\tGEO_OPEN_NODE(),\n''')
-        if has_skybox:
-            f_geo.write('''\t\tGEO_ASM(0, geo_render_backdrop),\n''')    
+            if geo.line0:
+                f_geo.write(f"{geo.line0}")
+            else:
+                if has_flipbooks:
+                    f_geo.write(f'''\tGEO_BATCH_NODE_START_WITH_FLIPBOOK(batch_lvl_dls_{lvl_name}, {lvl_name}_flipbooks),\n''')
+                else:
+                    f_geo.write(f'''\tGEO_BATCH_NODE_START(batch_lvl_dls_{lvl_name}),\n''')
 
-        for content in geo.contents:
-            f_geo.write(f"{content}\n")
+            f_geo.write('''\tGEO_OPEN_NODE(),\n''')
+            if has_skybox:
+                f_geo.write('''\t\tGEO_ASM(0, geo_render_backdrop),\n''')    
 
-        f_geo.write('''\tGEO_RETURN(),\n''')
-        f_geo.write('''};\n\n''')
+            for content in geo.contents:
+                f_geo.write(f"{content}\n")
 
-        f_geo.write(f'''const GeoLayout {area.name} = {{\n''')
+            f_geo.write('''\tGEO_RETURN(),\n''')
+            f_geo.write('''};\n''')
+
+        f_geo.write(f'''\nconst GeoLayout {area.name} = {{\n''')
         for content in area.contents:
             f_geo.write(content)
 
@@ -618,11 +670,11 @@ if '__main__' in __name__:
     header_path = f"{path}/header.inc.h"
     model_path = f"{path}/model.inc.c"
     
-    geo, area = parse_geo(geo_path)
+    geos, area = parse_geo(geo_path)
     header = parse_header(header_path)
     model = parse_model(model_path)
 
-    layered_batches = batchify(geo, model, header)
+    layered_batches = batchify(geos, model, header)
 
     geo_patched_path = f"{path}/geo_lvl.inc.c"
     header_patched_path = f"{path}/header_lvl.inc.h"
@@ -631,6 +683,6 @@ if '__main__' in __name__:
     has_flipbooks = os.path.exists(f"{sys.argv[1]}/flipbook.inc.c")
     has_skybox = os.path.exists(f"{sys.argv[1]}/{name}_skybox")
 
-    serialize_geo(geo, area, geo_patched_path, has_flipbooks, has_skybox)
+    serialize_geo(geos, area, geo_patched_path, has_flipbooks, has_skybox)
     replacements = serialize_model(model, layered_batches, model_patched_path)
     serialize_header(header, layered_batches, replacements, header_patched_path, has_flipbooks)

@@ -28,6 +28,7 @@
 #include "engine/colors.h"
 #include "profiling.h"
 #include "emutest.h"
+#include "debug.h"
 #ifdef S2DEX_TEXT_ENGINE
 #include "s2d_engine/init.h"
 #endif
@@ -358,7 +359,18 @@ static void warm_up_batch_node(void)
                 case GRAPH_NODE_TYPE_GENERATED_LIST:
                     size = sizeof(struct GraphNodeGenerated);
                     break;
+                case GRAPH_NODE_TYPE_SWITCH_CASE:
+                    size = sizeof(struct GraphNodeSwitchCase);
+                    break;
             }
+
+#ifdef DEBUG_ASSERTIONS
+            if (!size) {
+                char errorMsg[40];
+                sprintf(errorMsg, "Unknown node type %d", curGraphNode->type);
+                error(errorMsg);
+            }
+#endif
 
             if (lvlNode)
             {
@@ -406,6 +418,9 @@ static void warm_up_batch_node(void)
                     break;
                 case GRAPH_NODE_TYPE_GENERATED_LIST:
                     copySize = freshNodeSize = sizeof(struct GraphNodeGenerated);
+                    break;
+                case GRAPH_NODE_TYPE_SWITCH_CASE:
+                    copySize = freshNodeSize = sizeof(struct GraphNodeSwitchCase);
                     break;
             }
 

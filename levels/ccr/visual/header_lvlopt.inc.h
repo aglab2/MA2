@@ -1,0 +1,1426 @@
+extern const GeoLayout ccr_area_1_geo[];
+extern const GeoLayout ccr_dl_002_object_011C808C_geo[];
+extern const GeoLayout ccr_dl_003_object_011C761C_geo[];
+extern const GeoLayout ccr_dl_004_object_011C6BAC_geo[];
+extern const GeoLayout ccr_dl_005_object_011C613C_geo[];
+extern const GeoLayout ccr_dl_006_object_011C56CC_geo[];
+extern const GeoLayout ccr_dl_007_object_011C4C5C_geo[];
+extern const GeoLayout ccr_dl_008_object_011C41EC_geo[];
+extern const GeoLayout ccr_dl_009_object_011C377C_geo[];
+extern const GeoLayout ccr_dl_010_object_011C2D0C_geo[];
+extern const GeoLayout ccr_dl_011_object_011C229C_geo[];
+extern const GeoLayout ccr_dl_012_object_011C182C_geo[];
+extern const GeoLayout ccr_dl_013_object_011C0DBC_geo[];
+extern const GeoLayout ccr_dl_014_object_011C034C_geo[];
+extern const GeoLayout ccr_dl_015_object_011BF8DC_geo[];
+extern const GeoLayout ccr_dl_016_object_011BEE6C_geo[];
+extern const GeoLayout ccr_dl_017_object_011BE3FC_geo[];
+extern const GeoLayout ccr_dl_018_object_011BD98C_geo[];
+extern const GeoLayout ccr_dl_019_object_011BCF1C_geo[];
+extern const GeoLayout ccr_dl_020_object_011BC4AC_geo[];
+extern const GeoLayout ccr_dl_021_object_011BBA3C_geo[];
+extern const GeoLayout ccr_dl_022_object_011BAFCC_geo[];
+extern const GeoLayout ccr_dl_023_object_011BA55C_geo[];
+extern const GeoLayout ccr_dl_024_object_011B9AEC_geo[];
+extern const GeoLayout ccr_dl_025_object_011B907C_geo[];
+extern const GeoLayout ccr_dl_026_object_011B860C_geo[];
+extern const GeoLayout ccr_dl_027_object_011B7B9C_geo[];
+extern const GeoLayout ccr_dl_028_object_011B712C_geo[];
+extern const GeoLayout ccr_dl_029_object_011B66BC_geo[];
+extern const GeoLayout ccr_dl_030_object_011B5C4C_geo[];
+extern const GeoLayout ccr_dl_031_object_011B51DC_geo[];
+extern const GeoLayout ccr_dl_032_object_011B476C_geo[];
+extern const GeoLayout ccr_dl_002_object_011F507C_geo[];
+extern const GeoLayout ccr_dl_003_object_011F410C_geo[];
+extern const GeoLayout ccr_dl_004_object_011F3164_geo[];
+extern const GeoLayout ccr_dl_005_object_011F21E4_geo[];
+extern const GeoLayout ccr_dl_006_object_011F1254_geo[];
+extern const GeoLayout ccr_dl_007_object_011F02DC_geo[];
+extern const GeoLayout ccr_dl_008_object_011EF334_geo[];
+extern const GeoLayout ccr_dl_009_object_011EE3C4_geo[];
+extern const GeoLayout ccr_dl_010_object_011ED454_geo[];
+extern const GeoLayout ccr_dl_011_object_011EC4E4_geo[];
+extern const GeoLayout ccr_dl_012_object_011EB574_geo[];
+extern const GeoLayout ccr_dl_013_object_011EA5FC_geo[];
+extern const GeoLayout ccr_dl_014_object_011E967C_geo[];
+extern const GeoLayout ccr_dl_015_object_011E8704_geo[];
+extern const GeoLayout ccr_dl_016_object_011E7784_geo[];
+extern const GeoLayout ccr_dl_002_object_011F507C_001_geo[];
+extern const GeoLayout ccr_dl_003_object_011F410C_001_geo[];
+extern const GeoLayout ccr_dl_004_object_011F3164_001_geo[];
+extern const GeoLayout ccr_dl_005_object_011F21E4_001_geo[];
+extern const GeoLayout ccr_dl_006_object_011F1254_001_geo[];
+extern const GeoLayout ccr_dl_007_object_011F02DC_001_geo[];
+extern const GeoLayout ccr_dl_008_object_011EF334_001_geo[];
+extern const GeoLayout ccr_dl_009_object_011EE3C4_001_geo[];
+extern const GeoLayout ccr_dl_010_object_011ED454_001_geo[];
+extern const GeoLayout ccr_dl_011_object_011EC4E4_001_geo[];
+extern const GeoLayout ccr_dl_012_object_011EB574_001_geo[];
+extern const GeoLayout ccr_dl_013_object_011EA5FC_001_geo[];
+extern const GeoLayout ccr_dl_014_object_011E967C_001_geo[];
+extern const GeoLayout ccr_dl_015_object_011E8704_001_geo[];
+extern const GeoLayout ccr_dl_016_object_011E7784_001_geo[];
+extern const GeoLayout ccr_dl_002_object_011F507C_002_geo[];
+extern const GeoLayout ccr_dl_003_object_011F410C_002_geo[];
+extern const GeoLayout ccr_dl_004_object_011F3164_002_geo[];
+extern const GeoLayout ccr_dl_005_object_011F21E4_002_geo[];
+extern const GeoLayout ccr_dl_006_object_011F1254_002_geo[];
+extern const GeoLayout ccr_dl_007_object_011F02DC_002_geo[];
+extern const GeoLayout ccr_dl_008_object_011EF334_002_geo[];
+extern const GeoLayout ccr_dl_009_object_011EE3C4_002_geo[];
+extern const GeoLayout ccr_dl_010_object_011ED454_002_geo[];
+extern const GeoLayout ccr_dl_011_object_011EC4E4_002_geo[];
+extern const GeoLayout ccr_dl_012_object_011EB574_002_geo[];
+extern const GeoLayout ccr_dl_013_object_011EA5FC_002_geo[];
+extern const GeoLayout ccr_dl_014_object_011E967C_002_geo[];
+extern const GeoLayout ccr_dl_015_object_011E8704_002_geo[];
+extern const GeoLayout ccr_dl_016_object_011E7784_002_geo[];
+extern const GeoLayout ccr_dl_002_object_011F507C_003_geo[];
+extern const GeoLayout ccr_dl_003_object_011F410C_003_geo[];
+extern const GeoLayout ccr_dl_004_object_011F3164_003_geo[];
+extern const GeoLayout ccr_dl_005_object_011F21E4_003_geo[];
+extern const GeoLayout ccr_dl_006_object_011F1254_003_geo[];
+extern const GeoLayout ccr_dl_007_object_011F02DC_003_geo[];
+extern const GeoLayout ccr_dl_008_object_011EF334_003_geo[];
+extern const GeoLayout ccr_dl_009_object_011EE3C4_003_geo[];
+extern const GeoLayout ccr_dl_010_object_011ED454_003_geo[];
+extern const GeoLayout ccr_dl_011_object_011EC4E4_003_geo[];
+extern const GeoLayout ccr_dl_012_object_011EB574_003_geo[];
+extern const GeoLayout ccr_dl_013_object_011EA5FC_003_geo[];
+extern const GeoLayout ccr_dl_014_object_011E967C_003_geo[];
+extern const GeoLayout ccr_dl_015_object_011E8704_003_geo[];
+extern const GeoLayout ccr_dl_016_object_011E7784_003_geo[];
+extern const GeoLayout ccr_dl_002_object_011FA8FC_geo[];
+extern const GeoLayout ccr_dl_003_object_011FA0D4_geo[];
+extern const GeoLayout ccr_dl_004_object_011F98AC_geo[];
+extern const GeoLayout ccr_dl_005_object_011F9084_geo[];
+extern const GeoLayout ccr_dl_006_object_011F8874_geo[];
+extern const GeoLayout ccr_dl_007_object_011F804C_geo[];
+extern const GeoLayout ccr_dl_008_object_011F783C_geo[];
+extern const GeoLayout ccr_dl_009_object_011F7034_geo[];
+extern const GeoLayout ccr_dl_010_object_011F682C_geo[];
+extern const GeoLayout ccr_dl_002_object_011FA8FC_001_geo[];
+extern const GeoLayout ccr_dl_003_object_011FA0D4_001_geo[];
+extern const GeoLayout ccr_dl_004_object_011F98AC_001_geo[];
+extern const GeoLayout ccr_dl_005_object_011F9084_001_geo[];
+extern const GeoLayout ccr_dl_006_object_011F8874_001_geo[];
+extern const GeoLayout ccr_dl_007_object_011F804C_001_geo[];
+extern const GeoLayout ccr_dl_008_object_011F783C_001_geo[];
+extern const GeoLayout ccr_dl_009_object_011F7034_001_geo[];
+extern const GeoLayout ccr_dl_010_object_011F682C_001_geo[];
+extern const GeoLayout ccr_dl_002_object_011FA8FC_002_geo[];
+extern const GeoLayout ccr_dl_003_object_011FA0D4_002_geo[];
+extern const GeoLayout ccr_dl_004_object_011F98AC_002_geo[];
+extern const GeoLayout ccr_dl_005_object_011F9084_002_geo[];
+extern const GeoLayout ccr_dl_006_object_011F8874_002_geo[];
+extern const GeoLayout ccr_dl_007_object_011F804C_002_geo[];
+extern const GeoLayout ccr_dl_008_object_011F783C_002_geo[];
+extern const GeoLayout ccr_dl_009_object_011F7034_002_geo[];
+extern const GeoLayout ccr_dl_010_object_011F682C_002_geo[];
+extern const GeoLayout ccr_dl_002_object_011FFA6C_geo[];
+extern const GeoLayout ccr_dl_003_object_011FF254_geo[];
+extern const GeoLayout ccr_dl_004_object_011FEA2C_geo[];
+extern const GeoLayout ccr_dl_005_object_011FE204_geo[];
+extern const GeoLayout ccr_dl_006_object_011FD9DC_geo[];
+extern const GeoLayout ccr_dl_007_object_011FD1CC_geo[];
+extern const GeoLayout ccr_dl_008_object_011FC9BC_geo[];
+extern const GeoLayout ccr_dl_009_object_011FC184_geo[];
+extern const GeoLayout ccr_dl_010_object_011FB96C_geo[];
+extern const GeoLayout ccr_dl_002_object_011FFA6C_001_geo[];
+extern const GeoLayout ccr_dl_003_object_011FF254_001_geo[];
+extern const GeoLayout ccr_dl_004_object_011FEA2C_001_geo[];
+extern const GeoLayout ccr_dl_005_object_011FE204_001_geo[];
+extern const GeoLayout ccr_dl_006_object_011FD9DC_001_geo[];
+extern const GeoLayout ccr_dl_007_object_011FD1CC_001_geo[];
+extern const GeoLayout ccr_dl_008_object_011FC9BC_001_geo[];
+extern const GeoLayout ccr_dl_009_object_011FC184_001_geo[];
+extern const GeoLayout ccr_dl_010_object_011FB96C_001_geo[];
+extern const GeoLayout ccr_dl_002_object_011FFA6C_002_geo[];
+extern const GeoLayout ccr_dl_003_object_011FF254_002_geo[];
+extern const GeoLayout ccr_dl_004_object_011FEA2C_002_geo[];
+extern const GeoLayout ccr_dl_005_object_011FE204_002_geo[];
+extern const GeoLayout ccr_dl_006_object_011FD9DC_002_geo[];
+extern const GeoLayout ccr_dl_007_object_011FD1CC_002_geo[];
+extern const GeoLayout ccr_dl_008_object_011FC9BC_002_geo[];
+extern const GeoLayout ccr_dl_009_object_011FC184_002_geo[];
+extern const GeoLayout ccr_dl_010_object_011FB96C_002_geo[];
+extern const GeoLayout ccr_area_1[];
+extern const Collision ccr_area_1_collision[];
+extern const MacroObject ccr_area_1_macro_objs[];
+extern u8 ccr_dl_kd_lk_un403_ci4[];
+extern u8 ccr_dl_kd_lk_un403_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un401_ci4[];
+extern u8 ccr_dl_kd_lk_un401_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un108_ci4[];
+extern u8 ccr_dl_kd_lk_un108_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un111_ci4[];
+extern u8 ccr_dl_kd_lk_un111_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un504_ci4[];
+extern u8 ccr_dl_kd_lk_un504_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un1021_ci4[];
+extern u8 ccr_dl_kd_lk_un1021_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un1022_ci4[];
+extern u8 ccr_dl_kd_lk_un1022_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un1023_ci4[];
+extern u8 ccr_dl_kd_lk_un1023_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un103_ci4[];
+extern u8 ccr_dl_kd_lk_un103_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un114_ci8[];
+extern u8 ccr_dl_kd_lk_un114_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un101_ci4[];
+extern u8 ccr_dl_kd_lk_un101_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_water3_rgba32[];
+extern u8 ccr_dl_kd_lk_un113_ci4[];
+extern u8 ccr_dl_kd_lk_un113_pal_rgba16[];
+extern u8 ccr_dl_tx_ccpoison001_001_ci4[];
+extern u8 ccr_dl_tx_ccpoison001_001_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un301_ci4[];
+extern u8 ccr_dl_kd_lk_un301_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un302_ci4[];
+extern u8 ccr_dl_kd_lk_un302_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un104_ci4[];
+extern u8 ccr_dl_kd_lk_un104_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un204_ci4[];
+extern u8 ccr_dl_kd_lk_un204_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un404_ci4[];
+extern u8 ccr_dl_kd_lk_un404_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un201_ci4[];
+extern u8 ccr_dl_kd_lk_un201_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un202_ci4[];
+extern u8 ccr_dl_kd_lk_un202_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un405_ci4[];
+extern u8 ccr_dl_kd_lk_un405_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un205_ci4[];
+extern u8 ccr_dl_kd_lk_un205_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un206_ci4[];
+extern u8 ccr_dl_kd_lk_un206_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un406_ci4[];
+extern u8 ccr_dl_kd_lk_un406_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un402_rgba16[];
+extern u8 ccr_dl_kd_lk_un110_ci4[];
+extern u8 ccr_dl_kd_lk_un110_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un105_ci4[];
+extern u8 ccr_dl_kd_lk_un105_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un109_ci4[];
+extern u8 ccr_dl_kd_lk_un109_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un106_ci4[];
+extern u8 ccr_dl_kd_lk_un106_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_un107_ci4[];
+extern u8 ccr_dl_kd_lk_un107_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_water1_01_ci4[];
+extern u8 ccr_dl_kd_lk_water1_01_pal_rgba16[];
+extern u8 ccr_dl_kd_lk_water3_ci8[];
+extern u8 ccr_dl_kd_lk_water3_pal_rgba16[];
+extern Gfx ccr_dl_0000_object_013C2EFC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0001_object_013C2AA4_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0002_object_013C2894_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0002_object_013C2894_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_0002_object_013C2894_mesh_layer_1_tri_2[];
+extern Gfx ccr_dl_0003_object_013C176C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0003_object_013C176C_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_0003_object_013C176C_mesh_layer_1_tri_2[];
+extern Gfx ccr_dl_0004_object_013C10D4_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0004_object_013C10D4_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_0005_object_013C34E4_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0005_object_013C34E4_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_0005_object_013C34E4_mesh_layer_1_tri_2[];
+extern Gfx ccr_dl_0005_object_013C34E4_mesh_layer_1_tri_3[];
+extern Gfx ccr_dl_0005_object_013C34E4_mesh_layer_1_tri_4[];
+extern Gfx ccr_dl_0007_object_013C015C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0007_object_013C015C_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_0007_object_013C015C_mesh_layer_1_tri_2[];
+extern Gfx ccr_dl_0007_object_013C015C_mesh_layer_1_tri_3[];
+extern Gfx ccr_dl_0007_object_013C015C_mesh_layer_1_tri_4[];
+extern Gfx ccr_dl_0009_object_013BF55C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_001_object_011B141C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_002_object_011B131C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_003_object_011B121C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_004_object_011B111C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_005_object_011B101C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_006_object_011B0F1C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_007_object_011B0E1C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_008_object_011B0D1C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_009_object_011B0C1C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_010_object_011B0B1C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_011_object_011B0A1C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_012_object_011B091C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_001_object_011B2054_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_002_object_011B1F54_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_003_object_011B1E54_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_004_object_011B1D54_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_005_object_011B1C54_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_006_object_011B1B54_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_007_object_011B1A54_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_008_object_011B1954_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_009_object_011B1854_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_010_object_011B1754_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_011_object_011B1654_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_012_object_011B1554_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_001_object_011B2F74_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_002_object_011B2B04_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_001_object_011B3894_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_002_object_011B341C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_001_object_011C8AFC_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_002_object_011C808C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_003_object_011C761C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_004_object_011C6BAC_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_005_object_011C613C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_006_object_011C56CC_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_007_object_011C4C5C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_008_object_011C41EC_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_009_object_011C377C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_010_object_011C2D0C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_011_object_011C229C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_012_object_011C182C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_013_object_011C0DBC_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_014_object_011C034C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_015_object_011BF8DC_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_016_object_011BEE6C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_017_object_011BE3FC_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_018_object_011BD98C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_019_object_011BCF1C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_020_object_011BC4AC_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_021_object_011BBA3C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_022_object_011BAFCC_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_023_object_011BA55C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_024_object_011B9AEC_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_025_object_011B907C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_026_object_011B860C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_027_object_011B7B9C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_028_object_011B712C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_029_object_011B66BC_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_030_object_011B5C4C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_031_object_011B51DC_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_032_object_011B476C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_002_object_011D03CC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_003_object_011CFD5C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_004_object_011CF6EC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_005_object_011CF07C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_006_object_011CEA0C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_007_object_011CE39C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_001_object_011D0A3C_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_002_object_011D03CC_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_003_object_011CFD5C_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_004_object_011CF6EC_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_005_object_011CF07C_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_006_object_011CEA0C_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_007_object_011CE39C_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_001_object_011D0A3C_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_002_object_011D03CC_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_003_object_011CFD5C_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_004_object_011CF6EC_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_005_object_011CF07C_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_006_object_011CEA0C_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_007_object_011CE39C_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_001_object_011D0A3C_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_002_object_011D03CC_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_003_object_011CFD5C_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_004_object_011CF6EC_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_005_object_011CF07C_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_006_object_011CEA0C_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_007_object_011CE39C_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_001_object_011E406C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_002_object_011E3F34_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_001_object_011E51BC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_001_object_011E51BC_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_002_object_011E4D84_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_002_object_011E4D84_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_003_object_011E494C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_003_object_011E494C_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_004_object_011E4514_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_004_object_011E4514_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_001_object_011F5FEC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_002_object_011F507C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_003_object_011F410C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_004_object_011F3164_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_005_object_011F21E4_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_006_object_011F1254_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_007_object_011F02DC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_008_object_011EF334_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_009_object_011EE3C4_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_010_object_011ED454_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_011_object_011EC4E4_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_012_object_011EB574_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_013_object_011EA5FC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_014_object_011E967C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_015_object_011E8704_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_016_object_011E7784_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_001_object_011F5FEC_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_002_object_011F507C_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_003_object_011F410C_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_004_object_011F3164_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_005_object_011F21E4_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_006_object_011F1254_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_007_object_011F02DC_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_008_object_011EF334_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_009_object_011EE3C4_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_010_object_011ED454_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_011_object_011EC4E4_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_012_object_011EB574_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_013_object_011EA5FC_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_014_object_011E967C_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_015_object_011E8704_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_016_object_011E7784_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_001_object_011F5FEC_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_002_object_011F507C_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_003_object_011F410C_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_004_object_011F3164_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_005_object_011F21E4_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_006_object_011F1254_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_007_object_011F02DC_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_008_object_011EF334_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_009_object_011EE3C4_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_010_object_011ED454_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_011_object_011EC4E4_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_012_object_011EB574_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_013_object_011EA5FC_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_014_object_011E967C_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_015_object_011E8704_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_016_object_011E7784_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_001_object_011F5FEC_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_002_object_011F507C_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_003_object_011F410C_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_004_object_011F3164_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_005_object_011F21E4_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_006_object_011F1254_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_007_object_011F02DC_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_008_object_011EF334_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_009_object_011EE3C4_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_010_object_011ED454_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_011_object_011EC4E4_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_012_object_011EB574_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_013_object_011EA5FC_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_014_object_011E967C_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_015_object_011E8704_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_016_object_011E7784_003_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_001_object_011FB10C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_001_object_011FB10C_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_002_object_011FA8FC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_002_object_011FA8FC_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_003_object_011FA0D4_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_003_object_011FA0D4_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_004_object_011F98AC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_004_object_011F98AC_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_005_object_011F9084_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_005_object_011F9084_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_006_object_011F8874_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_006_object_011F8874_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_007_object_011F804C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_007_object_011F804C_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_008_object_011F783C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_008_object_011F783C_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_009_object_011F7034_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_009_object_011F7034_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_010_object_011F682C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_010_object_011F682C_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_001_object_011FB10C_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_001_object_011FB10C_001_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_002_object_011FA8FC_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_002_object_011FA8FC_001_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_003_object_011FA0D4_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_003_object_011FA0D4_001_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_004_object_011F98AC_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_004_object_011F98AC_001_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_005_object_011F9084_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_005_object_011F9084_001_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_006_object_011F8874_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_006_object_011F8874_001_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_007_object_011F804C_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_007_object_011F804C_001_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_008_object_011F783C_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_008_object_011F783C_001_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_009_object_011F7034_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_009_object_011F7034_001_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_010_object_011F682C_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_010_object_011F682C_001_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_001_object_011FB10C_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_001_object_011FB10C_002_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_002_object_011FA8FC_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_002_object_011FA8FC_002_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_003_object_011FA0D4_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_003_object_011FA0D4_002_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_004_object_011F98AC_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_004_object_011F98AC_002_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_005_object_011F9084_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_005_object_011F9084_002_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_006_object_011F8874_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_006_object_011F8874_002_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_007_object_011F804C_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_007_object_011F804C_002_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_008_object_011F783C_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_008_object_011F783C_002_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_009_object_011F7034_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_009_object_011F7034_002_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_010_object_011F682C_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_010_object_011F682C_002_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_001_object_012002AC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_001_object_012002AC_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_002_object_011FFA6C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_002_object_011FFA6C_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_003_object_011FF254_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_003_object_011FF254_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_004_object_011FEA2C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_004_object_011FEA2C_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_005_object_011FE204_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_005_object_011FE204_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_006_object_011FD9DC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_006_object_011FD9DC_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_007_object_011FD1CC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_007_object_011FD1CC_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_008_object_011FC9BC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_008_object_011FC9BC_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_009_object_011FC184_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_009_object_011FC184_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_010_object_011FB96C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_010_object_011FB96C_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_001_object_012002AC_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_001_object_012002AC_001_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_002_object_011FFA6C_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_002_object_011FFA6C_001_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_003_object_011FF254_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_003_object_011FF254_001_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_004_object_011FEA2C_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_004_object_011FEA2C_001_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_005_object_011FE204_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_005_object_011FE204_001_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_006_object_011FD9DC_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_006_object_011FD9DC_001_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_007_object_011FD1CC_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_007_object_011FD1CC_001_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_008_object_011FC9BC_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_008_object_011FC9BC_001_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_009_object_011FC184_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_009_object_011FC184_001_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_010_object_011FB96C_001_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_010_object_011FB96C_001_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_001_object_012002AC_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_001_object_012002AC_002_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_002_object_011FFA6C_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_002_object_011FFA6C_002_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_003_object_011FF254_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_003_object_011FF254_002_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_004_object_011FEA2C_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_004_object_011FEA2C_002_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_005_object_011FE204_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_005_object_011FE204_002_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_006_object_011FD9DC_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_006_object_011FD9DC_002_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_007_object_011FD1CC_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_007_object_011FD1CC_002_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_008_object_011FC9BC_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_008_object_011FC9BC_002_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_009_object_011FC184_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_009_object_011FC184_002_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_010_object_011FB96C_002_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_010_object_011FB96C_002_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_001_object_01200A84_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_001_object_01200A84_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_002_object_012006B4_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_002_object_012006B4_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_0010_object_013BE8FC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0011_object_013BE05C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0012_object_013C3474_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0012_object_013C3474_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_0016_object_013BC0FC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0016_object_013BC0FC_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_0016_object_013BC0FC_mesh_layer_1_tri_2[];
+extern Gfx ccr_dl_0016_object_013BC0FC_mesh_layer_1_tri_3[];
+extern Gfx ccr_dl_0016_object_013BC0FC_mesh_layer_1_tri_4[];
+extern Gfx ccr_dl_0017_object_013C33CC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0019_object_013BB4BC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0019_object_013BB4BC_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_0019_object_013BB4BC_mesh_layer_1_tri_2[];
+extern Gfx ccr_dl_0019_object_013BB4BC_mesh_layer_1_tri_3[];
+extern Gfx ccr_dl_0019_object_013BB4BC_mesh_layer_1_tri_4[];
+extern Gfx ccr_dl_0019_object_013BB4BC_mesh_layer_1_tri_5[];
+extern Gfx ccr_dl_0019_object_013BB4BC_mesh_layer_1_tri_6[];
+extern Gfx ccr_dl_0019_object_013BB4BC_mesh_layer_1_tri_7[];
+extern Gfx ccr_dl_0020_object_013C3394_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0020_object_013C3394_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_0022_object_013C335C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0024_object_013B73AC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0024_object_013B73AC_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_0024_object_013B73AC_mesh_layer_1_tri_2[];
+extern Gfx ccr_dl_0024_object_013B73AC_mesh_layer_1_tri_3[];
+extern Gfx ccr_dl_0025_object_013C3324_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0025_object_013C3324_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_0025_object_013C3324_mesh_layer_1_tri_2[];
+extern Gfx ccr_dl_0029_object_013C327C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0029_object_013C327C_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_0031_object_013B5234_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0032_object_013B504C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0032_object_013B504C_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_0032_object_013B504C_mesh_layer_1_tri_2[];
+extern Gfx ccr_dl_0032_object_013B504C_mesh_layer_1_tri_3[];
+extern Gfx ccr_dl_0032_object_013B504C_mesh_layer_1_tri_4[];
+extern Gfx ccr_dl_0033_object_013B35BC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0034_object_013B317C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0034_object_013B317C_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_0034_object_013B317C_mesh_layer_1_tri_2[];
+extern Gfx ccr_dl_0035_object_013B1024_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0035_object_013B1024_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_0035_object_013B1024_mesh_layer_1_tri_2[];
+extern Gfx ccr_dl_0036_object_013AF7CC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0036_object_013AF7CC_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_0036_object_013AF7CC_mesh_layer_1_tri_2[];
+extern Gfx ccr_dl_0037_object_013AE8CC_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0037_object_013AE8CC_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_0037_object_013AE8CC_mesh_layer_1_tri_2[];
+extern Gfx ccr_dl_0038_object_013ADD8C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0038_object_013ADD8C_mesh_layer_1_tri_1[];
+extern Gfx ccr_dl_0039_object_013C3244_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0043_object_013C319C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0047_object_013AAE9C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_0048_object_013C30F4_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_object_011B005C_mesh_layer_1_tri_0[];
+extern Gfx ccr_dl_object_011B3C1C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_object_011B3D1C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_object_011CDC2C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_object_011CDD2C_mesh_layer_5_tri_0[];
+extern u32 ccr_dl_0000_object_013C2EFC_mesh_layer_1[];
+extern u32 ccr_dl_0001_object_013C2AA4_mesh_layer_1[];
+extern u32 ccr_dl_0002_object_013C2894_mesh_layer_1[];
+extern u32 ccr_dl_0003_object_013C176C_mesh_layer_1[];
+extern u32 ccr_dl_0004_object_013C10D4_mesh_layer_1[];
+extern u32 ccr_dl_0005_object_013C34E4_mesh_layer_1[];
+extern u32 ccr_dl_0007_object_013C015C_mesh_layer_1[];
+extern u32 ccr_dl_0009_object_013BF55C_mesh_layer_1[];
+extern u32 ccr_dl_001_object_011B141C_mesh_layer_5[];
+extern u32 ccr_dl_002_object_011B131C_mesh_layer_5[];
+extern u32 ccr_dl_003_object_011B121C_mesh_layer_5[];
+extern u32 ccr_dl_004_object_011B111C_mesh_layer_5[];
+extern u32 ccr_dl_005_object_011B101C_mesh_layer_5[];
+extern u32 ccr_dl_006_object_011B0F1C_mesh_layer_5[];
+extern u32 ccr_dl_007_object_011B0E1C_mesh_layer_5[];
+extern u32 ccr_dl_008_object_011B0D1C_mesh_layer_5[];
+extern u32 ccr_dl_009_object_011B0C1C_mesh_layer_5[];
+extern u32 ccr_dl_010_object_011B0B1C_mesh_layer_5[];
+extern u32 ccr_dl_011_object_011B0A1C_mesh_layer_5[];
+extern u32 ccr_dl_012_object_011B091C_mesh_layer_5[];
+extern u32 ccr_dl_001_object_011B2054_mesh_layer_5[];
+extern u32 ccr_dl_002_object_011B1F54_mesh_layer_5[];
+extern u32 ccr_dl_003_object_011B1E54_mesh_layer_5[];
+extern u32 ccr_dl_004_object_011B1D54_mesh_layer_5[];
+extern u32 ccr_dl_005_object_011B1C54_mesh_layer_5[];
+extern u32 ccr_dl_006_object_011B1B54_mesh_layer_5[];
+extern u32 ccr_dl_007_object_011B1A54_mesh_layer_5[];
+extern u32 ccr_dl_008_object_011B1954_mesh_layer_5[];
+extern u32 ccr_dl_009_object_011B1854_mesh_layer_5[];
+extern u32 ccr_dl_010_object_011B1754_mesh_layer_5[];
+extern u32 ccr_dl_011_object_011B1654_mesh_layer_5[];
+extern u32 ccr_dl_012_object_011B1554_mesh_layer_5[];
+extern u32 ccr_dl_001_object_011B2F74_mesh_layer_1[];
+extern u32 ccr_dl_002_object_011B2B04_mesh_layer_1[];
+extern u32 ccr_dl_001_object_011B3894_mesh_layer_1[];
+extern u32 ccr_dl_002_object_011B341C_mesh_layer_1[];
+extern u32 ccr_dl_001_object_011C8AFC_mesh_layer_5[];
+extern u32 ccr_dl_002_object_011C808C_mesh_layer_5[];
+extern u32 ccr_dl_003_object_011C761C_mesh_layer_5[];
+extern u32 ccr_dl_004_object_011C6BAC_mesh_layer_5[];
+extern u32 ccr_dl_005_object_011C613C_mesh_layer_5[];
+extern u32 ccr_dl_006_object_011C56CC_mesh_layer_5[];
+extern u32 ccr_dl_007_object_011C4C5C_mesh_layer_5[];
+extern u32 ccr_dl_008_object_011C41EC_mesh_layer_5[];
+extern u32 ccr_dl_009_object_011C377C_mesh_layer_5[];
+extern u32 ccr_dl_010_object_011C2D0C_mesh_layer_5[];
+extern u32 ccr_dl_011_object_011C229C_mesh_layer_5[];
+extern u32 ccr_dl_012_object_011C182C_mesh_layer_5[];
+extern u32 ccr_dl_013_object_011C0DBC_mesh_layer_5[];
+extern u32 ccr_dl_014_object_011C034C_mesh_layer_5[];
+extern u32 ccr_dl_015_object_011BF8DC_mesh_layer_5[];
+extern u32 ccr_dl_016_object_011BEE6C_mesh_layer_5[];
+extern u32 ccr_dl_017_object_011BE3FC_mesh_layer_5[];
+extern u32 ccr_dl_018_object_011BD98C_mesh_layer_5[];
+extern u32 ccr_dl_019_object_011BCF1C_mesh_layer_5[];
+extern u32 ccr_dl_020_object_011BC4AC_mesh_layer_5[];
+extern u32 ccr_dl_021_object_011BBA3C_mesh_layer_5[];
+extern u32 ccr_dl_022_object_011BAFCC_mesh_layer_5[];
+extern u32 ccr_dl_023_object_011BA55C_mesh_layer_5[];
+extern u32 ccr_dl_024_object_011B9AEC_mesh_layer_5[];
+extern u32 ccr_dl_025_object_011B907C_mesh_layer_5[];
+extern u32 ccr_dl_026_object_011B860C_mesh_layer_5[];
+extern u32 ccr_dl_027_object_011B7B9C_mesh_layer_5[];
+extern u32 ccr_dl_028_object_011B712C_mesh_layer_5[];
+extern u32 ccr_dl_029_object_011B66BC_mesh_layer_5[];
+extern u32 ccr_dl_030_object_011B5C4C_mesh_layer_5[];
+extern u32 ccr_dl_031_object_011B51DC_mesh_layer_5[];
+extern u32 ccr_dl_032_object_011B476C_mesh_layer_5[];
+extern u32 ccr_dl_001_object_011D0A3C_mesh_layer_1[];
+extern u32 ccr_dl_002_object_011D03CC_mesh_layer_1[];
+extern u32 ccr_dl_003_object_011CFD5C_mesh_layer_1[];
+extern u32 ccr_dl_004_object_011CF6EC_mesh_layer_1[];
+extern u32 ccr_dl_005_object_011CF07C_mesh_layer_1[];
+extern u32 ccr_dl_006_object_011CEA0C_mesh_layer_1[];
+extern u32 ccr_dl_007_object_011CE39C_mesh_layer_1[];
+extern u32 ccr_dl_001_object_011D0A3C_001_mesh_layer_1[];
+extern u32 ccr_dl_002_object_011D03CC_001_mesh_layer_1[];
+extern u32 ccr_dl_003_object_011CFD5C_001_mesh_layer_1[];
+extern u32 ccr_dl_004_object_011CF6EC_001_mesh_layer_1[];
+extern u32 ccr_dl_005_object_011CF07C_001_mesh_layer_1[];
+extern u32 ccr_dl_006_object_011CEA0C_001_mesh_layer_1[];
+extern u32 ccr_dl_007_object_011CE39C_001_mesh_layer_1[];
+extern u32 ccr_dl_001_object_011D0A3C_002_mesh_layer_1[];
+extern u32 ccr_dl_002_object_011D03CC_002_mesh_layer_1[];
+extern u32 ccr_dl_003_object_011CFD5C_002_mesh_layer_1[];
+extern u32 ccr_dl_004_object_011CF6EC_002_mesh_layer_1[];
+extern u32 ccr_dl_005_object_011CF07C_002_mesh_layer_1[];
+extern u32 ccr_dl_006_object_011CEA0C_002_mesh_layer_1[];
+extern u32 ccr_dl_007_object_011CE39C_002_mesh_layer_1[];
+extern u32 ccr_dl_001_object_011D0A3C_003_mesh_layer_1[];
+extern u32 ccr_dl_002_object_011D03CC_003_mesh_layer_1[];
+extern u32 ccr_dl_003_object_011CFD5C_003_mesh_layer_1[];
+extern u32 ccr_dl_004_object_011CF6EC_003_mesh_layer_1[];
+extern u32 ccr_dl_005_object_011CF07C_003_mesh_layer_1[];
+extern u32 ccr_dl_006_object_011CEA0C_003_mesh_layer_1[];
+extern u32 ccr_dl_007_object_011CE39C_003_mesh_layer_1[];
+extern u32 ccr_dl_001_object_011E406C_mesh_layer_1[];
+extern u32 ccr_dl_002_object_011E3F34_mesh_layer_1[];
+extern u32 ccr_dl_001_object_011E51BC_mesh_layer_1[];
+extern u32 ccr_dl_002_object_011E4D84_mesh_layer_1[];
+extern u32 ccr_dl_003_object_011E494C_mesh_layer_1[];
+extern u32 ccr_dl_004_object_011E4514_mesh_layer_1[];
+extern u32 ccr_dl_001_object_011F5FEC_mesh_layer_1[];
+extern u32 ccr_dl_002_object_011F507C_mesh_layer_1[];
+extern u32 ccr_dl_003_object_011F410C_mesh_layer_1[];
+extern u32 ccr_dl_004_object_011F3164_mesh_layer_1[];
+extern u32 ccr_dl_005_object_011F21E4_mesh_layer_1[];
+extern u32 ccr_dl_006_object_011F1254_mesh_layer_1[];
+extern u32 ccr_dl_007_object_011F02DC_mesh_layer_1[];
+extern u32 ccr_dl_008_object_011EF334_mesh_layer_1[];
+extern u32 ccr_dl_009_object_011EE3C4_mesh_layer_1[];
+extern u32 ccr_dl_010_object_011ED454_mesh_layer_1[];
+extern u32 ccr_dl_011_object_011EC4E4_mesh_layer_1[];
+extern u32 ccr_dl_012_object_011EB574_mesh_layer_1[];
+extern u32 ccr_dl_013_object_011EA5FC_mesh_layer_1[];
+extern u32 ccr_dl_014_object_011E967C_mesh_layer_1[];
+extern u32 ccr_dl_015_object_011E8704_mesh_layer_1[];
+extern u32 ccr_dl_016_object_011E7784_mesh_layer_1[];
+extern u32 ccr_dl_001_object_011F5FEC_001_mesh_layer_1[];
+extern u32 ccr_dl_002_object_011F507C_001_mesh_layer_1[];
+extern u32 ccr_dl_003_object_011F410C_001_mesh_layer_1[];
+extern u32 ccr_dl_004_object_011F3164_001_mesh_layer_1[];
+extern u32 ccr_dl_005_object_011F21E4_001_mesh_layer_1[];
+extern u32 ccr_dl_006_object_011F1254_001_mesh_layer_1[];
+extern u32 ccr_dl_007_object_011F02DC_001_mesh_layer_1[];
+extern u32 ccr_dl_008_object_011EF334_001_mesh_layer_1[];
+extern u32 ccr_dl_009_object_011EE3C4_001_mesh_layer_1[];
+extern u32 ccr_dl_010_object_011ED454_001_mesh_layer_1[];
+extern u32 ccr_dl_011_object_011EC4E4_001_mesh_layer_1[];
+extern u32 ccr_dl_012_object_011EB574_001_mesh_layer_1[];
+extern u32 ccr_dl_013_object_011EA5FC_001_mesh_layer_1[];
+extern u32 ccr_dl_014_object_011E967C_001_mesh_layer_1[];
+extern u32 ccr_dl_015_object_011E8704_001_mesh_layer_1[];
+extern u32 ccr_dl_016_object_011E7784_001_mesh_layer_1[];
+extern u32 ccr_dl_001_object_011F5FEC_002_mesh_layer_1[];
+extern u32 ccr_dl_002_object_011F507C_002_mesh_layer_1[];
+extern u32 ccr_dl_003_object_011F410C_002_mesh_layer_1[];
+extern u32 ccr_dl_004_object_011F3164_002_mesh_layer_1[];
+extern u32 ccr_dl_005_object_011F21E4_002_mesh_layer_1[];
+extern u32 ccr_dl_006_object_011F1254_002_mesh_layer_1[];
+extern u32 ccr_dl_007_object_011F02DC_002_mesh_layer_1[];
+extern u32 ccr_dl_008_object_011EF334_002_mesh_layer_1[];
+extern u32 ccr_dl_009_object_011EE3C4_002_mesh_layer_1[];
+extern u32 ccr_dl_010_object_011ED454_002_mesh_layer_1[];
+extern u32 ccr_dl_011_object_011EC4E4_002_mesh_layer_1[];
+extern u32 ccr_dl_012_object_011EB574_002_mesh_layer_1[];
+extern u32 ccr_dl_013_object_011EA5FC_002_mesh_layer_1[];
+extern u32 ccr_dl_014_object_011E967C_002_mesh_layer_1[];
+extern u32 ccr_dl_015_object_011E8704_002_mesh_layer_1[];
+extern u32 ccr_dl_016_object_011E7784_002_mesh_layer_1[];
+extern u32 ccr_dl_001_object_011F5FEC_003_mesh_layer_1[];
+extern u32 ccr_dl_002_object_011F507C_003_mesh_layer_1[];
+extern u32 ccr_dl_003_object_011F410C_003_mesh_layer_1[];
+extern u32 ccr_dl_004_object_011F3164_003_mesh_layer_1[];
+extern u32 ccr_dl_005_object_011F21E4_003_mesh_layer_1[];
+extern u32 ccr_dl_006_object_011F1254_003_mesh_layer_1[];
+extern u32 ccr_dl_007_object_011F02DC_003_mesh_layer_1[];
+extern u32 ccr_dl_008_object_011EF334_003_mesh_layer_1[];
+extern u32 ccr_dl_009_object_011EE3C4_003_mesh_layer_1[];
+extern u32 ccr_dl_010_object_011ED454_003_mesh_layer_1[];
+extern u32 ccr_dl_011_object_011EC4E4_003_mesh_layer_1[];
+extern u32 ccr_dl_012_object_011EB574_003_mesh_layer_1[];
+extern u32 ccr_dl_013_object_011EA5FC_003_mesh_layer_1[];
+extern u32 ccr_dl_014_object_011E967C_003_mesh_layer_1[];
+extern u32 ccr_dl_015_object_011E8704_003_mesh_layer_1[];
+extern u32 ccr_dl_016_object_011E7784_003_mesh_layer_1[];
+extern u32 ccr_dl_001_object_011FB10C_mesh_layer_1[];
+extern u32 ccr_dl_002_object_011FA8FC_mesh_layer_1[];
+extern u32 ccr_dl_003_object_011FA0D4_mesh_layer_1[];
+extern u32 ccr_dl_004_object_011F98AC_mesh_layer_1[];
+extern u32 ccr_dl_005_object_011F9084_mesh_layer_1[];
+extern u32 ccr_dl_006_object_011F8874_mesh_layer_1[];
+extern u32 ccr_dl_007_object_011F804C_mesh_layer_1[];
+extern u32 ccr_dl_008_object_011F783C_mesh_layer_1[];
+extern u32 ccr_dl_009_object_011F7034_mesh_layer_1[];
+extern u32 ccr_dl_010_object_011F682C_mesh_layer_1[];
+extern u32 ccr_dl_001_object_011FB10C_001_mesh_layer_1[];
+extern u32 ccr_dl_002_object_011FA8FC_001_mesh_layer_1[];
+extern u32 ccr_dl_003_object_011FA0D4_001_mesh_layer_1[];
+extern u32 ccr_dl_004_object_011F98AC_001_mesh_layer_1[];
+extern u32 ccr_dl_005_object_011F9084_001_mesh_layer_1[];
+extern u32 ccr_dl_006_object_011F8874_001_mesh_layer_1[];
+extern u32 ccr_dl_007_object_011F804C_001_mesh_layer_1[];
+extern u32 ccr_dl_008_object_011F783C_001_mesh_layer_1[];
+extern u32 ccr_dl_009_object_011F7034_001_mesh_layer_1[];
+extern u32 ccr_dl_010_object_011F682C_001_mesh_layer_1[];
+extern u32 ccr_dl_001_object_011FB10C_002_mesh_layer_1[];
+extern u32 ccr_dl_002_object_011FA8FC_002_mesh_layer_1[];
+extern u32 ccr_dl_003_object_011FA0D4_002_mesh_layer_1[];
+extern u32 ccr_dl_004_object_011F98AC_002_mesh_layer_1[];
+extern u32 ccr_dl_005_object_011F9084_002_mesh_layer_1[];
+extern u32 ccr_dl_006_object_011F8874_002_mesh_layer_1[];
+extern u32 ccr_dl_007_object_011F804C_002_mesh_layer_1[];
+extern u32 ccr_dl_008_object_011F783C_002_mesh_layer_1[];
+extern u32 ccr_dl_009_object_011F7034_002_mesh_layer_1[];
+extern u32 ccr_dl_010_object_011F682C_002_mesh_layer_1[];
+extern u32 ccr_dl_001_object_012002AC_mesh_layer_1[];
+extern u32 ccr_dl_002_object_011FFA6C_mesh_layer_1[];
+extern u32 ccr_dl_003_object_011FF254_mesh_layer_1[];
+extern u32 ccr_dl_004_object_011FEA2C_mesh_layer_1[];
+extern u32 ccr_dl_005_object_011FE204_mesh_layer_1[];
+extern u32 ccr_dl_006_object_011FD9DC_mesh_layer_1[];
+extern u32 ccr_dl_007_object_011FD1CC_mesh_layer_1[];
+extern u32 ccr_dl_008_object_011FC9BC_mesh_layer_1[];
+extern u32 ccr_dl_009_object_011FC184_mesh_layer_1[];
+extern u32 ccr_dl_010_object_011FB96C_mesh_layer_1[];
+extern u32 ccr_dl_001_object_012002AC_001_mesh_layer_1[];
+extern u32 ccr_dl_002_object_011FFA6C_001_mesh_layer_1[];
+extern u32 ccr_dl_003_object_011FF254_001_mesh_layer_1[];
+extern u32 ccr_dl_004_object_011FEA2C_001_mesh_layer_1[];
+extern u32 ccr_dl_005_object_011FE204_001_mesh_layer_1[];
+extern u32 ccr_dl_006_object_011FD9DC_001_mesh_layer_1[];
+extern u32 ccr_dl_007_object_011FD1CC_001_mesh_layer_1[];
+extern u32 ccr_dl_008_object_011FC9BC_001_mesh_layer_1[];
+extern u32 ccr_dl_009_object_011FC184_001_mesh_layer_1[];
+extern u32 ccr_dl_010_object_011FB96C_001_mesh_layer_1[];
+extern u32 ccr_dl_001_object_012002AC_002_mesh_layer_1[];
+extern u32 ccr_dl_002_object_011FFA6C_002_mesh_layer_1[];
+extern u32 ccr_dl_003_object_011FF254_002_mesh_layer_1[];
+extern u32 ccr_dl_004_object_011FEA2C_002_mesh_layer_1[];
+extern u32 ccr_dl_005_object_011FE204_002_mesh_layer_1[];
+extern u32 ccr_dl_006_object_011FD9DC_002_mesh_layer_1[];
+extern u32 ccr_dl_007_object_011FD1CC_002_mesh_layer_1[];
+extern u32 ccr_dl_008_object_011FC9BC_002_mesh_layer_1[];
+extern u32 ccr_dl_009_object_011FC184_002_mesh_layer_1[];
+extern u32 ccr_dl_010_object_011FB96C_002_mesh_layer_1[];
+extern u32 ccr_dl_001_object_01200A84_mesh_layer_1[];
+extern u32 ccr_dl_002_object_012006B4_mesh_layer_1[];
+extern u32 ccr_dl_0010_object_013BE8FC_mesh_layer_1[];
+extern u32 ccr_dl_0011_object_013BE05C_mesh_layer_1[];
+extern u32 ccr_dl_0012_object_013C3474_mesh_layer_1[];
+extern u32 ccr_dl_0016_object_013BC0FC_mesh_layer_1[];
+extern u32 ccr_dl_0017_object_013C33CC_mesh_layer_1[];
+extern u32 ccr_dl_0019_object_013BB4BC_mesh_layer_1[];
+extern u32 ccr_dl_0020_object_013C3394_mesh_layer_1[];
+extern u32 ccr_dl_0022_object_013C335C_mesh_layer_1[];
+extern u32 ccr_dl_0024_object_013B73AC_mesh_layer_1[];
+extern u32 ccr_dl_0025_object_013C3324_mesh_layer_1[];
+extern u32 ccr_dl_0029_object_013C327C_mesh_layer_1[];
+extern u32 ccr_dl_0031_object_013B5234_mesh_layer_1[];
+extern u32 ccr_dl_0032_object_013B504C_mesh_layer_1[];
+extern u32 ccr_dl_0033_object_013B35BC_mesh_layer_1[];
+extern u32 ccr_dl_0034_object_013B317C_mesh_layer_1[];
+extern u32 ccr_dl_0035_object_013B1024_mesh_layer_1[];
+extern u32 ccr_dl_0036_object_013AF7CC_mesh_layer_1[];
+extern u32 ccr_dl_0037_object_013AE8CC_mesh_layer_1[];
+extern u32 ccr_dl_0038_object_013ADD8C_mesh_layer_1[];
+extern u32 ccr_dl_0039_object_013C3244_mesh_layer_1[];
+extern u32 ccr_dl_0043_object_013C319C_mesh_layer_1[];
+extern u32 ccr_dl_0047_object_013AAE9C_mesh_layer_1[];
+extern u32 ccr_dl_0048_object_013C30F4_mesh_layer_1[];
+extern u32 ccr_dl_object_011B005C_mesh_layer_1[];
+extern u32 ccr_dl_object_011B3C1C_mesh_layer_5[];
+extern u32 ccr_dl_object_011B3D1C_mesh_layer_5[];
+extern u32 ccr_dl_object_011CDC2C_mesh_layer_5[];
+extern u32 ccr_dl_object_011CDD2C_mesh_layer_5[];
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN403_PAL_RGBA16 0
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN401_PAL_RGBA16 1
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_OBJLANDTABLE0037_SA2BLVL_2_F3D 2
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN108_PAL_RGBA16 3
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN108_PAL_RGBA16_1 4
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN111_PAL_RGBA16 5
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN504_PAL_RGBA16 6
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN1021_PAL_RGBA16 7
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN1022_PAL_RGBA16 8
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN1023_PAL_RGBA16 9
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN103_PAL_RGBA16 10
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN101_PAL_RGBA16 11
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN113_PAL_RGBA16 12
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_TX_CCPOISON001_001_PAL_RGBA16 13
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN301_PAL_RGBA16 14
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN301_PAL_RGBA16_1 15
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN302_PAL_RGBA16 16
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN103_PAL_RGBA16_1 17
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN104_PAL_RGBA16 18
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN204_PAL_RGBA16 19
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN401_PAL_RGBA16_1 20
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN404_PAL_RGBA16 21
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN201_PAL_RGBA16 22
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN204_PAL_RGBA16_1 23
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN202_PAL_RGBA16 24
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN405_PAL_RGBA16 25
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN205_PAL_RGBA16 26
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN206_PAL_RGBA16 27
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN206_PAL_RGBA16_1 28
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN406_PAL_RGBA16 29
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_OBJLANDTABLE0037_SA2BLVL_25_F3D 30
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN201_PAL_RGBA16_1 31
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN202_PAL_RGBA16_1 32
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN201_PAL_RGBA16_2 33
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN202_PAL_RGBA16_2 34
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN110_PAL_RGBA16 35
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN105_PAL_RGBA16 36
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN109_PAL_RGBA16 37
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN110_PAL_RGBA16_1 38
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN106_PAL_RGBA16 39
+#define LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN107_PAL_RGBA16 40
+#define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_PAL_RGBA16 0
+#define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32 1
+#define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER1_01_PAL_RGBA16 2
+#define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER1_01_PAL_RGBA16_1 3
+#define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_PAL_RGBA16 4
+#define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_PAL_RGBA16_1 5
+extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
+#define ccr_dl_0007_object_013C015C_mesh_layer_1_vtx_0 ccr_dl_0005_object_013C34E4_mesh_layer_1_vtx_0
+#define ccr_dl_0007_object_013C015C_mesh_layer_1_vtx_2 ccr_dl_0005_object_013C34E4_mesh_layer_1_vtx_2
+#define ccr_dl_0007_object_013C015C_mesh_layer_1_vtx_3 ccr_dl_0005_object_013C34E4_mesh_layer_1_vtx_3
+#define ccr_dl_0007_object_013C015C_mesh_layer_1_vtx_4 ccr_dl_0005_object_013C34E4_mesh_layer_1_vtx_4
+#define ccr_dl_006_object_011B0F1C_mesh_layer_5_vtx_0 ccr_dl_003_object_011B121C_mesh_layer_5_vtx_0
+#define ccr_dl_010_object_011B0B1C_mesh_layer_5_vtx_0 ccr_dl_008_object_011B0D1C_mesh_layer_5_vtx_0
+#define ccr_dl_011_object_011B0A1C_mesh_layer_5_vtx_0 ccr_dl_001_object_011B141C_mesh_layer_5_vtx_0
+#define ccr_dl_012_object_011B091C_mesh_layer_5_vtx_0 ccr_dl_008_object_011B0D1C_mesh_layer_5_vtx_0
+#define ccr_dl_002_object_011B2B04_mesh_layer_1_vtx_0 ccr_dl_001_object_011B2F74_mesh_layer_1_vtx_0
+#define ccr_dl_001_object_011B3894_mesh_layer_1_vtx_0 ccr_dl_001_object_011B2F74_mesh_layer_1_vtx_0
+#define ccr_dl_002_object_011B341C_mesh_layer_1_vtx_0 ccr_dl_001_object_011B2F74_mesh_layer_1_vtx_0
+#define ccr_dl_002_object_011D03CC_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_003_object_011CFD5C_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_004_object_011CF6EC_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_005_object_011CF07C_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_006_object_011CEA0C_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_007_object_011CE39C_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_001_object_011D0A3C_001_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_002_object_011D03CC_001_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_003_object_011CFD5C_001_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_004_object_011CF6EC_001_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_005_object_011CF07C_001_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_006_object_011CEA0C_001_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_007_object_011CE39C_001_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_001_object_011D0A3C_002_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_002_object_011D03CC_002_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_003_object_011CFD5C_002_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_004_object_011CF6EC_002_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_005_object_011CF07C_002_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_006_object_011CEA0C_002_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_007_object_011CE39C_002_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_001_object_011D0A3C_003_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_002_object_011D03CC_003_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_003_object_011CFD5C_003_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_004_object_011CF6EC_003_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_005_object_011CF07C_003_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_006_object_011CEA0C_003_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_007_object_011CE39C_003_mesh_layer_1_vtx_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_vtx_0
+#define ccr_dl_002_object_011E3F34_mesh_layer_1_vtx_0 ccr_dl_001_object_011E406C_mesh_layer_1_vtx_0
+#define ccr_dl_002_object_011E4D84_mesh_layer_1_vtx_0 ccr_dl_001_object_011E51BC_mesh_layer_1_vtx_0
+#define ccr_dl_002_object_011E4D84_mesh_layer_1_vtx_1 ccr_dl_001_object_011E51BC_mesh_layer_1_vtx_1
+#define ccr_dl_003_object_011E494C_mesh_layer_1_vtx_0 ccr_dl_001_object_011E51BC_mesh_layer_1_vtx_0
+#define ccr_dl_003_object_011E494C_mesh_layer_1_vtx_1 ccr_dl_001_object_011E51BC_mesh_layer_1_vtx_1
+#define ccr_dl_004_object_011E4514_mesh_layer_1_vtx_0 ccr_dl_001_object_011E51BC_mesh_layer_1_vtx_0
+#define ccr_dl_004_object_011E4514_mesh_layer_1_vtx_1 ccr_dl_001_object_011E51BC_mesh_layer_1_vtx_1
+#define ccr_dl_001_object_011F5FEC_001_mesh_layer_1_vtx_0 ccr_dl_001_object_011F5FEC_mesh_layer_1_vtx_0
+#define ccr_dl_002_object_011F507C_001_mesh_layer_1_vtx_0 ccr_dl_002_object_011F507C_mesh_layer_1_vtx_0
+#define ccr_dl_003_object_011F410C_001_mesh_layer_1_vtx_0 ccr_dl_003_object_011F410C_mesh_layer_1_vtx_0
+#define ccr_dl_004_object_011F3164_001_mesh_layer_1_vtx_0 ccr_dl_004_object_011F3164_mesh_layer_1_vtx_0
+#define ccr_dl_005_object_011F21E4_001_mesh_layer_1_vtx_0 ccr_dl_005_object_011F21E4_mesh_layer_1_vtx_0
+#define ccr_dl_006_object_011F1254_001_mesh_layer_1_vtx_0 ccr_dl_006_object_011F1254_mesh_layer_1_vtx_0
+#define ccr_dl_007_object_011F02DC_001_mesh_layer_1_vtx_0 ccr_dl_007_object_011F02DC_mesh_layer_1_vtx_0
+#define ccr_dl_008_object_011EF334_001_mesh_layer_1_vtx_0 ccr_dl_008_object_011EF334_mesh_layer_1_vtx_0
+#define ccr_dl_009_object_011EE3C4_001_mesh_layer_1_vtx_0 ccr_dl_009_object_011EE3C4_mesh_layer_1_vtx_0
+#define ccr_dl_010_object_011ED454_001_mesh_layer_1_vtx_0 ccr_dl_010_object_011ED454_mesh_layer_1_vtx_0
+#define ccr_dl_011_object_011EC4E4_001_mesh_layer_1_vtx_0 ccr_dl_011_object_011EC4E4_mesh_layer_1_vtx_0
+#define ccr_dl_012_object_011EB574_001_mesh_layer_1_vtx_0 ccr_dl_012_object_011EB574_mesh_layer_1_vtx_0
+#define ccr_dl_013_object_011EA5FC_001_mesh_layer_1_vtx_0 ccr_dl_013_object_011EA5FC_mesh_layer_1_vtx_0
+#define ccr_dl_014_object_011E967C_001_mesh_layer_1_vtx_0 ccr_dl_014_object_011E967C_mesh_layer_1_vtx_0
+#define ccr_dl_015_object_011E8704_001_mesh_layer_1_vtx_0 ccr_dl_015_object_011E8704_mesh_layer_1_vtx_0
+#define ccr_dl_016_object_011E7784_001_mesh_layer_1_vtx_0 ccr_dl_016_object_011E7784_mesh_layer_1_vtx_0
+#define ccr_dl_001_object_011F5FEC_002_mesh_layer_1_vtx_0 ccr_dl_001_object_011F5FEC_mesh_layer_1_vtx_0
+#define ccr_dl_002_object_011F507C_002_mesh_layer_1_vtx_0 ccr_dl_002_object_011F507C_mesh_layer_1_vtx_0
+#define ccr_dl_003_object_011F410C_002_mesh_layer_1_vtx_0 ccr_dl_003_object_011F410C_mesh_layer_1_vtx_0
+#define ccr_dl_004_object_011F3164_002_mesh_layer_1_vtx_0 ccr_dl_004_object_011F3164_mesh_layer_1_vtx_0
+#define ccr_dl_005_object_011F21E4_002_mesh_layer_1_vtx_0 ccr_dl_005_object_011F21E4_mesh_layer_1_vtx_0
+#define ccr_dl_006_object_011F1254_002_mesh_layer_1_vtx_0 ccr_dl_006_object_011F1254_mesh_layer_1_vtx_0
+#define ccr_dl_007_object_011F02DC_002_mesh_layer_1_vtx_0 ccr_dl_007_object_011F02DC_mesh_layer_1_vtx_0
+#define ccr_dl_008_object_011EF334_002_mesh_layer_1_vtx_0 ccr_dl_008_object_011EF334_mesh_layer_1_vtx_0
+#define ccr_dl_009_object_011EE3C4_002_mesh_layer_1_vtx_0 ccr_dl_009_object_011EE3C4_mesh_layer_1_vtx_0
+#define ccr_dl_010_object_011ED454_002_mesh_layer_1_vtx_0 ccr_dl_010_object_011ED454_mesh_layer_1_vtx_0
+#define ccr_dl_011_object_011EC4E4_002_mesh_layer_1_vtx_0 ccr_dl_011_object_011EC4E4_mesh_layer_1_vtx_0
+#define ccr_dl_012_object_011EB574_002_mesh_layer_1_vtx_0 ccr_dl_012_object_011EB574_mesh_layer_1_vtx_0
+#define ccr_dl_013_object_011EA5FC_002_mesh_layer_1_vtx_0 ccr_dl_013_object_011EA5FC_mesh_layer_1_vtx_0
+#define ccr_dl_014_object_011E967C_002_mesh_layer_1_vtx_0 ccr_dl_014_object_011E967C_mesh_layer_1_vtx_0
+#define ccr_dl_015_object_011E8704_002_mesh_layer_1_vtx_0 ccr_dl_015_object_011E8704_mesh_layer_1_vtx_0
+#define ccr_dl_016_object_011E7784_002_mesh_layer_1_vtx_0 ccr_dl_016_object_011E7784_mesh_layer_1_vtx_0
+#define ccr_dl_001_object_011F5FEC_003_mesh_layer_1_vtx_0 ccr_dl_001_object_011F5FEC_mesh_layer_1_vtx_0
+#define ccr_dl_002_object_011F507C_003_mesh_layer_1_vtx_0 ccr_dl_002_object_011F507C_mesh_layer_1_vtx_0
+#define ccr_dl_003_object_011F410C_003_mesh_layer_1_vtx_0 ccr_dl_003_object_011F410C_mesh_layer_1_vtx_0
+#define ccr_dl_004_object_011F3164_003_mesh_layer_1_vtx_0 ccr_dl_004_object_011F3164_mesh_layer_1_vtx_0
+#define ccr_dl_005_object_011F21E4_003_mesh_layer_1_vtx_0 ccr_dl_005_object_011F21E4_mesh_layer_1_vtx_0
+#define ccr_dl_006_object_011F1254_003_mesh_layer_1_vtx_0 ccr_dl_006_object_011F1254_mesh_layer_1_vtx_0
+#define ccr_dl_007_object_011F02DC_003_mesh_layer_1_vtx_0 ccr_dl_007_object_011F02DC_mesh_layer_1_vtx_0
+#define ccr_dl_008_object_011EF334_003_mesh_layer_1_vtx_0 ccr_dl_008_object_011EF334_mesh_layer_1_vtx_0
+#define ccr_dl_009_object_011EE3C4_003_mesh_layer_1_vtx_0 ccr_dl_009_object_011EE3C4_mesh_layer_1_vtx_0
+#define ccr_dl_010_object_011ED454_003_mesh_layer_1_vtx_0 ccr_dl_010_object_011ED454_mesh_layer_1_vtx_0
+#define ccr_dl_011_object_011EC4E4_003_mesh_layer_1_vtx_0 ccr_dl_011_object_011EC4E4_mesh_layer_1_vtx_0
+#define ccr_dl_012_object_011EB574_003_mesh_layer_1_vtx_0 ccr_dl_012_object_011EB574_mesh_layer_1_vtx_0
+#define ccr_dl_013_object_011EA5FC_003_mesh_layer_1_vtx_0 ccr_dl_013_object_011EA5FC_mesh_layer_1_vtx_0
+#define ccr_dl_014_object_011E967C_003_mesh_layer_1_vtx_0 ccr_dl_014_object_011E967C_mesh_layer_1_vtx_0
+#define ccr_dl_015_object_011E8704_003_mesh_layer_1_vtx_0 ccr_dl_015_object_011E8704_mesh_layer_1_vtx_0
+#define ccr_dl_016_object_011E7784_003_mesh_layer_1_vtx_0 ccr_dl_016_object_011E7784_mesh_layer_1_vtx_0
+#define ccr_dl_002_object_011FA8FC_mesh_layer_1_vtx_1 ccr_dl_001_object_011FB10C_mesh_layer_1_vtx_1
+#define ccr_dl_003_object_011FA0D4_mesh_layer_1_vtx_1 ccr_dl_001_object_011FB10C_mesh_layer_1_vtx_1
+#define ccr_dl_004_object_011F98AC_mesh_layer_1_vtx_1 ccr_dl_001_object_011FB10C_mesh_layer_1_vtx_1
+#define ccr_dl_009_object_011F7034_mesh_layer_1_vtx_0 ccr_dl_008_object_011F783C_mesh_layer_1_vtx_0
+#define ccr_dl_010_object_011F682C_mesh_layer_1_vtx_0 ccr_dl_008_object_011F783C_mesh_layer_1_vtx_0
+#define ccr_dl_010_object_011F682C_mesh_layer_1_vtx_1 ccr_dl_001_object_011FB10C_mesh_layer_1_vtx_1
+#define ccr_dl_001_object_011FB10C_001_mesh_layer_1_vtx_0 ccr_dl_001_object_011FB10C_mesh_layer_1_vtx_0
+#define ccr_dl_001_object_011FB10C_001_mesh_layer_1_vtx_1 ccr_dl_001_object_011FB10C_mesh_layer_1_vtx_1
+#define ccr_dl_002_object_011FA8FC_001_mesh_layer_1_vtx_0 ccr_dl_002_object_011FA8FC_mesh_layer_1_vtx_0
+#define ccr_dl_002_object_011FA8FC_001_mesh_layer_1_vtx_1 ccr_dl_001_object_011FB10C_mesh_layer_1_vtx_1
+#define ccr_dl_003_object_011FA0D4_001_mesh_layer_1_vtx_0 ccr_dl_003_object_011FA0D4_mesh_layer_1_vtx_0
+#define ccr_dl_003_object_011FA0D4_001_mesh_layer_1_vtx_1 ccr_dl_001_object_011FB10C_mesh_layer_1_vtx_1
+#define ccr_dl_004_object_011F98AC_001_mesh_layer_1_vtx_0 ccr_dl_004_object_011F98AC_mesh_layer_1_vtx_0
+#define ccr_dl_004_object_011F98AC_001_mesh_layer_1_vtx_1 ccr_dl_001_object_011FB10C_mesh_layer_1_vtx_1
+#define ccr_dl_005_object_011F9084_001_mesh_layer_1_vtx_0 ccr_dl_005_object_011F9084_mesh_layer_1_vtx_0
+#define ccr_dl_005_object_011F9084_001_mesh_layer_1_vtx_1 ccr_dl_005_object_011F9084_mesh_layer_1_vtx_1
+#define ccr_dl_006_object_011F8874_001_mesh_layer_1_vtx_0 ccr_dl_006_object_011F8874_mesh_layer_1_vtx_0
+#define ccr_dl_006_object_011F8874_001_mesh_layer_1_vtx_1 ccr_dl_006_object_011F8874_mesh_layer_1_vtx_1
+#define ccr_dl_007_object_011F804C_001_mesh_layer_1_vtx_0 ccr_dl_007_object_011F804C_mesh_layer_1_vtx_0
+#define ccr_dl_007_object_011F804C_001_mesh_layer_1_vtx_1 ccr_dl_007_object_011F804C_mesh_layer_1_vtx_1
+#define ccr_dl_008_object_011F783C_001_mesh_layer_1_vtx_0 ccr_dl_008_object_011F783C_mesh_layer_1_vtx_0
+#define ccr_dl_008_object_011F783C_001_mesh_layer_1_vtx_1 ccr_dl_008_object_011F783C_mesh_layer_1_vtx_1
+#define ccr_dl_009_object_011F7034_001_mesh_layer_1_vtx_0 ccr_dl_008_object_011F783C_mesh_layer_1_vtx_0
+#define ccr_dl_009_object_011F7034_001_mesh_layer_1_vtx_1 ccr_dl_009_object_011F7034_mesh_layer_1_vtx_1
+#define ccr_dl_010_object_011F682C_001_mesh_layer_1_vtx_0 ccr_dl_008_object_011F783C_mesh_layer_1_vtx_0
+#define ccr_dl_010_object_011F682C_001_mesh_layer_1_vtx_1 ccr_dl_001_object_011FB10C_mesh_layer_1_vtx_1
+#define ccr_dl_001_object_011FB10C_002_mesh_layer_1_vtx_0 ccr_dl_001_object_011FB10C_mesh_layer_1_vtx_0
+#define ccr_dl_001_object_011FB10C_002_mesh_layer_1_vtx_1 ccr_dl_001_object_011FB10C_mesh_layer_1_vtx_1
+#define ccr_dl_002_object_011FA8FC_002_mesh_layer_1_vtx_0 ccr_dl_002_object_011FA8FC_mesh_layer_1_vtx_0
+#define ccr_dl_002_object_011FA8FC_002_mesh_layer_1_vtx_1 ccr_dl_001_object_011FB10C_mesh_layer_1_vtx_1
+#define ccr_dl_003_object_011FA0D4_002_mesh_layer_1_vtx_0 ccr_dl_003_object_011FA0D4_mesh_layer_1_vtx_0
+#define ccr_dl_003_object_011FA0D4_002_mesh_layer_1_vtx_1 ccr_dl_001_object_011FB10C_mesh_layer_1_vtx_1
+#define ccr_dl_004_object_011F98AC_002_mesh_layer_1_vtx_0 ccr_dl_004_object_011F98AC_mesh_layer_1_vtx_0
+#define ccr_dl_004_object_011F98AC_002_mesh_layer_1_vtx_1 ccr_dl_001_object_011FB10C_mesh_layer_1_vtx_1
+#define ccr_dl_005_object_011F9084_002_mesh_layer_1_vtx_0 ccr_dl_005_object_011F9084_mesh_layer_1_vtx_0
+#define ccr_dl_005_object_011F9084_002_mesh_layer_1_vtx_1 ccr_dl_005_object_011F9084_mesh_layer_1_vtx_1
+#define ccr_dl_006_object_011F8874_002_mesh_layer_1_vtx_0 ccr_dl_006_object_011F8874_mesh_layer_1_vtx_0
+#define ccr_dl_006_object_011F8874_002_mesh_layer_1_vtx_1 ccr_dl_006_object_011F8874_mesh_layer_1_vtx_1
+#define ccr_dl_007_object_011F804C_002_mesh_layer_1_vtx_0 ccr_dl_007_object_011F804C_mesh_layer_1_vtx_0
+#define ccr_dl_007_object_011F804C_002_mesh_layer_1_vtx_1 ccr_dl_007_object_011F804C_mesh_layer_1_vtx_1
+#define ccr_dl_008_object_011F783C_002_mesh_layer_1_vtx_0 ccr_dl_008_object_011F783C_mesh_layer_1_vtx_0
+#define ccr_dl_008_object_011F783C_002_mesh_layer_1_vtx_1 ccr_dl_008_object_011F783C_mesh_layer_1_vtx_1
+#define ccr_dl_009_object_011F7034_002_mesh_layer_1_vtx_0 ccr_dl_008_object_011F783C_mesh_layer_1_vtx_0
+#define ccr_dl_009_object_011F7034_002_mesh_layer_1_vtx_1 ccr_dl_009_object_011F7034_mesh_layer_1_vtx_1
+#define ccr_dl_010_object_011F682C_002_mesh_layer_1_vtx_0 ccr_dl_008_object_011F783C_mesh_layer_1_vtx_0
+#define ccr_dl_010_object_011F682C_002_mesh_layer_1_vtx_1 ccr_dl_001_object_011FB10C_mesh_layer_1_vtx_1
+#define ccr_dl_002_object_011FFA6C_mesh_layer_1_vtx_1 ccr_dl_001_object_012002AC_mesh_layer_1_vtx_1
+#define ccr_dl_003_object_011FF254_mesh_layer_1_vtx_1 ccr_dl_001_object_012002AC_mesh_layer_1_vtx_1
+#define ccr_dl_004_object_011FEA2C_mesh_layer_1_vtx_1 ccr_dl_001_object_012002AC_mesh_layer_1_vtx_1
+#define ccr_dl_009_object_011FC184_mesh_layer_1_vtx_0 ccr_dl_008_object_011FC9BC_mesh_layer_1_vtx_0
+#define ccr_dl_010_object_011FB96C_mesh_layer_1_vtx_0 ccr_dl_008_object_011FC9BC_mesh_layer_1_vtx_0
+#define ccr_dl_010_object_011FB96C_mesh_layer_1_vtx_1 ccr_dl_001_object_012002AC_mesh_layer_1_vtx_1
+#define ccr_dl_001_object_012002AC_001_mesh_layer_1_vtx_0 ccr_dl_001_object_012002AC_mesh_layer_1_vtx_0
+#define ccr_dl_001_object_012002AC_001_mesh_layer_1_vtx_1 ccr_dl_001_object_012002AC_mesh_layer_1_vtx_1
+#define ccr_dl_002_object_011FFA6C_001_mesh_layer_1_vtx_0 ccr_dl_002_object_011FFA6C_mesh_layer_1_vtx_0
+#define ccr_dl_002_object_011FFA6C_001_mesh_layer_1_vtx_1 ccr_dl_001_object_012002AC_mesh_layer_1_vtx_1
+#define ccr_dl_003_object_011FF254_001_mesh_layer_1_vtx_0 ccr_dl_003_object_011FF254_mesh_layer_1_vtx_0
+#define ccr_dl_003_object_011FF254_001_mesh_layer_1_vtx_1 ccr_dl_001_object_012002AC_mesh_layer_1_vtx_1
+#define ccr_dl_004_object_011FEA2C_001_mesh_layer_1_vtx_0 ccr_dl_004_object_011FEA2C_mesh_layer_1_vtx_0
+#define ccr_dl_004_object_011FEA2C_001_mesh_layer_1_vtx_1 ccr_dl_001_object_012002AC_mesh_layer_1_vtx_1
+#define ccr_dl_005_object_011FE204_001_mesh_layer_1_vtx_0 ccr_dl_005_object_011FE204_mesh_layer_1_vtx_0
+#define ccr_dl_005_object_011FE204_001_mesh_layer_1_vtx_1 ccr_dl_005_object_011FE204_mesh_layer_1_vtx_1
+#define ccr_dl_006_object_011FD9DC_001_mesh_layer_1_vtx_0 ccr_dl_006_object_011FD9DC_mesh_layer_1_vtx_0
+#define ccr_dl_006_object_011FD9DC_001_mesh_layer_1_vtx_1 ccr_dl_006_object_011FD9DC_mesh_layer_1_vtx_1
+#define ccr_dl_007_object_011FD1CC_001_mesh_layer_1_vtx_0 ccr_dl_007_object_011FD1CC_mesh_layer_1_vtx_0
+#define ccr_dl_007_object_011FD1CC_001_mesh_layer_1_vtx_1 ccr_dl_007_object_011FD1CC_mesh_layer_1_vtx_1
+#define ccr_dl_008_object_011FC9BC_001_mesh_layer_1_vtx_0 ccr_dl_008_object_011FC9BC_mesh_layer_1_vtx_0
+#define ccr_dl_008_object_011FC9BC_001_mesh_layer_1_vtx_1 ccr_dl_008_object_011FC9BC_mesh_layer_1_vtx_1
+#define ccr_dl_009_object_011FC184_001_mesh_layer_1_vtx_0 ccr_dl_008_object_011FC9BC_mesh_layer_1_vtx_0
+#define ccr_dl_009_object_011FC184_001_mesh_layer_1_vtx_1 ccr_dl_009_object_011FC184_mesh_layer_1_vtx_1
+#define ccr_dl_010_object_011FB96C_001_mesh_layer_1_vtx_0 ccr_dl_008_object_011FC9BC_mesh_layer_1_vtx_0
+#define ccr_dl_010_object_011FB96C_001_mesh_layer_1_vtx_1 ccr_dl_001_object_012002AC_mesh_layer_1_vtx_1
+#define ccr_dl_001_object_012002AC_002_mesh_layer_1_vtx_0 ccr_dl_001_object_012002AC_mesh_layer_1_vtx_0
+#define ccr_dl_001_object_012002AC_002_mesh_layer_1_vtx_1 ccr_dl_001_object_012002AC_mesh_layer_1_vtx_1
+#define ccr_dl_002_object_011FFA6C_002_mesh_layer_1_vtx_0 ccr_dl_002_object_011FFA6C_mesh_layer_1_vtx_0
+#define ccr_dl_002_object_011FFA6C_002_mesh_layer_1_vtx_1 ccr_dl_001_object_012002AC_mesh_layer_1_vtx_1
+#define ccr_dl_003_object_011FF254_002_mesh_layer_1_vtx_0 ccr_dl_003_object_011FF254_mesh_layer_1_vtx_0
+#define ccr_dl_003_object_011FF254_002_mesh_layer_1_vtx_1 ccr_dl_001_object_012002AC_mesh_layer_1_vtx_1
+#define ccr_dl_004_object_011FEA2C_002_mesh_layer_1_vtx_0 ccr_dl_004_object_011FEA2C_mesh_layer_1_vtx_0
+#define ccr_dl_004_object_011FEA2C_002_mesh_layer_1_vtx_1 ccr_dl_001_object_012002AC_mesh_layer_1_vtx_1
+#define ccr_dl_005_object_011FE204_002_mesh_layer_1_vtx_0 ccr_dl_005_object_011FE204_mesh_layer_1_vtx_0
+#define ccr_dl_005_object_011FE204_002_mesh_layer_1_vtx_1 ccr_dl_005_object_011FE204_mesh_layer_1_vtx_1
+#define ccr_dl_006_object_011FD9DC_002_mesh_layer_1_vtx_0 ccr_dl_006_object_011FD9DC_mesh_layer_1_vtx_0
+#define ccr_dl_006_object_011FD9DC_002_mesh_layer_1_vtx_1 ccr_dl_006_object_011FD9DC_mesh_layer_1_vtx_1
+#define ccr_dl_007_object_011FD1CC_002_mesh_layer_1_vtx_0 ccr_dl_007_object_011FD1CC_mesh_layer_1_vtx_0
+#define ccr_dl_007_object_011FD1CC_002_mesh_layer_1_vtx_1 ccr_dl_007_object_011FD1CC_mesh_layer_1_vtx_1
+#define ccr_dl_008_object_011FC9BC_002_mesh_layer_1_vtx_0 ccr_dl_008_object_011FC9BC_mesh_layer_1_vtx_0
+#define ccr_dl_008_object_011FC9BC_002_mesh_layer_1_vtx_1 ccr_dl_008_object_011FC9BC_mesh_layer_1_vtx_1
+#define ccr_dl_009_object_011FC184_002_mesh_layer_1_vtx_0 ccr_dl_008_object_011FC9BC_mesh_layer_1_vtx_0
+#define ccr_dl_009_object_011FC184_002_mesh_layer_1_vtx_1 ccr_dl_009_object_011FC184_mesh_layer_1_vtx_1
+#define ccr_dl_010_object_011FB96C_002_mesh_layer_1_vtx_0 ccr_dl_008_object_011FC9BC_mesh_layer_1_vtx_0
+#define ccr_dl_010_object_011FB96C_002_mesh_layer_1_vtx_1 ccr_dl_001_object_012002AC_mesh_layer_1_vtx_1
+#define ccr_dl_002_object_012006B4_mesh_layer_1_vtx_0 ccr_dl_001_object_01200A84_mesh_layer_1_vtx_0
+#define ccr_dl_002_object_012006B4_mesh_layer_1_vtx_1 ccr_dl_001_object_01200A84_mesh_layer_1_vtx_1
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_1_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_3_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_4_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_5_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_6_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_8_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_9_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_10_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_11_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_WallSweep1_sa2mdl_0_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_MatrixWalls1_sa2mdl_0_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_AbyssWaterfalls_sa2mdl_0_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_2_f3d
+#define mat_revert_ccr_dl_WallPlates_sa2mdl_0_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_Acid_sa2mdl_0_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_HallwaySweep1_sa2mdl_0_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_HallwaySweep2_sa2mdl_0_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_HallwaySweep2_sa2mdl_1_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_12_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_13_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_14_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_15_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_16_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_17_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_18_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_19_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_20_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_21_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_22_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_23_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_24_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_25_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_2_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_26_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_29_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_30_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_31_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_32_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_33_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_34_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_35_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_36_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_objLandTable0037_sa2blvl_37_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_Water1_sa2mdl_0_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_Water2_sa2mdl_0_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_WaterfallOverflow_sa2mdl_0_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define mat_revert_ccr_dl_WaterfallTop_sa2mdl_0_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
+#define ccr_dl_0007_object_013C015C_mesh_layer_1_tri_0 ccr_dl_0005_object_013C34E4_mesh_layer_1_tri_0
+#define ccr_dl_0007_object_013C015C_mesh_layer_1_tri_2 ccr_dl_0005_object_013C34E4_mesh_layer_1_tri_2
+#define ccr_dl_0007_object_013C015C_mesh_layer_1_tri_3 ccr_dl_0005_object_013C34E4_mesh_layer_1_tri_3
+#define ccr_dl_0007_object_013C015C_mesh_layer_1_tri_4 ccr_dl_0005_object_013C34E4_mesh_layer_1_tri_4
+#define ccr_dl_006_object_011B0F1C_mesh_layer_5_tri_0 ccr_dl_003_object_011B121C_mesh_layer_5_tri_0
+#define ccr_dl_010_object_011B0B1C_mesh_layer_5_tri_0 ccr_dl_008_object_011B0D1C_mesh_layer_5_tri_0
+#define ccr_dl_011_object_011B0A1C_mesh_layer_5_tri_0 ccr_dl_001_object_011B141C_mesh_layer_5_tri_0
+#define ccr_dl_012_object_011B091C_mesh_layer_5_tri_0 ccr_dl_008_object_011B0D1C_mesh_layer_5_tri_0
+#define ccr_dl_002_object_011B2B04_mesh_layer_1_tri_0 ccr_dl_001_object_011B2F74_mesh_layer_1_tri_0
+#define ccr_dl_001_object_011B3894_mesh_layer_1_tri_0 ccr_dl_001_object_011B2F74_mesh_layer_1_tri_0
+#define ccr_dl_002_object_011B341C_mesh_layer_1_tri_0 ccr_dl_001_object_011B2F74_mesh_layer_1_tri_0
+#define ccr_dl_002_object_011D03CC_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_003_object_011CFD5C_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_004_object_011CF6EC_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_005_object_011CF07C_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_006_object_011CEA0C_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_007_object_011CE39C_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_001_object_011D0A3C_001_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_002_object_011D03CC_001_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_003_object_011CFD5C_001_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_004_object_011CF6EC_001_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_005_object_011CF07C_001_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_006_object_011CEA0C_001_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_007_object_011CE39C_001_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_001_object_011D0A3C_002_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_002_object_011D03CC_002_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_003_object_011CFD5C_002_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_004_object_011CF6EC_002_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_005_object_011CF07C_002_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_006_object_011CEA0C_002_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_007_object_011CE39C_002_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_001_object_011D0A3C_003_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_002_object_011D03CC_003_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_003_object_011CFD5C_003_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_004_object_011CF6EC_003_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_005_object_011CF07C_003_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_006_object_011CEA0C_003_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_007_object_011CE39C_003_mesh_layer_1_tri_0 ccr_dl_001_object_011D0A3C_mesh_layer_1_tri_0
+#define ccr_dl_002_object_011E3F34_mesh_layer_1_tri_0 ccr_dl_001_object_011E406C_mesh_layer_1_tri_0
+#define ccr_dl_002_object_011E4D84_mesh_layer_1_tri_0 ccr_dl_001_object_011E51BC_mesh_layer_1_tri_0
+#define ccr_dl_003_object_011E494C_mesh_layer_1_tri_0 ccr_dl_001_object_011E51BC_mesh_layer_1_tri_0
+#define ccr_dl_004_object_011E4514_mesh_layer_1_tri_0 ccr_dl_001_object_011E51BC_mesh_layer_1_tri_0
+#define ccr_dl_001_object_011F5FEC_001_mesh_layer_1_tri_0 ccr_dl_001_object_011F5FEC_mesh_layer_1_tri_0
+#define ccr_dl_002_object_011F507C_001_mesh_layer_1_tri_0 ccr_dl_002_object_011F507C_mesh_layer_1_tri_0
+#define ccr_dl_003_object_011F410C_001_mesh_layer_1_tri_0 ccr_dl_003_object_011F410C_mesh_layer_1_tri_0
+#define ccr_dl_004_object_011F3164_001_mesh_layer_1_tri_0 ccr_dl_004_object_011F3164_mesh_layer_1_tri_0
+#define ccr_dl_005_object_011F21E4_001_mesh_layer_1_tri_0 ccr_dl_005_object_011F21E4_mesh_layer_1_tri_0
+#define ccr_dl_006_object_011F1254_001_mesh_layer_1_tri_0 ccr_dl_006_object_011F1254_mesh_layer_1_tri_0
+#define ccr_dl_007_object_011F02DC_001_mesh_layer_1_tri_0 ccr_dl_007_object_011F02DC_mesh_layer_1_tri_0
+#define ccr_dl_008_object_011EF334_001_mesh_layer_1_tri_0 ccr_dl_008_object_011EF334_mesh_layer_1_tri_0
+#define ccr_dl_009_object_011EE3C4_001_mesh_layer_1_tri_0 ccr_dl_009_object_011EE3C4_mesh_layer_1_tri_0
+#define ccr_dl_010_object_011ED454_001_mesh_layer_1_tri_0 ccr_dl_010_object_011ED454_mesh_layer_1_tri_0
+#define ccr_dl_011_object_011EC4E4_001_mesh_layer_1_tri_0 ccr_dl_011_object_011EC4E4_mesh_layer_1_tri_0
+#define ccr_dl_012_object_011EB574_001_mesh_layer_1_tri_0 ccr_dl_012_object_011EB574_mesh_layer_1_tri_0
+#define ccr_dl_013_object_011EA5FC_001_mesh_layer_1_tri_0 ccr_dl_013_object_011EA5FC_mesh_layer_1_tri_0
+#define ccr_dl_014_object_011E967C_001_mesh_layer_1_tri_0 ccr_dl_014_object_011E967C_mesh_layer_1_tri_0
+#define ccr_dl_015_object_011E8704_001_mesh_layer_1_tri_0 ccr_dl_015_object_011E8704_mesh_layer_1_tri_0
+#define ccr_dl_016_object_011E7784_001_mesh_layer_1_tri_0 ccr_dl_016_object_011E7784_mesh_layer_1_tri_0
+#define ccr_dl_001_object_011F5FEC_002_mesh_layer_1_tri_0 ccr_dl_001_object_011F5FEC_mesh_layer_1_tri_0
+#define ccr_dl_002_object_011F507C_002_mesh_layer_1_tri_0 ccr_dl_002_object_011F507C_mesh_layer_1_tri_0
+#define ccr_dl_003_object_011F410C_002_mesh_layer_1_tri_0 ccr_dl_003_object_011F410C_mesh_layer_1_tri_0
+#define ccr_dl_004_object_011F3164_002_mesh_layer_1_tri_0 ccr_dl_004_object_011F3164_mesh_layer_1_tri_0
+#define ccr_dl_005_object_011F21E4_002_mesh_layer_1_tri_0 ccr_dl_005_object_011F21E4_mesh_layer_1_tri_0
+#define ccr_dl_006_object_011F1254_002_mesh_layer_1_tri_0 ccr_dl_006_object_011F1254_mesh_layer_1_tri_0
+#define ccr_dl_007_object_011F02DC_002_mesh_layer_1_tri_0 ccr_dl_007_object_011F02DC_mesh_layer_1_tri_0
+#define ccr_dl_008_object_011EF334_002_mesh_layer_1_tri_0 ccr_dl_008_object_011EF334_mesh_layer_1_tri_0
+#define ccr_dl_009_object_011EE3C4_002_mesh_layer_1_tri_0 ccr_dl_009_object_011EE3C4_mesh_layer_1_tri_0
+#define ccr_dl_010_object_011ED454_002_mesh_layer_1_tri_0 ccr_dl_010_object_011ED454_mesh_layer_1_tri_0
+#define ccr_dl_011_object_011EC4E4_002_mesh_layer_1_tri_0 ccr_dl_011_object_011EC4E4_mesh_layer_1_tri_0
+#define ccr_dl_012_object_011EB574_002_mesh_layer_1_tri_0 ccr_dl_012_object_011EB574_mesh_layer_1_tri_0
+#define ccr_dl_013_object_011EA5FC_002_mesh_layer_1_tri_0 ccr_dl_013_object_011EA5FC_mesh_layer_1_tri_0
+#define ccr_dl_014_object_011E967C_002_mesh_layer_1_tri_0 ccr_dl_014_object_011E967C_mesh_layer_1_tri_0
+#define ccr_dl_015_object_011E8704_002_mesh_layer_1_tri_0 ccr_dl_015_object_011E8704_mesh_layer_1_tri_0
+#define ccr_dl_016_object_011E7784_002_mesh_layer_1_tri_0 ccr_dl_016_object_011E7784_mesh_layer_1_tri_0
+#define ccr_dl_001_object_011F5FEC_003_mesh_layer_1_tri_0 ccr_dl_001_object_011F5FEC_mesh_layer_1_tri_0
+#define ccr_dl_002_object_011F507C_003_mesh_layer_1_tri_0 ccr_dl_002_object_011F507C_mesh_layer_1_tri_0
+#define ccr_dl_003_object_011F410C_003_mesh_layer_1_tri_0 ccr_dl_003_object_011F410C_mesh_layer_1_tri_0
+#define ccr_dl_004_object_011F3164_003_mesh_layer_1_tri_0 ccr_dl_004_object_011F3164_mesh_layer_1_tri_0
+#define ccr_dl_005_object_011F21E4_003_mesh_layer_1_tri_0 ccr_dl_005_object_011F21E4_mesh_layer_1_tri_0
+#define ccr_dl_006_object_011F1254_003_mesh_layer_1_tri_0 ccr_dl_006_object_011F1254_mesh_layer_1_tri_0
+#define ccr_dl_007_object_011F02DC_003_mesh_layer_1_tri_0 ccr_dl_007_object_011F02DC_mesh_layer_1_tri_0
+#define ccr_dl_008_object_011EF334_003_mesh_layer_1_tri_0 ccr_dl_008_object_011EF334_mesh_layer_1_tri_0
+#define ccr_dl_009_object_011EE3C4_003_mesh_layer_1_tri_0 ccr_dl_009_object_011EE3C4_mesh_layer_1_tri_0
+#define ccr_dl_010_object_011ED454_003_mesh_layer_1_tri_0 ccr_dl_010_object_011ED454_mesh_layer_1_tri_0
+#define ccr_dl_011_object_011EC4E4_003_mesh_layer_1_tri_0 ccr_dl_011_object_011EC4E4_mesh_layer_1_tri_0
+#define ccr_dl_012_object_011EB574_003_mesh_layer_1_tri_0 ccr_dl_012_object_011EB574_mesh_layer_1_tri_0
+#define ccr_dl_013_object_011EA5FC_003_mesh_layer_1_tri_0 ccr_dl_013_object_011EA5FC_mesh_layer_1_tri_0
+#define ccr_dl_014_object_011E967C_003_mesh_layer_1_tri_0 ccr_dl_014_object_011E967C_mesh_layer_1_tri_0
+#define ccr_dl_015_object_011E8704_003_mesh_layer_1_tri_0 ccr_dl_015_object_011E8704_mesh_layer_1_tri_0
+#define ccr_dl_016_object_011E7784_003_mesh_layer_1_tri_0 ccr_dl_016_object_011E7784_mesh_layer_1_tri_0
+#define ccr_dl_002_object_011FA8FC_mesh_layer_1_tri_1 ccr_dl_001_object_011FB10C_mesh_layer_1_tri_1
+#define ccr_dl_003_object_011FA0D4_mesh_layer_1_tri_1 ccr_dl_001_object_011FB10C_mesh_layer_1_tri_1
+#define ccr_dl_004_object_011F98AC_mesh_layer_1_tri_1 ccr_dl_001_object_011FB10C_mesh_layer_1_tri_1
+#define ccr_dl_009_object_011F7034_mesh_layer_1_tri_0 ccr_dl_008_object_011F783C_mesh_layer_1_tri_0
+#define ccr_dl_010_object_011F682C_mesh_layer_1_tri_0 ccr_dl_008_object_011F783C_mesh_layer_1_tri_0
+#define ccr_dl_010_object_011F682C_mesh_layer_1_tri_1 ccr_dl_001_object_011FB10C_mesh_layer_1_tri_1
+#define ccr_dl_001_object_011FB10C_001_mesh_layer_1_tri_0 ccr_dl_001_object_011FB10C_mesh_layer_1_tri_0
+#define ccr_dl_001_object_011FB10C_001_mesh_layer_1_tri_1 ccr_dl_001_object_011FB10C_mesh_layer_1_tri_1
+#define ccr_dl_002_object_011FA8FC_001_mesh_layer_1_tri_0 ccr_dl_002_object_011FA8FC_mesh_layer_1_tri_0
+#define ccr_dl_002_object_011FA8FC_001_mesh_layer_1_tri_1 ccr_dl_001_object_011FB10C_mesh_layer_1_tri_1
+#define ccr_dl_003_object_011FA0D4_001_mesh_layer_1_tri_0 ccr_dl_003_object_011FA0D4_mesh_layer_1_tri_0
+#define ccr_dl_003_object_011FA0D4_001_mesh_layer_1_tri_1 ccr_dl_001_object_011FB10C_mesh_layer_1_tri_1
+#define ccr_dl_004_object_011F98AC_001_mesh_layer_1_tri_0 ccr_dl_004_object_011F98AC_mesh_layer_1_tri_0
+#define ccr_dl_004_object_011F98AC_001_mesh_layer_1_tri_1 ccr_dl_001_object_011FB10C_mesh_layer_1_tri_1
+#define ccr_dl_005_object_011F9084_001_mesh_layer_1_tri_0 ccr_dl_005_object_011F9084_mesh_layer_1_tri_0
+#define ccr_dl_005_object_011F9084_001_mesh_layer_1_tri_1 ccr_dl_005_object_011F9084_mesh_layer_1_tri_1
+#define ccr_dl_006_object_011F8874_001_mesh_layer_1_tri_0 ccr_dl_006_object_011F8874_mesh_layer_1_tri_0
+#define ccr_dl_006_object_011F8874_001_mesh_layer_1_tri_1 ccr_dl_006_object_011F8874_mesh_layer_1_tri_1
+#define ccr_dl_007_object_011F804C_001_mesh_layer_1_tri_0 ccr_dl_007_object_011F804C_mesh_layer_1_tri_0
+#define ccr_dl_007_object_011F804C_001_mesh_layer_1_tri_1 ccr_dl_007_object_011F804C_mesh_layer_1_tri_1
+#define ccr_dl_008_object_011F783C_001_mesh_layer_1_tri_0 ccr_dl_008_object_011F783C_mesh_layer_1_tri_0
+#define ccr_dl_008_object_011F783C_001_mesh_layer_1_tri_1 ccr_dl_008_object_011F783C_mesh_layer_1_tri_1
+#define ccr_dl_009_object_011F7034_001_mesh_layer_1_tri_0 ccr_dl_008_object_011F783C_mesh_layer_1_tri_0
+#define ccr_dl_009_object_011F7034_001_mesh_layer_1_tri_1 ccr_dl_009_object_011F7034_mesh_layer_1_tri_1
+#define ccr_dl_010_object_011F682C_001_mesh_layer_1_tri_0 ccr_dl_008_object_011F783C_mesh_layer_1_tri_0
+#define ccr_dl_010_object_011F682C_001_mesh_layer_1_tri_1 ccr_dl_001_object_011FB10C_mesh_layer_1_tri_1
+#define ccr_dl_001_object_011FB10C_002_mesh_layer_1_tri_0 ccr_dl_001_object_011FB10C_mesh_layer_1_tri_0
+#define ccr_dl_001_object_011FB10C_002_mesh_layer_1_tri_1 ccr_dl_001_object_011FB10C_mesh_layer_1_tri_1
+#define ccr_dl_002_object_011FA8FC_002_mesh_layer_1_tri_0 ccr_dl_002_object_011FA8FC_mesh_layer_1_tri_0
+#define ccr_dl_002_object_011FA8FC_002_mesh_layer_1_tri_1 ccr_dl_001_object_011FB10C_mesh_layer_1_tri_1
+#define ccr_dl_003_object_011FA0D4_002_mesh_layer_1_tri_0 ccr_dl_003_object_011FA0D4_mesh_layer_1_tri_0
+#define ccr_dl_003_object_011FA0D4_002_mesh_layer_1_tri_1 ccr_dl_001_object_011FB10C_mesh_layer_1_tri_1
+#define ccr_dl_004_object_011F98AC_002_mesh_layer_1_tri_0 ccr_dl_004_object_011F98AC_mesh_layer_1_tri_0
+#define ccr_dl_004_object_011F98AC_002_mesh_layer_1_tri_1 ccr_dl_001_object_011FB10C_mesh_layer_1_tri_1
+#define ccr_dl_005_object_011F9084_002_mesh_layer_1_tri_0 ccr_dl_005_object_011F9084_mesh_layer_1_tri_0
+#define ccr_dl_005_object_011F9084_002_mesh_layer_1_tri_1 ccr_dl_005_object_011F9084_mesh_layer_1_tri_1
+#define ccr_dl_006_object_011F8874_002_mesh_layer_1_tri_0 ccr_dl_006_object_011F8874_mesh_layer_1_tri_0
+#define ccr_dl_006_object_011F8874_002_mesh_layer_1_tri_1 ccr_dl_006_object_011F8874_mesh_layer_1_tri_1
+#define ccr_dl_007_object_011F804C_002_mesh_layer_1_tri_0 ccr_dl_007_object_011F804C_mesh_layer_1_tri_0
+#define ccr_dl_007_object_011F804C_002_mesh_layer_1_tri_1 ccr_dl_007_object_011F804C_mesh_layer_1_tri_1
+#define ccr_dl_008_object_011F783C_002_mesh_layer_1_tri_0 ccr_dl_008_object_011F783C_mesh_layer_1_tri_0
+#define ccr_dl_008_object_011F783C_002_mesh_layer_1_tri_1 ccr_dl_008_object_011F783C_mesh_layer_1_tri_1
+#define ccr_dl_009_object_011F7034_002_mesh_layer_1_tri_0 ccr_dl_008_object_011F783C_mesh_layer_1_tri_0
+#define ccr_dl_009_object_011F7034_002_mesh_layer_1_tri_1 ccr_dl_009_object_011F7034_mesh_layer_1_tri_1
+#define ccr_dl_010_object_011F682C_002_mesh_layer_1_tri_0 ccr_dl_008_object_011F783C_mesh_layer_1_tri_0
+#define ccr_dl_010_object_011F682C_002_mesh_layer_1_tri_1 ccr_dl_001_object_011FB10C_mesh_layer_1_tri_1
+#define ccr_dl_002_object_011FFA6C_mesh_layer_1_tri_1 ccr_dl_001_object_012002AC_mesh_layer_1_tri_1
+#define ccr_dl_003_object_011FF254_mesh_layer_1_tri_1 ccr_dl_001_object_012002AC_mesh_layer_1_tri_1
+#define ccr_dl_004_object_011FEA2C_mesh_layer_1_tri_1 ccr_dl_001_object_012002AC_mesh_layer_1_tri_1
+#define ccr_dl_009_object_011FC184_mesh_layer_1_tri_0 ccr_dl_008_object_011FC9BC_mesh_layer_1_tri_0
+#define ccr_dl_010_object_011FB96C_mesh_layer_1_tri_0 ccr_dl_008_object_011FC9BC_mesh_layer_1_tri_0
+#define ccr_dl_010_object_011FB96C_mesh_layer_1_tri_1 ccr_dl_001_object_012002AC_mesh_layer_1_tri_1
+#define ccr_dl_001_object_012002AC_001_mesh_layer_1_tri_0 ccr_dl_001_object_012002AC_mesh_layer_1_tri_0
+#define ccr_dl_001_object_012002AC_001_mesh_layer_1_tri_1 ccr_dl_001_object_012002AC_mesh_layer_1_tri_1
+#define ccr_dl_002_object_011FFA6C_001_mesh_layer_1_tri_0 ccr_dl_002_object_011FFA6C_mesh_layer_1_tri_0
+#define ccr_dl_002_object_011FFA6C_001_mesh_layer_1_tri_1 ccr_dl_001_object_012002AC_mesh_layer_1_tri_1
+#define ccr_dl_003_object_011FF254_001_mesh_layer_1_tri_0 ccr_dl_003_object_011FF254_mesh_layer_1_tri_0
+#define ccr_dl_003_object_011FF254_001_mesh_layer_1_tri_1 ccr_dl_001_object_012002AC_mesh_layer_1_tri_1
+#define ccr_dl_004_object_011FEA2C_001_mesh_layer_1_tri_0 ccr_dl_004_object_011FEA2C_mesh_layer_1_tri_0
+#define ccr_dl_004_object_011FEA2C_001_mesh_layer_1_tri_1 ccr_dl_001_object_012002AC_mesh_layer_1_tri_1
+#define ccr_dl_005_object_011FE204_001_mesh_layer_1_tri_0 ccr_dl_005_object_011FE204_mesh_layer_1_tri_0
+#define ccr_dl_005_object_011FE204_001_mesh_layer_1_tri_1 ccr_dl_005_object_011FE204_mesh_layer_1_tri_1
+#define ccr_dl_006_object_011FD9DC_001_mesh_layer_1_tri_0 ccr_dl_006_object_011FD9DC_mesh_layer_1_tri_0
+#define ccr_dl_006_object_011FD9DC_001_mesh_layer_1_tri_1 ccr_dl_006_object_011FD9DC_mesh_layer_1_tri_1
+#define ccr_dl_007_object_011FD1CC_001_mesh_layer_1_tri_0 ccr_dl_007_object_011FD1CC_mesh_layer_1_tri_0
+#define ccr_dl_007_object_011FD1CC_001_mesh_layer_1_tri_1 ccr_dl_007_object_011FD1CC_mesh_layer_1_tri_1
+#define ccr_dl_008_object_011FC9BC_001_mesh_layer_1_tri_0 ccr_dl_008_object_011FC9BC_mesh_layer_1_tri_0
+#define ccr_dl_008_object_011FC9BC_001_mesh_layer_1_tri_1 ccr_dl_008_object_011FC9BC_mesh_layer_1_tri_1
+#define ccr_dl_009_object_011FC184_001_mesh_layer_1_tri_0 ccr_dl_008_object_011FC9BC_mesh_layer_1_tri_0
+#define ccr_dl_009_object_011FC184_001_mesh_layer_1_tri_1 ccr_dl_009_object_011FC184_mesh_layer_1_tri_1
+#define ccr_dl_010_object_011FB96C_001_mesh_layer_1_tri_0 ccr_dl_008_object_011FC9BC_mesh_layer_1_tri_0
+#define ccr_dl_010_object_011FB96C_001_mesh_layer_1_tri_1 ccr_dl_001_object_012002AC_mesh_layer_1_tri_1
+#define ccr_dl_001_object_012002AC_002_mesh_layer_1_tri_0 ccr_dl_001_object_012002AC_mesh_layer_1_tri_0
+#define ccr_dl_001_object_012002AC_002_mesh_layer_1_tri_1 ccr_dl_001_object_012002AC_mesh_layer_1_tri_1
+#define ccr_dl_002_object_011FFA6C_002_mesh_layer_1_tri_0 ccr_dl_002_object_011FFA6C_mesh_layer_1_tri_0
+#define ccr_dl_002_object_011FFA6C_002_mesh_layer_1_tri_1 ccr_dl_001_object_012002AC_mesh_layer_1_tri_1
+#define ccr_dl_003_object_011FF254_002_mesh_layer_1_tri_0 ccr_dl_003_object_011FF254_mesh_layer_1_tri_0
+#define ccr_dl_003_object_011FF254_002_mesh_layer_1_tri_1 ccr_dl_001_object_012002AC_mesh_layer_1_tri_1
+#define ccr_dl_004_object_011FEA2C_002_mesh_layer_1_tri_0 ccr_dl_004_object_011FEA2C_mesh_layer_1_tri_0
+#define ccr_dl_004_object_011FEA2C_002_mesh_layer_1_tri_1 ccr_dl_001_object_012002AC_mesh_layer_1_tri_1
+#define ccr_dl_005_object_011FE204_002_mesh_layer_1_tri_0 ccr_dl_005_object_011FE204_mesh_layer_1_tri_0
+#define ccr_dl_005_object_011FE204_002_mesh_layer_1_tri_1 ccr_dl_005_object_011FE204_mesh_layer_1_tri_1
+#define ccr_dl_006_object_011FD9DC_002_mesh_layer_1_tri_0 ccr_dl_006_object_011FD9DC_mesh_layer_1_tri_0
+#define ccr_dl_006_object_011FD9DC_002_mesh_layer_1_tri_1 ccr_dl_006_object_011FD9DC_mesh_layer_1_tri_1
+#define ccr_dl_007_object_011FD1CC_002_mesh_layer_1_tri_0 ccr_dl_007_object_011FD1CC_mesh_layer_1_tri_0
+#define ccr_dl_007_object_011FD1CC_002_mesh_layer_1_tri_1 ccr_dl_007_object_011FD1CC_mesh_layer_1_tri_1
+#define ccr_dl_008_object_011FC9BC_002_mesh_layer_1_tri_0 ccr_dl_008_object_011FC9BC_mesh_layer_1_tri_0
+#define ccr_dl_008_object_011FC9BC_002_mesh_layer_1_tri_1 ccr_dl_008_object_011FC9BC_mesh_layer_1_tri_1
+#define ccr_dl_009_object_011FC184_002_mesh_layer_1_tri_0 ccr_dl_008_object_011FC9BC_mesh_layer_1_tri_0
+#define ccr_dl_009_object_011FC184_002_mesh_layer_1_tri_1 ccr_dl_009_object_011FC184_mesh_layer_1_tri_1
+#define ccr_dl_010_object_011FB96C_002_mesh_layer_1_tri_0 ccr_dl_008_object_011FC9BC_mesh_layer_1_tri_0
+#define ccr_dl_010_object_011FB96C_002_mesh_layer_1_tri_1 ccr_dl_001_object_012002AC_mesh_layer_1_tri_1
+#define ccr_dl_002_object_012006B4_mesh_layer_1_tri_0 ccr_dl_001_object_01200A84_mesh_layer_1_tri_0
+#define ccr_dl_006_object_011B0F1C_mesh_layer_5 ccr_dl_003_object_011B121C_mesh_layer_5
+#define ccr_dl_010_object_011B0B1C_mesh_layer_5 ccr_dl_008_object_011B0D1C_mesh_layer_5
+#define ccr_dl_011_object_011B0A1C_mesh_layer_5 ccr_dl_001_object_011B141C_mesh_layer_5
+#define ccr_dl_012_object_011B091C_mesh_layer_5 ccr_dl_008_object_011B0D1C_mesh_layer_5
+#define ccr_dl_002_object_011B2B04_mesh_layer_1 ccr_dl_001_object_011B2F74_mesh_layer_1
+#define ccr_dl_001_object_011B3894_mesh_layer_1 ccr_dl_001_object_011B2F74_mesh_layer_1
+#define ccr_dl_002_object_011B341C_mesh_layer_1 ccr_dl_001_object_011B2F74_mesh_layer_1
+#define ccr_dl_002_object_011D03CC_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_003_object_011CFD5C_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_004_object_011CF6EC_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_005_object_011CF07C_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_006_object_011CEA0C_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_007_object_011CE39C_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_001_object_011D0A3C_001_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_002_object_011D03CC_001_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_003_object_011CFD5C_001_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_004_object_011CF6EC_001_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_005_object_011CF07C_001_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_006_object_011CEA0C_001_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_007_object_011CE39C_001_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_001_object_011D0A3C_002_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_002_object_011D03CC_002_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_003_object_011CFD5C_002_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_004_object_011CF6EC_002_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_005_object_011CF07C_002_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_006_object_011CEA0C_002_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_007_object_011CE39C_002_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_001_object_011D0A3C_003_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_002_object_011D03CC_003_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_003_object_011CFD5C_003_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_004_object_011CF6EC_003_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_005_object_011CF07C_003_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_006_object_011CEA0C_003_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_007_object_011CE39C_003_mesh_layer_1 ccr_dl_001_object_011D0A3C_mesh_layer_1
+#define ccr_dl_002_object_011E3F34_mesh_layer_1 ccr_dl_001_object_011E406C_mesh_layer_1
+#define ccr_dl_002_object_011E4D84_mesh_layer_1 ccr_dl_001_object_011E51BC_mesh_layer_1
+#define ccr_dl_003_object_011E494C_mesh_layer_1 ccr_dl_001_object_011E51BC_mesh_layer_1
+#define ccr_dl_004_object_011E4514_mesh_layer_1 ccr_dl_001_object_011E51BC_mesh_layer_1
+#define ccr_dl_001_object_011F5FEC_001_mesh_layer_1 ccr_dl_001_object_011F5FEC_mesh_layer_1
+#define ccr_dl_001_object_011F5FEC_002_mesh_layer_1 ccr_dl_001_object_011F5FEC_mesh_layer_1
+#define ccr_dl_001_object_011F5FEC_003_mesh_layer_1 ccr_dl_001_object_011F5FEC_mesh_layer_1
+#define ccr_dl_001_object_011FB10C_001_mesh_layer_1 ccr_dl_001_object_011FB10C_mesh_layer_1
+#define ccr_dl_001_object_011FB10C_002_mesh_layer_1 ccr_dl_001_object_011FB10C_mesh_layer_1
+#define ccr_dl_001_object_012002AC_001_mesh_layer_1 ccr_dl_001_object_012002AC_mesh_layer_1
+#define ccr_dl_001_object_012002AC_002_mesh_layer_1 ccr_dl_001_object_012002AC_mesh_layer_1
+#define ccr_dl_002_object_012006B4_mesh_layer_1 ccr_dl_001_object_01200A84_mesh_layer_1
+#define ccr_dl_002_object_011F507C_001_mesh_layer_1 ccr_dl_002_object_011F507C_mesh_layer_1
+#define ccr_dl_003_object_011F410C_001_mesh_layer_1 ccr_dl_003_object_011F410C_mesh_layer_1
+#define ccr_dl_004_object_011F3164_001_mesh_layer_1 ccr_dl_004_object_011F3164_mesh_layer_1
+#define ccr_dl_005_object_011F21E4_001_mesh_layer_1 ccr_dl_005_object_011F21E4_mesh_layer_1
+#define ccr_dl_006_object_011F1254_001_mesh_layer_1 ccr_dl_006_object_011F1254_mesh_layer_1
+#define ccr_dl_007_object_011F02DC_001_mesh_layer_1 ccr_dl_007_object_011F02DC_mesh_layer_1
+#define ccr_dl_008_object_011EF334_001_mesh_layer_1 ccr_dl_008_object_011EF334_mesh_layer_1
+#define ccr_dl_009_object_011EE3C4_001_mesh_layer_1 ccr_dl_009_object_011EE3C4_mesh_layer_1
+#define ccr_dl_010_object_011ED454_001_mesh_layer_1 ccr_dl_010_object_011ED454_mesh_layer_1
+#define ccr_dl_011_object_011EC4E4_001_mesh_layer_1 ccr_dl_011_object_011EC4E4_mesh_layer_1
+#define ccr_dl_012_object_011EB574_001_mesh_layer_1 ccr_dl_012_object_011EB574_mesh_layer_1
+#define ccr_dl_013_object_011EA5FC_001_mesh_layer_1 ccr_dl_013_object_011EA5FC_mesh_layer_1
+#define ccr_dl_014_object_011E967C_001_mesh_layer_1 ccr_dl_014_object_011E967C_mesh_layer_1
+#define ccr_dl_015_object_011E8704_001_mesh_layer_1 ccr_dl_015_object_011E8704_mesh_layer_1
+#define ccr_dl_016_object_011E7784_001_mesh_layer_1 ccr_dl_016_object_011E7784_mesh_layer_1
+#define ccr_dl_002_object_011F507C_002_mesh_layer_1 ccr_dl_002_object_011F507C_mesh_layer_1
+#define ccr_dl_003_object_011F410C_002_mesh_layer_1 ccr_dl_003_object_011F410C_mesh_layer_1
+#define ccr_dl_004_object_011F3164_002_mesh_layer_1 ccr_dl_004_object_011F3164_mesh_layer_1
+#define ccr_dl_005_object_011F21E4_002_mesh_layer_1 ccr_dl_005_object_011F21E4_mesh_layer_1
+#define ccr_dl_006_object_011F1254_002_mesh_layer_1 ccr_dl_006_object_011F1254_mesh_layer_1
+#define ccr_dl_007_object_011F02DC_002_mesh_layer_1 ccr_dl_007_object_011F02DC_mesh_layer_1
+#define ccr_dl_008_object_011EF334_002_mesh_layer_1 ccr_dl_008_object_011EF334_mesh_layer_1
+#define ccr_dl_009_object_011EE3C4_002_mesh_layer_1 ccr_dl_009_object_011EE3C4_mesh_layer_1
+#define ccr_dl_010_object_011ED454_002_mesh_layer_1 ccr_dl_010_object_011ED454_mesh_layer_1
+#define ccr_dl_011_object_011EC4E4_002_mesh_layer_1 ccr_dl_011_object_011EC4E4_mesh_layer_1
+#define ccr_dl_012_object_011EB574_002_mesh_layer_1 ccr_dl_012_object_011EB574_mesh_layer_1
+#define ccr_dl_013_object_011EA5FC_002_mesh_layer_1 ccr_dl_013_object_011EA5FC_mesh_layer_1
+#define ccr_dl_014_object_011E967C_002_mesh_layer_1 ccr_dl_014_object_011E967C_mesh_layer_1
+#define ccr_dl_015_object_011E8704_002_mesh_layer_1 ccr_dl_015_object_011E8704_mesh_layer_1
+#define ccr_dl_016_object_011E7784_002_mesh_layer_1 ccr_dl_016_object_011E7784_mesh_layer_1
+#define ccr_dl_002_object_011F507C_003_mesh_layer_1 ccr_dl_002_object_011F507C_mesh_layer_1
+#define ccr_dl_003_object_011F410C_003_mesh_layer_1 ccr_dl_003_object_011F410C_mesh_layer_1
+#define ccr_dl_004_object_011F3164_003_mesh_layer_1 ccr_dl_004_object_011F3164_mesh_layer_1
+#define ccr_dl_005_object_011F21E4_003_mesh_layer_1 ccr_dl_005_object_011F21E4_mesh_layer_1
+#define ccr_dl_006_object_011F1254_003_mesh_layer_1 ccr_dl_006_object_011F1254_mesh_layer_1
+#define ccr_dl_007_object_011F02DC_003_mesh_layer_1 ccr_dl_007_object_011F02DC_mesh_layer_1
+#define ccr_dl_008_object_011EF334_003_mesh_layer_1 ccr_dl_008_object_011EF334_mesh_layer_1
+#define ccr_dl_009_object_011EE3C4_003_mesh_layer_1 ccr_dl_009_object_011EE3C4_mesh_layer_1
+#define ccr_dl_010_object_011ED454_003_mesh_layer_1 ccr_dl_010_object_011ED454_mesh_layer_1
+#define ccr_dl_011_object_011EC4E4_003_mesh_layer_1 ccr_dl_011_object_011EC4E4_mesh_layer_1
+#define ccr_dl_012_object_011EB574_003_mesh_layer_1 ccr_dl_012_object_011EB574_mesh_layer_1
+#define ccr_dl_013_object_011EA5FC_003_mesh_layer_1 ccr_dl_013_object_011EA5FC_mesh_layer_1
+#define ccr_dl_014_object_011E967C_003_mesh_layer_1 ccr_dl_014_object_011E967C_mesh_layer_1
+#define ccr_dl_015_object_011E8704_003_mesh_layer_1 ccr_dl_015_object_011E8704_mesh_layer_1
+#define ccr_dl_016_object_011E7784_003_mesh_layer_1 ccr_dl_016_object_011E7784_mesh_layer_1
+#define ccr_dl_002_object_011FA8FC_001_mesh_layer_1 ccr_dl_002_object_011FA8FC_mesh_layer_1
+#define ccr_dl_003_object_011FA0D4_001_mesh_layer_1 ccr_dl_003_object_011FA0D4_mesh_layer_1
+#define ccr_dl_004_object_011F98AC_001_mesh_layer_1 ccr_dl_004_object_011F98AC_mesh_layer_1
+#define ccr_dl_005_object_011F9084_001_mesh_layer_1 ccr_dl_005_object_011F9084_mesh_layer_1
+#define ccr_dl_006_object_011F8874_001_mesh_layer_1 ccr_dl_006_object_011F8874_mesh_layer_1
+#define ccr_dl_007_object_011F804C_001_mesh_layer_1 ccr_dl_007_object_011F804C_mesh_layer_1
+#define ccr_dl_008_object_011F783C_001_mesh_layer_1 ccr_dl_008_object_011F783C_mesh_layer_1
+#define ccr_dl_009_object_011F7034_001_mesh_layer_1 ccr_dl_009_object_011F7034_mesh_layer_1
+#define ccr_dl_010_object_011F682C_001_mesh_layer_1 ccr_dl_010_object_011F682C_mesh_layer_1
+#define ccr_dl_002_object_011FA8FC_002_mesh_layer_1 ccr_dl_002_object_011FA8FC_mesh_layer_1
+#define ccr_dl_003_object_011FA0D4_002_mesh_layer_1 ccr_dl_003_object_011FA0D4_mesh_layer_1
+#define ccr_dl_004_object_011F98AC_002_mesh_layer_1 ccr_dl_004_object_011F98AC_mesh_layer_1
+#define ccr_dl_005_object_011F9084_002_mesh_layer_1 ccr_dl_005_object_011F9084_mesh_layer_1
+#define ccr_dl_006_object_011F8874_002_mesh_layer_1 ccr_dl_006_object_011F8874_mesh_layer_1
+#define ccr_dl_007_object_011F804C_002_mesh_layer_1 ccr_dl_007_object_011F804C_mesh_layer_1
+#define ccr_dl_008_object_011F783C_002_mesh_layer_1 ccr_dl_008_object_011F783C_mesh_layer_1
+#define ccr_dl_009_object_011F7034_002_mesh_layer_1 ccr_dl_009_object_011F7034_mesh_layer_1
+#define ccr_dl_010_object_011F682C_002_mesh_layer_1 ccr_dl_010_object_011F682C_mesh_layer_1
+#define ccr_dl_002_object_011FFA6C_001_mesh_layer_1 ccr_dl_002_object_011FFA6C_mesh_layer_1
+#define ccr_dl_003_object_011FF254_001_mesh_layer_1 ccr_dl_003_object_011FF254_mesh_layer_1
+#define ccr_dl_004_object_011FEA2C_001_mesh_layer_1 ccr_dl_004_object_011FEA2C_mesh_layer_1
+#define ccr_dl_005_object_011FE204_001_mesh_layer_1 ccr_dl_005_object_011FE204_mesh_layer_1
+#define ccr_dl_006_object_011FD9DC_001_mesh_layer_1 ccr_dl_006_object_011FD9DC_mesh_layer_1
+#define ccr_dl_007_object_011FD1CC_001_mesh_layer_1 ccr_dl_007_object_011FD1CC_mesh_layer_1
+#define ccr_dl_008_object_011FC9BC_001_mesh_layer_1 ccr_dl_008_object_011FC9BC_mesh_layer_1
+#define ccr_dl_009_object_011FC184_001_mesh_layer_1 ccr_dl_009_object_011FC184_mesh_layer_1
+#define ccr_dl_010_object_011FB96C_001_mesh_layer_1 ccr_dl_010_object_011FB96C_mesh_layer_1
+#define ccr_dl_002_object_011FFA6C_002_mesh_layer_1 ccr_dl_002_object_011FFA6C_mesh_layer_1
+#define ccr_dl_003_object_011FF254_002_mesh_layer_1 ccr_dl_003_object_011FF254_mesh_layer_1
+#define ccr_dl_004_object_011FEA2C_002_mesh_layer_1 ccr_dl_004_object_011FEA2C_mesh_layer_1
+#define ccr_dl_005_object_011FE204_002_mesh_layer_1 ccr_dl_005_object_011FE204_mesh_layer_1
+#define ccr_dl_006_object_011FD9DC_002_mesh_layer_1 ccr_dl_006_object_011FD9DC_mesh_layer_1
+#define ccr_dl_007_object_011FD1CC_002_mesh_layer_1 ccr_dl_007_object_011FD1CC_mesh_layer_1
+#define ccr_dl_008_object_011FC9BC_002_mesh_layer_1 ccr_dl_008_object_011FC9BC_mesh_layer_1
+#define ccr_dl_009_object_011FC184_002_mesh_layer_1 ccr_dl_009_object_011FC184_mesh_layer_1
+#define ccr_dl_010_object_011FB96C_002_mesh_layer_1 ccr_dl_010_object_011FB96C_mesh_layer_1

@@ -263,7 +263,6 @@ struct GraphNodeLevelOfDetail {
  */
 struct GraphNodeSwitchCase {
     /*0x00*/ struct FnGraphNode fnNode;
-    /*0x18*/ s32 unused;
     /*0x1C*/ s16 numCases;
     /*0x1E*/ s16 selectedCase;
 };
