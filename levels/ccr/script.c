@@ -18,6 +18,7 @@
 #include "levels/ccr/area_1/collision.inc.c"
 #include "level_config.h"
 static struct LevelConfig cfg = { };
+#define SEQ_LEVEL_GRASS 0x44
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_ccr_entry[] = {
