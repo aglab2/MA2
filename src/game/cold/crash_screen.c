@@ -164,25 +164,25 @@ void crash_screen_sleep(s32 ms) {
     while (osGetTime() < cycles) { }
 }
 
-void crash_screen_print_float_reg(s32 x, s32 y, s32 regNum, void *addr) {
+static void crash_screen_print_float_reg(s32 x, s32 y, s32 regNum, void *addr) {
     u32 bits = *(u32 *) addr;
     s32 exponent = ((bits & 0x7f800000U) >> 0x17) - 0x7F;
 
     if ((exponent >= -0x7E && exponent <= 0x7F) || bits == 0x0) {
-        crash_screen_print(x, y, "F%02d:%.3e",  regNum, *(f32 *) addr);
+        crash_screen_print(x, y, "%02d %.3e",  regNum, *(f32 *) addr);
     } else {
-        crash_screen_print(x, y, "F%02d:%08XD", regNum, *(u32 *) addr);
+        crash_screen_print(x, y, "%02d %08XD", regNum, *(u32 *) addr);
     }
 }
 
-void crash_screen_print_fpcsr(u32 fpcsr) {
+static void crash_screen_print_fpcsr(u32 fpcsr) {
     s32 i;
     u32 bit = BIT(17);
 
-    crash_screen_print(30, 155, "FPCSR:%08XH", fpcsr);
+    crash_screen_print(30, 150, "FPCSR:%08XH", fpcsr);
     for (i = 0; i < 6; i++) {
         if (fpcsr & bit) {
-            crash_screen_print(132, 155, "(%s)", gFpcsrDesc[i]);
+            crash_screen_print(132, 150, "(%s)", gFpcsrDesc[i]);
             return;
         }
         bit >>= 1;
@@ -213,6 +213,15 @@ void draw_crash_context(OSThread *thread, s32 cause) {
     crash_screen_print_fpcsr(tc->fpcsr);
 
     osWritebackDCacheAll();
+    
+    for (int i = 0; i < 32; i++)
+    {
+        int row = (i / 4);
+        int col = (i % 4);
+
+        crash_screen_print_float_reg(30 + 60*col, 160 + 10*row, i, &tc->fpr[i]);
+    }
+
 #if 0
     crash_screen_print_float_reg( 30, 170,  0, &tc->fp0.f.f_even);
     crash_screen_print_float_reg(120, 170,  2, &tc->fp2.f.f_even);
