@@ -76,6 +76,29 @@ const GeoLayout ccr_area_1_geo[] = {
 			GEO_BRANCH(1, ccr_dl_032_object_011B476C_geo),
 		GEO_CLOSE_NODE(),
 		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_001_object_011C8AFC_mesh_layer_5),
+		GEO_SWITCH_CASE(20, geo_cc_switch),
+		GEO_OPEN_NODE(),
+			GEO_BRANCH(1, ccr_dl_002_object_011CD4D4_geo),
+			GEO_BRANCH(1, ccr_dl_003_object_011CD0F4_geo),
+			GEO_BRANCH(1, ccr_dl_004_object_011CCD14_geo),
+			GEO_BRANCH(1, ccr_dl_005_object_011CC934_geo),
+			GEO_BRANCH(1, ccr_dl_006_object_011CC554_geo),
+			GEO_BRANCH(1, ccr_dl_007_object_011CC174_geo),
+			GEO_BRANCH(1, ccr_dl_008_object_011CBD94_geo),
+			GEO_BRANCH(1, ccr_dl_009_object_011CB9B4_geo),
+			GEO_BRANCH(1, ccr_dl_010_object_011CB5D4_geo),
+			GEO_BRANCH(1, ccr_dl_011_object_011CB1F4_geo),
+			GEO_BRANCH(1, ccr_dl_012_object_011CAE14_geo),
+			GEO_BRANCH(1, ccr_dl_013_object_011CAA34_geo),
+			GEO_BRANCH(1, ccr_dl_014_object_011CA654_geo),
+			GEO_BRANCH(1, ccr_dl_015_object_011CA274_geo),
+			GEO_BRANCH(1, ccr_dl_016_object_011C9E94_geo),
+			GEO_BRANCH(1, ccr_dl_017_object_011C9AB4_geo),
+			GEO_BRANCH(1, ccr_dl_018_object_011C96D4_geo),
+			GEO_BRANCH(1, ccr_dl_019_object_011C92F4_geo),
+			GEO_BRANCH(1, ccr_dl_020_object_011C8F14_geo),
+		GEO_CLOSE_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_001_object_011CD8B4_mesh_layer_5),
 		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, (s16)0.0, (s16)2100.0, (s16)0.0, (s16)0.0, (s16)-25.603626632142287, (s16)0.0, ccr_dl_001_object_011D0A3C_mesh_layer_1),
 		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, (s16)0.0, (s16)3100.0, (s16)0.0, (s16)0.0, (s16)-24.999390532122526, (s16)0.0, ccr_dl_002_object_011D03CC_mesh_layer_1),
 		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, (s16)0.0, (s16)4099.998474121094, (s16)0.0, (s16)0.0, (s16)-64.48425308619726, (s16)0.0, ccr_dl_003_object_011CFD5C_mesh_layer_1),
@@ -539,6 +562,139 @@ const GeoLayout ccr_dl_032_object_011B476C_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
 		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_032_object_011B476C_mesh_layer_5),
+	GEO_CLOSE_NODE(),
+	GEO_RETURN(),
+};
+const GeoLayout ccr_dl_002_object_011CD4D4_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_002_object_011CD4D4_mesh_layer_5),
+	GEO_CLOSE_NODE(),
+	GEO_RETURN(),
+};
+const GeoLayout ccr_dl_003_object_011CD0F4_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_003_object_011CD0F4_mesh_layer_5),
+	GEO_CLOSE_NODE(),
+	GEO_RETURN(),
+};
+const GeoLayout ccr_dl_004_object_011CCD14_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_004_object_011CCD14_mesh_layer_5),
+	GEO_CLOSE_NODE(),
+	GEO_RETURN(),
+};
+const GeoLayout ccr_dl_005_object_011CC934_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_005_object_011CC934_mesh_layer_5),
+	GEO_CLOSE_NODE(),
+	GEO_RETURN(),
+};
+const GeoLayout ccr_dl_006_object_011CC554_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_006_object_011CC554_mesh_layer_5),
+	GEO_CLOSE_NODE(),
+	GEO_RETURN(),
+};
+const GeoLayout ccr_dl_007_object_011CC174_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_007_object_011CC174_mesh_layer_5),
+	GEO_CLOSE_NODE(),
+	GEO_RETURN(),
+};
+const GeoLayout ccr_dl_008_object_011CBD94_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_008_object_011CBD94_mesh_layer_5),
+	GEO_CLOSE_NODE(),
+	GEO_RETURN(),
+};
+const GeoLayout ccr_dl_009_object_011CB9B4_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_009_object_011CB9B4_mesh_layer_5),
+	GEO_CLOSE_NODE(),
+	GEO_RETURN(),
+};
+const GeoLayout ccr_dl_010_object_011CB5D4_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_010_object_011CB5D4_mesh_layer_5),
+	GEO_CLOSE_NODE(),
+	GEO_RETURN(),
+};
+const GeoLayout ccr_dl_011_object_011CB1F4_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_011_object_011CB1F4_mesh_layer_5),
+	GEO_CLOSE_NODE(),
+	GEO_RETURN(),
+};
+const GeoLayout ccr_dl_012_object_011CAE14_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_012_object_011CAE14_mesh_layer_5),
+	GEO_CLOSE_NODE(),
+	GEO_RETURN(),
+};
+const GeoLayout ccr_dl_013_object_011CAA34_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_013_object_011CAA34_mesh_layer_5),
+	GEO_CLOSE_NODE(),
+	GEO_RETURN(),
+};
+const GeoLayout ccr_dl_014_object_011CA654_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_014_object_011CA654_mesh_layer_5),
+	GEO_CLOSE_NODE(),
+	GEO_RETURN(),
+};
+const GeoLayout ccr_dl_015_object_011CA274_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_015_object_011CA274_mesh_layer_5),
+	GEO_CLOSE_NODE(),
+	GEO_RETURN(),
+};
+const GeoLayout ccr_dl_016_object_011C9E94_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_016_object_011C9E94_mesh_layer_5),
+	GEO_CLOSE_NODE(),
+	GEO_RETURN(),
+};
+const GeoLayout ccr_dl_017_object_011C9AB4_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_017_object_011C9AB4_mesh_layer_5),
+	GEO_CLOSE_NODE(),
+	GEO_RETURN(),
+};
+const GeoLayout ccr_dl_018_object_011C96D4_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_018_object_011C96D4_mesh_layer_5),
+	GEO_CLOSE_NODE(),
+	GEO_RETURN(),
+};
+const GeoLayout ccr_dl_019_object_011C92F4_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_019_object_011C92F4_mesh_layer_5),
+	GEO_CLOSE_NODE(),
+	GEO_RETURN(),
+};
+const GeoLayout ccr_dl_020_object_011C8F14_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccr_dl_020_object_011C8F14_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
