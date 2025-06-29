@@ -456,18 +456,18 @@ static inline void n64_format_double(
 	const ryu_floating_decimal_64 decimal = ryu_double_to_decimal( m, e );
 	switch( format->type ) {
 		case 6:
-			n64_format_double_exp( buffer, format, decimal, format->precision, value < 0.0, false );
+			n64_format_double_exp( buffer, format, decimal, format->precision, value < 0.0f, false );
 			break;
 		case 5:
-			n64_format_double_fixed( buffer, format, decimal, format->precision, value < 0.0, false );
+			n64_format_double_fixed( buffer, format, decimal, format->precision, value < 0.0f, false );
 			break;
 		default: {
 			const int P = format->precision ? (int)format->precision : 1;
 			const int exp = decimal.exponent + (int)decimalLength17( decimal.mantissa ) - 1;
 			if( P > exp && exp >= -4 ) {
-				n64_format_double_fixed( buffer, format, decimal, (unsigned int)(P - 1 - exp), value < 0.0, !format->alternate );
+				n64_format_double_fixed( buffer, format, decimal, (unsigned int)(P - 1 - exp), value < 0.0f, !format->alternate );
 			} else {
-				n64_format_double_exp( buffer, format, decimal, (unsigned int)(P - 1), value < 0.0, !format->alternate );
+				n64_format_double_exp( buffer, format, decimal, (unsigned int)(P - 1), value < 0.0f, !format->alternate );
 			}
 			break;
 		}
