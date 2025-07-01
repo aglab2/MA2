@@ -17,5 +17,6 @@
 #include "levels/ccr/geo.inc.c"
 #else
 extern Gfx *geo_switch_cc(s32 callContext, struct GraphNode *node, UNUSED void *context);
+extern Gfx *geo_switch_cc2(s32 callContext, struct GraphNode *node, UNUSED void *context);
 #include "levels/ccr/visual/geo_lvl.inc.c"
 #endif

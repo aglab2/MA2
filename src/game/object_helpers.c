@@ -254,6 +254,22 @@ Gfx *geo_switch_cc(s32 callContext, struct GraphNode *node, UNUSED void *context
     return NULL;
 }
 
+Gfx *geo_switch_cc2(s32 callContext, struct GraphNode *node, UNUSED void *context) {
+    if (callContext == GEO_CONTEXT_RENDER) {
+        struct GraphNodeSwitchCase *switchCase = (struct GraphNodeSwitchCase *) node;
+        if (switchCase->numCases)
+        {
+            switchCase->selectedCase = CLAMP(gGlobalTimer % 16, 0, 9);
+        }
+        else
+        {
+            switchCase->selectedCase = CLAMP(5 + (-gGlobalTimer) % 16, 0, 9);
+        }
+    }
+
+    return NULL;
+}
+
 Gfx *geo_switch_area(s32 callContext, struct GraphNode *node, UNUSED void *context) {
     struct GraphNodeSwitchCase *switchCase = (struct GraphNodeSwitchCase *) node;
     RoomData room;
