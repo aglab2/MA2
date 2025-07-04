@@ -1,0 +1,14 @@
+extern const GeoLayout ccr_capopen_geo[];
+extern u8 ccr_capopen_kd_lk_un111_ci4[];
+extern u8 ccr_capopen_kd_lk_un111_pal_rgba16[];
+extern u8 ccr_capopen_kd_lk_un112_ci4[];
+extern u8 ccr_capopen_kd_lk_un112_pal_rgba16[];
+extern Vtx ccr_capopen_ccr_capopen_mesh_layer_1_vtx_0[582];
+extern Gfx ccr_capopen_ccr_capopen_mesh_layer_1_tri_0[];
+extern Vtx ccr_capopen_ccr_capopen_mesh_layer_1_vtx_1[178];
+extern Gfx ccr_capopen_ccr_capopen_mesh_layer_1_tri_1[];
+extern Gfx mat_ccr_capopen_OpenSwitchCapsule_sa2mdl_0_f3d[];
+extern Gfx mat_revert_ccr_capopen_OpenSwitchCapsule_sa2mdl_0_f3d[];
+extern Gfx mat_ccr_capopen_OpenSwitchCapsule_sa2mdl_1_f3d[];
+extern Gfx mat_revert_ccr_capopen_OpenSwitchCapsule_sa2mdl_1_f3d[];
+extern Gfx ccr_capopen_ccr_capopen_mesh_layer_1[];

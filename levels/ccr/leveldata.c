@@ -197,3 +197,15 @@ static Vtx ccr_dl_0020_object_013C3394_mesh_layer_1_vtx_0[179] = {
 #include "levels/ccr/visual/model_lvlopt.inc.c"
 #include "levels/ccr/flipbook.inc.c"
 #endif
+
+#include "levels/ccr/ccr_capopen/collision.inc.c"
+#include "levels/ccr/ccr_capopen/model.inc.c"
+#include "levels/ccr/ccr_capsule_anim/model.inc.c"
+#include "levels/ccr/ccr_bubble/model.inc.c"
+#include "levels/ccr/ccr_switch_p1/collision.inc.c"
+#include "levels/ccr/ccr_switch_p1/model.inc.c"
+#include "levels/ccr/ccr_switch_p2/collision.inc.c"
+#include "levels/ccr/ccr_switch_p2/model.inc.c"
+#include "levels/ccr/ccr_rising/model.inc.c"
+#include "levels/ccr/ccr_capsule/model.inc.c"
+#include "levels/ccr/cc_walls/model.inc.c"

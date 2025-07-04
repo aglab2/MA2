@@ -20,3 +20,12 @@ extern Gfx *geo_switch_cc(s32 callContext, struct GraphNode *node, UNUSED void *
 extern Gfx *geo_switch_cc2(s32 callContext, struct GraphNode *node, UNUSED void *context);
 #include "levels/ccr/visual/geo_lvl.inc.c"
 #endif
+
+#include "levels/ccr/ccr_capopen/geo.inc.c"
+#include "levels/ccr/ccr_capsule_anim/geo.inc.c"
+#include "levels/ccr/ccr_bubble/geo.inc.c"
+#include "levels/ccr/ccr_switch_p1/geo.inc.c"
+#include "levels/ccr/ccr_switch_p2/geo.inc.c"
+#include "levels/ccr/ccr_rising/geo.inc.c"
+#include "levels/ccr/ccr_capsule/geo.inc.c"
+#include "levels/ccr/cc_walls/geo.inc.c"
