@@ -209,3 +209,7 @@ static Vtx ccr_dl_0020_object_013C3394_mesh_layer_1_vtx_0[179] = {
 #include "levels/ccr/ccr_rising/model.inc.c"
 #include "levels/ccr/ccr_capsule/model.inc.c"
 #include "levels/ccr/cc_walls/model.inc.c"
+#include "levels/ccr/ccr_block/collision.inc.c"
+#include "levels/ccr/ccr_block/model.inc.c"
+#include "levels/ccr/ccr_step/collision.inc.c"
+#include "levels/ccr/ccr_step/model.inc.c"

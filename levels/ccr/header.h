@@ -34,4 +34,12 @@ extern const LevelScript level_ccr_entry[];
 
 #include "levels/ccr/cc_walls/geo_header.h"
 
+#include "levels/ccr/ccr_block/collision_header.h"
+
+#include "levels/ccr/ccr_block/geo_header.h"
+
+#include "levels/ccr/ccr_step/collision_header.h"
+
+#include "levels/ccr/ccr_step/geo_header.h"
+
 #endif
