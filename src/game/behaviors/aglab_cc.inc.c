@@ -473,9 +473,14 @@ void bhv_cce_spawn_block_init()
     o->oAction = 0;
 }
 
+extern const Collision cce_block_collision[];
+extern const Collision ccr_block_collision[];
 void bhv_cce_block_init()
 {
-
+    if (gCurrLevelNum == LEVEL_CCE)
+        obj_set_collision_data(o, cce_block_collision);
+    if (gCurrLevelNum == LEVEL_CCR)
+        obj_set_collision_data(o, ccr_block_collision);
 }
 
 void bhv_cce_block_loop()
@@ -529,5 +534,26 @@ void bhv_whomp_loop_cc()
     bhv_whomp_loop();
     o->oTimer++;
     bhv_whomp_loop();
+}
+
+extern const BehaviorScript bhvCCRSwitchP2[];
+void bhv_ccr_switch_init()
+{
+    o->parentObj = spawn_object(o, MODEL_CCR_SWITCH2, bhvCCRSwitchP2);
+}
+
+void bhv_ccr_switch_loop()
+{
+
+}
+
+void bhv_ccr_switch2_loop()
+{
+
+}
+
+void bhv_ccr_capsule_loop()
+{
+
 }
 

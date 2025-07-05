@@ -613,6 +613,8 @@ extern const BehaviorScript bhvCCTimestop[];
 extern const BehaviorScript bhvCCTFastDrop[];
 extern const BehaviorScript bhvCCSpawn[];
 extern const BehaviorScript bhvCCSpawnBlock[];
+extern const BehaviorScript bhvCCRSwitch[];
+extern const BehaviorScript bhvCCRCapsule[];
 
 extern const BehaviorScript bhvCoinFormationCC[];
 extern const BehaviorScript bhvCoinFormationSpawnedCoinCC[];

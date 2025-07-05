@@ -31,3 +31,4 @@ extern Gfx *geo_switch_cc2(s32 callContext, struct GraphNode *node, UNUSED void 
 #include "levels/ccr/cc_walls/geo.inc.c"
 #include "levels/ccr/ccr_block/geo.inc.c"
 #include "levels/ccr/ccr_step/geo.inc.c"
+#include "levels/ccr/ccr_switch/geo.inc.c"

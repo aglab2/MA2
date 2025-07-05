@@ -42,4 +42,6 @@ extern const LevelScript level_ccr_entry[];
 
 #include "levels/ccr/ccr_step/geo_header.h"
 
+#include "levels/ccr/ccr_switch/geo_header.h"
+
 #endif

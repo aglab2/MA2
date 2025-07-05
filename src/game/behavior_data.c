@@ -6611,7 +6611,6 @@ extern void bhv_cce_block_loop();
 const BehaviorScript bhvCCSpawnBlock[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
-    LOAD_COLLISION_DATA(cce_block_collision),
     CALL_NATIVE(bhv_cce_block_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_cce_block_loop),
@@ -6794,5 +6793,37 @@ const BehaviorScript bhvSmallWhompCC[] = {
     SET_HOME(),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_whomp_loop_cc),
+    END_LOOP(),
+};
+
+extern const Collision ccr_switch_p1_collision[];
+extern const Collision ccr_switch_p2_collision[];
+extern void bhv_ccr_switch_init();
+extern void bhv_ccr_switch_loop();
+extern const BehaviorScript bhvCCRSwitch[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    LOAD_COLLISION_DATA(ccr_switch_p1_collision),
+    CALL_NATIVE(load_object_static_model),
+    CALL_NATIVE(bhv_ccr_switch_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ccr_switch_loop),
+    END_LOOP(),
+};
+
+extern void bhv_ccr_switch2_loop();
+extern const BehaviorScript bhvCCRSwitchP2[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    LOAD_COLLISION_DATA(ccr_switch_p2_collision),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ccr_switch2_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern void bhv_ccr_capsule_loop();
+extern const BehaviorScript bhvCCRCapsule[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ccr_capsule_loop),
     END_LOOP(),
 };
