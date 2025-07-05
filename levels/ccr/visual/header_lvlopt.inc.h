@@ -278,6 +278,15 @@ extern const GeoLayout ccr_dl_048_object_011DDBBC_geo[];
 extern const GeoLayout ccr_dl_049_object_011DDAEC_geo[];
 extern const GeoLayout ccr_dl_050_object_011DDA1C_geo[];
 extern const GeoLayout ccr_dl_051_object_011DD94C_geo[];
+extern const GeoLayout ccr_dl_052_object_011DD87C_geo[];
+extern const GeoLayout ccr_dl_053_object_011DD7AC_geo[];
+extern const GeoLayout ccr_dl_054_object_011DD6DC_geo[];
+extern const GeoLayout ccr_dl_055_object_011DD60C_geo[];
+extern const GeoLayout ccr_dl_056_object_011DD53C_geo[];
+extern const GeoLayout ccr_dl_057_object_011DD46C_geo[];
+extern const GeoLayout ccr_dl_058_object_011DD39C_geo[];
+extern const GeoLayout ccr_dl_059_object_011DD2CC_geo[];
+extern const GeoLayout ccr_dl_060_object_011DD224_geo[];
 extern const GeoLayout ccr_dl_002_object_011E068C_001_geo[];
 extern const GeoLayout ccr_dl_003_object_011E05BC_001_geo[];
 extern const GeoLayout ccr_dl_004_object_011E04EC_001_geo[];
@@ -328,6 +337,15 @@ extern const GeoLayout ccr_dl_048_object_011DDBBC_001_geo[];
 extern const GeoLayout ccr_dl_049_object_011DDAEC_001_geo[];
 extern const GeoLayout ccr_dl_050_object_011DDA1C_001_geo[];
 extern const GeoLayout ccr_dl_051_object_011DD94C_001_geo[];
+extern const GeoLayout ccr_dl_052_object_011DD87C_001_geo[];
+extern const GeoLayout ccr_dl_053_object_011DD7AC_001_geo[];
+extern const GeoLayout ccr_dl_054_object_011DD6DC_001_geo[];
+extern const GeoLayout ccr_dl_055_object_011DD60C_001_geo[];
+extern const GeoLayout ccr_dl_056_object_011DD53C_001_geo[];
+extern const GeoLayout ccr_dl_057_object_011DD46C_001_geo[];
+extern const GeoLayout ccr_dl_058_object_011DD39C_001_geo[];
+extern const GeoLayout ccr_dl_059_object_011DD2CC_001_geo[];
+extern const GeoLayout ccr_dl_060_object_011DD224_001_geo[];
 extern const GeoLayout ccr_dl_002_object_011E068C_002_geo[];
 extern const GeoLayout ccr_dl_003_object_011E05BC_002_geo[];
 extern const GeoLayout ccr_dl_004_object_011E04EC_002_geo[];
@@ -378,6 +396,15 @@ extern const GeoLayout ccr_dl_048_object_011DDBBC_002_geo[];
 extern const GeoLayout ccr_dl_049_object_011DDAEC_002_geo[];
 extern const GeoLayout ccr_dl_050_object_011DDA1C_002_geo[];
 extern const GeoLayout ccr_dl_051_object_011DD94C_002_geo[];
+extern const GeoLayout ccr_dl_052_object_011DD87C_002_geo[];
+extern const GeoLayout ccr_dl_053_object_011DD7AC_002_geo[];
+extern const GeoLayout ccr_dl_054_object_011DD6DC_002_geo[];
+extern const GeoLayout ccr_dl_055_object_011DD60C_002_geo[];
+extern const GeoLayout ccr_dl_056_object_011DD53C_002_geo[];
+extern const GeoLayout ccr_dl_057_object_011DD46C_002_geo[];
+extern const GeoLayout ccr_dl_058_object_011DD39C_002_geo[];
+extern const GeoLayout ccr_dl_059_object_011DD2CC_002_geo[];
+extern const GeoLayout ccr_dl_060_object_011DD224_002_geo[];
 extern const GeoLayout ccr_dl_002_object_011E068C_003_geo[];
 extern const GeoLayout ccr_dl_003_object_011E05BC_003_geo[];
 extern const GeoLayout ccr_dl_004_object_011E04EC_003_geo[];
@@ -428,6 +455,15 @@ extern const GeoLayout ccr_dl_048_object_011DDBBC_003_geo[];
 extern const GeoLayout ccr_dl_049_object_011DDAEC_003_geo[];
 extern const GeoLayout ccr_dl_050_object_011DDA1C_003_geo[];
 extern const GeoLayout ccr_dl_051_object_011DD94C_003_geo[];
+extern const GeoLayout ccr_dl_052_object_011DD87C_003_geo[];
+extern const GeoLayout ccr_dl_053_object_011DD7AC_003_geo[];
+extern const GeoLayout ccr_dl_054_object_011DD6DC_003_geo[];
+extern const GeoLayout ccr_dl_055_object_011DD60C_003_geo[];
+extern const GeoLayout ccr_dl_056_object_011DD53C_003_geo[];
+extern const GeoLayout ccr_dl_057_object_011DD46C_003_geo[];
+extern const GeoLayout ccr_dl_058_object_011DD39C_003_geo[];
+extern const GeoLayout ccr_dl_059_object_011DD2CC_003_geo[];
+extern const GeoLayout ccr_dl_060_object_011DD224_003_geo[];
 extern const GeoLayout ccr_dl_002_object_011E3CF4_geo[];
 extern const GeoLayout ccr_dl_003_object_011E3C24_geo[];
 extern const GeoLayout ccr_dl_004_object_011E3B54_geo[];
@@ -478,6 +514,15 @@ extern const GeoLayout ccr_dl_048_object_011E1224_geo[];
 extern const GeoLayout ccr_dl_049_object_011E1154_geo[];
 extern const GeoLayout ccr_dl_050_object_011E1084_geo[];
 extern const GeoLayout ccr_dl_051_object_011E0FB4_geo[];
+extern const GeoLayout ccr_dl_052_object_011E0EE4_geo[];
+extern const GeoLayout ccr_dl_053_object_011E0E14_geo[];
+extern const GeoLayout ccr_dl_054_object_011E0D44_geo[];
+extern const GeoLayout ccr_dl_055_object_011E0C74_geo[];
+extern const GeoLayout ccr_dl_056_object_011E0BA4_geo[];
+extern const GeoLayout ccr_dl_057_object_011E0AD4_geo[];
+extern const GeoLayout ccr_dl_058_object_011E0A04_geo[];
+extern const GeoLayout ccr_dl_059_object_011E0934_geo[];
+extern const GeoLayout ccr_dl_060_object_011E0864_geo[];
 extern const GeoLayout ccr_dl_002_object_011E3CF4_001_geo[];
 extern const GeoLayout ccr_dl_003_object_011E3C24_001_geo[];
 extern const GeoLayout ccr_dl_004_object_011E3B54_001_geo[];
@@ -528,6 +573,15 @@ extern const GeoLayout ccr_dl_048_object_011E1224_001_geo[];
 extern const GeoLayout ccr_dl_049_object_011E1154_001_geo[];
 extern const GeoLayout ccr_dl_050_object_011E1084_001_geo[];
 extern const GeoLayout ccr_dl_051_object_011E0FB4_001_geo[];
+extern const GeoLayout ccr_dl_052_object_011E0EE4_001_geo[];
+extern const GeoLayout ccr_dl_053_object_011E0E14_001_geo[];
+extern const GeoLayout ccr_dl_054_object_011E0D44_001_geo[];
+extern const GeoLayout ccr_dl_055_object_011E0C74_001_geo[];
+extern const GeoLayout ccr_dl_056_object_011E0BA4_001_geo[];
+extern const GeoLayout ccr_dl_057_object_011E0AD4_001_geo[];
+extern const GeoLayout ccr_dl_058_object_011E0A04_001_geo[];
+extern const GeoLayout ccr_dl_059_object_011E0934_001_geo[];
+extern const GeoLayout ccr_dl_060_object_011E0864_001_geo[];
 extern const GeoLayout ccr_dl_002_object_011E3CF4_002_geo[];
 extern const GeoLayout ccr_dl_003_object_011E3C24_002_geo[];
 extern const GeoLayout ccr_dl_004_object_011E3B54_002_geo[];
@@ -578,6 +632,15 @@ extern const GeoLayout ccr_dl_048_object_011E1224_002_geo[];
 extern const GeoLayout ccr_dl_049_object_011E1154_002_geo[];
 extern const GeoLayout ccr_dl_050_object_011E1084_002_geo[];
 extern const GeoLayout ccr_dl_051_object_011E0FB4_002_geo[];
+extern const GeoLayout ccr_dl_052_object_011E0EE4_002_geo[];
+extern const GeoLayout ccr_dl_053_object_011E0E14_002_geo[];
+extern const GeoLayout ccr_dl_054_object_011E0D44_002_geo[];
+extern const GeoLayout ccr_dl_055_object_011E0C74_002_geo[];
+extern const GeoLayout ccr_dl_056_object_011E0BA4_002_geo[];
+extern const GeoLayout ccr_dl_057_object_011E0AD4_002_geo[];
+extern const GeoLayout ccr_dl_058_object_011E0A04_002_geo[];
+extern const GeoLayout ccr_dl_059_object_011E0934_002_geo[];
+extern const GeoLayout ccr_dl_060_object_011E0864_002_geo[];
 extern const GeoLayout ccr_dl_002_object_011E3CF4_003_geo[];
 extern const GeoLayout ccr_dl_003_object_011E3C24_003_geo[];
 extern const GeoLayout ccr_dl_004_object_011E3B54_003_geo[];
@@ -628,6 +691,15 @@ extern const GeoLayout ccr_dl_048_object_011E1224_003_geo[];
 extern const GeoLayout ccr_dl_049_object_011E1154_003_geo[];
 extern const GeoLayout ccr_dl_050_object_011E1084_003_geo[];
 extern const GeoLayout ccr_dl_051_object_011E0FB4_003_geo[];
+extern const GeoLayout ccr_dl_052_object_011E0EE4_003_geo[];
+extern const GeoLayout ccr_dl_053_object_011E0E14_003_geo[];
+extern const GeoLayout ccr_dl_054_object_011E0D44_003_geo[];
+extern const GeoLayout ccr_dl_055_object_011E0C74_003_geo[];
+extern const GeoLayout ccr_dl_056_object_011E0BA4_003_geo[];
+extern const GeoLayout ccr_dl_057_object_011E0AD4_003_geo[];
+extern const GeoLayout ccr_dl_058_object_011E0A04_003_geo[];
+extern const GeoLayout ccr_dl_059_object_011E0934_003_geo[];
+extern const GeoLayout ccr_dl_060_object_011E0864_003_geo[];
 extern const GeoLayout ccr_area_1[];
 extern const Collision ccr_area_1_collision[];
 extern const MacroObject ccr_area_1_macro_objs[];
@@ -1197,6 +1269,15 @@ extern Gfx ccr_dl_048_object_011DDBBC_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_049_object_011DDAEC_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_050_object_011DDA1C_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_051_object_011DD94C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_052_object_011DD87C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_053_object_011DD7AC_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_054_object_011DD6DC_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_055_object_011DD60C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_056_object_011DD53C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_057_object_011DD46C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_058_object_011DD39C_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_059_object_011DD2CC_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_060_object_011DD224_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_001_object_011E075C_001_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_002_object_011E068C_001_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_003_object_011E05BC_001_mesh_layer_5_tri_0[];
@@ -1248,6 +1329,15 @@ extern Gfx ccr_dl_048_object_011DDBBC_001_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_049_object_011DDAEC_001_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_050_object_011DDA1C_001_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_051_object_011DD94C_001_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_052_object_011DD87C_001_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_053_object_011DD7AC_001_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_054_object_011DD6DC_001_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_055_object_011DD60C_001_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_056_object_011DD53C_001_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_057_object_011DD46C_001_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_058_object_011DD39C_001_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_059_object_011DD2CC_001_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_060_object_011DD224_001_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_001_object_011E075C_002_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_002_object_011E068C_002_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_003_object_011E05BC_002_mesh_layer_5_tri_0[];
@@ -1299,6 +1389,15 @@ extern Gfx ccr_dl_048_object_011DDBBC_002_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_049_object_011DDAEC_002_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_050_object_011DDA1C_002_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_051_object_011DD94C_002_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_052_object_011DD87C_002_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_053_object_011DD7AC_002_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_054_object_011DD6DC_002_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_055_object_011DD60C_002_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_056_object_011DD53C_002_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_057_object_011DD46C_002_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_058_object_011DD39C_002_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_059_object_011DD2CC_002_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_060_object_011DD224_002_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_001_object_011E075C_003_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_002_object_011E068C_003_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_003_object_011E05BC_003_mesh_layer_5_tri_0[];
@@ -1350,6 +1449,15 @@ extern Gfx ccr_dl_048_object_011DDBBC_003_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_049_object_011DDAEC_003_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_050_object_011DDA1C_003_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_051_object_011DD94C_003_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_052_object_011DD87C_003_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_053_object_011DD7AC_003_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_054_object_011DD6DC_003_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_055_object_011DD60C_003_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_056_object_011DD53C_003_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_057_object_011DD46C_003_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_058_object_011DD39C_003_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_059_object_011DD2CC_003_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_060_object_011DD224_003_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_001_object_011E3DC4_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_002_object_011E3CF4_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_003_object_011E3C24_mesh_layer_5_tri_0[];
@@ -1401,6 +1509,15 @@ extern Gfx ccr_dl_048_object_011E1224_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_049_object_011E1154_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_050_object_011E1084_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_051_object_011E0FB4_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_052_object_011E0EE4_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_053_object_011E0E14_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_054_object_011E0D44_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_055_object_011E0C74_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_056_object_011E0BA4_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_057_object_011E0AD4_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_058_object_011E0A04_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_059_object_011E0934_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_060_object_011E0864_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_001_object_011E3DC4_001_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_002_object_011E3CF4_001_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_003_object_011E3C24_001_mesh_layer_5_tri_0[];
@@ -1452,6 +1569,15 @@ extern Gfx ccr_dl_048_object_011E1224_001_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_049_object_011E1154_001_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_050_object_011E1084_001_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_051_object_011E0FB4_001_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_052_object_011E0EE4_001_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_053_object_011E0E14_001_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_054_object_011E0D44_001_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_055_object_011E0C74_001_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_056_object_011E0BA4_001_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_057_object_011E0AD4_001_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_058_object_011E0A04_001_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_059_object_011E0934_001_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_060_object_011E0864_001_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_001_object_011E3DC4_002_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_002_object_011E3CF4_002_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_003_object_011E3C24_002_mesh_layer_5_tri_0[];
@@ -1503,6 +1629,15 @@ extern Gfx ccr_dl_048_object_011E1224_002_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_049_object_011E1154_002_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_050_object_011E1084_002_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_051_object_011E0FB4_002_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_052_object_011E0EE4_002_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_053_object_011E0E14_002_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_054_object_011E0D44_002_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_055_object_011E0C74_002_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_056_object_011E0BA4_002_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_057_object_011E0AD4_002_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_058_object_011E0A04_002_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_059_object_011E0934_002_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_060_object_011E0864_002_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_001_object_011E3DC4_003_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_002_object_011E3CF4_003_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_003_object_011E3C24_003_mesh_layer_5_tri_0[];
@@ -1554,6 +1689,15 @@ extern Gfx ccr_dl_048_object_011E1224_003_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_049_object_011E1154_003_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_050_object_011E1084_003_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_051_object_011E0FB4_003_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_052_object_011E0EE4_003_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_053_object_011E0E14_003_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_054_object_011E0D44_003_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_055_object_011E0C74_003_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_056_object_011E0BA4_003_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_057_object_011E0AD4_003_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_058_object_011E0A04_003_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_059_object_011E0934_003_mesh_layer_5_tri_0[];
+extern Gfx ccr_dl_060_object_011E0864_003_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_object_011B005C_mesh_layer_1_tri_0[];
 extern Gfx ccr_dl_object_011B3C1C_mesh_layer_5_tri_0[];
 extern Gfx ccr_dl_object_011B3D1C_mesh_layer_5_tri_0[];
@@ -1950,6 +2094,15 @@ extern u32 ccr_dl_048_object_011DDBBC_mesh_layer_5[];
 extern u32 ccr_dl_049_object_011DDAEC_mesh_layer_5[];
 extern u32 ccr_dl_050_object_011DDA1C_mesh_layer_5[];
 extern u32 ccr_dl_051_object_011DD94C_mesh_layer_5[];
+extern u32 ccr_dl_052_object_011DD87C_mesh_layer_5[];
+extern u32 ccr_dl_053_object_011DD7AC_mesh_layer_5[];
+extern u32 ccr_dl_054_object_011DD6DC_mesh_layer_5[];
+extern u32 ccr_dl_055_object_011DD60C_mesh_layer_5[];
+extern u32 ccr_dl_056_object_011DD53C_mesh_layer_5[];
+extern u32 ccr_dl_057_object_011DD46C_mesh_layer_5[];
+extern u32 ccr_dl_058_object_011DD39C_mesh_layer_5[];
+extern u32 ccr_dl_059_object_011DD2CC_mesh_layer_5[];
+extern u32 ccr_dl_060_object_011DD224_mesh_layer_5[];
 extern u32 ccr_dl_001_object_011E075C_001_mesh_layer_5[];
 extern u32 ccr_dl_002_object_011E068C_001_mesh_layer_5[];
 extern u32 ccr_dl_003_object_011E05BC_001_mesh_layer_5[];
@@ -2001,6 +2154,15 @@ extern u32 ccr_dl_048_object_011DDBBC_001_mesh_layer_5[];
 extern u32 ccr_dl_049_object_011DDAEC_001_mesh_layer_5[];
 extern u32 ccr_dl_050_object_011DDA1C_001_mesh_layer_5[];
 extern u32 ccr_dl_051_object_011DD94C_001_mesh_layer_5[];
+extern u32 ccr_dl_052_object_011DD87C_001_mesh_layer_5[];
+extern u32 ccr_dl_053_object_011DD7AC_001_mesh_layer_5[];
+extern u32 ccr_dl_054_object_011DD6DC_001_mesh_layer_5[];
+extern u32 ccr_dl_055_object_011DD60C_001_mesh_layer_5[];
+extern u32 ccr_dl_056_object_011DD53C_001_mesh_layer_5[];
+extern u32 ccr_dl_057_object_011DD46C_001_mesh_layer_5[];
+extern u32 ccr_dl_058_object_011DD39C_001_mesh_layer_5[];
+extern u32 ccr_dl_059_object_011DD2CC_001_mesh_layer_5[];
+extern u32 ccr_dl_060_object_011DD224_001_mesh_layer_5[];
 extern u32 ccr_dl_001_object_011E075C_002_mesh_layer_5[];
 extern u32 ccr_dl_002_object_011E068C_002_mesh_layer_5[];
 extern u32 ccr_dl_003_object_011E05BC_002_mesh_layer_5[];
@@ -2052,6 +2214,15 @@ extern u32 ccr_dl_048_object_011DDBBC_002_mesh_layer_5[];
 extern u32 ccr_dl_049_object_011DDAEC_002_mesh_layer_5[];
 extern u32 ccr_dl_050_object_011DDA1C_002_mesh_layer_5[];
 extern u32 ccr_dl_051_object_011DD94C_002_mesh_layer_5[];
+extern u32 ccr_dl_052_object_011DD87C_002_mesh_layer_5[];
+extern u32 ccr_dl_053_object_011DD7AC_002_mesh_layer_5[];
+extern u32 ccr_dl_054_object_011DD6DC_002_mesh_layer_5[];
+extern u32 ccr_dl_055_object_011DD60C_002_mesh_layer_5[];
+extern u32 ccr_dl_056_object_011DD53C_002_mesh_layer_5[];
+extern u32 ccr_dl_057_object_011DD46C_002_mesh_layer_5[];
+extern u32 ccr_dl_058_object_011DD39C_002_mesh_layer_5[];
+extern u32 ccr_dl_059_object_011DD2CC_002_mesh_layer_5[];
+extern u32 ccr_dl_060_object_011DD224_002_mesh_layer_5[];
 extern u32 ccr_dl_001_object_011E075C_003_mesh_layer_5[];
 extern u32 ccr_dl_002_object_011E068C_003_mesh_layer_5[];
 extern u32 ccr_dl_003_object_011E05BC_003_mesh_layer_5[];
@@ -2103,6 +2274,15 @@ extern u32 ccr_dl_048_object_011DDBBC_003_mesh_layer_5[];
 extern u32 ccr_dl_049_object_011DDAEC_003_mesh_layer_5[];
 extern u32 ccr_dl_050_object_011DDA1C_003_mesh_layer_5[];
 extern u32 ccr_dl_051_object_011DD94C_003_mesh_layer_5[];
+extern u32 ccr_dl_052_object_011DD87C_003_mesh_layer_5[];
+extern u32 ccr_dl_053_object_011DD7AC_003_mesh_layer_5[];
+extern u32 ccr_dl_054_object_011DD6DC_003_mesh_layer_5[];
+extern u32 ccr_dl_055_object_011DD60C_003_mesh_layer_5[];
+extern u32 ccr_dl_056_object_011DD53C_003_mesh_layer_5[];
+extern u32 ccr_dl_057_object_011DD46C_003_mesh_layer_5[];
+extern u32 ccr_dl_058_object_011DD39C_003_mesh_layer_5[];
+extern u32 ccr_dl_059_object_011DD2CC_003_mesh_layer_5[];
+extern u32 ccr_dl_060_object_011DD224_003_mesh_layer_5[];
 extern u32 ccr_dl_001_object_011E3DC4_mesh_layer_5[];
 extern u32 ccr_dl_002_object_011E3CF4_mesh_layer_5[];
 extern u32 ccr_dl_003_object_011E3C24_mesh_layer_5[];
@@ -2154,6 +2334,15 @@ extern u32 ccr_dl_048_object_011E1224_mesh_layer_5[];
 extern u32 ccr_dl_049_object_011E1154_mesh_layer_5[];
 extern u32 ccr_dl_050_object_011E1084_mesh_layer_5[];
 extern u32 ccr_dl_051_object_011E0FB4_mesh_layer_5[];
+extern u32 ccr_dl_052_object_011E0EE4_mesh_layer_5[];
+extern u32 ccr_dl_053_object_011E0E14_mesh_layer_5[];
+extern u32 ccr_dl_054_object_011E0D44_mesh_layer_5[];
+extern u32 ccr_dl_055_object_011E0C74_mesh_layer_5[];
+extern u32 ccr_dl_056_object_011E0BA4_mesh_layer_5[];
+extern u32 ccr_dl_057_object_011E0AD4_mesh_layer_5[];
+extern u32 ccr_dl_058_object_011E0A04_mesh_layer_5[];
+extern u32 ccr_dl_059_object_011E0934_mesh_layer_5[];
+extern u32 ccr_dl_060_object_011E0864_mesh_layer_5[];
 extern u32 ccr_dl_001_object_011E3DC4_001_mesh_layer_5[];
 extern u32 ccr_dl_002_object_011E3CF4_001_mesh_layer_5[];
 extern u32 ccr_dl_003_object_011E3C24_001_mesh_layer_5[];
@@ -2205,6 +2394,15 @@ extern u32 ccr_dl_048_object_011E1224_001_mesh_layer_5[];
 extern u32 ccr_dl_049_object_011E1154_001_mesh_layer_5[];
 extern u32 ccr_dl_050_object_011E1084_001_mesh_layer_5[];
 extern u32 ccr_dl_051_object_011E0FB4_001_mesh_layer_5[];
+extern u32 ccr_dl_052_object_011E0EE4_001_mesh_layer_5[];
+extern u32 ccr_dl_053_object_011E0E14_001_mesh_layer_5[];
+extern u32 ccr_dl_054_object_011E0D44_001_mesh_layer_5[];
+extern u32 ccr_dl_055_object_011E0C74_001_mesh_layer_5[];
+extern u32 ccr_dl_056_object_011E0BA4_001_mesh_layer_5[];
+extern u32 ccr_dl_057_object_011E0AD4_001_mesh_layer_5[];
+extern u32 ccr_dl_058_object_011E0A04_001_mesh_layer_5[];
+extern u32 ccr_dl_059_object_011E0934_001_mesh_layer_5[];
+extern u32 ccr_dl_060_object_011E0864_001_mesh_layer_5[];
 extern u32 ccr_dl_001_object_011E3DC4_002_mesh_layer_5[];
 extern u32 ccr_dl_002_object_011E3CF4_002_mesh_layer_5[];
 extern u32 ccr_dl_003_object_011E3C24_002_mesh_layer_5[];
@@ -2256,6 +2454,15 @@ extern u32 ccr_dl_048_object_011E1224_002_mesh_layer_5[];
 extern u32 ccr_dl_049_object_011E1154_002_mesh_layer_5[];
 extern u32 ccr_dl_050_object_011E1084_002_mesh_layer_5[];
 extern u32 ccr_dl_051_object_011E0FB4_002_mesh_layer_5[];
+extern u32 ccr_dl_052_object_011E0EE4_002_mesh_layer_5[];
+extern u32 ccr_dl_053_object_011E0E14_002_mesh_layer_5[];
+extern u32 ccr_dl_054_object_011E0D44_002_mesh_layer_5[];
+extern u32 ccr_dl_055_object_011E0C74_002_mesh_layer_5[];
+extern u32 ccr_dl_056_object_011E0BA4_002_mesh_layer_5[];
+extern u32 ccr_dl_057_object_011E0AD4_002_mesh_layer_5[];
+extern u32 ccr_dl_058_object_011E0A04_002_mesh_layer_5[];
+extern u32 ccr_dl_059_object_011E0934_002_mesh_layer_5[];
+extern u32 ccr_dl_060_object_011E0864_002_mesh_layer_5[];
 extern u32 ccr_dl_001_object_011E3DC4_003_mesh_layer_5[];
 extern u32 ccr_dl_002_object_011E3CF4_003_mesh_layer_5[];
 extern u32 ccr_dl_003_object_011E3C24_003_mesh_layer_5[];
@@ -2307,6 +2514,15 @@ extern u32 ccr_dl_048_object_011E1224_003_mesh_layer_5[];
 extern u32 ccr_dl_049_object_011E1154_003_mesh_layer_5[];
 extern u32 ccr_dl_050_object_011E1084_003_mesh_layer_5[];
 extern u32 ccr_dl_051_object_011E0FB4_003_mesh_layer_5[];
+extern u32 ccr_dl_052_object_011E0EE4_003_mesh_layer_5[];
+extern u32 ccr_dl_053_object_011E0E14_003_mesh_layer_5[];
+extern u32 ccr_dl_054_object_011E0D44_003_mesh_layer_5[];
+extern u32 ccr_dl_055_object_011E0C74_003_mesh_layer_5[];
+extern u32 ccr_dl_056_object_011E0BA4_003_mesh_layer_5[];
+extern u32 ccr_dl_057_object_011E0AD4_003_mesh_layer_5[];
+extern u32 ccr_dl_058_object_011E0A04_003_mesh_layer_5[];
+extern u32 ccr_dl_059_object_011E0934_003_mesh_layer_5[];
+extern u32 ccr_dl_060_object_011E0864_003_mesh_layer_5[];
 extern u32 ccr_dl_object_011B005C_mesh_layer_1[];
 extern u32 ccr_dl_object_011B3C1C_mesh_layer_5[];
 extern u32 ccr_dl_object_011B3D1C_mesh_layer_5[];
@@ -2356,14 +2572,14 @@ extern u32 ccr_dl_object_011CDD2C_mesh_layer_5[];
 #define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_PAL_RGBA16 0
 #define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32 1
 #define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_1 2
-#define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32 3
+#define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2 3
 #define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32 4
 #define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1 5
 #define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER1_01_PAL_RGBA16 6
 #define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER1_01_PAL_RGBA16_1 7
-#define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2 8
-#define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_3 9
-#define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1 10
+#define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_3 8
+#define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_4 9
+#define LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32 10
 extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
 #define ccr_dl_0007_object_013C015C_mesh_layer_1_vtx_0 ccr_dl_0005_object_013C34E4_mesh_layer_1_vtx_0
 #define ccr_dl_0007_object_013C015C_mesh_layer_1_vtx_2 ccr_dl_0005_object_013C34E4_mesh_layer_1_vtx_2
@@ -2625,6 +2841,15 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
 #define ccr_dl_049_object_011DDAEC_001_mesh_layer_5_vtx_0 ccr_dl_049_object_011DDAEC_mesh_layer_5_vtx_0
 #define ccr_dl_050_object_011DDA1C_001_mesh_layer_5_vtx_0 ccr_dl_050_object_011DDA1C_mesh_layer_5_vtx_0
 #define ccr_dl_051_object_011DD94C_001_mesh_layer_5_vtx_0 ccr_dl_051_object_011DD94C_mesh_layer_5_vtx_0
+#define ccr_dl_052_object_011DD87C_001_mesh_layer_5_vtx_0 ccr_dl_052_object_011DD87C_mesh_layer_5_vtx_0
+#define ccr_dl_053_object_011DD7AC_001_mesh_layer_5_vtx_0 ccr_dl_053_object_011DD7AC_mesh_layer_5_vtx_0
+#define ccr_dl_054_object_011DD6DC_001_mesh_layer_5_vtx_0 ccr_dl_054_object_011DD6DC_mesh_layer_5_vtx_0
+#define ccr_dl_055_object_011DD60C_001_mesh_layer_5_vtx_0 ccr_dl_055_object_011DD60C_mesh_layer_5_vtx_0
+#define ccr_dl_056_object_011DD53C_001_mesh_layer_5_vtx_0 ccr_dl_056_object_011DD53C_mesh_layer_5_vtx_0
+#define ccr_dl_057_object_011DD46C_001_mesh_layer_5_vtx_0 ccr_dl_057_object_011DD46C_mesh_layer_5_vtx_0
+#define ccr_dl_058_object_011DD39C_001_mesh_layer_5_vtx_0 ccr_dl_058_object_011DD39C_mesh_layer_5_vtx_0
+#define ccr_dl_059_object_011DD2CC_001_mesh_layer_5_vtx_0 ccr_dl_059_object_011DD2CC_mesh_layer_5_vtx_0
+#define ccr_dl_060_object_011DD224_001_mesh_layer_5_vtx_0 ccr_dl_060_object_011DD224_mesh_layer_5_vtx_0
 #define ccr_dl_001_object_011E075C_002_mesh_layer_5_vtx_0 ccr_dl_001_object_011E075C_mesh_layer_5_vtx_0
 #define ccr_dl_002_object_011E068C_002_mesh_layer_5_vtx_0 ccr_dl_002_object_011E068C_mesh_layer_5_vtx_0
 #define ccr_dl_003_object_011E05BC_002_mesh_layer_5_vtx_0 ccr_dl_003_object_011E05BC_mesh_layer_5_vtx_0
@@ -2676,6 +2901,15 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
 #define ccr_dl_049_object_011DDAEC_002_mesh_layer_5_vtx_0 ccr_dl_049_object_011DDAEC_mesh_layer_5_vtx_0
 #define ccr_dl_050_object_011DDA1C_002_mesh_layer_5_vtx_0 ccr_dl_050_object_011DDA1C_mesh_layer_5_vtx_0
 #define ccr_dl_051_object_011DD94C_002_mesh_layer_5_vtx_0 ccr_dl_051_object_011DD94C_mesh_layer_5_vtx_0
+#define ccr_dl_052_object_011DD87C_002_mesh_layer_5_vtx_0 ccr_dl_052_object_011DD87C_mesh_layer_5_vtx_0
+#define ccr_dl_053_object_011DD7AC_002_mesh_layer_5_vtx_0 ccr_dl_053_object_011DD7AC_mesh_layer_5_vtx_0
+#define ccr_dl_054_object_011DD6DC_002_mesh_layer_5_vtx_0 ccr_dl_054_object_011DD6DC_mesh_layer_5_vtx_0
+#define ccr_dl_055_object_011DD60C_002_mesh_layer_5_vtx_0 ccr_dl_055_object_011DD60C_mesh_layer_5_vtx_0
+#define ccr_dl_056_object_011DD53C_002_mesh_layer_5_vtx_0 ccr_dl_056_object_011DD53C_mesh_layer_5_vtx_0
+#define ccr_dl_057_object_011DD46C_002_mesh_layer_5_vtx_0 ccr_dl_057_object_011DD46C_mesh_layer_5_vtx_0
+#define ccr_dl_058_object_011DD39C_002_mesh_layer_5_vtx_0 ccr_dl_058_object_011DD39C_mesh_layer_5_vtx_0
+#define ccr_dl_059_object_011DD2CC_002_mesh_layer_5_vtx_0 ccr_dl_059_object_011DD2CC_mesh_layer_5_vtx_0
+#define ccr_dl_060_object_011DD224_002_mesh_layer_5_vtx_0 ccr_dl_060_object_011DD224_mesh_layer_5_vtx_0
 #define ccr_dl_001_object_011E075C_003_mesh_layer_5_vtx_0 ccr_dl_001_object_011E075C_mesh_layer_5_vtx_0
 #define ccr_dl_002_object_011E068C_003_mesh_layer_5_vtx_0 ccr_dl_002_object_011E068C_mesh_layer_5_vtx_0
 #define ccr_dl_003_object_011E05BC_003_mesh_layer_5_vtx_0 ccr_dl_003_object_011E05BC_mesh_layer_5_vtx_0
@@ -2727,6 +2961,15 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
 #define ccr_dl_049_object_011DDAEC_003_mesh_layer_5_vtx_0 ccr_dl_049_object_011DDAEC_mesh_layer_5_vtx_0
 #define ccr_dl_050_object_011DDA1C_003_mesh_layer_5_vtx_0 ccr_dl_050_object_011DDA1C_mesh_layer_5_vtx_0
 #define ccr_dl_051_object_011DD94C_003_mesh_layer_5_vtx_0 ccr_dl_051_object_011DD94C_mesh_layer_5_vtx_0
+#define ccr_dl_052_object_011DD87C_003_mesh_layer_5_vtx_0 ccr_dl_052_object_011DD87C_mesh_layer_5_vtx_0
+#define ccr_dl_053_object_011DD7AC_003_mesh_layer_5_vtx_0 ccr_dl_053_object_011DD7AC_mesh_layer_5_vtx_0
+#define ccr_dl_054_object_011DD6DC_003_mesh_layer_5_vtx_0 ccr_dl_054_object_011DD6DC_mesh_layer_5_vtx_0
+#define ccr_dl_055_object_011DD60C_003_mesh_layer_5_vtx_0 ccr_dl_055_object_011DD60C_mesh_layer_5_vtx_0
+#define ccr_dl_056_object_011DD53C_003_mesh_layer_5_vtx_0 ccr_dl_056_object_011DD53C_mesh_layer_5_vtx_0
+#define ccr_dl_057_object_011DD46C_003_mesh_layer_5_vtx_0 ccr_dl_057_object_011DD46C_mesh_layer_5_vtx_0
+#define ccr_dl_058_object_011DD39C_003_mesh_layer_5_vtx_0 ccr_dl_058_object_011DD39C_mesh_layer_5_vtx_0
+#define ccr_dl_059_object_011DD2CC_003_mesh_layer_5_vtx_0 ccr_dl_059_object_011DD2CC_mesh_layer_5_vtx_0
+#define ccr_dl_060_object_011DD224_003_mesh_layer_5_vtx_0 ccr_dl_060_object_011DD224_mesh_layer_5_vtx_0
 #define ccr_dl_001_object_011E3DC4_001_mesh_layer_5_vtx_0 ccr_dl_001_object_011E3DC4_mesh_layer_5_vtx_0
 #define ccr_dl_002_object_011E3CF4_001_mesh_layer_5_vtx_0 ccr_dl_002_object_011E3CF4_mesh_layer_5_vtx_0
 #define ccr_dl_003_object_011E3C24_001_mesh_layer_5_vtx_0 ccr_dl_003_object_011E3C24_mesh_layer_5_vtx_0
@@ -2778,6 +3021,15 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
 #define ccr_dl_049_object_011E1154_001_mesh_layer_5_vtx_0 ccr_dl_049_object_011E1154_mesh_layer_5_vtx_0
 #define ccr_dl_050_object_011E1084_001_mesh_layer_5_vtx_0 ccr_dl_050_object_011E1084_mesh_layer_5_vtx_0
 #define ccr_dl_051_object_011E0FB4_001_mesh_layer_5_vtx_0 ccr_dl_051_object_011E0FB4_mesh_layer_5_vtx_0
+#define ccr_dl_052_object_011E0EE4_001_mesh_layer_5_vtx_0 ccr_dl_052_object_011E0EE4_mesh_layer_5_vtx_0
+#define ccr_dl_053_object_011E0E14_001_mesh_layer_5_vtx_0 ccr_dl_053_object_011E0E14_mesh_layer_5_vtx_0
+#define ccr_dl_054_object_011E0D44_001_mesh_layer_5_vtx_0 ccr_dl_054_object_011E0D44_mesh_layer_5_vtx_0
+#define ccr_dl_055_object_011E0C74_001_mesh_layer_5_vtx_0 ccr_dl_055_object_011E0C74_mesh_layer_5_vtx_0
+#define ccr_dl_056_object_011E0BA4_001_mesh_layer_5_vtx_0 ccr_dl_056_object_011E0BA4_mesh_layer_5_vtx_0
+#define ccr_dl_057_object_011E0AD4_001_mesh_layer_5_vtx_0 ccr_dl_057_object_011E0AD4_mesh_layer_5_vtx_0
+#define ccr_dl_058_object_011E0A04_001_mesh_layer_5_vtx_0 ccr_dl_058_object_011E0A04_mesh_layer_5_vtx_0
+#define ccr_dl_059_object_011E0934_001_mesh_layer_5_vtx_0 ccr_dl_059_object_011E0934_mesh_layer_5_vtx_0
+#define ccr_dl_060_object_011E0864_001_mesh_layer_5_vtx_0 ccr_dl_060_object_011E0864_mesh_layer_5_vtx_0
 #define ccr_dl_001_object_011E3DC4_002_mesh_layer_5_vtx_0 ccr_dl_001_object_011E3DC4_mesh_layer_5_vtx_0
 #define ccr_dl_002_object_011E3CF4_002_mesh_layer_5_vtx_0 ccr_dl_002_object_011E3CF4_mesh_layer_5_vtx_0
 #define ccr_dl_003_object_011E3C24_002_mesh_layer_5_vtx_0 ccr_dl_003_object_011E3C24_mesh_layer_5_vtx_0
@@ -2829,6 +3081,15 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
 #define ccr_dl_049_object_011E1154_002_mesh_layer_5_vtx_0 ccr_dl_049_object_011E1154_mesh_layer_5_vtx_0
 #define ccr_dl_050_object_011E1084_002_mesh_layer_5_vtx_0 ccr_dl_050_object_011E1084_mesh_layer_5_vtx_0
 #define ccr_dl_051_object_011E0FB4_002_mesh_layer_5_vtx_0 ccr_dl_051_object_011E0FB4_mesh_layer_5_vtx_0
+#define ccr_dl_052_object_011E0EE4_002_mesh_layer_5_vtx_0 ccr_dl_052_object_011E0EE4_mesh_layer_5_vtx_0
+#define ccr_dl_053_object_011E0E14_002_mesh_layer_5_vtx_0 ccr_dl_053_object_011E0E14_mesh_layer_5_vtx_0
+#define ccr_dl_054_object_011E0D44_002_mesh_layer_5_vtx_0 ccr_dl_054_object_011E0D44_mesh_layer_5_vtx_0
+#define ccr_dl_055_object_011E0C74_002_mesh_layer_5_vtx_0 ccr_dl_055_object_011E0C74_mesh_layer_5_vtx_0
+#define ccr_dl_056_object_011E0BA4_002_mesh_layer_5_vtx_0 ccr_dl_056_object_011E0BA4_mesh_layer_5_vtx_0
+#define ccr_dl_057_object_011E0AD4_002_mesh_layer_5_vtx_0 ccr_dl_057_object_011E0AD4_mesh_layer_5_vtx_0
+#define ccr_dl_058_object_011E0A04_002_mesh_layer_5_vtx_0 ccr_dl_058_object_011E0A04_mesh_layer_5_vtx_0
+#define ccr_dl_059_object_011E0934_002_mesh_layer_5_vtx_0 ccr_dl_059_object_011E0934_mesh_layer_5_vtx_0
+#define ccr_dl_060_object_011E0864_002_mesh_layer_5_vtx_0 ccr_dl_060_object_011E0864_mesh_layer_5_vtx_0
 #define ccr_dl_001_object_011E3DC4_003_mesh_layer_5_vtx_0 ccr_dl_001_object_011E3DC4_mesh_layer_5_vtx_0
 #define ccr_dl_002_object_011E3CF4_003_mesh_layer_5_vtx_0 ccr_dl_002_object_011E3CF4_mesh_layer_5_vtx_0
 #define ccr_dl_003_object_011E3C24_003_mesh_layer_5_vtx_0 ccr_dl_003_object_011E3C24_mesh_layer_5_vtx_0
@@ -2880,6 +3141,15 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
 #define ccr_dl_049_object_011E1154_003_mesh_layer_5_vtx_0 ccr_dl_049_object_011E1154_mesh_layer_5_vtx_0
 #define ccr_dl_050_object_011E1084_003_mesh_layer_5_vtx_0 ccr_dl_050_object_011E1084_mesh_layer_5_vtx_0
 #define ccr_dl_051_object_011E0FB4_003_mesh_layer_5_vtx_0 ccr_dl_051_object_011E0FB4_mesh_layer_5_vtx_0
+#define ccr_dl_052_object_011E0EE4_003_mesh_layer_5_vtx_0 ccr_dl_052_object_011E0EE4_mesh_layer_5_vtx_0
+#define ccr_dl_053_object_011E0E14_003_mesh_layer_5_vtx_0 ccr_dl_053_object_011E0E14_mesh_layer_5_vtx_0
+#define ccr_dl_054_object_011E0D44_003_mesh_layer_5_vtx_0 ccr_dl_054_object_011E0D44_mesh_layer_5_vtx_0
+#define ccr_dl_055_object_011E0C74_003_mesh_layer_5_vtx_0 ccr_dl_055_object_011E0C74_mesh_layer_5_vtx_0
+#define ccr_dl_056_object_011E0BA4_003_mesh_layer_5_vtx_0 ccr_dl_056_object_011E0BA4_mesh_layer_5_vtx_0
+#define ccr_dl_057_object_011E0AD4_003_mesh_layer_5_vtx_0 ccr_dl_057_object_011E0AD4_mesh_layer_5_vtx_0
+#define ccr_dl_058_object_011E0A04_003_mesh_layer_5_vtx_0 ccr_dl_058_object_011E0A04_mesh_layer_5_vtx_0
+#define ccr_dl_059_object_011E0934_003_mesh_layer_5_vtx_0 ccr_dl_059_object_011E0934_mesh_layer_5_vtx_0
+#define ccr_dl_060_object_011E0864_003_mesh_layer_5_vtx_0 ccr_dl_060_object_011E0864_mesh_layer_5_vtx_0
 #define mat_revert_ccr_dl_objLandTable0037_sa2blvl_1_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
 #define mat_revert_ccr_dl_objLandTable0037_sa2blvl_3_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
 #define mat_revert_ccr_dl_objLandTable0037_sa2blvl_4_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
@@ -3186,6 +3456,15 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
 #define ccr_dl_049_object_011DDAEC_001_mesh_layer_5_tri_0 ccr_dl_049_object_011DDAEC_mesh_layer_5_tri_0
 #define ccr_dl_050_object_011DDA1C_001_mesh_layer_5_tri_0 ccr_dl_050_object_011DDA1C_mesh_layer_5_tri_0
 #define ccr_dl_051_object_011DD94C_001_mesh_layer_5_tri_0 ccr_dl_051_object_011DD94C_mesh_layer_5_tri_0
+#define ccr_dl_052_object_011DD87C_001_mesh_layer_5_tri_0 ccr_dl_052_object_011DD87C_mesh_layer_5_tri_0
+#define ccr_dl_053_object_011DD7AC_001_mesh_layer_5_tri_0 ccr_dl_053_object_011DD7AC_mesh_layer_5_tri_0
+#define ccr_dl_054_object_011DD6DC_001_mesh_layer_5_tri_0 ccr_dl_054_object_011DD6DC_mesh_layer_5_tri_0
+#define ccr_dl_055_object_011DD60C_001_mesh_layer_5_tri_0 ccr_dl_055_object_011DD60C_mesh_layer_5_tri_0
+#define ccr_dl_056_object_011DD53C_001_mesh_layer_5_tri_0 ccr_dl_056_object_011DD53C_mesh_layer_5_tri_0
+#define ccr_dl_057_object_011DD46C_001_mesh_layer_5_tri_0 ccr_dl_057_object_011DD46C_mesh_layer_5_tri_0
+#define ccr_dl_058_object_011DD39C_001_mesh_layer_5_tri_0 ccr_dl_058_object_011DD39C_mesh_layer_5_tri_0
+#define ccr_dl_059_object_011DD2CC_001_mesh_layer_5_tri_0 ccr_dl_059_object_011DD2CC_mesh_layer_5_tri_0
+#define ccr_dl_060_object_011DD224_001_mesh_layer_5_tri_0 ccr_dl_060_object_011DD224_mesh_layer_5_tri_0
 #define ccr_dl_001_object_011E075C_002_mesh_layer_5_tri_0 ccr_dl_001_object_011E075C_mesh_layer_5_tri_0
 #define ccr_dl_002_object_011E068C_002_mesh_layer_5_tri_0 ccr_dl_002_object_011E068C_mesh_layer_5_tri_0
 #define ccr_dl_003_object_011E05BC_002_mesh_layer_5_tri_0 ccr_dl_003_object_011E05BC_mesh_layer_5_tri_0
@@ -3237,6 +3516,15 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
 #define ccr_dl_049_object_011DDAEC_002_mesh_layer_5_tri_0 ccr_dl_049_object_011DDAEC_mesh_layer_5_tri_0
 #define ccr_dl_050_object_011DDA1C_002_mesh_layer_5_tri_0 ccr_dl_050_object_011DDA1C_mesh_layer_5_tri_0
 #define ccr_dl_051_object_011DD94C_002_mesh_layer_5_tri_0 ccr_dl_051_object_011DD94C_mesh_layer_5_tri_0
+#define ccr_dl_052_object_011DD87C_002_mesh_layer_5_tri_0 ccr_dl_052_object_011DD87C_mesh_layer_5_tri_0
+#define ccr_dl_053_object_011DD7AC_002_mesh_layer_5_tri_0 ccr_dl_053_object_011DD7AC_mesh_layer_5_tri_0
+#define ccr_dl_054_object_011DD6DC_002_mesh_layer_5_tri_0 ccr_dl_054_object_011DD6DC_mesh_layer_5_tri_0
+#define ccr_dl_055_object_011DD60C_002_mesh_layer_5_tri_0 ccr_dl_055_object_011DD60C_mesh_layer_5_tri_0
+#define ccr_dl_056_object_011DD53C_002_mesh_layer_5_tri_0 ccr_dl_056_object_011DD53C_mesh_layer_5_tri_0
+#define ccr_dl_057_object_011DD46C_002_mesh_layer_5_tri_0 ccr_dl_057_object_011DD46C_mesh_layer_5_tri_0
+#define ccr_dl_058_object_011DD39C_002_mesh_layer_5_tri_0 ccr_dl_058_object_011DD39C_mesh_layer_5_tri_0
+#define ccr_dl_059_object_011DD2CC_002_mesh_layer_5_tri_0 ccr_dl_059_object_011DD2CC_mesh_layer_5_tri_0
+#define ccr_dl_060_object_011DD224_002_mesh_layer_5_tri_0 ccr_dl_060_object_011DD224_mesh_layer_5_tri_0
 #define ccr_dl_001_object_011E075C_003_mesh_layer_5_tri_0 ccr_dl_001_object_011E075C_mesh_layer_5_tri_0
 #define ccr_dl_002_object_011E068C_003_mesh_layer_5_tri_0 ccr_dl_002_object_011E068C_mesh_layer_5_tri_0
 #define ccr_dl_003_object_011E05BC_003_mesh_layer_5_tri_0 ccr_dl_003_object_011E05BC_mesh_layer_5_tri_0
@@ -3288,6 +3576,15 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
 #define ccr_dl_049_object_011DDAEC_003_mesh_layer_5_tri_0 ccr_dl_049_object_011DDAEC_mesh_layer_5_tri_0
 #define ccr_dl_050_object_011DDA1C_003_mesh_layer_5_tri_0 ccr_dl_050_object_011DDA1C_mesh_layer_5_tri_0
 #define ccr_dl_051_object_011DD94C_003_mesh_layer_5_tri_0 ccr_dl_051_object_011DD94C_mesh_layer_5_tri_0
+#define ccr_dl_052_object_011DD87C_003_mesh_layer_5_tri_0 ccr_dl_052_object_011DD87C_mesh_layer_5_tri_0
+#define ccr_dl_053_object_011DD7AC_003_mesh_layer_5_tri_0 ccr_dl_053_object_011DD7AC_mesh_layer_5_tri_0
+#define ccr_dl_054_object_011DD6DC_003_mesh_layer_5_tri_0 ccr_dl_054_object_011DD6DC_mesh_layer_5_tri_0
+#define ccr_dl_055_object_011DD60C_003_mesh_layer_5_tri_0 ccr_dl_055_object_011DD60C_mesh_layer_5_tri_0
+#define ccr_dl_056_object_011DD53C_003_mesh_layer_5_tri_0 ccr_dl_056_object_011DD53C_mesh_layer_5_tri_0
+#define ccr_dl_057_object_011DD46C_003_mesh_layer_5_tri_0 ccr_dl_057_object_011DD46C_mesh_layer_5_tri_0
+#define ccr_dl_058_object_011DD39C_003_mesh_layer_5_tri_0 ccr_dl_058_object_011DD39C_mesh_layer_5_tri_0
+#define ccr_dl_059_object_011DD2CC_003_mesh_layer_5_tri_0 ccr_dl_059_object_011DD2CC_mesh_layer_5_tri_0
+#define ccr_dl_060_object_011DD224_003_mesh_layer_5_tri_0 ccr_dl_060_object_011DD224_mesh_layer_5_tri_0
 #define ccr_dl_001_object_011E3DC4_001_mesh_layer_5_tri_0 ccr_dl_001_object_011E3DC4_mesh_layer_5_tri_0
 #define ccr_dl_002_object_011E3CF4_001_mesh_layer_5_tri_0 ccr_dl_002_object_011E3CF4_mesh_layer_5_tri_0
 #define ccr_dl_003_object_011E3C24_001_mesh_layer_5_tri_0 ccr_dl_003_object_011E3C24_mesh_layer_5_tri_0
@@ -3339,6 +3636,15 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
 #define ccr_dl_049_object_011E1154_001_mesh_layer_5_tri_0 ccr_dl_049_object_011E1154_mesh_layer_5_tri_0
 #define ccr_dl_050_object_011E1084_001_mesh_layer_5_tri_0 ccr_dl_050_object_011E1084_mesh_layer_5_tri_0
 #define ccr_dl_051_object_011E0FB4_001_mesh_layer_5_tri_0 ccr_dl_051_object_011E0FB4_mesh_layer_5_tri_0
+#define ccr_dl_052_object_011E0EE4_001_mesh_layer_5_tri_0 ccr_dl_052_object_011E0EE4_mesh_layer_5_tri_0
+#define ccr_dl_053_object_011E0E14_001_mesh_layer_5_tri_0 ccr_dl_053_object_011E0E14_mesh_layer_5_tri_0
+#define ccr_dl_054_object_011E0D44_001_mesh_layer_5_tri_0 ccr_dl_054_object_011E0D44_mesh_layer_5_tri_0
+#define ccr_dl_055_object_011E0C74_001_mesh_layer_5_tri_0 ccr_dl_055_object_011E0C74_mesh_layer_5_tri_0
+#define ccr_dl_056_object_011E0BA4_001_mesh_layer_5_tri_0 ccr_dl_056_object_011E0BA4_mesh_layer_5_tri_0
+#define ccr_dl_057_object_011E0AD4_001_mesh_layer_5_tri_0 ccr_dl_057_object_011E0AD4_mesh_layer_5_tri_0
+#define ccr_dl_058_object_011E0A04_001_mesh_layer_5_tri_0 ccr_dl_058_object_011E0A04_mesh_layer_5_tri_0
+#define ccr_dl_059_object_011E0934_001_mesh_layer_5_tri_0 ccr_dl_059_object_011E0934_mesh_layer_5_tri_0
+#define ccr_dl_060_object_011E0864_001_mesh_layer_5_tri_0 ccr_dl_060_object_011E0864_mesh_layer_5_tri_0
 #define ccr_dl_001_object_011E3DC4_002_mesh_layer_5_tri_0 ccr_dl_001_object_011E3DC4_mesh_layer_5_tri_0
 #define ccr_dl_002_object_011E3CF4_002_mesh_layer_5_tri_0 ccr_dl_002_object_011E3CF4_mesh_layer_5_tri_0
 #define ccr_dl_003_object_011E3C24_002_mesh_layer_5_tri_0 ccr_dl_003_object_011E3C24_mesh_layer_5_tri_0
@@ -3390,6 +3696,15 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
 #define ccr_dl_049_object_011E1154_002_mesh_layer_5_tri_0 ccr_dl_049_object_011E1154_mesh_layer_5_tri_0
 #define ccr_dl_050_object_011E1084_002_mesh_layer_5_tri_0 ccr_dl_050_object_011E1084_mesh_layer_5_tri_0
 #define ccr_dl_051_object_011E0FB4_002_mesh_layer_5_tri_0 ccr_dl_051_object_011E0FB4_mesh_layer_5_tri_0
+#define ccr_dl_052_object_011E0EE4_002_mesh_layer_5_tri_0 ccr_dl_052_object_011E0EE4_mesh_layer_5_tri_0
+#define ccr_dl_053_object_011E0E14_002_mesh_layer_5_tri_0 ccr_dl_053_object_011E0E14_mesh_layer_5_tri_0
+#define ccr_dl_054_object_011E0D44_002_mesh_layer_5_tri_0 ccr_dl_054_object_011E0D44_mesh_layer_5_tri_0
+#define ccr_dl_055_object_011E0C74_002_mesh_layer_5_tri_0 ccr_dl_055_object_011E0C74_mesh_layer_5_tri_0
+#define ccr_dl_056_object_011E0BA4_002_mesh_layer_5_tri_0 ccr_dl_056_object_011E0BA4_mesh_layer_5_tri_0
+#define ccr_dl_057_object_011E0AD4_002_mesh_layer_5_tri_0 ccr_dl_057_object_011E0AD4_mesh_layer_5_tri_0
+#define ccr_dl_058_object_011E0A04_002_mesh_layer_5_tri_0 ccr_dl_058_object_011E0A04_mesh_layer_5_tri_0
+#define ccr_dl_059_object_011E0934_002_mesh_layer_5_tri_0 ccr_dl_059_object_011E0934_mesh_layer_5_tri_0
+#define ccr_dl_060_object_011E0864_002_mesh_layer_5_tri_0 ccr_dl_060_object_011E0864_mesh_layer_5_tri_0
 #define ccr_dl_001_object_011E3DC4_003_mesh_layer_5_tri_0 ccr_dl_001_object_011E3DC4_mesh_layer_5_tri_0
 #define ccr_dl_002_object_011E3CF4_003_mesh_layer_5_tri_0 ccr_dl_002_object_011E3CF4_mesh_layer_5_tri_0
 #define ccr_dl_003_object_011E3C24_003_mesh_layer_5_tri_0 ccr_dl_003_object_011E3C24_mesh_layer_5_tri_0
@@ -3441,6 +3756,15 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
 #define ccr_dl_049_object_011E1154_003_mesh_layer_5_tri_0 ccr_dl_049_object_011E1154_mesh_layer_5_tri_0
 #define ccr_dl_050_object_011E1084_003_mesh_layer_5_tri_0 ccr_dl_050_object_011E1084_mesh_layer_5_tri_0
 #define ccr_dl_051_object_011E0FB4_003_mesh_layer_5_tri_0 ccr_dl_051_object_011E0FB4_mesh_layer_5_tri_0
+#define ccr_dl_052_object_011E0EE4_003_mesh_layer_5_tri_0 ccr_dl_052_object_011E0EE4_mesh_layer_5_tri_0
+#define ccr_dl_053_object_011E0E14_003_mesh_layer_5_tri_0 ccr_dl_053_object_011E0E14_mesh_layer_5_tri_0
+#define ccr_dl_054_object_011E0D44_003_mesh_layer_5_tri_0 ccr_dl_054_object_011E0D44_mesh_layer_5_tri_0
+#define ccr_dl_055_object_011E0C74_003_mesh_layer_5_tri_0 ccr_dl_055_object_011E0C74_mesh_layer_5_tri_0
+#define ccr_dl_056_object_011E0BA4_003_mesh_layer_5_tri_0 ccr_dl_056_object_011E0BA4_mesh_layer_5_tri_0
+#define ccr_dl_057_object_011E0AD4_003_mesh_layer_5_tri_0 ccr_dl_057_object_011E0AD4_mesh_layer_5_tri_0
+#define ccr_dl_058_object_011E0A04_003_mesh_layer_5_tri_0 ccr_dl_058_object_011E0A04_mesh_layer_5_tri_0
+#define ccr_dl_059_object_011E0934_003_mesh_layer_5_tri_0 ccr_dl_059_object_011E0934_mesh_layer_5_tri_0
+#define ccr_dl_060_object_011E0864_003_mesh_layer_5_tri_0 ccr_dl_060_object_011E0864_mesh_layer_5_tri_0
 #define ccr_dl_006_object_011B0F1C_mesh_layer_5 ccr_dl_003_object_011B121C_mesh_layer_5
 #define ccr_dl_010_object_011B0B1C_mesh_layer_5 ccr_dl_008_object_011B0D1C_mesh_layer_5
 #define ccr_dl_011_object_011B0A1C_mesh_layer_5 ccr_dl_001_object_011B141C_mesh_layer_5
@@ -3646,6 +3970,15 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
 #define ccr_dl_049_object_011DDAEC_001_mesh_layer_5 ccr_dl_049_object_011DDAEC_mesh_layer_5
 #define ccr_dl_050_object_011DDA1C_001_mesh_layer_5 ccr_dl_050_object_011DDA1C_mesh_layer_5
 #define ccr_dl_051_object_011DD94C_001_mesh_layer_5 ccr_dl_051_object_011DD94C_mesh_layer_5
+#define ccr_dl_052_object_011DD87C_001_mesh_layer_5 ccr_dl_052_object_011DD87C_mesh_layer_5
+#define ccr_dl_053_object_011DD7AC_001_mesh_layer_5 ccr_dl_053_object_011DD7AC_mesh_layer_5
+#define ccr_dl_054_object_011DD6DC_001_mesh_layer_5 ccr_dl_054_object_011DD6DC_mesh_layer_5
+#define ccr_dl_055_object_011DD60C_001_mesh_layer_5 ccr_dl_055_object_011DD60C_mesh_layer_5
+#define ccr_dl_056_object_011DD53C_001_mesh_layer_5 ccr_dl_056_object_011DD53C_mesh_layer_5
+#define ccr_dl_057_object_011DD46C_001_mesh_layer_5 ccr_dl_057_object_011DD46C_mesh_layer_5
+#define ccr_dl_058_object_011DD39C_001_mesh_layer_5 ccr_dl_058_object_011DD39C_mesh_layer_5
+#define ccr_dl_059_object_011DD2CC_001_mesh_layer_5 ccr_dl_059_object_011DD2CC_mesh_layer_5
+#define ccr_dl_060_object_011DD224_001_mesh_layer_5 ccr_dl_060_object_011DD224_mesh_layer_5
 #define ccr_dl_002_object_011E068C_002_mesh_layer_5 ccr_dl_002_object_011E068C_mesh_layer_5
 #define ccr_dl_003_object_011E05BC_002_mesh_layer_5 ccr_dl_003_object_011E05BC_mesh_layer_5
 #define ccr_dl_004_object_011E04EC_002_mesh_layer_5 ccr_dl_004_object_011E04EC_mesh_layer_5
@@ -3696,6 +4029,15 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
 #define ccr_dl_049_object_011DDAEC_002_mesh_layer_5 ccr_dl_049_object_011DDAEC_mesh_layer_5
 #define ccr_dl_050_object_011DDA1C_002_mesh_layer_5 ccr_dl_050_object_011DDA1C_mesh_layer_5
 #define ccr_dl_051_object_011DD94C_002_mesh_layer_5 ccr_dl_051_object_011DD94C_mesh_layer_5
+#define ccr_dl_052_object_011DD87C_002_mesh_layer_5 ccr_dl_052_object_011DD87C_mesh_layer_5
+#define ccr_dl_053_object_011DD7AC_002_mesh_layer_5 ccr_dl_053_object_011DD7AC_mesh_layer_5
+#define ccr_dl_054_object_011DD6DC_002_mesh_layer_5 ccr_dl_054_object_011DD6DC_mesh_layer_5
+#define ccr_dl_055_object_011DD60C_002_mesh_layer_5 ccr_dl_055_object_011DD60C_mesh_layer_5
+#define ccr_dl_056_object_011DD53C_002_mesh_layer_5 ccr_dl_056_object_011DD53C_mesh_layer_5
+#define ccr_dl_057_object_011DD46C_002_mesh_layer_5 ccr_dl_057_object_011DD46C_mesh_layer_5
+#define ccr_dl_058_object_011DD39C_002_mesh_layer_5 ccr_dl_058_object_011DD39C_mesh_layer_5
+#define ccr_dl_059_object_011DD2CC_002_mesh_layer_5 ccr_dl_059_object_011DD2CC_mesh_layer_5
+#define ccr_dl_060_object_011DD224_002_mesh_layer_5 ccr_dl_060_object_011DD224_mesh_layer_5
 #define ccr_dl_002_object_011E068C_003_mesh_layer_5 ccr_dl_002_object_011E068C_mesh_layer_5
 #define ccr_dl_003_object_011E05BC_003_mesh_layer_5 ccr_dl_003_object_011E05BC_mesh_layer_5
 #define ccr_dl_004_object_011E04EC_003_mesh_layer_5 ccr_dl_004_object_011E04EC_mesh_layer_5
@@ -3746,6 +4088,15 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
 #define ccr_dl_049_object_011DDAEC_003_mesh_layer_5 ccr_dl_049_object_011DDAEC_mesh_layer_5
 #define ccr_dl_050_object_011DDA1C_003_mesh_layer_5 ccr_dl_050_object_011DDA1C_mesh_layer_5
 #define ccr_dl_051_object_011DD94C_003_mesh_layer_5 ccr_dl_051_object_011DD94C_mesh_layer_5
+#define ccr_dl_052_object_011DD87C_003_mesh_layer_5 ccr_dl_052_object_011DD87C_mesh_layer_5
+#define ccr_dl_053_object_011DD7AC_003_mesh_layer_5 ccr_dl_053_object_011DD7AC_mesh_layer_5
+#define ccr_dl_054_object_011DD6DC_003_mesh_layer_5 ccr_dl_054_object_011DD6DC_mesh_layer_5
+#define ccr_dl_055_object_011DD60C_003_mesh_layer_5 ccr_dl_055_object_011DD60C_mesh_layer_5
+#define ccr_dl_056_object_011DD53C_003_mesh_layer_5 ccr_dl_056_object_011DD53C_mesh_layer_5
+#define ccr_dl_057_object_011DD46C_003_mesh_layer_5 ccr_dl_057_object_011DD46C_mesh_layer_5
+#define ccr_dl_058_object_011DD39C_003_mesh_layer_5 ccr_dl_058_object_011DD39C_mesh_layer_5
+#define ccr_dl_059_object_011DD2CC_003_mesh_layer_5 ccr_dl_059_object_011DD2CC_mesh_layer_5
+#define ccr_dl_060_object_011DD224_003_mesh_layer_5 ccr_dl_060_object_011DD224_mesh_layer_5
 #define ccr_dl_002_object_011E3CF4_001_mesh_layer_5 ccr_dl_002_object_011E3CF4_mesh_layer_5
 #define ccr_dl_003_object_011E3C24_001_mesh_layer_5 ccr_dl_003_object_011E3C24_mesh_layer_5
 #define ccr_dl_004_object_011E3B54_001_mesh_layer_5 ccr_dl_004_object_011E3B54_mesh_layer_5
@@ -3796,6 +4147,15 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
 #define ccr_dl_049_object_011E1154_001_mesh_layer_5 ccr_dl_049_object_011E1154_mesh_layer_5
 #define ccr_dl_050_object_011E1084_001_mesh_layer_5 ccr_dl_050_object_011E1084_mesh_layer_5
 #define ccr_dl_051_object_011E0FB4_001_mesh_layer_5 ccr_dl_051_object_011E0FB4_mesh_layer_5
+#define ccr_dl_052_object_011E0EE4_001_mesh_layer_5 ccr_dl_052_object_011E0EE4_mesh_layer_5
+#define ccr_dl_053_object_011E0E14_001_mesh_layer_5 ccr_dl_053_object_011E0E14_mesh_layer_5
+#define ccr_dl_054_object_011E0D44_001_mesh_layer_5 ccr_dl_054_object_011E0D44_mesh_layer_5
+#define ccr_dl_055_object_011E0C74_001_mesh_layer_5 ccr_dl_055_object_011E0C74_mesh_layer_5
+#define ccr_dl_056_object_011E0BA4_001_mesh_layer_5 ccr_dl_056_object_011E0BA4_mesh_layer_5
+#define ccr_dl_057_object_011E0AD4_001_mesh_layer_5 ccr_dl_057_object_011E0AD4_mesh_layer_5
+#define ccr_dl_058_object_011E0A04_001_mesh_layer_5 ccr_dl_058_object_011E0A04_mesh_layer_5
+#define ccr_dl_059_object_011E0934_001_mesh_layer_5 ccr_dl_059_object_011E0934_mesh_layer_5
+#define ccr_dl_060_object_011E0864_001_mesh_layer_5 ccr_dl_060_object_011E0864_mesh_layer_5
 #define ccr_dl_002_object_011E3CF4_002_mesh_layer_5 ccr_dl_002_object_011E3CF4_mesh_layer_5
 #define ccr_dl_003_object_011E3C24_002_mesh_layer_5 ccr_dl_003_object_011E3C24_mesh_layer_5
 #define ccr_dl_004_object_011E3B54_002_mesh_layer_5 ccr_dl_004_object_011E3B54_mesh_layer_5
@@ -3846,6 +4206,15 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
 #define ccr_dl_049_object_011E1154_002_mesh_layer_5 ccr_dl_049_object_011E1154_mesh_layer_5
 #define ccr_dl_050_object_011E1084_002_mesh_layer_5 ccr_dl_050_object_011E1084_mesh_layer_5
 #define ccr_dl_051_object_011E0FB4_002_mesh_layer_5 ccr_dl_051_object_011E0FB4_mesh_layer_5
+#define ccr_dl_052_object_011E0EE4_002_mesh_layer_5 ccr_dl_052_object_011E0EE4_mesh_layer_5
+#define ccr_dl_053_object_011E0E14_002_mesh_layer_5 ccr_dl_053_object_011E0E14_mesh_layer_5
+#define ccr_dl_054_object_011E0D44_002_mesh_layer_5 ccr_dl_054_object_011E0D44_mesh_layer_5
+#define ccr_dl_055_object_011E0C74_002_mesh_layer_5 ccr_dl_055_object_011E0C74_mesh_layer_5
+#define ccr_dl_056_object_011E0BA4_002_mesh_layer_5 ccr_dl_056_object_011E0BA4_mesh_layer_5
+#define ccr_dl_057_object_011E0AD4_002_mesh_layer_5 ccr_dl_057_object_011E0AD4_mesh_layer_5
+#define ccr_dl_058_object_011E0A04_002_mesh_layer_5 ccr_dl_058_object_011E0A04_mesh_layer_5
+#define ccr_dl_059_object_011E0934_002_mesh_layer_5 ccr_dl_059_object_011E0934_mesh_layer_5
+#define ccr_dl_060_object_011E0864_002_mesh_layer_5 ccr_dl_060_object_011E0864_mesh_layer_5
 #define ccr_dl_002_object_011E3CF4_003_mesh_layer_5 ccr_dl_002_object_011E3CF4_mesh_layer_5
 #define ccr_dl_003_object_011E3C24_003_mesh_layer_5 ccr_dl_003_object_011E3C24_mesh_layer_5
 #define ccr_dl_004_object_011E3B54_003_mesh_layer_5 ccr_dl_004_object_011E3B54_mesh_layer_5
@@ -3896,4 +4265,13 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
 #define ccr_dl_049_object_011E1154_003_mesh_layer_5 ccr_dl_049_object_011E1154_mesh_layer_5
 #define ccr_dl_050_object_011E1084_003_mesh_layer_5 ccr_dl_050_object_011E1084_mesh_layer_5
 #define ccr_dl_051_object_011E0FB4_003_mesh_layer_5 ccr_dl_051_object_011E0FB4_mesh_layer_5
+#define ccr_dl_052_object_011E0EE4_003_mesh_layer_5 ccr_dl_052_object_011E0EE4_mesh_layer_5
+#define ccr_dl_053_object_011E0E14_003_mesh_layer_5 ccr_dl_053_object_011E0E14_mesh_layer_5
+#define ccr_dl_054_object_011E0D44_003_mesh_layer_5 ccr_dl_054_object_011E0D44_mesh_layer_5
+#define ccr_dl_055_object_011E0C74_003_mesh_layer_5 ccr_dl_055_object_011E0C74_mesh_layer_5
+#define ccr_dl_056_object_011E0BA4_003_mesh_layer_5 ccr_dl_056_object_011E0BA4_mesh_layer_5
+#define ccr_dl_057_object_011E0AD4_003_mesh_layer_5 ccr_dl_057_object_011E0AD4_mesh_layer_5
+#define ccr_dl_058_object_011E0A04_003_mesh_layer_5 ccr_dl_058_object_011E0A04_mesh_layer_5
+#define ccr_dl_059_object_011E0934_003_mesh_layer_5 ccr_dl_059_object_011E0934_mesh_layer_5
+#define ccr_dl_060_object_011E0864_003_mesh_layer_5 ccr_dl_060_object_011E0864_mesh_layer_5
 extern const struct FlipbookLayer ccr_flipbooks[LAYER_COUNT];

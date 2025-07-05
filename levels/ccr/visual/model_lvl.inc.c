@@ -39145,6 +39145,123 @@ Gfx ccr_dl_051_object_011DD94C_mesh_layer_5_tri_0[] = {
 	gsSPEndDisplayListHint(4),
 };
 
+Vtx ccr_dl_052_object_011DD87C_mesh_layer_5_vtx_0[4] = {
+	{{ {343, 504, 135}, 0, {997, -9}, {232, 219, 193, 255} }},
+	{{ {388, 213, 152}, 0, {997, 489}, {232, 219, 193, 255} }},
+	{{ {343, 504, -135}, 0, {1, -9}, {232, 219, 193, 255} }},
+	{{ {388, 213, -152}, 0, {1, 489}, {232, 219, 193, 255} }},
+};
+
+Gfx ccr_dl_052_object_011DD87C_mesh_layer_5_tri_0[] = {
+	gsSPVertex(ccr_dl_052_object_011DD87C_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSPEndDisplayListHint(4),
+};
+
+Vtx ccr_dl_053_object_011DD7AC_mesh_layer_5_vtx_0[4] = {
+	{{ {346, 485, 136}, 0, {995, -3}, {232, 219, 193, 255} }},
+	{{ {388, 213, 152}, 0, {995, 495}, {232, 219, 193, 255} }},
+	{{ {346, 485, -136}, 0, {-1, -3}, {232, 219, 193, 255} }},
+	{{ {388, 213, -152}, 0, {-1, 495}, {232, 219, 193, 255} }},
+};
+
+Gfx ccr_dl_053_object_011DD7AC_mesh_layer_5_tri_0[] = {
+	gsSPVertex(ccr_dl_053_object_011DD7AC_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSPEndDisplayListHint(4),
+};
+
+Vtx ccr_dl_054_object_011DD6DC_mesh_layer_5_vtx_0[4] = {
+	{{ {349, 466, 137}, 0, {994, -9}, {232, 219, 193, 255} }},
+	{{ {388, 213, 152}, 0, {994, 489}, {232, 219, 193, 255} }},
+	{{ {349, 466, -137}, 0, {-1, -9}, {232, 219, 193, 255} }},
+	{{ {388, 213, -152}, 0, {-1, 489}, {232, 219, 193, 255} }},
+};
+
+Gfx ccr_dl_054_object_011DD6DC_mesh_layer_5_tri_0[] = {
+	gsSPVertex(ccr_dl_054_object_011DD6DC_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSPEndDisplayListHint(4),
+};
+
+Vtx ccr_dl_055_object_011DD60C_mesh_layer_5_vtx_0[4] = {
+	{{ {352, 446, 138}, 0, {991, -9}, {232, 219, 193, 255} }},
+	{{ {388, 213, 152}, 0, {991, 489}, {232, 219, 193, 255} }},
+	{{ {352, 446, -138}, 0, {-5, -9}, {232, 219, 193, 255} }},
+	{{ {388, 213, -152}, 0, {-5, 489}, {232, 219, 193, 255} }},
+};
+
+Gfx ccr_dl_055_object_011DD60C_mesh_layer_5_tri_0[] = {
+	gsSPVertex(ccr_dl_055_object_011DD60C_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSPEndDisplayListHint(4),
+};
+
+Vtx ccr_dl_056_object_011DD53C_mesh_layer_5_vtx_0[4] = {
+	{{ {355, 427, 139}, 0, {1000, -3}, {232, 219, 193, 255} }},
+	{{ {388, 213, 152}, 0, {1000, 495}, {232, 219, 193, 255} }},
+	{{ {355, 427, -139}, 0, {5, -3}, {232, 219, 193, 255} }},
+	{{ {388, 213, -152}, 0, {5, 495}, {232, 219, 193, 255} }},
+};
+
+Gfx ccr_dl_056_object_011DD53C_mesh_layer_5_tri_0[] = {
+	gsSPVertex(ccr_dl_056_object_011DD53C_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSPEndDisplayListHint(4),
+};
+
+Vtx ccr_dl_057_object_011DD46C_mesh_layer_5_vtx_0[4] = {
+	{{ {358, 408, 141}, 0, {998, -3}, {232, 219, 193, 255} }},
+	{{ {388, 213, 152}, 0, {998, 495}, {232, 219, 193, 255} }},
+	{{ {358, 408, -141}, 0, {2, -3}, {232, 219, 193, 255} }},
+	{{ {388, 213, -152}, 0, {2, 495}, {232, 219, 193, 255} }},
+};
+
+Gfx ccr_dl_057_object_011DD46C_mesh_layer_5_tri_0[] = {
+	gsSPVertex(ccr_dl_057_object_011DD46C_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSPEndDisplayListHint(4),
+};
+
+Vtx ccr_dl_058_object_011DD39C_mesh_layer_5_vtx_0[4] = {
+	{{ {361, 388, 142}, 0, {994, -9}, {232, 219, 193, 255} }},
+	{{ {388, 213, 152}, 0, {994, 489}, {232, 219, 193, 255} }},
+	{{ {361, 388, -142}, 0, {-1, -9}, {232, 219, 193, 255} }},
+	{{ {388, 213, -152}, 0, {-1, 489}, {232, 219, 193, 255} }},
+};
+
+Gfx ccr_dl_058_object_011DD39C_mesh_layer_5_tri_0[] = {
+	gsSPVertex(ccr_dl_058_object_011DD39C_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSPEndDisplayListHint(4),
+};
+
+Vtx ccr_dl_059_object_011DD2CC_mesh_layer_5_vtx_0[4] = {
+	{{ {364, 369, 143}, 0, {994, 3}, {232, 219, 193, 255} }},
+	{{ {388, 213, 152}, 0, {994, 501}, {232, 219, 193, 255} }},
+	{{ {364, 369, -143}, 0, {-2, 3}, {232, 219, 193, 255} }},
+	{{ {388, 213, -152}, 0, {-2, 501}, {232, 219, 193, 255} }},
+};
+
+Gfx ccr_dl_059_object_011DD2CC_mesh_layer_5_tri_0[] = {
+	gsSPVertex(ccr_dl_059_object_011DD2CC_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSPEndDisplayListHint(4),
+};
+
+Vtx ccr_dl_060_object_011DD224_mesh_layer_5_vtx_0[4] = {
+	{{ {367, 349, 144}, 0, {997, -3}, {232, 219, 193, 255} }},
+	{{ {388, 213, 152}, 0, {997, 495}, {232, 219, 193, 255} }},
+	{{ {367, 349, -144}, 0, {1, -3}, {232, 219, 193, 255} }},
+	{{ {388, 213, -152}, 0, {1, 495}, {232, 219, 193, 255} }},
+};
+
+Gfx ccr_dl_060_object_011DD224_mesh_layer_5_tri_0[] = {
+	gsSPVertex(ccr_dl_060_object_011DD224_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSPEndDisplayListHint(4),
+};
+
 Vtx ccr_dl_001_object_011E3DC4_mesh_layer_5_vtx_0[4] = {
 	{{ {361, 351, -157}, 0, {5, 998}, {232, 219, 193, 255} }},
 	{{ {381, 213, -167}, 0, {5, 500}, {232, 219, 193, 255} }},
@@ -39891,6 +40008,123 @@ Vtx ccr_dl_051_object_011E0FB4_mesh_layer_5_vtx_0[4] = {
 
 Gfx ccr_dl_051_object_011E0FB4_mesh_layer_5_tri_0[] = {
 	gsSPVertex(ccr_dl_051_object_011E0FB4_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSPEndDisplayListHint(4),
+};
+
+Vtx ccr_dl_052_object_011E0EE4_mesh_layer_5_vtx_0[4] = {
+	{{ {129, 776, -295}, 0, {988, -3}, {232, 219, 193, 255} }},
+	{{ {110, 1043, -254}, 0, {988, 495}, {232, 219, 193, 255} }},
+	{{ {295, 776, -129}, 0, {-8, -3}, {232, 219, 193, 255} }},
+	{{ {254, 1043, -110}, 0, {-8, 495}, {232, 219, 193, 255} }},
+};
+
+Gfx ccr_dl_052_object_011E0EE4_mesh_layer_5_tri_0[] = {
+	gsSPVertex(ccr_dl_052_object_011E0EE4_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSPEndDisplayListHint(4),
+};
+
+Vtx ccr_dl_053_object_011E0E14_mesh_layer_5_vtx_0[4] = {
+	{{ {127, 795, -292}, 0, {998, 0}, {232, 219, 193, 255} }},
+	{{ {110, 1043, -254}, 0, {998, 498}, {232, 219, 193, 255} }},
+	{{ {292, 795, -127}, 0, {2, 0}, {232, 219, 193, 255} }},
+	{{ {254, 1043, -110}, 0, {2, 498}, {232, 219, 193, 255} }},
+};
+
+Gfx ccr_dl_053_object_011E0E14_mesh_layer_5_tri_0[] = {
+	gsSPVertex(ccr_dl_053_object_011E0E14_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSPEndDisplayListHint(4),
+};
+
+Vtx ccr_dl_054_object_011E0D44_mesh_layer_5_vtx_0[4] = {
+	{{ {126, 814, -289}, 0, {1001, -9}, {232, 219, 193, 255} }},
+	{{ {110, 1043, -254}, 0, {1001, 489}, {232, 219, 193, 255} }},
+	{{ {289, 814, -126}, 0, {5, -9}, {232, 219, 193, 255} }},
+	{{ {254, 1043, -110}, 0, {5, 489}, {232, 219, 193, 255} }},
+};
+
+Gfx ccr_dl_054_object_011E0D44_mesh_layer_5_tri_0[] = {
+	gsSPVertex(ccr_dl_054_object_011E0D44_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSPEndDisplayListHint(4),
+};
+
+Vtx ccr_dl_055_object_011E0C74_mesh_layer_5_vtx_0[4] = {
+	{{ {125, 834, -286}, 0, {997, -9}, {232, 219, 193, 255} }},
+	{{ {110, 1043, -254}, 0, {997, 489}, {232, 219, 193, 255} }},
+	{{ {286, 834, -125}, 0, {2, -9}, {232, 219, 193, 255} }},
+	{{ {254, 1043, -110}, 0, {2, 489}, {232, 219, 193, 255} }},
+};
+
+Gfx ccr_dl_055_object_011E0C74_mesh_layer_5_tri_0[] = {
+	gsSPVertex(ccr_dl_055_object_011E0C74_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSPEndDisplayListHint(4),
+};
+
+Vtx ccr_dl_056_object_011E0BA4_mesh_layer_5_vtx_0[4] = {
+	{{ {123, 853, -283}, 0, {1000, 0}, {232, 219, 193, 255} }},
+	{{ {110, 1043, -254}, 0, {1000, 498}, {232, 219, 193, 255} }},
+	{{ {283, 853, -123}, 0, {5, 0}, {232, 219, 193, 255} }},
+	{{ {254, 1043, -110}, 0, {5, 498}, {232, 219, 193, 255} }},
+};
+
+Gfx ccr_dl_056_object_011E0BA4_mesh_layer_5_tri_0[] = {
+	gsSPVertex(ccr_dl_056_object_011E0BA4_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSPEndDisplayListHint(4),
+};
+
+Vtx ccr_dl_057_object_011E0AD4_mesh_layer_5_vtx_0[4] = {
+	{{ {122, 873, -280}, 0, {995, -6}, {232, 219, 193, 255} }},
+	{{ {110, 1043, -254}, 0, {995, 492}, {232, 219, 193, 255} }},
+	{{ {280, 873, -122}, 0, {-1, -6}, {232, 219, 193, 255} }},
+	{{ {254, 1043, -110}, 0, {-1, 492}, {232, 219, 193, 255} }},
+};
+
+Gfx ccr_dl_057_object_011E0AD4_mesh_layer_5_tri_0[] = {
+	gsSPVertex(ccr_dl_057_object_011E0AD4_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSPEndDisplayListHint(4),
+};
+
+Vtx ccr_dl_058_object_011E0A04_mesh_layer_5_vtx_0[4] = {
+	{{ {121, 892, -277}, 0, {994, -13}, {232, 219, 193, 255} }},
+	{{ {110, 1043, -254}, 0, {994, 485}, {232, 219, 193, 255} }},
+	{{ {277, 892, -121}, 0, {-1, -13}, {232, 219, 193, 255} }},
+	{{ {254, 1043, -110}, 0, {-1, 485}, {232, 219, 193, 255} }},
+};
+
+Gfx ccr_dl_058_object_011E0A04_mesh_layer_5_tri_0[] = {
+	gsSPVertex(ccr_dl_058_object_011E0A04_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSPEndDisplayListHint(4),
+};
+
+Vtx ccr_dl_059_object_011E0934_mesh_layer_5_vtx_0[4] = {
+	{{ {119, 911, -274}, 0, {994, -9}, {232, 219, 193, 255} }},
+	{{ {110, 1043, -254}, 0, {994, 489}, {232, 219, 193, 255} }},
+	{{ {274, 911, -119}, 0, {-2, -9}, {232, 219, 193, 255} }},
+	{{ {254, 1043, -110}, 0, {-2, 489}, {232, 219, 193, 255} }},
+};
+
+Gfx ccr_dl_059_object_011E0934_mesh_layer_5_tri_0[] = {
+	gsSPVertex(ccr_dl_059_object_011E0934_mesh_layer_5_vtx_0 + 0, 4, 0),
+	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
+	gsSPEndDisplayListHint(4),
+};
+
+Vtx ccr_dl_060_object_011E0864_mesh_layer_5_vtx_0[4] = {
+	{{ {118, 931, -271}, 0, {994, -3}, {232, 219, 193, 255} }},
+	{{ {110, 1043, -254}, 0, {994, 495}, {232, 219, 193, 255} }},
+	{{ {271, 931, -118}, 0, {-2, -3}, {232, 219, 193, 255} }},
+	{{ {254, 1043, -110}, 0, {-2, 495}, {232, 219, 193, 255} }},
+};
+
+Gfx ccr_dl_060_object_011E0864_mesh_layer_5_tri_0[] = {
+	gsSPVertex(ccr_dl_060_object_011E0864_mesh_layer_5_vtx_0 + 0, 4, 0),
 	gsSP2Triangles(0, 1, 2, 0, 2, 1, 3, 0),
 	gsSPEndDisplayListHint(4),
 };
@@ -40861,7 +41095,7 @@ Gfx mat_ccr_dl_DoorOpenWaterfall_sa2mdl_0_f3d[] = {
 	gsDPSetAlphaDither(G_AD_NOISE),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 178),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_32b_LOAD_BLOCK, 1, ccr_dl_kd_lk_sibuki1_rgba32),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_32b_LOAD_BLOCK, 1, ccr_dl_kd_lk_water3_rgba32),
 	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_32b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 128),
 	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_32b, 8, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 5, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0),
@@ -41329,7 +41563,7 @@ u32 ccr_dl_001_object_01208C04_mesh_layer_1[] = {
 };
 
 u32 ccr_dl_001_object_0120D2EC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_001_object_0120D2EC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2, ccr_dl_001_object_0120D2EC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
@@ -41359,12 +41593,12 @@ u32 ccr_dl_object_011B3D1C_mesh_layer_5[] = {
 };
 
 u32 ccr_dl_object_011CDC2C_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2, ccr_dl_object_011CDC2C_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_3, ccr_dl_object_011CDC2C_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_object_011CDD2C_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_3, ccr_dl_object_011CDD2C_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_4, ccr_dl_object_011CDD2C_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
@@ -41872,152 +42106,152 @@ u32 ccr_dl_036_object_012048BC_mesh_layer_1[] = {
 };
 
 u32 ccr_dl_037_object_012046DC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_037_object_012046DC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_037_object_012046DC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_038_object_012045DC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_038_object_012045DC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_038_object_012045DC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_039_object_012044DC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_039_object_012044DC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_039_object_012044DC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_040_object_012043DC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_040_object_012043DC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_040_object_012043DC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_041_object_012042DC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_041_object_012042DC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_041_object_012042DC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_042_object_012041DC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_042_object_012041DC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_042_object_012041DC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_043_object_012040DC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_043_object_012040DC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_043_object_012040DC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_044_object_01203FDC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_044_object_01203FDC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_044_object_01203FDC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_045_object_01203EDC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_045_object_01203EDC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_045_object_01203EDC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_046_object_01203DDC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_046_object_01203DDC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_046_object_01203DDC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_047_object_01203CDC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_047_object_01203CDC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_047_object_01203CDC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_048_object_01203BDC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_048_object_01203BDC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_048_object_01203BDC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_049_object_01203ADC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_049_object_01203ADC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_049_object_01203ADC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_050_object_012039DC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_050_object_012039DC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_050_object_012039DC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_051_object_012038DC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_051_object_012038DC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_051_object_012038DC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_002_object_0120D1B4_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_002_object_0120D1B4_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2, ccr_dl_002_object_0120D1B4_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_003_object_0120D00C_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_003_object_0120D00C_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2, ccr_dl_003_object_0120D00C_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_004_object_0120CDF4_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_004_object_0120CDF4_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2, ccr_dl_004_object_0120CDF4_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_005_object_0120CB54_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_005_object_0120CB54_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2, ccr_dl_005_object_0120CB54_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_006_object_0120C854_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_006_object_0120C854_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2, ccr_dl_006_object_0120C854_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_007_object_0120C4EC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_007_object_0120C4EC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2, ccr_dl_007_object_0120C4EC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_008_object_0120C124_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_008_object_0120C124_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2, ccr_dl_008_object_0120C124_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_009_object_0120BCF4_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_009_object_0120BCF4_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2, ccr_dl_009_object_0120BCF4_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_010_object_0120B844_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_010_object_0120B844_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2, ccr_dl_010_object_0120B844_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_011_object_0120B32C_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_011_object_0120B32C_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2, ccr_dl_011_object_0120B32C_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_012_object_0120ADB4_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_012_object_0120ADB4_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2, ccr_dl_012_object_0120ADB4_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_013_object_0120A7C4_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_013_object_0120A7C4_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2, ccr_dl_013_object_0120A7C4_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_014_object_0120A14C_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_014_object_0120A14C_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2, ccr_dl_014_object_0120A14C_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_015_object_01209A8C_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_015_object_01209A8C_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2, ccr_dl_015_object_01209A8C_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_016_object_01209364_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_016_object_01209364_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2, ccr_dl_016_object_01209364_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
@@ -42271,6 +42505,51 @@ u32 ccr_dl_051_object_011DD94C_mesh_layer_5[] = {
 	BATCH_END(),
 };
 
+u32 ccr_dl_052_object_011DD87C_mesh_layer_5[] = {
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_052_object_011DD87C_mesh_layer_5_tri_0),
+	BATCH_END(),
+};
+
+u32 ccr_dl_053_object_011DD7AC_mesh_layer_5[] = {
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_053_object_011DD7AC_mesh_layer_5_tri_0),
+	BATCH_END(),
+};
+
+u32 ccr_dl_054_object_011DD6DC_mesh_layer_5[] = {
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_054_object_011DD6DC_mesh_layer_5_tri_0),
+	BATCH_END(),
+};
+
+u32 ccr_dl_055_object_011DD60C_mesh_layer_5[] = {
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_055_object_011DD60C_mesh_layer_5_tri_0),
+	BATCH_END(),
+};
+
+u32 ccr_dl_056_object_011DD53C_mesh_layer_5[] = {
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_056_object_011DD53C_mesh_layer_5_tri_0),
+	BATCH_END(),
+};
+
+u32 ccr_dl_057_object_011DD46C_mesh_layer_5[] = {
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_057_object_011DD46C_mesh_layer_5_tri_0),
+	BATCH_END(),
+};
+
+u32 ccr_dl_058_object_011DD39C_mesh_layer_5[] = {
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_058_object_011DD39C_mesh_layer_5_tri_0),
+	BATCH_END(),
+};
+
+u32 ccr_dl_059_object_011DD2CC_mesh_layer_5[] = {
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_059_object_011DD2CC_mesh_layer_5_tri_0),
+	BATCH_END(),
+};
+
+u32 ccr_dl_060_object_011DD224_mesh_layer_5[] = {
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_060_object_011DD224_mesh_layer_5_tri_0),
+	BATCH_END(),
+};
+
 u32 ccr_dl_002_object_011E3CF4_mesh_layer_5[] = {
 	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_002_object_011E3CF4_mesh_layer_5_tri_0),
 	BATCH_END(),
@@ -42521,6 +42800,51 @@ u32 ccr_dl_051_object_011E0FB4_mesh_layer_5[] = {
 	BATCH_END(),
 };
 
+u32 ccr_dl_052_object_011E0EE4_mesh_layer_5[] = {
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_052_object_011E0EE4_mesh_layer_5_tri_0),
+	BATCH_END(),
+};
+
+u32 ccr_dl_053_object_011E0E14_mesh_layer_5[] = {
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_053_object_011E0E14_mesh_layer_5_tri_0),
+	BATCH_END(),
+};
+
+u32 ccr_dl_054_object_011E0D44_mesh_layer_5[] = {
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_054_object_011E0D44_mesh_layer_5_tri_0),
+	BATCH_END(),
+};
+
+u32 ccr_dl_055_object_011E0C74_mesh_layer_5[] = {
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_055_object_011E0C74_mesh_layer_5_tri_0),
+	BATCH_END(),
+};
+
+u32 ccr_dl_056_object_011E0BA4_mesh_layer_5[] = {
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_056_object_011E0BA4_mesh_layer_5_tri_0),
+	BATCH_END(),
+};
+
+u32 ccr_dl_057_object_011E0AD4_mesh_layer_5[] = {
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_057_object_011E0AD4_mesh_layer_5_tri_0),
+	BATCH_END(),
+};
+
+u32 ccr_dl_058_object_011E0A04_mesh_layer_5[] = {
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_058_object_011E0A04_mesh_layer_5_tri_0),
+	BATCH_END(),
+};
+
+u32 ccr_dl_059_object_011E0934_mesh_layer_5[] = {
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_059_object_011E0934_mesh_layer_5_tri_0),
+	BATCH_END(),
+};
+
+u32 ccr_dl_060_object_011E0864_mesh_layer_5[] = {
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_060_object_011E0864_mesh_layer_5_tri_0),
+	BATCH_END(),
+};
+
 static struct BatchDisplayLists batch_lvl_dls_LAYER_OPAQUE[] = {
 	[LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN403_PAL_RGBA16] = { mat_ccr_dl_objLandTable0037_sa2blvl_0_f3d, mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d, DL_HINT(mat_ccr_dl_objLandTable0037_sa2blvl_0_f3d), DL_HINT(mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d), },
 	[LVL_BATCH_LAYER_OPAQUE_CCR_DL_KD_LK_UN401_PAL_RGBA16] = { mat_ccr_dl_objLandTable0037_sa2blvl_1_f3d, mat_revert_ccr_dl_objLandTable0037_sa2blvl_1_f3d, DL_HINT(mat_ccr_dl_objLandTable0037_sa2blvl_1_f3d), DL_HINT(mat_revert_ccr_dl_objLandTable0037_sa2blvl_1_f3d), },
@@ -42569,14 +42893,14 @@ static struct BatchDisplayLists batch_lvl_dls_LAYER_TRANSPARENT[] = {
 	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_PAL_RGBA16] = { mat_ccr_dl_WallSweep1_sa2mdl_0_f3d, mat_revert_ccr_dl_WallSweep1_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_WallSweep1_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_WallSweep1_sa2mdl_0_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32] = { mat_ccr_dl_AbyssWaterfalls_sa2mdl_0_f3d, mat_revert_ccr_dl_AbyssWaterfalls_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_AbyssWaterfalls_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_AbyssWaterfalls_sa2mdl_0_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_1] = { mat_ccr_dl_Waterfall_sa2mdl_0_f3d, mat_revert_ccr_dl_Waterfall_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_Waterfall_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_Waterfall_sa2mdl_0_f3d), },
-	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32] = { mat_ccr_dl_DoorOpenWaterfall_sa2mdl_0_f3d, mat_revert_ccr_dl_DoorOpenWaterfall_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_DoorOpenWaterfall_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_DoorOpenWaterfall_sa2mdl_0_f3d), },
+	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2] = { mat_ccr_dl_DoorOpenWaterfall_sa2mdl_0_f3d, mat_revert_ccr_dl_DoorOpenWaterfall_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_DoorOpenWaterfall_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_DoorOpenWaterfall_sa2mdl_0_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32] = { mat_ccr_dl_SwitchCapsuleSweep1_sa2mdl_0_f3d, mat_revert_ccr_dl_SwitchCapsuleSweep1_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_SwitchCapsuleSweep1_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_SwitchCapsuleSweep1_sa2mdl_0_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1] = { mat_ccr_dl_SwitchCapsuleSweep2_sa2mdl_0_f3d, mat_revert_ccr_dl_SwitchCapsuleSweep2_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_SwitchCapsuleSweep2_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_SwitchCapsuleSweep2_sa2mdl_0_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER1_01_PAL_RGBA16] = { mat_ccr_dl_Water1_sa2mdl_0_f3d, mat_revert_ccr_dl_Water1_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_Water1_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_Water1_sa2mdl_0_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER1_01_PAL_RGBA16_1] = { mat_ccr_dl_Water2_sa2mdl_0_f3d, mat_revert_ccr_dl_Water2_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_Water2_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_Water2_sa2mdl_0_f3d), },
-	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2] = { mat_ccr_dl_WaterfallOverflow_sa2mdl_0_f3d, mat_revert_ccr_dl_WaterfallOverflow_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_WaterfallOverflow_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_WaterfallOverflow_sa2mdl_0_f3d), },
-	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_3] = { mat_ccr_dl_WaterfallTop_sa2mdl_0_f3d, mat_revert_ccr_dl_WaterfallTop_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_WaterfallTop_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_WaterfallTop_sa2mdl_0_f3d), },
-	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1] = { mat_ccr_dl_DoorOpen_sa2mdl_1_f3d, mat_revert_ccr_dl_DoorOpen_sa2mdl_1_f3d, DL_HINT(mat_ccr_dl_DoorOpen_sa2mdl_1_f3d), DL_HINT(mat_revert_ccr_dl_DoorOpen_sa2mdl_1_f3d), },
+	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_3] = { mat_ccr_dl_WaterfallOverflow_sa2mdl_0_f3d, mat_revert_ccr_dl_WaterfallOverflow_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_WaterfallOverflow_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_WaterfallOverflow_sa2mdl_0_f3d), },
+	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_4] = { mat_ccr_dl_WaterfallTop_sa2mdl_0_f3d, mat_revert_ccr_dl_WaterfallTop_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_WaterfallTop_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_WaterfallTop_sa2mdl_0_f3d), },
+	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32] = { mat_ccr_dl_DoorOpen_sa2mdl_1_f3d, mat_revert_ccr_dl_DoorOpen_sa2mdl_1_f3d, DL_HINT(mat_ccr_dl_DoorOpen_sa2mdl_1_f3d), DL_HINT(mat_revert_ccr_dl_DoorOpen_sa2mdl_1_f3d), },
 };
 
 struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT] = {
