@@ -6821,10 +6821,13 @@ extern const BehaviorScript bhvCCRSwitchP2[] = {
     END_LOOP(),
 };
 
+extern const Collision ccr_capsule_collision[];
 extern void bhv_ccr_capsule_loop();
 extern const BehaviorScript bhvCCRCapsule[] = {
-    BEGIN(OBJ_LIST_LEVEL),
+    BEGIN(OBJ_LIST_SURFACE),
+    LOAD_COLLISION_DATA(ccr_capsule_collision),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_ccr_capsule_loop),
+        CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };

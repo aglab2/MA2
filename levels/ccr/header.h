@@ -44,4 +44,6 @@ extern const LevelScript level_ccr_entry[];
 
 #include "levels/ccr/ccr_switch/geo_header.h"
 
+#include "levels/ccr/ccr_capsule/collision_header.h"
+
 #endif
