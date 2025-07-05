@@ -393,7 +393,7 @@ const GeoLayout ccr_area_1_geo[] = {
 			GEO_BRANCH(1, ccr_dl_051_object_012038DC_geo),
 		GEO_CLOSE_NODE(),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccr_dl_001_object_01208C04_mesh_layer_1),
-		GEO_SWITCH_CASE(51, geo_cc_switch),
+		GEO_SWITCH_CASE(16, geo_cc_switch),
 		GEO_OPEN_NODE(),
 			GEO_BRANCH(1, ccr_dl_002_object_0120D1B4_geo),
 			GEO_BRANCH(1, ccr_dl_003_object_0120D00C_geo),

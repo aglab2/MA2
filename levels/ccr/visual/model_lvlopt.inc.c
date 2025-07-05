@@ -12257,184 +12257,519 @@ ALIGNED8 u8 ccr_dl_kd_lk_un113_pal_rgba16[] = {
 	
 };
 
-ALIGNED8 u8 ccr_dl_kd_lk_sibuki1_ci8[] = {
+ALIGNED8 u8 ccr_dl_kd_lk_sibuki1_rgba32[] = {
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-	0x00, 0x00, 0x01, 0x02, 0x03, 0x04, 0x00, 0x00, 
-	0x00, 0x00, 0x05, 0x06, 0x07, 0x08, 0x00, 0x00, 
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-	0x00, 0x00, 0x09, 0x0a, 0x00, 0x0a, 0x0b, 0x00, 
-	0x0c, 0x0d, 0x0e, 0x0f, 0x10, 0x11, 0x0a, 0x00, 
-	0x01, 0x0f, 0x12, 0x06, 0x13, 0x14, 0x15, 0x16, 
-	0x17, 0x18, 0x19, 0x0f, 0x00, 0x00, 0x00, 0x00, 
-	0x00, 0x00, 0x1a, 0x00, 0x00, 0x09, 0x1b, 0x1a, 
-	0x1c, 0x1c, 0x1d, 0x1e, 0x12, 0x1f, 0x20, 0x1f, 
-	0x0e, 0x21, 0x22, 0x1b, 0x23, 0x24, 0x25, 0x26, 
-	0x27, 0x28, 0x02, 0x0f, 0x02, 0x02, 0x00, 0x00, 
-	0x00, 0x29, 0x29, 0x1c, 0x2a, 0x1a, 0x2b, 0x2c, 
-	0x2d, 0x2e, 0x2f, 0x30, 0x31, 0x29, 0x32, 0x33, 
-	0x14, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3a, 
-	0x3b, 0x3c, 0x3d, 0x08, 0x06, 0x3e, 0x00, 0x00, 
-	0x00, 0x3f, 0x40, 0x13, 0x2b, 0x41, 0x42, 0x13, 
-	0x43, 0x3f, 0x2e, 0x44, 0x23, 0x45, 0x39, 0x46, 
-	0x1d, 0x47, 0x25, 0x48, 0x49, 0x3d, 0x37, 0x4a, 
-	0x34, 0x4b, 0x4c, 0x4d, 0x44, 0x4e, 0x00, 0x00, 
-	0x00, 0x4f, 0x50, 0x42, 0x0f, 0x13, 0x51, 0x52, 
-	0x53, 0x06, 0x54, 0x55, 0x56, 0x17, 0x57, 0x58, 
-	0x4b, 0x59, 0x5a, 0x5b, 0x5c, 0x5d, 0x37, 0x5b, 
-	0x46, 0x5e, 0x5b, 0x51, 0x2c, 0x13, 0x00, 0x00, 
-	0x0f, 0x0f, 0x0f, 0x02, 0x2b, 0x1e, 0x4d, 0x5f, 
-	0x60, 0x28, 0x06, 0x5f, 0x24, 0x47, 0x61, 0x55, 
-	0x5b, 0x32, 0x62, 0x59, 0x55, 0x63, 0x4b, 0x64, 
-	0x05, 0x5b, 0x5f, 0x65, 0x66, 0x67, 0x67, 0x00, 
-	0x0f, 0x00, 0x68, 0x02, 0x2e, 0x69, 0x6a, 0x6b, 
-	0x55, 0x47, 0x58, 0x69, 0x69, 0x65, 0x6c, 0x5b, 
-	0x62, 0x5b, 0x6a, 0x6d, 0x58, 0x6d, 0x6d, 0x4b, 
-	0x23, 0x55, 0x17, 0x13, 0x00, 0x67, 0x0f, 0x00, 
-	0x00, 0x00, 0x1e, 0x18, 0x39, 0x61, 0x6e, 0x6f, 
-	0x6d, 0x6e, 0x6e, 0x64, 0x6d, 0x5f, 0x61, 0x70, 
-	0x5b, 0x60, 0x71, 0x59, 0x62, 0x61, 0x6d, 0x6c, 
-	0x44, 0x5a, 0x72, 0x39, 0x01, 0x42, 0x04, 0x00, 
-	0x00, 0x00, 0x07, 0x73, 0x74, 0x31, 0x59, 0x64, 
-	0x6a, 0x75, 0x5d, 0x4b, 0x70, 0x44, 0x5f, 0x6d, 
-	0x5b, 0x6a, 0x64, 0x59, 0x55, 0x4b, 0x6a, 0x6d, 
-	0x47, 0x2c, 0x66, 0x1c, 0x76, 0x2c, 0x65, 0x72, 
-	0x00, 0x77, 0x78, 0x45, 0x79, 0x12, 0x5f, 0x61, 
-	0x64, 0x6c, 0x5d, 0x4c, 0x6d, 0x48, 0x59, 0x7a, 
-	0x7b, 0x7c, 0x58, 0x58, 0x5f, 0x5b, 0x55, 0x59, 
-	0x69, 0x5f, 0x2f, 0x1d, 0x2d, 0x7d, 0x58, 0x7e, 
-	0x00, 0x7f, 0x80, 0x56, 0x28, 0x29, 0x32, 0x5f, 
-	0x32, 0x64, 0x7b, 0x55, 0x64, 0x59, 0x6a, 0x70, 
-	0x6d, 0x69, 0x59, 0x61, 0x7c, 0x55, 0x61, 0x81, 
-	0x82, 0x6a, 0x62, 0x65, 0x51, 0x03, 0x22, 0x2d, 
-	0x0f, 0x83, 0x39, 0x1c, 0x84, 0x1e, 0x32, 0x64, 
-	0x55, 0x55, 0x59, 0x6a, 0x6f, 0x59, 0x5d, 0x6c, 
-	0x59, 0x46, 0x81, 0x5f, 0x81, 0x55, 0x85, 0x52, 
-	0x1e, 0x6f, 0x6c, 0x1d, 0x86, 0x67, 0x87, 0x88, 
-	0x89, 0x8a, 0x1c, 0x12, 0x39, 0x7c, 0x47, 0x48, 
-	0x8b, 0x47, 0x5f, 0x70, 0x62, 0x59, 0x55, 0x8c, 
-	0x55, 0x8d, 0x8e, 0x8e, 0x8e, 0x5f, 0x82, 0x8f, 
-	0x13, 0x44, 0x55, 0x1c, 0x42, 0x0f, 0x50, 0x88, 
-	0x00, 0x84, 0x90, 0x5a, 0x55, 0x3f, 0x5f, 0x91, 
-	0x92, 0x82, 0x81, 0x59, 0x64, 0x6d, 0x69, 0x8e, 
-	0x8e, 0x28, 0x13, 0x85, 0x8e, 0x5f, 0x81, 0x13, 
-	0x8e, 0x44, 0x5b, 0x76, 0x08, 0x0f, 0x0f, 0x02, 
-	0x09, 0x1f, 0x08, 0x52, 0x8e, 0x47, 0x93, 0x8e, 
-	0x8e, 0x69, 0x47, 0x32, 0x7b, 0x4c, 0x69, 0x55, 
-	0x85, 0x1c, 0x13, 0x81, 0x8e, 0x59, 0x5f, 0x7d, 
-	0x8a, 0x94, 0x46, 0x2a, 0x02, 0x1f, 0x95, 0x0a, 
-	0x00, 0x02, 0x2e, 0x86, 0x8e, 0x64, 0x64, 0x8e, 
-	0x59, 0x55, 0x59, 0x5b, 0x5f, 0x8e, 0x8e, 0x39, 
-	0x96, 0x92, 0x94, 0x82, 0x92, 0x69, 0x82, 0x44, 
-	0x85, 0x8d, 0x13, 0x43, 0x97, 0x1b, 0x1c, 0x02, 
-	0x00, 0x10, 0x7d, 0x43, 0x55, 0x7b, 0x55, 0x7d, 
-	0x69, 0x5f, 0x61, 0x93, 0x61, 0x5b, 0x98, 0x99, 
-	0x5b, 0x47, 0x96, 0x9a, 0x99, 0x13, 0x69, 0x47, 
-	0x13, 0x8e, 0x98, 0x1c, 0x9b, 0x1b, 0x9c, 0x9d, 
-	0x09, 0x12, 0x39, 0x50, 0x44, 0x55, 0x8d, 0x9e, 
-	0x91, 0x94, 0x69, 0x69, 0x5f, 0x5b, 0x94, 0x8e, 
-	0x59, 0x69, 0x9f, 0x8a, 0x81, 0xa0, 0x8c, 0xa1, 
-	0x9f, 0x48, 0x46, 0x2b, 0x43, 0x0d, 0xa2, 0x00, 
-	0x00, 0x2a, 0x50, 0x83, 0x28, 0x82, 0x9f, 0x50, 
-	0x13, 0x96, 0x40, 0x46, 0x86, 0x47, 0x13, 0x96, 
-	0x65, 0x96, 0x79, 0x42, 0x28, 0xa3, 0x5b, 0x98, 
-	0x2b, 0x2c, 0x39, 0x2b, 0xa4, 0xa5, 0x2a, 0x00, 
-	0x00, 0x67, 0x08, 0x4f, 0x1f, 0x81, 0xa6, 0x50, 
-	0x9a, 0x13, 0x8a, 0x9f, 0x3a, 0x9f, 0x84, 0xa6, 
-	0x28, 0x0d, 0x51, 0x79, 0x2b, 0x22, 0x39, 0x39, 
-	0xa5, 0x08, 0xa5, 0x2a, 0x0d, 0xa7, 0x0f, 0x0f, 
-	0x00, 0x68, 0x02, 0x0f, 0x27, 0x8e, 0x2e, 0x97, 
-	0x10, 0x8f, 0x43, 0x0d, 0x41, 0x43, 0x43, 0x0d, 
-	0x9c, 0x29, 0x8e, 0x8f, 0x1f, 0xa5, 0x0f, 0xa5, 
-	0x68, 0x03, 0x4f, 0x76, 0x67, 0x0f, 0x00, 0x00, 
-	0x00, 0xa8, 0x0f, 0x67, 0x41, 0x52, 0xa5, 0x02, 
-	0x2a, 0x27, 0x8a, 0xa9, 0xaa, 0x9f, 0x2a, 0x50, 
-	0x28, 0x85, 0x8e, 0x8f, 0x67, 0x0f, 0x2a, 0x3f, 
-	0x09, 0x0a, 0x0f, 0x1c, 0x74, 0x02, 0x00, 0x00, 
-	0x00, 0x00, 0xa7, 0x68, 0xa9, 0x9c, 0x0f, 0x09, 
-	0x0e, 0x0f, 0x0e, 0x0f, 0xa5, 0xa5, 0x87, 0x08, 
-	0x4e, 0x5f, 0x9c, 0x28, 0x14, 0x02, 0xaa, 0x1b, 
-	0x0a, 0x0f, 0x0f, 0x1b, 0x9b, 0xa8, 0x00, 0x00, 
-	0x00, 0x00, 0x02, 0xa8, 0x16, 0xa5, 0x09, 0x0a, 
-	0x67, 0x09, 0x67, 0x0f, 0x00, 0x68, 0x95, 0xab, 
-	0x4e, 0x40, 0xaa, 0x79, 0xac, 0x09, 0xa8, 0x02, 
-	0xad, 0xae, 0x42, 0x1c, 0xaf, 0x00, 0x00, 0x00, 
-	0x00, 0x00, 0x09, 0x09, 0xa8, 0x0f, 0x02, 0x0b, 
-	0x02, 0x02, 0x42, 0x0f, 0x00, 0x02, 0xb0, 0xb1, 
-	0x28, 0x1c, 0x0f, 0x16, 0x0a, 0x09, 0x09, 0x00, 
-	0x00, 0x9d, 0x2b, 0x41, 0x88, 0x09, 0x00, 0x00, 
-	0x00, 0x00, 0x09, 0xa8, 0x02, 0x02, 0x68, 0x00, 
-	0xa8, 0x68, 0x87, 0x87, 0x00, 0x16, 0xa7, 0x02, 
-	0xb2, 0x13, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-	0x0f, 0x00, 0x00, 0x02, 0x9d, 0x00, 0x00, 0x00, 
-	0x00, 0x00, 0x00, 0xa8, 0x0f, 0x09, 0x09, 0x00, 
-	0x00, 0x00, 0x68, 0xb3, 0x00, 0x09, 0x09, 0x00, 
-	0x42, 0x83, 0x67, 0x00, 0x00, 0x00, 0x00, 0x0f, 
-	0x0f, 0x00, 0x00, 0x02, 0x9d, 0x00, 0x00, 0x00, 
-	0x00, 0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 
-	0x00, 0x00, 0x00, 0x0b, 0x00, 0x00, 0x00, 0x00, 
-	0x0f, 0x0f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-	0xa8, 0x00, 0x4f, 0x0f, 0x9d, 0x00, 0x00, 0x00, 
-	0x00, 0x00, 0x00, 0x00, 0x0a, 0x00, 0x00, 0x0b, 
-	0x00, 0x00, 0x00, 0x0f, 0x0f, 0x00, 0x00, 0x00, 
-	0x00, 0x0a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-	0x00, 0x00, 0x02, 0x02, 0x00, 0x00, 0x00, 0x00, 
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-	0x00, 0x00, 0x00, 0x0f, 0x0f, 0x00, 0x00, 0x00, 
-	0x00, 0x67, 0x67, 0x00, 0x00, 0x00, 0x00, 0x00, 
-	0x0b, 0x00, 0x00, 0x0a, 0x00, 0x00, 0x00, 0x00, 
-	0x00, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x00, 0x00, 
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-	0x00, 0xa8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
-	
-};
-
-ALIGNED8 u8 ccr_dl_kd_lk_sibuki1_pal_rgba16[] = {
-	0x00, 0x00, 0xec, 0xc0, 0xdc, 0x00, 0xe4, 0x00, 
-	0xec, 0x00, 0xf6, 0xd6, 0xed, 0x8e, 0xe4, 0xc8, 
-	0xe4, 0x40, 0xcb, 0x80, 0xcb, 0x40, 0xcb, 0x00, 
-	0xd4, 0x44, 0xed, 0x46, 0xec, 0x80, 0xdc, 0x40, 
-	0xfd, 0xce, 0xe4, 0x86, 0xf6, 0x94, 0xfe, 0x0e, 
-	0xe4, 0x44, 0xe5, 0x52, 0xd4, 0x00, 0xff, 0x1c, 
-	0xf6, 0x98, 0xdc, 0xc4, 0xe4, 0x42, 0xf5, 0x48, 
-	0xf5, 0xce, 0xf6, 0x96, 0xfe, 0x10, 0xed, 0x08, 
-	0xed, 0x50, 0xdc, 0xc6, 0xf5, 0x90, 0xfe, 0x9a, 
-	0xfe, 0xda, 0xf7, 0x1a, 0xd3, 0x84, 0xe4, 0xc6, 
-	0xf5, 0x8a, 0xf6, 0x52, 0xed, 0x44, 0xf5, 0x46, 
-	0xf5, 0x8e, 0xed, 0x0a, 0xed, 0x4a, 0xf6, 0x54, 
-	0xf6, 0xdd, 0xf6, 0xd8, 0xff, 0x5d, 0xfe, 0x98, 
-	0xf6, 0x14, 0xf7, 0x1e, 0xee, 0x18, 0xf6, 0xdc, 
-	0xfe, 0xe2, 0xf6, 0x10, 0xed, 0x88, 0xe5, 0x4c, 
-	0xff, 0x60, 0xf6, 0x58, 0xe5, 0x4e, 0xed, 0xd0, 
-	0xfe, 0x92, 0xec, 0xc4, 0xed, 0x04, 0xf5, 0x8c, 
-	0xfe, 0xdb, 0xf5, 0xd0, 0xfe, 0x94, 0xff, 0x1d, 
-	0xff, 0x1f, 0xed, 0xd4, 0xed, 0xd6, 0xff, 0xe9, 
-	0xff, 0xab, 0xed, 0xd2, 0xfe, 0xd4, 0xe4, 0x80, 
-	0xec, 0xc2, 0xf6, 0x12, 0xf6, 0x0e, 0xf5, 0xd2, 
-	0xfe, 0xd8, 0xff, 0x5f, 0xf6, 0xde, 0xff, 0x17, 
-	0xff, 0x63, 0xff, 0xa3, 0xff, 0x21, 0xff, 0x61, 
-	0xff, 0x62, 0xff, 0xed, 0xf7, 0x61, 0xff, 0x1b, 
-	0xff, 0x69, 0xff, 0xa1, 0xff, 0xa7, 0xff, 0xad, 
-	0xff, 0xa5, 0xfe, 0x96, 0xed, 0x4c, 0xdc, 0x80, 
-	0xd3, 0xc0, 0xfe, 0xd9, 0xff, 0xa9, 0xff, 0x18, 
-	0xff, 0xe7, 0xff, 0xeb, 0xff, 0xf3, 0xff, 0x65, 
-	0xff, 0xef, 0xff, 0x25, 0xff, 0x1a, 0xe5, 0x8e, 
-	0xdc, 0x86, 0xff, 0xf5, 0xe4, 0x82, 0xff, 0x68, 
-	0xff, 0x22, 0xed, 0x48, 0xff, 0xe3, 0xff, 0xe5, 
-	0xfe, 0x99, 0xf5, 0xcc, 0xf6, 0x16, 0xff, 0xa4, 
-	0xf7, 0x20, 0xff, 0x19, 0xfe, 0x95, 0xe5, 0x04, 
-	0xfd, 0xcc, 0xfe, 0xd5, 0xed, 0x8c, 0xe4, 0xc2, 
-	0xdc, 0x02, 0xe5, 0x02, 0xf6, 0x0c, 0xfe, 0xd6, 
-	0xff, 0x67, 0xfe, 0x4e, 0xfe, 0xd7, 0xed, 0x06, 
-	0xe5, 0x0c, 0xfe, 0x97, 0xfe, 0x93, 0xff, 0x5b, 
-	0xfe, 0x90, 0xdc, 0x44, 0xfe, 0x50, 0xdc, 0x84, 
-	0xfe, 0x52, 0xfe, 0x12, 0xfd, 0xca, 0xe4, 0x84, 
-	0xf5, 0x88, 0xd3, 0x80, 0xed, 0x02, 0xf5, 0xca, 
-	0xfe, 0x0c, 0xfe, 0x54, 0xed, 0x86, 0xf7, 0x1f, 
-	0xf5, 0x4a, 0xdc, 0x42, 0xed, 0x8a, 0xdb, 0xc0, 
-	0xcb, 0xc0, 0xdc, 0x82, 0xe4, 0xc4, 0xd4, 0x02, 
-	0xdc, 0x46, 0xf5, 0x02, 0xf4, 0xc2, 0xe5, 0x0a, 
-	0xf5, 0x4c, 0xe4, 0xca, 0xe5, 0x06, 0xd3, 0xc2, 
+	0xee, 0x99, 0x00, 0x01, 0xdd, 0x80, 0x00, 0x01, 
+	0xe7, 0x82, 0x00, 0x12, 0xed, 0x87, 0x00, 0x01, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0xfa, 0xe1, 0x5e, 0x04, 0xed, 0xb7, 0x3d, 0x01, 
+	0xe6, 0x9c, 0x1f, 0x0a, 0xe6, 0x88, 0x00, 0x02, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0xcc, 0x76, 0x00, 0x04, 0xcc, 0x68, 0x00, 0x04, 
+	0x00, 0x00, 0x00, 0x00, 0xcc, 0x6f, 0x00, 0x01, 
+	0xcc, 0x66, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 
+	0xd9, 0x8d, 0x0d, 0x05, 0xf0, 0xac, 0x1b, 0x17, 
+	0xed, 0x92, 0x00, 0x16, 0xdd, 0x88, 0x00, 0x0b, 
+	0xfc, 0xbd, 0x3a, 0x1c, 0xe6, 0x98, 0x19, 0x0b, 
+	0xcf, 0x6c, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 
+	0xee, 0x99, 0x00, 0x01, 0xdd, 0x8f, 0x00, 0x02, 
+	0xf7, 0xd4, 0x52, 0x3f, 0xef, 0xb7, 0x38, 0x10, 
+	0xfe, 0xc3, 0x37, 0x2d, 0xe6, 0x8b, 0x0e, 0x16, 
+	0xe6, 0xb0, 0x47, 0x11, 0xd9, 0x80, 0x00, 0x01, 
+	0xfd, 0xe5, 0x70, 0x04, 0xf7, 0xd8, 0x65, 0x39, 
+	0xdf, 0x99, 0x10, 0x01, 0xdd, 0x88, 0x00, 0x01, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0xe9, 0x8f, 0x0c, 0x02, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xcc, 0x77, 0x00, 0x04, 
+	0xf5, 0xad, 0x1d, 0x03, 0xe5, 0x89, 0x0b, 0x01, 
+	0xf6, 0xba, 0x38, 0x04, 0xf6, 0xbb, 0x3b, 0x26, 
+	0xf5, 0xd6, 0x59, 0x35, 0xfd, 0xc4, 0x42, 0x20, 
+	0xf8, 0xd3, 0x51, 0x47, 0xf0, 0xa3, 0x24, 0x1e, 
+	0xf2, 0xae, 0x3e, 0x22, 0xf1, 0xa3, 0x24, 0x16, 
+	0xee, 0x94, 0x00, 0x16, 0xde, 0x9b, 0x18, 0x10, 
+	0xf7, 0xb9, 0x40, 0x25, 0xf4, 0xac, 0x1d, 0x03, 
+	0xfb, 0xd7, 0x69, 0x08, 0xfb, 0xe1, 0x6b, 0x0a, 
+	0xfa, 0xe5, 0x6d, 0x60, 0xd2, 0x76, 0x11, 0x05, 
+	0xe7, 0xa0, 0x1c, 0x0d, 0xf4, 0xb7, 0x2c, 0x3f, 
+	0xe2, 0x84, 0x01, 0x02, 0xdd, 0x88, 0x00, 0x0b, 
+	0xdc, 0x87, 0x00, 0x08, 0xdd, 0x87, 0x00, 0x01, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xf7, 0xcd, 0x4c, 0x04, 
+	0xfa, 0xce, 0x4b, 0x58, 0xf7, 0xc1, 0x3c, 0x06, 
+	0xef, 0xab, 0x13, 0x14, 0xe3, 0x89, 0x05, 0x01, 
+	0xf6, 0xac, 0x1c, 0x1f, 0xf5, 0xb9, 0x38, 0x2d, 
+	0xec, 0xa6, 0x27, 0x10, 0xec, 0xb0, 0x29, 0x30, 
+	0xf9, 0xcf, 0x51, 0x63, 0xfa, 0xe2, 0x75, 0x83, 
+	0xf9, 0xde, 0x62, 0x6f, 0xfa, 0xce, 0x4d, 0x62, 
+	0xfe, 0xed, 0x71, 0xb0, 0xfb, 0xd7, 0x63, 0x65, 
+	0xe5, 0x8b, 0x0e, 0x16, 0xf7, 0xc7, 0x54, 0x36, 
+	0xfa, 0xe3, 0x7e, 0x57, 0xef, 0xc9, 0x5f, 0x14, 
+	0xf8, 0xdc, 0x77, 0x50, 0xfb, 0xe2, 0x8b, 0x77, 
+	0xfa, 0xc8, 0x41, 0x58, 0xf1, 0xb2, 0x24, 0x16, 
+	0xe4, 0xac, 0x30, 0x14, 0xfc, 0xef, 0x82, 0x6e, 
+	0xf5, 0xce, 0x60, 0x3c, 0xe4, 0x89, 0x02, 0x14, 
+	0xeb, 0xb2, 0x38, 0x0a, 0xe4, 0xac, 0x36, 0x01, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xed, 0xbd, 0x41, 0x09, 
+	0xfe, 0xd4, 0x4a, 0x77, 0xfd, 0xc4, 0x36, 0x08, 
+	0xf6, 0xac, 0x1b, 0x20, 0xef, 0xa0, 0x0d, 0x13, 
+	0xec, 0xa6, 0x10, 0x14, 0xfb, 0xc6, 0x3a, 0x3a, 
+	0xf6, 0xb9, 0x33, 0x46, 0xf2, 0xc0, 0x42, 0x38, 
+	0xf1, 0xb0, 0x2b, 0x37, 0xfc, 0xdd, 0x6d, 0x89, 
+	0xfd, 0xd8, 0x67, 0x7e, 0xf6, 0xbd, 0x43, 0x4a, 
+	0xf4, 0xc2, 0x45, 0x2c, 0xfd, 0xd7, 0x56, 0x58, 
+	0xfa, 0xd5, 0x5c, 0x6a, 0xff, 0xe5, 0x74, 0xac, 
+	0xfa, 0xe3, 0x6a, 0x7b, 0xfd, 0xe8, 0x79, 0x9b, 
+	0xee, 0xba, 0x54, 0x11, 0xf9, 0xcc, 0x65, 0x57, 
+	0xf9, 0xdf, 0x75, 0x7c, 0xee, 0xba, 0x57, 0x14, 
+	0xf9, 0xc6, 0x55, 0x2b, 0xff, 0xfe, 0xa6, 0xea, 
+	0xff, 0xf5, 0xa9, 0x97, 0xf2, 0xbb, 0x4b, 0x15, 
+	0xff, 0xe0, 0x67, 0x92, 0xff, 0xdc, 0x54, 0x06, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xea, 0x97, 0x04, 0x02, 
+	0xed, 0xa0, 0x0c, 0x38, 0xef, 0xa6, 0x11, 0x03, 
+	0xdf, 0x8c, 0x02, 0x0d, 0xfb, 0xc6, 0x3b, 0x38, 
+	0xf4, 0xc4, 0x46, 0x37, 0xf5, 0xc3, 0x3d, 0x4d, 
+	0xf7, 0xbe, 0x49, 0x4a, 0xed, 0xb6, 0x3a, 0x23, 
+	0xfd, 0xe0, 0x62, 0x78, 0xff, 0xeb, 0x79, 0xaf, 
+	0xf9, 0xe0, 0x7c, 0x5e, 0xfd, 0xe3, 0x70, 0x6a, 
+	0xfd, 0xe3, 0x5d, 0x8d, 0xff, 0xec, 0x88, 0xae, 
+	0xff, 0xfd, 0xa3, 0xef, 0xff, 0xf7, 0x8c, 0xcd, 
+	0xfd, 0xe9, 0x82, 0x9b, 0xfb, 0xec, 0x86, 0x9d, 
+	0xfc, 0xf2, 0x88, 0x75, 0xff, 0xfd, 0xb7, 0xdb, 
+	0xf9, 0xe0, 0x70, 0x65, 0xff, 0xec, 0x82, 0x99, 
+	0xfd, 0xd3, 0x50, 0x54, 0xfa, 0xec, 0x83, 0x94, 
+	0xff, 0xf2, 0x85, 0xc3, 0xf8, 0xc4, 0x47, 0x30, 
+	0xf6, 0xb8, 0x3d, 0x41, 0xfb, 0xc2, 0x3c, 0x04, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0xdd, 0x88, 0x00, 0x07, 0xdd, 0x88, 0x00, 0x02, 
+	0xdd, 0x88, 0x00, 0x1f, 0xdb, 0x83, 0x00, 0x02, 
+	0xf3, 0xae, 0x1a, 0x2d, 0xfc, 0xc9, 0x42, 0x0c, 
+	0xee, 0xbd, 0x4e, 0x1e, 0xfd, 0xe9, 0x6f, 0x86, 
+	0xff, 0xf2, 0xa5, 0x96, 0xf4, 0xb1, 0x2d, 0x37, 
+	0xeb, 0xb5, 0x39, 0x19, 0xfd, 0xe3, 0x6f, 0x9d, 
+	0xfc, 0xda, 0x69, 0x73, 0xfe, 0xe9, 0x77, 0x9d, 
+	0xfd, 0xf4, 0x87, 0xbc, 0xff, 0xf1, 0x7d, 0xca, 
+	0xff, 0xee, 0x85, 0xc5, 0xff, 0xed, 0x74, 0xb8, 
+	0xff, 0xf4, 0x9e, 0xd2, 0xff, 0xf7, 0x8e, 0xd9, 
+	0xff, 0xf1, 0x7f, 0xca, 0xfe, 0xf9, 0xb3, 0xd4, 
+	0xff, 0xfe, 0xa1, 0xed, 0xff, 0xf9, 0x96, 0xd7, 
+	0xf9, 0xda, 0x5b, 0x57, 0xff, 0xf0, 0x80, 0xcb, 
+	0xfd, 0xe3, 0x69, 0x8b, 0xfd, 0xd6, 0x5e, 0x6e, 
+	0xf2, 0xaf, 0x2f, 0x05, 0xdd, 0x98, 0x00, 0x0b, 
+	0xdd, 0x98, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 
+	0xdd, 0x88, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 
+	0xd2, 0x7d, 0x00, 0x06, 0xdc, 0x86, 0x00, 0x08, 
+	0xef, 0xa9, 0x27, 0x21, 0xff, 0xe1, 0x66, 0xa0, 
+	0xff, 0xf3, 0xa2, 0xc7, 0xfc, 0xe3, 0x63, 0x7b, 
+	0xfe, 0xec, 0x7e, 0xb0, 0xfd, 0xe6, 0x75, 0xa5, 
+	0xfb, 0xec, 0x89, 0x9a, 0xff, 0xdd, 0x5f, 0x96, 
+	0xfd, 0xda, 0x66, 0x8e, 0xfb, 0xd5, 0x5d, 0x6e, 
+	0xff, 0xfe, 0x9e, 0xee, 0xff, 0xf1, 0x81, 0xcd, 
+	0xff, 0xf3, 0x9d, 0xd0, 0xff, 0xed, 0x82, 0xc2, 
+	0xff, 0xf9, 0xa6, 0xdb, 0xff, 0xfe, 0xac, 0xf8, 
+	0xff, 0xef, 0x8e, 0xc7, 0xff, 0xfe, 0xad, 0xfc, 
+	0xff, 0xff, 0xac, 0xfb, 0xff, 0xfb, 0xa4, 0xec, 
+	0xfc, 0xd9, 0x6a, 0x6f, 0xff, 0xec, 0x7d, 0xb1, 
+	0xfb, 0xe7, 0x71, 0x70, 0xfe, 0xc6, 0x3c, 0x34, 
+	0x00, 0x00, 0x00, 0x00, 0xe0, 0x90, 0x03, 0x0a, 
+	0xdd, 0x8a, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0xfe, 0xc2, 0x41, 0x1a, 0xf6, 0xd6, 0x64, 0x3a, 
+	0xf7, 0xc2, 0x42, 0x53, 0xff, 0xf5, 0x87, 0xd0, 
+	0xff, 0xfe, 0xcf, 0xf8, 0xff, 0xef, 0x93, 0xc6, 
+	0xff, 0xfd, 0xaa, 0xf3, 0xff, 0xfe, 0xcf, 0xf9, 
+	0xff, 0xfe, 0xce, 0xf8, 0xff, 0xf6, 0x96, 0xd9, 
+	0xff, 0xfe, 0xaa, 0xf3, 0xff, 0xe8, 0x6d, 0xa7, 
+	0xff, 0xf3, 0x87, 0xc2, 0xff, 0xfb, 0xbb, 0xf2, 
+	0xff, 0xf2, 0x84, 0xca, 0xff, 0xf1, 0xa2, 0xca, 
+	0xfc, 0xea, 0x97, 0x90, 0xff, 0xf5, 0x8c, 0xd4, 
+	0xff, 0xf7, 0x9d, 0xda, 0xff, 0xf3, 0x84, 0xd0, 
+	0xff, 0xfe, 0xac, 0xef, 0xff, 0xfe, 0x9e, 0xe1, 
+	0xfd, 0xdc, 0x67, 0x92, 0xfd, 0xe6, 0x80, 0x9d, 
+	0xfb, 0xe5, 0x6d, 0x69, 0xfa, 0xc7, 0x44, 0x47, 
+	0xed, 0x99, 0x02, 0x11, 0xed, 0xa8, 0x10, 0x13, 
+	0xed, 0x87, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0xe4, 0x9a, 0x25, 0x08, 0xe9, 0xb3, 0x3a, 0x14, 
+	0xe0, 0x93, 0x1a, 0x15, 0xf8, 0xda, 0x5f, 0x5c, 
+	0xff, 0xf4, 0x8c, 0xd9, 0xff, 0xf4, 0x96, 0xdb, 
+	0xff, 0xf9, 0xa8, 0xea, 0xff, 0xff, 0xd3, 0xff, 
+	0xff, 0xfb, 0xb5, 0xe9, 0xff, 0xfb, 0xa4, 0xed, 
+	0xff, 0xfe, 0xc0, 0xf6, 0xfd, 0xdc, 0x6f, 0x96, 
+	0xfd, 0xe4, 0x6d, 0x8e, 0xff, 0xfe, 0xaa, 0xf3, 
+	0xff, 0xef, 0x86, 0xce, 0xff, 0xf8, 0xa3, 0xdc, 
+	0xff, 0xf5, 0x98, 0xd7, 0xfe, 0xf7, 0x89, 0xb3, 
+	0xff, 0xf2, 0x7d, 0xca, 0xff, 0xfd, 0xa3, 0xf3, 
+	0xff, 0xfa, 0xa1, 0xe0, 0xff, 0xfe, 0xab, 0xfa, 
+	0xff, 0xe9, 0x76, 0xb3, 0xf5, 0xb7, 0x39, 0x3d, 
+	0xeb, 0xaf, 0x34, 0x0d, 0xf6, 0xbb, 0x3b, 0x27, 
+	0xe6, 0x94, 0x07, 0x04, 0xf6, 0xb9, 0x38, 0x2d, 
+	0xfd, 0xd8, 0x5d, 0x53, 0xfb, 0xe5, 0x6c, 0x05, 
+	0x00, 0x00, 0x00, 0x00, 0xfc, 0xef, 0xa7, 0x07, 
+	0xfb, 0xe4, 0x8e, 0x74, 0xf6, 0xbe, 0x3f, 0x49, 
+	0xec, 0xad, 0x24, 0x31, 0xf8, 0xd7, 0x56, 0x4e, 
+	0xff, 0xe4, 0x67, 0xa0, 0xff, 0xf3, 0x87, 0xd6, 
+	0xff, 0xf5, 0x93, 0xd9, 0xff, 0xfc, 0x9b, 0xef, 
+	0xff, 0xfe, 0xb1, 0xfc, 0xff, 0xfa, 0xaf, 0xe6, 
+	0xff, 0xfe, 0xab, 0xee, 0xff, 0xe8, 0x79, 0xb9, 
+	0xff, 0xf9, 0x89, 0xe1, 0xff, 0xfb, 0x8f, 0xeb, 
+	0xff, 0xfb, 0x92, 0xe3, 0xfe, 0xd7, 0x63, 0x88, 
+	0xff, 0xec, 0x8b, 0xae, 0xfd, 0xef, 0x8d, 0xbf, 
+	0xfe, 0xe4, 0x6d, 0x9d, 0xfd, 0xeb, 0x84, 0x9e, 
+	0xfd, 0xf0, 0x7d, 0xc1, 0xff, 0xf6, 0x88, 0xdd, 
+	0xfb, 0xdc, 0x62, 0x82, 0xfd, 0xe9, 0x6c, 0x85, 
+	0xf5, 0xcc, 0x4f, 0x3d, 0xf5, 0xd7, 0x59, 0x35, 
+	0xeb, 0xa8, 0x28, 0x1b, 0xf8, 0xba, 0x32, 0x28, 
+	0xff, 0xf2, 0x8e, 0xc5, 0xf9, 0xc7, 0x5e, 0x2b, 
+	0x00, 0x00, 0x00, 0x00, 0xfc, 0xf3, 0x91, 0x06, 
+	0xfa, 0xe7, 0x85, 0x5c, 0xf9, 0xe1, 0x7c, 0x56, 
+	0xf7, 0xb5, 0x2c, 0x28, 0xf8, 0xcd, 0x4d, 0x6c, 
+	0xff, 0xec, 0x72, 0xbc, 0xff, 0xe8, 0x6b, 0xbd, 
+	0xff, 0xf0, 0x76, 0xc3, 0xff, 0xf7, 0x93, 0xe4, 
+	0xff, 0xfb, 0x98, 0xeb, 0xff, 0xf1, 0x7b, 0xc5, 
+	0xff, 0xf9, 0x97, 0xe0, 0xff, 0xfa, 0x8f, 0xe2, 
+	0xff, 0xf3, 0xa7, 0xd2, 0xff, 0xfc, 0xbe, 0xf6, 
+	0xff, 0xfe, 0xaf, 0xf8, 0xff, 0xdb, 0x5f, 0x96, 
+	0xff, 0xf6, 0x8b, 0xd1, 0xff, 0xf9, 0x87, 0xe1, 
+	0xfe, 0xd9, 0x5f, 0x8b, 0xff, 0xef, 0x79, 0xbf, 
+	0xfe, 0xf5, 0x84, 0xac, 0xff, 0xe5, 0x66, 0xa3, 
+	0xff, 0xd8, 0x54, 0x88, 0xff, 0xf9, 0xa4, 0xdc, 
+	0xff, 0xf8, 0x9a, 0xd7, 0xfd, 0xd9, 0x58, 0x5d, 
+	0xf4, 0xc6, 0x49, 0x35, 0xe7, 0x83, 0x04, 0x15, 
+	0xf5, 0xb9, 0x40, 0x45, 0xec, 0xa6, 0x2d, 0x0e, 
+	0xdd, 0x88, 0x00, 0x0b, 0xea, 0xa2, 0x11, 0x03, 
+	0xfa, 0xc7, 0x44, 0x07, 0xf4, 0xc1, 0x3a, 0x48, 
+	0xfc, 0xba, 0x30, 0x1f, 0xff, 0xc9, 0x41, 0x71, 
+	0xff, 0xed, 0x75, 0xc1, 0xff, 0xf4, 0x93, 0xd7, 
+	0xff, 0xeb, 0x7a, 0xb1, 0xff, 0xf2, 0x7c, 0xcc, 
+	0xff, 0xf5, 0x8a, 0xdd, 0xff, 0xfa, 0xa2, 0xea, 
+	0xfd, 0xf0, 0x91, 0xc2, 0xff, 0xf5, 0x8d, 0xdd, 
+	0xff, 0xfd, 0xb4, 0xed, 0xff, 0xfe, 0x9f, 0xe1, 
+	0xff, 0xf8, 0x8d, 0xd2, 0xfd, 0xd4, 0x4f, 0x7d, 
+	0xff, 0xe4, 0x62, 0xac, 0xff, 0xe8, 0x6b, 0xb6, 
+	0xff, 0xe4, 0x65, 0xad, 0xff, 0xf0, 0x7a, 0xb8, 
+	0xfd, 0xdf, 0x55, 0x87, 0xf6, 0xc8, 0x37, 0x65, 
+	0xfb, 0xc4, 0x42, 0x4a, 0xfd, 0xee, 0x90, 0xb3, 
+	0xff, 0xfd, 0x9b, 0xd9, 0xfa, 0xd8, 0x5d, 0x73, 
+	0xf0, 0xb6, 0x32, 0x26, 0xe2, 0x90, 0x03, 0x0e, 
+	0xe8, 0x9c, 0x0b, 0x3b, 0xdc, 0x86, 0x08, 0x07, 
+	0xea, 0xa2, 0x07, 0x04, 0xf7, 0xc7, 0x33, 0x40, 
+	0xf7, 0xbe, 0x3c, 0x29, 0xf7, 0xd4, 0x56, 0x54, 
+	0xf6, 0xc7, 0x42, 0x56, 0xfc, 0xd8, 0x60, 0x85, 
+	0xff, 0xe7, 0x75, 0xc6, 0xfd, 0xe9, 0x79, 0xaa, 
+	0xfc, 0xde, 0x57, 0x74, 0xff, 0xe9, 0x71, 0xb9, 
+	0xff, 0xe5, 0x6b, 0xb7, 0xff, 0xfe, 0xc0, 0xf8, 
+	0xff, 0xf9, 0x9b, 0xe0, 0xff, 0xf5, 0x8a, 0xdc, 
+	0xff, 0xef, 0x79, 0xc5, 0xff, 0xf1, 0x9f, 0xca, 
+	0xff, 0xeb, 0x7b, 0xab, 0xfc, 0xca, 0x3a, 0x6b, 
+	0xfd, 0xe0, 0x59, 0x91, 0xff, 0xdf, 0x58, 0x92, 
+	0xff, 0xdf, 0x5e, 0xa4, 0xfe, 0xe4, 0x6b, 0xa8, 
+	0xfe, 0xd9, 0x51, 0x85, 0xeb, 0xa5, 0x18, 0x45, 
+	0xfc, 0xc5, 0x3b, 0x6b, 0xfd, 0xda, 0x69, 0x87, 
+	0xff, 0xf0, 0x7d, 0xb0, 0xf7, 0xbf, 0x3c, 0x49, 
+	0xed, 0xa6, 0x10, 0x19, 0xe0, 0x8b, 0x00, 0x0a, 
+	0xeb, 0x9d, 0x07, 0x36, 0xdc, 0x86, 0x05, 0x06, 
+	0x00, 0x00, 0x00, 0x00, 0xfe, 0xbe, 0x34, 0x1a, 
+	0xe9, 0xa8, 0x2f, 0x0c, 0xfd, 0xe8, 0x81, 0x8e, 
+	0xff, 0xec, 0x7b, 0xb7, 0xf2, 0xbc, 0x40, 0x63, 
+	0xff, 0xe6, 0x67, 0xa5, 0xfd, 0xd4, 0x57, 0x83, 
+	0xff, 0xd5, 0x4b, 0x85, 0xff, 0xd7, 0x4f, 0x91, 
+	0xff, 0xe4, 0x66, 0xa4, 0xff, 0xf7, 0x8d, 0xd2, 
+	0xff, 0xf6, 0x92, 0xd9, 0xff, 0xfe, 0xac, 0xf9, 
+	0xff, 0xe2, 0x66, 0xaa, 0xff, 0xda, 0x58, 0x8f, 
+	0xff, 0xdc, 0x58, 0x92, 0xf6, 0xb9, 0x2c, 0x49, 
+	0xfc, 0xc4, 0x36, 0x67, 0xfd, 0xdd, 0x50, 0x86, 
+	0xff, 0xde, 0x5b, 0x97, 0xff, 0xe7, 0x67, 0xa5, 
+	0xff, 0xe5, 0x63, 0x9e, 0xfc, 0xc6, 0x3c, 0x6d, 
+	0xff, 0xdb, 0x57, 0x8f, 0xfd, 0xdf, 0x6f, 0x91, 
+	0xff, 0xed, 0x84, 0x9d, 0xea, 0x96, 0x0c, 0x1a, 
+	0xe6, 0x8b, 0x01, 0x18, 0xdd, 0x88, 0x00, 0x0c, 
+	0xde, 0x89, 0x00, 0x0e, 0xdb, 0x83, 0x00, 0x01, 
+	0xcc, 0x77, 0x00, 0x04, 0xf2, 0xa1, 0x23, 0x04, 
+	0xe7, 0x8d, 0x02, 0x18, 0xf7, 0xc9, 0x39, 0x49, 
+	0xff, 0xde, 0x5c, 0x93, 0xfd, 0xe4, 0x71, 0xa2, 
+	0xff, 0xeb, 0x6e, 0xb1, 0xff, 0xdf, 0x58, 0x92, 
+	0xff, 0xe0, 0x5b, 0x93, 0xff, 0xe0, 0x61, 0xa6, 
+	0xff, 0xe7, 0x75, 0xc5, 0xff, 0xf0, 0x74, 0xc0, 
+	0xff, 0xfb, 0x93, 0xe7, 0xff, 0xf8, 0xac, 0xe0, 
+	0xff, 0xe1, 0x64, 0xa5, 0xff, 0xee, 0x7d, 0xc7, 
+	0xff, 0xda, 0x55, 0x89, 0xfa, 0xbc, 0x37, 0x45, 
+	0xfc, 0xc5, 0x3a, 0x6a, 0xff, 0xe5, 0x61, 0x9e, 
+	0xff, 0xdc, 0x58, 0x95, 0xff, 0xf5, 0x8f, 0xdb, 
+	0xff, 0xe7, 0x69, 0xa7, 0xfa, 0xc0, 0x34, 0x62, 
+	0xf9, 0xc3, 0x35, 0x6b, 0xff, 0xd2, 0x40, 0x78, 
+	0xfc, 0xd3, 0x55, 0x7c, 0xee, 0xa9, 0x12, 0x18, 
+	0xdc, 0x87, 0x00, 0x08, 0xec, 0xa4, 0x1f, 0x11, 
+	0xe2, 0x88, 0x0e, 0x13, 0xd0, 0x6c, 0x00, 0x05, 
+	0x00, 0x00, 0x00, 0x00, 0xdd, 0x82, 0x00, 0x12, 
+	0xf1, 0xad, 0x2d, 0x05, 0xf0, 0xb2, 0x30, 0x23, 
+	0xff, 0xde, 0x57, 0x93, 0xff, 0xf5, 0x91, 0xd5, 
+	0xff, 0xfa, 0x96, 0xe6, 0xff, 0xda, 0x58, 0x95, 
+	0xff, 0xf9, 0x8d, 0xdf, 0xff, 0xf0, 0x79, 0xc8, 
+	0xff, 0xf7, 0x8f, 0xe4, 0xff, 0xee, 0x84, 0xa7, 
+	0xff, 0xe9, 0x6d, 0xb5, 0xff, 0xda, 0x59, 0x8d, 
+	0xff, 0xdb, 0x57, 0x91, 0xfa, 0xc9, 0x45, 0x73, 
+	0xfd, 0xcc, 0x42, 0x70, 0xff, 0xd5, 0x4c, 0x84, 
+	0xff, 0xd2, 0x42, 0x7c, 0xff, 0xd6, 0x4f, 0x8f, 
+	0xff, 0xd5, 0x4b, 0x85, 0xff, 0xe0, 0x62, 0xa1, 
+	0xff, 0xd8, 0x54, 0x94, 0xff, 0xe0, 0x67, 0xa7, 
+	0xff, 0xdd, 0x55, 0x8b, 0xfd, 0xcb, 0x3d, 0x6d, 
+	0xfc, 0xc5, 0x39, 0x6b, 0xf9, 0xb8, 0x33, 0x29, 
+	0xe0, 0x90, 0x10, 0x07, 0xf8, 0xae, 0x1f, 0x43, 
+	0xf9, 0xba, 0x36, 0x3d, 0xdc, 0x85, 0x00, 0x08, 
+	0x00, 0x00, 0x00, 0x00, 0xfd, 0xbf, 0x3a, 0x1e, 
+	0xf9, 0xbb, 0x34, 0x4e, 0xf6, 0xb9, 0x34, 0x3a, 
+	0xff, 0xed, 0x7b, 0xba, 0xff, 0xfb, 0x90, 0xe6, 
+	0xff, 0xeb, 0x79, 0xaa, 0xfa, 0xbd, 0x35, 0x59, 
+	0xff, 0xdd, 0x63, 0x94, 0xff, 0xe9, 0x68, 0xaf, 
+	0xff, 0xf6, 0x84, 0xd3, 0xff, 0xeb, 0x6c, 0xb1, 
+	0xff, 0xf6, 0x84, 0xd5, 0xff, 0xf2, 0x83, 0xc6, 
+	0xff, 0xcb, 0x4c, 0x7d, 0xff, 0xc9, 0x46, 0x74, 
+	0xff, 0xec, 0x80, 0xc5, 0xff, 0xe6, 0x73, 0xc1, 
+	0xfd, 0xcb, 0x3e, 0x6e, 0xff, 0xbe, 0x2c, 0x68, 
+	0xff, 0xc9, 0x49, 0x7a, 0xff, 0xc6, 0x3c, 0x72, 
+	0xff, 0xde, 0x60, 0x96, 0xff, 0xe3, 0x70, 0xac, 
+	0xfd, 0xc5, 0x38, 0x56, 0xfd, 0xe1, 0x5d, 0x8f, 
+	0xfd, 0xd1, 0x47, 0x79, 0xfa, 0xc1, 0x3c, 0x5c, 
+	0xe6, 0x92, 0x12, 0x1b, 0xf3, 0xae, 0x23, 0x3a, 
+	0xf4, 0xb4, 0x23, 0x40, 0xd6, 0x75, 0x00, 0x06, 
+	0xcf, 0x77, 0x00, 0x04, 0xf8, 0xd3, 0x51, 0x46, 
+	0xf9, 0xc7, 0x44, 0x4e, 0xee, 0x9d, 0x07, 0x3f, 
+	0xfc, 0xde, 0x6f, 0x8c, 0xff, 0xf1, 0x7c, 0xbc, 
+	0xff, 0xd0, 0x3d, 0x78, 0xf0, 0xa1, 0x0c, 0x44, 
+	0xfc, 0xd7, 0x5e, 0x83, 0xff, 0xd5, 0x45, 0x7b, 
+	0xff, 0xdd, 0x60, 0x93, 0xff, 0xe1, 0x60, 0x9b, 
+	0xff, 0xe5, 0x67, 0xad, 0xff, 0xf2, 0x83, 0xc6, 
+	0xff, 0xd2, 0x43, 0x7d, 0xff, 0xdb, 0x59, 0x91, 
+	0xff, 0xf9, 0x8e, 0xdb, 0xff, 0xe0, 0x61, 0xa2, 
+	0xf9, 0xbd, 0x2d, 0x5c, 0xf5, 0xc5, 0x34, 0x63, 
+	0xff, 0xe3, 0x61, 0x9a, 0xff, 0xc2, 0x35, 0x6b, 
+	0xff, 0xee, 0x9d, 0xc2, 0xfd, 0xcf, 0x56, 0x73, 
+	0xf7, 0xba, 0x27, 0x62, 0xfb, 0xea, 0x7e, 0x90, 
+	0xfd, 0xd3, 0x50, 0x78, 0xf8, 0xb0, 0x1b, 0x51, 
+	0xf8, 0xb7, 0x2e, 0x5a, 0xec, 0xaf, 0x1b, 0x30, 
+	0xee, 0xb2, 0x1b, 0x2b, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xee, 0xa9, 0x10, 0x22, 
+	0xeb, 0x9c, 0x0a, 0x3e, 0xe6, 0xa1, 0x13, 0x3f, 
+	0xf4, 0xb9, 0x2a, 0x54, 0xfe, 0xd9, 0x51, 0x87, 
+	0xf8, 0xbb, 0x29, 0x64, 0xef, 0x9f, 0x0a, 0x42, 
+	0xfc, 0xc4, 0x3b, 0x6a, 0xff, 0xd1, 0x40, 0x79, 
+	0xff, 0xd2, 0x49, 0x7d, 0xfc, 0xd2, 0x54, 0x7d, 
+	0xf1, 0xb7, 0x33, 0x50, 0xfe, 0xe6, 0x71, 0x93, 
+	0xfd, 0xc5, 0x37, 0x6b, 0xfc, 0xcb, 0x3e, 0x6f, 
+	0xfc, 0xd4, 0x59, 0x7f, 0xfe, 0xcf, 0x45, 0x77, 
+	0xed, 0xac, 0x22, 0x42, 0xec, 0xa1, 0x0e, 0x3d, 
+	0xf9, 0xb4, 0x2a, 0x4f, 0xfa, 0xe6, 0x7c, 0x88, 
+	0xff, 0xec, 0x81, 0xc0, 0xfd, 0xd0, 0x4a, 0x76, 
+	0xf7, 0xaf, 0x18, 0x4d, 0xf6, 0xb9, 0x38, 0x49, 
+	0xf9, 0xc7, 0x45, 0x4c, 0xf7, 0xaf, 0x17, 0x47, 
+	0xf4, 0xaf, 0x26, 0x39, 0xe1, 0x89, 0x06, 0x14, 
+	0xed, 0xa9, 0x12, 0x15, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xdf, 0x96, 0x02, 0x11, 
+	0xe6, 0x8c, 0x01, 0x1d, 0xe8, 0x94, 0x02, 0x2a, 
+	0xeb, 0xa5, 0x25, 0x38, 0xfe, 0xe4, 0x64, 0xaf, 
+	0xf0, 0xb5, 0x27, 0x49, 0xee, 0xa0, 0x0c, 0x31, 
+	0xfe, 0xbc, 0x29, 0x64, 0xfe, 0xc3, 0x37, 0x6c, 
+	0xf5, 0xc5, 0x30, 0x63, 0xf8, 0xba, 0x28, 0x59, 
+	0xf2, 0xb4, 0x22, 0x41, 0xf9, 0xba, 0x27, 0x5a, 
+	0xfb, 0xc1, 0x35, 0x68, 0xf0, 0xb2, 0x2b, 0x5c, 
+	0xf8, 0xb9, 0x26, 0x59, 0xef, 0xac, 0x16, 0x4a, 
+	0xf8, 0xc8, 0x4b, 0x73, 0xef, 0xb0, 0x21, 0x46, 
+	0xf7, 0xae, 0x18, 0x4b, 0xf6, 0xb9, 0x3f, 0x2b, 
+	0xf6, 0xc9, 0x41, 0x64, 0xf9, 0xc8, 0x45, 0x4b, 
+	0xe0, 0x8b, 0x05, 0x18, 0xe3, 0x8a, 0x01, 0x1f, 
+	0xe1, 0x8f, 0x09, 0x23, 0xee, 0xad, 0x14, 0x42, 
+	0xeb, 0xad, 0x19, 0x2b, 0xda, 0x78, 0x00, 0x02, 
+	0xdd, 0x88, 0x00, 0x07, 0xdd, 0x88, 0x00, 0x01, 
+	0x00, 0x00, 0x00, 0x00, 0xd2, 0x7f, 0x00, 0x06, 
+	0xdd, 0x86, 0x00, 0x1f, 0xe2, 0x8b, 0x00, 0x1e, 
+	0xea, 0x9f, 0x17, 0x36, 0xfe, 0xdd, 0x5d, 0x96, 
+	0xef, 0xaa, 0x29, 0x33, 0xe2, 0x92, 0x0d, 0x24, 
+	0xfe, 0xc1, 0x36, 0x68, 0xf0, 0xa7, 0x1b, 0x34, 
+	0xf8, 0xb9, 0x2f, 0x5c, 0xef, 0xad, 0x15, 0x42, 
+	0xee, 0x9e, 0x11, 0x26, 0xf8, 0xb6, 0x2e, 0x5b, 
+	0xf5, 0xb2, 0x2e, 0x48, 0xf0, 0xaf, 0x1a, 0x47, 
+	0xf8, 0xb8, 0x24, 0x56, 0xf9, 0xcd, 0x4a, 0x63, 
+	0xfe, 0xdd, 0x57, 0x8d, 0xec, 0xa1, 0x16, 0x41, 
+	0xf2, 0xa8, 0x1d, 0x3e, 0xe0, 0x8d, 0x06, 0x23, 
+	0xe0, 0x8f, 0x04, 0x26, 0xdf, 0x89, 0x07, 0x21, 
+	0xd5, 0x7a, 0x00, 0x07, 0xe4, 0x87, 0x00, 0x17, 
+	0xe5, 0x90, 0x01, 0x05, 0xea, 0x97, 0x0b, 0x2b, 
+	0xde, 0x92, 0x03, 0x16, 0xdd, 0x88, 0x00, 0x07, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xd1, 0x7c, 0x00, 0x05, 
+	0xdd, 0x88, 0x00, 0x11, 0xdf, 0x94, 0x00, 0x12, 
+	0xee, 0x9e, 0x0e, 0x3f, 0xf5, 0xc2, 0x3b, 0x50, 
+	0xde, 0x8b, 0x05, 0x17, 0xda, 0x87, 0x02, 0x08, 
+	0xee, 0xa9, 0x0f, 0x44, 0xe6, 0x9f, 0x17, 0x18, 
+	0xfa, 0xc6, 0x33, 0x59, 0xe1, 0x90, 0x0c, 0x18, 
+	0xe7, 0x9c, 0x11, 0x0d, 0xf7, 0xba, 0x28, 0x5e, 
+	0xee, 0xa9, 0x0e, 0x47, 0xeb, 0x9d, 0x07, 0x3e, 
+	0xf4, 0xb9, 0x2c, 0x45, 0xff, 0xda, 0x53, 0x8f, 
+	0xfe, 0xdc, 0x59, 0x8e, 0xee, 0xa3, 0x16, 0x42, 
+	0xdf, 0x94, 0x01, 0x15, 0xde, 0x8a, 0x00, 0x23, 
+	0xee, 0xaa, 0x14, 0x45, 0xf2, 0xc0, 0x42, 0x36, 
+	0xcc, 0x73, 0x00, 0x05, 0xcf, 0x6d, 0x00, 0x05, 
+	0xdd, 0x88, 0x00, 0x09, 0xf6, 0xbc, 0x39, 0x4e, 
+	0xe2, 0x92, 0x16, 0x24, 0xdc, 0x86, 0x00, 0x08, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0xdd, 0x7d, 0x00, 0x10, 0xd4, 0x7d, 0x00, 0x07, 
+	0xe2, 0x92, 0x0c, 0x24, 0xf8, 0xb8, 0x24, 0x51, 
+	0xda, 0x89, 0x00, 0x07, 0xce, 0x77, 0x00, 0x05, 
+	0xeb, 0x97, 0x01, 0x21, 0xe1, 0x8c, 0x00, 0x0b, 
+	0xeb, 0x96, 0x01, 0x21, 0xdf, 0x8a, 0x00, 0x12, 
+	0xdf, 0x8d, 0x08, 0x01, 0xdd, 0x8d, 0x08, 0x16, 
+	0xe8, 0x9c, 0x0b, 0x1c, 0xe4, 0x8e, 0x02, 0x20, 
+	0xfb, 0xde, 0x55, 0x6d, 0xfe, 0xe3, 0x67, 0x99, 
+	0xf8, 0xb1, 0x23, 0x47, 0xf7, 0xb9, 0x27, 0x5e, 
+	0xe3, 0x8c, 0x10, 0x14, 0xda, 0x82, 0x00, 0x15, 
+	0xea, 0x9f, 0x10, 0x1c, 0xf6, 0xb0, 0x24, 0x23, 
+	0xd1, 0x6f, 0x00, 0x05, 0xe2, 0x8d, 0x03, 0x09, 
+	0xe1, 0x8e, 0x02, 0x0a, 0xf3, 0xaa, 0x22, 0x3e, 
+	0xe3, 0x93, 0x0e, 0x14, 0xcf, 0x7a, 0x00, 0x04, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0xdc, 0x86, 0x00, 0x08, 0xcf, 0x7a, 0x00, 0x05, 
+	0xd4, 0x80, 0x01, 0x07, 0xe2, 0x8f, 0x05, 0x13, 
+	0xcd, 0x77, 0x00, 0x04, 0xcc, 0x67, 0x00, 0x04, 
+	0xde, 0x94, 0x00, 0x10, 0xd1, 0x76, 0x00, 0x05, 
+	0xdf, 0x96, 0x01, 0x11, 0xdd, 0x8a, 0x00, 0x0a, 
+	0x00, 0x00, 0x00, 0x00, 0xd2, 0x79, 0x00, 0x06, 
+	0xdf, 0x8d, 0x14, 0x16, 0xd9, 0x86, 0x06, 0x08, 
+	0xfb, 0xdd, 0x52, 0x6a, 0xfd, 0xd2, 0x4b, 0x76, 
+	0xe6, 0x9d, 0x0e, 0x1b, 0xf2, 0xa9, 0x1e, 0x3a, 
+	0xe1, 0x8f, 0x17, 0x08, 0xcd, 0x77, 0x00, 0x05, 
+	0xcf, 0x79, 0x00, 0x05, 0xdc, 0x87, 0x00, 0x08, 
+	0xf7, 0xa2, 0x0a, 0x02, 0xf4, 0x9d, 0x09, 0x1e, 
+	0xee, 0xa8, 0x11, 0x22, 0xf6, 0xbb, 0x38, 0x4f, 
+	0xea, 0xa5, 0x28, 0x0d, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0xcc, 0x77, 0x00, 0x04, 0xcc, 0x77, 0x00, 0x04, 
+	0xd1, 0x7c, 0x00, 0x05, 0xdd, 0x88, 0x00, 0x1f, 
+	0xda, 0x82, 0x00, 0x02, 0xcc, 0x66, 0x00, 0x04, 
+	0xdc, 0x87, 0x00, 0x08, 0xdd, 0x87, 0x00, 0x01, 
+	0xed, 0xa8, 0x10, 0x20, 0xe0, 0x8d, 0x03, 0x12, 
+	0x00, 0x00, 0x00, 0x00, 0xde, 0x82, 0x00, 0x14, 
+	0xf4, 0xaf, 0x2e, 0x3c, 0xe4, 0x9f, 0x26, 0x08, 
+	0xf8, 0xb6, 0x2d, 0x27, 0xfa, 0xbd, 0x39, 0x3f, 
+	0xdd, 0x88, 0x00, 0x09, 0xd6, 0x84, 0x00, 0x06, 
+	0xcd, 0x6a, 0x00, 0x04, 0xcc, 0x77, 0x00, 0x04, 
+	0xcc, 0x77, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xd5, 0x74, 0x00, 0x05, 
+	0xf6, 0xac, 0x1c, 0x1e, 0xed, 0x9b, 0x10, 0x24, 
+	0xdb, 0x81, 0x06, 0x07, 0xcc, 0x77, 0x00, 0x04, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0xcc, 0x77, 0x00, 0x04, 0xcf, 0x7a, 0x00, 0x05, 
+	0xdc, 0x87, 0x00, 0x09, 0xda, 0x82, 0x00, 0x13, 
+	0xd3, 0x7e, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 
+	0xcf, 0x7a, 0x00, 0x04, 0xd6, 0x79, 0x00, 0x01, 
+	0xe9, 0x9c, 0x0c, 0x19, 0xe8, 0x9b, 0x0c, 0x18, 
+	0x00, 0x00, 0x00, 0x00, 0xd9, 0x84, 0x00, 0x10, 
+	0xdd, 0x7f, 0x00, 0x12, 0xde, 0x80, 0x00, 0x01, 
+	0xe5, 0xa1, 0x18, 0x13, 0xfd, 0xc2, 0x37, 0x31, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0xdd, 0x88, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xde, 0x82, 0x00, 0x14, 
+	0xd2, 0x70, 0x00, 0x06, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xd1, 0x7c, 0x00, 0x05, 
+	0xdd, 0x88, 0x00, 0x10, 0xcd, 0x77, 0x00, 0x04, 
+	0xcc, 0x77, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0xd9, 0x7a, 0x03, 0x01, 0xd5, 0x7c, 0x05, 0x05, 
+	0x00, 0x00, 0x00, 0x00, 0xcc, 0x77, 0x00, 0x04, 
+	0xcf, 0x76, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 
+	0xed, 0xa8, 0x11, 0x04, 0xea, 0xa4, 0x0e, 0x34, 
+	0xdd, 0x91, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xdd, 0x88, 0x00, 0x01, 
+	0xdd, 0x88, 0x00, 0x0f, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xde, 0x83, 0x00, 0x14, 
+	0xd2, 0x70, 0x00, 0x05, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xdd, 0x87, 0x00, 0x01, 
+	0xdd, 0x87, 0x00, 0x0f, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xcc, 0x66, 0x00, 0x04, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0xdf, 0x8b, 0x02, 0x01, 0xde, 0x8c, 0x02, 0x11, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0xcf, 0x7a, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 
+	0xe7, 0x92, 0x00, 0x02, 0xe2, 0x89, 0x00, 0x1b, 
+	0xd6, 0x72, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0xcf, 0x6c, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xcc, 0x66, 0x00, 0x04, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xdd, 0x88, 0x00, 0x0b, 
+	0xdd, 0x88, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xcf, 0x6c, 0x00, 0x04, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0xdd, 0x87, 0x00, 0x01, 0xdc, 0x87, 0x00, 0x10, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xdd, 0x88, 0x00, 0x08, 
+	0xdd, 0x88, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xdd, 0x98, 0x00, 0x0b, 
+	0xdd, 0x98, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0xcc, 0x66, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xcf, 0x6c, 0x00, 0x04, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0xcc, 0x66, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0xd0, 0x7f, 0x00, 0x05, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 
 	
 };
 
@@ -35896,10 +36231,10 @@ Gfx ccr_dl_016_object_01209364_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_001_object_011E075C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {275, 929, -108}, 0, {-12, 233}, {232, 219, 193, 255} }},
-	{{ {258, 1043, -101}, 0, {-12, 108}, {232, 219, 193, 255} }},
-	{{ {275, 929, 108}, 0, {237, 233}, {232, 219, 193, 255} }},
-	{{ {258, 1043, 101}, 0, {237, 108}, {232, 219, 193, 255} }},
+	{{ {275, 929, -108}, 0, {-4, 994}, {232, 219, 193, 255} }},
+	{{ {258, 1043, -101}, 0, {-4, 496}, {232, 219, 193, 255} }},
+	{{ {275, 929, 108}, 0, {991, 994}, {232, 219, 193, 255} }},
+	{{ {258, 1043, 101}, 0, {991, 496}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_001_object_011E075C_mesh_layer_5_tri_0[] = {
@@ -35909,10 +36244,10 @@ Gfx ccr_dl_001_object_011E075C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_002_object_011E068C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {279, 909, -110}, 0, {245, 233}, {232, 219, 193, 255} }},
-	{{ {258, 1043, -101}, 0, {245, 108}, {232, 219, 193, 255} }},
-	{{ {279, 909, 110}, 0, {494, 233}, {232, 219, 193, 255} }},
-	{{ {258, 1043, 101}, 0, {494, 108}, {232, 219, 193, 255} }},
+	{{ {279, 909, -110}, 0, {-1, 1001}, {232, 219, 193, 255} }},
+	{{ {258, 1043, -101}, 0, {-1, 503}, {232, 219, 193, 255} }},
+	{{ {279, 909, 110}, 0, {994, 1001}, {232, 219, 193, 255} }},
+	{{ {258, 1043, 101}, 0, {994, 503}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_002_object_011E068C_mesh_layer_5_tri_0[] = {
@@ -35922,10 +36257,10 @@ Gfx ccr_dl_002_object_011E068C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_003_object_011E05BC_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {282, 888, -111}, 0, {502, 233}, {232, 219, 193, 255} }},
-	{{ {258, 1043, -101}, 0, {502, 108}, {232, 219, 193, 255} }},
-	{{ {282, 888, 111}, 0, {751, 233}, {232, 219, 193, 255} }},
-	{{ {258, 1043, 101}, 0, {751, 108}, {232, 219, 193, 255} }},
+	{{ {282, 888, -111}, 0, {2, 998}, {232, 219, 193, 255} }},
+	{{ {258, 1043, -101}, 0, {2, 500}, {232, 219, 193, 255} }},
+	{{ {282, 888, 111}, 0, {997, 998}, {232, 219, 193, 255} }},
+	{{ {258, 1043, 101}, 0, {997, 500}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_003_object_011E05BC_mesh_layer_5_tri_0[] = {
@@ -35935,10 +36270,10 @@ Gfx ccr_dl_003_object_011E05BC_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_004_object_011E04EC_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {285, 867, -112}, 0, {759, 233}, {232, 219, 193, 255} }},
-	{{ {258, 1043, -101}, 0, {759, 108}, {232, 219, 193, 255} }},
-	{{ {285, 867, 112}, 0, {1008, 233}, {232, 219, 193, 255} }},
-	{{ {258, 1043, 101}, 0, {1008, 108}, {232, 219, 193, 255} }},
+	{{ {285, 867, -112}, 0, {-5, 1004}, {232, 219, 193, 255} }},
+	{{ {258, 1043, -101}, 0, {-5, 506}, {232, 219, 193, 255} }},
+	{{ {285, 867, 112}, 0, {991, 1004}, {232, 219, 193, 255} }},
+	{{ {258, 1043, 101}, 0, {991, 506}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_004_object_011E04EC_mesh_layer_5_tri_0[] = {
@@ -35948,10 +36283,10 @@ Gfx ccr_dl_004_object_011E04EC_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_005_object_011E041C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {289, 847, -113}, 0, {-12, 490}, {232, 219, 193, 255} }},
-	{{ {258, 1043, -101}, 0, {-12, 365}, {232, 219, 193, 255} }},
-	{{ {289, 847, 113}, 0, {237, 490}, {232, 219, 193, 255} }},
-	{{ {258, 1043, 101}, 0, {237, 365}, {232, 219, 193, 255} }},
+	{{ {289, 847, -113}, 0, {2, 1004}, {232, 219, 193, 255} }},
+	{{ {258, 1043, -101}, 0, {2, 506}, {232, 219, 193, 255} }},
+	{{ {289, 847, 113}, 0, {998, 1004}, {232, 219, 193, 255} }},
+	{{ {258, 1043, 101}, 0, {998, 506}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_005_object_011E041C_mesh_layer_5_tri_0[] = {
@@ -35961,10 +36296,10 @@ Gfx ccr_dl_005_object_011E041C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_006_object_011E034C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {292, 826, -115}, 0, {245, 490}, {232, 219, 193, 255} }},
-	{{ {258, 1043, -101}, 0, {245, 365}, {232, 219, 193, 255} }},
-	{{ {292, 826, 115}, 0, {494, 490}, {232, 219, 193, 255} }},
-	{{ {258, 1043, 101}, 0, {494, 365}, {232, 219, 193, 255} }},
+	{{ {292, 826, -115}, 0, {2, 997}, {232, 219, 193, 255} }},
+	{{ {258, 1043, -101}, 0, {2, 499}, {232, 219, 193, 255} }},
+	{{ {292, 826, 115}, 0, {998, 997}, {232, 219, 193, 255} }},
+	{{ {258, 1043, 101}, 0, {998, 499}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_006_object_011E034C_mesh_layer_5_tri_0[] = {
@@ -35974,10 +36309,10 @@ Gfx ccr_dl_006_object_011E034C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_007_object_011E027C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {295, 805, -116}, 0, {502, 490}, {232, 219, 193, 255} }},
-	{{ {258, 1043, -101}, 0, {502, 365}, {232, 219, 193, 255} }},
-	{{ {295, 805, 116}, 0, {751, 490}, {232, 219, 193, 255} }},
-	{{ {258, 1043, 101}, 0, {751, 365}, {232, 219, 193, 255} }},
+	{{ {295, 805, -116}, 0, {-2, 1007}, {232, 219, 193, 255} }},
+	{{ {258, 1043, -101}, 0, {-2, 509}, {232, 219, 193, 255} }},
+	{{ {295, 805, 116}, 0, {994, 1007}, {232, 219, 193, 255} }},
+	{{ {258, 1043, 101}, 0, {994, 509}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_007_object_011E027C_mesh_layer_5_tri_0[] = {
@@ -35987,10 +36322,10 @@ Gfx ccr_dl_007_object_011E027C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_008_object_011E01AC_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {298, 785, -117}, 0, {759, 490}, {232, 219, 193, 255} }},
-	{{ {259, 1031, -102}, 0, {759, 365}, {232, 219, 193, 255} }},
-	{{ {298, 785, 117}, 0, {1008, 490}, {232, 219, 193, 255} }},
-	{{ {259, 1031, 102}, 0, {1008, 365}, {232, 219, 193, 255} }},
+	{{ {298, 785, -117}, 0, {-2, 994}, {232, 219, 193, 255} }},
+	{{ {259, 1031, -102}, 0, {-2, 496}, {232, 219, 193, 255} }},
+	{{ {298, 785, 117}, 0, {994, 994}, {232, 219, 193, 255} }},
+	{{ {259, 1031, 102}, 0, {994, 496}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_008_object_011E01AC_mesh_layer_5_tri_0[] = {
@@ -36000,10 +36335,10 @@ Gfx ccr_dl_008_object_011E01AC_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_009_object_011E00DC_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {302, 764, -119}, 0, {-12, 747}, {232, 219, 193, 255} }},
-	{{ {261, 1020, -103}, 0, {-12, 622}, {232, 219, 193, 255} }},
-	{{ {302, 764, 119}, 0, {237, 747}, {232, 219, 193, 255} }},
-	{{ {261, 1020, 103}, 0, {237, 622}, {232, 219, 193, 255} }},
+	{{ {302, 764, -119}, 0, {-4, 991}, {232, 219, 193, 255} }},
+	{{ {261, 1020, -103}, 0, {-4, 493}, {232, 219, 193, 255} }},
+	{{ {302, 764, 119}, 0, {991, 991}, {232, 219, 193, 255} }},
+	{{ {261, 1020, 103}, 0, {991, 493}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_009_object_011E00DC_mesh_layer_5_tri_0[] = {
@@ -36013,10 +36348,10 @@ Gfx ccr_dl_009_object_011E00DC_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_010_object_011E000C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {305, 743, -120}, 0, {245, 747}, {232, 219, 193, 255} }},
-	{{ {263, 1008, -103}, 0, {245, 622}, {232, 219, 193, 255} }},
-	{{ {305, 743, 120}, 0, {494, 747}, {232, 219, 193, 255} }},
-	{{ {263, 1008, 103}, 0, {494, 622}, {232, 219, 193, 255} }},
+	{{ {305, 743, -120}, 0, {2, 1004}, {232, 219, 193, 255} }},
+	{{ {263, 1008, -103}, 0, {2, 506}, {232, 219, 193, 255} }},
+	{{ {305, 743, 120}, 0, {998, 1004}, {232, 219, 193, 255} }},
+	{{ {263, 1008, 103}, 0, {998, 506}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_010_object_011E000C_mesh_layer_5_tri_0[] = {
@@ -36026,10 +36361,10 @@ Gfx ccr_dl_010_object_011E000C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_011_object_011DFF3C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {308, 723, -121}, 0, {502, 747}, {232, 219, 193, 255} }},
-	{{ {265, 996, -104}, 0, {502, 622}, {232, 219, 193, 255} }},
-	{{ {308, 723, 121}, 0, {751, 747}, {232, 219, 193, 255} }},
-	{{ {265, 996, 104}, 0, {751, 622}, {232, 219, 193, 255} }},
+	{{ {308, 723, -121}, 0, {-2, 1000}, {232, 219, 193, 255} }},
+	{{ {265, 996, -104}, 0, {-2, 502}, {232, 219, 193, 255} }},
+	{{ {308, 723, 121}, 0, {994, 1000}, {232, 219, 193, 255} }},
+	{{ {265, 996, 104}, 0, {994, 502}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_011_object_011DFF3C_mesh_layer_5_tri_0[] = {
@@ -36039,10 +36374,10 @@ Gfx ccr_dl_011_object_011DFF3C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_012_object_011DFE6C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {311, 702, -122}, 0, {759, 747}, {232, 219, 193, 255} }},
-	{{ {267, 985, -105}, 0, {759, 622}, {232, 219, 193, 255} }},
-	{{ {311, 702, 122}, 0, {1008, 747}, {232, 219, 193, 255} }},
-	{{ {267, 985, 105}, 0, {1008, 622}, {232, 219, 193, 255} }},
+	{{ {311, 702, -122}, 0, {-2, 997}, {232, 219, 193, 255} }},
+	{{ {267, 985, -105}, 0, {-2, 499}, {232, 219, 193, 255} }},
+	{{ {311, 702, 122}, 0, {994, 997}, {232, 219, 193, 255} }},
+	{{ {267, 985, 105}, 0, {994, 499}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_012_object_011DFE6C_mesh_layer_5_tri_0[] = {
@@ -36052,10 +36387,10 @@ Gfx ccr_dl_012_object_011DFE6C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_013_object_011DFD9C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {315, 681, -124}, 0, {-12, 1004}, {232, 219, 193, 255} }},
-	{{ {269, 973, -106}, 0, {-12, 879}, {232, 219, 193, 255} }},
-	{{ {315, 681, 124}, 0, {237, 1004}, {232, 219, 193, 255} }},
-	{{ {269, 973, 106}, 0, {237, 879}, {232, 219, 193, 255} }},
+	{{ {315, 681, -124}, 0, {-4, 994}, {232, 219, 193, 255} }},
+	{{ {269, 973, -106}, 0, {-4, 496}, {232, 219, 193, 255} }},
+	{{ {315, 681, 124}, 0, {991, 994}, {232, 219, 193, 255} }},
+	{{ {269, 973, 106}, 0, {991, 496}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_013_object_011DFD9C_mesh_layer_5_tri_0[] = {
@@ -36065,10 +36400,10 @@ Gfx ccr_dl_013_object_011DFD9C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_014_object_011DFCCC_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {318, 661, -125}, 0, {245, 1004}, {232, 219, 193, 255} }},
-	{{ {270, 962, -106}, 0, {245, 879}, {232, 219, 193, 255} }},
-	{{ {318, 661, 125}, 0, {494, 1004}, {232, 219, 193, 255} }},
-	{{ {270, 962, 106}, 0, {494, 879}, {232, 219, 193, 255} }},
+	{{ {318, 661, -125}, 0, {-5, 994}, {232, 219, 193, 255} }},
+	{{ {270, 962, -106}, 0, {-5, 496}, {232, 219, 193, 255} }},
+	{{ {318, 661, 125}, 0, {991, 994}, {232, 219, 193, 255} }},
+	{{ {270, 962, 106}, 0, {991, 496}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_014_object_011DFCCC_mesh_layer_5_tri_0[] = {
@@ -36078,10 +36413,10 @@ Gfx ccr_dl_014_object_011DFCCC_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_015_object_011DFBFC_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {321, 640, -126}, 0, {502, 1004}, {232, 219, 193, 255} }},
-	{{ {272, 950, -107}, 0, {502, 879}, {232, 219, 193, 255} }},
-	{{ {321, 640, 126}, 0, {751, 1004}, {232, 219, 193, 255} }},
-	{{ {272, 950, 107}, 0, {751, 879}, {232, 219, 193, 255} }},
+	{{ {321, 640, -126}, 0, {2, 1003}, {232, 219, 193, 255} }},
+	{{ {272, 950, -107}, 0, {2, 505}, {232, 219, 193, 255} }},
+	{{ {321, 640, 126}, 0, {997, 1003}, {232, 219, 193, 255} }},
+	{{ {272, 950, 107}, 0, {997, 505}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_015_object_011DFBFC_mesh_layer_5_tri_0[] = {
@@ -36091,12 +36426,12 @@ Gfx ccr_dl_015_object_011DFBFC_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_016_object_011DFB2C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {258, 1043, -101}, 0, {759, 755}, {232, 219, 193, 255} }},
-	{{ {258, 1043, 101}, 0, {1008, 755}, {232, 219, 193, 255} }},
-	{{ {275, 929, 108}, 0, {1008, 879}, {232, 219, 193, 255} }},
-	{{ {275, 929, -108}, 0, {759, 879}, {232, 219, 193, 255} }},
-	{{ {324, 619, 128}, 0, {1008, 1004}, {232, 219, 193, 255} }},
-	{{ {324, 619, -128}, 0, {759, 1004}, {232, 219, 193, 255} }},
+	{{ {258, 1043, -101}, 0, {-2, -3}, {232, 219, 193, 255} }},
+	{{ {258, 1043, 101}, 0, {994, -3}, {232, 219, 193, 255} }},
+	{{ {275, 929, 108}, 0, {994, 495}, {232, 219, 193, 255} }},
+	{{ {275, 929, -108}, 0, {-2, 495}, {232, 219, 193, 255} }},
+	{{ {324, 619, 128}, 0, {994, 993}, {232, 219, 193, 255} }},
+	{{ {324, 619, -128}, 0, {-2, 993}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_016_object_011DFB2C_mesh_layer_5_tri_0[] = {
@@ -36107,12 +36442,12 @@ Gfx ccr_dl_016_object_011DFB2C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_017_object_011DFA2C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {258, 1043, -101}, 0, {-12, -16}, {232, 219, 193, 255} }},
-	{{ {258, 1043, 101}, 0, {237, -16}, {232, 219, 193, 255} }},
-	{{ {279, 909, 110}, 0, {237, 108}, {232, 219, 193, 255} }},
-	{{ {279, 909, -110}, 0, {-12, 108}, {232, 219, 193, 255} }},
-	{{ {328, 599, 129}, 0, {237, 233}, {232, 219, 193, 255} }},
-	{{ {328, 599, -129}, 0, {-12, 233}, {232, 219, 193, 255} }},
+	{{ {258, 1043, -101}, 0, {-1, -5}, {232, 219, 193, 255} }},
+	{{ {258, 1043, 101}, 0, {995, -5}, {232, 219, 193, 255} }},
+	{{ {279, 909, 110}, 0, {995, 493}, {232, 219, 193, 255} }},
+	{{ {279, 909, -110}, 0, {-1, 493}, {232, 219, 193, 255} }},
+	{{ {328, 599, 129}, 0, {995, 991}, {232, 219, 193, 255} }},
+	{{ {328, 599, -129}, 0, {-1, 991}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_017_object_011DFA2C_mesh_layer_5_tri_0[] = {
@@ -36123,12 +36458,12 @@ Gfx ccr_dl_017_object_011DFA2C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_018_object_011DF92C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {258, 1043, -101}, 0, {245, -16}, {232, 219, 193, 255} }},
-	{{ {258, 1043, 101}, 0, {494, -16}, {232, 219, 193, 255} }},
-	{{ {282, 888, 111}, 0, {494, 108}, {232, 219, 193, 255} }},
-	{{ {282, 888, -111}, 0, {245, 108}, {232, 219, 193, 255} }},
-	{{ {331, 578, 130}, 0, {494, 233}, {232, 219, 193, 255} }},
-	{{ {331, 578, -130}, 0, {245, 233}, {232, 219, 193, 255} }},
+	{{ {258, 1043, -101}, 0, {-1, -2}, {232, 219, 193, 255} }},
+	{{ {258, 1043, 101}, 0, {994, -2}, {232, 219, 193, 255} }},
+	{{ {282, 888, 111}, 0, {994, 496}, {232, 219, 193, 255} }},
+	{{ {282, 888, -111}, 0, {-1, 496}, {232, 219, 193, 255} }},
+	{{ {331, 578, 130}, 0, {994, 994}, {232, 219, 193, 255} }},
+	{{ {331, 578, -130}, 0, {-1, 994}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_018_object_011DF92C_mesh_layer_5_tri_0[] = {
@@ -36139,12 +36474,12 @@ Gfx ccr_dl_018_object_011DF92C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_019_object_011DF82C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {334, 557, 131}, 0, {751, 233}, {232, 219, 193, 255} }},
-	{{ {334, 557, -131}, 0, {502, 233}, {232, 219, 193, 255} }},
-	{{ {285, 867, -112}, 0, {502, 108}, {232, 219, 193, 255} }},
-	{{ {285, 867, 112}, 0, {751, 108}, {232, 219, 193, 255} }},
-	{{ {258, 1043, -101}, 0, {502, -16}, {232, 219, 193, 255} }},
-	{{ {258, 1043, 101}, 0, {751, -16}, {232, 219, 193, 255} }},
+	{{ {334, 557, 131}, 0, {991, 994}, {232, 219, 193, 255} }},
+	{{ {334, 557, -131}, 0, {-5, 994}, {232, 219, 193, 255} }},
+	{{ {285, 867, -112}, 0, {-5, 496}, {232, 219, 193, 255} }},
+	{{ {285, 867, 112}, 0, {991, 496}, {232, 219, 193, 255} }},
+	{{ {258, 1043, -101}, 0, {-5, -2}, {232, 219, 193, 255} }},
+	{{ {258, 1043, 101}, 0, {991, -2}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_019_object_011DF82C_mesh_layer_5_tri_0[] = {
@@ -36155,12 +36490,12 @@ Gfx ccr_dl_019_object_011DF82C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_020_object_011DF72C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {337, 537, 133}, 0, {1008, 233}, {232, 219, 193, 255} }},
-	{{ {337, 537, -133}, 0, {759, 233}, {232, 219, 193, 255} }},
-	{{ {289, 847, -113}, 0, {759, 108}, {232, 219, 193, 255} }},
-	{{ {289, 847, 113}, 0, {1008, 108}, {232, 219, 193, 255} }},
-	{{ {258, 1043, -101}, 0, {759, -16}, {232, 219, 193, 255} }},
-	{{ {258, 1043, 101}, 0, {1008, -16}, {232, 219, 193, 255} }},
+	{{ {337, 537, 133}, 0, {994, 991}, {232, 219, 193, 255} }},
+	{{ {337, 537, -133}, 0, {-2, 991}, {232, 219, 193, 255} }},
+	{{ {289, 847, -113}, 0, {-2, 493}, {232, 219, 193, 255} }},
+	{{ {289, 847, 113}, 0, {994, 493}, {232, 219, 193, 255} }},
+	{{ {258, 1043, -101}, 0, {-2, -5}, {232, 219, 193, 255} }},
+	{{ {258, 1043, 101}, 0, {994, -5}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_020_object_011DF72C_mesh_layer_5_tri_0[] = {
@@ -36171,12 +36506,12 @@ Gfx ccr_dl_020_object_011DF72C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_021_object_011DF62C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {258, 1043, -101}, 0, {-12, 241}, {232, 219, 193, 255} }},
-	{{ {258, 1043, 101}, 0, {237, 241}, {232, 219, 193, 255} }},
-	{{ {292, 826, 115}, 0, {237, 365}, {232, 219, 193, 255} }},
-	{{ {292, 826, -115}, 0, {-12, 365}, {232, 219, 193, 255} }},
-	{{ {341, 516, 134}, 0, {237, 490}, {232, 219, 193, 255} }},
-	{{ {341, 516, -134}, 0, {-12, 490}, {232, 219, 193, 255} }},
+	{{ {258, 1043, -101}, 0, {2, -9}, {232, 219, 193, 255} }},
+	{{ {258, 1043, 101}, 0, {998, -9}, {232, 219, 193, 255} }},
+	{{ {292, 826, 115}, 0, {998, 489}, {232, 219, 193, 255} }},
+	{{ {292, 826, -115}, 0, {2, 489}, {232, 219, 193, 255} }},
+	{{ {341, 516, 134}, 0, {998, 987}, {232, 219, 193, 255} }},
+	{{ {341, 516, -134}, 0, {2, 987}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_021_object_011DF62C_mesh_layer_5_tri_0[] = {
@@ -36187,12 +36522,12 @@ Gfx ccr_dl_021_object_011DF62C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_022_object_011DF52C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {344, 495, 135}, 0, {494, 490}, {232, 219, 193, 255} }},
-	{{ {344, 495, -135}, 0, {245, 490}, {232, 219, 193, 255} }},
-	{{ {295, 805, -116}, 0, {245, 365}, {232, 219, 193, 255} }},
-	{{ {295, 805, 116}, 0, {494, 365}, {232, 219, 193, 255} }},
-	{{ {258, 1043, -101}, 0, {245, 241}, {232, 219, 193, 255} }},
-	{{ {258, 1043, 101}, 0, {494, 241}, {232, 219, 193, 255} }},
+	{{ {344, 495, 135}, 0, {994, 997}, {232, 219, 193, 255} }},
+	{{ {344, 495, -135}, 0, {-1, 997}, {232, 219, 193, 255} }},
+	{{ {295, 805, -116}, 0, {-1, 499}, {232, 219, 193, 255} }},
+	{{ {295, 805, 116}, 0, {994, 499}, {232, 219, 193, 255} }},
+	{{ {258, 1043, -101}, 0, {-1, 1}, {232, 219, 193, 255} }},
+	{{ {258, 1043, 101}, 0, {994, 1}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_022_object_011DF52C_mesh_layer_5_tri_0[] = {
@@ -36203,12 +36538,12 @@ Gfx ccr_dl_022_object_011DF52C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_023_object_011DF42C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {259, 1031, -102}, 0, {502, 241}, {232, 219, 193, 255} }},
-	{{ {259, 1031, 102}, 0, {751, 241}, {232, 219, 193, 255} }},
-	{{ {298, 785, 117}, 0, {751, 365}, {232, 219, 193, 255} }},
-	{{ {298, 785, -117}, 0, {502, 365}, {232, 219, 193, 255} }},
-	{{ {347, 475, 137}, 0, {751, 490}, {232, 219, 193, 255} }},
-	{{ {347, 475, -137}, 0, {502, 490}, {232, 219, 193, 255} }},
+	{{ {259, 1031, -102}, 0, {2, 1}, {232, 219, 193, 255} }},
+	{{ {259, 1031, 102}, 0, {997, 1}, {232, 219, 193, 255} }},
+	{{ {298, 785, 117}, 0, {997, 499}, {232, 219, 193, 255} }},
+	{{ {298, 785, -117}, 0, {2, 499}, {232, 219, 193, 255} }},
+	{{ {347, 475, 137}, 0, {997, 997}, {232, 219, 193, 255} }},
+	{{ {347, 475, -137}, 0, {2, 997}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_023_object_011DF42C_mesh_layer_5_tri_0[] = {
@@ -36219,12 +36554,12 @@ Gfx ccr_dl_023_object_011DF42C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_024_object_011DF32C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {261, 1020, -103}, 0, {759, 241}, {232, 219, 193, 255} }},
-	{{ {261, 1020, 103}, 0, {1008, 241}, {232, 219, 193, 255} }},
-	{{ {302, 764, 119}, 0, {1008, 365}, {232, 219, 193, 255} }},
-	{{ {302, 764, -119}, 0, {759, 365}, {232, 219, 193, 255} }},
-	{{ {350, 454, 138}, 0, {1008, 490}, {232, 219, 193, 255} }},
-	{{ {350, 454, -138}, 0, {759, 490}, {232, 219, 193, 255} }},
+	{{ {261, 1020, -103}, 0, {-2, -2}, {232, 219, 193, 255} }},
+	{{ {261, 1020, 103}, 0, {994, -2}, {232, 219, 193, 255} }},
+	{{ {302, 764, 119}, 0, {994, 496}, {232, 219, 193, 255} }},
+	{{ {302, 764, -119}, 0, {-2, 496}, {232, 219, 193, 255} }},
+	{{ {350, 454, 138}, 0, {994, 994}, {232, 219, 193, 255} }},
+	{{ {350, 454, -138}, 0, {-2, 994}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_024_object_011DF32C_mesh_layer_5_tri_0[] = {
@@ -36235,12 +36570,12 @@ Gfx ccr_dl_024_object_011DF32C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_025_object_011DF22C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {354, 433, 139}, 0, {237, 747}, {232, 219, 193, 255} }},
-	{{ {354, 433, -139}, 0, {-12, 747}, {232, 219, 193, 255} }},
-	{{ {305, 743, -120}, 0, {-12, 622}, {232, 219, 193, 255} }},
-	{{ {305, 743, 120}, 0, {237, 622}, {232, 219, 193, 255} }},
-	{{ {263, 1008, -103}, 0, {-12, 498}, {232, 219, 193, 255} }},
-	{{ {263, 1008, 103}, 0, {237, 498}, {232, 219, 193, 255} }},
+	{{ {354, 433, 139}, 0, {998, 990}, {232, 219, 193, 255} }},
+	{{ {354, 433, -139}, 0, {2, 990}, {232, 219, 193, 255} }},
+	{{ {305, 743, -120}, 0, {2, 492}, {232, 219, 193, 255} }},
+	{{ {305, 743, 120}, 0, {998, 492}, {232, 219, 193, 255} }},
+	{{ {263, 1008, -103}, 0, {2, -6}, {232, 219, 193, 255} }},
+	{{ {263, 1008, 103}, 0, {998, -6}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_025_object_011DF22C_mesh_layer_5_tri_0[] = {
@@ -36251,12 +36586,12 @@ Gfx ccr_dl_025_object_011DF22C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_026_object_011DF12C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {357, 413, 140}, 0, {494, 747}, {232, 219, 193, 255} }},
-	{{ {357, 413, -140}, 0, {245, 747}, {232, 219, 193, 255} }},
-	{{ {308, 723, -121}, 0, {245, 622}, {232, 219, 193, 255} }},
-	{{ {308, 723, 121}, 0, {494, 622}, {232, 219, 193, 255} }},
-	{{ {265, 996, -104}, 0, {245, 498}, {232, 219, 193, 255} }},
-	{{ {265, 996, 104}, 0, {494, 498}, {232, 219, 193, 255} }},
+	{{ {357, 413, 140}, 0, {1001, 990}, {232, 219, 193, 255} }},
+	{{ {357, 413, -140}, 0, {5, 990}, {232, 219, 193, 255} }},
+	{{ {308, 723, -121}, 0, {5, 492}, {232, 219, 193, 255} }},
+	{{ {308, 723, 121}, 0, {1001, 492}, {232, 219, 193, 255} }},
+	{{ {265, 996, -104}, 0, {5, -6}, {232, 219, 193, 255} }},
+	{{ {265, 996, 104}, 0, {1001, -6}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_026_object_011DF12C_mesh_layer_5_tri_0[] = {
@@ -36267,12 +36602,12 @@ Gfx ccr_dl_026_object_011DF12C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_027_object_011DF02C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {267, 985, -105}, 0, {502, 498}, {232, 219, 193, 255} }},
-	{{ {267, 985, 105}, 0, {751, 498}, {232, 219, 193, 255} }},
-	{{ {311, 702, 122}, 0, {751, 622}, {232, 219, 193, 255} }},
-	{{ {311, 702, -122}, 0, {502, 622}, {232, 219, 193, 255} }},
-	{{ {360, 392, 142}, 0, {751, 747}, {232, 219, 193, 255} }},
-	{{ {360, 392, -142}, 0, {502, 747}, {232, 219, 193, 255} }},
+	{{ {267, 985, -105}, 0, {2, 1}, {232, 219, 193, 255} }},
+	{{ {267, 985, 105}, 0, {997, 1}, {232, 219, 193, 255} }},
+	{{ {311, 702, 122}, 0, {997, 499}, {232, 219, 193, 255} }},
+	{{ {311, 702, -122}, 0, {2, 499}, {232, 219, 193, 255} }},
+	{{ {360, 392, 142}, 0, {997, 997}, {232, 219, 193, 255} }},
+	{{ {360, 392, -142}, 0, {2, 997}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_027_object_011DF02C_mesh_layer_5_tri_0[] = {
@@ -36283,12 +36618,12 @@ Gfx ccr_dl_027_object_011DF02C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_028_object_011DEF2C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {363, 371, 143}, 0, {1008, 747}, {232, 219, 193, 255} }},
-	{{ {363, 371, -143}, 0, {759, 747}, {232, 219, 193, 255} }},
-	{{ {315, 681, -124}, 0, {759, 622}, {232, 219, 193, 255} }},
-	{{ {315, 681, 124}, 0, {1008, 622}, {232, 219, 193, 255} }},
-	{{ {269, 973, -106}, 0, {759, 498}, {232, 219, 193, 255} }},
-	{{ {269, 973, 106}, 0, {1008, 498}, {232, 219, 193, 255} }},
+	{{ {363, 371, 143}, 0, {1000, 997}, {232, 219, 193, 255} }},
+	{{ {363, 371, -143}, 0, {5, 997}, {232, 219, 193, 255} }},
+	{{ {315, 681, -124}, 0, {5, 499}, {232, 219, 193, 255} }},
+	{{ {315, 681, 124}, 0, {1000, 499}, {232, 219, 193, 255} }},
+	{{ {269, 973, -106}, 0, {5, 1}, {232, 219, 193, 255} }},
+	{{ {269, 973, 106}, 0, {1000, 1}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_028_object_011DEF2C_mesh_layer_5_tri_0[] = {
@@ -36299,12 +36634,12 @@ Gfx ccr_dl_028_object_011DEF2C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_029_object_011DEE2C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {270, 962, -106}, 0, {-12, 755}, {232, 219, 193, 255} }},
-	{{ {270, 962, 106}, 0, {237, 755}, {232, 219, 193, 255} }},
-	{{ {318, 661, 125}, 0, {237, 879}, {232, 219, 193, 255} }},
-	{{ {318, 661, -125}, 0, {-12, 879}, {232, 219, 193, 255} }},
-	{{ {367, 351, 144}, 0, {237, 1004}, {232, 219, 193, 255} }},
-	{{ {367, 351, -144}, 0, {-12, 1004}, {232, 219, 193, 255} }},
+	{{ {270, 962, -106}, 0, {-1, -6}, {232, 219, 193, 255} }},
+	{{ {270, 962, 106}, 0, {995, -6}, {232, 219, 193, 255} }},
+	{{ {318, 661, 125}, 0, {995, 492}, {232, 219, 193, 255} }},
+	{{ {318, 661, -125}, 0, {-1, 492}, {232, 219, 193, 255} }},
+	{{ {367, 351, 144}, 0, {995, 990}, {232, 219, 193, 255} }},
+	{{ {367, 351, -144}, 0, {-1, 990}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_029_object_011DEE2C_mesh_layer_5_tri_0[] = {
@@ -36315,12 +36650,12 @@ Gfx ccr_dl_029_object_011DEE2C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_030_object_011DED2C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {272, 950, -107}, 0, {245, 755}, {232, 219, 193, 255} }},
-	{{ {272, 950, 107}, 0, {494, 755}, {232, 219, 193, 255} }},
-	{{ {321, 640, 126}, 0, {494, 879}, {232, 219, 193, 255} }},
-	{{ {321, 640, -126}, 0, {245, 879}, {232, 219, 193, 255} }},
-	{{ {370, 330, 146}, 0, {494, 1004}, {232, 219, 193, 255} }},
-	{{ {370, 330, -146}, 0, {245, 1004}, {232, 219, 193, 255} }},
+	{{ {272, 950, -107}, 0, {8, -6}, {232, 219, 193, 255} }},
+	{{ {272, 950, 107}, 0, {1004, -6}, {232, 219, 193, 255} }},
+	{{ {321, 640, 126}, 0, {1004, 492}, {232, 219, 193, 255} }},
+	{{ {321, 640, -126}, 0, {8, 492}, {232, 219, 193, 255} }},
+	{{ {370, 330, 146}, 0, {1004, 990}, {232, 219, 193, 255} }},
+	{{ {370, 330, -146}, 0, {8, 990}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_030_object_011DED2C_mesh_layer_5_tri_0[] = {
@@ -36331,12 +36666,12 @@ Gfx ccr_dl_030_object_011DED2C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_031_object_011DEC2C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {373, 313, 146}, 0, {751, 1004}, {232, 219, 193, 255} }},
-	{{ {373, 313, -146}, 0, {502, 1004}, {232, 219, 193, 255} }},
-	{{ {324, 619, -128}, 0, {502, 879}, {232, 219, 193, 255} }},
-	{{ {324, 619, 128}, 0, {751, 879}, {232, 219, 193, 255} }},
-	{{ {275, 929, -108}, 0, {502, 755}, {232, 219, 193, 255} }},
-	{{ {275, 929, 108}, 0, {751, 755}, {232, 219, 193, 255} }},
+	{{ {373, 313, 146}, 0, {991, 993}, {232, 219, 193, 255} }},
+	{{ {373, 313, -146}, 0, {-5, 993}, {232, 219, 193, 255} }},
+	{{ {324, 619, -128}, 0, {-5, 495}, {232, 219, 193, 255} }},
+	{{ {324, 619, 128}, 0, {991, 495}, {232, 219, 193, 255} }},
+	{{ {275, 929, -108}, 0, {-5, -3}, {232, 219, 193, 255} }},
+	{{ {275, 929, 108}, 0, {991, -3}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_031_object_011DEC2C_mesh_layer_5_tri_0[] = {
@@ -36347,12 +36682,12 @@ Gfx ccr_dl_031_object_011DEC2C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_032_object_011DEB2C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {279, 909, -110}, 0, {759, 755}, {232, 219, 193, 255} }},
-	{{ {279, 909, 110}, 0, {1008, 755}, {232, 219, 193, 255} }},
-	{{ {328, 599, 129}, 0, {1008, 879}, {232, 219, 193, 255} }},
-	{{ {328, 599, -129}, 0, {759, 879}, {232, 219, 193, 255} }},
-	{{ {375, 297, 147}, 0, {1008, 1004}, {232, 219, 193, 255} }},
-	{{ {375, 297, -147}, 0, {759, 1004}, {232, 219, 193, 255} }},
+	{{ {279, 909, -110}, 0, {5, 1}, {232, 219, 193, 255} }},
+	{{ {279, 909, 110}, 0, {1000, 1}, {232, 219, 193, 255} }},
+	{{ {328, 599, 129}, 0, {1000, 499}, {232, 219, 193, 255} }},
+	{{ {328, 599, -129}, 0, {5, 499}, {232, 219, 193, 255} }},
+	{{ {375, 297, 147}, 0, {1000, 996}, {232, 219, 193, 255} }},
+	{{ {375, 297, -147}, 0, {5, 996}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_032_object_011DEB2C_mesh_layer_5_tri_0[] = {
@@ -36363,12 +36698,12 @@ Gfx ccr_dl_032_object_011DEB2C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_033_object_011DEA2C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {282, 888, -111}, 0, {-12, -16}, {232, 219, 193, 255} }},
-	{{ {282, 888, 111}, 0, {237, -16}, {232, 219, 193, 255} }},
-	{{ {331, 578, 130}, 0, {237, 108}, {232, 219, 193, 255} }},
-	{{ {331, 578, -130}, 0, {-12, 108}, {232, 219, 193, 255} }},
-	{{ {378, 280, 148}, 0, {237, 233}, {232, 219, 193, 255} }},
-	{{ {378, 280, -148}, 0, {-12, 233}, {232, 219, 193, 255} }},
+	{{ {282, 888, -111}, 0, {-1, -5}, {232, 219, 193, 255} }},
+	{{ {282, 888, 111}, 0, {995, -5}, {232, 219, 193, 255} }},
+	{{ {331, 578, 130}, 0, {995, 493}, {232, 219, 193, 255} }},
+	{{ {331, 578, -130}, 0, {-1, 493}, {232, 219, 193, 255} }},
+	{{ {378, 280, 148}, 0, {995, 991}, {232, 219, 193, 255} }},
+	{{ {378, 280, -148}, 0, {-1, 991}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_033_object_011DEA2C_mesh_layer_5_tri_0[] = {
@@ -36379,12 +36714,12 @@ Gfx ccr_dl_033_object_011DEA2C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_034_object_011DE92C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {380, 263, 149}, 0, {494, 233}, {232, 219, 193, 255} }},
-	{{ {380, 263, -149}, 0, {245, 233}, {232, 219, 193, 255} }},
-	{{ {334, 557, -131}, 0, {245, 108}, {232, 219, 193, 255} }},
-	{{ {334, 557, 131}, 0, {494, 108}, {232, 219, 193, 255} }},
-	{{ {285, 867, -112}, 0, {245, -16}, {232, 219, 193, 255} }},
-	{{ {285, 867, 112}, 0, {494, -16}, {232, 219, 193, 255} }},
+	{{ {380, 263, 149}, 0, {998, 994}, {232, 219, 193, 255} }},
+	{{ {380, 263, -149}, 0, {2, 994}, {232, 219, 193, 255} }},
+	{{ {334, 557, -131}, 0, {2, 496}, {232, 219, 193, 255} }},
+	{{ {334, 557, 131}, 0, {998, 496}, {232, 219, 193, 255} }},
+	{{ {285, 867, -112}, 0, {2, -2}, {232, 219, 193, 255} }},
+	{{ {285, 867, 112}, 0, {998, -2}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_034_object_011DE92C_mesh_layer_5_tri_0[] = {
@@ -36395,12 +36730,12 @@ Gfx ccr_dl_034_object_011DE92C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_035_object_011DE82C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {289, 847, -113}, 0, {502, -16}, {232, 219, 193, 255} }},
-	{{ {289, 847, 113}, 0, {751, -16}, {232, 219, 193, 255} }},
-	{{ {337, 537, 133}, 0, {751, 108}, {232, 219, 193, 255} }},
-	{{ {337, 537, -133}, 0, {502, 108}, {232, 219, 193, 255} }},
-	{{ {383, 246, 150}, 0, {751, 233}, {232, 219, 193, 255} }},
-	{{ {383, 246, -150}, 0, {502, 233}, {232, 219, 193, 255} }},
+	{{ {289, 847, -113}, 0, {2, 4}, {232, 219, 193, 255} }},
+	{{ {289, 847, 113}, 0, {997, 4}, {232, 219, 193, 255} }},
+	{{ {337, 537, 133}, 0, {997, 502}, {232, 219, 193, 255} }},
+	{{ {337, 537, -133}, 0, {2, 502}, {232, 219, 193, 255} }},
+	{{ {383, 246, 150}, 0, {997, 1000}, {232, 219, 193, 255} }},
+	{{ {383, 246, -150}, 0, {2, 1000}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_035_object_011DE82C_mesh_layer_5_tri_0[] = {
@@ -36411,12 +36746,12 @@ Gfx ccr_dl_035_object_011DE82C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_036_object_011DE72C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {292, 826, -115}, 0, {759, -16}, {232, 219, 193, 255} }},
-	{{ {292, 826, 115}, 0, {1008, -16}, {232, 219, 193, 255} }},
-	{{ {341, 516, 134}, 0, {1008, 108}, {232, 219, 193, 255} }},
-	{{ {341, 516, -134}, 0, {759, 108}, {232, 219, 193, 255} }},
-	{{ {385, 230, 151}, 0, {1008, 233}, {232, 219, 193, 255} }},
-	{{ {385, 230, -151}, 0, {759, 233}, {232, 219, 193, 255} }},
+	{{ {292, 826, -115}, 0, {-5, 4}, {232, 219, 193, 255} }},
+	{{ {292, 826, 115}, 0, {991, 4}, {232, 219, 193, 255} }},
+	{{ {341, 516, 134}, 0, {991, 502}, {232, 219, 193, 255} }},
+	{{ {341, 516, -134}, 0, {-5, 502}, {232, 219, 193, 255} }},
+	{{ {385, 230, 151}, 0, {991, 1000}, {232, 219, 193, 255} }},
+	{{ {385, 230, -151}, 0, {-5, 1000}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_036_object_011DE72C_mesh_layer_5_tri_0[] = {
@@ -36427,12 +36762,12 @@ Gfx ccr_dl_036_object_011DE72C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_037_object_011DE62C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {388, 213, 152}, 0, {237, 490}, {232, 219, 193, 255} }},
-	{{ {388, 213, -152}, 0, {-12, 490}, {232, 219, 193, 255} }},
-	{{ {344, 495, -135}, 0, {-12, 365}, {232, 219, 193, 255} }},
-	{{ {344, 495, 135}, 0, {237, 365}, {232, 219, 193, 255} }},
-	{{ {295, 805, -116}, 0, {-12, 241}, {232, 219, 193, 255} }},
-	{{ {295, 805, 116}, 0, {237, 241}, {232, 219, 193, 255} }},
+	{{ {388, 213, 152}, 0, {995, 997}, {232, 219, 193, 255} }},
+	{{ {388, 213, -152}, 0, {-1, 997}, {232, 219, 193, 255} }},
+	{{ {344, 495, -135}, 0, {-1, 499}, {232, 219, 193, 255} }},
+	{{ {344, 495, 135}, 0, {995, 499}, {232, 219, 193, 255} }},
+	{{ {295, 805, -116}, 0, {-1, 1}, {232, 219, 193, 255} }},
+	{{ {295, 805, 116}, 0, {995, 1}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_037_object_011DE62C_mesh_layer_5_tri_0[] = {
@@ -36443,12 +36778,12 @@ Gfx ccr_dl_037_object_011DE62C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_038_object_011DE52C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {298, 785, -117}, 0, {245, 241}, {232, 219, 193, 255} }},
-	{{ {298, 785, 117}, 0, {494, 241}, {232, 219, 193, 255} }},
-	{{ {347, 475, 137}, 0, {494, 365}, {232, 219, 193, 255} }},
-	{{ {347, 475, -137}, 0, {245, 365}, {232, 219, 193, 255} }},
-	{{ {388, 213, 152}, 0, {494, 490}, {232, 219, 193, 255} }},
-	{{ {388, 213, -152}, 0, {245, 490}, {232, 219, 193, 255} }},
+	{{ {298, 785, -117}, 0, {2, -2}, {232, 219, 193, 255} }},
+	{{ {298, 785, 117}, 0, {998, -2}, {232, 219, 193, 255} }},
+	{{ {347, 475, 137}, 0, {998, 496}, {232, 219, 193, 255} }},
+	{{ {347, 475, -137}, 0, {2, 496}, {232, 219, 193, 255} }},
+	{{ {388, 213, 152}, 0, {998, 994}, {232, 219, 193, 255} }},
+	{{ {388, 213, -152}, 0, {2, 994}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_038_object_011DE52C_mesh_layer_5_tri_0[] = {
@@ -36459,12 +36794,12 @@ Gfx ccr_dl_038_object_011DE52C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_039_object_011DE42C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {388, 213, 152}, 0, {751, 490}, {232, 219, 193, 255} }},
-	{{ {388, 213, -152}, 0, {502, 490}, {232, 219, 193, 255} }},
-	{{ {350, 454, -138}, 0, {502, 365}, {232, 219, 193, 255} }},
-	{{ {350, 454, 138}, 0, {751, 365}, {232, 219, 193, 255} }},
-	{{ {302, 764, -119}, 0, {502, 241}, {232, 219, 193, 255} }},
-	{{ {302, 764, 119}, 0, {751, 241}, {232, 219, 193, 255} }},
+	{{ {388, 213, 152}, 0, {991, 1000}, {232, 219, 193, 255} }},
+	{{ {388, 213, -152}, 0, {-5, 1000}, {232, 219, 193, 255} }},
+	{{ {350, 454, -138}, 0, {-5, 502}, {232, 219, 193, 255} }},
+	{{ {350, 454, 138}, 0, {991, 502}, {232, 219, 193, 255} }},
+	{{ {302, 764, -119}, 0, {-5, 4}, {232, 219, 193, 255} }},
+	{{ {302, 764, 119}, 0, {991, 4}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_039_object_011DE42C_mesh_layer_5_tri_0[] = {
@@ -36475,12 +36810,12 @@ Gfx ccr_dl_039_object_011DE42C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_040_object_011DE32C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {305, 743, -120}, 0, {759, 241}, {232, 219, 193, 255} }},
-	{{ {305, 743, 120}, 0, {1008, 241}, {232, 219, 193, 255} }},
-	{{ {354, 433, 139}, 0, {1008, 365}, {232, 219, 193, 255} }},
-	{{ {354, 433, -139}, 0, {759, 365}, {232, 219, 193, 255} }},
-	{{ {388, 213, 152}, 0, {1008, 490}, {232, 219, 193, 255} }},
-	{{ {388, 213, -152}, 0, {759, 490}, {232, 219, 193, 255} }},
+	{{ {305, 743, -120}, 0, {-2, -5}, {232, 219, 193, 255} }},
+	{{ {305, 743, 120}, 0, {994, -5}, {232, 219, 193, 255} }},
+	{{ {354, 433, 139}, 0, {994, 492}, {232, 219, 193, 255} }},
+	{{ {354, 433, -139}, 0, {-2, 492}, {232, 219, 193, 255} }},
+	{{ {388, 213, 152}, 0, {994, 990}, {232, 219, 193, 255} }},
+	{{ {388, 213, -152}, 0, {-2, 990}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_040_object_011DE32C_mesh_layer_5_tri_0[] = {
@@ -36491,12 +36826,12 @@ Gfx ccr_dl_040_object_011DE32C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_041_object_011DE22C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {308, 723, -121}, 0, {-12, 498}, {232, 219, 193, 255} }},
-	{{ {308, 723, 121}, 0, {237, 498}, {232, 219, 193, 255} }},
-	{{ {357, 413, 140}, 0, {237, 622}, {232, 219, 193, 255} }},
-	{{ {357, 413, -140}, 0, {-12, 622}, {232, 219, 193, 255} }},
-	{{ {388, 213, 152}, 0, {237, 747}, {232, 219, 193, 255} }},
-	{{ {388, 213, -152}, 0, {-12, 747}, {232, 219, 193, 255} }},
+	{{ {308, 723, -121}, 0, {5, 4}, {232, 219, 193, 255} }},
+	{{ {308, 723, 121}, 0, {1001, 4}, {232, 219, 193, 255} }},
+	{{ {357, 413, 140}, 0, {1001, 502}, {232, 219, 193, 255} }},
+	{{ {357, 413, -140}, 0, {5, 502}, {232, 219, 193, 255} }},
+	{{ {388, 213, 152}, 0, {1001, 1000}, {232, 219, 193, 255} }},
+	{{ {388, 213, -152}, 0, {5, 1000}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_041_object_011DE22C_mesh_layer_5_tri_0[] = {
@@ -36507,12 +36842,12 @@ Gfx ccr_dl_041_object_011DE22C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_042_object_011DE12C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {311, 702, -122}, 0, {245, 498}, {232, 219, 193, 255} }},
-	{{ {311, 702, 122}, 0, {494, 498}, {232, 219, 193, 255} }},
-	{{ {360, 392, 142}, 0, {494, 622}, {232, 219, 193, 255} }},
-	{{ {360, 392, -142}, 0, {245, 622}, {232, 219, 193, 255} }},
-	{{ {388, 213, 152}, 0, {494, 747}, {232, 219, 193, 255} }},
-	{{ {388, 213, -152}, 0, {245, 747}, {232, 219, 193, 255} }},
+	{{ {311, 702, -122}, 0, {-5, 1}, {232, 219, 193, 255} }},
+	{{ {311, 702, 122}, 0, {991, 1}, {232, 219, 193, 255} }},
+	{{ {360, 392, 142}, 0, {991, 499}, {232, 219, 193, 255} }},
+	{{ {360, 392, -142}, 0, {-5, 499}, {232, 219, 193, 255} }},
+	{{ {388, 213, 152}, 0, {991, 997}, {232, 219, 193, 255} }},
+	{{ {388, 213, -152}, 0, {-5, 997}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_042_object_011DE12C_mesh_layer_5_tri_0[] = {
@@ -36523,12 +36858,12 @@ Gfx ccr_dl_042_object_011DE12C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_043_object_011DE02C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {315, 681, -124}, 0, {502, 498}, {232, 219, 193, 255} }},
-	{{ {315, 681, 124}, 0, {751, 498}, {232, 219, 193, 255} }},
-	{{ {363, 371, 143}, 0, {751, 622}, {232, 219, 193, 255} }},
-	{{ {363, 371, -143}, 0, {502, 622}, {232, 219, 193, 255} }},
-	{{ {388, 213, 152}, 0, {751, 747}, {232, 219, 193, 255} }},
-	{{ {388, 213, -152}, 0, {502, 747}, {232, 219, 193, 255} }},
+	{{ {315, 681, -124}, 0, {-5, 1}, {232, 219, 193, 255} }},
+	{{ {315, 681, 124}, 0, {991, 1}, {232, 219, 193, 255} }},
+	{{ {363, 371, 143}, 0, {991, 499}, {232, 219, 193, 255} }},
+	{{ {363, 371, -143}, 0, {-5, 499}, {232, 219, 193, 255} }},
+	{{ {388, 213, 152}, 0, {991, 997}, {232, 219, 193, 255} }},
+	{{ {388, 213, -152}, 0, {-5, 997}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_043_object_011DE02C_mesh_layer_5_tri_0[] = {
@@ -36539,12 +36874,12 @@ Gfx ccr_dl_043_object_011DE02C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_044_object_011DDF2C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {388, 213, 152}, 0, {1008, 747}, {232, 219, 193, 255} }},
-	{{ {388, 213, -152}, 0, {759, 747}, {232, 219, 193, 255} }},
-	{{ {367, 351, -144}, 0, {759, 622}, {232, 219, 193, 255} }},
-	{{ {367, 351, 144}, 0, {1008, 622}, {232, 219, 193, 255} }},
-	{{ {318, 661, -125}, 0, {759, 498}, {232, 219, 193, 255} }},
-	{{ {318, 661, 125}, 0, {1008, 498}, {232, 219, 193, 255} }},
+	{{ {388, 213, 152}, 0, {994, 1000}, {232, 219, 193, 255} }},
+	{{ {388, 213, -152}, 0, {-2, 1000}, {232, 219, 193, 255} }},
+	{{ {367, 351, -144}, 0, {-2, 502}, {232, 219, 193, 255} }},
+	{{ {367, 351, 144}, 0, {994, 502}, {232, 219, 193, 255} }},
+	{{ {318, 661, -125}, 0, {-2, 4}, {232, 219, 193, 255} }},
+	{{ {318, 661, 125}, 0, {994, 4}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_044_object_011DDF2C_mesh_layer_5_tri_0[] = {
@@ -36555,10 +36890,10 @@ Gfx ccr_dl_044_object_011DDF2C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_045_object_011DDE2C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {321, 640, 126}, 0, {237, 755}, {232, 219, 193, 255} }},
-	{{ {370, 330, 146}, 0, {237, 879}, {232, 219, 193, 255} }},
-	{{ {321, 640, -126}, 0, {-12, 755}, {232, 219, 193, 255} }},
-	{{ {370, 330, -146}, 0, {-12, 879}, {232, 219, 193, 255} }},
+	{{ {321, 640, 126}, 0, {1001, 0}, {232, 219, 193, 255} }},
+	{{ {370, 330, 146}, 0, {1001, 498}, {232, 219, 193, 255} }},
+	{{ {321, 640, -126}, 0, {5, 0}, {232, 219, 193, 255} }},
+	{{ {370, 330, -146}, 0, {5, 498}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_045_object_011DDE2C_mesh_layer_5_tri_0[] = {
@@ -36568,10 +36903,10 @@ Gfx ccr_dl_045_object_011DDE2C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_046_object_011DDD5C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {327, 601, 129}, 0, {751, 755}, {232, 219, 193, 255} }},
-	{{ {375, 297, 147}, 0, {751, 879}, {232, 219, 193, 255} }},
-	{{ {327, 601, -129}, 0, {502, 755}, {232, 219, 193, 255} }},
-	{{ {375, 297, -147}, 0, {502, 879}, {232, 219, 193, 255} }},
+	{{ {327, 601, 129}, 0, {997, -10}, {232, 219, 193, 255} }},
+	{{ {375, 297, 147}, 0, {997, 488}, {232, 219, 193, 255} }},
+	{{ {327, 601, -129}, 0, {2, -10}, {232, 219, 193, 255} }},
+	{{ {375, 297, -147}, 0, {2, 488}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_046_object_011DDD5C_mesh_layer_5_tri_0[] = {
@@ -36581,10 +36916,10 @@ Gfx ccr_dl_046_object_011DDD5C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_047_object_011DDC8C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {324, 621, 127}, 0, {494, 755}, {232, 219, 193, 255} }},
-	{{ {373, 313, 146}, 0, {494, 879}, {232, 219, 193, 255} }},
-	{{ {324, 621, -127}, 0, {245, 755}, {232, 219, 193, 255} }},
-	{{ {373, 313, -146}, 0, {245, 879}, {232, 219, 193, 255} }},
+	{{ {324, 621, 127}, 0, {994, -6}, {232, 219, 193, 255} }},
+	{{ {373, 313, 146}, 0, {994, 492}, {232, 219, 193, 255} }},
+	{{ {324, 621, -127}, 0, {-1, -6}, {232, 219, 193, 255} }},
+	{{ {373, 313, -146}, 0, {-1, 492}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_047_object_011DDC8C_mesh_layer_5_tri_0[] = {
@@ -36594,10 +36929,10 @@ Gfx ccr_dl_047_object_011DDC8C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_048_object_011DDBBC_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {330, 582, 130}, 0, {1008, 755}, {232, 219, 193, 255} }},
-	{{ {378, 280, 148}, 0, {1008, 879}, {232, 219, 193, 255} }},
-	{{ {330, 582, -130}, 0, {759, 755}, {232, 219, 193, 255} }},
-	{{ {378, 280, -148}, 0, {759, 879}, {232, 219, 193, 255} }},
+	{{ {330, 582, 130}, 0, {997, -3}, {232, 219, 193, 255} }},
+	{{ {378, 280, 148}, 0, {997, 495}, {232, 219, 193, 255} }},
+	{{ {330, 582, -130}, 0, {1, -3}, {232, 219, 193, 255} }},
+	{{ {378, 280, -148}, 0, {1, 495}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_048_object_011DDBBC_mesh_layer_5_tri_0[] = {
@@ -36607,10 +36942,10 @@ Gfx ccr_dl_048_object_011DDBBC_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_049_object_011DDAEC_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {333, 562, 131}, 0, {237, -16}, {232, 219, 193, 255} }},
-	{{ {380, 263, 149}, 0, {237, 108}, {232, 219, 193, 255} }},
-	{{ {333, 562, -131}, 0, {-12, -16}, {232, 219, 193, 255} }},
-	{{ {380, 263, -149}, 0, {-12, 108}, {232, 219, 193, 255} }},
+	{{ {333, 562, 131}, 0, {998, -12}, {232, 219, 193, 255} }},
+	{{ {380, 263, 149}, 0, {998, 486}, {232, 219, 193, 255} }},
+	{{ {333, 562, -131}, 0, {2, -12}, {232, 219, 193, 255} }},
+	{{ {380, 263, -149}, 0, {2, 486}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_049_object_011DDAEC_mesh_layer_5_tri_0[] = {
@@ -36620,10 +36955,10 @@ Gfx ccr_dl_049_object_011DDAEC_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_050_object_011DDA1C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {336, 543, 132}, 0, {494, -16}, {232, 219, 193, 255} }},
-	{{ {383, 246, 150}, 0, {494, 108}, {232, 219, 193, 255} }},
-	{{ {336, 543, -132}, 0, {245, -16}, {232, 219, 193, 255} }},
-	{{ {383, 246, -150}, 0, {245, 108}, {232, 219, 193, 255} }},
+	{{ {336, 543, 132}, 0, {998, -3}, {232, 219, 193, 255} }},
+	{{ {383, 246, 150}, 0, {998, 495}, {232, 219, 193, 255} }},
+	{{ {336, 543, -132}, 0, {2, -3}, {232, 219, 193, 255} }},
+	{{ {383, 246, -150}, 0, {2, 495}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_050_object_011DDA1C_mesh_layer_5_tri_0[] = {
@@ -36633,10 +36968,10 @@ Gfx ccr_dl_050_object_011DDA1C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_051_object_011DD94C_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {339, 524, 133}, 0, {751, -16}, {232, 219, 193, 255} }},
-	{{ {385, 230, 151}, 0, {751, 108}, {232, 219, 193, 255} }},
-	{{ {339, 524, -133}, 0, {502, -16}, {232, 219, 193, 255} }},
-	{{ {385, 230, -151}, 0, {502, 108}, {232, 219, 193, 255} }},
+	{{ {339, 524, 133}, 0, {994, 0}, {232, 219, 193, 255} }},
+	{{ {385, 230, 151}, 0, {994, 498}, {232, 219, 193, 255} }},
+	{{ {339, 524, -133}, 0, {-2, 0}, {232, 219, 193, 255} }},
+	{{ {385, 230, -151}, 0, {-2, 498}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_051_object_011DD94C_mesh_layer_5_tri_0[] = {
@@ -36646,10 +36981,10 @@ Gfx ccr_dl_051_object_011DD94C_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_001_object_011E3DC4_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {361, 351, -157}, 0, {-12, 233}, {232, 219, 193, 255} }},
-	{{ {381, 213, -167}, 0, {-12, 108}, {232, 219, 193, 255} }},
-	{{ {157, 351, -361}, 0, {237, 233}, {232, 219, 193, 255} }},
-	{{ {167, 213, -381}, 0, {237, 108}, {232, 219, 193, 255} }},
+	{{ {361, 351, -157}, 0, {5, 998}, {232, 219, 193, 255} }},
+	{{ {381, 213, -167}, 0, {5, 500}, {232, 219, 193, 255} }},
+	{{ {157, 351, -361}, 0, {1001, 998}, {232, 219, 193, 255} }},
+	{{ {167, 213, -381}, 0, {1001, 500}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_001_object_011E3DC4_mesh_layer_5_tri_0[] = {
@@ -36659,10 +36994,10 @@ Gfx ccr_dl_001_object_011E3DC4_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_002_object_011E3CF4_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {358, 371, -156}, 0, {245, 233}, {232, 219, 193, 255} }},
-	{{ {381, 213, -167}, 0, {245, 108}, {232, 219, 193, 255} }},
-	{{ {156, 371, -358}, 0, {494, 233}, {232, 219, 193, 255} }},
-	{{ {167, 213, -381}, 0, {494, 108}, {232, 219, 193, 255} }},
+	{{ {358, 371, -156}, 0, {2, 998}, {232, 219, 193, 255} }},
+	{{ {381, 213, -167}, 0, {2, 500}, {232, 219, 193, 255} }},
+	{{ {156, 371, -358}, 0, {998, 998}, {232, 219, 193, 255} }},
+	{{ {167, 213, -381}, 0, {998, 500}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_002_object_011E3CF4_mesh_layer_5_tri_0[] = {
@@ -36672,10 +37007,10 @@ Gfx ccr_dl_002_object_011E3CF4_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_003_object_011E3C24_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {355, 392, -155}, 0, {502, 233}, {232, 219, 193, 255} }},
-	{{ {381, 213, -167}, 0, {502, 108}, {232, 219, 193, 255} }},
-	{{ {155, 392, -355}, 0, {751, 233}, {232, 219, 193, 255} }},
-	{{ {167, 213, -381}, 0, {751, 108}, {232, 219, 193, 255} }},
+	{{ {355, 392, -155}, 0, {2, 998}, {232, 219, 193, 255} }},
+	{{ {381, 213, -167}, 0, {2, 500}, {232, 219, 193, 255} }},
+	{{ {155, 392, -355}, 0, {997, 998}, {232, 219, 193, 255} }},
+	{{ {167, 213, -381}, 0, {997, 500}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_003_object_011E3C24_mesh_layer_5_tri_0[] = {
@@ -36685,10 +37020,10 @@ Gfx ccr_dl_003_object_011E3C24_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_004_object_011E3B54_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {352, 413, -153}, 0, {759, 233}, {232, 219, 193, 255} }},
-	{{ {381, 213, -167}, 0, {759, 108}, {232, 219, 193, 255} }},
-	{{ {153, 413, -352}, 0, {1008, 233}, {232, 219, 193, 255} }},
-	{{ {167, 213, -381}, 0, {1008, 108}, {232, 219, 193, 255} }},
+	{{ {352, 413, -153}, 0, {5, 1007}, {232, 219, 193, 255} }},
+	{{ {381, 213, -167}, 0, {5, 509}, {232, 219, 193, 255} }},
+	{{ {153, 413, -352}, 0, {1000, 1007}, {232, 219, 193, 255} }},
+	{{ {167, 213, -381}, 0, {1000, 509}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_004_object_011E3B54_mesh_layer_5_tri_0[] = {
@@ -36698,10 +37033,10 @@ Gfx ccr_dl_004_object_011E3B54_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_005_object_011E3A84_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {348, 433, -152}, 0, {-12, 490}, {232, 219, 193, 255} }},
-	{{ {381, 213, -167}, 0, {-12, 365}, {232, 219, 193, 255} }},
-	{{ {152, 433, -348}, 0, {237, 490}, {232, 219, 193, 255} }},
-	{{ {167, 213, -381}, 0, {237, 365}, {232, 219, 193, 255} }},
+	{{ {348, 433, -152}, 0, {2, 994}, {232, 219, 193, 255} }},
+	{{ {381, 213, -167}, 0, {2, 496}, {232, 219, 193, 255} }},
+	{{ {152, 433, -348}, 0, {998, 994}, {232, 219, 193, 255} }},
+	{{ {167, 213, -381}, 0, {998, 496}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_005_object_011E3A84_mesh_layer_5_tri_0[] = {
@@ -36711,10 +37046,10 @@ Gfx ccr_dl_005_object_011E3A84_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_006_object_011E39B4_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {345, 454, -150}, 0, {245, 490}, {232, 219, 193, 255} }},
-	{{ {381, 213, -167}, 0, {245, 365}, {232, 219, 193, 255} }},
-	{{ {150, 454, -345}, 0, {494, 490}, {232, 219, 193, 255} }},
-	{{ {167, 213, -381}, 0, {494, 365}, {232, 219, 193, 255} }},
+	{{ {345, 454, -150}, 0, {-5, 994}, {232, 219, 193, 255} }},
+	{{ {381, 213, -167}, 0, {-5, 496}, {232, 219, 193, 255} }},
+	{{ {150, 454, -345}, 0, {991, 994}, {232, 219, 193, 255} }},
+	{{ {167, 213, -381}, 0, {991, 496}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_006_object_011E39B4_mesh_layer_5_tri_0[] = {
@@ -36724,10 +37059,10 @@ Gfx ccr_dl_006_object_011E39B4_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_007_object_011E38E4_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {342, 475, -149}, 0, {502, 490}, {232, 219, 193, 255} }},
-	{{ {381, 213, -167}, 0, {502, 365}, {232, 219, 193, 255} }},
-	{{ {149, 475, -342}, 0, {751, 490}, {232, 219, 193, 255} }},
-	{{ {167, 213, -381}, 0, {751, 365}, {232, 219, 193, 255} }},
+	{{ {342, 475, -149}, 0, {-2, 997}, {232, 219, 193, 255} }},
+	{{ {381, 213, -167}, 0, {-2, 499}, {232, 219, 193, 255} }},
+	{{ {149, 475, -342}, 0, {994, 997}, {232, 219, 193, 255} }},
+	{{ {167, 213, -381}, 0, {994, 499}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_007_object_011E38E4_mesh_layer_5_tri_0[] = {
@@ -36737,10 +37072,10 @@ Gfx ccr_dl_007_object_011E38E4_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_008_object_011E3814_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {339, 495, -148}, 0, {759, 490}, {232, 219, 193, 255} }},
-	{{ {379, 227, -166}, 0, {759, 365}, {232, 219, 193, 255} }},
-	{{ {148, 495, -339}, 0, {1008, 490}, {232, 219, 193, 255} }},
-	{{ {166, 227, -379}, 0, {1008, 365}, {232, 219, 193, 255} }},
+	{{ {339, 495, -148}, 0, {1, 1001}, {232, 219, 193, 255} }},
+	{{ {379, 227, -166}, 0, {1, 503}, {232, 219, 193, 255} }},
+	{{ {148, 495, -339}, 0, {997, 1001}, {232, 219, 193, 255} }},
+	{{ {166, 227, -379}, 0, {997, 503}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_008_object_011E3814_mesh_layer_5_tri_0[] = {
@@ -36750,10 +37085,10 @@ Gfx ccr_dl_008_object_011E3814_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_009_object_011E3744_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {336, 516, -146}, 0, {-12, 747}, {232, 219, 193, 255} }},
-	{{ {377, 242, -165}, 0, {-12, 622}, {232, 219, 193, 255} }},
-	{{ {146, 516, -336}, 0, {237, 747}, {232, 219, 193, 255} }},
-	{{ {165, 242, -377}, 0, {237, 622}, {232, 219, 193, 255} }},
+	{{ {336, 516, -146}, 0, {-1, 997}, {232, 219, 193, 255} }},
+	{{ {377, 242, -165}, 0, {-1, 499}, {232, 219, 193, 255} }},
+	{{ {146, 516, -336}, 0, {995, 997}, {232, 219, 193, 255} }},
+	{{ {165, 242, -377}, 0, {995, 499}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_009_object_011E3744_mesh_layer_5_tri_0[] = {
@@ -36763,10 +37098,10 @@ Gfx ccr_dl_009_object_011E3744_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_010_object_011E3674_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {332, 537, -145}, 0, {245, 747}, {232, 219, 193, 255} }},
-	{{ {375, 257, -164}, 0, {245, 622}, {232, 219, 193, 255} }},
-	{{ {145, 537, -332}, 0, {494, 747}, {232, 219, 193, 255} }},
-	{{ {164, 257, -375}, 0, {494, 622}, {232, 219, 193, 255} }},
+	{{ {332, 537, -145}, 0, {-1, 994}, {232, 219, 193, 255} }},
+	{{ {375, 257, -164}, 0, {-1, 496}, {232, 219, 193, 255} }},
+	{{ {145, 537, -332}, 0, {994, 994}, {232, 219, 193, 255} }},
+	{{ {164, 257, -375}, 0, {994, 496}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_010_object_011E3674_mesh_layer_5_tri_0[] = {
@@ -36776,10 +37111,10 @@ Gfx ccr_dl_010_object_011E3674_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_011_object_011E35A4_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {329, 557, -143}, 0, {502, 747}, {232, 219, 193, 255} }},
-	{{ {373, 271, -163}, 0, {502, 622}, {232, 219, 193, 255} }},
-	{{ {143, 557, -329}, 0, {751, 747}, {232, 219, 193, 255} }},
-	{{ {163, 271, -373}, 0, {751, 622}, {232, 219, 193, 255} }},
+	{{ {329, 557, -143}, 0, {2, 991}, {232, 219, 193, 255} }},
+	{{ {373, 271, -163}, 0, {2, 493}, {232, 219, 193, 255} }},
+	{{ {143, 557, -329}, 0, {997, 991}, {232, 219, 193, 255} }},
+	{{ {163, 271, -373}, 0, {997, 493}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_011_object_011E35A4_mesh_layer_5_tri_0[] = {
@@ -36789,10 +37124,10 @@ Gfx ccr_dl_011_object_011E35A4_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_012_object_011E34D4_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {326, 578, -142}, 0, {759, 747}, {232, 219, 193, 255} }},
-	{{ {371, 286, -162}, 0, {759, 622}, {232, 219, 193, 255} }},
-	{{ {142, 578, -326}, 0, {1008, 747}, {232, 219, 193, 255} }},
-	{{ {162, 286, -371}, 0, {1008, 622}, {232, 219, 193, 255} }},
+	{{ {326, 578, -142}, 0, {1, 997}, {232, 219, 193, 255} }},
+	{{ {371, 286, -162}, 0, {1, 499}, {232, 219, 193, 255} }},
+	{{ {142, 578, -326}, 0, {997, 997}, {232, 219, 193, 255} }},
+	{{ {162, 286, -371}, 0, {997, 499}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_012_object_011E34D4_mesh_layer_5_tri_0[] = {
@@ -36802,10 +37137,10 @@ Gfx ccr_dl_012_object_011E34D4_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_013_object_011E3404_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {323, 599, -141}, 0, {-12, 1004}, {232, 219, 193, 255} }},
-	{{ {369, 301, -161}, 0, {-12, 879}, {232, 219, 193, 255} }},
-	{{ {141, 599, -323}, 0, {237, 1004}, {232, 219, 193, 255} }},
-	{{ {161, 301, -369}, 0, {237, 879}, {232, 219, 193, 255} }},
+	{{ {323, 599, -141}, 0, {2, 994}, {232, 219, 193, 255} }},
+	{{ {369, 301, -161}, 0, {2, 496}, {232, 219, 193, 255} }},
+	{{ {141, 599, -323}, 0, {998, 994}, {232, 219, 193, 255} }},
+	{{ {161, 301, -369}, 0, {998, 496}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_013_object_011E3404_mesh_layer_5_tri_0[] = {
@@ -36815,10 +37150,10 @@ Gfx ccr_dl_013_object_011E3404_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_014_object_011E3334_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {320, 619, -139}, 0, {245, 1004}, {232, 219, 193, 255} }},
-	{{ {367, 315, -160}, 0, {245, 879}, {232, 219, 193, 255} }},
-	{{ {139, 619, -320}, 0, {494, 1004}, {232, 219, 193, 255} }},
-	{{ {160, 315, -367}, 0, {494, 879}, {232, 219, 193, 255} }},
+	{{ {320, 619, -139}, 0, {5, 994}, {232, 219, 193, 255} }},
+	{{ {367, 315, -160}, 0, {5, 496}, {232, 219, 193, 255} }},
+	{{ {139, 619, -320}, 0, {1001, 994}, {232, 219, 193, 255} }},
+	{{ {160, 315, -367}, 0, {1001, 496}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_014_object_011E3334_mesh_layer_5_tri_0[] = {
@@ -36828,10 +37163,10 @@ Gfx ccr_dl_014_object_011E3334_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_015_object_011E3264_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {316, 640, -138}, 0, {502, 1004}, {232, 219, 193, 255} }},
-	{{ {365, 330, -159}, 0, {502, 879}, {232, 219, 193, 255} }},
-	{{ {138, 640, -316}, 0, {751, 1004}, {232, 219, 193, 255} }},
-	{{ {159, 330, -365}, 0, {751, 879}, {232, 219, 193, 255} }},
+	{{ {316, 640, -138}, 0, {-2, 1013}, {232, 219, 193, 255} }},
+	{{ {365, 330, -159}, 0, {-2, 515}, {232, 219, 193, 255} }},
+	{{ {138, 640, -316}, 0, {994, 1013}, {232, 219, 193, 255} }},
+	{{ {159, 330, -365}, 0, {994, 515}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_015_object_011E3264_mesh_layer_5_tri_0[] = {
@@ -36841,12 +37176,12 @@ Gfx ccr_dl_015_object_011E3264_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_016_object_011E3194_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {381, 213, -167}, 0, {759, 755}, {232, 219, 193, 255} }},
-	{{ {167, 213, -381}, 0, {1008, 755}, {232, 219, 193, 255} }},
-	{{ {157, 351, -361}, 0, {1008, 879}, {232, 219, 193, 255} }},
-	{{ {361, 351, -157}, 0, {759, 879}, {232, 219, 193, 255} }},
-	{{ {136, 661, -313}, 0, {1008, 1004}, {232, 219, 193, 255} }},
-	{{ {313, 661, -136}, 0, {759, 1004}, {232, 219, 193, 255} }},
+	{{ {381, 213, -167}, 0, {5, 1}, {232, 219, 193, 255} }},
+	{{ {167, 213, -381}, 0, {1000, 1}, {232, 219, 193, 255} }},
+	{{ {157, 351, -361}, 0, {1000, 499}, {232, 219, 193, 255} }},
+	{{ {361, 351, -157}, 0, {5, 499}, {232, 219, 193, 255} }},
+	{{ {136, 661, -313}, 0, {1000, 996}, {232, 219, 193, 255} }},
+	{{ {313, 661, -136}, 0, {5, 996}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_016_object_011E3194_mesh_layer_5_tri_0[] = {
@@ -36857,12 +37192,12 @@ Gfx ccr_dl_016_object_011E3194_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_017_object_011E3094_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {381, 213, -167}, 0, {-12, -16}, {232, 219, 193, 255} }},
-	{{ {167, 213, -381}, 0, {237, -16}, {232, 219, 193, 255} }},
-	{{ {156, 371, -358}, 0, {237, 108}, {232, 219, 193, 255} }},
-	{{ {358, 371, -156}, 0, {-12, 108}, {232, 219, 193, 255} }},
-	{{ {135, 681, -310}, 0, {237, 233}, {232, 219, 193, 255} }},
-	{{ {310, 681, -135}, 0, {-12, 233}, {232, 219, 193, 255} }},
+	{{ {381, 213, -167}, 0, {2, -2}, {232, 219, 193, 255} }},
+	{{ {167, 213, -381}, 0, {998, -2}, {232, 219, 193, 255} }},
+	{{ {156, 371, -358}, 0, {998, 496}, {232, 219, 193, 255} }},
+	{{ {358, 371, -156}, 0, {2, 496}, {232, 219, 193, 255} }},
+	{{ {135, 681, -310}, 0, {998, 994}, {232, 219, 193, 255} }},
+	{{ {310, 681, -135}, 0, {2, 994}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_017_object_011E3094_mesh_layer_5_tri_0[] = {
@@ -36873,12 +37208,12 @@ Gfx ccr_dl_017_object_011E3094_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_018_object_011E2F94_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {381, 213, -167}, 0, {245, -16}, {232, 219, 193, 255} }},
-	{{ {167, 213, -381}, 0, {494, -16}, {232, 219, 193, 255} }},
-	{{ {155, 392, -355}, 0, {494, 108}, {232, 219, 193, 255} }},
-	{{ {355, 392, -155}, 0, {245, 108}, {232, 219, 193, 255} }},
-	{{ {134, 702, -307}, 0, {494, 233}, {232, 219, 193, 255} }},
-	{{ {307, 702, -134}, 0, {245, 233}, {232, 219, 193, 255} }},
+	{{ {381, 213, -167}, 0, {-1, -2}, {232, 219, 193, 255} }},
+	{{ {167, 213, -381}, 0, {994, -2}, {232, 219, 193, 255} }},
+	{{ {155, 392, -355}, 0, {994, 496}, {232, 219, 193, 255} }},
+	{{ {355, 392, -155}, 0, {-1, 496}, {232, 219, 193, 255} }},
+	{{ {134, 702, -307}, 0, {994, 994}, {232, 219, 193, 255} }},
+	{{ {307, 702, -134}, 0, {-1, 994}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_018_object_011E2F94_mesh_layer_5_tri_0[] = {
@@ -36889,12 +37224,12 @@ Gfx ccr_dl_018_object_011E2F94_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_019_object_011E2E94_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {381, 213, -167}, 0, {502, -16}, {232, 219, 193, 255} }},
-	{{ {167, 213, -381}, 0, {751, -16}, {232, 219, 193, 255} }},
-	{{ {153, 413, -352}, 0, {751, 108}, {232, 219, 193, 255} }},
-	{{ {352, 413, -153}, 0, {502, 108}, {232, 219, 193, 255} }},
-	{{ {132, 723, -303}, 0, {751, 233}, {232, 219, 193, 255} }},
-	{{ {303, 723, -132}, 0, {502, 233}, {232, 219, 193, 255} }},
+	{{ {381, 213, -167}, 0, {-2, -2}, {232, 219, 193, 255} }},
+	{{ {167, 213, -381}, 0, {994, -2}, {232, 219, 193, 255} }},
+	{{ {153, 413, -352}, 0, {994, 496}, {232, 219, 193, 255} }},
+	{{ {352, 413, -153}, 0, {-2, 496}, {232, 219, 193, 255} }},
+	{{ {132, 723, -303}, 0, {994, 994}, {232, 219, 193, 255} }},
+	{{ {303, 723, -132}, 0, {-2, 994}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_019_object_011E2E94_mesh_layer_5_tri_0[] = {
@@ -36905,12 +37240,12 @@ Gfx ccr_dl_019_object_011E2E94_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_020_object_011E2D94_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {131, 743, -300}, 0, {1008, 233}, {232, 219, 193, 255} }},
-	{{ {300, 743, -131}, 0, {759, 233}, {232, 219, 193, 255} }},
-	{{ {348, 433, -152}, 0, {759, 108}, {232, 219, 193, 255} }},
-	{{ {152, 433, -348}, 0, {1008, 108}, {232, 219, 193, 255} }},
-	{{ {381, 213, -167}, 0, {759, -16}, {232, 219, 193, 255} }},
-	{{ {167, 213, -381}, 0, {1008, -16}, {232, 219, 193, 255} }},
+	{{ {131, 743, -300}, 0, {997, 997}, {232, 219, 193, 255} }},
+	{{ {300, 743, -131}, 0, {1, 997}, {232, 219, 193, 255} }},
+	{{ {348, 433, -152}, 0, {1, 499}, {232, 219, 193, 255} }},
+	{{ {152, 433, -348}, 0, {997, 499}, {232, 219, 193, 255} }},
+	{{ {381, 213, -167}, 0, {1, 1}, {232, 219, 193, 255} }},
+	{{ {167, 213, -381}, 0, {997, 1}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_020_object_011E2D94_mesh_layer_5_tri_0[] = {
@@ -36921,12 +37256,12 @@ Gfx ccr_dl_020_object_011E2D94_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_021_object_011E2C94_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {381, 213, -167}, 0, {-12, 241}, {232, 219, 193, 255} }},
-	{{ {167, 213, -381}, 0, {237, 241}, {232, 219, 193, 255} }},
-	{{ {150, 454, -345}, 0, {237, 365}, {232, 219, 193, 255} }},
-	{{ {345, 454, -150}, 0, {-12, 365}, {232, 219, 193, 255} }},
-	{{ {129, 764, -297}, 0, {237, 490}, {232, 219, 193, 255} }},
-	{{ {297, 764, -129}, 0, {-12, 490}, {232, 219, 193, 255} }},
+	{{ {381, 213, -167}, 0, {-4, 1}, {232, 219, 193, 255} }},
+	{{ {167, 213, -381}, 0, {991, 1}, {232, 219, 193, 255} }},
+	{{ {150, 454, -345}, 0, {991, 499}, {232, 219, 193, 255} }},
+	{{ {345, 454, -150}, 0, {-4, 499}, {232, 219, 193, 255} }},
+	{{ {129, 764, -297}, 0, {991, 997}, {232, 219, 193, 255} }},
+	{{ {297, 764, -129}, 0, {-4, 997}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_021_object_011E2C94_mesh_layer_5_tri_0[] = {
@@ -36937,12 +37272,12 @@ Gfx ccr_dl_021_object_011E2C94_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_022_object_011E2B94_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {128, 785, -294}, 0, {494, 490}, {232, 219, 193, 255} }},
-	{{ {294, 785, -128}, 0, {245, 490}, {232, 219, 193, 255} }},
-	{{ {342, 475, -149}, 0, {245, 365}, {232, 219, 193, 255} }},
-	{{ {149, 475, -342}, 0, {494, 365}, {232, 219, 193, 255} }},
-	{{ {381, 213, -167}, 0, {245, 241}, {232, 219, 193, 255} }},
-	{{ {167, 213, -381}, 0, {494, 241}, {232, 219, 193, 255} }},
+	{{ {128, 785, -294}, 0, {994, 997}, {232, 219, 193, 255} }},
+	{{ {294, 785, -128}, 0, {-1, 997}, {232, 219, 193, 255} }},
+	{{ {342, 475, -149}, 0, {-1, 499}, {232, 219, 193, 255} }},
+	{{ {149, 475, -342}, 0, {994, 499}, {232, 219, 193, 255} }},
+	{{ {381, 213, -167}, 0, {-1, 1}, {232, 219, 193, 255} }},
+	{{ {167, 213, -381}, 0, {994, 1}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_022_object_011E2B94_mesh_layer_5_tri_0[] = {
@@ -36953,12 +37288,12 @@ Gfx ccr_dl_022_object_011E2B94_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_023_object_011E2A94_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {379, 227, -166}, 0, {502, 241}, {232, 219, 193, 255} }},
-	{{ {166, 227, -379}, 0, {751, 241}, {232, 219, 193, 255} }},
-	{{ {148, 495, -339}, 0, {751, 365}, {232, 219, 193, 255} }},
-	{{ {339, 495, -148}, 0, {502, 365}, {232, 219, 193, 255} }},
-	{{ {127, 805, -291}, 0, {751, 490}, {232, 219, 193, 255} }},
-	{{ {291, 805, -127}, 0, {502, 490}, {232, 219, 193, 255} }},
+	{{ {379, 227, -166}, 0, {-2, -5}, {232, 219, 193, 255} }},
+	{{ {166, 227, -379}, 0, {994, -5}, {232, 219, 193, 255} }},
+	{{ {148, 495, -339}, 0, {994, 492}, {232, 219, 193, 255} }},
+	{{ {339, 495, -148}, 0, {-2, 492}, {232, 219, 193, 255} }},
+	{{ {127, 805, -291}, 0, {994, 990}, {232, 219, 193, 255} }},
+	{{ {291, 805, -127}, 0, {-2, 990}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_023_object_011E2A94_mesh_layer_5_tri_0[] = {
@@ -36969,12 +37304,12 @@ Gfx ccr_dl_023_object_011E2A94_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_024_object_011E2994_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {125, 826, -287}, 0, {1008, 490}, {232, 219, 193, 255} }},
-	{{ {287, 826, -125}, 0, {759, 490}, {232, 219, 193, 255} }},
-	{{ {336, 516, -146}, 0, {759, 365}, {232, 219, 193, 255} }},
-	{{ {146, 516, -336}, 0, {1008, 365}, {232, 219, 193, 255} }},
-	{{ {377, 242, -165}, 0, {759, 241}, {232, 219, 193, 255} }},
-	{{ {165, 242, -377}, 0, {1008, 241}, {232, 219, 193, 255} }},
+	{{ {125, 826, -287}, 0, {994, 1000}, {232, 219, 193, 255} }},
+	{{ {287, 826, -125}, 0, {-2, 1000}, {232, 219, 193, 255} }},
+	{{ {336, 516, -146}, 0, {-2, 502}, {232, 219, 193, 255} }},
+	{{ {146, 516, -336}, 0, {994, 502}, {232, 219, 193, 255} }},
+	{{ {377, 242, -165}, 0, {-2, 4}, {232, 219, 193, 255} }},
+	{{ {165, 242, -377}, 0, {994, 4}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_024_object_011E2994_mesh_layer_5_tri_0[] = {
@@ -36985,12 +37320,12 @@ Gfx ccr_dl_024_object_011E2994_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_025_object_011E2894_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {375, 257, -164}, 0, {-12, 498}, {232, 219, 193, 255} }},
-	{{ {164, 257, -375}, 0, {237, 498}, {232, 219, 193, 255} }},
-	{{ {145, 537, -332}, 0, {237, 622}, {232, 219, 193, 255} }},
-	{{ {332, 537, -145}, 0, {-12, 622}, {232, 219, 193, 255} }},
-	{{ {124, 847, -284}, 0, {237, 747}, {232, 219, 193, 255} }},
-	{{ {284, 847, -124}, 0, {-12, 747}, {232, 219, 193, 255} }},
+	{{ {375, 257, -164}, 0, {-1, -2}, {232, 219, 193, 255} }},
+	{{ {164, 257, -375}, 0, {995, -2}, {232, 219, 193, 255} }},
+	{{ {145, 537, -332}, 0, {995, 496}, {232, 219, 193, 255} }},
+	{{ {332, 537, -145}, 0, {-1, 496}, {232, 219, 193, 255} }},
+	{{ {124, 847, -284}, 0, {995, 993}, {232, 219, 193, 255} }},
+	{{ {284, 847, -124}, 0, {-1, 993}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_025_object_011E2894_mesh_layer_5_tri_0[] = {
@@ -37001,12 +37336,12 @@ Gfx ccr_dl_025_object_011E2894_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_026_object_011E2794_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {373, 271, -163}, 0, {245, 498}, {232, 219, 193, 255} }},
-	{{ {163, 271, -373}, 0, {494, 498}, {232, 219, 193, 255} }},
-	{{ {143, 557, -329}, 0, {494, 622}, {232, 219, 193, 255} }},
-	{{ {329, 557, -143}, 0, {245, 622}, {232, 219, 193, 255} }},
-	{{ {122, 867, -281}, 0, {494, 747}, {232, 219, 193, 255} }},
-	{{ {281, 867, -122}, 0, {245, 747}, {232, 219, 193, 255} }},
+	{{ {373, 271, -163}, 0, {5, 1}, {232, 219, 193, 255} }},
+	{{ {163, 271, -373}, 0, {1001, 1}, {232, 219, 193, 255} }},
+	{{ {143, 557, -329}, 0, {1001, 499}, {232, 219, 193, 255} }},
+	{{ {329, 557, -143}, 0, {5, 499}, {232, 219, 193, 255} }},
+	{{ {122, 867, -281}, 0, {1001, 997}, {232, 219, 193, 255} }},
+	{{ {281, 867, -122}, 0, {5, 997}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_026_object_011E2794_mesh_layer_5_tri_0[] = {
@@ -37017,12 +37352,12 @@ Gfx ccr_dl_026_object_011E2794_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_027_object_011E2694_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {371, 286, -162}, 0, {502, 498}, {232, 219, 193, 255} }},
-	{{ {162, 286, -371}, 0, {751, 498}, {232, 219, 193, 255} }},
-	{{ {142, 578, -326}, 0, {751, 622}, {232, 219, 193, 255} }},
-	{{ {326, 578, -142}, 0, {502, 622}, {232, 219, 193, 255} }},
-	{{ {121, 888, -278}, 0, {751, 747}, {232, 219, 193, 255} }},
-	{{ {278, 888, -121}, 0, {502, 747}, {232, 219, 193, 255} }},
+	{{ {371, 286, -162}, 0, {-5, -6}, {232, 219, 193, 255} }},
+	{{ {162, 286, -371}, 0, {991, -6}, {232, 219, 193, 255} }},
+	{{ {142, 578, -326}, 0, {991, 492}, {232, 219, 193, 255} }},
+	{{ {326, 578, -142}, 0, {-5, 492}, {232, 219, 193, 255} }},
+	{{ {121, 888, -278}, 0, {991, 990}, {232, 219, 193, 255} }},
+	{{ {278, 888, -121}, 0, {-5, 990}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_027_object_011E2694_mesh_layer_5_tri_0[] = {
@@ -37033,12 +37368,12 @@ Gfx ccr_dl_027_object_011E2694_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_028_object_011E2594_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {369, 301, -161}, 0, {759, 498}, {232, 219, 193, 255} }},
-	{{ {161, 301, -369}, 0, {1008, 498}, {232, 219, 193, 255} }},
-	{{ {141, 599, -323}, 0, {1008, 622}, {232, 219, 193, 255} }},
-	{{ {323, 599, -141}, 0, {759, 622}, {232, 219, 193, 255} }},
-	{{ {120, 909, -275}, 0, {1008, 747}, {232, 219, 193, 255} }},
-	{{ {275, 909, -120}, 0, {759, 747}, {232, 219, 193, 255} }},
+	{{ {369, 301, -161}, 0, {-5, 1}, {232, 219, 193, 255} }},
+	{{ {161, 301, -369}, 0, {991, 1}, {232, 219, 193, 255} }},
+	{{ {141, 599, -323}, 0, {991, 499}, {232, 219, 193, 255} }},
+	{{ {323, 599, -141}, 0, {-5, 499}, {232, 219, 193, 255} }},
+	{{ {120, 909, -275}, 0, {991, 997}, {232, 219, 193, 255} }},
+	{{ {275, 909, -120}, 0, {-5, 997}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_028_object_011E2594_mesh_layer_5_tri_0[] = {
@@ -37049,12 +37384,12 @@ Gfx ccr_dl_028_object_011E2594_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_029_object_011E2494_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {367, 315, -160}, 0, {-12, 755}, {232, 219, 193, 255} }},
-	{{ {160, 315, -367}, 0, {237, 755}, {232, 219, 193, 255} }},
-	{{ {139, 619, -320}, 0, {237, 879}, {232, 219, 193, 255} }},
-	{{ {320, 619, -139}, 0, {-12, 879}, {232, 219, 193, 255} }},
-	{{ {118, 929, -271}, 0, {237, 1004}, {232, 219, 193, 255} }},
-	{{ {271, 929, -118}, 0, {-12, 1004}, {232, 219, 193, 255} }},
+	{{ {367, 315, -160}, 0, {-4, -3}, {232, 219, 193, 255} }},
+	{{ {160, 315, -367}, 0, {991, -3}, {232, 219, 193, 255} }},
+	{{ {139, 619, -320}, 0, {991, 495}, {232, 219, 193, 255} }},
+	{{ {320, 619, -139}, 0, {-4, 495}, {232, 219, 193, 255} }},
+	{{ {118, 929, -271}, 0, {991, 993}, {232, 219, 193, 255} }},
+	{{ {271, 929, -118}, 0, {-4, 993}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_029_object_011E2494_mesh_layer_5_tri_0[] = {
@@ -37065,12 +37400,12 @@ Gfx ccr_dl_029_object_011E2494_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_030_object_011E2394_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {117, 950, -268}, 0, {494, 1004}, {232, 219, 193, 255} }},
-	{{ {268, 950, -117}, 0, {245, 1004}, {232, 219, 193, 255} }},
-	{{ {316, 640, -138}, 0, {245, 879}, {232, 219, 193, 255} }},
-	{{ {138, 640, -316}, 0, {494, 879}, {232, 219, 193, 255} }},
-	{{ {365, 330, -159}, 0, {245, 755}, {232, 219, 193, 255} }},
-	{{ {159, 330, -365}, 0, {494, 755}, {232, 219, 193, 255} }},
+	{{ {117, 950, -268}, 0, {988, 996}, {232, 219, 193, 255} }},
+	{{ {268, 950, -117}, 0, {-8, 996}, {232, 219, 193, 255} }},
+	{{ {316, 640, -138}, 0, {-8, 499}, {232, 219, 193, 255} }},
+	{{ {138, 640, -316}, 0, {988, 499}, {232, 219, 193, 255} }},
+	{{ {365, 330, -159}, 0, {-8, 1}, {232, 219, 193, 255} }},
+	{{ {159, 330, -365}, 0, {988, 1}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_030_object_011E2394_mesh_layer_5_tri_0[] = {
@@ -37081,12 +37416,12 @@ Gfx ccr_dl_030_object_011E2394_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_031_object_011E2294_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {116, 963, -266}, 0, {751, 1004}, {232, 219, 193, 255} }},
-	{{ {266, 963, -116}, 0, {502, 1004}, {232, 219, 193, 255} }},
-	{{ {313, 661, -136}, 0, {502, 879}, {232, 219, 193, 255} }},
-	{{ {136, 661, -313}, 0, {751, 879}, {232, 219, 193, 255} }},
-	{{ {361, 351, -157}, 0, {502, 755}, {232, 219, 193, 255} }},
-	{{ {157, 351, -361}, 0, {751, 755}, {232, 219, 193, 255} }},
+	{{ {116, 963, -266}, 0, {988, 996}, {232, 219, 193, 255} }},
+	{{ {266, 963, -116}, 0, {-8, 996}, {232, 219, 193, 255} }},
+	{{ {313, 661, -136}, 0, {-8, 499}, {232, 219, 193, 255} }},
+	{{ {136, 661, -313}, 0, {988, 499}, {232, 219, 193, 255} }},
+	{{ {361, 351, -157}, 0, {-8, 1}, {232, 219, 193, 255} }},
+	{{ {157, 351, -361}, 0, {988, 1}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_031_object_011E2294_mesh_layer_5_tri_0[] = {
@@ -37097,12 +37432,12 @@ Gfx ccr_dl_031_object_011E2294_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_032_object_011E2194_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {115, 976, -264}, 0, {1008, 1004}, {232, 219, 193, 255} }},
-	{{ {264, 976, -115}, 0, {759, 1004}, {232, 219, 193, 255} }},
-	{{ {310, 681, -135}, 0, {759, 879}, {232, 219, 193, 255} }},
-	{{ {135, 681, -310}, 0, {1008, 879}, {232, 219, 193, 255} }},
-	{{ {358, 371, -156}, 0, {759, 755}, {232, 219, 193, 255} }},
-	{{ {156, 371, -358}, 0, {1008, 755}, {232, 219, 193, 255} }},
+	{{ {115, 976, -264}, 0, {997, 996}, {232, 219, 193, 255} }},
+	{{ {264, 976, -115}, 0, {1, 996}, {232, 219, 193, 255} }},
+	{{ {310, 681, -135}, 0, {1, 499}, {232, 219, 193, 255} }},
+	{{ {135, 681, -310}, 0, {997, 499}, {232, 219, 193, 255} }},
+	{{ {358, 371, -156}, 0, {1, 1}, {232, 219, 193, 255} }},
+	{{ {156, 371, -358}, 0, {997, 1}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_032_object_011E2194_mesh_layer_5_tri_0[] = {
@@ -37113,12 +37448,12 @@ Gfx ccr_dl_032_object_011E2194_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_033_object_011E2094_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {355, 392, -155}, 0, {-12, -16}, {232, 219, 193, 255} }},
-	{{ {155, 392, -355}, 0, {237, -16}, {232, 219, 193, 255} }},
-	{{ {134, 702, -307}, 0, {237, 108}, {232, 219, 193, 255} }},
-	{{ {307, 702, -134}, 0, {-12, 108}, {232, 219, 193, 255} }},
-	{{ {114, 990, -262}, 0, {237, 233}, {232, 219, 193, 255} }},
-	{{ {262, 990, -114}, 0, {-12, 233}, {232, 219, 193, 255} }},
+	{{ {355, 392, -155}, 0, {2, 4}, {232, 219, 193, 255} }},
+	{{ {155, 392, -355}, 0, {998, 4}, {232, 219, 193, 255} }},
+	{{ {134, 702, -307}, 0, {998, 502}, {232, 219, 193, 255} }},
+	{{ {307, 702, -134}, 0, {2, 502}, {232, 219, 193, 255} }},
+	{{ {114, 990, -262}, 0, {998, 1000}, {232, 219, 193, 255} }},
+	{{ {262, 990, -114}, 0, {2, 1000}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_033_object_011E2094_mesh_layer_5_tri_0[] = {
@@ -37129,12 +37464,12 @@ Gfx ccr_dl_033_object_011E2094_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_034_object_011E1F94_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {352, 413, -153}, 0, {245, -16}, {232, 219, 193, 255} }},
-	{{ {153, 413, -352}, 0, {494, -16}, {232, 219, 193, 255} }},
-	{{ {132, 723, -303}, 0, {494, 108}, {232, 219, 193, 255} }},
-	{{ {303, 723, -132}, 0, {245, 108}, {232, 219, 193, 255} }},
-	{{ {113, 1003, -260}, 0, {494, 233}, {232, 219, 193, 255} }},
-	{{ {260, 1003, -113}, 0, {245, 233}, {232, 219, 193, 255} }},
+	{{ {352, 413, -153}, 0, {2, -2}, {232, 219, 193, 255} }},
+	{{ {153, 413, -352}, 0, {998, -2}, {232, 219, 193, 255} }},
+	{{ {132, 723, -303}, 0, {998, 496}, {232, 219, 193, 255} }},
+	{{ {303, 723, -132}, 0, {2, 496}, {232, 219, 193, 255} }},
+	{{ {113, 1003, -260}, 0, {998, 994}, {232, 219, 193, 255} }},
+	{{ {260, 1003, -113}, 0, {2, 994}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_034_object_011E1F94_mesh_layer_5_tri_0[] = {
@@ -37145,12 +37480,12 @@ Gfx ccr_dl_034_object_011E1F94_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_035_object_011E1E94_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {348, 433, -152}, 0, {502, -16}, {232, 219, 193, 255} }},
-	{{ {152, 433, -348}, 0, {751, -16}, {232, 219, 193, 255} }},
-	{{ {131, 743, -300}, 0, {751, 108}, {232, 219, 193, 255} }},
-	{{ {300, 743, -131}, 0, {502, 108}, {232, 219, 193, 255} }},
-	{{ {112, 1016, -258}, 0, {751, 233}, {232, 219, 193, 255} }},
-	{{ {258, 1016, -112}, 0, {502, 233}, {232, 219, 193, 255} }},
+	{{ {348, 433, -152}, 0, {-2, 1}, {232, 219, 193, 255} }},
+	{{ {152, 433, -348}, 0, {994, 1}, {232, 219, 193, 255} }},
+	{{ {131, 743, -300}, 0, {994, 499}, {232, 219, 193, 255} }},
+	{{ {300, 743, -131}, 0, {-2, 499}, {232, 219, 193, 255} }},
+	{{ {112, 1016, -258}, 0, {994, 997}, {232, 219, 193, 255} }},
+	{{ {258, 1016, -112}, 0, {-2, 997}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_035_object_011E1E94_mesh_layer_5_tri_0[] = {
@@ -37161,12 +37496,12 @@ Gfx ccr_dl_035_object_011E1E94_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_036_object_011E1D94_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {345, 454, -150}, 0, {759, -16}, {232, 219, 193, 255} }},
-	{{ {150, 454, -345}, 0, {1008, -16}, {232, 219, 193, 255} }},
-	{{ {129, 764, -297}, 0, {1008, 108}, {232, 219, 193, 255} }},
-	{{ {297, 764, -129}, 0, {759, 108}, {232, 219, 193, 255} }},
-	{{ {111, 1029, -256}, 0, {1008, 233}, {232, 219, 193, 255} }},
-	{{ {256, 1029, -111}, 0, {759, 233}, {232, 219, 193, 255} }},
+	{{ {345, 454, -150}, 0, {-2, 4}, {232, 219, 193, 255} }},
+	{{ {150, 454, -345}, 0, {994, 4}, {232, 219, 193, 255} }},
+	{{ {129, 764, -297}, 0, {994, 502}, {232, 219, 193, 255} }},
+	{{ {297, 764, -129}, 0, {-2, 502}, {232, 219, 193, 255} }},
+	{{ {111, 1029, -256}, 0, {994, 1000}, {232, 219, 193, 255} }},
+	{{ {256, 1029, -111}, 0, {-2, 1000}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_036_object_011E1D94_mesh_layer_5_tri_0[] = {
@@ -37177,12 +37512,12 @@ Gfx ccr_dl_036_object_011E1D94_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_037_object_011E1C94_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {342, 475, -149}, 0, {-12, 241}, {232, 219, 193, 255} }},
-	{{ {149, 475, -342}, 0, {237, 241}, {232, 219, 193, 255} }},
-	{{ {128, 785, -294}, 0, {237, 365}, {232, 219, 193, 255} }},
-	{{ {294, 785, -128}, 0, {-12, 365}, {232, 219, 193, 255} }},
-	{{ {110, 1043, -254}, 0, {237, 490}, {232, 219, 193, 255} }},
-	{{ {254, 1043, -110}, 0, {-12, 490}, {232, 219, 193, 255} }},
+	{{ {342, 475, -149}, 0, {-4, -2}, {232, 219, 193, 255} }},
+	{{ {149, 475, -342}, 0, {991, -2}, {232, 219, 193, 255} }},
+	{{ {128, 785, -294}, 0, {991, 496}, {232, 219, 193, 255} }},
+	{{ {294, 785, -128}, 0, {-4, 496}, {232, 219, 193, 255} }},
+	{{ {110, 1043, -254}, 0, {991, 994}, {232, 219, 193, 255} }},
+	{{ {254, 1043, -110}, 0, {-4, 994}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_037_object_011E1C94_mesh_layer_5_tri_0[] = {
@@ -37193,12 +37528,12 @@ Gfx ccr_dl_037_object_011E1C94_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_038_object_011E1B94_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {110, 1043, -254}, 0, {494, 490}, {232, 219, 193, 255} }},
-	{{ {254, 1043, -110}, 0, {245, 490}, {232, 219, 193, 255} }},
-	{{ {291, 805, -127}, 0, {245, 365}, {232, 219, 193, 255} }},
-	{{ {127, 805, -291}, 0, {494, 365}, {232, 219, 193, 255} }},
-	{{ {339, 495, -148}, 0, {245, 241}, {232, 219, 193, 255} }},
-	{{ {148, 495, -339}, 0, {494, 241}, {232, 219, 193, 255} }},
+	{{ {110, 1043, -254}, 0, {998, 994}, {232, 219, 193, 255} }},
+	{{ {254, 1043, -110}, 0, {2, 994}, {232, 219, 193, 255} }},
+	{{ {291, 805, -127}, 0, {2, 496}, {232, 219, 193, 255} }},
+	{{ {127, 805, -291}, 0, {998, 496}, {232, 219, 193, 255} }},
+	{{ {339, 495, -148}, 0, {2, -2}, {232, 219, 193, 255} }},
+	{{ {148, 495, -339}, 0, {998, -2}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_038_object_011E1B94_mesh_layer_5_tri_0[] = {
@@ -37209,12 +37544,12 @@ Gfx ccr_dl_038_object_011E1B94_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_039_object_011E1A94_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {336, 516, -146}, 0, {502, 241}, {232, 219, 193, 255} }},
-	{{ {146, 516, -336}, 0, {751, 241}, {232, 219, 193, 255} }},
-	{{ {125, 826, -287}, 0, {751, 365}, {232, 219, 193, 255} }},
-	{{ {287, 826, -125}, 0, {502, 365}, {232, 219, 193, 255} }},
-	{{ {110, 1043, -254}, 0, {751, 490}, {232, 219, 193, 255} }},
-	{{ {254, 1043, -110}, 0, {502, 490}, {232, 219, 193, 255} }},
+	{{ {336, 516, -146}, 0, {-8, -5}, {232, 219, 193, 255} }},
+	{{ {146, 516, -336}, 0, {988, -5}, {232, 219, 193, 255} }},
+	{{ {125, 826, -287}, 0, {988, 492}, {232, 219, 193, 255} }},
+	{{ {287, 826, -125}, 0, {-8, 492}, {232, 219, 193, 255} }},
+	{{ {110, 1043, -254}, 0, {988, 990}, {232, 219, 193, 255} }},
+	{{ {254, 1043, -110}, 0, {-8, 990}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_039_object_011E1A94_mesh_layer_5_tri_0[] = {
@@ -37225,12 +37560,12 @@ Gfx ccr_dl_039_object_011E1A94_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_040_object_011E1994_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {332, 537, -145}, 0, {759, 241}, {232, 219, 193, 255} }},
-	{{ {145, 537, -332}, 0, {1008, 241}, {232, 219, 193, 255} }},
-	{{ {124, 847, -284}, 0, {1008, 365}, {232, 219, 193, 255} }},
-	{{ {284, 847, -124}, 0, {759, 365}, {232, 219, 193, 255} }},
-	{{ {110, 1043, -254}, 0, {1008, 490}, {232, 219, 193, 255} }},
-	{{ {254, 1043, -110}, 0, {759, 490}, {232, 219, 193, 255} }},
+	{{ {332, 537, -145}, 0, {-5, -2}, {232, 219, 193, 255} }},
+	{{ {145, 537, -332}, 0, {991, -2}, {232, 219, 193, 255} }},
+	{{ {124, 847, -284}, 0, {991, 496}, {232, 219, 193, 255} }},
+	{{ {284, 847, -124}, 0, {-5, 496}, {232, 219, 193, 255} }},
+	{{ {110, 1043, -254}, 0, {991, 994}, {232, 219, 193, 255} }},
+	{{ {254, 1043, -110}, 0, {-5, 994}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_040_object_011E1994_mesh_layer_5_tri_0[] = {
@@ -37241,12 +37576,12 @@ Gfx ccr_dl_040_object_011E1994_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_041_object_011E1894_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {110, 1043, -254}, 0, {237, 747}, {232, 219, 193, 255} }},
-	{{ {254, 1043, -110}, 0, {-12, 747}, {232, 219, 193, 255} }},
-	{{ {281, 867, -122}, 0, {-12, 622}, {232, 219, 193, 255} }},
-	{{ {122, 867, -281}, 0, {237, 622}, {232, 219, 193, 255} }},
-	{{ {329, 557, -143}, 0, {-12, 498}, {232, 219, 193, 255} }},
-	{{ {143, 557, -329}, 0, {237, 498}, {232, 219, 193, 255} }},
+	{{ {110, 1043, -254}, 0, {991, 990}, {232, 219, 193, 255} }},
+	{{ {254, 1043, -110}, 0, {-4, 990}, {232, 219, 193, 255} }},
+	{{ {281, 867, -122}, 0, {-4, 492}, {232, 219, 193, 255} }},
+	{{ {122, 867, -281}, 0, {991, 492}, {232, 219, 193, 255} }},
+	{{ {329, 557, -143}, 0, {-4, -6}, {232, 219, 193, 255} }},
+	{{ {143, 557, -329}, 0, {991, -6}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_041_object_011E1894_mesh_layer_5_tri_0[] = {
@@ -37257,12 +37592,12 @@ Gfx ccr_dl_041_object_011E1894_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_042_object_011E1794_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {326, 578, -142}, 0, {245, 498}, {232, 219, 193, 255} }},
-	{{ {142, 578, -326}, 0, {494, 498}, {232, 219, 193, 255} }},
-	{{ {121, 888, -278}, 0, {494, 622}, {232, 219, 193, 255} }},
-	{{ {278, 888, -121}, 0, {245, 622}, {232, 219, 193, 255} }},
-	{{ {110, 1043, -254}, 0, {494, 747}, {232, 219, 193, 255} }},
-	{{ {254, 1043, -110}, 0, {245, 747}, {232, 219, 193, 255} }},
+	{{ {326, 578, -142}, 0, {-1, -9}, {232, 219, 193, 255} }},
+	{{ {142, 578, -326}, 0, {994, -9}, {232, 219, 193, 255} }},
+	{{ {121, 888, -278}, 0, {994, 489}, {232, 219, 193, 255} }},
+	{{ {278, 888, -121}, 0, {-1, 489}, {232, 219, 193, 255} }},
+	{{ {110, 1043, -254}, 0, {994, 987}, {232, 219, 193, 255} }},
+	{{ {254, 1043, -110}, 0, {-1, 987}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_042_object_011E1794_mesh_layer_5_tri_0[] = {
@@ -37273,12 +37608,12 @@ Gfx ccr_dl_042_object_011E1794_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_043_object_011E1694_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {323, 599, -141}, 0, {502, 498}, {232, 219, 193, 255} }},
-	{{ {141, 599, -323}, 0, {751, 498}, {232, 219, 193, 255} }},
-	{{ {120, 909, -275}, 0, {751, 622}, {232, 219, 193, 255} }},
-	{{ {275, 909, -120}, 0, {502, 622}, {232, 219, 193, 255} }},
-	{{ {110, 1043, -254}, 0, {751, 747}, {232, 219, 193, 255} }},
-	{{ {254, 1043, -110}, 0, {502, 747}, {232, 219, 193, 255} }},
+	{{ {323, 599, -141}, 0, {2, -9}, {232, 219, 193, 255} }},
+	{{ {141, 599, -323}, 0, {997, -9}, {232, 219, 193, 255} }},
+	{{ {120, 909, -275}, 0, {997, 489}, {232, 219, 193, 255} }},
+	{{ {275, 909, -120}, 0, {2, 489}, {232, 219, 193, 255} }},
+	{{ {110, 1043, -254}, 0, {997, 987}, {232, 219, 193, 255} }},
+	{{ {254, 1043, -110}, 0, {2, 987}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_043_object_011E1694_mesh_layer_5_tri_0[] = {
@@ -37289,12 +37624,12 @@ Gfx ccr_dl_043_object_011E1694_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_044_object_011E1594_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {320, 619, -139}, 0, {759, 498}, {232, 219, 193, 255} }},
-	{{ {139, 619, -320}, 0, {1008, 498}, {232, 219, 193, 255} }},
-	{{ {118, 929, -271}, 0, {1008, 622}, {232, 219, 193, 255} }},
-	{{ {271, 929, -118}, 0, {759, 622}, {232, 219, 193, 255} }},
-	{{ {110, 1043, -254}, 0, {1008, 747}, {232, 219, 193, 255} }},
-	{{ {254, 1043, -110}, 0, {759, 747}, {232, 219, 193, 255} }},
+	{{ {320, 619, -139}, 0, {-2, 4}, {232, 219, 193, 255} }},
+	{{ {139, 619, -320}, 0, {994, 4}, {232, 219, 193, 255} }},
+	{{ {118, 929, -271}, 0, {994, 502}, {232, 219, 193, 255} }},
+	{{ {271, 929, -118}, 0, {-2, 502}, {232, 219, 193, 255} }},
+	{{ {110, 1043, -254}, 0, {994, 1000}, {232, 219, 193, 255} }},
+	{{ {254, 1043, -110}, 0, {-2, 1000}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_044_object_011E1594_mesh_layer_5_tri_0[] = {
@@ -37305,10 +37640,10 @@ Gfx ccr_dl_044_object_011E1594_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_045_object_011E1494_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {138, 640, -316}, 0, {237, 755}, {232, 219, 193, 255} }},
-	{{ {117, 950, -268}, 0, {237, 879}, {232, 219, 193, 255} }},
-	{{ {316, 640, -138}, 0, {-12, 755}, {232, 219, 193, 255} }},
-	{{ {268, 950, -117}, 0, {-12, 879}, {232, 219, 193, 255} }},
+	{{ {138, 640, -316}, 0, {998, -10}, {232, 219, 193, 255} }},
+	{{ {117, 950, -268}, 0, {998, 488}, {232, 219, 193, 255} }},
+	{{ {316, 640, -138}, 0, {2, -10}, {232, 219, 193, 255} }},
+	{{ {268, 950, -117}, 0, {2, 488}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_045_object_011E1494_mesh_layer_5_tri_0[] = {
@@ -37318,10 +37653,10 @@ Gfx ccr_dl_045_object_011E1494_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_046_object_011E13C4_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {137, 659, -313}, 0, {494, 755}, {232, 219, 193, 255} }},
-	{{ {116, 963, -266}, 0, {494, 879}, {232, 219, 193, 255} }},
-	{{ {313, 659, -137}, 0, {245, 755}, {232, 219, 193, 255} }},
-	{{ {266, 963, -116}, 0, {245, 879}, {232, 219, 193, 255} }},
+	{{ {137, 659, -313}, 0, {994, -6}, {232, 219, 193, 255} }},
+	{{ {116, 963, -266}, 0, {994, 492}, {232, 219, 193, 255} }},
+	{{ {313, 659, -137}, 0, {-1, -6}, {232, 219, 193, 255} }},
+	{{ {266, 963, -116}, 0, {-1, 492}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_046_object_011E13C4_mesh_layer_5_tri_0[] = {
@@ -37331,10 +37666,10 @@ Gfx ccr_dl_046_object_011E13C4_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_047_object_011E12F4_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {135, 679, -310}, 0, {751, 755}, {232, 219, 193, 255} }},
-	{{ {115, 976, -264}, 0, {751, 879}, {232, 219, 193, 255} }},
-	{{ {310, 679, -135}, 0, {502, 755}, {232, 219, 193, 255} }},
-	{{ {264, 976, -115}, 0, {502, 879}, {232, 219, 193, 255} }},
+	{{ {135, 679, -310}, 0, {997, -6}, {232, 219, 193, 255} }},
+	{{ {115, 976, -264}, 0, {997, 492}, {232, 219, 193, 255} }},
+	{{ {310, 679, -135}, 0, {2, -6}, {232, 219, 193, 255} }},
+	{{ {264, 976, -115}, 0, {2, 492}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_047_object_011E12F4_mesh_layer_5_tri_0[] = {
@@ -37344,10 +37679,10 @@ Gfx ccr_dl_047_object_011E12F4_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_048_object_011E1224_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {134, 698, -307}, 0, {1008, 755}, {232, 219, 193, 255} }},
-	{{ {114, 990, -262}, 0, {1008, 879}, {232, 219, 193, 255} }},
-	{{ {307, 698, -134}, 0, {759, 755}, {232, 219, 193, 255} }},
-	{{ {262, 990, -114}, 0, {759, 879}, {232, 219, 193, 255} }},
+	{{ {134, 698, -307}, 0, {1000, -3}, {232, 219, 193, 255} }},
+	{{ {114, 990, -262}, 0, {1000, 495}, {232, 219, 193, 255} }},
+	{{ {307, 698, -134}, 0, {5, -3}, {232, 219, 193, 255} }},
+	{{ {262, 990, -114}, 0, {5, 495}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_048_object_011E1224_mesh_layer_5_tri_0[] = {
@@ -37357,10 +37692,10 @@ Gfx ccr_dl_048_object_011E1224_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_049_object_011E1154_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {133, 718, -304}, 0, {237, -16}, {232, 219, 193, 255} }},
-	{{ {113, 1003, -260}, 0, {237, 108}, {232, 219, 193, 255} }},
-	{{ {304, 718, -133}, 0, {-12, -16}, {232, 219, 193, 255} }},
-	{{ {260, 1003, -113}, 0, {-12, 108}, {232, 219, 193, 255} }},
+	{{ {133, 718, -304}, 0, {1004, -9}, {232, 219, 193, 255} }},
+	{{ {113, 1003, -260}, 0, {1004, 489}, {232, 219, 193, 255} }},
+	{{ {304, 718, -133}, 0, {8, -9}, {232, 219, 193, 255} }},
+	{{ {260, 1003, -113}, 0, {8, 489}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_049_object_011E1154_mesh_layer_5_tri_0[] = {
@@ -37370,10 +37705,10 @@ Gfx ccr_dl_049_object_011E1154_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_050_object_011E1084_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {131, 737, -301}, 0, {494, -16}, {232, 219, 193, 255} }},
-	{{ {112, 1016, -258}, 0, {494, 108}, {232, 219, 193, 255} }},
-	{{ {301, 737, -131}, 0, {245, -16}, {232, 219, 193, 255} }},
-	{{ {258, 1016, -112}, 0, {245, 108}, {232, 219, 193, 255} }},
+	{{ {131, 737, -301}, 0, {1001, -12}, {232, 219, 193, 255} }},
+	{{ {112, 1016, -258}, 0, {1001, 486}, {232, 219, 193, 255} }},
+	{{ {301, 737, -131}, 0, {5, -12}, {232, 219, 193, 255} }},
+	{{ {258, 1016, -112}, 0, {5, 486}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_050_object_011E1084_mesh_layer_5_tri_0[] = {
@@ -37383,10 +37718,10 @@ Gfx ccr_dl_050_object_011E1084_mesh_layer_5_tri_0[] = {
 };
 
 static Vtx ccr_dl_051_object_011E0FB4_mesh_layer_5_tri_0_vtxopt[] = {
-	{{ {130, 756, -298}, 0, {751, -16}, {232, 219, 193, 255} }},
-	{{ {111, 1029, -256}, 0, {751, 108}, {232, 219, 193, 255} }},
-	{{ {298, 756, -130}, 0, {502, -16}, {232, 219, 193, 255} }},
-	{{ {256, 1029, -111}, 0, {502, 108}, {232, 219, 193, 255} }},
+	{{ {130, 756, -298}, 0, {994, -6}, {232, 219, 193, 255} }},
+	{{ {111, 1029, -256}, 0, {994, 492}, {232, 219, 193, 255} }},
+	{{ {298, 756, -130}, 0, {-2, -6}, {232, 219, 193, 255} }},
+	{{ {256, 1029, -111}, 0, {-2, 492}, {232, 219, 193, 255} }},
 };
 
 Gfx ccr_dl_051_object_011E0FB4_mesh_layer_5_tri_0[] = {
@@ -38340,16 +38675,12 @@ Gfx mat_ccr_dl_DoorOpen_sa2mdl_1_f3d[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, ccr_dl_kd_lk_sibuki1_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 179),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_8b_LOAD_BLOCK, 1, ccr_dl_kd_lk_sibuki1_ci8),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_8b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 511, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_8b, 4, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0),
+	gsDPSetPrimColor(0, 0, 255, 255, 255, 178),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_32b_LOAD_BLOCK, 1, ccr_dl_kd_lk_sibuki1_rgba32),
+	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_32b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 1023, 128),
+	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_32b, 8, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0),
 	gsDPSetTileSize(0, 0, 0, 124, 124),
 	gsSPEndDisplayListHint(4),
 };
@@ -38359,16 +38690,12 @@ Gfx mat_ccr_dl_DoorOpenWaterfall_sa2mdl_0_f3d[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
-	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
-	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, ccr_dl_kd_lk_sibuki1_pal_rgba16),
-	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadTLUTCmd(5, 179),
-	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_8b_LOAD_BLOCK, 1, ccr_dl_kd_lk_sibuki1_ci8),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_8b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
-	gsDPLoadBlock(7, 0, 0, 511, 512),
-	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_8b, 4, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 5, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0),
+	gsDPSetPrimColor(0, 0, 255, 255, 255, 178),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_32b_LOAD_BLOCK, 1, ccr_dl_kd_lk_sibuki1_rgba32),
+	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_32b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 1023, 128),
+	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_32b, 8, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 5, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0),
 	gsDPSetTileSize(0, 0, 0, 124, 124),
 	gsSPEndDisplayListHint(4),
 };
@@ -38380,6 +38707,21 @@ Gfx mat_ccr_dl_SwitchCapsuleSweep1_sa2mdl_0_f3d[] = {
 	gsDPSetAlphaDither(G_AD_NOISE),
 	gsSPTexture(65535, 65535, 0, 0, 1),
 	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_32b_LOAD_BLOCK, 1, ccr_dl_kd_lk_un114_rgba32),
+	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_32b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 1023, 128),
+	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_32b, 8, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0),
+	gsDPSetTileSize(0, 0, 0, 124, 124),
+	gsSPEndDisplayListHint(4),
+};
+
+Gfx mat_ccr_dl_SwitchCapsuleSweep2_sa2mdl_0_f3d[] = {
+	gsSPGeometryMode(G_LIGHTING, 0),
+	gsDPPipeSync(),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
+	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsDPSetPrimColor(0, 0, 255, 255, 255, 169),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_32b_LOAD_BLOCK, 1, ccr_dl_kd_lk_un114_rgba32),
 	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_32b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 128),
@@ -38818,7 +39160,7 @@ u32 ccr_dl_001_object_01208C04_mesh_layer_1[] = {
 };
 
 u32 ccr_dl_001_object_0120D2EC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16, ccr_dl_001_object_0120D2EC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_001_object_0120D2EC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
@@ -38828,7 +39170,7 @@ u32 ccr_dl_001_object_011E075C_mesh_layer_5[] = {
 };
 
 u32 ccr_dl_001_object_011E3DC4_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_001_object_011E3DC4_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_001_object_011E3DC4_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
@@ -39361,152 +39703,152 @@ u32 ccr_dl_036_object_012048BC_mesh_layer_1[] = {
 };
 
 u32 ccr_dl_037_object_012046DC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16_1, ccr_dl_037_object_012046DC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_037_object_012046DC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_038_object_012045DC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16_1, ccr_dl_038_object_012045DC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_038_object_012045DC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_039_object_012044DC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16_1, ccr_dl_039_object_012044DC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_039_object_012044DC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_040_object_012043DC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16_1, ccr_dl_040_object_012043DC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_040_object_012043DC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_041_object_012042DC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16_1, ccr_dl_041_object_012042DC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_041_object_012042DC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_042_object_012041DC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16_1, ccr_dl_042_object_012041DC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_042_object_012041DC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_043_object_012040DC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16_1, ccr_dl_043_object_012040DC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_043_object_012040DC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_044_object_01203FDC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16_1, ccr_dl_044_object_01203FDC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_044_object_01203FDC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_045_object_01203EDC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16_1, ccr_dl_045_object_01203EDC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_045_object_01203EDC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_046_object_01203DDC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16_1, ccr_dl_046_object_01203DDC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_046_object_01203DDC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_047_object_01203CDC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16_1, ccr_dl_047_object_01203CDC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_047_object_01203CDC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_048_object_01203BDC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16_1, ccr_dl_048_object_01203BDC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_048_object_01203BDC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_049_object_01203ADC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16_1, ccr_dl_049_object_01203ADC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_049_object_01203ADC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_050_object_012039DC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16_1, ccr_dl_050_object_012039DC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_050_object_012039DC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_051_object_012038DC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16_1, ccr_dl_051_object_012038DC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1, ccr_dl_051_object_012038DC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_002_object_0120D1B4_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16, ccr_dl_002_object_0120D1B4_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_002_object_0120D1B4_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_003_object_0120D00C_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16, ccr_dl_003_object_0120D00C_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_003_object_0120D00C_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_004_object_0120CDF4_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16, ccr_dl_004_object_0120CDF4_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_004_object_0120CDF4_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_005_object_0120CB54_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16, ccr_dl_005_object_0120CB54_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_005_object_0120CB54_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_006_object_0120C854_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16, ccr_dl_006_object_0120C854_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_006_object_0120C854_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_007_object_0120C4EC_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16, ccr_dl_007_object_0120C4EC_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_007_object_0120C4EC_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_008_object_0120C124_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16, ccr_dl_008_object_0120C124_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_008_object_0120C124_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_009_object_0120BCF4_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16, ccr_dl_009_object_0120BCF4_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_009_object_0120BCF4_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_010_object_0120B844_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16, ccr_dl_010_object_0120B844_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_010_object_0120B844_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_011_object_0120B32C_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16, ccr_dl_011_object_0120B32C_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_011_object_0120B32C_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_012_object_0120ADB4_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16, ccr_dl_012_object_0120ADB4_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_012_object_0120ADB4_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_013_object_0120A7C4_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16, ccr_dl_013_object_0120A7C4_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_013_object_0120A7C4_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_014_object_0120A14C_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16, ccr_dl_014_object_0120A14C_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_014_object_0120A14C_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_015_object_01209A8C_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16, ccr_dl_015_object_01209A8C_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_015_object_01209A8C_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_016_object_01209364_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16, ccr_dl_016_object_01209364_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32, ccr_dl_016_object_01209364_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
@@ -39761,252 +40103,252 @@ u32 ccr_dl_051_object_011DD94C_mesh_layer_5[] = {
 };
 
 u32 ccr_dl_002_object_011E3CF4_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_002_object_011E3CF4_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_002_object_011E3CF4_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_003_object_011E3C24_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_003_object_011E3C24_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_003_object_011E3C24_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_004_object_011E3B54_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_004_object_011E3B54_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_004_object_011E3B54_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_005_object_011E3A84_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_005_object_011E3A84_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_005_object_011E3A84_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_006_object_011E39B4_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_006_object_011E39B4_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_006_object_011E39B4_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_007_object_011E38E4_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_007_object_011E38E4_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_007_object_011E38E4_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_008_object_011E3814_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_008_object_011E3814_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_008_object_011E3814_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_009_object_011E3744_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_009_object_011E3744_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_009_object_011E3744_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_010_object_011E3674_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_010_object_011E3674_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_010_object_011E3674_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_011_object_011E35A4_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_011_object_011E35A4_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_011_object_011E35A4_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_012_object_011E34D4_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_012_object_011E34D4_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_012_object_011E34D4_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_013_object_011E3404_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_013_object_011E3404_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_013_object_011E3404_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_014_object_011E3334_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_014_object_011E3334_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_014_object_011E3334_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_015_object_011E3264_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_015_object_011E3264_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_015_object_011E3264_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_016_object_011E3194_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_016_object_011E3194_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_016_object_011E3194_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_017_object_011E3094_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_017_object_011E3094_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_017_object_011E3094_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_018_object_011E2F94_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_018_object_011E2F94_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_018_object_011E2F94_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_019_object_011E2E94_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_019_object_011E2E94_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_019_object_011E2E94_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_020_object_011E2D94_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_020_object_011E2D94_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_020_object_011E2D94_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_021_object_011E2C94_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_021_object_011E2C94_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_021_object_011E2C94_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_022_object_011E2B94_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_022_object_011E2B94_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_022_object_011E2B94_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_023_object_011E2A94_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_023_object_011E2A94_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_023_object_011E2A94_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_024_object_011E2994_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_024_object_011E2994_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_024_object_011E2994_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_025_object_011E2894_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_025_object_011E2894_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_025_object_011E2894_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_026_object_011E2794_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_026_object_011E2794_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_026_object_011E2794_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_027_object_011E2694_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_027_object_011E2694_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_027_object_011E2694_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_028_object_011E2594_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_028_object_011E2594_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_028_object_011E2594_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_029_object_011E2494_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_029_object_011E2494_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_029_object_011E2494_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_030_object_011E2394_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_030_object_011E2394_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_030_object_011E2394_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_031_object_011E2294_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_031_object_011E2294_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_031_object_011E2294_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_032_object_011E2194_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_032_object_011E2194_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_032_object_011E2194_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_033_object_011E2094_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_033_object_011E2094_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_033_object_011E2094_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_034_object_011E1F94_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_034_object_011E1F94_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_034_object_011E1F94_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_035_object_011E1E94_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_035_object_011E1E94_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_035_object_011E1E94_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_036_object_011E1D94_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_036_object_011E1D94_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_036_object_011E1D94_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_037_object_011E1C94_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_037_object_011E1C94_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_037_object_011E1C94_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_038_object_011E1B94_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_038_object_011E1B94_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_038_object_011E1B94_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_039_object_011E1A94_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_039_object_011E1A94_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_039_object_011E1A94_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_040_object_011E1994_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_040_object_011E1994_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_040_object_011E1994_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_041_object_011E1894_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_041_object_011E1894_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_041_object_011E1894_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_042_object_011E1794_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_042_object_011E1794_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_042_object_011E1794_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_043_object_011E1694_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_043_object_011E1694_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_043_object_011E1694_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_044_object_011E1594_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_044_object_011E1594_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_044_object_011E1594_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_045_object_011E1494_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_045_object_011E1494_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_045_object_011E1494_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_046_object_011E13C4_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_046_object_011E13C4_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_046_object_011E13C4_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_047_object_011E12F4_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_047_object_011E12F4_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_047_object_011E12F4_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_048_object_011E1224_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_048_object_011E1224_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_048_object_011E1224_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_049_object_011E1154_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_049_object_011E1154_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_049_object_011E1154_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_050_object_011E1084_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_050_object_011E1084_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_050_object_011E1084_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
 u32 ccr_dl_051_object_011E0FB4_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, ccr_dl_051_object_011E0FB4_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, ccr_dl_051_object_011E0FB4_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
@@ -40058,17 +40400,18 @@ static struct BatchDisplayLists batch_lvl_dls_LAYER_TRANSPARENT[] = {
 	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_PAL_RGBA16] = { mat_ccr_dl_WallSweep1_sa2mdl_0_f3d, mat_revert_ccr_dl_WallSweep1_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_WallSweep1_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_WallSweep1_sa2mdl_0_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32] = { mat_ccr_dl_AbyssWaterfalls_sa2mdl_0_f3d, mat_revert_ccr_dl_AbyssWaterfalls_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_AbyssWaterfalls_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_AbyssWaterfalls_sa2mdl_0_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_1] = { mat_ccr_dl_Waterfall_sa2mdl_0_f3d, mat_revert_ccr_dl_Waterfall_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_Waterfall_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_Waterfall_sa2mdl_0_f3d), },
-	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16] = { mat_ccr_dl_DoorOpenWaterfall_sa2mdl_0_f3d, mat_revert_ccr_dl_DoorOpenWaterfall_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_DoorOpenWaterfall_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_DoorOpenWaterfall_sa2mdl_0_f3d), },
+	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32] = { mat_ccr_dl_DoorOpenWaterfall_sa2mdl_0_f3d, mat_revert_ccr_dl_DoorOpenWaterfall_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_DoorOpenWaterfall_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_DoorOpenWaterfall_sa2mdl_0_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32] = { mat_ccr_dl_SwitchCapsuleSweep1_sa2mdl_0_f3d, mat_revert_ccr_dl_SwitchCapsuleSweep1_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_SwitchCapsuleSweep1_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_SwitchCapsuleSweep1_sa2mdl_0_f3d), },
+	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1] = { mat_ccr_dl_SwitchCapsuleSweep2_sa2mdl_0_f3d, mat_revert_ccr_dl_SwitchCapsuleSweep2_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_SwitchCapsuleSweep2_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_SwitchCapsuleSweep2_sa2mdl_0_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER1_01_PAL_RGBA16] = { mat_ccr_dl_Water1_sa2mdl_0_f3d, mat_revert_ccr_dl_Water1_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_Water1_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_Water1_sa2mdl_0_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER1_01_PAL_RGBA16_1] = { mat_ccr_dl_Water2_sa2mdl_0_f3d, mat_revert_ccr_dl_Water2_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_Water2_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_Water2_sa2mdl_0_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_2] = { mat_ccr_dl_WaterfallOverflow_sa2mdl_0_f3d, mat_revert_ccr_dl_WaterfallOverflow_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_WaterfallOverflow_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_WaterfallOverflow_sa2mdl_0_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_WATER3_RGBA32_3] = { mat_ccr_dl_WaterfallTop_sa2mdl_0_f3d, mat_revert_ccr_dl_WaterfallTop_sa2mdl_0_f3d, DL_HINT(mat_ccr_dl_WaterfallTop_sa2mdl_0_f3d), DL_HINT(mat_revert_ccr_dl_WaterfallTop_sa2mdl_0_f3d), },
-	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_PAL_RGBA16_1] = { mat_ccr_dl_DoorOpen_sa2mdl_1_f3d, mat_revert_ccr_dl_DoorOpen_sa2mdl_1_f3d, DL_HINT(mat_ccr_dl_DoorOpen_sa2mdl_1_f3d), DL_HINT(mat_revert_ccr_dl_DoorOpen_sa2mdl_1_f3d), },
+	[LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_SIBUKI1_RGBA32_1] = { mat_ccr_dl_DoorOpen_sa2mdl_1_f3d, mat_revert_ccr_dl_DoorOpen_sa2mdl_1_f3d, DL_HINT(mat_ccr_dl_DoorOpen_sa2mdl_1_f3d), DL_HINT(mat_revert_ccr_dl_DoorOpen_sa2mdl_1_f3d), },
 };
 
 struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT] = {
 	[ LAYER_OPAQUE ] = { 41, batch_lvl_dls_LAYER_OPAQUE },
-	[ LAYER_TRANSPARENT ] = { 10, batch_lvl_dls_LAYER_TRANSPARENT },
+	[ LAYER_TRANSPARENT ] = { 11, batch_lvl_dls_LAYER_TRANSPARENT },
 };
 
