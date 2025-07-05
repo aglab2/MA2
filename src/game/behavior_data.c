@@ -6814,6 +6814,7 @@ extern void bhv_ccr_switch2_loop();
 extern const BehaviorScript bhvCCRSwitchP2[] = {
     BEGIN(OBJ_LIST_SURFACE),
     LOAD_COLLISION_DATA(ccr_switch_p2_collision),
+    SET_FLOAT(oDrawingDistance, 10000),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_ccr_switch2_loop),
         CALL_NATIVE(load_object_collision_model),
