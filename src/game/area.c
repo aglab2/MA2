@@ -366,7 +366,7 @@ static void warm_up_batch_node(void)
 
 #ifdef DEBUG_ASSERTIONS
             if (!size) {
-                char errorMsg[40];
+                static char errorMsg[40];
                 sprintf(errorMsg, "Unknown node type %d", curGraphNode->type);
                 error(errorMsg);
             }
