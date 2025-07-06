@@ -615,10 +615,24 @@ void bhv_ccr_capsule_loop()
 
 void bhv_ccr_water_lock_loop()
 {
-    if (!gTimeFrozen)
-    {
+    if (gTimeFrozen)
+        return;
 
-    }
+    if (gMarioStates->pos[1] > 2800.f)
+        return;
+
+    f32 dx = gMarioStates->pos[0];
+    if (absf(dx) > 300.f)
+        return;
+
+    f32 dz = gMarioStates->pos[2] + 2450.f;
+    if (absf(dz) > 100.f)
+        return;
+
+    if (dz < 0)
+        gMarioStates->pos[2] = -2450.f - 100.f;
+    else
+        gMarioStates->pos[2] = -2450.f + 100.f;
 }
 
 void bhv_clam_cc_loop()
