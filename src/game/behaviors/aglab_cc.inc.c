@@ -613,3 +613,24 @@ void bhv_ccr_capsule_loop()
     }
 }
 
+void bhv_ccr_water_lock_loop()
+{
+    if (!gTimeFrozen)
+    {
+
+    }
+}
+
+void bhv_clam_cc_loop()
+{
+    CC_FREEZE();
+    bhv_clam_loop();
+    bhv_clam_loop();
+}
+
+void bhv_skeeter_cc_update()
+{
+    CC_FREEZE();
+    bhv_skeeter_update();
+    bhv_skeeter_update();
+}

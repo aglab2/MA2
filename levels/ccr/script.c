@@ -17,7 +17,10 @@
 /* Fast64 begin persistent block [scripts] */
 #include "levels/ccr/area_1/collision.inc.c"
 #include "level_config.h"
-static struct LevelConfig cfg = { };
+extern const SpringDesc* spring_descs_ccr[];
+static struct LevelConfig cfg = {
+	.springDescs = spring_descs_ccr,
+};
 #define SEQ_LEVEL_GRASS 0x44
 /* Fast64 end persistent block [scripts] */
 
@@ -43,6 +46,9 @@ const LevelScript level_ccr_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_CCR_PLATFORM, ccr_step_geo), 
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
+	#define bhvClamShell bhvClamShellCC
+	#define bhvSkeeter bhvSkeeterCC
+	#define bhvSnufit bhvSnufitCC
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, ccr_area_1, 0, 0, 0),
@@ -50,12 +56,13 @@ const LevelScript level_ccr_entry[] = {
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		MARIO_POS(0x01, 0, 0, 863, 988),
+		OBJECT(MODEL_NONE, 0, 91, -2446, 0, -180, 0, 0x00000000, bhvCCRBlock),
 		OBJECT(MODEL_CCR_CAPSULE, 0, 0, 0, 0, 0, 0, 0x00000000, bhvCCRCapsule),
 		OBJECT(MODEL_CLAM_SHELL, 2086, 0, 73, 0, 0, 0, 0x00000000, bhvClamShell),
 		OBJECT(MODEL_CLAM_SHELL, -2086, 0, -39, 0, -180, 0, 0x00000000, bhvClamShell),
 		OBJECT(MODEL_NONE, -1, 300, -3351, 0, 0, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_NONE, 14, -1200, -6996, 0, 0, 0, 0x00000000, bhvCoinFormation),
-		OBJECT(MODEL_CCR_PLATFORM, 6, -1445, -5499, 0, 0, 0, 0x00000000, bhvCoinFormation),
+		OBJECT(MODEL_CCR_PLATFORM, 6, -1445, -5499, 0, 0, 0, 0x00000000, bhvCCRPlatform),
 		OBJECT(MODEL_SKEETER, -929, 200, -364, 0, 0, 0, 0x00000000, bhvSkeeter),
 		OBJECT(MODEL_SKEETER, 688, 200, -461, 0, 0, 0, 0x00000000, bhvSkeeter),
 		OBJECT(MODEL_SKEETER, -1606, 50, 1358, 0, 0, 0, 0x00000000, bhvSkeeter),

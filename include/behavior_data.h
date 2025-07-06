@@ -615,6 +615,8 @@ extern const BehaviorScript bhvCCSpawn[];
 extern const BehaviorScript bhvCCSpawnBlock[];
 extern const BehaviorScript bhvCCRSwitch[];
 extern const BehaviorScript bhvCCRCapsule[];
+extern const BehaviorScript bhvCCRBlock[];
+extern const BehaviorScript bhvCCRPlatform[];
 
 extern const BehaviorScript bhvCoinFormationCC[];
 extern const BehaviorScript bhvCoinFormationSpawnedCoinCC[];
@@ -629,5 +631,8 @@ extern const BehaviorScript bhvChainChompCC[];
 extern const BehaviorScript bhvBobombCC[];
 extern const BehaviorScript bhvKoopaCC[];
 extern const BehaviorScript bhvSmallWhompCC[];
+extern const BehaviorScript bhvClamShellCC[];
+extern const BehaviorScript bhvSkeeterCC[];
+extern const BehaviorScript bhvSnufitCC[];
 
 #endif // BEHAVIOR_DATA_H

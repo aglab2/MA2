@@ -196,6 +196,9 @@ static Vtx ccr_dl_0020_object_013C3394_mesh_layer_1_vtx_0[179] = {
 #include "levels/ccr/visual/header_lvlopt.inc.h"
 #include "levels/ccr/visual/model_lvlopt.inc.c"
 #include "levels/ccr/flipbook.inc.c"
+#include "spring_desc.h"
+#include "levels/ccr/area_1/spline.inc.c"
+#include "levels/ccr/rails.inc.c"
 #endif
 
 #include "levels/ccr/ccr_capopen/collision.inc.c"

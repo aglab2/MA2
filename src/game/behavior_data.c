@@ -6831,3 +6831,46 @@ extern const BehaviorScript bhvCCRCapsule[] = {
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
+
+extern void bhv_ccr_water_lock_loop();
+extern const BehaviorScript bhvCCRBlock[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ccr_water_lock_loop),
+    END_LOOP(),
+};
+
+extern const Collision ccr_step_collision[];
+extern const BehaviorScript bhvCCRPlatform[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(ccr_step_collision),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_cct_platform_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern void bhv_clam_cc_loop();
+const BehaviorScript bhvClamShellCC[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    DROP_TO_FLOOR(),
+    LOAD_ANIMATIONS(oAnimations, clam_shell_seg5_anims_05001744),
+    SET_FLOAT(oGraphYOffset, 10),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_clam_cc_loop),
+    END_LOOP(),
+};
+
+extern void bhv_skeeter_cc_update();
+const BehaviorScript bhvSkeeterCC[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_ANIMATIONS(oAnimations, skeeter_seg6_anims_06007DE0),
+    SET_HOME(),
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 180, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 1200, /*Unused*/ 0, 0),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_skeeter_cc_update),
+    END_LOOP(),
+};
