@@ -581,6 +581,24 @@ void bhv_ccr_switch2_loop()
 
 void bhv_ccr_capsule_loop()
 {
+    f32 yMax = 990.f;
+    f32 yMin = 300.f;
 
+    f32 rMax = 230.f;
+    f32 rMin = 350.f;
+
+    if (yMin <= gMarioStates->pos[1] && gMarioStates->pos[1] <= yMax)
+    {
+        f32 y = gMarioStates->pos[1] - yMin;
+        f32 r = rMin + (rMax - rMin) * (y / (yMax - yMin));
+
+        f32 d = gMarioStates->pos[0] * gMarioStates->pos[0] + gMarioStates->pos[2] * gMarioStates->pos[2];
+        if (d < r * r)
+        {
+            f32 angle = atan2s(gMarioStates->pos[2], gMarioStates->pos[0]);
+            gMarioStates->pos[0] = r * sins(angle);
+            gMarioStates->pos[2] = r * coss(angle);
+        }
+    }
 }
 
