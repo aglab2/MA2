@@ -91,6 +91,7 @@ void snufit_act_idle(int buff) {
 /**
  * Controls the literal shooting action, spawning three bhvSnufitBalls.
  */
+extern const BehaviorScript bhvSnufitBallsCC[];
 void snufit_act_shoot(int buff) {
     o->oSnufitBodyScalePeriod
         = approach_s16_symmetric(o->oSnufitBodyScalePeriod, -0x8000, 3000);
@@ -102,7 +103,7 @@ void snufit_act_shoot(int buff) {
     } else if (o->oSnufitBullets < 3 && o->oTimer >= 3) {
         o->oSnufitBullets++;
         cur_obj_play_sound_2(SOUND_OBJ_SNUFIT_SHOOT);
-        spawn_object_relative(0, 0, -20, 40, o, MODEL_BOWLING_BALL, bhvSnufitBalls);
+        spawn_object_relative(0, 0, -20, 40, o, MODEL_BOWLING_BALL, buff ? bhvSnufitBallsCC : bhvSnufitBalls);
         o->oSnufitRecoil = -30;
         o->oTimer = 0;
     }

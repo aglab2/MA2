@@ -546,7 +546,9 @@ void bhv_cce_block_loop()
 void bhv_chain_chomp_update_cc()
 {
     if (o->oAction)
+    {
         CC_FREEZE();
+    }
 
     bhv_chain_chomp_update();
     bhv_chain_chomp_update();
@@ -590,25 +592,55 @@ void bhv_ccr_switch2_loop()
 
 }
 
+void bhv_ccr_capsule_init()
+{
+    f32 d;
+    o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvFloorSwitchGrills, &d);
+}
+
+extern const Collision ccr_capopen_collision[];
 void bhv_ccr_capsule_loop()
 {
-    f32 yMax = 990.f;
-    f32 yMin = 300.f;
-
-    f32 rMax = 230.f;
-    f32 rMin = 350.f;
-
-    if (yMin <= gMarioStates->pos[1] && gMarioStates->pos[1] <= yMax)
+    if (0 == o->oAction)
     {
-        f32 y = gMarioStates->pos[1] - yMin;
-        f32 r = rMin + (rMax - rMin) * (y / (yMax - yMin));
-
-        f32 d = gMarioStates->pos[0] * gMarioStates->pos[0] + gMarioStates->pos[2] * gMarioStates->pos[2];
-        if (d < r * r)
+        if (0 != o->parentObj->oAction)
         {
-            f32 angle = atan2s(gMarioStates->pos[2], gMarioStates->pos[0]);
-            gMarioStates->pos[0] = r * sins(angle);
-            gMarioStates->pos[2] = r * coss(angle);
+            cur_obj_set_model(MODEL_CCR_CAPSULE_ANIM);
+            enable_time_stop_including_mario();
+            o->oAction = 1;
+        }
+
+        f32 yMax = 990.f;
+        f32 yMin = 300.f;
+
+        f32 rMax = 230.f;
+        f32 rMin = 350.f;
+
+        if (yMin <= gMarioStates->pos[1] && gMarioStates->pos[1] <= yMax)
+        {
+            f32 y = gMarioStates->pos[1] - yMin;
+            f32 r = rMin + (rMax - rMin) * (y / (yMax - yMin));
+
+            f32 d = gMarioStates->pos[0] * gMarioStates->pos[0] + gMarioStates->pos[2] * gMarioStates->pos[2];
+            if (d < r * r)
+            {
+                f32 angle = atan2s(gMarioStates->pos[2], gMarioStates->pos[0]);
+                gMarioStates->pos[0] = r * sins(angle);
+                gMarioStates->pos[2] = r * coss(angle);
+            }
+        }
+
+        load_object_collision_model();
+    }
+    else if (1 == o->oAction)
+    {
+        if (30 == o->oTimer)
+        {
+            o->oAction = 2;
+            disable_time_stop_including_mario();
+            cur_obj_set_model(MODEL_CCR_CAPSULE_OPEN);
+            obj_set_collision_data(o, ccr_capopen_collision);
+            load_object_static_model();
         }
     }
 }
@@ -647,4 +679,10 @@ void bhv_skeeter_cc_update()
     CC_FREEZE();
     bhv_skeeter_update();
     bhv_skeeter_update();
+}
+
+void bhv_snufit_balls_loop_cc()
+{
+    CC_FREEZE();
+    bhv_snufit_balls_loop();
 }

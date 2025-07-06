@@ -6702,19 +6702,6 @@ const BehaviorScript bhvSnufitCC[] = {
     END_LOOP(),
 };
 
-extern void bhv_snufit_balls_loop_cc();
-const BehaviorScript bhvSnufitBallsCC[] = {
-    BEGIN(OBJ_LIST_GENACTOR),
-    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    BILLBOARD(),
-    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 10, /*Gravity*/ 0, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
-    SET_FLOAT(oGraphYOffset, 10),
-    SCALE(/*Unused*/ 0, /*Field*/ 10),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_snufit_balls_loop_cc),
-    END_LOOP(),
-};
-
 extern void bhv_grindel_thwomp_loop_cc();
 const BehaviorScript bhvThwomp2CC[] = {
     BEGIN(OBJ_LIST_SURFACE),
@@ -6822,13 +6809,14 @@ extern const BehaviorScript bhvCCRSwitchP2[] = {
 };
 
 extern const Collision ccr_capsule_collision[];
+extern void bhv_ccr_capsule_init();
 extern void bhv_ccr_capsule_loop();
 extern const BehaviorScript bhvCCRCapsule[] = {
     BEGIN(OBJ_LIST_SURFACE),
     LOAD_COLLISION_DATA(ccr_capsule_collision),
+    CALL_NATIVE(bhv_ccr_capsule_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_ccr_capsule_loop),
-        CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
 
@@ -6872,5 +6860,19 @@ const BehaviorScript bhvSkeeterCC[] = {
     SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 180, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 1200, /*Unused*/ 0, 0),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_skeeter_cc_update),
+    END_LOOP(),
+};
+
+extern void bhv_snufit_balls_loop_cc();
+const BehaviorScript bhvSnufitBallsCC[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    BILLBOARD(),
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 10, /*Gravity*/ 0, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
+    CALL_NATIVE(bhv_init_room),
+    SET_FLOAT(oGraphYOffset, 10),
+    SCALE(/*Unused*/ 0, /*Field*/ 10),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_snufit_balls_loop_cc),
     END_LOOP(),
 };
