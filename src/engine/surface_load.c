@@ -710,7 +710,7 @@ void load_object_collision_model(void) {
  * Transform an object's vertices and add them to the static surface pool.
  */
 void load_object_static_model(void) {
-    TerrainData sVertexData[600];
+    TerrainData sVertexData[1200];
     sMainPool.regions[0].start = (void*) ALIGN16(sMainPool.regions[0].start);
 
     PUPPYPRINT_GET_SNAPSHOT();

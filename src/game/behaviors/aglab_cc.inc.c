@@ -634,6 +634,7 @@ void bhv_ccr_capsule_loop()
     }
     else if (1 == o->oAction)
     {
+        aglabGlobalScratch[0] = o->oTimer;
         if (30 == o->oTimer)
         {
             o->oAction = 2;
@@ -685,4 +686,14 @@ void bhv_snufit_balls_loop_cc()
 {
     CC_FREEZE();
     bhv_snufit_balls_loop();
+}
+
+Gfx *geo_ccr_anim(s32 callContext, struct GraphNode *node, UNUSED Mat4 *mtx)
+{
+    if (callContext == GEO_CONTEXT_RENDER) {
+        struct GraphNodeTranslationRotation *transNode = (struct GraphNodeTranslationRotation *) node->next;
+        transNode->rotation[1] = aglabGlobalScratch[0] * 0x8000 / 30; // 30 frames for full rotation
+    }
+
+    return NULL;
 }
