@@ -107,6 +107,8 @@ const GeoLayout ccr_area_1_geo[] = {
 			GEO_BRANCH(1, ccr_dl_031_object_011B51DC_geo),
 			GEO_BRANCH(1, ccr_dl_032_object_011B476C_geo),
 		GEO_CLOSE_NODE(),
+		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_TRANSPARENT, 0, 0, 0, ccr_dl_001_object_011CD8B4_mesh_layer_5),
+		/*
 		GEO_SWITCH_CASE(20, geo_cc_switch),
 		GEO_OPEN_NODE(),
 			GEO_BRANCH(1, ccr_dl_001_object_011CD4D4_geo),
@@ -130,6 +132,7 @@ const GeoLayout ccr_area_1_geo[] = {
 			GEO_BRANCH(1, ccr_dl_019_object_011C92F4_geo),
 			GEO_BRANCH(1, ccr_dl_020_object_011C8F14_geo),
 		GEO_CLOSE_NODE(),
+		*/
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, (f32)0.0, (f32)-1700.0, (f32)-5500.0, ccr_dl_001_object_011E406C_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_ROTATE(LAYER_OPAQUE, (f32)0.0, (f32)1300.0, (f32)-5500.0, (f32)-0.0, (f32)0.0, (f32)-179.999991348578, ccr_dl_002_object_011E3F34_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, (f32)0.0, (f32)-200.0, (f32)-5500.0, ccr_dl_001_object_011E51BC_mesh_layer_1),

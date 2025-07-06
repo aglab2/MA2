@@ -39220,7 +39220,7 @@ Gfx mat_ccr_dl_AbyssWaterfalls_sa2mdl_0_f3d[] = {
 };
 
 Gfx mat_ccr_dl_Waterfall_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
+	gsSPGeometryMode(G_LIGHTING | G_CULL_BACK, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -39231,6 +39231,13 @@ Gfx mat_ccr_dl_Waterfall_sa2mdl_0_f3d[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 128),
 	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_32b, 8, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 5, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0),
 	gsDPSetTileSize(0, 0, 0, 124, 124),
+	gsSPEndDisplayListHint(4),
+};
+
+Gfx mat_revert_ccr_dl_Waterfall_sa2mdl_0_f3d[] = {
+	gsSPGeometryMode(0, G_LIGHTING | G_CULL_BACK),
+	gsDPPipeSync(),
+	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsSPEndDisplayListHint(4),
 };
 
