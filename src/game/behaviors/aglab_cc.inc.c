@@ -325,6 +325,7 @@ void bhv_cce_spawn_block_init()
                     block->oTimer = 128;
                 }
                 block->oFaceAngleRoll = 0x4000;
+                block->oFaceAngleYaw = 0x4000;
                 block->oCCEBlocksMask = 255;
             }
             break;
@@ -470,7 +471,6 @@ void bhv_cce_spawn_block_init()
                     block->oPosY += baseVel * 128;
                     block->oTimer = 128;
                 }
-                block->oFaceAngleRoll = 0x4000;
                 block->oCCEBlocksMask = 255;
             }
             break;
@@ -480,10 +480,20 @@ void bhv_cce_spawn_block_init()
             {
                 struct Object* block = cc_spawn_block(bparam, &amountSpawned);
                 block->oVelY = baseVel;
-                block->oTimer = 32 + i * 64;
+                block->oTimer = 64 + i * 128;
                 block->oPosY += block->oVelY * block->oTimer;
-                block->oFaceAngleRoll = 0x4000;
                 block->oCCEBlocksMask = 255;
+            }
+            break;
+        
+        case 16:
+            {
+                struct Object* block = cc_spawn_block(bparam, &amountSpawned);
+                block->oVelZ = baseVel * 3.f;
+                obj_scale(block, 1.5f);
+                block->oFaceAngleRoll = 0x4000;
+                block->oFaceAngleYaw = 0x4000;
+                block->oCCEBlocksMask = 127;
             }
             break;
     }
@@ -498,6 +508,7 @@ void bhv_cce_spawn_block_init()
     }
 
     o->oAction = 0;
+    o->activeFlags = 0;
 }
 
 extern const Collision cce_block_collision[];

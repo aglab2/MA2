@@ -65,7 +65,7 @@ const LevelScript level_ccr_entry[] = {
 		OBJECT(MODEL_SNUFIT, -630, -1006, -7943, 0, 0, 0, 0x00000000, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 635, -1006, -7943, 0, 0, 0, 0x00000000, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, -1, -255, -9828, 0, 0, 0, 0x00000000, bhvSnufit),
-		OBJECT(MODEL_NONE, -3, -952, -8388, 0, 0, 0, (2 << 16), bhvCCSpawn),
+		OBJECT(MODEL_NONE, -3, -952, -8388, 0, 0, 0, (16 << 16), bhvCCSpawn),
 		OBJECT(MODEL_NONE, 580, -1700, -4950, 0, 0, 0, (14 << 16), bhvCCSpawn),
 		OBJECT(MODEL_NONE, -502, -1700, -4950, 0, 0, 0, (15 << 16), bhvCCSpawn),
 		OBJECT(MODEL_NONE, 580, -1700, -6050, 0, 0, 0, (15 << 16), bhvCCSpawn),
