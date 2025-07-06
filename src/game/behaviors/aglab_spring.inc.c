@@ -76,6 +76,7 @@ void bhv_spring_loop()
             gMarioStates->pos[2] = o->oPosZ;
             gMarioStates->faceAngle[1] = o->oFaceAnglePitch < 0 ? o->oFaceAngleYaw - 0x8000 : o->oFaceAngleYaw;
             set_mario_action(gMarioStates, ACT_JUMP, 0);
+            gMarioStates->squishTimer = 0;
             sSpringBezier = (s16*)o->oSpringBezier;
             calculate_quant();
         }
@@ -85,6 +86,7 @@ void bhv_spring_loop()
         if (o->oTimer < 5)
         {
             // do this for a couple frames to ensure that mario is being in the jump animation
+            gMarioStates->squishTimer = 0;
             set_mario_action(gMarioStates, ACT_JUMP, 0);
         }
 

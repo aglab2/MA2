@@ -614,6 +614,24 @@ static u32 should_strengthen_gravity_for_jump_ascent(struct MarioState *m) {
     return FALSE;
 }
 
+static f32 get_grav_mult(struct MarioState *m)
+{
+    f32 gravMult = 1.0f;
+    if (gCurrCourseNum == COURSE_CW)
+    {
+        gravMult = 0.3f;
+    }
+    if (gCurrCourseNum == COURSE_CCR)
+    {
+        // 5000  - gravity is 0 - upside down
+        // 0     - gravity is 1.f - normal
+        // -5000 - gravity is 2
+        return 1.0f - m->pos[1] / 6000.0f; 
+    }
+
+    return gravMult;
+}
+
 static void apply_gravity(struct MarioState *m) {
     if (m->prevAction == ACT_BUTT_SLIDE || m->prevAction == ACT_RAIL_GRIND || m->action == ACT_BUTT_SLIDE_AIR)
     {
@@ -621,10 +639,9 @@ static void apply_gravity(struct MarioState *m) {
     }
 
     f32 terminalSpeed = m->extraGravityEnabled ? -110.f : - 75.f;
-    f32 gravMult = 1.0f;
+    f32 gravMult = get_grav_mult(m);
     if (gCurrCourseNum == COURSE_CW)
     {
-        gravMult = 0.3f;
         terminalSpeed = -110.f;
     }
 
