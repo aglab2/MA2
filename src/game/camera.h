@@ -249,7 +249,9 @@ enum Cutscenes {
     CUTSCENE_CREDITS,
     CUTSCENE_EXIT_WATERFALL,
     CUTSCENE_EXIT_FALL_WMOTR,
-    CUTSCENE_ENTER_POOL
+    CUTSCENE_ENTER_POOL,
+    CUTSCENE_CCR_1,
+    CUTSCENE_CCR_2,
 };
 
 /**
@@ -562,7 +564,6 @@ struct Camera {
     /*0x02*/ s16 yaw;
     /*0x04*/ Vec3f focus;
     /*0x10*/ Vec3f pos;
-    /*0x1C*/ Vec3f unusedVec1;
     /// The x coordinate of the "center" of the area. The camera will rotate around this point.
     /// For example, this is what makes the camera rotate around the hill in BoB
     /*0x28*/ f32 areaCenX;

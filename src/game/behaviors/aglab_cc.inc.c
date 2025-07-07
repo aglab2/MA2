@@ -603,11 +603,14 @@ void bhv_ccr_capsule_loop()
 {
     if (0 == o->oAction)
     {
-        if (0 != o->parentObj->oAction)
+        if (100 == o->oTimer)
+        // if (0 != o->parentObj->oAction)
         {
             cur_obj_set_model(MODEL_CCR_CAPSULE_ANIM);
-            enable_time_stop_including_mario();
+            gCamera->cutscene = CUTSCENE_CCR_1;
             o->oAction = 1;
+            enable_time_stop_including_mario();
+            return;
         }
 
         f32 yMax = 990.f;
@@ -634,14 +637,16 @@ void bhv_ccr_capsule_loop()
     }
     else if (1 == o->oAction)
     {
+        gCamera->cutscene = CUTSCENE_CCR_1;
         aglabGlobalScratch[0] = o->oTimer;
-        if (30 == o->oTimer)
+        if (150 == o->oTimer)
         {
             o->oAction = 2;
-            disable_time_stop_including_mario();
             cur_obj_set_model(MODEL_CCR_CAPSULE_OPEN);
             obj_set_collision_data(o, ccr_capopen_collision);
             load_object_static_model();
+            reset_camera(gCamera);
+            // disable_time_stop_including_mario();
         }
     }
 }
@@ -690,6 +695,7 @@ void bhv_snufit_balls_loop_cc()
 
 Gfx *geo_ccr_anim(s32 callContext, struct GraphNode *node, UNUSED Mat4 *mtx)
 {
+    return NULL;
     if (callContext == GEO_CONTEXT_RENDER) {
         struct GraphNodeTranslationRotation *transNode = (struct GraphNodeTranslationRotation *) node->next;
         transNode->rotation[1] = aglabGlobalScratch[0] * 0x8000 / 30; // 30 frames for full rotation

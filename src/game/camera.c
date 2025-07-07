@@ -3134,6 +3134,10 @@ void update_camera(struct Camera *c) {
             }
         }
     }
+    else
+    {
+        c->camCollisionProgress = (struct CamCollisionProgress){};
+    }
 #ifdef PUPPYCAM
     }
 #endif
@@ -10119,6 +10123,27 @@ struct Cutscene sCutscenePyramidTopExplode[] = {
     { cutscene_pyramid_top_explode_end, 0 }
 };
 
+static void cutscene_ccr1(struct Camera *c) {
+    c->focus[0] = 0.f;
+    c->focus[1] = 0.f;
+    c->focus[2] = 0.f;
+
+    c->pos[0] = 398.f;
+    c->pos[1] = 2536.f;
+    c->pos[2] = 1382.f;
+}
+
+struct Cutscene sCutsceneCCR1[] = {
+    { cutscene_ccr1, 200 },
+};
+
+static void cutscene_ccr2(struct Camera *c) {
+}
+
+struct Cutscene sCutsceneCCR2[] = {
+    { cutscene_ccr2, CUTSCENE_LOOP },
+};
+
 /**
  * Cutscene that plays when Mario dies while standing, or from electrocution.
  */
@@ -10747,6 +10772,9 @@ void play_cutscene(struct Camera *c) {
         CUTSCENE(CUTSCENE_RACE_DIALOG,          sCutsceneDialog)
         CUTSCENE(CUTSCENE_ENTER_PYRAMID_TOP,    sCutsceneEnterPyramidTop)
         CUTSCENE(CUTSCENE_SSL_PYRAMID_EXPLODE,  sCutscenePyramidTopExplode)
+        
+        CUTSCENE(CUTSCENE_CCR_1,                sCutsceneCCR1)
+        CUTSCENE(CUTSCENE_CCR_2,                sCutsceneCCR2)
     }
 
 #undef CUTSCENE
