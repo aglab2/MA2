@@ -673,11 +673,11 @@ void bhv_ccr_water_lock_loop()
         gMarioStates->pos[2] = -2450.f + 100.f;
 }
 
+extern void bhv_clam_loop_impl(int buff);
 void bhv_clam_cc_loop()
 {
     CC_FREEZE();
-    bhv_clam_loop();
-    bhv_clam_loop();
+    bhv_clam_loop_impl(1);
 }
 
 void bhv_skeeter_cc_update()
