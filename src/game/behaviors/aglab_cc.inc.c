@@ -638,15 +638,15 @@ void bhv_ccr_capsule_loop()
     else if (1 == o->oAction)
     {
         gCamera->cutscene = CUTSCENE_CCR_1;
-        aglabGlobalScratch[0] = o->oTimer;
-        if (150 == o->oTimer)
+        aglabGlobalScratch[0] = o->oTimer - 10;
+        if (110 == o->oTimer)
         {
             o->oAction = 2;
             cur_obj_set_model(MODEL_CCR_CAPSULE_OPEN);
             obj_set_collision_data(o, ccr_capopen_collision);
             load_object_static_model();
             reset_camera(gCamera);
-            // disable_time_stop_including_mario();
+            disable_time_stop_including_mario();
         }
     }
 }
@@ -695,10 +695,9 @@ void bhv_snufit_balls_loop_cc()
 
 Gfx *geo_ccr_anim(s32 callContext, struct GraphNode *node, UNUSED Mat4 *mtx)
 {
-    return NULL;
     if (callContext == GEO_CONTEXT_RENDER) {
         struct GraphNodeTranslationRotation *transNode = (struct GraphNodeTranslationRotation *) node->next;
-        transNode->rotation[1] = aglabGlobalScratch[0] * 0x8000 / 30; // 30 frames for full rotation
+        transNode->rotation[2] = -CLAMP(aglabGlobalScratch[0], 0, 80) * 0x8000 / 150; // 30 frames for full rotation
     }
 
     return NULL;
