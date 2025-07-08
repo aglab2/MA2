@@ -62,21 +62,10 @@ If you have water raised,\n\
 you will not be able to\n\
 escape the lower area.")
 
-DEFINE_DIALOG(DIALOG_003, SOUND_OBJ_BOBOMB_BUDDY_TALK, 5, 95, 200, "\
-Thank you, Mario! The Big\n\
-Bob-omb is nothing but a\n\
-big dud now! But the\n\
-battle for the castle has\n\
-just begun.\n\
-Other enemies are holding\n\
-the other Power Stars. If\n\
-you recover more Stars,\n\
-you can open new doors\n\
-that lead to new worlds!\n\
-My Bob-omb Buddies are\n\
-waiting for you. Be sure\n\
-to talk to them--they'll\n\
-set up cannons for you.")
+DEFINE_DIALOG(DIALOG_003, SOUND_OBJ_BOBOMB_BUDDY_TALK, 3, 95, 200, "\
+Gravity is low here.\n\
+The higher you are, the\n\
+the lower the gravity.")
 
 DEFINE_DIALOG(DIALOG_004, NO_SOUND, 3, 95, 200, "\
 I wanted to place a star\n\

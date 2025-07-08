@@ -60,6 +60,8 @@ const LevelScript level_ccr_entry[] = {
 		MARIO_POS(0x01, 0, 0, 863, 988),
 		OBJECT(MODEL_NONE, 0, 91, -2446, 0, -180, 0, 0x00000000, bhvCCRBlock),
 		OBJECT(MODEL_CCR_CAPSULE, 0, 0, 0, 0, 0, 0, 0x00000000, bhvCCRCapsule),
+		OBJECT(MODEL_NONE, -501, 867, 831, 0, 0, 0, (17 << 16), bhvCoinFormation),
+		OBJECT(MODEL_WOODEN_SIGNPOST, 1, 200, 1109, 0, 0, 0, (3 << 24) | (3 << 16), bhvMessagePanel),
 		OBJECT(MODEL_CLAM_SHELL, 2086, 0, 73, 0, 0, 0, 0x00000000, bhvClamShell),
 		OBJECT(MODEL_CLAM_SHELL, -2086, 0, -39, 0, -180, 0, 0x00000000, bhvClamShell),
 		OBJECT(MODEL_NONE, -1, 300, -3351, 0, 0, 0, 0x00000000, bhvCoinFormation),
