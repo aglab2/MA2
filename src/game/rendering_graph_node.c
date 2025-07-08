@@ -476,7 +476,7 @@ static int render_course_batches(Gfx **ptempGfxHead, struct BatchArray* arr, int
     return amountRendered;
 }
 
-static int gFlipbookTimer = 0;
+uint32_t gFlipbookTimer = 0;
 static void apply_flipbooks(struct MasterLayer* masterLayer)
 {
     struct FlipbookArray* flipbooks = masterLayer->flipbooks;

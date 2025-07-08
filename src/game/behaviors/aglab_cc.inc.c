@@ -584,11 +584,7 @@ void bhv_ccr_switch_init()
 
 void bhv_ccr_switch2_loop()
 {
-    print_text_fmt_int(20, 20, "%d", o->oDrawingDistance);
     o->oDrawingDistance = 10000.f;
-
-    print_text_fmt_int(20, 40, "%d", gMarioStates->extraGravityEnabled);
-    print_text_fmt_int(20, 60, "%d", gMarioStates->extraAirAction);
 }
 
 void bhv_ccr_capsule_init()
@@ -602,8 +598,8 @@ void bhv_ccr_capsule_loop()
 {
     if (0 == o->oAction)
     {
-        if (100 == o->oTimer)
-        // if (0 != o->parentObj->oAction)
+        // if (100 == o->oTimer)
+        if (0 != o->parentObj->oAction)
         {
             cur_obj_set_model(MODEL_CCR_CAPSULE_ANIM);
             gCamera->cutscene = CUTSCENE_CCR_1;

@@ -362,6 +362,9 @@ static void warm_up_batch_node(void)
                 case GRAPH_NODE_TYPE_SWITCH_CASE:
                     size = sizeof(struct GraphNodeSwitchCase);
                     break;
+                case GRAPH_NODE_TYPE_TRANSLATION:
+                    size = sizeof(struct GraphNodeTranslation);
+                    break;
             }
 
 #ifdef DEBUG_ASSERTIONS
@@ -399,6 +402,7 @@ static void warm_up_batch_node(void)
         void* buf = (void*) ((u8*) content + sizeof(int));
         struct GraphNode *firstNode = gBatchNode->node.children;
         struct GraphNode *curGraphNode = firstNode;
+        struct GraphNode** pnext = NULL;
         do
         {
             struct GraphNodeLvlTranslationRotation* lvlNode = NULL;
@@ -422,6 +426,9 @@ static void warm_up_batch_node(void)
                 case GRAPH_NODE_TYPE_SWITCH_CASE:
                     copySize = freshNodeSize = sizeof(struct GraphNodeSwitchCase);
                     break;
+                case GRAPH_NODE_TYPE_TRANSLATION:
+                    copySize = freshNodeSize = sizeof(struct GraphNodeTranslation);
+                    break;
             }
 
             if (lvlNode)
@@ -440,6 +447,13 @@ static void warm_up_batch_node(void)
             memcpy(buf, curGraphNode, copySize);
             struct GraphNode* freshNode = (struct GraphNode*) buf;
             freshNode->size = freshNodeSize;
+
+            if (pnext)
+            {
+                *pnext = freshNode;
+                pnext = NULL;
+            }
+
             if (lvlNode)
             {
                 struct LightGraphLvlNodeTranslationRotation* freshLvlNode = (struct LightGraphLvlNodeTranslationRotation*) freshNode;
@@ -453,6 +467,12 @@ static void warm_up_batch_node(void)
                     freshLvlNode->rotation[2] = lvlNode->rotation[2];
                 }
             }
+
+            if (GRAPH_NODE_TYPE_GENERATED_LIST == curGraphNode->type)
+            {
+                pnext = &freshNode->next;
+            }
+
             buf += freshNodeSize;
         } while ((curGraphNode = curGraphNode->next) != firstNode);
     }

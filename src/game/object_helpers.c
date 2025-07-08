@@ -245,10 +245,11 @@ Gfx *geo_switch_anim_state(s32 callContext, struct GraphNode *node, UNUSED void 
     return NULL;
 }
 
+extern uint32_t gFlipbookTimer;
 Gfx *geo_switch_cc(s32 callContext, struct GraphNode *node, UNUSED void *context) {
     if (callContext == GEO_CONTEXT_RENDER) {
         struct GraphNodeSwitchCase *switchCase = (struct GraphNodeSwitchCase *) node;
-        switchCase->selectedCase = gGlobalTimer % switchCase->numCases;
+        switchCase->selectedCase = gFlipbookTimer % switchCase->numCases;
     }
 
     return NULL;
@@ -259,11 +260,30 @@ Gfx *geo_switch_cc2(s32 callContext, struct GraphNode *node, UNUSED void *contex
         struct GraphNodeSwitchCase *switchCase = (struct GraphNodeSwitchCase *) node;
         if (switchCase->numCases)
         {
-            switchCase->selectedCase = CLAMP(gGlobalTimer % 16, 0, 9);
+            switchCase->selectedCase = CLAMP(gFlipbookTimer % 16, 0, 9);
         }
         else
         {
-            switchCase->selectedCase = CLAMP(5 + (-gGlobalTimer) % 16, 0, 9);
+            switchCase->selectedCase = CLAMP(5 - gFlipbookTimer % 16, 0, 9);
+        }
+    }
+
+    return NULL;
+}
+
+extern void print_text_fmt_int(s32 x, s32 y, const char *fmt, int value);
+Gfx *geo_ccr_mov(s32 callContext, struct GraphNode *node, UNUSED void *context)
+{
+    if (callContext == GEO_CONTEXT_RENDER) {
+        struct GraphNodeGenerated *graphNode = (struct GraphNodeGenerated *) node;
+        struct LightGraphLvlNodeTranslationRotation *transNode = (struct LightGraphLvlNodeTranslationRotation *) node->next;
+        if (graphNode->parameter)
+        {
+            transNode->y = -1.f-((gFlipbookTimer * 32) & (8192 - 1));
+        }
+        else
+        {
+            transNode->y = ((gFlipbookTimer * 32) & (8192 - 1));
         }
     }
 

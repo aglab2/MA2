@@ -24,6 +24,7 @@ extern const GeoLayout ccr_dl_001_object_011E3CF4_002_geo[];
 extern const GeoLayout ccr_dl_001_object_011E3CF4_003_geo[];
 
 #define geo_cc_switch geo_switch_cc
+Gfx *geo_ccr_mov(s32 callContext, struct GraphNode *node, UNUSED void *context);
 
 const GeoLayout ccr_area_1_geo[] = {
 	GEO_BATCH_NODE_START_WITH_FLIPBOOK(batch_lvl_dls_ccr, ccr_flipbooks),
@@ -38,7 +39,8 @@ const GeoLayout ccr_area_1_geo[] = {
 		GEO_LVL_BATCH_TRANSLATE_ROTATE(LAYER_OPAQUE, 0, 0, 0, (f32)-0.0, (f32)90.00000933466734, (f32)0.0, ccr_dl_0007_object_013C015C_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_ROTATE(LAYER_OPAQUE, 0, 0, 0, (f32)-0.0, (f32)-179.999991348578, (f32)0.0, ccr_dl_0007_object_013C015C_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, (f32)-800.0, (f32)200.0, (f32)800.0, ccr_dl_0009_object_013BF55C_mesh_layer_1),
-		GEO_LVL_TRANSLATE_NODE(LAYER_OPAQUE, (f32)0.0, (f32)0.0, (f32)0.0),
+        GEO_ASM(0, geo_ccr_mov),
+		GEO_LVL_TRANSLATE_NODE(LAYER_OPAQUE, (f32)0.0, (f32)-4000.0, (f32)0.0),
 		GEO_OPEN_NODE(),
 			GEO_BATCH_TRANSLATE_ROTATE(LAYER_TRANSPARENT, 0, 0, 0, (f32)0.0, (f32)0, (f32)0.0, ccr_dl_001_object_011B141C_mesh_layer_5),
 			GEO_BATCH_TRANSLATE_ROTATE(LAYER_TRANSPARENT, 0, 0, 0, (f32)0.0, (f32)-22.500002333666835, (f32)0.0, ccr_dl_002_object_011B131C_mesh_layer_5),
@@ -53,7 +55,8 @@ const GeoLayout ccr_area_1_geo[] = {
 			GEO_BATCH_TRANSLATE_ROTATE(LAYER_TRANSPARENT, 0, 0, 0, (f32)-0.0, (f32)157.50000950547866, (f32)0.0, ccr_dl_011_object_011B0A1C_mesh_layer_5),
 			GEO_BATCH_TRANSLATE_ROTATE(LAYER_TRANSPARENT, 0, 0, 0, (f32)-0.0, (f32)-179.999991348578, (f32)0.0, ccr_dl_012_object_011B091C_mesh_layer_5),
 		GEO_CLOSE_NODE(),
-		GEO_LVL_TRANSLATE_NODE(LAYER_OPAQUE, (f32)0.0, (f32)0.0, (f32)0.0),
+        GEO_ASM(1, geo_ccr_mov),
+		GEO_LVL_TRANSLATE_NODE(LAYER_OPAQUE, (f32)0.0, (f32)-4000.0, (f32)0.0),
 		GEO_OPEN_NODE(),
 			GEO_BATCH_TRANSLATE_ROTATE(LAYER_TRANSPARENT, 0, 0, 0, (f32)0.0, (f32)0, (f32)0.0, ccr_dl_001_object_011B2054_mesh_layer_5),
 			GEO_BATCH_TRANSLATE_ROTATE(LAYER_TRANSPARENT, 0, 0, 0, (f32)0.0, (f32)-22.500002333666835, (f32)0.0, ccr_dl_002_object_011B1F54_mesh_layer_5),
