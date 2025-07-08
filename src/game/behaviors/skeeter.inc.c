@@ -33,12 +33,12 @@ static void skeeter_spawn_waves(void) {
     }
 }
 
-static void skeeter_act_idle(void) {
+static void skeeter_act_idle(int buff) {
     if (o->oMoveFlags & OBJ_MOVE_MASK_ON_GROUND) {
         cur_obj_init_animation_with_sound(3);
         o->oForwardVel = 0.0f;
 
-        if (o->oTimer > o->oSkeeterWaitTime && cur_obj_check_if_near_animation_end()) {
+        if (buff || (o->oTimer > o->oSkeeterWaitTime && cur_obj_check_if_near_animation_end())) {
             o->oAction = SKEETER_ACT_WALK;
         }
     } else {
@@ -135,7 +135,7 @@ static void skeeter_act_walk(void) {
     }
 }
 
-void bhv_skeeter_update(void) {
+void bhv_skeeter_update_impl(int buff) {
     o->oDeathSound = SOUND_OBJ_SNUFIT_SKEETER_DEATH;
     treat_far_home_as_mario(1000.0f);
 
@@ -143,7 +143,7 @@ void bhv_skeeter_update(void) {
 
     switch (o->oAction) {
         case SKEETER_ACT_IDLE:
-            skeeter_act_idle();
+            skeeter_act_idle(buff);
             break;
         case SKEETER_ACT_LUNGE:
             skeeter_act_lunge();
@@ -155,6 +155,10 @@ void bhv_skeeter_update(void) {
 
     obj_check_attacks(&sSkeeterHitbox, o->oAction);
     cur_obj_move_standard(-78);
+}
+
+void bhv_skeeter_update(void) {
+    bhv_skeeter_update_impl(0);
 }
 
 void bhv_skeeter_wave_update(void) {

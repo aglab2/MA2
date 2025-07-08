@@ -680,11 +680,12 @@ void bhv_clam_cc_loop()
     bhv_clam_loop_impl(1);
 }
 
+extern void bhv_skeeter_update_impl(int buff);
 void bhv_skeeter_cc_update()
 {
     CC_FREEZE();
-    bhv_skeeter_update();
-    bhv_skeeter_update();
+    bhv_skeeter_update_impl(1);
+    bhv_skeeter_update_impl(1);
 }
 
 void bhv_snufit_balls_loop_cc()
