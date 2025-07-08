@@ -6786,15 +6786,13 @@ const BehaviorScript bhvSmallWhompCC[] = {
 extern const Collision ccr_switch_p1_collision[];
 extern const Collision ccr_switch_p2_collision[];
 extern void bhv_ccr_switch_init();
-extern void bhv_ccr_switch_loop();
 extern const BehaviorScript bhvCCRSwitch[] = {
     BEGIN(OBJ_LIST_SURFACE),
     LOAD_COLLISION_DATA(ccr_switch_p1_collision),
-    CALL_NATIVE(load_object_static_model),
     CALL_NATIVE(bhv_ccr_switch_init),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_ccr_switch_loop),
-    END_LOOP(),
+    CALL_NATIVE(load_object_static_model),
+    SET_FLOAT(oDrawingDistance, 10000),
+    BREAK(),
 };
 
 extern void bhv_ccr_switch2_loop();

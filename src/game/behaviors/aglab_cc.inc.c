@@ -582,14 +582,13 @@ void bhv_ccr_switch_init()
     o->parentObj = spawn_object(o, MODEL_CCR_SWITCH2, bhvCCRSwitchP2);
 }
 
-void bhv_ccr_switch_loop()
-{
-
-}
-
 void bhv_ccr_switch2_loop()
 {
+    print_text_fmt_int(20, 20, "%d", o->oDrawingDistance);
+    o->oDrawingDistance = 10000.f;
 
+    print_text_fmt_int(20, 40, "%d", gMarioStates->extraGravityEnabled);
+    print_text_fmt_int(20, 60, "%d", gMarioStates->extraAirAction);
 }
 
 void bhv_ccr_capsule_init()

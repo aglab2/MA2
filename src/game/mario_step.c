@@ -637,6 +637,10 @@ static void apply_gravity(struct MarioState *m) {
     {
         m->extraGravityEnabled = 1;
     }
+    else
+    {
+        m->extraGravityEnabled = 0;
+    }
 
     f32 terminalSpeed = m->extraGravityEnabled ? -110.f : - 75.f;
     f32 gravMult = get_grav_mult(m);
