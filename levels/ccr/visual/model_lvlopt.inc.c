@@ -39177,7 +39177,7 @@ Gfx mat_ccr_dl_WallSweep2_sa2mdl_0_f3d[] = {
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
+	gsDPSetPrimColor(0, 0, 255, 255, 255, 204),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_32b_LOAD_BLOCK, 1, ccr_dl_kd_lk_un114_rgba32),
 	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_32b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 128),
@@ -39220,7 +39220,7 @@ Gfx mat_ccr_dl_AbyssWaterfalls_sa2mdl_0_f3d[] = {
 };
 
 Gfx mat_ccr_dl_Waterfall_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING | G_CULL_BACK, 0),
+	gsSPGeometryMode(G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
@@ -39231,13 +39231,6 @@ Gfx mat_ccr_dl_Waterfall_sa2mdl_0_f3d[] = {
 	gsDPLoadBlock(7, 0, 0, 1023, 128),
 	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_32b, 8, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 5, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0),
 	gsDPSetTileSize(0, 0, 0, 124, 124),
-	gsSPEndDisplayListHint(4),
-};
-
-Gfx mat_revert_ccr_dl_Waterfall_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(0, G_LIGHTING | G_CULL_BACK),
-	gsDPPipeSync(),
-	gsDPSetAlphaDither(G_AD_DISABLE),
 	gsSPEndDisplayListHint(4),
 };
 

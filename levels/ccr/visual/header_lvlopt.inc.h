@@ -703,6 +703,9 @@ extern const GeoLayout ccr_dl_060_object_011E0864_003_geo[];
 extern const GeoLayout ccr_area_1[];
 extern const Collision ccr_area_1_collision[];
 extern const MacroObject ccr_area_1_macro_objs[];
+extern const Trajectory ccr_area_1_spline_Spring_NurbsCurve[];
+extern const Trajectory ccr_area_1_spline_Spring_NurbsCurve_001[];
+extern const Trajectory ccr_area_1_spline_Spring_NurbsCurve_002[];
 extern u8 ccr_dl_kd_lk_un403_ci4[];
 extern u8 ccr_dl_kd_lk_un403_pal_rgba16[];
 extern u8 ccr_dl_kd_lk_un401_ci4[];
@@ -3195,6 +3198,7 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_ccr[LAYER_COUNT];
 #define mat_revert_ccr_dl_WallSweep2_sa2mdl_0_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_2_f3d
 #define mat_revert_ccr_dl_MatrixWalls1_sa2mdl_0_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
 #define mat_revert_ccr_dl_AbyssWaterfalls_sa2mdl_0_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_2_f3d
+#define mat_revert_ccr_dl_Waterfall_sa2mdl_0_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_2_f3d
 #define mat_revert_ccr_dl_Acid_sa2mdl_0_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
 #define mat_revert_ccr_dl_HallwaySweep1_sa2mdl_0_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
 #define mat_revert_ccr_dl_HallwaySweep2_sa2mdl_0_f3d mat_revert_ccr_dl_objLandTable0037_sa2blvl_0_f3d
