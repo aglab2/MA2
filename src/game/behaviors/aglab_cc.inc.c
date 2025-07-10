@@ -585,6 +585,7 @@ void bhv_ccr_switch_init()
 void bhv_ccr_switch2_loop()
 {
     o->oDrawingDistance = 10000.f;
+    o->oDistanceToMario = 0.f;
 }
 
 void bhv_ccr_capsule_init()
@@ -593,12 +594,15 @@ void bhv_ccr_capsule_init()
     o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvFloorSwitchGrills, &d);
 }
 
+extern Gfx mat_ccr_dl_WallSweep1_sa2mdl_0_f3d[];
 extern const Collision ccr_capopen_collision[];
 void bhv_ccr_capsule_loop()
 {
+    o->oDrawingDistance = 10000.f;
+    o->oDistanceToMario = 0.f;
     if (0 == o->oAction)
     {
-        // if (100 == o->oTimer)
+        // if (10 == o->oTimer)
         if (0 != o->parentObj->oAction)
         {
             cur_obj_set_model(MODEL_CCR_CAPSULE_ANIM);
@@ -634,8 +638,15 @@ void bhv_ccr_capsule_loop()
     {
         gCamera->cutscene = CUTSCENE_CCR_1;
         aglabGlobalScratch[0] = o->oTimer - 10;
+        if (10 == o->oTimer)
+        {
+            u8* ptr = (u8*) segmented_to_virtual(mat_ccr_dl_WallSweep1_sa2mdl_0_f3d);
+            ptr[10*8+7] = 0;
+        }
+
         if (110 == o->oTimer)
         {
+            o->oDrawingDistance = 2000.f;
             o->oAction = 2;
             cur_obj_set_model(MODEL_CCR_CAPSULE_OPEN);
             obj_set_collision_data(o, ccr_capopen_collision);

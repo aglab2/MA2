@@ -6798,6 +6798,7 @@ extern const BehaviorScript bhvCCRSwitch[] = {
 extern void bhv_ccr_switch2_loop();
 extern const BehaviorScript bhvCCRSwitchP2[] = {
     BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_COLLISION_DATA(ccr_switch_p2_collision),
     SET_FLOAT(oDrawingDistance, 10000),
     BEGIN_LOOP(),
