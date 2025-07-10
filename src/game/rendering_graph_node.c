@@ -494,7 +494,7 @@ static void apply_flipbooks(struct MasterLayer* masterLayer)
         // switch dl frames and patch the display list
         if (flipData->count)
         {
-            if (flipData->ci4s)
+            if (flipData->pals)
             {
                 *(u8**) &startDl[flipDls->offCI4] = flipData->ci4s + frame * 2048;
                 if (flipData->pals)
@@ -505,7 +505,7 @@ static void apply_flipbooks(struct MasterLayer* masterLayer)
             else
             {
                 // offPal will correspond to the first entry for loadblock which we will need to use
-                *(u8**) &startDl[flipDls->offPal] = flipData->ci4s + frame * 4096;
+                *(u8**) &startDl[flipDls->offPal ?: flipDls->offCI4] = flipData->ci4s + frame * 4096;
             }
         }
 
