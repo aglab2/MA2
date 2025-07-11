@@ -19,6 +19,7 @@ extern const Collision ss1_boo_collision[];
 #define oSSCtlSpecial oObjF4
 #define oSSCtlLastRadius oFloatF8
 #define oSSCtlInitAngle oFC
+#define oSSCtlAwaitTiming o100
 
 extern s32 approach_f32_ptr(f32 *px, f32 target, f32 delta);
 void bhv_ss_ctl_loop()
@@ -31,6 +32,7 @@ void bhv_ss_ctl_loop()
         {
             o->oAction = 1;
         }
+        o->oSSCtlAwaitTiming = 0;
     }
     else if (1 == o->oAction)
     {
@@ -92,22 +94,42 @@ void bhv_ss_ctl_loop()
         bowser->oPosZ = z;
         bowser->oMoveAngleYaw = 0x8000-o->oTimer * 323;
 
-        if (0 == o->oSubAction && (gMarioStates->action == ACT_GROUND_POUND || gMarioStates->action == ACT_GROUND_POUND_LAND))
+        // if (gMarioStates->action == ACT_GROUND_POUND || gMarioStates->action == ACT_GROUND_POUND_LAND)
+        // {
+        // }
+
+        if (0 == o->oSubAction)
         {
             f32 dx = gMarioStates->pos[0] - bowser->oPosX;
             f32 dz = gMarioStates->pos[2] - bowser->oPosZ;
             f32 d = dx * dx + dz * dz;
+            o->oSSCtlAwaitTiming++;
             if (d < 60000.f)
             {
-                o->oTimer--;
-                obj_scale(bowser, 1.4f + 0.1f * sins(gGlobalTimer * 11234));
-                if (gMarioStates->action == ACT_GROUND_POUND_LAND)
+                if (o->oSSCtlAwaitTiming < 100)
                 {
-                    bowser->oInteractStatus = INT_STATUS_NONE;
-                    obj_scale(bowser, 1.f);
-                    bowser->oAction = 7; // run
-                    bowser->oTimer = 0;
-                    o->oSubAction = 1;
+                    o->oTimer--;
+                    obj_scale(bowser, 1.4f + 0.1f * sins(gGlobalTimer * 11234));
+                    if (gMarioStates->action == ACT_GROUND_POUND_LAND)
+                    {
+                        bowser->oInteractStatus = INT_STATUS_NONE;
+                        obj_scale(bowser, 1.f);
+                        bowser->oAction = 7; // run
+                        bowser->oTimer = 0;
+                        o->oSubAction = 1;
+                    }
+                }
+                else
+                {
+                    o->oSSCtlAwaitTiming = 100;
+                }
+            }
+            else
+            {
+                o->oSSCtlAwaitTiming -= 5;
+                if (o->oSSCtlAwaitTiming < 0)
+                {
+                    o->oSSCtlAwaitTiming = 0;
                 }
             }
         }
