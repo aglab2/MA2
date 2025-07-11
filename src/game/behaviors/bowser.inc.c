@@ -169,7 +169,8 @@ s32 bowser_spawn_shockwave(void) {
 void bowser_bounce_effects(s32 *timer) {
     if (o->oMoveFlags & OBJ_MOVE_LANDED) {
         (*timer)++;
-        if (*timer < 4) {
+        int limit = gCurrLevelNum == LEVEL_SS1 ? 2 : 4;
+        if (*timer < limit) {
             cur_obj_start_cam_event(o, CAM_EVENT_BOWSER_THROW_BOUNCE);
             spawn_mist_particles_variable(0, 0, 60.0f);
             cur_obj_play_sound_2(SOUND_OBJ_BOWSER_WALK);
