@@ -114,7 +114,7 @@ Gfx *geo_update_alpha_compare(s32 callContext, struct GraphNode *node, UNUSED vo
 
         SET_GRAPH_NODE_LAYER(currentGraphNode->fnNode.node.flags, parameter);
         if (objectOpacity == 0xFF) {
-            // ---
+            gDPSetAlphaCompareReal(dlHead++, G_AC_NONE);
         } else {
             gDPSetAlphaCompareReal(dlHead++, G_AC_DITHER);
         }

@@ -13,8 +13,12 @@ void bhv_ss_ctl_init()
     o->oOpacity = 255;
 }
 
+extern const Collision ss1_space_collision[];
+extern const Collision ss1_boo_collision[];
+
 void bhv_ss_ctl_loop()
 {
+    o->oCollisionDistance = 30000.0f;
     struct Object* bowser = o->parentObj;
     if (0 == o->oAction)
     {
@@ -34,8 +38,23 @@ void bhv_ss_ctl_loop()
         o->oOpacity = bowser->oOpacity = opacity;
         if (0 == opacity)
         {
-            cur_obj_hide();
-            obj_hide(bowser);
+            obj_set_collision_data(o, ss1_boo_collision);
+            obj_set_model(o, MODEL_SS1_BOO);
+            o->oAction = 2;
+            gMarioStates->pos[0] = 600.f;
+            gMarioStates->pos[2] = 0.f;
         }
+    }
+    else if (2 == o->oAction)
+    {
+        int opacity = 8 * o->oTimer;
+        if (opacity > 255)
+        {
+            opacity = 255;
+        }
+        o->oOpacity = bowser->oOpacity = opacity;
+        
+        if (gMarioStates->pos[0] < -600.f)
+            gMarioStates->pos[0] = -600.f;
     }
 }

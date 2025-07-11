@@ -11,3 +11,5 @@
 #include "levels/ss1/leveldata.inc.c"
 #include "levels/ss1/ss1_space/model.inc.c"
 #include "levels/ss1/ss1_space/collision.inc.c"
+#include "levels/ss1/ss1_boo/collision.inc.c"
+#include "levels/ss1/ss1_boo/model.inc.c"

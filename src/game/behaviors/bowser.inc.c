@@ -770,8 +770,9 @@ void bowser_act_hit_mine(void) {
         cur_obj_init_animation_with_sound(BOWSER_ANIM_FLIP);
         cur_obj_extend_animation_if_at_end();
         bowser_bounce_effects(&o->oBowserTimer);
+        int amount = gCurrLevelNum == LEVEL_SS1 ? 1 : 2;
         // Reset vel and stand up
-        if (o->oBowserTimer > 2) {
+        if (o->oBowserTimer > amount) {
             cur_obj_init_animation_with_sound(BOWSER_ANIM_STAND_UP_FROM_FLIP);
             o->oVelY = 0.0f;
             o->oForwardVel = 0.0f;
