@@ -443,7 +443,6 @@ static void bowser_clean_attack();
 /**
  * Default Bowser act that doesn't last very long
  */
-extern void print_text_fmt_int(s32 x, s32 y, const char *fmt, int);
 void bowser_act_default(void) {
     // Set eye state
     o->oBowserEyesShut = FALSE;
@@ -454,7 +453,6 @@ void bowser_act_default(void) {
     o->oForwardVel = 0.0f;
     o->oVelY = 0.0f;
 
-    print_text_fmt_int(20, 20, "%d", o->oHealth);
     o->oInteractType = INTERACT_BOUNCE_TOP;
     if (o->oInteractStatus & INT_STATUS_WAS_ATTACKED)
     {
@@ -793,10 +791,13 @@ void bowser_act_hit_mine(void) {
 
     if (o->oSubAction < BOWSER_SUB_ACT_HIT_MINE_STOP)
     {
-        gMarioStates->pos[0] = o->oPosX - 90.f * o->oTimer;
-        gMarioStates->pos[1] = o->oPosY;
-        gMarioStates->pos[2] = o->oPosZ;
-        gMarioStates->faceAngle[1] = 0x8000 + o->oMoveAngleYaw;
+        if (gCurrLevelNum == LEVEL_SS2 || o->oOpacity)
+        {
+            gMarioStates->pos[0] = o->oPosX - 90.f * o->oTimer;
+            gMarioStates->pos[1] = o->oPosY;
+            gMarioStates->pos[2] = o->oPosZ;
+            gMarioStates->faceAngle[1] = 0x8000 + o->oMoveAngleYaw;
+        }
     }
 }
 

@@ -131,7 +131,8 @@ static const struct RenderModeContainer renderModeTable_1Cycle[2] = {
     [RENDER_NO_ZB] = { {
         [LAYER_FORCE] = G_RM_OPA_SURF,
         [LAYER_OPAQUE] = G_RM_AA_OPA_SURF,
-        [LAYER_OPAQUE_INTER] = G_RM_AA_OPA_SURF,
+        [LAYER_PCL] = G_RM_AA_PCL_SURF,
+        // [LAYER_OPAQUE_INTER] = G_RM_AA_OPA_SURF,
         [LAYER_OPAQUE_DECAL] = G_RM_AA_OPA_SURF,
         [LAYER_ALPHA] = G_RM_AA_TEX_EDGE,
 #if SILHOUETTE
@@ -149,7 +150,8 @@ static const struct RenderModeContainer renderModeTable_1Cycle[2] = {
     [RENDER_ZB] = { {
         [LAYER_FORCE] = G_RM_ZB_OPA_SURF,
         [LAYER_OPAQUE] = G_RM_AA_ZB_OPA_SURF,
-        [LAYER_OPAQUE_INTER] = G_RM_AA_ZB_OPA_INTER,
+        [LAYER_PCL] = G_RM_AA_ZB_PCL_SURF,
+        // [LAYER_OPAQUE_INTER] = G_RM_AA_ZB_OPA_INTER,
         [LAYER_OPAQUE_DECAL] = G_RM_AA_ZB_OPA_DECAL,
         [LAYER_ALPHA] = G_RM_AA_ZB_TEX_EDGE,
 #if SILHOUETTE
@@ -170,7 +172,8 @@ static const struct RenderModeContainer renderModeTable_2Cycle[2] = {
     [RENDER_NO_ZB] = { {
         [LAYER_FORCE] = G_RM_OPA_SURF2,
         [LAYER_OPAQUE] = G_RM_AA_OPA_SURF2,
-        [LAYER_OPAQUE_INTER] = G_RM_AA_OPA_SURF2,
+        [LAYER_PCL] = G_RM_AA_PCL_SURF2,
+        // [LAYER_OPAQUE_INTER] = G_RM_AA_OPA_SURF2,
         [LAYER_OPAQUE_DECAL] = G_RM_AA_OPA_SURF2,
         [LAYER_ALPHA] = G_RM_AA_TEX_EDGE2,
 #if SILHOUETTE
@@ -188,7 +191,8 @@ static const struct RenderModeContainer renderModeTable_2Cycle[2] = {
     [RENDER_ZB] = { {
         [LAYER_FORCE] = G_RM_ZB_OPA_SURF2,
         [LAYER_OPAQUE] = G_RM_AA_ZB_OPA_SURF2,
-        [LAYER_OPAQUE_INTER] = G_RM_AA_ZB_OPA_INTER2,
+        [LAYER_PCL] = G_RM_AA_ZB_PCL_SURF2,
+        // [LAYER_OPAQUE_INTER] = G_RM_AA_ZB_OPA_INTER2,
         [LAYER_OPAQUE_DECAL] = G_RM_AA_ZB_OPA_DECAL2,
         [LAYER_ALPHA] = G_RM_AA_ZB_TEX_EDGE2,
 #if SILHOUETTE
