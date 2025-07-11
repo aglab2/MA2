@@ -110,18 +110,19 @@ void bhv_ss_ctl_loop()
                 {
                     o->oTimer--;
                     obj_scale(bowser, 1.4f + 0.1f * sins(gGlobalTimer * 11234));
-                    if (gMarioStates->action == ACT_GROUND_POUND_LAND)
-                    {
-                        bowser->oInteractStatus = INT_STATUS_NONE;
-                        obj_scale(bowser, 1.f);
-                        bowser->oAction = 7; // run
-                        bowser->oTimer = 0;
-                        o->oSubAction = 1;
-                    }
                 }
                 else
                 {
                     o->oSSCtlAwaitTiming = 100;
+                }
+
+                if (gMarioStates->action == ACT_GROUND_POUND_LAND)
+                {
+                    bowser->oInteractStatus = INT_STATUS_NONE;
+                    obj_scale(bowser, 1.f);
+                    bowser->oAction = 7; // run
+                    bowser->oTimer = 0;
+                    o->oSubAction = 1;
                 }
             }
             else
@@ -149,6 +150,7 @@ void bhv_ss_ctl_loop()
             o->oSSCtlSpecial->oPosY = 0;
             o->oSSCtlSpecial->oPosZ = 0;
             o->oSSCtlInitAngle = atan2s(gMarioStates->pos[2], gMarioStates->pos[0]);
+            o->oSSCtlAwaitTiming = 0;
         }
     }
     else if (5 == o->oAction)
@@ -171,14 +173,16 @@ void bhv_ss_ctl_loop()
             o->oSSCtlSpecial->oPosZ = z;
             o->oSSCtlSpecial->oFaceAngleYaw = o->oSSCtlInitAngle + o->oTimer * 123 + 0x4000;
             o->oSSCtlSpecial->oFaceAnglePitch = 0;
-            o->oSSCtlSpecial->oFaceAngleRoll = 0;                
-            if (gMarioStates->action == ACT_JUMP_KICK || gMarioStates->action == ACT_MOVE_PUNCHING)
+            o->oSSCtlSpecial->oFaceAngleRoll = 0; 
+
+            o->oSSCtlAwaitTiming++;
+            f32 dx = gMarioStates->pos[0] - o->oSSCtlSpecial->oPosX;
+            f32 dy = gMarioStates->pos[1] - o->oSSCtlSpecial->oPosY;
+            f32 dz = gMarioStates->pos[2] - o->oSSCtlSpecial->oPosZ;
+            f32 d = dx * dx + dy * dy + dz * dz;
+            if (d < 60000.f)
             {
-                f32 dx = gMarioStates->pos[0] - o->oSSCtlSpecial->oPosX;
-                f32 dy = gMarioStates->pos[1] - o->oSSCtlSpecial->oPosY;
-                f32 dz = gMarioStates->pos[2] - o->oSSCtlSpecial->oPosZ;
-                f32 d = dx * dx + dy * dy + dz * dz;
-                if (d < 60000.f)
+                if (gMarioStates->action == ACT_JUMP_KICK || gMarioStates->action == ACT_MOVE_PUNCHING)
                 {
                     bowser->oInteractStatus = INT_STATUS_NONE;
                     bowser->oAction = 7; // run
@@ -194,11 +198,31 @@ void bhv_ss_ctl_loop()
                     o->oSSCtlSpecial->oPosX = 2000.f;
                     o->oSSCtlSpecial->oPosY = -800.f;
                     o->oSSCtlSpecial->oPosZ = 0;
-                    o->oSSCtlSpecial->oOpacity = 255;
+                    o->oSSCtlSpecial->oOpacity = 0;
                     o->oSSCtlSpecial->oFaceAngleRoll = 0x4000;
                     o->oSSCtlSpecial->oFaceAnglePitch = 0x4000;
                     obj_scale(o->oSSCtlSpecial, 1.5f);
-                    // obj_hide(o->oSSCtlSpecial);
+                }
+                else
+                {
+                    if (o->oSSCtlAwaitTiming < 100)
+                    {
+                        o->oTimer--;
+                        obj_scale(o->oSSCtlSpecial, 1.f + 0.1f * sins(gGlobalTimer * 11234));
+                    }
+                    else
+                    {
+                        o->oSSCtlAwaitTiming = 100;
+                    }
+                }
+            }
+            else
+            {
+                obj_scale(o->oSSCtlSpecial, 1.f);
+                o->oSSCtlAwaitTiming -= 5;
+                if (o->oSSCtlAwaitTiming < 0)
+                {
+                    o->oSSCtlAwaitTiming = 0;
                 }
             }
         }
