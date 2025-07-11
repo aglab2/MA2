@@ -16,6 +16,9 @@ void bhv_ss_ctl_init()
 extern const Collision ss1_space_collision[];
 extern const Collision ss1_boo_collision[];
 
+#define oSSCtlSpecial oObjF4
+#define oSSCtlLastRadius oFloatF8
+
 void bhv_ss_ctl_loop()
 {
     o->oCollisionDistance = 30000.0f;
@@ -52,9 +55,72 @@ void bhv_ss_ctl_loop()
         {
             opacity = 255;
         }
-        o->oOpacity = bowser->oOpacity = opacity;
+        o->oOpacity = opacity;
+        bowser->oOpacity = 0; 
         
         if (gMarioStates->pos[0] < -600.f)
             gMarioStates->pos[0] = -600.f;
+
+        if (255 == opacity)
+        {
+            o->oAction = 3;
+            obj_scale(bowser, 1.5f);
+        }
+    }
+    else if (3 == o->oAction)
+    {
+        // move bowser around the center which is at (2000, 0, 0)
+        if (!o->oSubAction)
+            o->oSSCtlLastRadius = 2000.f + 500.f * sins(o->oTimer * 223);
+
+        f32 r = o->oSSCtlLastRadius;
+        f32 x = 2000.f + r * coss(o->oTimer * 323);
+        f32 z =    0.f + r * sins(o->oTimer * 323);
+
+        bowser->oOpacity = o->oSubAction ? 255 : 0;
+        bowser->oPosX = x;
+        bowser->oPosY = 0.f;
+        bowser->oPosZ = z;
+        bowser->oMoveAngleYaw = -o->oTimer * 323;
+
+        if (gMarioStates->action == ACT_GROUND_POUND || gMarioStates->action == ACT_GROUND_POUND_LAND)
+        {
+            f32 dx = gMarioStates->pos[0] - bowser->oPosX;
+            f32 dz = gMarioStates->pos[2] - bowser->oPosZ;
+            f32 d = dx * dx + dz * dz;
+            if (d < 60000.f)
+            {
+                o->oTimer--;
+                obj_scale(bowser, 1.4f + 0.1f * sins(gGlobalTimer * 11234));
+                if (gMarioStates->action == ACT_GROUND_POUND_LAND)
+                {
+                    bowser->oInteractStatus = INT_STATUS_NONE;
+                    obj_scale(bowser, 1.f);
+                    bowser->oAction = 7; // run
+                    bowser->oTimer = 0;
+                    o->oSubAction = 1;
+                }
+            }
+        }
+
+        if (16 == bowser->oAction)
+        {
+            o->oAction = 4;
+        }
+    }
+    else if (4 == o->oAction)
+    {
+        if (3 == bowser->oAction)
+        {
+            o->oAction = 5;
+        }
+    }
+    else if (5 == o->oAction)
+    {
+        bowser->oPosX = 0;
+        bowser->oPosY = 0;
+        bowser->oPosZ = 0;
+
+        
     }
 }

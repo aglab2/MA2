@@ -549,51 +549,21 @@ void bowser_act_walk_to_mario(void) {
  * Makes Bowser teleport while invisible
  */
 void bowser_act_teleport(void) {
-    switch (o->oSubAction) {
-        // Set opacity target to invisible and become intangible
-        case BOWSER_SUB_ACT_TELEPORT_START:
-            cur_obj_become_intangible();
-            o->oBowserTargetOpacity = 0;
-            o->oBowserTimer = 30; // set timer value
-            // Play sound effect
-            if (o->oTimer == 0) {
-                cur_obj_play_sound_2(SOUND_OBJ2_BOWSER_TELEPORT);
-            }
-            // Bowser is invisible, move angle to face Mario
-            if (o->oOpacity == 0) {
-                o->oSubAction++;
-                o->oMoveAngleYaw = o->oAngleToMario;
-            }
-            break;
+    if (o->oTimer == 0) {
+        cur_obj_play_sound_2(SOUND_OBJ2_BOWSER_ROAR);
+    }
 
-        case BOWSER_SUB_ACT_TELEPORT_MOVE:
-            // reduce timer and set velocity teleport while at it
-            if (o->oBowserTimer--) {
-                o->oForwardVel = 100.0f;
-            } else {
-                o->oSubAction = BOWSER_SUB_ACT_TELEPORT_STOP;
-                o->oMoveAngleYaw = o->oAngleToMario; // update angle
-            }
+    cur_obj_init_animation_with_sound(BOWSER_ANIM_FLIP);
+    o->oForwardVel = 0.0f;
+    o->oOpacity -= 10;
+    o->oPosY += 100.0f;
+    if (o->oOpacity < 0)
+        o->oOpacity = 0;
 
-            if (abs_angle_diff(o->oMoveAngleYaw, o->oAngleToMario) > 0x4000) {
-                if (o->oDistanceToMario > 500.0f) {
-                    o->oSubAction = BOWSER_SUB_ACT_TELEPORT_STOP;
-                    o->oMoveAngleYaw = o->oAngleToMario; // update angle
-                    cur_obj_play_sound_2(SOUND_OBJ2_BOWSER_TELEPORT);
-                }
-            }
-            break;
-
-        // Set opacity target to visible and become tangible
-        case BOWSER_SUB_ACT_TELEPORT_STOP:
-            o->oForwardVel = 0.0f; // reset velocity
-            o->oBowserTargetOpacity = 255;
-            // Set to default action once visible
-            if (o->oOpacity == 255) {
-                o->oAction = BOWSER_ACT_DEFAULT;
-            }
-            cur_obj_become_tangible();
-            break;
+    cur_obj_become_intangible();
+    if (0 == o->oOpacity)
+    {
+        o->oAction = BOWSER_ACT_DANCE;
     }
 }
 
@@ -1006,77 +976,21 @@ void bowser_act_turn_from_edge(void) {
  * Makes Bowser charge (run) to Mario
  */
 void bowser_act_charge_mario(void) {
-    s32 time;
-    // Reset Speed to prepare charge
-    if (o->oTimer == 0) {
-        o->oForwardVel = 0.0f;
+    if (0 == o->oTimer)
+    {
+        cur_obj_play_sound_2(SOUND_OBJ2_BOWSER_ROAR);
     }
 
-    switch (o->oSubAction) {
-        case BOWSER_SUB_ACT_CHARGE_START:
-            // Start running
-            o->oBowserTimer = 0;
-            if (cur_obj_init_animation_and_check_if_near_end(BOWSER_ANIM_RUN_START)) {
-                o->oSubAction = BOWSER_SUB_ACT_CHARGE_RUN;
-            }
-            break;
+    // Set speed to run
+    o->oForwardVel = 50.0f;
+    cur_obj_init_animation_with_sound(BOWSER_ANIM_RUN);
+    // Rotate to Mario
+    // cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x200);
 
-        case BOWSER_SUB_ACT_CHARGE_RUN:
-            // Set speed to run
-            o->oForwardVel = 50.0f;
-            if (cur_obj_init_animation_and_check_if_near_end(BOWSER_ANIM_RUN)) {
-                o->oBowserTimer++;
-                // Split if 6 timer frames has passed
-                if (o->oBowserTimer >= 6) {
-                    o->oSubAction = BOWSER_SUB_ACT_CHARGE_SLIP;
-                }
-                // Slip if Mario has a differentiable angle and 2 timer frames has passed
-                if (o->oBowserTimer >= 2) {
-                    if (abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) > 0x2000) {
-                        o->oSubAction = BOWSER_SUB_ACT_CHARGE_SLIP;
-                    }
-                }
-            }
-            // Rotate to Mario
-            cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x200);
-            break;
-
-        case BOWSER_SUB_ACT_CHARGE_SLIP:
-            // Spawn smoke puff while slipping
-            o->oBowserTimer = 0;
-            cur_obj_init_animation_with_sound(BOWSER_ANIM_RUN_SLIP);
-            spawn_object_relative_with_scale(0, 100, -50, 0, 3.0f, o, MODEL_SMOKE, bhvWhitePuffSmoke2);
-            spawn_object_relative_with_scale(0, -100, -50, 0, 3.0f, o, MODEL_SMOKE, bhvWhitePuffSmoke2);
-            // End Charge once Bowser stops running
-            if (approach_f32_signed(&o->oForwardVel, 0, -1.0f)) {
-                o->oSubAction = BOWSER_SUB_ACT_CHARGE_END;
-            }
-            cur_obj_extend_animation_if_at_end();
-            break;
-
-        case BOWSER_SUB_ACT_CHARGE_END:
-            // Stop running
-            o->oForwardVel = 0.0f;
-            cur_obj_init_animation_with_sound(BOWSER_ANIM_RUN_STOP);
-            if (cur_obj_check_if_near_animation_end()) {
-                // Set time delay to go to default action
-                if (o->oBehParams2ndByte == BOWSER_BP_BITS) {
-                    time = 10;
-                } else {
-                    time = 30;
-                }
-                if (o->oBowserTimer > time) {
-                    o->oAction = BOWSER_ACT_DEFAULT;
-                }
-                o->oBowserTimer++;
-            }
-            cur_obj_extend_animation_if_at_end();
-            break;
-    }
-
-    // Bowser is close to falling so set hit edge action
-    if (o->oMoveFlags & OBJ_MOVE_HIT_EDGE) {
-        o->oAction = BOWSER_ACT_HIT_EDGE;
+    if (o->oInteractStatus & INT_STATUS_WAS_ATTACKED)
+    {
+        o->oHealth--;
+        o->oAction = BOWSER_ACT_TELEPORT;
     }
 }
 
@@ -1821,6 +1735,7 @@ void bhv_bowser_loop(void) {
 
     // Adjust opacity (when not dead)
     // Mostly for the teleport action in BitFS
+#if 0
     if (o->oAction != BOWSER_ACT_DEAD) {
         if (o->oBowserTargetOpacity != o->oOpacity) {
             // increase opacity when oBowserTargetOpacity is 255
@@ -1838,6 +1753,7 @@ void bhv_bowser_loop(void) {
             }
         }
     }
+#endif
 
     bhv_bowser_body_anchor_loop();
     bowser_kill_mario_on_hit();
