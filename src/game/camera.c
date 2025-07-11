@@ -3344,7 +3344,7 @@ void init_camera(struct Camera *c) {
         // Calls the initial cutscene when you enter Bowser battle levels
         // Note: This replaced an "old" way to call these cutscenes using
         // a camEvent value: CAM_EVENT_BOWSER_INIT
-        case LEVEL_BOWSER_1:
+        case LEVEL_SS1:
         case LEVEL_SS2:
             // Since Bowser 1 has a demo entry, check for it
             // If it is, then set CamAct to the end to directly activate Bowser
@@ -6142,6 +6142,9 @@ struct CameraTrigger sCamCce[] = {
 	NULL_TRIGGER
 };
 struct CameraTrigger sCamCcr[] = {
+	NULL_TRIGGER
+};
+struct CameraTrigger sCamSs1[] = {
 	NULL_TRIGGER
 };
 struct CameraTrigger *sCameraTriggers[LEVEL_COUNT + 1] = {
@@ -10396,7 +10399,7 @@ u8 sZoomOutAreaMasks[] = {
 	ZOOMOUT_AREA_MASK(1, 1, 1, 0, 1, 0, 0, 0), 
 	ZOOMOUT_AREA_MASK(1, 1, 1, 1, 1, 1, 1, 1), 
 	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), 
-	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 0, 0, 0, 0), 
+	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), 
 };
 
 /*

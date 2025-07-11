@@ -443,6 +443,7 @@ static void bowser_clean_attack();
 /**
  * Default Bowser act that doesn't last very long
  */
+extern void print_text_fmt_int(s32 x, s32 y, const char *fmt, int);
 void bowser_act_default(void) {
     // Set eye state
     o->oBowserEyesShut = FALSE;
@@ -453,6 +454,7 @@ void bowser_act_default(void) {
     o->oForwardVel = 0.0f;
     o->oVelY = 0.0f;
 
+    print_text_fmt_int(20, 20, "%d", o->oHealth);
     o->oInteractType = INTERACT_BOUNCE_TOP;
     if (o->oInteractStatus & INT_STATUS_WAS_ATTACKED)
     {
@@ -464,7 +466,8 @@ void bowser_act_default(void) {
             o->oInteractStatus = INT_STATUS_NONE;
         }
         
-        bowser_clean_attack();
+        if (gCurrLevelNum == LEVEL_SS2)
+            bowser_clean_attack();
     }
 #if 0
     // Set level specific actions
@@ -704,6 +707,11 @@ static void bowser_spawn_attack()
     }
 }
 
+static void bowser_advance_phases()
+{
+    
+}
+
 static void despawn_all(const BehaviorScript* behavior)
 {
     uintptr_t *behaviorAddr = segmented_to_virtual(behavior);
@@ -776,7 +784,10 @@ void bowser_act_hit_mine(void) {
             // Makes Bowser dance at one health (in BitS)
             o->oAction = BOWSER_ACT_DANCE;
             o->oBowserEyesShut = FALSE; // open eyes
-            bowser_spawn_attack();
+            if (gCurrLevelNum == LEVEL_SS2)
+                bowser_spawn_attack();
+            else
+                bowser_advance_phases();
         }
     }
 

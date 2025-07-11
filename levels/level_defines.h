@@ -42,6 +42,7 @@ DEFINE_LEVEL("SR", LEVEL_SR, COURSE_SR, sr, generic, 20000, 0x00, 0x00, 0x00, _,
 DEFINE_LEVEL("MSP", LEVEL_MSP, COURSE_MSP, msp, generic, 20000, 0x00, 0x00, 0x00, _, sCamMsp) 
 DEFINE_LEVEL("CW", LEVEL_CW, COURSE_CW, cw, generic, 20000, 0x00, 0x00, 0x00, _, sCamCw) 
 DEFINE_LEVEL("FC", LEVEL_FC, COURSE_FC, fc, generic, 20000, 0x00, 0x00, 0x00, _, sCamFc) 
+DEFINE_LEVEL("SS1", LEVEL_SS1, COURSE_SS1, ss1, generic, 20000, 0x00, 0x00, 0x00, _, sCamSs1) 
 DEFINE_LEVEL("CCT", LEVEL_CCT, COURSE_CCT, cct, generic, 20000, 0x00, 0x00, 0x00, _, sCamCct) 
 DEFINE_LEVEL("CCE", LEVEL_CCE, COURSE_CCE, cce, generic, 20000, 0x00, 0x00, 0x00, _, sCamCce) 
 DEFINE_LEVEL("CCR", LEVEL_CCR, COURSE_CCR, ccr, generic, 20000, 0x00, 0x00, 0x00, _, sCamCcr) 

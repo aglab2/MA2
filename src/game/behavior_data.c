@@ -6838,6 +6838,21 @@ extern const BehaviorScript bhvCCRPlatform[] = {
     END_LOOP(),
 };
 
+extern void bhv_ss_ctl_init();
+extern void bhv_ss_ctl_loop();
+extern const Collision ss1_space_collision[];
+extern const BehaviorScript bhvSSCtl[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(ss1_space_collision),
+    CALL_NATIVE(bhv_ss_ctl_init),
+    SET_HOME(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ss_ctl_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
 extern void bhv_clam_cc_loop();
 const BehaviorScript bhvClamShellCC[] = {
     BEGIN(OBJ_LIST_GENACTOR),
