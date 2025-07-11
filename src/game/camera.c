@@ -10138,10 +10138,25 @@ struct Cutscene sCutsceneCCR1[] = {
 };
 
 static void cutscene_ccr2(struct Camera *c) {
+    c->focus[0] = -2364.f;
+    c->focus[1] = 3210.f;
+    c->focus[2] = 0.f;
+
+    c->pos[0] = -1863.f;
+    c->pos[1] = 4273.f;
+    c->pos[2] = -440.f;
+
 }
 
 struct Cutscene sCutsceneCCR2[] = {
     { cutscene_ccr2, CUTSCENE_LOOP },
+};
+
+static void cutscene_ccr3(struct Camera *c) {
+}
+
+struct Cutscene sCutsceneCCR3[] = {
+    { cutscene_ccr3, CUTSCENE_LOOP },
 };
 
 /**
@@ -10775,6 +10790,7 @@ void play_cutscene(struct Camera *c) {
         
         CUTSCENE(CUTSCENE_CCR_1,                sCutsceneCCR1)
         CUTSCENE(CUTSCENE_CCR_2,                sCutsceneCCR2)
+        CUTSCENE(CUTSCENE_CCR_3,                sCutsceneCCR3)
     }
 
 #undef CUTSCENE

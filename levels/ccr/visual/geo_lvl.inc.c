@@ -25,6 +25,8 @@ extern const GeoLayout ccr_dl_001_object_011E3CF4_003_geo[];
 
 #define geo_cc_switch geo_switch_cc
 Gfx *geo_ccr_mov(s32 callContext, struct GraphNode *node, UNUSED void *context);
+Gfx *geo_ccr_anim_end(s32 callContext, struct GraphNode *node, UNUSED void *context);
+Gfx *geo_ccr_anim2_end(s32 callContext, struct GraphNode *node, UNUSED void *context);
 
 const GeoLayout ccr_area_1_geo[] = {
 	GEO_BATCH_NODE_START_WITH_FLIPBOOK(batch_lvl_dls_ccr, ccr_flipbooks),
@@ -382,7 +384,7 @@ const GeoLayout ccr_area_1_geo[] = {
 		GEO_LVL_BATCH_TRANSLATE_ROTATE(LAYER_OPAQUE, (f32)4.87890977618477e-18, (f32)1100.0004577636719, (f32)-2.729866368932389e-18, (f32)-6.372701034408034e-06, (f32)-154.99509226888986, (f32)1.8036794305282353e-06, ccr_dl_007_object_011CE39C_003_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, 0, 0, 0, ccr_dl_001_object_011B265C_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_ROTATE(LAYER_OPAQUE, 0, 0, 0, (f32)-9.334666014167418e-06, (f32)90, (f32)-2.504480508153661e-06, ccr_dl_002_object_011B245C_mesh_layer_1),
-		GEO_SWITCH_CASE(51, geo_cc_switch),
+		GEO_SWITCH_CASE(51, geo_ccr_anim_end),
 		GEO_OPEN_NODE(),
 			GEO_BRANCH(1, ccr_dl_001_object_01208A14_geo),
 			GEO_BRANCH(1, ccr_dl_002_object_01208A14_geo),
@@ -436,7 +438,7 @@ const GeoLayout ccr_area_1_geo[] = {
 			GEO_BRANCH(1, ccr_dl_050_object_012039DC_geo),
 			GEO_BRANCH(1, ccr_dl_051_object_012038DC_geo),
 		GEO_CLOSE_NODE(),
-		GEO_SWITCH_CASE(16, geo_cc_switch),
+		GEO_SWITCH_CASE(16, geo_ccr_anim2_end),
 		GEO_OPEN_NODE(),
 			GEO_BRANCH(1, ccr_dl_001_object_0120D1B4_geo),
 			GEO_BRANCH(1, ccr_dl_002_object_0120D1B4_geo),

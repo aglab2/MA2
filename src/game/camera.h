@@ -252,6 +252,7 @@ enum Cutscenes {
     CUTSCENE_ENTER_POOL,
     CUTSCENE_CCR_1,
     CUTSCENE_CCR_2,
+    CUTSCENE_CCR_3,
 };
 
 /**

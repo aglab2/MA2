@@ -580,18 +580,42 @@ extern const BehaviorScript bhvCCRSwitchP2[];
 void bhv_ccr_switch_init()
 {
     o->parentObj = spawn_object(o, MODEL_CCR_SWITCH2, bhvCCRSwitchP2);
+    aglabGlobalScratch[1] = 0;
 }
 
 void bhv_ccr_switch2_loop()
 {
-    o->oDrawingDistance = 10000.f;
-    o->oDistanceToMario = 0.f;
+    if (0 == o->oAction)
+    {
+        o->oDrawingDistance = 10000.f;
+        o->oDistanceToMario = 0.f;
+        if (50 == o->oTimer)
+        // if (o == gMarioObject->platform)
+        {
+            o->oAction = 1;
+            gCamera->cutscene = CUTSCENE_CCR_2;
+        }
+    }
+    else
+    {
+        if (o->oTimer < 60)
+        {
+            o->oPosY -= 1.f;
+        }
+        else if (o->oTimer < 110)
+        {
+            enable_time_stop_including_mario();
+            aglabGlobalScratch[1] = o->oTimer - 60;
+            gCamera->cutscene = CUTSCENE_CCR_2;
+        }
+    }
 }
 
 void bhv_ccr_capsule_init()
 {
     f32 d;
     o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvFloorSwitchGrills, &d);
+    aglabGlobalScratch[0] = 0;
 }
 
 extern Gfx mat_ccr_dl_WallSweep1_sa2mdl_0_f3d[];
@@ -705,6 +729,26 @@ Gfx *geo_ccr_anim(s32 callContext, struct GraphNode *node, UNUSED Mat4 *mtx)
     if (callContext == GEO_CONTEXT_RENDER) {
         struct GraphNodeTranslationRotation *transNode = (struct GraphNodeTranslationRotation *) node->next;
         transNode->rotation[2] = -CLAMP(aglabGlobalScratch[0], 0, 80) * 0x8000 / 150; // 30 frames for full rotation
+    }
+
+    return NULL;
+}
+
+Gfx *geo_ccr_anim_end(s32 callContext, struct GraphNode *node, UNUSED void *context)
+{
+    if (callContext == GEO_CONTEXT_RENDER) {
+        struct GraphNodeSwitchCase *switchCase = (struct GraphNodeSwitchCase *) node;
+        switchCase->selectedCase = aglabGlobalScratch[1] % switchCase->numCases;
+    }
+
+    return NULL;
+}
+
+Gfx *geo_ccr_anim2_end(s32 callContext, struct GraphNode *node, UNUSED void *context)
+{
+    if (callContext == GEO_CONTEXT_RENDER) {
+        struct GraphNodeSwitchCase *switchCase = (struct GraphNodeSwitchCase *) node;
+        switchCase->selectedCase = CLAMP(aglabGlobalScratch[1] - 10, 0, 15);
     }
 
     return NULL;
