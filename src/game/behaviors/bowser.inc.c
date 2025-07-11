@@ -286,16 +286,6 @@ s8 sBowserDebugActions[] = {
 };
 
 /**
- * Debug function that allows to change Bowser's actions (most of them)
- */
-UNUSED static void bowser_debug_actions(void) {
-    if (gDebugInfo[DEBUG_PAGE_ENEMYINFO][1] != 0) {
-        o->oAction = sBowserDebugActions[gDebugInfo[DEBUG_PAGE_ENEMYINFO][2] & 0x0F];
-        gDebugInfo[DEBUG_PAGE_ENEMYINFO][1] = 0;
-    }
-}
-
-/**
  * Set actions (and attacks) for Bowser in "Bowser in the Dark World"
  */
 void bowser_bitdw_actions(void) {
@@ -719,6 +709,19 @@ static void bowser_kill_mario_on_hit()
         gMarioStates->health = 0x180;
 }
 
+static int want_manage()
+{
+    if (gCurrLevelNum == LEVEL_SS2)
+        return 1;
+
+    // SS1 will disable bowser control after the first hit
+    if (1 == aglabGlobalScratch[0])
+        return 0;
+
+    // this case occurs at the very start of SS1
+    return o->oOpacity;
+}
+
 /**
  * Flips Bowser back on stage if he hits a mine with more than 1 health
  */
@@ -763,7 +766,7 @@ void bowser_act_hit_mine(void) {
 
     if (o->oSubAction < BOWSER_SUB_ACT_HIT_MINE_STOP)
     {
-        if (gCurrLevelNum == LEVEL_SS2 || o->oOpacity)
+        if (want_manage())
         {
             gMarioStates->pos[0] = o->oPosX - 90.f * o->oTimer;
             gMarioStates->pos[1] = o->oPosY;
@@ -1137,8 +1140,6 @@ void bowser_act_jump_onto_stage(void) {
             }
             break;
     }
-
-    print_debug_bottom_up("sp %d", o->oForwardVel);
 }
 
 /**
@@ -1791,6 +1792,7 @@ void bhv_bowser_init(void) {
     o->oBowserEyesShut = FALSE;
 
     attacks_shuffle();
+    aglabGlobalScratch[0] = 0;
 }
 
 Gfx *geo_update_body_rot_from_parent(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx) {

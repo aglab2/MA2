@@ -828,6 +828,11 @@ static int aglabGlobalScratch[0x10];
 #include "behaviors/aglab_gravflip.inc.c"
 #include "behaviors/aglab_speeder.inc.c"
 
+extern const s16 dBowserFlamesOrientationValues[];
+#include "obj_behaviors_2.h"
+#include "platform_displacement.h"
+#include "behaviors/bowser.inc.c"
+
 void clear_scratch(void) {
     bzero(aglabGlobalScratch, sizeof(aglabGlobalScratch));
 }

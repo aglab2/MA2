@@ -17,3 +17,5 @@
 #include "levels/ss1/geo.inc.c"
 #include "levels/ss1/ss1_space/geo.inc.c"
 #include "levels/ss1/ss1_boo/geo.inc.c"
+#include "levels/ss1/ss1_shadow/geo.inc.c"
+#include "levels/ss1/ss1_booboo/geo.inc.c"

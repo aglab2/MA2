@@ -168,7 +168,6 @@ void spawn_sparkle_particles(s32 n, s32 radius, s32 height, s32 r) {
 #include "behaviors/grand_star.inc.c"
 #include "behaviors/bowser_key.inc.c"
 #include "behaviors/bullet_bill.inc.c"
-#include "behaviors/bowser.inc.c"
 #include "behaviors/bowser_falling_platform.inc.c"
 #include "behaviors/bowser_flame.inc.c"
 #include "behaviors/blue_fish.inc.c"

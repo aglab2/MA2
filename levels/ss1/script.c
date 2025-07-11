@@ -34,6 +34,8 @@ const LevelScript level_ss1_entry[] = {
 	JUMP_LINK(script_func_global_1), 
 	LOAD_MODEL_FROM_GEO(MODEL_SS1_SPACE, ss1_space_geo),
 	LOAD_MODEL_FROM_GEO(MODEL_SS1_BOO, ss1_boo_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_SS1_SHADOW, ss1_shadow_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_SS1_BOO_BOO, ss1_booboo_geo),
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
