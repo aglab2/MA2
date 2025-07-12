@@ -38,6 +38,40 @@ ALIGNED8 u8 cck_lk_un1_pal[] = {
     #include "levels/cck/kd_lk_un207_15.ci4.pal"
 };
 
+ALIGNED8 u8 cck_lk_water_ci4[] = {
+    #include "levels/cck/kd_lk_water1_01.ci4.inc.c"
+    #include "levels/cck/kd_lk_water1_02.ci4.inc.c"
+    #include "levels/cck/kd_lk_water1_03.ci4.inc.c"
+    #include "levels/cck/kd_lk_water1_04.ci4.inc.c"
+    #include "levels/cck/kd_lk_water1_05.ci4.inc.c"
+    #include "levels/cck/kd_lk_water1_06.ci4.inc.c"
+    #include "levels/cck/kd_lk_water1_07.ci4.inc.c"
+    #include "levels/cck/kd_lk_water1_08.ci4.inc.c"
+    #include "levels/cck/kd_lk_water1_09.ci4.inc.c"
+    #include "levels/cck/kd_lk_water1_10.ci4.inc.c"
+    #include "levels/cck/kd_lk_water1_11.ci4.inc.c"
+    #include "levels/cck/kd_lk_water1_12.ci4.inc.c"
+    #include "levels/cck/kd_lk_water1_13.ci4.inc.c"
+    #include "levels/cck/kd_lk_water1_14.ci4.inc.c"
+};
+
+ALIGNED8 u8 cck_lk_water_pal[] = {
+    #include "levels/cck/kd_lk_water1_01.ci4.pal"
+    #include "levels/cck/kd_lk_water1_02.ci4.pal"
+    #include "levels/cck/kd_lk_water1_03.ci4.pal"
+    #include "levels/cck/kd_lk_water1_04.ci4.pal"
+    #include "levels/cck/kd_lk_water1_05.ci4.pal"
+    #include "levels/cck/kd_lk_water1_06.ci4.pal"
+    #include "levels/cck/kd_lk_water1_07.ci4.pal"
+    #include "levels/cck/kd_lk_water1_08.ci4.pal"
+    #include "levels/cck/kd_lk_water1_09.ci4.pal"
+    #include "levels/cck/kd_lk_water1_10.ci4.pal"
+    #include "levels/cck/kd_lk_water1_11.ci4.pal"
+    #include "levels/cck/kd_lk_water1_12.ci4.pal"
+    #include "levels/cck/kd_lk_water1_13.ci4.pal"
+    #include "levels/cck/kd_lk_water1_14.ci4.pal"
+};
+
 ALIGNED8 u8 cck_lk_un114_rgba32[] = {
     #include "levels/cck/kd_lk_un114_0.rgba32.inc.c"
     ,
@@ -78,10 +112,10 @@ static struct FlipbookData flipbooks_opaque[] = {
 
 static struct FlipbookData flipbooks_xlu[] = {
     // { LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_PAL_RGBA16, .tileScrollX = 5, },
-    { LVL_BATCH_LAYER_TRANSPARENT_CCK_DL_KD_LK_WATER1_01_PAL_RGBA16, .tileScrollX=2,  },
+    { LVL_BATCH_LAYER_TRANSPARENT_CCK_DL_KD_LK_WATER1_01_PAL_RGBA16, .count=14, .frames=2, .ci4s=cck_lk_water_ci4, .pals=cck_lk_water_pal  },
 
-    { LVL_BATCH_LAYER_TRANSPARENT_CCK_DL_KD_LK_UN114_PAL_RGBA16, .ci4s = cck_lk_un114_rgba32, .count=15, .frames=2,  },
-    { LVL_BATCH_LAYER_TRANSPARENT_CCK_DL_KD_LK_UN114_PAL_RGBA16_1, .ci4s = cck_lk_un114_rgba32, .count=15, .frames=2,  },
+    { LVL_BATCH_LAYER_TRANSPARENT_CCK_DL_KD_LK_UN114_RGBA32, .ci4s = cck_lk_un114_rgba32, .count=15, .frames=2,  },
+    { LVL_BATCH_LAYER_TRANSPARENT_CCK_DL_KD_LK_UN114_RGBA32_1, .ci4s = cck_lk_un114_rgba32, .count=15, .frames=2,  },
 };
 
 const struct FlipbookLayer cck_flipbooks[LAYER_COUNT] = {
