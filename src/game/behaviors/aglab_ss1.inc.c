@@ -419,6 +419,8 @@ void bhv_ss_ctl_loop()
     else
     {
         bowser->oOpacity = 255;
+        bowser->oPosX = 0;
+        bowser->oPosZ = 0;
     }
 
     if (o->oAction <= 10)
