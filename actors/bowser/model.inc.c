@@ -1167,7 +1167,7 @@ const Gfx bowser_seg6_dl_0603B8D0[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsDPSetEnvColor(255, 255, 255, 255),
-    gsDPSetAlphaCompare(G_AC_NONE),
+    gsDPSetAlphaCompareReal(G_AC_NONE),
     gsSPSetGeometryMode(G_LIGHTING),
     gsSPEndDisplayList(),
 };
@@ -1186,7 +1186,7 @@ const Gfx bowser_seg6_dl_0603B948[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsDPSetEnvColor(255, 255, 255, 255),
-    gsDPSetAlphaCompare(G_AC_NONE),
+    gsDPSetAlphaCompareReal(G_AC_NONE),
     gsDPSetRenderMode(G_RM_AA_ZB_XLU_SURF, G_RM_NOOP2),
     gsSPSetGeometryMode(G_LIGHTING),
     gsSPEndDisplayList(),

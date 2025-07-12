@@ -355,9 +355,9 @@ void bhv_ss_ctl_loop()
             bowser->oAction = BOWSER_ACT_DEFAULT;
             bowser->oMoveAngleYaw = 0x8000;
             bowser->oInteractStatus = 0;
-            bowser->oPosX = 16.f;
-            bowser->oPosY = -3.f;
-            bowser->oPosZ = 1974.f;
+            bowser->oPosX = 0.9f * 16.f;
+            bowser->oPosY = 0.9f * -3.f;
+            bowser->oPosZ = 0.9f * 1974.f;
             obj_set_collision_data(o, ss1_golem_collision);
             s8DirModeYawOffset = 0x8000;
             o->oAction = 12;
@@ -378,9 +378,9 @@ void bhv_ss_ctl_loop()
 
         bowser->oOpacity = o->oOpacity = opacity;
 
-        gMarioStates->pos[0] = -43.f;
-        gMarioStates->pos[1] = 176.f;
-        gMarioStates->pos[2] = -2016.f;
+        gMarioStates->pos[0] = 0.9f * -43.f;
+        gMarioStates->pos[1] = 0.9f * 176.f;
+        gMarioStates->pos[2] = 0.9f * -2016.f;
 
         if (opacity == 255)
         {
@@ -391,16 +391,16 @@ void bhv_ss_ctl_loop()
     {
         if (BOWSER_ACT_HIT_MINE == bowser->oAction)
         {
-            gMarioStates->pos[0] = 16.f;
-            gMarioStates->pos[1] = -3.f;
-            gMarioStates->pos[2] = 1974.f;
+            gMarioStates->pos[0] = 0.9f * 16.f;
+            gMarioStates->pos[1] = 0.9f * -3.f;
+            gMarioStates->pos[2] = 0.9f * 1974.f;
 
             if (0 == o->oSubAction)
             {
                 o->oTimer = 0;
                 o->oSubAction = 1;
                 o->oSSCtlSpecial = spawn_object(o, MODEL_SS1_GOLEM_GEO, bhvSS1Golem);
-                o->oSSCtlSpecial->oPosY = -1300.f;
+                o->oSSCtlSpecial->oPosY = -1400.f;
                 // o->oSSCtlSpecial->oFaceAngleYaw = 0x8000;
             }
 
@@ -411,6 +411,7 @@ void bhv_ss_ctl_loop()
                 bowser->oPosX = 0;
                 bowser->oPosY = 2500.f;
                 bowser->oPosZ = 0;
+                bowser->oAction = BOWSER_ACT_DANCE;
                 o->oAction = 14;
             }
             o->oSSCtlSpecial->oOpacity = 255 - bowser->oOpacity;
@@ -426,5 +427,5 @@ void bhv_ss_ctl_loop()
     if (o->oAction <= 10)
         load_object_collision_model();
 
-    print_text_fmt_int(20, 20, "A %d", o->oAction);
+    print_text_fmt_int(20, 20, "A %d", bowser->oHealth);
 }

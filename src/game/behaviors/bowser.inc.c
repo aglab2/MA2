@@ -1190,13 +1190,16 @@ void bowser_fly_back_dead(void) {
     o->oMoveAngleYaw = o->oBowserAngleToCenter + 0x8000;
     o->oBowserTimer = 0;
     o->oSubAction++; // BOWSER_SUB_ACT_DEAD_BOUNCE
-    gMarioStates->pos[0] = o->oPosX;
-    gMarioStates->pos[1] = o->oPosY;
-    gMarioStates->pos[2] = o->oPosZ;
-    gMarioStates->faceAngle[1] = 0x8000 + o->oMoveAngleYaw;
-    gMarioStates->forwardVel = 100.f;
-    gMarioStates->vel[1] = 50.f;
-    set_mario_action(gMarioStates, ACT_THROWN_BACKWARD, 0);
+    if (gCurrLevelNum == LEVEL_SS2)
+    {
+        gMarioStates->pos[0] = o->oPosX;
+        gMarioStates->pos[1] = o->oPosY;
+        gMarioStates->pos[2] = o->oPosZ;
+        gMarioStates->faceAngle[1] = 0x8000 + o->oMoveAngleYaw;
+        gMarioStates->forwardVel = 100.f;
+        gMarioStates->vel[1] = 50.f;
+        set_mario_action(gMarioStates, ACT_THROWN_BACKWARD, 0);
+    }
 }
 
 /**
