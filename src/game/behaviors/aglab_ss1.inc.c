@@ -16,11 +16,14 @@ void bhv_ss_ctl_init()
 extern const Collision ss1_space_collision[];
 extern const Collision ss1_boo_collision[];
 extern const Collision ss1_fly_collision[];
+extern const Collision ss1_golem_collision[];
 
 #define oSSCtlSpecial oObjF4
 #define oSSCtlLastRadius oFloatF8
 #define oSSCtlInitAngle oFC
 #define oSSCtlAwaitTiming o100
+
+extern s16 s8DirModeYawOffset;
 
 extern s32 approach_f32_ptr(f32 *px, f32 target, f32 delta);
 void bhv_ss_ctl_loop()
@@ -143,6 +146,7 @@ void bhv_ss_ctl_loop()
     }
     else if (4 == o->oAction)
     {
+        bowser->oInteractStatus = -1;
         if (3 == bowser->oAction)
         {
             o->oAction = 5;
@@ -152,6 +156,7 @@ void bhv_ss_ctl_loop()
             o->oSSCtlSpecial->oPosZ = 0;
             o->oSSCtlInitAngle = atan2s(gMarioStates->pos[2], gMarioStates->pos[0]);
             o->oSSCtlAwaitTiming = 0;
+            bowser->oInteractStatus = 0;
         }
     }
     else if (5 == o->oAction)
@@ -247,6 +252,7 @@ void bhv_ss_ctl_loop()
     }
     else if (7 == o->oAction)
     {
+        bowser->oInteractStatus = -1;
         f32 dx = gMarioStates->pos[0] - 2000.f;
         f32 dz = gMarioStates->pos[2];
 
@@ -265,9 +271,10 @@ void bhv_ss_ctl_loop()
             o->oAction = 8;
             obj_set_model(o, MODEL_SS1_FLY);
             bowser->oAction = 8; // spit fire in the air
-            bowser->oMoveAngleYaw = 0;
+            bowser->oMoveAngleYaw = -0x4000;
             obj_hide(o->oSSCtlSpecial);
             obj_set_collision_data(o, ss1_fly_collision);
+            s8DirModeYawOffset = -0x4000;
         }
     }
     else if (8 == o->oAction)
@@ -282,6 +289,7 @@ void bhv_ss_ctl_loop()
         bowser->oPosX = 1000.f;
         bowser->oPosY = 0;
         bowser->oPosZ = 0;
+        bowser->oInteractStatus = 0;
 
         gMarioStates->pos[0] = -1000.f;
         gMarioStates->pos[1] = 0;
@@ -294,8 +302,73 @@ void bhv_ss_ctl_loop()
     }
     else if (9 == o->oAction)
     {
-        // -
+        if (BOWSER_ACT_HIT_MINE == bowser->oAction)
+        {
+            if (0 == o->oSubAction)
+            {
+                o->oTimer = 0;
+                o->oSubAction = 1;
+            }
+
+            bowser->oOpacity -= 10;
+            if (bowser->oOpacity < 0)
+            {
+                bowser->oOpacity = 0;
+                bowser->oPosX = 0;
+                bowser->oPosY = 700.f;
+                bowser->oPosZ = 0;
+            }
+        }
+
+        if (o->oTimer == 40 && o->oSubAction)
+        {
+            bowser->oAction = BOWSER_ACT_CHARGE_MARIO;
+            o->oAction = 10;
+        }
+    }
+    else if (10 == o->oAction)
+    {
+        bowser->oOpacity = 255;
+        bowser->oPosX = 0;
+        bowser->oPosY = 700.f;
+        bowser->oPosZ = 800.f * sins(gGlobalTimer * 234);
+        bowser->oMoveAngleYaw = 0x8000 * (coss(gGlobalTimer * 234) > 0);
+        if (bowser->oAction != BOWSER_ACT_CHARGE_MARIO)
+        {
+            o->oAction = 11;
+            bowser->oInteractStatus = -1;
+        }
+    }
+    else if (11 == o->oAction)
+    {
+        int opacity = 255 - 8 * o->oTimer;
+        if (opacity < 0)
+        {
+            opacity = 0;
+        }
+        
+        o->oOpacity = bowser->oOpacity = opacity;
+        if (0 == opacity)
+        {
+            obj_set_model(o, MODEL_SS1_GOLEM);
+            bowser->oAction = BOWSER_ACT_DEFAULT;
+            bowser->oMoveAngleYaw = -0x4000;
+            bowser->oInteractStatus = 0;
+            // obj_set_collision_data(o, ss1_golem_collision);
+            s8DirModeYawOffset = -0x4000;
+            o->oAction = 12;
+        }
+    }
+    else if (12 == o->oAction)
+    {
+        int opacity = 8*o->oTimer;
+        if (opacity > 255)
+        {
+            opacity = 255;
+        }
+
+        bowser->oOpacity = o->oOpacity = opacity;
     }
 
-    print_text_fmt_int(10, 10, "%d", o->oAction);
+    print_text_fmt_int(20, 20, "A %d", o->oAction);
 }
