@@ -80,18 +80,9 @@ endif
 
 flips$(EXT): CC := $(CXX)
 flips_SOURCES := FlipsSrc/Flips.cpp
-ifeq ($(OS),Windows_NT)
-flips_CFLAGS := -Wall -Wextra -fopenmp -Os -flto -fuse-linker-plugin -fomit-frame-pointer -fmerge-all-constants \
+flips_CFLAGS := -Wall -Wextra -fopenmp -Os -flto -fomit-frame-pointer -fmerge-all-constants \
 -fvisibility=hidden -fno-exceptions -fno-rtti -fno-unwind-tables -fno-asynchronous-unwind-tables \
--ffunction-sections -fdata-sections -Wl,--gc-sections
-else
-flips_CFLAGS := -Wall -Wextra -fopenmp -Os -flto -fuse-linker-plugin -fomit-frame-pointer -fmerge-all-constants \
--fvisibility=hidden -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables \
--ffunction-sections -fdata-sections -Wl,--gc-sections \
--fvisibility=hidden -fno-exceptions -fno-rtti -fno-unwind-tables -fno-asynchronous-unwind-tables \
--ffunction-sections -fdata-sections -Wl,--gc-sections  \
--Wl,-z,relro,-z,now,--as-needed,--hash-style=gnu,--relax
-endif
+-ffunction-sections -fdata-sections
 
 all-except-recomp: $(LIBAUDIOFILE) $(OUTPUTS)
 
