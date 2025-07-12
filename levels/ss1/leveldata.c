@@ -17,3 +17,5 @@
 #include "levels/ss1/ss1_booboo/model.inc.c"
 #include "levels/ss1/ss1_fly/collision.inc.c"
 #include "levels/ss1/ss1_fly/model.inc.c"
+#include "levels/ss1/ss1_golem/collision.inc.c"
+#include "levels/ss1/ss1_golem/model.inc.c"

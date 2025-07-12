@@ -24,4 +24,8 @@ extern const LevelScript level_ss1_entry[];
 
 #include "levels/ss1/ss1_fly/geo_header.h"
 
+#include "levels/ss1/ss1_golem/collision_header.h"
+
+#include "levels/ss1/ss1_golem/geo_header.h"
+
 #endif
