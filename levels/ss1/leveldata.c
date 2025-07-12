@@ -15,3 +15,5 @@
 #include "levels/ss1/ss1_boo/model.inc.c"
 #include "levels/ss1/ss1_shadow/model.inc.c"
 #include "levels/ss1/ss1_booboo/model.inc.c"
+#include "levels/ss1/ss1_fly/collision.inc.c"
+#include "levels/ss1/ss1_fly/model.inc.c"

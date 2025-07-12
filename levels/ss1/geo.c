@@ -19,3 +19,4 @@
 #include "levels/ss1/ss1_boo/geo.inc.c"
 #include "levels/ss1/ss1_shadow/geo.inc.c"
 #include "levels/ss1/ss1_booboo/geo.inc.c"
+#include "levels/ss1/ss1_fly/geo.inc.c"

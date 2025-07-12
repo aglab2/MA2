@@ -15,6 +15,7 @@ void bhv_ss_ctl_init()
 
 extern const Collision ss1_space_collision[];
 extern const Collision ss1_boo_collision[];
+extern const Collision ss1_fly_collision[];
 
 #define oSSCtlSpecial oObjF4
 #define oSSCtlLastRadius oFloatF8
@@ -262,11 +263,38 @@ void bhv_ss_ctl_loop()
         if (0 == o->oSSCtlSpecial->oOpacity)
         {
             o->oAction = 8;
+            obj_set_model(o, MODEL_SS1_FLY);
+            bowser->oAction = 8; // spit fire in the air
+            bowser->oMoveAngleYaw = 0;
+            obj_hide(o->oSSCtlSpecial);
+            obj_set_collision_data(o, ss1_fly_collision);
         }
     }
-    else
+    else if (8 == o->oAction)
     {
+        int opacity = 8*o->oTimer;
+        if (opacity > 255)
+        {
+            opacity = 255;
+        }
 
+        bowser->oOpacity = o->oOpacity = opacity;
+        bowser->oPosX = 1000.f;
+        bowser->oPosY = 0;
+        bowser->oPosZ = 0;
+
+        gMarioStates->pos[0] = -1000.f;
+        gMarioStates->pos[1] = 0;
+        gMarioStates->pos[2] = 0;
+
+        if (255 == opacity)
+        {
+            o->oAction = 9;
+        }
+    }
+    else if (9 == o->oAction)
+    {
+        // -
     }
 
     print_text_fmt_int(10, 10, "%d", o->oAction);
