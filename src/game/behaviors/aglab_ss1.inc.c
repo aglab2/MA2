@@ -155,7 +155,7 @@ void bhv_ss_ctl_loop()
             o->oSSCtlSpecial->oPosX = 0;
             o->oSSCtlSpecial->oPosY = 0;
             o->oSSCtlSpecial->oPosZ = 0;
-            o->oSSCtlInitAngle = atan2s(gMarioStates->pos[2], gMarioStates->pos[0]);
+            o->oSSCtlInitAngle = atan2s(gMarioStates->pos[2] - 2000.f, gMarioStates->pos[0]);
             o->oSSCtlAwaitTiming = 0;
             bowser->oInteractStatus = 0;
         }

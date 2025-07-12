@@ -792,7 +792,7 @@ enum StarGrabStyle
 
 static enum StarGrabStyle get_star_grab_style(struct Object *obj)
 {
-    if (gCurrCourseNum == COURSE_SS2)
+    if (gCurrCourseNum == COURSE_SS2 || gCurrCourseNum == COURSE_SS1)
         return STAR_GRAB_EXIT;
 
     if (obj_has_model(obj, MODEL_CHECKPOINT))
