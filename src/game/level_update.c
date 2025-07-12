@@ -1073,7 +1073,12 @@ void update_hud_values(void) {
 #ifdef BREATH_METER
         s16 numBreathWedges = gMarioState->breath > 0 ? gMarioState->breath >> 8 : 0;
 #endif
-        COND_BIT(gCurrCourseNum != COURSE_NONE && gCurrCourseNum != COURSE_SS2, gHudDisplay.flags, HUD_DISPLAY_FLAG_COIN_COUNT);
+        COND_BIT(gCurrCourseNum != COURSE_NONE
+              && gCurrCourseNum != COURSE_SS2
+              && gCurrCourseNum != COURSE_SS1
+              && gCurrCourseNum != COURSE_CCT
+              && gCurrCourseNum != COURSE_CCE
+              && gCurrCourseNum != COURSE_CCR, gHudDisplay.flags, HUD_DISPLAY_FLAG_COIN_COUNT);
 
         if (gHudDisplay.coins < gMarioState->numCoins) {
             if (gGlobalTimer & 1) {
