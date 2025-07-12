@@ -46,6 +46,7 @@ DEFINE_LEVEL("SS1", LEVEL_SS1, COURSE_SS1, ss1, generic, 20000, 0x00, 0x00, 0x00
 DEFINE_LEVEL("CCT", LEVEL_CCT, COURSE_CCT, cct, generic, 20000, 0x00, 0x00, 0x00, _, sCamCct) 
 DEFINE_LEVEL("CCE", LEVEL_CCE, COURSE_CCE, cce, generic, 20000, 0x00, 0x00, 0x00, _, sCamCce) 
 DEFINE_LEVEL("CCR", LEVEL_CCR, COURSE_CCR, ccr, generic, 20000, 0x00, 0x00, 0x00, _, sCamCcr) 
+DEFINE_LEVEL("CCK", LEVEL_CCK, COURSE_CCK, cck, generic, 20000, 0x00, 0x00, 0x00, _, sCamCck) 
 DEFINE_LEVEL("BOB", LEVEL_BOB, COURSE_NONE, bob, generic, 20000, 0x00, 0x00, 0x00, _, sCamBOB) 
 DEFINE_LEVEL("PRELUDE", LEVEL_PRELUDE, COURSE_NONE, prelude, generic, 20000, 0x00, 0x00, 0x00, _, sCamPrelude) 
 DEFINE_LEVEL("END", LEVEL_END, COURSE_NONE, end, generic, 20000, 0x00, 0x00, 0x00, _, sCamEnd) 
