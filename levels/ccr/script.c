@@ -46,6 +46,7 @@ const LevelScript level_ccr_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_CCR_PLATFORM, ccr_step_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CCR_CAPSULE_OPEN, ccr_capopen_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CCR_CAPSULE_ANIM, ccr_capsule_anim_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CCR_RISING, ccr_rising_geo), 
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
 	#define bhvClamShell bhvClamShellCC

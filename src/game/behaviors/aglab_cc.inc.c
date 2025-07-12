@@ -594,19 +594,29 @@ void bhv_ccr_switch2_loop()
         {
             o->oAction = 1;
             gCamera->cutscene = CUTSCENE_CCR_2;
+            o->parentObj = spawn_object(o, MODEL_CCR_RISING, bhvStaticObject);
+            o->parentObj->oPosX = 0;
+            o->parentObj->oPosY = 100.f;
+            o->parentObj->oPosZ = 0;
+            enable_time_stop_including_mario();
         }
     }
     else
     {
-        if (o->oTimer < 60)
+        if (o->oTimer < 30)
         {
             o->oPosY -= 1.f;
         }
-        else if (o->oTimer < 110)
+        else if (o->oTimer < 83)
         {
-            enable_time_stop_including_mario();
-            aglabGlobalScratch[1] = o->oTimer - 60;
+            aglabGlobalScratch[1] = o->oTimer - 30;
             gCamera->cutscene = CUTSCENE_CCR_2;
+        }
+        else
+        {
+            o->parentObj->oPosY += 10.f;
+            print_text_fmt_int(10, 10, "%d", (int) o->parentObj->oPosY);
+            gCamera->cutscene = CUTSCENE_CCR_3;            
         }
     }
 }
@@ -738,7 +748,7 @@ Gfx *geo_ccr_anim_end(s32 callContext, struct GraphNode *node, UNUSED void *cont
 {
     if (callContext == GEO_CONTEXT_RENDER) {
         struct GraphNodeSwitchCase *switchCase = (struct GraphNodeSwitchCase *) node;
-        switchCase->selectedCase = aglabGlobalScratch[1] % switchCase->numCases;
+        switchCase->selectedCase = CLAMP(aglabGlobalScratch[1], 0, switchCase->numCases - 1);
     }
 
     return NULL;
@@ -748,7 +758,7 @@ Gfx *geo_ccr_anim2_end(s32 callContext, struct GraphNode *node, UNUSED void *con
 {
     if (callContext == GEO_CONTEXT_RENDER) {
         struct GraphNodeSwitchCase *switchCase = (struct GraphNodeSwitchCase *) node;
-        switchCase->selectedCase = CLAMP(aglabGlobalScratch[1] - 10, 0, 15);
+        switchCase->selectedCase = CLAMP(aglabGlobalScratch[1] - 20, 0, 15);
     }
 
     return NULL;
