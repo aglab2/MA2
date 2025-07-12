@@ -37,6 +37,8 @@ const LevelScript level_ss1_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_SS1_SHADOW, ss1_shadow_geo),
 	LOAD_MODEL_FROM_GEO(MODEL_SS1_BOO_BOO, ss1_booboo_geo),
 	LOAD_MODEL_FROM_GEO(MODEL_SS1_FLY, ss1_fly_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_SS1_GOLEM, ss1_golem_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_SS1_GOLEM_GEO, ss1_golem_go_geo),
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */

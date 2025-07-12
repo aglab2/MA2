@@ -25,6 +25,7 @@ extern const Collision ss1_golem_collision[];
 
 extern s16 s8DirModeYawOffset;
 
+extern const BehaviorScript bhvSS1Golem[];
 extern s32 approach_f32_ptr(f32 *px, f32 target, f32 delta);
 void bhv_ss_ctl_loop()
 {
@@ -272,7 +273,7 @@ void bhv_ss_ctl_loop()
             obj_set_model(o, MODEL_SS1_FLY);
             bowser->oAction = 8; // spit fire in the air
             bowser->oMoveAngleYaw = -0x4000;
-            obj_hide(o->oSSCtlSpecial);
+            o->oSSCtlSpecial->activeFlags = 0;
             obj_set_collision_data(o, ss1_fly_collision);
             s8DirModeYawOffset = -0x4000;
         }
@@ -332,7 +333,7 @@ void bhv_ss_ctl_loop()
         bowser->oPosX = 0;
         bowser->oPosY = 700.f;
         bowser->oPosZ = 800.f * sins(gGlobalTimer * 234);
-        bowser->oMoveAngleYaw = 0x8000 * (coss(gGlobalTimer * 234) > 0);
+        bowser->oMoveAngleYaw = 0x8000 * (coss(gGlobalTimer * 234) < 0);
         if (bowser->oAction != BOWSER_ACT_CHARGE_MARIO)
         {
             o->oAction = 11;
@@ -352,11 +353,19 @@ void bhv_ss_ctl_loop()
         {
             obj_set_model(o, MODEL_SS1_GOLEM);
             bowser->oAction = BOWSER_ACT_DEFAULT;
-            bowser->oMoveAngleYaw = -0x4000;
+            bowser->oMoveAngleYaw = 0x8000;
             bowser->oInteractStatus = 0;
-            // obj_set_collision_data(o, ss1_golem_collision);
-            s8DirModeYawOffset = -0x4000;
+            bowser->oPosX = 16.f;
+            bowser->oPosY = -3.f;
+            bowser->oPosZ = 1974.f;
+            obj_set_collision_data(o, ss1_golem_collision);
+            s8DirModeYawOffset = 0x8000;
             o->oAction = 12;
+            load_object_static_model();
+        }
+        else
+        {
+            load_object_collision_model();
         }
     }
     else if (12 == o->oAction)
@@ -368,7 +377,52 @@ void bhv_ss_ctl_loop()
         }
 
         bowser->oOpacity = o->oOpacity = opacity;
+
+        gMarioStates->pos[0] = -43.f;
+        gMarioStates->pos[1] = 176.f;
+        gMarioStates->pos[2] = -2016.f;
+
+        if (opacity == 255)
+        {
+            o->oAction = 13;
+        }
     }
+    else if (13 == o->oAction)
+    {
+        if (BOWSER_ACT_HIT_MINE == bowser->oAction)
+        {
+            gMarioStates->pos[0] = 16.f;
+            gMarioStates->pos[1] = -3.f;
+            gMarioStates->pos[2] = 1974.f;
+
+            if (0 == o->oSubAction)
+            {
+                o->oTimer = 0;
+                o->oSubAction = 1;
+                o->oSSCtlSpecial = spawn_object(o, MODEL_SS1_GOLEM_GEO, bhvSS1Golem);
+                o->oSSCtlSpecial->oPosY = -1300.f;
+                // o->oSSCtlSpecial->oFaceAngleYaw = 0x8000;
+            }
+
+            bowser->oOpacity -= 10;
+            if (bowser->oOpacity < 0)
+            {
+                bowser->oOpacity = 0;
+                bowser->oPosX = 0;
+                bowser->oPosY = 2500.f;
+                bowser->oPosZ = 0;
+                o->oAction = 14;
+            }
+            o->oSSCtlSpecial->oOpacity = 255 - bowser->oOpacity;
+        }
+    }
+    else
+    {
+        bowser->oOpacity = 255;
+    }
+
+    if (o->oAction <= 10)
+        load_object_collision_model();
 
     print_text_fmt_int(20, 20, "A %d", o->oAction);
 }

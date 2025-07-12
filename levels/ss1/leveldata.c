@@ -19,3 +19,5 @@
 #include "levels/ss1/ss1_fly/model.inc.c"
 #include "levels/ss1/ss1_golem/collision.inc.c"
 #include "levels/ss1/ss1_golem/model.inc.c"
+#include "levels/ss1/ss1_golem_go/collision.inc.c"
+#include "levels/ss1/ss1_golem_go/model.inc.c"

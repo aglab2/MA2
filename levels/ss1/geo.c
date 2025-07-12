@@ -21,3 +21,4 @@
 #include "levels/ss1/ss1_booboo/geo.inc.c"
 #include "levels/ss1/ss1_fly/geo.inc.c"
 #include "levels/ss1/ss1_golem/geo.inc.c"
+#include "levels/ss1/ss1_golem_go/geo.inc.c"
