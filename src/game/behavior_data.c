@@ -6898,3 +6898,53 @@ const BehaviorScript bhvSnufitBallsCC[] = {
         CALL_NATIVE(bhv_snufit_balls_loop_cc),
     END_LOOP(),
 };
+
+extern void bhv_cck_doors_init();
+extern void bhv_cck_doors_loop();
+const BehaviorScript bhvCCKDoor[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    CALL_NATIVE(bhv_cck_doors_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_cck_doors_loop),
+    END_LOOP(),
+};
+
+extern void bhv_cck_gate_loop();
+extern const BehaviorScript bhvCCKGate[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_cck_gate_loop),
+    END_LOOP(),
+};
+
+extern void bhv_cck_current_loop();
+extern const BehaviorScript bhvCCKCurrent[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_cck_current_loop),
+    END_LOOP(),
+};
+
+extern const Collision cck_switch_p1_collision[];
+extern const Collision cck_switch_p2_collision[];
+extern void bhv_cck_switch_init();
+extern const BehaviorScript bhvCCKSwitch[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    LOAD_COLLISION_DATA(cck_switch_p1_collision),
+    CALL_NATIVE(bhv_cck_switch_init),
+    CALL_NATIVE(load_object_static_model),
+    SET_FLOAT(oDrawingDistance, 10000),
+    BREAK(),
+};
+
+extern void bhv_cck_switch2_loop();
+extern const BehaviorScript bhvCCKSwitchP2[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(cck_switch_p2_collision),
+    SET_FLOAT(oDrawingDistance, 10000),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_cck_switch2_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};

@@ -22,6 +22,10 @@ static struct LevelConfig cfg = {
 	.springDescs = spring_descs_ccr,
 };
 #define SEQ_LEVEL_GRASS 0x44
+#define bhvCoinFormation bhvCoinFormationCC
+#define bhvClamShell bhvClamShellCC
+#define bhvSkeeter bhvSkeeterCC
+#define bhvSnufit bhvSnufitCC
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_ccr_entry[] = {
@@ -49,9 +53,6 @@ const LevelScript level_ccr_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_CCR_RISING, ccr_rising_geo), 
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
-	#define bhvClamShell bhvClamShellCC
-	#define bhvSkeeter bhvSkeeterCC
-	#define bhvSnufit bhvSnufitCC
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, ccr_area_1, 0, 0, 0),

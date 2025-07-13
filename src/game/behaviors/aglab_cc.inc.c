@@ -763,3 +763,68 @@ Gfx *geo_ccr_anim2_end(s32 callContext, struct GraphNode *node, UNUSED void *con
 
     return NULL;
 }
+
+extern const BehaviorScript bhvCCKSwitchP2[];
+void bhv_cck_switch_init()
+{
+    o->parentObj = spawn_object(o, MODEL_CCR_SWITCH2, bhvCCKSwitchP2);
+}
+
+void bhv_cck_switch2_loop()
+{
+    if (0 == o->oAction)
+    {
+        o->oDrawingDistance = 10000.f;
+        o->oDistanceToMario = 0.f;
+        if (o == gMarioObject->platform)
+        {
+            o->oAction = 1;
+            gCamera->cutscene = CUTSCENE_CCK_1;
+            enable_time_stop_including_mario();
+        }
+    }
+    else
+    {
+        // -
+    }
+}
+
+void bhv_cck_current_loop()
+{
+    // -
+}
+
+void bhv_cck_gate_loop()
+{
+    if (gTimeFrozen)
+        return;
+
+    f32 ydiff = gMarioStates->pos[1] - o->oPosY;
+    if (ydiff < -10.f || ydiff > 1000.f)
+        return;
+
+#if 0
+    f32 dx = gMarioStates->pos[0];
+    if (absf(dx) > 300.f)
+        return;
+
+    f32 dz = gMarioStates->pos[2] + 2450.f;
+    if (absf(dz) > 100.f)
+        return;
+
+    if (dz < 0)
+        gMarioStates->pos[2] = -2450.f - 100.f;
+    else
+        gMarioStates->pos[2] = -2450.f + 100.f;
+#endif
+}
+
+void bhv_cck_doors_init()
+{
+    o->oObjF4 = spawn_object(o, MODEL_CCK_DOOR_L, bhvStaticObject);
+    o->oObjF8 = spawn_object(o, MODEL_CCK_DOOR_R, bhvStaticObject);
+}
+
+void bhv_cck_doors_loop()
+{
+}
