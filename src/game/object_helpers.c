@@ -311,8 +311,6 @@ Gfx *geo_switch_cc2(s32 callContext, struct GraphNode *node, UNUSED void *contex
                 switchCase->selectedCase = CLAMP(-1 + time, 0, 9);
             else
                 switchCase->selectedCase = CLAMP(18 - time, 3, 8);
-            
-            print_text_fmt_int(10, 30, "%d", switchCase->selectedCase);
         }
     }
 
