@@ -16,4 +16,18 @@ extern const LevelScript level_cck_entry[];
 
 #include "levels/cck/ccr_doorr/geo_header.h"
 
+#include "levels/cck/cck_switch/geo_header.h"
+
+#include "levels/cck/cck_block/geo_header.h"
+
+#include "levels/cck/cck_block/collision_header.h"
+
+#include "levels/cck/cck_switch_p1/collision_header.h"
+
+#include "levels/cck/cck_switch_p1/geo_header.h"
+
+#include "levels/cck/cck_switch_p2/collision_header.h"
+
+#include "levels/cck/cck_switch_p2/geo_header.h"
+
 #endif

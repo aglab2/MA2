@@ -20,3 +20,7 @@
 #endif
 #include "levels/cck/ccr_doorl/geo.inc.c"
 #include "levels/cck/ccr_doorr/geo.inc.c"
+#include "levels/cck/cck_switch/geo.inc.c"
+#include "levels/cck/cck_block/geo.inc.c"
+#include "levels/cck/cck_switch_p1/geo.inc.c"
+#include "levels/cck/cck_switch_p2/geo.inc.c"
