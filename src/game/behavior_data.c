@@ -6909,9 +6909,11 @@ const BehaviorScript bhvCCKDoor[] = {
     END_LOOP(),
 };
 
+extern void bhv_cck_gate_init();
 extern void bhv_cck_gate_loop();
 extern const BehaviorScript bhvCCKGate[] = {
     BEGIN(OBJ_LIST_LEVEL),
+    CALL_NATIVE(bhv_cck_gate_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_cck_gate_loop),
     END_LOOP(),

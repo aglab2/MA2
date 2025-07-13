@@ -794,29 +794,53 @@ void bhv_cck_current_loop()
     // -
 }
 
+void bhv_cck_gate_init()
+{
+    f32 d;
+    o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvFloorSwitchGrills, &d);
+}
+
 void bhv_cck_gate_loop()
 {
-    if (gTimeFrozen)
-        return;
+    if (0 == o->oBehParams2ndByte)
+    {
+        if (gTimeFrozen)
+            return;
 
-    f32 ydiff = gMarioStates->pos[1] - o->oPosY;
-    if (ydiff < -10.f || ydiff > 1000.f)
-        return;
+        f32 ydiff = gMarioStates->pos[1] - o->oPosY;
+        if (ydiff < -10.f || ydiff > 1000.f)
+            return;
 
-#if 0
-    f32 dx = gMarioStates->pos[0];
-    if (absf(dx) > 300.f)
-        return;
+        f32 dx = gMarioStates->pos[0];
+        if (absf(dx) > 300.f)
+            return;
 
-    f32 dz = gMarioStates->pos[2] + 2450.f;
-    if (absf(dz) > 100.f)
-        return;
+        f32 dz = gMarioStates->pos[2] - o->oPosZ;
+        if (absf(dz) > 100.f)
+            return;
 
-    if (dz < 0)
-        gMarioStates->pos[2] = -2450.f - 100.f;
+        gMarioStates->pos[2] = o->oPosZ + (dz < 0 ? -100.f : 100.f);
+    }
     else
-        gMarioStates->pos[2] = -2450.f + 100.f;
-#endif
+    {
+        if (o->parentObj->oAction != 0)
+            return;
+
+        
+        f32 ydiff = gMarioStates->pos[1] - o->oPosY;
+        if (ydiff < -10.f || ydiff > 700.f)
+            return;
+
+        f32 dx = gMarioStates->pos[0];
+        if (absf(dx) > 300.f)
+            return;
+
+        f32 dz = gMarioStates->pos[2] - o->oPosZ;
+        if (absf(dz) > 100.f)
+            return;
+
+        gMarioStates->pos[2] = o->oPosZ + (dz < 0 ? -100.f : 100.f);
+    }
 }
 
 void bhv_cck_doors_init()
