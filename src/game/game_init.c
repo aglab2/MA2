@@ -48,7 +48,8 @@ OSContStatus gControllerStatuses[MAXCONTROLLERS];
 OSContPadEx gControllerPads[MAXCONTROLLERS];
 u8 gControllerBits = 0b0000;
 u8 gBorderHeight = 0;
-u8 gBorderWidth = 0;
+Gfx gSciCmd;
+Gfx gFillRectCmd;
 #ifdef VANILLA_STYLE_CUSTOM_DEBUG
 u8 gCustomDebugMode;
 #endif
@@ -199,7 +200,7 @@ void select_framebuffer(void) {
     gDPSetCycleType(tempGfxHead++, G_CYC_1CYCLE);
     gDPSetColorImage(tempGfxHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH,
                      gPhysicalFramebuffers[sRenderingFramebuffer]);
-    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, gBorderWidth, gBorderHeight, SCREEN_WIDTH - gBorderWidth, SCREEN_HEIGHT - gBorderHeight);
+    *(gDisplayListHead++) = gSciCmd;
 
     gDisplayListHead = tempGfxHead;
 }

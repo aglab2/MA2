@@ -644,6 +644,7 @@ extern int gQuickLookups;
 extern int gSlowLookups;
 
 u8 gWaterTutorial;
+extern void shade_screen_yellow(void);
 void render_game(void) {
     PROFILER_GET_SNAPSHOT_TYPE(PROFILER_DELTA_COLLISION);
     if (gCurrentArea != NULL && !gWarpTransition.pauseRendering) {
@@ -655,8 +656,8 @@ void render_game(void) {
 #endif
 
         gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gViewport));
-
-        gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, gBorderWidth, gBorderHeight, SCREEN_WIDTH - gBorderWidth, SCREEN_HEIGHT - gBorderHeight);
+        if (gCurrLevelNum == LEVEL_CCK)
+            shade_screen_yellow();
         render_hud();
 
         if (gWaterTutorial && gWaterTutorial < 255)

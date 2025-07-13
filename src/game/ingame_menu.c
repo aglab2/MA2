@@ -1368,7 +1368,7 @@ void render_dialog_entries(void) {
     if (gLastDialogPageStrPos == -1 && gDialogHasResponse) {
         render_dialog_triangle_choice();
     }
-    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, gBorderWidth, gBorderHeight, SCREEN_WIDTH - gBorderWidth, SCREEN_HEIGHT - gBorderHeight);
+    *(gDisplayListHead++) = gSciCmd;
     if (gLastDialogPageStrPos != -1 && gDialogBoxState == DIALOG_STATE_VERTICAL) {
         render_dialog_triangle_next(dialog->linesPerBox);
     }
@@ -1543,8 +1543,23 @@ void shade_screen(void) {
     Gfx* dlHead = gDisplayListHead;
 
     gSPDisplayList(dlHead++, dl_shade_screen_begin);
-    gDPFillRectangle(dlHead++, GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(gBorderWidth), gBorderHeight,
-        (GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(gBorderWidth) + 1), ((SCREEN_HEIGHT - gBorderHeight) + 1));
+    gDPSetPrimColor(dlHead++, 0, 0, 0, 0, 0, 127);
+    *(dlHead++) = gFillRectCmd;
+    gSPDisplayList(dlHead++, dl_shade_screen_end);
+
+    gDisplayListHead = dlHead;
+}
+
+void shade_screen_yellow(void) {
+    int amount = CLAMP((6100.f - gMarioStates->pos[1]) / 3.f, 0, 127);
+    if (amount == 0)
+        return;
+
+    Gfx* dlHead = gDisplayListHead;
+
+    gSPDisplayList(dlHead++, dl_shade_screen_begin);
+    gDPSetPrimColor(dlHead++, 0, 0, 255, 165, 0, amount);
+    *(dlHead++) = gFillRectCmd;
     gSPDisplayList(dlHead++, dl_shade_screen_end);
 
     gDisplayListHead = dlHead;

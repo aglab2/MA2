@@ -48,7 +48,8 @@ extern u8 *gGfxPoolEnd;
 extern struct GfxPool *gGfxPool;
 extern u8 gControllerBits;
 extern u8 gBorderHeight;
-extern u8 gBorderWidth;
+extern Gfx gSciCmd;
+extern Gfx gFillRectCmd;
 #ifdef VANILLA_STYLE_CUSTOM_DEBUG
 extern u8 gCustomDebugMode;
 #endif

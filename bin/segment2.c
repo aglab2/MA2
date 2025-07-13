@@ -2526,7 +2526,6 @@ const Gfx dl_shade_screen_begin[] = {
     gsDPPipeSync(),
     gsDPSetRenderMode(G_RM_CLD_SURF, G_RM_CLD_SURF2),
     gsDPSetCycleType(G_CYC_1CYCLE),
-    gsDPSetPrimColor(0, 0, 0, 0, 0, 127),
     gsDPSetCombineMode(G_CC_PRIMITIVE, G_CC_PRIMITIVE),
     gsSPEndDisplayList(),
 };
