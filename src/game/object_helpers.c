@@ -293,6 +293,8 @@ Gfx *geo_switch_cc(s32 callContext, struct GraphNode *node, UNUSED void *context
     return NULL;
 }
 
+extern void print_text_fmt_int(s32 x, s32 y, const char *str, s32 n);
+
 Gfx *geo_switch_cc2(s32 callContext, struct GraphNode *node, UNUSED void *context) {
     if (callContext == GEO_CONTEXT_RENDER) {
         struct GraphNodeSwitchCase *switchCase = (struct GraphNodeSwitchCase *) node;
@@ -302,14 +304,21 @@ Gfx *geo_switch_cc2(s32 callContext, struct GraphNode *node, UNUSED void *contex
         }
         else
         {
-            switchCase->selectedCase = CLAMP(5 - gFlipbookTimer % 16, 0, 9);
+            int time = gFlipbookTimer % 16;
+            if (0 == time)
+                switchCase->selectedCase = 2;
+            else if (time <= 2)
+                switchCase->selectedCase = CLAMP(-1 + time, 0, 9);
+            else
+                switchCase->selectedCase = CLAMP(18 - time, 3, 8);
+            
+            print_text_fmt_int(10, 30, "%d", switchCase->selectedCase);
         }
     }
 
     return NULL;
 }
 
-extern void print_text_fmt_int(s32 x, s32 y, const char *fmt, int value);
 Gfx *geo_ccr_mov(s32 callContext, struct GraphNode *node, UNUSED void *context)
 {
     if (callContext == GEO_CONTEXT_RENDER) {

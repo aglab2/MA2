@@ -107,15 +107,14 @@ ALIGNED8 u8 cck_lk_un114_rgba32[] = {
 };
 
 static struct FlipbookData flipbooks_opaque[] = {
-    { LVL_BATCH_LAYER_OPAQUE_CCK_DL_KD_LK_UN207_PAL_RGBA16, .count=15, .frames=2, .ci4s=cck_lk_un1_ci4, .pals=cck_lk_un1_pal },
+    { LVL_BATCH_LAYER_OPAQUE_CCK_DL_KD_LK_UN207_PAL_RGBA16, .count=15, .frames=1, .ci4s=cck_lk_un1_ci4, .pals=cck_lk_un1_pal },
 };
 
 static struct FlipbookData flipbooks_xlu[] = {
     // { LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_PAL_RGBA16, .tileScrollX = 5, },
-    { LVL_BATCH_LAYER_TRANSPARENT_CCK_DL_KD_LK_WATER1_01_PAL_RGBA16, .count=14, .frames=2, .ci4s=cck_lk_water_ci4, .pals=cck_lk_water_pal  },
+    { LVL_BATCH_LAYER_TRANSPARENT_CCK_DL_KD_LK_WATER1_01_PAL_RGBA16, .count=14, .frames=1, .ci4s=cck_lk_water_ci4, .pals=cck_lk_water_pal  },
 
     { LVL_BATCH_LAYER_TRANSPARENT_CCK_DL_KD_LK_UN114_RGBA32, .ci4s = cck_lk_un114_rgba32, .count=15, .frames=2,  },
-    { LVL_BATCH_LAYER_TRANSPARENT_CCK_DL_KD_LK_UN114_RGBA32_1, .ci4s = cck_lk_un114_rgba32, .count=15, .frames=2,  },
 };
 
 const struct FlipbookLayer cck_flipbooks[LAYER_COUNT] = {

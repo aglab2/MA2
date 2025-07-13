@@ -572,8 +572,6 @@ extern u8 gTimeFrozen;
 static void adjust_view_range();
 static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
     u8 timeFrozen = gTimeFrozen;
-    if (!gTimeFrozen)
-        gFlipbookTimer++;
 
     const struct RenderPhase *renderPhase;
     s32 currLayer     = LAYER_FIRST;
@@ -585,7 +583,11 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
     Gfx *tempGfxHead = gDisplayListHead;
 
     if (enableZBuffer)
+    {
         adjust_view_range();
+        if (!timeFrozen)
+            gFlipbookTimer++;
+    }
 
     // Loop through the render phases
     for (phaseIndex = RENDER_PHASE_FIRST; phaseIndex < finalPhase; phaseIndex++) {
