@@ -2532,6 +2532,7 @@ const Gfx dl_shade_screen_begin[] = {
 };
 
 const Gfx dl_shade_screen_end[] = {
+    gsSPFlush(),
     gsDPPipeSync(),
     gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2),
     gsDPSetPrimColor(0, 0, 255, 255, 255, 255),

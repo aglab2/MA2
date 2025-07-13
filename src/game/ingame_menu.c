@@ -1368,7 +1368,7 @@ void render_dialog_entries(void) {
     if (gLastDialogPageStrPos == -1 && gDialogHasResponse) {
         render_dialog_triangle_choice();
     }
-    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 2, 2, SCREEN_WIDTH - gBorderHeight / 2, SCREEN_HEIGHT - gBorderHeight / 2);
+    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, gBorderWidth, gBorderHeight, SCREEN_WIDTH - gBorderWidth, SCREEN_HEIGHT - gBorderHeight);
     if (gLastDialogPageStrPos != -1 && gDialogBoxState == DIALOG_STATE_VERTICAL) {
         render_dialog_triangle_next(dialog->linesPerBox);
     }
@@ -1543,8 +1543,8 @@ void shade_screen(void) {
     Gfx* dlHead = gDisplayListHead;
 
     gSPDisplayList(dlHead++, dl_shade_screen_begin);
-    gDPFillRectangle(dlHead++, GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), gBorderHeight,
-        (GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) + 5), ((SCREEN_HEIGHT - gBorderHeight) + 1));
+    gDPFillRectangle(dlHead++, GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(gBorderWidth), gBorderHeight,
+        (GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(gBorderWidth) + 1), ((SCREEN_HEIGHT - gBorderHeight) + 1));
     gSPDisplayList(dlHead++, dl_shade_screen_end);
 
     gDisplayListHead = dlHead;

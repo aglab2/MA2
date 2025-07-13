@@ -498,7 +498,6 @@ void thread3_main(UNUSED void *arg) {
 #endif
 
     if (!gIsConsole) {
-        gBorderHeight = BORDER_HEIGHT_EMULATOR;
 #ifdef RCVI_HACK
         VI.comRegs.vSync = 525*20;   
         change_vi(&VI, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -508,6 +507,7 @@ void thread3_main(UNUSED void *arg) {
 #endif
     } else {
         gBorderHeight = BORDER_HEIGHT_CONSOLE;
+        gBorderWidth = BORDER_WIDTH_CONSOLE;
     }
 
     crash_screen_init();
