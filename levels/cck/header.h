@@ -12,4 +12,8 @@ extern const LevelScript level_cck_entry[];
 #include "levels/cck/visual/header_lvlopt.inc.h"
 #endif
 
+#include "levels/cck/ccr_doorl/geo_header.h"
+
+#include "levels/cck/ccr_doorr/geo_header.h"
+
 #endif

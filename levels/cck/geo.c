@@ -18,3 +18,5 @@
 #else
 #include "levels/cck/visual/geo_lvl.inc.c"
 #endif
+#include "levels/cck/ccr_doorl/geo.inc.c"
+#include "levels/cck/ccr_doorr/geo.inc.c"

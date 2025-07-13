@@ -1,0 +1,25 @@
+#include "src/game/envfx_snow.h"
+
+const GeoLayout ccr_doorr_geo[] = {
+	GEO_NODE_START(),
+	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccr_doorr_ccr_doorr_mesh_layer_1),
+		GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-250.0, (s16)0.0),
+		GEO_OPEN_NODE(),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)200.0, (s16)100.0, (s16)50.0, ccr_doorr_003_object_00561F74_mesh_layer_5),
+			GEO_OPEN_NODE(),
+				GEO_DISPLAY_LIST(LAYER_OPAQUE, ccr_doorr_003_object_00561F74_mesh_layer_1),
+			GEO_CLOSE_NODE(),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)200.0, (s16)400.0, (s16)50.0, ccr_doorr_004_object_00561B6C_mesh_layer_5),
+			GEO_OPEN_NODE(),
+				GEO_DISPLAY_LIST(LAYER_OPAQUE, ccr_doorr_004_object_00561B6C_mesh_layer_1),
+			GEO_CLOSE_NODE(),
+		GEO_CLOSE_NODE(),
+		GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-250.0, (s16)0.0),
+		GEO_OPEN_NODE(),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)200.0, (s16)48.27339172363281, (s16)0.0, ccr_doorr_006_object_0056172C_mesh_layer_1),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)200.0, (s16)449.3151092529297, (s16)0.0, ccr_doorr_007_object_005614DC_mesh_layer_1),
+		GEO_CLOSE_NODE(),
+	GEO_CLOSE_NODE(),
+	GEO_END(),
+};
