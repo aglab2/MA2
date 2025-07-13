@@ -47,7 +47,7 @@
  * There is generally no reason to have a value other than 0 for emulator. As for console, it provides a (small) performance boost.
  */
 #define BORDER_HEIGHT_CONSOLE  10
-#define BORDER_WIDTH_CONSOLE  2
+#define BORDER_WIDTH_CONSOLE  4
 
 /**
  * RCVI hack. Increases performance on emulator, and does nothing on console.
