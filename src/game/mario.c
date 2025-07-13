@@ -1748,11 +1748,18 @@ void rail_debug()
 /**
  * Main function for executing Mario's behavior. Returns particleFlags.
  */
+extern u8 gTimeFrozen;
 s32 execute_mario_action(UNUSED struct Object *obj) {
 #if 0
     rail_debug();
 #endif
     s32 inLoop = TRUE;
+
+    if (gCurrCourseNum == COURSE_CCK)
+    {
+        if (gTimeFrozen)
+            gCollisionFlags |= COLLISION_FLAG_EXCLUDE_LAVA;
+    }
 
     // Updates once per frame:
     vec3f_get_dist_and_angle(gMarioState->prevPos, gMarioState->pos, &gMarioState->moveSpeed, &gMarioState->movePitch, &gMarioState->moveYaw);
@@ -1843,12 +1850,13 @@ s32 execute_mario_action(UNUSED struct Object *obj) {
         }
 
 end:
-        play_infinite_stairs_music();
+        // play_infinite_stairs_music();
         gMarioState->marioObj->oInteractStatus = INT_STATUS_NONE;
 #if ENABLE_RUMBLE
         queue_rumble_particles(gMarioState);
 #endif
 
+        gCollisionFlags &= ~COLLISION_FLAG_EXCLUDE_LAVA;
         return gMarioState->particleFlags;
     }
 

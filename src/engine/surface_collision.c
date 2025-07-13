@@ -65,6 +65,7 @@ static s32 find_wall_collisions_from_list(struct SurfaceNode *surfaceNode, struc
     s32 numCols = 0;
     s32 flagCamera = gCollisionFlags & COLLISION_FLAG_CAMERA;
     s32 flagRetFirst = gCollisionFlags & COLLISION_FLAG_RETURN_FIRST;
+    s32 flagLava = gCollisionFlags & COLLISION_FLAG_EXCLUDE_LAVA;
 
     // Unlike floors/ceils, walls use regular co-ordinates for collision, so undo the transform.
     if (gGravityMode) pos[1] = 9000.f - pos[1];
@@ -95,6 +96,8 @@ static s32 find_wall_collisions_from_list(struct SurfaceNode *surfaceNode, struc
                 if (o == gMarioObject && gMarioState->flags & MARIO_VANISH_CAP) continue;
             }
         }
+        if (flagLava && type == SURFACE_BURNING)
+            continue;
 
         struct Surface *surf = SURFACE_NODE_SURF(packed);
 
@@ -322,6 +325,7 @@ static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 
     *pheight = CELL_HEIGHT_LIMIT;
     s32 flagCamera = gCollisionFlags & COLLISION_FLAG_CAMERA;
     s32 flagRetFirst = gCollisionFlags & COLLISION_FLAG_RETURN_FIRST;
+    s32 flagLava = gCollisionFlags & COLLISION_FLAG_EXCLUDE_LAVA;
     const u32 gm = gGravityMode;
     struct SurfaceNode* next = surfaceNode;
 
@@ -358,6 +362,8 @@ static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 
             // Ignore camera only surfaces
             continue;
         }
+        if (flagLava && type == SURFACE_BURNING)
+            continue;
 
         struct Surface* surf = SURFACE_NODE_SURF(packed);
 
@@ -511,6 +517,7 @@ static struct Surface *find_floor_from_list(const struct SurfaceNode *surfaceNod
     s32 excludeIntangible = !(gCollisionFlags & COLLISION_FLAG_INCLUDE_INTANGIBLE);
     s32 flagCamera = gCollisionFlags & COLLISION_FLAG_CAMERA;
     s32 flagRetFirst = gCollisionFlags & COLLISION_FLAG_RETURN_FIRST;
+    s32 flagLava = gCollisionFlags & COLLISION_FLAG_EXCLUDE_LAVA;
     const u32 gm = gGravityMode;
 
     struct SurfaceNode* next = surfaceNode;
@@ -543,6 +550,8 @@ static struct Surface *find_floor_from_list(const struct SurfaceNode *surfaceNod
         } else if (type == SURFACE_CAMERA_BOUNDARY) {
             continue; // If we are not checking for the camera, ignore camera only floors.
         }
+        if (flagLava && type == SURFACE_BURNING)
+            continue;
 
         // Exclude all floors above the point.
         if (!gm) {

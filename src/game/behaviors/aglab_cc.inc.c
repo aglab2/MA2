@@ -849,6 +849,9 @@ void bhv_cck_doors_init()
     o->oObjF8 = spawn_object(o, MODEL_CCK_DOOR_R, bhvStaticObject);
 }
 
+extern Gfx mat_cck_dl_LAZER_sa2mdl_0_f3d[];
 void bhv_cck_doors_loop()
 {
+    u8* ptr = (u8*) segmented_to_virtual(mat_cck_dl_LAZER_sa2mdl_0_f3d);
+    ptr[11*8 + 7] = gTimeFrozen ? 0 : 180;
 }
