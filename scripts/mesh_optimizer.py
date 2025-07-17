@@ -873,6 +873,14 @@ class ModelMeshEntry(ModelEntry):
                     tri0 = triangles.popleft()
                     tri1 = triangles.popleft()
                     dl_entry.data.append(f"\tgsSP2Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, 0, {tri1[0]}, {tri1[1]}, {tri1[2]}, 0),\n")
+                elif 4 == len(triangles):
+                    # 4 triangles is better presented as 2xTRI2 commands - same amount of commands but less RSP work
+                    tri0 = triangles.popleft()
+                    tri1 = triangles.popleft()
+                    tri2 = triangles.popleft()
+                    tri3 = triangles.popleft()
+                    dl_entry.data.append(f"\tgsSP2Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, 0, {tri1[0]}, {tri1[1]}, {tri1[2]}, 0),\n")
+                    dl_entry.data.append(f"\tgsSP2Triangles({tri2[0]}, {tri2[1]}, {tri2[2]}, 0, {tri3[0]}, {tri3[1]}, {tri3[2]}, 0),\n")
                 else:
                     tri0 = triangles.popleft()
                     tri1 = triangles.popleft()
