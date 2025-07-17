@@ -2,6 +2,14 @@ extern const GeoLayout sh_area_1_geo[];
 extern const GeoLayout sh_area_1[];
 extern const Collision sh_area_1_collision[];
 extern const MacroObject sh_area_1_macro_objs[];
+extern const Trajectory sh_area_1_spline_Spring_NurbsCurve[];
+extern const Trajectory sh_area_1_spline_Spring_NurbsCurve_001[];
+extern const Trajectory sh_area_1_spline_Spring_NurbsCurve_002[];
+extern const Trajectory sh_area_1_spline_Spring_NurbsCurve_003[];
+extern const Trajectory sh_area_1_spline_Spring_NurbsCurve_004[];
+extern const Trajectory sh_area_1_spline_Spring_NurbsCurve_005[];
+extern const Trajectory sh_area_1_spline_Spring_NurbsCurve_006[];
+extern const Trajectory sh_area_1_spline_Spring_NurbsCurve_007[];
 extern u8 sh_dl_pr64_12_ci4[];
 extern u8 sh_dl_pr64_12_pal_rgba16[];
 extern u8 sh_dl_pr128_4_ci4[];
@@ -776,20 +784,20 @@ extern Vtx sh_dl_object_00A73940_mesh_layer_2_vtx_0[4];
 extern Gfx sh_dl_object_00A73940_mesh_layer_2_tri_0[];
 extern Vtx sh_dl_object_00A73940_mesh_layer_1_vtx_0[45];
 extern Gfx sh_dl_object_00A73940_mesh_layer_1_tri_0[];
-extern Vtx sh_dl_object_00A73940_mesh_layer_5_vtx_0[8];
-extern Gfx sh_dl_object_00A73940_mesh_layer_5_tri_0[];
+extern Vtx sh_dl_object_00A73940_mesh_layer_4_vtx_0[8];
+extern Gfx sh_dl_object_00A73940_mesh_layer_4_tri_0[];
 extern Vtx sh_dl_object_00A741C8_mesh_layer_2_vtx_0[4];
 extern Gfx sh_dl_object_00A741C8_mesh_layer_2_tri_0[];
 extern Vtx sh_dl_object_00A741C8_mesh_layer_1_vtx_0[64];
 extern Gfx sh_dl_object_00A741C8_mesh_layer_1_tri_0[];
-extern Vtx sh_dl_object_00A741C8_mesh_layer_5_vtx_0[8];
-extern Gfx sh_dl_object_00A741C8_mesh_layer_5_tri_0[];
+extern Vtx sh_dl_object_00A741C8_mesh_layer_4_vtx_0[8];
+extern Gfx sh_dl_object_00A741C8_mesh_layer_4_tri_0[];
 extern Vtx sh_dl_object_00A74960_mesh_layer_2_vtx_0[4];
 extern Gfx sh_dl_object_00A74960_mesh_layer_2_tri_0[];
 extern Vtx sh_dl_object_00A74960_mesh_layer_1_vtx_0[50];
 extern Gfx sh_dl_object_00A74960_mesh_layer_1_tri_0[];
-extern Vtx sh_dl_object_00A74960_mesh_layer_5_vtx_0[8];
-extern Gfx sh_dl_object_00A74960_mesh_layer_5_tri_0[];
+extern Vtx sh_dl_object_00A74960_mesh_layer_4_vtx_0[8];
+extern Gfx sh_dl_object_00A74960_mesh_layer_4_tri_0[];
 extern Vtx sh_dl_object_00A7672C_mesh_layer_1_vtx_0[4];
 extern Gfx sh_dl_object_00A7672C_mesh_layer_1_tri_0[];
 extern Vtx sh_dl_object_00A7672C_mesh_layer_1_vtx_1[4];
@@ -848,9 +856,6 @@ extern Vtx sh_dl_object_00A7F5E0_001_mesh_layer_1_vtx_7[8];
 extern Gfx sh_dl_object_00A7F5E0_001_mesh_layer_1_tri_7[];
 extern Vtx sh_dl_object_00A7F5E0_001_mesh_layer_1_vtx_8[4];
 extern Gfx sh_dl_object_00A7F5E0_001_mesh_layer_1_tri_8[];
-extern Vtx sh_dl_Plane_mesh_layer_1_vtx_cull[8];
-extern Vtx sh_dl_Plane_mesh_layer_1_vtx_0[4];
-extern Gfx sh_dl_Plane_mesh_layer_1_tri_0[];
 extern u32 sh_dl_0000_object_00B2F19C_mesh_layer_1[];
 extern u32 sh_dl_0001_object_00B372D0_mesh_layer_1[];
 extern u32 sh_dl_0003_object_00B2D288_mesh_layer_1[];
@@ -956,19 +961,18 @@ extern u32 sh_dl_0175_object_00B08348_mesh_layer_1[];
 extern u32 sh_dl_0176_object_00B07D40_mesh_layer_1[];
 extern u32 sh_dl_object_00A73940_mesh_layer_2[];
 extern u32 sh_dl_object_00A73940_mesh_layer_1[];
-extern u32 sh_dl_object_00A73940_mesh_layer_5[];
+extern u32 sh_dl_object_00A73940_mesh_layer_4[];
 extern u32 sh_dl_object_00A741C8_mesh_layer_2[];
 extern u32 sh_dl_object_00A741C8_mesh_layer_1[];
-extern u32 sh_dl_object_00A741C8_mesh_layer_5[];
+extern u32 sh_dl_object_00A741C8_mesh_layer_4[];
 extern u32 sh_dl_object_00A74960_mesh_layer_2[];
 extern u32 sh_dl_object_00A74960_mesh_layer_1[];
-extern u32 sh_dl_object_00A74960_mesh_layer_5[];
+extern u32 sh_dl_object_00A74960_mesh_layer_4[];
 extern u32 sh_dl_object_00A7672C_mesh_layer_1[];
 extern u32 sh_dl_object_00A7AE40_mesh_layer_1[];
 extern u32 sh_dl_object_00A7AE40_mesh_layer_5[];
 extern u32 sh_dl_object_00A7B898_mesh_layer_1[];
 extern u32 sh_dl_object_00A7F5E0_001_mesh_layer_1[];
-extern u32 sh_dl_Plane_mesh_layer_1[];
 #define LVL_BATCH_LAYER_OPAQUE_SH_DL_PR64_12_PAL_RGBA16 0
 #define LVL_BATCH_LAYER_OPAQUE_SH_DL_PR128_4_PAL_RGBA16 1
 #define LVL_BATCH_LAYER_OPAQUE_SH_DL_PR256_4_PAL_RGBA16 2
@@ -1045,12 +1049,11 @@ extern u32 sh_dl_Plane_mesh_layer_1[];
 #define LVL_BATCH_LAYER_OPAQUE_SH_DL_MIU256_SH001_PAL_RGBA16 73
 #define LVL_BATCH_LAYER_OPAQUE_SH_DL_MIU128_SH010_PAL_RGBA16 74
 #define LVL_BATCH_LAYER_OPAQUE_SH_DL_MIU128_SH008_PAL_RGBA16 75
-#define LVL_BATCH_LAYER_OPAQUE_SH_DL_F3DLITE_MATERIAL 76
 #define LVL_BATCH_LAYER_TRANSPARENT_SH_DL_MIU32_SH001_PAL_RGBA16 0
 #define LVL_BATCH_LAYER_TRANSPARENT_SH_DL_MIU64_SH002_PAL_RGBA16 1
-#define LVL_BATCH_LAYER_TRANSPARENT_SH_DL_MIU64_SH008_PAL_RGBA16 2
-#define LVL_BATCH_LAYER_TRANSPARENT_SH_DL_GUN_LOGO001_PAL_RGBA16 3
+#define LVL_BATCH_LAYER_TRANSPARENT_SH_DL_GUN_LOGO001_PAL_RGBA16 2
 #define LVL_BATCH_LAYER_OPAQUE_DECAL_SH_DL_MIU128_SH008_PAL_RGBA16 0
+#define LVL_BATCH_LAYER_ALPHA_SH_DL_MIU64_SH008_PAL_RGBA16 0
 extern struct BatchLevelDisplayLists batch_lvl_dls_sh[LAYER_COUNT];
 #define sh_dl_0007_object_00B37228_mesh_layer_1_vtx_0 sh_dl_0004_object_00B37298_mesh_layer_1_vtx_0
 #define sh_dl_000_object_00A7E698_013_mesh_layer_5_vtx_0 sh_dl_000_object_00A7E698_mesh_layer_5_vtx_0
