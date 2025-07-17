@@ -57,6 +57,7 @@ of warnings if you use -Wpedantic. */
 /*#define G_SPECIAL_3       0xD3  no-op in F3DEX2 */
 /*#define G_SPECIAL_2       0xD4  no-op in F3DEX2 */
 /*#define G_SPECIAL_1       0xD5  triggered MVP recalculation in F3DEX2 for debug */
+#define G_TRI3              0xD3
 #define G_FLUSH             0xD4
 #define G_MEMSET            0xD5
 #define G_DMA_IO            0xD6
@@ -2611,6 +2612,46 @@ _DW({                                                                   \
     __gsSP1Triangle_w1f(v00, v01, v02, flag0)),                     \
     __gsSP1Triangle_w1f(v10, v11, v12, flag1)                       \
 }
+
+#define TRI3_BIT(v, s1, s2) _SHIFTL((v)>>s1, s2, 1)
+#define TRI3_BITX(v, s1, xv, xs1, s2) _SHIFTL(((v)>>s1) ^ ((xv)>>xs1), s2, 1)
+#define TRI3_BIT2(v, s1, s2) _SHIFTL((v)>>s1, s2, 2)
+
+/*
+11010011 0000000D d000000e e000000h
+aaaaaa0b b000000c c000000f F000000g
+
+F = f ^ e1
+D = d ^ e0
+
+v20=aaaaaa
+v21=bbfFDd
+v22=ccghee
+*/
+
+/**
+ * 3 Triangles
+ */
+#define gSP3Triangles(pkt, v00, v01, v02, v10, v11, v12, v20, v21, v22)                                \
+    _DW({                                                                                              \
+        Gfx *_g = (Gfx *) (pkt);                                                                       \
+        _g->words.w0 = (_SHIFTL(G_TRI3, 24, 8) | __gsSP1Triangle_w1(v00, v01, v02)                     \
+                        | TRI3_BITX(v21, 1, v22, 0, 16) | TRI3_BIT(v21, 0, 15) | TRI3_BIT2(v22, 0, 7)  \
+                        | TRI3_BIT(v22, 2, 0));                                                        \
+        _g->words.w1 = (__gsSP1Triangle_w1(v10, v11, v12) | _SHIFTL(v20, 26, 6)                        \
+                        | TRI3_BIT2(v21, 4, 23) | TRI3_BIT2(v22, 4, 15) | TRI3_BIT(v21, 3, 8)          \
+                        | TRI3_BITX(v21, 2, v22, 1, 7) | TRI3_BIT(v22, 3, 0));                         \
+    })
+
+/**
+ * @copydetails gSP3Triangles
+ */
+#define gsSP3Triangles(v00, v01, v02, v10, v11, v12, v20, v21, v22)                                    \
+    { (_SHIFTL(G_TRI3, 24, 8) | __gsSP1Triangle_w1(v00, v01, v02) | TRI3_BITX(v21, 1, v22, 0, 16)      \
+       | TRI3_BIT(v21, 0, 15) | TRI3_BIT2(v22, 0, 7) | TRI3_BIT(v22, 2, 0)),                           \
+      (__gsSP1Triangle_w1(v10, v11, v12) | _SHIFTL(v20, 26, 6) | TRI3_BIT2(v21, 4, 23)                 \
+       | TRI3_BIT2(v22, 4, 15) | TRI3_BIT(v21, 3, 8) | TRI3_BITX(v21, 2, v22, 1, 7)                    \
+       | TRI3_BIT(v22, 3, 0)) }
 
 /*
  * 5 Triangles base commands
