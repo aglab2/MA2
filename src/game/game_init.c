@@ -321,6 +321,18 @@ void make_viewport_clip_rect(Vp *viewport) {
 
 // #define CR1_TEST
 
+#if 0
+#define UCODE_TEXT_START gspF3DEX3_fifoTextStart
+#define UCODE_TEXT_END gspF3DEX3_fifoTextEnd
+#define UCODE_DATA_START gspF3DEX3_fifoDataStart
+#define UCODE_DATA_END gspF3DEX3_fifoDataEnd
+#else
+#define UCODE_TEXT_START gspF3DEX3_TRI3_fifoTextStart
+#define UCODE_TEXT_END gspF3DEX3_TRI3_fifoTextEnd
+#define UCODE_DATA_START gspF3DEX3_TRI3_fifoDataStart
+#define UCODE_DATA_END gspF3DEX3_TRI3_fifoDataEnd
+#endif
+
 void create_gfx_task_structure(void) {
 #ifdef CR1_TEST
     static u8 sCR1 = 0;
@@ -343,10 +355,10 @@ void create_gfx_task_structure(void) {
     gGfxSPTask->task.t.ucode_boot = rspbootTextStart;
     gGfxSPTask->task.t.ucode_boot_size = ((u8 *) rspbootTextEnd - (u8 *) rspbootTextStart);
     gGfxSPTask->task.t.flags = OS_TASK_DP_WAIT;
-    gGfxSPTask->task.t.ucode = gHasEX3 ? gspF3DEX3_fifoTextStart : (u64*) (0x80700000 - 0x28000);
-    gGfxSPTask->task.t.ucode_data = gHasEX3 ? gspF3DEX3_fifoDataStart : (u64*) (0x80700000 - 0x28000 + 0x1630);
-    gGfxSPTask->task.t.ucode_size = gHasEX3 ? ((u8 *) gspF3DEX3_fifoTextEnd - (u8 *) gspF3DEX3_fifoTextStart) : 0x1630;
-    gGfxSPTask->task.t.ucode_data_size = gHasEX3 ? ((u8 *) gspF3DEX3_fifoDataEnd - (u8 *) gspF3DEX3_fifoDataStart) : 0x420;
+    gGfxSPTask->task.t.ucode = gHasEX3 ? UCODE_TEXT_START : (u64*) (0x80700000 - 0x28000);
+    gGfxSPTask->task.t.ucode_data = gHasEX3 ? UCODE_DATA_START : (u64*) (0x80700000 - 0x28000 + 0x1630);
+    gGfxSPTask->task.t.ucode_size = gHasEX3 ? ((u8 *) UCODE_TEXT_END - (u8 *) UCODE_TEXT_START) : 0x1630;
+    gGfxSPTask->task.t.ucode_data_size = gHasEX3 ? ((u8 *) UCODE_DATA_END - (u8 *) UCODE_DATA_START) : 0x420;
 
     gGfxSPTask->task.t.dram_stack = (u64 *) gGfxSPTaskStack;
     gGfxSPTask->task.t.dram_stack_size = SP_DRAM_STACK_SIZE8;
