@@ -25,6 +25,7 @@ static struct LevelConfig cfg = { };
 #define bhvClamShell bhvClamShellCC
 #define bhvSkeeter bhvSkeeterCC
 #define bhvSnufit bhvSnufitCC
+#define bhvCCSpawnUp bhvCCSpawn
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_cck_entry[] = {
@@ -98,9 +99,18 @@ const LevelScript level_cck_entry[] = {
 		OBJECT(MODEL_SNUFIT, 756, 3739, -8451, 0, -180, 0, 0x00000000, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 3001, -786, -16574, 0, -180, 0, 0x00000000, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 3001, -786, -18249, 0, -180, 0, 0x00000000, bhvSnufit),
+#if 0
+		OBJECT(MODEL_NONE, -3, -952, -8388, 0, 0, 0, (16 << 16), bhvCCSpawn),
+		OBJECT(MODEL_NONE, 580, -1700, -4950, 0, 0, 0, (14 << 16), bhvCCSpawn),
+		OBJECT(MODEL_NONE, -502, -1700, -4950, 0, 0, 0, (15 << 16), bhvCCSpawn),
+		OBJECT(MODEL_NONE, 580, -1700, -6050, 0, 0, 0, (15 << 16), bhvCCSpawn),
+		OBJECT(MODEL_NONE, -502, -1700, -6050, 0, 0, 0, (14 << 16), bhvCCSpawn),
+		OBJECT(MODEL_NONE, -744, 2831, -8387, 0, -180, 0, 0x00000000, bhvCCSpawn),
+		OBJECT(MODEL_NONE, 791, 4543, -8387, 0, -180, 0, (1 << 16), bhvCCSpawnUp),
 		OBJECT(MODEL_NONE, 0, 3550, -11000, 0, -180, 0, 0x00000000, bhvCCKCurrent),
 		OBJECT(MODEL_NONE, 0, -950, -16000, 0, -180, 0, (1 << 16), bhvCCKCurrent),
 		OBJECT(MODEL_NONE, 1350, -950, -17350, 0, -180, 0, (2 << 16), bhvCCKCurrent),
+#endif
 		OBJECT(MODEL_STAR, -5, 8269, -848, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -3, 6122, 4003, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 8, 6368, -1239, 0, 0, 0, 0x00000000, bhvStar),

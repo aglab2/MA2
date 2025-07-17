@@ -720,6 +720,9 @@ Vtx cck_dl_0008_object_013FCBCC_mesh_layer_1_vtx_0[179] = {
 	{{ {-1200, 219, -300}, 0, {1157, 3466}, {168, 164, 157, 255} }},
 };
 
+#define cck_dl_tx_ccpoison001_001_pal_rgba16_copy cck_dl_tx_ccpoison001_001_pal_rgba16
+#define cck_dl_tx_ccpoison001_001_ci4_copy cck_dl_tx_ccpoison001_001_ci4 
+
 #include "levels/cck/visual/header_lvlopt.inc.h"
 #include "levels/cck/visual/model_lvlopt.inc.c"
 #include "levels/cck/flipbook.inc.c"
