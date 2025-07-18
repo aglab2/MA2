@@ -435,18 +435,9 @@ class ModelMeshEntry(ModelEntry):
 
         assert False, f"unknown command: {data}"
 
-    def compile(self):
-        print(f"compiling {self.name}")
-        assert self._base_vertices_model_entry, "compile() called twice"
-        dl_entry = ModelRawOptEntry(self.raw_name, self._base_vertices_model_entry)
-        vtx_entry = self._base_vertices_model_entry
-
-        render_passes = []
-
-        # For a grand majority of cases "just draw" will be good enough - that's when all vertices fit in the buffer
-        if len(self._vertices) < 56:
-            total_pricer = UsagePricer(self._triangles, set(), set())
-            rendered_triangles = self._triangles[:]
+    def make_render_pass(self, triangles, vertices):
+            total_pricer = UsagePricer(triangles, set(), set())
+            rendered_triangles = triangles[:]
             rendered_fan_strips = []
             while HAS_EX3_COMMANDS:
                 # done here means done checking for all fan/strip
@@ -557,11 +548,24 @@ class ModelMeshEntry(ModelEntry):
                 if done:
                     break
 
+            return RenderPass(vertices, rendered_triangles, rendered_fan_strips)
+
+    def compile(self):
+        print(f"compiling {self.name}")
+        assert self._base_vertices_model_entry, "compile() called twice"
+        dl_entry = ModelRawOptEntry(self.raw_name, self._base_vertices_model_entry)
+        vtx_entry = self._base_vertices_model_entry
+
+        render_passes = []
+
+        # For a grand majority of cases "just draw" will be good enough - that's when all vertices fit in the buffer
+        if len(self._vertices) < 56:
             passthru_vertices = {}
             for i in range(len(self._vertices)):
                 passthru_vertices[i] = i
 
-            render_passes.append(RenderPass(passthru_vertices, rendered_triangles, rendered_fan_strips))
+            render_pass = self.make_render_pass(self._triangles, passthru_vertices)
+            render_passes.append(render_pass)
         else:
             # This is a primitive greedy algorithm for drawing vertices
             loaded_vertices = {}
