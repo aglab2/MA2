@@ -57,7 +57,7 @@ const LevelScript level_sh_entry[] = {
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
-		MARIO_POS(0x01, 89, -5022, -5730, 2030),
+		// MARIO_POS(0x01, 89, -5022, -5730, 2030),
 		OBJECT(MODEL_BLACK_BOBOMB, -1449, 270, 1455, 0, 0, 0, 0x00000000, bhvBobomb),
 		OBJECT(MODEL_BLACK_BOBOMB, 10, 270, 1518, 0, 0, 0, 0x00000000, bhvBobomb),
 		OBJECT(MODEL_BLACK_BOBOMB, 1404, 270, 1523, 0, 0, 0, 0x00000000, bhvBobomb),
@@ -214,7 +214,8 @@ const LevelScript level_sh_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 	FREE_LEVEL_POOL(),
-	MARIO_POS(0x01, 89, -5022, -5730, 2030),
+	//MARIO_POS(0x01, 89, -5022, -5730, 2030),
+	MARIO_POS(0x01, 89, 149, -1430, 3415),
 	CALL(0, lvl_init_or_update),
 	CALL_LOOP(1, lvl_init_or_update),
 	CLEAR_LEVEL(),

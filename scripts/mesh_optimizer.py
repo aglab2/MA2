@@ -3,6 +3,7 @@ import sys
 
 HAS_EX3_COMMANDS = True
 HAS_TRI3 = False
+HAS_VTX_PINNING = True
 
 def get_args(line):
     bracket_open = line.find('(')
@@ -808,9 +809,12 @@ class ModelMeshEntry(ModelEntry):
                         common_vertices = list(common_vertices)
                         altered_render_passes.append(prev_render_pass)
                         altered_render_passes.append(render_pass)
-                        for render_pass in altered_render_passes:
-                            shuffle = make_shuffle_pinning_shared(render_pass.vertices, common_vertices)
-                            apply_shuffle(render_pass, shuffle)
+                        for altered_render_pass in altered_render_passes:
+                            shuffle = make_shuffle_pinning_shared(altered_render_pass.vertices, common_vertices)
+                            print(f"apply shuffle {shuffle}")
+                            print(f"render pass vtx before shuffle {altered_render_pass.vertices}")
+                            apply_shuffle(altered_render_pass, shuffle)
+                            print(f"render pass vtx after shuffle -> {altered_render_pass.vertices}")
 
                         pinned_vertices_left = common_vertices
                     else:
@@ -819,15 +823,26 @@ class ModelMeshEntry(ModelEntry):
                         # can be repinned to the right side of the buffer.
                         repinned_vertices_left = common_vertices.intersection(pinned_vertices_left)
                         unpinned_vertices_right = common_vertices.difference(pinned_vertices_left)
+                        print(f"repinned vertices left {repinned_vertices_left}")
                         if repinned_vertices_left:
                             # Shrink the left buffer to only contain the common vertices...
-                            for render_pass in altered_render_passes:
-                                shuffle = make_shuffle_pinning_shared_limited(render_pass.vertices, repinned_vertices_left, len(pinned_vertices_left))
-                                apply_shuffle_limited(render_pass, shuffle, len(pinned_vertices_left))
+
+                            # Make the sub-shuffle of length 'len(pinned_vertices_left)' that spans across all 'altered_render_passes'
+                            # Remember that shuffle must be applied to all altered render passes and it must be exactly the same shuffle
+                            shuffle = make_shuffle_pinning_shared_limited(altered_render_passes[0].vertices, repinned_vertices_left, len(pinned_vertices_left))
+                            print(f"apply pinning limited shuffle {shuffle}")
+                            for altered_render_pass in altered_render_passes:
+                                print(f"render pass vtx before pinning limited shuffle {altered_render_pass.vertices}")
+                                apply_shuffle_limited(altered_render_pass, shuffle, len(pinned_vertices_left))
+                                print(f"render pass vtx after pinning limited shuffle {altered_render_pass.vertices}")
+
                             pinned_vertices_left = list(repinned_vertices_left)
 
                             shuffle = make_shuffle_pinning_shared(render_pass.vertices, pinned_vertices_left)
+                            print(f"apply pinning shuffle {shuffle}")
+                            print(f"render pass vtx before pinning shuffle {render_pass.vertices}")
                             apply_shuffle(render_pass, shuffle)
+                            print(f"render pass vtx after pinning shuffle {render_pass.vertices}")
                             altered_render_passes.append(render_pass)
                         else:
                             # There is nothing else left to repin, drop left buffer
@@ -843,9 +858,12 @@ class ModelMeshEntry(ModelEntry):
 
         vtx_entry.vertices = []
         start_offset = 0
-        for render_pass, _ in zip(render_passes, render_pass_vtx_load_offsets):
+        for render_pass, vtx_load_offset in zip(render_passes, render_pass_vtx_load_offsets):
             cur_vtx_start_offset = start_offset
-            vtx_load_offset = 0
+            if not HAS_VTX_PINNING:
+                vtx_load_offset = 0
+
+            print(f"render pass out {render_pass.vertices} at {vtx_load_offset}")
             cur_vtx_load_amount = len(render_pass.vertices) - vtx_load_offset
 
             for _ in range(cur_vtx_load_amount):
@@ -854,7 +872,9 @@ class ModelMeshEntry(ModelEntry):
                 if render_pass.vertices[vtx] < vtx_load_offset:
                     continue
 
-                vtx_entry.vertices[start_offset + render_pass.vertices[vtx] - vtx_load_offset] = self._vertices[vtx]
+                glo = start_offset + render_pass.vertices[vtx] - vtx_load_offset
+                assert not vtx_entry.vertices[glo], f"vtx_entry is reused at {glo} for {vtx}"
+                vtx_entry.vertices[glo] = self._vertices[vtx]
 
             assert None not in vtx_entry.vertices[start_offset:start_offset + cur_vtx_load_amount], "vtx_entry is not filled correctly"
             start_offset += cur_vtx_load_amount
