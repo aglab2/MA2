@@ -548,7 +548,9 @@ class ModelMeshEntry(ModelEntry):
                 if done:
                     break
 
-            return RenderPass(vertices, rendered_triangles, rendered_fan_strips)
+            # We are converting tri to list because vtx load optimizer will want to mangle tri/fanstrip vertices
+            # We will never need to compare the triangles so this is fine
+            return RenderPass(vertices, [ list(tri) for tri in rendered_triangles ], rendered_fan_strips)
 
     def compile(self):
         print(f"compiling {self.name}")
@@ -556,6 +558,7 @@ class ModelMeshEntry(ModelEntry):
         dl_entry = ModelRawOptEntry(self.raw_name, self._base_vertices_model_entry)
         vtx_entry = self._base_vertices_model_entry
 
+        # Step 1: Generate render passes for each vertex set
         render_passes = []
 
         # For a grand majority of cases "just draw" will be good enough - that's when all vertices fit in the buffer
@@ -619,7 +622,6 @@ class ModelMeshEntry(ModelEntry):
                     return load_vertex(vtx)
 
             rendered_triangles = []
-            rendered_fan_strips = []
             highest_usage = 0
             # We flush when 'loaded_vertices' becomes 49 somewhat arbitrarily - we need to consume at most 7 for a fan/strip
 
@@ -633,11 +635,11 @@ class ModelMeshEntry(ModelEntry):
                     fanstrip_tri_check()
                     print("+ flush +")
 
-                    render_passes.append(RenderPass(loaded_vertices.copy(), rendered_triangles[:], rendered_fan_strips[:]))
+                    render_pass = self.make_render_pass([ self._tri_normalize(tri) for tri in rendered_triangles ], loaded_vertices.copy())
+                    render_passes.append(render_pass)
 
                     loaded_vertices.clear()
                     rendered_triangles = []
-                    rendered_fan_strips = []
 
                 if total_pricer.completed():
                     break
@@ -678,7 +680,13 @@ class ModelMeshEntry(ModelEntry):
                             total_pricer.remove(self._tri_normalize([ fan_vertices[0], fan_vertices[5], fan_vertices[6] ]))
 
                         print(f"fan {fan_vertices} -> {loaded_fan_vertices}")
-                        rendered_fan_strips.append(FanStrip(is_strip=False, vertices=loaded_fan_vertices))
+                        rendered_triangles.append([ loaded_fan_vertices[0], loaded_fan_vertices[1], loaded_fan_vertices[2] ])
+                        rendered_triangles.append([ loaded_fan_vertices[0], loaded_fan_vertices[2], loaded_fan_vertices[3] ])
+                        rendered_triangles.append([ loaded_fan_vertices[0], loaded_fan_vertices[3], loaded_fan_vertices[4] ])
+                        rendered_triangles.append([ loaded_fan_vertices[0], loaded_fan_vertices[4], loaded_fan_vertices[5] ])
+                        if fan_vertices[6] is not None:
+                            rendered_triangles.append([ loaded_fan_vertices[0], loaded_fan_vertices[5], loaded_fan_vertices[6] ])
+
                         continue
                     
                     if len(longest_link) == 3:
@@ -726,7 +734,14 @@ class ModelMeshEntry(ModelEntry):
                             total_pricer.remove(self._tri_normalize([ strip_vertices[4], strip_vertices[5], strip_vertices[6] ]))                            
 
                         print(f"strip {strip_vertices} -> {loaded_strip_vertices}")
-                        rendered_fan_strips.append(FanStrip(is_strip=True, vertices=loaded_strip_vertices))
+                        rendered_triangles.append([ loaded_strip_vertices[0], loaded_strip_vertices[1], loaded_strip_vertices[2] ])
+                        rendered_triangles.append([ loaded_strip_vertices[2], loaded_strip_vertices[1], loaded_strip_vertices[3] ])
+                        rendered_triangles.append([ loaded_strip_vertices[2], loaded_strip_vertices[3], loaded_strip_vertices[4] ])
+                        if strip_vertices[5] is not None:
+                            rendered_triangles.append([ loaded_strip_vertices[4], loaded_strip_vertices[3], loaded_strip_vertices[5] ])
+                        if strip_vertices[6] is not None:
+                            rendered_triangles.append([ loaded_strip_vertices[4], loaded_strip_vertices[5], loaded_strip_vertices[6] ])
+
                         continue
 
                 # Explicitly check for fanstrip vertices here - needed because algo expects no matching vertices
@@ -796,6 +811,7 @@ class ModelMeshEntry(ModelEntry):
                     highest_usage, highest_usage_vtx = next(candidate_to_load_pricer.highest_usage())
                     load_vertex(highest_usage_vtx)
 
+        # Step 2: Find common vertices across render passes and pin them to the left side of the buffer
         render_pass_vtx_load_offsets = []
         prev_render_pass = None
         pinned_vertices_left = None
@@ -860,6 +876,7 @@ class ModelMeshEntry(ModelEntry):
             render_pass_vtx_load_offsets.append(0 if not pinned_vertices_left else len(pinned_vertices_left))
             prev_render_pass = render_pass
 
+        # Step 3: Generate the display lists rendering the render passes
         vtx_entry.vertices = []
         start_offset = 0
         for render_pass, vtx_load_offset in zip(render_passes, render_pass_vtx_load_offsets):
