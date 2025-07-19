@@ -613,40 +613,16 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
             struct DisplayListNode *currList = masterLayer->list.head;
             if (currList)
             {
-                // Set the render mode for the current layer.
-    #if defined(DISABLE_AA) || !SILHOUETTE
-                // - do nothing...
-    #else
-                if (phaseIndex == RENDER_PHASE_NON_SILHOUETTE) {
-                    wantMode1 &= ~IM_RD;
-                    wantMode2 &= ~IM_RD;
-                }
-    #endif
                 set_render_mode(&tempGfxHead, enableZBuffer, currLayer);
+                render_lists(&tempGfxHead, masterLayer->list.head);
+            }
 
-                // Iterate through all the displaylists on the current layer.
-                do {
-                    // Add the display list's transformation to the master list.
-                    gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(currList->transform),
-                            (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
-    #if SILHOUETTE
-                    if (phaseIndex == RENDER_PHASE_SILHOUETTE) {
-                        // Add the current display list to the master list, with silhouette F3D.
-                        gSPDisplayList(tempGfxHead++, dl_silhouette_begin);
-                        gSPDisplayList(tempGfxHead++, currList->displayList);
-                        gSPDisplayList(tempGfxHead++, dl_silhouette_end);
-                    } else {
-                        // Add the current display list to the master list.
-                        gSPDisplayList(tempGfxHead++, currList->displayList);
-                    }
-    #else
-                    // Add the current display list to the master list.
-                    gSPDisplayList(tempGfxHead++, currList->displayList);
-    #endif
-                    // Move to the next DisplayListNode.
-                    currList = currList->next;
-                }
-                while (currList != NULL);
+            struct PairingHeapHead *currHeap = &masterLayer->heap;
+            if (currHeap->root)
+            {
+                set_render_mode(&tempGfxHead, enableZBuffer, currLayer);
+                Mtx* prevMtx = NULL;
+                render_heap(&tempGfxHead, &prevMtx, currHeap);
             }
 
             if (masterLayer->course || masterLayer->objects)
@@ -742,6 +718,7 @@ static void append_dl(struct DisplayListLinks* list, void* dl)
  * parameter. Look at the RenderModeContainer struct to see the corresponding
  * render modes of layers.
  */
+static u8 gUseHeap = 0; 
 void geo_append_display_list(void *displayList, s32 layer) {
 #ifdef F3DEX_GBI_2
     // gSPLookAt(gDisplayListHead++, gCurLookAt);
@@ -763,7 +740,21 @@ void geo_append_display_list(void *displayList, s32 layer) {
     }
 #endif // F3DEX_GBI_2 || SILHOUETTE
     struct MasterLayer* masterLayer = &gCurGraphNodeMasterList->layers[layer];
-    append_dl(&masterLayer->list, displayList);
+    if (!gUseHeap)
+    {
+        append_dl(&masterLayer->list, displayList);
+    }
+    else
+    {
+        struct PairingHeapNodeDisplayList* heapNode = main_pool_alloc_aligned_cde(sizeof(struct PairingHeapNodeDisplayList));
+
+        heapNode->transform = gMatStackFixed[gMatStackIndex];
+        heapNode->displayList = displayList;
+        heapNode->hint = 0;
+        heapNode->node.priority = (u32) displayList;
+
+        pairingheap_add(&masterLayer->heap, &heapNode->node);
+    }
 }
 
 static void geo_append_batched_display_list(void *displayList, enum RenderLayers layer, enum LayerBatches batch) {
@@ -810,6 +801,7 @@ void geo_process_master_list(struct GraphNodeMasterList *node) {
         for (int layer = LAYER_FIRST; layer < LAYER_COUNT; layer++) {
             struct MasterLayer* masterLayer = &node->layers[layer];
             masterLayer->list.head = NULL;
+            masterLayer->heap.root = NULL;
             batches_clean(masterLayer->objects);
             batches_clean(masterLayer->course);
         }

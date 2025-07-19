@@ -222,6 +222,7 @@ struct FlipbookArray {
 
 struct MasterLayer {
     struct DisplayListLinks list;
+    struct PairingHeapHead heap;
     struct FlipbookArray* flipbooks;
     struct BatchArray* objects;
     struct BatchArray* course;
