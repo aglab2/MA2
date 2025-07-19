@@ -700,6 +700,19 @@ it for antialiasing. */
 #define G_BL_1          2
 #define G_BL_0          3
 
+#define RM_AA_PCL_ALPHA_SURF(clk)                                                                      \
+    AA_DEF | RD_DEF | CVG_DST_CLAMP | ZMODE_OPA | G_AC_THRESHOLD                                        \
+        | GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
+
+#define RM_AA_ZB_PCL_ALPHA_SURF(clk)                                                                   \
+    AA_DEF | Z_CMP | Z_UPD | RD_DEF | CVG_DST_CLAMP | ZMODE_OPA | G_AC_THRESHOLD                        \
+        | GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
+
+#define RM_PCL_SURF(clk)                                        \
+    CVG_DST_FULL | FORCE_BL | ZMODE_OPA |                       \
+    G_AC_DITHER |                                               \
+    GBL_c##clk(G_BL_CLR_IN, G_BL_0, G_BL_CLR_IN, G_BL_1)
+
 #define GBL_c1(m1a, m1b, m2a, m2b)  \
     (m1a) << 30 | (m1b) << 26 | (m2a) << 22 | (m2b) << 18
 #define GBL_c2(m1a, m1b, m2a, m2b)  \
@@ -760,11 +773,15 @@ it for antialiasing. */
     ALPHA_CVG_SEL | FORCE_BL | ZMODE_DEC |                      \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
+#if 0
 /* Note that this uses AA_EN not AA_DEF */
 #define RM_AA_ZB_TEX_EDGE(clk)                                  \
     AA_EN | Z_CMP | Z_UPD | RD_DEF | CVG_DST_CLAMP |            \
     CVG_X_ALPHA | ALPHA_CVG_SEL | ZMODE_OPA | TEX_EDGE |        \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_A_MEM)
+#else
+#define RM_AA_ZB_TEX_EDGE(clk) RM_AA_ZB_PCL_ALPHA_SURF(clk)
+#endif
 
 #define RM_AA_ZB_TEX_INTER(clk)                                 \
     AA_DEF | Z_CMP | Z_UPD | RD_DEF | CVG_DST_CLAMP |           \
@@ -823,10 +840,14 @@ it for antialiasing. */
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
 /* Note that this uses AA_EN not AA_DEF */
+#if 0
 #define RM_AA_TEX_EDGE(clk)                                     \
     AA_EN | RD_DEF | CVG_DST_CLAMP |                            \
     CVG_X_ALPHA | ALPHA_CVG_SEL | ZMODE_OPA | TEX_EDGE |        \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_A_MEM)
+#else
+#define RM_AA_TEX_EDGE(clk) RM_AA_PCL_ALPHA_SURF(clk)
+#endif
 
 #define RM_AA_SUB_SURF(clk)                                     \
     AA_DEF | IM_RD | CVG_DST_FULL |                             \
@@ -893,10 +914,14 @@ it for antialiasing. */
     IM_RD | CVG_DST_FULL | FORCE_BL | ZMODE_OPA |               \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
+#if 0
 #define RM_TEX_EDGE(clk)                                        \
     CVG_DST_CLAMP | CVG_X_ALPHA | ALPHA_CVG_SEL | FORCE_BL |    \
     ZMODE_OPA | TEX_EDGE | AA_EN |                              \
     GBL_c##clk(G_BL_CLR_IN, G_BL_0, G_BL_CLR_IN, G_BL_1)
+#else
+#define RM_TEX_EDGE(clk) RM_PCL_SURF(clk)
+#endif
 
 #define RM_CLD_SURF(clk)                                        \
     AA_XLU_DEF | IM_RD | CVG_DST_SAVE | FORCE_BL | ZMODE_OPA |               \

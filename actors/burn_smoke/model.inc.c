@@ -50,7 +50,7 @@ const Gfx burn_smoke_seg4_sub_dl_end[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPSetGeometryMode(G_LIGHTING),
-    gsDPSetAlphaCompareReal(G_AC_NONE),
+    gsDPSetAlphaCompareReal(G_AC_THRESHOLD),
     gsSPEndDisplayList(),
 };
 
