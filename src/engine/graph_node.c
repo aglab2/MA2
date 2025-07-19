@@ -623,7 +623,7 @@ struct GraphNodeLvlTranslationRotation *init_graph_node_lvl_translation_rotation
     }
 
     if (graphNode != NULL) {
-        init_scene_graph_node_links(&graphNode->node, GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION);
+        init_scene_graph_node_links(&graphNode->node, GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION_COLD);
         vec3_copy(graphNode->translation, translation);
         vec3s_copy(graphNode->rotation, rotation);
         SET_GRAPH_NODE_LAYER(graphNode->node.flags, drawingLayer);
@@ -639,7 +639,7 @@ struct GraphNodeLvlTranslation         *init_graph_node_lvl_translation         
     }
 
     if (graphNode != NULL) {
-        init_scene_graph_node_links(&graphNode->node, GRAPH_NODE_TYPE_LVL_TRANSLATION);
+        init_scene_graph_node_links(&graphNode->node, GRAPH_NODE_TYPE_LVL_TRANSLATION_COLD);
 
         vec3_copy(graphNode->translation, translation);
         SET_GRAPH_NODE_LAYER(graphNode->node.flags, drawingLayer);

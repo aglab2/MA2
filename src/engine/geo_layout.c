@@ -1238,9 +1238,9 @@ void geo_layout_cmd_lvl_translation_rotation(void) {
     register_scene_graph_node(&graphNode->node);
 
     if (!dropped_for_console(displayList, drawingLayer))
-        GRAPH_NODE_LVL_DL_ASSIGN(graphNode, segmented_to_virtual(displayList));
+        graphNode->dl = segmented_to_virtual(displayList);
     else
-        GRAPH_NODE_LVL_DL_ASSIGN(graphNode, NULL);
+        graphNode->dl = NULL;
 
     gGeoLayoutCommand = (u8 *) cmdPos;
 }
@@ -1269,13 +1269,12 @@ void geo_layout_cmd_lvl_translation(void) {
     }
 
     graphNode = init_graph_node_lvl_translation(NULL, drawingLayer, translation);
-
     register_scene_graph_node(&graphNode->node);
 
     if (!dropped_for_console(displayList, drawingLayer))
-        GRAPH_NODE_LVL_DL_ASSIGN(graphNode, segmented_to_virtual(displayList));
+        graphNode->dl = segmented_to_virtual(displayList);
     else
-        GRAPH_NODE_LVL_DL_ASSIGN(graphNode, NULL);
+        graphNode->dl = NULL;
 
     gGeoLayoutCommand = (u8 *) cmdPos;
 }

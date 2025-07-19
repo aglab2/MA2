@@ -348,11 +348,11 @@ static void warm_up_batch_node(void)
             int size = 0;
             switch (curGraphNode->type)
             {
-                case GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION:
+                case GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION_COLD:
                     size = sizeof(struct LightGraphLvlNodeTranslationRotation);
                     lvlNode = (struct GraphNodeLvlTranslation*) curGraphNode;
                     break;
-                case GRAPH_NODE_TYPE_LVL_TRANSLATION:
+                case GRAPH_NODE_TYPE_LVL_TRANSLATION_COLD:
                     size = sizeof(struct LightGraphLvlNodeTranslation);
                     lvlNode = (struct GraphNodeLvlTranslation*) curGraphNode;
                     break;
@@ -410,12 +410,12 @@ static void warm_up_batch_node(void)
             int freshNodeSize = 0;
             switch (curGraphNode->type)
             {
-                case GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION:
+                case GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION_COLD:
                     copySize = sizeof(struct GraphNode);
                     freshNodeSize = sizeof(struct LightGraphLvlNodeTranslationRotation);
                     lvlNode = (struct GraphNodeLvlTranslationRotation*) curGraphNode;
                     break;
-                case GRAPH_NODE_TYPE_LVL_TRANSLATION:
+                case GRAPH_NODE_TYPE_LVL_TRANSLATION_COLD:
                     copySize = sizeof(struct GraphNode);
                     freshNodeSize = sizeof(struct LightGraphLvlNodeTranslation);
                     lvlNode = (struct GraphNodeLvlTranslationRotation*) curGraphNode;
@@ -460,12 +460,14 @@ static void warm_up_batch_node(void)
                 freshLvlNode->x = lvlNode->translation[0];
                 freshLvlNode->y = lvlNode->translation[1];
                 freshLvlNode->z = lvlNode->translation[2];
-                if (GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION == curGraphNode->type)
+                if (GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION_COLD == curGraphNode->type)
                 {
                     freshLvlNode->rotation[0] = lvlNode->rotation[0];
                     freshLvlNode->rotation[1] = lvlNode->rotation[1];
                     freshLvlNode->rotation[2] = lvlNode->rotation[2];
                 }
+                freshNode->type += GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION - GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION_COLD;
+                freshNode->parent = lvlNode->dl;
             }
 
             if (GRAPH_NODE_TYPE_GENERATED_LIST == curGraphNode->type)

@@ -1176,8 +1176,7 @@ static void geo_lvl_append_display_list(void *displayList, s32 layer) {
     }
 }
 
-static void append_lvl_dl_and_return(struct GraphNode *node) {
-    void* displayList = GRAPH_NODE_LVL_DL_RAW(node);
+static void append_lvl_dl_and_return_impl(struct GraphNode *node, void* displayList) {
     if ((void*) 0x80000000 != displayList) {
         geo_lvl_append_display_list(displayList, GET_GRAPH_NODE_LAYER(node->flags));
     }
@@ -1185,6 +1184,15 @@ static void append_lvl_dl_and_return(struct GraphNode *node) {
         geo_process_node_and_siblings_quick(node->children);
     }
     gMatStackIndex--;
+}
+
+static void append_lvl_dl_and_return(struct GraphNode *node) {
+    return append_lvl_dl_and_return_impl(node, GRAPH_NODE_LVL_DL_RAW(node));
+}
+
+static void append_lvl_dl_and_return_cold(struct GraphNode *node) {
+    void* displayList = ((struct GraphNodeLvlTranslationRotation *)node)->dl;
+    return append_lvl_dl_and_return_impl(node, displayList);
 }
 
 void geo_process_batchset(struct GraphNode *node) {
@@ -1838,6 +1846,44 @@ void geo_process_lvl_translation(struct LightGraphLvlNodeTranslation *lvlNode) {
     return append_lvl_dl_and_return(node);
 }
 
+void geo_process_lvl_translation_rotation_cold(struct GraphNodeLvlTranslationRotation *lvlNode) {
+    struct GraphNode *node = (struct GraphNode *) lvlNode;
+    void* dl = lvlNode->dl;
+    if (!dl)
+        return;
+
+    Vec3f translation;
+    vec3_copy(translation, lvlNode->translation);
+    vec3_sub(translation, gCurrentArea->renderOffset);
+
+    if (is_far_from_mario(translation[0], translation[1], translation[2]))
+        return;
+
+    mtxf_rotate_zxy_and_translate_and_mul(lvlNode->rotation[0], lvlNode->rotation[1], lvlNode->rotation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
+
+    inc_mat_stack();
+    return append_lvl_dl_and_return_cold(node);
+}
+
+void geo_process_lvl_translation_cold(struct GraphNodeLvlTranslation *lvlNode) {
+    struct GraphNode *node = (struct GraphNode *) lvlNode;
+    void* dl = lvlNode->dl;
+    if (!dl)
+        return;
+
+    Vec3f translation;
+    vec3_copy(translation, lvlNode->translation);
+    vec3_sub(translation, gCurrentArea->renderOffset);
+
+    if (is_far_from_mario(translation[0], translation[1], translation[2]))
+        return;
+
+    mtxf_translate_and_mul(translation[0], translation[1], translation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
+
+    inc_mat_stack();
+    return append_lvl_dl_and_return_cold(node);
+}
+
 void geo_process_break_translation(struct GraphNodeTranslation *node) {
     Vec3f translation;
     
@@ -1982,6 +2028,9 @@ static const GeoProcessFunc GeoProcessJumpTable[] = {
     [GRAPH_NODE_TYPE_BATCHSET_TRANSLATION]     = (GeoProcessFunc) geo_process_batchset_translation,
     [GRAPH_NODE_TYPE_BATCHSET_TRANSLATION_ROTATION] = (GeoProcessFunc) geo_process_batchset_translation_rotation,
     [GRAPH_NODE_TYPE_LVL_START]                = (GeoProcessFunc) geo_process_lvl_start,
+    
+    [GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION_COLD] = (GeoProcessFunc) geo_process_lvl_translation_rotation_cold,
+    [GRAPH_NODE_TYPE_LVL_TRANSLATION_COLD         ] = (GeoProcessFunc) geo_process_lvl_translation_cold,
 };
 
 /**

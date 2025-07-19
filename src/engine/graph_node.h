@@ -82,6 +82,9 @@ enum GraphNodeTypes {
     GRAPH_NODE_TYPE_BATCHSET_TRANSLATION,
     GRAPH_NODE_TYPE_BATCHSET_TRANSLATION_ROTATION,
 
+    GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION_COLD,
+    GRAPH_NODE_TYPE_LVL_TRANSLATION_COLD,
+
     GRAPH_NODE_TYPE_LVL_START,
 };
 
@@ -470,12 +473,14 @@ struct GraphNodeCoin {
 
 struct GraphNodeLvlTranslationRotation {
     struct GraphNode node;
+    void* dl;
     Vec3f translation;
     Vec3s rotation;
 };
 
 struct GraphNodeLvlTranslation {
     struct GraphNode node;
+    void* dl;
     Vec3f translation;
 };
 
