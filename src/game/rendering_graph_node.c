@@ -126,6 +126,20 @@ static s16 *gCurrAnimData;
 
 static Gfx* gLightReset;
 
+#define RM_AA_PCL_ALPHA_SURF(clk)                                                                      \
+    AA_DEF | IM_RD | CVG_DST_CLAMP | ZMODE_OPA | G_AC_THRESHOLD                                        \
+        | GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
+
+#define RM_AA_ZB_PCL_ALPHA_SURF(clk)                                                                   \
+    AA_DEF | Z_CMP | Z_UPD | IM_RD | CVG_DST_CLAMP | ZMODE_OPA | G_AC_THRESHOLD                        \
+        | GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
+
+#define G_RM_AA_PCL_ALPHA_SURF    RM_AA_PCL_ALPHA_SURF(1)
+#define G_RM_AA_PCL_ALPHA_SURF2   RM_AA_PCL_ALPHA_SURF(2)
+
+#define G_RM_AA_ZB_PCL_ALPHA_SURF     RM_AA_ZB_PCL_ALPHA_SURF(1)
+#define G_RM_AA_ZB_PCL_ALPHA_SURF2    RM_AA_ZB_PCL_ALPHA_SURF(2)
+
 /* Rendermode settings for cycle 1 for all 8 or 13 layers. */
 static const struct RenderModeContainer renderModeTable_1Cycle[2] = { 
     [RENDER_NO_ZB] = { {
@@ -134,7 +148,7 @@ static const struct RenderModeContainer renderModeTable_1Cycle[2] = {
         [LAYER_PCL] = G_RM_AA_PCL_SURF,
         // [LAYER_OPAQUE_INTER] = G_RM_AA_OPA_SURF,
         [LAYER_OPAQUE_DECAL] = G_RM_AA_OPA_SURF,
-        [LAYER_ALPHA] = G_RM_AA_TEX_EDGE,
+        [LAYER_ALPHA] = G_RM_AA_PCL_ALPHA_SURF,
 #if SILHOUETTE
         [LAYER_ALPHA_DECAL] = G_RM_AA_TEX_EDGE | ZMODE_DEC,
         [LAYER_SILHOUETTE_OPAQUE] = G_RM_AA_OPA_SURF,
@@ -153,7 +167,7 @@ static const struct RenderModeContainer renderModeTable_1Cycle[2] = {
         [LAYER_PCL] = G_RM_AA_ZB_PCL_SURF,
         // [LAYER_OPAQUE_INTER] = G_RM_AA_ZB_OPA_INTER,
         [LAYER_OPAQUE_DECAL] = G_RM_AA_ZB_OPA_DECAL,
-        [LAYER_ALPHA] = G_RM_AA_ZB_TEX_EDGE,
+        [LAYER_ALPHA] = G_RM_AA_ZB_PCL_ALPHA_SURF,
 #if SILHOUETTE
         [LAYER_ALPHA_DECAL] = G_RM_AA_ZB_TEX_EDGE | ZMODE_DEC,
         [LAYER_SILHOUETTE_OPAQUE] = G_RM_AA_ZB_OPA_SURF,
@@ -175,7 +189,7 @@ static const struct RenderModeContainer renderModeTable_2Cycle[2] = {
         [LAYER_PCL] = G_RM_AA_PCL_SURF2,
         // [LAYER_OPAQUE_INTER] = G_RM_AA_OPA_SURF2,
         [LAYER_OPAQUE_DECAL] = G_RM_AA_OPA_SURF2,
-        [LAYER_ALPHA] = G_RM_AA_TEX_EDGE2,
+        [LAYER_ALPHA] = G_RM_AA_PCL_ALPHA_SURF2,
 #if SILHOUETTE
         [LAYER_ALPHA_DECAL] = G_RM_AA_TEX_EDGE2 | ZMODE_DEC,
         [LAYER_SILHOUETTE_OPAQUE] = G_RM_AA_OPA_SURF2,
@@ -194,7 +208,7 @@ static const struct RenderModeContainer renderModeTable_2Cycle[2] = {
         [LAYER_PCL] = G_RM_AA_ZB_PCL_SURF2,
         // [LAYER_OPAQUE_INTER] = G_RM_AA_ZB_OPA_INTER2,
         [LAYER_OPAQUE_DECAL] = G_RM_AA_ZB_OPA_DECAL2,
-        [LAYER_ALPHA] = G_RM_AA_ZB_TEX_EDGE2,
+        [LAYER_ALPHA] = G_RM_AA_ZB_PCL_ALPHA_SURF2,
 #if SILHOUETTE
         [LAYER_ALPHA_DECAL] = G_RM_AA_ZB_TEX_EDGE2 | ZMODE_DEC,
         [LAYER_SILHOUETTE_OPAQUE] = G_RM_AA_ZB_OPA_SURF2,
@@ -309,25 +323,20 @@ static void set_render_mode(Gfx **ptempGfxHead, int zb, int layer)
     u32 wantMode1 = renderModeTable_1Cycle[zb].modes[layer];
     u32 wantMode2 = renderModeTable_2Cycle[zb].modes[layer];
     gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
-#if 0
     if (LAYER_ALPHA == layer)
     {
-        gDPSetAlphaCompareReal(tempGfxHead++, G_AC_THRESHOLD);
         gDPSetBlendColor(tempGfxHead++, 0, 0, 0, 127);
     }
-#endif
 #undef tempGfxHead
 }
 
 static void clear_render_mode(Gfx **ptempGfxHead, int layer)
 {
 #define tempGfxHead (*ptempGfxHead)
-#if 0
     if (LAYER_ALPHA == layer)
     {
         gDPSetAlphaCompare(tempGfxHead++, G_AC_NONE);
     }
-#endif
 #undef tempGfxHead
 }
 
