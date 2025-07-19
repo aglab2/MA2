@@ -127,11 +127,11 @@ static s16 *gCurrAnimData;
 static Gfx* gLightReset;
 
 #define RM_AA_PCL_ALPHA_SURF(clk)                                                                      \
-    AA_DEF | IM_RD | CVG_DST_CLAMP | ZMODE_OPA | G_AC_THRESHOLD                                        \
+    AA_DEF | RD_DEF | CVG_DST_CLAMP | ZMODE_OPA | G_AC_THRESHOLD                                        \
         | GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
 #define RM_AA_ZB_PCL_ALPHA_SURF(clk)                                                                   \
-    AA_DEF | Z_CMP | Z_UPD | IM_RD | CVG_DST_CLAMP | ZMODE_OPA | G_AC_THRESHOLD                        \
+    AA_DEF | Z_CMP | Z_UPD | RD_DEF | CVG_DST_CLAMP | ZMODE_OPA | G_AC_THRESHOLD                        \
         | GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
 #define G_RM_AA_PCL_ALPHA_SURF    RM_AA_PCL_ALPHA_SURF(1)
@@ -335,7 +335,7 @@ static void clear_render_mode(Gfx **ptempGfxHead, int layer)
 #define tempGfxHead (*ptempGfxHead)
     if (LAYER_ALPHA == layer)
     {
-        gDPSetAlphaCompare(tempGfxHead++, G_AC_NONE);
+        gDPSetAlphaCompareReal(tempGfxHead++, G_AC_NONE);
     }
 #undef tempGfxHead
 }
@@ -650,13 +650,13 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
                 render_batches(&tempGfxHead, masterLayer->objects, currLayer);
                 gDPPipeSync(tempGfxHead++);
                 gDPPipelineMode(tempGfxHead++, G_PM_1PRIMITIVE);
-                clear_render_mode(&tempGfxHead, currLayer);
 
                 if (LEVEL_IG == gCurrLevelNum)
                 {
                     gSPDisplayList(tempGfxHead++, gLightReset);
                 }
             }
+            clear_render_mode(&tempGfxHead, currLayer);
         }
     }
 

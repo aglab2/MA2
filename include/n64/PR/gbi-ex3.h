@@ -777,7 +777,7 @@ it for antialiasing. */
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_A_MEM)
 
 #define RM_AA_ZB_PCL_SURF(clk)                                  \
-    AA_DEF | Z_CMP | Z_UPD | IM_RD | CVG_DST_CLAMP |            \
+    AA_DEF | Z_CMP | Z_UPD | RD_DEF | CVG_DST_CLAMP |            \
     ZMODE_OPA | G_AC_DITHER |                                   \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
@@ -834,7 +834,7 @@ it for antialiasing. */
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_A_MEM)
 
 #define RM_AA_PCL_SURF(clk)                                     \
-    AA_DEF | IM_RD | CVG_DST_CLAMP |                            \
+    AA_DEF | RD_DEF | CVG_DST_CLAMP |                            \
     ZMODE_OPA | G_AC_DITHER |                                   \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
