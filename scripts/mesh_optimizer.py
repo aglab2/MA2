@@ -353,6 +353,17 @@ class ModelMeshEntry(ModelEntry):
         return (idx + 1) % 3
 
     @staticmethod
+    def _edges(tri):
+        yield (tri[0], tri[1])
+        yield (tri[1], tri[2])
+        yield (tri[2], tri[0])
+    
+    def _edges_reverse(self, tri):
+        yield (tri[1], tri[0])
+        yield (tri[2], tri[1])
+        yield (tri[0], tri[2])
+
+    @staticmethod
     def _longest_link(links, links_end):
         starting_vtxs     = [ vtx for vtx in links if vtx not in links_end ]
         intermediate_vtxs = [ vtx for vtx in links if vtx     in links_end ]
@@ -435,13 +446,162 @@ class ModelMeshEntry(ModelEntry):
 
         assert False, f"unknown command: {data}"
 
-    def make_render_pass(self, triangles, vertices):
-            total_pricer = UsagePricer(triangles, set(), set())
+    @staticmethod
+    def _v_in_triA_not_in_triB(triA, triB):
+        # Such routine is very helpful for strips because it is common that vtx needed to be outputted in index buffer
+        # is the exact vertex that is not in the next triangle.
+        return [v for v in triA if v not in triB].pop()
+
+    @staticmethod
+    def _strip_can_be_rendered(path):
+        # EX3 is unable to support every strip setup. Only strip where 3rd vertex is not shared with 1st vertex can work
+        # A tri setup like this can work:
+        #   2 - 4 - 6 ..
+        #  / \ / \ /  ..
+        # 1 - 3 - 5 - ..
+
+        # ... but its symmetric flip cannot work - the 3rd tri will be v4-v2-v5 but only v3-v4-v5 can be rendered
+        # 1 - 2 - 5 ..
+        #  \ / \ /  ..
+        #   3 - 4 - 6 - ..
+        v1 = ModelMeshEntry._v_in_triA_not_in_triB(path[0], path[1])
+        t1 = ModelMeshEntry._tri_rotate(path[0], v1)
+        v2 = t1[1]
+        return v2 not in path[2]
+
+    def _make_render_pass(self, triangles, vertices):
             rendered_triangles = triangles[:]
+            if not HAS_EX3_COMMANDS:
+                return RenderPass(vertices, [ list(tri) for tri in rendered_triangles ], [])
+
             rendered_fan_strips = []
-            while HAS_EX3_COMMANDS:
+
+            # Build the strips tree. The way it is built is using a temporary edge->tri mapping to link the tree...
+            edge_to_tris = {}
+            for tri in rendered_triangles:
+                # Mind that edge is flipped here because the next tri in strip will have the edge in reverse order
+                for edge in self._edges_reverse(tri):
+                    if edge not in edge_to_tris:
+                        edge_to_tris[edge] = []
+                    edge_to_tris[edge].append(tri)
+
+            strip_tri_to_tris = {}
+            # ...and iterating the triangles again linking the triangles
+            for tri in rendered_triangles:
+                for edge in self._edges(tri):
+                    if edge not in edge_to_tris:
+                        continue
+
+                    for ntri in edge_to_tris[edge]:
+                        if ntri not in strip_tri_to_tris:
+                            strip_tri_to_tris[ntri] = set()
+                        strip_tri_to_tris[ntri].add(tri)
+
+            del edge_to_tris
+
+            # This provides us with doubly linked triangles list for strips generation.
+            # Try to find the best start of the strip - the "loneliest" triangle with the least amount of neighbours
+            neighbour_count_to_tri = {}
+            for tri in strip_tri_to_tris:
+                neighbour_count = len(strip_tri_to_tris[tri])
+                if neighbour_count not in neighbour_count_to_tri:
+                    neighbour_count_to_tri[neighbour_count] = set()
+                neighbour_count_to_tri[neighbour_count].add(tri)
+
+            if not neighbour_count_to_tri or max(neighbour_count_to_tri.keys()) < 2:
+                # Not enough neighbours to form any kind of strip
+                return RenderPass(vertices, [ list(tri) for tri in rendered_triangles ], [])
+        
+            dfs_tri_traverse_order = []
+            for count in sorted(neighbour_count_to_tri.keys()):
+                dfs_tri_traverse_order.extend(list(neighbour_count_to_tri[count]))
+            
+            del neighbour_count_to_tri
+
+            # Now we need to dfs through each triangle to find the strips
+            # Start with lighest triangles that have the least amount of neighbours
+            # Because each render pass is by amount of vertices, we can just dfs each triangle without too much cost.
+            for tri in dfs_tri_traverse_order:
+                # Check if it was already rendered as part of a strip
+                if tri not in strip_tri_to_tris:
+                    continue
+
+                stack = [(tri, [tri])]
+                longest_path = [tri]
+                while stack:
+                    curr, path = stack.pop()
+                    # Note that dfs is allowed to do 'strip_tri_to_tris[curr]' because it is doubly linked
+                    # Conveniently we will get an exception is something went wrong in 'strip_tri_to_tris' generation
+                    for ntri in strip_tri_to_tris[curr]:
+                        if ntri not in path:
+                            new_path = path + [ntri]
+                            if len(new_path) > len(longest_path):
+                                longest_path = new_path
+
+                            stack.append((ntri, new_path))
+
+                # We got the path, evict all triangles that are in the path
+                for tri in longest_path:
+                    if not tri in strip_tri_to_tris:
+                        continue
+                    for ntri in strip_tri_to_tris.pop(tri):
+                        strip_tri_to_tris[ntri].remove(tri)
+                        if not strip_tri_to_tris[ntri]:
+                            del strip_tri_to_tris[ntri]
+
+                # Do not consider tiny strips (quads really), they will be handled nicely by regular TRI2 command
+                while len(longest_path) >= 3:
+                    path_to_render = None
+                    if len(longest_path) <= 5:
+                        path_to_render = longest_path
+                        longest_path = []
+                    elif len(longest_path) == 9:
+                        # Special handling is required for 9 triangles to avoid situation where 4 len strips cannot be rendered
+                        # Thankfully, we can just render either 5+4 or 4+5 triangles explicitly always renderable strip.
+                        if self._strip_can_be_rendered(longest_path):
+                            path_to_render = longest_path[:4]
+                            longest_path = longest_path[4:]
+                        else:
+                            path_to_render = longest_path[:5]
+                            longest_path = longest_path[5:]
+                    else:
+                        path_to_render = longest_path[:5]
+                        longest_path = longest_path[5:]
+
+                    # It is possible to convert unsupported strip by reversing the order of triangles for odd length.
+                    if not self._strip_can_be_rendered(path_to_render):
+                        if len(path_to_render) % 2 == 1:
+                            path_to_render.reverse()
+                        else:
+                            # Terrible fate occured - we have to trim down the strip but it will become renderable :)
+                            assert not longest_path
+                            assert len(path_to_render) == 4
+                            rendered_triangles.append(path_to_render[0])
+                            path_to_render = path_to_render[1:]
+
+                    # We will render longest_path as strips so remove it from 'rendered_triangles'
+                    for tri in path_to_render:
+                        rendered_triangles.remove(tri)
+
+                    # Now we can render the strip - kickstart the strip with the first triangle
+                    # Strip is defined as v1-v2-v3, v3-v2-v4, v3-v4-v5, v5-v4-v6, v5-v6-v7
+                    # Find out the rotation of the first triangle - v1 must only be used in 1st but not 2nd triangle
+                    tri_prev = self._tri_rotate(path_to_render[0], self._v_in_triA_not_in_triB(path_to_render[0], path_to_render[1]))
+                    assert tri_prev[1] not in path_to_render[2], "v2 must not be in t2"
+                    strip_vs = list(tri_prev)
+                    for tri_curr in path_to_render[1:]:
+                        strip_vs.append(self._v_in_triA_not_in_triB(tri_curr, tri_prev))
+                        tri_prev = tri_curr
+
+                    while len(strip_vs) < 7:
+                        strip_vs.append(-1)
+                    rendered_fan_strips.append(FanStrip(is_strip=True, vertices=strip_vs))
+
+                # ...rest, if left, will be rendered as triangles
+
+            total_pricer = UsagePricer(rendered_triangles, set(), set())
+            while True:
                 # done here means done checking for all fan/strip
-                # sometimes scanning in 'total_pricer' will need to be restarted due to changing its contents
                 done = True
                 if total_pricer.completed():
                     break
@@ -567,7 +727,7 @@ class ModelMeshEntry(ModelEntry):
             for i in range(len(self._vertices)):
                 passthru_vertices[i] = i
 
-            render_pass = self.make_render_pass(self._triangles, passthru_vertices)
+            render_pass = self._make_render_pass(self._triangles, passthru_vertices)
             render_passes.append(render_pass)
         else:
             # This is a primitive greedy algorithm for drawing vertices
@@ -635,7 +795,7 @@ class ModelMeshEntry(ModelEntry):
                     fanstrip_tri_check()
                     print("+ flush +")
 
-                    render_pass = self.make_render_pass([ self._tri_normalize(tri) for tri in rendered_triangles ], loaded_vertices.copy())
+                    render_pass = self._make_render_pass([ self._tri_normalize(tri) for tri in rendered_triangles ], loaded_vertices.copy())
                     render_passes.append(render_pass)
 
                     loaded_vertices.clear()
