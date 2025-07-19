@@ -17,8 +17,10 @@
 /* Fast64 begin persistent block [scripts] */
 #include "levels/cck/area_1/collision.inc.c"
 #include "level_config.h"
-static struct LevelConfig cfg = { };
-#define SEQ_LEVEL_GRASS 0x44
+static struct LevelConfig cfg = {
+	.viewRangeMult = 0.6f,
+};
+#define SEQ_LEVEL_GRASS 0
 #define MODEL_CCK_SWITCH_P1 MODEL_CCK_SWITCH
 #define bhvFish bhvFishSpawner
 #define bhvCoinFormation bhvCoinFormationCC

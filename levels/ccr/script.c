@@ -19,6 +19,7 @@
 #include "level_config.h"
 extern const SpringDesc* spring_descs_ccr[];
 static struct LevelConfig cfg = {
+	.viewRangeMult = 0.6f,
 	.springDescs = spring_descs_ccr,
 };
 #define SEQ_LEVEL_GRASS 0x44
