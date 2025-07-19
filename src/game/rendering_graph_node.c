@@ -309,21 +309,26 @@ static void set_render_mode(Gfx **ptempGfxHead, int zb, int layer)
     u32 wantMode1 = renderModeTable_1Cycle[zb].modes[layer];
     u32 wantMode2 = renderModeTable_2Cycle[zb].modes[layer];
     gDPSetRenderMode(tempGfxHead++, wantMode1, wantMode2);
+#ifdef WANT_TEX_EDGE_PCL
     if (LAYER_ALPHA == layer)
     {
+        gDPSetAlphaCompareReal(tempGfxHead++, G_AC_THRESHOLD);
         gDPSetBlendColor(tempGfxHead++, 0, 0, 0, 127);
     }
+#endif
 #undef tempGfxHead
 }
 
 static void clear_render_mode(Gfx **ptempGfxHead, int layer)
 {
+#ifdef WANT_TEX_EDGE_PCL
 #define tempGfxHead (*ptempGfxHead)
     if (LAYER_ALPHA == layer)
     {
         gDPSetAlphaCompareReal(tempGfxHead++, G_AC_NONE);
     }
 #undef tempGfxHead
+#endif
 }
 
 /**

@@ -5,6 +5,7 @@
 
 #define NO_SYNCS_IN_TEXTURE_LOADS
 // #define RISKY_RDP_SYNCS
+#define WANT_TEX_EDGE_PCL
 
 /* List of options; the documentation for each is where it is used below. */
 /* #define REQUIRE_SEMICOLONS_AFTER_GBI_COMMANDS */ /* recommended */
@@ -773,7 +774,7 @@ it for antialiasing. */
     ALPHA_CVG_SEL | FORCE_BL | ZMODE_DEC |                      \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
-#if 0
+#ifndef WANT_TEX_EDGE_PCL
 /* Note that this uses AA_EN not AA_DEF */
 #define RM_AA_ZB_TEX_EDGE(clk)                                  \
     AA_EN | Z_CMP | Z_UPD | RD_DEF | CVG_DST_CLAMP |            \
@@ -840,7 +841,7 @@ it for antialiasing. */
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
 /* Note that this uses AA_EN not AA_DEF */
-#if 0
+#ifndef WANT_TEX_EDGE_PCL
 #define RM_AA_TEX_EDGE(clk)                                     \
     AA_EN | RD_DEF | CVG_DST_CLAMP |                            \
     CVG_X_ALPHA | ALPHA_CVG_SEL | ZMODE_OPA | TEX_EDGE |        \
@@ -914,7 +915,7 @@ it for antialiasing. */
     IM_RD | CVG_DST_FULL | FORCE_BL | ZMODE_OPA |               \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
-#if 0
+#ifndef WANT_TEX_EDGE_PCL
 #define RM_TEX_EDGE(clk)                                        \
     CVG_DST_CLAMP | CVG_X_ALPHA | ALPHA_CVG_SEL | FORCE_BL |    \
     ZMODE_OPA | TEX_EDGE | AA_EN |                              \
