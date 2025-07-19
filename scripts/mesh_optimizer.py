@@ -629,7 +629,7 @@ class ModelMeshEntry(ModelEntry):
                 if not total_pricer.completed():
                     highest_usage, highest_usage_vtx = next(total_pricer.highest_usage())
 
-                limit = 52 if highest_usage < 4 else 48
+                limit = 54 if highest_usage < 4 else 48
                 if (len(loaded_vertices) and total_pricer.completed()) or len(loaded_vertices) > limit:
                     # Flush vertices
                     fanstrip_tri_check()

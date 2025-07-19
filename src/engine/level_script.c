@@ -432,12 +432,15 @@ static void level_cmd_load_model_from_dl(void) {
 }
 
 static void level_cmd_load_model_from_geo(void) {
-    ModelID16 model = CMD_GET(ModelID16, 2);
+    u8 flags = CMD_GET(u8, 2);
+    u8 model = CMD_GET(u8, 3);
     void *geo = CMD_GET(void *, 4);
 
     assert(model < MODEL_ID_COUNT, "Tried to load an invalid model ID.");
     if (model < MODEL_ID_COUNT) {
-        gLoadedGraphNodes[model] = process_geo_layout(geo);
+        struct GraphNode *node = process_geo_layout(geo);
+        node->flags |= flags;
+        gLoadedGraphNodes[model] = node;
     }
 
     sCurrentCmd = CMD_NEXT;

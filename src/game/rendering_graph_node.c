@@ -1606,7 +1606,9 @@ void geo_process_object(struct Object *node) {
 #endif
                 gCurGraphNodeObject = (struct GraphNodeObject *) node;
                 node->header.gfx.sharedChild->parent = &node->header.gfx.node;
+                gUseHeap = !(node->header.gfx.sharedChild->flags & GRAPH_RENDER_NO_HEAP);
                 geo_process_node_and_siblings(node->header.gfx.sharedChild);
+                gUseHeap = 0;
                 node->header.gfx.sharedChild->parent = NULL;
                 gCurGraphNodeObject = NULL;
             }
