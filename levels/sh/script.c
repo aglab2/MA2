@@ -21,7 +21,7 @@ extern const SpringDesc* spring_descs_sh[];
 static struct LevelConfig cfg = {
 	.springDescs = spring_descs_sh
 };
-#define SEQ_LEVEL_GRASS 0
+#define SEQ_LEVEL_GRASS 0x3e
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_sh_entry[] = {

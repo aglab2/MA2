@@ -1007,6 +1007,9 @@ void geo_layout_cmd_node_object_parent(void) {
    cmd+0x04: GraphNodeFunc func
 */
 void geo_layout_cmd_node_generated(void) {
+    if (gCurRootGraphNode)
+        gCurRootGraphNode->flags |= GRAPH_RENDER_NO_HEAP;
+
     struct GraphNodeGenerated *graphNode =
         init_graph_node_generated(NULL,
                                   (GraphNodeFunc) cur_geo_cmd_ptr(0x04), // asm function
