@@ -10181,13 +10181,13 @@ struct Cutscene sCutsceneCCR3[] = {
 };
 
 static void cutscene_cck1(struct Camera *c) {
-    c->focus[0] = -632.f;
-    c->focus[1] = 1102.f;
-    c->focus[2] = 209.f;
+    c->focus[0] = 0.f;
+    c->focus[1] = 3095.f;
+    c->focus[2] = -2427.f;
 
-    c->pos[0] = 596.f;
-    c->pos[1] = 400.f;
-    c->pos[2] = 2423.f;
+    c->pos[0] = 861.f;
+    c->pos[1] = 3621.f;
+    c->pos[2] = -1389.f;
 }
 
 struct Cutscene sCutsceneCCK1[] = {

@@ -6,6 +6,7 @@
 #include "dialog_ids.h"
 
 #include "make_const_nonconst.h"
+#include "spring_desc.h"
 
 #if 0
 #include "levels/cck/leveldata.inc.c"
@@ -726,6 +727,8 @@ Vtx cck_dl_0008_object_013FCBCC_mesh_layer_1_vtx_0[179] = {
 #include "levels/cck/visual/header_lvlopt.inc.h"
 #include "levels/cck/visual/model_lvlopt.inc.c"
 #include "levels/cck/flipbook.inc.c"
+#include "levels/cck/area_1/spline.inc.c"
+#include "levels/cck/rails.inc.c"
 #endif
 
 #include "levels/cck/ccr_doorl/model.inc.c"

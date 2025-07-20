@@ -17,10 +17,13 @@
 /* Fast64 begin persistent block [scripts] */
 #include "levels/cck/area_1/collision.inc.c"
 #include "level_config.h"
+#include "spring_desc.h"
+extern const SpringDesc* spring_descs_cck[];
 static struct LevelConfig cfg = {
-	.viewRangeMult = 0.6f,
+	.viewRangeMult = 0.8f,
+	.springDescs = spring_descs_cck,
 };
-#define SEQ_LEVEL_GRASS 0
+#define SEQ_LEVEL_GRASS 0x44
 #define MODEL_CCK_SWITCH_P1 MODEL_CCK_SWITCH
 #define bhvFish bhvFishSpawner
 #define bhvCoinFormation bhvCoinFormationCC
@@ -59,7 +62,6 @@ const LevelScript level_cck_entry[] = {
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		MARIO_POS(0x01, 0, 0, 6700, 0),
-#if 0
 		OBJECT(MODEL_BUB, 796, 3595, -798, 0, 135, 0, 0x00000000, bhvBub),
 		OBJECT(MODEL_BUB, 851, 2319, 1189, 0, 135, 0, 0x00000000, bhvBub),
 		OBJECT(MODEL_BUB, 74, 1110, -1345, 0, 135, 0, 0x00000000, bhvBub),
@@ -84,15 +86,15 @@ const LevelScript level_cck_entry[] = {
 		OBJECT(MODEL_NONE, -2, -1700, -5492, 0, 90, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 4, 300, -7, 0, 90, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -7, 2850, -4595, 0, -180, 0, (2 << 16), bhvCoinFormation),
-		OBJECT(MODEL_NONE, -798, 4647, 801, 0, 0, 0, (17 << 16), bhvCoinFormation),
+		OBJECT(MODEL_NONE, -798, 4485, 801, 0, 0, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 611, 3087, -6941, 0, 0, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -623, 3087, -6933, 0, 0, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 0, 6600, -2450, 0, 0, 0, 0x00000000, bhvCCKDoor),
 		OBJECT(MODEL_FISH, 0, 1380, -36, 0, 0, 0, 0x00000000, bhvFish),
 		OBJECT(MODEL_FISH, -17, -251, -8435, 0, 135, 0, 0x00000000, bhvFish),
 		OBJECT(MODEL_FISH, 0, 3576, -36, 0, 0, 0, 0x00000000, bhvFish),
-		OBJECT(MODEL_NONE, 2, 6300, 3010, 0, 0, 0, 0x00000000, bhvCCKGate),
-		OBJECT(MODEL_NONE, -2, 2850, -2527, 0, -180, 0, (1 << 16), bhvCCKGate),
+		OBJECT(MODEL_NONE, 2, 6300, 3010, 0, 0, 0, (1 << 16), bhvCCKGate),
+		OBJECT(MODEL_NONE, -2, 2850, -2527, 0, -180, 0, 0x00000000, bhvCCKGate),
 		OBJECT(MODEL_SKEETER, 1, 6300, 3366, 0, -180, 0, 0x00000000, bhvSkeeter),
 		OBJECT(MODEL_SKEETER, -709, 6300, -1646, 0, -180, 0, 0x00000000, bhvSkeeter),
 		OBJECT(MODEL_SKEETER, 748, 6300, -1650, 0, -180, 0, 0x00000000, bhvSkeeter),
@@ -112,7 +114,6 @@ const LevelScript level_cck_entry[] = {
 		OBJECT(MODEL_NONE, 0, 3550, -11000, 0, -180, 0, 0x00000000, bhvCCKCurrent),
 		OBJECT(MODEL_NONE, 0, -950, -16000, 0, -180, 0, (1 << 16), bhvCCKCurrent),
 		OBJECT(MODEL_NONE, 1350, -950, -17350, 0, -180, 0, (2 << 16), bhvCCKCurrent),
-#endif
 		OBJECT(MODEL_STAR, -5, 8269, -848, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -3, 6122, 4003, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 8, 6368, -1239, 0, 0, 0, 0x00000000, bhvStar),
@@ -125,9 +126,11 @@ const LevelScript level_cck_entry[] = {
 		OBJECT(MODEL_STAR, 5, 4228, -14086, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -38, -1287, -13488, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 2566, -1581, -17976, 0, 0, 0, 0x00000000, bhvStar),
-		OBJECT(MODEL_PURPLE_SWITCH, -5, 7900, -848, 0, 0, 0, 0x00000000, bhvFloorSwitchGrills),
+		OBJECT(MODEL_STAR, -5, 8269, 3237, 0, 0, 0, 0x00000000, bhvStar),
+		OBJECT(MODEL_CC_RUNE, -5, 7900, -848, 0, 0, 0, 0x00000000, bhvCCRune),
 		OBJECT(MODEL_CCK_SWITCH_P1, 4402, -1750, -17359, 0, 0, 0, 0x00000000, bhvCCKSwitch),
-		OBJECT(MODEL_CC_TIMESTOP, -798, 4483, 801, 0, 0, 0, 0x00000000, bhvCCTimestop),
+		OBJECT(MODEL_PURPLE_SWITCH, -5, 7900, 3272, 0, 0, 0, 0x00000000, bhvFloorSwitchGrills),
+		OBJECT(MODEL_CC_TIMESTOP, -798, 4400, 801, 0, 0, 0, 0x00000000, bhvCCTimestop),
 		OBJECT(MODEL_CC_TIMESTOP, 1, 3450, -7778, 0, 0, 0, 0x00000000, bhvCCTimestop),
 		OBJECT(MODEL_CC_TIMESTOP, -38, -1450, -13963, 0, 0, 0, 0x00000000, bhvCCTimestop),
 		TERRAIN(cck_area_1_collision),

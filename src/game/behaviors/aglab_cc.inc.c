@@ -513,12 +513,15 @@ void bhv_cce_spawn_block_init()
 
 extern const Collision cce_block_collision[];
 extern const Collision ccr_block_collision[];
+extern const Collision cck_block_collision[];
 void bhv_cce_block_init()
 {
     if (gCurrLevelNum == LEVEL_CCE)
         obj_set_collision_data(o, cce_block_collision);
     if (gCurrLevelNum == LEVEL_CCR)
         obj_set_collision_data(o, ccr_block_collision);
+    if (gCurrLevelNum == LEVEL_CCK)
+        obj_set_collision_data(o, cck_block_collision);
 }
 
 void bhv_cce_block_loop()
@@ -779,7 +782,7 @@ void bhv_cck_switch2_loop()
         if (o == gMarioObject->platform)
         {
             o->oAction = 1;
-            gCamera->cutscene = CUTSCENE_CCK_1;
+            gCamera->cutscene = CUTSCENE_CCK_2;
             enable_time_stop_including_mario();
         }
     }
@@ -796,13 +799,14 @@ void bhv_cck_current_loop()
 
 void bhv_cck_gate_init()
 {
-    f32 d;
-    o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvFloorSwitchGrills, &d);
+    o->parentObj = cur_obj_find_object_with_behavior_and_bparam2(bhvFloorSwitchGrills, o->oBehParams2ndByte);
 }
+
+extern Gfx mat_cck_dl_LaserBarrier_sa2mdl_0_f3d[];
 
 void bhv_cck_gate_loop()
 {
-    if (0 == o->oBehParams2ndByte)
+    if (0 != o->oBehParams2ndByte)
     {
         if (gTimeFrozen)
             return;
@@ -824,9 +828,28 @@ void bhv_cck_gate_loop()
     else
     {
         if (o->parentObj->oAction != 0)
-            return;
+        {
+            if (0 == o->oSubAction)
+            {
+                o->oSubAction = 1;
+                o->oTimer = 0;
+            }
 
-        
+            if (o->oTimer < 60)
+            {
+                gCamera->cutscene = CUTSCENE_CCK_1;
+                enable_time_stop_including_mario();
+                u8* ptr = (u8*) segmented_to_virtual(mat_cck_dl_LaserBarrier_sa2mdl_0_f3d);
+                ptr[6*8 + 7] = CLAMP(180 - (o->oTimer - 10) * 6, 0, 180);
+            }
+            else if (60 == o->oTimer)
+            {
+                disable_time_stop_including_mario();
+                reset_camera(gCamera);
+            }
+            return;
+        }
+
         f32 ydiff = gMarioStates->pos[1] - o->oPosY;
         if (ydiff < -10.f || ydiff > 700.f)
             return;
@@ -853,5 +876,5 @@ extern Gfx mat_cck_dl_LAZER_sa2mdl_0_f3d[];
 void bhv_cck_doors_loop()
 {
     u8* ptr = (u8*) segmented_to_virtual(mat_cck_dl_LAZER_sa2mdl_0_f3d);
-    ptr[11*8 + 7] = gTimeFrozen ? 0 : 180;
+    ptr[10*8 + 7] = gTimeFrozen ? 0 : 180;
 }

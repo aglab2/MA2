@@ -6950,3 +6950,9 @@ extern const BehaviorScript bhvCCKSwitchP2[] = {
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
+
+const BehaviorScript bhvCCRune[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    BEGIN_LOOP(),
+    END_LOOP(),
+};
