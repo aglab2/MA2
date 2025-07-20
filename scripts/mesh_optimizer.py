@@ -275,7 +275,360 @@ def apply_shuffle_limited(render_pass: RenderPass, shuffle, limit):
                 continue
             fanstrip.vertices[i] = -1 if loc_vtx == -1 else shuffle[loc_vtx]
 
-class ModelMeshEntry(ModelEntry):
+class TriKit:
+    @staticmethod
+    def _tri_trivial(tri):
+        return tri[0] == tri[1] or tri[0] == tri[2] or tri[1] == tri[2]
+
+    @staticmethod
+    def _tri_rotate(tri, vtx):
+        if tri[0] == vtx:
+            return tri[0], tri[1], tri[2]
+        if tri[1] == vtx:
+            return tri[1], tri[2], tri[0]
+        if tri[2] == vtx:
+            return tri[2], tri[0], tri[1]
+
+        assert False, "triangle does not contain the vertex"
+
+    @staticmethod
+    def _tri_normalize(tri):
+        # There is a single representation of a 'tri' if minimal vertex is the first one
+        # This will allow to have a convenient lookups in sets
+        vtx = min(tri)
+        return TriKit._tri_rotate(tri, vtx)
+
+    @staticmethod
+    def _tris_rotate(tris, vtx):
+        return [ TriKit._tri_rotate(tri, vtx) for tri in tris ]
+
+    @staticmethod
+    def _tri_index_next(idx):
+        return (idx + 1) % 3
+
+    @staticmethod
+    def _edges(tri):
+        yield (tri[0], tri[1])
+        yield (tri[1], tri[2])
+        yield (tri[2], tri[0])
+    
+    @staticmethod
+    def _edges_reverse(tri):
+        yield (tri[1], tri[0])
+        yield (tri[2], tri[1])
+        yield (tri[0], tri[2])
+
+    @staticmethod
+    def _v_in_triA_not_in_triB(triA, triB):
+        # Such routine is very helpful for strips because it is common that vtx needed to be outputted in index buffer
+        # is the exact vertex that is not in the next triangle.
+        return [v for v in triA if v not in triB].pop()
+
+    @staticmethod
+    def _strip_can_be_rendered(path):
+        # EX3 is unable to support every strip setup. Only strip where 3rd vertex is not shared with 1st vertex can work
+        # A tri setup like this can work:
+        #   2 - 4 - 6 ..
+        #  / \ / \ /  ..
+        # 1 - 3 - 5 - ..
+
+        # ... but its symmetric flip cannot work - the 3rd tri will be v4-v2-v5 but only v3-v4-v5 can be rendered
+        # 1 - 2 - 5 ..
+        #  \ / \ /  ..
+        #   3 - 4 - 6 - ..
+        v1 = TriKit._v_in_triA_not_in_triB(path[0], path[1])
+        t1 = TriKit._tri_rotate(path[0], v1)
+        v2 = t1[1]
+        return v2 not in path[2]
+
+    @staticmethod
+    def _strip_can_continue(path, ntri):
+        if len(path) < 3:
+            return True
+
+        # Check if ntri can be a valid next triangle in the strip
+        # Construct the last strip edge...
+        v_last1 = TriKit._v_in_triA_not_in_triB(path[-1], path[-2])
+        v_last2 = TriKit._v_in_triA_not_in_triB(path[-2], path[-3])
+        t_last = path[-1]
+        t_last_rot = TriKit._tri_rotate(t_last, v_last2)
+        if t_last_rot[1] == v_last1:
+            edge_next = (v_last1, v_last2)
+        else:
+            assert t_last_rot[2] == v_last1, "v_last1 must be in t_last"
+            edge_next = (v_last2, v_last1)
+
+        # ...and check that edge is actually present in the next triangle
+        can = edge_next in TriKit._edges(ntri)
+        return can
+
+    @staticmethod
+    def stripify(triangles):
+            rendered_triangles = triangles[:]
+            if not HAS_EX3_COMMANDS:
+                return rendered_triangles, []
+
+            rendered_fan_strips = []
+
+            # Build the strips tree. The way it is built is using a temporary edge->tri mapping to link the tree...
+            edge_to_tris = {}
+            for tri in rendered_triangles:
+                # Mind that edge is flipped here because the next tri in strip will have the edge in reverse order
+                for edge in TriKit._edges_reverse(tri):
+                    if edge not in edge_to_tris:
+                        edge_to_tris[edge] = []
+                    edge_to_tris[edge].append(tri)
+
+            strip_tri_to_tris = {}
+            # ...and iterating the triangles again linking the triangles
+            for tri in rendered_triangles:
+                for edge in TriKit._edges(tri):
+                    if edge not in edge_to_tris:
+                        continue
+
+                    for ntri in edge_to_tris[edge]:
+                        if ntri not in strip_tri_to_tris:
+                            strip_tri_to_tris[ntri] = set()
+                        strip_tri_to_tris[ntri].add(tri)
+
+            del edge_to_tris
+
+            # This provides us with doubly linked triangles list for strips generation.
+            # Try to find the best start of the strip - the "loneliest" triangle with the least amount of neighbours
+            neighbour_count_to_tri = {}
+            for tri in strip_tri_to_tris:
+                neighbour_count = len(strip_tri_to_tris[tri])
+                if neighbour_count not in neighbour_count_to_tri:
+                    neighbour_count_to_tri[neighbour_count] = set()
+                neighbour_count_to_tri[neighbour_count].add(tri)
+
+            if not neighbour_count_to_tri or max(neighbour_count_to_tri.keys()) < 2:
+                # Not enough neighbours to form any kind of strip
+                return rendered_triangles, []
+
+            dfs_tri_traverse_order = []
+            for count in sorted(neighbour_count_to_tri.keys()):
+                dfs_tri_traverse_order.extend(list(neighbour_count_to_tri[count]))
+            
+            del neighbour_count_to_tri
+
+            strip_scraps = []
+            tri_to_strip_scrap = {}
+            
+            # This is a convenient mapping for fan generation, we will use it later...
+            edge_to_tris = {}
+
+            def remove_tri(tri):
+                rendered_triangles.remove(tri)
+
+                if edge_to_tris:
+                    for edge in TriKit._edges(tri):
+                        edge_to_tris[edge].remove(tri)
+                        if not edge_to_tris[edge]:
+                            del edge_to_tris[edge]
+
+                scraps_to_remove = []
+                if tri in tri_to_strip_scrap:
+                    scraps_to_remove = tri_to_strip_scrap[tri]
+
+                for scrap in scraps_to_remove:
+                    strip_scraps.remove(scrap)
+                    for scrap_tri in scrap:
+                        tri_to_strip_scrap[scrap_tri].remove(scrap)
+                        if not tri_to_strip_scrap[scrap_tri]:
+                            del tri_to_strip_scrap[scrap_tri]
+
+                    # Try to salvage the scrap if it was of length 4 and had beginning or ending cut
+                    salvaged_scrap = None
+                    if len(scrap) == 4:
+                        if scrap[0] == tri:
+                            salvaged_scrap = scrap[1:]
+                        if scrap[-1] == tri:
+                            salvaged_scrap = scrap[:-1]
+                    
+                    if salvaged_scrap:
+                        strip_scraps.append(salvaged_scrap)
+                        for salv_tri in salvaged_scrap:
+                            if salv_tri not in tri_to_strip_scrap:
+                                tri_to_strip_scrap[salv_tri] = []
+                            tri_to_strip_scrap[salv_tri].append(salvaged_scrap)
+
+                assert tri not in tri_to_strip_scrap, "tri must not be in tri_to_strip_scrap"
+
+            # Now we need to dfs through each triangle to find the strips
+            # Start with lighest triangles that have the least amount of neighbours
+            # Because each render pass is by amount of vertices, we can just dfs each triangle without too much cost.
+            for tri in dfs_tri_traverse_order:
+                # Check if it was already rendered as part of a strip
+                if tri not in strip_tri_to_tris:
+                    continue
+
+                stack = [(tri, [tri])]
+                longest_path = [tri]
+                while stack:
+                    curr, path = stack.pop()
+                    # Note that dfs is allowed to do 'strip_tri_to_tris[curr]' because it is doubly linked
+                    # Conveniently we will get an exception is something went wrong in 'strip_tri_to_tris' generation
+                    for ntri in strip_tri_to_tris[curr]:
+                        if ntri not in path and TriKit._strip_can_continue(path, ntri):
+                            new_path = path + [ntri]
+                            if len(new_path) > len(longest_path):
+                                longest_path = new_path
+
+                            stack.append((ntri, new_path))
+
+                # We got the path, evict all triangles that are in the path
+                for tri in longest_path:
+                    if not tri in strip_tri_to_tris:
+                        continue
+                    for ntri in strip_tri_to_tris.pop(tri):
+                        strip_tri_to_tris[ntri].remove(tri)
+                        if not strip_tri_to_tris[ntri]:
+                            del strip_tri_to_tris[ntri]
+
+                # Do not consider tiny strips (quads really), they will be handled nicely by regular TRI2 command
+                while len(longest_path) > 3:
+                    path_to_render = None
+                    if len(longest_path) <= 5:
+                        path_to_render = longest_path
+                        longest_path = []
+                    elif len(longest_path) == 9:
+                        # Special handling is required for 9 triangles to avoid situation where 4 len strips cannot be rendered
+                        # Thankfully, we can just render either 5+4 or 4+5 triangles explicitly always renderable strip.
+                        if TriKit._strip_can_be_rendered(longest_path):
+                            path_to_render = longest_path[:4]
+                            longest_path = longest_path[4:]
+                        else:
+                            path_to_render = longest_path[:5]
+                            longest_path = longest_path[5:]
+                    else:
+                        path_to_render = longest_path[:5]
+                        longest_path = longest_path[5:]
+
+                    # It is possible to convert unsupported strip by reversing the order of triangles for odd length.
+                    if not TriKit._strip_can_be_rendered(path_to_render):
+                        if len(path_to_render) % 2 == 1:
+                            path_to_render.reverse()
+                        else:
+                            # Terrible fate occured - we have to trim down the strip but it will become renderable :)
+                            assert not longest_path
+                            assert len(path_to_render) == 4
+                            longest_path = path_to_render
+                            break # Fall down to fan logic
+
+                    # We will render longest_path as strips so remove it from 'rendered_triangles'
+                    for tri in path_to_render:
+                        remove_tri(tri)
+
+                    # Now we can render the strip - kickstart the strip with the first triangle
+                    # Strip is defined as v1-v2-v3, v3-v2-v4, v3-v4-v5, v5-v4-v6, v5-v6-v7
+                    # Find out the rotation of the first triangle - v1 must only be used in 1st but not 2nd triangle
+                    tri_prev = TriKit._tri_rotate(path_to_render[0], TriKit._v_in_triA_not_in_triB(path_to_render[0], path_to_render[1]))
+                    assert tri_prev[1] not in path_to_render[2], "v2 must not be in t2"
+                    strip_vs = list(tri_prev)
+                    for tri_curr in path_to_render[1:]:
+                        strip_vs.append(TriKit._v_in_triA_not_in_triB(tri_curr, tri_prev))
+                        tri_prev = tri_curr
+
+                    while len(strip_vs) < 7:
+                        strip_vs.append(-1)
+                    rendered_fan_strips.append(FanStrip(is_strip=True, vertices=strip_vs))
+
+                if 3 == len(longest_path) or 4 == len(longest_path):
+                    strip_scrap = longest_path
+                    strip_scraps.append(strip_scrap)
+                    for tri in strip_scrap:
+                        if tri not in tri_to_strip_scrap:
+                            tri_to_strip_scrap[tri] = list()
+                        tri_to_strip_scrap[tri].append(strip_scrap)
+
+                # ...rest, if left, will be rendered as triangles (or maybe fans?)
+
+            # For fans a lookup from vtx to triangles is convenient to have vtx->tri mapping, declaration is on top so 'remove_tri' can see it
+            for tri in rendered_triangles:
+                for edge in TriKit._edges(tri):
+                    if edge not in edge_to_tris:
+                        edge_to_tris[edge] = set()
+                    edge_to_tris[edge].add(tri)
+
+            def scrap_properly_rotated(scrap):
+                v1 = [v for v in scrap[0] if v in scrap[1] and v in scrap[2]].pop()
+                v2 = TriKit._v_in_triA_not_in_triB(scrap[0], scrap[1])
+                proper = (v1, v2) in TriKit._edges(scrap[0])
+                assert proper or (v2, v1) in TriKit._edges(scrap[0]), "v1 and v2 must be in the first triangle"
+                return proper
+
+            while strip_scraps:
+                strip_scrap = strip_scraps[0]
+
+                if len(strip_scrap) == 4:
+                    # Fan can be continue by either 3rd or 4th triangle. Choose that is continuable
+                    scrap_choice0 = strip_scrap[:3]
+                    if not scrap_properly_rotated(scrap_choice0):
+                        scrap_choice0.reverse()
+                        assert scrap_properly_rotated(scrap_choice0)
+
+                    scrap_choice1 = strip_scrap[1:]
+                    if not scrap_properly_rotated(scrap_choice1):
+                        scrap_choice1.reverse()
+                        assert scrap_properly_rotated(scrap_choice1)
+
+                    v1_choice0 = [v for v in scrap_choice0[0] if v in scrap_choice0[1] and v in scrap_choice0[2]].pop()
+                    v5_choice0 = TriKit._v_in_triA_not_in_triB(scrap_choice0[2], scrap_choice0[1])
+                    v1_choice1 = [v for v in scrap_choice1[0] if v in scrap_choice1[1] and v in scrap_choice1[2]].pop()
+                    v5_choice1 = TriKit._v_in_triA_not_in_triB(scrap_choice1[2], scrap_choice1[1])
+                    v5_tris_choice0 = edge_to_tris.get((v1_choice0, v5_choice0), [])
+                    v5_tris_choice1 = edge_to_tris.get((v1_choice1, v5_choice1), [])
+                    if len(v5_tris_choice0) >= len(v5_tris_choice1):
+                        strip_scrap = scrap_choice0
+                    else:
+                        strip_scrap = scrap_choice1
+
+                assert len(strip_scrap) == 3, "strip scrap must be 3 triangles long"
+
+                # Special case for 3 triangles - try to continue as a fan
+                # Remove from renders
+                for tri in strip_scrap:
+                    remove_tri(tri)
+
+                if not scrap_properly_rotated(strip_scrap):
+                    strip_scrap.reverse()
+                    assert scrap_properly_rotated(strip_scrap)
+
+                # Strip notation: Fan notation:
+                #   2 - 4            3 - 4
+                #  / \ / \          / \ / \ 
+                # 1 - 3 - 5        2 - 1 - 5
+
+                # This guaranteed to exist due to the structure of the strip - pivot vertex v1
+                v1 = [v for v in strip_scrap[0] if v in strip_scrap[1] and v in strip_scrap[2]].pop()
+                v2 = TriKit._v_in_triA_not_in_triB(strip_scrap[0], strip_scrap[1])
+                v3 = TriKit._v_in_triA_not_in_triB(strip_scrap[1], strip_scrap[2])
+                v4 = TriKit._v_in_triA_not_in_triB(strip_scrap[1], strip_scrap[0])
+                v5 = TriKit._v_in_triA_not_in_triB(strip_scrap[2], strip_scrap[1])
+                v6 = -1
+                v7 = -1
+
+                e5 = (v1, v5)
+                if e5 in edge_to_tris:
+                    tri3 = next(iter(edge_to_tris[e5]))
+                    remove_tri(tri3)
+                    v6 = TriKit._v_in_triA_not_in_triB(tri3, strip_scrap[2])
+                    e6 = (v1, v6)
+                    if e6 in edge_to_tris:
+                        tri4 = next(iter(edge_to_tris[e6]))
+                        remove_tri(tri4)
+                        v7 = TriKit._v_in_triA_not_in_triB(tri4, tri3)
+
+                fan_vertices = [ v1, v2, v3, v4, v5, v6, v7 ]
+                rendered_fan_strips.append(FanStrip(is_strip=False, vertices=fan_vertices))
+
+            # We are converting tri to list because vtx load optimizer will want to mangle tri/fanstrip vertices
+            # We will never need to compare the triangles so this is fine
+            return rendered_triangles, rendered_fan_strips
+
+
+class ModelMeshEntry(ModelEntry, TriKit):
     def __init__(self, line, next_line, model):
         super().__init__(line)
         self._model = model
@@ -308,32 +661,6 @@ class ModelMeshEntry(ModelEntry):
             self._vertices_lookup[vertex] = idx
             return idx
 
-    @staticmethod
-    def _tri_trivial(tri):
-        return tri[0] == tri[1] or tri[0] == tri[2] or tri[1] == tri[2]
-
-    @staticmethod
-    def _tri_rotate(tri, vtx):
-        if tri[0] == vtx:
-            return tri[0], tri[1], tri[2]
-        if tri[1] == vtx:
-            return tri[1], tri[2], tri[0]
-        if tri[2] == vtx:
-            return tri[2], tri[0], tri[1]
-
-        assert False, "triangle does not contain the vertex"
-
-    @staticmethod
-    def _tri_normalize(tri):
-        # There is a single representation of a 'tri' if minimal vertex is the first one
-        # This will allow to have a convenient lookups in sets
-        vtx = min(tri)
-        return ModelMeshEntry._tri_rotate(tri, vtx)
-
-    @staticmethod
-    def _tris_rotate(tris, vtx):
-        return [ ModelMeshEntry._tri_rotate(tri, vtx) for tri in tris ]
-
     def _tri(self, tri_indices):
         if self._tri_trivial(tri_indices):
             return
@@ -347,21 +674,6 @@ class ModelMeshEntry(ModelEntry):
 
         self._triangles.append(tri)
         self._triangles_lookup.add(tri)
-
-    @staticmethod
-    def _tri_index_next(idx):
-        return (idx + 1) % 3
-
-    @staticmethod
-    def _edges(tri):
-        yield (tri[0], tri[1])
-        yield (tri[1], tri[2])
-        yield (tri[2], tri[0])
-    
-    def _edges_reverse(self, tri):
-        yield (tri[1], tri[0])
-        yield (tri[2], tri[1])
-        yield (tri[0], tri[2])
 
     @staticmethod
     def _longest_link(links, links_end):
@@ -447,312 +759,9 @@ class ModelMeshEntry(ModelEntry):
         assert False, f"unknown command: {data}"
 
     @staticmethod
-    def _v_in_triA_not_in_triB(triA, triB):
-        # Such routine is very helpful for strips because it is common that vtx needed to be outputted in index buffer
-        # is the exact vertex that is not in the next triangle.
-        return [v for v in triA if v not in triB].pop()
-
-    @staticmethod
-    def _strip_can_be_rendered(path):
-        # EX3 is unable to support every strip setup. Only strip where 3rd vertex is not shared with 1st vertex can work
-        # A tri setup like this can work:
-        #   2 - 4 - 6 ..
-        #  / \ / \ /  ..
-        # 1 - 3 - 5 - ..
-
-        # ... but its symmetric flip cannot work - the 3rd tri will be v4-v2-v5 but only v3-v4-v5 can be rendered
-        # 1 - 2 - 5 ..
-        #  \ / \ /  ..
-        #   3 - 4 - 6 - ..
-        v1 = ModelMeshEntry._v_in_triA_not_in_triB(path[0], path[1])
-        t1 = ModelMeshEntry._tri_rotate(path[0], v1)
-        v2 = t1[1]
-        return v2 not in path[2]
-
-    @staticmethod
-    def _strip_can_continue(path, ntri):
-        if len(path) < 3:
-            return True
-
-        # Check if ntri can be a valid next triangle in the strip
-        # Construct the last strip edge...
-        v_last1 = ModelMeshEntry._v_in_triA_not_in_triB(path[-1], path[-2])
-        v_last2 = ModelMeshEntry._v_in_triA_not_in_triB(path[-2], path[-3])
-        t_last = path[-1]
-        t_last_rot = ModelMeshEntry._tri_rotate(t_last, v_last2)
-        if t_last_rot[1] == v_last1:
-            edge_next = (v_last1, v_last2)
-        else:
-            assert t_last_rot[2] == v_last1, "v_last1 must be in t_last"
-            edge_next = (v_last2, v_last1)
-
-        # ...and check that edge is actually present in the next triangle
-        can = edge_next in ModelMeshEntry._edges(ntri)
-        return can
-
-    def _make_render_pass(self, triangles, vertices):
-            rendered_triangles = triangles[:]
-            if not HAS_EX3_COMMANDS:
-                return RenderPass(vertices, [ list(tri) for tri in rendered_triangles ], [])
-
-            rendered_fan_strips = []
-
-            # Build the strips tree. The way it is built is using a temporary edge->tri mapping to link the tree...
-            edge_to_tris = {}
-            for tri in rendered_triangles:
-                # Mind that edge is flipped here because the next tri in strip will have the edge in reverse order
-                for edge in self._edges_reverse(tri):
-                    if edge not in edge_to_tris:
-                        edge_to_tris[edge] = []
-                    edge_to_tris[edge].append(tri)
-
-            strip_tri_to_tris = {}
-            # ...and iterating the triangles again linking the triangles
-            for tri in rendered_triangles:
-                for edge in self._edges(tri):
-                    if edge not in edge_to_tris:
-                        continue
-
-                    for ntri in edge_to_tris[edge]:
-                        if ntri not in strip_tri_to_tris:
-                            strip_tri_to_tris[ntri] = set()
-                        strip_tri_to_tris[ntri].add(tri)
-
-            del edge_to_tris
-
-            # This provides us with doubly linked triangles list for strips generation.
-            # Try to find the best start of the strip - the "loneliest" triangle with the least amount of neighbours
-            neighbour_count_to_tri = {}
-            for tri in strip_tri_to_tris:
-                neighbour_count = len(strip_tri_to_tris[tri])
-                if neighbour_count not in neighbour_count_to_tri:
-                    neighbour_count_to_tri[neighbour_count] = set()
-                neighbour_count_to_tri[neighbour_count].add(tri)
-
-            if not neighbour_count_to_tri or max(neighbour_count_to_tri.keys()) < 2:
-                # Not enough neighbours to form any kind of strip
-                return RenderPass(vertices, [ list(tri) for tri in rendered_triangles ], [])
-        
-            dfs_tri_traverse_order = []
-            for count in sorted(neighbour_count_to_tri.keys()):
-                dfs_tri_traverse_order.extend(list(neighbour_count_to_tri[count]))
-            
-            del neighbour_count_to_tri
-
-            strip_scraps = []
-            tri_to_strip_scrap = {}
-            
-            # This is a convenient mapping for fan generation, we will use it later...
-            edge_to_tris = {}
-
-            def remove_tri(tri):
-                rendered_triangles.remove(tri)
-
-                if edge_to_tris:
-                    for edge in self._edges(tri):
-                        edge_to_tris[edge].remove(tri)
-                        if not edge_to_tris[edge]:
-                            del edge_to_tris[edge]
-
-                scraps_to_remove = []
-                if tri in tri_to_strip_scrap:
-                    scraps_to_remove = tri_to_strip_scrap[tri]
-
-                for scrap in scraps_to_remove:
-                    strip_scraps.remove(scrap)
-                    for scrap_tri in scrap:
-                        tri_to_strip_scrap[scrap_tri].remove(scrap)
-                        if not tri_to_strip_scrap[scrap_tri]:
-                            del tri_to_strip_scrap[scrap_tri]
-
-                    # Try to salvage the scrap if it was of length 4 and had beginning or ending cut
-                    salvaged_scrap = None
-                    if len(scrap) == 4:
-                        if scrap[0] == tri:
-                            salvaged_scrap = scrap[1:]
-                        if scrap[-1] == tri:
-                            salvaged_scrap = scrap[:-1]
-                    
-                    if salvaged_scrap:
-                        strip_scraps.append(salvaged_scrap)
-                        for salv_tri in salvaged_scrap:
-                            if salv_tri not in tri_to_strip_scrap:
-                                tri_to_strip_scrap[salv_tri] = []
-                            tri_to_strip_scrap[salv_tri].append(salvaged_scrap)
-
-                assert tri not in tri_to_strip_scrap, "tri must not be in tri_to_strip_scrap"
-
-            # Now we need to dfs through each triangle to find the strips
-            # Start with lighest triangles that have the least amount of neighbours
-            # Because each render pass is by amount of vertices, we can just dfs each triangle without too much cost.
-            for tri in dfs_tri_traverse_order:
-                # Check if it was already rendered as part of a strip
-                if tri not in strip_tri_to_tris:
-                    continue
-
-                stack = [(tri, [tri])]
-                longest_path = [tri]
-                while stack:
-                    curr, path = stack.pop()
-                    # Note that dfs is allowed to do 'strip_tri_to_tris[curr]' because it is doubly linked
-                    # Conveniently we will get an exception is something went wrong in 'strip_tri_to_tris' generation
-                    for ntri in strip_tri_to_tris[curr]:
-                        if ntri not in path and self._strip_can_continue(path, ntri):
-                            new_path = path + [ntri]
-                            if len(new_path) > len(longest_path):
-                                longest_path = new_path
-
-                            stack.append((ntri, new_path))
-
-                # We got the path, evict all triangles that are in the path
-                for tri in longest_path:
-                    if not tri in strip_tri_to_tris:
-                        continue
-                    for ntri in strip_tri_to_tris.pop(tri):
-                        strip_tri_to_tris[ntri].remove(tri)
-                        if not strip_tri_to_tris[ntri]:
-                            del strip_tri_to_tris[ntri]
-
-                # Do not consider tiny strips (quads really), they will be handled nicely by regular TRI2 command
-                while len(longest_path) > 3:
-                    path_to_render = None
-                    if len(longest_path) <= 5:
-                        path_to_render = longest_path
-                        longest_path = []
-                    elif len(longest_path) == 9:
-                        # Special handling is required for 9 triangles to avoid situation where 4 len strips cannot be rendered
-                        # Thankfully, we can just render either 5+4 or 4+5 triangles explicitly always renderable strip.
-                        if self._strip_can_be_rendered(longest_path):
-                            path_to_render = longest_path[:4]
-                            longest_path = longest_path[4:]
-                        else:
-                            path_to_render = longest_path[:5]
-                            longest_path = longest_path[5:]
-                    else:
-                        path_to_render = longest_path[:5]
-                        longest_path = longest_path[5:]
-
-                    # It is possible to convert unsupported strip by reversing the order of triangles for odd length.
-                    if not self._strip_can_be_rendered(path_to_render):
-                        if len(path_to_render) % 2 == 1:
-                            path_to_render.reverse()
-                        else:
-                            # Terrible fate occured - we have to trim down the strip but it will become renderable :)
-                            assert not longest_path
-                            assert len(path_to_render) == 4
-                            longest_path = path_to_render
-                            break # Fall down to fan logic
-
-                    # We will render longest_path as strips so remove it from 'rendered_triangles'
-                    for tri in path_to_render:
-                        remove_tri(tri)
-
-                    # Now we can render the strip - kickstart the strip with the first triangle
-                    # Strip is defined as v1-v2-v3, v3-v2-v4, v3-v4-v5, v5-v4-v6, v5-v6-v7
-                    # Find out the rotation of the first triangle - v1 must only be used in 1st but not 2nd triangle
-                    tri_prev = self._tri_rotate(path_to_render[0], self._v_in_triA_not_in_triB(path_to_render[0], path_to_render[1]))
-                    assert tri_prev[1] not in path_to_render[2], "v2 must not be in t2"
-                    strip_vs = list(tri_prev)
-                    for tri_curr in path_to_render[1:]:
-                        strip_vs.append(self._v_in_triA_not_in_triB(tri_curr, tri_prev))
-                        tri_prev = tri_curr
-
-                    while len(strip_vs) < 7:
-                        strip_vs.append(-1)
-                    rendered_fan_strips.append(FanStrip(is_strip=True, vertices=strip_vs))
-
-                if 3 == len(longest_path) or 4 == len(longest_path):
-                    strip_scrap = longest_path
-                    strip_scraps.append(strip_scrap)
-                    for tri in strip_scrap:
-                        if tri not in tri_to_strip_scrap:
-                            tri_to_strip_scrap[tri] = list()
-                        tri_to_strip_scrap[tri].append(strip_scrap)
-
-                # ...rest, if left, will be rendered as triangles (or maybe fans?)
-
-            # For fans a lookup from vtx to triangles is convenient to have vtx->tri mapping, declaration is on top so 'remove_tri' can see it
-            for tri in rendered_triangles:
-                for edge in self._edges(tri):
-                    if edge not in edge_to_tris:
-                        edge_to_tris[edge] = set()
-                    edge_to_tris[edge].add(tri)
-
-            def scrap_properly_rotated(scrap):
-                v1 = [v for v in scrap[0] if v in scrap[1] and v in scrap[2]].pop()
-                v2 = self._v_in_triA_not_in_triB(scrap[0], scrap[1])
-                proper = (v1, v2) in self._edges(scrap[0])
-                assert proper or (v2, v1) in self._edges(scrap[0]), "v1 and v2 must be in the first triangle"
-                return proper
-
-            while strip_scraps:
-                strip_scrap = strip_scraps[0]
-
-                if len(strip_scrap) == 4:
-                    # Fan can be continue by either 3rd or 4th triangle. Choose that is continuable
-                    scrap_choice0 = strip_scrap[:3]
-                    if not scrap_properly_rotated(scrap_choice0):
-                        scrap_choice0.reverse()
-                        assert scrap_properly_rotated(scrap_choice0)
-
-                    scrap_choice1 = strip_scrap[1:]
-                    if not scrap_properly_rotated(scrap_choice1):
-                        scrap_choice1.reverse()
-                        assert scrap_properly_rotated(scrap_choice1)
-
-                    v1_choice0 = [v for v in scrap_choice0[0] if v in scrap_choice0[1] and v in scrap_choice0[2]].pop()
-                    v5_choice0 = self._v_in_triA_not_in_triB(scrap_choice0[2], scrap_choice0[1])
-                    v1_choice1 = [v for v in scrap_choice1[0] if v in scrap_choice1[1] and v in scrap_choice1[2]].pop()
-                    v5_choice1 = self._v_in_triA_not_in_triB(scrap_choice1[2], scrap_choice1[1])
-                    v5_tris_choice0 = edge_to_tris.get((v1_choice0, v5_choice0), [])
-                    v5_tris_choice1 = edge_to_tris.get((v1_choice1, v5_choice1), [])
-                    if len(v5_tris_choice0) >= len(v5_tris_choice1):
-                        strip_scrap = scrap_choice0
-                    else:
-                        strip_scrap = scrap_choice1
-
-                assert len(strip_scrap) == 3, "strip scrap must be 3 triangles long"
-
-                # Special case for 3 triangles - try to continue as a fan
-                # Remove from renders
-                for tri in strip_scrap:
-                    remove_tri(tri)
-
-                if not scrap_properly_rotated(strip_scrap):
-                    strip_scrap.reverse()
-                    assert scrap_properly_rotated(strip_scrap)
-
-                # Strip notation: Fan notation:
-                #   2 - 4            3 - 4
-                #  / \ / \          / \ / \ 
-                # 1 - 3 - 5        2 - 1 - 5
-
-                # This guaranteed to exist due to the structure of the strip - pivot vertex v1
-                v1 = [v for v in strip_scrap[0] if v in strip_scrap[1] and v in strip_scrap[2]].pop()
-                v2 = self._v_in_triA_not_in_triB(strip_scrap[0], strip_scrap[1])
-                v3 = self._v_in_triA_not_in_triB(strip_scrap[1], strip_scrap[2])
-                v4 = self._v_in_triA_not_in_triB(strip_scrap[1], strip_scrap[0])
-                v5 = self._v_in_triA_not_in_triB(strip_scrap[2], strip_scrap[1])
-                v6 = -1
-                v7 = -1
-
-                e5 = (v1, v5)
-                if e5 in edge_to_tris:
-                    tri3 = next(iter(edge_to_tris[e5]))
-                    remove_tri(tri3)
-                    v6 = self._v_in_triA_not_in_triB(tri3, strip_scrap[2])
-                    e6 = (v1, v6)
-                    if e6 in edge_to_tris:
-                        tri4 = next(iter(edge_to_tris[e6]))
-                        remove_tri(tri4)
-                        v7 = self._v_in_triA_not_in_triB(tri4, tri3)
-
-                fan_vertices = [ v1, v2, v3, v4, v5, v6, v7 ]
-                rendered_fan_strips.append(FanStrip(is_strip=False, vertices=fan_vertices))
-
-            # We are converting tri to list because vtx load optimizer will want to mangle tri/fanstrip vertices
-            # We will never need to compare the triangles so this is fine
-            return RenderPass(vertices, [ list(tri) for tri in rendered_triangles ], rendered_fan_strips)
+    def _make_render_pass(triangles, vertices):
+        triangles, fanstrips = TriKit.stripify(triangles)
+        return RenderPass(vertices, [ list(tri) for tri in triangles ], fanstrips)
 
     def compile(self):
         print(f"compiling {self.name}")
@@ -1245,6 +1254,85 @@ def patch_header(header_path, header_patched_path):
                 continue
             f_header.write(line)
 
+class ModelVtxIndexer(TriKit):
+    def __init__(self):
+        self._reset()
+
+    def _reset(self):
+        self._triangles_lookup = set()
+        self._triangles = []
+
+    def tri(self, tri):
+        if self._tri_trivial(tri):
+            return
+
+        tri = self._tri_normalize(tri)
+        if tri in self._triangles_lookup:
+            return
+
+        self._triangles.append(tri)
+        self._triangles_lookup.add(tri)
+    
+    def flush(self, f_model):
+        if not self._triangles:
+            return
+
+        triangles, strips = TriKit.stripify(self._triangles)
+        self._reset()
+
+        triangles = deque(triangles)
+        while triangles:
+            if HAS_TRI3:
+                if 1 == len(triangles):
+                    tri = triangles.popleft()
+                    f_model.write(f"\tgsSP1Triangle({tri[0]}, {tri[1]}, {tri[2]}, 0),\n")
+                elif 2 == len(triangles):
+                    tri0 = triangles.popleft()
+                    tri1 = triangles.popleft()
+                    f_model.write(f"\tgsSP2Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, 0, {tri1[0]}, {tri1[1]}, {tri1[2]}, 0),\n")
+                elif 4 == len(triangles):
+                    # 4 triangles is better presented as 2xTRI2 commands - same amount of commands but less RSP work
+                    tri0 = triangles.popleft()
+                    tri1 = triangles.popleft()
+                    tri2 = triangles.popleft()
+                    tri3 = triangles.popleft()
+                    f_model.write(f"\tgsSP2Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, 0, {tri1[0]}, {tri1[1]}, {tri1[2]}, 0),\n")
+                    f_model.write(f"\tgsSP2Triangles({tri2[0]}, {tri2[1]}, {tri2[2]}, 0, {tri3[0]}, {tri3[1]}, {tri3[2]}, 0),\n")
+                else:
+                    tri0 = triangles.popleft()
+                    tri1 = triangles.popleft()
+                    tri2 = triangles.popleft()
+                    f_model.write(f"\tgsSP3Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, {tri1[0]}, {tri1[1]}, {tri1[2]}, {tri2[0]}, {tri2[1]}, {tri2[2]}),\n")
+            else:
+                if 1 == len(triangles):
+                    tri = triangles.popleft()
+                    f_model.write(f"\tgsSP1Triangle({tri[0]}, {tri[1]}, {tri[2]}, 0),\n")
+                else:
+                    tri0 = triangles.popleft()
+                    tri1 = triangles.popleft()
+                    f_model.write(f"\tgsSP2Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, 0, {tri1[0]}, {tri1[1]}, {tri1[2]}, 0),\n")
+
+        for strip in strips:
+            f_model.write(strip.stringify())
+
+def indexize_model(model_path, model_patched_path):
+    with open(model_path, "r") as f_model:
+        lines = f_model.readlines()
+
+    indexer = ModelVtxIndexer()
+    with open(model_patched_path, "w") as f_model:
+        for line in lines:
+            if 'gsSP2Triangles' in line:
+                args = get_args(line)
+                indexer.tri([ int(args[0]), int(args[1]), int(args[2]) ])
+                indexer.tri([ int(args[4]), int(args[5]), int(args[6]) ])
+            elif 'gsSP1Triangle' in line:
+                args = get_args(line)
+                indexer.tri([ int(args[0]), int(args[1]), int(args[2]) ])
+            else:
+                indexer.flush(f_model)
+                f_model.write(line)
+
 def make_opt_name(path):
     h_ext = '.inc.h'
     c_ext = '.inc.c'
@@ -1260,13 +1348,10 @@ if '__main__' in __name__:
     if len(sys.argv) >= 3:
         header_path = sys.argv[2]
         header_patched_path = make_opt_name(header_path)
-    else:
-        header_path = None
-        header_patched_path = None
 
-    model = load_model(model_path)
-    optimize_model(model)
-    serialize_model(model, model_patched_path)
-
-    if header_path:
+        model = load_model(model_path)
+        optimize_model(model)
+        serialize_model(model, model_patched_path)
         patch_header(header_path, header_patched_path)
+    else:
+        indexize_model(model_path, model_patched_path)
