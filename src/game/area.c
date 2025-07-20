@@ -480,6 +480,7 @@ static void warm_up_batch_node(void)
     }
 }
 
+u8* gCollisionStart = NULL;
 void load_area(s32 index) {
     if (gCurrentArea == NULL && gAreaData[index].graphNode != NULL) {
         gCurrentArea = &gAreaData[index];
@@ -490,6 +491,7 @@ void load_area(s32 index) {
         warm_up_batch_node();
         gMarioCurrentRoom = 0;
 
+        gCollisionStart = sMainPool.regions[0].start;
         if (gCurrentArea->terrainData != NULL) {
             load_area_terrain(gCurrentArea->terrainData, gCurrentArea->surfaceRooms);
         }

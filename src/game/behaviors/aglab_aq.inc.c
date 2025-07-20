@@ -4,6 +4,7 @@
 #define oAqLiftReload OBJECT_FIELD_S16(0x1B, 1)
 #define oAqLiftSwitches oObjF8
 
+extern u8* gCollisionStart;
 void bhv_aq_ctls_init()
 {
     struct Object** objs = &o->oAqLiftSwitches;
@@ -60,8 +61,7 @@ void bhv_aq_lift_loop()
         o->oAqLiftReload = 1;
         o->oAqLiftActive = wanted_height;
 
-        main_pool_pop_state();
-        main_pool_push_state();
+        sMainPool.regions[0].start = gCollisionStart;
         load_area_terrain(gCurrentArea->terrainData, gCurrentArea->surfaceRooms);
     }
 }
