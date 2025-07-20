@@ -602,6 +602,7 @@ void bhv_ccr_switch2_loop()
             o->parentObj->oPosY = 100.f;
             o->parentObj->oPosZ = 0;
             enable_time_stop_including_mario();
+            o->parentObj->activeFlags |= ACTIVE_FLAG_INITIATED_TIME_STOP;
         }
     }
     else
@@ -617,8 +618,15 @@ void bhv_ccr_switch2_loop()
         }
         else
         {
+            if (o->oTimer == 100)
+            {
+                o->oBehParams2ndByte = 0xa;
+                SET_BPARAM2(o->oBehParams, 0xa);
+                gMarioStates->usedObj = o;
+                level_trigger_warp(gMarioStates, WARP_OP_SPIN_SHRINK);
+            }
+
             o->parentObj->oPosY += 10.f;
-            print_text_fmt_int(10, 10, "%d", (int) o->parentObj->oPosY);
             gCamera->cutscene = CUTSCENE_CCR_3;            
         }
     }
@@ -779,16 +787,40 @@ void bhv_cck_switch2_loop()
     {
         o->oDrawingDistance = 10000.f;
         o->oDistanceToMario = 0.f;
+        // if (50 == o->oTimer)
         if (o == gMarioObject->platform)
         {
             o->oAction = 1;
             gCamera->cutscene = CUTSCENE_CCK_2;
             enable_time_stop_including_mario();
+            struct Object* obj;
+            obj = (struct Object*) aglabGlobalScratch[0];
+            obj->activeFlags |= ACTIVE_FLAG_INITIATED_TIME_STOP;
+            obj = (struct Object*) aglabGlobalScratch[1];
+            obj->activeFlags |= ACTIVE_FLAG_INITIATED_TIME_STOP;
         }
     }
     else
     {
-        // -
+        if (o->oTimer < 10)
+        {
+            return;
+        }
+        else if (o->oTimer < 40)
+        {
+            struct Object* obj;
+            obj = (struct Object*) aglabGlobalScratch[0];
+            obj->oPosX -= 5.f;
+            obj = (struct Object*) aglabGlobalScratch[1];
+            obj->oPosX += 5.f;
+        }
+        else if (o->oTimer == 70)
+        {
+            o->oBehParams2ndByte = 0xa;
+            SET_BPARAM2(o->oBehParams, 0xa);
+            gMarioStates->usedObj = o;
+            level_trigger_warp(gMarioStates, WARP_OP_SPIN_SHRINK);
+        }
     }
 }
 
@@ -948,7 +980,13 @@ void bhv_cck_gate_loop()
 void bhv_cck_doors_init()
 {
     o->oObjF4 = spawn_object(o, MODEL_CCK_DOOR_L, bhvStaticObject);
+    o->oObjF4->oPosY += 250.f;
+    o->oObjF4->oPosZ += 100.f;
+    aglabGlobalScratch[0] = o->oObjF4;
     o->oObjF8 = spawn_object(o, MODEL_CCK_DOOR_R, bhvStaticObject);
+    o->oObjF8->oPosY += 250.f;
+    o->oObjF8->oPosZ += 100.f;
+    aglabGlobalScratch[1] = o->oObjF8;
 }
 
 extern Gfx mat_cck_dl_LAZER_sa2mdl_0_f3d[];
