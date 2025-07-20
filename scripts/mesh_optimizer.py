@@ -1245,20 +1245,28 @@ def patch_header(header_path, header_patched_path):
                 continue
             f_header.write(line)
 
-if '__main__' in __name__:
-    path = f"{sys.argv[1]}/visual"
-    slash_idx = sys.argv[1].rfind('/')
-    name = sys.argv[1][slash_idx+1:]
+def make_opt_name(path):
+    h_ext = '.inc.h'
+    c_ext = '.inc.c'
+    if path.endswith(h_ext):
+        return path[:-len(h_ext)] + 'opt' + h_ext
+    elif path.endswith(c_ext):
+        return path[:-len(c_ext)] + 'opt' + c_ext
 
-    header_path = f"{path}/header_lvl.inc.h"
-    header_patched_path = f"{path}/header_lvlopt.inc.h"
-    model_path = f"{path}/model_lvl.inc.c"   
-    model_patched_path = f"{path}/model_lvlopt.inc.c"
- 
+if '__main__' in __name__:
+    model_path = sys.argv[1]
+    model_patched_path = make_opt_name(model_path)
+
+    if len(sys.argv) >= 3:
+        header_path = sys.argv[2]
+        header_patched_path = make_opt_name(header_path)
+    else:
+        header_path = None
+        header_patched_path = None
+
     model = load_model(model_path)
     optimize_model(model)
     serialize_model(model, model_patched_path)
 
-    patch_header(header_path, header_patched_path)
-
-    a = 0
+    if header_path:
+        patch_header(header_path, header_patched_path)
