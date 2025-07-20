@@ -469,6 +469,27 @@ class ModelMeshEntry(ModelEntry):
         v2 = t1[1]
         return v2 not in path[2]
 
+    @staticmethod
+    def _strip_can_continue(path, ntri):
+        if len(path) < 3:
+            return True
+
+        # Check if ntri can be a valid next triangle in the strip
+        # Construct the last strip edge...
+        v_last1 = ModelMeshEntry._v_in_triA_not_in_triB(path[-1], path[-2])
+        v_last2 = ModelMeshEntry._v_in_triA_not_in_triB(path[-2], path[-3])
+        t_last = path[-1]
+        t_last_rot = ModelMeshEntry._tri_rotate(t_last, v_last2)
+        if t_last_rot[1] == v_last1:
+            edge_next = (v_last1, v_last2)
+        else:
+            assert t_last_rot[2] == v_last1, "v_last1 must be in t_last"
+            edge_next = (v_last2, v_last1)
+
+        # ...and check that edge is actually present in the next triangle
+        can = edge_next in ModelMeshEntry._edges(ntri)
+        return can
+
     def _make_render_pass(self, triangles, vertices):
             rendered_triangles = triangles[:]
             if not HAS_EX3_COMMANDS:
@@ -533,7 +554,7 @@ class ModelMeshEntry(ModelEntry):
                     # Note that dfs is allowed to do 'strip_tri_to_tris[curr]' because it is doubly linked
                     # Conveniently we will get an exception is something went wrong in 'strip_tri_to_tris' generation
                     for ntri in strip_tri_to_tris[curr]:
-                        if ntri not in path:
+                        if ntri not in path and self._strip_can_continue(path, ntri):
                             new_path = path + [ntri]
                             if len(new_path) > len(longest_path):
                                 longest_path = new_path
@@ -597,7 +618,7 @@ class ModelMeshEntry(ModelEntry):
                         strip_vs.append(-1)
                     rendered_fan_strips.append(FanStrip(is_strip=True, vertices=strip_vs))
 
-                # ...rest, if left, will be rendered as triangles
+                # ...rest, if left, will be rendered as triangles (or maybe fans?)
 
             total_pricer = UsagePricer(rendered_triangles, set(), set())
             while True:
@@ -789,8 +810,7 @@ class ModelMeshEntry(ModelEntry):
                 if not total_pricer.completed():
                     highest_usage, highest_usage_vtx = next(total_pricer.highest_usage())
 
-                limit = 54 if highest_usage < 4 else 48
-                if (len(loaded_vertices) and total_pricer.completed()) or len(loaded_vertices) > limit:
+                if (len(loaded_vertices) and total_pricer.completed()) or len(loaded_vertices) >= 56:
                     # Flush vertices
                     fanstrip_tri_check()
                     print("+ flush +")
@@ -808,7 +828,7 @@ class ModelMeshEntry(ModelEntry):
                 highest_usage_vtx_triangles = list(total_pricer.vtx_to_tris(highest_usage_vtx))
 
                 # Strip of fan requires to have a vertex that has at least 4 triangles
-                if HAS_EX3_COMMANDS and len(highest_usage_vtx_triangles) >= 4:
+                if HAS_EX3_COMMANDS and len(highest_usage_vtx_triangles) >= 4 and len(loaded_vertices) < 49:
                     # Try to represent as fan or as strip
                     # Both require at least 3 triangles to be worth it and looks like this:
                     #   3 - 4
