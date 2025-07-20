@@ -313,7 +313,7 @@ static void set_render_mode(Gfx **ptempGfxHead, int zb, int layer)
     if (LAYER_ALPHA == layer)
     {
         gDPSetAlphaCompareReal(tempGfxHead++, G_AC_THRESHOLD);
-        gDPSetBlendColor(tempGfxHead++, 0, 0, 0, 127);
+        gDPSetBlendColor(tempGfxHead++, 0, 0, 0, 1);
     }
 #endif
 #undef tempGfxHead

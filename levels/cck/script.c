@@ -59,6 +59,7 @@ const LevelScript level_cck_entry[] = {
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		MARIO_POS(0x01, 0, 0, 6700, 0),
+#if 0
 		OBJECT(MODEL_BUB, 796, 3595, -798, 0, 135, 0, 0x00000000, bhvBub),
 		OBJECT(MODEL_BUB, 851, 2319, 1189, 0, 135, 0, 0x00000000, bhvBub),
 		OBJECT(MODEL_BUB, 74, 1110, -1345, 0, 135, 0, 0x00000000, bhvBub),
@@ -101,7 +102,6 @@ const LevelScript level_cck_entry[] = {
 		OBJECT(MODEL_SNUFIT, 756, 3739, -8451, 0, -180, 0, 0x00000000, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 3001, -786, -16574, 0, -180, 0, 0x00000000, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, 3001, -786, -18249, 0, -180, 0, 0x00000000, bhvSnufit),
-#if 0
 		OBJECT(MODEL_NONE, -3, -952, -8388, 0, 0, 0, (16 << 16), bhvCCSpawn),
 		OBJECT(MODEL_NONE, 580, -1700, -4950, 0, 0, 0, (14 << 16), bhvCCSpawn),
 		OBJECT(MODEL_NONE, -502, -1700, -4950, 0, 0, 0, (15 << 16), bhvCCSpawn),

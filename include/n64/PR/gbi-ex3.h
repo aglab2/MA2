@@ -4,8 +4,8 @@
  */
 
 #define NO_SYNCS_IN_TEXTURE_LOADS
-// #define RISKY_RDP_SYNCS
-#define WANT_TEX_EDGE_PCL
+#define RISKY_RDP_SYNCS
+// #define WANT_TEX_EDGE_PCL
 
 /* List of options; the documentation for each is where it is used below. */
 /* #define REQUIRE_SEMICOLONS_AFTER_GBI_COMMANDS */ /* recommended */
