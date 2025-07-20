@@ -792,9 +792,88 @@ void bhv_cck_switch2_loop()
     }
 }
 
+extern const BehaviorScript bhvCCKBubble[];
 void bhv_cck_current_loop()
 {
-    // -
+    CC_FREEZE();
+
+    int half = o->oBehParams2ndByte;
+    int turn = 2 == o->oBehParams2ndByte;
+
+    if (0 == (o->oTimer % 16))
+    {
+        struct Object* bubble = spawn_object(o, MODEL_CCK_BUBBLE, bhvCCKBubble);
+        bubble->oPosX += (2000.f + 60.f * 30.f) * sins(o->oFaceAngleYaw) / (half ? 2.f : 1.f);
+        bubble->oPosZ += (2000.f + 60.f * 30.f) * coss(o->oFaceAngleYaw) / (half ? 2.f : 1.f);
+
+        bubble->oPosX += random_f32_around_zero(500.f) * coss(o->oFaceAngleYaw);
+        bubble->oPosZ += random_f32_around_zero(500.f) * sins(o->oFaceAngleYaw);
+
+        bubble->oVelX = -60.f * sins(o->oFaceAngleYaw);
+        bubble->oVelZ = -60.f * coss(o->oFaceAngleYaw);
+
+        bubble->oPosY += 500.f * random_float();
+        bubble->oAnimState = 50 * random_float();
+
+        bubble->oBehParams2ndByte = o->oBehParams2ndByte;
+    }
+
+    f32 dx = gMarioStates->pos[0] - o->oPosX;
+    f32 dy = gMarioStates->pos[1] - o->oPosY;
+    f32 dz = gMarioStates->pos[2] - o->oPosZ;
+    if (!turn)
+    {
+        f32 z = 2300.f / (half ? 2.f : 1.f);
+        if (ABS(dz) < z && ABS(dx) < 500.f && (0.f <= dy && dy <= 500.f))
+        {
+            f32 zd = 2000.f / (half ? 2.f : 1.f);
+            f32 vel = 60.f - CLAMP(ABS(dz) - zd, 0.f, 300.f / (half ? 2.f : 1.f)) / (5.f / (half ? 2.f : 1.f));
+            gMarioStates->pos[0] -= vel * sins(o->oFaceAngleYaw);
+            gMarioStates->pos[2] -= vel * coss(o->oFaceAngleYaw);
+        }
+    }
+    else
+    {
+        f32 x = 1150.f;
+        if (ABS(dx) < x && ABS(dz) < 500.f && (0.f <= dy && dy <= 500.f))
+        {
+            f32 xd = 1000.f;
+            f32 vel = 60.f - CLAMP(ABS(dx) - xd, 0.f, 150.f) / 2.5f;
+            gMarioStates->pos[0] -= vel * sins(o->oFaceAngleYaw);
+            gMarioStates->pos[2] -= vel * coss(o->oFaceAngleYaw);
+        }
+    }
+}
+
+void bhv_cck_bubble_loop()
+{
+    CC_FREEZE();
+
+    int half = o->oBehParams2ndByte;
+    int turn = 2 == o->oBehParams2ndByte;
+
+    o->oAnimState++;
+    int div = half ? 2 : 1;
+
+    if (o->oTimer <= 30 / div)
+    {
+        o->oVelY = 2.f * o->oTimer;
+        obj_scale(o, o->oTimer / (30.f / div));
+    }
+
+    if (o->oTimer > 100 / div)
+    {
+        o->oVelY = 60.f - 2.f * (o->oTimer - (100 / div));
+        obj_scale(o, 1.f - (o->oTimer - (100 / div)) / (30.f / div));
+    }
+
+    if (o->oTimer == 130 / div)
+    {
+        o->activeFlags = 0;
+    }
+
+    o->oPosX += o->oVelX;
+    o->oPosZ += o->oVelZ;
 }
 
 void bhv_cck_gate_init()

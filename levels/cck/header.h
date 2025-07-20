@@ -30,4 +30,6 @@ extern const LevelScript level_cck_entry[];
 
 #include "levels/cck/cck_switch_p2/geo_header.h"
 
+#include "levels/cck/cck_bubble/geo_header.h"
+
 #endif

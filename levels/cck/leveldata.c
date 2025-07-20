@@ -740,3 +740,4 @@ Vtx cck_dl_0008_object_013FCBCC_mesh_layer_1_vtx_0[179] = {
 #include "levels/cck/cck_switch_p1/model.inc.c"
 #include "levels/cck/cck_switch_p2/collision.inc.c"
 #include "levels/cck/cck_switch_p2/model.inc.c"
+#include "levels/cck/cck_bubble/model.inc.c"

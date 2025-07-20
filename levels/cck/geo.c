@@ -24,3 +24,4 @@
 #include "levels/cck/cck_block/geo.inc.c"
 #include "levels/cck/cck_switch_p1/geo.inc.c"
 #include "levels/cck/cck_switch_p2/geo.inc.c"
+#include "levels/cck/cck_bubble/geo.inc.c"

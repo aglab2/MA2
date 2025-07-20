@@ -53,6 +53,7 @@ const LevelScript level_cck_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_CCK_SWITCH2, cck_switch_p2_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CCK_DOOR_L, ccr_doorl_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CCK_DOOR_R, ccr_doorr_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CCK_BUBBLE, cck_bubble_geo),
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
