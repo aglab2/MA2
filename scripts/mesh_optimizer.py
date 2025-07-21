@@ -32,7 +32,8 @@ class ModelRawEntry(ModelEntry):
 class ModelRawOptEntry(ModelEntry):
     def __init__(self, line, optvtx):
         super().__init__(line)
-        self.data = [line]
+        #self.data = [line]
+        self.data = []
         self.optvtx = optvtx
 
     def add(self, line):
@@ -45,6 +46,7 @@ class ModelVtxEntry(ModelEntry):
     def __init__(self, line):
         super().__init__(line)
         self.vertices = []
+        self.used = False
     
     def add(self, vertex):
         self.vertices.append(vertex)
@@ -628,16 +630,18 @@ class TriKit:
             return rendered_triangles, rendered_fan_strips
 
 
-class ModelMeshEntry(ModelEntry, TriKit):
-    def __init__(self, line, next_line, model):
-        super().__init__(line)
+class ModelMeshEntry(TriKit):
+    def __init__(self, next_line, model):
         self._model = model
 
         vtx_args = get_args(next_line)
         vtx_arg = vtx_args[0]
         vtx_arg_split = vtx_arg.split(' ')
 
-        self._base_vertices_model_entry = ModelVtxEntry(f'static Vtx {self.name}_vtxopt[] = {{\n')
+        _, vtx = model.find(vtx_arg_split[0])
+        vtx.used = True
+
+        self._base_vertices_model_entry = ModelVtxEntry(f'static Vtx {vtx_arg_split[0]}_vtxopt[] = {{\n')
         assert '+' == vtx_arg_split[1], "offset must be 0"
         assert '0' == vtx_arg_split[2], "offset must be 0"
 
@@ -764,9 +768,10 @@ class ModelMeshEntry(ModelEntry, TriKit):
         return RenderPass(vertices, [ list(tri) for tri in triangles ], fanstrips)
 
     def compile(self):
-        print(f"compiling {self.name}")
         assert self._base_vertices_model_entry, "compile() called twice"
-        dl_entry = ModelRawOptEntry(self.raw_name, self._base_vertices_model_entry)
+        assert not self._base_vertices_model_entry.used
+        self._base_vertices_model_entry.used = True
+        draws = []
         vtx_entry = self._base_vertices_model_entry
 
         # Step 1: Generate render passes for each vertex set
@@ -1112,52 +1117,52 @@ class ModelMeshEntry(ModelEntry, TriKit):
 
             if cur_vtx_load_amount:
                 if 1 == len(render_passes):
-                    dl_entry.data.append(f"\tgsSPVertex({vtx_entry.name}, {cur_vtx_load_amount}, {vtx_load_offset}),\n")
+                    draws.append(f"\tgsSPVertex({vtx_entry.name}, {cur_vtx_load_amount}, {vtx_load_offset}),\n")
                 else:
-                    dl_entry.data.append(f"\tgsSPVertex({vtx_entry.name} + {cur_vtx_start_offset}, {cur_vtx_load_amount}, {vtx_load_offset}),\n")
+                    draws.append(f"\tgsSPVertex({vtx_entry.name} + {cur_vtx_start_offset}, {cur_vtx_load_amount}, {vtx_load_offset}),\n")
 
             triangles = deque(render_pass.triangles)
             while triangles:
                 if HAS_TRI3:
                     if 1 == len(triangles):
                         tri = triangles.popleft()
-                        dl_entry.data.append(f"\tgsSP1Triangle({tri[0]}, {tri[1]}, {tri[2]}, 0),\n")
+                        draws.append(f"\tgsSP1Triangle({tri[0]}, {tri[1]}, {tri[2]}, 0),\n")
                     elif 2 == len(triangles):
                         tri0 = triangles.popleft()
                         tri1 = triangles.popleft()
-                        dl_entry.data.append(f"\tgsSP2Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, 0, {tri1[0]}, {tri1[1]}, {tri1[2]}, 0),\n")
+                        draws.append(f"\tgsSP2Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, 0, {tri1[0]}, {tri1[1]}, {tri1[2]}, 0),\n")
                     elif 4 == len(triangles):
                         # 4 triangles is better presented as 2xTRI2 commands - same amount of commands but less RSP work
                         tri0 = triangles.popleft()
                         tri1 = triangles.popleft()
                         tri2 = triangles.popleft()
                         tri3 = triangles.popleft()
-                        dl_entry.data.append(f"\tgsSP2Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, 0, {tri1[0]}, {tri1[1]}, {tri1[2]}, 0),\n")
-                        dl_entry.data.append(f"\tgsSP2Triangles({tri2[0]}, {tri2[1]}, {tri2[2]}, 0, {tri3[0]}, {tri3[1]}, {tri3[2]}, 0),\n")
+                        draws.append(f"\tgsSP2Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, 0, {tri1[0]}, {tri1[1]}, {tri1[2]}, 0),\n")
+                        draws.append(f"\tgsSP2Triangles({tri2[0]}, {tri2[1]}, {tri2[2]}, 0, {tri3[0]}, {tri3[1]}, {tri3[2]}, 0),\n")
                     else:
                         tri0 = triangles.popleft()
                         tri1 = triangles.popleft()
                         tri2 = triangles.popleft()
-                        dl_entry.data.append(f"\tgsSP3Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, {tri1[0]}, {tri1[1]}, {tri1[2]}, {tri2[0]}, {tri2[1]}, {tri2[2]}),\n")
+                        draws.append(f"\tgsSP3Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, {tri1[0]}, {tri1[1]}, {tri1[2]}, {tri2[0]}, {tri2[1]}, {tri2[2]}),\n")
                 else:
                     if 1 == len(triangles):
                         tri = triangles.popleft()
-                        dl_entry.data.append(f"\tgsSP1Triangle({tri[0]}, {tri[1]}, {tri[2]}, 0),\n")
+                        draws.append(f"\tgsSP1Triangle({tri[0]}, {tri[1]}, {tri[2]}, 0),\n")
                     else:
                         tri0 = triangles.popleft()
                         tri1 = triangles.popleft()
-                        dl_entry.data.append(f"\tgsSP2Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, 0, {tri1[0]}, {tri1[1]}, {tri1[2]}, 0),\n")
+                        draws.append(f"\tgsSP2Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, 0, {tri1[0]}, {tri1[1]}, {tri1[2]}, 0),\n")
 
             for fanstrip in render_pass.fanstrips:
-                dl_entry.data.append(fanstrip.stringify())
+                draws.append(fanstrip.stringify())
 
         vtx_entry.vertices.append("};\n")
 
-        dl_entry.data.append(f"\tgsSPEndDisplayListHint(4),\n")
-        dl_entry.data.append("};\n")
+        #dl_entry.data.append(f"\tgsSPEndDisplayListHint(4),\n")
+        #dl_entry.data.append("};\n")
         # this function is not reentrant so make sure we will crash next time we this
         self._base_vertices_model_entry = None
-        return dl_entry
+        return draws, vtx_entry
 
     def __repr__(self):
         return f"ModelRenderEntry(name={self.name})"
@@ -1210,19 +1215,57 @@ def load_model(model_path):
 
     return model
 
+class ModelMeshEntryList(ModelEntry):
+    def __init__(self, line):
+        super().__init__(line)
+        self.data = [line]
+        self.opvtxs = []
+
+def _is_tri(line):
+    return 'gsSP2Triangles' in line or 'gsSP1Triangle' in line
+
+def _is_draw(line, nline):
+    if _is_tri(line):
+        return True
+    if 'gsSPVertex' in line:
+        return _is_tri(nline)
+
+    return False
+
 def optimize_model(model):
     for model_entry_idx in range(len(model.entries)):
         old_entry = model.entries[model_entry_idx]
         if not isinstance(old_entry, ModelRawEntry):
             continue
-        if not 'Gfx' in old_entry.data[0] or not 'gsSPVertex' in old_entry.data[1]:
+        if not 'Gfx' in old_entry.data[0]:
             continue
 
-        entry = ModelMeshEntry(old_entry.data[0], old_entry.data[1], model)
-        for i in range(1, len(old_entry.data)):
-            entry.add(old_entry.data[i])
+        mlist = ModelMeshEntryList(old_entry.data[0])
+        entry = None
 
-        model.entries[model_entry_idx] = entry.compile()
+        for i in range(1, len(old_entry.data)):
+            line = old_entry.data[i]
+            nline = old_entry.data[i+1] if i + 1 < len(old_entry.data) else None
+            if not _is_draw(line, nline):
+                if entry:
+                    draws, vtxopt = entry.compile()
+                    mlist.data.extend(draws)
+                    mlist.opvtxs.append(vtxopt)
+
+                    entry = None
+                mlist.data.append(line)
+                continue
+            else:
+                if not entry:
+                    entry = ModelMeshEntry(line, model)
+                entry.add(line)
+
+        model.entries[model_entry_idx] = mlist
+        #entry = ModelMeshEntry(old_entry.data[0], old_entry.data[1], model)
+        #for i in range(1, len(old_entry.data)):
+        #    entry.add(old_entry.data[i])
+
+        #model.entries[model_entry_idx] = entry.compile()
 
 def serialize_model(model, path):
     with open(path, "w") as f_model:
@@ -1230,14 +1273,21 @@ def serialize_model(model, path):
 
         for entry in model.entries:
             if isinstance(entry, ModelVtxEntry):
+                if not entry.used:
+                    f_model.write(entry.raw_name)
+                    for line in entry.vertices:
+                        f_model.write(line)
+                    f_model.write('\n')
+
                 continue
-            
-            if isinstance(entry, ModelRawOptEntry):
-                entry_vertices = entry.optvtx
-                f_model.write(entry_vertices.raw_name)
-                for line in entry_vertices.vertices:
-                    f_model.write(line)
-                f_model.write('\n')
+
+
+            if isinstance(entry, ModelMeshEntryList):
+                for entry_vertices in entry.opvtxs:
+                    f_model.write(entry_vertices.raw_name)
+                    for line in entry_vertices.vertices:
+                        f_model.write(line)
+                    f_model.write('\n')
 
             for line in entry.data:
                 f_model.write(line)
@@ -1334,12 +1384,12 @@ def indexize_model(model_path, model_patched_path):
                 f_model.write(line)
 
 def make_opt_name(path):
-    h_ext = '.inc.h'
-    c_ext = '.inc.c'
-    if path.endswith(h_ext):
-        return path[:-len(h_ext)] + 'opt' + h_ext
-    elif path.endswith(c_ext):
-        return path[:-len(c_ext)] + 'opt' + c_ext
+    extensions = [ '.inc.c', '.inc.h', '.h', '.c' ]
+    for ext in extensions:
+        if path.endswith(ext):
+            return path[:-len(ext)] + 'opt' + ext
+
+    assert False, f"unknown extension for {path}"
 
 if '__main__' in __name__:
     model_path = sys.argv[1]
