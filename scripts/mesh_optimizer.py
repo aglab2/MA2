@@ -643,7 +643,10 @@ class ModelMeshEntry(TriKit):
 
         self._base_vertices_model_entry = ModelVtxEntry(f'static Vtx {vtx_arg_split[0]}_vtxopt[] = {{\n')
         assert '+' == vtx_arg_split[1], "offset must be 0"
-        assert '0' == vtx_arg_split[2], "offset must be 0"
+        if '0' != vtx_arg_split[2]:
+            orig_name = self._base_vertices_model_entry.name
+            self._base_vertices_model_entry.name = self._base_vertices_model_entry.name + f"_{vtx_arg_split[2]}"
+            self._base_vertices_model_entry.raw_name = self._base_vertices_model_entry.raw_name.replace(orig_name, self._base_vertices_model_entry.name)
 
         self._vertices = []
         self._vertices_lookup = {}
