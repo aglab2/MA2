@@ -324,7 +324,10 @@ class TriKit:
     def _v_in_triA_not_in_triB(triA, triB):
         # Such routine is very helpful for strips because it is common that vtx needed to be outputted in index buffer
         # is the exact vertex that is not in the next triangle.
-        return [v for v in triA if v not in triB].pop()
+        arr = [v for v in triA if v not in triB]
+        if not arr:
+            return -1
+        return arr.pop()
 
     @staticmethod
     def _strip_can_be_rendered(path):
@@ -344,9 +347,18 @@ class TriKit:
         return v2 not in path[2]
 
     @staticmethod
-    def _strip_can_continue(path, ntri):
-        if len(path) < 3:
+    def _strip_can_continue(path, ntri):        
+        if path[-1][0] == ntri[0] and path[-1][1] == ntri[2] and path[-1][2] == ntri[1]:
+            return False
+
+        if len(path) < 2:
             return True
+
+        if len(path) == 2:
+            v = TriKit._v_in_triA_not_in_triB(path[0], path[1])
+            t = TriKit._tri_rotate(path[0], v)
+            e = (t[1], t[2])
+            return e not in TriKit._edges(ntri)
 
         # Check if ntri can be a valid next triangle in the strip
         # Construct the last strip edge...
