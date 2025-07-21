@@ -642,11 +642,12 @@ class ModelMeshEntry(TriKit):
         vtx.used = True
 
         self._base_vertices_model_entry = ModelVtxEntry(f'static Vtx {vtx_arg_split[0]}_vtxopt[] = {{\n')
-        assert '+' == vtx_arg_split[1], "offset must be 0"
-        if '0' != vtx_arg_split[2]:
-            orig_name = self._base_vertices_model_entry.name
-            self._base_vertices_model_entry.name = self._base_vertices_model_entry.name + f"_{vtx_arg_split[2]}"
-            self._base_vertices_model_entry.raw_name = self._base_vertices_model_entry.raw_name.replace(orig_name, self._base_vertices_model_entry.name)
+        if len(vtx_arg_split) > 1:
+            assert '+' == vtx_arg_split[1], "offset must be 0"
+            if '0' != vtx_arg_split[2]:
+                orig_name = self._base_vertices_model_entry.name
+                self._base_vertices_model_entry.name = self._base_vertices_model_entry.name + f"_{vtx_arg_split[2]}"
+                self._base_vertices_model_entry.raw_name = self._base_vertices_model_entry.raw_name.replace(orig_name, self._base_vertices_model_entry.name)
 
         self._vertices = []
         self._vertices_lookup = {}
@@ -731,7 +732,6 @@ class ModelMeshEntry(TriKit):
             args = get_args(data)
             vtx_arg = args[0]
             vtx_arg_split = vtx_arg.split(' ')
-            assert '+' == vtx_arg_split[1], "incorrect vtx declaration"
 
             vertices_model_name = vtx_arg_split[0]
             if self._parser_vertices_model_name != vertices_model_name:
@@ -739,7 +739,12 @@ class ModelMeshEntry(TriKit):
                 _, model_entry = self._model.find(vertices_model_name)
                 self._parser_vertices_model_entry = model_entry
 
-            vtx_offset = int(vtx_arg_split[2])
+            if len(vtx_arg_split) > 1:
+                assert '+' == vtx_arg_split[1], "incorrect vtx declaration"
+                vtx_offset = int(vtx_arg_split[2])
+            else:
+                vtx_offset = 0
+
             num = int(args[1])
             vbo_offset = int(args[2])
             for i in range(num):
@@ -1200,6 +1205,8 @@ def load_model(model_path):
             line = f_model.readline()
             if not line:
                 break
+            if line.startswith('//'):
+                continue
 
             if line == '\n':
                 curr_entry = None

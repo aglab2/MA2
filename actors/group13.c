@@ -6,7 +6,7 @@
 #include "types.h"
 #include "make_const_nonconst.h"
 
-#include "skeeter/model.inc.c"
+#include "skeeter/modelopt.inc.c"
 #include "skeeter/anims/data.inc.c"
 #include "skeeter/anims/table.inc.c"
 UNUSED static const u64 binid_0 = 0;
