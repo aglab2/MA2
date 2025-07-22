@@ -321,16 +321,26 @@ void make_viewport_clip_rect(Vp *viewport) {
 
 // #define CR1_TEST
 
-#if 0
+#ifdef EX3_BASE
 #define UCODE_TEXT_START gspF3DEX3_fifoTextStart
 #define UCODE_TEXT_END gspF3DEX3_fifoTextEnd
 #define UCODE_DATA_START gspF3DEX3_fifoDataStart
 #define UCODE_DATA_END gspF3DEX3_fifoDataEnd
-#else
+#endif
+
+#ifdef EX3_TRI3
 #define UCODE_TEXT_START gspF3DEX3_TRI3_fifoTextStart
 #define UCODE_TEXT_END gspF3DEX3_TRI3_fifoTextEnd
 #define UCODE_DATA_START gspF3DEX3_TRI3_fifoDataStart
 #define UCODE_DATA_END gspF3DEX3_TRI3_fifoDataEnd
+#endif
+
+#define EX3_SNAKE
+#ifdef EX3_SNAKE
+#define UCODE_TEXT_START gspF3DEX3_SNAKE_fifoTextStart
+#define UCODE_TEXT_END gspF3DEX3_SNAKE_fifoTextEnd
+#define UCODE_DATA_START gspF3DEX3_SNAKE_fifoDataStart
+#define UCODE_DATA_END gspF3DEX3_SNAKE_fifoDataEnd
 #endif
 
 void create_gfx_task_structure(void) {
