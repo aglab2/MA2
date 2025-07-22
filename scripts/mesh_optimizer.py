@@ -5,6 +5,9 @@ HAS_EX3_COMMANDS = True
 HAS_TRI3 = False
 HAS_VTX_PINNING = True
 
+def log_debug(line):
+    pass
+
 def get_args(line):
     bracket_open = line.find('(')
     bracket_close = line.rfind(')')
@@ -189,7 +192,7 @@ class RenderPass:
         self.triangles = triangles
         self.fanstrips = fanstrips
         if self.fanstrips:
-            print(f"fanstrips {self.fanstrips}")
+            log_debug(f"fanstrips {self.fanstrips}")
 
 class FanStrip:
     def __init__(self, is_strip, vertices):
@@ -807,7 +810,7 @@ class ModelMeshEntry(TriKit):
             loaded_vertices = {}
             def load_vertex(vtx):
                 loaded_vertices[vtx] = len(loaded_vertices)
-                print(f"load vertex {vtx} -> {len(loaded_vertices) - 1}")
+                log_debug(f"load vertex {vtx} -> {len(loaded_vertices) - 1}")
                 return len(loaded_vertices) - 1
 
             def load_or_find_vertex(vtx):
@@ -837,20 +840,20 @@ class ModelMeshEntry(TriKit):
                         if None in loaded_tri:
                             continue
 
-                        print(f"fanstrip tri check -> render {tri} as {loaded_tri}")
+                        log_debug(f"fanstrip tri check -> render {tri} as {loaded_tri}")
                         rendered_triangles.append(loaded_tri)
                         total_pricer.remove(tri)
                         rendered = True
 
                 fanstrip_vtx_to_check = []
-                print(f"fanstrip_tri_check -> {rendered}")
+                log_debug(f"fanstrip_tri_check -> {rendered}")
                 return rendered
             
             def load_or_find_fanstrip_vtx(vtx):
                 if vtx in loaded_vertices:
                     return loaded_vertices[vtx]
                 else:
-                    print(f"load fanstrip vertex {vtx}")
+                    log_debug(f"load fanstrip vertex {vtx}")
                     fanstrip_vtx_to_check.append(vtx)
                     return load_vertex(vtx)
 
@@ -865,7 +868,7 @@ class ModelMeshEntry(TriKit):
                 if (len(loaded_vertices) and total_pricer.completed()) or len(loaded_vertices) >= 56:
                     # Flush vertices
                     fanstrip_tri_check()
-                    print("+ flush +")
+                    log_debug("+ flush +")
 
                     render_pass = self._make_render_pass([ self._tri_normalize(tri) for tri in rendered_triangles ], loaded_vertices.copy())
                     render_passes.append(render_pass)
@@ -911,7 +914,7 @@ class ModelMeshEntry(TriKit):
                         if fan_vertices[6] is not None:
                             total_pricer.remove(self._tri_normalize([ fan_vertices[0], fan_vertices[5], fan_vertices[6] ]))
 
-                        print(f"fan {fan_vertices} -> {loaded_fan_vertices}")
+                        log_debug(f"fan {fan_vertices} -> {loaded_fan_vertices}")
                         rendered_triangles.append([ loaded_fan_vertices[0], loaded_fan_vertices[1], loaded_fan_vertices[2] ])
                         rendered_triangles.append([ loaded_fan_vertices[0], loaded_fan_vertices[2], loaded_fan_vertices[3] ])
                         rendered_triangles.append([ loaded_fan_vertices[0], loaded_fan_vertices[3], loaded_fan_vertices[4] ])
@@ -965,7 +968,7 @@ class ModelMeshEntry(TriKit):
                         if strip_vertices[6] is not None:
                             total_pricer.remove(self._tri_normalize([ strip_vertices[4], strip_vertices[5], strip_vertices[6] ]))                            
 
-                        print(f"strip {strip_vertices} -> {loaded_strip_vertices}")
+                        log_debug(f"strip {strip_vertices} -> {loaded_strip_vertices}")
                         rendered_triangles.append([ loaded_strip_vertices[0], loaded_strip_vertices[1], loaded_strip_vertices[2] ])
                         rendered_triangles.append([ loaded_strip_vertices[2], loaded_strip_vertices[1], loaded_strip_vertices[3] ])
                         rendered_triangles.append([ loaded_strip_vertices[2], loaded_strip_vertices[3], loaded_strip_vertices[4] ])
@@ -993,7 +996,7 @@ class ModelMeshEntry(TriKit):
                     if None in loaded_tri:
                         continue
 
-                    print(f"pre render {tri} as {loaded_tri}")
+                    log_debug(f"pre render {tri} as {loaded_tri}")
                     rendered_triangles.append(loaded_tri)
                     total_pricer.remove(tri)
                 
@@ -1005,16 +1008,16 @@ class ModelMeshEntry(TriKit):
                 candidate_vtxs = set()
                 candidate_tris = set()
                 banned_vertices = set(loaded_vertices.keys())
-                print("")
+                log_debug("")
                 while True:
-                    print(f"{loaded_vertices}")
+                    log_debug(f"{loaded_vertices}")
                     banned_vertices.add(highest_usage_vtx)
                     highest_usage_vtx_triangles = list(total_pricer.vtx_to_tris(highest_usage_vtx))
                     for tri in highest_usage_vtx_triangles:
                         loaded_tri = [ loaded_vertices.get(vtx) for vtx in tri ]
-                        print(f"{tri} -> {loaded_tri}")
+                        log_debug(f"{tri} -> {loaded_tri}")
                         if not None in loaded_tri:
-                            print(f"render {tri} as {loaded_tri}")
+                            log_debug(f"render {tri} as {loaded_tri}")
                             rendered_triangles.append(loaded_tri)
                             candidate_tris.remove(tri)
                             total_pricer.remove(tri)
@@ -1050,12 +1053,12 @@ class ModelMeshEntry(TriKit):
         altered_render_passes = []
         for i, render_pass in enumerate(render_passes):
             curr_vertices = set(render_pass.vertices.keys())
-            print(f"render pass {i} -> {curr_vertices}")
+            log_debug(f"render pass {i} -> {curr_vertices}")
             if prev_render_pass:
                 prev_vertices = prev_render_pass.vertices
                 common_vertices = set(prev_vertices.keys()).intersection(curr_vertices)
                 if common_vertices:
-                    print(f"common vertices {common_vertices}, length {len(common_vertices)}")
+                    log_debug(f"common vertices {common_vertices}, length {len(common_vertices)}")
                     if not pinned_vertices_left:
                         # Perform the first shuffling and pin the common vertices on the left vbo
                         common_vertices = list(common_vertices)
@@ -1063,10 +1066,10 @@ class ModelMeshEntry(TriKit):
                         altered_render_passes.append(render_pass)
                         for altered_render_pass in altered_render_passes:
                             shuffle = make_shuffle_pinning_shared(altered_render_pass.vertices, common_vertices)
-                            print(f"apply shuffle {shuffle}")
-                            print(f"render pass vtx before shuffle {altered_render_pass.vertices}")
+                            log_debug(f"apply shuffle {shuffle}")
+                            log_debug(f"render pass vtx before shuffle {altered_render_pass.vertices}")
                             apply_shuffle(altered_render_pass, shuffle)
-                            print(f"render pass vtx after shuffle -> {altered_render_pass.vertices}")
+                            log_debug(f"render pass vtx after shuffle -> {altered_render_pass.vertices}")
 
                         pinned_vertices_left = common_vertices
                     else:
@@ -1075,26 +1078,26 @@ class ModelMeshEntry(TriKit):
                         # can be repinned to the right side of the buffer.
                         repinned_vertices_left = common_vertices.intersection(pinned_vertices_left)
                         unpinned_vertices_right = common_vertices.difference(pinned_vertices_left)
-                        print(f"repinned vertices left {repinned_vertices_left}")
+                        log_debug(f"repinned vertices left {repinned_vertices_left}")
                         if repinned_vertices_left:
                             # Shrink the left buffer to only contain the common vertices...
 
                             # Make the sub-shuffle of length 'len(pinned_vertices_left)' that spans across all 'altered_render_passes'
                             # Remember that shuffle must be applied to all altered render passes and it must be exactly the same shuffle
                             shuffle = make_shuffle_pinning_shared_limited(altered_render_passes[0].vertices, repinned_vertices_left, len(pinned_vertices_left))
-                            print(f"apply pinning limited shuffle {shuffle}")
+                            log_debug(f"apply pinning limited shuffle {shuffle}")
                             for altered_render_pass in altered_render_passes:
-                                print(f"render pass vtx before pinning limited shuffle {altered_render_pass.vertices}")
+                                log_debug(f"render pass vtx before pinning limited shuffle {altered_render_pass.vertices}")
                                 apply_shuffle_limited(altered_render_pass, shuffle, len(pinned_vertices_left))
-                                print(f"render pass vtx after pinning limited shuffle {altered_render_pass.vertices}")
+                                log_debug(f"render pass vtx after pinning limited shuffle {altered_render_pass.vertices}")
 
                             pinned_vertices_left = list(repinned_vertices_left)
 
                             shuffle = make_shuffle_pinning_shared(render_pass.vertices, pinned_vertices_left)
-                            print(f"apply pinning shuffle {shuffle}")
-                            print(f"render pass vtx before pinning shuffle {render_pass.vertices}")
+                            log_debug(f"apply pinning shuffle {shuffle}")
+                            log_debug(f"render pass vtx before pinning shuffle {render_pass.vertices}")
                             apply_shuffle(render_pass, shuffle)
-                            print(f"render pass vtx after pinning shuffle {render_pass.vertices}")
+                            log_debug(f"render pass vtx after pinning shuffle {render_pass.vertices}")
                             altered_render_passes.append(render_pass)
                         else:
                             # There is nothing else left to repin, drop left buffer
@@ -1116,7 +1119,7 @@ class ModelMeshEntry(TriKit):
             if not HAS_VTX_PINNING:
                 vtx_load_offset = 0
 
-            print(f"render pass out {render_pass.vertices} at {vtx_load_offset}")
+            log_debug(f"render pass out {render_pass.vertices} at {vtx_load_offset}")
             cur_vtx_load_amount = len(render_pass.vertices) - vtx_load_offset
 
             for _ in range(cur_vtx_load_amount):
