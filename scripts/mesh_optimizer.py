@@ -646,14 +646,14 @@ class TriKit:
 
 
 class ModelMeshEntry(TriKit):
-    def __init__(self, next_line, model):
+    def __init__(self, next_line, model, vtxopt_name):
         self._model = model
 
         vtx_args = get_args(next_line)
         vtx_arg = vtx_args[0]
         vtx_arg_split = vtx_arg.split(' ')
 
-        self._base_vertices_model_entry = ModelVtxEntry(f'static Vtx {vtx_arg_split[0]}_vtxopt[] = {{\n')
+        self._base_vertices_model_entry = ModelVtxEntry(f'static Vtx {vtxopt_name}_vtxopt[] = {{\n')
         if len(vtx_arg_split) > 1:
             assert '+' == vtx_arg_split[1], "offset must be 0"
             if '0' != vtx_arg_split[2]:
@@ -1265,6 +1265,7 @@ def optimize_model(model):
         mlist = ModelMeshEntryList(old_entry.data[0])
         entry = None
 
+        num = 0
         for i in range(1, len(old_entry.data)):
             line = old_entry.data[i]
             nline = old_entry.data[i+1] if i + 1 < len(old_entry.data) else None
@@ -1279,7 +1280,8 @@ def optimize_model(model):
                 continue
             else:
                 if not entry:
-                    entry = ModelMeshEntry(line, model)
+                    entry = ModelMeshEntry(line, model, f'{mlist.name}_{num}')
+                    num += 1 
                 entry.add(line)
                 
                 if 'gsSPVertex' in line:
