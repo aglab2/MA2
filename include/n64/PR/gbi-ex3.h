@@ -2767,7 +2767,7 @@ _DW({                                                                  \
 #define gsSPContinueSnake(i0, i0d, i1, i1d, i2, i2d, i3, i3d, \
                           i4, i4d, i5, i5d, i6, i6d, i7, i7d) \
 {                                                             \
-    _gSPTriSnakeW1(i0, i0d, i1, i1d, i2, i2d, i3, i3d)        \
+    _gSPTriSnakeW1(i0, i0d, i1, i1d, i2, i2d, i3, i3d),       \
     _gSPTriSnakeW1(i4, i4d, i5, i5d, i6, i6d, i7, i7d)        \
 }
 
