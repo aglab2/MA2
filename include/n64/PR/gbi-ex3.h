@@ -54,9 +54,8 @@ of warnings if you use -Wpedantic. */
 /*
  * GBI commands in order
  */
-#define G_TRI3              0xD1
-#define G_LIGHTTORDP        0xD2
-#define G_RELSEGMENT        0xD3
+/*#define G_SPECIAL_3       0xD3  no-op in F3DEX2 */
+/*#define G_SPECIAL_2       0xD4  no-op in F3DEX2 */
 #define G_FLUSH             0xD4
 #define G_MEMSET            0xD5
 #define G_DMA_IO            0xD6
@@ -109,7 +108,10 @@ of warnings if you use -Wpedantic. */
 #define G_TRI1              0x05
 #define G_TRI2              0x06
 #define G_QUAD              0x07
-#define G_TRISNAKE          0x08 /* = G_LINE3D was a no-op in F3DEX2, has been removed */
+#define G_TRISNAKE          0x08  /* used to be G_TRISTRIP */
+#define G_TRI3              0x09
+#define G_LIGHTTORDP        0x0A
+#define G_RELSEGMENT        0x0B
 
 /* names differ between F3DEX2 and F3DZEX */
 #define G_BRANCH_Z G_BRANCH_WZ
@@ -2650,12 +2652,16 @@ v22=ccghee
        | TRI3_BIT(v22, 3, 0)) }
 
 /**
- * Make the triangle snake turn left before drawing this triangle.
+ * Make the triangle snake turn left before drawing this triangle. In other
+ * words, build the new triangle off the newest and middle-age vertices of the
+ * last triangle.
  * @see gSPTriSnake
  */
 #define G_SNAKE_LEFT  0
 /**
- * Make the triangle snake turn right before drawing this triangle.
+ * Make the triangle snake turn right before drawing this triangle. In other
+ * words, build the new triangle off the newest and oldest vertices of the last
+ * triangle.
  * @see gSPTriSnake
  */
 #define G_SNAKE_RIGHT 1
