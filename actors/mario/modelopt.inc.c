@@ -4276,10 +4276,11 @@ Vtx mario_pelvis_mesh_layer_1_vtx_0[15] = {
 
 Gfx mario_pelvis_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_pelvis_mesh_layer_1_vtx_0 + 0, 15, 0),
-	gsSP2Triangles(3, 5, 7, 0, 0, 3, 7, 0),
-	gsSP2Triangles(7, 12, 8, 0, 7, 8, 10, 0),
-	gsSPTriStrip(6, 5, 4, 3, 2, 0, 1),
-	gsSPTriStrip(14, 10, 9, 8, 11, 12, 13),
+	gsSP2Triangles(4, 6, 5, 0, 11, 12, 13, 0),
+	gsSPTriSnake(1, 2, 0, 3, G_SNAKE_LEFT, 4, G_SNAKE_LEFT, 5, G_SNAKE_RIGHT, 7, G_SNAKE_RIGHT),
+	gsSPContinueSnake(G_SNAKE_LAST | 0, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
+	gsSPTriSnake(9, 14, 10, 8, G_SNAKE_RIGHT, 11, G_SNAKE_RIGHT, 12, G_SNAKE_LEFT, 7, G_SNAKE_LEFT),
+	gsSPContinueSnake(G_SNAKE_LAST | 10, G_SNAKE_LEFT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -4315,12 +4316,9 @@ Vtx mario_chest_mesh_layer_1_vtx_0[11] = {
 
 Gfx mario_chest_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_chest_mesh_layer_1_vtx_0 + 0, 11, 8),
-	gsSP2Triangles(7, 11, 10, 0, 2, 3, 14, 0),
-	gsSP1Triangle(3, 15, 14, 0),
-	gsSPTriStrip(11, 7, 12, 6, 13, 2, 14),
-	gsSPTriStrip(15, 3, 16, 4, 17, 5, 18),
-	gsSPTriFan(0, 8, 9, 18, 5, -1, -1),
-	gsSPTriFan(1, 7, 10, 8, 0, -1, -1),
+	gsSPTriSnake(14, 13, 2, 6, G_SNAKE_LEFT, 12, G_SNAKE_LEFT, 7, G_SNAKE_RIGHT, 11, G_SNAKE_LEFT),
+	gsSPContinueSnake(10, G_SNAKE_RIGHT, 1, G_SNAKE_RIGHT, 8, G_SNAKE_LEFT, 0, G_SNAKE_RIGHT, 9, G_SNAKE_LEFT, 18, G_SNAKE_RIGHT, 5, G_SNAKE_RIGHT, 17, G_SNAKE_LEFT),
+	gsSPContinueSnake(4, G_SNAKE_RIGHT, 16, G_SNAKE_LEFT, 3, G_SNAKE_RIGHT, 15, G_SNAKE_LEFT, 14, G_SNAKE_RIGHT, G_SNAKE_LAST | 2, G_SNAKE_RIGHT, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -4363,10 +4361,9 @@ Gfx mario_chest_mesh_layer_1_tri_1[] = {
 	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
 	gsSP2Triangles(6, 7, 8, 0, 27, 28, 29, 0),
 	gsSP1Triangle(27, 29, 30, 0),
-	gsSPTriStrip(21, 22, 23, 24, 25, 26, 27),
-	gsSPTriStrip(19, 18, 17, 16, 15, 14, 13),
-	gsSPTriFan(10, 11, 9, 12, 13, 14, -1),
-	gsSPTriFan(17, 22, 21, 20, 19, -1, -1),
+	gsSPTriSnake(10, 11, 9, 12, G_SNAKE_RIGHT, 13, G_SNAKE_RIGHT, 14, G_SNAKE_RIGHT, 15, G_SNAKE_LEFT),
+	gsSPContinueSnake(16, G_SNAKE_RIGHT, 17, G_SNAKE_LEFT, 18, G_SNAKE_RIGHT, 19, G_SNAKE_LEFT, 20, G_SNAKE_LEFT, 21, G_SNAKE_LEFT, 22, G_SNAKE_LEFT, 23, G_SNAKE_RIGHT),
+	gsSPContinueSnake(24, G_SNAKE_LEFT, 25, G_SNAKE_RIGHT, 26, G_SNAKE_LEFT, G_SNAKE_LAST | 27, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -4400,11 +4397,12 @@ Vtx mario_chest_mesh_layer_1_vtx_2[25] = {
 
 Gfx mario_chest_mesh_layer_1_tri_2[] = {
 	gsSPVertex(mario_chest_mesh_layer_1_vtx_2 + 0, 25, 0),
-	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
-	gsSP2Triangles(9, 10, 11, 0, 21, 24, 23, 0),
-	gsSPTriStrip(16, 15, 14, 13, 11, 12, 9),
-	gsSPTriStrip(8, 7, 6, 5, 4, 3, 2),
-	gsSPTriStrip(23, 22, 21, 17, 19, 18, 20),
+	gsSPTriSnake(14, 16, 15, 13, G_SNAKE_RIGHT, 11, G_SNAKE_RIGHT, 12, G_SNAKE_LEFT, 9, G_SNAKE_RIGHT),
+	gsSPContinueSnake(G_SNAKE_LAST | 10, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
+	gsSPTriSnake(6, 8, 7, 5, G_SNAKE_RIGHT, 4, G_SNAKE_RIGHT, 3, G_SNAKE_LEFT, 2, G_SNAKE_RIGHT),
+	gsSPContinueSnake(0, G_SNAKE_LEFT, G_SNAKE_LAST | 1, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
+	gsSPTriSnake(20, 19, 18, 17, G_SNAKE_LEFT, 21, G_SNAKE_LEFT, 22, G_SNAKE_RIGHT, 23, G_SNAKE_LEFT),
+	gsSPContinueSnake(G_SNAKE_LAST | 24, G_SNAKE_LEFT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -4480,21 +4478,17 @@ Vtx mario_head_dl_mesh_layer_1_vtx_0[49] = {
 
 Gfx mario_head_dl_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_head_dl_mesh_layer_1_vtx_0 + 0, 49, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 5, 8, 0),
-	gsSP2Triangles(15, 20, 21, 0, 26, 30, 29, 0),
-	gsSP2Triangles(26, 31, 30, 0, 30, 31, 32, 0),
-	gsSP2Triangles(29, 36, 37, 0, 29, 37, 38, 0),
-	gsSP2Triangles(28, 39, 40, 0, 28, 40, 41, 0),
-	gsSP2Triangles(27, 45, 46, 0, 24, 27, 46, 0),
-	gsSP2Triangles(24, 46, 47, 0, 24, 47, 48, 0),
-	gsSPTriStrip(18, 17, 12, 16, 15, 19, 20),
-	gsSPTriStrip(14, 13, 9, 12, 8, 15, -1),
-	gsSPTriStrip(1, 3, 2, 4, 5, 6, 7),
-	gsSPTriStrip(41, 42, 28, 43, 27, 44, 45),
-	gsSPTriStrip(38, 39, 29, 28, 26, 27, 24),
-	gsSPTriFan(9, 8, 5, 10, 11, -1, -1),
-	gsSPTriFan(24, 48, 22, 23, 25, 26, -1),
-	gsSPTriFan(30, 32, 33, 34, 35, 36, 29),
+	gsSP2Triangles(4, 6, 5, 0, 5, 6, 7, 0),
+	gsSP2Triangles(5, 10, 9, 0, 9, 10, 11, 0),
+	gsSP2Triangles(9, 13, 12, 0, 9, 14, 13, 0),
+	gsSPTriSnake(12, 18, 17, 16, G_SNAKE_RIGHT, 15, G_SNAKE_RIGHT, 8, G_SNAKE_RIGHT, 9, G_SNAKE_RIGHT),
+	gsSPContinueSnake(5, G_SNAKE_LEFT, 2, G_SNAKE_LEFT, 4, G_SNAKE_RIGHT, 3, G_SNAKE_LEFT, 1, G_SNAKE_LEFT, G_SNAKE_LAST | 0, G_SNAKE_LEFT, -1, 0, -1, 0),
+	gsSPTriSnake(21, 15, 20, 19, G_SNAKE_LEFT, G_SNAKE_LAST | 16, G_SNAKE_LEFT, -1, 0, -1, 0),
+	gsSPTriSnake(28, 41, 42, 43, G_SNAKE_RIGHT, 27, G_SNAKE_RIGHT, 44, G_SNAKE_LEFT, 45, G_SNAKE_RIGHT),
+	gsSPContinueSnake(46, G_SNAKE_RIGHT, 24, G_SNAKE_RIGHT, 47, G_SNAKE_LEFT, 48, G_SNAKE_RIGHT, 22, G_SNAKE_RIGHT, 23, G_SNAKE_RIGHT, 25, G_SNAKE_RIGHT, 26, G_SNAKE_RIGHT),
+	gsSPContinueSnake(27, G_SNAKE_RIGHT, 28, G_SNAKE_LEFT, 29, G_SNAKE_LEFT, 30, G_SNAKE_LEFT, 31, G_SNAKE_LEFT, 32, G_SNAKE_RIGHT, 33, G_SNAKE_RIGHT, 34, G_SNAKE_RIGHT),
+	gsSPContinueSnake(35, G_SNAKE_RIGHT, 36, G_SNAKE_RIGHT, 29, G_SNAKE_RIGHT, 37, G_SNAKE_LEFT, 38, G_SNAKE_RIGHT, 39, G_SNAKE_RIGHT, 28, G_SNAKE_RIGHT, 40, G_SNAKE_LEFT),
+	gsSPContinueSnake(G_SNAKE_LAST | 41, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -4584,38 +4578,28 @@ Vtx mario_head_dl_mesh_layer_1_vtx_1[81] = {
 
 Gfx mario_head_dl_mesh_layer_1_tri_1[] = {
 	gsSPVertex(mario_head_dl_mesh_layer_1_vtx_1 + 0, 56, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 6, 5, 0),
-	gsSP2Triangles(18, 27, 24, 0, 35, 36, 37, 0),
-	gsSP2Triangles(0, 43, 45, 0, 41, 48, 43, 0),
-	gsSP2Triangles(46, 47, 52, 0, 7, 8, 12, 0),
-	gsSP2Triangles(8, 10, 12, 0, 27, 53, 54, 0),
+	gsSP2Triangles(0, 1, 2, 0, 6, 9, 8, 0),
+	gsSP2Triangles(4, 15, 24, 0, 25, 26, 28, 0),
+	gsSP2Triangles(35, 42, 41, 0, 49, 51, 50, 0),
+	gsSP2Triangles(4, 5, 15, 0, 27, 53, 54, 0),
 	gsSP1Triangle(53, 55, 54, 0),
-	gsSPTriStrip(17, 16, 14, 15, 5, 4, 2),
-	gsSPTriStrip(34, 43, 44, 0, 3, 2, 4),
-	gsSPTriStrip(36, 35, 33, 34, 31, 44, 29),
-	gsSPTriStrip(15, 24, 4, 25, 3, 29, 44),
-	gsSPTriStrip(24, 15, 18, 16, 19, 20, -1),
-	gsSPTriStrip(14, 5, 13, 12, 11, 10, 9),
-	gsSPTriStrip(12, 5, 7, 6, 8, 9, 10),
-	gsSPTriStrip(43, 46, 45, 52, 51, 50, 49),
-	gsSPTriStrip(30, 29, 28, 25, 26, 24, 27),
-	gsSPTriFan(41, 43, 34, 35, 42, -1, -1),
-	gsSPTriFan(37, 36, 38, 39, 40, -1, -1),
-	gsSPTriFan(20, 23, 22, 21, 19, -1, -1),
-	gsSPTriFan(47, 46, 43, 48, 49, 50, 52),
-	gsSPTriFan(31, 29, 30, 32, 33, -1, -1),
+	gsSPTriSnake(14, 17, 16, 15, G_SNAKE_RIGHT, 5, G_SNAKE_RIGHT, 13, G_SNAKE_RIGHT, 12, G_SNAKE_LEFT),
+	gsSPContinueSnake(7, G_SNAKE_LEFT, 8, G_SNAKE_RIGHT, 6, G_SNAKE_LEFT, 5, G_SNAKE_LEFT, 2, G_SNAKE_RIGHT, 4, G_SNAKE_LEFT, 3, G_SNAKE_RIGHT, 0, G_SNAKE_RIGHT),
+	gsSPContinueSnake(44, G_SNAKE_LEFT, 29, G_SNAKE_LEFT, 31, G_SNAKE_RIGHT, 34, G_SNAKE_RIGHT, 43, G_SNAKE_RIGHT, 0, G_SNAKE_RIGHT, 45, G_SNAKE_LEFT, 46, G_SNAKE_LEFT),
+	gsSPContinueSnake(47, G_SNAKE_LEFT, 52, G_SNAKE_RIGHT, 45, G_SNAKE_RIGHT, 51, G_SNAKE_LEFT, 50, G_SNAKE_LEFT, 47, G_SNAKE_LEFT, 49, G_SNAKE_RIGHT, 48, G_SNAKE_LEFT),
+	gsSPContinueSnake(43, G_SNAKE_LEFT, 41, G_SNAKE_RIGHT, 34, G_SNAKE_LEFT, 35, G_SNAKE_RIGHT, 33, G_SNAKE_LEFT, 31, G_SNAKE_LEFT, 32, G_SNAKE_RIGHT, 30, G_SNAKE_LEFT),
+	gsSPContinueSnake(29, G_SNAKE_LEFT, 28, G_SNAKE_RIGHT, 25, G_SNAKE_LEFT, 3, G_SNAKE_LEFT, 4, G_SNAKE_RIGHT, 24, G_SNAKE_RIGHT, 26, G_SNAKE_RIGHT, 27, G_SNAKE_LEFT),
+	gsSPContinueSnake(18, G_SNAKE_LEFT, 15, G_SNAKE_LEFT, 16, G_SNAKE_RIGHT, 19, G_SNAKE_RIGHT, 20, G_SNAKE_LEFT, 21, G_SNAKE_RIGHT, 22, G_SNAKE_LEFT, G_SNAKE_LAST | 23, G_SNAKE_LEFT),
+	gsSPTriSnake(40, 37, 39, 38, G_SNAKE_LEFT, 36, G_SNAKE_LEFT, 35, G_SNAKE_LEFT, G_SNAKE_LAST | 33, G_SNAKE_RIGHT),
+	gsSPTriSnake(13, 12, 11, 10, G_SNAKE_LEFT, 8, G_SNAKE_LEFT, 9, G_SNAKE_RIGHT, G_SNAKE_LAST | 11, G_SNAKE_RIGHT),
 	gsSPVertex(mario_head_dl_mesh_layer_1_vtx_1 + 56, 25, 0),
-	gsSP2Triangles(9, 12, 11, 0, 0, 3, 15, 0),
-	gsSP2Triangles(4, 5, 19, 0, 5, 7, 20, 0),
-	gsSP2Triangles(7, 10, 20, 0, 10, 21, 20, 0),
-	gsSP1Triangle(22, 23, 24, 0),
-	gsSPTriStrip(6, 8, 7, 9, 10, 11, 22),
-	gsSPTriStrip(3, 18, 17, 23, 14, 22, 11),
-	gsSPTriStrip(18, 3, 4, 2, 5, 6, 7),
-	gsSPTriStrip(13, 16, 15, 1, 0, 2, 3),
-	gsSPTriStrip(3, 17, 15, 14, 13, 11, 12),
-	gsSPTriStrip(10, 22, 21, 24, 20, 19, 5),
-	gsSPTriFan(18, 4, 19, 24, 23, -1, -1),
+	gsSP1Triangle(0, 1, 2, 0),
+	gsSPTriSnake(7, 6, 8, 9, G_SNAKE_RIGHT, 10, G_SNAKE_RIGHT, 20, G_SNAKE_RIGHT, 5, G_SNAKE_RIGHT),
+	gsSPContinueSnake(19, G_SNAKE_LEFT, 24, G_SNAKE_LEFT, 18, G_SNAKE_RIGHT, 23, G_SNAKE_LEFT, 22, G_SNAKE_LEFT, 21, G_SNAKE_LEFT, 20, G_SNAKE_LEFT, 10, G_SNAKE_RIGHT),
+	gsSPContinueSnake(22, G_SNAKE_RIGHT, 11, G_SNAKE_LEFT, 9, G_SNAKE_LEFT, 12, G_SNAKE_RIGHT, 13, G_SNAKE_RIGHT, 14, G_SNAKE_RIGHT, 22, G_SNAKE_RIGHT, 23, G_SNAKE_LEFT),
+	gsSPContinueSnake(17, G_SNAKE_LEFT, 18, G_SNAKE_RIGHT, 3, G_SNAKE_LEFT, 15, G_SNAKE_LEFT, 14, G_SNAKE_LEFT, 13, G_SNAKE_RIGHT, 16, G_SNAKE_RIGHT, 1, G_SNAKE_RIGHT),
+	gsSPContinueSnake(0, G_SNAKE_RIGHT, 3, G_SNAKE_RIGHT, 2, G_SNAKE_LEFT, 4, G_SNAKE_RIGHT, 18, G_SNAKE_RIGHT, 19, G_SNAKE_LEFT, 5, G_SNAKE_LEFT, 2, G_SNAKE_LEFT),
+	gsSPContinueSnake(6, G_SNAKE_RIGHT, G_SNAKE_LAST | 7, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -4641,11 +4625,10 @@ Vtx mario_head_dl_mesh_layer_1_vtx_2[17] = {
 
 Gfx mario_head_dl_mesh_layer_1_tri_2[] = {
 	gsSPVertex(mario_head_dl_mesh_layer_1_vtx_2 + 0, 17, 0),
-	gsSP2Triangles(9, 10, 14, 0, 6, 9, 16, 0),
-	gsSP1Triangle(5, 6, 16, 0),
-	gsSPTriStrip(15, 4, 5, 2, 6, 7, 8),
-	gsSPTriFan(2, 4, 3, 0, 1, -1, -1),
-	gsSPTriFan(8, 13, 12, 11, 10, 9, 6),
+	gsSP2Triangles(2, 7, 6, 0, 6, 7, 8, 0),
+	gsSP2Triangles(9, 10, 14, 0, 4, 5, 15, 0),
+	gsSPTriSnake(1, 2, 0, 3, G_SNAKE_LEFT, 4, G_SNAKE_LEFT, 5, G_SNAKE_LEFT, 6, G_SNAKE_LEFT),
+	gsSPContinueSnake(16, G_SNAKE_RIGHT, 9, G_SNAKE_LEFT, 8, G_SNAKE_LEFT, 10, G_SNAKE_RIGHT, 11, G_SNAKE_LEFT, 12, G_SNAKE_LEFT, G_SNAKE_LAST | 13, G_SNAKE_LEFT, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -4689,17 +4672,14 @@ Vtx mario_head_dl_mesh_layer_1_vtx_3[35] = {
 
 Gfx mario_head_dl_mesh_layer_1_tri_3[] = {
 	gsSPVertex(mario_head_dl_mesh_layer_1_vtx_3 + 0, 35, 0),
-	gsSP2Triangles(0, 3, 8, 0, 3, 18, 8, 0),
-	gsSP2Triangles(19, 26, 25, 0, 19, 21, 26, 0),
-	gsSP2Triangles(27, 31, 30, 0, 27, 32, 31, 0),
-	gsSPTriStrip(6, 18, 4, 3, 2, 0, 1),
-	gsSPTriStrip(18, 6, 8, 7, 0, 9, -1),
-	gsSPTriStrip(16, 9, 14, 15, 13, 17, 11),
-	gsSPTriFan(10, 9, 7, 11, 17, 15, 9),
-	gsSPTriFan(19, 25, 24, 23, 22, 20, 21),
-	gsSPTriFan(12, 14, 13, 11, 7, -1, -1),
-	gsSPTriFan(27, 30, 28, 29, 34, 33, 32),
-	gsSPTriFan(5, 7, 6, 4, 2, -1, -1),
+	gsSPTriSnake(1, 2, 0, 3, G_SNAKE_LEFT, 4, G_SNAKE_LEFT, 5, G_SNAKE_LEFT, 6, G_SNAKE_RIGHT),
+	gsSPContinueSnake(7, G_SNAKE_LEFT, 8, G_SNAKE_RIGHT, 18, G_SNAKE_RIGHT, 4, G_SNAKE_RIGHT, 3, G_SNAKE_LEFT, 8, G_SNAKE_LEFT, 0, G_SNAKE_RIGHT, 7, G_SNAKE_LEFT),
+	gsSPContinueSnake(9, G_SNAKE_RIGHT, 10, G_SNAKE_LEFT, 11, G_SNAKE_LEFT, 12, G_SNAKE_LEFT, 13, G_SNAKE_RIGHT, 14, G_SNAKE_LEFT, 15, G_SNAKE_RIGHT, 17, G_SNAKE_RIGHT),
+	gsSPContinueSnake(11, G_SNAKE_RIGHT, 10, G_SNAKE_LEFT, 15, G_SNAKE_LEFT, 9, G_SNAKE_RIGHT, 14, G_SNAKE_LEFT, G_SNAKE_LAST | 16, G_SNAKE_RIGHT, -1, 0, -1, 0),
+	gsSPTriSnake(19, 25, 24, 23, G_SNAKE_RIGHT, 22, G_SNAKE_RIGHT, 20, G_SNAKE_RIGHT, 21, G_SNAKE_RIGHT),
+	gsSPContinueSnake(26, G_SNAKE_RIGHT, G_SNAKE_LAST | 25, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
+	gsSPTriSnake(34, 27, 29, 28, G_SNAKE_LEFT, 30, G_SNAKE_LEFT, 31, G_SNAKE_LEFT, 32, G_SNAKE_LEFT),
+	gsSPContinueSnake(33, G_SNAKE_LEFT, G_SNAKE_LAST | 34, G_SNAKE_LEFT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -4746,19 +4726,15 @@ Vtx mario_head_dl_mesh_layer_1_vtx_4[38] = {
 
 Gfx mario_head_dl_mesh_layer_1_tri_4[] = {
 	gsSPVertex(mario_head_dl_mesh_layer_1_vtx_4 + 0, 38, 0),
-	gsSP2Triangles(10, 13, 12, 0, 12, 13, 14, 0),
-	gsSP2Triangles(15, 16, 17, 0, 15, 19, 18, 0),
-	gsSP2Triangles(6, 18, 19, 0, 16, 34, 32, 0),
-	gsSP2Triangles(18, 21, 35, 0, 28, 31, 37, 0),
-	gsSPTriStrip(6, 5, 4, 3, 0, 1, 2),
-	gsSPTriStrip(7, 8, 9, 10, 11, 12, -1),
-	gsSPTriStrip(27, 29, 28, 30, 31, 32, 37),
-	gsSPTriStrip(15, 18, 16, 35, 34, 37, 32),
-	gsSPTriStrip(24, 23, 22, 21, 20, 18, 6),
-	gsSPTriStrip(26, 27, 25, 28, 36, 37, 35),
-	gsSPTriFan(25, 23, 24, 2, 26, -1, -1),
-	gsSPTriFan(33, 17, 16, 32, 30, -1, -1),
-	gsSPTriFan(36, 35, 21, 23, 25, -1, -1),
+	gsSP1Triangle(22, 24, 23, 0),
+	gsSPTriSnake(2, 0, 1, 3, G_SNAKE_LEFT, 4, G_SNAKE_LEFT, 5, G_SNAKE_RIGHT, G_SNAKE_LAST | 6, G_SNAKE_LEFT),
+	gsSPTriSnake(9, 7, 8, 10, G_SNAKE_RIGHT, 11, G_SNAKE_RIGHT, 12, G_SNAKE_LEFT, 13, G_SNAKE_LEFT),
+	gsSPContinueSnake(G_SNAKE_LAST | 14, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
+	gsSPTriSnake(27, 29, 28, 25, G_SNAKE_RIGHT, 26, G_SNAKE_RIGHT, 2, G_SNAKE_LEFT, 24, G_SNAKE_LEFT),
+	gsSPContinueSnake(23, G_SNAKE_LEFT, 36, G_SNAKE_LEFT, 28, G_SNAKE_LEFT, 37, G_SNAKE_RIGHT, 35, G_SNAKE_RIGHT, 34, G_SNAKE_LEFT, 32, G_SNAKE_LEFT, 16, G_SNAKE_RIGHT),
+	gsSPContinueSnake(35, G_SNAKE_RIGHT, 18, G_SNAKE_LEFT, 21, G_SNAKE_RIGHT, 36, G_SNAKE_RIGHT, 23, G_SNAKE_LEFT, 22, G_SNAKE_LEFT, 20, G_SNAKE_LEFT, 18, G_SNAKE_LEFT),
+	gsSPContinueSnake(6, G_SNAKE_RIGHT, 19, G_SNAKE_LEFT, 15, G_SNAKE_LEFT, 16, G_SNAKE_LEFT, 17, G_SNAKE_RIGHT, 33, G_SNAKE_LEFT, 32, G_SNAKE_LEFT, 30, G_SNAKE_RIGHT),
+	gsSPContinueSnake(31, G_SNAKE_LEFT, 37, G_SNAKE_LEFT, 28, G_SNAKE_RIGHT, 30, G_SNAKE_RIGHT, G_SNAKE_LAST | 29, G_SNAKE_LEFT, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -4774,7 +4750,7 @@ Vtx mario_head_dl_mesh_layer_1_vtx_5[7] = {
 
 Gfx mario_head_dl_mesh_layer_1_tri_5[] = {
 	gsSPVertex(mario_head_dl_mesh_layer_1_vtx_5 + 0, 7, 0),
-	gsSPTriStrip(1, 2, 0, 3, 4, 5, 6),
+	gsSPTriSnake(0, 1, 2, 3, G_SNAKE_RIGHT, 4, G_SNAKE_RIGHT, 5, G_SNAKE_LEFT, G_SNAKE_LAST | 6, G_SNAKE_RIGHT),
 	gsSPEndDisplayList(),
 };
 
@@ -4879,39 +4855,26 @@ Vtx mario_switch_option_capless_head__no_cap__mesh_layer_1_vtx_0[96] = {
 
 Gfx mario_switch_option_capless_head__no_cap__mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_switch_option_capless_head__no_cap__mesh_layer_1_vtx_0 + 0, 56, 0),
-	gsSP2Triangles(12, 14, 13, 0, 12, 15, 14, 0),
-	gsSP2Triangles(11, 23, 22, 0, 11, 24, 23, 0),
-	gsSP2Triangles(27, 30, 29, 0, 29, 30, 31, 0),
-	gsSP2Triangles(32, 35, 34, 0, 38, 39, 40, 0),
-	gsSP2Triangles(41, 43, 42, 0, 44, 47, 46, 0),
-	gsSP1Triangle(1, 47, 44, 0),
-	gsSPTriStrip(29, 28, 27, 26, 25, 23, 24),
-	gsSPTriStrip(8, 7, 6, 4, 5, 0, -1),
-	gsSPTriStrip(52, 51, 50, 49, 44, 48, 1),
-	gsSPTriStrip(35, 32, 36, 37, 38, 39, -1),
-	gsSPTriStrip(6, 9, 8, 10, 11, 12, 13),
-	gsSPTriFan(0, 4, 3, 1, 2, -1, -1),
-	gsSPTriFan(51, 52, 53, 54, 55, -1, -1),
-	gsSPTriFan(14, 15, 16, 17, 18, 19, 13),
-	gsSPTriFan(34, 40, 39, 41, 42, -1, -1),
-	gsSPTriFan(11, 22, 21, 20, 8, -1, -1),
-	gsSPTriFan(32, 34, 26, 33, 31, 30, -1),
-	gsSPTriFan(44, 46, 45, 42, 43, -1, -1),
+	gsSP2Triangles(14, 18, 19, 0, 13, 14, 19, 0),
+	gsSPTriSnake(2, 0, 1, 3, G_SNAKE_LEFT, 4, G_SNAKE_LEFT, 5, G_SNAKE_LEFT, 6, G_SNAKE_RIGHT),
+	gsSPContinueSnake(7, G_SNAKE_RIGHT, 8, G_SNAKE_LEFT, 9, G_SNAKE_LEFT, 10, G_SNAKE_RIGHT, 11, G_SNAKE_RIGHT, 20, G_SNAKE_RIGHT, 21, G_SNAKE_LEFT, 22, G_SNAKE_LEFT),
+	gsSPContinueSnake(23, G_SNAKE_LEFT, 24, G_SNAKE_LEFT, 25, G_SNAKE_RIGHT, 26, G_SNAKE_RIGHT, 27, G_SNAKE_LEFT, 28, G_SNAKE_RIGHT, 29, G_SNAKE_LEFT, 30, G_SNAKE_LEFT),
+	gsSPContinueSnake(31, G_SNAKE_RIGHT, 32, G_SNAKE_LEFT, 33, G_SNAKE_RIGHT, 26, G_SNAKE_LEFT, 34, G_SNAKE_LEFT, 35, G_SNAKE_LEFT, 36, G_SNAKE_LEFT, 37, G_SNAKE_LEFT),
+	gsSPContinueSnake(38, G_SNAKE_RIGHT, 39, G_SNAKE_LEFT, 40, G_SNAKE_RIGHT, 34, G_SNAKE_LEFT, 41, G_SNAKE_LEFT, 42, G_SNAKE_RIGHT, 43, G_SNAKE_LEFT, 44, G_SNAKE_RIGHT),
+	gsSPContinueSnake(45, G_SNAKE_RIGHT, 46, G_SNAKE_LEFT, 47, G_SNAKE_LEFT, 1, G_SNAKE_LEFT, 48, G_SNAKE_LEFT, 49, G_SNAKE_LEFT, 50, G_SNAKE_LEFT, 51, G_SNAKE_RIGHT),
+	gsSPContinueSnake(52, G_SNAKE_LEFT, 53, G_SNAKE_RIGHT, 54, G_SNAKE_RIGHT, G_SNAKE_LAST | 55, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0, -1, 0),
+	gsSPTriSnake(18, 14, 17, 16, G_SNAKE_LEFT, 15, G_SNAKE_LEFT, 12, G_SNAKE_LEFT, 13, G_SNAKE_LEFT),
+	gsSPContinueSnake(11, G_SNAKE_RIGHT, G_SNAKE_LAST | 10, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
 	gsSPVertex(mario_switch_option_capless_head__no_cap__mesh_layer_1_vtx_0 + 56, 40, 0),
 	gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
-	gsSP2Triangles(4, 5, 6, 0, 8, 10, 9, 0),
-	gsSP2Triangles(8, 11, 10, 0, 13, 14, 16, 0),
-	gsSP2Triangles(14, 17, 16, 0, 19, 22, 21, 0),
-	gsSP2Triangles(21, 22, 23, 0, 23, 25, 24, 0),
-	gsSP2Triangles(30, 33, 32, 0, 35, 38, 37, 0),
-	gsSPTriStrip(23, 35, 36, 37, 39, 38, -1),
-	gsSPTriStrip(4, 8, 7, 9, 16, 10, 13),
-	gsSPTriStrip(25, 30, 31, 32, 34, 33, -1),
-	gsSPTriStrip(23, 24, 21, 20, 19, 18, 17),
-	gsSPTriStrip(29, 18, 28, 20, 26, 24, -1),
-	gsSPTriFan(12, 15, 14, 13, 10, 11, -1),
-	gsSPTriFan(26, 24, 25, 27, 28, -1, -1),
-	gsSPTriFan(16, 17, 18, 29, 7, -1, -1),
+	gsSP2Triangles(4, 5, 6, 0, 23, 25, 24, 0),
+	gsSPTriSnake(36, 23, 35, 37, G_SNAKE_RIGHT, 39, G_SNAKE_RIGHT, 38, G_SNAKE_LEFT, G_SNAKE_LAST | 35, G_SNAKE_LEFT),
+	gsSPTriSnake(7, 4, 8, 9, G_SNAKE_RIGHT, 16, G_SNAKE_RIGHT, 29, G_SNAKE_RIGHT, 18, G_SNAKE_LEFT),
+	gsSPContinueSnake(28, G_SNAKE_RIGHT, 20, G_SNAKE_LEFT, 26, G_SNAKE_RIGHT, 27, G_SNAKE_RIGHT, 25, G_SNAKE_LEFT, 24, G_SNAKE_LEFT, 20, G_SNAKE_LEFT, 21, G_SNAKE_RIGHT),
+	gsSPContinueSnake(23, G_SNAKE_RIGHT, 22, G_SNAKE_LEFT, 19, G_SNAKE_LEFT, 20, G_SNAKE_LEFT, 18, G_SNAKE_RIGHT, 17, G_SNAKE_RIGHT, 16, G_SNAKE_LEFT, 14, G_SNAKE_RIGHT),
+	gsSPContinueSnake(13, G_SNAKE_LEFT, 10, G_SNAKE_LEFT, 9, G_SNAKE_LEFT, 8, G_SNAKE_RIGHT, 11, G_SNAKE_RIGHT, 12, G_SNAKE_RIGHT, 13, G_SNAKE_RIGHT, 14, G_SNAKE_LEFT),
+	gsSPContinueSnake(G_SNAKE_LAST | 15, G_SNAKE_LEFT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
+	gsSPTriSnake(31, 25, 30, 32, G_SNAKE_RIGHT, 34, G_SNAKE_RIGHT, 33, G_SNAKE_LEFT, G_SNAKE_LAST | 30, G_SNAKE_LEFT),
 	gsSPEndDisplayList(),
 };
 
@@ -4937,11 +4900,11 @@ Vtx mario_switch_option_capless_head__no_cap__mesh_layer_1_vtx_1[17] = {
 
 Gfx mario_switch_option_capless_head__no_cap__mesh_layer_1_tri_1[] = {
 	gsSPVertex(mario_switch_option_capless_head__no_cap__mesh_layer_1_vtx_1 + 0, 17, 0),
-	gsSP1Triangle(6, 9, 8, 0),
-	gsSPTriStrip(7, 16, 4, 3, 1, 2, 0),
-	gsSPTriFan(7, 6, 8, 10, 11, 12, -1),
-	gsSPTriFan(3, 15, 14, 13, 2, -1, -1),
-	gsSPTriFan(4, 1, 5, 6, 7, -1, -1),
+	gsSP2Triangles(6, 9, 8, 0, 4, 7, 16, 0),
+	gsSP1Triangle(3, 4, 16, 0),
+	gsSPTriSnake(0, 1, 2, 3, G_SNAKE_LEFT, 4, G_SNAKE_LEFT, 5, G_SNAKE_LEFT, 6, G_SNAKE_RIGHT),
+	gsSPContinueSnake(7, G_SNAKE_RIGHT, 8, G_SNAKE_LEFT, 10, G_SNAKE_RIGHT, 11, G_SNAKE_RIGHT, G_SNAKE_LAST | 12, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0),
+	gsSPTriSnake(3, 15, 14, 13, G_SNAKE_RIGHT, G_SNAKE_LAST | 2, G_SNAKE_RIGHT, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -5052,42 +5015,33 @@ Vtx mario_switch_option_capless_head__no_cap__mesh_layer_1_vtx_2[102] = {
 
 Gfx mario_switch_option_capless_head__no_cap__mesh_layer_1_tri_2[] = {
 	gsSPVertex(mario_switch_option_capless_head__no_cap__mesh_layer_1_vtx_2 + 0, 56, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
-	gsSP2Triangles(3, 5, 6, 0, 15, 16, 17, 0),
+	gsSP2Triangles(0, 1, 2, 0, 15, 16, 17, 0),
 	gsSP2Triangles(8, 17, 16, 0, 18, 19, 20, 0),
-	gsSP2Triangles(20, 23, 22, 0, 20, 24, 23, 0),
-	gsSP2Triangles(23, 24, 25, 0, 24, 26, 25, 0),
-	gsSP2Triangles(24, 27, 26, 0, 3, 28, 29, 0),
-	gsSP2Triangles(8, 22, 23, 0, 31, 37, 36, 0),
-	gsSP2Triangles(35, 36, 40, 0, 44, 47, 48, 0),
-	gsSP1Triangle(53, 54, 55, 0),
-	gsSPTriStrip(32, 31, 30, 18, 21, 20, 22),
-	gsSPTriStrip(43, 41, 42, 44, 49, 48, -1),
-	gsSPTriStrip(23, 25, 3, 26, 28, 27, 29),
-	gsSPTriFan(52, 54, 53, 50, 51, -1, -1),
-	gsSPTriFan(7, 10, 9, 8, 6, 5, -1),
-	gsSPTriFan(45, 47, 44, 41, 46, -1, -1),
-	gsSPTriFan(13, 11, 12, 14, 15, 9, -1),
-	gsSPTriFan(37, 31, 2, 38, 39, -1, -1),
-	gsSPTriFan(31, 36, 35, 34, 33, 18, -1),
+	gsSP2Triangles(8, 22, 23, 0, 35, 36, 40, 0),
+	gsSPTriSnake(30, 32, 31, 18, G_SNAKE_RIGHT, 21, G_SNAKE_RIGHT, 20, G_SNAKE_LEFT, 22, G_SNAKE_RIGHT),
+	gsSPContinueSnake(23, G_SNAKE_LEFT, 24, G_SNAKE_LEFT, 25, G_SNAKE_RIGHT, 26, G_SNAKE_LEFT, 27, G_SNAKE_LEFT, 28, G_SNAKE_RIGHT, 29, G_SNAKE_LEFT, 3, G_SNAKE_RIGHT),
+	gsSPContinueSnake(26, G_SNAKE_RIGHT, 25, G_SNAKE_LEFT, G_SNAKE_LAST | 23, G_SNAKE_LEFT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
+	gsSPTriSnake(51, 52, 50, 53, G_SNAKE_LEFT, 54, G_SNAKE_LEFT, G_SNAKE_LAST | 55, G_SNAKE_RIGHT, -1, 0),
+	gsSPTriSnake(7, 10, 9, 8, G_SNAKE_RIGHT, 6, G_SNAKE_RIGHT, 5, G_SNAKE_RIGHT, 3, G_SNAKE_LEFT),
+	gsSPContinueSnake(G_SNAKE_LAST | 4, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
+	gsSPTriSnake(46, 45, 41, 44, G_SNAKE_LEFT, 47, G_SNAKE_LEFT, 48, G_SNAKE_RIGHT, 49, G_SNAKE_RIGHT),
+	gsSPContinueSnake(42, G_SNAKE_RIGHT, 41, G_SNAKE_RIGHT, G_SNAKE_LAST | 43, G_SNAKE_LEFT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
+	gsSPTriSnake(13, 11, 12, 14, G_SNAKE_RIGHT, 15, G_SNAKE_RIGHT, G_SNAKE_LAST | 9, G_SNAKE_RIGHT, -1, 0),
+	gsSPTriSnake(39, 37, 38, 2, G_SNAKE_LEFT, 31, G_SNAKE_LEFT, 36, G_SNAKE_LEFT, 35, G_SNAKE_RIGHT),
+	gsSPContinueSnake(34, G_SNAKE_RIGHT, 33, G_SNAKE_RIGHT, G_SNAKE_LAST | 18, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
 	gsSPVertex(mario_switch_option_capless_head__no_cap__mesh_layer_1_vtx_2 + 56, 46, 0),
-	gsSP2Triangles(0, 1, 2, 0, 3, 6, 4, 0),
-	gsSP2Triangles(5, 8, 7, 0, 7, 8, 9, 0),
-	gsSP2Triangles(10, 13, 11, 0, 10, 14, 13, 0),
-	gsSP2Triangles(24, 27, 26, 0, 13, 26, 27, 0),
-	gsSP2Triangles(30, 31, 35, 0, 31, 32, 35, 0),
-	gsSP2Triangles(39, 40, 41, 0, 36, 38, 45, 0),
-	gsSPTriStrip(9, 6, 7, 3, 5, 4, -1),
-	gsSPTriStrip(21, 31, 18, 17, 12, 10, 11),
-	gsSPTriStrip(31, 21, 32, 33, 35, 34, 29),
-	gsSPTriStrip(13, 14, 26, 15, 28, 29, 34),
-	gsSPTriStrip(12, 19, 18, 20, 21, 22, 33),
-	gsSPTriStrip(20, 23, 22, 24, 25, 26, 28),
-	gsSPTriStrip(41, 42, 39, 43, 38, 44, 45),
-	gsSPTriStrip(14, 10, 15, 16, 29, 30, 35),
-	gsSPTriFan(25, 28, 34, 33, 22, -1, -1),
-	gsSPTriFan(37, 40, 39, 38, 36, -1, -1),
-	gsSPTriFan(17, 31, 30, 16, 10, -1, -1),
+	gsSP2Triangles(0, 1, 2, 0, 10, 13, 11, 0),
+	gsSP1Triangle(15, 16, 29, 0),
+	gsSPTriSnake(9, 6, 7, 3, G_SNAKE_LEFT, 4, G_SNAKE_LEFT, 5, G_SNAKE_RIGHT, 7, G_SNAKE_RIGHT),
+	gsSPContinueSnake(8, G_SNAKE_LEFT, G_SNAKE_LAST | 9, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
+	gsSPTriSnake(10, 11, 12, 17, G_SNAKE_RIGHT, 16, G_SNAKE_RIGHT, 15, G_SNAKE_RIGHT, 14, G_SNAKE_RIGHT),
+	gsSPContinueSnake(13, G_SNAKE_RIGHT, 26, G_SNAKE_LEFT, 15, G_SNAKE_LEFT, 28, G_SNAKE_RIGHT, 29, G_SNAKE_LEFT, 34, G_SNAKE_RIGHT, 35, G_SNAKE_LEFT, 33, G_SNAKE_RIGHT),
+	gsSPContinueSnake(32, G_SNAKE_LEFT, 31, G_SNAKE_LEFT, 30, G_SNAKE_LEFT, 29, G_SNAKE_LEFT, 16, G_SNAKE_RIGHT, 17, G_SNAKE_RIGHT, 31, G_SNAKE_RIGHT, 18, G_SNAKE_LEFT),
+	gsSPContinueSnake(12, G_SNAKE_LEFT, 19, G_SNAKE_RIGHT, 20, G_SNAKE_RIGHT, 21, G_SNAKE_RIGHT, 31, G_SNAKE_RIGHT, 32, G_SNAKE_LEFT, 33, G_SNAKE_LEFT, 22, G_SNAKE_LEFT),
+	gsSPContinueSnake(20, G_SNAKE_LEFT, 23, G_SNAKE_RIGHT, 24, G_SNAKE_RIGHT, 25, G_SNAKE_RIGHT, 33, G_SNAKE_RIGHT, 34, G_SNAKE_LEFT, 28, G_SNAKE_LEFT, 26, G_SNAKE_LEFT),
+	gsSPContinueSnake(24, G_SNAKE_LEFT, 27, G_SNAKE_RIGHT, G_SNAKE_LAST | 13, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
+	gsSPTriSnake(42, 39, 41, 40, G_SNAKE_LEFT, 37, G_SNAKE_LEFT, 38, G_SNAKE_LEFT, 36, G_SNAKE_RIGHT),
+	gsSPContinueSnake(45, G_SNAKE_LEFT, 44, G_SNAKE_LEFT, 43, G_SNAKE_LEFT, 39, G_SNAKE_LEFT, G_SNAKE_LAST | 42, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -5145,21 +5099,17 @@ Vtx mario_switch_option_capless_head__no_cap__mesh_layer_1_vtx_3[49] = {
 
 Gfx mario_switch_option_capless_head__no_cap__mesh_layer_1_tri_3[] = {
 	gsSPVertex(mario_switch_option_capless_head__no_cap__mesh_layer_1_vtx_3 + 0, 49, 0),
-	gsSP2Triangles(0, 1, 2, 0, 2, 5, 8, 0),
-	gsSP2Triangles(15, 20, 21, 0, 26, 30, 29, 0),
-	gsSP2Triangles(26, 31, 30, 0, 30, 31, 32, 0),
-	gsSP2Triangles(29, 36, 37, 0, 29, 37, 38, 0),
-	gsSP2Triangles(28, 39, 40, 0, 28, 40, 41, 0),
-	gsSP2Triangles(27, 45, 46, 0, 24, 27, 46, 0),
-	gsSP2Triangles(24, 46, 47, 0, 24, 47, 48, 0),
-	gsSPTriStrip(18, 17, 12, 16, 15, 19, 20),
-	gsSPTriStrip(14, 13, 9, 12, 8, 15, -1),
-	gsSPTriStrip(1, 3, 2, 4, 5, 6, 7),
-	gsSPTriStrip(41, 42, 28, 43, 27, 44, 45),
-	gsSPTriStrip(38, 39, 29, 28, 26, 27, 24),
-	gsSPTriFan(9, 8, 5, 10, 11, -1, -1),
-	gsSPTriFan(24, 48, 22, 23, 25, 26, -1),
-	gsSPTriFan(30, 32, 33, 34, 35, 36, 29),
+	gsSP2Triangles(4, 6, 5, 0, 5, 6, 7, 0),
+	gsSP2Triangles(5, 10, 9, 0, 9, 10, 11, 0),
+	gsSP2Triangles(9, 13, 12, 0, 9, 14, 13, 0),
+	gsSPTriSnake(12, 18, 17, 16, G_SNAKE_RIGHT, 15, G_SNAKE_RIGHT, 8, G_SNAKE_RIGHT, 9, G_SNAKE_RIGHT),
+	gsSPContinueSnake(5, G_SNAKE_LEFT, 2, G_SNAKE_LEFT, 4, G_SNAKE_RIGHT, 3, G_SNAKE_LEFT, 1, G_SNAKE_LEFT, G_SNAKE_LAST | 0, G_SNAKE_LEFT, -1, 0, -1, 0),
+	gsSPTriSnake(21, 15, 20, 19, G_SNAKE_LEFT, G_SNAKE_LAST | 16, G_SNAKE_LEFT, -1, 0, -1, 0),
+	gsSPTriSnake(28, 41, 42, 43, G_SNAKE_RIGHT, 27, G_SNAKE_RIGHT, 44, G_SNAKE_LEFT, 45, G_SNAKE_RIGHT),
+	gsSPContinueSnake(46, G_SNAKE_RIGHT, 24, G_SNAKE_RIGHT, 47, G_SNAKE_LEFT, 48, G_SNAKE_RIGHT, 22, G_SNAKE_RIGHT, 23, G_SNAKE_RIGHT, 25, G_SNAKE_RIGHT, 26, G_SNAKE_RIGHT),
+	gsSPContinueSnake(27, G_SNAKE_RIGHT, 28, G_SNAKE_LEFT, 29, G_SNAKE_LEFT, 30, G_SNAKE_LEFT, 31, G_SNAKE_LEFT, 32, G_SNAKE_RIGHT, 33, G_SNAKE_RIGHT, 34, G_SNAKE_RIGHT),
+	gsSPContinueSnake(35, G_SNAKE_RIGHT, 36, G_SNAKE_RIGHT, 29, G_SNAKE_RIGHT, 37, G_SNAKE_LEFT, 38, G_SNAKE_RIGHT, 39, G_SNAKE_RIGHT, 28, G_SNAKE_RIGHT, 40, G_SNAKE_LEFT),
+	gsSPContinueSnake(G_SNAKE_LAST | 41, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -5213,9 +5163,8 @@ Vtx mario_upper_arm_L_mesh_layer_1_vtx_0[6] = {
 
 Gfx mario_upper_arm_L_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_upper_arm_L_mesh_layer_1_vtx_0 + 0, 6, 5),
-	gsSP1Triangle(0, 10, 2, 0),
-	gsSPTriStrip(2, 5, 3, 6, 4, 7, -1),
-	gsSPTriStrip(4, 7, 1, 8, 0, 9, 10),
+	gsSPTriSnake(3, 2, 5, 6, G_SNAKE_RIGHT, 4, G_SNAKE_RIGHT, 7, G_SNAKE_LEFT, 1, G_SNAKE_RIGHT),
+	gsSPContinueSnake(8, G_SNAKE_LEFT, 0, G_SNAKE_RIGHT, 9, G_SNAKE_LEFT, 10, G_SNAKE_RIGHT, G_SNAKE_LAST | 2, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -5243,9 +5192,8 @@ Vtx mario_lower_arm_L_mesh_layer_1_vtx_0[6] = {
 
 Gfx mario_lower_arm_L_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_lower_arm_L_mesh_layer_1_vtx_0 + 0, 6, 5),
-	gsSP2Triangles(3, 9, 8, 0, 3, 10, 9, 0),
-	gsSPTriStrip(3, 8, 2, 7, 0, 6, 5),
-	gsSPTriStrip(3, 4, 10, 1, 5, 0, -1),
+	gsSPTriSnake(5, 0, 6, 7, G_SNAKE_LEFT, 2, G_SNAKE_LEFT, 8, G_SNAKE_RIGHT, 3, G_SNAKE_LEFT),
+	gsSPContinueSnake(9, G_SNAKE_RIGHT, 10, G_SNAKE_LEFT, 4, G_SNAKE_LEFT, 1, G_SNAKE_RIGHT, 5, G_SNAKE_RIGHT, G_SNAKE_LAST | 0, G_SNAKE_LEFT, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -5259,7 +5207,7 @@ Vtx mario_lower_arm_L_mesh_layer_1_vtx_1[5] = {
 
 Gfx mario_lower_arm_L_mesh_layer_1_tri_1[] = {
 	gsSPVertex(mario_lower_arm_L_mesh_layer_1_vtx_1 + 0, 5, 0),
-	gsSPTriFan(1, 4, 3, 2, 0, -1, -1),
+	gsSPTriSnake(1, 4, 3, 2, G_SNAKE_RIGHT, G_SNAKE_LAST | 0, G_SNAKE_RIGHT, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -5279,11 +5227,9 @@ Vtx mario_lower_arm_L_mesh_layer_1_vtx_2[11] = {
 
 Gfx mario_lower_arm_L_mesh_layer_1_tri_2[] = {
 	gsSPVertex(mario_lower_arm_L_mesh_layer_1_vtx_2 + 0, 11, 0),
-	gsSP2Triangles(2, 8, 7, 0, 1, 8, 2, 0),
-	gsSP2Triangles(7, 9, 10, 0, 7, 8, 9, 0),
-	gsSPTriStrip(9, 4, 10, 5, 7, 6, 2),
-	gsSPTriStrip(9, 8, 3, 1, 0, 2, 6),
-	gsSPTriStrip(6, 5, 0, 4, 3, 9, -1),
+	gsSPTriSnake(4, 10, 9, 7, G_SNAKE_LEFT, 5, G_SNAKE_LEFT, 4, G_SNAKE_LEFT, 0, G_SNAKE_RIGHT),
+	gsSPContinueSnake(6, G_SNAKE_RIGHT, 7, G_SNAKE_RIGHT, 2, G_SNAKE_LEFT, 8, G_SNAKE_RIGHT, 9, G_SNAKE_RIGHT, 3, G_SNAKE_LEFT, 4, G_SNAKE_RIGHT, 0, G_SNAKE_LEFT),
+	gsSPContinueSnake(1, G_SNAKE_LEFT, 8, G_SNAKE_LEFT, 2, G_SNAKE_RIGHT, 0, G_SNAKE_RIGHT, G_SNAKE_LAST | 6, G_SNAKE_LEFT, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -5313,16 +5259,12 @@ Vtx mario_hand_dl_L_mesh_layer_1_vtx_0[21] = {
 
 Gfx mario_hand_dl_L_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_hand_dl_L_mesh_layer_1_vtx_0 + 0, 21, 0),
-	gsSP2Triangles(7, 11, 10, 0, 3, 4, 14, 0),
-	gsSP2Triangles(8, 18, 17, 0, 8, 9, 18, 0),
-	gsSP1Triangle(15, 16, 20, 0),
-	gsSPTriStrip(2, 0, 1, 3, 13, 14, 15),
-	gsSPTriStrip(18, 19, 17, 16, 4, 15, 14),
-	gsSPTriStrip(19, 18, 10, 9, 7, 8, 6),
-	gsSPTriStrip(3, 0, 4, 5, 17, 6, 8),
-	gsSPTriStrip(15, 20, 13, 12, 1, 10, 11),
-	gsSPTriFan(6, 5, 0, 2, 7, -1, -1),
-	gsSPTriFan(20, 16, 19, 10, 12, -1, -1),
+	gsSP1Triangle(1, 13, 12, 0),
+	gsSPTriSnake(1, 2, 0, 3, G_SNAKE_RIGHT, 13, G_SNAKE_RIGHT, 14, G_SNAKE_LEFT, 15, G_SNAKE_RIGHT),
+	gsSPContinueSnake(4, G_SNAKE_LEFT, 16, G_SNAKE_RIGHT, 20, G_SNAKE_RIGHT, 13, G_SNAKE_RIGHT, 12, G_SNAKE_LEFT, 10, G_SNAKE_LEFT, 1, G_SNAKE_RIGHT, 11, G_SNAKE_LEFT),
+	gsSPContinueSnake(7, G_SNAKE_LEFT, 9, G_SNAKE_LEFT, 18, G_SNAKE_LEFT, 8, G_SNAKE_RIGHT, 7, G_SNAKE_RIGHT, 6, G_SNAKE_LEFT, 2, G_SNAKE_RIGHT, 0, G_SNAKE_LEFT),
+	gsSPContinueSnake(5, G_SNAKE_LEFT, 17, G_SNAKE_LEFT, 8, G_SNAKE_LEFT, 18, G_SNAKE_RIGHT, 19, G_SNAKE_RIGHT, 10, G_SNAKE_LEFT, 20, G_SNAKE_RIGHT, 16, G_SNAKE_RIGHT),
+	gsSPContinueSnake(17, G_SNAKE_RIGHT, 4, G_SNAKE_LEFT, 5, G_SNAKE_RIGHT, 0, G_SNAKE_LEFT, 3, G_SNAKE_LEFT, G_SNAKE_LAST | 14, G_SNAKE_LEFT, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -5358,19 +5300,14 @@ Vtx mario_switch_option_left_hand_open_left_hand_open_mesh_layer_1_vtx_0[27] = {
 
 Gfx mario_switch_option_left_hand_open_left_hand_open_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_switch_option_left_hand_open_left_hand_open_mesh_layer_1_vtx_0 + 0, 27, 0),
-	gsSP2Triangles(0, 1, 2, 0, 5, 6, 7, 0),
-	gsSP2Triangles(6, 10, 7, 0, 8, 22, 21, 0),
-	gsSP2Triangles(8, 9, 23, 0, 17, 18, 19, 0),
-	gsSP1Triangle(14, 17, 19, 0),
-	gsSPTriStrip(10, 15, 14, 16, 17, 1, 18),
-	gsSPTriStrip(11, 14, 13, 19, 3, 18, 1),
-	gsSPTriStrip(14, 11, 10, 9, 7, 8, 4),
-	gsSPTriStrip(25, 13, 26, 20, 21, 4, 8),
-	gsSPTriStrip(13, 25, 12, 24, 23, 22, 8),
-	gsSPTriStrip(2, 6, 0, 5, 4, 7, -1),
-	gsSPTriFan(3, 1, 0, 4, 20, 13, -1),
-	gsSPTriFan(12, 23, 9, 11, 13, -1, -1),
-	gsSPTriFan(26, 21, 22, 24, 25, -1, -1),
+	gsSP2Triangles(0, 1, 2, 0, 0, 2, 6, 0),
+	gsSP2Triangles(4, 5, 7, 0, 14, 15, 16, 0),
+	gsSPTriSnake(15, 14, 10, 11, G_SNAKE_LEFT, 13, G_SNAKE_LEFT, 19, G_SNAKE_LEFT, 17, G_SNAKE_LEFT),
+	gsSPContinueSnake(16, G_SNAKE_LEFT, 1, G_SNAKE_RIGHT, 18, G_SNAKE_RIGHT, 19, G_SNAKE_RIGHT, 3, G_SNAKE_LEFT, 1, G_SNAKE_LEFT, 0, G_SNAKE_RIGHT, 4, G_SNAKE_RIGHT),
+	gsSPContinueSnake(5, G_SNAKE_LEFT, 6, G_SNAKE_LEFT, 7, G_SNAKE_RIGHT, 10, G_SNAKE_LEFT, 9, G_SNAKE_RIGHT, 11, G_SNAKE_LEFT, 12, G_SNAKE_RIGHT, 13, G_SNAKE_LEFT),
+	gsSPContinueSnake(25, G_SNAKE_RIGHT, 26, G_SNAKE_LEFT, 20, G_SNAKE_LEFT, 21, G_SNAKE_RIGHT, 22, G_SNAKE_RIGHT, 8, G_SNAKE_LEFT, 23, G_SNAKE_RIGHT, 24, G_SNAKE_RIGHT),
+	gsSPContinueSnake(26, G_SNAKE_RIGHT, 25, G_SNAKE_LEFT, 12, G_SNAKE_LEFT, 23, G_SNAKE_LEFT, 9, G_SNAKE_RIGHT, 8, G_SNAKE_LEFT, 7, G_SNAKE_RIGHT, 4, G_SNAKE_LEFT),
+	gsSPContinueSnake(21, G_SNAKE_LEFT, 20, G_SNAKE_RIGHT, 3, G_SNAKE_RIGHT, 13, G_SNAKE_LEFT, G_SNAKE_LAST | 19, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -5398,9 +5335,8 @@ Vtx mario_upper_arm_R_mesh_layer_1_vtx_0[6] = {
 
 Gfx mario_upper_arm_R_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_upper_arm_R_mesh_layer_1_vtx_0 + 0, 6, 5),
-	gsSP1Triangle(0, 8, 7, 0),
-	gsSPTriStrip(0, 7, 4, 6, 3, 5, 2),
-	gsSPTriFan(1, 2, 10, 9, 8, 0, -1),
+	gsSPTriSnake(1, 2, 10, 9, G_SNAKE_RIGHT, 8, G_SNAKE_RIGHT, 0, G_SNAKE_RIGHT, 7, G_SNAKE_LEFT),
+	gsSPContinueSnake(4, G_SNAKE_RIGHT, 6, G_SNAKE_LEFT, 3, G_SNAKE_RIGHT, 5, G_SNAKE_LEFT, G_SNAKE_LAST | 2, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -5428,10 +5364,8 @@ Vtx mario_lower_arm_R_mesh_layer_1_vtx_0[6] = {
 
 Gfx mario_lower_arm_R_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_lower_arm_R_mesh_layer_1_vtx_0 + 0, 6, 5),
-	gsSP2Triangles(3, 7, 6, 0, 3, 8, 7, 0),
-	gsSP1Triangle(1, 10, 9, 0),
-	gsSPTriStrip(10, 1, 5, 0, 6, 4, 3),
-	gsSPTriFan(2, 1, 9, 8, 3, -1, -1),
+	gsSPTriSnake(3, 6, 4, 0, G_SNAKE_LEFT, 5, G_SNAKE_LEFT, 1, G_SNAKE_RIGHT, 10, G_SNAKE_LEFT),
+	gsSPContinueSnake(9, G_SNAKE_RIGHT, 2, G_SNAKE_RIGHT, 8, G_SNAKE_LEFT, 3, G_SNAKE_RIGHT, 7, G_SNAKE_LEFT, G_SNAKE_LAST | 6, G_SNAKE_RIGHT, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -5445,7 +5379,7 @@ Vtx mario_lower_arm_R_mesh_layer_1_vtx_1[5] = {
 
 Gfx mario_lower_arm_R_mesh_layer_1_tri_1[] = {
 	gsSPVertex(mario_lower_arm_R_mesh_layer_1_vtx_1 + 0, 5, 0),
-	gsSPTriFan(2, 0, 1, 3, 4, -1, -1),
+	gsSPTriSnake(2, 0, 1, 3, G_SNAKE_RIGHT, G_SNAKE_LAST | 4, G_SNAKE_RIGHT, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -5465,11 +5399,9 @@ Vtx mario_lower_arm_R_mesh_layer_1_vtx_2[11] = {
 
 Gfx mario_lower_arm_R_mesh_layer_1_tri_2[] = {
 	gsSPVertex(mario_lower_arm_R_mesh_layer_1_vtx_2 + 0, 11, 0),
-	gsSP2Triangles(1, 7, 2, 0, 1, 8, 7, 0),
-	gsSP2Triangles(5, 10, 9, 0, 5, 6, 10, 0),
-	gsSPTriStrip(10, 8, 9, 4, 5, 0, 6),
-	gsSPTriStrip(8, 10, 7, 6, 2, 0, 1),
-	gsSPTriFan(3, 4, 8, 1, 0, 4, -1),
+	gsSPTriSnake(6, 5, 0, 4, G_SNAKE_LEFT, 9, G_SNAKE_LEFT, 8, G_SNAKE_RIGHT, 10, G_SNAKE_LEFT),
+	gsSPContinueSnake(5, G_SNAKE_LEFT, 6, G_SNAKE_RIGHT, 7, G_SNAKE_RIGHT, 8, G_SNAKE_RIGHT, 1, G_SNAKE_LEFT, 2, G_SNAKE_LEFT, 6, G_SNAKE_LEFT, 0, G_SNAKE_RIGHT),
+	gsSPContinueSnake(1, G_SNAKE_RIGHT, 3, G_SNAKE_LEFT, 8, G_SNAKE_RIGHT, 4, G_SNAKE_LEFT, G_SNAKE_LAST | 0, G_SNAKE_LEFT, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -5499,15 +5431,12 @@ Vtx mario_hand_dl_R_mesh_layer_1_vtx_0[21] = {
 
 Gfx mario_hand_dl_R_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_hand_dl_R_mesh_layer_1_vtx_0 + 0, 21, 0),
-	gsSP2Triangles(6, 7, 8, 0, 3, 14, 13, 0),
-	gsSP2Triangles(9, 10, 18, 0, 10, 19, 18, 0),
-	gsSPTriStrip(15, 14, 4, 3, 1, 2, 0),
-	gsSPTriStrip(14, 15, 13, 20, 19, 17, 18),
-	gsSPTriStrip(11, 10, 8, 9, 6, 18, 17),
-	gsSPTriStrip(10, 11, 19, 12, 13, 2, 3),
-	gsSPTriStrip(7, 6, 1, 5, 4, 16, 15),
-	gsSPTriFan(11, 8, 0, 2, 12, -1, -1),
-	gsSPTriFan(16, 5, 6, 17, 20, 15, -1),
+	gsSP2Triangles(1, 3, 2, 0, 2, 12, 11, 0),
+	gsSPTriSnake(0, 1, 2, 11, G_SNAKE_RIGHT, 8, G_SNAKE_RIGHT, 10, G_SNAKE_LEFT, 19, G_SNAKE_LEFT),
+	gsSPContinueSnake(12, G_SNAKE_LEFT, 13, G_SNAKE_RIGHT, 2, G_SNAKE_LEFT, 3, G_SNAKE_RIGHT, 14, G_SNAKE_RIGHT, 15, G_SNAKE_RIGHT, 4, G_SNAKE_LEFT, 3, G_SNAKE_LEFT),
+	gsSPContinueSnake(1, G_SNAKE_RIGHT, 5, G_SNAKE_RIGHT, 16, G_SNAKE_RIGHT, 15, G_SNAKE_RIGHT, 20, G_SNAKE_LEFT, 13, G_SNAKE_RIGHT, 19, G_SNAKE_LEFT, 17, G_SNAKE_LEFT),
+	gsSPContinueSnake(16, G_SNAKE_LEFT, 6, G_SNAKE_RIGHT, 5, G_SNAKE_LEFT, 1, G_SNAKE_RIGHT, 7, G_SNAKE_RIGHT, 8, G_SNAKE_RIGHT, 9, G_SNAKE_RIGHT, 18, G_SNAKE_RIGHT),
+	gsSPContinueSnake(17, G_SNAKE_RIGHT, 19, G_SNAKE_LEFT, 10, G_SNAKE_LEFT, 9, G_SNAKE_LEFT, G_SNAKE_LAST | 8, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -5543,19 +5472,13 @@ Vtx mario_switch_option_right_hand_open_right_hand_open_mesh_layer_1_vtx_0[27] =
 
 Gfx mario_switch_option_right_hand_open_right_hand_open_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_switch_option_right_hand_open_right_hand_open_mesh_layer_1_vtx_0 + 0, 27, 0),
-	gsSP2Triangles(7, 8, 9, 0, 9, 13, 12, 0),
-	gsSP2Triangles(0, 2, 13, 0, 3, 17, 16, 0),
-	gsSP2Triangles(4, 5, 18, 0, 5, 7, 18, 0),
-	gsSP1Triangle(11, 21, 20, 0),
-	gsSPTriStrip(8, 7, 6, 5, 1, 4, 3),
-	gsSPTriStrip(9, 10, 7, 17, 18, 3, 4),
-	gsSPTriStrip(10, 9, 11, 12, 21, 15, 22),
-	gsSPTriStrip(19, 24, 17, 23, 16, 22, 15),
-	gsSPTriStrip(24, 19, 25, 20, 26, 21, 22),
-	gsSPTriStrip(0, 1, 2, 3, 15, 16, -1),
-	gsSPTriFan(14, 13, 2, 15, 12, 13, -1),
-	gsSPTriFan(23, 24, 25, 26, 22, -1, -1),
-	gsSPTriFan(19, 17, 10, 11, 20, -1, -1),
+	gsSP1Triangle(2, 3, 15, 0),
+	gsSPTriSnake(7, 6, 8, 9, G_SNAKE_RIGHT, 10, G_SNAKE_RIGHT, 17, G_SNAKE_RIGHT, 19, G_SNAKE_LEFT),
+	gsSPContinueSnake(11, G_SNAKE_LEFT, 20, G_SNAKE_RIGHT, 25, G_SNAKE_RIGHT, 26, G_SNAKE_LEFT, 21, G_SNAKE_LEFT, 11, G_SNAKE_LEFT, 12, G_SNAKE_RIGHT, 15, G_SNAKE_RIGHT),
+	gsSPContinueSnake(22, G_SNAKE_RIGHT, 26, G_SNAKE_RIGHT, 23, G_SNAKE_LEFT, 25, G_SNAKE_RIGHT, 24, G_SNAKE_LEFT, 19, G_SNAKE_RIGHT, 17, G_SNAKE_LEFT, 23, G_SNAKE_LEFT),
+	gsSPContinueSnake(16, G_SNAKE_RIGHT, 22, G_SNAKE_LEFT, 15, G_SNAKE_RIGHT, 3, G_SNAKE_RIGHT, 17, G_SNAKE_RIGHT, 18, G_SNAKE_LEFT, 7, G_SNAKE_RIGHT, 5, G_SNAKE_LEFT),
+	gsSPContinueSnake(6, G_SNAKE_RIGHT, 1, G_SNAKE_LEFT, 4, G_SNAKE_LEFT, 18, G_SNAKE_LEFT, 3, G_SNAKE_RIGHT, 1, G_SNAKE_RIGHT, 2, G_SNAKE_LEFT, 0, G_SNAKE_RIGHT),
+	gsSPContinueSnake(13, G_SNAKE_LEFT, 14, G_SNAKE_LEFT, 15, G_SNAKE_LEFT, 12, G_SNAKE_RIGHT, 13, G_SNAKE_RIGHT, 9, G_SNAKE_LEFT, 11, G_SNAKE_LEFT, G_SNAKE_LAST | 10, G_SNAKE_RIGHT),
 	gsSPEndDisplayList(),
 };
 
@@ -5621,21 +5544,19 @@ Vtx mario_switch_option_right_hand_peace_right_hand_peace_mesh_layer_1_vtx_0[56]
 Gfx mario_switch_option_right_hand_peace_right_hand_peace_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_switch_option_right_hand_peace_right_hand_peace_mesh_layer_1_vtx_0 + 0, 56, 0),
 	gsSP2Triangles(5, 6, 7, 0, 5, 7, 8, 0),
+	gsSP2Triangles(9, 10, 11, 0, 9, 11, 12, 0),
 	gsSP2Triangles(12, 15, 14, 0, 14, 15, 16, 0),
-	gsSP2Triangles(30, 31, 32, 0, 9, 13, 38, 0),
+	gsSP2Triangles(19, 21, 20, 0, 20, 21, 22, 0),
 	gsSP2Triangles(43, 44, 45, 0, 44, 46, 45, 0),
 	gsSP2Triangles(52, 53, 54, 0, 52, 54, 55, 0),
-	gsSPTriStrip(42, 41, 34, 9, 33, 38, 39),
-	gsSPTriStrip(19, 18, 14, 17, 13, 39, 38),
-	gsSPTriStrip(10, 11, 9, 12, 13, 14, -1),
-	gsSPTriStrip(37, 36, 35, 34, 32, 33, 30),
-	gsSPTriStrip(25, 28, 40, 29, 39, 30, 33),
-	gsSPTriStrip(20, 23, 18, 24, 17, 40, 39),
-	gsSPTriFan(20, 18, 19, 21, 22, -1, -1),
-	gsSPTriFan(0, 1, 2, 3, 4, -1, -1),
-	gsSPTriFan(48, 49, 47, 50, 51, -1, -1),
-	gsSPTriFan(27, 31, 30, 29, 28, 25, 26),
-	gsSPTriFan(25, 40, 24, 23, 26, -1, -1),
+	gsSPTriSnake(34, 42, 41, 9, G_SNAKE_RIGHT, 33, G_SNAKE_RIGHT, 38, G_SNAKE_LEFT, 39, G_SNAKE_RIGHT),
+	gsSPContinueSnake(30, G_SNAKE_RIGHT, 29, G_SNAKE_LEFT, 40, G_SNAKE_LEFT, 17, G_SNAKE_LEFT, 13, G_SNAKE_LEFT, 38, G_SNAKE_LEFT, 9, G_SNAKE_RIGHT, 12, G_SNAKE_RIGHT),
+	gsSPContinueSnake(14, G_SNAKE_RIGHT, 17, G_SNAKE_RIGHT, 18, G_SNAKE_LEFT, 19, G_SNAKE_LEFT, 20, G_SNAKE_RIGHT, 23, G_SNAKE_RIGHT, 24, G_SNAKE_RIGHT, 17, G_SNAKE_RIGHT),
+	gsSPContinueSnake(40, G_SNAKE_LEFT, 25, G_SNAKE_LEFT, 23, G_SNAKE_LEFT, 26, G_SNAKE_RIGHT, 27, G_SNAKE_RIGHT, 28, G_SNAKE_RIGHT, 40, G_SNAKE_RIGHT, 29, G_SNAKE_LEFT),
+	gsSPContinueSnake(27, G_SNAKE_LEFT, 30, G_SNAKE_RIGHT, 31, G_SNAKE_LEFT, 32, G_SNAKE_RIGHT, 33, G_SNAKE_RIGHT, 34, G_SNAKE_LEFT, 35, G_SNAKE_LEFT, 36, G_SNAKE_RIGHT),
+	gsSPContinueSnake(G_SNAKE_LAST | 37, G_SNAKE_LEFT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
+	gsSPTriSnake(4, 0, 3, 2, G_SNAKE_LEFT, G_SNAKE_LAST | 1, G_SNAKE_LEFT, -1, 0, -1, 0),
+	gsSPTriSnake(51, 48, 50, 47, G_SNAKE_LEFT, G_SNAKE_LAST | 49, G_SNAKE_LEFT, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -5666,16 +5587,12 @@ Vtx mario_switch_option_right_hand_cap_right_hand_cap_mesh_layer_1_vtx_0[22] = {
 
 Gfx mario_switch_option_right_hand_cap_right_hand_cap_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_switch_option_right_hand_cap_right_hand_cap_mesh_layer_1_vtx_0 + 0, 22, 0),
-	gsSP2Triangles(5, 8, 7, 0, 9, 11, 10, 0),
-	gsSP2Triangles(0, 10, 11, 0, 0, 12, 10, 0),
-	gsSP2Triangles(10, 19, 18, 0, 15, 20, 21, 0),
-	gsSP2Triangles(15, 17, 20, 0, 17, 18, 19, 0),
-	gsSPTriStrip(5, 9, 8, 10, 7, 18, 6),
-	gsSPTriStrip(14, 2, 15, 16, 17, 6, 18),
-	gsSPTriStrip(2, 14, 0, 13, 12, 19, 10),
-	gsSPTriStrip(1, 4, 3, 5, 6, 7, -1),
-	gsSPTriStrip(0, 1, 2, 3, 16, 6, -1),
-	gsSPTriStrip(17, 19, 20, 13, 21, 14, 15),
+	gsSP1Triangle(7, 10, 18, 0),
+	gsSPTriSnake(8, 5, 9, 10, G_SNAKE_RIGHT, 7, G_SNAKE_RIGHT, 5, G_SNAKE_RIGHT, 6, G_SNAKE_LEFT),
+	gsSPContinueSnake(18, G_SNAKE_LEFT, 17, G_SNAKE_RIGHT, 16, G_SNAKE_RIGHT, 15, G_SNAKE_LEFT, 20, G_SNAKE_LEFT, 21, G_SNAKE_RIGHT, 14, G_SNAKE_RIGHT, 2, G_SNAKE_RIGHT),
+	gsSPContinueSnake(16, G_SNAKE_RIGHT, 3, G_SNAKE_LEFT, 6, G_SNAKE_RIGHT, 5, G_SNAKE_LEFT, 4, G_SNAKE_LEFT, 1, G_SNAKE_LEFT, 2, G_SNAKE_LEFT, 0, G_SNAKE_RIGHT),
+	gsSPContinueSnake(14, G_SNAKE_LEFT, 13, G_SNAKE_RIGHT, 21, G_SNAKE_LEFT, 20, G_SNAKE_RIGHT, 19, G_SNAKE_RIGHT, 17, G_SNAKE_LEFT, 18, G_SNAKE_RIGHT, 10, G_SNAKE_RIGHT),
+	gsSPContinueSnake(12, G_SNAKE_RIGHT, 13, G_SNAKE_RIGHT, 0, G_SNAKE_LEFT, 10, G_SNAKE_LEFT, 11, G_SNAKE_RIGHT, G_SNAKE_LAST | 9, G_SNAKE_LEFT, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -5694,9 +5611,8 @@ Vtx mario_switch_option_right_hand_cap_right_hand_cap_mesh_layer_1_vtx_1[10] = {
 
 Gfx mario_switch_option_right_hand_cap_right_hand_cap_mesh_layer_1_tri_1[] = {
 	gsSPVertex(mario_switch_option_right_hand_cap_right_hand_cap_mesh_layer_1_vtx_1 + 0, 10, 0),
-	gsSP1Triangle(4, 6, 5, 0),
-	gsSPTriFan(0, 1, 2, 3, 4, 5, -1),
-	gsSPTriFan(6, 4, 7, 8, 9, -1, -1),
+	gsSPTriSnake(0, 1, 2, 3, G_SNAKE_RIGHT, 4, G_SNAKE_RIGHT, 5, G_SNAKE_RIGHT, 6, G_SNAKE_LEFT),
+	gsSPContinueSnake(7, G_SNAKE_LEFT, 8, G_SNAKE_RIGHT, G_SNAKE_LAST | 9, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -5748,17 +5664,15 @@ Vtx mario_switch_option_right_hand_cap_right_hand_cap_mesh_layer_1_vtx_2[43] = {
 
 Gfx mario_switch_option_right_hand_cap_right_hand_cap_mesh_layer_1_tri_2[] = {
 	gsSPVertex(mario_switch_option_right_hand_cap_right_hand_cap_mesh_layer_1_vtx_2 + 0, 43, 0),
-	gsSP2Triangles(1, 4, 3, 0, 6, 7, 8, 0),
-	gsSP2Triangles(9, 10, 12, 0, 9, 14, 19, 0),
-	gsSP2Triangles(34, 35, 36, 0, 34, 37, 35, 0),
-	gsSPTriStrip(26, 25, 24, 23, 20, 21, 22),
-	gsSPTriStrip(35, 37, 38, 39, 40, 41, 42),
-	gsSPTriStrip(11, 10, 8, 9, 6, 19, 4),
-	gsSPTriStrip(13, 16, 15, 3, 18, 4, 19),
-	gsSPTriStrip(27, 28, 29, 30, 31, 32, 33),
-	gsSPTriStrip(0, 1, 2, 3, 17, 16, -1),
-	gsSPTriStrip(18, 19, 15, 14, 13, 9, 12),
-	gsSPTriFan(5, 7, 6, 4, 1, -1, -1),
+	gsSP1Triangle(0, 1, 2, 0),
+	gsSPTriSnake(24, 26, 25, 23, G_SNAKE_RIGHT, 20, G_SNAKE_RIGHT, 21, G_SNAKE_LEFT, G_SNAKE_LAST | 22, G_SNAKE_RIGHT),
+	gsSPTriSnake(42, 40, 41, 39, G_SNAKE_LEFT, 38, G_SNAKE_LEFT, 37, G_SNAKE_RIGHT, 35, G_SNAKE_LEFT),
+	gsSPContinueSnake(34, G_SNAKE_RIGHT, G_SNAKE_LAST | 36, G_SNAKE_LEFT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
+	gsSPTriSnake(11, 10, 8, 9, G_SNAKE_LEFT, 12, G_SNAKE_LEFT, 13, G_SNAKE_RIGHT, 14, G_SNAKE_RIGHT),
+	gsSPContinueSnake(15, G_SNAKE_LEFT, 16, G_SNAKE_LEFT, 3, G_SNAKE_RIGHT, 17, G_SNAKE_LEFT, 2, G_SNAKE_RIGHT, 1, G_SNAKE_RIGHT, 4, G_SNAKE_RIGHT, 5, G_SNAKE_LEFT),
+	gsSPContinueSnake(6, G_SNAKE_RIGHT, 19, G_SNAKE_RIGHT, 18, G_SNAKE_RIGHT, 3, G_SNAKE_RIGHT, 15, G_SNAKE_LEFT, 19, G_SNAKE_LEFT, 14, G_SNAKE_RIGHT, 9, G_SNAKE_LEFT),
+	gsSPContinueSnake(6, G_SNAKE_LEFT, 8, G_SNAKE_RIGHT, 7, G_SNAKE_LEFT, G_SNAKE_LAST | 5, G_SNAKE_LEFT, -1, 0, -1, 0, -1, 0, -1, 0),
+	gsSPTriSnake(33, 31, 32, 30, G_SNAKE_LEFT, 29, G_SNAKE_LEFT, 28, G_SNAKE_RIGHT, G_SNAKE_LAST | 27, G_SNAKE_LEFT),
 	gsSPEndDisplayList(),
 };
 
@@ -5774,7 +5688,7 @@ Vtx mario_switch_option_right_hand_cap_right_hand_cap_mesh_layer_1_vtx_3[7] = {
 
 Gfx mario_switch_option_right_hand_cap_right_hand_cap_mesh_layer_1_tri_3[] = {
 	gsSPVertex(mario_switch_option_right_hand_cap_right_hand_cap_mesh_layer_1_vtx_3 + 0, 7, 0),
-	gsSPTriStrip(1, 2, 0, 3, 4, 5, 6),
+	gsSPTriSnake(0, 1, 2, 3, G_SNAKE_RIGHT, 4, G_SNAKE_RIGHT, 5, G_SNAKE_LEFT, G_SNAKE_LAST | 6, G_SNAKE_RIGHT),
 	gsSPEndDisplayList(),
 };
 
@@ -5803,16 +5717,12 @@ Vtx mario_switch_option_right_hand_wing_cap_right_hand_wing_cap_mesh_layer_1_vtx
 
 Gfx mario_switch_option_right_hand_wing_cap_right_hand_wing_cap_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_switch_option_right_hand_wing_cap_right_hand_wing_cap_mesh_layer_1_vtx_0 + 0, 20, 0),
-	gsSP2Triangles(3, 4, 12, 0, 4, 13, 12, 0),
-	gsSP2Triangles(8, 9, 17, 0, 10, 19, 18, 0),
-	gsSP2Triangles(10, 11, 19, 0, 11, 14, 19, 0),
-	gsSP2Triangles(14, 15, 19, 0, 16, 18, 19, 0),
-	gsSPTriStrip(5, 0, 6, 2, 7, 8, 16),
-	gsSPTriStrip(1, 10, 9, 18, 17, 16, 8),
-	gsSPTriStrip(10, 1, 3, 0, 4, 5, 13),
-	gsSPTriStrip(10, 3, 11, 12, 14, 13, 5),
-	gsSPTriStrip(5, 6, 14, 7, 15, 16, 19),
-	gsSPTriFan(2, 0, 1, 9, 8, -1, -1),
+	gsSP1Triangle(4, 5, 13, 0),
+	gsSPTriSnake(0, 6, 5, 4, G_SNAKE_RIGHT, 3, G_SNAKE_RIGHT, 12, G_SNAKE_LEFT, 13, G_SNAKE_LEFT),
+	gsSPContinueSnake(14, G_SNAKE_RIGHT, 5, G_SNAKE_LEFT, 6, G_SNAKE_RIGHT, 7, G_SNAKE_RIGHT, 15, G_SNAKE_RIGHT, 19, G_SNAKE_RIGHT, 11, G_SNAKE_RIGHT, 12, G_SNAKE_RIGHT),
+	gsSPContinueSnake(3, G_SNAKE_LEFT, 10, G_SNAKE_LEFT, 19, G_SNAKE_LEFT, 18, G_SNAKE_RIGHT, 9, G_SNAKE_RIGHT, 17, G_SNAKE_LEFT, 16, G_SNAKE_LEFT, 8, G_SNAKE_RIGHT),
+	gsSPContinueSnake(9, G_SNAKE_RIGHT, 2, G_SNAKE_LEFT, 1, G_SNAKE_RIGHT, 10, G_SNAKE_RIGHT, 3, G_SNAKE_LEFT, 0, G_SNAKE_LEFT, 2, G_SNAKE_LEFT, 6, G_SNAKE_RIGHT),
+	gsSPContinueSnake(7, G_SNAKE_LEFT, 8, G_SNAKE_LEFT, 16, G_SNAKE_RIGHT, 15, G_SNAKE_RIGHT, 19, G_SNAKE_LEFT, G_SNAKE_LAST | 18, G_SNAKE_LEFT, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -5831,9 +5741,8 @@ Vtx mario_switch_option_right_hand_wing_cap_right_hand_wing_cap_mesh_layer_1_vtx
 
 Gfx mario_switch_option_right_hand_wing_cap_right_hand_wing_cap_mesh_layer_1_tri_1[] = {
 	gsSPVertex(mario_switch_option_right_hand_wing_cap_right_hand_wing_cap_mesh_layer_1_vtx_1 + 0, 10, 0),
-	gsSP1Triangle(4, 6, 5, 0),
-	gsSPTriFan(0, 1, 2, 3, 4, 5, -1),
-	gsSPTriFan(6, 4, 7, 8, 9, -1, -1),
+	gsSPTriSnake(0, 1, 2, 3, G_SNAKE_RIGHT, 4, G_SNAKE_RIGHT, 5, G_SNAKE_RIGHT, 6, G_SNAKE_LEFT),
+	gsSPContinueSnake(7, G_SNAKE_LEFT, 8, G_SNAKE_RIGHT, G_SNAKE_LAST | 9, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -5885,17 +5794,15 @@ Vtx mario_switch_option_right_hand_wing_cap_right_hand_wing_cap_mesh_layer_1_vtx
 
 Gfx mario_switch_option_right_hand_wing_cap_right_hand_wing_cap_mesh_layer_1_tri_2[] = {
 	gsSPVertex(mario_switch_option_right_hand_wing_cap_right_hand_wing_cap_mesh_layer_1_vtx_2 + 0, 43, 0),
-	gsSP2Triangles(1, 4, 3, 0, 6, 7, 8, 0),
-	gsSP2Triangles(9, 10, 12, 0, 9, 14, 19, 0),
-	gsSP2Triangles(34, 35, 36, 0, 34, 37, 35, 0),
-	gsSPTriStrip(26, 25, 24, 23, 20, 21, 22),
-	gsSPTriStrip(35, 37, 38, 39, 40, 41, 42),
-	gsSPTriStrip(11, 10, 8, 9, 6, 19, 4),
-	gsSPTriStrip(13, 16, 15, 3, 18, 4, 19),
-	gsSPTriStrip(27, 28, 29, 30, 31, 32, 33),
-	gsSPTriStrip(0, 1, 2, 3, 17, 16, -1),
-	gsSPTriStrip(18, 19, 15, 14, 13, 9, 12),
-	gsSPTriFan(5, 7, 6, 4, 1, -1, -1),
+	gsSP1Triangle(0, 1, 2, 0),
+	gsSPTriSnake(24, 26, 25, 23, G_SNAKE_RIGHT, 20, G_SNAKE_RIGHT, 21, G_SNAKE_LEFT, G_SNAKE_LAST | 22, G_SNAKE_RIGHT),
+	gsSPTriSnake(42, 40, 41, 39, G_SNAKE_LEFT, 38, G_SNAKE_LEFT, 37, G_SNAKE_RIGHT, 35, G_SNAKE_LEFT),
+	gsSPContinueSnake(34, G_SNAKE_RIGHT, G_SNAKE_LAST | 36, G_SNAKE_LEFT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
+	gsSPTriSnake(11, 10, 8, 9, G_SNAKE_LEFT, 12, G_SNAKE_LEFT, 13, G_SNAKE_RIGHT, 14, G_SNAKE_RIGHT),
+	gsSPContinueSnake(15, G_SNAKE_LEFT, 16, G_SNAKE_LEFT, 3, G_SNAKE_RIGHT, 17, G_SNAKE_LEFT, 2, G_SNAKE_RIGHT, 1, G_SNAKE_RIGHT, 4, G_SNAKE_RIGHT, 5, G_SNAKE_LEFT),
+	gsSPContinueSnake(6, G_SNAKE_RIGHT, 19, G_SNAKE_RIGHT, 18, G_SNAKE_RIGHT, 3, G_SNAKE_RIGHT, 15, G_SNAKE_LEFT, 19, G_SNAKE_LEFT, 14, G_SNAKE_RIGHT, 9, G_SNAKE_LEFT),
+	gsSPContinueSnake(6, G_SNAKE_LEFT, 8, G_SNAKE_RIGHT, 7, G_SNAKE_LEFT, G_SNAKE_LAST | 5, G_SNAKE_LEFT, -1, 0, -1, 0, -1, 0, -1, 0),
+	gsSPTriSnake(33, 31, 32, 30, G_SNAKE_LEFT, 29, G_SNAKE_LEFT, 28, G_SNAKE_RIGHT, G_SNAKE_LAST | 27, G_SNAKE_LEFT),
 	gsSPEndDisplayList(),
 };
 
@@ -5911,7 +5818,7 @@ Vtx mario_switch_option_right_hand_wing_cap_right_hand_wing_cap_mesh_layer_1_vtx
 
 Gfx mario_switch_option_right_hand_wing_cap_right_hand_wing_cap_mesh_layer_1_tri_3[] = {
 	gsSPVertex(mario_switch_option_right_hand_wing_cap_right_hand_wing_cap_mesh_layer_1_vtx_3 + 0, 7, 0),
-	gsSPTriStrip(1, 2, 0, 3, 4, 5, 6),
+	gsSPTriSnake(0, 1, 2, 3, G_SNAKE_RIGHT, 4, G_SNAKE_RIGHT, 5, G_SNAKE_LEFT, G_SNAKE_LAST | 6, G_SNAKE_RIGHT),
 	gsSPEndDisplayList(),
 };
 
@@ -5956,9 +5863,8 @@ Vtx mario_upper_leg_L_mesh_layer_1_vtx_0[5] = {
 
 Gfx mario_upper_leg_L_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_upper_leg_L_mesh_layer_1_vtx_0 + 0, 5, 5),
-	gsSP1Triangle(2, 3, 7, 0),
-	gsSPTriStrip(9, 0, 5, 1, 6, 2, 7),
-	gsSPTriFan(8, 7, 3, 4, 0, 9, -1),
+	gsSPTriSnake(7, 6, 2, 3, G_SNAKE_RIGHT, 8, G_SNAKE_RIGHT, 4, G_SNAKE_LEFT, 0, G_SNAKE_RIGHT),
+	gsSPContinueSnake(9, G_SNAKE_RIGHT, 5, G_SNAKE_LEFT, 1, G_SNAKE_LEFT, 6, G_SNAKE_RIGHT, G_SNAKE_LAST | 2, G_SNAKE_LEFT, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -5973,8 +5879,7 @@ Vtx mario_upper_leg_L_mesh_layer_1_vtx_1[6] = {
 
 Gfx mario_upper_leg_L_mesh_layer_1_tri_1[] = {
 	gsSPVertex(mario_upper_leg_L_mesh_layer_1_vtx_1 + 0, 6, 0),
-	gsSP1Triangle(3, 4, 5, 0),
-	gsSPTriFan(0, 4, 3, 1, 2, -1, -1),
+	gsSPTriSnake(2, 0, 1, 3, G_SNAKE_LEFT, 4, G_SNAKE_LEFT, G_SNAKE_LAST | 5, G_SNAKE_RIGHT, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -6001,9 +5906,8 @@ Vtx mario_lower_leg_L_mesh_layer_1_vtx_0[5] = {
 
 Gfx mario_lower_leg_L_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_lower_leg_L_mesh_layer_1_vtx_0 + 0, 5, 5),
-	gsSP1Triangle(1, 9, 5, 0),
-	gsSPTriStrip(7, 3, 6, 0, 5, 2, 1),
-	gsSPTriFan(8, 9, 1, 4, 3, 7, -1),
+	gsSPTriSnake(6, 7, 3, 0, G_SNAKE_RIGHT, 5, G_SNAKE_RIGHT, 2, G_SNAKE_LEFT, 1, G_SNAKE_RIGHT),
+	gsSPContinueSnake(9, G_SNAKE_RIGHT, 8, G_SNAKE_LEFT, 4, G_SNAKE_LEFT, 3, G_SNAKE_RIGHT, G_SNAKE_LAST | 7, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -6030,9 +5934,8 @@ Vtx mario_foot_L_mesh_layer_1_vtx_0[5] = {
 
 Gfx mario_foot_L_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_foot_L_mesh_layer_1_vtx_0 + 0, 5, 5),
-	gsSP1Triangle(0, 6, 1, 0),
-	gsSPTriStrip(2, 8, 4, 9, 0, 5, 6),
-	gsSPTriFan(7, 8, 2, 3, 1, 6, -1),
+	gsSPTriSnake(6, 0, 5, 9, G_SNAKE_LEFT, 4, G_SNAKE_LEFT, 8, G_SNAKE_RIGHT, 2, G_SNAKE_LEFT),
+	gsSPContinueSnake(7, G_SNAKE_RIGHT, 3, G_SNAKE_LEFT, 1, G_SNAKE_RIGHT, 6, G_SNAKE_RIGHT, G_SNAKE_LAST | 0, G_SNAKE_LEFT, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -6067,13 +5970,13 @@ Vtx mario_foot_L_mesh_layer_1_vtx_1[26] = {
 
 Gfx mario_foot_L_mesh_layer_1_tri_1[] = {
 	gsSPVertex(mario_foot_L_mesh_layer_1_vtx_1 + 0, 26, 0),
-	gsSP2Triangles(5, 6, 7, 0, 8, 9, 10, 0),
-	gsSP2Triangles(8, 11, 9, 0, 16, 20, 19, 0),
-	gsSPTriStrip(6, 5, 4, 3, 0, 1, 2),
-	gsSPTriStrip(16, 15, 14, 13, 12, 11, 8),
-	gsSPTriStrip(22, 23, 19, 18, 16, 17, 15),
-	gsSPTriStrip(9, 11, 25, 13, 24, 15, 17),
-	gsSPTriFan(21, 22, 19, 20, 8, 10, 22),
+	gsSP1Triangle(8, 9, 10, 0),
+	gsSPTriSnake(2, 0, 1, 3, G_SNAKE_LEFT, 4, G_SNAKE_LEFT, 5, G_SNAKE_RIGHT, 6, G_SNAKE_LEFT),
+	gsSPContinueSnake(G_SNAKE_LAST | 7, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
+	gsSPTriSnake(14, 16, 15, 13, G_SNAKE_RIGHT, 12, G_SNAKE_RIGHT, 11, G_SNAKE_LEFT, 8, G_SNAKE_RIGHT),
+	gsSPContinueSnake(9, G_SNAKE_LEFT, 25, G_SNAKE_LEFT, 13, G_SNAKE_LEFT, 24, G_SNAKE_RIGHT, 15, G_SNAKE_LEFT, 17, G_SNAKE_RIGHT, 16, G_SNAKE_LEFT, 18, G_SNAKE_RIGHT),
+	gsSPContinueSnake(19, G_SNAKE_LEFT, 23, G_SNAKE_RIGHT, 22, G_SNAKE_LEFT, 21, G_SNAKE_LEFT, 10, G_SNAKE_RIGHT, 8, G_SNAKE_LEFT, 20, G_SNAKE_LEFT, 19, G_SNAKE_LEFT),
+	gsSPContinueSnake(G_SNAKE_LAST | 16, G_SNAKE_RIGHT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -6100,10 +6003,8 @@ Vtx mario_upper_leg_R_mesh_layer_1_vtx_0[5] = {
 
 Gfx mario_upper_leg_R_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_upper_leg_R_mesh_layer_1_vtx_0 + 0, 5, 5),
-	gsSP2Triangles(2, 7, 6, 0, 2, 8, 7, 0),
-	gsSP2Triangles(2, 3, 8, 0, 3, 4, 8, 0),
-	gsSP1Triangle(4, 9, 8, 0),
-	gsSPTriStrip(2, 6, 0, 5, 1, 9, 4),
+	gsSPTriSnake(4, 1, 9, 8, G_SNAKE_RIGHT, 3, G_SNAKE_RIGHT, 2, G_SNAKE_LEFT, 7, G_SNAKE_LEFT),
+	gsSPContinueSnake(6, G_SNAKE_RIGHT, 0, G_SNAKE_RIGHT, 5, G_SNAKE_LEFT, 1, G_SNAKE_RIGHT, G_SNAKE_LAST | 9, G_SNAKE_LEFT, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -6118,7 +6019,7 @@ Vtx mario_upper_leg_R_mesh_layer_1_vtx_1[6] = {
 
 Gfx mario_upper_leg_R_mesh_layer_1_tri_1[] = {
 	gsSPVertex(mario_upper_leg_R_mesh_layer_1_vtx_1 + 0, 6, 0),
-	gsSPTriStrip(0, 1, 2, 3, 4, 5, -1),
+	gsSPTriSnake(2, 0, 1, 3, G_SNAKE_RIGHT, 4, G_SNAKE_RIGHT, G_SNAKE_LAST | 5, G_SNAKE_LEFT, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -6147,8 +6048,8 @@ Vtx mario_lower_leg_R_mesh_layer_1_vtx_0[6] = {
 Gfx mario_lower_leg_R_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_lower_leg_R_mesh_layer_1_vtx_0 + 0, 6, 5),
 	gsSP2Triangles(1, 2, 5, 0, 0, 5, 2, 0),
-	gsSPTriStrip(6, 10, 1, 9, 4, 3, -1),
-	gsSPTriStrip(6, 0, 7, 3, 8, 9, -1),
+	gsSPTriSnake(1, 6, 10, 9, G_SNAKE_RIGHT, 4, G_SNAKE_RIGHT, 3, G_SNAKE_LEFT, 8, G_SNAKE_LEFT),
+	gsSPContinueSnake(7, G_SNAKE_RIGHT, 0, G_SNAKE_RIGHT, G_SNAKE_LAST | 6, G_SNAKE_LEFT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -6175,9 +6076,8 @@ Vtx mario_foot_dl_R_mesh_layer_1_vtx_0[5] = {
 
 Gfx mario_foot_dl_R_mesh_layer_1_tri_0[] = {
 	gsSPVertex(mario_foot_dl_R_mesh_layer_1_vtx_0 + 0, 5, 5),
-	gsSP2Triangles(3, 8, 4, 0, 1, 4, 8, 0),
-	gsSPTriStrip(8, 3, 7, 2, 5, 0, 6),
-	gsSPTriFan(9, 6, 0, 1, 8, -1, -1),
+	gsSPTriSnake(5, 0, 6, 9, G_SNAKE_LEFT, 1, G_SNAKE_LEFT, 8, G_SNAKE_RIGHT, 4, G_SNAKE_LEFT),
+	gsSPContinueSnake(3, G_SNAKE_RIGHT, 7, G_SNAKE_RIGHT, 2, G_SNAKE_LEFT, 5, G_SNAKE_RIGHT, G_SNAKE_LAST | 0, G_SNAKE_LEFT, -1, 0, -1, 0, -1, 0),
 	gsSPEndDisplayList(),
 };
 
@@ -6213,14 +6113,13 @@ Vtx mario_foot_dl_R_mesh_layer_1_vtx_1[27] = {
 
 Gfx mario_foot_dl_R_mesh_layer_1_tri_1[] = {
 	gsSPVertex(mario_foot_dl_R_mesh_layer_1_vtx_1 + 0, 27, 0),
-	gsSP2Triangles(5, 7, 6, 0, 8, 12, 11, 0),
-	gsSP2Triangles(8, 13, 12, 0, 18, 19, 20, 0),
-	gsSP1Triangle(11, 25, 23, 0),
-	gsSPTriStrip(1, 2, 0, 3, 4, 5, 6),
-	gsSPTriStrip(10, 8, 9, 11, 24, 23, 22),
-	gsSPTriStrip(12, 13, 26, 16, 18, 17, 19),
-	gsSPTriStrip(17, 16, 15, 13, 14, 8, -1),
-	gsSPTriFan(20, 19, 21, 22, 23, 25, 18),
+	gsSP2Triangles(8, 12, 11, 0, 22, 24, 23, 0),
+	gsSP1Triangle(18, 20, 25, 0),
+	gsSPTriSnake(0, 1, 2, 3, G_SNAKE_RIGHT, 4, G_SNAKE_RIGHT, 5, G_SNAKE_LEFT, 6, G_SNAKE_RIGHT),
+	gsSPContinueSnake(G_SNAKE_LAST | 7, G_SNAKE_LEFT, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0, -1, 0),
+	gsSPTriSnake(9, 10, 8, 11, G_SNAKE_RIGHT, 24, G_SNAKE_RIGHT, 23, G_SNAKE_LEFT, 25, G_SNAKE_LEFT),
+	gsSPContinueSnake(20, G_SNAKE_RIGHT, 22, G_SNAKE_RIGHT, 21, G_SNAKE_LEFT, 19, G_SNAKE_LEFT, 18, G_SNAKE_LEFT, 17, G_SNAKE_RIGHT, 16, G_SNAKE_LEFT, 26, G_SNAKE_LEFT),
+	gsSPContinueSnake(13, G_SNAKE_RIGHT, 12, G_SNAKE_LEFT, 8, G_SNAKE_RIGHT, 14, G_SNAKE_RIGHT, 15, G_SNAKE_RIGHT, 16, G_SNAKE_RIGHT, G_SNAKE_LAST | 17, G_SNAKE_LEFT, -1, 0),
 	gsSPEndDisplayList(),
 };
 

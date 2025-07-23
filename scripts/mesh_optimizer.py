@@ -1309,7 +1309,8 @@ class ModelVtxIndexer(TriKit):
                     f_model.write(f"\tgsSP2Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, 0, {tri1[0]}, {tri1[1]}, {tri1[2]}, 0),\n")
 
         for strip in strips:
-            f_model.write(strip.stringify())
+            for line in strip.stringify_x():
+                f_model.write(line)
 
 def indexize_model(model_path, model_patched_path):
     with open(model_path, "r") as f_model:
