@@ -5,6 +5,9 @@ HAS_EX3_COMMANDS = True
 HAS_TRI3 = False
 HAS_VTX_PINNING = True
 
+# Current DFS implementation is O(2^n) algo so not to wait forever we limit the amount of triangles to walk through
+WALK_LIMIT = 10000
+
 def log_debug(line):
     pass
 
@@ -451,10 +454,11 @@ class TriKit:
 
                 stack = [(tri, [tri])]
                 longest_path = [tri]
+                limit = WALK_LIMIT
                 print(f"\nDFS: Starting with triangle {tri} for len {len(strip_tri_to_tris)}")
-                while stack:
+                while stack and limit:
+                    limit -= 1
                     curr, path = stack.pop()
-                    #print(f"DFS: {curr} with path {path}")
                     # Note that dfs is allowed to do 'strip_tri_to_tris[curr]' because it is doubly linked
                     # Conveniently we will get an exception is something went wrong in 'strip_tri_to_tris' generation
                     for ntri in strip_tri_to_tris[curr]:
@@ -463,7 +467,6 @@ class TriKit:
                             if len(new_path) > len(longest_path):
                                 longest_path = new_path
 
-                            #print(f"DFS: {curr} -> {ntri} with new path {new_path}")
                             stack.append((ntri, new_path))
 
                 # We got the path, evict all triangles that are in the path

@@ -342,7 +342,7 @@ enum GoddardScene {
     CMD_PTR(geo)
 
 #define LOAD_MODEL_FROM_GEO_NO_HEAP(model, geo) \
-    CMD_BBBB(LEVEL_CMD_LOAD_MODEL_FROM_GEO, 0x08, GRAPH_RENDER_NO_HEAP, model), \
+    CMD_BBBB(LEVEL_CMD_LOAD_MODEL_FROM_GEO, 0x08, 1 << 6, model), \
     CMD_PTR(geo)
 
 // unk8 is float, but doesn't really matter since CMD23 is unused
