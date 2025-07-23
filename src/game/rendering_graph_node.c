@@ -1601,7 +1601,7 @@ void geo_process_object(struct Object *node) {
 
         // FIXME: correct types
         if (node->header.gfx.animInfo.curAnim != NULL) {
-            geo_set_animation_globals(&node->header.gfx.animInfo, (node->header.gfx.node.flags & GRAPH_RENDER_HAS_ANIMATION) != 0, 0 /*!frozen*/);
+            geo_set_animation_globals(&node->header.gfx.animInfo, (node->header.gfx.node.flags & GRAPH_RENDER_HAS_ANIMATION) != 0, node->header.gfx.areaIndex == gCurGraphNodeRoot->areaIndex);
         }
 
         if (!isInvisible && obj_is_in_view(&node->header.gfx)) {
