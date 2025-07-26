@@ -9,7 +9,7 @@
 
 #include "config.h"
 
-#define TEST_LEVEL LEVEL_CCS
+#define TEST_LEVEL LEVEL_CE
 
 extern const LevelScript level_main_scripts_entry[];
 const LevelScript level_script_entry[] = {
