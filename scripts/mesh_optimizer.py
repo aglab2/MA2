@@ -61,11 +61,16 @@ class ModelVtxEntry(ModelEntry):
         return f"ModelVtxEntry(name={self.name})"
 
 class UsagePricer:
-    def __init__(self, req_tris, loaded_vertices=None, banned_vertices=None):
+    def __init__(self, req_tris, loaded_vertices=None, rendered_tris=[], banned_vertices=None):
         self._vertices_to_triangle = {}
         self._usage_to_vertices = {}
         self._banned_vertices = set(banned_vertices) if banned_vertices else set()
         self._loaded_vertices = loaded_vertices if loaded_vertices else []
+
+        self._inverse_edges = set()
+        for tri in rendered_tris:
+            for edge in TriKit._edges_reverse(tri):
+                self._inverse_edges.add(edge)
 
         for tri in req_tris:
             for vtx in tri:
@@ -90,6 +95,7 @@ class UsagePricer:
 
     def add(self, tri):
         # Add vtx for the given triangle and rescale the usage
+        assert False, "need rework"
         for vtx in tri:
             if vtx in self._banned_vertices:
                 continue
@@ -145,6 +151,7 @@ class UsagePricer:
 
     def ban(self, vtx):
         # Admittedly this is a pretty simplistic approach but it is so simple that it should be fine as is
+        assert False, "need rework"
         affected_triangles = []
         if vtx in self._vertices_to_triangle:
             affected_triangles = list(self._vertices_to_triangle[vtx])
@@ -166,6 +173,10 @@ class UsagePricer:
 
     def _tri_cost(self, tri):
         cost = sum([self._vtx_cost(vtx) for vtx in tri])
+        for edge in TriKit._edges(tri):
+            if edge in self._inverse_edges:
+                cost += 500
+
         return cost
 
     def _tris_cost(self, tris):
@@ -763,7 +774,7 @@ class ModelMeshEntry(TriKit):
 
                                     candidate_tris.add(candidate_tri)
 
-                        candidate_to_load_pricer = UsagePricer(candidate_tris, loaded_vertices, banned_vertices)
+                        candidate_to_load_pricer = UsagePricer(candidate_tris, loaded_vertices, rendered_triangles, banned_vertices)
                         if candidate_to_load_pricer.completed() or len(loaded_vertices) == 56:
                             break
 
