@@ -190,12 +190,12 @@ class UsagePricer:
         return not self._usage_to_vertices
 
 class RenderPass:
-    def __init__(self, vertices, triangles, fanstrips):
+    def __init__(self, vertices, triangles, snakes):
         self.vertices = vertices
         self.triangles = triangles
-        self.fanstrips = fanstrips
-        if self.fanstrips:
-            log_debug(f"fanstrips {self.fanstrips}")
+        self.snakes = snakes
+        if self.snakes:
+            log_debug(f"snakes {self.snakes}")
 
 SNAKE_TURN_LEFT = "G_SNAKE_LEFT"
 SNAKE_TURN_RIGHT = "G_SNAKE_RIGHT"
@@ -284,9 +284,9 @@ def apply_shuffle(render_pass: RenderPass, shuffle):
     for tri in render_pass.triangles:
         for i, loc_vtx in enumerate(tri):
             tri[i] = shuffle[loc_vtx]
-    for fanstrip in render_pass.fanstrips:
-        for i, loc_vtx in enumerate(fanstrip.vertices):
-            fanstrip.vertices[i] = -1 if loc_vtx == -1 else shuffle[loc_vtx]
+    for snake in render_pass.snakes:
+        for i, loc_vtx in enumerate(snake.vertices):
+            snake.vertices[i] = -1 if loc_vtx == -1 else shuffle[loc_vtx]
 
 def apply_shuffle_limited(render_pass: RenderPass, shuffle, limit):
     for glo_vtx in render_pass.vertices:
@@ -301,11 +301,11 @@ def apply_shuffle_limited(render_pass: RenderPass, shuffle, limit):
                 continue
             tri[i] = shuffle[loc_vtx]
 
-    for fanstrip in render_pass.fanstrips:
-        for i, loc_vtx in enumerate(fanstrip.vertices):
+    for snake in render_pass.snakes:
+        for i, loc_vtx in enumerate(snake.vertices):
             if loc_vtx >= limit:
                 continue
-            fanstrip.vertices[i] = -1 if loc_vtx == -1 else shuffle[loc_vtx]
+            snake.vertices[i] = -1 if loc_vtx == -1 else shuffle[loc_vtx]
 
 class TriKit:
     @staticmethod
@@ -397,7 +397,7 @@ class TriKit:
             if not HAS_EX3_COMMANDS:
                 return rendered_triangles, []
 
-            rendered_fan_strips = []
+            rendered_snakes = []
 
             # Build the strips tree. The way it is built is using a temporary edge->tri mapping to link the tree...
             edge_to_tris = {}
@@ -550,14 +550,14 @@ class TriKit:
 
                         ptri = TriKit._tri_rotate(tri, v4)
 
-                    rendered_fan_strips.append(Snake(vertices, turns))
+                    rendered_snakes.append(Snake(vertices, turns))
                     a = 0
 
                 # ...rest, if left, will be rendered as triangles (or maybe fans?)
 
-            # We are converting tri to list because vtx load optimizer will want to mangle tri/fanstrip vertices
+            # We are converting tri to list because vtx load optimizer will want to mangle tri vertices
             # We will never need to compare the triangles so this is fine
-            return rendered_triangles, rendered_fan_strips
+            return rendered_triangles, rendered_snakes
 
 
 class ModelMeshEntry(TriKit):
@@ -699,8 +699,8 @@ class ModelMeshEntry(TriKit):
 
     @staticmethod
     def _make_render_pass(triangles, vertices):
-        triangles, fanstrips = TriKit.stripify(triangles)
-        return RenderPass(vertices, [ list(tri) for tri in triangles ], fanstrips)
+        triangles, snakes = TriKit.stripify(triangles)
+        return RenderPass(vertices, [ list(tri) for tri in triangles ], snakes)
 
     def compile(self):
         assert self._base_vertices_model_entry, "compile() called twice"
@@ -1088,8 +1088,8 @@ class ModelMeshEntry(TriKit):
                         tri1 = triangles.popleft()
                         draws.append(f"\tgsSP2Triangles({tri0[0]}, {tri0[1]}, {tri0[2]}, 0, {tri1[0]}, {tri1[1]}, {tri1[2]}, 0),\n")
 
-            for fanstrip in render_pass.fanstrips:
-                draws.extend(fanstrip.stringify_x())
+            for snake in render_pass.snakes:
+                draws.extend(snake.stringify_x())
 
         vtx_entry.vertices.append("};\n")
 
