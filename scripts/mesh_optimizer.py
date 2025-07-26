@@ -488,6 +488,12 @@ class TriKit:
                             del strip_tri_to_tris[ntri]
 
                 if len(longest_path) > 2:
+                    # Trim the snake tail - there is no point to store 1 triangle at the end of the strip
+                    # because they can easily be expressed as regular triangles without perf cost 
+                    longest_path_tail = (len(longest_path) - 5) % 8
+                    if len(longest_path) > 5 and longest_path_tail == 1:
+                        longest_path.pop()
+
                     for tri in longest_path:
                         remove_tri(tri)
 
