@@ -329,12 +329,20 @@ void make_viewport_clip_rect(Vp *viewport) {
 #define UCODE_DATA_END gspF3DEX3_fifoDataEnd
 #endif
 
-#define EX3_SNAKE
+// #define EX3_SNAKE
 #ifdef EX3_SNAKE
 #define UCODE_TEXT_START gspF3DEX3_SNAKE_fifoTextStart
 #define UCODE_TEXT_END gspF3DEX3_SNAKE_fifoTextEnd
 #define UCODE_DATA_START gspF3DEX3_SNAKE_fifoDataStart
 #define UCODE_DATA_END gspF3DEX3_SNAKE_fifoDataEnd
+#endif
+
+#define EX3_MEMSET
+#ifdef EX3_MEMSET
+#define UCODE_TEXT_START gspF3DEX3_MEMSET_fifoTextStart
+#define UCODE_TEXT_END gspF3DEX3_MEMSET_fifoTextEnd
+#define UCODE_DATA_START gspF3DEX3_MEMSET_fifoDataStart
+#define UCODE_DATA_END gspF3DEX3_MEMSET_fifoDataEnd
 #endif
 
 void create_gfx_task_structure(void) {
