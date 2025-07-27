@@ -1,0 +1,11 @@
+extern const GeoLayout ccs_area_1_geo[];
+extern const GeoLayout ccs_area_1[];
+extern const Collision ccs_area_1_collision[];
+extern const MacroObject ccs_area_1_macro_objs[];
+extern u8 ccs_dl_kd_ls_beam1_ci4[];
+extern u8 ccs_dl_kd_ls_beam1_pal_rgba16[];
+extern Vtx ccs_dl_0173_object_012E64E0_mesh_layer_1_vtx_0[67];
+extern Gfx ccs_dl_0173_object_012E64E0_mesh_layer_1_tri_0[];
+extern Gfx mat_ccs_dl_objLandTable0034_sa2blvl_62_f3d[];
+extern Gfx mat_revert_ccs_dl_objLandTable0034_sa2blvl_62_f3d[];
+extern Gfx ccs_dl_0173_object_012E64E0_mesh_layer_1[];
