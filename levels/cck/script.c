@@ -23,7 +23,7 @@ static struct LevelConfig cfg = {
 	.viewRangeMult = 0.8f,
 	.springDescs = spring_descs_cck,
 };
-#define SEQ_LEVEL_GRASS 0
+#define SEQ_LEVEL_GRASS 0x44
 #define MODEL_CCK_SWITCH_P1 MODEL_CCK_SWITCH
 #define bhvFish bhvFishSpawner
 #define bhvCoinFormation bhvCoinFormationCC
