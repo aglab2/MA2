@@ -256,7 +256,6 @@ SECTIONS
       BUILD_DIR/src/audio*.o(.text*);
       BUILD_DIR/src/game/lz4t_fast.o(.text*);
       BUILD_DIR/src/game/dma_async.o(.text*);
-      BUILD_DIR/src/game*.o(.text*);
       BUILD_DIR/src/game/behavior_actions.o(.text*);
       BUILD_DIR/src/game/obj_behaviors_2.o(.text*);
       BUILD_DIR/src/game/obj_behaviors.o(.text*);
@@ -266,6 +265,7 @@ SECTIONS
       BUILD_DIR/src/engine/surface_collision.o(.text*);
       BUILD_DIR/src/engine/surface_load.o(.text*);
       BUILD_DIR/src/engine/graph_node.o(.text*);
+      BUILD_DIR/src/game*.o(.text*);
       BUILD_DIR/src/engine*.o(.text*);
       BUILD_DIR/src/hacktice*.o(.text*);
       _engineSegmentTextEnd = .;
