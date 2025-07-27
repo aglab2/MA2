@@ -64,7 +64,7 @@
 #endif
 
 #ifdef F3DEX3
-      BUILD_DIR/lib/gspF3DEX3.o(.data);
+      BUILD_DIR/lib/gspF3DEX3_B.o(.data);
 #endif
 
 /* Fast3DEX2 Rej Data */
