@@ -1,5 +1,8 @@
 #include "src/game/envfx_snow.h"
 
+extern Gfx *geo_switch_cc(s32 callContext, struct GraphNode *node, UNUSED void *context);
+#define geo_ccs_switch geo_switch_cc
+
 const GeoLayout ccs_area_1_geo[] = {
 	GEO_BATCH_NODE_START(batch_lvl_dls_ccs),
 	GEO_OPEN_NODE(),

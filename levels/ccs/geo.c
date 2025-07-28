@@ -13,5 +13,9 @@
 
 #include "levels/ccs/header.h"
 
-
+#if 0
 #include "levels/ccs/geo.inc.c"
+#else
+#include "levels/ccs/visual/header_lvlopt.inc.h"
+#include "levels/ccs/visual/geo_lvl.inc.c"
+#endif

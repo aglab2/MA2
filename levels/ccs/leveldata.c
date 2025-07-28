@@ -7,5 +7,9 @@
 
 #include "make_const_nonconst.h"
 
-
+#if 0
 #include "levels/ccs/leveldata.inc.c"
+#else
+#include "levels/ccs/visual/header_lvlopt.inc.h"
+#include "levels/ccs/visual/model_lvlopt.inc.c"
+#endif

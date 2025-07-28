@@ -15,6 +15,11 @@
 #include "levels/ccs/header.h"
 
 /* Fast64 begin persistent block [scripts] */
+#include "levels/ccs/area_1/collision.inc.c"
+#include "level_config.h"
+#define SEQ_LEVEL_GRASS 0x00
+static struct LevelConfig cfg = {
+};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_ccs_entry[] = {
@@ -23,6 +28,7 @@ const LevelScript level_ccs_entry[] = {
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
 	/* Fast64 begin persistent block [level commands] */
+	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, ccs_area_1, 0, 0, -2000),
