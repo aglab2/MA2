@@ -16,10 +16,10 @@
 #define ST_P(s, t)	{TC_P(s), TC_P(t)}
 
 #ifdef F3DEX3
-//#define gsDPSetAlphaCompareReal gsDPSetAlphaCompare
-//#define gDPSetAlphaCompareReal gDPSetAlphaCompare
-//#include "gbi-ex3b.h"
-#include "gbi-ex3.h"
+#define gsDPSetAlphaCompareReal gsDPSetAlphaCompare
+#define gDPSetAlphaCompareReal gDPSetAlphaCompare
+#include "gbi-ex3b.h"
+//#include "gbi-ex3.h"
 #else
 #include "gbi-ex2.h"
 #endif
