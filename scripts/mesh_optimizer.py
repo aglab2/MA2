@@ -206,8 +206,8 @@ class RenderPass:
         if self.snakes:
             log_debug(f"snakes {self.snakes}")
 
-SNAKE_TURN_LEFT = "G_SNAKE_LEFT"
-SNAKE_TURN_RIGHT = "G_SNAKE_RIGHT"
+SNAKE_TURN_LEFT = "G_SNAKE_RIGHT"
+SNAKE_TURN_RIGHT = "G_SNAKE_LEFT"
 
 class SnakeCommand:
     def __init__(self, vtx = -1, turn = 0):

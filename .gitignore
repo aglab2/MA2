@@ -54,6 +54,8 @@ build/*
 *.map
 .assets-local.txt
 
+__pycache__
+
 # Vanilla Assets.
 # You can allow an asset to be committed by deleting one of these lines.
 actors/amp/amp_body.rgba16.png
