@@ -2191,14 +2191,14 @@ _DW({                                                   \
  * @param p are the bit OR'd parameters to the matrix macro (@ref G_MTX_PROJECTION, @ref G_MTX_MODELVIEW, @ref G_MTX_MUL, @ref G_MTX_LOAD, @ref G_MTX_NOPUSH)
  */
 #define gSPMatrix(pkt, m, p) \
-        gDma2p((pkt),G_MTX, (m), sizeof(Mtx), (p) ^ G_MTX_PUSH, 0)
+        gDma2p((pkt),G_MTX, (m), sizeof(Mtx), (p) ^ G_MTX_PUSH ^ G_MTX_LOAD, 0)
 /**
  * @brief macro which inserts a matrix operation in a static display list.
  * 
  * @copydetails gSPMatrix
  */
 #define gsSPMatrix(m, p) \
-        gsDma2p(     G_MTX, (m), sizeof(Mtx), (p) ^ G_MTX_PUSH, 0)
+        gsDma2p(     G_MTX, (m), sizeof(Mtx), (p) ^ G_MTX_PUSH ^ G_MTX_LOAD, 0)
 
 /**
  * @brief macro which pops one of the matrix stacks at the end display list.
