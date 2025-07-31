@@ -31,7 +31,9 @@ const LevelScript level_ccs_entry[] = {
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
-	AREA(1, ccs_area_1, 0, 0, -2000),
+	AREA(1, ccs_area_1, 0, 0, 0),
+		MARIO_POS(0x01, 0, -3, -4310, 9568),
+		// OBJECT(MODEL_NONE, -3, -4310, 9568, 0, 0, 0, (0xa << 16), bhvWarp),
 		TERRAIN(ccs_area_1_collision),
 		MACRO_OBJECTS(ccs_area_1_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
@@ -40,7 +42,7 @@ const LevelScript level_ccs_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 	FREE_LEVEL_POOL(),
-	MARIO_POS(1, 0, 0, 0, 0),
+	MARIO_POS(0x01, 0, -3, -4310, 9568),
 	CALL(0, lvl_init_or_update),
 	CALL_LOOP(1, lvl_init_or_update),
 	CLEAR_LEVEL(),
