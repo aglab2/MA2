@@ -1,4 +1,5 @@
 from collections import deque
+import math
 import sys
 
 HAS_EX3_COMMANDS = True
@@ -333,6 +334,17 @@ class TriKit:
         assert False, "triangle does not contain the vertex"
 
     @staticmethod
+    def tri_rotate_to(tri, index):
+        if index == 0:
+            return tri[0], tri[1], tri[2]
+        if index == 1:
+            return tri[1], tri[2], tri[0]
+        if index == 2:
+            return tri[2], tri[0], tri[1]
+
+        assert False, "index must be 0, 1 or 2"
+
+    @staticmethod
     def _tri_normalize(tri):
         # There is a single representation of a 'tri' if minimal vertex is the first one
         # This will allow to have a convenient lookups in sets
@@ -401,35 +413,65 @@ class TriKit:
         return v in ntri
 
     @staticmethod
+    def build_strip_tri_to_tris(tris, can_link=None):
+        # Build the strips tree. The way it is built is using a temporary edge->tri mapping to link the tree...
+        edge_to_tris = {}
+        for tri in tris:
+            # Mind that edge is flipped here because the next tri in strip will have the edge in reverse order
+            for edge in TriKit._edges_reverse(tri):
+                if edge not in edge_to_tris:
+                    edge_to_tris[edge] = []
+                edge_to_tris[edge].append(tri)
+
+        strip_tri_to_tris = {}
+        # ...and iterating the triangles again linking the triangles
+        for tri in tris:
+            for edge in TriKit._edges(tri):
+                if edge not in edge_to_tris:
+                    continue
+
+                for ntri in edge_to_tris[edge]:
+                    if can_link and not can_link(tri, ntri):
+                        continue
+
+                    if ntri not in strip_tri_to_tris:
+                        strip_tri_to_tris[ntri] = set()
+                    strip_tri_to_tris[ntri].add(tri)
+
+        return strip_tri_to_tris
+
+    @staticmethod
+    def build_traverse_order(strip_tri_to_tris):
+        # This provides us with doubly linked triangles list for strips generation.
+        # Try to find the best start of the strip - the "loneliest" triangle with the least amount of neighbours
+        neighbour_count_to_tri = {}
+        for tri in strip_tri_to_tris:
+            neighbour_count = len(strip_tri_to_tris[tri])
+            if neighbour_count not in neighbour_count_to_tri:
+                neighbour_count_to_tri[neighbour_count] = set()
+            neighbour_count_to_tri[neighbour_count].add(tri)
+
+        if not neighbour_count_to_tri or max(neighbour_count_to_tri.keys()) < 2:
+            # Not enough neighbours to form any kind of strip
+            return None
+
+        dfs_tri_traverse_order = []
+        for count in sorted(neighbour_count_to_tri.keys()):
+            dfs_tri_traverse_order.extend(list(neighbour_count_to_tri[count]))
+        
+        return dfs_tri_traverse_order
+
+    @staticmethod
     def stripify(triangles):
             rendered_triangles = triangles[:]
             if not HAS_EX3_COMMANDS:
                 return rendered_triangles, []
 
             rendered_snakes = []
-
-            # Build the strips tree. The way it is built is using a temporary edge->tri mapping to link the tree...
-            edge_to_tris = {}
-            for tri in rendered_triangles:
-                # Mind that edge is flipped here because the next tri in strip will have the edge in reverse order
-                for edge in TriKit._edges_reverse(tri):
-                    if edge not in edge_to_tris:
-                        edge_to_tris[edge] = []
-                    edge_to_tris[edge].append(tri)
-
-            strip_tri_to_tris = {}
-            # ...and iterating the triangles again linking the triangles
-            for tri in rendered_triangles:
-                for edge in TriKit._edges(tri):
-                    if edge not in edge_to_tris:
-                        continue
-
-                    for ntri in edge_to_tris[edge]:
-                        if ntri not in strip_tri_to_tris:
-                            strip_tri_to_tris[ntri] = set()
-                        strip_tri_to_tris[ntri].add(tri)
-
-            del edge_to_tris
+            strip_tri_to_tris = TriKit.build_strip_tri_to_tris(rendered_triangles)
+            dfs_tri_traverse_order = TriKit.build_traverse_order(strip_tri_to_tris)
+            if not dfs_tri_traverse_order:
+                return rendered_triangles, []
 
             # This provides us with doubly linked triangles list for strips generation.
             # Try to find the best start of the strip - the "loneliest" triangle with the least amount of neighbours
@@ -574,10 +616,82 @@ class TriKit:
             # We will never need to compare the triangles so this is fine
             return rendered_triangles, rendered_snakes
 
+class Vec3:
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+
+    def __sub__(self, other):
+        return Vec3(self.x - other.x, self.y - other.y, self.z - other.z)
+
+    def __add__(self, other):
+        return Vec3(self.x + other.x, self.y + other.y, self.z + other.z)
+
+    def __mul__(self, other):
+        if isinstance(other, Vec3):
+            return self.x * other.x + self.y * other.y + self.z * other.z
+        else:
+            return Vec3(self.x * other, self.y * other, self.z * other)
+
+    def __xor__(self, other):
+        # Cross product
+        return Vec3(
+            self.y * other.z - self.z * other.y,
+            self.z * other.x - self.x * other.z,
+            self.x * other.y - self.y * other.x
+        )
+
+    def __repr__(self):
+        return f"Vec3({self.x}, {self.y}, {self.z})"
+
+class Vtx:
+    def __init__(self, line):
+        ls = [ tok.replace('{', '').replace('}', '').strip() for tok in line.split(',') ]
+        ls = [ int(tok) for tok in ls if tok ]
+        self.pos = Vec3(ls[0], ls[1], ls[2])
+        self.uv = [ ls[4], ls[5] ]
+        self.color = [ ls[6], ls[7], ls[8], ls[9] ]
+
+    def __repr__(self):
+        return f"Vtx(pos={self.pos}, uv={self.uv}, color={self.color})"
+
+class BaryPreCalc:
+    def __init__(self, tri):
+        diffs = [ e[0].pos - e[1].pos for e in TriKit._edges(tri) ]
+        diffs_length = [ diff*diff for diff in diffs ]
+        diffs_min_idx = diffs_length.index(min(diffs_length))
+        self.tri = TriKit.tri_rotate_to(tri, diffs_min_idx)
+        self.r = [ v.pos for v in self.tri ]
+        self.dr = [ e[0] - e[1] for e in TriKit._edges(self.r) ]
+        self.tv = (self.r[0] - self.r[2]) ^ (self.r[1] - self.r[2])
+
+    def try_conv(self, vtx):
+        dr2 = vtx - self.r[2]
+        # For barycentric coordinates to work, we must check that vtx is coplanar with the triangle
+        mul = dr2 * self.tv
+        len = math.sqrt((dr2 * dr2) * (self.tv * self.tv))
+        if abs(mul) > len * 1e-2:
+            return None
+
+        lv0 = dr2 ^ self.dr[1]
+        lv1 = dr2 ^ self.dr[2]
+        dr0 = vtx - self.r[0]
+        lv2 = dr0 ^ self.dr[0]
+
+        l0 = lv0 * self.tv
+        l1 = lv1 * self.tv
+        l2 = lv2 * self.tv
+
+        return l0, l1, l2
+
+    def __repr__(self):
+        return f"BaryPreCalc(t={self.t}, r={self.r}, dr={self.dr}, tv={self.tv}, tl={self.tl})"
 
 class ModelMeshEntry(TriKit):
     def __init__(self, next_line, model, vtxopt_name):
         self._model = model
+        self._name = vtxopt_name
 
         vtx_args = get_args(next_line)
         vtx_arg = vtx_args[0]
@@ -723,6 +837,298 @@ class ModelMeshEntry(TriKit):
         self._base_vertices_model_entry.used = True
         draws = []
         vtx_entry = self._base_vertices_model_entry
+
+        triangles_altered = False
+        if True: # "cck_dl_0040_object_013EC7E4_mesh_layer_1_tri_3" in vtx_entry.name:
+
+            # Step 0: Merge coplanar vertices
+            vtx_values = [ Vtx(vtx) for vtx in self._vertices ]
+            triangles = self._triangles[:]
+            bary_precals = { tri: BaryPreCalc([ vtx_values[vtx] for vtx in tri ]) for tri in triangles }
+
+            def add_tri(tri):
+                print(f"Adding triangle: {tri}")
+                assert not TriKit._tri_trivial(tri)
+                tri = TriKit._tri_normalize(tri)
+                triangles.append(tri)
+
+            def check_barylink(tri, ntri):
+                nvtx = TriKit._v_in_triA_not_in_triB(ntri, tri)
+                if nvtx == -1:
+                    return False
+
+                bary_precalc = bary_precals[tri]
+                nvtx_v = vtx_values[nvtx]
+                bary_coords = bary_precalc.try_conv(nvtx_v.pos)
+                if not bary_coords:
+                    return False
+
+                bary_total = sum(bary_coords)
+                tri_weighted = list(zip(bary_coords, bary_precalc.tri))
+                u_expected = sum([ w * t.uv[0]    for w, t in tri_weighted ])
+                v_expected = sum([ w * t.uv[1]    for w, t in tri_weighted ])
+                r_expected = sum([ w * t.color[0] for w, t in tri_weighted ])
+                g_expected = sum([ w * t.color[1] for w, t in tri_weighted ])
+                b_expected = sum([ w * t.color[2] for w, t in tri_weighted ])
+                a_expected = sum([ w * t.color[3] for w, t in tri_weighted ])
+
+                #u_weighted = u_expected / bary_total
+                #v_weighted = v_expected / bary_total
+                #r_weighted = r_expected / bary_total
+                #g_weighted = g_expected / bary_total
+                #b_weighted = b_expected / bary_total
+                #a_weighted = a_expected / bary_total
+
+                u_actual = nvtx_v.uv[0] * bary_total
+                v_actual = nvtx_v.uv[1] * bary_total
+                r_actual = nvtx_v.color[0] * bary_total
+                g_actual = nvtx_v.color[1] * bary_total
+                b_actual = nvtx_v.color[2] * bary_total
+                a_actual = nvtx_v.color[3] * bary_total
+
+                color_err = bary_total * 3
+                uv_err    = bary_total * 10
+                
+                u_ok = abs(u_expected - u_actual) < uv_err
+                v_ok = abs(v_expected - v_actual) < uv_err
+                r_ok = abs(r_expected - r_actual) < color_err
+                g_ok = abs(g_expected - g_actual) < color_err
+                b_ok = abs(b_expected - b_actual) < color_err
+                a_ok = abs(a_expected - a_actual) < color_err
+
+                return u_ok and v_ok and r_ok and g_ok and b_ok and a_ok
+
+            strip_tri_to_tris = TriKit.build_strip_tri_to_tris(self._triangles, check_barylink)
+            tri_traverse_order = TriKit.build_traverse_order(strip_tri_to_tris)
+            if tri_traverse_order:
+                for tri in tri_traverse_order:
+                    # Check if it was already rendered as part of a strip
+                    if tri not in strip_tri_to_tris:
+                        continue
+
+                    ngon = list(tri)
+                    ngon_tris = set()
+                    ngon_tris.add(tri)
+
+                    # Instead of DFS, use BFS for improved quality for generated ngon
+                    stack = deque() 
+                    stack.appendleft(tri)
+                    while stack:
+                        curr = stack.pop()
+                        if not curr in strip_tri_to_tris:
+                            continue
+                        for ntri in strip_tri_to_tris[curr]:
+                            if ntri in ngon_tris:
+                                continue
+
+                            # Can continue?
+                            nvtx = TriKit._v_in_triA_not_in_triB(ntri, curr)
+                            ntrir = TriKit._tri_rotate(ntri, nvtx)
+                            try:
+                                e1i = ngon.index(ntrir[1])
+                            except ValueError:
+                                assert False
+
+                            e2i = e1i - 1 if e1i > 0 else len(ngon) - 1
+                            e2 = ngon[e2i]
+                            assert e2 == ntrir[2]
+
+                            # Is sane continuation? - does not work as expected atm
+                            #fail = False
+                            #for ngon_tri in ngon_tris:
+                            #    bary_calc = bary_precals[ngon_tri]
+                            #    bary_coords = bary_calc.try_conv(vtx_values[nvtx].pos)
+                            #    assert bary_coords, "barycentric coordinates must be valid"
+                            #    # If all barycentric coordinates are positive, then the triangle is inside the ngon - we cannot allow that for continuation
+                            #    if (bary_coords[0] >= 0 and bary_coords[1] >= 0 and bary_coords[2] >= 0) or \
+                            #       (bary_coords[0] <= 0 and bary_coords[1] <= 0 and bary_coords[2] <= 0):
+                            #        fail = True
+                            #        break
+                            #
+                            #if fail:
+                            #    continue
+
+                            assert nvtx not in ngon
+                            ngon.insert(e2i + 1, nvtx)
+                            ngon_tris.add(ntri)
+                            stack.appendleft(ntri)
+
+                    bary_tri = bary_precals[tri]
+                    pivot = bary_tri.dr[0]
+                    pivot_dir = bary_tri.tv
+                    pivot_maxdir = pivot ^ pivot_dir
+
+                    # Mark tris as used
+                    for tri in ngon_tris:
+                        if not tri in strip_tri_to_tris:
+                            continue
+                        for ntri in strip_tri_to_tris.pop(tri):
+                            if ntri in strip_tri_to_tris:
+                                strip_tri_to_tris[ntri].discard(tri)
+                                if not strip_tri_to_tris[ntri]:
+                                    del strip_tri_to_tris[ntri]
+
+                    # Try to reduce amount of vertices in ngon
+                    if len(ngon) <= 4:
+                        continue
+
+                    print(ngon)
+                    changed = False
+                    ngon_values = [ vtx_values[vtx] for vtx in ngon ]
+                    iter = 1
+                    # TODO: iter must be also ==len(ngon) to handle the last vertex
+                    while iter <= len(ngon):
+                        vp = ngon_values[iter - 2]
+                        vc = ngon_values[iter - 1]
+                        vn = ngon_values[0 if iter == len(ngon) else iter]
+
+                        dvp = vp.pos - vc.pos
+                        dvpl = dvp * dvp
+                        dvn = vn.pos - vc.pos
+                        dvnl = dvn * dvn
+
+                        dvx = dvp ^ dvn
+                        dvxl = dvx * dvx * 100
+                        if dvxl < dvpl * dvnl:
+                            changed = True
+                            del ngon[iter - 1]
+                            del ngon_values[iter - 1]
+                        else:
+                            iter += 1
+
+                    if not changed:
+                        continue
+
+                    # Get rid of all triangles that are were part of the ngon...
+                    triangles_altered = True
+                    for tri in ngon_tris:
+                        del triangles[triangles.index(tri)]
+
+                    # ...and retriangulate the ngon.
+                    # Calculate the angle cache for all edges of the ngonx
+                    #angle_edge_cache = {}
+                    #def angle_cached(i1, i2):
+                    #    pp = ngon[i1]
+                    #    pc = ngon[i2]
+                    #    if (pp, pc) in angle_edge_cache:
+                    #        return angle_edge_cache[(pp, pc)]
+                    #    pvp = ngon_values[i1].pos
+                    #    pvc = ngon_values[i2].pos
+                    #    ev = pvc - pvp
+                    #    angle = math.acos(pivot * ev / math.sqrt((ev * ev) * (pivot * pivot)))
+                    #    angle_edge_cache[(pp, pc)] = angle
+                    #    return angle
+
+                    while len(ngon) > 4:
+                        # For this find convex hull of the ngon first
+
+                        # Find the first point that has the largest distance from the pivot
+                        max_point = ngon_values[0].pos
+                        max_i = 0
+                        for i, tri in enumerate(ngon_values[1:]):
+                            dp = max_point - tri.pos
+                            mul = dp * pivot_maxdir
+                            if mul > 0:
+                                max_point = tri.pos
+                                max_i = i + 1
+
+                        # Start builing the convex hull with the max point
+                        # !!! Mind that indices in 'hull' are indices in 'ngon' !!!
+                        hull_by_ngon_indices = [max_i]
+                        hull_cur_vec = pivot
+                        hull_cur = max_point
+                        while True:
+                            print(f"Current hull: {hull_by_ngon_indices} ~> {[ngon[i] for i in hull_by_ngon_indices]}")
+                            max_i = -1
+                            max_a = -2
+                            for i, vc in enumerate(ngon_values):
+                                if i == hull_by_ngon_indices[-1]:
+                                    continue
+
+                                dv = vc.pos - hull_cur
+                                # only consider positive turns.... - pointless because points are selected carefully already
+                                #dvm = dv ^ hull_cur_vec
+                                #print(f"Turn between {hull[-1]} and {i}: {dvm} and {dvm * pivot_dir}")
+                                #if dvm * pivot_dir < 0:
+                                #    continue
+
+                                # ...and pick the one with the largest angle (will be between -1 and 1)
+                                dva = (dv * hull_cur_vec) / (math.sqrt(dv*dv) * math.sqrt(hull_cur_vec*hull_cur_vec))
+                                print(f"Angle between {ngon[hull_by_ngon_indices[-1]]} and {ngon[i]}: {dva}")
+                                if dva > max_a:
+                                    max_a = dva
+                                    max_i = i
+                                    max_point = vc.pos
+                            
+                            if max_i == hull_by_ngon_indices[0]:
+                                break
+
+                            hull_by_ngon_indices.append(max_i)
+                            hull_cur_vec = max_point - hull_cur
+                            hull_cur = max_point
+
+                        # Setify the hull to know which edges are part of ears
+                        ears_indices = []
+                        for i in range(len(hull_by_ngon_indices)):
+                            i_p = hull_by_ngon_indices[i-1]
+                            i_c = hull_by_ngon_indices[i+0]
+                            i_n = hull_by_ngon_indices[(i+1) % len(hull_by_ngon_indices)]
+
+                            i_pexp = (i_c + 1) % len(ngon)
+                            i_nexp = (i_c - 1 + len(ngon)) % len(ngon)
+
+                            if i_pexp == i_p and i_nexp == i_n:
+                                ears_indices.append(i_c)
+
+                        assert len(ears_indices) >= 2, "there must be at least two ears in the ngon"
+                        if len(ears_indices) == len(ngon):
+                            fan = [ ngon[0], ngon[1], ngon[2] ]
+                            add_tri(tuple(fan))
+                            for vtx in ngon[3:]:
+                                fan[1] = fan[2]
+                                fan[2] = vtx
+                                add_tri(tuple(fan))
+                            ngon = []
+                            break
+                        else:
+                            # TODO: This is inefficient, vertices are already sorted properly so we have to just check for the sides
+                            #       The painful part is the checks on the very ends that must be carefully addressed
+                            banned_indices = set()
+                            filtered_ears = []
+                            for index in sorted(ears_indices):
+                                if index in banned_indices:
+                                    continue
+
+                                banned_indices.add((index - 1 + len(ngon)) % len(ngon))
+                                banned_indices.add((index + 1) % len(ngon))
+                                filtered_ears.append(index)
+
+                            ear_diff = 0
+                            for ear_undiff in filtered_ears:
+                                if len(ngon) <= 4:
+                                    break
+
+                                ear = ear_undiff - ear_diff
+                                add_tri((ngon[(ear - 1)], ngon[ear], ngon[(ear + 1) % len(ngon)]))
+                                del ngon[ear]
+                                del ngon_values[ear]
+                                ear_diff += 1
+                    
+                    if len(ngon) == 3:
+                        add_tri(tuple(ngon))
+                        pass
+                    elif len(ngon) == 4:
+                        pass
+                        add_tri(tuple(ngon[:3]))
+                        add_tri((ngon[0], ngon[2], ngon[3]))
+                    elif len(ngon) == 0:
+                        pass
+                    else:
+                        assert False, "ngon must be 3 or 4 vertices long"
+
+        if triangles_altered:
+            #self._triangles = [ triangles[0], triangles[1], triangles[2] ]
+            self._triangles = triangles
 
         # Step 1: Generate render passes for each vertex set
         render_passes = []
