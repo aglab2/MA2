@@ -1,0 +1,47 @@
+
+    // Now start filling the whole DMEM with the clear code. Start from the
+    // end of data, so that we don't risk racing with DMA.
+    // memsetBufferBZeroStart must be aligned on 0x40 boundary
+    li      $1, 0x1000
+    li      $2, memsetBufferBZeroStart + 0x40
+    addiu   $3, $2, 0x1000
+
+    li      $ra, @@cont
+@@repeat:
+    sqv     $v2, (-0x10)($2)
+    beq     $1, $2, while_wait_dma_busy
+     sqv    $v2, (-0x20)($2)
+@@cont:
+    addiu   $2, 0x40
+    sqv     $v2, (-0x70)($2)
+    bne     $2, $3, @@repeat
+     sqv    $v2, (-0x80)($2)
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+    // Now start filling the whole DMEM with the clear code. Start from the
+    // end of data, so that we don't risk racing with DMA.
+    // memsetBufferBZeroStart must be aligned on 0x40 boundary
+    li      $1, 0x1000
+    li      $2, memsetBufferBZeroStart + 0x40
+    addiu   $3, $2, 0x1000
+
+    li      $ra, @@cont
+@@repeat:
+    sqv     $v2, (-0x10)($2)
+    beq     $1, $2, while_wait_dma_busy
+     sqv    $v2, (-0x20)($2)
+@@cont:
+    addiu   $2, 0x40
+    sqv     $v2, (-0x70)($2)
+    bne     $2, $3, @@repeat
+     sqv    $v2, (-0x80)($2)

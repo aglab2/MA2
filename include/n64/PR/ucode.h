@@ -250,8 +250,8 @@ extern u64 gspL3DZEX2_PosLight_xbusDataStart[],
 /*========== F3DEX3 ==========*/
 extern u64 gspF3DEX3_fifoTextStart[], gspF3DEX3_fifoTextEnd[];
 extern u64 gspF3DEX3_fifoDataStart[], gspF3DEX3_fifoDataEnd[];
-extern u64 gspF3DEX3_SNAKE_fifoTextStart[], gspF3DEX3_SNAKE_fifoTextEnd[];
-extern u64 gspF3DEX3_SNAKE_fifoDataStart[], gspF3DEX3_SNAKE_fifoDataEnd[];
+extern u64 gspF3DEX3_ALIGHT_fifoTextStart[], gspF3DEX3_ALIGHT_fifoTextEnd[];
+extern u64 gspF3DEX3_ALIGHT_fifoDataStart[], gspF3DEX3_ALIGHT_fifoDataEnd[];
 extern u64 gspF3DEX3_MEMSET_fifoTextStart[], gspF3DEX3_MEMSET_fifoTextEnd[];
 extern u64 gspF3DEX3_MEMSET_fifoDataStart[], gspF3DEX3_MEMSET_fifoDataEnd[];
 

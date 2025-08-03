@@ -1,0 +1,60 @@
+DMA READ: (0x0 <- 0x10f620) len 744, count 1, skip 0
+DMA READ: (0x1080 <- 0x10ca70) len 3968, count 1, skip 0
+DMA READ: (0x1000 <- 0x10dab0) len 376, count 1, skip 0
+DMA READ: (0xf28 <- 0x400) len 168, count 1, skip 0
+DMA READ: (0xf28 <- 0x19d1a0) len 168, count 1, skip 0
+DMA READ: (0xf28 <- 0x488) len 168, count 1, skip 0
+DMA READ: (0xf28 <- 0x19d170) len 168, count 1, skip 0
+DMA READ: (0xf28 <- 0x490) len 168, count 1, skip 0
+DMA WRITE: (0xf7aa0 <- 0xc68) len 168, count 1, skip 0 ;gGfxSPTaskOutputBuffer
+DMA WRITE: (0x6daa0 <- 0x0) len 752, count 1, skip 0 ;gGfxSPTaskYieldBuffer
+DMA WRITE: (0xf7b50 <- 0x0) len 624, count 12, skip 0
+DMA READ: (0x0 <- 0x7cfff8) len 752, count 1, skip 0
+DMA READ: (0xf28 <- 0x4c0) len 168, count 1, skip 0
+DMA READ: (0x0 <- 0x7cfff8) len 8, count 1, skip 0
+DMA READ: (0x0 <- 0x0) len 8, count 1, skip 0
+
+0x0000000080209780
+0x0000000080580000
+0x00000000806da800
+0x0000000080700000
+
+OSTASK 0x10 - 0x40 needs to be saved!
+
+
+
+memsetOsTaskBackupOutStart equ ((vertexBuffer + 0xF) & 0xFF0)
+memsetOsTaskBackupInStart equ OSTask + 0x10
+memsetOsTaskBackupSize equ 0x30
+memsetTotalBackupSize equ memsetOsTaskBackupOutStart + memsetOsTaskBackupSize
+// Each bzero loop will get rid of 0x40 bytes with comparison on 0x1000 to trigger dma wait
+memsetBufferBZeroStart equ ((memsetTotalBackupSize + 0x3F) & 0xFC0)
+
+
+$v3
+$v4
+$v5
+
+
+A00 - OK
+B00 - OK
+B40 - OK    <= 2880
+B80 - CRASH <= 2944
+?????
+BC0 - CRASH
+C00 - CRASH
+E00 - CRASH
+F00 - CRASH
+
+
+0xC00 - OK 0xF40 - OK 0xF80 - NOK 0x1000 - NOK
+0xD00 - OK
+0xF00 - OK
+
+2944 - 3088
+
+CRASHMAN: 0xBC0 -0x10/0x20/0x30/0x40
+
+
+0x0000000080188014
+0x000000008018a940

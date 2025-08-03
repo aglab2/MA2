@@ -329,15 +329,15 @@ void make_viewport_clip_rect(Vp *viewport) {
 #define UCODE_DATA_END gspF3DEX3_fifoDataEnd
 #endif
 
-// #define EX3_SNAKE
-#ifdef EX3_SNAKE
-#define UCODE_TEXT_START gspF3DEX3_SNAKE_fifoTextStart
-#define UCODE_TEXT_END gspF3DEX3_SNAKE_fifoTextEnd
-#define UCODE_DATA_START gspF3DEX3_SNAKE_fifoDataStart
-#define UCODE_DATA_END gspF3DEX3_SNAKE_fifoDataEnd
+#define EX3_ALIGHT
+#ifdef EX3_ALIGHT
+#define UCODE_TEXT_START gspF3DEX3_ALIGHT_fifoTextStart
+#define UCODE_TEXT_END gspF3DEX3_ALIGHT_fifoTextEnd
+#define UCODE_DATA_START gspF3DEX3_ALIGHT_fifoDataStart
+#define UCODE_DATA_END gspF3DEX3_ALIGHT_fifoDataEnd
 #endif
 
-#define EX3_MEMSET
+// #define EX3_MEMSET
 #ifdef EX3_MEMSET
 #define UCODE_TEXT_START gspF3DEX3_MEMSET_fifoTextStart
 #define UCODE_TEXT_END gspF3DEX3_MEMSET_fifoTextEnd
