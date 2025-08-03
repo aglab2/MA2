@@ -1555,7 +1555,7 @@ void shade_screen(void) {
 extern u8 gHasPerformance;
 static inline int want_alight(void) {
 #ifndef FORCE_ALIGHT
-    return gHasPerformance;
+    return !gHasPerformance;
 #else
     return 1;
 #endif
