@@ -109,7 +109,11 @@ of warnings if you use -Wpedantic. */
 #define G_TRI2              0x06
 #define G_QUAD              0x07
 #define G_TRISNAKE          0x08  /* used to be G_TRISTRIP */
+#if 0
 #define G_TRI3              0x09
+#else
+#define G_ALIGHT            0x09
+#endif
 #define G_LIGHTTORDP        0x0A
 #define G_RELSEGMENT        0x0B
 
@@ -2612,6 +2616,27 @@ _DW({                                                                   \
     __gsSP1Triangle_w1f(v10, v11, v12, flag1)                       \
 }
 
+#define gSPAlight(pkt, r, g, b, a)                      \
+_DW({                                                   \
+    Gfx *_g = (Gfx *)(pkt);                             \
+                                                        \
+    _g->words.w0 = (_SHIFTL(G_ALIGHT, 24, 8) |          \
+                    _SHIFTL(a,  8, 8));                 \
+    _g->words.w1 = (_SHIFTL(r, 24, 8) |                 \
+                    _SHIFTL(g, 16, 8) |                 \
+                    _SHIFTL(b,  8, 8));                 \
+})
+
+#define gsSPAlight(r, g, b, a)              \
+{                                           \
+   (_SHIFTL(G_ALIGHT, 24, 8) |              \
+    _SHIFTL(a, 8, 8)),                      \
+   (_SHIFTL(r, 24, 8) |                     \
+    _SHIFTL(g, 16, 8) |                     \
+    _SHIFTL(b,  8, 8))                      \
+}
+
+#if 0
 #define TRI3_BIT(v, s1, s2) _SHIFTL((v)>>s1, s2, 1)
 #define TRI3_BITX(v, s1, xv, xs1, s2) _SHIFTL(((v)>>s1) ^ ((xv)>>xs1), s2, 1)
 #define TRI3_BIT2(v, s1, s2) _SHIFTL((v)>>s1, s2, 2)
@@ -2651,6 +2676,7 @@ v22=ccghee
       (__gsSP1Triangle_w1(v10, v11, v12) | _SHIFTL(v20, 26, 6) | TRI3_BIT2(v21, 4, 23)                 \
        | TRI3_BIT2(v22, 4, 15) | TRI3_BIT(v21, 3, 8) | TRI3_BITX(v21, 2, v22, 1, 7)                    \
        | TRI3_BIT(v22, 3, 0)) }
+#endif
 
 /**
  * Make the triangle snake turn right before drawing this triangle. In other

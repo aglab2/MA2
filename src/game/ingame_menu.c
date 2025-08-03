@@ -1550,7 +1550,31 @@ void shade_screen(void) {
     gDisplayListHead = dlHead;
 }
 
+// #define FORCE_ALIGHT
+
+extern u8 gHasPerformance;
+static inline int want_alight(void) {
+#ifndef FORCE_ALIGHT
+    return gHasPerformance;
+#else
+    return 1;
+#endif
+}
+
+extern void shade_screen_yellow_alight(void) {
+    if (!want_alight()) {
+        return;
+    }
+
+    int amount = CLAMP((6100.f - gMarioStates->pos[1]) / 3.f, 0, 127);
+    Gfx* dlHead = gDisplayListHead;
+    gSPAlight(gDisplayListHead++, 255, 165, 0, amount);
+}
+
 void shade_screen_yellow(void) {
+    if (want_alight())
+        return;
+
     int amount = CLAMP((6100.f - gMarioStates->pos[1]) / 3.f, 0, 127);
     if (amount == 0)
         return;

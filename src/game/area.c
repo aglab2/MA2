@@ -649,9 +649,13 @@ extern int gSlowLookups;
 
 u8 gWaterTutorial;
 extern void shade_screen_yellow(void);
+extern void shade_screen_yellow_alight(void);
 void render_game(void) {
     PROFILER_GET_SNAPSHOT_TYPE(PROFILER_DELTA_COLLISION);
     if (gCurrentArea != NULL && !gWarpTransition.pauseRendering) {
+        if (gCurrLevelNum == LEVEL_CCK)
+            shade_screen_yellow_alight();
+
         if (gCurrentArea->graphNode) {
             geo_process_root(gCurrentArea->graphNode, gViewportOverride, gViewportClip, gFBSetColor);
         }
