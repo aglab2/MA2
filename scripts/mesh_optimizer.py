@@ -533,8 +533,10 @@ class TriKit:
                     # Trim the snake tail - there is no point to store 1 triangle at the end of the strip
                     # because they can easily be expressed as regular triangles without perf cost 
                     longest_path_tail = (len(longest_path) - 5) % 8
-                    if len(longest_path) > 5 and longest_path_tail == 1:
+                    if len(longest_path) > 5 and (longest_path_tail == 1 or longest_path_tail == 2):
                         longest_path.pop()
+                        if longest_path_tail == 2:
+                            longest_path.pop()
 
                     for tri in longest_path:
                         remove_tri(tri)
@@ -839,11 +841,12 @@ class ModelMeshEntry(TriKit):
         vtx_entry = self._base_vertices_model_entry
 
         triangles_altered = False
-        if True: # "cck_dl_0040_object_013EC7E4_mesh_layer_1_tri_3" in vtx_entry.name:
+        try: # "cck_dl_0040_object_013EC7E4_mesh_layer_1_tri_3" in vtx_entry.name:
 
             # Step 0: Merge coplanar vertices
             vtx_values = [ Vtx(vtx) for vtx in self._vertices ]
             triangles = self._triangles[:]
+            print(f"start triangles: {triangles}")
             bary_precals = { tri: BaryPreCalc([ vtx_values[vtx] for vtx in tri ]) for tri in triangles }
 
             def add_tri(tri):
@@ -899,12 +902,29 @@ class ModelMeshEntry(TriKit):
                 return u_ok and v_ok and r_ok and g_ok and b_ok and a_ok
 
             strip_tri_to_tris = TriKit.build_strip_tri_to_tris(self._triangles, check_barylink)
+            strip_link_checks = []
+            for tri in strip_tri_to_tris:
+                for ntri in strip_tri_to_tris[tri]:
+                    strip_link_checks.append((ntri, tri))
+
+            print(f"strip_link_checks: {strip_link_checks} adding to {strip_tri_to_tris}")
+            for link in strip_link_checks:
+                tri, ntri = link
+                if tri not in strip_tri_to_tris:
+                    strip_tri_to_tris[tri] = set()
+                strip_tri_to_tris[tri].add(ntri)
+            del strip_link_checks
+            
+            print(f"start strip_tri_to_tris: {strip_tri_to_tris}")
+
             tri_traverse_order = TriKit.build_traverse_order(strip_tri_to_tris)
             if tri_traverse_order:
                 for tri in tri_traverse_order:
                     # Check if it was already rendered as part of a strip
                     if tri not in strip_tri_to_tris:
                         continue
+
+                    print(f"strip_tri_to_tris: {strip_tri_to_tris}, triangle: {triangles}")
 
                     ngon = list(tri)
                     ngon_tris = set()
@@ -960,23 +980,28 @@ class ModelMeshEntry(TriKit):
 
                     # Mark tris as used
                     for tri in ngon_tris:
+                        print(f"Removing triangle {tri} from strip_tri_to_tris")
+                        print(f"strip_tri_to_tris before {strip_tri_to_tris}")
                         if not tri in strip_tri_to_tris:
                             continue
                         for ntri in strip_tri_to_tris.pop(tri):
-                            if ntri in strip_tri_to_tris:
-                                strip_tri_to_tris[ntri].discard(tri)
-                                if not strip_tri_to_tris[ntri]:
-                                    del strip_tri_to_tris[ntri]
+                            strip_tri_to_tris[ntri].remove(tri)
+                            if not strip_tri_to_tris[ntri]:
+                                del strip_tri_to_tris[ntri]
+
+                        print(f"strip_tri_to_tris after {strip_tri_to_tris}")
+
+                    print(f"strip_tri_to_tris after: {strip_tri_to_tris}, triangle: {triangles}")
 
                     # Try to reduce amount of vertices in ngon
                     if len(ngon) <= 4:
                         continue
 
-                    print(ngon)
+                    print(f"ngon: {ngon}, ngon_tris: {ngon_tris}")
                     changed = False
                     ngon_values = [ vtx_values[vtx] for vtx in ngon ]
+                    print(f"ngon_values: {ngon_values}")
                     iter = 1
-                    # TODO: iter must be also ==len(ngon) to handle the last vertex
                     while iter <= len(ngon):
                         vp = ngon_values[iter - 2]
                         vc = ngon_values[iter - 1]
@@ -988,8 +1013,9 @@ class ModelMeshEntry(TriKit):
                         dvnl = dvn * dvn
 
                         dvx = dvp ^ dvn
-                        dvxl = dvx * dvx * 100
+                        dvxl = dvx * dvx * 10000
                         if dvxl < dvpl * dvnl:
+                            print(f"Removing vertex {ngon[iter - 1]} from ngon {ngon} because dvx {dvx} is too small {dvxl} compared to dvp {dvp} {dvpl} and dvn {dvn} {dvnl}")
                             changed = True
                             del ngon[iter - 1]
                             del ngon_values[iter - 1]
@@ -998,6 +1024,8 @@ class ModelMeshEntry(TriKit):
 
                     if not changed:
                         continue
+
+                    print(f"reduced ngon: {ngon} with ngon_values: {ngon_values}")
 
                     # Get rid of all triangles that are were part of the ngon...
                     triangles_altered = True
@@ -1125,6 +1153,9 @@ class ModelMeshEntry(TriKit):
                         pass
                     else:
                         assert False, "ngon must be 3 or 4 vertices long"
+        except Exception as e:
+            triangles_altered = False
+            pass
 
         if triangles_altered:
             #self._triangles = [ triangles[0], triangles[1], triangles[2] ]
