@@ -1158,8 +1158,19 @@ class ModelMeshEntry(TriKit):
             pass
 
         if triangles_altered:
-            #self._triangles = [ triangles[0], triangles[1], triangles[2] ]
-            self._triangles = triangles
+            vertices_replaced = self._vertices
+            shuffle_vertices_old2new = {}
+            shuffle_vertices_curr = 0   
+            self._triangles = []         
+            self._vertices = []
+            for tri in triangles:
+                for vtx in tri:
+                    if vtx not in shuffle_vertices_old2new:
+                        shuffle_vertices_old2new[vtx] = shuffle_vertices_curr
+                        self._vertices.append(vertices_replaced[vtx])
+                        shuffle_vertices_curr += 1
+                self._triangles.append(tuple(shuffle_vertices_old2new[vtx] for vtx in tri))
+            a = 0
 
         # Step 1: Generate render passes for each vertex set
         render_passes = []
