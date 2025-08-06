@@ -335,6 +335,14 @@ void make_viewport_clip_rect(Vp *viewport) {
 #define UCODE_DATA_END gspF3DEX3_MEMSET_fifoDataEnd
 #endif
 
+#define EX3_TEXCACHE
+#ifdef EX3_TEXCACHE
+#define UCODE_TEXT_START gspF3DEX3_TEXCACHE_fifoTextStart
+#define UCODE_TEXT_END gspF3DEX3_TEXCACHE_fifoTextEnd
+#define UCODE_DATA_START gspF3DEX3_TEXCACHE_fifoDataStart
+#define UCODE_DATA_END gspF3DEX3_TEXCACHE_fifoDataEnd
+#endif
+
 void create_gfx_task_structure(void) {
 #ifdef CR1_TEST
     static u8 sCR1 = 0;

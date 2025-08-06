@@ -188,6 +188,7 @@ SECTIONS
       */rsp.o(.text*);
       */gspF3DEX3_ALIGHT.o(.text*);
       */gspF3DEX3_MEMSET.o(.text*);
+      */gspF3DEX3_TEXCACHE.o(.text*);
 #include "rsptext.inc.ld"
       BUILD_DIR/lib/aspMain.o(.text*);
       lib/PR/audio/n_aspMain.o(.text*);
@@ -208,6 +209,7 @@ SECTIONS
       */libz.a:*.o(.data*);
       */gspF3DEX3_ALIGHT.o(.data*);
       */gspF3DEX3_MEMSET.o(.data*);
+      */gspF3DEX3_TEXCACHE.o(.data*);
 #include "rspdata.inc.ld"
       BUILD_DIR/lib/aspMain.o(.data*);
       lib/PR/audio/n_aspMain.o(.data*);
