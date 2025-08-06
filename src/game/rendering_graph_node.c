@@ -568,6 +568,7 @@ static void apply_ig_lighting(Gfx **ptempGfxHead)
 #undef tempGfxHead
 }
 
+uint32_t sBackdropRenderedOnFrame = 0;
 extern u8 gTimeFrozen;
 static void adjust_view_range();
 static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
@@ -609,6 +610,12 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
             struct MasterLayer* masterLayer = &node->layers[currLayer];
             if (!timeFrozen)
                 apply_flipbooks(masterLayer);
+
+            if (1 == currLayer && enableZBuffer && sBackdropRenderedOnFrame == gGlobalTimer)
+            {
+                gSPFlush(tempGfxHead++);
+                gSPMemset(tempGfxHead++, (u8*) gPhysicalZBuffer + gBorderHeight  * SCREEN_WIDTH * 2, GPACK_ZDZ(G_MAXFBZ, 0), SCREEN_WIDTH * (SCREEN_HEIGHT - 2 * gBorderHeight) * 2);
+            }
 
             struct DisplayListNode *currList = masterLayer->list.head;
             if (currList)
@@ -1264,7 +1271,7 @@ void geo_process_background(struct GraphNodeBackground *node) {
 #endif
         Gfx *gfx = gfxStart;
 
-        if (gHasEX3)
+        if (0)
         {
             gSPMemset(gfx++, (u8*) gPhysicalFramebuffers[sRenderingFramebuffer] + gBorderHeight  * SCREEN_WIDTH * 2, node->background, SCREEN_WIDTH * (SCREEN_HEIGHT - 2 * gBorderHeight) * 2);
         }
@@ -1273,10 +1280,10 @@ void geo_process_background(struct GraphNodeBackground *node) {
             gDPPipeSync(gfx++);
             gDPSetCycleType(gfx++, G_CYC_FILL);
             gDPSetFillColor(gfx++, node->background);
-            gDPFillRectangle(gfx++, GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), 0,
-            GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - 0 - 1);
+            *gfx++ = gFillRectCmd;
             gDPPipeSync(gfx++);
             gDPSetCycleType(gfx++, G_CYC_1CYCLE);
+            gSPFlush(gfx++);
         }
         gSPEndDisplayList(gfx++);
 
@@ -2149,6 +2156,7 @@ Gfx *geo_render_backdrop(s32 callContext, struct GraphNode *node, UNUSED f32 b[4
         mtxf_to_mtx(mtx, gMatStack[gMatStackIndex]);
         gMatStackFixed[gMatStackIndex] = mtx;
         geo_append_display_list(gSkybox, 0); // DL pointer
+        sBackdropRenderedOnFrame = gGlobalTimer;
         
         gMatStackIndex--;
     }

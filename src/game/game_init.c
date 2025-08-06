@@ -161,7 +161,7 @@ void my_rsp_init(void) {
 /**
  * Initialize the z buffer for the current frame.
  */
-void init_z_buffer(s32 resetZB) {
+static void init_z_buffer(s32 resetZB) {
     Gfx *tempGfxHead = gDisplayListHead;
 
     gDPPipeSync(tempGfxHead++);
@@ -169,21 +169,13 @@ void init_z_buffer(s32 resetZB) {
     gDPSetDepthSource(tempGfxHead++, G_ZS_PIXEL);
     gDPSetDepthImage(tempGfxHead++, gPhysicalZBuffer);
 
-    gDPSetColorImage(tempGfxHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, gPhysicalZBuffer);
-    if (!resetZB)
-        return;
-
-    if (gHasEX3)
-    {
-        gSPMemset(tempGfxHead++, (u8*) gPhysicalZBuffer + gBorderHeight  * SCREEN_WIDTH * 2, GPACK_ZDZ(G_MAXFBZ, 0), SCREEN_WIDTH * (SCREEN_HEIGHT - 2 * gBorderHeight) * 2);
-    }
-    else
+    if (resetZB)
     {
         gDPSetColorImage(tempGfxHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, gPhysicalZBuffer);
         gDPSetFillColor(tempGfxHead++,
                         GPACK_ZDZ(G_MAXFBZ, 0) << 16 | GPACK_ZDZ(G_MAXFBZ, 0));
-    
-        gDPFillRectangle(tempGfxHead++, 0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1 - 0);    
+        *tempGfxHead++ = gFillRectCmd;
+        gSPFlush(tempGfxHead++);
     }
 
     gDisplayListHead = tempGfxHead;
@@ -211,7 +203,7 @@ void select_framebuffer(void) {
  */
 void clear_framebuffer(s32 color) {
 
-    if (gHasEX3)
+    if (0)
     {
         gSPMemset(gDisplayListHead++, (u8*) gPhysicalFramebuffers[sRenderingFramebuffer] + gBorderHeight * SCREEN_WIDTH * 2, color, SCREEN_WIDTH * (SCREEN_HEIGHT - 2 * gBorderHeight) * 2);
     }
@@ -224,9 +216,7 @@ void clear_framebuffer(s32 color) {
         gDPSetCycleType(tempGfxHead++, G_CYC_FILL);
     
         gDPSetFillColor(tempGfxHead++, color);
-        gDPFillRectangle(tempGfxHead++,
-                         GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), 0,
-                         GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - 0 - 1);
+        *tempGfxHead++ = gFillRectCmd;
     
         gDPPipeSync(tempGfxHead++);
     

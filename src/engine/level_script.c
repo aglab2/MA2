@@ -970,6 +970,7 @@ static void (*LevelScriptJumpTable[])(void) = {
     /*LEVEL_CMD_SET_ECHO                    */ level_cmd_set_echo,
 };
 
+extern uint32_t sBackdropRenderedOnFrame;
 struct LevelCommand *level_script_execute(struct LevelCommand *cmd) {
     sScriptStatus = SCRIPT_RUNNING;
     sCurrentCmd = cmd;
@@ -978,7 +979,7 @@ struct LevelCommand *level_script_execute(struct LevelCommand *cmd) {
         LevelScriptJumpTable[sCurrentCmd->type]();
     }
 
-    init_rcp(CLEAR_ZBUFFER);
+    init_rcp(sBackdropRenderedOnFrame != gGlobalTimer - 1);
     render_game();
     end_master_display_list();
     alloc_display_list(0);
