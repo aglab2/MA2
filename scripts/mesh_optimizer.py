@@ -8,7 +8,6 @@ from scipy.spatial import ConvexHull
 
 HAS_EX3_COMMANDS = True
 HAS_TRI3 = False
-HAS_VTX_PINNING = True
 
 # Current DFS implementation is O(2^n) algo so not to wait forever we limit the amount of triangles to walk through
 WALK_LIMIT = 10000
@@ -651,6 +650,9 @@ class Vec3:
     def __repr__(self):
         return f"Vec3({self.x}, {self.y}, {self.z})"
 
+    def as_list(self):
+        return [self.x, self.y, self.z]
+
 class Vtx:
     def __init__(self, line):
         ls = [ tok.replace('{', '').replace('}', '').strip() for tok in line.split(',') ]
@@ -837,18 +839,18 @@ class ModelMeshEntry(TriKit):
         triangles, snakes = TriKit.stripify(triangles)
         return RenderPass(vertices, [ list(tri) for tri in triangles ], snakes)
 
-    def compile(self):
+    def compile(self, have_tile):
         assert self._base_vertices_model_entry, "compile() called twice"
         assert not self._base_vertices_model_entry.used
         self._base_vertices_model_entry.used = True
         draws = []
         vtx_entry = self._base_vertices_model_entry
 
+        vtx_values = [ Vtx(vtx) for vtx in self._vertices ]
         triangles_altered = False
         try: # "cck_dl_0040_object_013EC7E4_mesh_layer_1_tri_3" in vtx_entry.name:
 
             # Step 0: Merge coplanar vertices
-            vtx_values = [ Vtx(vtx) for vtx in self._vertices ]
             triangles = self._triangles[:]
             log_debug(f"start triangles: {triangles}")
             bary_precals = { tri: BaryPreCalc([ vtx_values[vtx] for vtx in tri ]) for tri in triangles }
@@ -1174,32 +1176,89 @@ class ModelMeshEntry(TriKit):
                         self._vertices.append(vertices_replaced[vtx])
                         shuffle_vertices_curr += 1
                 self._triangles.append(tuple(shuffle_vertices_old2new[vtx] for vtx in tri))
-            a = 0
+
+            vtx_values = [ Vtx(vtx) for vtx in self._vertices ]
+
+        np_vtx_poss = np.array([vtx.pos.as_list() for vtx in vtx_values])
+        if not have_tile:
+            try:
+                np_vtx_poss_hull_indices = list(ConvexHull(np_vtx_poss).vertices)
+            except:
+                try:
+                    np_vtx_poss_hull_indices = list(ConvexHull(np_vtx_poss, qhull_options='QJ').vertices)
+                except:
+                    np_vtx_poss_hull_indices = []
+
+            if len(np_vtx_poss_hull_indices) > 56:
+                np_vtx_poss_hull_indices = []
+        else:
+            np_vtx_poss_hull_indices = []
 
         # Step 1: Generate render passes for each vertex set
         render_passes = []
+        culling_pinned_vertices = np_vtx_poss_hull_indices
 
         # For a grand majority of cases "just draw" will be good enough - that's when all vertices fit in the buffer
         if len(self._vertices) <= 56:
-            passthru_vertices = {}
+            loaded_vertices = {}
+            for i in np_vtx_poss_hull_indices:
+                loaded_vertices[i] = len(loaded_vertices)
             for i in range(len(self._vertices)):
-                passthru_vertices[i] = i
+                if i not in np_vtx_poss_hull_indices:
+                    loaded_vertices[i] = len(loaded_vertices)
 
-            render_passes.append(self._make_render_pass(self._triangles, passthru_vertices))
+            render_passes.append(self._make_render_pass([ tuple([ loaded_vertices[vtx] for vtx in tri ]) for tri in self._triangles ], loaded_vertices))
         else:
             # This is a primitive greedy algorithm for loading vertices with weights
+            preload_vertices = np_vtx_poss_hull_indices
             total_pricer = UsagePricer(self._triangles)
             while not total_pricer.completed():
                 loaded_vertices = {}
                 rendered_triangles = []
 
+                precandidate_vtxs = None
+                precandidate_tris = None
+                if preload_vertices:
+                    precandidate_vtxs = set()
+                    precandidate_tris = set()
+                    for i in preload_vertices:
+                        loaded_vertices[i] = len(loaded_vertices)
+                    for tri in self._triangles:
+                        loaded_tri = [ loaded_vertices.get(vtx) for vtx in tri ]
+                        if None not in loaded_tri:
+                            rendered_triangles.append(tuple(loaded_tri))
+                            total_pricer.remove(tri)
+                        else:
+                            want = False
+                            for i, vtx in enumerate(loaded_tri):
+                                if vtx:
+                                    want = True
+                                    break
+                            if want:
+                                for i, vtx in enumerate(loaded_tri):
+                                    if not vtx:
+                                        precandidate_vtxs.add(tri[i])
+                    for cand_vtx in precandidate_vtxs:
+                        candidate_vtx_tris = total_pricer.vtx_to_tris(cand_vtx)
+                        for candidate_tri in candidate_vtx_tris:
+                            precandidate_tris.add(candidate_tri)
+                    preload_vertices = None
+
                 # TODO: When 2nd condition triggers, it usually means that the pool of vertices has depleted and it is better to stop 
                 while not total_pricer.completed() and len(loaded_vertices) < 56:
-                    highest_usage_vtx = total_pricer.highest_usage()
-                    loaded_vertices[highest_usage_vtx] = len(loaded_vertices)
+                    if precandidate_vtxs:
+                        candidate_vtxs = precandidate_vtxs
+                        candidate_tris = precandidate_tris
+                        candidate_to_load_pricer = UsagePricer(candidate_tris, loaded_vertices, rendered_triangles, set(loaded_vertices.keys()))
+                        highest_usage_vtx = candidate_to_load_pricer.highest_usage()
+                        precandidate_tris = None
+                        precandidate_vtxs = None
+                    else:
+                        highest_usage_vtx = total_pricer.highest_usage()
+                        candidate_vtxs = set()
+                        candidate_tris = set()
 
-                    candidate_vtxs = set()
-                    candidate_tris = set()
+                    loaded_vertices[highest_usage_vtx] = len(loaded_vertices)
                     banned_vertices = set(loaded_vertices.keys())
                     log_debug("")
                     while True:
@@ -1227,9 +1286,6 @@ class ModelMeshEntry(TriKit):
                                 candidate_vtxs.add(candidate_vtx)
                                 candidate_vtx_tris = total_pricer.vtx_to_tris(candidate_vtx)
                                 for candidate_tri in candidate_vtx_tris:
-                                    if candidate_tri in candidate_tris:
-                                        continue
-
                                     candidate_tris.add(candidate_tri)
 
                         candidate_to_load_pricer = UsagePricer(candidate_tris, loaded_vertices, rendered_triangles, banned_vertices)
@@ -1244,8 +1300,8 @@ class ModelMeshEntry(TriKit):
         # Step 2: Find common vertices across render passes and pin them to the left side of the buffer
         render_pass_vtx_load_offsets = []
         prev_render_pass = None
-        pinned_vertices_left = None
-        altered_render_passes = []
+        pinned_vertices_left = culling_pinned_vertices
+        altered_render_passes = [] if not culling_pinned_vertices else [render_passes[0]]
         for i, render_pass in enumerate(render_passes):
             curr_vertices = set(render_pass.vertices.keys())
             log_debug(f"render pass {i} -> {curr_vertices}")
@@ -1309,10 +1365,14 @@ class ModelMeshEntry(TriKit):
         # Step 3: Generate the display lists rendering the render passes
         vtx_entry.vertices = []
         start_offset = 0
+        first = True
         for render_pass, vtx_load_offset in zip(render_passes, render_pass_vtx_load_offsets):
             cur_vtx_start_offset = start_offset
-            if not HAS_VTX_PINNING:
+            add_cull_with_len = 0
+            if first:
+                add_cull_with_len = vtx_load_offset
                 vtx_load_offset = 0
+                first = False
 
             log_debug(f"render pass out {render_pass.vertices} at {vtx_load_offset}")
             cur_vtx_load_amount = len(render_pass.vertices) - vtx_load_offset
@@ -1330,11 +1390,18 @@ class ModelMeshEntry(TriKit):
             assert None not in vtx_entry.vertices[start_offset:start_offset + cur_vtx_load_amount], "vtx_entry is not filled correctly"
             start_offset += cur_vtx_load_amount
 
+            if add_cull_with_len:
+                draws.append(f"\tgsSPVertex({vtx_entry.name}, {add_cull_with_len}, 0),\n")
+                draws.append(f"\tgsSPCullDisplayList(0, {add_cull_with_len}),\n")
+
             if cur_vtx_load_amount:
-                if 1 == len(render_passes):
+                if 1 == len(render_passes) and 0 == add_cull_with_len:
                     draws.append(f"\tgsSPVertex({vtx_entry.name}, {cur_vtx_load_amount}, {vtx_load_offset}),\n")
                 else:
-                    draws.append(f"\tgsSPVertex({vtx_entry.name} + {cur_vtx_start_offset}, {cur_vtx_load_amount}, {vtx_load_offset}),\n")
+                    if 0 == add_cull_with_len:
+                        draws.append(f"\tgsSPVertex({vtx_entry.name} + {cur_vtx_start_offset}, {cur_vtx_load_amount}, {vtx_load_offset}),\n")
+                    elif cur_vtx_load_amount != add_cull_with_len:
+                        draws.append(f"\tgsSPVertex({vtx_entry.name} + {cur_vtx_start_offset} + {add_cull_with_len}, {cur_vtx_load_amount} - {add_cull_with_len}, {vtx_load_offset} + {add_cull_with_len}),\n")
 
             triangles = deque(render_pass.triangles)
             while triangles:
@@ -1461,12 +1528,17 @@ def optimize_model(model):
         entry = None
 
         num = 0
+        have_tile = None
         for i in range(1, len(old_entry.data)):
             line = old_entry.data[i]
+            if 'gsDPLoadTile' in line:
+                have_tile = True
+
             nline = old_entry.data[i+1] if i + 1 < len(old_entry.data) else None
             if not _is_draw(line, nline):
                 if entry:
-                    draws, vtxopt = entry.compile()
+                    draws, vtxopt = entry.compile(have_tile)
+                    have_tile = False
                     mlist.data.extend(draws)
                     mlist.opvtxs.append(vtxopt)
 
