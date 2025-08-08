@@ -319,7 +319,7 @@ void make_viewport_clip_rect(Vp *viewport) {
 #define UCODE_DATA_END gspF3DEX3_fifoDataEnd
 #endif
 
-#define EX3_ALIGHT
+// #define EX3_ALIGHT
 #ifdef EX3_ALIGHT
 #define UCODE_TEXT_START gspF3DEX3_ALIGHT_fifoTextStart
 #define UCODE_TEXT_END gspF3DEX3_ALIGHT_fifoTextEnd
