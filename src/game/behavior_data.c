@@ -6966,3 +6966,11 @@ const BehaviorScript bhvCCKBubble[] = {
         CALL_NATIVE(bhv_cck_bubble_loop),
     END_LOOP(),
 };
+
+extern void bhv_ccs_lock_loop();
+const BehaviorScript bhvCCSLock[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ccs_lock_loop),
+    END_LOOP(),
+};

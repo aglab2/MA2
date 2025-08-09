@@ -514,6 +514,7 @@ void bhv_cce_spawn_block_init()
 extern const Collision cce_block_collision[];
 extern const Collision ccr_block_collision[];
 extern const Collision cck_block_collision[];
+extern const Collision ccs_block_collision[];
 void bhv_cce_block_init()
 {
     if (gCurrLevelNum == LEVEL_CCE)
@@ -522,6 +523,8 @@ void bhv_cce_block_init()
         obj_set_collision_data(o, ccr_block_collision);
     if (gCurrLevelNum == LEVEL_CCK)
         obj_set_collision_data(o, cck_block_collision);
+    if (gCurrLevelNum == LEVEL_CCS)
+        obj_set_collision_data(o, ccs_block_collision);
 }
 
 void bhv_cce_block_loop()
@@ -994,4 +997,27 @@ void bhv_cck_doors_loop()
 {
     u8* ptr = (u8*) segmented_to_virtual(mat_cck_dl_LAZER_sa2mdl_0_f3d);
     ptr[10*8 + 7] = gTimeFrozen ? 0 : 180;
+}
+
+void bhv_ccs_lock_loop()
+{
+    u8* ptr = (u8*) segmented_to_virtual(mat_cck_dl_LAZER_sa2mdl_0_f3d);
+    ptr[10*8 + 7] = gTimeFrozen ? 0 : 180;
+
+    if (gTimeFrozen)
+        return;
+
+    f32 ydiff = gMarioStates->pos[1] - o->oPosY;
+    if (ydiff < -10.f || ydiff > 1000.f)
+        return;
+
+    f32 dx = gMarioStates->pos[0];
+    if (absf(dx) > 300.f)
+        return;
+
+    f32 dz = gMarioStates->pos[2] - o->oPosZ;
+    if (absf(dz) > 100.f)
+        return;
+
+    gMarioStates->pos[2] = o->oPosZ + (dz < 0 ? -100.f : 100.f);
 }

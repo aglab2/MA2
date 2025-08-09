@@ -14,10 +14,10 @@ extern u8 gIsGravityFlipped;
 // Vanilla value is 78.
 #define FIND_FLOOR_BUFFER 78
 
-#define CELL_HEIGHT_LIMIT_VALUE      22000
+#define CELL_HEIGHT_LIMIT_VALUE      27000
 #define FLOOR_LOWER_LIMIT_VALUE      -27000
 
-#define CELL_HEIGHT_LIMIT_VALUE_F      22000.f
+#define CELL_HEIGHT_LIMIT_VALUE_F      27000.f
 #define FLOOR_LOWER_LIMIT_VALUE_F      -27000.f
 
 #if 1
