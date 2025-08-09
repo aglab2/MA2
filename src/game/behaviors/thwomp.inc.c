@@ -14,7 +14,7 @@ static void grindel_thwomp_act_on_ground(void) {
 }
 
 void grindel_thwomp_act_falling_impl(int normal) {
-    o->oVelY += normal ? -10.f : -4.0f;
+    o->oVelY += normal ? -4.0f : -10.f;
     o->oPosY += o->oVelY;
     if (o->oPosY < o->oHomeY) {
         o->oPosY = o->oHomeY;
