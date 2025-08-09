@@ -33,7 +33,7 @@ const LevelScript level_ccs_entry[] = {
 
 	AREA(1, ccs_area_1, 0, 0, 0),
 		MARIO_POS(0x01, 0, -3, -4310, 9568),
-		// OBJECT(MODEL_NONE, -3, -4310, 9568, 0, 0, 0, (0xa << 16), bhvWarp),
+		OBJECT(MODEL_NONE, -3, -4310, 9568, 0, 0, 0, (0xa << 16), bhvInstantActiveWarp),
 		TERRAIN(ccs_area_1_collision),
 		MACRO_OBJECTS(ccs_area_1_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),

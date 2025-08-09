@@ -61,9 +61,64 @@ const GeoLayout ccs_area_1_geo[] = {
 			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-5100.0, (s16)-4800.0, (s16)-17800.0, ccs_dl_013_object_01A81254_mesh_layer_5),
 			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-5100.0, (s16)-4800.0, (s16)-17800.0, ccs_dl_014_object_01A81124_mesh_layer_5),
 		GEO_CLOSE_NODE(),
-		GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)0.0, (s16)20000.0),
+		GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)0.002384185791015625, (s16)20000.0),
 		GEO_OPEN_NODE(),
 			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-5100.0, (s16)-5300.0, (s16)-24250.0, ccs_dl_001_object_01ACDD94_mesh_layer_5),
+		GEO_CLOSE_NODE(),
+		GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)0.002384185791015625, (s16)20000.0),
+		GEO_OPEN_NODE(),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-5100.0, (s16)-9100.0, (s16)-36400.0, ccs_dl_001_object_01AE1714_mesh_layer_5),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-5100.0, (s16)-8100.0, (s16)-38400.0, ccs_dl_002_object_01AE1644_mesh_layer_5),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)-5100.0, (s16)-8100.0, (s16)-38400.0, ccs_dl_003_object_01AE1514_mesh_layer_1),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-5100.0, (s16)-10100.0, (s16)-34900.0, ccs_dl_004_object_01AE1404_mesh_layer_5),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-5100.0, (s16)-11100.0, (s16)-32400.0, ccs_dl_005_object_01AE1334_mesh_layer_5),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-5100.0, (s16)-12100.0, (s16)-30900.0, ccs_dl_006_object_01AE1264_mesh_layer_5),
+			GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_TRANSPARENT, (s16)-5100.0, (s16)-9100.0, (s16)-40400.0, (s16)-0.0, (s16)-179.999991348578, (s16)0.0, ccs_dl_007_object_01AE1194_mesh_layer_5),
+			GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_TRANSPARENT, (s16)-5100.0, (s16)-10100.0, (s16)-41900.0, (s16)-0.0, (s16)-179.999991348578, (s16)0.0, ccs_dl_008_object_01AE10C4_mesh_layer_5),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-5100.0, (s16)-11100.0, (s16)-33400.0, ccs_dl_009_object_01AE0FF4_mesh_layer_5),
+		GEO_CLOSE_NODE(),
+		GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)0.002384185791015625, (s16)20000.0),
+		GEO_OPEN_NODE(),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-5100.0, (s16)-16500.0, (s16)-44000.0, ccs_dl_001_object_01AE18BC_mesh_layer_5),
+		GEO_CLOSE_NODE(),
+		GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)0.002384185791015625, (s16)20000.0),
+		GEO_OPEN_NODE(),
+			GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_TRANSPARENT, (s16)-8100.0, (s16)-24200.0, (s16)-63000.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0, ccs_dl_001_object_01B357FC_mesh_layer_5),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-5100.0, (s16)-20300.0, (s16)-57000.0, ccs_dl_002_object_01B355A4_mesh_layer_5),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-5100.0, (s16)-16500.0, (s16)-52000.0, ccs_dl_003_object_01B3539C_mesh_layer_5),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-5100.0, (s16)-17300.0, (s16)-54000.0, ccs_dl_004_object_01B35144_mesh_layer_5),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-5100.0, (s16)-23300.0, (s16)-60000.0, ccs_dl_005_object_01B34F3C_mesh_layer_5),
+		GEO_CLOSE_NODE(),
+		GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)0.002384185791015625, (s16)20000.0),
+		GEO_OPEN_NODE(),
+			GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_TRANSPARENT, (s16)900.0, (s16)-40800.0, (s16)-79000.0, (s16)-0.0, (s16)-90.00000933466734, (s16)0.0, ccs_dl_001_object_01B37C64_mesh_layer_5),
+			GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_TRANSPARENT, (s16)2900.0, (s16)-40000.0, (s16)-79000.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0, ccs_dl_002_object_01B378AC_mesh_layer_5),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)5900.0, (s16)-39100.0, (s16)-76000.0, ccs_dl_003_object_01B37654_mesh_layer_5),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)5900.0, (s16)-38300.0, (s16)-74000.0, ccs_dl_004_object_01B3729C_mesh_layer_5),
+			GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_TRANSPARENT, (s16)2900.0, (s16)-37400.0, (s16)-71000.0, (s16)-0.0, (s16)-90.00000933466734, (s16)0.0, ccs_dl_005_object_01B37044_mesh_layer_5),
+			GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_TRANSPARENT, (s16)-100.0, (s16)-34400.0, (s16)-71000.0, (s16)-0.0, (s16)-90.00000933466734, (s16)0.0, ccs_dl_006_object_01B36C8C_mesh_layer_5),
+			GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_TRANSPARENT, (s16)-3100.0, (s16)-31400.0, (s16)-71000.0, (s16)-0.0, (s16)-90.00000933466734, (s16)0.0, ccs_dl_007_object_01B36A84_mesh_layer_5),
+			GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_TRANSPARENT, (s16)-6100.0, (s16)-28400.0, (s16)-71000.0, (s16)-0.0, (s16)-90.00000933466734, (s16)0.0, ccs_dl_008_object_01B3687C_mesh_layer_5),
+			GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_TRANSPARENT, (s16)-8100.0, (s16)-27600.0, (s16)-71000.0, (s16)-0.0, (s16)-90.00000933466734, (s16)0.0, ccs_dl_009_object_01B36674_mesh_layer_5),
+			GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_TRANSPARENT, (s16)-13100.0, (s16)-26700.0, (s16)-68000.0, (s16)-0.0, (s16)-179.999991348578, (s16)0.0, ccs_dl_010_object_01B3641C_mesh_layer_5),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-13100.0, (s16)-25900.0, (s16)-66000.0, ccs_dl_011_object_01B36064_mesh_layer_5),
+			GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_TRANSPARENT, (s16)-10100.0, (s16)-25000.0, (s16)-63000.0, (s16)-0.0, (s16)-90.00000933466734, (s16)0.0, ccs_dl_012_object_01B35E0C_mesh_layer_5),
+			GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_TRANSPARENT, (s16)-10100.0, (s16)-27600.0, (s16)-71000.0, (s16)-0.0, (s16)-90.00000933466734, (s16)0.0, ccs_dl_013_object_01B35A54_mesh_layer_5),
+		GEO_CLOSE_NODE(),
+		GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)0.002384185791015625, (s16)20000.0),
+		GEO_OPEN_NODE(),
+			GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_TRANSPARENT, (s16)-9100.0, (s16)-52400.0, (s16)-96000.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0, ccs_dl_001_object_01B38F4C_mesh_layer_5),
+			GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_TRANSPARENT, (s16)-7100.0, (s16)-52400.0, (s16)-96000.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0, ccs_dl_002_object_01B38CF4_mesh_layer_5),
+			GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_TRANSPARENT, (s16)-5100.0, (s16)-52400.0, (s16)-96000.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0, ccs_dl_003_object_01B38AE4_mesh_layer_5),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-2100.0, (s16)-51500.0, (s16)-93000.0, ccs_dl_004_object_01B388D4_mesh_layer_5),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-2100.0, (s16)-48500.0, (s16)-90000.0, ccs_dl_005_object_01B3851C_mesh_layer_5),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-2100.0, (s16)-45500.0, (s16)-87000.0, ccs_dl_006_object_01B38314_mesh_layer_5),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-2100.0, (s16)-42500.0, (s16)-84000.0, ccs_dl_007_object_01B3810C_mesh_layer_5),
+			GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-2100.0, (s16)-41700.0, (s16)-82000.0, ccs_dl_008_object_01B37F04_mesh_layer_5),
+		GEO_CLOSE_NODE(),
+		GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)0.002384185791015625, (s16)20000.0),
+		GEO_OPEN_NODE(),
+			GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, (s16)-24900.0, (s16)-57650.0, (s16)-96000.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0, ccs_dl_001_object_01B39954_mesh_layer_1),
 		GEO_CLOSE_NODE(),
 		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, (s16)2900.0, (s16)-37400.0, (s16)-51000.0, (s16)-0.0, (s16)-90.00000933466734, (s16)0.0, ccs_dl_0008_object_0132F07C_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)-5100.0, (s16)-23300.0, (s16)-40000.00244140625, ccs_dl_0008_object_0132F07C_mesh_layer_1),
@@ -246,6 +301,10 @@ const GeoLayout ccs_area_1_geo[] = {
 		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)4200.0, (s16)-0.0, (s16)-179.999991348578, (s16)0.0, ccs_dl_0167_object_0132E0BC_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)-5100.0, (s16)-4750.0, (s16)-8100.0, ccs_dl_0171_object_012F27AC_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)0.0, (s16)-4800.0, (s16)4200.0, ccs_dl_0165_object_0132E0F4_mesh_layer_5),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)-5100.0, (s16)-5300.0006103515625, (s16)-4249.998779296875, ccs_dl_object_01ACA4BC_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)-5100.0, (s16)-5300.0006103515625, (s16)-4249.998779296875, ccs_dl_object_01ACA8B4_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)0.0, (s16)-4451.0357666015625, (s16)2200.0, ccs_dl_object_8DBE43E22ED5B6F6D41_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)0.0, (s16)-4451.0357666015625, (s16)2200.0, ccs_dl_object_8DBE43E22ED60B3C887_mesh_layer_5),
 		GEO_SWITCH_CASE(8, geo_ccs_switch),
 		GEO_OPEN_NODE(),
 			GEO_BRANCH(1, ccs_dl_sUn0Tuuro0_1_geo),
@@ -1817,7 +1876,7 @@ const GeoLayout ccs_area_1_geo[] = {
 			GEO_BRANCH(1, ccs_dl_sUn2Beam_8_geo),
 			GEO_BRANCH(1, ccs_dl_sUn2Beam_9_geo),
 		GEO_CLOSE_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_0_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_0_mesh_layer_5),
 		GEO_SWITCH_CASE(79, geo_ccs_switch),
 		GEO_OPEN_NODE(),
 			GEO_BRANCH(1, ccs_dl_sUn2Beam_1_001_geo),
@@ -1899,7 +1958,7 @@ const GeoLayout ccs_area_1_geo[] = {
 			GEO_BRANCH(1, ccs_dl_sUn2Beam_8_001_geo),
 			GEO_BRANCH(1, ccs_dl_sUn2Beam_9_001_geo),
 		GEO_CLOSE_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_0_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_0_mesh_layer_5),
 		GEO_SWITCH_CASE(79, geo_ccs_switch),
 		GEO_OPEN_NODE(),
 			GEO_BRANCH(1, ccs_dl_sUn2Beam_1_002_geo),
@@ -1981,7 +2040,7 @@ const GeoLayout ccs_area_1_geo[] = {
 			GEO_BRANCH(1, ccs_dl_sUn2Beam_8_002_geo),
 			GEO_BRANCH(1, ccs_dl_sUn2Beam_9_002_geo),
 		GEO_CLOSE_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_0_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_0_mesh_layer_5),
 		GEO_SWITCH_CASE(79, geo_ccs_switch),
 		GEO_OPEN_NODE(),
 			GEO_BRANCH(1, ccs_dl_sUn2Beam_1_003_geo),
@@ -2063,7 +2122,7 @@ const GeoLayout ccs_area_1_geo[] = {
 			GEO_BRANCH(1, ccs_dl_sUn2Beam_8_003_geo),
 			GEO_BRANCH(1, ccs_dl_sUn2Beam_9_003_geo),
 		GEO_CLOSE_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_0_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_0_mesh_layer_5),
 		GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)4400.0, (s16)-4800.0, (s16)2200.0),
 		GEO_OPEN_NODE(),
 			GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Kabe_0_mesh_layer_1),
@@ -12509,2184 +12568,2184 @@ const GeoLayout ccs_dl_sUn1Beam_9_023_geo[] = {
 const GeoLayout ccs_dl_sUn2Beam_1_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_1_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_1_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_10_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_10_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_10_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_11_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_11_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_11_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_12_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_12_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_12_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_13_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_13_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_13_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_14_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_14_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_14_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_15_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_15_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_15_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_16_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_16_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_16_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_17_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_17_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_17_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_18_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_18_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_18_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_19_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_19_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_19_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_2_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_2_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_2_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_20_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_20_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_20_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_21_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_21_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_21_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_22_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_22_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_22_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_23_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_23_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_23_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_24_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_24_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_24_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_25_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_25_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_25_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_26_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_26_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_26_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_27_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_27_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_27_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_28_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_28_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_28_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_29_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_29_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_29_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_3_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_3_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_3_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_30_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_30_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_30_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_31_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_31_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_31_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_32_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_32_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_32_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_33_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_33_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_33_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_34_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_34_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_34_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_35_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_35_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_35_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_36_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_36_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_36_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_37_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_37_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_37_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_38_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_38_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_38_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_39_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_39_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_39_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_4_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_4_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_4_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_40_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_40_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_40_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_41_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_41_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_41_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_42_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_42_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_42_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_43_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_43_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_43_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_44_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_44_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_44_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_45_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_45_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_45_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_46_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_46_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_46_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_47_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_47_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_47_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_48_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_48_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_48_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_49_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_49_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_49_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_5_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_5_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_5_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_50_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_50_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_50_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_51_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_51_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_51_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_52_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_52_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_52_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_53_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_53_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_53_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_54_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_54_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_54_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_55_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_55_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_55_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_56_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_56_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_56_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_57_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_57_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_57_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_58_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_58_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_58_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_59_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_59_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_59_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_6_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_6_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_6_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_60_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_60_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_60_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_61_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_61_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_61_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_62_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_62_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_62_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_63_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_63_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_63_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_64_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_64_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_64_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_65_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_65_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_65_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_66_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_66_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_66_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_67_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_67_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_67_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_68_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_68_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_68_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_69_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_69_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_69_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_7_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_7_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_7_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_70_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_70_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_70_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_71_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_71_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_71_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_72_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_72_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_72_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_73_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_73_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_73_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_74_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_74_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_74_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_75_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_75_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_75_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_76_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_76_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_76_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_77_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_77_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_77_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_78_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_78_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_78_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_8_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_8_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_8_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_9_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_9_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_9_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_1_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_1_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_1_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_10_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_10_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_10_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_11_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_11_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_11_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_12_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_12_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_12_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_13_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_13_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_13_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_14_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_14_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_14_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_15_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_15_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_15_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_16_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_16_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_16_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_17_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_17_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_17_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_18_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_18_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_18_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_19_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_19_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_19_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_2_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_2_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_2_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_20_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_20_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_20_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_21_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_21_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_21_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_22_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_22_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_22_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_23_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_23_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_23_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_24_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_24_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_24_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_25_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_25_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_25_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_26_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_26_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_26_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_27_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_27_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_27_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_28_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_28_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_28_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_29_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_29_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_29_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_3_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_3_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_3_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_30_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_30_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_30_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_31_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_31_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_31_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_32_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_32_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_32_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_33_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_33_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_33_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_34_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_34_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_34_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_35_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_35_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_35_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_36_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_36_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_36_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_37_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_37_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_37_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_38_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_38_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_38_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_39_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_39_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_39_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_4_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_4_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_4_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_40_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_40_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_40_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_41_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_41_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_41_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_42_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_42_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_42_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_43_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_43_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_43_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_44_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_44_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_44_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_45_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_45_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_45_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_46_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_46_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_46_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_47_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_47_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_47_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_48_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_48_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_48_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_49_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_49_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_49_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_5_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_5_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_5_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_50_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_50_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_50_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_51_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_51_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_51_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_52_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_52_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_52_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_53_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_53_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_53_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_54_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_54_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_54_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_55_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_55_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_55_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_56_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_56_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_56_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_57_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_57_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_57_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_58_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_58_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_58_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_59_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_59_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_59_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_6_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_6_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_6_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_60_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_60_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_60_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_61_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_61_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_61_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_62_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_62_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_62_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_63_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_63_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_63_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_64_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_64_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_64_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_65_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_65_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_65_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_66_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_66_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_66_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_67_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_67_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_67_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_68_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_68_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_68_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_69_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_69_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_69_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_7_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_7_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_7_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_70_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_70_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_70_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_71_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_71_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_71_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_72_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_72_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_72_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_73_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_73_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_73_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_74_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_74_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_74_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_75_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_75_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_75_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_76_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_76_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_76_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_77_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_77_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_77_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_78_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_78_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_78_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_8_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_8_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_8_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_9_001_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)6.830189170012751e-06, (s16)90.00000933466734, (s16)-6.83018998423475e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_9_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_9_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_1_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_1_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_1_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_10_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_10_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_10_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_11_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_11_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_11_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_12_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_12_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_12_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_13_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_13_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_13_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_14_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_14_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_14_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_15_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_15_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_15_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_16_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_16_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_16_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_17_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_17_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_17_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_18_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_18_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_18_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_19_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_19_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_19_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_2_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_2_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_2_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_20_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_20_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_20_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_21_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_21_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_21_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_22_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_22_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_22_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_23_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_23_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_23_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_24_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_24_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_24_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_25_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_25_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_25_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_26_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_26_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_26_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_27_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_27_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_27_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_28_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_28_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_28_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_29_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_29_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_29_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_3_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_3_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_3_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_30_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_30_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_30_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_31_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_31_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_31_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_32_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_32_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_32_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_33_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_33_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_33_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_34_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_34_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_34_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_35_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_35_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_35_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_36_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_36_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_36_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_37_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_37_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_37_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_38_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_38_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_38_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_39_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_39_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_39_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_4_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_4_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_4_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_40_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_40_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_40_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_41_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_41_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_41_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_42_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_42_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_42_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_43_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_43_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_43_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_44_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_44_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_44_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_45_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_45_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_45_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_46_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_46_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_46_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_47_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_47_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_47_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_48_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_48_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_48_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_49_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_49_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_49_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_5_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_5_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_5_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_50_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_50_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_50_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_51_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_51_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_51_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_52_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_52_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_52_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_53_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_53_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_53_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_54_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_54_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_54_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_55_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_55_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_55_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_56_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_56_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_56_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_57_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_57_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_57_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_58_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_58_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_58_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_59_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_59_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_59_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_6_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_6_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_6_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_60_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_60_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_60_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_61_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_61_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_61_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_62_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_62_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_62_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_63_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_63_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_63_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_64_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_64_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_64_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_65_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_65_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_65_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_66_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_66_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_66_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_67_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_67_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_67_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_68_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_68_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_68_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_69_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_69_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_69_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_7_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_7_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_7_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_70_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_70_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_70_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_71_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_71_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_71_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_72_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_72_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_72_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_73_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_73_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_73_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_74_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_74_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_74_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_75_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_75_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_75_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_76_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_76_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_76_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_77_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_77_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_77_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_78_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_78_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_78_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_8_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_8_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_8_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_9_002_geo[] = {
 	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-0.0, (s16)-179.99997768819966, (s16)0.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_9_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_9_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_1_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_1_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_1_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_10_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_10_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_10_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_11_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_11_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_11_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_12_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_12_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_12_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_13_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_13_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_13_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_14_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_14_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_14_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_15_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_15_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_15_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_16_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_16_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_16_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_17_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_17_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_17_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_18_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_18_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_18_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_19_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_19_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_19_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_2_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_2_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_2_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_20_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_20_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_20_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_21_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_21_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_21_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_22_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_22_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_22_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_23_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_23_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_23_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_24_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_24_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_24_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_25_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_25_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_25_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_26_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_26_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_26_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_27_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_27_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_27_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_28_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_28_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_28_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_29_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_29_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_29_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_3_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_3_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_3_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_30_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_30_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_30_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_31_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_31_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_31_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_32_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_32_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_32_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_33_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_33_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_33_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_34_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_34_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_34_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_35_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_35_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_35_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_36_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_36_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_36_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_37_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_37_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_37_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_38_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_38_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_38_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_39_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_39_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_39_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_4_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_4_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_4_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_40_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_40_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_40_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_41_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_41_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_41_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_42_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_42_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_42_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_43_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_43_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_43_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_44_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_44_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_44_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_45_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_45_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_45_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_46_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_46_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_46_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_47_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_47_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_47_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_48_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_48_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_48_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_49_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_49_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_49_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_5_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_5_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_5_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_50_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_50_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_50_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_51_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_51_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_51_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_52_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_52_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_52_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_53_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_53_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_53_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_54_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_54_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_54_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_55_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_55_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_55_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_56_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_56_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_56_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_57_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_57_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_57_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_58_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_58_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_58_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_59_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_59_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_59_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_6_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_6_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_6_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_60_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_60_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_60_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_61_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_61_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_61_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_62_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_62_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_62_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_63_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_63_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_63_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_64_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_64_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_64_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_65_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_65_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_65_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_66_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_66_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_66_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_67_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_67_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_67_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_68_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_68_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_68_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_69_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_69_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_69_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_7_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_7_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_7_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_70_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_70_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_70_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_71_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_71_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_71_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_72_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_72_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_72_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_73_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_73_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_73_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_74_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_74_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_74_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_75_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_75_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_75_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_76_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_76_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_76_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_77_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_77_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_77_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_78_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_78_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_78_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_8_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_8_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_8_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn2Beam_9_003_geo[] = {
-	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)0.0, (s16)-90.00000933466734, (s16)0.0),
+	GEO_TRANSLATE_ROTATE(LAYER_OPAQUE, (s16)0.0, (s16)-4800.0, (s16)2200.0, (s16)-6.830190798456748e-06, (s16)-89.99996835353231, (s16)6.830187541568754e-06),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn2Beam_9_001_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn2Beam_9_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
@@ -14700,70 +14759,70 @@ const GeoLayout ccs_dl_sUn3Beam_1_geo[] = {
 const GeoLayout ccs_dl_sUn3Beam_10_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_10_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_10_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_11_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_11_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_11_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_12_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_12_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_12_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_13_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_13_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_13_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_14_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_14_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_14_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_15_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_15_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_15_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_16_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_16_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_16_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_17_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_17_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_17_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_18_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_18_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_18_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_19_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_19_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_19_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
@@ -14777,469 +14836,469 @@ const GeoLayout ccs_dl_sUn3Beam_2_geo[] = {
 const GeoLayout ccs_dl_sUn3Beam_20_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_20_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_20_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_21_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_21_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_21_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_22_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_22_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_22_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_23_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_23_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_23_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_24_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_24_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_24_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_25_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_25_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_25_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_26_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_26_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_26_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_27_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_27_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_27_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_28_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_28_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_28_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_29_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_29_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_29_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_3_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_3_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_3_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_30_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_30_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_30_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_31_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_31_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_31_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_32_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_32_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_32_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_33_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_33_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_33_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_34_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_34_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_34_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_35_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_35_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_35_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_36_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_36_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_36_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_37_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_37_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_37_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_38_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_38_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_38_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_39_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_39_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_39_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_4_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_4_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_4_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_40_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_40_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_40_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_41_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_41_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_41_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_42_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_42_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_42_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_43_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_43_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_43_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_44_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_44_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_44_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_45_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_45_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_45_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_46_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_46_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_46_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_47_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_47_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_47_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_48_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_48_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_48_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_49_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_49_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_49_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_5_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_5_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_5_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_50_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_50_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_50_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_51_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_51_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_51_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_52_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_52_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_52_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_53_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_53_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_53_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_54_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_54_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_54_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_55_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_55_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_55_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_56_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_56_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_56_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_57_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_57_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_57_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_58_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_58_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_58_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_59_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_59_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_59_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_6_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_6_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_6_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_60_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_60_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_60_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_61_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_61_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_61_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_62_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_62_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_62_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_63_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_63_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_63_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_64_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_64_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_64_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_65_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_65_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_65_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_66_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_66_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_66_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_67_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_67_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_67_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_68_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_68_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_68_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_69_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_69_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_69_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_7_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_7_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_7_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_70_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_70_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_70_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_71_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_71_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_71_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_72_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_72_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_72_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_73_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_73_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_73_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_74_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_74_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_74_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_75_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_75_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_75_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_76_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_76_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_76_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_77_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_77_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_77_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_78_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_78_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_78_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_79_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_79_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_79_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_8_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_8_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_8_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
 const GeoLayout ccs_dl_sUn3Beam_9_geo[] = {
 	GEO_TRANSLATE_NODE(LAYER_OPAQUE, (s16)-5100.0, (s16)-4800.0, (s16)2200.0),
 	GEO_OPEN_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, ccs_dl_sUn3Beam_9_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ccs_dl_sUn3Beam_9_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
