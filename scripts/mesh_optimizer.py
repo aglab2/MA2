@@ -1179,8 +1179,8 @@ class ModelMeshEntry(TriKit):
 
             vtx_values = [ Vtx(vtx) for vtx in self._vertices ]
 
-        np_vtx_poss = np.array([vtx.pos.as_list() for vtx in vtx_values])
-        if not have_tile:
+        if not have_tile and vtx_values and len(self._triangles) > 5:
+            np_vtx_poss = np.array([vtx.pos.as_list() for vtx in vtx_values])
             try:
                 np_vtx_poss_hull_indices = list(ConvexHull(np_vtx_poss).vertices)
             except:
@@ -1222,6 +1222,7 @@ class ModelMeshEntry(TriKit):
                     precandidate_vtxs = set()
                     precandidate_tris = set()
                     for i in preload_vertices:
+                        assert i not in loaded_vertices, "preload vertices must not contain duplicates"
                         loaded_vertices[i] = len(loaded_vertices)
                     for tri in self._triangles:
                         loaded_tri = [ loaded_vertices.get(vtx) for vtx in tri ]
@@ -1231,12 +1232,12 @@ class ModelMeshEntry(TriKit):
                         else:
                             want = False
                             for i, vtx in enumerate(loaded_tri):
-                                if vtx:
+                                if vtx is not None:
                                     want = True
                                     break
                             if want:
                                 for i, vtx in enumerate(loaded_tri):
-                                    if not vtx:
+                                    if vtx is None:
                                         precandidate_vtxs.add(tri[i])
                     for cand_vtx in precandidate_vtxs:
                         candidate_vtx_tris = total_pricer.vtx_to_tris(cand_vtx)
@@ -1247,14 +1248,17 @@ class ModelMeshEntry(TriKit):
                 # TODO: When 2nd condition triggers, it usually means that the pool of vertices has depleted and it is better to stop 
                 while not total_pricer.completed() and len(loaded_vertices) < 56:
                     if precandidate_vtxs:
+                        log_debug(f"precandidate_vtxs: {precandidate_vtxs}, precandidate_tris: {precandidate_tris}")
                         candidate_vtxs = precandidate_vtxs
                         candidate_tris = precandidate_tris
                         candidate_to_load_pricer = UsagePricer(candidate_tris, loaded_vertices, rendered_triangles, set(loaded_vertices.keys()))
                         highest_usage_vtx = candidate_to_load_pricer.highest_usage()
+                        assert highest_usage_vtx not in loaded_vertices, "highest_usage_vtx must not be loaded"
                         precandidate_tris = None
                         precandidate_vtxs = None
                     else:
                         highest_usage_vtx = total_pricer.highest_usage()
+                        assert highest_usage_vtx not in loaded_vertices, "highest_usage_vtx must not be loaded"
                         candidate_vtxs = set()
                         candidate_tris = set()
 
@@ -1293,6 +1297,7 @@ class ModelMeshEntry(TriKit):
                             break
 
                         highest_usage_vtx = candidate_to_load_pricer.highest_usage()
+                        assert highest_usage_vtx not in loaded_vertices, "highest_usage_vtx must not be loaded"
                         loaded_vertices[highest_usage_vtx] = len(loaded_vertices)
 
                 render_passes.append(self._make_render_pass(rendered_triangles, loaded_vertices))
