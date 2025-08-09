@@ -19,3 +19,8 @@
 #include "levels/ccs/visual/header_lvlopt.inc.h"
 #include "levels/ccs/visual/geo_lvl.inc.c"
 #endif
+
+#include "levels/ccs/ccs_block/geo.inc.c"
+#include "levels/ccs/ccs_shutter_left/geo.inc.c"
+#include "levels/ccs/ccs_shutter_right/geo.inc.c"
+#include "levels/ccs/ccs_switch/geo.inc.c"
