@@ -6153,6 +6153,9 @@ struct CameraTrigger sCamCck[] = {
 struct CameraTrigger sCamCcs[] = {
 	NULL_TRIGGER
 };
+struct CameraTrigger sCamLb[] = {
+	NULL_TRIGGER
+};
 struct CameraTrigger *sCameraTriggers[LEVEL_COUNT + 1] = {
     NULL,
     #include "levels/level_defines.h"
@@ -10450,6 +10453,7 @@ u8 sZoomOutAreaMasks[] = {
 	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), 
 	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), 
 	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), 
+	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 0, 0, 0, 0), 
 };
 
 /*
