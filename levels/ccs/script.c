@@ -27,6 +27,7 @@
 #define bhvGoombaTripletSpawner bhvGoombaTripletSpawnerCC
 #define bhvCCSpawnUp bhvCCSpawn
 #define bhvCoinFormation bhvCoinFormationCC
+#define SEQ_LEVEL_GRASS 0x46
 extern const IWDHeader* iw_descs_ccs[];
 static struct LevelConfig cfg = {
 	.iwds = iw_descs_ccs,
