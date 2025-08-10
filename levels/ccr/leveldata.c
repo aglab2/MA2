@@ -192,7 +192,6 @@ static Vtx ccr_dl_0020_object_013C3394_mesh_layer_1_vtx_0[179] = {
 	{{ {-1200, 219, -300}, 0, {1157, 3466}, {168, 164, 157, 255} }},
 };
 
-
 #include "levels/ccr/visual/header_lvlopt.inc.h"
 #include "levels/ccr/visual/model_lvlopt.inc.c"
 #include "levels/ccr/flipbook.inc.c"

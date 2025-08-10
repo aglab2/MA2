@@ -13,6 +13,7 @@
 #else
 #include "levels/ccs/visual/header_lvlopt.inc.h"
 #include "levels/ccs/visual/model_lvlopt.inc.c"
+#include "levels/ccs/flipbook.inc.c"
 #endif
 
 #include "levels/ccs/ccs_block/collision.inc.c"
