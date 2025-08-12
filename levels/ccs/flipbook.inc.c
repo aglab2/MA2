@@ -84,7 +84,6 @@ static struct FlipbookData flipbooks_xlu[] = {
     { LVL_BATCH_LAYER_TRANSPARENT_CCS_DL_KD_LS_WATER1_001_PAL_RGBA16_1, .tileScrollX=2,  },
     { LVL_BATCH_LAYER_TRANSPARENT_CCS_DL_KD_LS_WATER1_001_PAL_RGBA16_2, .tileScrollX=2,  },
     { LVL_BATCH_LAYER_TRANSPARENT_CCS_DL_KD_LS_WATER1_001_PAL_RGBA16_3, .tileScrollX=2,  },
-    { LVL_BATCH_LAYER_TRANSPARENT_CCS_DL_KD_LS_WATER1_001_PAL_RGBA16_4, .tileScrollX=2,  },
 
     { LVL_BATCH_LAYER_TRANSPARENT_CCS_DL_KD_LK_UN114_RGBA32, .ci4s = ccs_lk_un114_rgba32, .count=15, .frames=2,  },
     { LVL_BATCH_LAYER_TRANSPARENT_CCS_DL_KD_LK_UN114_RGBA32_1, .ci4s = ccs_lk_un114_rgba32, .count=15, .frames=2,  },

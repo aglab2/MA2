@@ -70,5 +70,6 @@
     "43_cc1": [ "0C_extended_bank" ],
     "44_cc2": [ "0C_extended_bank" ],
     "45_b2a": [ "0C_extended_bank" ],
-    "46_cc3": [ "0C_extended_bank" ]
+    "46_cc3": [ "0C_extended_bank" ],
+    "47_fsow": [ "0C_extended_bank" ]
 }

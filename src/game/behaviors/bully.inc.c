@@ -169,12 +169,6 @@ void bully_step(void) {
     bully_backup_check(collisionFlags);
     bully_play_stomping_sound();
     obj_check_floor_death(collisionFlags, sObjFloor);
-
-    if (o->oBullySubtype & BULLY_STYPE_CHILL) {
-        if (o->oPosY < 1030.0f) {
-            o->oAction = OBJ_ACT_LAVA_DEATH;
-        }
-    }
 }
 
 void bully_spawn_coin(void) {
