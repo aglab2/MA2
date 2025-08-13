@@ -57,7 +57,7 @@ static void fly_guy_act_idle(void) {
  * Turn toward mario or home, and when positioned nicely, either lunge or shoot
  * fire. If mario is far away, stop and return to the idle action.
  */
-static void fly_guy_act_approach_mario(void) {
+static void fly_guy_act_approach_mario(int mode) {
     // If we are >2000 units from home or Mario is <2000 units from us
     if (o->oDistanceToMario >= 25000.0f || o->oDistanceToMario < 2000.0f) {
         obj_forward_vel_approach(10.0f, 0.5f);
@@ -68,12 +68,16 @@ static void fly_guy_act_approach_mario(void) {
 
         // If facing toward mario and we are either near mario laterally or
         // far above him
+        if (mode == 1)
+            return;
+
+        f32 dist = mode ? 800.f : 400.f;
         if (abs_angle_diff(o->oAngleToMario, o->oFaceAngleYaw) < 0x2000
-            && (o->oPosY - gMarioObject->oPosY > 400.0f || o->oDistanceToMario < 400.0f)) {
+            && (o->oPosY - gMarioObject->oPosY > dist || o->oDistanceToMario < dist)) {
             // Either shoot fire or lunge
-            if (o->oBehParams2ndByte != FLY_GUY_BP_LUNGES && random_u16() % 2) {
+            if (mode || (o->oBehParams2ndByte != FLY_GUY_BP_LUNGES && random_u16() % 2)) {
                 o->oAction = FLY_GUY_ACT_SHOOT_FIRE;
-                o->oFlyGuyScaleVel = 0.06f;
+                o->oFlyGuyScaleVel = mode ? 0.12f : 0.06f;
             } else {
                 o->oAction = FLY_GUY_ACT_LUNGE;
                 o->oFlyGuyLungeTargetPitch = obj_turn_pitch_toward_mario(-200.0f, 0);
@@ -176,7 +180,7 @@ static void fly_guy_act_shoot_fire(void) {
 /**
  * Update function for fly guy.
  */
-void bhv_fly_guy_update(void) {
+void bhv_fly_guy_update_impl(int mode) {
     // PARTIAL_UPDATE (appears in non-roomed levels)
 
     if (!(o->activeFlags & ACTIVE_FLAG_IN_DIFFERENT_ROOM)) {
@@ -201,7 +205,7 @@ void bhv_fly_guy_update(void) {
                 fly_guy_act_idle();
                 break;
             case FLY_GUY_ACT_APPROACH_MARIO:
-                fly_guy_act_approach_mario();
+                fly_guy_act_approach_mario(mode);
                 break;
             case FLY_GUY_ACT_LUNGE:
                 fly_guy_act_lunge();
@@ -214,4 +218,8 @@ void bhv_fly_guy_update(void) {
         cur_obj_move_standard(78);
         obj_check_attacks(&sFlyGuyHitbox, o->oAction);
     }
+}
+
+void bhv_fly_guy_update(void) {
+    return bhv_fly_guy_update_impl(0);
 }

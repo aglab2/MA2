@@ -911,6 +911,7 @@ void bhv_cck_bubble_loop()
     o->oPosZ += o->oVelZ;
 }
 
+extern struct Object *cur_obj_find_object_with_behavior_and_bparam2(const BehaviorScript *behavior, int val);
 void bhv_cck_gate_init()
 {
     o->parentObj = cur_obj_find_object_with_behavior_and_bparam2(bhvFloorSwitchGrills, o->oBehParams2ndByte);
@@ -985,11 +986,11 @@ void bhv_cck_doors_init()
     o->oObjF4 = spawn_object(o, MODEL_CCK_DOOR_L, bhvStaticObject);
     o->oObjF4->oPosY += 250.f;
     o->oObjF4->oPosZ += 100.f;
-    aglabGlobalScratch[0] = o->oObjF4;
+    *(struct Object**)aglabGlobalScratch[0] = o->oObjF4;
     o->oObjF8 = spawn_object(o, MODEL_CCK_DOOR_R, bhvStaticObject);
     o->oObjF8->oPosY += 250.f;
     o->oObjF8->oPosZ += 100.f;
-    aglabGlobalScratch[1] = o->oObjF8;
+    *(struct Object**)aglabGlobalScratch[1] = o->oObjF8;
 }
 
 extern Gfx mat_cck_dl_LAZER_sa2mdl_0_f3d[];
@@ -1020,4 +1021,51 @@ void bhv_ccs_lock_loop()
         return;
 
     gMarioStates->pos[2] = o->oPosZ + (dz < 0 ? -100.f : 100.f);
+}
+
+extern void bhv_bully_loop();
+void bhv_bully_loop_cc()
+{
+    CC_FREEZE();
+    bhv_bully_loop();
+    o->oTimer++;
+    bhv_bully_loop();
+}
+
+extern void treat_far_home_as_mario(f32 threshold);
+extern void enemy_lakitu_act_uninitialized();
+extern void enemy_lakitu_act_main(int buff);
+void bhv_enemy_lakitu_update_cc()
+{
+    treat_far_home_as_mario(2000.0f);
+
+    CC_FREEZE();
+    switch (o->oAction) {
+        case ENEMY_LAKITU_ACT_UNINITIALIZED:
+            enemy_lakitu_act_uninitialized();
+            break;
+        case ENEMY_LAKITU_ACT_MAIN:
+            enemy_lakitu_act_main(1);
+            break;
+    }
+}
+
+void bhv_spiny_update_cc(void)
+{
+    if (o->oTimer > 60)
+    {
+        o->activeFlags = 0;
+    }
+
+    o->oGraphYOffset = 15.0f;
+    o->oFaceAnglePitch -= 0x2000;
+
+    cur_obj_init_animation_with_sound(0);
+    cur_obj_move_standard(-78);
+}
+
+extern void bhv_fly_guy_update_impl(int mode);
+void bhv_fly_guy_update_cc()
+{
+    return bhv_fly_guy_update_impl(o->oBehParams2ndByte);
 }

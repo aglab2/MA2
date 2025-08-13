@@ -724,7 +724,7 @@ static s32 obj_move_for_one_second(s32 endAction) {
  * attack Mario (e.g. fly guy shooting fire or lunging), especially when combined
  * with partial updates.
  */
-static void treat_far_home_as_mario(f32 threshold) {
+void treat_far_home_as_mario(f32 threshold) {
     Vec3f d;
     vec3f_diff(d, &o->oHomeVec, &o->oPosVec);
 

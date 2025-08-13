@@ -22,11 +22,13 @@
 #define SEQ_LEVEL_GRASS 0x00
 #define bhvFloorSwitchGrills bhvFloorSwitchHardcodedModel
 // TODO: needs to buffed
-#define bhvSmallBully bhvSmallChillBully
+#define bhvSmallBully bhvSmallChillBullyCC
 #define bhvSnufit bhvSnufitCC
 #define bhvGoombaTripletSpawner bhvGoombaTripletSpawnerCC
 #define bhvCCSpawnUp bhvCCSpawn
 #define bhvCoinFormation bhvCoinFormationCC
+#define bhvFlyGuy bhvFlyGuyCC
+#define bhvEnemyLakitu bhvEnemyLakituCC
 #define SEQ_LEVEL_GRASS 0x46
 extern const IWDHeader* iw_descs_ccs[];
 static struct LevelConfig cfg = {
@@ -57,6 +59,34 @@ const LevelScript level_ccs_entry[] = {
 	JUMP_LINK(script_func_global_1), 
 	JUMP_LINK(script_func_global_12), 
 	JUMP_LINK(script_func_global_17), 
+	JUMP_LINK(script_func_global_1), 
+	JUMP_LINK(script_func_global_12), 
+	JUMP_LINK(script_func_global_17), 
+	JUMP_LINK(script_func_global_1), 
+	JUMP_LINK(script_func_global_12), 
+	JUMP_LINK(script_func_global_17), 
+	JUMP_LINK(script_func_global_1), 
+	JUMP_LINK(script_func_global_12), 
+	JUMP_LINK(script_func_global_17), 
+	JUMP_LINK(script_func_global_1), 
+	JUMP_LINK(script_func_global_12), 
+	JUMP_LINK(script_func_global_17), 
+	LOAD_MODEL_FROM_GEO(MODEL_CCS_TIMESTOP, ccs_switch_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CCS_BLOCK, ccs_block_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_LEFT, ccs_shutter_left_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_RIGHT, ccs_shutter_right_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CCS_TIMESTOP, ccs_switch_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CCS_BLOCK, ccs_block_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_LEFT, ccs_shutter_left_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_RIGHT, ccs_shutter_right_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CCS_TIMESTOP, ccs_switch_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CCS_BLOCK, ccs_block_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_LEFT, ccs_shutter_left_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_RIGHT, ccs_shutter_right_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CCS_TIMESTOP, ccs_switch_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CCS_BLOCK, ccs_block_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_LEFT, ccs_shutter_left_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_RIGHT, ccs_shutter_right_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CCS_TIMESTOP, ccs_switch_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CCS_BLOCK, ccs_block_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_LEFT, ccs_shutter_left_geo), 
@@ -113,8 +143,8 @@ const LevelScript level_ccs_entry[] = {
 		OBJECT(MODEL_ENEMY_LAKITU, -3962, -4642, 12438, 0, 0, 0, 0x00000000, bhvEnemyLakitu),
 		OBJECT(MODEL_ENEMY_LAKITU, -5795, -6042, -13425, 0, 0, 0, 0x00000000, bhvEnemyLakitu),
 		OBJECT(MODEL_ENEMY_LAKITU, -4485, -6042, -13425, 0, 0, 0, 0x00000000, bhvEnemyLakitu),
-		OBJECT(MODEL_FLYGUY, 8, -4611, 17967, 0, 0, 0, 0x00000000, bhvFlyGuy),
-		OBJECT(MODEL_FLYGUY, 4014, -4553, 12202, 0, 0, 0, 0x00000000, bhvFlyGuy),
+		OBJECT(MODEL_FLYGUY, 8, -4611, 17967, 0, 0, 0, (1 << 16), bhvFlyGuy),
+		OBJECT(MODEL_FLYGUY, 4014, -4553, 12202, 0, 0, 0, (2 << 16), bhvFlyGuy),
 		OBJECT(MODEL_FLYGUY, 4494, -4553, 11685, 0, 0, 0, 0x00000000, bhvFlyGuy),
 		OBJECT(MODEL_FLYGUY, 4494, -4553, 12688, 0, 0, 0, 0x00000000, bhvFlyGuy),
 		OBJECT(MODEL_GOAL, -14699, -56304, -66012, 0, 0, 0, 0x00000000, bhvGoal),

@@ -23,7 +23,7 @@ static struct ObjectHitbox sEnemyLakituHitbox = {
 /**
  * Wait for mario to approach, then spawn the cloud and become visible.
  */
-static void enemy_lakitu_act_uninitialized(void) {
+void enemy_lakitu_act_uninitialized(void) {
     if (o->oDistanceToMario < 2000.0f) {
         spawn_object_relative_with_scale(CLOUD_BP_LAKITU_CLOUD, 0, 0, 0, 2.0f, o, MODEL_MIST, bhvCloud);
 
@@ -92,22 +92,31 @@ static void enemy_lakitu_update_speed_and_angle(void) {
  * When close enough to mario and facing roughly toward him, spawn a spiny and
  * hold it, then enter the hold spiny sub-action.
  */
-static void enemy_lakitu_sub_act_no_spiny(void) {
+extern const BehaviorScript bhvSpinyCC[];
+static void enemy_lakitu_sub_act_no_spiny(int buff) {
     cur_obj_init_animation_with_sound(1);
 
-    if (o->oEnemyLakituSpinyCooldown != 0) {
-        o->oEnemyLakituSpinyCooldown--;
-    } else if (o->oEnemyLakituNumSpinies < 3 && o->oDistanceToMario < 800.0f
+    if (buff)
+    {
+        if (o->oEnemyLakituSpinyCooldown != 0) {
+            o->oEnemyLakituSpinyCooldown--;
+            return;
+        }
+    }
+
+    if (o->oEnemyLakituNumSpinies < 3 && o->oDistanceToMario < 800.0f
                && abs_angle_diff(o->oAngleToMario, o->oFaceAngleYaw) < 0x4000) {
-        struct Object *spiny = spawn_object(o, MODEL_SPINY_BALL, bhvSpiny);
+        struct Object *spiny = spawn_object(o, MODEL_SPINY_BALL, buff ? bhvSpinyCC : bhvSpiny);
         if (spiny != NULL) {
             o->prevObj = spiny;
             spiny->oAction = SPINY_ACT_HELD_BY_LAKITU;
             obj_init_animation_with_sound(spiny, spiny_egg_seg5_anims_050157E4, 0);
 
-            o->oEnemyLakituNumSpinies++;
+            if (!buff)
+                o->oEnemyLakituNumSpinies++;
+
             o->oSubAction = ENEMY_LAKITU_SUB_ACT_HOLD_SPINY;
-            o->oEnemyLakituSpinyCooldown = 30;
+            o->oEnemyLakituSpinyCooldown = buff ? 20 : 30;
         }
     }
 }
@@ -116,7 +125,7 @@ static void enemy_lakitu_sub_act_no_spiny(void) {
  * When close to mario and facing toward him or when mario gets far enough away,
  * enter the throw spiny sub-action.
  */
-static void enemy_lakitu_sub_act_hold_spiny(void) {
+static void enemy_lakitu_sub_act_hold_spiny(int buff) {
     cur_obj_init_anim_extend(3);
 
     if (o->oEnemyLakituSpinyCooldown != 0) {
@@ -149,7 +158,7 @@ static void enemy_lakitu_sub_act_throw_spiny(void) {
 /**
  * Main update function.
  */
-static void enemy_lakitu_act_main(void) {
+void enemy_lakitu_act_main(int buff) {
     cur_obj_play_sound_1(SOUND_AIR_LAKITU_FLY);
 
     cur_obj_update_floor_and_walls();
@@ -163,10 +172,10 @@ static void enemy_lakitu_act_main(void) {
 
     switch (o->oSubAction) {
         case ENEMY_LAKITU_SUB_ACT_NO_SPINY:
-            enemy_lakitu_sub_act_no_spiny();
+            enemy_lakitu_sub_act_no_spiny(buff);
             break;
         case ENEMY_LAKITU_SUB_ACT_HOLD_SPINY:
-            enemy_lakitu_sub_act_hold_spiny();
+            enemy_lakitu_sub_act_hold_spiny(buff);
             break;
         case ENEMY_LAKITU_SUB_ACT_THROW_SPINY:
             enemy_lakitu_sub_act_throw_spiny();
@@ -195,7 +204,7 @@ void bhv_enemy_lakitu_update(void) {
             enemy_lakitu_act_uninitialized();
             break;
         case ENEMY_LAKITU_ACT_MAIN:
-            enemy_lakitu_act_main();
+            enemy_lakitu_act_main(0);
             break;
     }
 }

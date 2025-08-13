@@ -633,6 +633,9 @@ extern const BehaviorScript bhvGoombaCC[];
 extern const BehaviorScript bhvHeaveHoCC[];
 extern const BehaviorScript bhvSnufitCC[];
 extern const BehaviorScript bhvThwomp2CC[];
+extern const BehaviorScript bhvSmallChillBullyCC[];
+extern const BehaviorScript bhvEnemyLakituCC[];
+extern const BehaviorScript bhvFlyGuyCC[];
 
 extern const BehaviorScript bhvChainChompCC[];
 extern const BehaviorScript bhvBobombCC[];
