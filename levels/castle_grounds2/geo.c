@@ -14,4 +14,7 @@
 #include "levels/castle_grounds2/header.h"
 
 
+extern Gfx *geo_update_alpha_compare(s32 callContext, struct GraphNode *node, UNUSED void *context);
 #include "levels/castle_grounds2/geo.inc.c"
+#include "levels/castle_grounds2/ow2_lock/geo.inc.c"
+#include "levels/castle_grounds2/ow2_number/geo.inc.c"

@@ -6356,9 +6356,7 @@ extern void bhv_ow_ctl_loop();
 const BehaviorScript bhvOwCtl[] = {
     BEGIN(OBJ_LIST_SPAWNER),
     CALL_NATIVE(bhv_ow_ctl_init),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_ow_ctl_loop),
-    END_LOOP(),
+    BREAK(),
 };
 
 extern void bhv_ow_visual_loop();
@@ -6370,12 +6368,12 @@ const BehaviorScript bhvOwVisual[] = {
     END_LOOP(),
 };
 
-extern const Collision ow_lock_collision[];
+extern void bhv_ow_lock_init();
 extern void bhv_ow_lock_loop();
 const BehaviorScript bhvOwLock[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    LOAD_COLLISION_DATA(ow_lock_collision),
+    CALL_NATIVE(bhv_ow_lock_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_ow_lock_loop),
     END_LOOP(),

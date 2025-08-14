@@ -15,6 +15,12 @@
 #include "levels/castle_grounds2/header.h"
 
 /* Fast64 begin persistent block [scripts] */
+#include "level_config.h"
+#define SEQ_LEVEL_GRASS 0x2A
+extern const GeoLayout ow2_number_geo[];
+extern const GeoLayout ow2_clear_geo[];
+
+static struct LevelConfig cfg = {};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_castle_grounds2_entry[] = {
@@ -22,7 +28,11 @@ const LevelScript level_castle_grounds2_entry[] = {
 	LOAD_MIO0(0x7, _castle_grounds2_segment_7SegmentRomStart, _castle_grounds2_segment_7SegmentRomEnd), 
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
+	LOAD_MODEL_FROM_GEO(MODEL_OW_LOCK, ow2_lock_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_OW_NUMBER, ow2_number_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_OW_CLEAR, ow2_clear_geo), 
 	/* Fast64 begin persistent block [level commands] */
+	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, castle_grounds2_area_1, 0, 0, 0),
@@ -78,7 +88,7 @@ const LevelScript level_castle_grounds2_entry[] = {
 		WARP_NODE(0x4e, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0x4f, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0x11, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
-		// OBJECT(MODEL_NONE, -626, 935, -8828, 0, 90, 0, 0x00000000, bhvOwCtl),
+		OBJECT(MODEL_NONE, -626, 935, -8828, 0, 90, 0, 0x00000000, bhvOwCtl),
 		OBJECT(MODEL_THI_WARP_PIPE, -626, 4, -6768, 0, 90, 0, (0x21 << 16), bhvWarpPipe),
 		OBJECT(MODEL_THI_WARP_PIPE, -626, 4, -7768, 0, 90, 0, (0x20 << 16), bhvWarpPipe),
 		OBJECT(MODEL_THI_WARP_PIPE, -626, 4, -5768, 0, 90, 0, (0x22 << 16), bhvWarpPipe),

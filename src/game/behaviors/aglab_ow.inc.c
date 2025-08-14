@@ -115,6 +115,14 @@ void bhv_ow_visual_loop()
     hide_if_invisible();
 }
 
+extern const Collision ow_lock_collision[];
+extern const Collision ow2_lock_collision[];
+
+void bhv_ow_lock_init()
+{
+    o->collisionData = segmented_to_virtual(gCurrLevelNum == LEVEL_CASTLE_GROUNDS2 ? ow2_lock_collision : ow_lock_collision);
+}
+
 extern void load_object_collision_model();
 void bhv_ow_lock_loop()
 {
