@@ -125,6 +125,7 @@ static u16 *gCurrAnimAttribute;
 static s16 *gCurrAnimData;
 
 static Gfx* gLightReset;
+static Gfx* gIGLightReset;
 
 /* Rendermode settings for cycle 1 for all 8 or 13 layers. */
 static const struct RenderModeContainer renderModeTable_1Cycle[2] = { 
@@ -543,31 +544,6 @@ static const uint32_t kDirectionalLight = 0xFFFFFF00;
 
 #define SET_LIGHT_COLOR(light, c) do{ *(u32*) &((light).l.col[0]) = c; *(u32*) &((light).l.colc[0]) = c; }while(0)
 
-static void apply_ig_lighting(Gfx **ptempGfxHead)
-{
-#define tempGfxHead (*ptempGfxHead)
-    static const uint32_t kAmbientLight     = 0x1F1F1F00;
-    static const uint32_t kDirectionalLight = 0x7F7F7F00;
-
-    Lights1* curLight = (Lights1*)alloc_display_list(32);
-    SET_LIGHT_COLOR(curLight->a   , kAmbientLight);
-    SET_LIGHT_COLOR(curLight->l[0], kDirectionalLight);
-
-    curLight->l->l.dir[0] = 105 * sins(gGlobalTimer * 0x234);
-    curLight->l->l.dir[1] = 0x49;
-    curLight->l->l.dir[2] = 105 * coss(gGlobalTimer * 0x234);
-
-    if (gHasEX3)
-    {
-        gSPSetLights1(tempGfxHead++, (*curLight));
-    }
-    else
-    {
-        gSPSetLights1EX2(tempGfxHead++, (*curLight));
-    }
-#undef tempGfxHead
-}
-
 uint32_t sBackdropRenderedOnFrame = 0;
 extern u8 gTimeFrozen;
 static void adjust_view_range();
@@ -636,7 +612,7 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
             {
                 if (LEVEL_IG == gCurrLevelNum)
                 {
-                    apply_ig_lighting(&tempGfxHead);
+                    gSPDisplayList(tempGfxHead++, gIGLightReset);
                 }
 
                 gDPPipeSync(tempGfxHead++);
@@ -988,12 +964,39 @@ static void setup_global_light() {
         gSPSetLights1EX2(gDisplayListHead++, (*curLight));
     }
 
+    if (LEVEL_IG == gCurrLevelNum)
     {
-        Gfx* cur = alloc_display_list(0x10);
+        Gfx* cur = alloc_display_list(0x18);
         gLightReset = (Gfx*) VIRTUAL_TO_PHYSICAL2(cur);
         gSPSetLights1(cur++, (*curLight));
-        gSPEndDisplayList(cur++);    
+        gSPEndDisplayList(cur);
+
+        static const uint32_t kAmbientLight     = 0x1F1F1F00;
+        static const uint32_t kDirectionalLight = 0x7F7F7F00;
+
+        Lights1* curLight2 = (Lights1*)alloc_display_list(sizeof(Lights1EX2));
+        SET_LIGHT_COLOR(curLight2->a   , kAmbientLight);
+        SET_LIGHT_COLOR(curLight2->l[0], kDirectionalLight);
+
+        curLight2->l->l.dir[0] = 105 * sins(gGlobalTimer * 0x234);
+        curLight2->l->l.dir[1] = 0x49;
+        curLight2->l->l.dir[2] = 105 * coss(gGlobalTimer * 0x234);
+
+        cur = alloc_display_list(0x18);
+        gIGLightReset = (Gfx*) VIRTUAL_TO_PHYSICAL2(cur);
+        gSPSetLights1(cur++, (*curLight2));
+        gSPEndDisplayList(cur);
     }
+}
+
+Gfx *geo_ig_light(s32 callContext, struct GraphNode *node, UNUSED void *context)
+{
+    struct GraphNodeGenerated *currentGraphNode = (struct GraphNodeGenerated *) node;
+    if (callContext != GEO_CONTEXT_RENDER) {
+        SET_GRAPH_NODE_LAYER(node->flags, currentGraphNode->parameter & 0xff);
+    }
+
+    return (currentGraphNode->parameter & 0x800) ? gLightReset : gIGLightReset;
 }
 
 /**
