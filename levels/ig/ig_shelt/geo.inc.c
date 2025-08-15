@@ -3,6 +3,7 @@
 const GeoLayout ig_shelt_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
+		GEO_ASM(LAYER_OPAQUE, geo_ig_light),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, ig_shelt_ig_shelt_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)-165.0, (s16)447.5, (s16)40.0, ig_shelt_001_object_007F1674_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)165.0, (s16)32.5, (s16)40.0, ig_shelt_002_object_007F1494_mesh_layer_1),
@@ -12,6 +13,7 @@ const GeoLayout ig_shelt_geo[] = {
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)-80.0, (s16)75.0, (s16)50.4998779296875, ig_shelt_006_object_007F0E7C_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)80.0, (s16)402.9998779296875, (s16)50.4998779296875, ig_shelt_007_object_007F0DBC_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)-80.0, (s16)402.9998779296875, (s16)50.4998779296875, ig_shelt_008_object_007F0CFC_mesh_layer_1),
+		GEO_ASM(0x800 | LAYER_OPAQUE, geo_ig_light),
 	GEO_CLOSE_NODE(),
 	GEO_END(),
 };

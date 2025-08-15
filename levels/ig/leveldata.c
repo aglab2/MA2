@@ -5,6 +5,7 @@
 #include "textures.h"
 #include "dialog_ids.h"
 #include "instant_warp_desc.h"
+#include "spring_desc.h"
 
 #include "make_const_nonconst.h"
 
@@ -31,6 +32,7 @@ IWDHeader* iw_descs_ig[] = {
 #include "levels/ig/area_1/spline.inc.c"
 #include "levels/ig/area_2/spline.inc.c"
 #include "levels/ig/visual/model_lvl.inc.c"
+#include "levels/ig/rails.inc.c"
 #endif
 
 #include "levels/ig/ig_bombe/model.inc.c"

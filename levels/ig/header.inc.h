@@ -3,6 +3,8 @@ extern const GeoLayout ig_area_1[];
 extern const Collision ig_area_1_collision[];
 extern const MacroObject ig_area_1_macro_objs[];
 extern const Trajectory ig_area_1_spline_Spring[];
+extern const Trajectory ig_area_1_spline_Spring_001[];
+extern const Trajectory ig_area_1_spline_Spring_002[];
 extern const GeoLayout ig_area_2_geo[];
 extern const GeoLayout ig_area_2[];
 extern const Collision ig_area_2_collision[];

@@ -5,3 +5,17 @@ const Trajectory ig_area_1_spline_Spring[] = {
 	TRAJECTORY_POS( 3, 11849, 2676, 6887),
 	TRAJECTORY_END(),
 };
+const Trajectory ig_area_1_spline_Spring_001[] = {
+	TRAJECTORY_POS( 0, 8628, 2415, 1625),
+	TRAJECTORY_POS( 1, 8763, 3461, 1625),
+	TRAJECTORY_POS( 2, 9059, 4177, 1625),
+	TRAJECTORY_POS( 3, 9733, 4498, 1625),
+	TRAJECTORY_END(),
+};
+const Trajectory ig_area_1_spline_Spring_002[] = {
+	TRAJECTORY_POS( 0, 15139, 2415, 1625),
+	TRAJECTORY_POS( 1, 15004, 3461, 1625),
+	TRAJECTORY_POS( 2, 14708, 4177, 1625),
+	TRAJECTORY_POS( 3, 14035, 4498, 1625),
+	TRAJECTORY_END(),
+};

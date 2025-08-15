@@ -3,10 +3,14 @@
 const GeoLayout ig_siren_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
+		GEO_ASM(LAYER_OPAQUE, geo_ig_light),
+		GEO_ASM(LAYER_TRANSPARENT, geo_ig_light),
 		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ig_siren_ig_siren_mesh_layer_5),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, ig_siren_ig_siren_mesh_layer_1),
 		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, ig_siren_001_object_007F5BDC_mesh_layer_5),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, ig_siren_001_object_007F5BDC_mesh_layer_1),
+		GEO_ASM(0x800 | LAYER_OPAQUE, geo_ig_light),
+		GEO_ASM(0x800 | LAYER_TRANSPARENT, geo_ig_light),
 	GEO_CLOSE_NODE(),
 	GEO_END(),
 };
