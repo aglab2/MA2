@@ -1711,6 +1711,38 @@ extern const int gLevelWithHardModes;
 static const char kCollectTheGoalRing[] = "Objective: Collect the Goal Ring";
 static const char kCollectTheStars[] = "Objective: Find all the stars";
 
+static const char* getStageName()
+{
+    if (gCurrLevelNum < LEVEL_SS2)
+    {
+        return "Hero Story %d:";
+    }
+    if (gCurrLevelNum < LEVEL_SS1)
+    {
+        return "Dark Story %d:";
+    }
+    if (gCurrLevelNum < LEVEL_LB)
+    {
+        return "Last Stage:";
+    }
+
+    return "";
+}
+
+static int getCourseNumber()
+{
+    if (gCurrLevelNum < LEVEL_SS2)
+    {
+        return gCurrLevelNum - LEVEL_CE + 1;
+    }
+    if (gCurrLevelNum < LEVEL_SS1)
+    {
+        return gCurrLevelNum - LEVEL_IG + 1;
+    }
+
+    return 0;
+}
+
 void render_pause_my_score_coins(void) {
     char str[20];
 
@@ -1727,9 +1759,7 @@ void render_pause_my_score_coins(void) {
         char *courseName = segmented_to_virtual(courseNameTbl[courseIndex]);
 
         if (courseIndex <= COURSE_NUM_TO_INDEX(COURSE_STAGES_MAX)) {
-            char courseNumText[8];
-            format_int_to_string(courseNumText, gCurrCourseNum);
-            sprintf(str, LANG_ARRAY(textCourseX), courseNumText);
+            sprintf(str, getStageName(), getCourseNumber());
             print_generic_string_aligned(PAUSE_MENU_LEFT_X, PAUSE_MENU_COURSE_Y, str, TEXT_ALIGN_RIGHT);
             print_generic_string(PAUSE_MENU_RIGHT_X, PAUSE_MENU_COURSE_Y, courseName);
 
