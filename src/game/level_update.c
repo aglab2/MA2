@@ -1286,6 +1286,34 @@ s32 play_mode_normal(void) {
     return FALSE;
 }
 
+static int exitWarpLvl()
+{
+    if (gCurrLevelNum <= LEVEL_SS2)
+    {
+        return LEVEL_CASTLE_GROUNDS;
+    }
+    if (gCurrLevelNum <= LEVEL_SS1)
+    {
+        return LEVEL_CASTLE_GROUNDS2;
+    }
+
+    return LEVEL_LB;
+}
+
+static int exitWarpId()
+{
+    if (gCurrLevelNum <= LEVEL_SS2)
+    {
+        return gCurrLevelNum - LEVEL_CE + 0x20;
+    }
+    if (gCurrLevelNum <= LEVEL_SS1)
+    {
+        return gCurrLevelNum - LEVEL_IG + 0x20;
+    }
+
+    return 0xa;
+}
+
 s32 play_mode_paused(void) {
     if (gMenuOptSelectIndex == MENU_OPT_NONE) {
         set_menu_mode(MENU_MODE_RENDER_PAUSE_SCREEN);
@@ -1299,7 +1327,7 @@ s32 play_mode_paused(void) {
         } else {
             if (gMenuOptSelectIndex == MENU_OPT_EXIT_COURSE)
             {
-                initiate_warp(EXIT_COURSE_LEVEL, EXIT_COURSE_AREA, gCurrLevelNum - LEVEL_CE + 0x20, WARP_FLAG_EXIT_COURSE);
+                initiate_warp(exitWarpLvl(), EXIT_COURSE_AREA, exitWarpId(), WARP_FLAG_EXIT_COURSE);
             }
             else
             {
