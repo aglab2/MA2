@@ -147,6 +147,20 @@ u32 get_mario_spawn_type(struct Object *obj) {
     return MARIO_SPAWN_NONE;
 }
 
+static int warpIdBase()
+{
+    if (gCurrLevelNum <= LEVEL_SS2)
+    {
+        return gCurrLevelNum - LEVEL_CE;
+    }
+    if (gCurrLevelNum <= LEVEL_SS1)
+    {
+        return gCurrLevelNum - LEVEL_IG;
+    }
+
+    return 0xa;
+}
+
 extern void LevelReset_markObjectsForRespawn();
 struct ObjectWarpNode *area_get_warp_node(u8 id) {
     if (id == WARP_NODE_FAIL_WARP || id == WARP_NODE_FAIL_WARP2 || (0xe0 <= id && id < 0xf0))
@@ -165,12 +179,12 @@ struct ObjectWarpNode *area_get_warp_node(u8 id) {
     if (gCurrCourseNum != COURSE_SS2 && id == WARP_NODE_DEFAULT) {
         node->node.destArea = 1;
         node->node.destLevel = LEVEL_CASTLE_GROUNDS;
-        node->node.destNode = 0x50 + gCurrLevelNum - LEVEL_CE;
+        node->node.destNode = 0x50 + warpIdBase();
     }
     if (id == WARP_NODE_DEATH && gCurrCourseNum != COURSE_NONE) {
         node->node.destArea = 1;
         node->node.destLevel = LEVEL_CASTLE_GROUNDS;
-        node->node.destNode = 0x80 + gCurrLevelNum - LEVEL_CE;
+        node->node.destNode = 0x80 + warpIdBase();
     }
 
     return node;
