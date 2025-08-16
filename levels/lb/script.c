@@ -15,7 +15,7 @@
 #include "levels/lb/header.h"
 
 /* Fast64 begin persistent block [scripts] */
-#define SEQ_LEVEL_GRASS 0
+#define SEQ_LEVEL_GRASS 0x48
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_lb_entry[] = {
@@ -24,8 +24,14 @@ const LevelScript level_lb_entry[] = {
 	LOAD_MIO0(0xa, _water_skybox_mio0SegmentRomStart, _water_skybox_mio0SegmentRomEnd), 
     LOAD_YAY0(/*seg*/ 0x06, _group12_yay0SegmentRomStart, _group12_yay0SegmentRomEnd),
     LOAD_RAW( /*seg*/ 0x0D, _group12_geoSegmentRomStart, _group12_geoSegmentRomEnd),
+	LOAD_YAY0(        /*seg*/ 0x05, _group3_yay0SegmentRomStart, _group3_yay0SegmentRomEnd),
+	LOAD_RAW(         /*seg*/ 0x0C, _group3_geoSegmentRomStart,  _group3_geoSegmentRomEnd),
+	LOAD_YAY0(        /*seg*/ 0x08, _common0_yay0SegmentRomStart, _common0_yay0SegmentRomEnd),
+	LOAD_RAW(         /*seg*/ 0x0F, _common0_geoSegmentRomStart,  _common0_geoSegmentRomEnd),
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario),
+	JUMP_LINK(script_func_global_1),
+    JUMP_LINK(script_func_global_4),
     JUMP_LINK(script_func_global_13),
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
