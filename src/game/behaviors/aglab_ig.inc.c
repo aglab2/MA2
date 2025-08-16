@@ -121,5 +121,10 @@ void bhv_ig_shelf_loop()
         o->oFaceAnglePitch += 0x200;
         o->oPosY += o->oVelY;
         obj_update_pos_vel_xz();
+
+        if (o->oTimer > 100)
+        {
+            o->activeFlags = 0;
+        }
     }
 }
