@@ -6391,11 +6391,10 @@ extern const Collision ig_shelt_collision[];
 extern void bhv_ig_shelf_loop();
 const BehaviorScript bhvIgShelf[] = {
     BEGIN(OBJ_LIST_SURFACE),
-    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO)),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_COLLISION_DATA(ig_shelt_collision),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_ig_shelf_loop),
-        CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
 
@@ -7026,5 +7025,14 @@ const BehaviorScript bhvCCSLock[] = {
     BEGIN(OBJ_LIST_LEVEL),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_ccs_lock_loop),
+    END_LOOP(),
+};
+ 
+extern void bhv_test_loop();
+const BehaviorScript bhvTest[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_test_loop),
     END_LOOP(),
 };
