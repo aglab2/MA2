@@ -971,12 +971,30 @@ static void setup_global_light() {
         gSPSetLights1(cur++, (*curLight));
         gSPEndDisplayList(cur);
 
-        static const uint32_t kAmbientLight     = 0x1F1F1F00;
+        static const uint32_t kAmbientLight     = 0x2F2F2F00;
         static const uint32_t kDirectionalLight = 0x7F7F7F00;
+
+        static int8_t diff = 0;
+        if (gCurrAreaIndex == 2)
+        {
+            diff++;
+            if (diff > 0x20)
+            {
+                diff = 0x20;
+            }
+        }
+        else
+        {
+            diff--;
+            if (diff < 0)
+            {
+                diff = 0;
+            }
+        }
 
         Lights1* curLight2 = (Lights1*)alloc_display_list(sizeof(Lights1EX2));
         SET_LIGHT_COLOR(curLight2->a   , kAmbientLight);
-        SET_LIGHT_COLOR(curLight2->l[0], kDirectionalLight);
+        SET_LIGHT_COLOR(curLight2->l[0], kDirectionalLight + (diff << 24) - (diff << 17) - (diff << 9));
 
         curLight2->l->l.dir[0] = 105 * sins(gGlobalTimer * 0x234);
         curLight2->l->l.dir[1] = 0x49;
