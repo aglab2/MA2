@@ -544,7 +544,10 @@ static const uint32_t kDirectionalLight = 0xFFFFFF00;
 
 #define SET_LIGHT_COLOR(light, c) do{ *(u32*) &((light).l.col[0]) = c; *(u32*) &((light).l.colc[0]) = c; }while(0)
 
+#ifdef WANT_MEMSET
 uint32_t sBackdropRenderedOnFrame = 0;
+#endif
+
 extern u8 gTimeFrozen;
 static void adjust_view_range();
 static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
@@ -587,11 +590,13 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
             if (!timeFrozen)
                 apply_flipbooks(masterLayer);
 
+#ifdef WANT_MEMSET
             if (1 == currLayer && enableZBuffer && sBackdropRenderedOnFrame == gGlobalTimer)
             {
                 gSPFlush(tempGfxHead++);
                 gSPMemset(tempGfxHead++, (u8*) gPhysicalZBuffer + gBorderHeight  * SCREEN_WIDTH * 2, GPACK_ZDZ(G_MAXFBZ, 0), SCREEN_WIDTH * (SCREEN_HEIGHT - 2 * gBorderHeight) * 2);
             }
+#endif
 
             struct DisplayListNode *currList = masterLayer->list.head;
             if (currList)
@@ -2177,7 +2182,7 @@ Gfx *geo_render_backdrop(s32 callContext, struct GraphNode *node, UNUSED f32 b[4
         mtxf_to_mtx(mtx, gMatStack[gMatStackIndex]);
         gMatStackFixed[gMatStackIndex] = mtx;
         geo_append_display_list(gSkybox, 0); // DL pointer
-        sBackdropRenderedOnFrame = gGlobalTimer;
+        // sBackdropRenderedOnFrame = gGlobalTimer;
         
         gMatStackIndex--;
     }

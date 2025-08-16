@@ -2363,7 +2363,7 @@ _DW({                                               \
  * Normal control flow commands; same as @ref gsSPDisplayListHint but with hint of 0
  */
 #define sizeof_or_zero(x) (sizeof(x) >> 3)
-#define gsSPDisplayList(    dl) _gsSPDisplayListRaw(    dl, sizeof_or_zero(dl))
+#define gsSPDisplayList(    dl) _gsSPDisplayListRaw(    dl, _DLHINTVALUE(sizeof_or_zero(dl)))
 
 /**
  * Normal control flow commands; same as @ref gSPBranchListHint but with hint of 0
