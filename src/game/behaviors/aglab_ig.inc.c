@@ -33,7 +33,7 @@ struct IgLoc2
     Vec3f pos;
 };
 
-#if 1
+#if 0
 extern const BehaviorScript bhvTest[];
 static void IG_spawn_test_particle(struct Object* part, f32 x, f32 y, f32 z)
 {
