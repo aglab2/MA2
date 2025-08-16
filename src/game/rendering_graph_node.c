@@ -1713,7 +1713,7 @@ void geo_process_held_object(struct GraphNodeHeldObject *node) {
         gCurrAnimType = ANIM_TYPE_NONE;
         gCurGraphNodeHeldObject = (void *) node;
         if (node->objNode->header.gfx.animInfo.curAnim != NULL) {
-            geo_set_animation_globals(&node->objNode->header.gfx.animInfo, (node->objNode->header.gfx.node.flags & GRAPH_RENDER_HAS_ANIMATION) != 0, 0);
+            geo_set_animation_globals(&node->objNode->header.gfx.animInfo, (node->objNode->header.gfx.node.flags & GRAPH_RENDER_HAS_ANIMATION) != 0, 1);
         }
 
         geo_process_node_and_siblings(node->objNode->header.gfx.sharedChild);
