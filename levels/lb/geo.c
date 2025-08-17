@@ -18,3 +18,4 @@
 #include "levels/lb/lb_rail/geo.inc.c"
 #include "levels/lb/lb_ball/geo.inc.c"
 #include "levels/lb/lb_stand/geo.inc.c"
+#include "levels/lb/lb_tail/geo.inc.c"

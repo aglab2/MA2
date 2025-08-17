@@ -12,3 +12,4 @@
 #include "levels/lb/lb_rail/model.inc.c"
 #include "levels/lb/lb_ball/model.inc.c"
 #include "levels/lb/lb_stand/model.inc.c"
+#include "levels/lb/lb_tail/model.inc.c"

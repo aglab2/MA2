@@ -1,0 +1,12 @@
+extern const GeoLayout lb_tail_geo[];
+extern u8 lb_tail_last1body06_ci4[];
+extern u8 lb_tail_last1body06_pal_rgba16[];
+extern u8 lb_tail_last1body08_ci4[];
+extern u8 lb_tail_last1body08_pal_rgba16[];
+extern u8 lb_tail_last1body05_ci4[];
+extern u8 lb_tail_last1body05_pal_rgba16[];
+extern Vtx lb_tail_tail_mesh_layer_1_vtx_cull[8];
+extern Vtx lb_tail_tail_mesh_layer_1_vtx_0[41];
+extern Vtx lb_tail_tail_mesh_layer_1_vtx_1[17];
+extern Vtx lb_tail_tail_mesh_layer_1_vtx_2[66];
+extern Gfx lb_tail_tail_mesh_layer_1[];

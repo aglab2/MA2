@@ -7046,3 +7046,12 @@ const BehaviorScript bhvLBCtl[] = {
         CALL_NATIVE(bhv_lb_ctl_loop),
     END_LOOP(),
 };
+
+extern void bhv_lb_ball_loop();
+const BehaviorScript bhvLBBall[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_lb_ball_loop),
+    END_LOOP(),
+};
