@@ -256,6 +256,8 @@ extern u64 gspF3DEX3_MEMSET_fifoTextStart[], gspF3DEX3_MEMSET_fifoTextEnd[];
 extern u64 gspF3DEX3_MEMSET_fifoDataStart[], gspF3DEX3_MEMSET_fifoDataEnd[];
 extern u64 gspF3DEX3_TEXCACHE_fifoTextStart[], gspF3DEX3_TEXCACHE_fifoTextEnd[];
 extern u64 gspF3DEX3_TEXCACHE_fifoDataStart[], gspF3DEX3_TEXCACHE_fifoDataEnd[];
+extern u64 gspF3DEX3_VTXBUF_fifoTextStart[], gspF3DEX3_VTXBUF_fifoTextEnd[];
+extern u64 gspF3DEX3_VTXBUF_fifoDataStart[], gspF3DEX3_VTXBUF_fifoDataEnd[];
 
 /**************************************************************************
  *

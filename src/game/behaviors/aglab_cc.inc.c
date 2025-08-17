@@ -986,11 +986,11 @@ void bhv_cck_doors_init()
     o->oObjF4 = spawn_object(o, MODEL_CCK_DOOR_L, bhvStaticObject);
     o->oObjF4->oPosY += 250.f;
     o->oObjF4->oPosZ += 100.f;
-    *(struct Object**)aglabGlobalScratch[0] = o->oObjF4;
+    *(struct Object**)&aglabGlobalScratch[0] = o->oObjF4;
     o->oObjF8 = spawn_object(o, MODEL_CCK_DOOR_R, bhvStaticObject);
     o->oObjF8->oPosY += 250.f;
     o->oObjF8->oPosZ += 100.f;
-    *(struct Object**)aglabGlobalScratch[1] = o->oObjF8;
+    *(struct Object**)&aglabGlobalScratch[1] = o->oObjF8;
 }
 
 extern Gfx mat_cck_dl_LAZER_sa2mdl_0_f3d[];
