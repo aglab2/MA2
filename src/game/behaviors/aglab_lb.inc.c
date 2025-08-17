@@ -110,10 +110,43 @@ void bhv_lb_ctl_loop()
     {
         lb_pin_bowser();
         lb_pin_mario();
+
+        if (0 == (o->oTimer % 40))
+        {
+            for (int i = 0; i < 6; i++)
+            {
+                s32 angleToMario = obj_angle_to_object(o->parentObj, gMarioObject);
+                struct Object* ball = spawn_object(o, MODEL_LB_BALL, bhvLBBall);
+                ball->oForwardVel = 50.f;
+                ball->oMoveAngleYaw = angleToMario + 0x10000 / 6 * i;
+                ball->oFaceAngleYaw = random_u16();
+                ball->oFaceAngleRoll = random_u16();
+                obj_scale(ball, 0.1f);
+            }
+        }
     }
 }
 
 void bhv_lb_ball_loop()
 {
+    o->oFaceAngleYaw += 0x280;
+    o->oFaceAngleRoll += 0x146;
+    obj_update_pos_vel_xz();
 
+    if (o->oTimer <= 10)
+    {
+        o->oOpacity = 20 * o->oTimer;
+        obj_scale(o, 0.1f * o->oTimer);
+    }
+    
+    if (o->oTimer > 90)
+    {
+        o->oOpacity = 20 * (100 - o->oTimer);
+        obj_scale(o, 0.1f * (100 - o->oTimer));
+    }
+
+    if (o->oTimer == 99)
+    {
+        obj_mark_for_deletion(o);
+    }
 }
