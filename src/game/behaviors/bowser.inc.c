@@ -493,19 +493,7 @@ void bowser_act_walk_to_mario(void) {
     s16 turnSpeed;
     s16 angleFromMario = abs_angle_diff(o->oMoveAngleYaw, o->oAngleToMario);
 
-    // Set turning speed depending of the health
-    // Also special case for BitFS
-    if (o->oBehParams2ndByte == BOWSER_BP_BITFS) {
-        turnSpeed = 0x400;
-    } else { // BOWSER_BP_BitDW or BOWSER_BP_BitS
-        if (o->oHealth >= 3) {
-            turnSpeed = 0x400;
-        } else if (o->oHealth == 2) {
-            turnSpeed = 0x300;
-        } else { // 1 health
-            turnSpeed = 0x200;
-        }
-    }
+    turnSpeed = 0x100;
 
     cur_obj_rotate_yaw_toward(o->oAngleToMario, turnSpeed);
 
@@ -567,7 +555,7 @@ void bowser_act_spit_fire_into_sky(void) {
     // Set frames
     animFrame = o->header.gfx.animInfo.animFrame;
     // Spawn flames in the middle of the animation
-    if (animFrame > 24 && animFrame < 36) {
+    if (gCurrLevelNum != LEVEL_LB && animFrame > 24 && animFrame < 36) {
         cur_obj_play_sound_1(SOUND_AIR_BOWSER_SPIT_FIRE);
         if (animFrame == 35) { // Spawns Blue flames at this frame
             spawn_object_relative(1, 0, 400, 100, o, MODEL_RED_FLAME, bhvBlueBowserFlame);
@@ -705,8 +693,11 @@ static void bowser_clean_attack()
 
 static void bowser_kill_mario_on_hit()
 {
-    if (gMarioStates->health > 0x180)
-        gMarioStates->health = 0x180;
+    if (gCurrLevelNum == LEVEL_SS1 || gCurrLevelNum == LEVEL_SS2)
+    {
+        if (gMarioStates->health > 0x180)
+            gMarioStates->health = 0x180;
+    }
 }
 
 static int want_manage()

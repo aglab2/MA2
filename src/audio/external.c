@@ -348,7 +348,7 @@ static void seq_player_fade_to_zero_volume(s32 player, FadeT fadeDuration) {
 /**
  * Called from threads: thread4_sound, thread5_game_loop
  */
-static void func_8031D690(s32 player, FadeT fadeInTime) {
+void func_8031D690(s32 player, FadeT fadeInTime) {
     struct SequencePlayer *seqPlayer = &gSequencePlayers[player];
 
     if (fadeInTime == 0 || seqPlayer->state == SEQUENCE_PLAYER_STATE_FADE_OUT) {

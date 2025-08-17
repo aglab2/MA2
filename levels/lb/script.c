@@ -15,7 +15,7 @@
 #include "levels/lb/header.h"
 
 /* Fast64 begin persistent block [scripts] */
-#define SEQ_LEVEL_GRASS 0x48
+#define SEQ_LEVEL_GRASS 0
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_lb_entry[] = {
@@ -40,8 +40,10 @@ const LevelScript level_lb_entry[] = {
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
-		OBJECT(MODEL_NONE, -674, 487, 2452, 0, 0, 0, (0xa << 16), bhvInstantActiveWarp),
 		MARIO_POS(0x01, 0, -690, 487, 2433),
+		OBJECT(MODEL_NONE, 0, 0, 0, 0, 0, 0, 0x00000000, bhvLBCtl),
+		OBJECT(MODEL_NONE, 0, 487, 2452, 0, 0, 0, (0xa << 16), bhvInstantActiveWarp),
+		OBJECT(MODEL_BOWSER, -110, -856, 29, 0, 0, 0, 0x00000000, bhvBowser),
 		TERRAIN(lb_area_1_collision),
 		MACRO_OBJECTS(lb_area_1_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),

@@ -171,6 +171,19 @@ u32 determine_interaction(struct MarioState *m, struct Object *obj) {
     u32 interaction = 0;
     u32 action = m->action;
 
+    if (gCurrLevelNum == LEVEL_LB)
+    {           
+        f32 y = obj->oPosY; 
+        y += 1400.f;
+        if (m->vel[1] < 0.0f) {
+            if (m->pos[1] > y) {
+                interaction = INT_HIT_FROM_ABOVE;
+            }
+        }
+
+        return interaction;
+    }
+
     if (action & ACT_FLAG_ATTACKING) {
         if (action == ACT_PUNCHING || action == ACT_MOVE_PUNCHING || action == ACT_JUMP_KICK) {
             s16 dYawToObject = mario_obj_angle_to_object(m, obj) - m->faceAngle[1];

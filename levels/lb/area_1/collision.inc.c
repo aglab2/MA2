@@ -353,6 +353,6 @@ const Collision lb_area_1_collision[] = {
 	COL_TRI(127, 131, 84),
 	COL_TRI_STOP(),
 	COL_WATER_BOX_INIT(1),
-	COL_WATER_BOX(0x00, -2235, -10636, 2235, 6809, 100),
+	COL_WATER_BOX(0x00, -2235, -10636, 2235, 6809, 65),
 	COL_END()
 };

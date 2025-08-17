@@ -41,7 +41,8 @@ void bhv_grand_star_loop(void) {
             cur_obj_play_sound_2(SOUND_GENERAL_GRAND_STAR);
 
             cutscene_object(CUTSCENE_STAR_SPAWN, o);
-            o->oGrandStarArcTime = arc_to_goal_pos(gVec3fZero, &o->oPosVec, 80.0f, -2.0f);
+            static Vec3f Target = { 0, 2050, -12000 };
+            o->oGrandStarArcTime = arc_to_goal_pos(Target, &o->oPosVec, 80.0f, -2.0f);
         }
 
         cur_obj_move_using_fvel_and_gravity();
@@ -68,12 +69,12 @@ void bhv_grand_star_loop(void) {
 
         spawn_sparkle_particles(3, 200, 80, -60);
     } else {
-        cur_obj_become_tangible();
+        //cur_obj_become_tangible();
 
-        if (o->oInteractStatus & INT_STATUS_INTERACTED) {
-            obj_mark_for_deletion(o);
-            o->oInteractStatus = INT_STATUS_NONE;
-        }
+        //if (o->oInteractStatus & INT_STATUS_INTERACTED) {
+        //    obj_mark_for_deletion(o);
+        //    o->oInteractStatus = INT_STATUS_NONE;
+        //}
     }
 
     if (o->oAngleVelYaw > 0x400) {

@@ -7036,3 +7036,13 @@ const BehaviorScript bhvTest[] = {
         CALL_NATIVE(bhv_test_loop),
     END_LOOP(),
 };
+
+extern void bhv_lb_ctl_init();
+extern void bhv_lb_ctl_loop();
+const BehaviorScript bhvLBCtl[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    CALL_NATIVE(bhv_lb_ctl_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_lb_ctl_loop),
+    END_LOOP(),
+};
