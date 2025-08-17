@@ -16,4 +16,6 @@ extern const LevelScript level_lb_entry[];
 
 #include "levels/lb/lb_tail/geo_header.h"
 
+#include "levels/lb/lb_tail/collision_header.h"
+
 #endif

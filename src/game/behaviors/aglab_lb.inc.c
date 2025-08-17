@@ -46,6 +46,17 @@ extern void set_camera_mode_8_directions(struct Camera *c);
 extern void func_8031D690(s32 player, s32 fadeInTime);
 void bhv_lb_ctl_loop()
 {
+    
+        if (0 == o->oTimer)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                struct Object* tail = spawn_object(o, MODEL_LB_TAIL, bhvLBTail);
+                tail->oOpacity = 0;
+                tail->oMoveAngleYaw = 0x4000 * i;
+            }
+        }
+
     if (0 == o->oAction)
     {
         o->parentObj->oPosX = 0;
@@ -111,6 +122,7 @@ void bhv_lb_ctl_loop()
         lb_pin_bowser();
         lb_pin_mario();
 
+#if 0
         if (0 == (o->oTimer % 40))
         {
             for (int i = 0; i < 6; i++)
@@ -124,6 +136,12 @@ void bhv_lb_ctl_loop()
                 obj_scale(ball, 0.1f);
             }
         }
+#else
+        if (0 == o->oTimer)
+        {
+            struct Object* tail = spawn_object(o, MODEL_LB_TAIL, bhvLBTail);
+        }
+#endif 
     }
 }
 
@@ -149,4 +167,17 @@ void bhv_lb_ball_loop()
     {
         obj_mark_for_deletion(o);
     }
+}
+
+void bhv_lb_tail_init()
+{
+    o->oDrawingDistance = 20000.f;
+}
+
+void bhv_lb_tail_loop()
+{
+    o->oOpacity = CLAMP(o->oTimer, 0, 255);
+    o->oMoveAngleYaw += 0x100;
+    o->oPosX = 1600.f * coss(-o->oMoveAngleYaw);
+    o->oPosZ = 1600.f * sins(-o->oMoveAngleYaw);
 }

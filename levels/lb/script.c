@@ -36,6 +36,7 @@ const LevelScript level_lb_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_LB_RAIL, lb_rail_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_LB_BALL, lb_ball_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_LB_STAND, lb_stand_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_LB_TAIL, lb_tail_geo),
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
 

@@ -7055,3 +7055,17 @@ const BehaviorScript bhvLBBall[] = {
         CALL_NATIVE(bhv_lb_ball_loop),
     END_LOOP(),
 };
+
+extern const Collision lb_tail_collision[];
+extern void bhv_lb_tail_init();
+extern void bhv_lb_tail_loop();
+const BehaviorScript bhvLBTail[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    LOAD_COLLISION_DATA(lb_tail_collision),
+    CALL_NATIVE(bhv_lb_tail_init),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_lb_tail_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
