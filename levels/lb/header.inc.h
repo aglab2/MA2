@@ -2,6 +2,7 @@ extern const GeoLayout lb_area_1_geo[];
 extern const GeoLayout lb_area_1[];
 extern const Collision lb_area_1_collision[];
 extern const MacroObject lb_area_1_macro_objs[];
+extern const Trajectory lb_area_1_spline_attach_00FCA364_001[];
 extern u8 lb_dl_kd_ls_unit712_ci4[];
 extern u8 lb_dl_kd_ls_unit712_pal_rgba16[];
 extern u8 lb_dl_kd_ls_unit711_ci4[];

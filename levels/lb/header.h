@@ -8,4 +8,6 @@ extern const LevelScript level_lb_entry[];
 
 
 #include "levels/lb/header.inc.h"
+#include "levels/lb/lb_rail/geo_header.h"
+
 #endif

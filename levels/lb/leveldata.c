@@ -9,3 +9,4 @@
 
 
 #include "levels/lb/leveldata.inc.c"
+#include "levels/lb/lb_rail/model.inc.c"

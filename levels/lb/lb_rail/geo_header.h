@@ -1,0 +1,15 @@
+extern const GeoLayout lb_rail_geo[];
+extern u8 lb_rail_last1metal06_ci4[];
+extern u8 lb_rail_last1metal06_pal_rgba16[];
+extern u8 lb_rail_last1metal01_ci4[];
+extern u8 lb_rail_last1metal01_pal_rgba16[];
+extern u8 lb_rail_last1metal04_ci4[];
+extern u8 lb_rail_last1metal04_pal_rgba16[];
+extern u8 lb_rail_bs0_ml1_ci8[];
+extern u8 lb_rail_bs0_ml1_pal_rgba16[];
+extern Vtx lb_rail_attach_00FCA364_004_mesh_layer_1_vtx_cull[8];
+extern Vtx lb_rail_attach_00FCA364_004_mesh_layer_1_vtx_0[49];
+extern Vtx lb_rail_attach_00FCA364_004_mesh_layer_1_vtx_1[40];
+extern Vtx lb_rail_attach_00FCA364_004_mesh_layer_1_vtx_2[19];
+extern Vtx lb_rail_attach_00FCA364_004_mesh_layer_1_vtx_3[24];
+extern Gfx lb_rail_attach_00FCA364_004_mesh_layer_1[];

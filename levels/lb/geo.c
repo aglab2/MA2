@@ -15,3 +15,4 @@
 
 
 #include "levels/lb/geo.inc.c"
+#include "levels/lb/lb_rail/geo.inc.c"

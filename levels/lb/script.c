@@ -33,6 +33,7 @@ const LevelScript level_lb_entry[] = {
 	JUMP_LINK(script_func_global_1), 
 	JUMP_LINK(script_func_global_4), 
 	JUMP_LINK(script_func_global_13), 
+	LOAD_MODEL_FROM_GEO(MODEL_LB_RAIL, lb_rail_geo),
 	/* Fast64 begin persistent block [level commands] */
 	/* Fast64 end persistent block [level commands] */
 
