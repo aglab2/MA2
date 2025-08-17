@@ -8,6 +8,8 @@ from scipy.spatial import ConvexHull
 
 HAS_EX3_COMMANDS = True
 HAS_TRI3 = False
+#VTX_BUF_SIZE = 56
+VTX_BUF_SIZE = 59
 
 # Current DFS implementation is O(2^n) algo so not to wait forever we limit the amount of triangles to walk through
 WALK_LIMIT = 10000
@@ -1189,7 +1191,7 @@ class ModelMeshEntry(TriKit):
                 except:
                     np_vtx_poss_hull_indices = []
 
-            if len(np_vtx_poss_hull_indices) > 56:
+            if len(np_vtx_poss_hull_indices) > VTX_BUF_SIZE:
                 np_vtx_poss_hull_indices = []
         else:
             np_vtx_poss_hull_indices = []
@@ -1199,7 +1201,7 @@ class ModelMeshEntry(TriKit):
         culling_pinned_vertices = np_vtx_poss_hull_indices
 
         # For a grand majority of cases "just draw" will be good enough - that's when all vertices fit in the buffer
-        if len(self._vertices) <= 56:
+        if len(self._vertices) <= VTX_BUF_SIZE:
             loaded_vertices = {}
             for i in np_vtx_poss_hull_indices:
                 loaded_vertices[i] = len(loaded_vertices)
@@ -1245,8 +1247,7 @@ class ModelMeshEntry(TriKit):
                             precandidate_tris.add(candidate_tri)
                     preload_vertices = None
 
-                # TODO: When 2nd condition triggers, it usually means that the pool of vertices has depleted and it is better to stop 
-                while not total_pricer.completed() and len(loaded_vertices) < 56:
+                while not total_pricer.completed() and len(loaded_vertices) < VTX_BUF_SIZE - 3:
                     if precandidate_vtxs:
                         log_debug(f"precandidate_vtxs: {precandidate_vtxs}, precandidate_tris: {precandidate_tris}")
                         candidate_vtxs = precandidate_vtxs
@@ -1293,7 +1294,7 @@ class ModelMeshEntry(TriKit):
                                     candidate_tris.add(candidate_tri)
 
                         candidate_to_load_pricer = UsagePricer(candidate_tris, loaded_vertices, rendered_triangles, banned_vertices)
-                        if candidate_to_load_pricer.completed() or len(loaded_vertices) == 56:
+                        if candidate_to_load_pricer.completed() or len(loaded_vertices) == VTX_BUF_SIZE:
                             break
 
                         highest_usage_vtx = candidate_to_load_pricer.highest_usage()
