@@ -729,7 +729,7 @@ s32 find_water_level(s32 x, s32 z) { // TODO: Allow y pos
     TerrainData *p = gEnvironmentRegions;
     PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.collision_water);
     PUPPYPRINT_GET_SNAPSHOT();
-    s32 waterLevel = FLOOR_LOWER_LIMIT;
+    s32 waterLevel = FLOOR_LOWER_LIMIT_VALUE;
 
     if (p != NULL) {
         s32 numRegions = *p++;
@@ -761,9 +761,10 @@ s32 find_water_level(s32 x, s32 z) { // TODO: Allow y pos
  * Finds the height of the poison gas (used only in HMC) at a given location.
  */
 s32 find_poison_gas_level(s32 x, s32 z) {
+    return FLOOR_LOWER_LIMIT_VALUE;
     s32 val;
     s32 loX, hiX, loZ, hiZ;
-    s32 gasLevel = FLOOR_LOWER_LIMIT;
+    s32 gasLevel = FLOOR_LOWER_LIMIT_VALUE;
     TerrainData *p = gEnvironmentRegions;
     PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.collision_water);
     PUPPYPRINT_GET_SNAPSHOT();
