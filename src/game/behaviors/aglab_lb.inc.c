@@ -94,6 +94,10 @@ static void lb_tail_modify()
     lb_coll_modify(amount);
 }
 
+#define LB_PHASE0_LENGTH 40
+#define LB_PHASE1_LENGTH 300
+#define LB_PHASE2_LENGTH 300
+
 extern void set_camera_mode_8_directions(struct Camera *c);
 extern void func_8031D690(s32 player, s32 fadeInTime);
 void bhv_lb_ctl_loop()
@@ -170,7 +174,7 @@ void bhv_lb_ctl_loop()
     }
     else if (3 == o->oAction)
     {
-        if (60 == o->oTimer)
+        if (LB_PHASE0_LENGTH == o->oTimer)
         {
             o->oAction = 4;
         }
@@ -185,6 +189,11 @@ void bhv_lb_ctl_loop()
                 tail->oOpacity = 0;
                 tail->oMoveAngleYaw = 0x4000 * i;
             }
+        }
+
+        if (LB_PHASE1_LENGTH == o->oTimer)
+        {
+            o->oAction = 5;
         }
     }
     else if (5 == o->oAction)
@@ -202,6 +211,14 @@ void bhv_lb_ctl_loop()
                 obj_scale(ball, 0.1f);
             }
         }
+        
+        if (LB_PHASE2_LENGTH == o->oTimer)
+        {
+            o->oAction = 6;
+        }
+    }
+    else if (6 == o->oAction)
+    {
     }
     else
     {
@@ -242,7 +259,11 @@ void bhv_lb_tail_init()
 
 void bhv_lb_tail_loop()
 {
-    o->oOpacity = CLAMP(o->oTimer * 4, 0, 255);
+    if (o->oTimer <= 64)
+        o->oOpacity = CLAMP(o->oTimer * 4, 0, 255);
+    if (o->oTimer > LB_PHASE1_LENGTH - 32)
+        o->oOpacity = CLAMP((LB_PHASE1_LENGTH - o->oTimer) * 8, 0, 255);
+
     o->oMoveAngleYaw += 0x100;
     o->oPosX = 1800.f * coss(-o->oMoveAngleYaw);
     o->oPosZ = 1800.f * sins(-o->oMoveAngleYaw);
