@@ -4,6 +4,7 @@
 #include "moving_texture_macros.h"
 #include "textures.h"
 #include "dialog_ids.h"
+#include "rail_desc.h"
 
 #include "make_const_nonconst.h"
 
@@ -14,3 +15,4 @@
 #include "levels/lb/lb_stand/model.inc.c"
 #include "levels/lb/lb_tail/model.inc.c"
 #include "levels/lb/lb_tail/collision.inc.c"
+#include "levels/lb/rails.inc.c"

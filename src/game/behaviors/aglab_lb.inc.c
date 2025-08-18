@@ -177,12 +177,6 @@ void bhv_lb_ctl_loop()
         if (LB_PHASE0_LENGTH == o->oTimer)
         {
             o->oAction = 4;
-        }
-    }
-    else if (4 == o->oAction)
-    {
-        if (0 == o->oTimer)
-        {
             for (int i = 0; i < 4; i++)
             {
                 struct Object* tail = spawn_object(o, MODEL_LB_TAIL, bhvLBTail);
@@ -190,7 +184,9 @@ void bhv_lb_ctl_loop()
                 tail->oMoveAngleYaw = 0x4000 * i;
             }
         }
-
+    }
+    else if (4 == o->oAction)
+    {
         if (LB_PHASE1_LENGTH == o->oTimer)
         {
             o->oAction = 5;
@@ -215,6 +211,7 @@ void bhv_lb_ctl_loop()
         if (LB_PHASE2_LENGTH == o->oTimer)
         {
             o->oAction = 6;
+            struct Object* rail = spawn_object(o, MODEL_LB_RAIL, bhvLBRail);
         }
     }
     else if (6 == o->oAction)
@@ -270,4 +267,13 @@ void bhv_lb_tail_loop()
 
     if (255 == o->oOpacity)
         load_object_collision_model();
+    
+    if (LB_PHASE1_LENGTH == o->oTimer)
+        o->activeFlags = 0;
+}
+
+void bhv_lb_rail_loop()
+{
+    if (o->oTimer <= 64)
+        o->oOpacity = CLAMP(o->oTimer * 4, 0, 255);
 }

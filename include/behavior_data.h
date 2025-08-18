@@ -627,6 +627,7 @@ extern const BehaviorScript bhvCCSLock[];
 extern const BehaviorScript bhvLBCtl[];
 extern const BehaviorScript bhvLBBall[];
 extern const BehaviorScript bhvLBTail[];
+extern const BehaviorScript bhvLBRail[];
 
 extern const BehaviorScript bhvCoinFormationCC[];
 extern const BehaviorScript bhvCoinFormationSpawnedCoinCC[];

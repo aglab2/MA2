@@ -6,6 +6,8 @@
 #include "dialog_ids.h"
 #include "segment_symbols.h"
 #include "level_commands.h"
+#include "level_config.h"
+#include "rail_desc.h"
 
 #include "game/level_update.h"
 
@@ -15,6 +17,10 @@
 #include "levels/lb/header.h"
 
 /* Fast64 begin persistent block [scripts] */
+extern const RailDesc* rail_descs_lb[];
+static struct LevelConfig cfg = {
+	.railDesc = (void*) rail_descs_lb,
+};
 #define SEQ_LEVEL_GRASS 0
 /* Fast64 end persistent block [scripts] */
 
@@ -38,6 +44,7 @@ const LevelScript level_lb_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_LB_STAND, lb_stand_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_LB_TAIL, lb_tail_geo),
 	/* Fast64 begin persistent block [level commands] */
+	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, lb_area_1, 0, 0, 0),
