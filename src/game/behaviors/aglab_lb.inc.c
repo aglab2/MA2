@@ -42,10 +42,72 @@ static void lb_pin_mario()
     }
 }
 
+static void lb_pin()
+{
+    lb_pin_bowser(); lb_pin_mario();
+}
+
+extern const Collision lb_tail_collision[];
+extern const Collision lb_tail_collision_COPY[];
+
+extern Vtx lb_tail_tail_mesh_layer_1_vtx_0[41] __attribute__((section(".data")));
+extern Vtx lb_tail_tail_mesh_layer_1_vtx_1[17] __attribute__((section(".data")));
+extern Vtx lb_tail_tail_mesh_layer_1_vtx_2[66] __attribute__((section(".data")));
+
+extern Vtx lb_tail_tail_mesh_layer_1_vtx_0_COPY[41] __attribute__((section(".data")));
+extern Vtx lb_tail_tail_mesh_layer_1_vtx_1_COPY[17] __attribute__((section(".data")));
+extern Vtx lb_tail_tail_mesh_layer_1_vtx_2_COPY[66] __attribute__((section(".data")));
+
+static void lb_vtx_modify(f32 amount, int count, Vtx* c, Vtx* t)
+{
+    c = segmented_to_virtual(c);
+    t = segmented_to_virtual(t);
+    for (int i = 0; i < count; i++)
+    {
+        Vtx* vt = &t[i];
+        Vtx* vc = &c[i];
+        int off = 450 + vc->v.ob[0];
+        vt->v.ob[2] = vc->v.ob[2] + amount * off * off;
+    }
+}
+
+static void lb_coll_modify(f32 amount)
+{
+    Collision* t = segmented_to_virtual(lb_tail_collision      + 2);
+    Collision* c = segmented_to_virtual(lb_tail_collision_COPY + 2);
+    for (int i = 0; i < 74; i++)
+    {
+        Collision* vt = t + 3*i;
+        Collision* vc = c + 3*i;
+        int off = 450 + vc[0];
+        vt[2] = vc[2] + amount * off * off;
+    }
+}
+
+static void lb_tail_modify()
+{
+    f32 amount = sins(o->oTimer * 0x163) * 0.00015f;
+    lb_vtx_modify(amount, ARRAY_COUNT(lb_tail_tail_mesh_layer_1_vtx_0), lb_tail_tail_mesh_layer_1_vtx_0_COPY, lb_tail_tail_mesh_layer_1_vtx_0);
+    lb_vtx_modify(amount, ARRAY_COUNT(lb_tail_tail_mesh_layer_1_vtx_1), lb_tail_tail_mesh_layer_1_vtx_1_COPY, lb_tail_tail_mesh_layer_1_vtx_1);
+    lb_vtx_modify(amount, ARRAY_COUNT(lb_tail_tail_mesh_layer_1_vtx_2), lb_tail_tail_mesh_layer_1_vtx_2_COPY, lb_tail_tail_mesh_layer_1_vtx_2);
+
+    lb_coll_modify(amount);
+}
+
 extern void set_camera_mode_8_directions(struct Camera *c);
 extern void func_8031D690(s32 player, s32 fadeInTime);
 void bhv_lb_ctl_loop()
 {
+    lb_tail_modify();
+
+#if 0
+    if (0 == o->oTimer)
+    {
+        struct Object* tail = spawn_object(o, MODEL_LB_TAIL, bhvLBTail);
+        tail->oOpacity = 255;
+    }
+#endif
+
     if (0 == o->oAction)
     {
         o->parentObj->oPosX = 0;
@@ -88,7 +150,7 @@ void bhv_lb_ctl_loop()
             o->parentObj->oAction = BOWSER_ACT_SPIT_FIRE_INTO_SKY;
             cur_obj_play_sound_2(SOUND_OBJ2_BOWSER_ROAR);
 
-            o->parentObj->hitboxRadius = 500.f;
+            o->parentObj->hitboxRadius = 1000.f;
             o->parentObj->hitboxHeight = 1500.f;
 
             s8DirModeYawOffset = 0x8000;
@@ -106,12 +168,27 @@ void bhv_lb_ctl_loop()
             o->oAction = 3;
         }
     }
-    else
+    else if (3 == o->oAction)
     {
-        lb_pin_bowser();
-        lb_pin_mario();
-
-#if 0
+        if (60 == o->oTimer)
+        {
+            o->oAction = 4;
+        }
+    }
+    else if (4 == o->oAction)
+    {
+        if (0 == o->oTimer)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                struct Object* tail = spawn_object(o, MODEL_LB_TAIL, bhvLBTail);
+                tail->oOpacity = 0;
+                tail->oMoveAngleYaw = 0x4000 * i;
+            }
+        }
+    }
+    else if (5 == o->oAction)
+    {
         if (0 == (o->oTimer % 40))
         {
             for (int i = 0; i < 6; i++)
@@ -125,18 +202,13 @@ void bhv_lb_ctl_loop()
                 obj_scale(ball, 0.1f);
             }
         }
-#else
-        if (0 == o->oTimer)
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                struct Object* tail = spawn_object(o, MODEL_LB_TAIL, bhvLBTail);
-                tail->oOpacity = 0;
-                tail->oMoveAngleYaw = 0x4000 * i;
-            }
-        }
-#endif 
     }
+    else
+    {
+    }
+
+    if (o->oAction >= 3)
+        lb_pin();
 }
 
 void bhv_lb_ball_loop()
@@ -170,8 +242,11 @@ void bhv_lb_tail_init()
 
 void bhv_lb_tail_loop()
 {
-    o->oOpacity = CLAMP(o->oTimer, 0, 255);
+    o->oOpacity = CLAMP(o->oTimer * 4, 0, 255);
     o->oMoveAngleYaw += 0x100;
-    o->oPosX = 1600.f * coss(-o->oMoveAngleYaw);
-    o->oPosZ = 1600.f * sins(-o->oMoveAngleYaw);
+    o->oPosX = 1800.f * coss(-o->oMoveAngleYaw);
+    o->oPosZ = 1800.f * sins(-o->oMoveAngleYaw);
+
+    if (255 == o->oOpacity)
+        load_object_collision_model();
 }
