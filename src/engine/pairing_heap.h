@@ -27,16 +27,16 @@ static inline void pairingheap_init(struct PairingHeapHead* heap)
     heap->root = NULL;
 }
 
-void pairingheap_add(struct PairingHeapHead *heap, struct PairingHeapNode *node);
+static void pairingheap_add(struct PairingHeapHead *heap, struct PairingHeapNode *node);
 static inline struct PairingHeapNode* pairingheap_first(struct PairingHeapHead *heap)
 {
     return heap->root;
 }
 
-struct PairingHeapNode* pairingheap_remove_first(struct PairingHeapHead *heap);
+static struct PairingHeapNode* pairingheap_remove_first(struct PairingHeapHead *heap);
 
 // Custom function that I need for management purposes
-void pairingheap_decrease(struct PairingHeapHead *heap, struct PairingHeapNode *node);
+static void pairingheap_decrease(struct PairingHeapHead *heap, struct PairingHeapNode *node);
 
 /* Is the heap empty? */
 #define pairingheap_is_empty(h)			((h)->root == NULL)

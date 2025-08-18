@@ -20,7 +20,7 @@
 #include "emutest.h"
 #include "flipbook.h"
 #include "game/tile_scroll.h"
-#include "engine/pairing_heap.h"
+#include "engine/pairing_heap_impl.h"
 
 #include "config.h"
 #include "config/config_world.h"

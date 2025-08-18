@@ -75,7 +75,7 @@ static struct PairingHeapNode* merge(struct PairingHeapHead *heap, struct Pairin
  *
  * Adds the given node to the heap in O(1) time.
  */
-void pairingheap_add(struct PairingHeapHead *heap, struct PairingHeapNode *node)
+static void pairingheap_add(struct PairingHeapHead *heap, struct PairingHeapNode *node)
 {
 	node->first_child = NULL;
 
@@ -92,7 +92,7 @@ void pairingheap_add(struct PairingHeapHead *heap, struct PairingHeapNode *node)
  * it after rebalancing the heap. The caller must ensure that this routine is
  * not used on an empty heap. O(log n) amortized.
  */
-struct PairingHeapNode* pairingheap_remove_first(struct PairingHeapHead *heap)
+static struct PairingHeapNode* pairingheap_remove_first(struct PairingHeapHead *heap)
 {
 	struct PairingHeapNode *result;
 	struct PairingHeapNode *children;
@@ -171,7 +171,7 @@ merge_children(struct PairingHeapHead *heap, struct PairingHeapNode *children)
 	return newroot;
 }
 
-void pairingheap_decrease(struct PairingHeapHead *heap, struct PairingHeapNode *node)
+static void pairingheap_decrease(struct PairingHeapHead *heap, struct PairingHeapNode *node)
 {
     struct PairingHeapNode *parent = node->prev_or_parent;
     if (parent)
