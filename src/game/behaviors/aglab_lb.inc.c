@@ -1,5 +1,9 @@
 #include "rail_desc.h"
 
+#define oLbTailRange oFloatF4
+#define oLbTailFlipped oF8
+#define oLbTailSpeed oFC
+
 void bhv_lb_ctl_init()
 {
     f32 d;
@@ -157,6 +161,7 @@ static void lb_spawn_rails(void)
 #define LB_PHASE0_LENGTH 40
 #define LB_PHASE1_LENGTH 300
 #define LB_PHASE2_LENGTH 300
+#define LB_PHASE3_LENGTH 300
 
 extern void set_camera_mode_8_directions(struct Camera *c);
 extern void func_8031D690(s32 player, s32 fadeInTime);
@@ -175,7 +180,7 @@ void bhv_lb_ctl_loop()
     {
         seq_player_play_sequence(0, 0x48, 0);
         func_8031D690(0, 60);
-        o->oAction = 1;
+        o->oAction = 7;
         return;
     }
 #endif
@@ -246,11 +251,13 @@ void bhv_lb_ctl_loop()
         {
             lb_tail_modify();
             o->oAction = 4;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
             {
                 struct Object* tail = spawn_object(o, MODEL_LB_TAIL, bhvLBTail);
+                tail->oLbTailRange = 1800.f;
                 tail->oOpacity = 0;
-                tail->oMoveAngleYaw = 0x4000 * i;
+                tail->oLbTailSpeed = 0x100;
+                tail->oMoveAngleYaw = 0x10000 / 3 * i;
             }
         }
     }
@@ -301,11 +308,26 @@ void bhv_lb_ctl_loop()
         {
             gMarioStates->vel[1] = 50.f;
             gMarioStates->forwardVel = -100.f;
+            
+            for (int i = 0; i < 4; i++)
+            {
+                struct Object* tail = spawn_object(o, MODEL_LB_TAIL, bhvLBTail);
+                tail->oLbTailRange = (i&1) ? 3200.f : 1800.f;
+                tail->oLbTailFlipped = (i&1);
+                tail->oOpacity = 0;
+                tail->oLbTailSpeed = 0xA0;
+                tail->oMoveAngleYaw = 0x10000 / 4 * i + ((i&1) ? 0 : 0x8000);
+            }
+        }
+        
+        lb_tail_modify();
+        if (LB_PHASE3_LENGTH == o->oTimer)
+        {
+            o->oAction = 8;
         }
     }
     else
     {
-        
     }
 }
 
@@ -345,9 +367,10 @@ void bhv_lb_tail_loop()
     if (o->oTimer > LB_PHASE1_LENGTH - 32)
         o->oOpacity = CLAMP((LB_PHASE1_LENGTH - o->oTimer) * 8, 0, 255);
 
-    o->oMoveAngleYaw += 0x100;
-    o->oPosX = 1800.f * coss(-o->oMoveAngleYaw);
-    o->oPosZ = 1800.f * sins(-o->oMoveAngleYaw);
+    o->oMoveAngleYaw += o->oLbTailSpeed;
+    int flipAngle = o->oLbTailFlipped ? 0x8000 : 0;
+    o->oPosX = o->oLbTailRange * coss(flipAngle - o->oMoveAngleYaw);
+    o->oPosZ = o->oLbTailRange * sins(flipAngle - o->oMoveAngleYaw);
 
     if (255 == o->oOpacity)
         load_object_collision_model();
