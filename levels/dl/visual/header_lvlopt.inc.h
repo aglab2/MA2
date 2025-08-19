@@ -2,14 +2,8 @@ extern const GeoLayout dl_area_1_geo[];
 extern const GeoLayout dl_area_1[];
 extern const Collision dl_area_1_collision[];
 extern const MacroObject dl_area_1_macro_objs[];
-extern const Trajectory dl_area_1_spline_NurbsCurve_Loop[];
-extern const Trajectory dl_area_1_spline_NurbsCurve_Loop_001[];
-extern const Trajectory dl_area_1_spline_NurbsCurve_Loop_002[];
-extern const Trajectory dl_area_1_spline_NurbsCurve_Loop_003[];
-extern const Trajectory dl_area_1_spline_NurbsCurve_Loop_004[];
-extern const Trajectory dl_area_1_spline_NurbsCurve_Loop_005[];
-extern const Trajectory dl_area_1_spline_NurbsCurve_Loop_006[];
-extern const Trajectory dl_area_1_spline_NurbsCurve_Loop_007[];
+extern const Trajectory dl_area_1_spline_NurbsCurve_Spring[];
+extern const Trajectory dl_area_1_spline_NurbsCurve_Spring_001[];
 extern u8 dl_dl_kd_dl_hasira3_vq_ci4[];
 extern u8 dl_dl_kd_dl_hasira3_vq_pal_rgba16[];
 extern u8 dl_dl_kd_dl_hasira1_vq_ci4[];
@@ -1009,8 +1003,8 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_dl[LAYER_COUNT];
 #define mat_revert_dl_dl_CHIN3_sa2mdl_2_f3d mat_revert_dl_dl_objLandTable0018_sa2blvl_0_f3d
 #define mat_revert_dl_dl_PLANT3_sa2mdl_0_f3d mat_revert_dl_dl_objLandTable0018_sa2blvl_0_f3d
 #define mat_revert_dl_dl_PLANT3_sa2mdl_1_f3d mat_revert_dl_dl_LEAF_BRIGHT_sa2mdl_0_f3d
-#define mat_revert_dl_dl_SmallOasis_sa2mdl_0_f3d mat_revert_dl_dl_LEAF_BRIGHT_sa2mdl_0_f3d
-#define mat_revert_dl_dl_OasisPrisonWater1_sa2mdl_0_f3d mat_revert_dl_dl_LEAF_BRIGHT_sa2mdl_0_f3d
+#define mat_revert_dl_dl_SmallOasis_sa2mdl_0_f3d mat_revert_dl_dl_objLandTable0018_sa2blvl_0_f3d
+#define mat_revert_dl_dl_OasisPrisonWater1_sa2mdl_0_f3d mat_revert_dl_dl_objLandTable0018_sa2blvl_0_f3d
 #define mat_revert_dl_dl_STAKE_BRIGHT_sa2bmdl_0_f3d mat_revert_dl_dl_objLandTable0018_sa2blvl_0_f3d
 #define mat_revert_dl_dl_CANOE_sa2bmdl_0_f3d mat_revert_dl_dl_objLandTable0018_sa2blvl_0_f3d
 #define mat_revert_dl_dl_CANOE_sa2bmdl_1_f3d mat_revert_dl_dl_objLandTable0018_sa2blvl_0_f3d

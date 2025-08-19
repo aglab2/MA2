@@ -7077,3 +7077,19 @@ const BehaviorScript bhvLBRail[] = {
         CALL_NATIVE(bhv_lb_rail_loop),
     END_LOOP(),
 };
+
+extern void bhv_dl_flow_loop();
+const BehaviorScript bhvDlFlow[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_dl_flow_loop),
+    END_LOOP(),
+};
+
+extern void bhv_dl_shell_loop();
+const BehaviorScript bhvDlShell[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_dl_shell_loop),
+    END_LOOP(),
+};
