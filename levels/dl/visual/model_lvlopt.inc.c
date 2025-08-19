@@ -28038,7 +28038,7 @@ Gfx mat_dl_dl_SmallOasis_sa2mdl_0_f3d[] = {
 	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
+	gsDPSetPrimColor(0, 0, 255, 255, 255, 204),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, dl_dl_kd_dl_mizu_001_pal_rgba16),
 	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadTLUTCmd(5, 13),
@@ -28051,13 +28051,13 @@ Gfx mat_dl_dl_SmallOasis_sa2mdl_0_f3d[] = {
 };
 
 Gfx mat_dl_dl_OasisPrisonWater1_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
+	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
-	gsDPSetPrimColor(0, 0, 255, 255, 255, 255),
+	gsDPSetPrimColor(0, 0, 255, 255, 255, 204),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, dl_dl_kd_dl_mizu_001_pal_rgba16),
 	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadTLUTCmd(5, 13),
@@ -28065,6 +28065,25 @@ Gfx mat_dl_dl_OasisPrisonWater1_sa2mdl_0_f3d[] = {
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
 	gsDPLoadBlock(7, 0, 0, 1023, 512),
 	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 252),
+	gsSPEndDisplayListHint(4),
+};
+
+Gfx mat_dl_dl_OasisPrisonWater2_sa2mdl_0_f3d[] = {
+	gsSPGeometryMode(G_CULL_BACK | G_LIGHTING, 0),
+	gsDPPipeSync(),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
+	gsDPSetAlphaDither(G_AD_NOISE),
+	gsDPSetTextureLUT(G_TT_RGBA16),
+	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsDPSetPrimColor(0, 0, 255, 255, 255, 204),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, dl_dl_kd_dl_mizu_001_pal_rgba16),
+	gsDPSetTile(0, 0, 0, 256, 5, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadTLUTCmd(5, 13),
+	gsDPSetTextureImage(G_IM_FMT_CI, G_IM_SIZ_16b, 1, dl_dl_kd_dl_mizu_001_ci4),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_16b, 0, 0, 7, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 1023, 512),
+	gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_4b, 4, 0, 0, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0, G_TX_WRAP | G_TX_NOMIRROR, 6, 0),
 	gsDPSetTileSize(0, 0, 0, 252, 252),
 	gsSPEndDisplayListHint(4),
 };
@@ -29329,7 +29348,7 @@ u32 dl_dl_object_009EFDEC_mesh_layer_5[] = {
 };
 
 u32 dl_dl_object_009EFF24_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_DL_DL_KD_DL_MIZU_001_PAL_RGBA16, dl_dl_object_009EFF24_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_DL_DL_KD_DL_MIZU_001_PAL_RGBA16_2, dl_dl_object_009EFF24_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
@@ -29339,7 +29358,7 @@ u32 dl_dl_object_009F028C_mesh_layer_5[] = {
 };
 
 u32 dl_dl_object_009F07E4_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_DL_DL_KD_DL_MIZU_001_PAL_RGBA16, dl_dl_object_009F07E4_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_DL_DL_KD_DL_MIZU_001_PAL_RGBA16_2, dl_dl_object_009F07E4_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
@@ -29434,7 +29453,7 @@ u32 dl_dl_object_00A4AA64_mesh_layer_5[] = {
 };
 
 u32 dl_dl_water_002_mesh_layer_5[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_DL_DL_KD_DL_MIZU_001_PAL_RGBA16, dl_dl_water_002_mesh_layer_5_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_DL_DL_KD_DL_MIZU_001_PAL_RGBA16_2, dl_dl_water_002_mesh_layer_5_tri_0),
 	BATCH_END(),
 };
 
@@ -29512,6 +29531,7 @@ static struct BatchDisplayLists batch_lvl_dls_LAYER_TRANSPARENT[] = {
 	[LVL_BATCH_LAYER_TRANSPARENT_DL_DL_KD_DL_KUSA2_PAL_RGBA16_1] = { mat_dl_dl_objLandTable0018_sa2blvl_23_f3d, mat_revert_dl_dl_objLandTable0018_sa2blvl_23_f3d, DL_HINT(mat_dl_dl_objLandTable0018_sa2blvl_23_f3d), DL_HINT(mat_revert_dl_dl_objLandTable0018_sa2blvl_23_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_DL_DL_KD_DL_MIZU_001_PAL_RGBA16] = { mat_dl_dl_SmallOasis_sa2mdl_0_f3d, mat_revert_dl_dl_SmallOasis_sa2mdl_0_f3d, DL_HINT(mat_dl_dl_SmallOasis_sa2mdl_0_f3d), DL_HINT(mat_revert_dl_dl_SmallOasis_sa2mdl_0_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_DL_DL_KD_DL_MIZU_001_PAL_RGBA16_1] = { mat_dl_dl_OasisPrisonWater1_sa2mdl_0_f3d, mat_revert_dl_dl_OasisPrisonWater1_sa2mdl_0_f3d, DL_HINT(mat_dl_dl_OasisPrisonWater1_sa2mdl_0_f3d), DL_HINT(mat_revert_dl_dl_OasisPrisonWater1_sa2mdl_0_f3d), },
+	[LVL_BATCH_LAYER_TRANSPARENT_DL_DL_KD_DL_MIZU_001_PAL_RGBA16_2] = { mat_dl_dl_OasisPrisonWater2_sa2mdl_0_f3d, mat_revert_dl_dl_OasisPrisonWater2_sa2mdl_0_f3d, DL_HINT(mat_dl_dl_OasisPrisonWater2_sa2mdl_0_f3d), DL_HINT(mat_revert_dl_dl_OasisPrisonWater2_sa2mdl_0_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_DL_DL_KD_DL_MIZU2_001_RGBA32] = { mat_dl_dl_SmallOasisWall_sa2mdl_0_f3d, mat_revert_dl_dl_SmallOasisWall_sa2mdl_0_f3d, DL_HINT(mat_dl_dl_SmallOasisWall_sa2mdl_0_f3d), DL_HINT(mat_revert_dl_dl_SmallOasisWall_sa2mdl_0_f3d), },
 	[LVL_BATCH_LAYER_TRANSPARENT_DL_DL_DZ_DL_WATER256A_RGBA32] = { mat_dl_dl__00_sa2mdl_0_002_f3d, mat_revert_dl_dl__00_sa2mdl_0_002_f3d, DL_HINT(mat_dl_dl__00_sa2mdl_0_002_f3d), DL_HINT(mat_revert_dl_dl__00_sa2mdl_0_002_f3d), },
 };
@@ -29523,7 +29543,7 @@ static struct BatchDisplayLists batch_lvl_dls_LAYER_ALPHA[] = {
 
 struct BatchLevelDisplayLists batch_lvl_dls_dl[LAYER_COUNT] = {
 	[ LAYER_OPAQUE ] = { 66, batch_lvl_dls_LAYER_OPAQUE },
-	[ LAYER_TRANSPARENT ] = { 6, batch_lvl_dls_LAYER_TRANSPARENT },
+	[ LAYER_TRANSPARENT ] = { 7, batch_lvl_dls_LAYER_TRANSPARENT },
 	[ LAYER_ALPHA ] = { 2, batch_lvl_dls_LAYER_ALPHA },
 };
 
