@@ -58,8 +58,6 @@ struct MemoryPool {
     struct MemoryBlock freeList;
 };
 
-extern uintptr_t sSegmentTable[32];
-
 
 /**
  * Memory pool for small graphical effects that aren't connected to Objects.
@@ -69,19 +67,15 @@ struct MemoryPool *gEffectsMemoryPool;
 
 
 
-uintptr_t sSegmentTable[32];
+static uintptr_t sSegmentTable[32];
 uintptr_t sSegmentROMTable[32];
 struct MainPoolContext sMainPool;
 
 static struct MainPoolState *gMainPoolState = NULL;
 
 uintptr_t set_segment_base_addr(s32 segment, void *addr) {
-    sSegmentTable[segment] = ((uintptr_t) addr & 0x1FFFFFFF);
+    sSegmentTable[segment] = ((uintptr_t) addr & 0x1FFFFFFF) | 0x80000000;
     return sSegmentTable[segment];
-}
-
-UNUSED void *get_segment_base_addr(s32 segment) {
-    return (void *) (sSegmentTable[segment] | 0x80000000);
 }
 
 #ifndef NO_SEGMENTED_MEMORY
@@ -92,20 +86,14 @@ void *segmented_to_virtual(const void *addr) {
     size_t segment = ((uintptr_t) addr >> 24);
     size_t offset  = ((uintptr_t) addr & 0x00FFFFFF);
 
-    return (void *) ((sSegmentTable[segment] + offset) | 0x80000000);
-}
-
-void *virtual_to_segmented(u32 segment, const void *addr) {
-    size_t offset = ((uintptr_t) addr & 0x1FFFFFFF) - sSegmentTable[segment];
-
-    return (void *) ((segment << 24) + offset);
+    return (void *) ((sSegmentTable[segment] + offset));
 }
 
 void move_segment_table_to_dmem(void) {
     Gfx *tempGfxHead = gDisplayListHead;
 
     for (s32 i = 0; i < 16; i++) {
-        gSPSegment(tempGfxHead++, i, sSegmentTable[i]);
+        gSPSegment(tempGfxHead++, i, sSegmentTable[i] & 0x7fffffff);
     }
 
     gDisplayListHead = tempGfxHead;

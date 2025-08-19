@@ -7072,6 +7072,7 @@ const BehaviorScript bhvLBTail[] = {
 extern void bhv_lb_rail_loop();
 const BehaviorScript bhvLBRail[] = {
     BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_lb_rail_loop),
     END_LOOP(),

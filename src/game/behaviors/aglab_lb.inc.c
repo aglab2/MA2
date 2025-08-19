@@ -1,3 +1,5 @@
+#include "rail_desc.h"
+
 void bhv_lb_ctl_init()
 {
     f32 d;
@@ -92,6 +94,48 @@ static void lb_tail_modify()
     lb_vtx_modify(amount, ARRAY_COUNT(lb_tail_tail_mesh_layer_1_vtx_2), lb_tail_tail_mesh_layer_1_vtx_2_COPY, lb_tail_tail_mesh_layer_1_vtx_2);
 
     lb_coll_modify(amount);
+}
+
+extern const Trajectory lb_area_1_spline_attach_00FCA364_001_1[];
+extern const Trajectory lb_area_1_spline_attach_00FCA364_001_2[];
+extern const Trajectory lb_area_1_spline_attach_00FCA364_001_3[];
+extern const Trajectory lb_area_1_spline_attach_00FCA364_001_4[];
+extern const Trajectory lb_area_1_spline_attach_00FCA364_001_C[];
+__attribute__((noinline))
+static void lb_traj_rotate(int num, s16 angle)
+{
+    static const Trajectory* kTrajs[] = {
+        lb_area_1_spline_attach_00FCA364_001_1,
+        lb_area_1_spline_attach_00FCA364_001_2,
+        lb_area_1_spline_attach_00FCA364_001_3,
+        lb_area_1_spline_attach_00FCA364_001_4,
+    };
+
+    Trajectory* t = segmented_to_virtual(kTrajs[num]);
+    const Trajectory* c = segmented_to_virtual(lb_area_1_spline_attach_00FCA364_001_C);
+    while (-1 != *t)
+    {
+        t[1] = c[1] * coss(angle) - c[3] * sins(angle);
+        // t[2] = c[2];
+        t[3] = c[3] * coss(angle) + c[1] * sins(angle);
+        t += 4;
+        c += 4;
+    }
+}
+
+extern RailDesc lb_rails_area1[];
+static void lb_rails_activate_switch(void)
+{
+    // This works because there are exactly 4 rails available
+    // The first rail is a stop marker, then rest 4.
+    // We perform swapping of the first and last rails to activate all 4 at once
+    RailDesc* rails = segmented_to_virtual(lb_rails_area1);
+    RailDesc* first = &rails[0];
+    RailDesc* last  = &rails[4];
+
+    RailDesc tmp = *first;
+    *first = *last;
+    *last = tmp;
 }
 
 #define LB_PHASE0_LENGTH 40
@@ -211,7 +255,14 @@ void bhv_lb_ctl_loop()
         if (LB_PHASE2_LENGTH == o->oTimer)
         {
             o->oAction = 6;
-            struct Object* rail = spawn_object(o, MODEL_LB_RAIL, bhvLBRail);
+            s32 angleToMario = obj_angle_to_object(o->parentObj, gMarioObject);
+            for (int i = 0; i < 4; i++)
+            {
+                struct Object* rail = spawn_object(o, MODEL_LB_RAIL, bhvLBRail);
+                rail->oFaceAngleYaw = angleToMario + 0x10000 / 4 * i;
+                lb_traj_rotate(i, rail->oFaceAngleYaw);
+            }
+            lb_rails_activate_switch();
         }
     }
     else if (6 == o->oAction)

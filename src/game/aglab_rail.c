@@ -91,6 +91,7 @@ static int facing_same_way(s32 xDiff, s32 zDiff)
     return xDiff * gMarioStates->vel[0] + zDiff * gMarioStates->vel[2] < 0;
 }
 
+extern void print_text_fmt_int(int x, int y, const char* fmt, int value);
 extern u8 gIsGravityFlipped;
 static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop, int it)
 {
