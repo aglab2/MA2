@@ -3,6 +3,7 @@
 #define oLbTailRange oFloatF4
 #define oLbTailFlipped oF8
 #define oLbTailSpeed oFC
+#define oLbTailTimeout o100
 
 void bhv_lb_ctl_init()
 {
@@ -257,6 +258,7 @@ void bhv_lb_ctl_loop()
                 tail->oLbTailRange = 1800.f;
                 tail->oOpacity = 0;
                 tail->oLbTailSpeed = 0x100;
+                tail->oLbTailTimeout = LB_PHASE1_LENGTH;
                 tail->oMoveAngleYaw = 0x10000 / 3 * i;
             }
         }
@@ -316,6 +318,7 @@ void bhv_lb_ctl_loop()
                 tail->oLbTailFlipped = (i&1);
                 tail->oOpacity = 0;
                 tail->oLbTailSpeed = 0x90;
+                tail->oLbTailTimeout = LB_PHASE3_LENGTH;
                 tail->oMoveAngleYaw = 0x10000 / 4 * i + ((i&1) ? 0 : 0x8000);
             }
         }
@@ -325,6 +328,10 @@ void bhv_lb_ctl_loop()
         {
             o->oAction = 8;
         }
+    }
+    else if (8 == o->oAction)
+    {
+        
     }
     else
     {
@@ -362,10 +369,11 @@ void bhv_lb_tail_init()
 
 void bhv_lb_tail_loop()
 {
+    int amt = o->oLbTailTimeout;
     if (o->oTimer <= 64)
         o->oOpacity = CLAMP(o->oTimer * 4, 0, 255);
-    if (o->oTimer > LB_PHASE1_LENGTH - 32)
-        o->oOpacity = CLAMP((LB_PHASE1_LENGTH - o->oTimer) * 8, 0, 255);
+    if (o->oTimer > amt - 32)
+        o->oOpacity = CLAMP((amt - o->oTimer) * 8, 0, 255);
 
     o->oMoveAngleYaw += o->oLbTailSpeed;
     int flipAngle = o->oLbTailFlipped ? 0x8000 : 0;
@@ -375,7 +383,7 @@ void bhv_lb_tail_loop()
     if (255 == o->oOpacity)
         load_object_collision_model();
     
-    if (LB_PHASE1_LENGTH == o->oTimer)
+    if (amt == o->oTimer)
         o->activeFlags = 0;
 }
 
