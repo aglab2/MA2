@@ -161,7 +161,7 @@ static void lb_spawn_rails(void)
 #define LB_PHASE0_LENGTH 40
 #define LB_PHASE1_LENGTH 300
 #define LB_PHASE2_LENGTH 300
-#define LB_PHASE3_LENGTH 300
+#define LB_PHASE3_LENGTH 500
 
 extern void set_camera_mode_8_directions(struct Camera *c);
 extern void func_8031D690(s32 player, s32 fadeInTime);
@@ -315,7 +315,7 @@ void bhv_lb_ctl_loop()
                 tail->oLbTailRange = (i&1) ? 3200.f : 1800.f;
                 tail->oLbTailFlipped = (i&1);
                 tail->oOpacity = 0;
-                tail->oLbTailSpeed = 0xA0;
+                tail->oLbTailSpeed = 0x90;
                 tail->oMoveAngleYaw = 0x10000 / 4 * i + ((i&1) ? 0 : 0x8000);
             }
         }
