@@ -16,7 +16,7 @@ static void lb_pin_bowser()
     o->parentObj->oPosY = 0;
     o->parentObj->oPosZ = 0;
 
-    if (o->parentObj->oAction != BOWSER_ACT_WALK_TO_MARIO)
+    if (o->parentObj->oAction != BOWSER_ACT_WALK_TO_MARIO && o->parentObj->oAction != BOWSER_ACT_HIT_MINE)
     {
         s32 angleToMario = obj_angle_to_object(o->parentObj, gMarioObject);
         s16 angleFromMario = abs_angle_diff(o->parentObj->oMoveAngleYaw, angleToMario);
@@ -115,9 +115,9 @@ static void lb_traj_rotate(int num, s16 angle)
     const Trajectory* c = segmented_to_virtual(lb_area_1_spline_attach_00FCA364_001_C);
     while (-1 != *t)
     {
-        t[1] = c[1] * coss(angle) - c[3] * sins(angle);
+        t[1] = c[1] * coss(angle) + c[3] * sins(angle);
         // t[2] = c[2];
-        t[3] = c[3] * coss(angle) + c[1] * sins(angle);
+        t[3] = c[3] * coss(angle) - c[1] * sins(angle);
         t += 4;
         c += 4;
     }
@@ -138,6 +138,18 @@ static void lb_rails_activate_switch(void)
     *last = tmp;
 }
 
+static void lb_spawn_rails(void)
+{
+    s32 angleToMario = obj_angle_to_object(o->parentObj, gMarioObject);
+    for (int i = 0; i < 4; i++)
+    {
+        struct Object* rail = spawn_object(o, MODEL_LB_RAIL, bhvLBRail);
+        rail->oFaceAngleYaw = angleToMario + 0x10000 / 4 * i;
+        lb_traj_rotate(i, rail->oFaceAngleYaw);
+    }
+    lb_rails_activate_switch();
+}
+
 #define LB_PHASE0_LENGTH 40
 #define LB_PHASE1_LENGTH 300
 #define LB_PHASE2_LENGTH 300
@@ -146,14 +158,12 @@ extern void set_camera_mode_8_directions(struct Camera *c);
 extern void func_8031D690(s32 player, s32 fadeInTime);
 void bhv_lb_ctl_loop()
 {
-    lb_tail_modify();
+    if (o->oAction >= 3)
+        lb_pin();
 
 #if 0
     if (0 == o->oTimer)
-    {
-        struct Object* tail = spawn_object(o, MODEL_LB_TAIL, bhvLBTail);
-        tail->oOpacity = 255;
-    }
+        lb_spawn_rails();
 #endif
 
     if (0 == o->oAction)
@@ -199,7 +209,7 @@ void bhv_lb_ctl_loop()
             cur_obj_play_sound_2(SOUND_OBJ2_BOWSER_ROAR);
 
             o->parentObj->hitboxRadius = 1000.f;
-            o->parentObj->hitboxHeight = 1500.f;
+            o->parentObj->hitboxHeight = 1300.f;
 
             s8DirModeYawOffset = 0x8000;
    
@@ -220,6 +230,7 @@ void bhv_lb_ctl_loop()
     {
         if (LB_PHASE0_LENGTH == o->oTimer)
         {
+            lb_tail_modify();
             o->oAction = 4;
             for (int i = 0; i < 4; i++)
             {
@@ -231,6 +242,7 @@ void bhv_lb_ctl_loop()
     }
     else if (4 == o->oAction)
     {
+        lb_tail_modify();
         if (LB_PHASE1_LENGTH == o->oTimer)
         {
             o->oAction = 5;
@@ -255,25 +267,16 @@ void bhv_lb_ctl_loop()
         if (LB_PHASE2_LENGTH == o->oTimer)
         {
             o->oAction = 6;
-            s32 angleToMario = obj_angle_to_object(o->parentObj, gMarioObject);
-            for (int i = 0; i < 4; i++)
-            {
-                struct Object* rail = spawn_object(o, MODEL_LB_RAIL, bhvLBRail);
-                rail->oFaceAngleYaw = angleToMario + 0x10000 / 4 * i;
-                lb_traj_rotate(i, rail->oFaceAngleYaw);
-            }
-            lb_rails_activate_switch();
+            lb_spawn_rails();
         }
     }
     else if (6 == o->oAction)
     {
+        o->parentObj->oAction = BOWSER_ACT_HIT_EDGE;
     }
     else
     {
     }
-
-    if (o->oAction >= 3)
-        lb_pin();
 }
 
 void bhv_lb_ball_loop()

@@ -431,6 +431,23 @@ void bowser_act_idle(void) {
 }
 
 static void bowser_clean_attack();
+static void bowser_handle_dmg(void)
+{
+    if (o->oInteractStatus & INT_STATUS_WAS_ATTACKED)
+    {
+        o->oHealth--;
+        if (o->oHealth <= 0) {
+            o->oAction = BOWSER_ACT_DEAD;
+        } else {
+            o->oAction = BOWSER_ACT_HIT_MINE;
+            o->oInteractStatus = INT_STATUS_NONE;
+        }
+        
+        if (gCurrLevelNum == LEVEL_SS2)
+            bowser_clean_attack();
+    }
+}
+
 /**
  * Default Bowser act that doesn't last very long
  */
@@ -445,19 +462,7 @@ void bowser_act_default(void) {
     o->oVelY = 0.0f;
 
     o->oInteractType = INTERACT_BOUNCE_TOP;
-    if (o->oInteractStatus & INT_STATUS_WAS_ATTACKED)
-    {
-        o->oHealth--;
-        if (o->oHealth <= 0) {
-            o->oAction = BOWSER_ACT_DEAD;
-        } else {
-            o->oAction = BOWSER_ACT_HIT_MINE;
-            o->oInteractStatus = INT_STATUS_NONE;
-        }
-        
-        if (gCurrLevelNum == LEVEL_SS2)
-            bowser_clean_attack();
-    }
+    bowser_handle_dmg();
 #if 0
     // Set level specific actions
     if (o->oBehParams2ndByte == BOWSER_BP_BITDW) {
@@ -885,7 +890,7 @@ void bowser_act_hit_edge(void) {
     if (o->oTimer == 0) {
         o->oBowserTimer = 0;
     }
-
+#if 0
     switch (o->oSubAction) {
         case 0:
             // Move on the edge
@@ -907,6 +912,10 @@ void bowser_act_hit_edge(void) {
             }
             break;
     }
+#else
+    cur_obj_init_animation_with_sound(BOWSER_ANIM_EDGE_MOVE);
+    bowser_handle_dmg();
+#endif
 }
 
 /**
