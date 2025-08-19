@@ -167,6 +167,12 @@ s32 bowser_spawn_shockwave(void) {
  * Plays step sound, spawns particles and changes camera event
  */
 void bowser_bounce_effects(s32 *timer) {
+    if (gCurrLevelNum == LEVEL_LB && o->oTimer > 30)
+    {
+        (*timer)++;
+        return;
+    }
+    
     if (o->oMoveFlags & OBJ_MOVE_LANDED) {
         (*timer)++;
         int limit = gCurrLevelNum == LEVEL_SS1 ? 2 : 4;
@@ -707,6 +713,8 @@ static void bowser_kill_mario_on_hit()
 
 static int want_manage()
 {
+    if (gCurrLevelNum == LEVEL_LB)
+        return 0;
     if (gCurrLevelNum == LEVEL_SS2)
         return 1;
 
@@ -739,7 +747,10 @@ void bowser_act_hit_mine(void) {
         cur_obj_init_animation_with_sound(BOWSER_ANIM_FLIP);
         cur_obj_extend_animation_if_at_end();
         bowser_bounce_effects(&o->oBowserTimer);
-        int amount = gCurrLevelNum == LEVEL_SS1 ? 1 : 2;
+        int amount = 1;
+        if (gCurrLevelNum == LEVEL_SS2)
+            amount = 2;
+
         // Reset vel and stand up
         if (o->oBowserTimer > amount) {
             cur_obj_init_animation_with_sound(BOWSER_ANIM_STAND_UP_FROM_FLIP);
@@ -768,6 +779,12 @@ void bowser_act_hit_mine(void) {
             gMarioStates->pos[1] = o->oPosY;
             gMarioStates->pos[2] = o->oPosZ;
             gMarioStates->faceAngle[1] = 0x8000 + o->oMoveAngleYaw;
+        }
+        if (gCurrLevelNum == LEVEL_LB && o->oTimer == 0)
+        {
+            set_mario_action(gMarioStates, ACT_THROWN_BACKWARD, 0);
+            gMarioStates->vel[1] = 50.f;
+            gMarioStates->forwardVel = -100.f;
         }
     }
 }

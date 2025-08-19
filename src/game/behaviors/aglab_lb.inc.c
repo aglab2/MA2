@@ -4,10 +4,12 @@ void bhv_lb_ctl_init()
 {
     f32 d;
     o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvBowser, &d);
+#if 0
     gSecondCameraFocus = spawn_object(o, MODEL_STAR, bhvGrandStar);
     gSecondCameraFocus->oPosX = 0;
     gSecondCameraFocus->oPosY = 1050;
     gSecondCameraFocus->oPosZ = -10000;
+#endif
 }
 
 static void lb_pin_bowser()
@@ -16,7 +18,9 @@ static void lb_pin_bowser()
     o->parentObj->oPosY = 0;
     o->parentObj->oPosZ = 0;
 
-    if (o->parentObj->oAction != BOWSER_ACT_WALK_TO_MARIO && o->parentObj->oAction != BOWSER_ACT_HIT_MINE)
+    if (o->parentObj->oAction != BOWSER_ACT_WALK_TO_MARIO
+     && o->parentObj->oAction != BOWSER_ACT_HIT_MINE
+     && o->parentObj->oAction != BOWSER_ACT_HIT_EDGE)
     {
         s32 angleToMario = obj_angle_to_object(o->parentObj, gMarioObject);
         s16 angleFromMario = abs_angle_diff(o->parentObj->oMoveAngleYaw, angleToMario);
@@ -166,6 +170,16 @@ void bhv_lb_ctl_loop()
         lb_spawn_rails();
 #endif
 
+#if 1
+    if (0 == o->oTimer && o->oAction == 0)
+    {
+        seq_player_play_sequence(0, 0x48, 0);
+        func_8031D690(0, 60);
+        o->oAction = 1;
+        return;
+    }
+#endif
+
     if (0 == o->oAction)
     {
         o->parentObj->oPosX = 0;
@@ -272,10 +286,26 @@ void bhv_lb_ctl_loop()
     }
     else if (6 == o->oAction)
     {
-        o->parentObj->oAction = BOWSER_ACT_HIT_EDGE;
+        if (o->oTimer < 2)
+            o->parentObj->oAction = BOWSER_ACT_HIT_EDGE;
+
+        if (o->parentObj->oAction != BOWSER_ACT_HIT_EDGE)
+        {
+            o->oAction = 7;
+            lb_rails_activate_switch();
+        }
+    }
+    else if (7 == o->oAction)
+    {
+        if (0 == o->oTimer)
+        {
+            gMarioStates->vel[1] = 50.f;
+            gMarioStates->forwardVel = -100.f;
+        }
     }
     else
     {
+        
     }
 }
 
@@ -330,4 +360,14 @@ void bhv_lb_rail_loop()
 {
     if (o->oTimer <= 64)
         o->oOpacity = CLAMP(o->oTimer * 4, 0, 255);
+
+    if (o->parentObj->oAction != 6)
+    {
+        o->oOpacity -= 4;
+        if (o->oOpacity < 0)
+        {
+            o->oOpacity = 0;
+            o->activeFlags = 0;
+        }
+    }
 }
