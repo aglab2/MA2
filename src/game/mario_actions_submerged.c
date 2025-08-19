@@ -539,6 +539,15 @@ static s32 act_breaststroke(struct MarioState *m) {
         return TRUE;
     }
 
+
+    if (m->interactObj && m->interactObj->behavior == segmented_to_virtual(bhvKoopaShellUnderwater)) {
+        // play_shell_music();
+        m->heldObj = m->interactObj;
+        m->interactObj = NULL;
+        m->heldObj->oHeldState = HELD_HELD;
+        return set_mario_action(m, ACT_WATER_SHELL_SWIMMING, 0);
+    }
+
     if (++m->actionTimer >= 14) {
         if (nextAction != ACT_BREASTSTROKE) {
             return set_mario_action(m, nextAction, 0);
@@ -752,6 +761,18 @@ static s32 act_water_shell_swimming(struct MarioState *m) {
     if (m->marioObj->oInteractStatus & INT_STATUS_MARIO_DROP_OBJECT) {
         return drop_and_set_mario_action(m, ACT_WATER_IDLE, 0);
     }
+    
+    if (m->actionTimer++ == 240) {
+        m->heldObj->oInteractStatus = INT_STATUS_STOP_RIDING;
+        m->heldObj = NULL;
+        set_mario_action(m, ACT_FLUTTER_KICK, 0);
+    }
+
+    m->forwardVel = approach_f32(m->forwardVel, 60.0f, 2.0f, 1.0f);
+
+    play_swimming_noise(m);
+    set_mario_animation(m, MARIO_ANIM_FLUTTERKICK_WITH_OBJ);
+    common_swimming_step(m, 300);
 
     return FALSE;
 }

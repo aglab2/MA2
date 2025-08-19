@@ -400,7 +400,7 @@ void mario_retrieve_cap(void) {
     gMarioState->flags |= MARIO_NORMAL_CAP | MARIO_CAP_IN_HAND;
 }
 
-u32 able_to_grab_object(struct MarioState *m, UNUSED struct Object *obj) {
+static u32 able_to_grab_object(struct MarioState *m, UNUSED struct Object *obj) {
     u32 action = m->action;
 
     if (action == ACT_DIVE_SLIDE || action == ACT_DIVE) {
@@ -409,6 +409,10 @@ u32 able_to_grab_object(struct MarioState *m, UNUSED struct Object *obj) {
         }
     } else if (action == ACT_PUNCHING || action == ACT_MOVE_PUNCHING) {
         if (m->actionArg < 2) {
+            return TRUE;
+        }
+    } else if (action == ACT_BREASTSTROKE) {
+        if (obj->behavior == bhvKoopaShellUnderwater) {
             return TRUE;
         }
     }
