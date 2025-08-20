@@ -95,14 +95,19 @@ static void lb_coll_modify(f32 amount)
     }
 }
 
-static void lb_tail_modify()
+static void lb_tail_modify_by(f32 amount)
 {
-    f32 amount = sins(o->oTimer * 0x163) * 0.00015f;
+    amount *= 0.00015f;
     lb_vtx_modify(amount, ARRAY_COUNT(lb_tail_tail_mesh_layer_1_vtx_0), lb_tail_tail_mesh_layer_1_vtx_0_COPY, lb_tail_tail_mesh_layer_1_vtx_0);
     lb_vtx_modify(amount, ARRAY_COUNT(lb_tail_tail_mesh_layer_1_vtx_1), lb_tail_tail_mesh_layer_1_vtx_1_COPY, lb_tail_tail_mesh_layer_1_vtx_1);
     lb_vtx_modify(amount, ARRAY_COUNT(lb_tail_tail_mesh_layer_1_vtx_2), lb_tail_tail_mesh_layer_1_vtx_2_COPY, lb_tail_tail_mesh_layer_1_vtx_2);
 
     lb_coll_modify(amount);
+}
+
+static void lb_tail_modify_sine()
+{
+    return lb_tail_modify_by(sins(o->oTimer * 0x163));
 }
 
 extern const Trajectory lb_area_1_spline_attach_00FCA364_001_1[];
@@ -250,7 +255,7 @@ void bhv_lb_ctl_loop()
     {
         if (LB_PHASE0_LENGTH == o->oTimer)
         {
-            lb_tail_modify();
+            lb_tail_modify_sine();
             o->oAction = 4;
             for (int i = 0; i < 3; i++)
             {
@@ -260,12 +265,13 @@ void bhv_lb_ctl_loop()
                 tail->oLbTailSpeed = 0x100;
                 tail->oLbTailTimeout = LB_PHASE1_LENGTH;
                 tail->oMoveAngleYaw = 0x10000 / 3 * i;
+                tail->oBehParams2ndByte = 0;
             }
         }
     }
     else if (4 == o->oAction)
     {
-        lb_tail_modify();
+        lb_tail_modify_sine();
         if (LB_PHASE1_LENGTH == o->oTimer)
         {
             o->oAction = 5;
@@ -320,10 +326,19 @@ void bhv_lb_ctl_loop()
                 tail->oLbTailSpeed = 0x90;
                 tail->oLbTailTimeout = LB_PHASE3_LENGTH;
                 tail->oMoveAngleYaw = 0x10000 / 4 * i + ((i&1) ? 0 : 0x8000);
+                tail->oBehParams2ndByte = 1;
             }
         }
-        
-        lb_tail_modify();
+
+#if 0
+        int amt = o->oTimer % 64;
+        if (amt < 50)
+            lb_tail_modify_by(amt / 40.f);
+        else
+            lb_tail_modify_by((63 - amt) / 12.f * 1.2f);
+#endif
+        lb_tail_modify_sine();
+
         if (LB_PHASE3_LENGTH == o->oTimer)
         {
             o->oAction = 8;
@@ -376,6 +391,27 @@ void bhv_lb_tail_loop()
         o->oOpacity = CLAMP((amt - o->oTimer) * 8, 0, 255);
 
     o->oMoveAngleYaw += o->oLbTailSpeed;
+#if 0
+    if (o->oBehParams2ndByte == 1)
+    {
+        int amt = o->oTimer % 64;
+        int speed = 0;
+        if (amt < 50)
+            speed = 50 - amt;
+        else
+            speed = -0x140;
+
+        if (o->oLbTailFlipped)
+            speed = -speed;
+
+        o->oMoveAngleYaw += speed;
+    }
+    else
+    {
+        o->oMoveAngleYaw += 0x100;
+    }
+#endif
+
     int flipAngle = o->oLbTailFlipped ? 0x8000 : 0;
     o->oPosX = o->oLbTailRange * coss(flipAngle - o->oMoveAngleYaw);
     o->oPosZ = o->oLbTailRange * sins(flipAngle - o->oMoveAngleYaw);
