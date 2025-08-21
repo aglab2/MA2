@@ -5,11 +5,16 @@
 #define oLbTailSpeed oFC
 #define oLbTailTimeout o100
 
+#define oLbSparkle oObjF4
+
 void bhv_lb_ctl_init()
 {
     f32 d;
     o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvBowser, &d);
-#if 0
+    o->oLbSparkle = spawn_object(o, MODEL_LB_SPARKLE, bhvStaticObject);
+    o->oLbSparkle->oOpacity = 0;
+    o->oLbSparkle->oPosY -= 50.f;
+#if 1
     gSecondCameraFocus = spawn_object(o, MODEL_STAR, bhvGrandStar);
     gSecondCameraFocus->oPosX = 0;
     gSecondCameraFocus->oPosY = 1050;
@@ -186,7 +191,7 @@ void bhv_lb_ctl_loop()
     {
         seq_player_play_sequence(0, 0x48, 0);
         func_8031D690(0, 60);
-        o->oAction = 7;
+        o->oAction = 8;
         return;
     }
 #endif
@@ -279,6 +284,16 @@ void bhv_lb_ctl_loop()
     }
     else if (5 == o->oAction)
     {
+        f32 val = coss(o->oTimer * 0x10000 / 80);
+        val *= val;
+        val *= 500.f;
+        val -= 200.f;
+        if (val > 220.f)
+            val = 220.f;
+        if (val < 0.f)
+            val = 0.f;
+
+        o->oLbSparkle->oOpacity = val + 32;
         if (0 == (o->oTimer % 40))
         {
             for (int i = 0; i < 6; i++)
@@ -346,7 +361,7 @@ void bhv_lb_ctl_loop()
     }
     else if (8 == o->oAction)
     {
-        
+        o->oLbSparkle->oOpacity = sins(o->oTimer * 0x263) * sins(o->oTimer * 0x263) * 220 + 32;
     }
     else
     {

@@ -16,3 +16,5 @@
 #include "levels/lb/lb_tail/model.inc.c"
 #include "levels/lb/lb_tail/collision.inc.c"
 #include "levels/lb/rails.inc.c"
+
+#include "levels/lb/lb_sparkle/model.inc.c"
