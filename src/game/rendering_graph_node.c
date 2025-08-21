@@ -217,6 +217,7 @@ struct GraphNodeObject *gCurGraphNodeObject = NULL;
 struct GraphNodeHeldObject *gCurGraphNodeHeldObject = NULL;
 u16 gAreaUpdateCounter = 0;
 static LookAt* gCurLookAt;
+static Vec3f sNodeCameraVec;
 
 #if SILHOUETTE
 // AA_EN        Enable anti aliasing (not actually used for AA in this case).
@@ -1086,6 +1087,8 @@ void geo_process_camera(struct GraphNodeCamera *node) {
 
     if (node->fnNode.node.children != 0) {
         gCurGraphNodeCamera = node;
+        vec3_diff(sNodeCameraVec, gCurGraphNodeCamera->pos, gCurGraphNodeCamera->focus);
+        vec3_normalize(sNodeCameraVec);
         node->matrixPtr = &gCameraTransform;
         geo_process_node_and_siblings(node->fnNode.node.children);
         gCurGraphNodeCamera = NULL;
@@ -1808,7 +1811,7 @@ static void adjust_view_range()
 }
 
 f32 gViewRangeMult;
-static int is_far_from_mario(f32 l0, f32 l1, f32 l2)
+static int is_far_from_mario(f32 l0, f32 l1, f32 l2, f32 radius)
 {
     Vec3f loc = { l0, l1, l2 };
     Vec3f d;
@@ -1830,11 +1833,20 @@ static int is_far_from_mario(f32 l0, f32 l1, f32 l2)
     {
         return 1;
     }
-    else
+
+    if (radius)
     {
-        gPriority = priority;
-        return 0;
+        // For radius check do a simple approximation.
+        // Check that node point is far from the camera and behind the camera
+        vec3_diff(d, gCurGraphNodeCamera->pos, loc);
+        if (radius*radius < dist && vec3_dot(d, sNodeCameraVec) < 0)
+        {
+            return 1;
+        }
     }
+
+    gPriority = priority;
+    return 0;
 }
 
 void geo_process_lvl_translation_rotation(struct LightGraphLvlNodeTranslationRotation *lvlNode) {
@@ -1849,7 +1861,7 @@ void geo_process_lvl_translation_rotation(struct LightGraphLvlNodeTranslationRot
     translation[2] = lvlNode->z;
     vec3_sub(translation, gCurrentArea->renderOffset);
 
-    if (is_far_from_mario(translation[0], translation[1], translation[2]))
+    if (is_far_from_mario(translation[0], translation[1], translation[2], lvlNode->radius))
         return;
 
     mtxf_rotate_zxy_and_translate_and_mul(lvlNode->rotation[0], lvlNode->rotation[1], lvlNode->rotation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
@@ -1870,7 +1882,7 @@ void geo_process_lvl_translation(struct LightGraphLvlNodeTranslation *lvlNode) {
     translation[2] = lvlNode->z;
     vec3_sub(translation, gCurrentArea->renderOffset);
 
-    if (is_far_from_mario(translation[0], translation[1], translation[2]))
+    if (is_far_from_mario(translation[0], translation[1], translation[2], 0))
         return;
 
     mtxf_translate_and_mul(translation[0], translation[1], translation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
@@ -1889,7 +1901,7 @@ void geo_process_lvl_translation_rotation_cold(struct GraphNodeLvlTranslationRot
     vec3_copy(translation, lvlNode->translation);
     vec3_sub(translation, gCurrentArea->renderOffset);
 
-    if (is_far_from_mario(translation[0], translation[1], translation[2]))
+    if (is_far_from_mario(translation[0], translation[1], translation[2], lvlNode->radius))
         return;
 
     mtxf_rotate_zxy_and_translate_and_mul(lvlNode->rotation[0], lvlNode->rotation[1], lvlNode->rotation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
@@ -1908,7 +1920,7 @@ void geo_process_lvl_translation_cold(struct GraphNodeLvlTranslation *lvlNode) {
     vec3_copy(translation, lvlNode->translation);
     vec3_sub(translation, gCurrentArea->renderOffset);
 
-    if (is_far_from_mario(translation[0], translation[1], translation[2]))
+    if (is_far_from_mario(translation[0], translation[1], translation[2], lvlNode->radius))
         return;
 
     mtxf_translate_and_mul(translation[0], translation[1], translation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);

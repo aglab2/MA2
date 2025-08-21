@@ -60,7 +60,7 @@ const SpringDesc* spring_descs_ms[] = {
     NULL,
 };
 
-#include "levels/ms/visual/model_lvl.inc.c"
+#include "levels/ms/visual/model_lvlopt.inc.c"
 
 #if 0
 #include "levels/ms/leveldata.inc.c"

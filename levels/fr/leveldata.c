@@ -10,7 +10,7 @@
 #include "make_const_nonconst.h"
 
 #include "levels/fr/visual/header_lvl.inc.h"
-#include "levels/fr/visual/model_lvl.inc.c"
+#include "levels/fr/visual/model_lvlopt.inc.c"
 
 LDLDesc __debug__loop_desc = { 0 };
 static const LDLDesc loop_desc1 = { 0 };

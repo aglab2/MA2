@@ -1207,6 +1207,79 @@ static int dropped_for_console(void* dl, s32 layer)
     return 0;
 }
 
+struct CullDlPattern
+{
+    u32 vtxs;
+    void* vtxsPtr;
+    u8 cullCmd;
+    u8 _pad;
+    u16 amount;
+};
+
+static f32 get_radius_dl(void* dl)
+{
+    struct CullDlPattern* cullDl = segmented_to_virtual(dl);
+    int amount;
+    if (cullDl->cullCmd != G_CULLDL)
+    {
+        u8* cursor = &cullDl->cullCmd;
+        while (*cursor != G_ENDDL)
+        {
+            if (*cursor == G_VTX)
+                return 0;
+
+            cursor += 8;
+        }
+        amount = (cullDl->vtxs >> 13) & 63;
+    }
+    else
+    {
+        amount = cullDl->amount >> 1;
+    }
+
+    f32 result = 0.f;
+    Vtx* vtxs = segmented_to_virtual(cullDl->vtxsPtr);
+    for (int i = 0; i < amount; i++)
+    {
+        Vtx* vtx = &vtxs[i];
+        Vec3f pos;
+        vec3_copy(pos, vtx->n.ob);
+        f32 pendingRadius = vec3_sumsq(pos);
+        if (pendingRadius > result)
+            result = pendingRadius;
+    }
+
+    return result;
+}
+
+struct BatchCmd
+{
+    u32 check;
+    void* dl;
+};
+
+static f32 get_radius_batch_cmds(void* commands)
+{
+    f32 result = 0.f;
+    struct BatchCmd* batchCmd = (struct BatchCmd*)commands;
+    while (batchCmd->check != 0)
+    {
+        f32 dlRadius = get_radius_dl(batchCmd->dl);
+        if (!dlRadius)
+            return result;
+
+        if (dlRadius > result)
+            result = dlRadius;
+
+        batchCmd++;
+    }
+
+    if (result > 10000.f * 10000.f)
+        return 0;
+    else
+        return sqrtf(result);
+}
+
 void geo_layout_cmd_lvl_translation_rotation(void) {
     struct GraphNodeLvlTranslationRotation *graphNode;
 
@@ -1238,9 +1311,16 @@ void geo_layout_cmd_lvl_translation_rotation(void) {
     register_scene_graph_node(&graphNode->node);
 
     if (!dropped_for_console(displayList, drawingLayer))
+    {
         graphNode->dl = segmented_to_virtual(displayList);
+        f32 result = displayList ? get_radius_batch_cmds(graphNode->dl) : 0.f;
+        graphNode->radius = result + result;
+    }
     else
+    {
         graphNode->dl = NULL;
+        graphNode->radius = 0.f;
+    }
 
     gGeoLayoutCommand = (u8 *) cmdPos;
 }
@@ -1272,9 +1352,16 @@ void geo_layout_cmd_lvl_translation(void) {
     register_scene_graph_node(&graphNode->node);
 
     if (!dropped_for_console(displayList, drawingLayer))
+    {
         graphNode->dl = segmented_to_virtual(displayList);
+        f32 result = displayList ? get_radius_batch_cmds(graphNode->dl) : 0.f;
+        graphNode->radius = result + result;
+    }
     else
+    {
         graphNode->dl = NULL;
+        graphNode->radius = 0.f;
+    }
 
     gGeoLayoutCommand = (u8 *) cmdPos;
 }

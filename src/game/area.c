@@ -488,6 +488,7 @@ static void warm_up_batch_node(void)
                 freshLvlNode->x = lvlNode->translation[0];
                 freshLvlNode->y = lvlNode->translation[1];
                 freshLvlNode->z = lvlNode->translation[2];
+                freshLvlNode->radius = lvlNode->radius;
                 if (GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION_COLD == curGraphNode->type)
                 {
                     freshLvlNode->rotation[0] = lvlNode->rotation[0];

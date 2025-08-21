@@ -174,7 +174,7 @@ const SpringLinkDesc spring_links_pc[] = {
     { NULL, NULL, }
 };
 
-#include "levels/pc/visual/model_lvl.inc.c"
+#include "levels/pc/visual/model_lvlopt.inc.c"
 
 #if 0
 #include "levels/pc/leveldata.inc.c"

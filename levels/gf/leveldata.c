@@ -54,7 +54,7 @@ static const LDLDesc loop_desc2 = { 0, .dontFlip = 1, .canSnapBackwards = 1 };
 
 #include "levels/gf/flipbook.inc.c"
 
-#include "levels/gf/visual/model_lvl.inc.c"
+#include "levels/gf/visual/model_lvlopt.inc.c"
 
 #if 0
 #include "levels/gf/leveldata.inc.c"

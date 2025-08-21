@@ -31,7 +31,7 @@ IWDHeader* iw_descs_ig[] = {
 #else
 #include "levels/ig/area_1/spline.inc.c"
 #include "levels/ig/area_2/spline.inc.c"
-#include "levels/ig/visual/model_lvl.inc.c"
+#include "levels/ig/visual/model_lvlopt.inc.c"
 #include "levels/ig/rails.inc.c"
 #endif
 

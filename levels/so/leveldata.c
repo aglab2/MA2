@@ -13,7 +13,7 @@
 #include "levels/so/leveldata.inc.c"
 #else
 #include "levels/so/visual/header_lvl.inc.h"
-#include "levels/so/visual/model_lvl.inc.c"
+#include "levels/so/visual/model_lvlopt.inc.c"
 #include "levels/so/area_1/spline.inc.c"
 #include "levels/so/area_2/spline.inc.c"
 #endif
