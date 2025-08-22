@@ -96,6 +96,7 @@ const LevelScript level_so_entry[] = {
 		OBJECT(MODEL_SO_HAKO, -12763, 0, -17434, 0, 0, 0, (MODEL_SO_HAKO_BREAK << 16), bhvBreakable),
 		OBJECT(MODEL_SO_HAKO, -13028, 0, -17434, 0, 0, 0, (MODEL_SO_HAKO_BREAK << 16), bhvBreakable),
 		OBJECT(MODEL_SO_HAKO, -6840, -600, -18495, 0, 0, 0, (MODEL_SO_HAKO_BREAK << 16), bhvBreakable),
+		OBJECT(MODEL_NONE, -14997, 1000, 2861, 0, -180, 0, (0xa << 16), bhvInstantActiveWarp),
 		OBJECT(MODEL_SO_ASHIBA, -17611, 0, -2377, 0, 90, 0, 0x00000000, bhvSoMove),
 		OBJECT(MODEL_SO_ASHIBA2, -14960, 0, -8743, 0, 0, 0, (1 << 16), bhvSoMove),
 		OBJECT(MODEL_SO_PILLAR, -8465, -400, -18241, 0, -90, 0, (1 << 16), bhvSoPillar),
