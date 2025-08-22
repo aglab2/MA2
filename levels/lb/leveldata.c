@@ -18,3 +18,4 @@
 #include "levels/lb/rails.inc.c"
 
 #include "levels/lb/lb_sparkle/model.inc.c"
+#include "levels/lb/lb_sparkle2/model.inc.c"

@@ -382,8 +382,9 @@ void bhv_lb_ctl_loop()
             s8 pattern = patterns[k];
             if (timeMod == 1+5*k)
             {
-                struct Object* sparkle = spawn_object(o, MODEL_LB_SPARKLE, bhvLbSparkle);
-                sparkle->oPosY = 350.f + pattern * 300.f;
+                int model = pattern < 0 ? MODEL_LB_SPARKLE : MODEL_LB_SPARKLE2;
+                struct Object* sparkle = spawn_object(o, model, bhvLbSparkle);
+                sparkle->oPosY = 50.f;
                 sparkle->oBehParams2ndByte = 1;
             }
             if (timeMod == 60+20*k)

@@ -20,4 +20,6 @@ extern const LevelScript level_lb_entry[];
 
 #include "levels/lb/lb_sparkle/geo_header.h"
 
+#include "levels/lb/lb_sparkle2/geo_header.h"
+
 #endif
