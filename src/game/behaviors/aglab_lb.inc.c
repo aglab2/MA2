@@ -1,11 +1,11 @@
 #define LB_NO_STAR
-#define LB_DEBUG_SHORTCUT_TO_PHASE 8
+// #define LB_DEBUG_SHORTCUT_TO_PHASE 8
 
 #define LB_PHASE0_LENGTH 40
 #define LB_PHASE1_LENGTH 300
 #define LB_PHASE2_LENGTH 300
 #define LB_PHASE3_LENGTH 400
-#define LB_PHASE4_LENGTH 300
+#define LB_PHASE4_LENGTH 380
 
 #include "rail_desc.h"
 
@@ -335,7 +335,7 @@ void bhv_lb_ctl_loop()
             gMarioStates->forwardVel = -100.f;
         }
 
-        if (30 == o->oTimer)
+        if (50 == o->oTimer)
         {
             for (int i = 0; i < 4; i++)
             {
@@ -367,7 +367,7 @@ void bhv_lb_ctl_loop()
     else if (8 == o->oAction)
     {
         s8* patterns = (u8*) &o->oLbCtlPattern;
-        int timeMod = o->oTimer % 200;
+        int timeMod = o->oTimer % 130;
         if (0 == timeMod)
         {
             int which = random_u16() % 3;
@@ -402,13 +402,22 @@ void bhv_lb_ctl_loop()
             }
         }
 
-        //if (LB_PHASE4_LENGTH == o->oTimer)
-        //{
-        //    o->oAction = 9;
-        //}
+        if (LB_PHASE4_LENGTH == o->oTimer)
+        {
+            o->oAction = 9;
+            lb_spawn_rails();
+        }
     }
     else if (9 == o->oAction)
     {
+        if (o->oTimer < 2)
+            o->parentObj->oAction = BOWSER_ACT_HIT_EDGE;
+
+        if (o->parentObj->oAction != BOWSER_ACT_HIT_EDGE)
+        {
+            o->oAction = 7;
+            lb_rails_activate_switch();
+        }
     }
     else
     {
@@ -505,7 +514,8 @@ void bhv_lb_rail_loop()
     if (o->oTimer <= 64)
         o->oOpacity = CLAMP(o->oTimer * 4, 0, 255);
 
-    if (o->parentObj->oAction != 6)
+    if (o->parentObj->oAction != 6
+     && o->parentObj->oAction != 9)
     {
         o->oOpacity -= 4;
         if (o->oOpacity < 0)
