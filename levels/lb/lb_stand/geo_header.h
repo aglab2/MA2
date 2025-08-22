@@ -1,8 +1,10 @@
 extern const GeoLayout lb_stand_geo[];
-extern u8 lb_stand_energy01_rgba32[];
-extern u8 lb_stand_blightning01_ci4[];
-extern u8 lb_stand_blightning01_pal_rgba16[];
-extern Vtx lb_stand_000_object_00F6E1AC_mesh_layer_5_vtx_0[164];
-extern Vtx lb_stand_001_object_00F6D204_mesh_layer_5_vtx_0[252];
-extern Gfx lb_stand_000_object_00F6E1AC_mesh_layer_5[];
-extern Gfx lb_stand_001_object_00F6D204_mesh_layer_5[];
+extern u8 lb_stand_ikura01_ci4[];
+extern u8 lb_stand_ikura01_pal_rgba16[];
+extern u8 lb_stand_ikura02_rgba32[];
+extern Vtx lb_stand_001_object_00F6B2A4_mesh_layer_1_vtx_cull[8];
+extern Vtx lb_stand_001_object_00F6B2A4_mesh_layer_1_vtx_0[50];
+extern Vtx lb_stand_002_object_00F6B26C_mesh_layer_5_vtx_cull[8];
+extern Vtx lb_stand_002_object_00F6B26C_mesh_layer_5_vtx_0[32];
+extern Gfx lb_stand_001_object_00F6B2A4_mesh_layer_1[];
+extern Gfx lb_stand_002_object_00F6B26C_mesh_layer_5[];

@@ -22,4 +22,6 @@ extern const LevelScript level_lb_entry[];
 
 #include "levels/lb/lb_sparkle2/geo_header.h"
 
+#include "levels/lb/lb_stand/collision_header.h"
+
 #endif

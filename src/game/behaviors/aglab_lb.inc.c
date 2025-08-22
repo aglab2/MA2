@@ -1,5 +1,5 @@
 #define LB_NO_STAR
-#define LB_DEBUG_SHORTCUT_TO_PHASE 10
+// #define LB_DEBUG_SHORTCUT_TO_PHASE 11
 
 #define LB_PHASE0_LENGTH 40
 #define LB_PHASE1_LENGTH 300
@@ -21,6 +21,9 @@
 #define oLbCtlTailTimer oF8
 
 #define oLbZapHitTimer oF4
+
+#define oLbPlatformRange oF4
+#define oLbPlatformSpeed oF8
 
 void bhv_lb_ctl_init()
 {
@@ -179,6 +182,22 @@ static void lb_spawn_rails(void)
         lb_traj_rotate(i, rail->oFaceAngleYaw);
     }
     lb_rails_activate_switch();
+}
+
+extern const BehaviorScript bhvLbStand[];
+static void lb_spawn_upp()
+{
+    for (int j = 0; j < 5; j++)
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            struct Object* bubble = spawn_object(o, MODEL_LB_STAND, bhvLbStand);
+            bubble->oLbPlatformRange = 1300.f;
+            bubble->oPosY = 200.f + 400.f * j;
+            bubble->oMoveAngleYaw = 0x10000 / 8 * i + 0x10000 / 16 * j;
+            bubble->oLbPlatformSpeed = 0x50 * (j&1 ? 1 : -1);
+        }   
+    }
 }
 
 extern const BehaviorScript bhvLBBallAim[];
@@ -474,11 +493,18 @@ void bhv_lb_ctl_loop()
         if (LB_PHASE6_LENGTH == o->oTimer)
         {
             o->oAction = 12;
+            lb_spawn_upp();
         }
     }
     else if (12 == o->oAction)
     {
+        if (o->oTimer < 2)
+            o->parentObj->oAction = BOWSER_ACT_HIT_EDGE;
 
+        if (o->parentObj->oAction != BOWSER_ACT_HIT_EDGE)
+        {
+            o->oAction = 10;
+        }
     }
 }
 
@@ -615,4 +641,24 @@ void bhv_lb_sparkle_loop()
 
     if (200 < o->oTimer)
         o->activeFlags = 0;
+}
+
+void bhv_lb_stand_loop()
+{
+    if (o->oTimer <= 64)
+    {
+        f32 scale = CLAMP(o->oTimer*2, 1, 100);
+        obj_scale(o, scale / 64.f);
+    }
+
+    o->oMoveAngleYaw += o->oLbPlatformSpeed;
+    f32 range = o->oLbPlatformRange;
+    o->oPosX = range * coss(o->oMoveAngleYaw);
+    o->oPosZ = range * sins(o->oMoveAngleYaw);
+
+    if (gMarioObject->platform == o)
+    {
+        gMarioStates->pos[0] = o->oPosX;
+        gMarioStates->pos[2] = o->oPosZ;
+    }
 }

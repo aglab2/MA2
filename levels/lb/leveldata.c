@@ -19,3 +19,4 @@
 
 #include "levels/lb/lb_sparkle/model.inc.c"
 #include "levels/lb/lb_sparkle2/model.inc.c"
+#include "levels/lb/lb_stand/collision.inc.c"
