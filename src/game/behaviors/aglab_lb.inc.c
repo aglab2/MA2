@@ -1,5 +1,5 @@
 #define LB_NO_STAR
-#define LB_DEBUG_SHORTCUT_TO_PHASE 14
+#define LB_DEBUG_SHORTCUT_TO_PHASE 13
 
 #define LB_PHASE0_LENGTH 40
 #define LB_PHASE1_LENGTH 300
@@ -20,6 +20,7 @@
 // patterns takes F4 and F8
 #define oLbCtlPattern oF4
 #define oLbCtlTailTimer oF8
+#define oLbCtlWind oObjFC
 
 #define oLbZapHitTimer oF4
 
@@ -234,10 +235,13 @@ static void lb_patterns(int timeMod, int count)
 
 extern void set_camera_mode_8_directions(struct Camera *c);
 extern void func_8031D690(s32 player, s32 fadeInTime);
+extern const BehaviorScript bhvLBWind[];
 void bhv_lb_ctl_loop()
 {
     if (o->oAction >= 3 && o->oAction <= 14)
         lb_pin();
+    if (o->oAction > 14)
+        lb_pin_bowser();
 
 #if 0
     if (0 == o->oTimer)
@@ -247,6 +251,9 @@ void bhv_lb_ctl_loop()
 #ifdef LB_DEBUG_SHORTCUT_TO_PHASE
     if (0 == o->oTimer && o->oAction == 0)
     {
+        obj_scale(o->parentObj, 5.f);
+        o->parentObj->hitboxRadius = 1000.f;
+        o->parentObj->hitboxHeight = 1300.f;
         seq_player_play_sequence(0, 0x48, 0);
         func_8031D690(0, 60);
         o->oAction = LB_DEBUG_SHORTCUT_TO_PHASE;
@@ -539,10 +546,9 @@ void bhv_lb_ctl_loop()
             int timeMod = o->oTimer % 85;
             if (0 == timeMod)
             {
-                int which = random_u16() % 2;
                 for (int i = 0; i < 1; i++)
                 {
-                    patterns[i] = (i == which) ? -1 : 1;
+                    patterns[i] = 1;
                 }
             }
 
@@ -567,12 +573,20 @@ void bhv_lb_ctl_loop()
     }
     else if (15 == o->oAction)
     {
-        if (o->oTimer < 100)
+        if (o->oTimer < 50)
         {
             gMarioStates->pos[0] = 0;
-            gMarioStates->pos[1] = 1400.f + o->oTimer;
-            gMarioStates->pos[2] = o->oTimer * 80;
+            gMarioStates->pos[1] = 1400.f + o->oTimer * 32;
+            gMarioStates->pos[2] = o->oTimer * 170;
+            gMarioStates->vel[0] = 0;
+            gMarioStates->vel[1] = 0;
+            gMarioStates->vel[2] = 0;
+            gMarioStates->faceAngle[1] = 0x8000;
             s8DirModeYawOffset = 0;
+        }
+        if (o->oTimer == 50)
+        {
+            struct Object* wind = spawn_object(o, MODEL_NONE, bhvLBWind);
         }
     }
 }
@@ -718,7 +732,7 @@ void bhv_lb_stand_loop()
     {
         if (o->oTimer <= 64)
         {
-            f32 scale = CLAMP(o->oTimer*2, 1, 100);
+            f32 scale = CLAMP(o->oTimer*2, 1, 120);
             obj_scale(o, scale / 64.f);
         }
 
@@ -747,4 +761,9 @@ void bhv_lb_stand_loop()
             o->activeFlags = 0;
         }
     }
+}
+
+void bhv_lb_wind_loop()
+{
+
 }

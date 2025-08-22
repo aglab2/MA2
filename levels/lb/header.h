@@ -24,4 +24,6 @@ extern const LevelScript level_lb_entry[];
 
 #include "levels/lb/lb_stand/collision_header.h"
 
+#include "levels/lb/lb_wind/collision_header.h"
+
 #endif

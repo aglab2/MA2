@@ -7048,6 +7048,17 @@ const BehaviorScript bhvLBCtl[] = {
     END_LOOP(),
 };
 
+extern const Collision lb_wind_collision[];
+extern void bhv_lb_wind_loop();
+const BehaviorScript bhvLBWind[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    LOAD_COLLISION_DATA(lb_wind_collision),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_lb_wind_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
 extern void bhv_lb_ball_loop();
 const BehaviorScript bhvLBBall[] = {
     BEGIN(OBJ_LIST_LEVEL),
