@@ -7041,6 +7041,7 @@ extern void bhv_lb_ctl_init();
 extern void bhv_lb_ctl_loop();
 const BehaviorScript bhvLBCtl[] = {
     BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO),
     CALL_NATIVE(bhv_lb_ctl_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_lb_ctl_loop),
@@ -7053,6 +7054,15 @@ const BehaviorScript bhvLBBall[] = {
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_lb_ball_loop),
+    END_LOOP(),
+};
+
+extern void bhv_lb_ball_aim_loop();
+const BehaviorScript bhvLBBallAim[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_lb_ball_aim_loop),
     END_LOOP(),
 };
 
@@ -7091,5 +7101,14 @@ const BehaviorScript bhvDlShell[] = {
     BEGIN(OBJ_LIST_SPAWNER),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_dl_shell_loop),
+    END_LOOP(),
+};
+
+extern void bhv_lb_sparkle_loop();
+const BehaviorScript bhvLbSparkle[] = {
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_lb_sparkle_loop),
     END_LOOP(),
 };

@@ -1,3 +1,12 @@
+#define LB_NO_STAR
+#define LB_DEBUG_SHORTCUT_TO_PHASE 8
+
+#define LB_PHASE0_LENGTH 40
+#define LB_PHASE1_LENGTH 300
+#define LB_PHASE2_LENGTH 300
+#define LB_PHASE3_LENGTH 400
+#define LB_PHASE4_LENGTH 300
+
 #include "rail_desc.h"
 
 #define oLbTailRange oFloatF4
@@ -5,16 +14,14 @@
 #define oLbTailSpeed oFC
 #define oLbTailTimeout o100
 
-#define oLbSparkle oObjF4
+// patterns takes F4 and F8
+#define oLbCtlPattern oF4
 
 void bhv_lb_ctl_init()
 {
     f32 d;
     o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvBowser, &d);
-    o->oLbSparkle = spawn_object(o, MODEL_LB_SPARKLE, bhvStaticObject);
-    o->oLbSparkle->oOpacity = 0;
-    o->oLbSparkle->oPosY -= 50.f;
-#if 1
+#ifndef LB_NO_STAR
     gSecondCameraFocus = spawn_object(o, MODEL_STAR, bhvGrandStar);
     gSecondCameraFocus->oPosX = 0;
     gSecondCameraFocus->oPosY = 1050;
@@ -32,7 +39,7 @@ static void lb_pin_bowser()
      && o->parentObj->oAction != BOWSER_ACT_HIT_MINE
      && o->parentObj->oAction != BOWSER_ACT_HIT_EDGE)
     {
-        s32 angleToMario = obj_angle_to_object(o->parentObj, gMarioObject);
+        s32 angleToMario = o->oAngleToMario;
         s16 angleFromMario = abs_angle_diff(o->parentObj->oMoveAngleYaw, angleToMario);
         if (angleFromMario > 0x1000)
         {
@@ -159,7 +166,7 @@ static void lb_rails_activate_switch(void)
 
 static void lb_spawn_rails(void)
 {
-    s32 angleToMario = obj_angle_to_object(o->parentObj, gMarioObject);
+    s32 angleToMario = o->oAngleToMario;
     for (int i = 0; i < 4; i++)
     {
         struct Object* rail = spawn_object(o, MODEL_LB_RAIL, bhvLBRail);
@@ -169,13 +176,9 @@ static void lb_spawn_rails(void)
     lb_rails_activate_switch();
 }
 
-#define LB_PHASE0_LENGTH 40
-#define LB_PHASE1_LENGTH 300
-#define LB_PHASE2_LENGTH 300
-#define LB_PHASE3_LENGTH 500
-
 extern void set_camera_mode_8_directions(struct Camera *c);
 extern void func_8031D690(s32 player, s32 fadeInTime);
+extern const BehaviorScript bhvLBBallAim[];
 void bhv_lb_ctl_loop()
 {
     if (o->oAction >= 3)
@@ -186,12 +189,12 @@ void bhv_lb_ctl_loop()
         lb_spawn_rails();
 #endif
 
-#if 1
+#ifdef LB_DEBUG_SHORTCUT_TO_PHASE
     if (0 == o->oTimer && o->oAction == 0)
     {
         seq_player_play_sequence(0, 0x48, 0);
         func_8031D690(0, 60);
-        o->oAction = 8;
+        o->oAction = LB_DEBUG_SHORTCUT_TO_PHASE;
         return;
     }
 #endif
@@ -215,7 +218,9 @@ void bhv_lb_ctl_loop()
             gMarioStates->vel[1] = 50.f;
             gMarioStates->vel[2] = 0.f;
             set_mario_action(gMarioStates, ACT_THROWN_BACKWARD, 0);
+#ifndef LB_NO_STAR
             gSecondCameraFocus->oPosY = 0;
+#endif
             cur_obj_play_sound_2(SOUND_OBJ_BOWSER_LAUGH);
             o->oAction = 1;
 
@@ -284,21 +289,18 @@ void bhv_lb_ctl_loop()
     }
     else if (5 == o->oAction)
     {
-        f32 val = coss(o->oTimer * 0x10000 / 80);
-        val *= val;
-        val *= 500.f;
-        val -= 200.f;
-        if (val > 220.f)
-            val = 220.f;
-        if (val < 0.f)
-            val = 0.f;
-
-        o->oLbSparkle->oOpacity = val + 32;
-        if (0 == (o->oTimer % 40))
+        int timeMod = o->oTimer % 40;
+        if (20 == timeMod && LB_PHASE2_LENGTH != o->oTimer)
+        {
+            struct Object* sparkle = spawn_object(o, MODEL_LB_SPARKLE, bhvLbSparkle);
+            sparkle->oPosY = 50.f;
+            sparkle->oBehParams2ndByte = 0;
+        }
+        if (39 == timeMod)
         {
             for (int i = 0; i < 6; i++)
             {
-                s32 angleToMario = obj_angle_to_object(o->parentObj, gMarioObject);
+                s32 angleToMario = o->oAngleToMario;
                 struct Object* ball = spawn_object(o, MODEL_LB_BALL, bhvLBBall);
                 ball->oForwardVel = 50.f;
                 ball->oMoveAngleYaw = angleToMario + 0x10000 / 6 * i;
@@ -307,7 +309,7 @@ void bhv_lb_ctl_loop()
                 obj_scale(ball, 0.1f);
             }
         }
-        
+
         if (LB_PHASE2_LENGTH == o->oTimer)
         {
             o->oAction = 6;
@@ -331,7 +333,10 @@ void bhv_lb_ctl_loop()
         {
             gMarioStates->vel[1] = 50.f;
             gMarioStates->forwardVel = -100.f;
-            
+        }
+
+        if (30 == o->oTimer)
+        {
             for (int i = 0; i < 4; i++)
             {
                 struct Object* tail = spawn_object(o, MODEL_LB_TAIL, bhvLBTail);
@@ -361,18 +366,58 @@ void bhv_lb_ctl_loop()
     }
     else if (8 == o->oAction)
     {
-        o->oLbSparkle->oOpacity = sins(o->oTimer * 0x263) * sins(o->oTimer * 0x263) * 220 + 32;
+        s8* patterns = (u8*) &o->oLbCtlPattern;
+        int timeMod = o->oTimer % 200;
+        if (0 == timeMod)
+        {
+            int which = random_u16() % 3;
+            for (int i = 0; i < 3; i++)
+            {
+                patterns[i] = (i == which) ? -1 : 1;
+            }
+        }
+
+        for (int k = 0; k < 3; k++)
+        {
+            s8 pattern = patterns[k];
+            if (timeMod == 1+5*k)
+            {
+                struct Object* sparkle = spawn_object(o, MODEL_LB_SPARKLE, bhvLbSparkle);
+                sparkle->oPosY = 350.f + pattern * 300.f;
+                sparkle->oBehParams2ndByte = 1;
+            }
+            if (timeMod == 60+20*k)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    s32 angleToMario = o->oAngleToMario;
+                    struct Object* ball = spawn_object(o, MODEL_LB_BALL, bhvLBBallAim);
+                    ball->oFaceAngleYaw = random_u16();
+                    ball->oFaceAngleRoll = random_u16();
+                    ball->oBehParams2ndByte = 0x10000 / 6 * i;
+                    ball->oPosY = 400.f + pattern * 400.f;
+                    obj_scale(ball, 0.1f);
+                }
+            }
+        }
+
+        //if (LB_PHASE4_LENGTH == o->oTimer)
+        //{
+        //    o->oAction = 9;
+        //}
+    }
+    else if (9 == o->oAction)
+    {
     }
     else
     {
     }
 }
 
-void bhv_lb_ball_loop()
+static void bhv_lb_ball_common()
 {
     o->oFaceAngleYaw += 0x280;
     o->oFaceAngleRoll += 0x146;
-    obj_update_pos_vel_xz();
 
     if (o->oTimer <= 10)
     {
@@ -390,6 +435,22 @@ void bhv_lb_ball_loop()
     {
         obj_mark_for_deletion(o);
     }
+}
+
+void bhv_lb_ball_loop()
+{
+    obj_update_pos_vel_xz();
+    return bhv_lb_ball_common();
+}
+
+void bhv_lb_ball_aim_loop()
+{
+    s32 angle = atan2s(gMarioObject->oPosZ, gMarioObject->oPosX);
+    angle += o->oBehParams2ndByte;
+    o->oPosX = o->oTimer * 50.f * sins(angle);
+    o->oPosZ = o->oTimer * 50.f * coss(angle);
+
+    return bhv_lb_ball_common();
 }
 
 void bhv_lb_tail_init()
@@ -452,4 +513,20 @@ void bhv_lb_rail_loop()
             o->activeFlags = 0;
         }
     }
+}
+
+void bhv_lb_sparkle_loop()
+{
+    o->oTimer += o->oBehParams2ndByte;
+    f32 xzScale = 0.5f + o->oTimer * 0.05f;
+    f32 yscale = 3.f / xzScale / xzScale;
+    obj_scale_xyz(o, xzScale * 0.5f, yscale * 0.5f, xzScale * 0.5f);
+    if (o->oTimer < 32)
+        o->oOpacity = o->oTimer * 200 / 32;
+
+    if (o->oTimer > 200 - 32)
+        o->oOpacity = (200 - o->oTimer) * 200 / 32;
+
+    if (200 < o->oTimer)
+        o->activeFlags = 0;
 }
