@@ -105,7 +105,7 @@ const LevelScript level_dl_entry[] = {
 		OBJECT(MODEL_NONE, 10745, 1790, 14707, 0, 116, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 11415, 2880, 14710, 0, 116, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -498, 138, 9720, 0, 116, 0, (17 << 16), bhvCoinFormation),
-		OBJECT(MODEL_NONE, 2007, 339, 10990, 0, 0, 0, 0x00000000, bhvDlFlow),
+		OBJECT(MODEL_NONE, 1999, 2, 10990, 0, -180, 0, 0x00000000, bhvDlFlow),
 		OBJECT(MODEL_NONE, 2105, 46, 3150, 0, 116, 0, 0x00000000, bhvGoombaTripletSpawner),
 		OBJECT(MODEL_NONE, 4011, 15, -844, 0, 116, 0, 0x00000000, bhvGoombaTripletSpawner),
 		OBJECT(MODEL_NONE, 1973, 3800, -2518, 0, 116, 0, 0x00000000, bhvGoombaTripletSpawner),

@@ -33,6 +33,7 @@ const int gLevelWithHardModes = 1 << (LEVEL_CE - LEVEL_CE)
 extern u8 gIsHardMode;
 extern s8 gDialogCameraAngleIndex;
 extern f32 sViewRange;
+extern u8 gTimeFrozen;
 void bhv_ow_ctl_init()
 {
     int off = 0x80;
@@ -76,6 +77,7 @@ void bhv_ow_ctl_init()
 #endif
     }
 
+    gTimeFrozen = 0;
     sSpringBezier = NULL;
     sTrajectory = NULL;
     gDialogCameraAngleIndex = 1;
