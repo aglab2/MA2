@@ -35,6 +35,7 @@ IWDHeader* iw_descs_so[] = {
 
 #include "levels/so/header.h"
 #include "levels/so/rails.inc.c"
+#include "levels/so/flipbook.inc.c"
 
 #include "levels/so/so_skybox/model.inc.c"
 #include "levels/so/hb_ashiba/model.inc.c"

@@ -1,7 +1,8 @@
 #include "src/game/envfx_snow.h"
 
+extern const struct FlipbookLayer so_flipbooks[LAYER_COUNT];
 const GeoLayout so_area_1_geo[] = {
-	GEO_BATCH_NODE_START(batch_lvl_dls_so),
+	GEO_BATCH_NODE_START_WITH_FLIPBOOK(batch_lvl_dls_so, so_flipbooks),
 	GEO_OPEN_NODE(),
 		GEO_ASM(0, geo_render_backdrop),
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, (f32)1000.0, (f32)-250.0, (f32)-18200.0, so_dl_0000_object_00EE4668_mesh_layer_1),

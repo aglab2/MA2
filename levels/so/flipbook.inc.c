@@ -1,0 +1,80 @@
+#include "flipbook.h"
+
+static ALIGNED8 u8 sand_ci4[] = {
+    #include "levels/so/dz_so_ryuusa_0001.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0002.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0003.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0004.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0005.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0006.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0007.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0008.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0009.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0010.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0011.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0012.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0013.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0014.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0015.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0016.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0017.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0018.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0019.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0020.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0021.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0022.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0023.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0024.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0025.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0026.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0027.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0028.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0029.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0030.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0031.ci4.inc.c"
+    #include "levels/so/dz_so_ryuusa_0032.ci4.inc.c"
+
+};
+
+static ALIGNED8 u8 sand_pal[] = {
+    #include "levels/so/dz_so_ryuusa_0001.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0002.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0003.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0004.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0005.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0006.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0007.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0008.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0009.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0010.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0011.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0012.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0013.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0014.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0015.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0016.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0017.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0018.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0019.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0020.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0021.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0022.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0023.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0024.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0025.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0026.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0027.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0028.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0029.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0030.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0031.ci4.pal"
+    #include "levels/so/dz_so_ryuusa_0032.ci4.pal"
+};
+
+static struct FlipbookData flipbooks_opa[] = {
+    { LVL_BATCH_LAYER_OPAQUE_SO_DL_DZ_SO_RYUUSA_0001_PAL_RGBA16, 32, 2, .ci4s=sand_ci4, .pals=sand_pal, .tileScrollX = 1, },
+};
+
+const struct FlipbookLayer so_flipbooks[LAYER_COUNT] = {
+    [ LAYER_OPAQUE ] = FLIPBOOK_LAYER_DECL(flipbooks_opa),
+};
