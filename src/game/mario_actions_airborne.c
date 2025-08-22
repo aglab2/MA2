@@ -139,7 +139,7 @@ s32 check_fall_damage_or_get_stuck(struct MarioState *m, u32 hardFallAction) {
     return check_fall_damage(m, hardFallAction);
 }
 
-s32 check_horizontal_wind(struct MarioState *m) {
+static s32 check_horizontal_wind(struct MarioState *m) {
     struct Surface *floor = m->floor;
     f32 speed;
     s16 pushAngle;

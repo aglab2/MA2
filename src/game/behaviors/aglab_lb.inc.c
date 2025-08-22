@@ -1,5 +1,5 @@
 #define LB_NO_STAR
-#define LB_DEBUG_SHORTCUT_TO_PHASE 13
+#define LB_DEBUG_SHORTCUT_TO_PHASE 14
 
 #define LB_PHASE0_LENGTH 40
 #define LB_PHASE1_LENGTH 300
@@ -236,7 +236,7 @@ extern void set_camera_mode_8_directions(struct Camera *c);
 extern void func_8031D690(s32 player, s32 fadeInTime);
 void bhv_lb_ctl_loop()
 {
-    if (o->oAction >= 3)
+    if (o->oAction >= 3 && o->oAction <= 14)
         lb_pin();
 
 #if 0
@@ -567,7 +567,13 @@ void bhv_lb_ctl_loop()
     }
     else if (15 == o->oAction)
     {
-        
+        if (o->oTimer < 100)
+        {
+            gMarioStates->pos[0] = 0;
+            gMarioStates->pos[1] = 1400.f + o->oTimer;
+            gMarioStates->pos[2] = o->oTimer * 80;
+            s8DirModeYawOffset = 0;
+        }
     }
 }
 
