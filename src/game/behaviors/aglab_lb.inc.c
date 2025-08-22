@@ -18,6 +18,9 @@
 
 // patterns takes F4 and F8
 #define oLbCtlPattern oF4
+#define oLbCtlTailTimer oF8
+
+#define oLbZapHitTimer oF4
 
 void bhv_lb_ctl_init()
 {
@@ -189,6 +192,7 @@ static void lb_patterns(int timeMod, int count)
         {
             int model = pattern < 0 ? MODEL_LB_SPARKLE : MODEL_LB_SPARKLE2;
             struct Object* sparkle = spawn_object(o, model, bhvLbSparkle);
+            cur_obj_play_sound_1(SOUND_AIR_AMP_BUZZ);
             sparkle->oPosY = 50.f;
             sparkle->oBehParams2ndByte = 1;
         }
@@ -480,24 +484,56 @@ void bhv_lb_ctl_loop()
 
 static void bhv_lb_ball_common()
 {
-    o->oFaceAngleYaw += 0x280;
-    o->oFaceAngleRoll += 0x146;
+    if (0 == o->oLbZapHitTimer)
+    {
+        int canDamage = 1;
+        o->oFaceAngleYaw += 0x280;
+        o->oFaceAngleRoll += 0x146;
 
-    if (o->oTimer <= 10)
-    {
-        o->oOpacity = 20 * o->oTimer;
-        obj_scale(o, 0.1f * o->oTimer);
-    }
-    
-    if (o->oTimer > 90)
-    {
-        o->oOpacity = 20 * (100 - o->oTimer);
-        obj_scale(o, 0.1f * (100 - o->oTimer));
-    }
+        if (o->oTimer <= 10)
+        {
+            o->oOpacity = 20 * o->oTimer;
+            obj_scale(o, 0.1f * o->oTimer);
+            canDamage = 0;
+        }
+        
+        if (o->oTimer > 90)
+        {
+            o->oOpacity = 20 * (100 - o->oTimer);
+            obj_scale(o, 0.1f * (100 - o->oTimer));
+            canDamage = 0;
+        }
 
-    if (o->oTimer == 99)
+        if (o->oTimer == 99)
+        {
+            o->activeFlags = 0;
+        }
+
+        if (canDamage)
+        {
+            Vec3f marioPos;
+            vec3_copy(marioPos, gMarioStates->pos);
+            marioPos[1] += 40.f;
+            Vec3f diff;
+            vec3_diff(diff, &o->oPosVec, marioPos);
+            f32 len = vec3_sumsq(diff);
+            if (len < 320.f * 320.f)
+            {
+                gMarioStates->health -= 0x100;
+                o->oLbZapHitTimer = 1;
+            }
+        }
+    }
+    else
     {
-        obj_mark_for_deletion(o);
+        cur_obj_play_sound_1(SOUND_AIR_BOBOMB_LIT_FUSE);
+        o->oOpacity = 20 * (5 - o->oLbZapHitTimer);
+        obj_scale(o, 0.1f * (5 - o->oLbZapHitTimer));
+        if (o->oLbZapHitTimer == 5)
+        {
+            o->activeFlags = 0;
+        }
+        o->oLbZapHitTimer++;
     }
 }
 
