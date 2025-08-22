@@ -1,13 +1,14 @@
 #define LB_NO_STAR
-// #define LB_DEBUG_SHORTCUT_TO_PHASE 11
+#define LB_DEBUG_SHORTCUT_TO_PHASE 13
 
 #define LB_PHASE0_LENGTH 40
 #define LB_PHASE1_LENGTH 300
 #define LB_PHASE2_LENGTH 300
 #define LB_PHASE3_LENGTH 400
 #define LB_PHASE4_LENGTH 380
-#define LB_PHASE5_LENGTH 500
-#define LB_PHASE6_LENGTH 500
+#define LB_PHASE5_LENGTH 400
+#define LB_PHASE6_LENGTH 460
+#define LB_PHASE7_LENGTH 500
 
 #include "rail_desc.h"
 
@@ -503,7 +504,54 @@ void bhv_lb_ctl_loop()
 
         if (o->parentObj->oAction != BOWSER_ACT_HIT_EDGE)
         {
-            o->oAction = 10;
+            o->oAction = 13;
+        }
+    }
+    else if (13 == o->oAction)
+    {
+        if (0 == o->oTimer)
+        {
+            gMarioStates->vel[1] = 50.f;
+            gMarioStates->forwardVel = -100.f;
+        }
+
+        if (50 == o->oTimer)
+        {
+            s16 angle = random_u16();
+            for (int i = 0; i < 2; i++)
+            {
+                struct Object* tail = spawn_object(o, MODEL_LB_TAIL, bhvLBTail);
+                tail->oLbTailRange = (i&1) ? 3200.f : 1800.f;
+                tail->oLbTailFlipped = (i&1);
+                tail->oOpacity = 0;
+                tail->oLbTailSpeed = 0x100;
+                tail->oLbTailTimeout = LB_PHASE7_LENGTH - 30;
+                tail->oMoveAngleYaw = angle + 0x10000 / 2 * i + ((i&1) ? 0 : 0x8000);
+                tail->oBehParams2ndByte = 1;
+            }
+        }
+
+        lb_tail_modify_sine();
+
+        if (o->oTimer > 80)
+        {
+            s8* patterns = (u8*) &o->oLbCtlPattern;
+            int timeMod = o->oTimer % 85;
+            if (0 == timeMod)
+            {
+                int which = random_u16() % 2;
+                for (int i = 0; i < 1; i++)
+                {
+                    patterns[i] = (i == which) ? -1 : 1;
+                }
+            }
+
+            lb_patterns(timeMod, 1);
+        }
+
+        if (LB_PHASE7_LENGTH == o->oTimer)
+        {
+            o->oAction = 14;
         }
     }
 }
