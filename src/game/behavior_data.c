@@ -3817,6 +3817,20 @@ const BehaviorScript bhvBowserBomb[] = {
     END_LOOP(),
 };
 
+extern void bhv_lb_bowser_bomb_loop();
+const BehaviorScript bhvLbBowserBomb[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    SET_INT(oIntangibleTimer, 0),
+    SET_HITBOX_WITH_OFFSET(/*Radius*/ 40, /*Height*/ 40, /*Downwards offset*/ 40),
+    DELAY(1),
+    BEGIN_LOOP(),
+        SET_INT(oIntangibleTimer, 0),
+        CALL_NATIVE(bhv_bowser_bomb_loop),
+        CALL_NATIVE(bhv_lb_bowser_bomb_loop),
+    END_LOOP(),
+};
+
 const BehaviorScript bhvBowserBombExplosion[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
@@ -7081,7 +7095,8 @@ extern const Collision lb_stand_collision[];
 extern void bhv_lb_stand_loop();
 const BehaviorScript bhvLbStand[] = {
     BEGIN(OBJ_LIST_SURFACE),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_DONT_CALC_COLL_DIST)),
+    SET_FLOAT(oCollisionDistance, 100),
     LOAD_COLLISION_DATA(lb_stand_collision),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_lb_stand_loop),

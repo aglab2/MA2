@@ -236,6 +236,7 @@ static void lb_patterns(int timeMod, int count)
 extern void set_camera_mode_8_directions(struct Camera *c);
 extern void func_8031D690(s32 player, s32 fadeInTime);
 extern const BehaviorScript bhvLBWind[];
+extern const BehaviorScript bhvLbBowserBomb[];
 void bhv_lb_ctl_loop()
 {
     if (o->oAction >= 3 && o->oAction <= 14)
@@ -587,6 +588,21 @@ void bhv_lb_ctl_loop()
         if (o->oTimer == 50)
         {
             struct Object* wind = spawn_object(o, MODEL_NONE, bhvLBWind);
+
+            for (int i = 0; i < 3; i++)
+            {
+                int amount = 8 + 2*i;
+                for (int j = 0; j < amount; j++)
+                {
+                    struct Object* bomb = spawn_object(o, MODEL_BOWSER_BOMB, bhvLbBowserBomb);
+                    bomb->oLbPlatformRange = 2000.f + 2000.f * i;
+                    bomb->oMoveAngleYaw = 0x10000 / amount * j;
+                    bomb->oPosX = bomb->oLbPlatformRange * sins(bomb->oMoveAngleYaw);
+                    bomb->oPosY = 2900.f;
+                    bomb->oPosZ = bomb->oLbPlatformRange * coss(bomb->oMoveAngleYaw);
+                    bomb->oLbPlatformSpeed = 0x10 * (i + 1) * (i&1 ? 1 : -1);
+                }
+            }
         }
     }
 }
@@ -732,7 +748,7 @@ void bhv_lb_stand_loop()
     {
         if (o->oTimer <= 64)
         {
-            f32 scale = CLAMP(o->oTimer*2, 1, 120);
+            f32 scale = CLAMP(o->oTimer*2, 1, 100);
             obj_scale(o, scale / 64.f);
         }
 
@@ -765,5 +781,14 @@ void bhv_lb_stand_loop()
 
 void bhv_lb_wind_loop()
 {
+}
 
+void bhv_lb_bowser_bomb_loop()
+{
+    f32 range = o->oLbPlatformRange;
+    o->oMoveAngleYaw += o->oLbPlatformSpeed;
+    o->oPosX = range * coss(o->oMoveAngleYaw);
+    o->oPosZ = range * sins(o->oMoveAngleYaw);
+    
+    set_object_visibility(o, 30000);
 }
