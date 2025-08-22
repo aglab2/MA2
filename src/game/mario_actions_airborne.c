@@ -45,6 +45,7 @@ void play_knockback_sound(struct MarioState *m) {
     }
 }
 
+extern void deal_lava_damage(struct MarioState *m);
 s32 lava_boost_on_wall(struct MarioState *m) {
     m->faceAngle[1] = m->wallYaw;
 
@@ -53,7 +54,7 @@ s32 lava_boost_on_wall(struct MarioState *m) {
     }
 
     if (!(m->flags & MARIO_METAL_CAP)) {
-        m->hurtCounter += (gCurrLevelNum == LEVEL_LB) ? 4 : 12;
+        deal_lava_damage(m);
     }
 
     play_sound(SOUND_MARIO_ON_FIRE, m->marioObj->header.gfx.cameraToObject);
@@ -1518,7 +1519,7 @@ s32 act_lava_boost(struct MarioState *m) {
             if (m->floor->type == SURFACE_BURNING) {
                 m->actionState = ACT_STATE_LAVA_BOOST_HIT_LAVA;
                 if (!(m->flags & MARIO_METAL_CAP)) {
-                    m->hurtCounter += (gCurrLevelNum == LEVEL_LB) ? 4 : 12;
+                    deal_lava_damage(m);
                 }
                 m->vel[1] = 84.0f;
                 play_sound(SOUND_MARIO_ON_FIRE, m->marioObj->header.gfx.cameraToObject);

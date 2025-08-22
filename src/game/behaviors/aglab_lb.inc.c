@@ -8,7 +8,7 @@
 #define LB_PHASE4_LENGTH 380
 #define LB_PHASE5_LENGTH 400
 #define LB_PHASE6_LENGTH 460
-#define LB_PHASE7_LENGTH 500
+#define LB_PHASE7_LENGTH 670
 
 #include "rail_desc.h"
 
@@ -186,7 +186,7 @@ static void lb_spawn_rails(void)
 }
 
 extern const BehaviorScript bhvLbStand[];
-static void lb_spawn_upp()
+static void lb_spawn_upp(int vel)
 {
     for (int j = 0; j < 5; j++)
     {
@@ -196,7 +196,7 @@ static void lb_spawn_upp()
             bubble->oLbPlatformRange = 1300.f;
             bubble->oPosY = 200.f + 400.f * j;
             bubble->oMoveAngleYaw = 0x10000 / 8 * i + 0x10000 / 16 * j;
-            bubble->oLbPlatformSpeed = 0x50 * (j&1 ? 1 : -1);
+            bubble->oLbPlatformSpeed = vel * (j&1 ? 1 : -1);
         }   
     }
 }
@@ -494,7 +494,7 @@ void bhv_lb_ctl_loop()
         if (LB_PHASE6_LENGTH == o->oTimer)
         {
             o->oAction = 12;
-            lb_spawn_upp();
+            lb_spawn_upp(0x50);
         }
     }
     else if (12 == o->oAction)
@@ -552,7 +552,22 @@ void bhv_lb_ctl_loop()
         if (LB_PHASE7_LENGTH == o->oTimer)
         {
             o->oAction = 14;
+            lb_spawn_upp(0x70);
         }
+    }
+    else if (14 == o->oAction)
+    {
+        if (o->oTimer < 2)
+            o->parentObj->oAction = BOWSER_ACT_HIT_EDGE;
+
+        if (o->parentObj->oAction != BOWSER_ACT_HIT_EDGE)
+        {
+            o->oAction = 15;
+        }
+    }
+    else if (15 == o->oAction)
+    {
+        
     }
 }
 
@@ -693,20 +708,37 @@ void bhv_lb_sparkle_loop()
 
 void bhv_lb_stand_loop()
 {
-    if (o->oTimer <= 64)
+    if (0 == o->oAction)
     {
-        f32 scale = CLAMP(o->oTimer*2, 1, 100);
-        obj_scale(o, scale / 64.f);
+        if (o->oTimer <= 64)
+        {
+            f32 scale = CLAMP(o->oTimer*2, 1, 100);
+            obj_scale(o, scale / 64.f);
+        }
+
+        o->oMoveAngleYaw += o->oLbPlatformSpeed;
+        f32 range = o->oLbPlatformRange;
+        o->oPosX = range * coss(o->oMoveAngleYaw);
+        o->oPosZ = range * sins(o->oMoveAngleYaw);
+
+        if (gMarioObject->platform == o)
+        {
+            gMarioStates->pos[0] = o->oPosX;
+            gMarioStates->pos[2] = o->oPosZ;
+        }
+
+        if (o->parentObj->oAction != 12 && o->parentObj->oAction != 14)
+        {
+            o->oAction = 1;
+        }
     }
-
-    o->oMoveAngleYaw += o->oLbPlatformSpeed;
-    f32 range = o->oLbPlatformRange;
-    o->oPosX = range * coss(o->oMoveAngleYaw);
-    o->oPosZ = range * sins(o->oMoveAngleYaw);
-
-    if (gMarioObject->platform == o)
+    else
     {
-        gMarioStates->pos[0] = o->oPosX;
-        gMarioStates->pos[2] = o->oPosZ;
+        f32 scale = CLAMP(32 - o->oTimer, 1, 32);
+        obj_scale(o, scale / 32.f);
+        if (o->oTimer == 32)
+        {
+            o->activeFlags = 0;
+        }
     }
 }

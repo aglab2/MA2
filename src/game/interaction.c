@@ -1939,10 +1939,28 @@ void check_death_barrier(struct MarioState *m) {
     }
 }
 
+void deal_lava_damage(struct MarioState *m)
+{
+    if (gCurrLevelNum != LEVEL_LB)
+    {
+        m->hurtCounter += 12;
+    }
+    else
+    {
+        static u32 sLastTimeLavaDamageDealt = 0;
+        if (gGlobalTimer - sLastTimeLavaDamageDealt < 30) {
+            return;
+        }
+
+        sLastTimeLavaDamageDealt = gGlobalTimer;
+        m->hurtCounter += 4;
+    }
+}
+
 void check_lava_boost(struct MarioState *m) {
     if (!(m->action & ACT_FLAG_RIDING_SHELL) && m->pos[1] < m->floorHeight + 10.0f) {
         if (!(m->flags & MARIO_METAL_CAP)) {
-            m->hurtCounter += (gCurrLevelNum == LEVEL_LB) ? 4 : 12;
+            deal_lava_damage(m);
         }
 
         update_mario_sound_and_camera(m);
