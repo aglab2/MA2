@@ -1902,12 +1902,17 @@ u32 common_landing_action(struct MarioState *m, s16 animation, u32 airAction) {
     return stepResult;
 }
 
+static int not_slippery(int type)
+{
+    return type == SURFACE_NO_CAM_COLLISION_NOT_SLIPPERY || type == SURFACE_NOT_SLIPPERY || type == SURFACE_HARD_NOT_SLIPPERY;
+}
+
 s32 common_landing_cancels(struct MarioState *m, struct LandingAction *landingAction,
                            s32 (*setAPressAction)(struct MarioState *m, u32 action, u32 actionArg)) {
     //! Everything here, including floor steepness, is checked before checking
     // if Mario is actually on the floor. This leads to e.g. remote sliding.
 
-    if (absf(m->floor->normal.y) < COS73) {
+    if (!not_slippery(m->floor->type) && absf(m->floor->normal.y) < COS73) {
         return mario_push_off_steep_floor(m, landingAction->verySteepAction, 0);
     }
 
