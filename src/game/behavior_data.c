@@ -6715,6 +6715,26 @@ const BehaviorScript bhvYellowCoinSpawnedCC[] = {
     END_LOOP(),
 };
 
+extern void bhv_coin_formation_spawned_coin_loop_lb();
+const BehaviorScript bhvYellowCoinSpawnedLB[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BILLBOARD(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_coin_formation_spawned_coin_loop_lb),
+    END_LOOP(),
+};
+
+extern void bhv_coin_formation_init_lb();
+extern void bhv_coin_formation_loop_lb();
+const BehaviorScript bhvCoinFormationLB[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    CALL_NATIVE(bhv_coin_formation_init_lb),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_coin_formation_loop_lb),
+    END_LOOP(),
+};
+
 extern void bhv_goomba_update_cc();
 const BehaviorScript bhvGoombaCC[] = {
     BEGIN(OBJ_LIST_PUSHABLE),

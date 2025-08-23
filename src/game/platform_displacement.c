@@ -44,7 +44,7 @@ void update_mario_platform(void) {
     marioZ = gMarioObject->oPosZ;
     floorHeight = find_floor(marioX, marioY, marioZ, &floor);
 
-    f32 units = gCurrLevelNum == LEVEL_LB ? 10.f : 4.f;
+    f32 units = gCurrLevelNum == LEVEL_LB ? 50.f : 4.f;
     awayFromFloor =  absf(marioY - floorHeight) >= units;
 
     if (awayFromFloor) {
