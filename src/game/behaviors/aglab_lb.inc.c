@@ -1,5 +1,5 @@
 // #define LB_NO_STAR
-// #define LB_DEBUG_SHORTCUT_TO_PHASE 13
+#define LB_DEBUG_SHORTCUT_TO_PHASE 13
 
 #define LB_PHASE0_LENGTH 40
 #define LB_PHASE1_LENGTH 300
@@ -26,6 +26,7 @@
 
 #define oLbPlatformRange oF4
 #define oLbPlatformSpeed oF8
+#define oLbPlatformGrippedFrame oFC
 
 #define oLbCoinPattern oF8
 #define oLbCoinSpeed oFC
@@ -814,6 +815,14 @@ void bhv_lb_stand_loop()
         {
             gMarioStates->pos[0] = o->oPosX;
             gMarioStates->pos[2] = o->oPosZ;
+            if (o->oLbPlatformGrippedFrame < o->oTimer - 10)
+            {
+                gMarioStates->vel[0] = 0;
+                gMarioStates->vel[1] = -1.f;
+                gMarioStates->vel[2] = 0;
+            }
+
+            o->oLbPlatformGrippedFrame = o->oTimer;
         }
 
         if (o->parentObj->oAction != 12 && o->parentObj->oAction != 14)
