@@ -761,7 +761,8 @@ s32 find_water_level(s32 x, s32 z) { // TODO: Allow y pos
  * Finds the height of the poison gas (used only in HMC) at a given location.
  */
 s32 find_poison_gas_level(s32 x, s32 z) {
-    return FLOOR_LOWER_LIMIT_VALUE;
+    return gCurrLevelNum == LEVEL_LB ? 90 : FLOOR_LOWER_LIMIT_VALUE;
+#if 0
     s32 val;
     s32 loX, hiX, loZ, hiZ;
     s32 gasLevel = FLOOR_LOWER_LIMIT_VALUE;
@@ -796,6 +797,7 @@ s32 find_poison_gas_level(s32 x, s32 z) {
     
     profiler_collision_update(first);
     return gasLevel;
+#endif
 }
 
 /**************************************************

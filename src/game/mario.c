@@ -1318,7 +1318,7 @@ void update_mario_geometry_inputs(struct MarioState *m) {
             m->input |= INPUT_IN_WATER;
         }
 
-        if (m->pos[1] < (gasLevel - 100.0f)) {
+        if (m->pos[1] < (gasLevel)) {
             m->input |= INPUT_IN_POISON_GAS;
         }
 

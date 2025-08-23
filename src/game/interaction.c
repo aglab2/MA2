@@ -173,14 +173,14 @@ u32 determine_interaction(struct MarioState *m, struct Object *obj) {
 
     if (gCurrLevelNum == LEVEL_LB)
     {
-        interaction = INT_PUNCH;
+        interaction = 0;
         f32 y = obj->oPosY; 
         y += 1000.f;
-        if (m->vel[1] < 0.0f) {
+        // if (m->vel[1] < 0.0f) {
             if (m->pos[1] > y) {
                 interaction = INT_HIT_FROM_ABOVE;
             }
-        }
+        // }
 
         return interaction;
     }

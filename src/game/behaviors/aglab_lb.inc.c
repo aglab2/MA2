@@ -1,5 +1,5 @@
-#define LB_NO_STAR
-#define LB_DEBUG_SHORTCUT_TO_PHASE 13
+// #define LB_NO_STAR
+// #define LB_DEBUG_SHORTCUT_TO_PHASE 13
 
 #define LB_PHASE0_LENGTH 40
 #define LB_PHASE1_LENGTH 300
@@ -72,6 +72,15 @@ static void lb_pin_mario()
         gMarioStates->pos[2] /= d;
         gMarioStates->pos[0] *= 3400.f;
         gMarioStates->pos[2] *= 3400.f;
+    }
+
+    if (gMarioStates->action == ACT_LAVA_BOOST)
+    {
+        if (gMarioStates->pos[1] > 900.f)
+        {
+            gMarioStates->pos[1] = 900.f;
+            gMarioStates->vel[1] = 0.f;
+        }
     }
 }
 
@@ -195,7 +204,7 @@ static void lb_spawn_upp(int vel)
         {
             struct Object* bubble = spawn_object(o, MODEL_LB_STAND, bhvLbStand);
             bubble->oLbPlatformRange = 1300.f;
-            bubble->oPosY = 200.f + 400.f * j;
+            bubble->oPosY = 250.f + 400.f * j;
             bubble->oMoveAngleYaw = 0x10000 / 8 * i + 0x10000 / 16 * j;
             bubble->oLbPlatformSpeed = vel * (j&1 ? 1 : -1);
         }   
@@ -318,6 +327,14 @@ void bhv_lb_ctl_loop()
     }
     else if (2 == o->oAction)
     {
+        if (o->oTimer < 25)
+        {
+            int negative = gMarioStates->pos[0] < 0;
+            gMarioStates->pos[0] += negative ? -15.f : 15.f;
+            gMarioStates->pos[0] = CLAMP(gMarioStates->pos[0] , -400.f, 400.f);
+            gMarioStates->health = 0x880;
+        }
+
         obj_scale(o->parentObj, 0.1f * o->oTimer);
         if (50 == o->oTimer)
         {
