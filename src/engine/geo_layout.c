@@ -1314,7 +1314,7 @@ void geo_layout_cmd_lvl_translation_rotation(void) {
     {
         graphNode->dl = segmented_to_virtual(displayList);
         f32 result = displayList ? get_radius_batch_cmds(graphNode->dl) : 0.f;
-        graphNode->radius = result + result;
+        graphNode->radius = result;
     }
     else
     {
@@ -1355,7 +1355,7 @@ void geo_layout_cmd_lvl_translation(void) {
     {
         graphNode->dl = segmented_to_virtual(displayList);
         f32 result = displayList ? get_radius_batch_cmds(graphNode->dl) : 0.f;
-        graphNode->radius = result + result;
+        graphNode->radius = result;
     }
     else
     {

@@ -1836,10 +1836,13 @@ static int is_far_from_mario(f32 l0, f32 l1, f32 l2, f32 radius)
 
     if (radius)
     {
+        f32 radiusSquared = radius * radius;
+        f32 radiusSquared2 = radiusSquared + radiusSquared;
         // For radius check do a simple approximation.
         // Check that node point is far from the camera and behind the camera
         vec3_diff(d, gCurGraphNodeCamera->pos, loc);
-        if (radius*radius < dist && vec3_dot(d, sNodeCameraVec) < 0)
+        f32 dist = d[0]*d[0] + d[1]*d[1] + d[2]*d[2];
+        if (radiusSquared2 < dist && vec3_dot(d, sNodeCameraVec) < radius)
         {
             return 1;
         }
