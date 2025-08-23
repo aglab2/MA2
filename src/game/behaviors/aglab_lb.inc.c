@@ -1,5 +1,5 @@
 // #define LB_NO_STAR
-#define LB_DEBUG_SHORTCUT_TO_PHASE 13
+#define LB_DEBUG_SHORTCUT_TO_PHASE 14
 
 #define LB_PHASE0_LENGTH 40
 #define LB_PHASE1_LENGTH 300
@@ -652,9 +652,10 @@ void bhv_lb_ctl_loop()
                     bomb->oLbPlatformRange = 2000.f + 2000.f * i;
                     bomb->oMoveAngleYaw = 0x10000 / amount * j;
                     bomb->oPosX = bomb->oLbPlatformRange * sins(bomb->oMoveAngleYaw);
-                    bomb->oPosY = 2900.f;
+                    bomb->oPosY = 2950.f;
                     bomb->oPosZ = bomb->oLbPlatformRange * coss(bomb->oMoveAngleYaw);
                     bomb->oLbPlatformSpeed = 0x10 * (i + 1) * (i&1 ? 1 : -1);
+                    obj_scale(bomb, 0);
                 }
             }
         }
@@ -843,10 +844,17 @@ void bhv_lb_stand_loop()
 
 void bhv_lb_wind_loop()
 {
+    if (gMarioStates->health >= 0x100)
+        load_object_collision_model();
 }
 
 void bhv_lb_bowser_bomb_loop()
 {
+    if (o->oTimer < 32)
+    {
+        obj_scale(o, (1 + o->oTimer) / 32.f);
+    }
+
     f32 range = o->oLbPlatformRange;
     o->oMoveAngleYaw += o->oLbPlatformSpeed;
     o->oPosX = range * coss(o->oMoveAngleYaw);

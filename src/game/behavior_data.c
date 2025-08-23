@@ -3822,7 +3822,7 @@ const BehaviorScript bhvLbBowserBomb[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     SET_INT(oIntangibleTimer, 0),
-    SET_HITBOX_WITH_OFFSET(/*Radius*/ 40, /*Height*/ 40, /*Downwards offset*/ 40),
+    SET_HITBOX_WITH_OFFSET(/*Radius*/ 40, /*Height*/ 210, /*Downwards offset*/ 40),
     DELAY(1),
     BEGIN_LOOP(),
         SET_INT(oIntangibleTimer, 0),
@@ -7089,7 +7089,6 @@ const BehaviorScript bhvLBWind[] = {
     LOAD_COLLISION_DATA(lb_wind_collision),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_lb_wind_loop),
-        CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
 

@@ -5,6 +5,8 @@ void bhv_bowser_bomb_loop(void) {
         o->oInteractStatus &= ~INT_STATUS_INTERACTED;
         spawn_object(o, MODEL_EXPLOSION, bhvExplosion);
         o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
+        if (gCurrCourseNum == COURSE_LB)
+            gMarioStates->health -= 0x100;
     }
 
     if (o->oInteractStatus & INT_STATUS_HIT_MINE) {
