@@ -1811,7 +1811,7 @@ static void adjust_view_range()
 }
 
 f32 gViewRangeMult;
-static int is_far_from_mario(f32 l0, f32 l1, f32 l2, f32 radius)
+static int is_far_from_mario(f32 l0, f32 l1, f32 l2, f32 sphR)
 {
     Vec3f loc = { l0, l1, l2 };
     Vec3f d;
@@ -1834,19 +1834,81 @@ static int is_far_from_mario(f32 l0, f32 l1, f32 l2, f32 radius)
         return 1;
     }
 
-    if (radius)
+// #define HAVE_BACK_FLIPPING
+#ifdef HAVE_BACK_FLIPPING_V1
+    while (sphR2)
     {
-        f32 radiusSquared = radius * radius;
-        f32 radiusSquared2 = radiusSquared + radiusSquared;
-        // For radius check do a simple approximation.
-        // Check that node point is far from the camera and behind the camera
         vec3_diff(d, gCurGraphNodeCamera->pos, loc);
-        f32 dist = d[0]*d[0] + d[1]*d[1] + d[2]*d[2];
-        if (radiusSquared2 < dist && vec3_dot(d, sNodeCameraVec) < radius)
+        f32 dLen2 = vec3_sumsq(d);
+        // center of the sphere is too close to the apex
+        if (sphR2 < dLen2)
+        {
+            break;
+        }
+
+        // decompose vector 'd' to 'h' and 'r'
+        // h is amount of cone 'u' vector, r is rest hence orthogonal to cone 'u'
+        Vec3f coneU;
+        vec3_copy(coneU, sNodeCameraVec);
+        f32 coneHLen = vec3_dot(d, coneU);
+        Vec3f coneH;
+        vec3_scale_dest(coneH, coneU, coneHLen);
+        Vec3f coneR;
+        vec3_diff(coneR, d, coneH);
+        f32 coneHLen2 = coneHLen * coneHLen;
+        f32 coneRLen2 = vec3_sumsq(coneR);
+
+        // sphere center is inside the cone but it might be also inverted cone...
+        // This assume 45 degree cone!
+        int coneSphCenterInside =  coneRLen2 <= coneHLen2;
+        if (coneSphCenterInside)
+        {
+            // ...and cone is not inverted but center is actually inside...
+            if (coneHLen >= -100.f || coneRLen2 < 100.f * 100.f)
+                break;
+            
+            // ...otherwise the point is very behind the cone hence sphere itself cannot be inside anymore
+            return 1;
+        }
+
+        // sphere center is somewhere outside in such a manner that closest point is a projection on the cone side
+        // I am currently pulling a real trivial approximation which will culls only negative h
+        if (coneHLen > 0)
+            break;
+
+        // this is a guarantee from the sphere being behind the cone - if point is far enough outwards, then
+        // coneR / sqrt(2) > sphR -> coneR2 ? sphR2 * 2
+        //f32 sphR2Twice = sphR2 + sphR2;
+        //if (coneRLen2 > sphR2Twice)
+        //    return 1;
+
+        break;
+    }
+#endif
+
+#define HAVE_BACK_FLIPPING_V2
+#ifdef HAVE_BACK_FLIPPING_V2
+    while (sphR)
+    {
+        vec3_diff(d, gCurGraphNodeCamera->pos, loc);
+        f32 dLen2 = vec3_sumsq(d);
+        // center of the sphere is too close to the apex
+        if (sphR*sphR < dLen2)
+        {
+            break;
+        }
+        
+        Vec3f coneU;
+        vec3_copy(coneU, sNodeCameraVec);
+        f32 coneHLen = vec3_dot(d, coneU);
+        if (coneHLen < -sphR)
         {
             return 1;
         }
+
+        break;
     }
+#endif
 
     gPriority = priority;
     return 0;
