@@ -162,13 +162,16 @@ static void apply_mario_inertia(void) {
 #endif
 
 #ifdef MARIO_INERTIA_LATERAL
-    // Apply sideways inertia
-    gMarioState->pos[0] += sMarioAmountDisplaced[0];
-    gMarioState->pos[2] += sMarioAmountDisplaced[2];
+    if (gCurrCourseNum == COURSE_CCT)
+    {
+        // Apply sideways inertia
+        gMarioState->pos[0] += sMarioAmountDisplaced[0];
+        gMarioState->pos[2] += sMarioAmountDisplaced[2];
 
-    // Drag
-    sMarioAmountDisplaced[0] *= 0.97f;
-    sMarioAmountDisplaced[2] *= 0.97f;
+        // Drag
+        sMarioAmountDisplaced[0] *= 0.95f;
+        sMarioAmountDisplaced[2] *= 0.95f;
+    }
 #endif
 
     // Stop applying inertia once Mario has landed, or when ground pounding

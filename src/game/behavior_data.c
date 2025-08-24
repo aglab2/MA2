@@ -6452,6 +6452,15 @@ const BehaviorScript bhvSoMove[] = {
     END_LOOP(),
 };
 
+extern const Collision hb_ashiba_collision[];
+const BehaviorScript bhvSoMoveStill[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    LOAD_COLLISION_DATA(hb_ashiba_collision),
+    BEGIN_LOOP(),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
 extern const Collision so_pillar_base_collision[];
 extern void bhv_so_pillarbase_init();
 extern void bhv_so_pillarbase_loop();

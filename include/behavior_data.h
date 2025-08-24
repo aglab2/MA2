@@ -595,6 +595,7 @@ extern const BehaviorScript bhvSparkler[];
 extern const BehaviorScript bhvSoPillar[];
 extern const BehaviorScript bhvSoHako[];
 extern const BehaviorScript bhvSoMove[];
+extern const BehaviorScript bhvSoMoveStill[];
 extern const BehaviorScript bhvRhSlane[];
 extern const BehaviorScript bhvRhHammer[];
 extern const BehaviorScript bhvWbMove[];
