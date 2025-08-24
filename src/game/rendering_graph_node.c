@@ -1891,12 +1891,14 @@ static int is_far_from_mario(f32 l0, f32 l1, f32 l2, f32 sphR)
     while (sphR)
     {
         vec3_diff(d, gCurGraphNodeCamera->pos, loc);
+#if 0
         f32 dLen2 = vec3_sumsq(d);
         // center of the sphere is too close to the apex
         if (sphR*sphR < dLen2)
         {
             break;
         }
+#endif
         
         Vec3f coneU;
         vec3_copy(coneU, sNodeCameraVec);
