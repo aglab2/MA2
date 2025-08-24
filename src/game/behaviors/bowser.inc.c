@@ -1204,7 +1204,11 @@ void bowser_fly_back_dead(void) {
         o->oForwardVel = -200.0f;
     }
     o->oVelY = 100.0f;
-    o->oMoveAngleYaw = o->oBowserAngleToCenter + 0x8000;
+    if (gCurrLevelNum != LEVEL_LB)
+        o->oMoveAngleYaw = o->oBowserAngleToCenter + 0x8000;
+    else
+        o->oMoveAngleYaw = 0x1000;
+
     o->oBowserTimer = 0;
     o->oSubAction++; // BOWSER_SUB_ACT_DEAD_BOUNCE
     if (gCurrLevelNum == LEVEL_SS2)
@@ -1239,6 +1243,9 @@ void bowser_dead_bounce(void) {
  * Returns TRUE if he is close enough
  */
 s32 bowser_dead_wait_for_mario(void) {
+    if (gCurrLevelNum == LEVEL_LB)
+        return FALSE;
+
     s32 ret = FALSE;
     cur_obj_become_intangible();
     if (cur_obj_init_animation_and_check_if_near_end(BOWSER_ANIM_LAY_DOWN) && o->oDistanceToMario < 700.0f

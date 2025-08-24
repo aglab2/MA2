@@ -1,5 +1,5 @@
 // #define LB_NO_STAR
-#define LB_DEBUG_SHORTCUT_TO_PHASE 14
+// #define LB_DEBUG_SHORTCUT_TO_PHASE 14
 
 #define LB_PHASE0_LENGTH 40
 #define LB_PHASE1_LENGTH 300
@@ -36,6 +36,8 @@ void bhv_lb_ctl_init()
 {
     f32 d;
     o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvBowser, &d);
+    o->parentObj->oHomeY = -100.f;
+
 #ifndef LB_NO_STAR
     gSecondCameraFocus = spawn_object(o, MODEL_STAR, bhvGrandStar);
     gSecondCameraFocus->oPosX = 0;
@@ -52,7 +54,8 @@ static void lb_pin_bowser()
 
     if (o->parentObj->oAction != BOWSER_ACT_WALK_TO_MARIO
      && o->parentObj->oAction != BOWSER_ACT_HIT_MINE
-     && o->parentObj->oAction != BOWSER_ACT_HIT_EDGE)
+     && o->parentObj->oAction != BOWSER_ACT_HIT_EDGE
+     && o->parentObj->oAction != BOWSER_ACT_DEAD)
     {
         s32 angleToMario = o->oAngleToMario;
         s16 angleFromMario = abs_angle_diff(o->parentObj->oMoveAngleYaw, angleToMario);
@@ -256,8 +259,10 @@ void bhv_lb_ctl_loop()
 {
     if (o->oAction >= 3 && o->oAction <= 14)
         lb_pin();
-    if (o->oAction > 14)
+    if (o->oAction == 14 || o->oAction == 15)
         lb_pin_bowser();
+    if (o->oAction == 16)
+        lb_pin_mario();
 
 #if 0
     if (0 == o->oTimer)
@@ -297,7 +302,8 @@ void bhv_lb_ctl_loop()
             gMarioStates->vel[2] = 0.f;
             set_mario_action(gMarioStates, ACT_THROWN_BACKWARD, 0);
 #ifndef LB_NO_STAR
-            gSecondCameraFocus->oPosY = 0;
+            gSecondCameraFocus->activeFlags = 0;
+            gSecondCameraFocus = NULL;
 #endif
             cur_obj_play_sound_2(SOUND_OBJ_BOWSER_LAUGH);
             o->oAction = 1;
@@ -623,6 +629,7 @@ void bhv_lb_ctl_loop()
 
         if (o->parentObj->oAction != BOWSER_ACT_HIT_EDGE)
         {
+            o->parentObj->oHealth = 1;
             o->oAction = 15;
         }
     }
@@ -659,7 +666,42 @@ void bhv_lb_ctl_loop()
                 }
             }
         }
+
+        if (o->oTimer > 100)
+        {
+            if (o->parentObj->oAction == BOWSER_ACT_DEAD)
+            {
+                o->oAction = 16;
+                o->parentObj->hitboxRadius = 100.f;
+                o->parentObj->hitboxHeight = 300.f;
+                seq_player_fade_out(SEQ_PLAYER_LEVEL, 1);
+            }
+        }
     }
+    else if (16 == o->oAction)
+    {
+        gMarioStates->health = 0x880;
+        if (o->oTimer < 40)
+        {
+            obj_scale(o->parentObj, 0.1f * (50 - o->oTimer));
+            // o->parentObj->oPosX -= 60.f;
+        }
+
+        if (o->oTimer == 40)
+        {
+            gSecondCameraFocus = spawn_object(o, MODEL_STAR, bhvGrandStar);
+            vec3_copy(&gSecondCameraFocus->oPosVec, &o->parentObj->oPosVec);
+            gSecondCameraFocus->oBehParams2ndByte = 1;
+        }
+    }
+    else
+    {
+
+    }
+
+    //print_text_fmt_int(20, 20, "A %d", o->parentObj->oAction);
+    //print_text_fmt_int(20, 40, "S %d", o->parentObj->oSubAction);
+    //print_text_fmt_int(20, 60, "Y %d", o->parentObj->oPosY);
 }
 
 static void bhv_lb_ball_common()
@@ -844,6 +886,13 @@ void bhv_lb_stand_loop()
 
 void bhv_lb_wind_loop()
 {
+    if (o->parentObj->oAction == 16)
+        o->activeFlags = 0;
+
+    f32 d = gMarioStates->pos[0] * gMarioStates->pos[0] + gMarioStates->pos[2] * gMarioStates->pos[2];
+    if (d < 1000.f * 1000.f)
+        return;
+
     if (gMarioStates->health >= 0x100)
         load_object_collision_model();
 }

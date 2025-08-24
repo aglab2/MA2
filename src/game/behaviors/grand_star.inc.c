@@ -41,8 +41,18 @@ void bhv_grand_star_loop(void) {
             cur_obj_play_sound_2(SOUND_GENERAL_GRAND_STAR);
 
             cutscene_object(CUTSCENE_STAR_SPAWN, o);
-            static Vec3f Target = { 0, 2050, -12000 };
-            o->oGrandStarArcTime = arc_to_goal_pos(Target, &o->oPosVec, 80.0f, -2.0f);
+            f32* aTarget = NULL;
+            if (o->oBehParams2ndByte)
+            {
+                static Vec3f Target0 = { 0, 200, 0 };
+                aTarget = Target0;
+            }
+            else
+            {
+                static Vec3f Target1 = { 0, 2050, -12000 };
+                aTarget = Target1;
+            }
+            o->oGrandStarArcTime = arc_to_goal_pos(aTarget, &o->oPosVec, 80.0f, -2.0f);
         }
 
         cur_obj_move_using_fvel_and_gravity();
