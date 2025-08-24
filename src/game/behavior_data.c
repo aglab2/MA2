@@ -5937,6 +5937,14 @@ const BehaviorScript bhvBreakable[] = {
     END_LOOP(),
 };
 
+extern void bhv_breakable_up_loop();
+const BehaviorScript bhvBreakableUp[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_breakable_up_loop),
+    END_LOOP(),
+};
+
 extern void bhv_pl_elv_loop();
 extern const Collision pl_elv_collision[];
 const BehaviorScript bhvPLElv[] = {

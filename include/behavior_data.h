@@ -548,6 +548,7 @@ extern const BehaviorScript bhvHammerUpDown[];
 extern const BehaviorScript bhvWCStoneHead[];
 extern const BehaviorScript bhvBreakableShrinking[];
 extern const BehaviorScript bhvBreakable[];
+extern const BehaviorScript bhvBreakableUp[];
 extern const BehaviorScript bhvPLElv[];
 extern const BehaviorScript bhvPLCage[];
 extern const BehaviorScript bhvPLCage2[];
