@@ -832,6 +832,11 @@ u32 interact_star_or_key(struct MarioState *m, UNUSED u32 interactType, struct O
     u32 starGrabAction = ACT_STAR_DANCE_EXIT;
     enum StarGrabStyle style = get_star_grab_style(obj);
     u32 grandStar = (obj->oInteractionSubtype & INT_SUBTYPE_GRAND_STAR) != 0;
+    if (grandStar)
+    {
+        style = STAR_GRAB_EXIT;
+        grandStar = 0;
+    }
 
     if (m->health >= 0x100) {
         if (IS_STAR_GRAB_EXIT(style))
@@ -882,7 +887,7 @@ u32 interact_star_or_key(struct MarioState *m, UNUSED u32 interactType, struct O
         m->numStars =
             save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1);
 
-        if (IS_STAR_GRAB_EXIT(style)) {
+        if (IS_STAR_GRAB_EXIT(style) && gCurrCourseNum != COURSE_LB) {
             drop_queued_background_music();
             fadeout_level_music(126);
         }

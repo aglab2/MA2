@@ -407,7 +407,7 @@ u8 sFramesSinceCutsceneEnded = 0;
  * 3 = Dialog doesn't have a response
  */
 u8 sCutsceneDialogResponse = DIALOG_RESPONSE_NONE;
-struct PlayerCameraState *sMarioCamState = &gPlayerCameraState[0];
+#define sMarioCamState (&gPlayerCameraState[0])
 // struct PlayerCameraState *sLuigiCamState = &gPlayerCameraState[1];
 Vec3f sFixedModeBasePosition    = { 646.0f, 143.0f, -1513.0f };
 

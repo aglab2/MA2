@@ -999,6 +999,22 @@ void bowser_act_charge_mario(void) {
     if (0 == o->oTimer)
     {
         cur_obj_play_sound_2(SOUND_OBJ2_BOWSER_ROAR);
+        if (gCurrLevelNum == LEVEL_LB)
+        {
+            o->oFaceAngleYaw = o->oAngleToMario;
+            o->oMoveAngleYaw = o->oAngleToMario;
+        }
+    }
+
+    if (gCurrLevelNum == LEVEL_LB)
+    {
+        if (o->oMoveFlags & OBJ_MOVE_HIT_EDGE)
+        {
+            o->oMoveFlags &= ~OBJ_MOVE_HIT_EDGE;
+            o->oPosX += o->oVelX;
+            o->oPosY = 0;
+            o->oPosZ += o->oVelZ;
+        }
     }
 
     // Set speed to run

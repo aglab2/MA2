@@ -590,7 +590,9 @@ void general_star_dance_handler(struct MarioState *m, s32 isInWater) {
                     obj_set_model(celebStar, gStarModelLastCollected);
                 }
 #endif
-                disable_background_sound();
+                if (gCurrLevelNum != LEVEL_LB)
+                    disable_background_sound();
+
                 //! TODO: Is this check necessary? Both seem to do the exact same thing.
                 if (m->actionArg & 1) {
                     // No exit
@@ -610,12 +612,15 @@ void general_star_dance_handler(struct MarioState *m, s32 isInWater) {
                 break;
 
             case 80:
-                if (!(m->actionArg & 1)) {
-                    level_trigger_warp(m, WARP_OP_STAR_EXIT);
-                } else {
-                    enable_time_stop();
-                    create_dialog_box_with_response(gLastCompletedStarNum == 7 ? DIALOG_013 : DIALOG_014);
-                    m->actionState = ACT_STATE_STAR_DANCE_DO_SAVE;
+                if (gCurrLevelNum != LEVEL_LB)
+                {
+                    if (!(m->actionArg & 1)) {
+                        level_trigger_warp(m, WARP_OP_STAR_EXIT);
+                    } else {
+                        enable_time_stop();
+                        create_dialog_box_with_response(gLastCompletedStarNum == 7 ? DIALOG_013 : DIALOG_014);
+                        m->actionState = ACT_STATE_STAR_DANCE_DO_SAVE;
+                    }
                 }
                 break;
         }

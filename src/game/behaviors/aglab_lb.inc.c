@@ -1,5 +1,5 @@
 #define LB_NO_STAR
-#define LB_DEBUG_SHORTCUT_TO_PHASE 11
+#define LB_DEBUG_SHORTCUT_TO_PHASE 14
 
 #define LB_PHASE0_LENGTH 40
 #define LB_PHASE1_LENGTH 300
@@ -251,6 +251,7 @@ static void lb_patterns(int timeMod, int count)
     }
 }
 
+extern void disable_background_sound();
 extern const BehaviorScript bhvCoinFormationLB[];
 extern void set_camera_mode_8_directions(struct Camera *c);
 extern void func_8031D690(s32 player, s32 fadeInTime);
@@ -702,15 +703,39 @@ void bhv_lb_ctl_loop()
             vec3_copy(&gSecondCameraFocus->oPosVec, &o->parentObj->oPosVec);
             gSecondCameraFocus->oBehParams2ndByte = 1;
         }
+
+        if (gMarioStates->action == ACT_STAR_DANCE_EXIT)
+        {
+            o->oAction = 17;
+        }
     }
     else
     {
+        Vec3f camDir;
+        vec3_diff(camDir, gLakituState.goalPos, gLakituState.goalFocus);
+        s16 camAngle = atan2s(camDir[2], camDir[0]);
+        f32 r = sqrtf(camDir[2]*camDir[2] + camDir[0]*camDir[0]);
+        camAngle = approach_angle(camAngle, 0, 0x200);
+        gLakituState.goalPos[0] = gLakituState.goalFocus[0] + r * sins(camAngle);
+        gLakituState.goalPos[2] = gLakituState.goalFocus[2] + r * coss(camAngle);
+        gLakituState.yaw = camAngle;
+        gLakituState.nextYaw = camAngle;
 
+        if (o->oTimer == 60)
+        {
+            o->parentObj->oAction = BOWSER_ACT_CHARGE_MARIO;
+        }
+
+        if (o->oTimer == 120)
+        {
+            gMarioStates->usedObj = o;
+            SET_BPARAM2(o->oBehParams, 0xa);
+            level_trigger_warp(gMarioStates, WARP_OP_TELEPORT);
+            disable_background_sound();
+        }
+
+        print_text_fmt_int(20, 20, "%d", o->oTimer);
     }
-
-    //print_text_fmt_int(20, 20, "A %d", o->parentObj->oAction);
-    //print_text_fmt_int(20, 40, "S %d", o->parentObj->oSubAction);
-    //print_text_fmt_int(20, 60, "Y %d", o->parentObj->oPosY);
 }
 
 static void bhv_lb_ball_common()
