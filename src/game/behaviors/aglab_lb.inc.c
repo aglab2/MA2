@@ -1,5 +1,5 @@
-#define LB_NO_STAR
-#define LB_DEBUG_SHORTCUT_TO_PHASE 14
+// #define LB_NO_STAR
+// #define LB_DEBUG_SHORTCUT_TO_PHASE 14
 
 #define LB_PHASE0_LENGTH 40
 #define LB_PHASE1_LENGTH 300
@@ -726,15 +726,13 @@ void bhv_lb_ctl_loop()
             o->parentObj->oAction = BOWSER_ACT_CHARGE_MARIO;
         }
 
-        if (o->oTimer == 120)
+        if (o->oTimer == 115)
         {
             gMarioStates->usedObj = o;
             SET_BPARAM2(o->oBehParams, 0xa);
             level_trigger_warp(gMarioStates, WARP_OP_TELEPORT);
             disable_background_sound();
         }
-
-        print_text_fmt_int(20, 20, "%d", o->oTimer);
     }
 }
 
