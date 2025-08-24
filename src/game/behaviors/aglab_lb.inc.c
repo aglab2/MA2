@@ -1,5 +1,5 @@
-// #define LB_NO_STAR
-// #define LB_DEBUG_SHORTCUT_TO_PHASE 14
+#define LB_NO_STAR
+#define LB_DEBUG_SHORTCUT_TO_PHASE 11
 
 #define LB_PHASE0_LENGTH 40
 #define LB_PHASE1_LENGTH 300
@@ -31,6 +31,7 @@
 #define oLbCoinPattern oF8
 #define oLbCoinSpeed oFC
 #define oLbCoinTimeout o100
+#define oLbCoinRange oFloat104
 
 void bhv_lb_ctl_init()
 {
@@ -204,7 +205,7 @@ static void lb_spawn_rails(void)
 }
 
 extern const BehaviorScript bhvLbStand[];
-static void lb_spawn_upp(int vel)
+static void lb_spawn_upp(int vel, s16 angle)
 {
     for (int j = 0; j < 5; j++)
     {
@@ -213,8 +214,8 @@ static void lb_spawn_upp(int vel)
             struct Object* bubble = spawn_object(o, MODEL_LB_STAND, bhvLbStand);
             bubble->oLbPlatformRange = 1300.f;
             bubble->oPosY = 350.f + 450.f * j;
-            bubble->oMoveAngleYaw = 0x10000 / 8 * i + 0x10000 / 16 * j;
-            bubble->oLbPlatformSpeed = vel * (j&1 ? 1 : -1);
+            bubble->oMoveAngleYaw = angle + 0x10000 / 8 * i + 0x10000 / 16 * j;
+            bubble->oLbPlatformSpeed = vel * (j&1 ? -1 : 1);
         }   
     }
 }
@@ -555,7 +556,15 @@ void bhv_lb_ctl_loop()
         if (LB_PHASE6_LENGTH == o->oTimer)
         {
             o->oAction = 12;
-            lb_spawn_upp(0x50);
+            s16 angle = random_u16();
+            lb_spawn_upp(0x50, angle);
+            {
+                struct Object* coins = spawn_object(o, MODEL_NONE, bhvCoinFormationLB);
+                coins->oLbCoinPattern = 0;
+                coins->oMoveAngleYaw = angle;
+                coins->oLbCoinSpeed = 0x50;
+                coins->oLbCoinTimeout = 300;
+            }
         }
     }
     else if (12 == o->oAction)
@@ -619,7 +628,7 @@ void bhv_lb_ctl_loop()
         if (LB_PHASE7_LENGTH == o->oTimer)
         {
             o->oAction = 14;
-            lb_spawn_upp(0x70);
+            lb_spawn_upp(0x70, random_u16());
         }
     }
     else if (14 == o->oAction)
@@ -851,8 +860,8 @@ void bhv_lb_stand_loop()
 
         o->oMoveAngleYaw += o->oLbPlatformSpeed;
         f32 range = o->oLbPlatformRange;
-        o->oPosX = range * coss(o->oMoveAngleYaw);
-        o->oPosZ = range * sins(o->oMoveAngleYaw);
+        o->oPosX = range * sins(o->oMoveAngleYaw);
+        o->oPosZ = range * coss(o->oMoveAngleYaw);
 
         if (gMarioObject->platform == o)
         {
@@ -912,19 +921,17 @@ void bhv_lb_bowser_bomb_loop()
     set_object_visibility(o, 30000);
 }
 
-#define COIN_RANGE 2500.f
 extern void bhv_coin_formation_spawned_coin_loop(void);
 void bhv_coin_formation_spawned_coin_loop_lb()
 {
-    f32 range = COIN_RANGE;
+    f32 range = o->oLbCoinRange;
     o->oMoveAngleYaw += o->oLbCoinSpeed;
     o->oPosX = range * sins(o->oMoveAngleYaw);
     o->oPosZ = range * coss(o->oMoveAngleYaw);
     if (o->oTimer < 32)
     {
-        o->oPosY = o->oTimer * 4;
+        o->oPosY += o->oVelY;
     }
-    o->oFloor = NULL;
     o->oFloorHeight = 100.f;
 
     if (o->oTimer > o->oLbCoinTimeout)
@@ -936,23 +943,38 @@ void bhv_coin_formation_spawned_coin_loop_lb()
 }
 
 extern const BehaviorScript bhvYellowCoinSpawnedLB[];
-void bhv_coin_formation_init_lb()
+
+static void spawn_lb_coin_pattern(int mask, int amount, f32 range, f32 vel)
 {
-    int mask = o->oLbCoinPattern;
-    for (int i = 0; i < 3*4; i++)
+    for (int i = 0; i < amount; i++)
     {
         if (!(mask & (1 << i)))
             continue;
 
         struct Object *newCoin = spawn_object(o, MODEL_YELLOW_COIN, bhvYellowCoinSpawnedLB);
-        int angle = o->oMoveAngleYaw + 0x10000/(4*3) * i;
+        int angle = o->oMoveAngleYaw + 0x10000/amount * i;
         newCoin->oMoveAngleYaw = angle;
-        newCoin->oPosX = COIN_RANGE * sins(angle);
+        newCoin->oPosX = range * sins(angle);
         newCoin->oPosY = 0;
-        newCoin->oPosZ = COIN_RANGE * coss(angle);
+        newCoin->oPosZ = range * coss(angle);
+        newCoin->oVelY = vel;
 
         newCoin->oLbCoinSpeed = o->oLbCoinSpeed;
         newCoin->oLbCoinTimeout = o->oLbCoinTimeout - 30;
+        newCoin->oLbCoinRange = range;
+    }
+}
+
+void bhv_coin_formation_init_lb()
+{
+    int mask = o->oLbCoinPattern;
+    if (0 == mask)
+    {
+        spawn_lb_coin_pattern(~0, 8, 1300.f, 13.f);
+    }
+    else
+    {
+        spawn_lb_coin_pattern(mask, 12, 2500.f, 4.f);
     }
 }
 

@@ -79,12 +79,15 @@ void bhv_grand_star_loop(void) {
 
         spawn_sparkle_particles(3, 200, 80, -60);
     } else {
-        //cur_obj_become_tangible();
+        if (0 != o->oBehParams2ndByte)
+        {
+            cur_obj_become_tangible();
 
-        //if (o->oInteractStatus & INT_STATUS_INTERACTED) {
-        //    obj_mark_for_deletion(o);
-        //    o->oInteractStatus = INT_STATUS_NONE;
-        //}
+            if (o->oInteractStatus & INT_STATUS_INTERACTED) {
+                obj_mark_for_deletion(o);
+                o->oInteractStatus = INT_STATUS_NONE;
+            }
+        }
     }
 
     if (o->oAngleVelYaw > 0x400) {
