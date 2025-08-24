@@ -260,11 +260,10 @@ the back and hurl me to\n\
 this royal turf? I think\n\
 that you cannot!")
 
-DEFINE_DIALOG(DIALOG_018, NO_SOUND, 4, 30, 200, "\
-I'm sleeping because...\n\
-...I'm sleepy. I don't\n\
-like being disturbed.\n\
-Please walk quietly.")
+DEFINE_DIALOG(DIALOG_018, NO_SOUND, 3, 30, 200, "\
+I just think\n\
+Radical Highway\n\
+is so cool.")
 
 DEFINE_DIALOG(DIALOG_019, NO_SOUND, 5, 30, 200, "\
 \n\
