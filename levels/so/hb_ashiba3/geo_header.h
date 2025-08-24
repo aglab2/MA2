@@ -1,5 +1,11 @@
 extern const GeoLayout hb_ashiba3_geo[];
-extern u8 hb_ashiba3_kd_so_door1_ci4[];
-extern u8 hb_ashiba3_kd_so_door1_pal_rgba16[];
-extern Vtx hb_ashiba3_c_hb_ashiba3_mesh_layer_1_vtx_0[8];
-extern Gfx hb_ashiba3_c_hb_ashiba3_mesh_layer_1[];
+extern u8 hb_ashiba3_kd_so_other1_ci4[];
+extern u8 hb_ashiba3_kd_so_other1_pal_rgba16[];
+extern u8 hb_ashiba3_kd_so_hasira5_ci4[];
+extern u8 hb_ashiba3_kd_so_hasira5_pal_rgba16[];
+extern u8 hb_ashiba3_kd_so_kabe2_ci4[];
+extern u8 hb_ashiba3_kd_so_kabe2_pal_rgba16[];
+extern Vtx hb_ashiba3_hb_ashiba3_mesh_layer_1_vtx_0[4];
+extern Vtx hb_ashiba3_hb_ashiba3_mesh_layer_1_vtx_1[16];
+extern Vtx hb_ashiba3_hb_ashiba3_mesh_layer_1_vtx_2[13];
+extern Gfx hb_ashiba3_hb_ashiba3_mesh_layer_1[];
