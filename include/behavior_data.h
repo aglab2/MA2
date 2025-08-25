@@ -633,6 +633,7 @@ extern const BehaviorScript bhvLBRail[];
 extern const BehaviorScript bhvDlFlow[];
 extern const BehaviorScript bhvDlShell[];
 extern const BehaviorScript bhvLbSparkle[];
+extern const BehaviorScript bhvRhExplosions[];
 
 extern const BehaviorScript bhvCoinFormationCC[];
 extern const BehaviorScript bhvCoinFormationSpawnedCoinCC[];

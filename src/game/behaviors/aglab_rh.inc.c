@@ -30,3 +30,8 @@ void bhv_rh_hammer_loop()
     int id = GET_BPARAM1(o->oBehParams);
     aglabGlobalScratch[id] = o->oTimer;
 }
+
+void bhv_rh_explosions_loop()
+{
+    
+}

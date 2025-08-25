@@ -7186,3 +7186,12 @@ const BehaviorScript bhvLbSparkle[] = {
         CALL_NATIVE(bhv_lb_sparkle_loop),
     END_LOOP(),
 };
+
+extern void bhv_rh_explosions_loop();
+const BehaviorScript bhvRhExplosions[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_rh_explosions_loop),
+    END_LOOP(),
+};
