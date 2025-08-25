@@ -639,7 +639,17 @@ static void apply_gravity(struct MarioState *m) {
     }
     else
     {
-        m->extraGravityEnabled = 0;
+        static u64 ResetGravityFlags = 1ULL << (LEVEL_CE - LEVEL_CE)
+                                     | 1ULL << (LEVEL_MH - LEVEL_CE)
+                                     | 1ULL << (LEVEL_GF - LEVEL_CE)
+                                     | 1ULL << (LEVEL_PC - LEVEL_CE)
+
+                                     | 1ULL << (LEVEL_RH - LEVEL_CE)
+                                     | 1ULL << (LEVEL_WJ - LEVEL_CE);
+        if (ResetGravityFlags & (1ULL << (gCurrLevelNum - LEVEL_CE)))
+        {
+            m->extraGravityEnabled = 0;
+        }
     }
 
     f32 terminalSpeed = m->extraGravityEnabled ? -110.f : - 75.f;

@@ -1507,6 +1507,10 @@ void tilt_body_butt_slide(struct MarioState *m) {
 void common_slide_action(struct MarioState *m, u32 endAction, u32 airAction, s32 animation) {
     play_sound(SOUND_MOVING_TERRAIN_SLIDE + m->terrainSoundAddend, m->marioObj->header.gfx.cameraToObject);
 
+    if (must_cancel_landing(m)) {
+        return mario_push_off_steep_floor(m, ACT_FREEFALL, 0);
+    }
+
 #if ENABLE_RUMBLE
     reset_rumble_timers_slip();
 #endif
