@@ -1,11 +1,27 @@
 void bhv_rh_slane_init()
 {
-
+    o->oHomeY = find_floor_height(o->oPosX, o->oPosY - 100.f, o->oPosZ);
 }
 
 void bhv_rh_slane_loop()
 {
-
+    if (0 == o->oAction)
+    {
+        if (gMarioObject->platform == o)
+        {
+            o->oAction = 1;
+            cur_obj_set_model(MODEL_RH_SLANE_BREAK);
+        }
+    }
+    else if (1 == o->oAction)
+    {
+        o->oPosY -= o->oTimer;
+        if (o->oPosY < o->oHomeY)
+        {
+            o->oPosY = o->oHomeY;
+            o->oAction = 2;
+        }
+    }
 }
 
 void bhv_rh_hammer_init()
