@@ -789,11 +789,16 @@ void tilt_body_ground_shell(struct MarioState *m, s16 startYaw) {
     marioObj->header.gfx.pos[1] += 45.0f;
 }
 
+extern int must_cancel_landing(struct MarioState* m);
 s32 act_walking(struct MarioState *m) {
     Vec3f startPos;
     s16 startYaw = m->faceAngle[1];
 
     mario_drop_held_object(m);
+
+    if (must_cancel_landing(m)) {
+        return mario_push_off_steep_floor(m, ACT_FREEFALL, 0);
+    }
 
     if (should_begin_sliding(m)) {
         return set_mario_action(m, ACT_BEGIN_SLIDING, 0);
@@ -1907,7 +1912,7 @@ static int not_slippery(int type)
     return type == SURFACE_NO_CAM_COLLISION_NOT_SLIPPERY || type == SURFACE_NOT_SLIPPERY || type == SURFACE_HARD_NOT_SLIPPERY;
 }
 
-static int must_cancel_landing(struct MarioState* m)
+int must_cancel_landing(struct MarioState* m)
 {
     static u64 Flags = (1ULL << (LEVEL_CE  - LEVEL_CE))
                      | (1ULL << (LEVEL_WC  - LEVEL_CE))
