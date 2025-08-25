@@ -562,7 +562,7 @@ static int nearest_star_location(int scanAmount, u64 mask, f32 mgx, f32 mgy, f32
 #endif
 
 extern u8 sStarIds;
-extern const int gLevelWithHardModes;
+extern const u64 gLevelWithHardModes;
 
 static void render_star_display()
 {
@@ -585,7 +585,7 @@ static void render_star_display()
         return;
 
     u64 collectedMask = save_file_get_star_flags(gCurrSaveFileNum - 1, gCurrCourseNum - 1);
-    if (gLevelWithHardModes & (1 << (gCurrLevelNum - LEVEL_CE)))
+    if (gLevelWithHardModes & (1ULL << (gCurrLevelNum - LEVEL_CE)))
     {
         if (!(collectedMask & (1ULL << 63)))
             return;

@@ -7,26 +7,26 @@ extern const BehaviorScript bhvOwVisual[];
 extern const BehaviorScript bhvOwLock[];
 extern const BehaviorScript bhvOwNumber[];
 
-const int gLevelWithHardModes = 1 << (LEVEL_CE - LEVEL_CE)
-                              | 1 << (LEVEL_PL - LEVEL_CE)
-                              | 1 << (LEVEL_MH - LEVEL_CE)
-                              | 1 << (LEVEL_GF - LEVEL_CE)
-                              | 1 << (LEVEL_MS - LEVEL_CE)
-                              | 1 << (LEVEL_HB - LEVEL_CE)
-                              | 1 << (LEVEL_PC - LEVEL_CE)
-                              | 1 << (LEVEL_EE - LEVEL_CE)
-                              | 1 << (LEVEL_CG - LEVEL_CE)
-                              | 1 << (LEVEL_FR - LEVEL_CE)
+const u64 gLevelWithHardModes = 1ULL << (LEVEL_CE - LEVEL_CE)
+                              | 1ULL << (LEVEL_PL - LEVEL_CE)
+                              | 1ULL << (LEVEL_MH - LEVEL_CE)
+                              | 1ULL << (LEVEL_GF - LEVEL_CE)
+                              | 1ULL << (LEVEL_MS - LEVEL_CE)
+                              | 1ULL << (LEVEL_HB - LEVEL_CE)
+                              | 1ULL << (LEVEL_PC - LEVEL_CE)
+                              | 1ULL << (LEVEL_EE - LEVEL_CE)
+                              | 1ULL << (LEVEL_CG - LEVEL_CE)
+                              | 1ULL << (LEVEL_FR - LEVEL_CE)
 
-                              | 1 << (LEVEL_IG - LEVEL_CE)
-                              | 1 << (LEVEL_SO - LEVEL_CE)
-                              | 1 << (LEVEL_RH - LEVEL_CE)
-                              | 1 << (LEVEL_LC - LEVEL_CE)
-                              | 1 << (LEVEL_WB - LEVEL_CE)
-                              | 1 << (LEVEL_WJ - LEVEL_CE)
-                              | 1 << (LEVEL_SR - LEVEL_CE)
-                              | 1 << (LEVEL_CW - LEVEL_CE)
-                              | 1 << (LEVEL_FC - LEVEL_CE)
+                              | 1ULL << (LEVEL_IG - LEVEL_CE)
+                              | 1ULL << (LEVEL_SO - LEVEL_CE)
+                              | 1ULL << (LEVEL_RH - LEVEL_CE)
+                              | 1ULL << (LEVEL_LC - LEVEL_CE)
+                              | 1ULL << (LEVEL_WB - LEVEL_CE)
+                              | 1ULL << (LEVEL_WJ - LEVEL_CE)
+                              | 1ULL << (LEVEL_SR - LEVEL_CE)
+                              | 1ULL << (LEVEL_CW - LEVEL_CE)
+                              | 1ULL << (LEVEL_FC - LEVEL_CE)
 
                               ;
 
@@ -39,7 +39,7 @@ void bhv_ow_ctl_init()
     int off = 0x80;
     for (int i = 0; i < OW_LEVEL_COUNT; i++)
     {
-        int withExtraMode = gLevelWithHardModes & (1 << i);
+        u64 withExtraMode = gLevelWithHardModes & (1ULL << i);
 
         {
             struct Object* obj = spawn_object(o, MODEL_OW_CE + i, bhvOwVisual);

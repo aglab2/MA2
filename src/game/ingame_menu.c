@@ -1706,7 +1706,7 @@ static void render_star_at(int enabled, int x, int y)
     print_generic_string_aligned(x, y, enabled ? "★" : "☆", TEXT_ALIGN_RIGHT);
 }
 
-extern const int gLevelWithHardModes;
+extern const u64 gLevelWithHardModes;
 
 static const char kCollectTheGoalRing[] = "Objective: Collect the Goal Ring";
 static const char kCollectTheStars[] = "Objective: Find all the stars";
@@ -1769,7 +1769,7 @@ void render_pause_my_score_coins(void) {
             {
                 render_star_at(!!(starFlags & (1ULL << i)), PAUSE_MENU_LEFT_X + 3 + (62 - i) * 16 - 30, y);
             }
-            if (gLevelWithHardModes & (1 << (gCurrLevelNum - LEVEL_CE)))
+            if (gLevelWithHardModes & (1ULL << (gCurrLevelNum - LEVEL_CE)))
             {
                 bool enabled = !!(starFlags & (1ULL << 63));
                 render_star_at(enabled, PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30, y);
