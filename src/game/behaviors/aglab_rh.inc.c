@@ -24,27 +24,51 @@ void bhv_rh_slane_loop()
     }
 }
 
+struct RhHammerBackup
+{
+    s16 timer;
+    s16 y;
+};
+
 void bhv_rh_hammer_init()
 {
+    struct RhHammerBackup* rhBackup = (struct RhHammerBackup*) aglabGlobalScratch;
+
+    const f32 A3Y = -4150.f*10.f;
+    const f32 A4Y = -5123.f*10.f;
+
     int id = GET_BPARAM1(o->oBehParams);
     int mask = 1 << id;
-    if (aglabGlobalScratch[9] & mask)
+    if (aglabGlobalScratch[0xf] & mask)
     {
-        o->oTimer = aglabGlobalScratch[id];
+        o->oTimer = rhBackup[id].timer;
+        o->oPosY = rhBackup[id].y;
+        if (gCurrAreaIndex == 3)
+        {
+            o->oPosY -= A3Y - A4Y;
+        }
+        else
+        {
+            o->oPosY -= A4Y - A3Y;
+        }
     }
     else
     {
-        aglabGlobalScratch[9] |= mask;
+        aglabGlobalScratch[0xf] |= mask;
         o->oTimer = o->oBehParams2ndByte;
     }
 }
 
 void bhv_rh_hammer_loop()
 {
+    struct RhHammerBackup* rhBackup = (struct RhHammerBackup*) aglabGlobalScratch;
+
     bhv_up_down_loop();
 
     int id = GET_BPARAM1(o->oBehParams);
-    aglabGlobalScratch[id] = o->oTimer;
+    rhBackup[id].timer = o->oTimer;
+    rhBackup[id].y = o->oPosY;
+    o->oDrawingDistance = 10000.f;
 }
 
 #define oRhExplosionsLocs oF4
