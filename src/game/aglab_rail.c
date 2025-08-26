@@ -432,7 +432,11 @@ int zipline_step(int exSpeed)
 
                 sForwardVel *= 0.97f;
                 sForwardVel += dot / 12.0f;
-                int grav = trajDirection[1] / dirMag * 5.f;
+                f32 gravMult = 5.f;
+                if (gCurrCourseNum == COURSE_RH)
+                    gravMult = 2.f;
+
+                int grav = trajDirection[1] / dirMag * gravMult;
                 if (gIsGravityFlipped)
                     grav = -grav;
 
