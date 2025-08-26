@@ -37,8 +37,8 @@ void bhv_rocket_loop()
         }
         else
         {
-            o->oPosX += 70.f * sins(o->oFaceAngleYaw);
-            o->oPosZ += 70.f * coss(o->oFaceAngleYaw);
+            o->oPosX -= 100.f * coss(o->oFaceAngleYaw);
+            o->oPosZ -= 100.f * sins(o->oFaceAngleYaw);
         }
 
         puffAt(o, 10.f, 1, 50.f);
@@ -49,7 +49,8 @@ void bhv_rocket_loop()
         
         if (o->oTimer > 110)
         {
-            set_mario_action(gMarioStates, ACT_FLYING, 0);
+            int act = 0 == o->oBehParams2ndByte ? ACT_FLYING : ACT_VERTICAL_WIND;
+            set_mario_action(gMarioStates, act, 0);
             o->parentObj->oAction = 0;
             o->activeFlags = 0;
         }

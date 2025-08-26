@@ -1829,7 +1829,7 @@ s32 act_flying(struct MarioState *m) {
 extern const BehaviorScript bhvRocket[];
 s32 act_riding_hoot(struct MarioState *m) {
     // if (!(m->input & INPUT_A_DOWN) || (m->marioObj->oInteractStatus & INT_STATUS_MARIO_DROP_FROM_HOOT)) {
-    if (0) {
+#if 0
         m->usedObj->oInteractStatus = 0;
         m->usedObj->oHootMarioReleaseTime = gGlobalTimer;
 
@@ -1838,14 +1838,24 @@ s32 act_riding_hoot(struct MarioState *m) {
         queue_rumble_data(4, 40);
 #endif
         return set_mario_action(m, ACT_FREEFALL, 0);
-    }
+#endif
 
     if (m->usedObj->behavior == bhvRocket)
     {
-        m->pos[0] = m->usedObj->oPosX + 40.f * sins(0x4000 + m->usedObj->oFaceAngleYaw);
-        m->pos[1] = m->usedObj->oPosY - 172.5f;
-        m->pos[2] = m->usedObj->oPosZ + 40.f * coss(0x4000 + m->usedObj->oFaceAngleYaw);
-        m->faceAngle[1] = 0xC000 + m->usedObj->oFaceAngleYaw;
+        if (0 == m->usedObj->oBehParams2ndByte)
+        {
+            m->pos[0] = m->usedObj->oPosX + 40.f * sins(0x4000 + m->usedObj->oFaceAngleYaw);
+            m->pos[1] = m->usedObj->oPosY - 172.5f;
+            m->pos[2] = m->usedObj->oPosZ + 40.f * coss(0x4000 + m->usedObj->oFaceAngleYaw);
+            m->faceAngle[1] = 0xC000 + m->usedObj->oFaceAngleYaw;
+        }
+        else
+        {
+            m->pos[0] = m->usedObj->oPosX - 50.f * sins(0x4000 + m->usedObj->oFaceAngleYaw);
+            m->pos[1] = m->usedObj->oPosY - 172.5f;
+            m->pos[2] = m->usedObj->oPosZ - 50.f * coss(0x4000 + m->usedObj->oFaceAngleYaw);
+            m->faceAngle[1] = 0x4000 + m->usedObj->oFaceAngleYaw;            
+        }
     }
     else
     {
@@ -1946,7 +1956,12 @@ s32 act_top_of_pole_jump(struct MarioState *m) {
 }
 
 s32 act_vertical_wind(struct MarioState *m) {
-    if (gCurrCourseNum != COURSE_SH && gCurrCourseNum != COURSE_LB && gCurrCourseNum != COURSE_EE && m->floor && m->floor->type != SURFACE_VERTICAL_WIND) {
+    if (m->floor && m->floor->type != SURFACE_VERTICAL_WIND
+     && gCurrCourseNum != COURSE_SH
+     && gCurrCourseNum != COURSE_RH
+     && gCurrCourseNum != COURSE_LB
+     && gCurrCourseNum != COURSE_EE
+       ) {
         return set_mario_action(m, ACT_FLYING, 0);
     }
 
