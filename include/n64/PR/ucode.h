@@ -258,6 +258,8 @@ extern u64 gspF3DEX3_TEXCACHE_fifoTextStart[], gspF3DEX3_TEXCACHE_fifoTextEnd[];
 extern u64 gspF3DEX3_TEXCACHE_fifoDataStart[], gspF3DEX3_TEXCACHE_fifoDataEnd[];
 extern u64 gspF3DEX3_VTXBUF_fifoTextStart[], gspF3DEX3_VTXBUF_fifoTextEnd[];
 extern u64 gspF3DEX3_VTXBUF_fifoDataStart[], gspF3DEX3_VTXBUF_fifoDataEnd[];
+extern u64 gspF3DEX3_CHERRY_fifoTextStart[], gspF3DEX3_CHERRY_fifoTextEnd[];
+extern u64 gspF3DEX3_CHERRY_fifoDataStart[], gspF3DEX3_CHERRY_fifoDataEnd[];
 
 /**************************************************************************
  *

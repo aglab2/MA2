@@ -343,12 +343,20 @@ void make_viewport_clip_rect(Vp *viewport) {
 #define UCODE_DATA_END gspF3DEX3_TEXCACHE_fifoDataEnd
 #endif
 
-#define EX3_VTXBUF
+// #define EX3_VTXBUF
 #ifdef EX3_VTXBUF
 #define UCODE_TEXT_START gspF3DEX3_VTXBUF_fifoTextStart
 #define UCODE_TEXT_END gspF3DEX3_VTXBUF_fifoTextEnd
 #define UCODE_DATA_START gspF3DEX3_VTXBUF_fifoDataStart
 #define UCODE_DATA_END gspF3DEX3_VTXBUF_fifoDataEnd
+#endif
+
+#define EX3_CHERRY
+#ifdef EX3_CHERRY
+#define UCODE_TEXT_START gspF3DEX3_CHERRY_fifoTextStart
+#define UCODE_TEXT_END gspF3DEX3_CHERRY_fifoTextEnd
+#define UCODE_DATA_START gspF3DEX3_CHERRY_fifoDataStart
+#define UCODE_DATA_END gspF3DEX3_CHERRY_fifoDataEnd
 #endif
 
 void create_gfx_task_structure(void) {
