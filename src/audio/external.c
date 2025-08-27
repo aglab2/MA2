@@ -564,6 +564,11 @@ struct SPTask *create_next_audio_frame_task(void) {
         gAudioRandom = ((gAudioRandom + gAudioFrameCount) * gAudioFrameCount);
     }
 
+#define ASPMAIN_TEXT_START SHaspMainTextStart
+#define ASPMAIN_TEXT_END SHaspMainTextEnd
+#define ASPMAIN_DATA_START SHaspMainDataStart
+#define ASPMAIN_DATA_END SHaspMainDataEnd
+
     index = gAudioTaskIndex;
     gAudioTask->msgqueue = NULL;
     gAudioTask->msg = NULL;
@@ -573,10 +578,10 @@ struct SPTask *create_next_audio_frame_task(void) {
     task->flags = flags;
     task->ucode_boot = rspbootTextStart;
     task->ucode_boot_size = (u8 *) rspbootTextEnd  - (u8 *) rspbootTextStart;
-    task->ucode = aspMainTextStart;
+    task->ucode = ASPMAIN_TEXT_START;
     task->ucode_size = 0x800; // (this size is ignored)
-    task->ucode_data = aspMainDataStart;
-    task->ucode_data_size = (aspMainDataEnd  - aspMainDataStart) * sizeof(u64);
+    task->ucode_data = ASPMAIN_DATA_START;
+    task->ucode_data_size = (ASPMAIN_DATA_END - ASPMAIN_DATA_START) * sizeof(u64);
     task->dram_stack = NULL;
     task->dram_stack_size = 0;
     task->output_buff = NULL;

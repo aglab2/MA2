@@ -193,6 +193,7 @@ SECTIONS
       */gspF3DEX3_CHERRY.o(.text*);
 #include "rsptext.inc.ld"
       BUILD_DIR/lib/aspMain.o(.text*);
+      BUILD_DIR/lib/audio.o(.text*);
       lib/PR/audio/n_aspMain.o(.text*);
       lib/PR/hvqm/hvqm2sp1.o(.text*);
       _mainSegmentTextEnd = .;
@@ -216,6 +217,7 @@ SECTIONS
       */gspF3DEX3_CHERRY.o(.data*);
 #include "rspdata.inc.ld"
       BUILD_DIR/lib/aspMain.o(.data*);
+      BUILD_DIR/lib/audio.o(.data*);
       lib/PR/audio/n_aspMain.o(.data*);
       lib/PR/hvqm/hvqm2sp1.o(.data*);
 

@@ -538,6 +538,7 @@ typedef short ENVMIX_STATE[40];
         _a->words.w1 = (uintptr_t)(s);                                  \
 }
 
+#if 0
 /*
  * Sets up an entry in the segment table.
  *
@@ -551,6 +552,9 @@ typedef short ENVMIX_STATE[40];
         _a->words.w0 = _SHIFTL(A_SEGMENT, 24, 8);                       \
         _a->words.w1 = _SHIFTL(s, 24, 8) | _SHIFTL(b, 0, 24);           \
 }
+#else
+#define aSegment(...)
+#endif
 
 /*
  * Sets internal DMEM buffer addresses used for later commands.

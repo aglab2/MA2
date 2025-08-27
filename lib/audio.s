@@ -12,9 +12,9 @@
  */
 
 .balign 16
-glabel aspMainTextStart
-    .incbin "lib/PR/audio/aspMain.bin"
-glabel aspMainTextEnd
+glabel SHaspMainTextStart
+    .incbin "lib/PR/audio/audio.code"
+glabel SHaspMainTextEnd
 
 /* DATA SECTION START */
 
@@ -23,6 +23,6 @@ glabel aspMainTextEnd
 /* Audio Data */
 
 .balign 16
-glabel aspMainDataStart
-    .incbin "lib/PR/audio/aspMain_data.bin"
-glabel aspMainDataEnd
+glabel SHaspMainDataStart
+    .incbin "lib/PR/audio/audio.data"
+glabel SHaspMainDataEnd

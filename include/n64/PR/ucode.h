@@ -146,6 +146,10 @@ extern u64	gspSprite2D_fifoDataStart[], gspSprite2D_fifoDataEnd[];
 extern u64 	aspMainTextStart[], aspMainTextEnd[];
 extern u64 	aspMainDataStart[], aspMainDataEnd[];
 
+extern u64 	SHaspMainTextStart[], SHaspMainTextEnd[];
+extern u64 	SHaspMainDataStart[], SHaspMainDataEnd[];
+
+
 /*========== F3DEX/F3DLX/F3DLP/L3DEX ==========*/
 /* FIFO version only */
 extern u64  gspF3DEX_fifoTextStart[],     gspF3DEX_fifoTextEnd[];
