@@ -59,7 +59,7 @@
     "38_3bn": [ "0C_extended_bank" ],
     "39_st": [ "0C_extended_bank" ],
     "3A_so": [ "0C_extended_bank" ],
-    "3B_rh": [ "0C_extended_bank" ],
+    "3B_rh": [ "26_extended_bank_LOW" ],
     "3C_lc": [ "0C_extended_bank" ],
     "3D_wb": [ "0C_extended_bank" ],
     "3E_sh": [ "0C_extended_bank" ],
@@ -67,10 +67,10 @@
     "40_sr": [ "0C_extended_bank" ],
     "41_msp": [ "0C_extended_bank" ],
     "42_fc": [ "0C_extended_bank" ],
-    "43_cc1": [ "0C_extended_bank" ],
-    "44_cc2": [ "0C_extended_bank" ],
+    "43_cc1": [ "26_extended_bank_LOW" ],
+    "44_cc2": [ "26_extended_bank_LOW" ],
     "45_b2a": [ "0C_extended_bank" ],
-    "46_cc3": [ "0C_extended_bank" ],
+    "46_cc3": [ "26_extended_bank_LOW" ],
     "47_fsow": [ "0C_extended_bank" ],
     "48_sm": [ "0C_extended_bank" ]
 }
