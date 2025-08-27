@@ -49,6 +49,7 @@ void bhv_rh_hammer_init()
         }
         else
         {
+            gMarioStates->extraGravityEnabled = 1;
             o->oPosY -= A4Y - A3Y;
         }
     }
