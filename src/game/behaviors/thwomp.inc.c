@@ -24,7 +24,7 @@ void grindel_thwomp_act_falling_impl(int normal) {
 }
 
 void grindel_thwomp_act_falling(void)  {
-    grindel_thwomp_act_falling_impl(0);
+    grindel_thwomp_act_falling_impl(1);
 }   
 
 void grindel_thwomp_act_land(void) {
@@ -65,7 +65,7 @@ void grindel_thwomp_act_rising_impl(int normal) {
 }
 
 void grindel_thwomp_act_rising(void) {
-    grindel_thwomp_act_rising_impl(1);
+    grindel_thwomp_act_rising_impl(0);
 }
 
 ObjActionFunc sGrindelThwompActions[] = {

@@ -646,7 +646,7 @@ static void apply_gravity(struct MarioState *m) {
 
                                      | 1ULL << (LEVEL_RH - LEVEL_CE)
                                      | 1ULL << (LEVEL_WJ - LEVEL_CE);
-        if (ResetGravityFlags & (1ULL << (gCurrLevelNum - LEVEL_CE)))
+        if (!(ResetGravityFlags & (1ULL << (gCurrLevelNum - LEVEL_CE))))
         {
             m->extraGravityEnabled = 0;
         }

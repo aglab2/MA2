@@ -695,6 +695,8 @@ void render_game(void) {
         gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gViewport));
         if (gCurrLevelNum == LEVEL_CCK)
             shade_screen_yellow();
+
+        print_text_fmt_int(20, 20, "%d", gMarioStates->extraGravityEnabled);
         render_hud();
 
         if (gWaterTutorial && gWaterTutorial < 255)

@@ -208,7 +208,7 @@ void bhv_grindel_thwomp_loop_cc()
     CC_FREEZE();
 
     switch (o->oAction) {
-        case 0: grindel_thwomp_act_rising_impl(0); break;
+        case 0: grindel_thwomp_act_rising_impl(1); break;
         case 1: grindel_thwomp_act_floating_impl(0); break;
         case 2: grindel_thwomp_act_falling_impl(0); break;
         case 3: grindel_thwomp_act_land(); break;
