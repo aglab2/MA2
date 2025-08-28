@@ -25,6 +25,9 @@
 #define DMEM_ADDR_WET_LEFT_CH 0x740
 #define DMEM_ADDR_WET_RIGHT_CH 0x880
 
+// shindou microcode directly manipulates DRAM so add an offset manually
+#define DMEM_OFFSET 0x5c0
+
 #define aSetLoadBufferPair(pkt, c, off)                                                                \
     aSetBuffer(pkt, 0, c + DMEM_ADDR_WET_LEFT_CH, 0, DEFAULT_LEN_1CH - c);                             \
     aLoadBuffer(pkt, VIRTUAL_TO_PHYSICAL2(gSynthesisReverb.ringBuffer.left + (off)));                  \
@@ -726,6 +729,9 @@ u64 *synthesis_process_notes(s16 *aiBuf, u32 bufLen, u64 *cmd) {
                         }
                     }
 
+#define FAST_DOWNSAMPLE 1
+#define FAST_RESAMPLE 1
+
                     switch (nParts) {
                         case 1:
                             noteSamplesDmemAddrBeforeResampling = DMEM_ADDR_UNCOMPRESSED_NOTE + sp130;
@@ -734,16 +740,25 @@ u64 *synthesis_process_notes(s16 *aiBuf, u32 bufLen, u64 *cmd) {
                         case 2:
                             switch (curPart) {
                                 case 0:
+#if FAST_DOWNSAMPLE
+                                    aDownsampleHalf(cmd++, (samplesLenAdjusted) / 2, DMEM_OFFSET + DMEM_ADDR_UNCOMPRESSED_NOTE + sp130, DMEM_OFFSET + DMEM_ADDR_RESAMPLED);
+                                    resampledTempLen = samplesLenAdjusted;
+                                    noteSamplesDmemAddrBeforeResampling = DMEM_ADDR_RESAMPLED;
+#else
                                     aSetBuffer(cmd++, 0, DMEM_ADDR_UNCOMPRESSED_NOTE + sp130, DMEM_ADDR_RESAMPLED, samplesLenAdjusted + 4);
-                                    aResample(cmd++, A_INIT, 0xff60, VIRTUAL_TO_PHYSICAL2(note->synthesisBuffers->dummyResampleState));
+                                    aResample(cmd++, A_INIT, 0xff60, VIRTUAL_TO_PHYSICAL2(note->synthesisBuffers->dummyResampleState))
                                     resampledTempLen = samplesLenAdjusted + 4;
                                     noteSamplesDmemAddrBeforeResampling = DMEM_ADDR_RESAMPLED + 4;
+#endif
                                     if (note->finished) {
                                         aClearBuffer(cmd++, DMEM_ADDR_RESAMPLED + resampledTempLen, samplesLenAdjusted + 16);
                                     }
                                     break;
 
                                 case 1:
+#if FAST_DOWNSAMPLE
+                                    aDownsampleHalf(cmd++, (samplesLenAdjusted) / 2, DMEM_OFFSET + DMEM_ADDR_UNCOMPRESSED_NOTE + sp130, DMEM_OFFSET + DMEM_ADDR_RESAMPLED + resampledTempLen);
+#else
                                     aSetBuffer(cmd++, 0, DMEM_ADDR_UNCOMPRESSED_NOTE + sp130,
                                                DMEM_ADDR_RESAMPLED2,
                                                samplesLenAdjusted + 8);
@@ -753,6 +768,7 @@ u64 *synthesis_process_notes(s16 *aiBuf, u32 bufLen, u64 *cmd) {
                                     aDMEMMove(cmd++, DMEM_ADDR_RESAMPLED2 + 4,
                                               DMEM_ADDR_RESAMPLED + resampledTempLen,
                                               samplesLenAdjusted + 4);
+#endif
                                     break;
                             }
                     }
@@ -771,7 +787,19 @@ u64 *synthesis_process_notes(s16 *aiBuf, u32 bufLen, u64 *cmd) {
 
             // final resample
             aSetBuffer(cmd++, /*flags*/ 0, noteSamplesDmemAddrBeforeResampling, /*dmemout*/ DMEM_ADDR_TEMP, bufLen);
+#ifdef FAST_RESAMPLE
+            if ((0x8000 - 0x60 < resamplingRateFixedPoint && resamplingRateFixedPoint < 0x8000 + 0x60)
+             || (0x4000 - 0x60 < resamplingRateFixedPoint && resamplingRateFixedPoint < 0x4000 + 0x60))
+            {
+                aResampleZoh(cmd++, resamplingRateFixedPoint, 0);
+            }
+            else
+            {
+                aResample(cmd++, flags, resamplingRateFixedPoint, VIRTUAL_TO_PHYSICAL2(note->synthesisBuffers->finalResampleState));
+            }
+#else
             aResample(cmd++, flags, resamplingRateFixedPoint, VIRTUAL_TO_PHYSICAL2(note->synthesisBuffers->finalResampleState));
+#endif
 
 #ifdef ENABLE_STEREO_HEADSET_EFFECTS
             if (note->headsetPanRight != 0 || note->prevHeadsetPanRight != 0) {

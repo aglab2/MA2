@@ -42,15 +42,22 @@
 #define A_INTERLEAVE            13
 #define A_SETLOOP               15
 
+#define A_RESAMPLE_ZOH          7
+#define A_DOWNSAMPLE_HALF       14
+
 #ifndef VERSION_SH
 
 #define A_ENVMIXER              3
 #define A_LOADBUFF              4
 #define A_RESAMPLE              5
 #define A_SAVEBUFF              6
+#if 0
 #define A_SEGMENT               7
+#endif
 #define A_SETVOL                9
+#if 0
 #define A_POLEF                 14
+#endif
 
 #else
 
@@ -352,6 +359,7 @@ typedef short ENVMIX_STATE[40];
         _a->words.w1 = (uintptr_t)(s);                                  \
 }
 
+#if 0
 /*
  * Not used in SM64.
  */
@@ -363,6 +371,7 @@ typedef short ENVMIX_STATE[40];
                         _SHIFTL(g, 0, 16));                             \
         _a->words.w1 = (uintptr_t)(s);                                  \
 }
+#endif
 
 /*
  * Clears DMEM data, where d is address and c is count, by writing zeros.
@@ -645,6 +654,48 @@ typedef short ENVMIX_STATE[40];
                     _SHIFTL(v, 0, 16));                                 \
         _a->words.w1 = (uintptr_t)(tr);                                 \
 }
+
+/*
+ * Fast resample.
+ *
+ * Before this command, call:
+ * aSetBuffer(cmd++, 0, in, out, count)
+ *
+ * This works like the other resample command but just takes the "nearest" sample,
+ * instead of a function of the four nearest samples.
+ *
+ * Initially the current position is calculated as (in << 16) + startFract.
+ * For every sample to create, the value is simply taken from the sample
+ * at address ((position >> 17) << 1). Then the current position is incremented
+ * by (pitch << 2).
+ *
+ * Note: count represents the number of output bytes to create, and is
+ * rounded up to the nearest multiple of 8 bytes.
+ */
+#define aResampleZoh(pkt, pitch, startFract)                            \
+{                                                                       \
+        Acmd *_a = (Acmd *)pkt;                                         \
+                                                                        \
+        _a->words.w0 = (_SHIFTL(A_RESAMPLE_ZOH, 24, 8) |                \
+                    _SHIFTL(pitch, 0, 16));                             \
+        _a->words.w1 = _SHIFTL(startFract, 0, 16);                      \
+}
+
+/*
+ * Fast downsampling by taking every other sample, discarding others.
+ *
+ * Note: nSamples refers to the number of output samples to create, and
+ * is first rounded up to the nearest multiple of 8.
+ */
+#define aDownsampleHalf(pkt, nSamples, i, o)                            \
+{                                                                       \
+        Acmd *_a = (Acmd *)pkt;                                         \
+                                                                        \
+        _a->words.w0 = (_SHIFTL(A_DOWNSAMPLE_HALF, 24, 8) |             \
+                        _SHIFTL(nSamples, 0, 16));                      \
+        _a->words.w1 = _SHIFTL(i, 16, 16) | _SHIFTL(o, 0, 16);          \
+}
+
 
 #ifdef VERSION_SH
 #undef aLoadBuffer
