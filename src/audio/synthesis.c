@@ -788,8 +788,7 @@ u64 *synthesis_process_notes(s16 *aiBuf, u32 bufLen, u64 *cmd) {
             // final resample
             aSetBuffer(cmd++, /*flags*/ 0, noteSamplesDmemAddrBeforeResampling, /*dmemout*/ DMEM_ADDR_TEMP, bufLen);
 #ifdef FAST_RESAMPLE
-            if ((0x8000 - 0x60 < resamplingRateFixedPoint && resamplingRateFixedPoint < 0x8000 + 0x60)
-             || (0x4000 - 0x60 < resamplingRateFixedPoint && resamplingRateFixedPoint < 0x4000 + 0x60))
+            if ((0x8000 - 0x60 < resamplingRateFixedPoint && resamplingRateFixedPoint < 0x8000 + 0x60))
             {
                 aResampleZoh(cmd++, resamplingRateFixedPoint, 0);
             }
