@@ -7197,3 +7197,12 @@ const BehaviorScript bhvRhExplosions[] = {
         CALL_NATIVE(bhv_rh_explosions_loop),
     END_LOOP(),
 };
+
+extern void bhv_eq_ctl_loop();
+const BehaviorScript bhvEqCtl[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_eq_ctl_loop),
+    END_LOOP(),
+};

@@ -35,9 +35,15 @@ static ALIGNED8 u8 water_pal[] = {
 };
 
 static struct FlipbookData flipbooks_opadec[] = {
-    { LVL_BATCH_LAYER_OPAQUE_DECAL_EQ_DL_DZ_EQ_TRI_PAL_RGBA16, .shading = 1, },
+    { LVL_BATCH_LAYER_TRANSPARENT_DECAL_EQ_DL_DZ_EQ_TRI_IA16, .shading = 1, },
+    { LVL_BATCH_LAYER_TRANSPARENT_DECAL_EQ_DL_DZ_EQ_TRI_IA16_1, .shading = 1, },
+};
+
+static struct FlipbookData flipbooks_xlu[] = {
+    { LVL_BATCH_LAYER_ALPHA_EQ_DL_KD_EQ_AMI1_001_PAL_RGBA16, .ci4s = water_ci4, .pals = water_pal },
 };
 
 const struct FlipbookLayer eq_flipbooks[LAYER_COUNT] = {
     [ LAYER_OPAQUE_DECAL ] = FLIPBOOK_LAYER_DECL(flipbooks_opadec),
+    [ LAYER_TRANSPARENT ] = FLIPBOOK_LAYER_DECL(flipbooks_xlu),
 };

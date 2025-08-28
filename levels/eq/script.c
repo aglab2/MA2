@@ -105,6 +105,7 @@ const LevelScript level_eq_entry[] = {
 		OBJECT(MODEL_NONE, 653, 581, 73, 0, -178, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 3177, 346, 3188, 0, -178, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -3147, 295, 3150, 0, -178, 0, (17 << 16), bhvCoinFormation),
+		OBJECT(MODEL_NONE, -3639, 387, 8391, 0, 0, 0, 0x00000000, bhvEqCtl),
 		OBJECT(MODEL_BLUE_FLAME, -503, 1363, 4644, 0, -180, 0, 0x00000000, bhvFlame),
 		OBJECT(MODEL_BLUE_FLAME, 492, 1363, 4644, 0, -180, 0, 0x00000000, bhvFlame),
 		OBJECT(MODEL_BLUE_FLAME, -11, 522, 390, 0, -180, 0, 0x00000000, bhvFlame2),
