@@ -1,5 +1,5 @@
 // #define LB_NO_STAR
-// #define LB_DEBUG_SHORTCUT_TO_PHASE 14
+// #define LB_DEBUG_SHORTCUT_TO_PHASE 11
 
 #define LB_PHASE0_LENGTH 40
 #define LB_PHASE1_LENGTH 300
@@ -8,7 +8,7 @@
 #define LB_PHASE4_LENGTH 380
 #define LB_PHASE5_LENGTH 400
 #define LB_PHASE6_LENGTH 460
-#define LB_PHASE7_LENGTH 670
+#define LB_PHASE7_LENGTH 500
 
 #include "rail_desc.h"
 
@@ -573,7 +573,7 @@ void bhv_lb_ctl_loop()
                 coins->oLbCoinPattern = 0;
                 coins->oMoveAngleYaw = angle;
                 coins->oLbCoinSpeed = 0x50;
-                coins->oLbCoinTimeout = 300;
+                coins->oLbCoinTimeout = 50;
             }
         }
     }
@@ -966,9 +966,10 @@ void bhv_coin_formation_spawned_coin_loop_lb()
     }
     o->oFloorHeight = 100.f;
 
-    if (o->oTimer > o->oLbCoinTimeout)
+    int timeout = o->parentObj->oLbCoinTimeout - 30;
+    if (o->oTimer > timeout)
     {
-        o->oPosY += o->oTimer - o->oLbCoinTimeout;
+        o->oPosY += o->oTimer - timeout;
     }
 
     return bhv_coin_formation_spawned_coin_loop();
@@ -992,7 +993,6 @@ static void spawn_lb_coin_pattern(int mask, int amount, f32 range, f32 vel)
         newCoin->oVelY = vel;
 
         newCoin->oLbCoinSpeed = o->oLbCoinSpeed;
-        newCoin->oLbCoinTimeout = o->oLbCoinTimeout - 30;
         newCoin->oLbCoinRange = range;
     }
 }
@@ -1012,6 +1012,11 @@ void bhv_coin_formation_init_lb()
 
 void bhv_coin_formation_loop_lb()
 {
+    if (o->parentObj->oAction == 12)
+    {
+        o->oLbCoinTimeout++;
+    }
+
     if (o->oTimer == o->oLbCoinTimeout)
     {
         o->oAction = COIN_FORMATION_ACT_INACTIVE;
