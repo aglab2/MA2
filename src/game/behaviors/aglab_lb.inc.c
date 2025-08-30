@@ -40,10 +40,17 @@ void bhv_lb_ctl_init()
     o->parentObj->oHomeY = -100.f;
 
 #ifndef LB_NO_STAR
-    gSecondCameraFocus = spawn_object(o, MODEL_STAR, bhvGrandStar);
-    gSecondCameraFocus->oPosX = 0;
-    gSecondCameraFocus->oPosY = 1050;
-    gSecondCameraFocus->oPosZ = -10000;
+    if (gMarioStates->pos[2] > 0)
+    {
+        gSecondCameraFocus = spawn_object(o, MODEL_STAR, bhvGrandStar);
+        gSecondCameraFocus->oPosX = 0;
+        gSecondCameraFocus->oPosY = 1050;
+        gSecondCameraFocus->oPosZ = -10000;
+    }
+    else
+    {
+        gSecondCameraFocus = NULL;
+    }
 #endif
 }
 
@@ -252,6 +259,7 @@ static void lb_patterns(int timeMod, int count)
     }
 }
 
+extern void fail_warp_set_safe_pos(f32* pos, s16 angle, int areaIndex, int levelNum);
 extern void disable_background_sound();
 extern const BehaviorScript bhvCoinFormationLB[];
 extern void set_camera_mode_8_directions(struct Camera *c);
@@ -304,15 +312,22 @@ void bhv_lb_ctl_loop()
             gMarioStates->vel[1] = 50.f;
             gMarioStates->vel[2] = 0.f;
             set_mario_action(gMarioStates, ACT_THROWN_BACKWARD, 0);
-#ifndef LB_NO_STAR
-            gSecondCameraFocus->activeFlags = 0;
-            gSecondCameraFocus = NULL;
-#endif
+            if (gSecondCameraFocus)
+            {
+                gSecondCameraFocus->activeFlags = 0;
+                gSecondCameraFocus = NULL;
+            }
             cur_obj_play_sound_2(SOUND_OBJ_BOWSER_LAUGH);
             o->oAction = 1;
 
             seq_player_play_sequence(0, 0x48, 0);
             func_8031D690(0, 60);
+            
+            Vec3f pos;
+            pos[0] = gMarioStates->pos[0];
+            pos[1] = gMarioStates->pos[1];
+            pos[2] = -11000.f;
+            fail_warp_set_safe_pos(pos, 0x8000, 1, LEVEL_LB);
         }
 
         if (gMarioStates->pos[2] > 5000.f)
