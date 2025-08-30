@@ -313,6 +313,14 @@ void bhv_lb_ctl_loop()
             seq_player_play_sequence(0, 0x48, 0);
             func_8031D690(0, 60);
         }
+
+        if (gMarioStates->pos[2] > 5000.f)
+        {
+            o->oAction = 1000;
+            gMarioStates->usedObj = o;
+            SET_BPARAM2(o->oBehParams, 0xb);
+            level_trigger_warp(gMarioStates, WARP_OP_WARP_DOOR);
+        }
     }
     else if (1 == o->oAction)
     {
@@ -709,7 +717,7 @@ void bhv_lb_ctl_loop()
             o->oAction = 17;
         }
     }
-    else
+    else if (17 == o->oAction)
     {
         Vec3f camDir;
         vec3_diff(camDir, gLakituState.goalPos, gLakituState.goalFocus);
