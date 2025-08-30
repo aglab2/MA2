@@ -237,7 +237,8 @@ static void lb_patterns(int timeMod, int count)
         }
         if (timeMod == 60+20*k)
         {
-            for (int i = 0; i < 6; i++)
+            // for (int i = 0; i < 6; i++)
+            int i = 0;
             {
                 s32 angleToMario = o->oAngleToMario;
                 struct Object* ball = spawn_object(o, MODEL_LB_BALL, bhvLBBallAim);
