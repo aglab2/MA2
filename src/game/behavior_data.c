@@ -5937,6 +5937,17 @@ const BehaviorScript bhvBreakable[] = {
     END_LOOP(),
 };
 
+extern void bhv_wb_breakable_init();
+extern void bhv_wb_breakable_loop();
+const BehaviorScript bhvWbBreakable[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    CALL_NATIVE(bhv_wb_breakable_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_wb_breakable_loop),
+    END_LOOP(),
+};
+
 extern void bhv_breakable_up_loop();
 const BehaviorScript bhvBreakableUp[] = {
     BEGIN(OBJ_LIST_LEVEL),
