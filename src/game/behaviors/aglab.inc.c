@@ -76,5 +76,12 @@ void bhv_flame_init()
 
 void bhv_flame_init2()
 {
-    obj_scale(o, 12.f);
+    if (gCurrCourseNum == COURSE_EQ)
+    {
+        obj_scale(o, 9.f);
+    }
+    else
+    {
+        obj_scale(o, 12.f);
+    }
 }

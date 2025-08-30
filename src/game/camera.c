@@ -1281,7 +1281,7 @@ void mode_8_directions_camera(struct Camera *c) {
 #endif
 
     f32 range = 400.f;
-    if (gCurrCourseNum == COURSE_DC)
+    if (gCurrCourseNum == COURSE_DC || gCurrCourseNum == COURSE_EQ)
         range = 10.f;
 
     lakitu_zoom(range, 0x900);
