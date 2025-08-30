@@ -677,13 +677,12 @@ extern int gQuickLookups;
 extern int gSlowLookups;
 
 u8 gWaterTutorial;
-extern void shade_screen_yellow(void);
-extern void shade_screen_yellow_alight(void);
+extern void shade_screen_water(void);
+extern void shade_screen_water_alight(void);
 void render_game(void) {
     PROFILER_GET_SNAPSHOT_TYPE(PROFILER_DELTA_COLLISION);
     if (gCurrentArea != NULL && !gWarpTransition.pauseRendering) {
-        if (gCurrLevelNum == LEVEL_CCK)
-            shade_screen_yellow_alight();
+        shade_screen_water_alight();
 
         if (gCurrentArea->graphNode) {
             geo_process_root(gCurrentArea->graphNode, gViewportOverride, gViewportClip, gFBSetColor);
@@ -693,8 +692,7 @@ void render_game(void) {
 #endif
 
         gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gViewport));
-        if (gCurrLevelNum == LEVEL_CCK)
-            shade_screen_yellow();
+        shade_screen_water();
 
         print_text_fmt_int(20, 20, "%d", gMarioStates->extraGravityEnabled);
         render_hud();

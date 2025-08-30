@@ -466,6 +466,7 @@ void unload_objects_from_area(UNUSED s32 unused, s32 areaIndex) {
  * Spawn objects given a list of SpawnInfos. Called when loading an area.
  */
 
+extern u8 water_amount_curr;
 void springs_init();
 void spawn_objects_from_info(UNUSED s32 unused, struct SpawnInfo *spawnInfo) {
     gObjectLists = gObjectListArray;
@@ -480,6 +481,7 @@ void spawn_objects_from_info(UNUSED s32 unused, struct SpawnInfo *spawnInfo) {
         gCCMEnteredSlide |= 1;
     }
 
+    water_amount_curr = 0;
     springs_init();
     while (spawnInfo != NULL) {
         struct Object *object;

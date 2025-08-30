@@ -1561,28 +1561,56 @@ static inline int want_alight(void) {
 #endif
 }
 
-extern void shade_screen_yellow_alight(void) {
+struct WaterColor {
+    u8 r;
+    u8 g;
+    u8 b;
+};
+
+static struct WaterColor get_water_color()
+{
+    switch (gCurrCourseNum)
+    {
+        case COURSE_CCK:
+            return (struct WaterColor){255, 165, 0};
+        case COURSE_DL:
+            return (struct WaterColor){0x00, 0xa0, 0x6a};
+        default:
+            return (struct WaterColor){0x16, 0x76, 0xc8};
+    }
+}
+
+u8 water_amount_curr = 0;
+static u8 water_alpha()
+{
+    int amount = CLAMP((gMarioStates->waterLevel - gCamera->pos[1]) / 3.f, 0, 127);
+    water_amount_curr = approach_s32(water_amount_curr, amount, 4, 4);
+    return water_amount_curr;
+}
+
+void shade_screen_water_alight(void) {
     if (!want_alight()) {
         return;
     }
 
-    int amount = CLAMP((6100.f - gMarioStates->pos[1]) / 3.f, 0, 127);
+    struct WaterColor color = get_water_color();
     Gfx* dlHead = gDisplayListHead;
-    gSPAlight(gDisplayListHead++, 255, 165, 0, amount);
+    gSPAlight(gDisplayListHead++, color.r, color.g, color.b, water_alpha());
 }
 
-void shade_screen_yellow(void) {
+void shade_screen_water(void) {
     if (want_alight())
         return;
 
-    int amount = CLAMP((6100.f - gMarioStates->pos[1]) / 3.f, 0, 127);
-    if (amount == 0)
+    int amount = water_alpha();
+    if (!amount)
         return;
 
     Gfx* dlHead = gDisplayListHead;
 
+    struct WaterColor color = get_water_color();
     gSPDisplayList(dlHead++, dl_shade_screen_begin);
-    gDPSetPrimColor(dlHead++, 0, 0, 255, 165, 0, amount);
+    gDPSetPrimColor(dlHead++, 0, 0, color.r, color.g, color.b, amount);
     *(dlHead++) = gFillRectCmd;
     gSPDisplayList(dlHead++, dl_shade_screen_end);
 
