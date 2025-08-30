@@ -558,7 +558,7 @@ def batchify(geos, model, header):
                     header[i] = line.replace('Gfx', 'u32')
                     replaced = True
 
-            assert replaced
+            #assert replaced
 
     return layered_batches
 

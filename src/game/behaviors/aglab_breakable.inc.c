@@ -12,6 +12,13 @@ void bhv_breakable_loop()
             {
                 o->activeFlags = 0;
             }
+            else
+            {
+                o->oTimer = 0;
+                o->oVelY = -1.f + random_f32_around_zero(0.1f);
+                o->oMoveAngleYaw = random_u16();
+                o->oForwardVel = 40.f + random_f32_around_zero(5.f);
+            }
         }
     }
 }

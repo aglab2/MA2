@@ -694,7 +694,7 @@ void render_game(void) {
         gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gViewport));
         shade_screen_water();
 
-        print_text_fmt_int(20, 20, "%d", gMarioStates->extraGravityEnabled);
+        // print_text_fmt_int(20, 20, "%d", gMarioStates->extraGravityEnabled);
         render_hud();
 
         if (gWaterTutorial && gWaterTutorial < 255)
