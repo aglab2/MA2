@@ -252,16 +252,8 @@ extern u64 gspL3DZEX2_PosLight_xbusDataStart[],
            gspL3DZEX2_PosLight_xbusDataEnd[];
 
 /*========== F3DEX3 ==========*/
-extern u64 gspF3DEX3_fifoTextStart[], gspF3DEX3_fifoTextEnd[];
-extern u64 gspF3DEX3_fifoDataStart[], gspF3DEX3_fifoDataEnd[];
-extern u64 gspF3DEX3_ALIGHT_fifoTextStart[], gspF3DEX3_ALIGHT_fifoTextEnd[];
-extern u64 gspF3DEX3_ALIGHT_fifoDataStart[], gspF3DEX3_ALIGHT_fifoDataEnd[];
-extern u64 gspF3DEX3_MEMSET_fifoTextStart[], gspF3DEX3_MEMSET_fifoTextEnd[];
-extern u64 gspF3DEX3_MEMSET_fifoDataStart[], gspF3DEX3_MEMSET_fifoDataEnd[];
-extern u64 gspF3DEX3_TEXCACHE_fifoTextStart[], gspF3DEX3_TEXCACHE_fifoTextEnd[];
-extern u64 gspF3DEX3_TEXCACHE_fifoDataStart[], gspF3DEX3_TEXCACHE_fifoDataEnd[];
-extern u64 gspF3DEX3_VTXBUF_fifoTextStart[], gspF3DEX3_VTXBUF_fifoTextEnd[];
-extern u64 gspF3DEX3_VTXBUF_fifoDataStart[], gspF3DEX3_VTXBUF_fifoDataEnd[];
+extern u64 gspF3DEX3_MICRO_fifoTextStart[], gspF3DEX3_MICRO_fifoTextEnd[];
+extern u64 gspF3DEX3_MICRO_fifoDataStart[], gspF3DEX3_MICRO_fifoDataEnd[];
 extern u64 gspF3DEX3_CHERRY_fifoTextStart[], gspF3DEX3_CHERRY_fifoTextEnd[];
 extern u64 gspF3DEX3_CHERRY_fifoDataStart[], gspF3DEX3_CHERRY_fifoDataEnd[];
 

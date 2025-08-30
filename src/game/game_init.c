@@ -309,46 +309,12 @@ void make_viewport_clip_rect(Vp *viewport) {
  * If you plan on using gSPLoadUcode, make sure to add OS_TASK_LOADABLE to the flags member.
  */
 
-// #define CR1_TEST
-
-// #define EX3_BASE
-#ifdef EX3_BASE
-#define UCODE_TEXT_START gspF3DEX3_fifoTextStart
-#define UCODE_TEXT_END gspF3DEX3_fifoTextEnd
-#define UCODE_DATA_START gspF3DEX3_fifoDataStart
-#define UCODE_DATA_END gspF3DEX3_fifoDataEnd
-#endif
-
-// #define EX3_ALIGHT
-#ifdef EX3_ALIGHT
-#define UCODE_TEXT_START gspF3DEX3_ALIGHT_fifoTextStart
-#define UCODE_TEXT_END gspF3DEX3_ALIGHT_fifoTextEnd
-#define UCODE_DATA_START gspF3DEX3_ALIGHT_fifoDataStart
-#define UCODE_DATA_END gspF3DEX3_ALIGHT_fifoDataEnd
-#endif
-
-// #define EX3_MEMSET
-#ifdef EX3_MEMSET
-#define UCODE_TEXT_START gspF3DEX3_MEMSET_fifoTextStart
-#define UCODE_TEXT_END gspF3DEX3_MEMSET_fifoTextEnd
-#define UCODE_DATA_START gspF3DEX3_MEMSET_fifoDataStart
-#define UCODE_DATA_END gspF3DEX3_MEMSET_fifoDataEnd
-#endif
-
-// #define EX3_TEXCACHE
-#ifdef EX3_TEXCACHE
-#define UCODE_TEXT_START gspF3DEX3_TEXCACHE_fifoTextStart
-#define UCODE_TEXT_END gspF3DEX3_TEXCACHE_fifoTextEnd
-#define UCODE_DATA_START gspF3DEX3_TEXCACHE_fifoDataStart
-#define UCODE_DATA_END gspF3DEX3_TEXCACHE_fifoDataEnd
-#endif
-
-// #define EX3_VTXBUF
-#ifdef EX3_VTXBUF
-#define UCODE_TEXT_START gspF3DEX3_VTXBUF_fifoTextStart
-#define UCODE_TEXT_END gspF3DEX3_VTXBUF_fifoTextEnd
-#define UCODE_DATA_START gspF3DEX3_VTXBUF_fifoDataStart
-#define UCODE_DATA_END gspF3DEX3_VTXBUF_fifoDataEnd
+// #define EX3_MICRO
+#ifdef EX3_MICRO
+#define UCODE_TEXT_START gspF3DEX3_MICRO_fifoTextStart
+#define UCODE_TEXT_END gspF3DEX3_MICRO_fifoTextEnd
+#define UCODE_DATA_START gspF3DEX3_MICRO_fifoDataStart
+#define UCODE_DATA_END gspF3DEX3_MICRO_fifoDataEnd
 #endif
 
 #define EX3_CHERRY
