@@ -10,6 +10,11 @@
 extern int cc_switch_mario_nearby();
 static int purple_on_switch(int shift, f32 dist)
 {
+    if (gCurrCourseNum == COURSE_LC)
+    {
+        return o->oDistanceToMario < 100.f;
+    }
+
     if (shift)
     {
         return cc_switch_mario_nearby();
