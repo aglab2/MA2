@@ -597,6 +597,13 @@
             "sound": "2B",
             "sound_hi": "2C"
         },
+        "Based Organ": {
+            "release_rate": 19,
+            "normal_range_hi": 50,
+            "envelope": "envelope0",
+            "sound": "49_organ_1",
+            "sound_hi": "4A_organ_1_lq"
+        },
         "percussion": [
             {"release_rate": 10, "pan": 62, "envelope": "envelope11", "sound": {"sample": "06_kick_drum_1", "tuning": 0.210224}},
             {"release_rate": 10, "pan": 62, "envelope": "envelope11", "sound": {"sample": "06_kick_drum_1", "tuning": 0.2227245}},
@@ -723,6 +730,7 @@
         "Low Bell",
         "High Bell",
         "Harmonica",
-        "Percussion Loop"
+        "Percussion Loop",
+        "Based Organ"
     ]
 }

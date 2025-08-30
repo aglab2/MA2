@@ -8,8 +8,7 @@ for filename in os.listdir(directory):
         filepath = os.path.join(directory, filename)
         try:
             with sf.SoundFile(filepath) as f:
-                if f.samplerate > 32000:
-                    print(f"WARNING {filename}: {f.samplerate} Hz")
+                print(f"{filename}: {f.samplerate} Hz")
         except Exception as e:
             print(f"Error reading {filename}: {e}")
 
