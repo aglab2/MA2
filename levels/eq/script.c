@@ -18,6 +18,7 @@
 #include "levels/eq/area_1/collision.inc.c"
 #include "level_config.h"
 #define SEQ_LEVEL_GRASS 0x49
+extern const GeoLayout green_flame_geo[];
 static struct LevelConfig cfg = {
 };
 /* Fast64 end persistent block [scripts] */
@@ -42,6 +43,7 @@ const LevelScript level_eq_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_EQ_COFFIN_BLUE, eq_coffin_blue_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_EQ_COFFIN_GREEN, eq_coffin_green_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_EQ_VASE, eq_vase_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_GREEN_FLAME, green_flame_geo), 
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
@@ -151,8 +153,8 @@ const LevelScript level_eq_entry[] = {
 		OBJECT(MODEL_NONE, 4634, 500, 4383, 0, -178, 0, 0x00000000, bhvGoombaTripletSpawner),
 		OBJECT(MODEL_NONE, 9524, -18, 9517, 0, -134, 0, (0xa << 16), bhvInstantActiveWarp),
 		OBJECT(MODEL_MONTY_MOLE, -5840, 200, 5840, 0, -178, 0, 0x00000000, bhvMontyMole),
-		OBJECT(MODEL_MONTY_MOLE, -7223, 200, 7267, 0, -178, 0, 0x00000000, bhvMontyMole),
-		OBJECT(MODEL_MONTY_MOLE, -8452, 200, 7654, 0, -178, 0, 0x00000000, bhvMontyMole),
+		// OBJECT(MODEL_MONTY_MOLE, -7223, 200, 7267, 0, -178, 0, 0x00000000, bhvMontyMole),
+		// OBJECT(MODEL_MONTY_MOLE, -8452, 200, 7654, 0, -178, 0, 0x00000000, bhvMontyMole),
 		OBJECT(MODEL_MONTY_MOLE, -7713, 200, 8446, 0, -178, 0, 0x00000000, bhvMontyMole),
 		OBJECT(MODEL_DL_MONTY_MOLE_HOLE, -5840, 200, 5840, 0, -178, 0, 0x00000000, bhvMontyMoleHole),
 		OBJECT(MODEL_DL_MONTY_MOLE_HOLE, -7223, 200, 7267, 0, -178, 0, 0x00000000, bhvMontyMoleHole),
