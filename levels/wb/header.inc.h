@@ -5,6 +5,7 @@ extern const MacroObject wb_area_1_macro_objs[];
 extern const Trajectory wb_area_1_spline_Spring_NurbsCurve[];
 extern const Trajectory wb_area_1_spline_Spring_NurbsCurve_001[];
 extern const Trajectory wb_area_1_spline_Spring_NurbsCurve_009[];
+extern const Trajectory wb_area_1_spline_Spring_NurbsCurve_011[];
 extern const GeoLayout wb_area_2_geo[];
 extern const GeoLayout wb_area_2[];
 extern const Collision wb_area_2_collision[];
