@@ -3,6 +3,12 @@
 const GeoLayout sh_area_1_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
+		GEO_DISPLAY_LIST(LAYER_OPAQUE, sh_lb_sh_lb_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_OPAQUE, sh_lr_sh_lr_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_OPAQUE, sh_ly_sh_ly_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_OPAQUE, sh_rb_sh_rb_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_OPAQUE, sh_rr_sh_rr_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_OPAQUE, sh_ry_sh_ry_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)-3250.0, (s16)-1425.0, (s16)500.0, sh_dl_0000_object_00B2F19C_mesh_layer_1),
 		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, (s16)-3375.0, (s16)-9320.0, (s16)3400.0, (s16)-0.0, (s16)-90.00000933466734, (s16)0.0, sh_dl_0001_object_00B372D0_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)3355.0, (s16)-9320.0, (s16)3420.0, sh_dl_0001_object_00B372D0_mesh_layer_1),
