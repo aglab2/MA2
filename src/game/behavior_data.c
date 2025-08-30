@@ -1452,7 +1452,7 @@ extern const Collision purple_switch_collision[];
 const BehaviorScript bhvFloorSwitchHardcodedModel[] = {
     BEGIN(OBJ_LIST_SURFACE),
     // Floor switch - common:
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
     LOAD_COLLISION_DATA(purple_switch_collision),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_purple_switch_loop),

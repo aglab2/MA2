@@ -1961,6 +1961,7 @@ s32 act_vertical_wind(struct MarioState *m) {
      && gCurrCourseNum != COURSE_RH
      && gCurrCourseNum != COURSE_LB
      && gCurrCourseNum != COURSE_EE
+     && gCurrCourseNum != COURSE_LC
        ) {
         return set_mario_action(m, ACT_FLYING, 0);
     }
@@ -1985,7 +1986,7 @@ s32 act_vertical_wind(struct MarioState *m) {
         set_mario_animation(m, MARIO_ANIM_AIRBORNE_ON_STOMACH);
     }
 
-    if (gCurrCourseNum != COURSE_EE && gCurrCourseNum != COURSE_LB)
+    if (gCurrCourseNum != COURSE_EE && gCurrCourseNum != COURSE_LB && gCurrCourseNum != COURSE_LC)
     {
         update_air_without_turn(m);
     }
