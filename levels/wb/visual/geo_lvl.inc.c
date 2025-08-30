@@ -4,7 +4,16 @@ const GeoLayout wb_area_1_geo[] = {
 	GEO_BATCH_NODE_START_WITH_FLIPBOOK(batch_lvl_dls_wb, wb_flipbooks),
 	GEO_OPEN_NODE(),
 		GEO_ASM(0, geo_render_backdrop),
+#if 0
+		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, 0, 0, 0, wb_fig_ai_wb_fig_ai_mesh_layer_1),
+		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, 0, 0, 0, wb_fig_ai_001_object_005D42F0_mesh_layer_1),
+		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, 0, 0, 0, wb_fig_ai_002_object_005D3DC0_mesh_layer_1),
+		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_TRANSPARENT, 0, 0, 0, wb_fig_ai_002_object_005D3DC0_mesh_layer_5),
+		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, 0, 0, 0, wb_fig_ai_003_object_005D3130_mesh_layer_1),
+		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, 0, 0, 0, wb_fig_ai_004_object_005D29C0_mesh_layer_1),
+		GEO_LVL_BATCH_TRANSLATE_ROTATE(LAYER_OPAQUE, 0, 0, 0, (f32)-0.0, (f32)179.999991348578, (f32)0.0, wb_fig_ai_005_object_005D21B8_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, (f32)32800.0, (f32)-1598.5000610351562, (f32)-83210.0, wb_dl_0000_object_00C4C788_mesh_layer_1),
+#endif
 		GEO_OPEN_NODE(),
 			GEO_BATCH(LAYER_OPAQUE_DECAL, wb_dl_0000_object_00C4C788_mesh_layer_2),
 		GEO_CLOSE_NODE(),
