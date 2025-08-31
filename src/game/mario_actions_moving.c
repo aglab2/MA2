@@ -1913,7 +1913,7 @@ u32 common_landing_action(struct MarioState *m, s16 animation, u32 airAction) {
 
 static int not_slippery(int type)
 {
-    return type == SURFACE_NO_CAM_COLLISION_NOT_SLIPPERY || type == SURFACE_NOT_SLIPPERY || type == SURFACE_HARD_NOT_SLIPPERY;
+    return type == SURFACE_NO_CAM_COLLISION_NOT_SLIPPERY || type == SURFACE_NOT_SLIPPERY || type == SURFACE_HARD_NOT_SLIPPERY || type == SURFACE_SPEEDER;
 }
 
 int must_cancel_landing(struct MarioState* m)
@@ -1930,7 +1930,9 @@ int must_cancel_landing(struct MarioState* m)
                      | (1ULL << (LEVEL_SH  - LEVEL_CE))
                      | (1ULL << (LEVEL_MSP - LEVEL_CE))
                      | (1ULL << (LEVEL_CCR - LEVEL_CE))
-                     | (1ULL << (LEVEL_CCK - LEVEL_CE));
+                     | (1ULL << (LEVEL_CCK - LEVEL_CE))
+                     | (1ULL << (LEVEL_WJ  - LEVEL_CE))
+                     | (1ULL << (LEVEL_GF  - LEVEL_CE));
     u64 skipNonSlippery = Flags & (1ULL << (gCurrLevelNum - LEVEL_CE));
     if (skipNonSlippery)
     {

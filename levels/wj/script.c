@@ -80,7 +80,7 @@ const LevelScript level_wj_entry[] = {
 		OBJECT(MODEL_NONE, 1506, -6517, 11367, 0, 0, 0, 0x00000000, bhvGoombaTripletSpawner),
 		OBJECT(MODEL_NONE, -1242, -6480, 11611, 0, 0, 0, 0x00000000, bhvGoombaTripletSpawner),
 		OBJECT(MODEL_NONE, -19997, 3412, 3223, 0, 0, 0, (0xa << 16), bhvInstantActiveWarp),
-		OBJECT(MODEL_RED_COIN, -19531, -3194, 10042, 0, 0, 0, 0x00000000, bhvRedCoin),
+		OBJECT(MODEL_RED_COIN, -10798, -9468, 12621, 0, 0, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_RED_COIN, -19438, -4673, 11476, 0, 0, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_RED_COIN, -19114, -6550, 13459, 0, 0, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_RED_COIN, -18359, -7544, 15066, 0, 0, 0, 0x00000000, bhvRedCoin),
