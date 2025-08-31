@@ -41,10 +41,10 @@ void bhv_sh_door_loop()
     {
         if (o->oTimer < 30)
         {
-            objs[0]->oPosX -= 10.f * coss(o->oFaceAngleYaw);
-            objs[0]->oPosZ -= 10.f * sins(o->oFaceAngleYaw);
-            objs[1]->oPosX += 10.f * coss(o->oFaceAngleYaw);
-            objs[1]->oPosZ += 10.f * sins(o->oFaceAngleYaw);    
+            objs[0]->oPosX -= 10.f * coss(-o->oFaceAngleYaw);
+            objs[0]->oPosZ -= 10.f * sins(-o->oFaceAngleYaw);
+            objs[1]->oPosX += 10.f * coss(-o->oFaceAngleYaw);
+            objs[1]->oPosZ += 10.f * sins(-o->oFaceAngleYaw);    
         }
         else
         {
