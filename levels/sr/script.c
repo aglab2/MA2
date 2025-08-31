@@ -50,10 +50,10 @@ const LevelScript level_sr_entry[] = {
 	JUMP_LINK(script_func_global_15), 
 	LOAD_MODEL_FROM_GEO(MODEL_SR_DRUM, sr_drum_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_SR_DRUM_BREAK, sr_drum_break_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_SR_PNP, sr_pnp_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_SR_PNP_GROUND, sr_pnp_ground_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_SR_PNP_LIMIT, sr_pnp_limit_geo), 
 	/* Fast64 begin persistent block [level commands] */
+	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_SR_PNP, sr_pnp_geo), 
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
