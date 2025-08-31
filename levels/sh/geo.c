@@ -30,3 +30,6 @@
 #include "levels/sh/sh_ry/geo.inc.c"
 #include "levels/sh/sh_tank/geo.inc.c"
 #include "levels/sh/sh_tank_break/geo.inc.c"
+#include "levels/sh/sh_blod/geo.inc.c"
+#include "levels/sh/sh_rlod/geo.inc.c"
+#include "levels/sh/sh_ylod/geo.inc.c"

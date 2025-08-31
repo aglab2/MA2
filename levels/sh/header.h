@@ -34,4 +34,10 @@ extern const LevelScript level_sh_entry[];
 
 #include "levels/sh/sh_tank_break/geo_header.h"
 
+#include "levels/sh/sh_blod/geo_header.h"
+
+#include "levels/sh/sh_rlod/geo_header.h"
+
+#include "levels/sh/sh_ylod/geo_header.h"
+
 #endif

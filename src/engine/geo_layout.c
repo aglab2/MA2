@@ -953,12 +953,13 @@ void geo_layout_cmd_node_batch_display_list_anim(void) {
     gGeoLayoutCommand += 0x0C << CMD_SIZE_SHIFT;
 }
 
-static int dropped_for_console(void* dl, s32 layer);
+static void* replaced_for_console(void* dl, s32 layer);
 void geo_layout_cmd_batchset_node(void) {
     struct GraphNode *graphNode;
     s32 drawingLayer = cur_geo_cmd_u8(0x01);
     void *displayList = cur_geo_cmd_ptr(0x04);
-    if (dropped_for_console(displayList, drawingLayer))
+    displayList = replaced_for_console(displayList, drawingLayer);
+    if (!displayList)
         goto fini;
 
     graphNode = main_pool_alloc(sizeof(struct GraphNode));
@@ -1155,6 +1156,8 @@ extern u32 cg_dl_0286_object_00F5A4A4_mesh_layer_1[];
 extern u32 so_dl_0314_object_00EE1C68_mesh_layer_1[];
 extern u32 so_dl_0320_object_00EE1B50_mesh_layer_1[];
 
+extern u32 sh_dl_0071_object_00B1FED8_mesh_layer_1[];
+
 static const u32* kCGBannedDls[] = {
     cg_dl_0000_object_00F72984_mesh_layer_1,
     // cg_dl_0013_object_00F726AC_mesh_layer_1,
@@ -1168,9 +1171,6 @@ static const u32* kCGBannedDls[] = {
 
 static int dropped_for_console(void* dl, s32 layer)
 {
-    if (!gIsConsole)
-        return 0;
-
     if (gCurrCourseNum == COURSE_CE)
     {
         if (LAYER_OPAQUE_DECAL == layer || LAYER_TRANSPARENT == layer)
@@ -1217,7 +1217,41 @@ static int dropped_for_console(void* dl, s32 layer)
         return 0;
     }
 
+    if (gCurrCourseNum == COURSE_SH)
+    {
+        if (dl == sh_dl_0071_object_00B1FED8_mesh_layer_1)
+            return 1;
+    }
+
     return 0;
+}
+
+extern u32 sh_dl_000_object_00A898F8_mesh_layer_1[];
+extern u32 sh_dl_000_object_00A86D60_mesh_layer_1[];
+extern u32 sh_dl_000_object_00A8834C_mesh_layer_1[];
+
+extern u32 sh_blod_object_00A7FB48_078_mesh_layer_1[];
+extern u32 sh_rlod_object_00A7FB48_078_LOD_mesh_layer_1[];
+extern u32 sh_ylod_object_00A7FB48_078_LOD_mesh_layer_1[];
+static void* replaced_for_console(void* dl, s32 layer)
+{
+    //if (!gIsConsole)
+    //    return dl;
+
+    if (dropped_for_console(dl, layer))
+        return NULL;
+
+    if (gCurrCourseNum == COURSE_SH)
+    {
+        if (dl == sh_dl_000_object_00A898F8_mesh_layer_1)
+            return sh_rlod_object_00A7FB48_078_LOD_mesh_layer_1;
+        if (dl == sh_dl_000_object_00A86D60_mesh_layer_1)
+            return sh_blod_object_00A7FB48_078_mesh_layer_1;
+        if (dl == sh_dl_000_object_00A8834C_mesh_layer_1)
+            return sh_ylod_object_00A7FB48_078_LOD_mesh_layer_1;
+    }
+
+    return dl;
 }
 
 struct CullDlPattern
@@ -1322,8 +1356,8 @@ void geo_layout_cmd_lvl_translation_rotation(void) {
 
     graphNode = init_graph_node_lvl_translation_rotation(NULL, drawingLayer, translation, rotation);
     register_scene_graph_node(&graphNode->node);
-
-    if (!dropped_for_console(displayList, drawingLayer))
+    displayList = replaced_for_console(displayList, drawingLayer);
+    if (displayList)
     {
         graphNode->dl = segmented_to_virtual(displayList);
         f32 result = displayList ? get_radius_batch_cmds(graphNode->dl) : 0.f;
@@ -1363,8 +1397,8 @@ void geo_layout_cmd_lvl_translation(void) {
 
     graphNode = init_graph_node_lvl_translation(NULL, drawingLayer, translation);
     register_scene_graph_node(&graphNode->node);
-
-    if (!dropped_for_console(displayList, drawingLayer))
+    displayList = replaced_for_console(displayList, drawingLayer);
+    if (displayList)
     {
         graphNode->dl = segmented_to_virtual(displayList);
         f32 result = displayList ? get_radius_batch_cmds(graphNode->dl) : 0.f;

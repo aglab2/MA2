@@ -1,6 +1,14 @@
 
 #define oShDoorDoors oObjF4
 
+static void obj_unhide(struct Object *obj) {
+    obj->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
+}
+
+static void obj_hide(struct Object *obj) {
+    obj->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
+}
+
 void bhv_sh_door_init()
 {
     struct Object** objs = &o->oShDoorDoors;
@@ -11,6 +19,17 @@ void bhv_sh_door_init()
 void bhv_sh_door_loop()
 {
     struct Object** objs = &o->oShDoorDoors;
+    if (gMarioStates->pos[1] > -1430.f)
+    {
+        obj_hide(objs[0]);
+        obj_hide(objs[1]);
+    }
+    else
+    {
+        obj_unhide(objs[0]);
+        obj_unhide(objs[1]);
+    }
+
     if (0 == o->oAction)
     {
         if (o->oDistanceToMario < 100.f)

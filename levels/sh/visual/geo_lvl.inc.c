@@ -3,12 +3,17 @@
 const GeoLayout sh_area_1_geo[] = {
 	GEO_BATCH_NODE_START(batch_lvl_dls_sh),
 	GEO_OPEN_NODE(),
+#if 0
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, 0, 0, 0, sh_lb_sh_lb_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, 0, 0, 0, sh_lr_sh_lr_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, 0, 0, 0, sh_ly_sh_ly_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, 0, 0, 0, sh_rb_sh_rb_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, 0, 0, 0, sh_rr_sh_rr_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, 0, 0, 0, sh_ry_sh_ry_mesh_layer_1),
+		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, 0, 0, 0, sh_blod_object_00A7FB48_078_mesh_layer_1),
+		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, 0, 0, 0, sh_rlod_object_00A7FB48_078_LOD_mesh_layer_1),
+		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, 0, 0, 0, sh_ylod_object_00A7FB48_078_LOD_mesh_layer_1),
+#endif
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, (f32)-3250.0, (f32)-1425.0, (f32)500.0, sh_dl_0000_object_00B2F19C_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_ROTATE(LAYER_OPAQUE, (f32)-3375.0, (f32)-9320.0, (f32)3400.0, (f32)-0.0, (f32)-90.00000933466734, (f32)0.0, sh_dl_0001_object_00B372D0_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, (f32)3355.0, (f32)-9320.0, (f32)3420.0, sh_dl_0001_object_00B372D0_mesh_layer_1),

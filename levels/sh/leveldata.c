@@ -28,3 +28,6 @@
 #include "levels/sh/sh_ry/model.inc.c"
 #include "levels/sh/sh_tank/model.inc.c"
 #include "levels/sh/sh_tank_break/model.inc.c"
+#include "levels/sh/sh_blod/model.inc.c"
+#include "levels/sh/sh_rlod/model.inc.c"
+#include "levels/sh/sh_ylod/model.inc.c"

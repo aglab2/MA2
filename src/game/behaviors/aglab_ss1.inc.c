@@ -1,11 +1,3 @@
-static void obj_unhide(struct Object *obj) {
-    obj->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
-}
-
-static void obj_hide(struct Object *obj) {
-    obj->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
-}
-
 void bhv_ss_ctl_init()
 {
     f32 d;
