@@ -15,8 +15,8 @@ const Trajectory wj_area_4_spline_NurbsCurve_001_Spring_001[] = {
 const Trajectory wj_area_4_spline_NurbsCurve_001_Spring_002[] = {
 	TRAJECTORY_POS( 0, -7428, -5265, -19015),
 	TRAJECTORY_POS( 1, -7503, -3794, -19015),
-	TRAJECTORY_POS( 2, -7749, -2776, -19015),
-	TRAJECTORY_POS( 3, -8207, -2483, -19015),
+	TRAJECTORY_POS( 2, -7749, -2292, -19015),
+	TRAJECTORY_POS( 3, -8265, -2538, -19016),
 	TRAJECTORY_END(),
 };
 const Trajectory wj_area_4_spline_NurbsCurve_VineLoop_001[] = {

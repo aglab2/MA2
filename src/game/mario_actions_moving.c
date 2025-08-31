@@ -1916,6 +1916,7 @@ static int not_slippery(int type)
     return type == SURFACE_NO_CAM_COLLISION_NOT_SLIPPERY || type == SURFACE_NOT_SLIPPERY || type == SURFACE_HARD_NOT_SLIPPERY || type == SURFACE_SPEEDER;
 }
 
+extern void print_text_fmt_int(int x, int y, const char *str, int i);
 int must_cancel_landing(struct MarioState* m)
 {
     static u64 Flags = (1ULL << (LEVEL_CE  - LEVEL_CE))
@@ -1934,13 +1935,20 @@ int must_cancel_landing(struct MarioState* m)
                      | (1ULL << (LEVEL_WJ  - LEVEL_CE))
                      | (1ULL << (LEVEL_GF  - LEVEL_CE));
     u64 skipNonSlippery = Flags & (1ULL << (gCurrLevelNum - LEVEL_CE));
+    f32 limit = COS73;
     if (skipNonSlippery)
     {
         if (not_slippery(m->floor->type))
-            return 0;
+        {
+            if (gCurrCourseNum == COURSE_DL)
+                return 0;
+
+            limit = 0.05f;
+        }
     }
 
-    return absf(m->floor->normal.y) < COS73;
+    print_text_fmt_int(20, 20, "%d", 10000 * absf(m->floor->normal.y));
+    return absf(m->floor->normal.y) < limit;
 }
 
 s32 common_landing_cancels(struct MarioState *m, struct LandingAction *landingAction,
