@@ -80,7 +80,8 @@ void bhv_wj_up_loop()
     }
     else
     {
-        if (o->oTimer < (gCurrAreaIndex == 1 ? 20 : 40))
+        int time = (gCurrAreaIndex == 1 ? 20 : 40);
+        if (o->oTimer < time)
         {
             o->oPosY = o->oHomeY + 100.f * o->oTimer;
             gMarioStates->pos[0] = o->oPosX;

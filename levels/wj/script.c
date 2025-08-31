@@ -46,13 +46,13 @@ const LevelScript level_wj_entry[] = {
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
 	JUMP_LINK(script_func_global_1), 
-	LOAD_MODEL_FROM_GEO(MODEL_WJ_VINE, wj_vine_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_WJ_PLATFORM, wj_platform_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_WJ_UP_VINE, wj_side_vine_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_WJ_UP_HOOK, wj_side_hook_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_WJ_SIDE_VINE, wj_up_vine_geo), 
-	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_WJ_SIDE_HOOK, wj_up_hook_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_WJ_SIDE_HOOK, wj_up_hook_geo), 
 	/* Fast64 begin persistent block [level commands] */
+	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_WJ_VINE, wj_vine_geo), 
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
@@ -79,6 +79,7 @@ const LevelScript level_wj_entry[] = {
 		OBJECT(MODEL_RED_FLAME, 2109, -1115, 8588, 0, 0, 0, 0x00000000, bhvFlame),
 		OBJECT(MODEL_NONE, 1506, -6517, 11367, 0, 0, 0, 0x00000000, bhvGoombaTripletSpawner),
 		OBJECT(MODEL_NONE, -1242, -6480, 11611, 0, 0, 0, 0x00000000, bhvGoombaTripletSpawner),
+		OBJECT(MODEL_NONE, -19997, 3412, 3223, 0, 0, 0, (0xa << 16), bhvInstantActiveWarp),
 		OBJECT(MODEL_RED_COIN, -19531, -3194, 10042, 0, 0, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_RED_COIN, -19438, -4673, 11476, 0, 0, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_RED_COIN, -19114, -6550, 13459, 0, 0, 0, 0x00000000, bhvRedCoin),
@@ -94,7 +95,7 @@ const LevelScript level_wj_entry[] = {
 		OBJECT(MODEL_STAR, 1255, -2991, 10700, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 4530, -418, 8844, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_WJ_UP_VINE, 50, -6519, 11649, 0, 44, 0, 0x00000000, bhvWjUp),
-		OBJECT(MODEL_WJ_UP_VINE, 2231, -6517, 7897, 0, -12, 0, 0x00000000, bhvWjUp),
+		OBJECT(MODEL_WJ_UP_VINE, 2231, -6517, 7897, 0, -12, 0, (1 << 16), bhvWjUp),
 		OBJECT(MODEL_WJ_UP_VINE, 2016, -3597, 10163, 0, 61, 0, 0x00000000, bhvWjUp),
 		OBJECT(MODEL_WJ_VINE, -14094, -11073, 11499, 0, 0, 0, 0x00000000, bhvGfVine),
 		TERRAIN(wj_area_1_collision),

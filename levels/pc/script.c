@@ -54,8 +54,6 @@ const LevelScript level_pc_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_PC_DOOR_G, pc_door_g_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_PC_DOOR_R, pc_door_r_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_PC_DOOR_N, pc_door_n_geo), 
-	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_PC_KEY_BLUE, pc_key_blue_geo), 
-	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_PC_KEY_GREEN, pc_key_green_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_PC_KEYDOOR_BLUE, pc_keydoor_blue_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_PC_KEYDOOR_GREEN, pc_keydoor_green_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_PC_WALLTYPE, pc_walltype_geo), 
@@ -67,6 +65,8 @@ const LevelScript level_pc_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_PC_SANDGLASS_SPRING, pc_sandglass_spring_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_PC_MOVE, pc_move_geo), 
 	/* Fast64 begin persistent block [level commands] */
+	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_PC_KEY_BLUE, pc_key_blue_geo), 
+	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_PC_KEY_GREEN, pc_key_green_geo), 
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 

@@ -55,6 +55,7 @@ const LevelScript level_gf_entry[] = {
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
 	JUMP_LINK(script_func_global_1), 
 	JUMP_LINK(script_func_global_15), 
+	/* Fast64 begin persistent block [level commands] */
 	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_GF_VINE, gf_vine_geo), 
 	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_GF_GAKE_A, gf_gake_a_geo), 
 	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_GF_GAKE_B, gf_gake_b_geo), 
@@ -62,7 +63,6 @@ const LevelScript level_gf_entry[] = {
 	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_GF_GAKE_D, gf_gake_d_geo), 
 	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_GF_GAKE_E, gf_gake_e_geo), 
 	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_GF_GAKE_F, gf_gake_f_geo), 
-	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
