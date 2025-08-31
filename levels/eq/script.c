@@ -44,6 +44,9 @@ const LevelScript level_eq_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_EQ_COFFIN_GREEN, eq_coffin_green_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_EQ_VASE, eq_vase_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_GREEN_FLAME, green_flame_geo), 
+	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_EQ_TREASURE_RED_BREAK, eg_treasure_red_break_geo),
+	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_EQ_TREASURE_GREEN_BREAK, eg_treasure_green_break_geo),
+	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_EQ_TREASURE_BLUE_BREAK, eg_treasure_blue_break_geo),
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */

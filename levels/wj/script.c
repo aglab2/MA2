@@ -51,7 +51,7 @@ const LevelScript level_wj_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_WJ_UP_VINE, wj_side_vine_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_WJ_UP_HOOK, wj_side_hook_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_WJ_SIDE_VINE, wj_up_vine_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_WJ_SIDE_HOOK, wj_up_hook_geo), 
+	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_WJ_SIDE_HOOK, wj_up_hook_geo), 
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
