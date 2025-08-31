@@ -17,7 +17,7 @@ void bhv_wj_side_loop()
         diff[0] += 4100.f * coss(o->oFaceAngleYaw);
         diff[2] += 4100.f * sins(o->oFaceAngleYaw);
         f32 dist = diff[0] * diff[0] + diff[1] * diff[1] + diff[2] * diff[2];
-        if (dist < 4000.f)
+        if (dist < 5000.f)
         {
             o->oAction = 1;
             set_mario_action(gMarioStates, ACT_JUMP, 0);
@@ -60,8 +60,17 @@ void bhv_wj_up_init()
     spawn_object(o, MODEL_WJ_PLATFORM, bhvStaticObject);
     o->oPosY += 2100.f;
     struct Object* hook = spawn_object(o, MODEL_WJ_UP_HOOK, bhvStaticObject);
-    if (gCurrAreaIndex != 1)
-        hook->oFaceAngleYaw += 0x4000;
+    if (!o->oBehParams2ndByte)
+    {
+        if (gCurrAreaIndex == 1)
+        {
+            hook->oFaceAngleYaw += 0x4000;
+        }
+    }
+    else
+    {
+        hook->oFaceAngleYaw += 0x8000;
+    }
 }
 
 void bhv_wj_up_loop()
@@ -72,7 +81,7 @@ void bhv_wj_up_loop()
         vec3_diff(diff, gMarioStates->pos, &o->oPosVec);
         diff[1] += 2100.f;
         f32 dist = diff[0] * diff[0] + diff[1] * diff[1] + diff[2] * diff[2];
-        if (dist < 4000.f)
+        if (dist < 5000.f)
         {
             o->oAction = 1;
             set_mario_action(gMarioStates, ACT_JUMP, 0);
