@@ -1235,8 +1235,8 @@ extern u32 sh_rlod_object_00A7FB48_078_LOD_mesh_layer_1[];
 extern u32 sh_ylod_object_00A7FB48_078_LOD_mesh_layer_1[];
 static void* replaced_for_console(void* dl, s32 layer)
 {
-    //if (!gIsConsole)
-    //    return dl;
+    if (!gIsConsole)
+        return dl;
 
     if (dropped_for_console(dl, layer))
         return NULL;
