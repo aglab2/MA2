@@ -19,6 +19,7 @@ static f32 sPosY;
 static f32 sPosZ;
 static f32 sForwardVelLimit = 0;
 static f32 sForwardVel = 0;
+static f32 sExtraTilt = 0;
 static u32 sCancelDeadline = 0;
 static u8 sCancelTimeout = 0;
 static u8 sAngleFlipped = 0;
@@ -221,6 +222,7 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
             trajDirection[2] /= dirMag;
     
             sForwardVel = trajDirection[0] * gMarioStates->vel[0] + trajDirection[1] * gMarioStates->vel[1] + trajDirection[2] * gMarioStates->vel[2];
+            sExtraTilt = trajDirection[0] * gMarioStates->vel[2] - trajDirection[2] * gMarioStates->vel[0];
             sForwardVelLimit = 55.f + CLAMP(traj_length(traj) / 400.f, 30.f, 120.f);    
         }
 
@@ -337,7 +339,17 @@ static void prepare_mario_for_zipline_drop_loop(Vec3f trajDirection)
     }
 }
 
-int zipline_step(int exSpeed)
+static f32 approach_f32_i(f32 current, f32 target, f32 inc, f32 dec) {
+    f32 dist = (target - current);
+    if (dist >= 0.0f) { // target >= current
+        current = ((dist >  inc) ? (current + inc) : target);
+    } else { // target < current
+        current = ((dist < -dec) ? (current - dec) : target);
+    }
+    return current;
+}
+
+int zipline_step(int exSpeed, s16* extraTilt)
 {
     f32 exSpeedBoost = sForwardVel * (exSpeed ? (100 - exSpeed * exSpeed) / 2000.f : 0);
     sForwardVel += exSpeedBoost;
@@ -425,8 +437,19 @@ int zipline_step(int exSpeed)
                 xdir /= szmag;
                 zdir /= szmag;
 
+                f32 xrdir = -zdir;
+                f32 zrdir = xdir;
+                if (sAngleFlipped)
+                {
+                    xrdir = -xrdir;
+                    zrdir = -zrdir;
+                }
+
                 f32 xspd = gMarioState->intendedMag * sins(gMarioState->intendedYaw);
                 f32 zspd = gMarioState->intendedMag * coss(gMarioState->intendedYaw);
+                f32 cross = 0x100 * (xspd * xrdir + zspd * zrdir);
+                sExtraTilt = approach_f32_i(sExtraTilt, cross, 0x300, 0x300);
+
                 if (abs_angle_diff(gMarioState->faceAngle[1], gMarioState->intendedYaw) > 0x4000)
                 {
                     xspd /= 5.f;
@@ -446,6 +469,8 @@ int zipline_step(int exSpeed)
 
                 sForwardVel -= grav;
                 sForwardVel = CLAMP(sForwardVel, -velLimit, velLimit);
+                sExtraTilt = CLAMP(sExtraTilt, -0x2000, 0x2000);
+                *extraTilt = sExtraTilt;
             }
 
 #if 0

@@ -767,7 +767,7 @@ void tilt_body_walking(struct MarioState *m, s16 startYaw) {
     }
 }
 
-void tilt_body_ground_shell(struct MarioState *m, s16 startYaw) {
+static void tilt_body_ground_shell(struct MarioState *m, s16 startYaw) {
     struct MarioBodyState *marioBodyState = m->marioBodyState;
     struct Object *marioObj = m->marioObj;
     s16 dYaw = m->faceAngle[1] - startYaw;
@@ -1307,9 +1307,9 @@ s32 act_riding_shell_ground(struct MarioState *m) {
     return FALSE;
 }
 
+extern void print_text_fmt_int(int x, int y, const char *fmt, int i);
 s32 act_rail_grind(struct MarioState *m)
 {
-    s16 startYaw = m->faceAngle[1];
     int onLoop = zipline_on_loop();
     int blocked = 0;
     if (gCurrCourseNum == COURSE_CW)
@@ -1340,8 +1340,9 @@ s32 act_rail_grind(struct MarioState *m)
         }
     }
 
+    s16 extraTilt;
     int clampedTimer = m->actionTimer > 10 ? 10 : m->actionTimer;
-    if (zipline_step(clampedTimer)) {
+    if (zipline_step(clampedTimer, &extraTilt)) {
         int butt = 0;
         if (gIsGravityFlipped)
             m->pos[1] = 9000.f - m->pos[1];
@@ -1382,7 +1383,26 @@ s32 act_rail_grind(struct MarioState *m)
     }
     m->marioObj->header.gfx.pos[1] -= dist;
     set_mario_animation(m, anim);
-    tilt_body_ground_shell(m, startYaw);
+
+    {
+        struct MarioBodyState *marioBodyState = m->marioBodyState;
+        struct Object *marioObj = m->marioObj;
+
+        s16 dYaw = extraTilt;
+        s16 nextBodyRoll = -(s16) dYaw;
+        s16 nextBodyPitch = (s16)(m->forwardVel * 170.0f);
+
+        nextBodyPitch = CLAMP(dYaw,      0, 0x1000);
+
+        marioBodyState->torsoAngle[2] = approach_s32_symmetric(marioBodyState->torsoAngle[2], nextBodyRoll,  0x200);
+        marioBodyState->torsoAngle[0] = approach_s32_symmetric(marioBodyState->torsoAngle[0], nextBodyPitch, 0x200);
+        marioBodyState->headAngle[2] = -marioBodyState->torsoAngle[2];
+
+        marioObj->header.gfx.angle[1] = m->faceAngle[1];
+        marioObj->header.gfx.angle[2] = marioBodyState->torsoAngle[2];
+        marioObj->header.gfx.pos[1] += 45.0f;
+    }
+
     m->marioObj->header.gfx.angle[0] = m->faceAngle[0];
     m->marioObj->header.gfx.angle[1] = m->faceAngle[1] + 0x10000 / 10 * clampedTimer;
     m->marioObj->header.gfx.angle[2] = m->faceAngle[2];
