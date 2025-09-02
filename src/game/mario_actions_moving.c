@@ -1307,21 +1307,33 @@ s32 act_riding_shell_ground(struct MarioState *m) {
     return FALSE;
 }
 
-extern void print_text_fmt_int(int x, int y, const char *fmt, int i);
+extern struct Object *gMarioObject;
+extern void puffAt(struct Object* obj, float size, int numParticles, f32 yoff);
 s32 act_rail_grind(struct MarioState *m)
 {
     int onLoop = zipline_on_loop();
     int blocked = 0;
+    int holdZ = 0;
     if (gCurrCourseNum == COURSE_CW)
     {
         blocked = m->floor->type == SURFACE_DEATH_PLANE;
     }
 
     if (!onLoop) {
+        holdZ = m->input & INPUT_Z_DOWN;
+        if (holdZ && m->forwardVel > 10.f)
+        {
+            int scale = m->forwardVel;
+            if (scale > 30.f)
+                scale = 30.f;
+
+            puffAt(gMarioObject, scale, 1, 0.f);
+        }
+
         if (!blocked && (m->input & INPUT_A_PRESSED)) {
             return set_mario_action(m, ACT_JUMP, 0);
         }
-        
+
         if (0 == m->actionTimer)
         {        
             if (m->input & INPUT_B_PRESSED && absf(m->forwardVel) > 30.0f)
@@ -1342,7 +1354,7 @@ s32 act_rail_grind(struct MarioState *m)
 
     s16 extraTilt;
     int clampedTimer = m->actionTimer > 10 ? 10 : m->actionTimer;
-    if (zipline_step(clampedTimer, &extraTilt)) {
+    if (zipline_step(clampedTimer, &extraTilt, holdZ)) {
         int butt = 0;
         if (gIsGravityFlipped)
             m->pos[1] = 9000.f - m->pos[1];
@@ -1389,10 +1401,10 @@ s32 act_rail_grind(struct MarioState *m)
         struct Object *marioObj = m->marioObj;
 
         s16 dYaw = extraTilt;
-        s16 nextBodyRoll = -(s16) dYaw;
+        s16 nextBodyRoll = dYaw;
         s16 nextBodyPitch = (s16)(m->forwardVel * 170.0f);
 
-        nextBodyPitch = CLAMP(dYaw,      0, 0x1000);
+        nextBodyPitch = CLAMP(dYaw, 0, 0x1000);
 
         marioBodyState->torsoAngle[2] = approach_s32_symmetric(marioBodyState->torsoAngle[2], nextBodyRoll,  0x200);
         marioBodyState->torsoAngle[0] = approach_s32_symmetric(marioBodyState->torsoAngle[0], nextBodyPitch, 0x200);
@@ -1871,7 +1883,6 @@ s32 act_ground_bonk(struct MarioState *m) {
     return FALSE;
 }
 
-extern struct Object *gMarioObject;
 s32 act_death_exit_land(struct MarioState *m) {
     s32 animFrame;
 

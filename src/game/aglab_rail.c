@@ -349,7 +349,7 @@ static f32 approach_f32_i(f32 current, f32 target, f32 inc, f32 dec) {
     return current;
 }
 
-int zipline_step(int exSpeed, s16* extraTilt)
+int zipline_step(int exSpeed, s16* extraTilt, int holdZ)
 {
     f32 exSpeedBoost = sForwardVel * (exSpeed ? (100 - exSpeed * exSpeed) / 2000.f : 0);
     sForwardVel += exSpeedBoost;
@@ -457,7 +457,11 @@ int zipline_step(int exSpeed, s16* extraTilt)
                 }
                 f32 dot = xdir * xspd + zdir * zspd;
 
-                sForwardVel *= 0.97f;
+                if (holdZ)
+                    sForwardVel *= 0.67f;
+                else
+                    sForwardVel *= 0.97f;
+
                 sForwardVel += dot / 12.0f;
                 f32 gravMult = 5.f;
                 if (gCurrCourseNum == COURSE_RH || gCurrCourseNum == COURSE_LB)
@@ -469,7 +473,7 @@ int zipline_step(int exSpeed, s16* extraTilt)
 
                 sForwardVel -= grav;
                 sForwardVel = CLAMP(sForwardVel, -velLimit, velLimit);
-                sExtraTilt = CLAMP(sExtraTilt, -0x2000, 0x2000);
+                sExtraTilt = CLAMP(sExtraTilt, -0x1800, 0x1800);
                 *extraTilt = sExtraTilt;
             }
 
