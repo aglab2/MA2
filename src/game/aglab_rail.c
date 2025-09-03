@@ -1,3 +1,4 @@
+#include "aglab_rail.h"
 #include <PR/ultratypes.h>
 #include "types.h"
 #include "game/area.h"
@@ -14,9 +15,6 @@ static s16 sZiplineSegmentCount;
 static s16 sZiplineLoopYaw;
 static s16 sLoopFaceAngle;
 static f32 sZiplineProgress = 0;
-static f32 sPosX;
-static f32 sPosY;
-static f32 sPosZ;
 static f32 sForwardVelLimit = 0;
 static f32 sForwardVel = 0;
 static f32 sExtraTilt = 0;
@@ -94,7 +92,7 @@ static int facing_same_way(s32 xDiff, s32 zDiff)
 
 extern void print_text_fmt_int(int x, int y, const char* fmt, int value);
 extern u8 gIsGravityFlipped;
-static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop, int it)
+static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop, int it, f32 minRange, rail_valid_fn valid, void* ctx, f32* pclosestPoint)
 {
     (void) it;
     if (sCancelDeadline > gGlobalTimer && traj == sTrajectory && sTrajectoryArea == gCurrAreaIndex)
@@ -105,7 +103,7 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
     Vec3f Q = { gMarioStates->pos[0], gIsGravityFlipped ? 9000.f - (40.f + gMarioStates->pos[1]) : (40.f + gMarioStates->pos[1]), gMarioStates->pos[2] };
     loop = loop ? segmented_to_virtual(loop) : NULL;
     int jungleLoop = loop && loop->dontFlip;
-    f32 minDist = jungleLoop ? (500.f * 500.f) : (90.f * 90.f);
+    f32 minDist = jungleLoop ? (500.f * 500.f) : (minRange);
     f32 DBGminDist = 100000000000.f;
     Vec3f closestPoint = {0, 0, 0};
     f32 minT = 0;
@@ -124,10 +122,13 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
         float tmpDist = diff[0] * diff[0] + diff[1] * diff[1] + diff[2] * diff[2];
         if (tmpDist < minDist)
         {
-            minDist = tmpDist;
-            minT = tmpT;
-            minPoint = i * 4;
-            vec3f_copy(closestPoint, tmpClosestPoint);
+            if (!valid || valid(ctx, tmpClosestPoint[0], tmpClosestPoint[1], tmpClosestPoint[2]))
+            {
+                minDist = tmpDist;
+                minT = tmpT;
+                minPoint = i * 4;
+                vec3f_copy(closestPoint, tmpClosestPoint);
+            }
         }
         if (tmpDist < DBGminDist)
         {
@@ -153,9 +154,10 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
 
     if (minPoint >= 0)
     {
-        sPosX = closestPoint[0];
-        sPosY = closestPoint[1];
-        sPosZ = closestPoint[2];
+        if (pclosestPoint)
+        {
+            vec3_copy(pclosestPoint, closestPoint);
+        }
         sZiplineProgress = minT;
         sZiplineCurPoint = minPoint;
 
@@ -222,7 +224,7 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
             trajDirection[2] /= dirMag;
     
             sForwardVel = trajDirection[0] * gMarioStates->vel[0] + trajDirection[1] * gMarioStates->vel[1] + trajDirection[2] * gMarioStates->vel[2];
-            sExtraTilt = trajDirection[0] * gMarioStates->vel[2] - trajDirection[2] * gMarioStates->vel[0];
+            sExtraTilt = 0; // trajDirection[0] * gMarioStates->vel[2] - trajDirection[2] * gMarioStates->vel[0];
             sForwardVelLimit = 55.f + CLAMP(traj_length(traj) / 400.f, 30.f, 120.f);    
         }
 
@@ -246,15 +248,8 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
     }
 }
 
-extern int on_spring();
-int zipline_cancel()
+int do_zipline_cancel(f32 range, rail_valid_fn fn, void* ctx, f32* closestPoint)
 {
-    if (on_spring())
-        return 0;
-
-    if (gMarioStates->action == ACT_RAIL_GRIND)
-        return 0;
-
     if (sCancelTimeout)
     {
         sCancelDeadline = gGlobalTimer + sCancelTimeout;
@@ -275,7 +270,7 @@ int zipline_cancel()
     {
         const Trajectory* traj = segmented_to_virtual(trajectories->rail);
         const LDLDesc* loop = trajectories->loop;
-        if (handle_trajectory_cancel(traj, loop, it++))
+        if (handle_trajectory_cancel(traj, loop, it++, range, fn, ctx, closestPoint))
             return 1;
 
         trajectories++;
@@ -285,6 +280,18 @@ int zipline_cancel()
     print_text_fmt_int(20, 20, "%d", it);
 #endif
     return 0;
+}
+
+extern int on_spring();
+int zipline_cancel()
+{
+    if (on_spring())
+        return 0;
+
+    if (gMarioStates->action == ACT_RAIL_GRIND)
+        return 0;
+
+    return do_zipline_cancel(90.f * 90.f, NULL, NULL, NULL);
 }
 
 static void prepare_mario_for_zipline_drop_rail(Vec3f trajDirection)
@@ -447,14 +454,22 @@ int zipline_step(int exSpeed, s16* extraTilt, int holdZ)
 
                 f32 xspd = gMarioState->intendedMag * sins(gMarioState->intendedYaw);
                 f32 zspd = gMarioState->intendedMag * coss(gMarioState->intendedYaw);
-                f32 cross = 0x100 * (xspd * xrdir + zspd * zrdir);
-                sExtraTilt = approach_f32_i(sExtraTilt, cross, 0x300, 0x300);
+                f32 cross = 0xC0 * (xspd * xrdir + zspd * zrdir);
 
-                if (abs_angle_diff(gMarioState->faceAngle[1], gMarioState->intendedYaw) > 0x4000)
+                int adiff = abs_angle_diff(gMarioState->faceAngle[1], gMarioState->intendedYaw);
+                if (adiff > 0x4000)
                 {
                     xspd /= 5.f;
                     zspd /= 5.f;
                 }
+
+                if (adiff <= 0x3000)
+                {
+                    cross /= 5.f;
+                }
+                print_text_fmt_int(20, 60, "AF 0x%x", adiff);
+                print_text_fmt_int(20, 40, "C 0x%x", cross);
+                sExtraTilt = approach_f32_i(sExtraTilt, cross, 0x300, 0x300);
                 f32 dot = xdir * xspd + zdir * zspd;
 
                 if (holdZ)
@@ -475,6 +490,7 @@ int zipline_step(int exSpeed, s16* extraTilt, int holdZ)
                 sForwardVel = CLAMP(sForwardVel, -velLimit, velLimit);
                 sExtraTilt = CLAMP(sExtraTilt, -0x1800, 0x1800);
                 *extraTilt = sExtraTilt;
+                print_text_fmt_int(20, 20, "0x%x", ABS(sExtraTilt));
             }
 
 #if 0
@@ -586,9 +602,9 @@ int zipline_step(int exSpeed, s16* extraTilt, int holdZ)
         Vec3s trajNextPoint = {traj[sZiplineCurPoint + 4 + 1], traj[sZiplineCurPoint + 4 + 2], traj[sZiplineCurPoint + 4 + 3]};
         Vec3f trajDirection;
         vec3f_diff(trajDirection, trajNextPoint, trajCurPoint);
-        sPosX = trajCurPoint[0] + (trajDirection[0] * sZiplineProgress);
-        sPosY = trajCurPoint[1] + (trajDirection[1] * sZiplineProgress);
-        sPosZ = trajCurPoint[2] + (trajDirection[2] * sZiplineProgress);
+        f32 sPosX = trajCurPoint[0] + (trajDirection[0] * sZiplineProgress);
+        f32 sPosY = trajCurPoint[1] + (trajDirection[1] * sZiplineProgress);
+        f32 sPosZ = trajCurPoint[2] + (trajDirection[2] * sZiplineProgress);
         gMarioStates->pos[0] = sPosX;
         gMarioStates->pos[1] = sPosY;
         if (gIsGravityFlipped)
@@ -603,4 +619,51 @@ int zipline_step(int exSpeed, s16* extraTilt, int holdZ)
 int zipline_on_loop()
 {
     return sLoopDesc != NULL;
+}
+
+int zipline_get_tilt(zipline_tilt_t* tilt)
+{
+    if (gCurrCourseNum == COURSE_CW)
+    {
+        return 0;
+    }
+    if (sLoopDesc)
+    {
+        return 0;
+    }
+    if (ABS(sExtraTilt) < 0x1000)
+    {
+        return 0;
+    }
+
+    const Trajectory* traj = sTrajectory;
+    // Advance along the zipline
+    Vec3s trajCurPoint = {traj[sZiplineCurPoint + 1], traj[sZiplineCurPoint + 2], traj[sZiplineCurPoint + 3]};
+    Vec3s trajNextPoint = {traj[sZiplineCurPoint + 4 + 1], traj[sZiplineCurPoint + 4 + 2], traj[sZiplineCurPoint + 4 + 3]};
+    Vec3f trajDirection;
+    vec3f_diff(trajDirection, trajNextPoint, trajCurPoint);
+
+    f32 xdir = trajDirection[0];
+    f32 zdir = trajDirection[2];
+    f32 szmag = sqrtf(xdir * xdir + zdir * zdir);
+    xdir /= szmag;
+    zdir /= szmag;
+
+    f32 xrdir = -zdir;
+    f32 zrdir = xdir;
+    if (sAngleFlipped)
+    {
+        xrdir = -xrdir;
+        zrdir = -zrdir;
+    }
+    if (sExtraTilt > 0)
+    {
+        xrdir = -xrdir;
+        zrdir = -zrdir;
+    }
+
+    tilt->v[0] = xrdir;
+    tilt->v[1] = zrdir;
+
+    return (int) traj;
 }

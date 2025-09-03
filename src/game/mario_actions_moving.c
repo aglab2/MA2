@@ -1307,6 +1307,21 @@ s32 act_riding_shell_ground(struct MarioState *m) {
     return FALSE;
 }
 
+extern struct MarioState gMarioStates[1];
+static int rail_valid_switch(void* ctx, f32 cx, f32 cy, f32 cz)
+{
+    struct MarioState *m = gMarioStates;
+    Vec2f dc;
+    const zipline_tilt_t* tilt = (const zipline_tilt_t*) ctx;
+
+    dc[0] = m->pos[0] - cx;
+    dc[1] = m->pos[2] - cz;
+    f32 len = vec2_mag(dc);
+    f32 mult = vec2_dot(dc, tilt->v);
+
+    return mult > len * 0.5f;
+}
+
 extern struct Object *gMarioObject;
 extern void puffAt(struct Object* obj, float size, int numParticles, f32 yoff);
 s32 act_rail_grind(struct MarioState *m)
@@ -1331,7 +1346,36 @@ s32 act_rail_grind(struct MarioState *m)
         }
 
         if (!blocked && (m->input & INPUT_A_PRESSED)) {
-            return set_mario_action(m, ACT_JUMP, 0);
+            zipline_tilt_t tilt;
+            int hasTilt = zipline_get_tilt(&tilt);
+            if (!hasTilt)
+            {
+                return set_mario_action(m, ACT_JUMP, 0);
+            }
+
+            Vec3f closestNextRailLocation;
+            if (!do_zipline_cancel(500.f * 500.f, rail_valid_switch, &tilt, closestNextRailLocation))
+            {
+                return set_mario_action(m, ACT_JUMP, 0);
+            }
+
+            puffAt(gMarioObject, 15.f, 2, 0.f);
+            for (int i = 0; i < 4; i++)
+            {
+                struct Object* sparkle =  spawn_object(gMarioObject, MODEL_SPARKLES, bhvCoinSparklesSpawner);
+                sparkle->oPosX = (i*m->pos[0] + (3-i)*closestNextRailLocation[0]) / 3.f;
+                sparkle->oPosY = (i*m->pos[1] + (3-i)*closestNextRailLocation[1]) / 3.f;
+                sparkle->oPosZ = (i*m->pos[2] + (3-i)*closestNextRailLocation[2]) / 3.f;
+            }
+
+            m->pos[0] += closestNextRailLocation[0];
+            m->pos[1] += closestNextRailLocation[1];
+            m->pos[2] += closestNextRailLocation[2];
+            m->pos[0] *= 0.5f;
+            m->pos[1] *= 0.5f;
+            m->pos[2] *= 0.5f;
+            play_mario_jump_sound(m);
+            return FALSE;
         }
 
         if (0 == m->actionTimer)
@@ -1406,7 +1450,7 @@ s32 act_rail_grind(struct MarioState *m)
 
         nextBodyPitch = CLAMP(dYaw, 0, 0x1000);
 
-        marioBodyState->torsoAngle[2] = approach_s32_symmetric(marioBodyState->torsoAngle[2], nextBodyRoll,  0x200);
+        marioBodyState->torsoAngle[2] = nextBodyRoll;
         marioBodyState->torsoAngle[0] = approach_s32_symmetric(marioBodyState->torsoAngle[0], nextBodyPitch, 0x200);
         marioBodyState->headAngle[2] = -marioBodyState->torsoAngle[2];
 

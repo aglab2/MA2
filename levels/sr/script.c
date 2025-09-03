@@ -30,6 +30,7 @@ static struct LevelConfig cfg = {
 	.railDesc = rail_descs_sr,
 	.iwds = iw_descs_sr,
 	.springDescs = (void*) spring_descs_sr,
+	.viewRangeMult = 1.5f,
 };
 #define SEQ_LEVEL_GRASS 0x40
 /* Fast64 end persistent block [scripts] */
