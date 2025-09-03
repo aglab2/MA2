@@ -1208,8 +1208,10 @@ s32 act_unused_death_exit(struct MarioState *m) {
     return FALSE;
 }
 
+extern int zipline_cancel();
 s32 act_falling_death_exit(struct MarioState *m) {
-    if (launch_mario_until_land(m, ACT_DEATH_EXIT_LAND, MARIO_ANIM_GENERAL_FALL, 0.0f)) {
+    int zipLineCanceled = zipline_cancel();
+    if (zipLineCanceled || launch_mario_until_land(m, ACT_DEATH_EXIT_LAND, MARIO_ANIM_GENERAL_FALL, 0.0f)) {
         play_sound(SOUND_MARIO_OOOF2, m->marioObj->header.gfx.cameraToObject);
 #if ENABLE_RUMBLE
         queue_rumble_data(5, 80);
@@ -1225,6 +1227,12 @@ s32 act_falling_death_exit(struct MarioState *m) {
 #ifdef BREATH_METER
     m->breath = 0x880;
 #endif
+
+    if (zipLineCanceled)
+    {
+        return drop_and_set_mario_action(m, ACT_RAIL_GRIND, 0);
+    }
+
     return FALSE;
 }
 
