@@ -1374,6 +1374,7 @@ s32 act_rail_grind(struct MarioState *m)
             m->pos[0] *= 0.5f;
             m->pos[1] *= 0.5f;
             m->pos[2] *= 0.5f;
+            m->flags &= ~MARIO_MARIO_SOUND_PLAYED;
             play_mario_jump_sound(m);
             return FALSE;
         }
