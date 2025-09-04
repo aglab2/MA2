@@ -7,7 +7,7 @@ struct ObjectHitbox sBreakableBoxHitbox = {
     /* health:            */   1,
     /* numLootCoins:      */   0,
     /* radius:            */ 150,
-    /* height:            */ 200,
+    /* height:            */ 195,
     /* hurtboxRadius:     */ 150,
     /* hurtboxHeight:     */ 150,
 };
@@ -27,6 +27,7 @@ void hidden_breakable_box_actions(void) {
     struct Object *switchObj;
     obj_set_hitbox(o, &sBreakableBoxHitbox);
     cur_obj_set_model(MODEL_BREAKABLE_BOX);
+    o->oDrawingDistance = 6000.0f;
     switch (o->oAction) {
         case BREAKABLE_BOX_ACT_HIDDEN:
             cur_obj_disable_rendering();
