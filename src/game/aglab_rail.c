@@ -413,6 +413,8 @@ int zipline_step(int exSpeed, s16* extraTilt, int holdZ)
 #else
             if (sLoopDesc->angleOffset)
                 gMarioStates->faceAngle[1] = sZiplineLoopYaw + sLoopDesc->angleOffset * (1 + sZiplineCurPoint) / sZiplineSegmentCount;
+            else
+                gMarioStates->faceAngle[1] = sZiplineLoopYaw;
 
             if (abs_angle_diff(gMarioState->faceAngle[1], sLoopFaceAngle) < 0x4000)
                 gMarioStates->faceAngle[0] = atan2s(trajDirection[1], sqrtf(trajDirection[0] * trajDirection[0] + trajDirection[2] * trajDirection[2])) - 0x4000;

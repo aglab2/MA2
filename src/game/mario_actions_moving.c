@@ -1324,6 +1324,7 @@ static int rail_valid_switch(void* ctx, f32 cx, f32 cy, f32 cz)
 
 extern struct Object *gMarioObject;
 extern void puffAt(struct Object* obj, float size, int numParticles, f32 yoff);
+extern void print_text_fmt_int(int x, int y, const char *str, int value);
 s32 act_rail_grind(struct MarioState *m)
 {
     int onLoop = zipline_on_loop();
@@ -1397,7 +1398,7 @@ s32 act_rail_grind(struct MarioState *m)
         }
     }
 
-    s16 extraTilt;
+    s16 extraTilt = 0;
     int clampedTimer = m->actionTimer > 10 ? 10 : m->actionTimer;
     if (zipline_step(clampedTimer, &extraTilt, holdZ)) {
         int butt = 0;
@@ -1454,9 +1455,6 @@ s32 act_rail_grind(struct MarioState *m)
         marioBodyState->torsoAngle[2] = nextBodyRoll;
         marioBodyState->torsoAngle[0] = approach_s32_symmetric(marioBodyState->torsoAngle[0], nextBodyPitch, 0x200);
         marioBodyState->headAngle[2] = -marioBodyState->torsoAngle[2];
-
-        marioObj->header.gfx.angle[1] = m->faceAngle[1];
-        marioObj->header.gfx.angle[2] = marioBodyState->torsoAngle[2];
         marioObj->header.gfx.pos[1] += 45.0f;
     }
 
