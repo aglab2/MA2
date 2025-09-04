@@ -37,8 +37,16 @@ void bhv_rocket_loop()
         }
         else
         {
-            o->oPosX -= 100.f * coss(o->oFaceAngleYaw);
-            o->oPosZ -= 100.f * sins(o->oFaceAngleYaw);
+            if (gCurrCourseNum == COURSE_RH)
+            {
+                o->oPosX -= 100.f * coss(o->oFaceAngleYaw);
+                o->oPosZ -= 100.f * sins(o->oFaceAngleYaw);
+            }
+            else
+            {
+                o->oPosX -= 100.f * coss(o->oFaceAngleYaw-0x4000);
+                o->oPosZ -= 100.f * sins(o->oFaceAngleYaw-0x4000);            
+            }
         }
 
         puffAt(o, 10.f, 1, 50.f);
