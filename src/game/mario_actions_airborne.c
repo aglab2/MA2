@@ -1986,7 +1986,7 @@ s32 act_vertical_wind(struct MarioState *m) {
         set_mario_animation(m, MARIO_ANIM_AIRBORNE_ON_STOMACH);
     }
 
-    if (gCurrCourseNum != COURSE_EE && gCurrCourseNum != COURSE_LB)
+    if (gCurrCourseNum != COURSE_EE && gCurrCourseNum != COURSE_LB && gCurrCourseNum != COURSE_LF)
     {
         update_air_without_turn(m);
     }

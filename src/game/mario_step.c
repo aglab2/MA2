@@ -706,7 +706,7 @@ static void apply_gravity(struct MarioState *m) {
     }
 }
 
-static void apply_vertical_wind(struct MarioState *m) {\
+static void apply_vertical_wind(struct MarioState *m) {
     f32 maxVelY;
 
     if (m->action != ACT_GROUND_POUND) {
@@ -725,6 +725,9 @@ static void apply_vertical_wind(struct MarioState *m) {\
         }
         if (gCurrCourseNum == COURSE_LB) {
             lim = 3000.f;
+        }
+        if (gCurrCourseNum == COURSE_LF) {
+            lim = 1000.f;
         }
         f32 offsetY = m->pos[1] - lim;
 
