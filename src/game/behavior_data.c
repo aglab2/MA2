@@ -6605,12 +6605,14 @@ const BehaviorScript bhvSrJump[] = {
 };
 
 extern void bhv_cw_breakable_init();
+extern void bhv_cw_breakable_loop();
 const BehaviorScript bhvCWBreakable[] = {
     BEGIN(OBJ_LIST_LEVEL),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
     SET_FLOAT(oDrawingDistance, 20000),
     CALL_NATIVE(bhv_cw_breakable_init),
     BEGIN_LOOP(),
+        CALL_NATIVE(bhv_cw_breakable_loop),
         CALL_NATIVE(bhv_breakable_shrinking_loop),
     END_LOOP(),
 };
