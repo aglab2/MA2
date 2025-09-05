@@ -31,6 +31,7 @@
 #define cw_area_7 cw_area_1
 #define cw_area_8 cw_area_1
 #define cw_area_9 cw_area_1
+#define bhvCwMeteo bhvCWBreakable
 extern Gfx cw_skybox_cw_skybox_mesh[];
 extern const IWDHeader* iw_descs_cw[];
 extern const SpringDesc* spring_descs_cw[];
@@ -105,6 +106,27 @@ const LevelScript level_cw_entry[] = {
 		OBJECT(MODEL_NONE, -4284, -9124, -494, 0, -90, 0, 0x00000000, bhvGoombaTripletSpawner),
 		OBJECT(MODEL_NONE, 3038, -6124, -29, 0, -90, 0, 0x00000000, bhvGoombaTripletSpawner),
 		OBJECT(MODEL_NONE, 817, -4624, -958, 0, -90, 0, 0x00000000, bhvGoombaTripletSpawner),
+		OBJECT(MODEL_NONE, -10452, -11187, -39, 0, 90, 0, (0xa << 16), bhvInstantActiveWarp),
+		OBJECT(MODEL_NONE, -8840, -11243, -1470, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, -7633, -10562, -2849, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, -5515, -9230, -1316, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, -4582, -9158, 2209, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, -7342, -10439, 1449, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, -1471, -8353, -851, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, -3110, -8591, -1652, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, -5832, -10073, -5436, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, -2444, -9581, -8038, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, 1953, -8713, -5942, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, 3124, -5244, -3037, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, 1135, -3977, -2720, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, 1916, -3684, -6156, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, 4620, -3974, -9019, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, 5410, -1979, -3298, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, 5340, -2439, 1397, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, 1520, -6034, 1758, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, 8585, -2673, -8528, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, 10345, -589, -12943, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, 15527, 1577, -8451, 0, -90, 0, 0x00000000, bhvCwMeteo),
 		OBJECT(MODEL_STAR, -7536, -10844, -33, 0, -90, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -1401, -7239, -2955, 0, -90, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 441, -4211, -1002, 0, -90, 0, 0x00000000, bhvStar),
@@ -165,6 +187,14 @@ const LevelScript level_cw_entry[] = {
 		OBJECT(MODEL_GOOMBA, -12417, 3612, -10027, 0, -90, 0, 0x00000000, bhvGoomba),
 		OBJECT(MODEL_GOOMBA, -12341, 5212, -11069, 0, -90, 0, 0x00000000, bhvGoomba),
 		OBJECT(MODEL_GOOMBA, -8849, 6777, -9995, 0, -90, 0, 0x00000000, bhvGoomba),
+		OBJECT(MODEL_NONE, -13213, -1262, -8959, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, -13224, -1251, -10975, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, -12331, -3615, -10982, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, -14413, 570, -9866, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, -13569, 8820, -9145, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, -13252, 14499, -10564, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, -11136, 12485, -9716, 0, -90, 0, 0x00000000, bhvCwMeteo),
+		OBJECT(MODEL_NONE, -9667, 10047, -9887, 0, -90, 0, 0x00000000, bhvCwMeteo),
 		OBJECT(MODEL_RED_COIN, -11020, 14216, -9194, 0, -90, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_RED_COIN, -11457, 14216, -8750, 0, -90, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_RED_COIN, -9070, 12762, -9190, 0, -90, 0, 0x00000000, bhvRedCoin),
@@ -341,6 +371,7 @@ const LevelScript level_cw_entry[] = {
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		OBJECT(MODEL_GOAL, -14488, -13331, 31092, 0, 90, 0, 0x00000000, bhvGoal),
 		TERRAIN(cw_area_7_collision),
 		MACRO_OBJECTS(cw_area_7_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),

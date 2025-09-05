@@ -214,6 +214,10 @@ int LZ4T_lastLiterals (
             // means that encoding is extended
             LZ4T_pushNibble(&op, 8);
             LZ4T_encodeBitLen(&op, length - TINY_LITERAL_LIMIT - 1);
+            if (length > 512)
+            {
+                printf("%d\n", length);
+            }
             LZ4_wildCopy8(op, anchor, op + length);
             op += length;
         } else {
