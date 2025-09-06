@@ -75,5 +75,6 @@
     "48_sm": [ "0C_extended_bank" ],
     "49_eq": [ "0C_extended_bank" ],
     "4A_dt": [ "0C_extended_bank" ],
-    "4B_cw": [ "0C_extended_bank" ]
+    "4B_cw": [ "0C_extended_bank" ],
+    "4C_lal": [ "0C_extended_bank" ]
 }

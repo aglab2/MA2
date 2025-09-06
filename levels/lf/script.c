@@ -15,6 +15,7 @@
 #include "levels/lf/header.h"
 
 /* Fast64 begin persistent block [scripts] */
+#define SEQ_LEVEL_GRASS 0x4C
 #include "level_config.h"
 static struct LevelConfig cfg = {
 	.skybox = lf_skybox_lf_space_mesh,

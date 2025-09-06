@@ -1845,7 +1845,7 @@ s32 execute_mario_action(UNUSED struct Object *obj) {
                 }
             }
             
-            if (gCurrCourseNum != COURSE_LB)
+            if (gCurrCourseNum != COURSE_LB && gCurrCourseNum != COURSE_LF)
             {
                 spawn_wind_particles(1, 0);
                 play_sound(SOUND_ENV_WIND2, gMarioState->marioObj->header.gfx.cameraToObject);
