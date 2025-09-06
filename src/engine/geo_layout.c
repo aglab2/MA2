@@ -953,12 +953,12 @@ void geo_layout_cmd_node_batch_display_list_anim(void) {
     gGeoLayoutCommand += 0x0C << CMD_SIZE_SHIFT;
 }
 
-static void* replaced_for_console(void* dl, s32 layer);
+static void* dl_devirt(void* dl, s32 layer);
 void geo_layout_cmd_batchset_node(void) {
     struct GraphNode *graphNode;
     s32 drawingLayer = cur_geo_cmd_u8(0x01);
     void *displayList = cur_geo_cmd_ptr(0x04);
-    displayList = replaced_for_console(displayList, drawingLayer);
+    displayList = dl_devirt(displayList, drawingLayer);
     if (!displayList)
         goto fini;
 
@@ -968,7 +968,7 @@ void geo_layout_cmd_batchset_node(void) {
 
     register_scene_graph_node(graphNode);
 
-    GRAPH_NODE_LVL_DL_ASSIGN_RAW(graphNode,  segmented_to_virtual(displayList));
+    GRAPH_NODE_LVL_DL_ASSIGN_RAW(graphNode,  displayList);
 
 fini:
     gGeoLayoutCommand += 0x08 << CMD_SIZE_SHIFT;
@@ -1254,6 +1254,18 @@ static void* replaced_for_console(void* dl, s32 layer)
     return dl;
 }
 
+static void* dl_devirt(void* dl, s32 layer)
+{
+    if (!dl)
+        return segmented_to_virtual(dl);
+    
+    dl = replaced_for_console(dl, layer);
+    if (!dl)
+        return NULL;
+
+    return segmented_to_virtual(dl);
+}
+
 struct CullDlPattern
 {
     u32 vtxs;
@@ -1307,6 +1319,9 @@ struct BatchCmd
 
 static f32 get_radius_batch_cmds(void* commands)
 {
+    if (commands == (void*) 0x80000000)
+        return 0.f;
+
     f32 result = 0.f;
     struct BatchCmd* batchCmd = (struct BatchCmd*)commands;
     while (batchCmd->check != 0)
@@ -1356,11 +1371,11 @@ void geo_layout_cmd_lvl_translation_rotation(void) {
 
     graphNode = init_graph_node_lvl_translation_rotation(NULL, drawingLayer, translation, rotation);
     register_scene_graph_node(&graphNode->node);
-    displayList = replaced_for_console(displayList, drawingLayer);
+    displayList = dl_devirt(displayList, drawingLayer);
     if (displayList)
     {
-        graphNode->dl = segmented_to_virtual(displayList);
-        f32 result = displayList ? get_radius_batch_cmds(graphNode->dl) : 0.f;
+        graphNode->dl = displayList;
+        f32 result = get_radius_batch_cmds(displayList);
         graphNode->radius = result;
     }
     else
@@ -1397,11 +1412,11 @@ void geo_layout_cmd_lvl_translation(void) {
 
     graphNode = init_graph_node_lvl_translation(NULL, drawingLayer, translation);
     register_scene_graph_node(&graphNode->node);
-    displayList = replaced_for_console(displayList, drawingLayer);
+    displayList = dl_devirt(displayList, drawingLayer);
     if (displayList)
     {
-        graphNode->dl = segmented_to_virtual(displayList);
-        f32 result = displayList ? get_radius_batch_cmds(graphNode->dl) : 0.f;
+        graphNode->dl = displayList;
+        f32 result = get_radius_batch_cmds(displayList);
         graphNode->radius = result;
     }
     else
