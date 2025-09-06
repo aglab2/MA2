@@ -283,5 +283,6 @@ void cur_obj_spawn_loot_blue_coin(void);
 
 void cur_obj_spawn_star_at_y_offset(f32 targetX, f32 targetY, f32 targetZ, f32 offsetY);
 Gfx *geo_render_backdrop(s32 callContext, struct GraphNode *node, UNUSED f32 b[4][4]);
+Gfx *geo_render_backdrop2(s32 callContext, struct GraphNode *node, UNUSED f32 b[4][4]);
 
 #endif // OBJECT_HELPERS_H

@@ -2267,3 +2267,29 @@ Gfx *geo_render_backdrop(s32 callContext, struct GraphNode *node, UNUSED f32 b[4
     }
     return 0;
 }
+
+#if 0
+Gfx *geo_render_backdrop2(s32 callContext, UNUSED struct GraphNode *node, UNUSED f32 b[4][4]) {
+    Mat4 mat;
+    Mtx *mtx = alloc_display_list(sizeof(*mtx));
+    s32 i;
+    f32 pos[3];
+    if (callContext == GEO_CONTEXT_RENDER) {
+#define FARAWAYNESS .95f // the closer to 1 the further away
+
+        for (i = 0; i < 3; i++) {
+            pos[i] = gCurGraphNodeCamera->pos[i] * FARAWAYNESS;
+        }
+
+        mtxf_translate(mat, pos);
+        mtxf_mul(gMatStack[gMatStackIndex + 1], mat, gMatStack[gMatStackIndex]);
+        gMatStackIndex++;
+        mtxf_to_mtx(mtx, gMatStack[gMatStackIndex]);
+        gMatStackFixed[gMatStackIndex] = mtx;
+        geo_append_display_list(gSkybox, 0); // DL pointer
+        
+        gMatStackIndex--;
+    }
+    return 0;
+}
+#endif

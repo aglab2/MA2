@@ -1749,7 +1749,7 @@ static const char* getStageName()
     {
         return "Dark Story %d:";
     }
-    if (gCurrLevelNum < LEVEL_LB)
+    if (gCurrLevelNum < LEVEL_LF)
     {
         return "Last Stage:";
     }

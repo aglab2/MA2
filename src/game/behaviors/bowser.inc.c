@@ -162,12 +162,17 @@ s32 bowser_spawn_shockwave(void) {
     return FALSE;
 }
 
+static int in_last()
+{
+    return gCurrLevelNum == LEVEL_LB || gCurrLevelNum == LEVEL_LF;
+}
+
 /**
  * Misc effects that Bowser plays when he lands with drastic actions
  * Plays step sound, spawns particles and changes camera event
  */
 void bowser_bounce_effects(s32 *timer) {
-    if (gCurrLevelNum == LEVEL_LB && o->oTimer > 30)
+    if (in_last() && o->oTimer > 30)
     {
         (*timer)++;
         return;
@@ -566,7 +571,7 @@ void bowser_act_spit_fire_into_sky(void) {
     // Set frames
     animFrame = o->header.gfx.animInfo.animFrame;
     // Spawn flames in the middle of the animation
-    if (gCurrLevelNum != LEVEL_LB && animFrame > 24 && animFrame < 36) {
+    if (!in_last() && animFrame > 24 && animFrame < 36) {
         cur_obj_play_sound_1(SOUND_AIR_BOWSER_SPIT_FIRE);
         if (animFrame == 35) { // Spawns Blue flames at this frame
             spawn_object_relative(1, 0, 400, 100, o, MODEL_RED_FLAME, bhvBlueBowserFlame);
@@ -713,7 +718,7 @@ static void bowser_kill_mario_on_hit()
 
 static int want_manage()
 {
-    if (gCurrLevelNum == LEVEL_LB)
+    if (in_last())
         return 0;
     if (gCurrLevelNum == LEVEL_SS2)
         return 1;
@@ -780,7 +785,7 @@ void bowser_act_hit_mine(void) {
             gMarioStates->pos[2] = o->oPosZ;
             gMarioStates->faceAngle[1] = 0x8000 + o->oMoveAngleYaw;
         }
-        if (gCurrLevelNum == LEVEL_LB && o->oTimer == 0)
+        if (in_last() && o->oTimer == 0)
         {
             set_mario_action(gMarioStates, ACT_THROWN_BACKWARD, 0);
             gMarioStates->vel[1] = 50.f;
@@ -999,14 +1004,14 @@ void bowser_act_charge_mario(void) {
     if (0 == o->oTimer)
     {
         cur_obj_play_sound_2(SOUND_OBJ2_BOWSER_ROAR);
-        if (gCurrLevelNum == LEVEL_LB)
+        if (in_last())
         {
             o->oFaceAngleYaw = o->oAngleToMario;
             o->oMoveAngleYaw = o->oAngleToMario;
         }
     }
 
-    if (gCurrLevelNum == LEVEL_LB)
+    if (in_last())
     {
         if (o->oMoveFlags & OBJ_MOVE_HIT_EDGE)
         {
@@ -1220,7 +1225,7 @@ void bowser_fly_back_dead(void) {
         o->oForwardVel = -200.0f;
     }
     o->oVelY = 100.0f;
-    if (gCurrLevelNum != LEVEL_LB)
+    if (!in_last())
         o->oMoveAngleYaw = o->oBowserAngleToCenter + 0x8000;
     else
         o->oMoveAngleYaw = 0x1000;
@@ -1259,7 +1264,7 @@ void bowser_dead_bounce(void) {
  * Returns TRUE if he is close enough
  */
 s32 bowser_dead_wait_for_mario(void) {
-    if (gCurrLevelNum == LEVEL_LB)
+    if (in_last())
         return FALSE;
 
     s32 ret = FALSE;

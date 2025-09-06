@@ -47,7 +47,7 @@ const LevelScript level_lf_entry[] = {
 		MARIO_POS(0x01, 0, 334, 19, 16000),
 		OBJECT(MODEL_BOWSER, 0, 0, 0, 0, 0, 0, 0x00000000, bhvBowser),
 		OBJECT(MODEL_NONE, 0, 0, 0, 0, 0, 0, 0x00000000, bhvLfCtl),
-		OBJECT(MODEL_NONE, 64, 7, 16000, 0, 180, 0, (0xa << 16), bhvInstantActiveWarp),
+		OBJECT(MODEL_NONE, 0, 3000, 16000, 0, 180, 0, (0xa << 16), bhvInstantActiveWarp),
 		TERRAIN(lf_area_1_collision),
 		MACRO_OBJECTS(lf_area_1_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
@@ -56,7 +56,7 @@ const LevelScript level_lf_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 	FREE_LEVEL_POOL(),
-	MARIO_POS(0x01, 180, 334, 19, 16000),
+	MARIO_POS(0x01, 180, 0, 3000, 16000),
 	CALL(0, lvl_init_or_update),
 	CALL_LOOP(1, lvl_init_or_update),
 	CLEAR_LEVEL(),

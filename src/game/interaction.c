@@ -171,7 +171,7 @@ u32 determine_interaction(struct MarioState *m, struct Object *obj) {
     u32 interaction = 0;
     u32 action = m->action;
 
-    if (gCurrLevelNum == LEVEL_LB)
+    if (gCurrLevelNum == LEVEL_LB || gCurrLevelNum == LEVEL_LF)
     {
         interaction = 0;
         f32 y = obj->oPosY; 

@@ -727,7 +727,8 @@ static void apply_vertical_wind(struct MarioState *m) {
             lim = 3000.f;
         }
         if (gCurrCourseNum == COURSE_LF) {
-            lim = 3000.f;
+            int distToCenter = m->pos[0] * m->pos[0] + m->pos[2] * m->pos[2];
+            lim = CLAMP(0, sqrtf(distToCenter), 3000.f);
         }
         f32 offsetY = m->pos[1] - lim;
 
