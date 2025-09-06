@@ -3,6 +3,7 @@
 const GeoLayout lf_area_1_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
+		GEO_ASM(0, geo_render_backdrop),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, lf_dl_object_01313F04_mesh_layer_1),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
