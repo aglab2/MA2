@@ -319,7 +319,7 @@ static u32 celled_coord(s32 coord, s32 cell) {
 /**
  * Iterate through the list of ceilings and find the first ceiling over a given point.
  */
-static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 x, s32 y, s32 z, u32 celled, f32 *pheight) {
+static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 x, s32 y, s32 z, u8 celledX, u8 celledZ, f32 *pheight) {
     register struct Surface* ceil = NULL;
     register f32 height;
     *pheight = CELL_HEIGHT_LIMIT;
@@ -347,8 +347,10 @@ static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 
         }
 
         {
-            if (celled < surfaceNode->lowerCell) continue;
-            if (celled > surfaceNode->upperCell) continue;
+            if (celledX < surfaceNode->lowerCellX) continue;
+            if (celledX > surfaceNode->upperCellX) continue;
+            if (celledZ < surfaceNode->lowerCellZ) continue;
+            if (celledZ > surfaceNode->upperCellZ) continue;
         }
 
         SurfaceType type = SURFACE_NODE_TYPE(packed);
@@ -438,7 +440,6 @@ f32 find_ceil(f32 posX, f32 posY, f32 posZ, struct Surface **pceil) {
     s32 cellZ = GET_CELL_COORD(z);
     u32 celledX = celled_coord(x, cellX);
     u32 celledZ = celled_coord(z, cellZ);
-    u32 celled = celledZ | (celledX << 8);
 
     struct SurfaceNode *surfaceList;
     struct Surface *ceil = NULL;
@@ -449,7 +450,7 @@ f32 find_ceil(f32 posX, f32 posY, f32 posZ, struct Surface **pceil) {
     if (includeDynamic) {
         // Check for surfaces belonging to objects.
         surfaceList = gDynamicSurfacePartition[cellZ][cellX][ceilPartition];
-        dynamicCeil = find_ceil_from_list(surfaceList, x, y, z, celled, &dynamicHeight);
+        dynamicCeil = find_ceil_from_list(surfaceList, x, y, z, celledX, celledZ, &dynamicHeight);
 
         // In the next check, only check for ceilings lower than the previous check.
         height = dynamicHeight;
@@ -457,7 +458,7 @@ f32 find_ceil(f32 posX, f32 posY, f32 posZ, struct Surface **pceil) {
 
     // Check for surfaces that are a part of level geometry.
     surfaceList = gStaticSurfacePartition[cellZ][cellX][ceilPartition];
-    ceil = find_ceil_from_list(surfaceList, x, y, z, celled, &height);
+    ceil = find_ceil_from_list(surfaceList, x, y, z, celledX, celledZ, &height);
 
     // Use the lower ceiling.
     if (includeDynamic && height >= dynamicHeight) {
@@ -510,7 +511,7 @@ int gSlowLookups = 0;
 /**
  * Iterate through the list of floors and find the first floor under a given point.
  */
-static struct Surface *find_floor_from_list(const struct SurfaceNode *surfaceNode, s32 x, s32 y, s32 z, u32 celled, f32 *pheight) {
+static struct Surface *find_floor_from_list(const struct SurfaceNode *surfaceNode, s32 x, s32 y, s32 z, u32 celledX, u32 celledZ, f32 *pheight) {
     register struct Surface *floor = NULL;
     register f32 height;
     register s32 bufferY = y + FIND_FLOOR_BUFFER;
@@ -562,8 +563,10 @@ static struct Surface *find_floor_from_list(const struct SurfaceNode *surfaceNod
         }
 
         {
-            if (celled < surfaceNode->lowerCell) continue;
-            if (celled > surfaceNode->upperCell) continue;
+            if (celledX < surfaceNode->lowerCellX) continue;
+            if (celledX > surfaceNode->upperCellX) continue;
+            if (celledZ < surfaceNode->lowerCellZ) continue;
+            if (celledZ > surfaceNode->upperCellZ) continue;
         }
 
         // Check that the point is within the triangle bounds.
@@ -648,7 +651,6 @@ f32 find_floor(f32 xPos, f32 yPos, f32 zPos, struct Surface **pfloor) {
     s32 cellZ = GET_CELL_COORD(z);
     u32 celledX = celled_coord(x, cellX);
     u32 celledZ = celled_coord(z, cellZ);
-    u32 celled = celledZ | (celledX << 8);
 
     struct SurfaceNode *surfaceList;
     struct Surface *floor = NULL;
@@ -659,7 +661,7 @@ f32 find_floor(f32 xPos, f32 yPos, f32 zPos, struct Surface **pfloor) {
     if (includeDynamic) {
         // Check for surfaces belonging to objects.
         surfaceList = gDynamicSurfacePartition[cellZ][cellX][floorPartition];
-        dynamicFloor = find_floor_from_list(surfaceList, x, y, z, celled, &dynamicHeight);
+        dynamicFloor = find_floor_from_list(surfaceList, x, y, z, celledX, celledZ, &dynamicHeight);
 
         // In the next check, only check for floors higher than the previous check.
         height = dynamicHeight;
@@ -667,7 +669,7 @@ f32 find_floor(f32 xPos, f32 yPos, f32 zPos, struct Surface **pfloor) {
 
     // Check for surfaces that are a part of level geometry.
     surfaceList = gStaticSurfacePartition[cellZ][cellX][floorPartition];
-    floor = find_floor_from_list(surfaceList, x, y, z, celled, &height);
+    floor = find_floor_from_list(surfaceList, x, y, z, celledX, celledZ, &height);
 
     // Use the higher floor.
     if (includeDynamic && height <= dynamicHeight) {
