@@ -7112,6 +7112,17 @@ const BehaviorScript bhvLBCtl[] = {
     END_LOOP(),
 };
 
+extern void bhv_lf_ctl_init();
+extern void bhv_lf_ctl_loop();
+const BehaviorScript bhvLfCtl[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO),
+    CALL_NATIVE(bhv_lf_ctl_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_lf_ctl_loop),
+    END_LOOP(),
+};
+
 extern const Collision lb_wind_collision[];
 extern void bhv_lb_wind_loop();
 const BehaviorScript bhvLBWind[] = {

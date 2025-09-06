@@ -15,3 +15,4 @@
 
 
 #include "levels/lf/geo.inc.c"
+#include "levels/lf/lf/geo.inc.c"

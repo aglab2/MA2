@@ -821,6 +821,7 @@ static int aglabGlobalScratch[0x10];
 #include "behaviors/aglab_cc.inc.c"
 #include "behaviors/aglab_ss1.inc.c"
 #include "behaviors/aglab_lb.inc.c"
+#include "behaviors/aglab_lf.inc.c"
 #include "behaviors/aglab_dl.inc.c"
 #include "behaviors/aglab_eq.inc.c"
 

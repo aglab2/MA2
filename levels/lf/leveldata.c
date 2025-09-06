@@ -10,3 +10,4 @@
 
 #include "levels/lf/leveldata.inc.c"
 #include "levels/lf/lf_skybox/model.inc.c"
+#include "levels/lf/lf/model.inc.c"
