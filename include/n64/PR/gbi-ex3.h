@@ -5653,6 +5653,7 @@ _DW({                                                   \
 #define gDPTileSync(pkt)        gDPNoParam(pkt, G_RDPTILESYNC)
 #define gsDPTileSync()          gsDPNoParam(    G_RDPTILESYNC)
 #define gDPPipeSync(pkt)        gDPNoParam(pkt, G_USEASPIPESYNC)
+#define gsDPPipeSyncReal()      gsDPNoParam(    G_RDPPIPESYNC)
 #define gsDPPipeSync()          gsDPNoParam(    G_USEASPIPESYNC)
 #define gDPLoadSync(pkt)        gDPNoParam(pkt, G_RDPLOADSYNC)
 #define gsDPLoadSync()          gsDPNoParam(    G_RDPLOADSYNC)

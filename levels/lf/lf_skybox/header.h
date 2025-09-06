@@ -1,11 +1,9 @@
 extern u8 lf_skybox_spacenbg256_ci4[];
-extern u8 lf_skybox_spacenbg256_pal_rgba16[];
 extern u8 lf_skybox_spacenbg256_x_spacenbg256_pal_rgba16[];
 extern u8 lf_skybox_spacenbg256_ci4_copy[];
 extern u8 lf_skybox_Y_CO8_11_rgba32[];
 extern u8 lf_skybox_EARTH512_2_rgba16[];
-extern Vtx lf_skybox_lf_space_mesh_vtx_0[33];
-extern Vtx lf_skybox_lf_space_mesh_vtx_1[151];
-extern Vtx lf_skybox_lf_space_mesh_vtx_2[4];
-extern Vtx lf_skybox_lf_space_mesh_vtx_3[449];
+extern Vtx lf_skybox_lf_space_mesh_vtx_0[198];
+extern Vtx lf_skybox_lf_space_mesh_vtx_1[104];
+extern Vtx lf_skybox_lf_space_mesh_vtx_2[449];
 extern Gfx lf_skybox_lf_space_mesh[];

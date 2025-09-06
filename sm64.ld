@@ -186,10 +186,6 @@ SECTIONS
       */libz.a:*.o(.text*);
       */libhvqm2.a:*.o(.text*);
       */rsp.o(.text*);
-      */gspF3DEX3_ALIGHT.o(.text*);
-      */gspF3DEX3_MEMSET.o(.text*);
-      */gspF3DEX3_TEXCACHE.o(.text*);
-      */gspF3DEX3_VTXBUF.o(.text*);
       */gspF3DEX3_CHERRY.o(.text*);
 #include "rsptext.inc.ld"
       BUILD_DIR/lib/aspMain.o(.text*);
@@ -210,10 +206,6 @@ SECTIONS
       *ULTRALIB.a:*.o(.data*);
       */libhvqm2.a:*.o(.data*);
       */libz.a:*.o(.data*);
-      */gspF3DEX3_ALIGHT.o(.data*);
-      */gspF3DEX3_MEMSET.o(.data*);
-      */gspF3DEX3_TEXCACHE.o(.data*);
-      */gspF3DEX3_VTXBUF.o(.data*);
       */gspF3DEX3_CHERRY.o(.data*);
 #include "rspdata.inc.ld"
       BUILD_DIR/lib/aspMain.o(.data*);

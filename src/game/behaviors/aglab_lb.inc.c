@@ -408,6 +408,7 @@ void bhv_lb_ctl_loop()
     }
     else if (5 == o->oAction)
     {
+#if 0
         int timeMod = o->oTimer % 40;
 #if 0
         if (20 == timeMod && LB_PHASE2_LENGTH != o->oTimer)
@@ -430,6 +431,17 @@ void bhv_lb_ctl_loop()
                 obj_scale(ball, 0.1f);
             }
         }
+#else
+        s8* patterns = (u8*) &o->oLbCtlPattern;
+        int timeMod = o->oTimer % 80;
+        if (0 == timeMod)
+        {
+            int which = random_u16() & 1;
+            patterns[0] = which ? -1 : 1;
+        }
+
+        lb_patterns(timeMod, 1);
+#endif
 
         if (LB_PHASE2_LENGTH == o->oTimer)
         {
@@ -1034,7 +1046,7 @@ void bhv_coin_formation_loop_lb()
 
     if (o->oTimer == o->oLbCoinTimeout)
     {
-        o->oAction = COIN_FORMATION_ACT_INACTIVE;
+        o->oAction = COIN_FORMATION_ACT_DEACTIVATE;
     }
 
     if (o->oTimer == o->oLbCoinTimeout + 1)
