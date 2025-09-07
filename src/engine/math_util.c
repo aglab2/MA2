@@ -933,7 +933,7 @@ s32 ray_surface_intersect(Vec3f orig, Vec3f dir, f32 dir_length, struct Surface 
     return TRUE;
 }
 
-static void find_surface_on_ray_list(struct SurfaceNode *list, Vec3f orig, Vec3f dir, f32 dir_length, struct Surface **hit_surface, Vec3f hit_pos, f32 *max_length) {
+static void find_surface_on_ray_list(RBTree *tree, Vec3f orig, Vec3f dir, f32 dir_length, struct Surface **hit_surface, Vec3f hit_pos, f32 *max_length) {
     s32 hit;
     f32 length;
     Vec3f chk_hit_pos;
@@ -951,10 +951,13 @@ static void find_surface_on_ray_list(struct SurfaceNode *list, Vec3f orig, Vec3f
     }
 
     // Iterate through every surface of the list
-    for (; list != NULL; list = list->next) {
+    RBTreeIterator it = rbt_begin_iterate(tree);
+    struct SurfaceNode* node;
+    while ((node = rbt_iterate(tree, &it))) {
         // Reject surface if out of vertical bounds
-        if ((list->lowerY > top) || (list->upperY < bottom)) continue;
-        struct Surface* surf = SURFACE_NODE_SURF(list->packed);
+        // AGLAB: COLL optimize - use smart walk
+        if ((node->triBvh.lowerY > top) || (node->triBvh.upperY < bottom)) continue;
+        struct Surface* surf = node->surf;
         // Check intersection between the ray and this surface
         hit = ray_surface_intersect(orig, dir, dir_length, surf, chk_hit_pos, &length);
         if (hit && (length <= *max_length)) {
@@ -971,16 +974,16 @@ static void find_surface_on_ray_cell(s32 cellX, s32 cellZ, Vec3f orig, Vec3f nor
     if ((cellX >= 0) && (cellX <= (NUM_CELLS - 1)) && (cellZ >= 0) && (cellZ <= (NUM_CELLS - 1))) {
         // Iterate through each surface in this partition
         if ((normalized_dir[1] > -NEAR_ONE) && (flags & RAYCAST_FIND_CEIL)) {
-            find_surface_on_ray_list( gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ], orig, normalized_dir, dir_length, hit_surface, hit_pos, max_length);
-            find_surface_on_ray_list(gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ], orig, normalized_dir, dir_length, hit_surface, hit_pos, max_length);
+            find_surface_on_ray_list( &gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ], orig, normalized_dir, dir_length, hit_surface, hit_pos, max_length);
+            find_surface_on_ray_list(&gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ], orig, normalized_dir, dir_length, hit_surface, hit_pos, max_length);
         }
         if ((normalized_dir[1] <  NEAR_ONE) && (flags & RAYCAST_FIND_FLOOR)) {
-            find_surface_on_ray_list( gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS], orig, normalized_dir, dir_length, hit_surface, hit_pos, max_length);
-            find_surface_on_ray_list(gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS], orig, normalized_dir, dir_length, hit_surface, hit_pos, max_length);
+            find_surface_on_ray_list( &gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS], orig, normalized_dir, dir_length, hit_surface, hit_pos, max_length);
+            find_surface_on_ray_list(&gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS], orig, normalized_dir, dir_length, hit_surface, hit_pos, max_length);
         }
         if (flags & RAYCAST_FIND_WALL) {
-            find_surface_on_ray_list( gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS ], orig, normalized_dir, dir_length, hit_surface, hit_pos, max_length);
-            find_surface_on_ray_list(gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS ], orig, normalized_dir, dir_length, hit_surface, hit_pos, max_length);
+            find_surface_on_ray_list( &gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS ], orig, normalized_dir, dir_length, hit_surface, hit_pos, max_length);
+            find_surface_on_ray_list(&gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS ], orig, normalized_dir, dir_length, hit_surface, hit_pos, max_length);
         }
     }
 }

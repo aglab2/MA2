@@ -1,0 +1,306 @@
+#include "rbtree.h"
+
+/*
+ * all leafs are sentinels, use customized NIL name to prevent
+ * collision with system-wide constant NIL which is actually NULL
+ */
+#define RBTNIL (&sentinel)
+
+#define RBTBLACK	(0)
+#define RBTRED		(1)
+
+static RBTNode sentinel =
+{
+	.color = RBTBLACK,.left = RBTNIL,.right = RBTNIL,.parent = NULL
+};
+
+/**********************************************************************
+ *							  Insertion								  *
+ **********************************************************************/
+
+static void bvh_visit(Bvh* acceptor, const Bvh* visitor)
+{
+    acceptor->lowerY = MIN(acceptor->lowerY, visitor->lowerY);
+    acceptor->upperY = MAX(acceptor->upperY, visitor->upperY);
+    acceptor->lowerCellX = MIN(acceptor->lowerCellX, visitor->lowerCellX);
+    acceptor->lowerCellZ = MIN(acceptor->lowerCellZ, visitor->lowerCellZ);
+    acceptor->upperCellX = MAX(acceptor->upperCellX, visitor->upperCellX);
+    acceptor->upperCellZ = MAX(acceptor->upperCellZ, visitor->upperCellZ);
+}
+
+static void surface_node_reweight(struct SurfaceNode* node)
+{
+    node->nodeBvh = node->triBvh;
+    struct SurfaceNode* left = node->left;
+    struct SurfaceNode* right = node->right;
+    if (left != RBTNIL) {
+        bvh_visit(&node->nodeBvh, &left->nodeBvh);
+    }
+    if (right != RBTNIL) {
+        bvh_visit(&node->nodeBvh, &right->nodeBvh);
+    }
+}
+
+/*
+ * Rotate node x to left.
+ *
+ * x's right child takes its place in the tree, and x becomes the left
+ * child of that node.
+ */
+static void
+rbt_rotate_left(RBTree *rbt, RBTNode *x)
+{
+	RBTNode    *y = x->right;
+
+	/* establish x->right link */
+	x->right = y->left;
+	if (y->left != RBTNIL)
+		y->left->parent = x;
+
+	/* establish y->parent link */
+	if (y != RBTNIL)
+		y->parent = x->parent;
+	if (x->parent)
+	{
+		if (x == x->parent->left)
+			x->parent->left = y;
+		else
+			x->parent->right = y;
+	}
+	else
+	{
+		rbt->root = y;
+	}
+
+	/* link x and y */
+	y->left = x;
+	if (x != RBTNIL)
+		x->parent = y;
+
+    surface_node_reweight(x);
+    // TODO: WTF? why is this a possible condition?
+	if (y != RBTNIL)
+        surface_node_reweight(y);
+}
+
+/*
+ * Rotate node x to right.
+ *
+ * x's left right child takes its place in the tree, and x becomes the right
+ * child of that node.
+ */
+static void
+rbt_rotate_right(RBTree *rbt, RBTNode *x)
+{
+	RBTNode    *y = x->left;
+
+	/* establish x->left link */
+	x->left = y->right;
+	if (y->right != RBTNIL)
+		y->right->parent = x;
+
+	/* establish y->parent link */
+	if (y != RBTNIL)
+		y->parent = x->parent;
+	if (x->parent)
+	{
+		if (x == x->parent->right)
+			x->parent->right = y;
+		else
+			x->parent->left = y;
+	}
+	else
+	{
+		rbt->root = y;
+	}
+
+	/* link x and y */
+	y->right = x;
+	if (x != RBTNIL)
+		x->parent = y;
+
+    surface_node_reweight(x);
+    // TODO: WTF? why is this a possible condition?
+	if (y != RBTNIL)
+        surface_node_reweight(y);
+}
+
+static void rbt_insert_fixup(RBTree *rbt, RBTNode *x)
+{
+	/*
+	 * x is always a red node.  Initially, it is the newly inserted node. Each
+	 * iteration of this loop moves it higher up in the tree.
+	 */
+	while (x != rbt->root && x->parent->color == RBTRED)
+	{
+		/*
+		 * x and x->parent are both red.  Fix depends on whether x->parent is
+		 * a left or right child.  In either case, we define y to be the
+		 * "uncle" of x, that is, the other child of x's grandparent.
+		 *
+		 * If the uncle is red, we flip the grandparent to red and its two
+		 * children to black.  Then we loop around again to check whether the
+		 * grandparent still has a problem.
+		 *
+		 * If the uncle is black, we will perform one or two "rotations" to
+		 * balance the tree.  Either x or x->parent will take the
+		 * grandparent's position in the tree and recolored black, and the
+		 * original grandparent will be recolored red and become a child of
+		 * that node. This always leaves us with a valid red-black tree, so
+		 * the loop will terminate.
+		 */
+		if (x->parent == x->parent->parent->left)
+		{
+			RBTNode    *y = x->parent->parent->right;
+
+			if (y->color == RBTRED)
+			{
+				/* uncle is RBTRED */
+				x->parent->color = RBTBLACK;
+				y->color = RBTBLACK;
+				x->parent->parent->color = RBTRED;
+
+				x = x->parent->parent;
+			}
+			else
+			{
+				/* uncle is RBTBLACK */
+				if (x == x->parent->right)
+				{
+					/* make x a left child */
+					x = x->parent;
+					rbt_rotate_left(rbt, x);
+				}
+
+				/* recolor and rotate */
+				x->parent->color = RBTBLACK;
+				x->parent->parent->color = RBTRED;
+
+				rbt_rotate_right(rbt, x->parent->parent);
+			}
+		}
+		else
+		{
+			/* mirror image of above code */
+			RBTNode    *y = x->parent->parent->left;
+
+			if (y->color == RBTRED)
+			{
+				/* uncle is RBTRED */
+				x->parent->color = RBTBLACK;
+				y->color = RBTBLACK;
+				x->parent->parent->color = RBTRED;
+
+				x = x->parent->parent;
+			}
+			else
+			{
+				/* uncle is RBTBLACK */
+				if (x == x->parent->left)
+				{
+					x = x->parent;
+					rbt_rotate_right(rbt, x);
+				}
+				x->parent->color = RBTBLACK;
+				x->parent->parent->color = RBTRED;
+
+				rbt_rotate_left(rbt, x->parent->parent);
+			}
+		}
+	}
+
+	/*
+	 * The root may already have been black; if not, the black-height of every
+	 * node in the tree increases by one.
+	 */
+	rbt->root->color = RBTBLACK;
+}
+
+static void surface_node_touch(struct SurfaceNode* node_to_touch, const struct SurfaceNode* touching_node)
+{
+    bvh_visit(&node_to_touch->nodeBvh, &touching_node->nodeBvh);
+}
+
+void rbt_insert(RBTree *rbt, RBTNode *node)
+{
+	RBTNode    *current,
+			   *parent,
+			   *x;
+    int cmp = 0;
+
+	/* find where node belongs */
+	current = rbt->root ?: RBTNIL;
+	parent = NULL;
+
+	while (current != RBTNIL)
+	{
+        surface_node_touch(current, node);
+        cmp = node->weight < current->weight;
+		parent = current;
+		current = cmp ? current->left : current->right;
+	}
+
+	x = node;
+	x->color = RBTRED;
+
+	x->left = RBTNIL;
+	x->right = RBTNIL;
+	x->parent = parent;
+
+	/* insert node in tree */
+	if (parent)
+	{
+		if (cmp)
+			parent->left = x;
+		else
+			parent->right = x;
+	}
+	else
+	{
+		rbt->root = x;
+	}
+
+	return (void) rbt_insert_fixup(rbt, x);
+}
+
+RBTNode* rbt_left_right_iterator(RBTree *rbt, RBTreeIterator *iter)
+{
+    // TODO: optimize first cycle better
+	if (iter->last_visited == NULL)
+	{
+		iter->last_visited = rbt->root;
+		while (iter->last_visited->left != RBTNIL)
+			iter->last_visited = iter->last_visited->left;
+
+		return iter->last_visited;
+	}
+
+	if (iter->last_visited->right != RBTNIL)
+	{
+		iter->last_visited = iter->last_visited->right;
+		while (iter->last_visited->left != RBTNIL)
+			iter->last_visited = iter->last_visited->left;
+
+		return iter->last_visited;
+	}
+
+	for (;;)
+	{
+		RBTNode    *came_from = iter->last_visited;
+
+		iter->last_visited = iter->last_visited->parent;
+		if (iter->last_visited == NULL)
+		{
+			iter->is_over = 1;
+			break;
+		}
+
+		if (iter->last_visited->left == came_from)
+			break;				/* came from left sub-tree, return current
+								 * node */
+
+		/* else - came from right sub-tree, continue to move up */
+	}
+
+	return iter->last_visited;
+}

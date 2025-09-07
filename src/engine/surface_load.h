@@ -5,6 +5,7 @@
 
 #include "surface_collision.h"
 #include "types.h"
+#include "rbtree.h"
 
 #define SURFACE_VERTICAL_BUFFER 5
 
@@ -16,29 +17,6 @@
  */
 #define DYNAMIC_SURFACE_POOL_SIZE 0x8000
 
-struct SurfaceNode {
-    s16 lowerY;
-    s16 upperY;
-    // these coordinates are relative to the cell shifted to fit in cell from 0 to 0xff
-    // In my case CELL_SIZE is 0x400 so shifted by 2.
-    // To avoid the potential errors, there is 1 "cell unit" shift in the calculation of the cell coordinates.
-    u8 lowerCellX;
-    u8 lowerCellZ;
-    u8 upperCellX;
-    u8 upperCellZ;
-    uintptr_t packed;
-    // TerrainData type;
-    // u8 flags;
-    // struct Surface *surf;
-    struct SurfaceNode *next;
-};
-
-#define SURFACE_NODE_TYPE(pack) (pack >> 24)
-#define SURFACE_NODE_FLAGS(pack) (pack)
-#define SURFACE_NODE_SURF(pack) ((struct Surface *)(0x80000000U | (pack & 0xFFFFF0)))
-
-#define SURFACE_NODE_PACK(surf, type, flags) (((uintptr_t)(surf) & 0xFFFFF0) | ((uintptr_t)(type) << 24) | (uintptr_t)(flags))
-
 enum SpatialPartitions {
     SPATIAL_PARTITION_FLOORS,
     SPATIAL_PARTITION_CEILS,
@@ -46,7 +24,7 @@ enum SpatialPartitions {
     NUM_SPATIAL_PARTITIONS
 };
 
-typedef struct SurfaceNode *SpatialPartitionCell[NUM_SPATIAL_PARTITIONS];
+typedef RBTree SpatialPartitionCell[NUM_SPATIAL_PARTITIONS];
 
 extern SpatialPartitionCell gStaticSurfacePartition[NUM_CELLS][NUM_CELLS];
 extern SpatialPartitionCell gDynamicSurfacePartition[NUM_CELLS][NUM_CELLS];

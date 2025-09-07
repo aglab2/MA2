@@ -53,7 +53,7 @@ static s32 check_wall_edge(Vec3f vert, Vec3f v2, f32 *d00, f32 *d01, f32 *invDen
  * Iterate through the list of walls until all walls are checked and
  * have given their wall push.
  */
-static s32 find_wall_collisions_from_list(struct SurfaceNode *surfaceNode, struct WallCollisionData *data) {
+static s32 find_wall_collisions_from_list(RBTree* tree, struct WallCollisionData *data) {
     const f32 corner_threshold = -0.9f;
     f32 offset;
     f32 radius = data->radius;
@@ -73,15 +73,17 @@ static s32 find_wall_collisions_from_list(struct SurfaceNode *surfaceNode, struc
     f32 margin_radius = radius - 1.0f;
 
     // Stay in this loop until out of walls.
-    for (; surfaceNode != NULL; surfaceNode = surfaceNode->next) {
-        uintptr_t packed = surfaceNode->packed;
-
+    struct RBTreeIterator it = rbt_begin_iterate(tree);
+    struct SurfaceNode* surfaceNode;
+    while ((surfaceNode = rbt_iterate(tree, &it)))
+    {
         // Exclude a large number of walls immediately to optimize.
-        if (pos[1] < surfaceNode->lowerY || pos[1] > surfaceNode->upperY) continue;
+        // AGLAB: optimize collision checks here - use smart walk
+        if (pos[1] < surfaceNode->triBvh.lowerY || pos[1] > surfaceNode->triBvh.upperY) continue;
 
         // Determine if checking for the camera or not.
-        TerrainData type = SURFACE_NODE_TYPE(packed);
-        uintptr_t flags = SURFACE_NODE_FLAGS(packed);
+        TerrainData type = surfaceNode->type;
+        uintptr_t flags = surfaceNode->flags;
         if (flagCamera) {
             if (flags & SURFACE_FLAG_NO_CAM_COLLISION) continue;
         } else {
@@ -99,7 +101,7 @@ static s32 find_wall_collisions_from_list(struct SurfaceNode *surfaceNode, struc
         if (flagLava && type == SURFACE_BURNING)
             continue;
 
-        struct Surface *surf = SURFACE_NODE_SURF(packed);
+        struct Surface *surf = surfaceNode->surf;
 
         // Dot of normal and pos, + origin offset
         offset = (surf->normal.x * pos[0])
@@ -207,7 +209,7 @@ s32 f32_find_wall_collision(f32 *xPtr, f32 *yPtr, f32 *zPtr, f32 offsetY, f32 ra
  * Find wall collisions and receive their push.
  */
 s32 find_wall_collisions(struct WallCollisionData *colData) {
-    struct SurfaceNode *node;
+    RBTree* tree;
     s32 numCollisions = 0;
     s32 x = colData->x;
     s32 z = colData->z;
@@ -232,13 +234,13 @@ s32 find_wall_collisions(struct WallCollisionData *colData) {
         for (s32 cellZ = minCellZ; cellZ <= maxCellZ; cellZ++) {
             if (includeDynamic) {
                 // Check for surfaces belonging to objects.
-                node = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS];
-                numCollisions += find_wall_collisions_from_list(node, colData);
+                tree = &gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS];
+                numCollisions += find_wall_collisions_from_list(tree, colData);
             }
 
             // Check for surfaces that are a part of level geometry.
-            node = gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS];
-            numCollisions += find_wall_collisions_from_list(node, colData);
+            tree = &gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS];
+            numCollisions += find_wall_collisions_from_list(tree, colData);
         }
     }
 
@@ -319,7 +321,7 @@ static u32 celled_coord(s32 coord, s32 cell) {
 /**
  * Iterate through the list of ceilings and find the first ceiling over a given point.
  */
-static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 x, s32 y, s32 z, u8 celledX, u8 celledZ, f32 *pheight) {
+static struct Surface *find_ceil_from_list(RBTree* tree, s32 x, s32 y, s32 z, u8 celledX, u8 celledZ, f32 *pheight) {
     register struct Surface* ceil = NULL;
     register f32 height;
     *pheight = CELL_HEIGHT_LIMIT;
@@ -327,34 +329,30 @@ static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 
     s32 flagRetFirst = gCollisionFlags & COLLISION_FLAG_RETURN_FIRST;
     s32 flagLava = gCollisionFlags & COLLISION_FLAG_EXCLUDE_LAVA;
     const u32 gm = gGravityMode;
-    struct SurfaceNode* next = surfaceNode;
 
     // Stay in this loop until out of ceilings.
-    while (next)
+    struct RBTreeIterator it = rbt_begin_iterate(tree);
+    struct SurfaceNode* surfaceNode;
+    while ((surfaceNode = rbt_iterate(tree, &it)))
     {
-        struct SurfaceNode* toHandle = next;
-        next = surfaceNode->next;
-        surfaceNode = toHandle;
-
-        uintptr_t packed = surfaceNode->packed;
-
         // Exclude all ceilings below the point
+        // AGLAB: COLL optimize - use smart walk
         if (!gm) {
-            if (y > surfaceNode->upperY) continue;
+            if (y > surfaceNode->triBvh.upperY) continue;
         } else {
             // TODO: uncba
             // if (y < surf->lowerY) continue;
         }
 
         {
-            if (celledX < surfaceNode->lowerCellX) continue;
-            if (celledX > surfaceNode->upperCellX) continue;
-            if (celledZ < surfaceNode->lowerCellZ) continue;
-            if (celledZ > surfaceNode->upperCellZ) continue;
+            if (celledX < surfaceNode->triBvh.lowerCellX) continue;
+            if (celledX > surfaceNode->triBvh.upperCellX) continue;
+            if (celledZ < surfaceNode->triBvh.lowerCellZ) continue;
+            if (celledZ > surfaceNode->triBvh.upperCellZ) continue;
         }
 
-        SurfaceType type = SURFACE_NODE_TYPE(packed);
-        uintptr_t flags = SURFACE_NODE_FLAGS(packed);
+        SurfaceType type = surfaceNode->type;
+        uintptr_t flags = surfaceNode->flags;
         // Determine if checking for the camera or not
         if (flagCamera) {
             if (flags & SURFACE_FLAG_NO_CAM_COLLISION) {
@@ -367,7 +365,7 @@ static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 
         if (flagLava && type == SURFACE_BURNING)
             continue;
 
-        struct Surface* surf = SURFACE_NODE_SURF(packed);
+        struct Surface* surf = surfaceNode->surf;
 
         // Check that the point is within the triangle bounds
         if (!gm) {
@@ -441,7 +439,7 @@ f32 find_ceil(f32 posX, f32 posY, f32 posZ, struct Surface **pceil) {
     u32 celledX = celled_coord(x, cellX);
     u32 celledZ = celled_coord(z, cellZ);
 
-    struct SurfaceNode *surfaceList;
+    RBTree *tree;
     struct Surface *ceil = NULL;
     struct Surface *dynamicCeil = NULL;
 
@@ -449,16 +447,16 @@ f32 find_ceil(f32 posX, f32 posY, f32 posZ, struct Surface **pceil) {
 
     if (includeDynamic) {
         // Check for surfaces belonging to objects.
-        surfaceList = gDynamicSurfacePartition[cellZ][cellX][ceilPartition];
-        dynamicCeil = find_ceil_from_list(surfaceList, x, y, z, celledX, celledZ, &dynamicHeight);
+        tree = &gDynamicSurfacePartition[cellZ][cellX][ceilPartition];
+        dynamicCeil = find_ceil_from_list(tree, x, y, z, celledX, celledZ, &dynamicHeight);
 
         // In the next check, only check for ceilings lower than the previous check.
         height = dynamicHeight;
     }
 
     // Check for surfaces that are a part of level geometry.
-    surfaceList = gStaticSurfacePartition[cellZ][cellX][ceilPartition];
-    ceil = find_ceil_from_list(surfaceList, x, y, z, celledX, celledZ, &height);
+    tree = &gStaticSurfacePartition[cellZ][cellX][ceilPartition];
+    ceil = find_ceil_from_list(tree, x, y, z, celledX, celledZ, &height);
 
     // Use the lower ceiling.
     if (includeDynamic && height >= dynamicHeight) {
@@ -511,7 +509,7 @@ int gSlowLookups = 0;
 /**
  * Iterate through the list of floors and find the first floor under a given point.
  */
-static struct Surface *find_floor_from_list(const struct SurfaceNode *surfaceNode, s32 x, s32 y, s32 z, u32 celledX, u32 celledZ, f32 *pheight) {
+static struct Surface *find_floor_from_list(RBTree *tree, s32 x, s32 y, s32 z, u32 celledX, u32 celledZ, f32 *pheight) {
     register struct Surface *floor = NULL;
     register f32 height;
     register s32 bufferY = y + FIND_FLOOR_BUFFER;
@@ -521,24 +519,18 @@ static struct Surface *find_floor_from_list(const struct SurfaceNode *surfaceNod
     s32 flagLava = gCollisionFlags & COLLISION_FLAG_EXCLUDE_LAVA;
     const u32 gm = gGravityMode;
 
-    struct SurfaceNode* next = surfaceNode;
-    while (next)
+    struct SurfaceNode* surfaceNode;
+    RBTreeIterator it = rbt_begin_iterate(tree);
+    while ((surfaceNode = rbt_iterate(tree, &it)))
     {
-        struct SurfaceNode* toHandle = next;
-        next = surfaceNode->next;
-        surfaceNode = toHandle;
-
 #ifdef DEBUG_SURF
         gQuickLookups++;
 #endif
-
-        uintptr_t packed = surfaceNode->packed;
-
         // To prevent the Merry-Go-Round room from loading when Mario passes above the hole that leads
         // there, SURFACE_INTANGIBLE is used. This prevent the wrong room from loading, but can also allow
         // Mario to pass through.
-        SurfaceType type = SURFACE_NODE_TYPE(packed);
-        uintptr_t flags = SURFACE_NODE_FLAGS(packed);
+        SurfaceType type = surfaceNode->type;
+        uintptr_t flags = surfaceNode->flags;
         if (excludeIntangible && (type == SURFACE_INTANGIBLE)) {
             continue;
         }
@@ -556,17 +548,17 @@ static struct Surface *find_floor_from_list(const struct SurfaceNode *surfaceNod
 
         // Exclude all floors above the point.
         if (!gm) {
-            if (bufferY < surfaceNode->lowerY) continue;
+            if (bufferY < surfaceNode->triBvh.lowerY) continue;
         } else {
             // TODO: uncba
             // if (bufferY > surf->upperY) continue;
         }
 
         {
-            if (celledX < surfaceNode->lowerCellX) continue;
-            if (celledX > surfaceNode->upperCellX) continue;
-            if (celledZ < surfaceNode->lowerCellZ) continue;
-            if (celledZ > surfaceNode->upperCellZ) continue;
+            if (celledX < surfaceNode->triBvh.lowerCellX) continue;
+            if (celledX > surfaceNode->triBvh.upperCellX) continue;
+            if (celledZ < surfaceNode->triBvh.lowerCellZ) continue;
+            if (celledZ > surfaceNode->triBvh.upperCellZ) continue;
         }
 
         // Check that the point is within the triangle bounds.
@@ -574,7 +566,7 @@ static struct Surface *find_floor_from_list(const struct SurfaceNode *surfaceNod
         gSlowLookups++;
 #endif
 
-        struct Surface *surf = SURFACE_NODE_SURF(packed);
+        struct Surface *surf = surfaceNode->surf;
         if (!gm) {
             if (!check_within_floor_triangle_bounds(x, z, surf)) continue;
         } else {
@@ -652,7 +644,7 @@ f32 find_floor(f32 xPos, f32 yPos, f32 zPos, struct Surface **pfloor) {
     u32 celledX = celled_coord(x, cellX);
     u32 celledZ = celled_coord(z, cellZ);
 
-    struct SurfaceNode *surfaceList;
+    RBTree* tree;
     struct Surface *floor = NULL;
     struct Surface *dynamicFloor = NULL;
 
@@ -660,16 +652,16 @@ f32 find_floor(f32 xPos, f32 yPos, f32 zPos, struct Surface **pfloor) {
 
     if (includeDynamic) {
         // Check for surfaces belonging to objects.
-        surfaceList = gDynamicSurfacePartition[cellZ][cellX][floorPartition];
-        dynamicFloor = find_floor_from_list(surfaceList, x, y, z, celledX, celledZ, &dynamicHeight);
+        tree = &gDynamicSurfacePartition[cellZ][cellX][floorPartition];
+        dynamicFloor = find_floor_from_list(tree, x, y, z, celledX, celledZ, &dynamicHeight);
 
         // In the next check, only check for floors higher than the previous check.
         height = dynamicHeight;
     }
 
     // Check for surfaces that are a part of level geometry.
-    surfaceList = gStaticSurfacePartition[cellZ][cellX][floorPartition];
-    floor = find_floor_from_list(surfaceList, x, y, z, celledX, celledZ, &height);
+    tree = &gStaticSurfacePartition[cellZ][cellX][floorPartition];
+    floor = find_floor_from_list(tree, x, y, z, celledX, celledZ, &height);
 
     // Use the higher floor.
     if (includeDynamic && height <= dynamicHeight) {

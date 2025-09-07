@@ -197,7 +197,7 @@ extern s32 gSurfaceNodesAllocated;
 extern s32 gSurfacesAllocated;
 
 void iterate_surfaces_visual(s32 x, s32 z, Vtx *verts) {
-    struct SurfaceNode *node;
+    struct RBTree *root;
     struct Surface *surf;
     s32 i = 0;
     ColorRGB col = COLOR_RGB_RED;
@@ -209,18 +209,18 @@ void iterate_surfaces_visual(s32 x, s32 z, Vtx *verts) {
 
     for (i = 0; i < (2 * NUM_SPATIAL_PARTITIONS); i++) {
         switch (i) {
-            case 0: node = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS ]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_GREEN ); break;
-            case 1: node =  gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS ]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_GREEN ); break;
-            case 2: node = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_BLUE  ); break;
-            case 3: node =  gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_BLUE  ); break;
-            case 4: node = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_RED   ); break;
-            case 5: node =  gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_RED   ); break;
+            case 0: root = &gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS ]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_GREEN ); break;
+            case 1: root =  &gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS ]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_GREEN ); break;
+            case 2: root = &gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_BLUE  ); break;
+            case 3: root =  &gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_BLUE  ); break;
+            case 4: root = &gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_RED   ); break;
+            case 5: root =  &gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_RED   ); break;
         }
 
-        while (node != NULL) {
-            surf = SURFACE_NODE_SURF(node->packed);
-            node = node->next;
-
+        RBTreeIterator it = rbt_begin_iterate(root);
+        struct SurfaceNode* node;
+        while ((node = rbt_iterate(root, &it))) {
+            surf = node->surf;
             if (SURFACE_IS_INSTANT_WARP(surf->type)) {
                 make_vertex(verts, (gVisualSurfaceCount + 0), surf->vertex1[0], surf->vertex1[1], surf->vertex1[2], 0, 0, 0xFF, 0xA0, 0x00, 0x80);
                 make_vertex(verts, (gVisualSurfaceCount + 1), surf->vertex2[0], surf->vertex2[1], surf->vertex2[2], 0, 0, 0xFF, 0xA0, 0x00, 0x80);
@@ -302,7 +302,7 @@ void visual_surface_display(Gfx **gfx, Vtx *verts, s32 iteration) {
 }
 
 s32 iterate_surface_count(s32 x, s32 z) {
-    struct SurfaceNode *node;
+    struct RBTree *root;
     s32 i = 0;
     s32 j = 0;
     TerrainData *p = gEnvironmentRegions;
@@ -315,16 +315,17 @@ s32 iterate_surface_count(s32 x, s32 z) {
 
     for (i = 0; i < (2 * NUM_SPATIAL_PARTITIONS); i++) {
         switch (i) {
-            case 0: node = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS ]; break;
-            case 1: node =  gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS ]; break;
-            case 2: node = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS]; break;
-            case 3: node =  gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS]; break;
-            case 4: node = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ]; break;
-            case 5: node =  gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ]; break;
+            case 0: root = &gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS ]; break;
+            case 1: root =  &gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS ]; break;
+            case 2: root = &gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS]; break;
+            case 3: root =  &gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS]; break;
+            case 4: root = &gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ]; break;
+            case 5: root =  &gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ]; break;
         }
 
-        while (node != NULL) {
-            node = node->next;
+        RBTreeIterator it = rbt_begin_iterate(root);
+        struct SurfaceNode* node;
+        while ((node = rbt_iterate(root, &it))) {
             j++;
         }
     }

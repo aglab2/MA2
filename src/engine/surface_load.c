@@ -50,17 +50,27 @@ u32 gTotalStaticSurfaceData;
 static struct SurfaceNode *alloc_surface_node(u8** pend, struct Surface* surface, u32 lowerXCelled, u32 upperXCelled, s32 lowerY, s32 upperY, u32 lowerZCelled, u32 upperZCelled) {
     u8* end = *pend;
     struct SurfaceNode *node = (struct SurfaceNode*) end;
-    __builtin_mips_cache(0xd, end);
-    *pend = (void*) ((u8*) end + 0x10);
+    __builtin_mips_cache(0xd, ((char*)end) + 0x00);
+    __builtin_mips_cache(0xd, ((char*)end) + 0x10);
+    __builtin_mips_cache(0xd, ((char*)end) + 0x20);
+    *pend = (void*) ((u8*) end + sizeof(struct SurfaceNode));
 
     gSurfaceNodesAllocated++;
-    node->lowerY = lowerY;
-    node->upperY = upperY;
-    node->lowerCellX = lowerXCelled;
-    node->upperCellX = upperXCelled;
-    node->lowerCellZ = lowerZCelled;
-    node->upperCellZ = upperZCelled;
-    node->packed = SURFACE_NODE_PACK(surface, surface->type, surface->flags);
+
+    Bvh bvh;
+    bvh.lowerY = lowerY;
+    bvh.upperY = upperY;
+    bvh.lowerCellX = lowerXCelled;
+    bvh.upperCellX = upperXCelled;
+    bvh.lowerCellZ = lowerZCelled;
+    bvh.upperCellZ = upperZCelled;
+    
+    node->triBvh = bvh;
+    node->nodeBvh = bvh;
+    node->flags = surface->flags;
+    node->type = surface->type;
+    node->surf = surface;
+    node->weight = morton(bvh);
 
     return node;
 }
@@ -113,7 +123,7 @@ static inline u8** get_pend(int dynamic) {
  * @param surface The surface to add
  */
 static void add_surface_to_cell(s32 dynamic, s32 cellX, s32 cellZ, struct Surface *surface, s32 lowerX, s32 upperX, s32 lowerY, s32 upperY, s32 lowerZ, s32 upperZ) {
-    struct SurfaceNode **list;
+    RBTree *tree;
     s32 addingPriority;
     s32 listIndex;
     u32 lowerXCelled = celled_coord(lowerX, cellX, +1);
@@ -135,48 +145,20 @@ static void add_surface_to_cell(s32 dynamic, s32 cellX, s32 cellZ, struct Surfac
     struct SurfaceNode *newNode = alloc_surface_node(pend, surface, lowerXCelled, upperXCelled, lowerY, upperY, lowerZCelled, upperZCelled);
 
     if (dynamic) {
-        list = &gDynamicSurfacePartition[cellZ][cellX][listIndex];
+        tree = &gDynamicSurfacePartition[cellZ][cellX][listIndex];
         if (sNumCellsUsed >= sizeof(sCellsUsedOffsets) / sizeof(*sCellsUsedOffsets)) {
             sClearAllCells = TRUE;
         } else {
-            if (*list == NULL) {
-                sCellsUsedOffsets[sNumCellsUsed] = list - &gDynamicSurfacePartition[0][0][0];
+            if (tree->root == NULL) {
+                sCellsUsedOffsets[sNumCellsUsed] = tree - &gDynamicSurfacePartition[0][0][0];
                 sNumCellsUsed++;
             }
         }
     } else {
-        list = &gStaticSurfacePartition[cellZ][cellX][listIndex];
+        tree = &gStaticSurfacePartition[cellZ][cellX][listIndex];
     }
 
-    if (*list == NULL) {
-        *list = newNode;
-        newNode->next = NULL;
-        return;
-    }
-
-    struct SurfaceNode *curNode = *list;
-
-    // Check if surface should be placed at the beginning of the list.
-    s32 priority = (listIndex == SPATIAL_PARTITION_FLOORS) ? (curNode->upperY) : (-curNode->lowerY);
-    if (dynamic || listIndex == SPATIAL_PARTITION_WALLS || addingPriority > priority) {
-        *list = newNode;
-        newNode->next = curNode;
-        return;
-    }
-
-    // Loop until we find the appropriate place for the surface in the list.
-    while (curNode->next != NULL) {
-        priority = (listIndex == SPATIAL_PARTITION_FLOORS) ? (curNode->next->upperY) : (-curNode->next->lowerY);
-
-        if (addingPriority > priority) {
-            break;
-        }
-
-        curNode = curNode->next;
-    }
-
-    newNode->next = curNode->next;
-    curNode->next = newNode;
+    rbt_insert(tree, newNode);
 }
 
 /**
@@ -528,9 +510,9 @@ void clear_dynamic_surfaces(void) {
         if (sClearAllCells) {
             bzero(gDynamicSurfacePartition, sizeof(gDynamicSurfacePartition));
         } else {
-            struct SurfaceNode **list = &gDynamicSurfacePartition[0][0][0];
+            RBTree* tree = &gDynamicSurfacePartition[0][0][0];
             for (u32 i = 0; i < sNumCellsUsed; i++) {
-                list[sCellsUsedOffsets[i]] = NULL;
+                tree[sCellsUsedOffsets[i]].root = NULL;
             }
         }
         sNumCellsUsed = 0;
