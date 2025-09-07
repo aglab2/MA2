@@ -36,6 +36,8 @@ const LevelScript level_lf_entry[] = {
 	JUMP_LINK(script_func_global_1), 
 	JUMP_LINK(script_func_global_8), 
 	JUMP_LINK(script_func_global_13), 
+	LOAD_MODEL_FROM_GEO(MODEL_LF_LAZER, lf_lazer_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_LF_PELLET, lf_geo),
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */

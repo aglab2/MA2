@@ -7244,3 +7244,15 @@ const BehaviorScript bhvEqCtl[] = {
         CALL_NATIVE(bhv_eq_ctl_loop),
     END_LOOP(),
 };
+
+extern const Collision lf_lazer_collision[];
+extern void bhv_lf_lazer_loop();
+const BehaviorScript bhvLfLazer[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    LOAD_COLLISION_DATA(lf_lazer_collision),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_lf_lazer_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};

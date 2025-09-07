@@ -1962,6 +1962,7 @@ s32 act_vertical_wind(struct MarioState *m) {
      && gCurrCourseNum != COURSE_LB
      && gCurrCourseNum != COURSE_EE
      && gCurrCourseNum != COURSE_LC
+     && gCurrCourseNum != COURSE_LF
        ) {
         return set_mario_action(m, ACT_FLYING, 0);
     }

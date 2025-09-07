@@ -12,4 +12,8 @@ extern const LevelScript level_lf_entry[];
 
 #include "levels/lf/lf/geo_header.h"
 
+#include "levels/lf/lf_lazer/collision_header.h"
+
+#include "levels/lf/lf_lazer/geo_header.h"
+
 #endif

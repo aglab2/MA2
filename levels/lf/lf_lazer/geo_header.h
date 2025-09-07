@@ -1,0 +1,15 @@
+extern const GeoLayout lf_lazer_geo[];
+extern u8 lf_lazer_ef_beam02_rgba16[];
+extern u8 lf_lazer_ef_beam01_ci8[];
+extern u8 lf_lazer_ef_beam01_pal_rgba16[];
+extern Vtx lf_lazer_001_object_0130597C_mesh_layer_5_vtx_cull[8];
+extern Vtx lf_lazer_001_object_0130597C_mesh_layer_5_vtx_0[39];
+extern Vtx lf_lazer_001_object_0130597C_mesh_layer_5_vtx_1[29];
+extern Vtx lf_lazer_002_object_01305504_mesh_layer_5_vtx_cull[8];
+extern Vtx lf_lazer_002_object_01305504_mesh_layer_5_vtx_0[57];
+extern Vtx lf_lazer_003_object_01304DE4_mesh_layer_1_vtx_cull[8];
+extern Vtx lf_lazer_003_object_01304DE4_mesh_layer_1_vtx_0[38];
+extern Vtx lf_lazer_003_object_01304DE4_mesh_layer_1_vtx_1[18];
+extern Gfx lf_lazer_001_object_0130597C_mesh_layer_5[];
+extern Gfx lf_lazer_002_object_01305504_mesh_layer_5[];
+extern Gfx lf_lazer_003_object_01304DE4_mesh_layer_1[];

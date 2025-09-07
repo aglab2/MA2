@@ -11,3 +11,5 @@
 #include "levels/lf/leveldata.inc.c"
 #include "levels/lf/lf_skybox/model.inc.c"
 #include "levels/lf/lf/model.inc.c"
+#include "levels/lf/lf_lazer/collision.inc.c"
+#include "levels/lf/lf_lazer/model.inc.c"

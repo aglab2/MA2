@@ -49,17 +49,6 @@ static void lf_phase_mr_blizzard()
     }
 }
 
-void bhv_lf_ctl_init()
-{
-    lf_phase_mr_blizzard();
-    f32 d;
-    o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvBowser, &d);
-    obj_scale(o->parentObj, 5.f);
-    o->parentObj->hitboxRadius = 1000.f;
-    o->parentObj->hitboxHeight = 1300.f;
-    gTimeFrozen = 0;
-}
-
 static void lf_place2(f32 x, f32 z, int model, const BehaviorScript* bhv, int pattern, int angle)
 {
     struct Object* spwn = spawn_object(o, MODEL_NONE, bhvLfRingSpawner);
@@ -119,6 +108,21 @@ static void lf_phase_spindrift()
     }
 }
 
+extern const BehaviorScript bhvLfLazer[];
+static void lf_phase_lazer()
+{
+    for (int i = 0; i < 6; i++)
+    {
+        f32 z = 15000.f - 2000.f * i;
+        int side = (i & 1) ? -1 : 1;
+        struct Object* spwn = spawn_object(o, MODEL_LF_LAZER, bhvLfLazer);
+        spwn->oPosX = side * 3500.f;
+        spwn->oPosY = LF_HEIGHT;
+        spwn->oPosZ = z;
+        spwn->oMoveAngleYaw = spwn->oFaceAngleYaw = 0;
+    }
+}
+
 static void lf_place_spawners(int health)
 {
     int phase = 4 - health;
@@ -137,8 +141,20 @@ static void lf_place_spawners(int health)
             lf_phase_snufit_lines();
         break;
         case 4:
+            lf_phase_lazer();
         break;
     }
+}
+
+void bhv_lf_ctl_init()
+{
+    lf_phase_lazer();
+    f32 d;
+    o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvBowser, &d);
+    obj_scale(o->parentObj, 5.f);
+    o->parentObj->hitboxRadius = 1000.f;
+    o->parentObj->hitboxHeight = 1300.f;
+    gTimeFrozen = 0;
 }
 
 void bhv_lf_ctl_loop()
@@ -349,4 +365,15 @@ void bhv_lf_ring_spawner_loop()
             obj_scale(snufit, scale);
         }
     }
+}
+
+void bhv_lf_lazer_loop()
+{
+    obj_scale(o, 0.6f);
+    o->oDrawingDistance = 20000.f;
+    int angle = 0xA00 * sins(o->oTimer * 0x175);
+    if (o->oPosX < 0)
+        angle += 0x8000;
+
+    o->oMoveAngleYaw = o->oFaceAngleYaw = angle;
 }
