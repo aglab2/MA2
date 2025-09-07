@@ -675,7 +675,7 @@ static void bowser_advance_phases()
     
 }
 
-static void despawn_all(const BehaviorScript* behavior)
+void despawn_all(const BehaviorScript* behavior)
 {
     uintptr_t *behaviorAddr = segmented_to_virtual(behavior);
     struct ObjectNode *listHead = &gObjectLists[get_object_list_from_behavior(behaviorAddr)];

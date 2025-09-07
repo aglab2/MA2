@@ -54,9 +54,7 @@ void bhv_mr_blizzard_init(void) {
             o->oAnimState = 1;
         }
 
-        // Mr. Blizzard starts under the floor holding nothing.
-        o->oMrBlizzardGraphYOffset = -200.0f;
-        o->oMrBlizzardHeldObj = NULL;
+        o->oMrBlizzardGraphYOffset = 0.f;
     }
 }
 
@@ -78,6 +76,10 @@ static void mr_blizzard_act_spawn_snowball(void) {
         if (o->oMrBlizzardGraphYOffset < 0.0f) {
             o->oAction = MR_BLIZZARD_ACT_HIDE_UNHIDE;
         } else {
+            o->oMoveAngleYaw = o->oAngleToMario;
+            o->oMrBlizzardGraphYVel = 42.0f;
+            cur_obj_unhide();
+            cur_obj_become_tangible();
             o->oAction = MR_BLIZZARD_ACT_ROTATE;
         }
     }
@@ -87,15 +89,13 @@ static void mr_blizzard_act_spawn_snowball(void) {
  * Handler for Mario entering or exiting Mr. Blizzard's range.
  */
 static void mr_blizzard_act_hide_unhide(void) {
-    if (o->oDistanceToMario < 1000.0f) {
+    if (1) {
         // If Mario is in range, move to rising action, make Mr. Blizzard visible,
         // make Mr. Blizzard tangible, and initialize GraphYVel.
-        cur_obj_play_sound_2(SOUND_OBJ_SNOW_SAND2);
         o->oAction = MR_BLIZZARD_ACT_RISE_FROM_GROUND;
         o->oMoveAngleYaw = o->oAngleToMario;
         o->oMrBlizzardGraphYVel = 42.0f;
 
-        mr_blizzard_spawn_white_particles(8, -10, 15, 20, 10);
         cur_obj_unhide();
         cur_obj_become_tangible();
     } else {
@@ -120,8 +120,6 @@ static void mr_blizzard_act_rise_from_ground(void) {
         o->oPosY += o->oMrBlizzardGraphYOffset - 24.0f;
         o->oMrBlizzardGraphYOffset = 24.0f;
 
-        mr_blizzard_spawn_white_particles(8, -20, 20, 15, 10);
-
         o->oAction = MR_BLIZZARD_ACT_ROTATE;
         o->oVelY = o->oMrBlizzardGraphYVel;
     } else if ((o->oMrBlizzardGraphYVel -= 10.0f) < 0.0f) {
@@ -138,64 +136,23 @@ static void mr_blizzard_act_rise_from_ground(void) {
 static void mr_blizzard_act_rotate(void) {
     // While Mr. Blizzard is on the ground, rotate toward Mario at
     // 8.4375 degrees/frame.
-    if (o->oMoveFlags & OBJ_MOVE_MASK_ON_GROUND) {
         s16 angleDiff;
         cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x600);
 
         // Modify the ChangeInDizziness based on Mario's angle to Mr. Blizzard.
         angleDiff = o->oAngleToMario - o->oMoveAngleYaw;
-        if (angleDiff != 0) {
-            if (angleDiff < 0) {
-                o->oMrBlizzardChangeInDizziness -= 8.0f;
-            } else {
-                o->oMrBlizzardChangeInDizziness += 8.0f;
-            }
 
-            // Incremement Dizziness by value of ChangeInDizziness
-            o->oMrBlizzardDizziness += o->oMrBlizzardChangeInDizziness;
-        } else if (o->oMrBlizzardDizziness != 0.0f) {
-            f32 prevDizziness = o->oMrBlizzardDizziness;
-            // Slowly move Dizziness back to 0 by making ChangeInDizziness positive if Dizziness
-            // is negative, and making ChangeInDizziness negative if Dizziness is positive.
-            if (o->oMrBlizzardDizziness < 0.0f) {
-                approach_f32_ptr(&o->oMrBlizzardChangeInDizziness, 1000.0f, 80.0f);
-            } else {
-                approach_f32_ptr(&o->oMrBlizzardChangeInDizziness, -1000.0f, 80.0f);
-            }
-
-            o->oMrBlizzardDizziness += o->oMrBlizzardChangeInDizziness;
-            // If prevDizziness has a different sign than Dizziness,
-            // set Dizziness and ChangeInDizziness to 0.
-            if (prevDizziness * o->oMrBlizzardDizziness < 0.0f) {
-                o->oMrBlizzardDizziness = o->oMrBlizzardChangeInDizziness = 0.0f;
-            }
-        }
-        // If Dizziness is not 0 and Mr. Blizzard's FaceRollAngle has a magnitude greater than
-        // 67.5 degrees move to death action, delete the snowball, and make Mr. Blizzard intangible.
-        if (o->oMrBlizzardDizziness != 0.0f) {
-            if (absi(o->oFaceAngleRoll) > 0x3000) {
-                o->oAction = MR_BLIZZARD_ACT_DEATH;
-                o->prevObj = o->oMrBlizzardHeldObj = NULL;
-                cur_obj_become_intangible();
-            }
-        }
-        // If Mario gets too far away, move to burrow action and delete the snowball.
-        else if (o->oDistanceToMario > 1500.0f) {
-            o->oAction = MR_BLIZZARD_ACT_BURROW;
-            o->oMrBlizzardChangeInDizziness = 300.0f;
-            o->prevObj = o->oMrBlizzardHeldObj = NULL;
-        }
         // After 60 frames, if Mario is within 11.25 degrees of Mr. Blizzard, throw snowball action.
-        else if (o->oTimer > 60 && abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) < 0x800) {
+        if (o->oTimer > 10 && abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) < 0x800) {
             o->oAction = MR_BLIZZARD_ACT_THROW_SNOWBALL;
         }
-    }
 }
 
 /**
  * Handler for Mr. Blizzard's death.
  */
 static void mr_blizzard_act_death(void) {
+#if 0
     if (clamp_f32(&o->oMrBlizzardDizziness, -0x4000, 0x4000)) {
         if (o->oMrBlizzardChangeInDizziness != 0.0f) {
             cur_obj_play_sound_2(SOUND_OBJ_SNOW_SAND1);
@@ -254,6 +211,7 @@ static void mr_blizzard_act_death(void) {
             o->oMrBlizzardDizziness = o->oMrBlizzardChangeInDizziness = 0.0f;
         }
     }
+#endif
 }
 
 /**
@@ -402,7 +360,7 @@ static void mr_blizzard_snowball_act_1(void) {
             }
 
             // Launch the snowball relative to Mario's distance from the snowball.
-            o->oMoveAngleYaw = (s32)(o->parentObj->oMoveAngleYaw + 4000 - marioDist * 4.0f);
+            o->oMoveAngleYaw = (s32)(o->parentObj->oMoveAngleYaw); //  - marioDist * 4.0f
             o->oForwardVel = 40.0f;
             o->oVelY = -20.0f + marioDist * 0.075f;
         }
@@ -433,12 +391,8 @@ static void mr_blizzard_snowball_act_2(void) {
     cur_obj_update_floor_and_walls();
     obj_check_attacks(&sMrBlizzardSnowballHitbox, -1);
 
-    // If snowball collides with the ground, delete snowball.
-    if (o->oAction == -1 || o->oMoveFlags & (OBJ_MOVE_MASK_ON_GROUND | OBJ_MOVE_ENTERED_WATER)) {
-        mr_blizzard_spawn_white_particles(6, 0, 5, 10, 3);
-        create_sound_spawner(SOUND_GENERAL_MOVING_IN_SAND);
-        obj_mark_for_deletion(o);
-    }
+    if (o->oTimer > 50)
+        o->activeFlags = 0;
 
     cur_obj_move_standard(78);
 }

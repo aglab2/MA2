@@ -17,20 +17,9 @@ enum
     LF_PATTERN_LINE,
 };
 
-void bhv_lf_ctl_init()
-{
-    f32 d;
-    o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvBowser, &d);
-    obj_scale(o->parentObj, 5.f);
-    o->parentObj->hitboxRadius = 1000.f;
-    o->parentObj->hitboxHeight = 1300.f;
-    gTimeFrozen = 0;
-}
-
 #define LF_HEIGHT 3000.f
 
 extern const BehaviorScript bhvLfRingSpawner[];
-
 static void lf_place(f32 x, f32 z, int model, const BehaviorScript* bhv, int pattern, f32 angleMult)
 {
     struct Object* spwn = spawn_object(o, MODEL_NONE, bhvLfRingSpawner);
@@ -45,40 +34,109 @@ static void lf_place(f32 x, f32 z, int model, const BehaviorScript* bhv, int pat
     spwn->oLfSpawnerPattern = pattern;
 }
 
+static void lf_phase_mr_blizzard()
+{
+    f32 xstart = random_f32_around_zero(3000.f);
+    for (int i = 0; i < 6; i++)
+    {
+        f32 x = xstart + i * 1800.f;
+        while (x > 3000.f) x -= 6000.f;
+        f32 z = 15000.f - 2000.f * i;
+        lf_place(x, z, MODEL_MR_BLIZZARD, bhvMrBlizzard, LF_PATTERN_CIRCLE, 1.f);
+        x += 3000.f;
+        if (x > 3000.f) x -= 6000.f;
+        lf_place(x, z, MODEL_MR_BLIZZARD, bhvMrBlizzard, LF_PATTERN_CIRCLE, 1.f);
+    }
+}
+
+void bhv_lf_ctl_init()
+{
+    lf_phase_mr_blizzard();
+    f32 d;
+    o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvBowser, &d);
+    obj_scale(o->parentObj, 5.f);
+    o->parentObj->hitboxRadius = 1000.f;
+    o->parentObj->hitboxHeight = 1300.f;
+    gTimeFrozen = 0;
+}
+
+static void lf_place2(f32 x, f32 z, int model, const BehaviorScript* bhv, int pattern, int angle)
+{
+    struct Object* spwn = spawn_object(o, MODEL_NONE, bhvLfRingSpawner);
+    spwn->oPosX = x;
+    spwn->oPosY = LF_HEIGHT;
+    spwn->oPosZ = z;
+    spwn->oMoveAngleYaw = spwn->oFaceAngleYaw = angle;
+    spwn->oLfSpawnerBeh = (uintptr_t)bhv;
+    spwn->oLfSpawnerModel = model;
+    spwn->oLfSpawnerAmount = 4;
+    spwn->oLfSpawnerRadius = 400.f;
+    spwn->oLfSpawnerPattern = pattern;
+}
+
+static void lf_phase_snufit_circles()
+{
+    f32 xstart = random_f32_around_zero(3000.f);
+    for (int i = 0; i < 6; i++)
+    {
+        f32 x = xstart + i * 1800.f;
+        while (x > 3000.f) x -= 6000.f;
+        f32 z = 15000.f - 2000.f * i;
+        lf_place(x, z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_CIRCLE, 1.f);
+        x += 3000.f;
+        if (x > 3000.f) x -= 6000.f;
+        lf_place(x, z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_CIRCLE, 1.f);
+    }
+}
+
+static void lf_phase_snufit_lines()
+{
+    f32 xstart = random_f32_around_zero(3000.f);
+    for (int i = 0; i < 6; i++)
+    {
+        f32 x = xstart + i * 1800.f;
+        while (x > 3000.f) x -= 6000.f;
+        f32 z = 15000.f - 2000.f * i;
+        lf_place(x, -z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_LINE, 0.f);
+        x += 3000.f;
+        if (x > 3000.f) x -= 6000.f;
+        lf_place(x, -z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_LINE, 0.f);
+    }
+}
+
+static void lf_phase_spindrift()
+{
+    f32 xstart = random_f32_around_zero(3000.f);
+    for (int i = 0; i < 6; i++)
+    {
+        f32 x = xstart + i * 1800.f;
+        while (x > 3000.f) x -= 6000.f;
+        f32 z = 15000.f - 2000.f * i;
+        lf_place2(x, -z, MODEL_SPINDRIFT, bhvSpindrift, LF_PATTERN_LINE, 0xc000);
+        x += 3000.f;
+        if (x > 3000.f) x -= 6000.f;
+        lf_place2(x, -z, MODEL_SPINDRIFT, bhvSpindrift, LF_PATTERN_LINE, 0xc000);
+    }
+}
+
 static void lf_place_spawners(int health)
 {
     int phase = 4 - health;
     switch (phase)
     {
         case 0:
-        {
-            f32 xstart = random_f32_around_zero(3000.f);
-            for (int i = 0; i < 6; i++)
-            {
-                f32 x = xstart + i * 1800.f;
-                while (x > 3000.f) x -= 6000.f;
-                f32 z = 15000.f - 2000.f * i;
-                lf_place(x, z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_CIRCLE, 1.f);
-                x += 3000.f;
-                if (x > 3000.f) x -= 6000.f;
-                lf_place(x, z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_CIRCLE, 1.f);
-            }
-        }
+            lf_phase_mr_blizzard();
         break;
         case 1:
-        {
-            f32 xstart = random_f32_around_zero(3000.f);
-            for (int i = 0; i < 6; i++)
-            {
-                f32 x = xstart + i * 1800.f;
-                while (x > 3000.f) x -= 6000.f;
-                f32 z = 15000.f - 2000.f * i;
-                lf_place(x, -z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_LINE, 0.1f);
-                x += 3000.f;
-                if (x > 3000.f) x -= 6000.f;
-                lf_place(x, -z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_LINE, 0.1f);
-            }
-        }
+            lf_phase_spindrift();
+        break;
+        case 2:
+            lf_phase_snufit_circles();
+        break;
+        case 3:
+            lf_phase_snufit_lines();
+        break;
+        case 4:
         break;
     }
 }
@@ -106,11 +164,6 @@ void bhv_lf_ctl_loop()
 
     if (0 == o->oAction)
     {
-        if (0 == o->oTimer)
-        {
-            lf_place_spawners(o->parentObj->oHealth);
-        }
-
         o->parentObj->oFaceAngleYaw = sideSplit ? 0x8000 : 0;
         int act = o->parentObj->oAction;
         if (act == BOWSER_ACT_HIT_MINE)
@@ -145,13 +198,28 @@ void bhv_lf_ctl_loop()
         int angle = CLAMP(o->oTimer * 0x200, 0, 0x8000);
         o->parentObj->oFaceAngleYaw = sideSplit ? angle : (0x8000 - angle);
         m->pos[0] = 0;
-        m->pos[2] = side * 160 * o->oTimer;
+        if (o->oTimer > 30)
+        {
+            m->pos[1] = (m->pos[1] - 3000.f) * 0.9f + 3000.f;
+        }
+        m->pos[2] = side * 250 * o->oTimer;
 
-        if (o->oTimer == 105)
+        if (70 == o->oTimer)
+        {
+            lf_place_spawners(o->parentObj->oHealth);
+        }
+
+        if (80 == o->oTimer)
         {
             o->oAction = 0;
         }
     }
+}
+
+static void lf_scale(struct Object* obj, f32 scale)
+{
+    obj_scale(obj, scale);
+    obj->oSnufitExtraScale = scale;
 }
 
 void bhv_lf_ring_spawner_init()
@@ -191,6 +259,11 @@ void bhv_lf_ring_spawner_init()
             objs[i] = snufit;
         }
     }
+
+    for (int i = 0; i < amount; i++)
+    {
+        lf_scale(objs[i], 0.1f);
+    }
 }
 
 static inline void lf_wrap(f32* val, f32 min, f32 max)
@@ -199,25 +272,37 @@ static inline void lf_wrap(f32* val, f32 min, f32 max)
     if (*val > max) *val = min + (*val - max);
 }
 
+extern void despawn_all(const BehaviorScript* behavior);
 void bhv_lf_ring_spawner_loop()
 {
     struct Object** objs = &o->oLfSpawnerObjects;
 
     struct Object* p = o->parentObj;
-    int despawn = 0;
-    if (1 == p->oAction)
-    {
-        despawn = 1;
-    }
-
-    if (despawn)
+    if (o->oTimer <= 10)
     {
         for (int i = 0; i < o->oLfSpawnerAmount; i++)
         {
-            objs[i]->activeFlags = 0;
+            lf_scale(objs[i], ((1 + o->oTimer) / 11.f));
         }
-        o->activeFlags = 0;
-        return;
+    }
+    else
+    {
+        int despawn = 0;
+        if (1 == p->oAction)
+        {
+            despawn = 1;
+        }
+
+        if (despawn)
+        {
+            despawn_all(bhvMrBlizzardSnowball);
+            for (int i = 0; i < o->oLfSpawnerAmount; i++)
+            {
+                objs[i]->activeFlags = 0;
+            }
+            o->activeFlags = 0;
+            return;
+        }
     }
 
     f32 radius = o->oLfSpawnerRadius;
@@ -261,6 +346,7 @@ void bhv_lf_ring_spawner_loop()
             scale *= azclamp;
 
             snufit->oSnufitExtraScale = scale;
+            obj_scale(snufit, scale);
         }
     }
 }
