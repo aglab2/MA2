@@ -9,7 +9,7 @@
 #define RBTBLACK	(0)
 #define RBTRED		(1)
 
-static RBTNode sentinel =
+RBTNode sentinel =
 {
 	.color = RBTBLACK,.left = RBTNIL,.right = RBTNIL,.parent = NULL
 };
@@ -263,44 +263,47 @@ void rbt_insert(RBTree *rbt, RBTNode *node)
 	return (void) rbt_insert_fixup(rbt, x);
 }
 
-RBTNode* rbt_left_right_iterator(RBTree *rbt, RBTreeIterator *iter)
+RBTNode* rbt_left_right_iterator_init(RBTree *rbt)
 {
-    // TODO: optimize first cycle better
-	if (iter->last_visited == NULL)
-	{
-		iter->last_visited = rbt->root;
-		while (iter->last_visited->left != RBTNIL)
-			iter->last_visited = iter->last_visited->left;
-
-		return iter->last_visited;
+	RBTNode *last_visited;
+	if (rbt->root == NULL) {
+		return NULL;
 	}
 
-	if (iter->last_visited->right != RBTNIL)
-	{
-		iter->last_visited = iter->last_visited->right;
-		while (iter->last_visited->left != RBTNIL)
-			iter->last_visited = iter->last_visited->left;
+	last_visited = rbt->root;
+	while (last_visited->left != RBTNIL)
+		last_visited = last_visited->left;
 
-		return iter->last_visited;
+	return last_visited;
+}
+
+RBTNode* rbt_left_right_iterator_next(RBTNode *last_visited)
+{
+	if (last_visited->right != RBTNIL)
+	{
+		last_visited = last_visited->right;
+		while (last_visited->left != RBTNIL)
+			last_visited = last_visited->left;
+
+		return last_visited;
 	}
 
 	for (;;)
 	{
-		RBTNode    *came_from = iter->last_visited;
+		RBTNode    *came_from = last_visited;
 
-		iter->last_visited = iter->last_visited->parent;
-		if (iter->last_visited == NULL)
+		last_visited = last_visited->parent;
+		if (last_visited == NULL)
 		{
-			iter->is_over = 1;
 			break;
 		}
 
-		if (iter->last_visited->left == came_from)
+		if (last_visited->left == came_from)
 			break;				/* came from left sub-tree, return current
 								 * node */
 
 		/* else - came from right sub-tree, continue to move up */
 	}
 
-	return iter->last_visited;
+	return last_visited;
 }

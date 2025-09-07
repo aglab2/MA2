@@ -49,6 +49,73 @@ static s32 check_wall_edge(Vec3f vert, Vec3f v2, f32 *d00, f32 *d01, f32 *invDen
     return TRUE;
 }
 
+typedef int (*RbIteratorAllowedFunc)(RBTNode* visiting, u32 celledX, u32 celledZ, s32 y, s32 ctx);
+
+static inline RBTNode* rbt_left_right_iterator_init_bvh(RBTree* rbt, u32 celledX, u32 celledZ, s32 y, s32 ctx, RbIteratorAllowedFunc allowed_func)
+{
+    if (rbt->root == NULL) {
+        return NULL;
+    }
+
+    if (!allowed_func(rbt->root, celledX, celledZ, y, ctx)) {
+        return NULL;
+    }
+    RBTNode* last_visited = rbt->root;
+
+    while (last_visited->left != RBTNIL)
+    {
+        if (!allowed_func(last_visited->left, celledX, celledZ, y, ctx))
+            break;
+
+        last_visited = last_visited->left;
+    }
+
+    return last_visited;
+}
+
+static inline RBTNode* rbt_left_right_iterator_next_bvh(RBTNode *last_visited, u32 celledX, u32 celledZ, s32 y, s32 ctx, RbIteratorAllowedFunc allowed_func)
+{
+	if (last_visited->right != RBTNIL && allowed_func(last_visited->right, celledX, celledZ, y, ctx))
+	{
+		last_visited = last_visited->right;
+		while (last_visited->left != RBTNIL)
+        {
+            if (!allowed_func(last_visited->left, celledX, celledZ, y, ctx))
+                break;
+
+			last_visited = last_visited->left;
+        }
+
+		return last_visited;
+	}
+
+	for (;;)
+	{
+		RBTNode    *came_from = last_visited;
+
+        // parent was already checked for bhv_allowed in previous iteration
+		last_visited = last_visited->parent;
+		if (last_visited == NULL)
+		{
+			break;
+		}
+
+		if (last_visited->left == came_from)
+			break;				/* came from left sub-tree, return current
+								 * node */
+
+		/* else - came from right sub-tree, continue to move up */
+	}
+
+	return last_visited;
+}
+
+
+static inline int bhv_wall_allowed(RBTNode* visiting, u32 celledX, u32 celledZ, s32 y, s32 ctx)
+{
+    return !(y < visiting->nodeBvh.lowerY || y > visiting->nodeBvh.upperY);
+}
+
 /**
  * Iterate through the list of walls until all walls are checked and
  * have given their wall push.
@@ -73,12 +140,11 @@ static s32 find_wall_collisions_from_list(RBTree* tree, struct WallCollisionData
     f32 margin_radius = radius - 1.0f;
 
     // Stay in this loop until out of walls.
-    struct RBTreeIterator it = rbt_begin_iterate(tree);
-    struct SurfaceNode* surfaceNode;
-    while ((surfaceNode = rbt_iterate(tree, &it)))
+    for (struct SurfaceNode* surfaceNode = rbt_left_right_iterator_init_bvh(tree, 0, 0, pos[1], 0, bhv_wall_allowed);
+         surfaceNode;
+         surfaceNode = rbt_left_right_iterator_next_bvh(surfaceNode, 0, 0, pos[1], 0, bhv_wall_allowed))
     {
         // Exclude a large number of walls immediately to optimize.
-        // AGLAB: optimize collision checks here - use smart walk
         if (pos[1] < surfaceNode->triBvh.lowerY || pos[1] > surfaceNode->triBvh.upperY) continue;
 
         // Determine if checking for the camera or not.
@@ -318,6 +384,23 @@ static u32 celled_coord(s32 coord, s32 cell) {
     return CLAMP((celledCoord >> CELLED_COORD_SHIFT), 0, 255);
 }
 
+static inline int bhv_ceil_allowed(RBTNode* visiting, u32 celledX, u32 celledZ, s32 y, s32 gm)
+{
+    // Check if the BVH overlaps with the cell and y-level
+    if (visiting->nodeBvh.upperCellX < celledX) return FALSE;
+    if (visiting->nodeBvh.lowerCellX > celledX) return FALSE;
+    if (visiting->nodeBvh.upperCellZ < celledZ) return FALSE;
+    if (visiting->nodeBvh.lowerCellZ > celledZ) return FALSE;
+    if (!gm) {
+        if (y > visiting->nodeBvh.upperY) return FALSE;
+    } else {
+        // TODO: uncba
+        // if (y < surf->lowerY) continue;
+    }
+
+    return TRUE;
+}
+
 /**
  * Iterate through the list of ceilings and find the first ceiling over a given point.
  */
@@ -331,9 +414,9 @@ static struct Surface *find_ceil_from_list(RBTree* tree, s32 x, s32 y, s32 z, u8
     const u32 gm = gGravityMode;
 
     // Stay in this loop until out of ceilings.
-    struct RBTreeIterator it = rbt_begin_iterate(tree);
-    struct SurfaceNode* surfaceNode;
-    while ((surfaceNode = rbt_iterate(tree, &it)))
+    for (struct SurfaceNode* surfaceNode = rbt_left_right_iterator_init_bvh(tree, celledX, celledZ, y, gm, bhv_ceil_allowed);
+         surfaceNode;
+         surfaceNode = rbt_left_right_iterator_next_bvh(surfaceNode, celledX, celledZ, y, gm, bhv_ceil_allowed))
     {
         // Exclude all ceilings below the point
         // AGLAB: COLL optimize - use smart walk
@@ -506,6 +589,23 @@ int gQuickLookups = 0;
 int gSlowLookups = 0;
 #endif
 
+static inline int bhv_floor_allowed(RBTNode* visiting, u32 celledX, u32 celledZ, s32 y, s32 gm)
+{
+    // Check if the BVH overlaps with the cell and y-level
+    if (visiting->nodeBvh.upperCellX < celledX) return FALSE;
+    if (visiting->nodeBvh.lowerCellX > celledX) return FALSE;
+    if (visiting->nodeBvh.upperCellZ < celledZ) return FALSE;
+    if (visiting->nodeBvh.lowerCellZ > celledZ) return FALSE;
+    if (!gm) {
+        if (y < visiting->nodeBvh.lowerY) return FALSE;
+    } else {
+        // TODO: uncba
+        // if (bufferY > surf->upperY) continue;
+    }
+
+    return TRUE;
+}
+
 /**
  * Iterate through the list of floors and find the first floor under a given point.
  */
@@ -519,9 +619,9 @@ static struct Surface *find_floor_from_list(RBTree *tree, s32 x, s32 y, s32 z, u
     s32 flagLava = gCollisionFlags & COLLISION_FLAG_EXCLUDE_LAVA;
     const u32 gm = gGravityMode;
 
-    struct SurfaceNode* surfaceNode;
-    RBTreeIterator it = rbt_begin_iterate(tree);
-    while ((surfaceNode = rbt_iterate(tree, &it)))
+    for (struct SurfaceNode* surfaceNode = rbt_left_right_iterator_init_bvh(tree, celledX, celledZ, bufferY, gm, bhv_floor_allowed);
+         surfaceNode;
+         surfaceNode = rbt_left_right_iterator_next_bvh(surfaceNode, celledX, celledZ, bufferY, gm, bhv_floor_allowed))
     {
 #ifdef DEBUG_SURF
         gQuickLookups++;
@@ -591,7 +691,7 @@ static struct Surface *find_floor_from_list(RBTree *tree, s32 x, s32 y, s32 z, u
 
         // Exit the loop if it's not possible for another floor to be closer
         // to the original point, or if COLLISION_FLAG_RETURN_FIRST.
-        if ((height == bufferY) || flagRetFirst) break;
+        // if ((height == bufferY) || flagRetFirst) break;
     }
     return floor;
 }

@@ -107,13 +107,6 @@ typedef struct SurfaceNode
     char color;
 } RBTNode;
 
-/*
- * RBTreeIterator holds state while traversing a tree.  This is declared
- * here so that callers can stack-allocate this, but must otherwise be
- * treated as an opaque struct.
- */
-typedef struct RBTreeIterator RBTreeIterator;
-
 typedef struct RBTree
 {
 	RBTNode    *root;			/* root node, or RBTNIL if tree is empty */
@@ -126,43 +119,19 @@ static inline void rbt_init(RBTree *rbt)
 
 extern void rbt_insert(RBTree *rbt, RBTNode*);
 
-extern RBTNode* rbt_left_right_iterator(RBTree *rbt, RBTreeIterator *iter);
-struct RBTreeIterator
+extern RBTNode* rbt_left_right_iterator_init(RBTree *rbt);
+extern RBTNode* rbt_left_right_iterator_next(RBTNode *last_visited);
+static inline RBTNode* rbt_iterate_init(RBTree *rbt)
 {
-	RBTNode    *last_visited;
-	int        is_over;
-};
-
-/*
- * rbt_begin_iterate: prepare to traverse the tree in any of several orders
- *
- * After calling rbt_begin_iterate, call rbt_iterate repeatedly until it
- * returns NULL or the traversal stops being of interest.
- *
- * If the tree is changed during traversal, results of further calls to
- * rbt_iterate are unspecified.  Multiple concurrent iterators on the same
- * tree are allowed.
- *
- * The iterator state is stored in the 'iter' struct.  The caller should
- * treat it as an opaque struct.
- */
-static inline RBTreeIterator rbt_begin_iterate(RBTree *rbt)
-{
-	RBTreeIterator iter;
-    iter.last_visited = NULL;
-	iter.is_over = (rbt->root == NULL);
-    return iter;
+    return rbt_left_right_iterator_init(rbt);
 }
 
-/*
- * rbt_iterate: return the next node in traversal order, or NULL if no more
- */
-static inline RBTNode* rbt_iterate(RBTree *rbt, RBTreeIterator *iter)
+static inline RBTNode* rbt_iterate_next(RBTNode *last_visited)
 {
-	if (iter->is_over)
-		return NULL;
-
-	return rbt_left_right_iterator(rbt, iter);
+	return rbt_left_right_iterator_next(last_visited);
 }
+
+#define RBTNIL (&sentinel)
+extern RBTNode sentinel;
 
 #endif							/* RBTREE_H */

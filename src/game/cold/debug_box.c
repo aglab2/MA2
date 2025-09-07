@@ -217,9 +217,7 @@ void iterate_surfaces_visual(s32 x, s32 z, Vtx *verts) {
             case 5: root =  &gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_RED   ); break;
         }
 
-        RBTreeIterator it = rbt_begin_iterate(root);
-        struct SurfaceNode* node;
-        while ((node = rbt_iterate(root, &it))) {
+        for (struct SurfaceNode* node = rbt_iterate_init(root); node; node = rbt_iterate_next(node)) {
             surf = node->surf;
             if (SURFACE_IS_INSTANT_WARP(surf->type)) {
                 make_vertex(verts, (gVisualSurfaceCount + 0), surf->vertex1[0], surf->vertex1[1], surf->vertex1[2], 0, 0, 0xFF, 0xA0, 0x00, 0x80);
@@ -323,9 +321,7 @@ s32 iterate_surface_count(s32 x, s32 z) {
             case 5: root =  &gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ]; break;
         }
 
-        RBTreeIterator it = rbt_begin_iterate(root);
-        struct SurfaceNode* node;
-        while ((node = rbt_iterate(root, &it))) {
+        for (struct SurfaceNode* node = rbt_iterate_init(root); node; node = rbt_iterate_next(node)) {
             j++;
         }
     }

@@ -951,9 +951,7 @@ static void find_surface_on_ray_list(RBTree *tree, Vec3f orig, Vec3f dir, f32 di
     }
 
     // Iterate through every surface of the list
-    RBTreeIterator it = rbt_begin_iterate(tree);
-    struct SurfaceNode* node;
-    while ((node = rbt_iterate(tree, &it))) {
+    for (struct SurfaceNode* node = rbt_iterate_init(tree); node; node = rbt_iterate_next(node)) {
         // Reject surface if out of vertical bounds
         // AGLAB: COLL optimize - use smart walk
         if ((node->triBvh.lowerY > top) || (node->triBvh.upperY < bottom)) continue;
