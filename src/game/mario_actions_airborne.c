@@ -1992,9 +1992,10 @@ s32 act_vertical_wind(struct MarioState *m) {
     }
     else
     {
-        m->forwardVel = intendedMag * coss(intendedDYaw);
-        m->slideVelX = m->intendedMag * sins(m->intendedYaw);
-        m->slideVelZ = m->intendedMag * coss(m->intendedYaw);
+        f32 mult = gCurrCourseNum == COURSE_LF ? 2.f : 1.f;
+        m->forwardVel = mult * m->intendedMag * coss(intendedDYaw);
+        m->slideVelX = mult * m->intendedMag * sins(m->intendedYaw);
+        m->slideVelZ = mult * m->intendedMag * coss(m->intendedYaw);
         m->vel[0] = m->slideVelX;
         m->vel[2] = m->slideVelZ;
     }

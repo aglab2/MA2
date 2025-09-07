@@ -1,4 +1,5 @@
 #define oLfHSTimer oF4
+#define oLfSpawnerObjects oObjF4
 
 void bhv_lf_ctl_init()
 {
@@ -7,21 +8,42 @@ void bhv_lf_ctl_init()
     obj_scale(o->parentObj, 5.f);
     o->parentObj->hitboxRadius = 1000.f;
     o->parentObj->hitboxHeight = 1300.f;
+    gTimeFrozen = 0;
 }
 
 #define LF_HEIGHT 3000.f
 
-static void spawn_snufit_circle()
+extern const BehaviorScript bhvLfRingSpawner[];
+
+static void lf_place(f32 x, f32 z)
 {
-    f32 radius = 500.f;
-    for (int i = 0; i < 8; i++)
+    struct Object* spwn = spawn_object(o, MODEL_NONE, bhvLfRingSpawner);
+    spwn->oPosX = x;
+    spwn->oPosY = LF_HEIGHT;
+    spwn->oPosZ = z;
+    spwn->oFaceAngleYaw = random_u16();  
+}
+
+static void lf_place_spawners(int health)
+{
+    int phase = 4 - health;
+    switch (phase)
     {
-        f32 angle = i * (0x10000 / 7);
-        struct Object* snufit = spawn_object(o, MODEL_SNUFIT, bhvSnufit);
-        snufit->oPosX = 0.f + radius * sins(angle);
-        snufit->oPosY = LF_HEIGHT;
-        snufit->oPosZ = 15000.f + radius * coss(angle);
-        snufit->oDrawingDistance = 20000.f;
+        case 0:
+        {
+            f32 xstart = random_f32_around_zero(3000.f);
+            for (int i = 0; i < 6; i++)
+            {
+                f32 x = xstart + i * 1800.f;
+                while (x > 3000.f) x -= 6000.f;
+                f32 z = 15000.f - 2000.f * i;
+                lf_place(x, z);
+                x += 3000.f;
+                if (x > 3000.f) x -= 6000.f;
+                lf_place(x, z);
+            }
+        }
+        break;
     }
 }
 
@@ -50,7 +72,7 @@ void bhv_lf_ctl_loop()
     {
         if (0 == o->oTimer)
         {
-            spawn_snufit_circle();
+            lf_place_spawners(o->parentObj->oHealth);
         }
 
         o->parentObj->oFaceAngleYaw = sideSplit ? 0x8000 : 0;
@@ -93,5 +115,37 @@ void bhv_lf_ctl_loop()
         {
             o->oAction = 0;
         }
+    }
+}
+
+void bhv_lf_ring_spawner_init()
+{
+    struct Object** objs = &o->oLfSpawnerObjects;
+    f32 radius = 500.f;
+    int amount = 4;
+    for (int i = 0; i < amount; i++)
+    {
+        s16 angle = o->oFaceAngleYaw + i * (0x10000 / 4);
+        struct Object* snufit = spawn_object(o, MODEL_SNUFIT, bhvSnufitCC);
+        snufit->oPosX = o->oPosX + radius * sins(angle);
+        snufit->oPosY = LF_HEIGHT;
+        snufit->oPosZ = o->oPosZ + radius * coss(angle);
+        snufit->oDrawingDistance = 20000.f;
+        objs[i] = snufit;
+    }
+}
+
+void bhv_lf_ring_spawner_loop()
+{
+    struct Object** objs = &o->oLfSpawnerObjects;
+    f32 radius = 700.f;
+    int amount = 4;
+    for (int i = 0; i < amount; i++)
+    {
+        s16 angle = o->oFaceAngleYaw + i * (0x10000 / amount) + o->oTimer * 0x120;
+        struct Object* snufit = objs[i];
+        snufit->oHomeX = snufit->oPosX = o->oPosX + radius * sins(angle);
+        snufit->oHomeY = snufit->oPosY = LF_HEIGHT;
+        snufit->oHomeZ = snufit->oPosZ = o->oPosZ + radius * coss(angle);
     }
 }

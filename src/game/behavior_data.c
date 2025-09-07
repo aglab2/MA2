@@ -7123,6 +7123,17 @@ const BehaviorScript bhvLfCtl[] = {
     END_LOOP(),
 };
 
+extern void bhv_lf_ring_spawner_init();
+extern void bhv_lf_ring_spawner_loop();
+const BehaviorScript bhvLfRingSpawner[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    OR_INT(oFlags, OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO),
+    CALL_NATIVE(bhv_lf_ring_spawner_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_lf_ring_spawner_loop),
+    END_LOOP(),
+};
+
 extern const Collision lb_wind_collision[];
 extern void bhv_lb_wind_loop();
 const BehaviorScript bhvLBWind[] = {

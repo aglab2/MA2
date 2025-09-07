@@ -6,6 +6,8 @@
  * the snufit shoots at Mario.
  */
 
+#define oSnufitPelletRange oFloatF4
+
 struct ObjectHitbox sSnufitHitbox = {
     /* interactType:      */ INTERACT_HIT_FROM_BELOW,
     /* downOffset:        */ 0,
@@ -103,7 +105,8 @@ void snufit_act_shoot(int buff) {
     } else if (o->oSnufitBullets < 3 && o->oTimer >= 3) {
         o->oSnufitBullets++;
         cur_obj_play_sound_2(SOUND_OBJ_SNUFIT_SHOOT);
-        spawn_object_relative(0, 0, -20, 40, o, MODEL_BOWLING_BALL, buff ? bhvSnufitBallsCC : bhvSnufitBalls);
+        struct Object* pellet = spawn_object_relative(0, 0, -20, 40, o, MODEL_BOWLING_BALL, buff ? bhvSnufitBallsCC : bhvSnufitBalls);
+        pellet->oSnufitPelletRange = buff ? 4500.f : 1500.f;
         o->oSnufitRecoil = -30;
         o->oTimer = 0;
     }
@@ -180,7 +183,7 @@ void bhv_snufit_loop(void)
 void bhv_snufit_balls_loop(void) {
     // If far from Mario or in a different room, despawn.
     if ((o->activeFlags & ACTIVE_FLAG_IN_DIFFERENT_ROOM)
-        || (o->oTimer != 0 && o->oDistanceToMario > 1500.0f)) {
+        || (o->oTimer != 0 && o->oDistanceToMario > o->oSnufitPelletRange)) {
         obj_mark_for_deletion(o);
     }
 
