@@ -52,7 +52,6 @@ static struct SurfaceNode *alloc_surface_node(u8** pend, struct Surface* surface
     struct SurfaceNode *node = (struct SurfaceNode*) end;
     __builtin_mips_cache(0xd, ((char*)end) + 0x00);
     __builtin_mips_cache(0xd, ((char*)end) + 0x10);
-    __builtin_mips_cache(0xd, ((char*)end) + 0x20);
     *pend = (void*) ((u8*) end + sizeof(struct SurfaceNode));
 
     gSurfaceNodesAllocated++;
@@ -66,7 +65,6 @@ static struct SurfaceNode *alloc_surface_node(u8** pend, struct Surface* surface
     bvh.upperCellZ = upperZCelled;
     
     node->triBvh = bvh;
-    node->nodeBvh = bvh;
     node->flags = surface->flags;
     node->type = surface->type;
     node->surf = surface;

@@ -18,29 +18,6 @@ RBTNode sentinel =
  *							  Insertion								  *
  **********************************************************************/
 
-static void bvh_visit(Bvh* acceptor, const Bvh* visitor)
-{
-    acceptor->lowerY = MIN(acceptor->lowerY, visitor->lowerY);
-    acceptor->upperY = MAX(acceptor->upperY, visitor->upperY);
-    acceptor->lowerCellX = MIN(acceptor->lowerCellX, visitor->lowerCellX);
-    acceptor->lowerCellZ = MIN(acceptor->lowerCellZ, visitor->lowerCellZ);
-    acceptor->upperCellX = MAX(acceptor->upperCellX, visitor->upperCellX);
-    acceptor->upperCellZ = MAX(acceptor->upperCellZ, visitor->upperCellZ);
-}
-
-static void surface_node_reweight(struct SurfaceNode* node)
-{
-    node->nodeBvh = node->triBvh;
-    struct SurfaceNode* left = node->left;
-    struct SurfaceNode* right = node->right;
-    if (left != RBTNIL) {
-        bvh_visit(&node->nodeBvh, &left->nodeBvh);
-    }
-    if (right != RBTNIL) {
-        bvh_visit(&node->nodeBvh, &right->nodeBvh);
-    }
-}
-
 /*
  * Rotate node x to left.
  *
@@ -76,11 +53,6 @@ rbt_rotate_left(RBTree *rbt, RBTNode *x)
 	y->left = x;
 	if (x != RBTNIL)
 		x->parent = y;
-
-    surface_node_reweight(x);
-    // TODO: WTF? why is this a possible condition?
-	if (y != RBTNIL)
-        surface_node_reweight(y);
 }
 
 /*
@@ -118,11 +90,6 @@ rbt_rotate_right(RBTree *rbt, RBTNode *x)
 	y->right = x;
 	if (x != RBTNIL)
 		x->parent = y;
-
-    surface_node_reweight(x);
-    // TODO: WTF? why is this a possible condition?
-	if (y != RBTNIL)
-        surface_node_reweight(y);
 }
 
 static void rbt_insert_fixup(RBTree *rbt, RBTNode *x)
@@ -216,11 +183,6 @@ static void rbt_insert_fixup(RBTree *rbt, RBTNode *x)
 	rbt->root->color = RBTBLACK;
 }
 
-static void surface_node_touch(struct SurfaceNode* node_to_touch, const struct SurfaceNode* touching_node)
-{
-    bvh_visit(&node_to_touch->nodeBvh, &touching_node->nodeBvh);
-}
-
 void rbt_insert(RBTree *rbt, RBTNode *node)
 {
 	RBTNode    *current,
@@ -234,7 +196,6 @@ void rbt_insert(RBTree *rbt, RBTNode *node)
 
 	while (current != RBTNIL)
 	{
-        surface_node_touch(current, node);
         cmp = node->weight < current->weight;
 		parent = current;
 		current = cmp ? current->left : current->right;

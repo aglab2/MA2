@@ -91,20 +91,17 @@ struct Surface; // forward declare
 typedef struct SurfaceNode
 {
     // First 0x10 bytes is BVH + rbtree left/right
-    Bvh nodeBvh;
+    Bvh triBvh;
 	struct SurfaceNode *left;		/* left child, or RBTNIL if none */
 	struct SurfaceNode *right;		/* right child, or RBTNIL if none */
 
     // Second 0x10 bytes is rest of rb mosh and surface info
-    Bvh triBvh;
     u8 flags;
+    char color;
     TerrainData type;
     struct Surface *surf;
-
-    // Third 0x10 bytes is rbtree building fields. TODO: mirror this to cold RAM
-    uint32_t weight; // weight is a morton of middle of bvh
 	struct SurfaceNode* parent;		/* parent, or NULL (not RBTNIL!) if none */
-    char color;
+    uint32_t weight;
 } RBTNode;
 
 typedef struct RBTree
