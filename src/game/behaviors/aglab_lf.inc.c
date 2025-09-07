@@ -4,11 +4,18 @@
 // !!! These fields will be overwritten by oLfSpawnerObjects !!!
 // You can only rely on them during the init sequence.
 #define oLfSpawnerBeh oF4
-#define oLfSpawnerModel oF8
+#define oLfSpawnerModel os16F8
 
 // And these fields _do_ get preserved, currently I am overwriting oHome
 #define oLfSpawnerAmount OBJECT_FIELD_S32(0x37)
 #define oLfSpawnerRadius OBJECT_FIELD_F32(0x38)
+#define oLfSpawnerPattern OBJECT_FIELD_S32(0x39)
+
+enum
+{
+    LF_PATTERN_CIRCLE,
+    LF_PATTERN_LINE,
+};
 
 void bhv_lf_ctl_init()
 {
@@ -24,17 +31,18 @@ void bhv_lf_ctl_init()
 
 extern const BehaviorScript bhvLfRingSpawner[];
 
-static void lf_place(f32 x, f32 z, int model, const BehaviorScript* bhv)
+static void lf_place(f32 x, f32 z, int model, const BehaviorScript* bhv, int pattern, f32 angleMult)
 {
     struct Object* spwn = spawn_object(o, MODEL_NONE, bhvLfRingSpawner);
     spwn->oPosX = x;
     spwn->oPosY = LF_HEIGHT;
     spwn->oPosZ = z;
-    spwn->oFaceAngleYaw = random_u16();
+    spwn->oFaceAngleYaw = 0x4000 + random_u16() * angleMult;
     spwn->oLfSpawnerBeh = (uintptr_t)bhv;
     spwn->oLfSpawnerModel = model;
     spwn->oLfSpawnerAmount = 4;
     spwn->oLfSpawnerRadius = 400.f;
+    spwn->oLfSpawnerPattern = pattern;
 }
 
 static void lf_place_spawners(int health)
@@ -50,10 +58,25 @@ static void lf_place_spawners(int health)
                 f32 x = xstart + i * 1800.f;
                 while (x > 3000.f) x -= 6000.f;
                 f32 z = 15000.f - 2000.f * i;
-                lf_place(x, z, MODEL_SNUFIT, bhvSnufitCC);
+                lf_place(x, z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_CIRCLE, 1.f);
                 x += 3000.f;
                 if (x > 3000.f) x -= 6000.f;
-                lf_place(x, z, MODEL_SNUFIT, bhvSnufitCC);
+                lf_place(x, z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_CIRCLE, 1.f);
+            }
+        }
+        break;
+        case 1:
+        {
+            f32 xstart = random_f32_around_zero(3000.f);
+            for (int i = 0; i < 6; i++)
+            {
+                f32 x = xstart + i * 1800.f;
+                while (x > 3000.f) x -= 6000.f;
+                f32 z = 15000.f - 2000.f * i;
+                lf_place(x, -z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_LINE, 0.1f);
+                x += 3000.f;
+                if (x > 3000.f) x -= 6000.f;
+                lf_place(x, -z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_LINE, 0.1f);
             }
         }
         break;
@@ -137,17 +160,43 @@ void bhv_lf_ring_spawner_init()
     f32 radius = o->oLfSpawnerRadius;
     int amount = o->oLfSpawnerAmount;
     int model = o->oLfSpawnerModel;
+    int pattern = o->oLfSpawnerPattern;
     const BehaviorScript* bhv = (const BehaviorScript*) o->oLfSpawnerBeh;
-    for (int i = 0; i < amount; i++)
+
+    if (LF_PATTERN_CIRCLE == pattern)
     {
-        s16 angle = o->oFaceAngleYaw + i * (0x10000 / amount);
-        struct Object* snufit = spawn_object(o, model, bhv);
-        snufit->oPosX = o->oPosX + radius * sins(angle);
-        snufit->oPosY = LF_HEIGHT;
-        snufit->oPosZ = o->oPosZ + radius * coss(angle);
-        snufit->oDrawingDistance = 20000.f;
-        objs[i] = snufit;
+        for (int i = 0; i < amount; i++)
+        {
+            s16 angle = o->oFaceAngleYaw + i * (0x10000 / amount);
+            struct Object* snufit = spawn_object(o, model, bhv);
+            snufit->oPosX = o->oPosX + radius * sins(angle);
+            snufit->oPosY = LF_HEIGHT;
+            snufit->oPosZ = o->oPosZ + radius * coss(angle);
+            snufit->oDrawingDistance = 20000.f;
+            objs[i] = snufit;
+        }
     }
+
+    if (LF_PATTERN_LINE == pattern)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            s16 angle = o->oFaceAngleYaw;
+            struct Object* snufit = spawn_object(o, model, bhv);
+            int loc = i - (amount / 2);
+            snufit->oHomeX = snufit->oPosX = o->oPosX + loc * radius * sins(angle);
+            snufit->oHomeY = snufit->oPosY = LF_HEIGHT;
+            snufit->oHomeZ = snufit->oPosZ = o->oPosZ + loc * radius * coss(angle);
+            snufit->oDrawingDistance = 20000.f;
+            objs[i] = snufit;
+        }
+    }
+}
+
+static inline void lf_wrap(f32* val, f32 min, f32 max)
+{
+    if (*val < min) *val = max - (min - *val);
+    if (*val > max) *val = min + (*val - max);
 }
 
 void bhv_lf_ring_spawner_loop()
@@ -173,12 +222,45 @@ void bhv_lf_ring_spawner_loop()
 
     f32 radius = o->oLfSpawnerRadius;
     int amount = o->oLfSpawnerAmount;
-    for (int i = 0; i < amount; i++)
+    int pattern = o->oLfSpawnerPattern;
+    if (LF_PATTERN_CIRCLE == pattern)
     {
-        s16 angle = o->oFaceAngleYaw + i * (0x10000 / amount) + o->oTimer * 0x120;
-        struct Object* snufit = objs[i];
-        snufit->oHomeX = snufit->oPosX = o->oPosX + radius * sins(angle);
-        snufit->oHomeY = snufit->oPosY = LF_HEIGHT;
-        snufit->oHomeZ = snufit->oPosZ = o->oPosZ + radius * coss(angle);
+        for (int i = 0; i < amount; i++)
+        {
+            s16 angle = o->oFaceAngleYaw + i * (0x10000 / amount) + o->oTimer * 0x120;
+            struct Object* snufit = objs[i];
+            snufit->oHomeX = snufit->oPosX = o->oPosX + radius * sins(angle);
+            snufit->oHomeY = snufit->oPosY = LF_HEIGHT;
+            snufit->oHomeZ = snufit->oPosZ = o->oPosZ + radius * coss(angle);
+        }
+    }
+
+    if (LF_PATTERN_LINE == pattern)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            s16 angle = o->oFaceAngleYaw;
+
+            struct Object* snufit = objs[i];
+            snufit->oHomeX += 40.f * sins(angle);
+            snufit->oHomeZ += 40.f * coss(angle);
+            lf_wrap(&snufit->oHomeX, -4000.f, 4000.f);
+            lf_wrap(&snufit->oHomeZ, -16000.f, -1000.f);
+            snufit->oPosX = snufit->oHomeX;
+            snufit->oPosZ = snufit->oHomeZ;
+
+            snufit->oPosY = snufit->oHomeY = LF_HEIGHT;
+
+            f32 scale = 1.f;
+            f32 ax = ABS(snufit->oPosX);
+            f32 az = ABS(snufit->oPosZ + 8000.f);
+
+            f32 axclamp = (1000.f - CLAMP(ax - 3000.f, 0.f, 1000.f)) / 1000.f;
+            f32 azclamp = (1000.f - CLAMP(az - 7000.f, 0.f, 1000.f)) / 1000.f;
+            scale *= axclamp;
+            scale *= azclamp;
+
+            snufit->oSnufitExtraScale = scale;
+        }
     }
 }

@@ -167,9 +167,14 @@ void bhv_snufit_loop_impl(int buff) {
             o->oSnufitScale = 1.0f;
         }
 
-        cur_obj_scale(o->oSnufitScale);
+        cur_obj_scale(o->oSnufitScale * o->oSnufitExtraScale);
         obj_check_attacks(&sSnufitHitbox, o->oAction);
     }
+}
+
+void bhv_snufit_init(void)
+{
+    o->oSnufitExtraScale = 1.0f;
 }
 
 void bhv_snufit_loop(void)

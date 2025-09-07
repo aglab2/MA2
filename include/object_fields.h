@@ -963,7 +963,7 @@
 /* Snufit */
 #define /*0x0F4*/ oSnufitRecoil          OBJECT_FIELD_S32(0x1B)
 #define /*0x0F8*/ oSnufitScale           OBJECT_FIELD_F32(0x1C)
-// 0x1D
+#define oSnufitExtraScale OBJECT_FIELD_F32(0x1D)
 #define /*0x100*/ oSnufitCircularPeriod  OBJECT_FIELD_S32(0x1E)
 #define /*0x104*/ oSnufitBodyScalePeriod OBJECT_FIELD_S32(0x1F)
 #define /*0x108*/ oSnufitBodyBaseScale   OBJECT_FIELD_S32(0x20)
