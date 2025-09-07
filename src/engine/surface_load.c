@@ -70,7 +70,9 @@ static struct SurfaceNode *alloc_surface_node(u8** pend, struct Surface* surface
     node->flags = surface->flags;
     node->type = surface->type;
     node->surf = surface;
+#if 0
     node->weight = morton(bvh);
+#endif
 
     return node;
 }
@@ -133,11 +135,12 @@ static void add_surface_to_cell(s32 dynamic, s32 cellX, s32 cellZ, struct Surfac
 
     if (surface->normal.y > NORMAL_FLOOR_THRESHOLD) {
         listIndex = SPATIAL_PARTITION_FLOORS;
-        addingPriority = upperY;
+        addingPriority = -upperY;
     } else if (surface->normal.y < NORMAL_CEIL_THRESHOLD) {
         listIndex = SPATIAL_PARTITION_CEILS;
-        addingPriority = -lowerY;
+        addingPriority = +lowerY;
     } else {
+        addingPriority = -upperY;
         listIndex = SPATIAL_PARTITION_WALLS;
     }
 
@@ -158,6 +161,7 @@ static void add_surface_to_cell(s32 dynamic, s32 cellX, s32 cellZ, struct Surfac
         tree = &gStaticSurfacePartition[cellZ][cellX][listIndex];
     }
 
+    newNode->weight = 0x8000 + addingPriority;
     rbt_insert(tree, newNode);
 }
 

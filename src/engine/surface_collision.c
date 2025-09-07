@@ -691,7 +691,7 @@ static struct Surface *find_floor_from_list(RBTree *tree, s32 x, s32 y, s32 z, u
 
         // Exit the loop if it's not possible for another floor to be closer
         // to the original point, or if COLLISION_FLAG_RETURN_FIRST.
-        // if ((height == bufferY) || flagRetFirst) break;
+        if ((height == bufferY) || flagRetFirst) break;
     }
     return floor;
 }
