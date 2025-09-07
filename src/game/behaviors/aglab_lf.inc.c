@@ -152,9 +152,25 @@ void bhv_lf_ring_spawner_init()
 
 void bhv_lf_ring_spawner_loop()
 {
-    struct Object* p = o->parentObj;
-
     struct Object** objs = &o->oLfSpawnerObjects;
+
+    struct Object* p = o->parentObj;
+    int despawn = 0;
+    if (1 == p->oAction)
+    {
+        despawn = 1;
+    }
+
+    if (despawn)
+    {
+        for (int i = 0; i < o->oLfSpawnerAmount; i++)
+        {
+            objs[i]->activeFlags = 0;
+        }
+        o->activeFlags = 0;
+        return;
+    }
+
     f32 radius = o->oLfSpawnerRadius;
     int amount = o->oLfSpawnerAmount;
     for (int i = 0; i < amount; i++)
