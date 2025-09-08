@@ -309,15 +309,15 @@ void make_viewport_clip_rect(Vp *viewport) {
  * If you plan on using gSPLoadUcode, make sure to add OS_TASK_LOADABLE to the flags member.
  */
 
-// #define EX3_MICRO
-#ifdef EX3_MICRO
-#define UCODE_TEXT_START gspF3DEX3_MICRO_fifoTextStart
-#define UCODE_TEXT_END gspF3DEX3_MICRO_fifoTextEnd
-#define UCODE_DATA_START gspF3DEX3_MICRO_fifoDataStart
-#define UCODE_DATA_END gspF3DEX3_MICRO_fifoDataEnd
+#define EX3_LITE
+#ifdef EX3_LITE
+#define UCODE_TEXT_START gspF3DEX3_LITE_fifoTextStart
+#define UCODE_TEXT_END gspF3DEX3_LITE_fifoTextEnd
+#define UCODE_DATA_START gspF3DEX3_LITE_fifoDataStart
+#define UCODE_DATA_END gspF3DEX3_LITE_fifoDataEnd
 #endif
 
-#define EX3_CHERRY
+// #define EX3_CHERRY
 #ifdef EX3_CHERRY
 #define UCODE_TEXT_START gspF3DEX3_CHERRY_fifoTextStart
 #define UCODE_TEXT_END gspF3DEX3_CHERRY_fifoTextEnd

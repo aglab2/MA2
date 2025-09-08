@@ -187,6 +187,7 @@ SECTIONS
       */libhvqm2.a:*.o(.text*);
       */rsp.o(.text*);
       */gspF3DEX3_CHERRY.o(.text*);
+      */gspF3DEX3_LITE.o(.text*);
 #include "rsptext.inc.ld"
       BUILD_DIR/lib/aspMain.o(.text*);
       BUILD_DIR/lib/audio.o(.text*);
@@ -207,6 +208,7 @@ SECTIONS
       */libhvqm2.a:*.o(.data*);
       */libz.a:*.o(.data*);
       */gspF3DEX3_CHERRY.o(.data*);
+      */gspF3DEX3_LITE.o(.data*);
 #include "rspdata.inc.ld"
       BUILD_DIR/lib/aspMain.o(.data*);
       BUILD_DIR/lib/audio.o(.data*);
