@@ -12,3 +12,5 @@
 #include "levels/castle_grounds2/ow2_number/model.inc.c"
 #include "levels/castle_grounds2/ow2_lock/model.inc.c"
 #include "levels/castle_grounds2/ow2_lock/collision.inc.c"
+
+#include "levels/castle_grounds2/ow2_ig/model.inc.c"

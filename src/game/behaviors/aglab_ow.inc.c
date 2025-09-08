@@ -1,4 +1,5 @@
 #define OW_LEVEL_COUNT 15
+#define OW2_LEVEL_COUNT 13
 
 extern const Trajectory* sTrajectory;
 extern const s16* sSpringBezier;
@@ -37,21 +38,35 @@ extern u8 gTimeFrozen;
 void bhv_ow_ctl_init()
 {
     int off = 0x80;
-    for (int i = 0; i < OW_LEVEL_COUNT; i++)
+    int levelCount = gCurrLevelNum == LEVEL_CASTLE_GROUNDS2 ? OW2_LEVEL_COUNT : OW_LEVEL_COUNT;
+    int levelBase = gCurrLevelNum == LEVEL_CASTLE_GROUNDS2 ? (LEVEL_IG - LEVEL_CE) : (LEVEL_CE - LEVEL_CE);
+    for (int i = 0; i < levelCount; i++)
     {
-        u64 withExtraMode = gLevelWithHardModes & (1ULL << i);
+        u64 withExtraMode = gLevelWithHardModes & (1ULL << (i + levelBase));
 
+        f32 baseDistanace;
+        if (gCurrLevelNum == LEVEL_CASTLE_GROUNDS2)
+        {
+            baseDistanace = -7738.f + 1000.f * i;
+        }
+        else
+        {
+            baseDistanace = 7238.f - 1000.f * i;
+        }
+
+
+        if (0 == i)
         {
             struct Object* obj = spawn_object(o, MODEL_OW_CE + i, bhvOwVisual);
             obj->oPosX = -585.f;
             obj->oPosY = 0.f;
-            obj->oPosZ = 7238.f - 1000.f * i;
+            obj->oPosZ = baseDistanace;
         }
         {
             struct Object* obj = spawn_object(o, MODEL_OW_LOCK, bhvOwLock);
             obj->oPosX = -585.f;
             obj->oPosY = 0.f;
-            obj->oPosZ = 7238.f - 1000.f * i - 600.f;
+            obj->oPosZ = baseDistanace - 600.f;
             if (!withExtraMode)
             {
                 obj->oBehParams2ndByte = off++;
@@ -59,7 +74,7 @@ void bhv_ow_ctl_init()
             }
             else
             {
-                obj->oBehParams2ndByte = i;
+                obj->oBehParams2ndByte = i + levelBase;
                 SET_BPARAM1(obj->oBehParams, 0);
             }
         }

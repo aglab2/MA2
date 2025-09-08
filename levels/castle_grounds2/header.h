@@ -13,4 +13,8 @@ extern const LevelScript level_castle_grounds2_entry[];
 
 #include "levels/castle_grounds2/ow2_lock/collision_header.h"
 
+#include "levels/castle_grounds2/ow2_ig/header.h"
+
+#include "levels/castle_grounds2/ow2_ig/geo_header.h"
+
 #endif
