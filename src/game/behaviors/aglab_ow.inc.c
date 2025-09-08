@@ -54,8 +54,6 @@ void bhv_ow_ctl_init()
             baseDistanace = 7238.f - 1000.f * i;
         }
 
-
-        if (0 == i)
         {
             struct Object* obj = spawn_object(o, MODEL_OW_CE + i, bhvOwVisual);
             obj->oPosX = -585.f;

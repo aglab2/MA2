@@ -29,7 +29,7 @@ const LevelScript level_castle_grounds2_entry[] = {
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
 	LOAD_MODEL_FROM_GEO(MODEL_OW2_IG, ow2_ig_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_OW2_DL, ow2_lock_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_OW2_DL, ow2_dl_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_OW2_SO, ow2_lock_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_OW2_RH, ow2_lock_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_OW2_EQ, ow2_lock_geo), 

@@ -1,0 +1,18 @@
+extern const GeoLayout ow2_dl_geo[];
+extern u8 ow2_dl_kd_dl_kusa1_ci4[];
+extern u8 ow2_dl_kd_dl_kusa1_pal_rgba16[];
+extern u8 ow2_dl_kd_dl_kabe4_vq_ci4[];
+extern u8 ow2_dl_kd_dl_kabe4_vq_pal_rgba16[];
+extern u8 ow2_dl_kd_dl_ido2_vq_ci4[];
+extern u8 ow2_dl_kd_dl_ido2_vq_pal_rgba16[];
+extern u8 ow2_dl_kd_dl_ido4_vq_ci4[];
+extern u8 ow2_dl_kd_dl_ido4_vq_pal_rgba16[];
+extern u8 ow2_dl_kd_dl_hasira4_vq_ci4[];
+extern u8 ow2_dl_kd_dl_hasira4_vq_pal_rgba16[];
+extern Vtx ow2_dl_0014_object_00E92170_mesh_layer_1_vtx_0[35];
+extern Vtx ow2_dl_0014_object_00E92170_mesh_layer_1_vtx_1[18];
+extern Vtx ow2_dl_0014_object_00E92170_mesh_layer_1_vtx_2[16];
+extern Vtx ow2_dl_0014_object_00E92170_mesh_layer_1_vtx_3[15];
+extern Vtx ow2_dl_0014_object_00E92170_mesh_layer_1_vtx_4[32];
+extern Vtx ow2_dl_0014_object_00E92170_mesh_layer_1_vtx_5[29];
+extern Gfx ow2_dl_0014_object_00E92170_mesh_layer_1[];

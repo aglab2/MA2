@@ -1583,6 +1583,9 @@ static struct WaterColor get_water_color()
 u8 water_amount_curr = 0;
 static u8 water_alpha()
 {
+    if (!gCamera)
+        return 0;
+
     int amount = CLAMP((gMarioStates->waterLevel - gCamera->pos[1]) / 3.f, 0, 127);
     water_amount_curr = approach_s32(water_amount_curr, amount, 4, 4);
     return water_amount_curr;
