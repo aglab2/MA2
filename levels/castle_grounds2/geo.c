@@ -24,3 +24,4 @@ extern Gfx *geo_update_alpha_compare(s32 callContext, struct GraphNode *node, UN
 #include "levels/castle_grounds2/ow2_so/geo.inc.c"
 #include "levels/castle_grounds2/ow2_rh/geo.inc.c"
 #include "levels/castle_grounds2/ow2_eq/geo.inc.c"
+#include "levels/castle_grounds2/ow2_lc/geo.inc.c"
