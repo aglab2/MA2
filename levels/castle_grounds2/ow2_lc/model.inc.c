@@ -3099,7 +3099,7 @@ Gfx ow2_lc_0099_object_01134EB4_mesh_layer_1[] = {
 	gsDPSetCombineLERP(0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT, 0, 0, 0, SHADE, 0, 0, 0, ENVIRONMENT),
 	gsSPTexture(65535, 65535, 0, 0, 0),
 	gsDPSetEnvColor(255, 255, 255, 255),
-	gsDPSetAlphaCompare(G_AC_NONE),
+	gsDPSetAlphaCompareReal(G_AC_NONE),
 	gsSPEndDisplayList(),
 };
 
