@@ -15,3 +15,5 @@
 
 #include "levels/castle_grounds2/ow2_ig/model.inc.c"
 #include "levels/castle_grounds2/ow2_dl/model.inc.c"
+#include "levels/castle_grounds2/ow2_so/model.inc.c"
+#include "levels/castle_grounds2/ow2_rh/model.inc.c"
