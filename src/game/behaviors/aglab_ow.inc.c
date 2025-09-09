@@ -40,6 +40,7 @@ void bhv_ow_ctl_init()
     int off = 0x80;
     int levelCount = gCurrLevelNum == LEVEL_CASTLE_GROUNDS2 ? OW2_LEVEL_COUNT : OW_LEVEL_COUNT;
     int levelBase = gCurrLevelNum == LEVEL_CASTLE_GROUNDS2 ? (LEVEL_IG - LEVEL_CE) : (LEVEL_CE - LEVEL_CE);
+    f32 xbase = gCurrLevelNum == LEVEL_CASTLE_GROUNDS2 ? -624.f : -585.f;
     for (int i = 0; i < levelCount; i++)
     {
         u64 withExtraMode = gLevelWithHardModes & (1ULL << (i + levelBase));
@@ -47,7 +48,7 @@ void bhv_ow_ctl_init()
         f32 baseDistanace;
         if (gCurrLevelNum == LEVEL_CASTLE_GROUNDS2)
         {
-            baseDistanace = -7738.f + 1000.f * i;
+            baseDistanace = -7761.f + 1000.f * i;
         }
         else
         {
@@ -56,13 +57,13 @@ void bhv_ow_ctl_init()
 
         {
             struct Object* obj = spawn_object(o, MODEL_OW_CE + i, bhvOwVisual);
-            obj->oPosX = -585.f;
+            obj->oPosX = xbase;
             obj->oPosY = 0.f;
             obj->oPosZ = baseDistanace;
         }
         {
             struct Object* obj = spawn_object(o, MODEL_OW_LOCK, bhvOwLock);
-            obj->oPosX = -585.f;
+            obj->oPosX = xbase;
             obj->oPosY = 0.f;
             obj->oPosZ = baseDistanace - 600.f;
             if (!withExtraMode)
