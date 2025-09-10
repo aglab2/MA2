@@ -37,7 +37,7 @@ const LevelScript level_castle_grounds2_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_OW2_WB, ow2_wb_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_OW2_SH, ow2_sh_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_OW2_WJ, ow2_wj_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_OW2_SR, ow2_lock_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_OW2_SR, ow2_sr_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_OW2_MS, ow2_lock_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_OW2_CW, ow2_lock_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_OW2_FC, ow2_lock_geo), 

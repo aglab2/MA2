@@ -33,4 +33,6 @@ extern const LevelScript level_castle_grounds2_entry[];
 
 #include "levels/castle_grounds2/ow2_wj/geo_header.h"
 
+#include "levels/castle_grounds2/ow2_sr/geo_header.h"
+
 #endif
