@@ -7256,3 +7256,18 @@ const BehaviorScript bhvLfLazer[] = {
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
+
+extern void bhv_cw_lads_loop();
+const BehaviorScript bhvCWLads[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_cw_lads_loop),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvCWLad[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    BEGIN_LOOP(),
+        ADD_INT(oGeoRoll, -0x100),
+    END_LOOP(),
+};

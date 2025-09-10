@@ -14,3 +14,8 @@ void bhv_cw_breakable_loop()
     o->oFaceAngleRoll += o->oMoveAngleRoll;
     o->oFaceAnglePitch += o->oMoveAnglePitch;
 }
+
+void bhv_cw_lads_loop()
+{
+
+}

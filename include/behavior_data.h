@@ -657,4 +657,6 @@ extern const BehaviorScript bhvClamShellCC[];
 extern const BehaviorScript bhvSkeeterCC[];
 extern const BehaviorScript bhvSnufitCC[];
 
+extern const BehaviorScript bhvCWLads[];
+
 #endif // BEHAVIOR_DATA_H

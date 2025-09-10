@@ -28,3 +28,4 @@
 #include "levels/cw/cw_updown/geo.inc.c"
 #include "levels/cw/cw_drill_base/geo.inc.c"
 #include "levels/cw/cw_drill/geo.inc.c"
+#include "levels/cw/cw_lad/geo.inc.c"
