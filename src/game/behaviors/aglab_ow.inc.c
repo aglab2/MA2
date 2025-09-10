@@ -8,6 +8,8 @@ extern const BehaviorScript bhvOwVisual[];
 extern const BehaviorScript bhvOwLock[];
 extern const BehaviorScript bhvOwNumber[];
 
+extern f32 gSafeY;
+
 const u64 gLevelWithHardModes = 1ULL << (LEVEL_CE - LEVEL_CE)
                               | 1ULL << (LEVEL_PL - LEVEL_CE)
                               | 1ULL << (LEVEL_MH - LEVEL_CE)
@@ -96,6 +98,7 @@ void bhv_ow_ctl_init()
     sTrajectory = NULL;
     gDialogCameraAngleIndex = 1;
     sViewRange = 400000000.0f;
+    gSafeY = -30000.f;
 
 #if 0
     gIsHardMode = 0;

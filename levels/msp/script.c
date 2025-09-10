@@ -137,7 +137,7 @@ const LevelScript level_msp_entry[] = {
 		OBJECT(MODEL_NONE, -3286, -1738, 5810, 0, -179, 0, 0x00000000, bhvGoombaTripletSpawner),
 		OBJECT(MODEL_NONE, 157, -4343, 8822, 0, -179, 0, 0x00000000, bhvGoombaTripletSpawner),
 		OBJECT(MODEL_NONE, 5781, -7884, 5417, 0, -179, 0, 0x00000000, bhvGoombaTripletSpawner),
-		OBJECT(MODEL_NONE, 887, -17634, 501, 0, 0, 0, (0xa << 16), bhvInstantActiveWarp),
+		OBJECT(MODEL_NONE, 887, -17634, 501, 0, 200, 0, (0xa << 16), bhvInstantActiveWarp),
 		OBJECT(MODEL_MSP_ORE, -3216, -9957, -3899, 0, 0, 0, (MODEL_MSP_ORE_BREAK << 16), bhvBreakable),
 		OBJECT(MODEL_MSP_ORE, -2944, -9496, -5345, 0, 37, 0, (MODEL_MSP_ORE_BREAK << 16), bhvBreakable),
 		OBJECT(MODEL_MSP_ORE, -3073, -9842, -7080, 0, -2, 0, (MODEL_MSP_ORE_BREAK << 16), bhvBreakable),

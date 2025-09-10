@@ -246,6 +246,7 @@ static void spawn_particle(u32 activeParticleFlag, ModelID16 model, const Behavi
 /**
  * Mario's primary behavior update function.
  */
+f32 gSafeY = -30000.f;
 extern void play_sound(s32 soundBits, f32 *pos);
 extern s16 fail_warp_trigger(struct MarioState* m);
 void bhv_mario_update(void) {
@@ -257,22 +258,21 @@ void bhv_mario_update(void) {
     particleFlags = execute_mario_action(gCurrentObject);
     if (gCurrCourseNum == COURSE_FR || gCurrCourseNum == COURSE_MSP)
     {
-        static f32 safeY = 0;
         f32 realY = gMarioStates->pos[1] + gCurrentArea->renderOffset[1];
         // print_text_fmt_int(20, 20, "RY %d", (s32)realY);    
         f32 distToFloor = gMarioStates->pos[1] - gMarioStates->floorHeight;
         // print_text_fmt_int(20, 40, "DF %d", (s32)distToFloor);
         if (distToFloor < 100.f || gMarioStates->action == ACT_RAIL_GRIND)
         {
-            safeY = realY;
+            gSafeY = realY;
         }
         else
         {
-            if (realY < safeY - 6000.f)
+            if (realY < gSafeY - 6000.f)
             {
                 spawn_object(gMarioObject, MODEL_BURN_SMOKE, bhvBlackSmokeMario);
             }
-            if (realY < safeY - 9000.f)
+            if (realY < gSafeY - 9000.f)
             {
                 spawn_object(gMarioObject, MODEL_RED_FLAME, bhvBlackSmokeMario);
                 if (20 == fail_warp_trigger(gMarioStates))
