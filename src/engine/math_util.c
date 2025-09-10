@@ -933,7 +933,7 @@ s32 ray_surface_intersect(Vec3f orig, Vec3f dir, f32 dir_length, struct Surface 
     return TRUE;
 }
 
-static void find_surface_on_ray_list(struct SurfaceNode *list, Vec3f orig, Vec3f dir, f32 dir_length, struct Surface **hit_surface, Vec3f hit_pos, f32 *max_length) {
+static void find_surface_on_ray_list_(struct SurfaceNode *list, Vec3f orig, Vec3f dir, f32 dir_length, struct Surface **hit_surface, Vec3f hit_pos, f32 *max_length) {
     s32 hit;
     f32 length;
     Vec3f chk_hit_pos;
@@ -964,6 +964,10 @@ static void find_surface_on_ray_list(struct SurfaceNode *list, Vec3f orig, Vec3f
         }
     }
     profiler_collision_update(first);
+}
+
+static inline void find_surface_on_ray_list(SlimPtr slim, Vec3f orig, Vec3f dir, f32 dir_length, struct Surface **hit_surface, Vec3f hit_pos, f32 *max_length) {
+    return find_surface_on_ray_list_(to_surfacenode(slim), orig, dir, dir_length, hit_surface, hit_pos, max_length);
 }
 
 static void find_surface_on_ray_cell(s32 cellX, s32 cellZ, Vec3f orig, Vec3f normalized_dir, f32 dir_length, struct Surface **hit_surface, Vec3f hit_pos, f32 *max_length, s32 flags) {

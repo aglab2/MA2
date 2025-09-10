@@ -232,12 +232,12 @@ s32 find_wall_collisions(struct WallCollisionData *colData) {
         for (s32 cellZ = minCellZ; cellZ <= maxCellZ; cellZ++) {
             if (includeDynamic) {
                 // Check for surfaces belonging to objects.
-                node = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS];
+                node = to_surfacenode(gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS]);
                 numCollisions += find_wall_collisions_from_list(node, colData);
             }
 
             // Check for surfaces that are a part of level geometry.
-            node = gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS];
+            node = to_surfacenode(gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS]);
             numCollisions += find_wall_collisions_from_list(node, colData);
         }
     }
@@ -449,7 +449,7 @@ f32 find_ceil(f32 posX, f32 posY, f32 posZ, struct Surface **pceil) {
 
     if (includeDynamic) {
         // Check for surfaces belonging to objects.
-        surfaceList = gDynamicSurfacePartition[cellZ][cellX][ceilPartition];
+        surfaceList = to_surfacenode(gDynamicSurfacePartition[cellZ][cellX][ceilPartition]);
         dynamicCeil = find_ceil_from_list(surfaceList, x, y, z, celledX, celledZ, &dynamicHeight);
 
         // In the next check, only check for ceilings lower than the previous check.
@@ -457,7 +457,7 @@ f32 find_ceil(f32 posX, f32 posY, f32 posZ, struct Surface **pceil) {
     }
 
     // Check for surfaces that are a part of level geometry.
-    surfaceList = gStaticSurfacePartition[cellZ][cellX][ceilPartition];
+    surfaceList = to_surfacenode(gStaticSurfacePartition[cellZ][cellX][ceilPartition]);
     ceil = find_ceil_from_list(surfaceList, x, y, z, celledX, celledZ, &height);
 
     // Use the lower ceiling.
@@ -660,7 +660,7 @@ f32 find_floor(f32 xPos, f32 yPos, f32 zPos, struct Surface **pfloor) {
 
     if (includeDynamic) {
         // Check for surfaces belonging to objects.
-        surfaceList = gDynamicSurfacePartition[cellZ][cellX][floorPartition];
+        surfaceList = to_surfacenode(gDynamicSurfacePartition[cellZ][cellX][floorPartition]);
         dynamicFloor = find_floor_from_list(surfaceList, x, y, z, celledX, celledZ, &dynamicHeight);
 
         // In the next check, only check for floors higher than the previous check.
@@ -668,7 +668,7 @@ f32 find_floor(f32 xPos, f32 yPos, f32 zPos, struct Surface **pfloor) {
     }
 
     // Check for surfaces that are a part of level geometry.
-    surfaceList = gStaticSurfacePartition[cellZ][cellX][floorPartition];
+    surfaceList = to_surfacenode(gStaticSurfacePartition[cellZ][cellX][floorPartition]);
     floor = find_floor_from_list(surfaceList, x, y, z, celledX, celledZ, &height);
 
     // Use the higher floor.

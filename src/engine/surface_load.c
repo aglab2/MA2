@@ -113,7 +113,7 @@ static inline u8** get_pend(int dynamic) {
  * @param surface The surface to add
  */
 static void add_surface_to_cell(s32 dynamic, s32 cellX, s32 cellZ, struct Surface *surface, s32 lowerX, s32 upperX, s32 lowerY, s32 upperY, s32 lowerZ, s32 upperZ) {
-    struct SurfaceNode **list;
+    SlimPtr* slimList;
     s32 addingPriority;
     s32 listIndex;
     u32 lowerXCelled = celled_coord(lowerX, cellX, +1);
@@ -135,31 +135,31 @@ static void add_surface_to_cell(s32 dynamic, s32 cellX, s32 cellZ, struct Surfac
     struct SurfaceNode *newNode = alloc_surface_node(pend, surface, lowerXCelled, upperXCelled, lowerY, upperY, lowerZCelled, upperZCelled);
 
     if (dynamic) {
-        list = &gDynamicSurfacePartition[cellZ][cellX][listIndex];
+        slimList = &gDynamicSurfacePartition[cellZ][cellX][listIndex];
         if (sNumCellsUsed >= sizeof(sCellsUsedOffsets) / sizeof(*sCellsUsedOffsets)) {
             sClearAllCells = TRUE;
         } else {
-            if (*list == NULL) {
-                sCellsUsedOffsets[sNumCellsUsed] = list - &gDynamicSurfacePartition[0][0][0];
+            if (slimList->offset16 == 0) {
+                sCellsUsedOffsets[sNumCellsUsed] = slimList - &gDynamicSurfacePartition[0][0][0];
                 sNumCellsUsed++;
             }
         }
     } else {
-        list = &gStaticSurfacePartition[cellZ][cellX][listIndex];
+        slimList = &gStaticSurfacePartition[cellZ][cellX][listIndex];
     }
 
-    if (*list == NULL) {
-        *list = newNode;
+    if (slimList->offset16 == 0) {
+        *slimList = to_slimptr(newNode);
         newNode->next = NULL;
         return;
     }
 
-    struct SurfaceNode *curNode = *list;
+    struct SurfaceNode *curNode = to_surfacenode(*slimList);
 
     // Check if surface should be placed at the beginning of the list.
     s32 priority = (listIndex == SPATIAL_PARTITION_FLOORS) ? (curNode->upperY) : (-curNode->lowerY);
     if (dynamic || listIndex == SPATIAL_PARTITION_WALLS || addingPriority > priority) {
-        *list = newNode;
+        *slimList = to_slimptr(newNode);
         newNode->next = curNode;
         return;
     }
@@ -476,7 +476,6 @@ void load_area_terrain(TerrainData *data, RoomData *surfaceRooms) {
     PUPPYPRINT_GET_SNAPSHOT();
     s32 terrainLoadType;
     TerrainData *vertexData = NULL;
-    u32 surfacePoolData;
 
     fps_relax = 65;
 
@@ -532,9 +531,9 @@ void clear_dynamic_surfaces(void) {
         if (sClearAllCells) {
             bzero(gDynamicSurfacePartition, sizeof(gDynamicSurfacePartition));
         } else {
-            struct SurfaceNode **list = &gDynamicSurfacePartition[0][0][0];
+            SlimPtr* list = &gDynamicSurfacePartition[0][0][0];
             for (u32 i = 0; i < sNumCellsUsed; i++) {
-                list[sCellsUsedOffsets[i]] = NULL;
+                list[sCellsUsedOffsets[i]].offset16 = 0;
             }
         }
         sNumCellsUsed = 0;

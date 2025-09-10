@@ -46,10 +46,27 @@ enum SpatialPartitions {
     NUM_SPATIAL_PARTITIONS
 };
 
-typedef struct SurfaceNode *SpatialPartitionCell[NUM_SPATIAL_PARTITIONS];
+typedef struct {
+    // ptr = (struct SurfaceNode**)0x8040'0000U | (offset16 << 4)
+    // allows addressing 1MB of RAM
+    u16 offset16;
+} SlimPtr;
+
+typedef SlimPtr SpatialPartitionCell[NUM_SPATIAL_PARTITIONS];
 
 extern SpatialPartitionCell gStaticSurfacePartition[NUM_CELLS][NUM_CELLS];
 extern SpatialPartitionCell gDynamicSurfacePartition[NUM_CELLS][NUM_CELLS];
+
+static inline struct SurfaceNode* to_surfacenode(SlimPtr ptr) {
+    return ptr.offset16 ? (struct SurfaceNode*)(0x80400000U | (ptr.offset16 << 4)) : NULL;
+}
+
+static inline SlimPtr to_slimptr(struct SurfaceNode* surf) {
+    SlimPtr ptr;
+    ptr.offset16 = surf ? ((((uintptr_t)surf) >> 4) & 0xFFFF) : 0;
+    return ptr;
+}
+
 extern u32 gTotalStaticSurfaceData;
 
 void alloc_surface_pools(void);

@@ -198,6 +198,7 @@ extern s32 gSurfacesAllocated;
 
 void iterate_surfaces_visual(s32 x, s32 z, Vtx *verts) {
     struct SurfaceNode *node;
+    SlimPtr slimNode;
     struct Surface *surf;
     s32 i = 0;
     ColorRGB col = COLOR_RGB_RED;
@@ -209,13 +210,14 @@ void iterate_surfaces_visual(s32 x, s32 z, Vtx *verts) {
 
     for (i = 0; i < (2 * NUM_SPATIAL_PARTITIONS); i++) {
         switch (i) {
-            case 0: node = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS ]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_GREEN ); break;
-            case 1: node =  gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS ]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_GREEN ); break;
-            case 2: node = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_BLUE  ); break;
-            case 3: node =  gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_BLUE  ); break;
-            case 4: node = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_RED   ); break;
-            case 5: node =  gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_RED   ); break;
+            case 0: slimNode = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS ]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_GREEN ); break;
+            case 1: slimNode =  gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS ]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_GREEN ); break;
+            case 2: slimNode = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_BLUE  ); break;
+            case 3: slimNode =  gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_BLUE  ); break;
+            case 4: slimNode = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_RED   ); break;
+            case 5: slimNode =  gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ]; colorRGB_copy(col, (ColorRGB)COLOR_RGB_RED   ); break;
         }
+        node = to_surfacenode(slimNode);
 
         while (node != NULL) {
             surf = SURFACE_NODE_SURF(node->packed);
@@ -303,6 +305,7 @@ void visual_surface_display(Gfx **gfx, Vtx *verts, s32 iteration) {
 
 s32 iterate_surface_count(s32 x, s32 z) {
     struct SurfaceNode *node;
+    SlimPtr slimNode;
     s32 i = 0;
     s32 j = 0;
     TerrainData *p = gEnvironmentRegions;
@@ -315,14 +318,15 @@ s32 iterate_surface_count(s32 x, s32 z) {
 
     for (i = 0; i < (2 * NUM_SPATIAL_PARTITIONS); i++) {
         switch (i) {
-            case 0: node = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS ]; break;
-            case 1: node =  gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS ]; break;
-            case 2: node = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS]; break;
-            case 3: node =  gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS]; break;
-            case 4: node = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ]; break;
-            case 5: node =  gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ]; break;
+            case 0: slimNode = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS ]; break;
+            case 1: slimNode =  gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_WALLS ]; break;
+            case 2: slimNode = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS]; break;
+            case 3: slimNode =  gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_FLOORS]; break;
+            case 4: slimNode = gDynamicSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ]; break;
+            case 5: slimNode =  gStaticSurfacePartition[cellZ][cellX][SPATIAL_PARTITION_CEILS ]; break;
         }
 
+        node = to_surfacenode(slimNode);
         while (node != NULL) {
             node = node->next;
             j++;
