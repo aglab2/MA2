@@ -570,9 +570,6 @@ static void update_terrain_objects(void) {
 #endif
     gObjectCounter += update_objects_in_list(&gObjectLists[OBJ_LIST_SURFACE]);
     profiler_update(PROFILER_TIME_DYNAMIC, profiler_get_delta(PROFILER_DELTA_COLLISION) - first);
-
-    // If the dynamic surface pool has overflowed, throw an error.
-    // assert((uintptr_t)gDynamicSurfacePoolEnd <= (uintptr_t)gDynamicSurfacePool + DYNAMIC_SURFACE_POOL_SIZE, "Dynamic surface pool size exceeded");
 }
 
 /**

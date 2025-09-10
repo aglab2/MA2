@@ -370,12 +370,7 @@ extern void clear_scratch(void);
 static void level_cmd_free_level_pool(void) {
     s32 i;
 
-    for (i = 0; i < AREA_COUNT; i++) {
-        if (gAreaData[i].terrainData != NULL) {
-            alloc_surface_pools();
-            break;
-        }
-    }
+    alloc_surface_pools();
     main_pool_push_state();
     clear_scratch();
 

@@ -32,7 +32,7 @@ static u8 sClearAllCells;
  * The static surface pool is resized to be exactly the amount of memory needed for the level geometry.
  * The dynamic surface pool is set at a fixed length and cleared every frame.
  */
-static ALIGNED16 u32 gDynamicSurfacePool[0x2000];
+static void* gDynamicSurfacePoolStart;
 
 /**
  * The end of the data currently allocated to the surface pools.
@@ -404,8 +404,12 @@ static void load_environmental_regions(TerrainData **data) {
  * Allocate the dynamic surface pool for object collision.
  */
 void alloc_surface_pools(void) {
-    gDynamicSurfacePoolEnd = gDynamicSurfacePool;
-
+    gDynamicSurfacePoolStart = main_pool_alloc_aligned(0, 0x8000, 0);
+    // In reality this condition is extremely unlikely to ever be true, but it's here as a failsafe.
+    if (gDynamicSurfacePoolStart == (void*) 0x80400000) {
+        gDynamicSurfacePoolStart = (void*) 0x80400010; 
+    }
+    gDynamicSurfacePoolEnd = gDynamicSurfacePoolStart;
     gCCMEnteredSlide = FALSE;
     reset_red_coins_collected();
 }
@@ -524,7 +528,7 @@ void clear_dynamic_surfaces(void) {
 
         gSurfacesAllocated = gNumStaticSurfaces;
         gSurfaceNodesAllocated = gNumStaticSurfaceNodes;
-        gDynamicSurfacePoolEnd = gDynamicSurfacePool;
+        gDynamicSurfacePoolEnd = gDynamicSurfacePoolStart;
         if (sClearAllCells) {
             bzero(gDynamicSurfacePartition, sizeof(gDynamicSurfacePartition));
         } else {
