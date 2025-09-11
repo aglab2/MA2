@@ -60,5 +60,7 @@ const RailDesc* rail_descs_cw[] = {
 
 const Trajectory* starmove_trajs_cw[] = {
 	cw_area_2_spline_NurbsCurve__StarMove,
+	cw_area_2_spline_NurbsCurve_StarMove,
+	cw_area_7_spline_0060_object_014980D4_003_StarMove,
 };
 

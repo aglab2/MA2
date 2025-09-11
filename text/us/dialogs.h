@@ -387,62 +387,16 @@ DEFINE_DIALOG(DIALOG_033, NO_SOUND, 2, 30, 200, "\
 Decades later, it\n\
 was time to go home.")
 
-DEFINE_DIALOG(DIALOG_034, NO_SOUND, 6, 30, 200, "\
-Good afternoon. The\n\
-Lakitu Bros., here,\n\
-reporting live from just\n\
-outside the Princess's\n\
-castle.\n\
-\n\
-Mario has just arrived\n\
-on the scene, and we'll\n\
-be filming the action live\n\
-as he enters the castle\n\
-and pursues the missing\n\
-Power Stars.\n\
-As seasoned cameramen,\n\
-we'll be shooting from the\n\
-recommended angle, but\n\
-you can change the\n\
-camera angle by pressing\n\
-the Ⓒ Buttons.\n\
-If we can't adjust the\n\
-view any further, we'll\n\
-buzz. To take a look at\n\
-the surroundings, stop\n\
-and press Ⓒ▲.\n\
-\n\
-Press Ⓐ to resume play.\n\
-Switch camera modes with\n\
-the Ⓡ Button. Signs along\n\
-the way will review these\n\
-instructions.\n\
-\n\
-For now, reporting live,\n\
-this has been the\n\
-Lakitu Bros.")
+DEFINE_DIALOG(DIALOG_034, NO_SOUND, 3, 30, 200, "\
+Use sideflips and\n\
+wallkicks to reach\n\
+the platforms above.")
 
-DEFINE_DIALOG(DIALOG_035, NO_SOUND, 5, 30, 200, "\
-There are four camera, or\n\
-“Ⓒ,” Buttons. Press Ⓒ▲\n\
-to look around using the\n\
-Control Stick.\n\
-\n\
-You'll usually see Mario\n\
-through Lakitu's camera.\n\
-It is the camera\n\
-recommended for normal\n\
-play.\n\
-You can change angles by\n\
-pressing Ⓒ▶. If you press\n\
-Ⓡ, the view switches to\n\
-Mario's camera, which\n\
-is directly behind him.\n\
-Press Ⓡ again to return\n\
-to Lakitu's camera. Press\n\
-Ⓒ▼ to see Mario from\n\
-afar, using either\n\
-Lakitu's or Mario's view.")
+DEFINE_DIALOG(DIALOG_035, NO_SOUND, 4, 30, 200, "\
+Rail ahead is very\n\
+sticky. You will not\n\
+be able to jump off it\n\
+till the end of the ride.")
 
 DEFINE_DIALOG(DIALOG_036, NO_SOUND, 5, 30, 200, "\
 OBSERVATION PLATFORM\n\
