@@ -469,8 +469,10 @@ int zipline_step(int exSpeed, s16* extraTilt, int holdZ)
                 {
                     cross /= 5.f;
                 }
+#if 0
                 print_text_fmt_int(20, 60, "AF 0x%x", adiff);
                 print_text_fmt_int(20, 40, "C 0x%x", cross);
+#endif
                 sExtraTilt = approach_f32_i(sExtraTilt, cross, 0x300, 0x300);
                 f32 dot = xdir * xspd + zdir * zspd;
 
@@ -492,7 +494,7 @@ int zipline_step(int exSpeed, s16* extraTilt, int holdZ)
                 sForwardVel = CLAMP(sForwardVel, -velLimit, velLimit);
                 sExtraTilt = CLAMP(sExtraTilt, -0x1800, 0x1800);
                 *extraTilt = sExtraTilt;
-                print_text_fmt_int(20, 20, "0x%x", ABS(sExtraTilt));
+                // print_text_fmt_int(20, 20, "0x%x", ABS(sExtraTilt));
             }
 
 #if 0

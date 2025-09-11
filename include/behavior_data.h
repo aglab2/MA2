@@ -606,6 +606,7 @@ extern const BehaviorScript bhvWjUp[];
 extern const BehaviorScript bhvWjSide[];
 extern const BehaviorScript bhvSrJump[];
 extern const BehaviorScript bhvCWBreakable[];
+extern const BehaviorScript bhvCwStarMove[];
 extern const BehaviorScript bhvFCGrav[];
 extern const BehaviorScript bhvCCTFlames[];
 extern const BehaviorScript bhvCCTGate[];
