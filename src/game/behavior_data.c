@@ -7279,10 +7279,12 @@ const BehaviorScript bhvCWLads[] = {
     END_LOOP(),
 };
 
+extern void bhv_cw_lad_init();
 extern void bhv_cw_lad_loop();
 const BehaviorScript bhvCWLad[] = {
     BEGIN(OBJ_LIST_LEVEL),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    CALL_NATIVE(bhv_cw_lad_init),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_cw_lad_loop),
     END_LOOP(),

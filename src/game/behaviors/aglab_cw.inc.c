@@ -43,6 +43,11 @@ void bhv_cw_lads_loop()
     }
 }
 
+void bhv_cw_lad_init()
+{
+    o->oDrawingDistance = 10000.f;
+}
+
 void bhv_cw_lad_loop()
 {
     struct Object* parent = o->parentObj;
@@ -50,6 +55,9 @@ void bhv_cw_lad_loop()
     {
         o->activeFlags = 0;
     }
+
+    o->oPosY += sins(o->oTimer * 0x345) * 5.f;
+    bhv_breakable_loop();
 }
 
 #define oStarMoveTraj OBJECT_FIELD_VPTR(0x1B)
