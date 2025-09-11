@@ -7268,17 +7268,22 @@ const BehaviorScript bhvLfLazer[] = {
     END_LOOP(),
 };
 
+extern void bhv_cw_lads_init();
 extern void bhv_cw_lads_loop();
 const BehaviorScript bhvCWLads[] = {
     BEGIN(OBJ_LIST_SPAWNER),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO)),
+    CALL_NATIVE(bhv_cw_lads_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_cw_lads_loop),
     END_LOOP(),
 };
 
+extern void bhv_cw_lad_loop();
 const BehaviorScript bhvCWLad[] = {
-    BEGIN(OBJ_LIST_SPAWNER),
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     BEGIN_LOOP(),
-        ADD_INT(oGeoRoll, -0x100),
+        CALL_NATIVE(bhv_cw_lad_loop),
     END_LOOP(),
 };

@@ -15,9 +15,41 @@ void bhv_cw_breakable_loop()
     o->oFaceAnglePitch += o->oMoveAnglePitch;
 }
 
+#define oCwLadsDespawn oF4
+
+extern const BehaviorScript bhvCWLad[];
+
+void bhv_cw_lads_init()
+{
+    o->oFaceAngleYaw += 0x8000;
+}
+
 void bhv_cw_lads_loop()
 {
+    if (o->oDistanceToMario < 10000.f)
+    {
+        if (2 != o->oCwLadsDespawn)
+        {
+            spawn_object_relative(0, -600, 0, 0, o, MODEL_CW_LAD, bhvCWLad);
+            spawn_object_relative(0, 600, 0, 0, o, MODEL_CW_LAD, bhvCWLad);
+            spawn_object_relative(0, 0, 300, 0, o, MODEL_CW_LAD, bhvCWLad);
+            o->oCwLadsDespawn = 2;
+        }
+    }
 
+    if (o->oDistanceToMario > 15000.f)
+    {
+        o->oCwLadsDespawn = 1;
+    }
+}
+
+void bhv_cw_lad_loop()
+{
+    struct Object* parent = o->parentObj;
+    if (parent->oCwLadsDespawn == 1)
+    {
+        o->activeFlags = 0;
+    }
 }
 
 #define oStarMoveTraj OBJECT_FIELD_VPTR(0x1B)
@@ -72,8 +104,10 @@ Gfx *geo_cw_lad_rotate(s32 callContext, struct GraphNode *node, UNUSED s32 conte
 {
     if (callContext == GEO_CONTEXT_RENDER) {
         // struct Object *obj = (struct Object *) gCurGraphNodeObject;
+        struct GraphNodeGenerated *fnNode = (struct GraphNodeGenerated *) node;
+        int param = fnNode->parameter;
         struct GraphNodeBatchsetTranslationRotation *transNode = (struct GraphNodeBatchsetTranslationRotation *) node->next;
-        transNode->rotation[1] = 0;
+        transNode->rotation[1] = !param ? 0x8000 : 0;
         transNode->rotation[2] = gGlobalTimer * 0x234;
     }
     return NULL;
