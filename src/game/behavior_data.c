@@ -6622,7 +6622,7 @@ const BehaviorScript bhvCWBreakable[] = {
 extern void bhv_cw_star_move_init();
 extern void bhv_cw_star_move_loop();
 const BehaviorScript bhvCwStarMove[] = {
-    BEGIN(OBJ_LIST_LEVEL),
+    BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
     CALL_NATIVE(bhv_cw_star_move_init),
     BEGIN_LOOP(),

@@ -52,14 +52,18 @@ void bhv_cw_star_move_loop()
     }
     else
     {
-        print_text_fmt_int(20, 20, "C %d", (int) o->oStarMoveCurPoint);
         if (o->oStarMoveCurPoint < 4*49)
         {
-            bhv_starmove_loop_impl(250.f - o->oStarMoveCurPoint);
+            bhv_starmove_loop_impl(150.f - o->oStarMoveCurPoint / 4);
         }
     }
 
     o->parentObj->oPosX = o->oPosX;
     o->parentObj->oPosY = o->oPosY;
     o->parentObj->oPosZ = o->oPosZ;
+
+    if (o->parentObj->activeFlags == 0)
+    {
+        o->activeFlags = 0;
+    }
 }
