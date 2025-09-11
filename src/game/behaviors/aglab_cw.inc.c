@@ -67,3 +67,14 @@ void bhv_cw_star_move_loop()
         o->activeFlags = 0;
     }
 }
+
+Gfx *geo_cw_lad_rotate(s32 callContext, struct GraphNode *node, UNUSED s32 context)
+{
+    if (callContext == GEO_CONTEXT_RENDER) {
+        // struct Object *obj = (struct Object *) gCurGraphNodeObject;
+        struct GraphNodeBatchsetTranslationRotation *transNode = (struct GraphNodeBatchsetTranslationRotation *) node->next;
+        transNode->rotation[1] = 0;
+        transNode->rotation[2] = gGlobalTimer * 0x234;
+    }
+    return NULL;
+}
