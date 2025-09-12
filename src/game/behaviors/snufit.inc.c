@@ -177,6 +177,13 @@ void bhv_snufit_init(void)
     o->oSnufitExtraScale = 1.0f;
 }
 
+void bhv_snufit_init_cc()
+{
+    bhv_snufit_init();
+    o->oDrawingDistance = 9000;
+}
+
+
 void bhv_snufit_loop(void)
 {
     return bhv_snufit_loop_impl(0);
