@@ -370,6 +370,7 @@ static void warm_up_batch_node(void)
     {
         struct GraphNode *firstNode = gBatchNode->node.children;
         struct GraphNode *curGraphNode = firstNode;
+        int pnext = 0;
         do
         {
             struct GraphNodeLvlTranslation* lvlNode = NULL;
@@ -403,7 +404,7 @@ static void warm_up_batch_node(void)
             }
 #endif
 
-            if (lvlNode)
+            if (!pnext && lvlNode)
             {
                 f32 dx = lvlNode->translation[0] - areaX;
                 f32 dy = lvlNode->translation[1] - areaY;
@@ -416,6 +417,16 @@ static void warm_up_batch_node(void)
                 }   
             }
             
+            if (pnext)
+            {
+                pnext = 0;
+            }
+            
+            if (GRAPH_NODE_TYPE_GENERATED_LIST == curGraphNode->type)
+            {
+                pnext = 1;
+            }
+
             amount++;
             allocSize += size;
         } while ((curGraphNode = curGraphNode->next) != firstNode);
@@ -459,7 +470,8 @@ static void warm_up_batch_node(void)
                     break;
             }
 
-            if (lvlNode)
+            // Never skip the ASM node, otherwise we might corrupt the chain
+            if (!pnext && lvlNode)
             {
                 f32 dx = lvlNode->translation[0] - areaX;
                 f32 dy = lvlNode->translation[1] - areaY;

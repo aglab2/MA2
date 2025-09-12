@@ -121,6 +121,63 @@ Gfx *geo_cw_lad_rotate(s32 callContext, struct GraphNode *node, UNUSED s32 conte
     return NULL;
 }
 
+struct cw_loc
+{
+    f32 progress;
+    int amt;
+};
+
+static struct cw_loc get_cw_loc(f32 z, const Trajectory* traj)
+{
+    z += 3000.f;
+    int i = 1;
+    while (traj[4*(i+1)] != -1 && traj[4*i + 3] < z)
+    {
+        i++;
+    }
+
+    f32 dz = traj[4*i + 3] - z;
+    f32 dt = traj[4*i + 3] - traj[4*(i-1) + 3];
+    return (struct cw_loc) { 1.f - dz / dt, i };
+}
+
+extern const Trajectory cw_area_7_spline_0060_object_014980D4_003_StarMove[];
+Gfx *geo_cw_ending(s32 callContext, struct GraphNode *node, UNUSED s32 context)
+{
+    if (callContext == GEO_CONTEXT_RENDER) {
+        const Trajectory* traj = (const Trajectory*) segmented_to_virtual(cw_area_7_spline_0060_object_014980D4_003_StarMove);
+        // struct Object *obj = (struct Object *) gCurGraphNodeObject;
+        struct GraphNodeGenerated *fnNode = (struct GraphNodeGenerated *) node;
+        int param = fnNode->parameter;
+        struct LightGraphLvlNodeTranslationRotation *transNode = (struct LightGraphLvlNodeTranslationRotation *) node->next;
+
+        if (gCurrAreaIndex != 7)
+        {
+            transNode->x = 50000.f  + traj[1];
+            transNode->y = 34870.f  + traj[2];
+            transNode->z = 160000.f + traj[3];
+            if (0 == param)
+                transNode->rotation[2] = 0;
+        }
+        else
+        {
+            f32 mz = gMarioStates->pos[2];
+            struct cw_loc loc = get_cw_loc(mz, traj);
+
+            f32 x = traj[4*(loc.amt-1) + 1] + (traj[4*loc.amt + 1] - traj[4*(loc.amt-1) + 1]) * loc.progress;
+            f32 y = traj[4*(loc.amt-1) + 2] + (traj[4*loc.amt + 2] - traj[4*(loc.amt-1) + 2]) * loc.progress;
+            f32 z = traj[4*(loc.amt-1) + 3] + (traj[4*loc.amt + 3] - traj[4*(loc.amt-1) + 3]) * loc.progress;
+
+            transNode->x = 50000.f  + x;
+            transNode->y = 34870.f  + y;
+            transNode->z = 160000.f + z;
+            if (0 == param)
+                transNode->rotation[2] = z * 0x8;
+        }
+    }
+    return NULL;
+}
+
 #define CW_RANGE_RANDO 30.f
 #define CW_RANGE_MOVEMENT 5.f
 static inline void cw_reds_randomize(struct Object* obj)

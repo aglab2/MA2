@@ -1,6 +1,7 @@
 #include "src/game/envfx_snow.h"
 
 extern Gfx *geo_cw_lad_rotate(s32 callContext, struct GraphNode *node, UNUSED s32 context);
+extern Gfx *geo_cw_ending(s32 callContext, struct GraphNode *node, UNUSED s32 context);
 const GeoLayout cw_area_1_geo[] = {
 	GEO_BATCH_NODE_START_WITH_FLIPBOOK(batch_lvl_dls_cw, cw_flipbooks),
 	GEO_OPEN_NODE(),
@@ -926,6 +927,7 @@ const GeoLayout cw_area_1_geo[] = {
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, (f32)9700.0, (f32)4000.0, (f32)0.0, cw_dl_0233_object_0149D524_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, (f32)5700.0, (f32)4000.0, (f32)-4000.0, cw_dl_0233_object_0149D524_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, (f32)5700.0, (f32)2500.0, (f32)0.0, cw_dl_0233_object_0149D524_mesh_layer_1),
+		GEO_ASM(0, geo_cw_ending),
 		GEO_LVL_TRANSLATE_ROTATE_NODE(LAYER_OPAQUE, (f32)35479.98779296875, (f32)24137.04833984375, (f32)185779.58984375, (f32)6.830189170012751e-06, (f32)-179.99997768819966, (f32)2.2255581957367457e-12),
 		GEO_OPEN_NODE(),
 			GEO_BATCH_TRANSLATE(LAYER_OPAQUE, (f32)0.0, (f32)1400.0, (f32)0.0, cw_dl_001_object_00ABAD7C_001_mesh_layer_1),
@@ -936,6 +938,7 @@ const GeoLayout cw_area_1_geo[] = {
 			GEO_BATCH_TRANSLATE(LAYER_OPAQUE, (f32)-1212.5, (f32)-700.0, (f32)0.0, cw_dl_006_object_00AB8B0C_001_mesh_layer_1),
 			GEO_BATCH_TRANSLATE(LAYER_OPAQUE, (f32)-1212.5, (f32)700.0, (f32)0.0, cw_dl_007_object_00AB84FC_001_mesh_layer_1),
 		GEO_CLOSE_NODE(),
+		GEO_ASM(1, geo_cw_ending),
 		GEO_LVL_BATCH_TRANSLATE_ROTATE(LAYER_OPAQUE, (f32)35479.98779296875, (f32)24137.04833984375, (f32)185779.58984375, (f32)6.830189170012751e-06, (f32)-179.99997768819966, (f32)2.2255581957367457e-12, cw_dl_cw_drill_base_001_mesh_layer_1),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
