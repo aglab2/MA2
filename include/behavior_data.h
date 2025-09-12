@@ -592,6 +592,8 @@ extern const BehaviorScript bhvOwCtl[];
 #define bhvBooaster bhvSpeeder
 extern const BehaviorScript bhvBobFakeout[];
 extern const BehaviorScript bhvIgShelf[];
+extern const BehaviorScript bhvIgStrongDoor[];
+extern const BehaviorScript bhvIgRocket[];
 extern const BehaviorScript bhvSparkler[];
 extern const BehaviorScript bhvSoPillar[];
 extern const BehaviorScript bhvSoHako[];

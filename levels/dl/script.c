@@ -43,12 +43,12 @@ const LevelScript level_dl_entry[] = {
 	JUMP_LINK(script_func_global_6), 
 	JUMP_LINK(script_func_global_14), 
 	LOAD_MODEL_FROM_GEO(MODEL_DL_VASE, dl_vase_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_DL_VASE_BREAK, dl_vase_break_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_DL_CRATE, dl_crate_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_DL_CRATE_BREAK, dl_crate_break_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_DL_CRATEDARK, dl_crate_dark_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_DL_CRATEDARK_BREAK, dl_cratedark_break_geo), 
 	/* Fast64 begin persistent block [level commands] */
+	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_DL_VASE_BREAK, dl_vase_break_geo), 
+	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_DL_CRATE_BREAK, dl_crate_break_geo), 
+	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_DL_CRATEDARK_BREAK, dl_cratedark_break_geo), 
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 

@@ -6433,6 +6433,30 @@ const BehaviorScript bhvIgShelf[] = {
     END_LOOP(),
 };
 
+extern const Collision ig_sdoor_collision[];
+extern void bhv_ig_sdoor_init();
+extern void bhv_ig_sdoor_loop();
+const BehaviorScript bhvIgStrongDoor[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(ig_sdoor_collision),
+    CALL_NATIVE(bhv_ig_sdoor_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ig_sdoor_loop),
+    END_LOOP(),
+};
+
+extern void bhv_ig_rocket_init();
+extern void bhv_ig_rocket_loop();
+const BehaviorScript bhvIgRocket[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    OR_INT(oFlags, OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    CALL_NATIVE(bhv_ig_rocket_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ig_rocket_loop),
+    END_LOOP(),
+};
+
 extern const Collision so_pillar_collision[];
 extern void bhv_so_pillar_init();
 extern void bhv_so_pillar_loop();

@@ -1,5 +1,6 @@
 #include "src/game/envfx_snow.h"
 
+extern Gfx *geo_ig_rocket_update(s32 callContext, struct GraphNode *node, UNUSED s32 context);
 const GeoLayout ig_area_1_geo[] = {
 	GEO_BATCH_NODE_START(batch_lvl_dls_ig),
 	GEO_OPEN_NODE(),
@@ -19,6 +20,7 @@ const GeoLayout ig_area_1_geo[] = {
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, (f32)53179.677734375, (f32)-13960.0, (f32)-12337.318115234375, ig_dl_000_object_007EF8A8_mesh_layer_1),
 		GEO_OPEN_NODE(),
 			GEO_BATCH_TRANSLATE(LAYER_OPAQUE, (f32)-147.001953125, (f32)196.99951171875, (f32)345.999755859375, ig_dl_001_object_007EED58_mesh_layer_1),
+			GEO_ASM(0, geo_ig_rocket_update),
 			GEO_BATCH_TRANSLATE(LAYER_OPAQUE, (f32)0.0, (f32)85.0, (f32)0.0, ig_dl_002_object_007EE9B8_mesh_layer_1),
 		GEO_CLOSE_NODE(),
 		GEO_LVL_BATCH_TRANSLATE_ROTATE(LAYER_OPAQUE, (f32)5701.60400390625, (f32)-2091.0472106933594, (f32)-2836.0781860351562, (f32)2.87870943322575e-13, (f32)90.00000933466734, (f32)-6.83018998423475e-06, ig_dl_000_object_007FBFF4_mesh_layer_1),

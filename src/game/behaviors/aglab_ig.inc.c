@@ -57,6 +57,19 @@ void bhv_test_loop()
     }
 }
 
+static void ig_blow_up()
+{
+    o->oVelY -= 1;
+    o->oFaceAnglePitch += 0x200;
+    o->oPosY += o->oVelY;
+    obj_update_pos_vel_xz();
+
+    if (o->oTimer > 100)
+    {
+        o->activeFlags = 0;
+    }
+}
+
 void bhv_ig_shelf_loop()
 {
     if (0 == o->oAction)
@@ -117,14 +130,72 @@ void bhv_ig_shelf_loop()
     }
     else
     {
-        o->oVelY -= 1;
-        o->oFaceAnglePitch += 0x200;
-        o->oPosY += o->oVelY;
-        obj_update_pos_vel_xz();
+        ig_blow_up();
+    }
+}
 
-        if (o->oTimer > 100)
+void bhv_ig_sdoor_init()
+{
+    o->parentObj = cur_obj_nearest_object_with_behavior(bhvIgRocket);
+}
+
+void bhv_ig_sdoor_loop()
+{
+    if (0 == o->oAction)
+    {
+        if (o->parentObj->oAction == 1 && o->oPosX < o->parentObj->oPosX)
         {
-            o->activeFlags = 0;
+            o->oVelY = 20.f;
+            o->oForwardVel = -30.f;
+            o->oAction = 1;
+            cur_obj_play_sound_2(SOUND_OBJ_BULLY_EXPLODE_UNUSED);
+        }
+        load_object_collision_model();
+    }
+    else
+    {
+        ig_blow_up();
+    }
+}
+
+void bhv_ig_rocket_init()
+{
+    aglabGlobalScratch[0] = 0;
+}
+
+void bhv_ig_rocket_loop()
+{
+    if (0 == o->oAction)
+    {
+        if (o->oDistanceToMario < 100.f)
+        {
+            o->oAction = 1;
         }
     }
+    else
+    {
+        puffAt(o, 10.f, 1, 50.f);
+        if (0 == (o->oTimer % 4))
+        {
+            cur_obj_play_sound_1(SOUND_OBJ_FLAME_BLOWN);
+        }
+
+        if (o->oPosX < 20000.f)
+        {
+            aglabGlobalScratch[0] += 100;
+            o->oPosX += 100.f;
+        }
+    }
+}
+
+Gfx *geo_ig_rocket_update(s32 callContext, struct GraphNode *node, UNUSED s32 context)
+{
+    if (callContext == GEO_CONTEXT_RENDER) {
+        // struct Object *obj = (struct Object *) gCurGraphNodeObject;
+        struct GraphNodeGenerated *fnNode = (struct GraphNodeGenerated *) node;
+        int param = fnNode->parameter;
+        struct GraphNodeBatchsetTranslation *transNode = (struct GraphNodeBatchsetTranslation *) node->next;
+        transNode->translation[0] = aglabGlobalScratch[0];
+    }
+    return NULL;
 }

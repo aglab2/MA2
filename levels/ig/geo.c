@@ -24,3 +24,4 @@
 #include "levels/ig/ig_lift/geo.inc.c"
 #include "levels/ig/ig_shelt/geo.inc.c"
 #include "levels/ig/ig_siren/geo.inc.c"
+#include "levels/ig/ig_sdoor/geo.inc.c"

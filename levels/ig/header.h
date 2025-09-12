@@ -26,4 +26,8 @@ extern const LevelScript level_ig_entry[];
 
 #include "levels/ig/ig_shelt/collision_header.h"
 
+#include "levels/ig/ig_sdoor/collision_header.h"
+
+#include "levels/ig/ig_sdoor/geo_header.h"
+
 #endif
