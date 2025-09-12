@@ -7314,3 +7314,14 @@ const BehaviorScript bhvCWLad[] = {
         CALL_NATIVE(bhv_cw_lad_loop),
     END_LOOP(),
 };
+
+extern void bhv_cw_rot_ctl_init();
+extern void bhv_cw_rot_ctl_loop();
+const BehaviorScript bhvCwRotCtl[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    CALL_NATIVE(bhv_cw_rot_ctl_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_cw_rot_ctl_loop),
+    END_LOOP(),
+};

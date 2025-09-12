@@ -120,3 +120,29 @@ Gfx *geo_cw_lad_rotate(s32 callContext, struct GraphNode *node, UNUSED s32 conte
     }
     return NULL;
 }
+
+#define CW_RANGE_RANDO 30.f
+#define CW_RANGE_MOVEMENT 5.f
+static inline void cw_reds_randomize(struct Object* obj)
+{
+    obj->oFaceAngleYaw = random_u16();
+    f32 amt = random_f32_around_zero(CW_RANGE_RANDO);
+    obj->oPosX += amt * sins(obj->oFaceAngleYaw);
+    obj->oPosZ += amt * coss(obj->oFaceAngleYaw);
+}
+
+void bhv_cw_rot_ctl_init()
+{
+    cur_obj_foreach(bhvRedCoin, cw_reds_randomize);
+}
+
+static inline void cw_reds_move(struct Object* obj)
+{
+    obj->oPosX += CW_RANGE_MOVEMENT * sins(obj->oFaceAngleYaw) * sins(o->oTimer * 0x234);
+    obj->oPosZ += CW_RANGE_MOVEMENT * coss(obj->oFaceAngleYaw) * sins(o->oTimer * 0x234);
+}
+
+void bhv_cw_rot_ctl_loop()
+{
+    cur_obj_foreach(bhvRedCoin, cw_reds_move);
+}
