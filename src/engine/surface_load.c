@@ -21,8 +21,8 @@
  * Partitions for course and object surfaces. The arrays represent
  * the 16x16 cells that each level is split into.
  */
-SpatialPartitionCell gStaticSurfacePartition[NUM_CELLS][NUM_CELLS];
-SpatialPartitionCell gDynamicSurfacePartition[NUM_CELLS][NUM_CELLS];
+ALIGNED16 SpatialPartitionCell gStaticSurfacePartition[NUM_CELLS][NUM_CELLS];
+ALIGNED16 SpatialPartitionCell gDynamicSurfacePartition[NUM_CELLS][NUM_CELLS];
 u16 sCellsUsedOffsets[NUM_CELLS];
 static u8 sNumCellsUsed;
 static u8 sClearAllCells;
@@ -487,6 +487,10 @@ void load_area_terrain(TerrainData *data, RoomData *surfaceRooms) {
     sClearAllCells = TRUE;
 
     // Clear the static (level) surface partitions for new use.
+    u8* ssp = (u8*) gStaticSurfacePartition;
+    for (int i = 0; i < sizeof(gStaticSurfacePartition) / 16; i++) {
+        __builtin_mips_cache(0xd, ssp + i * 16);
+    }
     bzero(gStaticSurfacePartition, sizeof(gStaticSurfacePartition));
     gTotalStaticSurfaceData = 0;
 

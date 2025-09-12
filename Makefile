@@ -129,7 +129,7 @@ endif
 #==============================================================================#
 
 # Default non-gcc opt flags
-DEFAULT_OPT_FLAGS = -Os -fallow-store-data-races -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division -fno-tree-loop-distribute-patterns
+DEFAULT_OPT_FLAGS = -Os -fallow-store-data-races -ffast-math -ftrapping-math -fno-associative-math -fno-tree-loop-distribute-patterns
 # Note: -fno-associative-math is used here to suppress warnings, ideally we would enable this as an optimization but
 # this conflicts with -ftrapping-math apparently.
 # TODO: Figure out how to allow -fassociative-math to be enabled
@@ -149,19 +149,19 @@ GCC_MAIN_OPT_FLAGS = \
 
 # Surface Collision
 GCC_COLLISION_OPT_FLAGS = \
-  $(GCC_MAIN_OPT_FLAGS) -Os -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division \
+  $(GCC_MAIN_OPT_FLAGS) -Os -ffast-math -ftrapping-math -fno-associative-math \
   -ffunction-sections \
   -fdata-sections \
   -falign-functions=32
 
 AUDIO_COLLISION_OPT_FLAGS = \
-  -Os -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division $(GCC_MAIN_OPT_FLAGS) \
+  -Os -ffast-math -ftrapping-math -fno-associative-math $(GCC_MAIN_OPT_FLAGS) \
   -ffunction-sections \
   -fdata-sections
 
 # Math Util
 GCC_MATH_UTIL_OPT_FLAGS = \
-  $(GCC_MAIN_OPT_FLAGS) -Os -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division \
+  $(GCC_MAIN_OPT_FLAGS) -Os -ffast-math -ftrapping-math -fno-associative-math \
   -ffunction-sections \
   -fdata-sections \
   -falign-functions=32
@@ -170,7 +170,7 @@ GCC_MATH_UTIL_OPT_FLAGS = \
 
 # Rendering graph node
 GCC_GRAPH_NODE_OPT_FLAGS = \
-  $(GCC_MAIN_OPT_FLAGS) -Os -ffast-math -ftrapping-math -fno-associative-math -mno-check-zero-division \
+  $(GCC_MAIN_OPT_FLAGS) -Os -ffast-math -ftrapping-math -fno-associative-math \
   -ffunction-sections \
   -fdata-sections \
   -falign-functions=32
