@@ -225,7 +225,7 @@ const LevelScript level_msp_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 	FREE_LEVEL_POOL(),
-	MARIO_POS(0x01, 0, 954, -17633, 420),
+	MARIO_POS(0x01, 0, -4666, -11270, -2735),
 	CALL(0, lvl_init_or_update),
 	CALL_LOOP(1, lvl_init_or_update),
 	CLEAR_LEVEL(),

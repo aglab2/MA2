@@ -20,6 +20,7 @@
 
 #include "config.h"
 
+extern void print_text_fmt_int(int x, int y, const char *str, int value);
 struct LandingAction {
     s16 numFrames;
     s16 doubleJumpTimer;
@@ -95,7 +96,7 @@ s32 begin_walking_action(struct MarioState *m, f32 forwardVel, u32 action, u32 a
     return set_mario_action(m, action, actionArg);
 }
 
-void check_ledge_climb_down(struct MarioState *m) {
+static void check_ledge_climb_down(struct MarioState *m) {
     struct WallCollisionData wallCols;
     struct Surface *floor, *wall;
 
@@ -745,7 +746,7 @@ void push_or_sidle_wall(struct MarioState *m, Vec3f startPos) {
     
 }
 
-void tilt_body_walking(struct MarioState *m, s16 startYaw) {
+static void tilt_body_walking(struct MarioState *m, s16 startYaw) {
     struct MarioBodyState *marioBodyState = m->marioBodyState;
     s16 animID = m->marioObj->header.gfx.animInfo.animID;
 
@@ -1324,7 +1325,6 @@ static int rail_valid_switch(void* ctx, f32 cx, f32 cy, f32 cz)
 
 extern struct Object *gMarioObject;
 extern void puffAt(struct Object* obj, float size, int numParticles, f32 yoff);
-extern void print_text_fmt_int(int x, int y, const char *str, int value);
 s32 act_rail_grind(struct MarioState *m)
 {
     int onLoop = zipline_on_loop();
