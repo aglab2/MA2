@@ -142,11 +142,12 @@ static void lf_phase_lazer()
         spwn->oPosY = LF_HEIGHT;
         spwn->oPosZ = z;
         spwn->oMoveAngleYaw = spwn->oFaceAngleYaw = 0;
+        obj_scale(spwn, 0.1f);
     }
 }
 
 extern const BehaviorScript bhvLfBalls[];
-static void lf_phase_balls(int half, f32 baseScale)
+static void lf_phase_balls(int half, f32 baseScale, int flipped)
 {
     int locNum = 0;
     u8* locs = (u8*) aglabGlobalScratch;
@@ -158,7 +159,9 @@ static void lf_phase_balls(int half, f32 baseScale)
         int amount = 9 + (layer & 1);
         for (int i = 0; i < amount; i++)
         {
-            s16 angle = i * (0x6000 / amount) + (layer & 1) * (0x6000 / (2 * amount)) - 0x3000 + 0x8000;
+            s16 angle = i * (0x6000 / amount) + (layer & 1) * (0x6000 / (2 * amount)) - 0x3000;
+            if (!flipped) angle += 0x8000;
+
             struct Object* spwn = spawn_object(bowser, MODEL_LF_PELLET, bhvLfBalls);
             //spwn->oPosX = bowser->oPosX + radius * sins(angle);
             //spwn->oPosY = LF_HEIGHT + (layer - 3) * 700.f - 2000.f;
@@ -179,6 +182,7 @@ static void lf_phase_balls(int half, f32 baseScale)
             spwn->oMoveAngleYaw = spwn->oFaceAngleYaw = angle + 0x8000;
             spwn->oDrawingDistance = 20000.f;
             spwn->oSnufitPelletBaseScale = baseScale;
+            spwn->oSnufitPelletFlipped = flipped;
 
             if (half)
             {
@@ -211,14 +215,14 @@ static void lf_place_spawners(int health)
             lf_phase_lazer();
         break;
         case 5:
-            lf_phase_balls(0, 0.1f);
+            lf_phase_balls(0, 0.1f, 0);
         break;
         case 6:
             lf_phase_mr_blizzard_rl(0.f, 0);
             lf_phase_lazer();
         break;
         case 7:
-            lf_phase_balls(1, 0.1f);
+            lf_phase_balls(1, 0.1f, 0);
             lf_phase_spindrift();
         break;
         case 8:
@@ -226,11 +230,11 @@ static void lf_place_spawners(int health)
             lf_phase_lazer();
         break;
         case 9:
-            lf_phase_balls(1, 0.2f);
+            lf_phase_balls(1, 0.2f, 0);
             lf_phase_spindrift();
         break;
         case 10:
-            lf_phase_snufit_circles_rl(0.f, 0);
+            lf_phase_balls(0, 0.1f, 1);
             lf_phase_lazer();
         break;
     }
@@ -245,11 +249,23 @@ void bhv_lf_ctl_init()
     o->parentObj->hitboxRadius = 1000.f;
     o->parentObj->hitboxHeight = 1300.f;
     gTimeFrozen = 0;
+
+    if (gMarioStates->action == ACT_FALLING_DEATH_EXIT)
+    {
+        drop_and_set_mario_action(gMarioStates, ACT_VERTICAL_WIND, 0);
+        gMarioStates->health = 0x880;
+    }
 }
 
 extern void despawn_all(const BehaviorScript* behavior);
 void bhv_lf_ctl_loop()
 {
+    if (gMarioStates->health < 0x100)
+    {
+        level_trigger_warp(gMarioStates, WARP_OP_DEATH);
+        return;
+    }
+
     o->parentObj->oPosX = 0;
     o->parentObj->oPosY = -500;
     o->parentObj->oPosZ = 0;
@@ -558,8 +574,10 @@ void bhv_lf_balls_loop()
 
                 o->oVelX = gMarioStates->pos[0] - o->oPosX;
                 o->oVelY = gMarioStates->pos[1] - o->oPosY;
-                o->oVelZ = gMarioStates->pos[2] - o->oPosZ + 2000.f + random_f32_around_zero(500.f);
+                int ahead = 2000.f + random_f32_around_zero(500.f);
+                o->oVelZ = gMarioStates->pos[2] - o->oPosZ + (o->oSnufitPelletFlipped ? -ahead : ahead);
                 f32 len = sqrtf(o->oVelX * o->oVelX + o->oVelY * o->oVelY + o->oVelZ * o->oVelZ);
+                if (len < 1.f) len = 1.f;
                 o->oVelX = o->oVelX / len * 200.f;
                 o->oVelY = o->oVelY / len * 200.f;
                 o->oVelZ = o->oVelZ / len * 200.f;
