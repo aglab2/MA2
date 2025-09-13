@@ -247,6 +247,7 @@ void bhv_lf_ctl_init()
     gTimeFrozen = 0;
 }
 
+extern void despawn_all(const BehaviorScript* behavior);
 void bhv_lf_ctl_loop()
 {
     o->parentObj->oPosX = 0;
@@ -309,6 +310,11 @@ void bhv_lf_ctl_loop()
             m->pos[1] = (m->pos[1] - 3000.f) * 0.9f + 3000.f;
         }
         m->pos[2] = side * 250 * o->oTimer;
+
+        if (10 == o->oTimer)
+        {
+            despawn_all(bhvLfBalls);
+        }
 
         if (70 == o->oTimer)
         {
@@ -384,7 +390,6 @@ static inline void lf_wrap(f32* val, f32 min, f32 max)
     if (*val > max) *val = min + (*val - max);
 }
 
-extern void despawn_all(const BehaviorScript* behavior);
 void bhv_lf_ring_spawner_loop()
 {
     struct Object** objs = &o->oLfSpawnerObjects;
