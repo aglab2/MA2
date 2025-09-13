@@ -343,42 +343,6 @@ static s32 perform_ground_quarter_step(struct MarioState *m, Vec3f nextPos) {
     return GROUND_STEP_NONE;
 }
 
-static void adjust_to_steepness(f32* pny, struct Surface* floor, f32 velX, f32 velZ, f32 nyMaxDecel, struct Surface** pcacheFloor, f32* pcacheFloorX, f32* pcacheFloorZ)
-{
-#define cacheFloor (*pcacheFloor)
-#define cacheFloorX (*pcacheFloorX)
-#define cacheFloorZ (*pcacheFloorZ)
-#define ny (*pny)
-
-    const f32 minSpeed = 0.0099487305f; // 3c23
-    f32 velMag2 = velX * velX + velZ * velZ;
-    if (velMag2 < minSpeed)
-    {
-        // do not bother with tiny speeds
-        return;
-    }
-
-    if (cacheFloor != floor)
-    {
-        cacheFloorX = floor->normal.x;
-        cacheFloorZ = floor->normal.z;
-        f32 cacheFloorXZMag = sqrtf(cacheFloorX * cacheFloorX + cacheFloorZ * cacheFloorZ);
-        cacheFloorX /= cacheFloorXZMag;
-        cacheFloorZ /= cacheFloorXZMag;
-        cacheFloor = floor;
-    }
-
-    f32 dotv = (velX * cacheFloorX) + (velZ * cacheFloorZ);
-    f32 amountToSteeped = sqrtf((dotv * dotv) / velMag2);
-
-    ny = lerpf(nyMaxDecel, ny, amountToSteeped);
-
-#undef ny
-#undef cacheFloor
-#undef cacheFloorX
-#undef cacheFloorZ
-}
-
 #pragma GCC diagnostic push
 // Need this for suppressing warnings in cacheFloorX and cacheFloorZ initialization
 // 'floor' will never be 'NULL' because validiity so first check will always succeed
@@ -388,25 +352,33 @@ s32 perform_ground_step(struct MarioState *m) {
     u32 stepResult;
     Vec3f intendedPos;
     int numSteps = 16;
-    const f32 nyMaxDecel = 0.8984375f; // 3f660000
-    struct Surface* cacheFloor = NULL;
-    f32 cacheFloorX, cacheFloorZ;
+    const f32 minVel = 0.000099658966f; // 38d10000
+    const struct Surface* cachedFloor = NULL;
+    f32 cachedNormalXdY, cachedNormalZdY;
 
     set_mario_wall(m, NULL);
 
     for (i = 0; i < numSteps; i++) {
         struct Surface* floor = m->floor;
         f32 velX = m->vel[0] / numSteps, velZ = m->vel[2] / numSteps;
-        f32 ny = absf(floor->normal.y);
-        if (ny < nyMaxDecel)
+        f32 mult = 1.f;
+
+        f32 velMag2 = sqr(velX) + sqr(velZ);
+        if (velMag2 > minVel)
         {
-            // We are dealing with steep slope so need to adjust ny multiplier
-            // If mario moves perpendicular to steep slope direction, we want to have ny close to 1.0
-            adjust_to_steepness(&ny, floor, velX, velZ, nyMaxDecel, &cacheFloor, &cacheFloorX, &cacheFloorZ);
+            if (cachedFloor != floor)
+            {
+                cachedFloor = floor;
+                cachedNormalXdY = floor->normal.x / floor->normal.y;
+                cachedNormalZdY = floor->normal.z / floor->normal.y;
+            }
+
+            f32 divi = sqr(velX * cachedNormalXdY + velZ * cachedNormalZdY) / velMag2;
+            mult = 1.f / sqrtf(1.f + divi);
         }
 
-        intendedPos[0] = m->pos[0] + velX * ny;
-        intendedPos[2] = m->pos[2] + velZ * ny;
+        intendedPos[0] = m->pos[0] + velX * mult;
+        intendedPos[2] = m->pos[2] + velZ * mult;
         intendedPos[1] = m->pos[1];
 
         stepResult = perform_ground_quarter_step(m, intendedPos);
