@@ -1257,6 +1257,12 @@ void bowser_dead_bounce(void) {
         o->oForwardVel = 0.0f;
         o->oSubAction++; // BOWSER_SUB_ACT_DEAD_WAIT
     }
+    
+    if (gCurrCourseNum == COURSE_LF && o->oTimer > 30)
+    {
+        cur_obj_init_animation_and_check_if_near_end(BOWSER_ANIM_LAY_DOWN);
+        o->oSubAction++;
+    }
 }
 
 /**
@@ -1830,7 +1836,7 @@ void bhv_bowser_init(void) {
     o->oBehParams2ndByte = level;
     // Set health and rainbow light depending of the level
     o->oBowserRainbowLight = sBowserRainbowLight[level];
-    o->oHealth = gCurrLevelNum == LEVEL_LF ? 11 : 7;
+    o->oHealth = gCurrLevelNum == LEVEL_LF ? 1 : 7;
     // Start camera event, this event is not defined so maybe
     // the "start arena" cutscene was originally called this way
     cur_obj_start_cam_event(o, CAM_EVENT_BOWSER_INIT);

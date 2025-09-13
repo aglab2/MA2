@@ -44,6 +44,7 @@ const LevelScript level_castle_courtyard_entry[] = {
 		WARP_NODE(0, LEVEL_CASTLE, 0x01, 0, WARP_NO_CHECKPOINT),
 		WARP_NODE(1, LEVEL_CASTLE, 0x01, 1, WARP_NO_CHECKPOINT),
 		MARIO_POS(0x01, 0, 18, 815, 9363),
+		OBJECT(MODEL_NONE, 18, 815, 9363, 0, -180, 0, (0xa << 16), bhvInstantActiveWarp),
 		OBJECT(MODEL_CASTLE_CASTLE_DOOR, -1257, 1358, 17148, 0, -180, 0, (0 << 16), bhvDoorWarp),
 		OBJECT(MODEL_CASTLE_CASTLE_DOOR, -1414, 1358, 17149, 0, 0, 0, (1 << 16), bhvDoorWarp),
 		OBJECT(MODEL_CASTLE_METAL_DOOR, -4611, 44, 16938, 0, -132, 0, (100 << 16), bhvDoorWarp),

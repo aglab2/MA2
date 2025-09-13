@@ -919,10 +919,11 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
 
             case WARP_OP_TELEPORT:
                 sSourceWarpNodeId = GET_BPARAM2(m->usedObj->oBehParams);
-                int epicLbWarp = gCurrLevelNum == LEVEL_LB && sSourceWarpNodeId == 0xa;
+                int epicLbWarp = (gCurrLevelNum == LEVEL_LB || gCurrLevelNum == LEVEL_LF) && sSourceWarpNodeId == 0xa;
+                int epicLfWarp = (gCurrLevelNum == LEVEL_LF) && sSourceWarpNodeId == 0xa;
                 sDelayedWarpTimer = epicLbWarp ? 70 : 20;
                 fadeMusic = forceMusicReload || !music_unchanged_through_warp(sSourceWarpNodeId);
-                play_transition(WARP_TRANSITION_FADE_INTO_COLOR, epicLbWarp ? 2 : sDelayedWarpTimer, 0, 0, 0);
+                play_transition(WARP_TRANSITION_FADE_INTO_COLOR, epicLbWarp ? (epicLfWarp ? 30 : 2) : sDelayedWarpTimer, epicLfWarp ? 0xaf : 0, epicLfWarp ? 0xaf : 0, epicLfWarp ? 0xaf : 0);
                 break;
 
             case WARP_OP_WARP_DOOR:

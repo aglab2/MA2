@@ -279,6 +279,20 @@ void bhv_lf_ctl_loop()
     {
         o->parentObj->oAction = 0;
     }
+        
+    if (o->parentObj->oHealth == 0)
+    {
+        print_text_fmt_int(20, 20, "A %d", o->parentObj->oAction);
+        print_text_fmt_int(20, 40, "SA %d", o->parentObj->oSubAction);
+        if (o->parentObj->oAction == BOWSER_ACT_DEAD && o->parentObj->oSubAction == 2 && o->parentObj->oTimer > 80)
+        {
+            gMarioStates->usedObj = o;
+            SET_BPARAM2(o->oBehParams, 0xa);
+            level_trigger_warp(gMarioStates, WARP_OP_TELEPORT);
+            disable_background_sound();
+        }
+        return;
+    }
 
     struct MarioState* m = gMarioStates;
     m->pos[0] = CLAMP(m->pos[0], -3000.f, 3000.f);
