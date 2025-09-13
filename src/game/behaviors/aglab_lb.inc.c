@@ -404,6 +404,17 @@ void bhv_lb_ctl_loop()
         if (LB_PHASE1_LENGTH == o->oTimer)
         {
             o->oAction = 5;
+            s8* patterns = (u8*) &o->oLbCtlPattern;
+            for (int i = 0; i < 4; i++)
+            {
+                patterns[i + 1] = -1;
+            }
+
+            for (int i = 0; i < 2; i++)
+            {
+                int which = random_u16() % 4;
+                patterns[which + 1] = 1;
+            }
         }
     }
     else if (5 == o->oAction)
@@ -433,11 +444,11 @@ void bhv_lb_ctl_loop()
         }
 #else
         s8* patterns = (u8*) &o->oLbCtlPattern;
+        int patternId = o->oTimer / 80;
         int timeMod = o->oTimer % 80;
         if (0 == timeMod)
         {
-            int which = random_u16() & 1;
-            patterns[0] = which ? -1 : 1;
+            patterns[0] = patterns[1 + patternId];
         }
 
         lb_patterns(timeMod, 1);
