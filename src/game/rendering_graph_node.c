@@ -1811,7 +1811,8 @@ static void adjust_view_range()
 }
 
 f32 gViewRangeMult;
-static int is_far_from_mario(f32 l0, f32 l1, f32 l2, f32 sphR)
+// if no probing is done, it will be const propagated out
+static int is_far_from_mario(f32 l0, f32 l1, f32 l2, f32 sphR, int probe)
 {
     Vec3f loc = { l0, l1, l2 };
     Vec3f d;
@@ -1834,14 +1835,28 @@ static int is_far_from_mario(f32 l0, f32 l1, f32 l2, f32 sphR)
         return 1;
     }
 
-// #define HAVE_BACK_FLIPPING
+#define HAVE_BACK_FLIPPING_V1
 #ifdef HAVE_BACK_FLIPPING_V1
-    while (sphR2)
+    while (sphR)
     {
+        if (probe)
+        {
+            print_text_fmt_int(20, 20, "SPHR %d", (int) sphR);
+        }
+
         vec3_diff(d, gCurGraphNodeCamera->pos, loc);
         f32 dLen2 = vec3_sumsq(d);
+        f32 sphR2 = sphR * sphR;
+
+        if (probe)
+        {
+            print_text_fmt_int(20, 40, "SPHR2 %d", (int) sphR2);
+            print_text_fmt_int(20, 60, "DLEN2 %d", (int) dLen2);
+            print_text_fmt_int(20, 80, "DLEN %d", (int) sqrtf(dLen2));
+        }
+
         // center of the sphere is too close to the apex
-        if (sphR2 < dLen2)
+        if (sphR2 > dLen2)
         {
             break;
         }
@@ -1860,11 +1875,11 @@ static int is_far_from_mario(f32 l0, f32 l1, f32 l2, f32 sphR)
 
         // sphere center is inside the cone but it might be also inverted cone...
         // This assume 45 degree cone!
-        int coneSphCenterInside =  coneRLen2 <= coneHLen2;
+        int coneSphCenterInside =  coneRLen2 < coneHLen2;
         if (coneSphCenterInside)
         {
             // ...and cone is not inverted but center is actually inside...
-            if (coneHLen >= -100.f || coneRLen2 < 100.f * 100.f)
+            if (coneHLen >= 0)
                 break;
             
             // ...otherwise the point is very behind the cone hence sphere itself cannot be inside anymore
@@ -1872,21 +1887,16 @@ static int is_far_from_mario(f32 l0, f32 l1, f32 l2, f32 sphR)
         }
 
         // sphere center is somewhere outside in such a manner that closest point is a projection on the cone side
-        // I am currently pulling a real trivial approximation which will culls only negative h
-        if (coneHLen > 0)
-            break;
-
-        // this is a guarantee from the sphere being behind the cone - if point is far enough outwards, then
-        // coneR / sqrt(2) > sphR -> coneR2 ? sphR2 * 2
-        //f32 sphR2Twice = sphR2 + sphR2;
-        //if (coneRLen2 > sphR2Twice)
-        //    return 1;
+        // find the minimal vertical projection length that would make the sphere touch the cone side
+        f32 maxConeHLen = sqrtf(coneRLen2) - 1.421875f * sphR; // 1.41421356237
+        if (coneHLen < maxConeHLen)
+            return 1;
 
         break;
     }
 #endif
 
-#define HAVE_BACK_FLIPPING_V2
+// #define HAVE_BACK_FLIPPING_V2
 #ifdef HAVE_BACK_FLIPPING_V2
     while (sphR)
     {
@@ -1928,7 +1938,7 @@ void geo_process_lvl_translation_rotation(struct LightGraphLvlNodeTranslationRot
     translation[2] = lvlNode->z;
     vec3_sub(translation, gCurrentArea->renderOffset);
 
-    if (is_far_from_mario(translation[0], translation[1], translation[2], lvlNode->radius))
+    if (is_far_from_mario(translation[0], translation[1], translation[2], lvlNode->radius, 0))
         return;
 
     mtxf_rotate_zxy_and_translate_and_mul(lvlNode->rotation[0], lvlNode->rotation[1], lvlNode->rotation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
@@ -1949,7 +1959,7 @@ void geo_process_lvl_translation(struct LightGraphLvlNodeTranslation *lvlNode) {
     translation[2] = lvlNode->z;
     vec3_sub(translation, gCurrentArea->renderOffset);
 
-    if (is_far_from_mario(translation[0], translation[1], translation[2], 0))
+    if (is_far_from_mario(translation[0], translation[1], translation[2], 0, 0))
         return;
 
     mtxf_translate_and_mul(translation[0], translation[1], translation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
@@ -1968,7 +1978,7 @@ void geo_process_lvl_translation_rotation_cold(struct GraphNodeLvlTranslationRot
     vec3_copy(translation, lvlNode->translation);
     vec3_sub(translation, gCurrentArea->renderOffset);
 
-    if (is_far_from_mario(translation[0], translation[1], translation[2], lvlNode->radius))
+    if (is_far_from_mario(translation[0], translation[1], translation[2], lvlNode->radius, 0))
         return;
 
     mtxf_rotate_zxy_and_translate_and_mul(lvlNode->rotation[0], lvlNode->rotation[1], lvlNode->rotation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
@@ -1987,7 +1997,7 @@ void geo_process_lvl_translation_cold(struct GraphNodeLvlTranslation *lvlNode) {
     vec3_copy(translation, lvlNode->translation);
     vec3_sub(translation, gCurrentArea->renderOffset);
 
-    if (is_far_from_mario(translation[0], translation[1], translation[2], lvlNode->radius))
+    if (is_far_from_mario(translation[0], translation[1], translation[2], lvlNode->radius, 0))
         return;
 
     mtxf_translate_and_mul(translation[0], translation[1], translation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);

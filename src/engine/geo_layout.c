@@ -1271,7 +1271,9 @@ struct CullDlPattern
     u32 vtxs;
     void* vtxsPtr;
     u8 cullCmd;
-    u8 _pad;
+    u8 _pad1;
+    u16 cullStart; // always 0 so not checking
+    u16 _pad2;
     u16 amount;
 };
 
@@ -1328,7 +1330,7 @@ static f32 get_radius_batch_cmds(void* commands)
     {
         f32 dlRadius = get_radius_dl(batchCmd->dl);
         if (!dlRadius)
-            return result;
+            return 0.f;
 
         if (dlRadius > result)
             result = dlRadius;
