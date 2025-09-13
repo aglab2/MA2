@@ -2010,7 +2010,8 @@ int must_cancel_landing(struct MarioState* m)
                      | (1ULL << (LEVEL_GF  - LEVEL_CE))
                      | (1ULL << (LEVEL_PH  - LEVEL_CE))
                      | (1ULL << (LEVEL_SR  - LEVEL_CE))
-                     | (1ULL << (LEVEL_SS1 - LEVEL_CE));
+                     | (1ULL << (LEVEL_SS1 - LEVEL_CE))
+                     | (1ULL << (LEVEL_CW  - LEVEL_CE));
     u64 skipNonSlippery = Flags & (1ULL << (gCurrLevelNum - LEVEL_CE));
     f32 limit = COS73;
     if (skipNonSlippery)

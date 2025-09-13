@@ -219,7 +219,7 @@ Gfx *geo_cw_ending(s32 callContext, struct GraphNode *node, UNUSED s32 context)
 }
 
 #define CW_RANGE_RANDO 30.f
-#define CW_RANGE_MOVEMENT 5.f
+#define CW_RANGE_MOVEMENT 20.f
 static inline void cw_reds_randomize(struct Object* obj)
 {
     obj->oFaceAngleYaw = random_u16();
