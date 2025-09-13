@@ -238,6 +238,12 @@ static void lf_scale(struct Object* obj, f32 scale)
     obj->oSnufitExtraScale = scale;
 }
 
+static void lf_mul_scale(struct Object* obj, f32 scale)
+{
+    f32 s = obj->oSnufitExtraScale * scale;
+    lf_scale(obj, s);
+}
+
 void bhv_lf_ring_spawner_init()
 {
     struct Object** objs = &o->oLfSpawnerObjects;
@@ -294,14 +300,7 @@ void bhv_lf_ring_spawner_loop()
     struct Object** objs = &o->oLfSpawnerObjects;
 
     struct Object* p = o->parentObj;
-    if (o->oTimer <= 10)
-    {
-        for (int i = 0; i < o->oLfSpawnerAmount; i++)
-        {
-            lf_scale(objs[i], ((1 + o->oTimer) / 11.f));
-        }
-    }
-    else
+    if (o->oTimer > 10)
     {
         int despawn = 0;
         if (1 == p->oAction)
@@ -333,6 +332,8 @@ void bhv_lf_ring_spawner_loop()
             snufit->oHomeX = snufit->oPosX = o->oPosX + radius * sins(angle);
             snufit->oHomeY = snufit->oPosY = LF_HEIGHT;
             snufit->oHomeZ = snufit->oPosZ = o->oPosZ + radius * coss(angle);
+
+            lf_scale(snufit, 1.f);
         }
     }
 
@@ -361,8 +362,15 @@ void bhv_lf_ring_spawner_loop()
             scale *= axclamp;
             scale *= azclamp;
 
-            snufit->oSnufitExtraScale = scale;
-            obj_scale(snufit, scale);
+            lf_scale(snufit, scale);
+        }
+    }
+
+    if (o->oTimer <= 10)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            lf_mul_scale(objs[i], ((1 + o->oTimer) / 11.f));
         }
     }
 }
@@ -376,4 +384,19 @@ void bhv_lf_lazer_loop()
         angle += 0x8000;
 
     o->oMoveAngleYaw = o->oFaceAngleYaw = angle;
+
+    struct Object* p = o->parentObj;
+    if (o->oTimer > 10)
+    {
+        int despawn = 0;
+        if (1 == p->oAction)
+        {
+            despawn = 1;
+        }
+
+        if (despawn)
+        {
+            o->activeFlags = 0;
+        }
+    }
 }
