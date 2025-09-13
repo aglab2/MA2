@@ -70,7 +70,12 @@ static struct FlipbookData flipbooks_alpha[] = {
     { LVL_BATCH_LAYER_ALPHA_FC_DL_MIU256_FC001_PAL_RGBA16, .tileScrollX = -8 },
 };
 
+static struct FlipbookData flipbooks_xlu[] = {
+    { LVL_BATCH_LAYER_TRANSPARENT_FC_DL_SPACE64_2_PAL_RGBA16, .tileScrollY = 6, },
+};
+
 const struct FlipbookLayer fc_flipbooks[LAYER_COUNT] = {
     [ LAYER_OPAQUE ] = FLIPBOOK_LAYER_DECL(flipbooks_opaque),
     [ LAYER_ALPHA  ] = FLIPBOOK_LAYER_DECL(flipbooks_alpha),
+    [ LAYER_TRANSPARENT ] = FLIPBOOK_LAYER_DECL(flipbooks_xlu),
 };
