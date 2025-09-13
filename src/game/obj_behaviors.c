@@ -792,7 +792,7 @@ static void ALWAYS_INLINE cur_obj_foreach(const BehaviorScript *behavior, Object
 
 // Because we are dealing with multi areas transitions,
 // it tends to be necessary to have a scratch to pass around between the objects.
-static int aglabGlobalScratch[0x10];
+static int aglabGlobalScratch[0x12];
 
 #include "behaviors/aglab.inc.c"
 #include "behaviors/aglab_wc.inc.c"

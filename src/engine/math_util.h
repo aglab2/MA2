@@ -618,6 +618,7 @@ void min_max_3s(s16 a, s16 b, s16 c, s16 *min, s16 *max);
 u16 random_u16(void);
 f32 random_float(void);
 s32 random_sign(void);
+void shuffle_u8(u8 *array, s32 n);
 
 static ALWAYS_INLINE void memcpy4(void* dst, const void* src, int n)
 {

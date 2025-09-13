@@ -63,6 +63,19 @@ s32 random_sign(void) {
     return ((random_u16() >= 0x7FFF) ? 1 : -1);
 }
 
+void shuffle_u8(u8 *array, s32 n)
+{
+    if (n > 1) {
+        s32 i;
+        for (i = n - 1; i > 0; i--) {
+            s32 j = (unsigned int) (random_float() * (i+1));
+            int t = array[j];
+            array[j] = array[i];
+            array[i] = t;
+        }
+    }
+}
+
 // Get the maximum and minimum of three numbers at the same time.
 #define min_max_3_func(a, b, c, min, max) { \
     if (b < a) {                            \

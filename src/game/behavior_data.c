@@ -7063,6 +7063,7 @@ const BehaviorScript bhvLfBalls[] = {
     SET_HOME(),
     SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 10, /*Gravity*/ 0, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
     CALL_NATIVE(bhv_lf_balls_init),
+    SET_FLOAT(oGraphYOffset, 50),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_lf_balls_loop),
     END_LOOP(),
@@ -7299,7 +7300,8 @@ extern void bhv_lf_lazer_loop();
 const BehaviorScript bhvLfLazer[] = {
     BEGIN(OBJ_LIST_SURFACE),
     LOAD_COLLISION_DATA(lf_lazer_collision),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_DONT_CALC_COLL_DIST)),
+    SET_FLOAT(oCollisionDistance, 30000),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_lf_lazer_loop),
         CALL_NATIVE(load_object_collision_model),

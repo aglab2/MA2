@@ -974,6 +974,8 @@
 #define oSnufitPelletLfTargetPosX oFloatF8
 #define oSnufitPelletLfTargetPosY oFloatFC
 #define oSnufitPelletLfTargetPosZ oFloat100
+#define oSnufitPelletId o104
+#define oSnufitPelletBaseScale oFloat108
 
 /* Spindel */
 #define /*0x0F4*/ oSpindelMoveTimer     OBJECT_FIELD_S32(0x1B)

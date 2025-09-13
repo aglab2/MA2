@@ -1195,8 +1195,8 @@ void cur_obj_apply_drag_xz(f32 dragStrength) {
     apply_drag_to_value(&o->oVelX, dragStrength);
     apply_drag_to_value(&o->oVelZ, dragStrength);
 }
-
-static void cur_obj_move_xz(f32 steepSlopeNormalY, s32 careAboutEdgesAndSteepSlopes) {
+ 
+void cur_obj_move_xz(f32 steepSlopeNormalY, s32 careAboutEdgesAndSteepSlopes) {
     struct Surface *intendedFloor;
 
     f32 intendedX = o->oPosX + o->oVelX;

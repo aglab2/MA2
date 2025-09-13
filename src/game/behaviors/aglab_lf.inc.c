@@ -1,4 +1,4 @@
-#define LF_INIT_PHASE lf_phase_balls
+#define LF_INIT_PHASE lf_phase_mr_blizzard(0.f, 0)
 
 #define oLfHSTimer oF4
 #define oLfSpawnerObjects oObjF4
@@ -22,21 +22,21 @@ enum
 #define LF_HEIGHT 3000.f
 
 extern const BehaviorScript bhvLfRingSpawner[];
-static void lf_place(f32 x, f32 z, int model, const BehaviorScript* bhv, int pattern, f32 angleMult)
+static void lf_place(f32 x, f32 y, f32 z, int model, const BehaviorScript* bhv, int pattern, f32 angleMult, int half)
 {
     struct Object* spwn = spawn_object(o, MODEL_NONE, bhvLfRingSpawner);
     spwn->oPosX = x;
-    spwn->oPosY = LF_HEIGHT;
+    spwn->oPosY = LF_HEIGHT + y;
     spwn->oPosZ = z;
     spwn->oFaceAngleYaw = 0x4000 + random_u16() * angleMult;
     spwn->oLfSpawnerBeh = (uintptr_t)bhv;
     spwn->oLfSpawnerModel = model;
-    spwn->oLfSpawnerAmount = 4;
+    spwn->oLfSpawnerAmount = half ? 3 : 4;
     spwn->oLfSpawnerRadius = 400.f;
     spwn->oLfSpawnerPattern = pattern;
 }
 
-static void lf_phase_mr_blizzard()
+static void lf_phase_mr_blizzard(f32 y, int half)
 {
     f32 xstart = random_f32_around_zero(3000.f);
     for (int i = 0; i < 6; i++)
@@ -44,10 +44,20 @@ static void lf_phase_mr_blizzard()
         f32 x = xstart + i * 1800.f;
         while (x > 3000.f) x -= 6000.f;
         f32 z = 15000.f - 2000.f * i;
-        lf_place(x, z, MODEL_MR_BLIZZARD, bhvMrBlizzard, LF_PATTERN_CIRCLE, 1.f);
+        lf_place(x, y, z, MODEL_MR_BLIZZARD, bhvMrBlizzard, LF_PATTERN_CIRCLE, 1.f, half);
         x += 3000.f;
         if (x > 3000.f) x -= 6000.f;
-        lf_place(x, z, MODEL_MR_BLIZZARD, bhvMrBlizzard, LF_PATTERN_CIRCLE, 1.f);
+        lf_place(x, y, z, MODEL_MR_BLIZZARD, bhvMrBlizzard, LF_PATTERN_CIRCLE, 1.f, half);
+    }
+}
+
+static void lf_phase_mr_blizzard_rl(f32 y, int half)
+{
+    for (int i = 0; i < 6; i++)
+    {
+        f32 x = (i & 1) ? 1300.f : -1300.f;
+        f32 z = 15000.f - 2000.f * i;
+        lf_place(x, y, z, MODEL_MR_BLIZZARD, bhvMrBlizzard, LF_PATTERN_CIRCLE, 1.f, half);
     }
 }
 
@@ -65,7 +75,7 @@ static void lf_place2(f32 x, f32 z, int model, const BehaviorScript* bhv, int pa
     spwn->oLfSpawnerPattern = pattern;
 }
 
-static void lf_phase_snufit_circles()
+static void lf_phase_snufit_circles(f32 y, int half)
 {
     f32 xstart = random_f32_around_zero(3000.f);
     for (int i = 0; i < 6; i++)
@@ -73,10 +83,20 @@ static void lf_phase_snufit_circles()
         f32 x = xstart + i * 1800.f;
         while (x > 3000.f) x -= 6000.f;
         f32 z = 15000.f - 2000.f * i;
-        lf_place(x, z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_CIRCLE, 1.f);
+        lf_place(x, y, z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_CIRCLE, 1.f, half);
         x += 3000.f;
         if (x > 3000.f) x -= 6000.f;
-        lf_place(x, z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_CIRCLE, 1.f);
+        lf_place(x, y, z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_CIRCLE, 1.f, half);
+    }
+}
+
+static void lf_phase_snufit_circles_rl(f32 y, int half)
+{
+    for (int i = 0; i < 6; i++)
+    {
+        f32 x = (i & 1) ? 1300.f : -1300.f;
+        f32 z = 15000.f - 2000.f * i;
+        lf_place(x, y, z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_CIRCLE, 1.f, half);
     }
 }
 
@@ -88,10 +108,10 @@ static void lf_phase_snufit_lines()
         f32 x = xstart + i * 1800.f;
         while (x > 3000.f) x -= 6000.f;
         f32 z = 15000.f - 2000.f * i;
-        lf_place(x, -z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_LINE, 0.f);
+        lf_place(x, 0.f, -z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_LINE, 0.f, 0 /*!half*/);
         x += 3000.f;
         if (x > 3000.f) x -= 6000.f;
-        lf_place(x, -z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_LINE, 0.f);
+        lf_place(x, 0.f, -z, MODEL_SNUFIT, bhvSnufitCC, LF_PATTERN_LINE, 0.f, 0 /*!half*/);
     }
 }
 
@@ -126,8 +146,11 @@ static void lf_phase_lazer()
 }
 
 extern const BehaviorScript bhvLfBalls[];
-static void lf_phase_balls()
+static void lf_phase_balls(int half, f32 baseScale)
 {
+    int locNum = 0;
+    u8* locs = (u8*) aglabGlobalScratch;
+
     struct Object* bowser = o->parentObj;
     for (int layer = 0; layer < 7; layer++)
     {
@@ -148,26 +171,38 @@ static void lf_phase_balls()
             spwn->oSnufitPelletLfTargetPosX = radius * sins(angle);
             spwn->oSnufitPelletLfTargetPosY = (layer - 3) * 700.f;
             spwn->oSnufitPelletLfTargetPosZ = radius * coss(angle);
+            
+            spwn->oSnufitPelletId = locNum;
+            locs[locNum] = locNum;
+            locNum++;
 
             spwn->oMoveAngleYaw = spwn->oFaceAngleYaw = angle + 0x8000;
             spwn->oDrawingDistance = 20000.f;
+            spwn->oSnufitPelletBaseScale = baseScale;
+
+            if (half)
+            {
+                if (i & 1) spwn->activeFlags = 0;
+            }
         }
     }
+
+    shuffle_u8(locs, locNum);
 }
 
 static void lf_place_spawners(int health)
 {
-    int phase = 4 - health;
+    int phase = 11 - health;
     switch (phase)
     {
         case 0:
-            lf_phase_mr_blizzard();
+            lf_phase_mr_blizzard(0.f, 0);
         break;
         case 1:
             lf_phase_spindrift();
         break;
         case 2:
-            lf_phase_snufit_circles();
+            lf_phase_snufit_circles(0.f, 0);
         break;
         case 3:
             lf_phase_snufit_lines();
@@ -176,10 +211,26 @@ static void lf_place_spawners(int health)
             lf_phase_lazer();
         break;
         case 5:
-            lf_phase_balls();
+            lf_phase_balls(0, 0.1f);
         break;
         case 6:
-            lf_phase_snufit_circles();
+            lf_phase_mr_blizzard_rl(0.f, 0);
+            lf_phase_lazer();
+        break;
+        case 7:
+            lf_phase_balls(1, 0.1f);
+            lf_phase_spindrift();
+        break;
+        case 8:
+            lf_phase_snufit_circles_rl(0.f, 0);
+            lf_phase_lazer();
+        break;
+        case 9:
+            lf_phase_balls(1, 0.2f);
+            lf_phase_spindrift();
+        break;
+        case 10:
+            lf_phase_snufit_circles_rl(0.f, 0);
             lf_phase_lazer();
         break;
     }
@@ -187,7 +238,7 @@ static void lf_place_spawners(int health)
 
 void bhv_lf_ctl_init()
 {
-    LF_INIT_PHASE();
+    LF_INIT_PHASE;
     f32 d;
     o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvBowser, &d);
     obj_scale(o->parentObj, 5.f);
@@ -213,7 +264,7 @@ void bhv_lf_ctl_loop()
     struct MarioState* m = gMarioStates;
     m->pos[0] = CLAMP(m->pos[0], -3000.f, 3000.f);
 
-    int sideSplit = o->parentObj->oHealth & 1;
+    int sideSplit = (1 + o->parentObj->oHealth) & 1;
     int side = sideSplit ? -1 : 1;
     m->faceAngle[1] = sideSplit ? 0 : 0x8000;
 
@@ -299,7 +350,7 @@ void bhv_lf_ring_spawner_init()
             s16 angle = o->oFaceAngleYaw + i * (0x10000 / amount);
             struct Object* snufit = spawn_object(o, model, bhv);
             snufit->oPosX = o->oPosX + radius * sins(angle);
-            snufit->oPosY = LF_HEIGHT;
+            snufit->oPosY = o->oPosY;
             snufit->oPosZ = o->oPosZ + radius * coss(angle);
             snufit->oDrawingDistance = 20000.f;
             objs[i] = snufit;
@@ -314,7 +365,7 @@ void bhv_lf_ring_spawner_init()
             struct Object* snufit = spawn_object(o, model, bhv);
             int loc = i - (amount / 2);
             snufit->oHomeX = snufit->oPosX = o->oPosX + loc * radius * sins(angle);
-            snufit->oHomeY = snufit->oPosY = LF_HEIGHT;
+            snufit->oHomeY = snufit->oPosY = o->oPosY;
             snufit->oHomeZ = snufit->oPosZ = o->oPosZ + loc * radius * coss(angle);
             snufit->oDrawingDistance = 20000.f;
             objs[i] = snufit;
@@ -369,7 +420,7 @@ void bhv_lf_ring_spawner_loop()
             s16 angle = o->oFaceAngleYaw + i * (0x10000 / amount) + o->oTimer * 0x120;
             struct Object* snufit = objs[i];
             snufit->oHomeX = snufit->oPosX = o->oPosX + radius * sins(angle);
-            snufit->oHomeY = snufit->oPosY = LF_HEIGHT;
+            snufit->oHomeY = snufit->oPosY = o->oPosY;
             snufit->oHomeZ = snufit->oPosZ = o->oPosZ + radius * coss(angle);
 
             lf_scale(snufit, 1.f);
@@ -390,7 +441,7 @@ void bhv_lf_ring_spawner_loop()
             snufit->oPosX = snufit->oHomeX;
             snufit->oPosZ = snufit->oHomeZ;
 
-            snufit->oPosY = snufit->oHomeY = LF_HEIGHT;
+            snufit->oPosY = snufit->oHomeY = o->oPosY;
 
             f32 scale = 1.f;
             f32 ax = ABS(snufit->oPosX);
@@ -454,11 +505,26 @@ void bhv_lf_balls_init()
     
 }
 
+struct ObjectHitbox sLfBulletHitbox = {
+    /* interactType:      */ INTERACT_SNUFIT_BULLET,
+    /* downOffset:        */ 50,
+    /* damageOrCoinValue: */ 1,
+    /* health:            */ 0,
+    /* numLootCoins:      */ 0,
+    /* radius:            */ 450,
+    /* height:            */ 1060,
+    /* hurtboxRadius:     */ 450,
+    /* hurtboxHeight:     */ 1060,
+};
+
+extern void cur_obj_move_xz(f32 steepSlopeNormalY, s32 careAboutEdgesAndSteepSlopes);
 extern struct ObjectHitbox sSnufitBulletHitbox;
 extern s32 obj_check_attacks(struct ObjectHitbox *hitbox, s32 attackedMarioAction);
 extern void obj_die_if_health_non_positive(void);
 void bhv_lf_balls_loop()
 {
+    f32 baseScale = o->oSnufitPelletBaseScale;
+    u8* locs = (u8*) aglabGlobalScratch;
     o->oFaceAngleRoll += 0x234;
     o->oFaceAngleYaw += 0x126;
 
@@ -467,20 +533,68 @@ void bhv_lf_balls_loop()
         if (o->oTimer < 30)
         {
             f32 scale = ((1 + o->oTimer) / 30.f);
-            obj_scale(o, 0.1f * scale);
+            obj_scale(o, baseScale * scale);
             o->oPosX = o->oHomeX + o->oSnufitPelletLfTargetPosX * scale;
             o->oPosY = o->oHomeY + o->oSnufitPelletLfTargetPosY * scale;
             o->oPosZ = o->oHomeZ + o->oSnufitPelletLfTargetPosZ * scale;
         }
 
-        obj_check_attacks(&sSnufitBulletHitbox, 3);
-        if (o->oAction == 3 || (o->oMoveFlags & (OBJ_MOVE_MASK_ON_GROUND | OBJ_MOVE_HIT_WALL))) {
-            o->oDeathSound = -1;
-            obj_die_if_health_non_positive();
-            return;
+        int diffTime = (o->oTimer - 30);
+        if ((diffTime % 7) == 0)
+        {
+            int id = o->oSnufitPelletId;
+            int which = diffTime / 7;
+            int whichId = locs[which];
+            if (id == whichId)
+            {
+                // target to mario
+                cur_obj_play_sound_2(SOUND_OBJ_SNUFIT_SHOOT);
+                o->oAction = 1;
+
+                o->oVelX = gMarioStates->pos[0] - o->oPosX;
+                o->oVelY = gMarioStates->pos[1] - o->oPosY;
+                o->oVelZ = gMarioStates->pos[2] - o->oPosZ + 2000.f + random_f32_around_zero(500.f);
+                f32 len = sqrtf(o->oVelX * o->oVelX + o->oVelY * o->oVelY + o->oVelZ * o->oVelZ);
+                o->oVelX = o->oVelX / len * 200.f;
+                o->oVelY = o->oVelY / len * 200.f;
+                o->oVelZ = o->oVelZ / len * 200.f;
+            }
         }
-        return;
     }
     
-    bhv_snufit_balls_loop();
+    int testDespawn = 0;
+    if (o->oAction != 2)
+    {
+        cur_obj_move_xz(COS78, FALSE);
+        cur_obj_move_y(0.f, 0.f, 0.f);
+        testDespawn = 1;
+    }
+    else
+    {
+        testDespawn = o->oTimer > 30;
+    }
+
+    if (testDespawn)
+    {
+        struct Object* p = o->parentObj;
+        int despawn = 0;
+        if (1 == p->oAction)
+        {
+            despawn = 1;
+        }
+
+        if (despawn)
+        {
+            o->activeFlags = 0;
+            return;
+        }
+    }
+
+    obj_set_hitbox(o, &sLfBulletHitbox);
+    if (o->oAction == 3 || (o->oMoveFlags & (OBJ_MOVE_MASK_ON_GROUND | OBJ_MOVE_HIT_WALL))) {
+        o->oDeathSound = -1;
+        obj_die_if_health_non_positive();
+        return;
+    }
+    return;
 }
