@@ -92,6 +92,11 @@ void bhv_coin_init(void) {
     cur_obj_set_behavior(bhvYellowCoin);
     obj_set_hitbox(o, &sYellowCoinHitbox);
     cur_obj_become_intangible();
+
+    if (gCurrCourseNum == COURSE_CW)
+    {
+        o->oGravity /= 1.5f;
+    }
 }
 
 void bhv_coin_loop(void) {

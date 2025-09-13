@@ -134,6 +134,11 @@ void bhv_goomba_init(void) {
     }
 #endif
 #endif
+
+    if (gCurrCourseNum == COURSE_CW)
+    {
+        o->oGravity /= 2.f;
+    }
 }
 
 /**
