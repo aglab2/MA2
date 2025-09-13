@@ -141,6 +141,8 @@ static struct cw_loc get_cw_loc(f32 z, const Trajectory* traj)
     return (struct cw_loc) { 1.f - dz / dt, i };
 }
 
+#define CW_MAX_Z (*(f32*) aglabGlobalScratch)
+
 extern const Trajectory cw_area_7_spline_0060_object_014980D4_003_StarMove[];
 Gfx *geo_cw_ending(s32 callContext, struct GraphNode *node, UNUSED s32 context)
 {
@@ -151,29 +153,67 @@ Gfx *geo_cw_ending(s32 callContext, struct GraphNode *node, UNUSED s32 context)
         int param = fnNode->parameter;
         struct LightGraphLvlNodeTranslationRotation *transNode = (struct LightGraphLvlNodeTranslationRotation *) node->next;
 
-        if (gCurrAreaIndex != 7)
+        int hasZ = 0;
+        f32 mz;
+
+        if (gCurrAreaIndex == 7)
         {
-            transNode->x = 50000.f  + traj[1];
-            transNode->y = 34870.f  + traj[2];
-            transNode->z = 160000.f + traj[3];
-            if (0 == param)
-                transNode->rotation[2] = 0;
+            mz = gMarioStates->pos[2];
+            hasZ = 1;
+        }
+        else if (gCurrAreaIndex == 6)
+        {
+            mz = gMarioStates->pos[2] - 40000.f;
+            hasZ = 1;
         }
         else
         {
-            f32 mz = gMarioStates->pos[2];
-            struct cw_loc loc = get_cw_loc(mz, traj);
-
-            f32 x = traj[4*(loc.amt-1) + 1] + (traj[4*loc.amt + 1] - traj[4*(loc.amt-1) + 1]) * loc.progress;
-            f32 y = traj[4*(loc.amt-1) + 2] + (traj[4*loc.amt + 2] - traj[4*(loc.amt-1) + 2]) * loc.progress;
-            f32 z = traj[4*(loc.amt-1) + 3] + (traj[4*loc.amt + 3] - traj[4*(loc.amt-1) + 3]) * loc.progress;
-
-            transNode->x = 50000.f  + x;
-            transNode->y = 34870.f  + y;
-            transNode->z = 160000.f + z;
-            if (0 == param)
-                transNode->rotation[2] = z * 0x8;
+            hasZ = 0;
         }
+
+        if (!hasZ)
+            return NULL;
+
+    
+        if (mz > CW_MAX_Z)
+            CW_MAX_Z = mz;
+
+        mz = CW_MAX_Z;
+
+        int angle = 0;
+        struct cw_loc loc = get_cw_loc(mz, traj);
+        f32 progress = loc.progress;
+        int amt = loc.amt;
+        if (progress > 1.f) // after curve?
+        {
+            progress = 1.f;
+            angle = 0;
+        }
+        else
+        {
+            if (progress < 0.f) // before curve?
+            {
+                progress = 0.f;
+                mz = traj[3];
+            }
+            // magic constant is referring to the last point z value
+            // aligned to be 0 in the end of the curve for smooth clamping
+            angle = (mz - 25779.f) * 0x8;
+        }
+
+        f32 x = traj[4*(amt-1) + 1] + (traj[4*amt + 1] - traj[4*(amt-1) + 1]) * progress;
+        f32 y = traj[4*(amt-1) + 2] + (traj[4*amt + 2] - traj[4*(amt-1) + 2]) * progress;
+        f32 z = traj[4*(amt-1) + 3] + (traj[4*amt + 3] - traj[4*(amt-1) + 3]) * progress;
+
+        // magic constants are area offset relative to global
+        transNode->x = 50000.f  + x;
+        transNode->y = 34870.f  + y  - 10.f;
+        transNode->z = 160000.f + z;
+
+        if (0 != param)
+            transNode->rotation[2] = 0;
+        else
+            transNode->rotation[2] = angle;
     }
     return NULL;
 }
@@ -190,6 +230,7 @@ static inline void cw_reds_randomize(struct Object* obj)
 
 void bhv_cw_rot_ctl_init()
 {
+    CW_MAX_Z = -60000.f;
     cur_obj_foreach(bhvRedCoin, cw_reds_randomize);
 }
 

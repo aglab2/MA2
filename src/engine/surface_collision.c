@@ -410,6 +410,8 @@ static int ban_fast_collision_ground(void)
         return 1;
     if (gCurrLevelNum == LEVEL_CCE)
         return 1;
+    if (gCurrLevelNum == LEVEL_CW && 7 == gCurrAreaIndex)
+        return 1;
 
     return 0;
 }
