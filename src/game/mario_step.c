@@ -754,7 +754,7 @@ static void apply_vertical_wind(struct MarioState *m) {
         }
         if (gCurrCourseNum == COURSE_LF) {
             int distToCenter = m->pos[0] * m->pos[0] + m->pos[2] * m->pos[2];
-            lim = CLAMP(0, sqrtf(distToCenter), 3000.f);
+            lim = CLAMP(0, sqrtf(distToCenter), 2900.f);
         }
         f32 offsetY = m->pos[1] - lim;
 
@@ -773,11 +773,17 @@ static void apply_vertical_wind(struct MarioState *m) {
             }
 
             if (offsetY >= 0.0f) {
-                maxVelY = lim / (offsetY + 200.0f);
+                maxVelY = 200.f * 50.f / (offsetY + 200.0f);
             } else {
                 maxVelY = 50.0f;
             }
-            maxVelY *= 1.3f;
+            if (gCurrCourseNum == COURSE_LF)
+            {
+            }
+            else
+            {
+                maxVelY *= 1.3f;
+            }
 
             if (m->vel[1] < maxVelY) {
                 if ((m->vel[1] += maxVelY / 8.0f) > maxVelY) {
