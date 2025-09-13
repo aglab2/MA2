@@ -1,0 +1,3 @@
+extern void scroll_gfx_lf_lazer_001_object_0130597C_mesh_layer_5();
+extern void scroll_gfx_lf_lazer_002_object_01305504_mesh_layer_5();
+extern void scroll_lf_level_geo_lf_lazer();

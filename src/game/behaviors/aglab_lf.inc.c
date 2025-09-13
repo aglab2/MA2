@@ -1,3 +1,5 @@
+#define LF_INIT_PHASE lf_phase_balls
+
 #define oLfHSTimer oF4
 #define oLfSpawnerObjects oObjF4
 
@@ -143,12 +145,19 @@ static void lf_place_spawners(int health)
         case 4:
             lf_phase_lazer();
         break;
+        case 5:
+            lf_phase_balls();
+        break;
+        case 6:
+            lf_phase_snufit_circles();
+            lf_phase_lazer();
+        break;
     }
 }
 
 void bhv_lf_ctl_init()
 {
-    lf_phase_lazer();
+    LF_INIT_PHASE();
     f32 d;
     o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvBowser, &d);
     obj_scale(o->parentObj, 5.f);
@@ -300,7 +309,7 @@ void bhv_lf_ring_spawner_loop()
     struct Object** objs = &o->oLfSpawnerObjects;
 
     struct Object* p = o->parentObj;
-    if (o->oTimer > 10)
+    if (o->oTimer > 30)
     {
         int despawn = 0;
         if (1 == p->oAction)
@@ -366,11 +375,11 @@ void bhv_lf_ring_spawner_loop()
         }
     }
 
-    if (o->oTimer <= 10)
+    if (o->oTimer <= 30)
     {
         for (int i = 0; i < amount; i++)
         {
-            lf_mul_scale(objs[i], ((1 + o->oTimer) / 11.f));
+            lf_mul_scale(objs[i], ((1 + o->oTimer) / 30.f));
         }
     }
 }
@@ -386,7 +395,7 @@ void bhv_lf_lazer_loop()
     o->oMoveAngleYaw = o->oFaceAngleYaw = angle;
 
     struct Object* p = o->parentObj;
-    if (o->oTimer > 10)
+    if (o->oTimer >= 30)
     {
         int despawn = 0;
         if (1 == p->oAction)
@@ -399,4 +408,13 @@ void bhv_lf_lazer_loop()
             o->activeFlags = 0;
         }
     }
+    else
+    {
+        obj_scale(o, 0.6f * ((1 + o->oTimer) / 30.f));
+    }
+}
+
+void bhv_lf_balls_loop()
+{
+
 }
