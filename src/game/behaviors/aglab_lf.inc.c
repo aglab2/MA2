@@ -260,11 +260,13 @@ void bhv_lf_ctl_init()
 extern void despawn_all(const BehaviorScript* behavior);
 void bhv_lf_ctl_loop()
 {
+    // i do not believe this can ever happen but just in case
     if (gMarioStates->health < 0x100)
     {
         level_trigger_warp(gMarioStates, WARP_OP_DEATH);
         return;
     }
+    gMarioStates->health = 0x880;
 
     o->parentObj->oPosX = 0;
     o->parentObj->oPosY = -500;
