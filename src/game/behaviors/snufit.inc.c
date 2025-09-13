@@ -6,8 +6,6 @@
  * the snufit shoots at Mario.
  */
 
-#define oSnufitPelletRange oFloatF4
-
 struct ObjectHitbox sSnufitHitbox = {
     /* interactType:      */ INTERACT_HIT_FROM_BELOW,
     /* downOffset:        */ 0,

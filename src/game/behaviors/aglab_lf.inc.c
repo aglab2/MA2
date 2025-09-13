@@ -125,6 +125,36 @@ static void lf_phase_lazer()
     }
 }
 
+extern const BehaviorScript bhvLfBalls[];
+static void lf_phase_balls()
+{
+    struct Object* bowser = o->parentObj;
+    for (int layer = 0; layer < 7; layer++)
+    {
+        f32 radius = 3500.f - ABS(layer - 3) * 350.f;
+        int amount = 9 + (layer & 1);
+        for (int i = 0; i < amount; i++)
+        {
+            s16 angle = i * (0x6000 / amount) + (layer & 1) * (0x6000 / (2 * amount)) - 0x3000 + 0x8000;
+            struct Object* spwn = spawn_object(bowser, MODEL_LF_PELLET, bhvLfBalls);
+            //spwn->oPosX = bowser->oPosX + radius * sins(angle);
+            //spwn->oPosY = LF_HEIGHT + (layer - 3) * 700.f - 2000.f;
+            //spwn->oPosZ = bowser->oPosZ + radius * coss(angle);
+
+            spwn->oPosX = spwn->oHomeX = bowser->oPosX;
+            spwn->oPosY = spwn->oHomeY = LF_HEIGHT - 2000.f;
+            spwn->oPosZ = spwn->oHomeZ = bowser->oPosZ;
+            
+            spwn->oSnufitPelletLfTargetPosX = radius * sins(angle);
+            spwn->oSnufitPelletLfTargetPosY = (layer - 3) * 700.f;
+            spwn->oSnufitPelletLfTargetPosZ = radius * coss(angle);
+
+            spwn->oMoveAngleYaw = spwn->oFaceAngleYaw = angle + 0x8000;
+            spwn->oDrawingDistance = 20000.f;
+        }
+    }
+}
+
 static void lf_place_spawners(int health)
 {
     int phase = 4 - health;
@@ -414,7 +444,43 @@ void bhv_lf_lazer_loop()
     }
 }
 
+void bhv_lf_balls_init()
+{
+    o->oSnufitPelletRange = 30000.f;
+    o->oAction = 2;
+    obj_scale(o, 0.1f);
+    o->oFaceAngleRoll = random_u16();
+    o->oFaceAngleYaw = random_u16();
+    
+}
+
+extern struct ObjectHitbox sSnufitBulletHitbox;
+extern s32 obj_check_attacks(struct ObjectHitbox *hitbox, s32 attackedMarioAction);
+extern void obj_die_if_health_non_positive(void);
 void bhv_lf_balls_loop()
 {
+    o->oFaceAngleRoll += 0x234;
+    o->oFaceAngleYaw += 0x126;
 
+    if (o->oAction == 2)
+    {
+        if (o->oTimer < 30)
+        {
+            f32 scale = ((1 + o->oTimer) / 30.f);
+            obj_scale(o, 0.1f * scale);
+            o->oPosX = o->oHomeX + o->oSnufitPelletLfTargetPosX * scale;
+            o->oPosY = o->oHomeY + o->oSnufitPelletLfTargetPosY * scale;
+            o->oPosZ = o->oHomeZ + o->oSnufitPelletLfTargetPosZ * scale;
+        }
+
+        obj_check_attacks(&sSnufitBulletHitbox, 3);
+        if (o->oAction == 3 || (o->oMoveFlags & (OBJ_MOVE_MASK_ON_GROUND | OBJ_MOVE_HIT_WALL))) {
+            o->oDeathSound = -1;
+            obj_die_if_health_non_positive();
+            return;
+        }
+        return;
+    }
+    
+    bhv_snufit_balls_loop();
 }

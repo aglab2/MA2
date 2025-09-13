@@ -970,6 +970,11 @@
 #define /*0x10C*/ oSnufitBullets         OBJECT_FIELD_S32(0x21)
 #define /*0x1AC*/ oSnufitBodyScale       OBJECT_FIELD_S16(0x49, 0)
 
+#define oSnufitPelletRange oFloatF4
+#define oSnufitPelletLfTargetPosX oFloatF8
+#define oSnufitPelletLfTargetPosY oFloatFC
+#define oSnufitPelletLfTargetPosZ oFloat100
+
 /* Spindel */
 #define /*0x0F4*/ oSpindelMoveTimer     OBJECT_FIELD_S32(0x1B)
 #define /*0x0F8*/ oSpindelMoveDirection OBJECT_FIELD_S32(0x1C)
