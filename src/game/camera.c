@@ -1305,7 +1305,7 @@ void mode_8_directions_camera(struct Camera *c) {
     c->paraCamOrigPos[1] = c->pos[1];
     c->paraCamOrigPos[2] = c->pos[2];
     sAreaYawChange = sAreaYaw - oldAreaYaw;
-    if (!gCamCollision)
+    if (!gCamCollision || (gMarioStates->action == ACT_FCGR_JUMP) || (gMarioStates->action == ACT_FCGR_WALKING))
     {
         c->camCollisionProgress.y = 1.f;
         c->camCollisionProgress.xz = 1.f;
