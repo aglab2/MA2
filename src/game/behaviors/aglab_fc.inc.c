@@ -7,6 +7,7 @@ typedef struct {
 } cyl_t;
 
 static cyl_t to_cyl(const Vec3f point, const Vec3f start, const Vec3f x_axis, const Vec3f y_axis, const Vec3f z_axis);
+static cyl_t to_cyl_velocity(Vec3f vel, Vec3f x_axis, Vec3f y_axis, Vec3f z_axis, cyl_t cyl);
 static cyl_t to_cyl_vec(const Vec3f rel, const Vec3f x_axis, const Vec3f y_axis, const Vec3f z_axis);
 static void to_xyz(Vec3f point, const Vec3f start, const Vec3f x_axis, const Vec3f y_axis, const Vec3f z_axis, cyl_t cyl);
 static void to_xyz_vec(Vec3f point, const Vec3f x_axis, const Vec3f y_axis, const Vec3f z_axis, cyl_t cyl);
@@ -44,19 +45,26 @@ void bhv_fc_grav_loop()
         // For velocity conversion, we cannot use generic 'to_cyl' function because
         // angular speed depends on the location of the object, not just the velocity.
 
-        // We are performing the transformation manually, similarly to the 'to_cyl_vec' function
-
-        Vec3f x_axis_new;
-        Vec3f y_axis_new;
-        gen_axis_point_oriented(x_axis_new, y_axis_new, x_axis, y_axis, z_axis, cyl.theta);
-
-        // Our choice of x_axis_new and y_axis_new is such that the 'r' value is the distance from the object to the pole...
-        sCylVel.z = vec3_dot(gMarioStates->vel, z_axis);
-        sCylVel.r = vec3_dot(gMarioStates->vel, x_axis_new);
-        // ... and the 'theta' is angular speed around the pole projected on 'y_axis_new'
-        // mind that angular speed is in radians, so we need to convert it to mario degrees
-        sCylVel.theta = vec3_dot(gMarioStates->vel, y_axis_new) / cyl.r / M_PI * 0x10000;
+        sCylVel = to_cyl_velocity(gMarioStates->vel, x_axis, y_axis, z_axis, cyl);
     }
+}
+
+static cyl_t to_cyl_velocity(Vec3f vel, Vec3f x_axis, Vec3f y_axis, Vec3f z_axis, cyl_t cyl)
+{
+    // We are performing the transformation manually, similarly to the 'to_cyl_vec' function
+    cyl_t result;
+    Vec3f x_axis_new;
+    Vec3f y_axis_new;
+    gen_axis_point_oriented(x_axis_new, y_axis_new, x_axis, y_axis, z_axis, cyl.theta);
+
+    // Our choice of x_axis_new and y_axis_new is such that the 'r' value is the distance from the object to the pole...
+    result.z = vec3_dot(vel, z_axis);
+    result.r = vec3_dot(vel, x_axis_new);
+    // ... and the 'theta' is angular speed around the pole projected on 'y_axis_new'
+    // mind that angular speed is in radians, so we need to convert it to mario degrees
+    result.theta = vec3_dot(vel, y_axis_new) / cyl.r / M_PI * 0x10000;
+
+    return result;
 }
 
 static cyl_t to_cyl_vec(const Vec3f rel, const Vec3f x_axis, const Vec3f y_axis, const Vec3f z_axis)
@@ -124,6 +132,7 @@ static void gen_axis_point_oriented(Vec3f x_axis_new, Vec3f y_axis_new, const Ve
     vec3_cross(y_axis_new, z_axis, x_axis_new);
 }
 
+extern f32 find_surface_on_ray(Vec3f orig, Vec3f dir, struct Surface **hit_surface, Vec3f hit_pos, s32 flags);
 int fcgr_spin(struct MarioState *m)
 {
     if (gCurrAreaIndex != sCylArea)
@@ -207,7 +216,54 @@ when walking:
     }
 
     sCylPos = cyl;
-    to_xyz(m->pos, &obj->oPosVec, x_axis, y_axis, z_axis, cyl);
+    Vec3f oldPos;
+    vec3_copy(oldPos, m->pos);
+    Vec3f newPos;
+    to_xyz(newPos, &obj->oPosVec, x_axis, y_axis, z_axis, cyl);
+
+    // raycast collision because mario collision engine is completely busted
+    int clampWalls = 1;
+    if (!m->hurtCounter)
+    {
+        Vec3f dir;
+        vec3_diff(dir, newPos, oldPos);
+        struct Surface* hitSurf = NULL;
+        Vec3f hitPos;
+        find_surface_on_ray(oldPos, dir, &hitSurf, hitPos, RAYCAST_FIND_ALL);
+
+        if (hitSurf && hitSurf->type == SURFACE_BURNING)
+        {
+            clampWalls = 0;
+            vec3_copy(newPos, hitPos);
+            cyl = to_cyl(newPos, &obj->oPosVec, x_axis, y_axis, z_axis);
+
+            sCylVel.theta = 0;
+            sCylVel.z = 0;
+            sCylVel.r = 0;
+
+            Vec3f n;
+            n[0] = hitSurf->normal.x;
+            n[1] = hitSurf->normal.y;
+            n[2] = hitSurf->normal.z;
+
+            sCylVel = to_cyl_velocity(n, x_axis, y_axis, z_axis, cyl);
+            sCylVel.r = 0.f;
+            sCylVel.z *= 50.f;
+            s16 mult = o->oFaceAngleYaw ? 30 : -30;
+            sCylVel.theta *= mult;
+            m->hurtCounter += 4;
+            play_sound(SOUND_MARIO_ON_FIRE, m->marioObj->header.gfx.cameraToObject);
+        }
+    }
+
+    vec3_copy(m->pos, newPos);
+    if (clampWalls)
+    {
+        gCollisionFlags |= COLLISION_FLAG_EXCLUDE_LAVA;
+        f32_find_wall_collision(&m->pos[0], &m->pos[1], &m->pos[2], 60.0f, 50.0f);
+        gCollisionFlags |= COLLISION_FLAG_EXCLUDE_LAVA;
+        f32_find_wall_collision(&m->pos[0], &m->pos[1], &m->pos[2], 30.0f, 24.0f);
+    }
 
     // A reverse of transformation above for velocity
     Vec3f x_axis_new;
