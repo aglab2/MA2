@@ -400,6 +400,9 @@ int fcgr_angle_overriden(s16 yaw, s16 marioAngle, f32* pan)
         rotate_in_xz(pand, pand, yaw);
 
         pan[0] = -dir[0] / 2.f - pand[0];
+
+        pan[0] *= 0.9f;
+        pan[2] *= 0.9f;
         
         approach_f32_asymptotic_bool(&sPanYOffset, dir[1] / 2.f, 0.025f);
         pan[1] = sPanYOffset;
