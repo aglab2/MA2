@@ -13,15 +13,19 @@
 
 #include "make_const_nonconst.h"
 #include "levels/gh/header.h"
-#include "level_config.h"
 
 /* Fast64 begin persistent block [scripts] */
+#include "instant_warp_desc.h"
+#include "level_config.h"
 extern const GeoLayout gh_area_1[];
+extern IWDHeader* iw_descs_gh[];
 #define gh_area_1 gh_area_1
 #define gh_area_2 gh_area_1
 #include "levels/gh/area_1/collision.inc.c"
 #include "levels/gh/area_2/collision.inc.c"
 static struct LevelConfig cfg = {
+	.iwds = iw_descs_gh,
+	.viewRangeMult = 3.f,
 };
 /* Fast64 end persistent block [scripts] */
 
@@ -34,11 +38,11 @@ const LevelScript level_gh_entry[] = {
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
-	AREA(1, gh_area_1, 0, -300-30-2, -900-900+90),
+	AREA(1, gh_area_1, 0, -174, -900),
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
-		MARIO_POS(0x01, 0, 133, 4075, 12214),
+		MARIO_POS(0x01, 0, 70, 2145, 6428),
 		TERRAIN(gh_area_1_collision),
 		MACRO_OBJECTS(gh_area_1_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
@@ -46,7 +50,7 @@ const LevelScript level_gh_entry[] = {
 		/* Fast64 begin persistent block [area commands] */
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
-	AREA(2, gh_area_2, 0, -800-30-2, -4900-900+90),
+	AREA(2, gh_area_2, 0, -674, -4900),
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
@@ -58,7 +62,7 @@ const LevelScript level_gh_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 	FREE_LEVEL_POOL(),
-	MARIO_POS(0x01, 0, 133, 4075, 12214),
+	MARIO_POS(0x01, 0, 70, 2145, 6428),
 	CALL(0, lvl_init_or_update),
 	CALL_LOOP(1, lvl_init_or_update),
 	CLEAR_LEVEL(),

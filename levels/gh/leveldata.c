@@ -10,6 +10,7 @@
 #if 0
 #include "levels/gh/leveldata.inc.c"
 #else
-#include "levels/gh/visual/header_lvlopt.inc.h"
-#include "levels/gh/visual/model_lvlopt.inc.c"
+#include "levels/gh/iw.inc.c"
+#include "levels/gh/visual/header_lvl.inc.h"
+#include "levels/gh/visual/model_lvl.inc.c"
 #endif
