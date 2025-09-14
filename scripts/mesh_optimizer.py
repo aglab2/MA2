@@ -1078,7 +1078,7 @@ class ModelMeshEntry(TriKit):
                             max_i = -1
                             max_a = -2
                             for i, vc in enumerate(ngon_values):
-                                if i == hull_by_ngon_indices[-1]:
+                                if i in hull_by_ngon_indices:
                                     continue
 
                                 dv = vc.pos - hull_cur
@@ -1095,8 +1095,8 @@ class ModelMeshEntry(TriKit):
                                     max_a = dva
                                     max_i = i
                                     max_point = vc.pos
-                            
-                            if max_i == hull_by_ngon_indices[0]:
+
+                            if max_i == -1 or max_i == hull_by_ngon_indices[0]:
                                 break
 
                             hull_by_ngon_indices.append(max_i)
