@@ -672,7 +672,7 @@ static void calc_y_to_curr_floor(f32 *posOff, f32 posMul, f32 posBound, f32 *foc
 }
 
 extern int fcgr_override_posYoff(f32* posYOff, f32* focYoff);
-void focus_on_mario(Vec3f focus, Vec3f pos, f32 posYOff, f32 focYOff, f32 dist, s16 pitch, s16 yaw) {
+static void focus_on_mario(Vec3f focus, Vec3f pos, f32 posYOff, f32 focYOff, f32 dist, s16 pitch, s16 yaw) {
     Vec3f marioPos;
 
     if (gIsGravityFlipped)
@@ -699,7 +699,7 @@ void focus_on_mario(Vec3f focus, Vec3f pos, f32 posYOff, f32 focYOff, f32 dist, 
 /**
  * Set the camera's y coordinate to goalHeight, respecting floors and ceilings in the way
  */
-void set_camera_height(struct Camera *c, f32 goalHeight) {
+static void set_camera_height(struct Camera *c, f32 goalHeight) {
     struct Surface *surface;
     f32 marioFloorHeight, marioCeilHeight, camFloorHeight;
     f32 baseOff = 125.f;
@@ -764,7 +764,7 @@ void set_camera_height(struct Camera *c, f32 goalHeight) {
 /**
  * Pitch the camera down when the camera is facing down a slope
  */
-s16 look_down_slopes(s16 camYaw) {
+static s16 look_down_slopes(s16 camYaw) {
     struct Surface *floor;
     // Default pitch
     s16 pitch = 0x05B0;
@@ -798,7 +798,7 @@ s16 look_down_slopes(s16 camYaw) {
  * Since this function only affects the camera's focus, Mario's movement direction isn't affected.
  */
 extern int fcgr_angle_overriden(s16 yaw, s16 marioAngle, f32* pan);
-void pan_ahead_of_player(struct Camera *c) {
+static void pan_ahead_of_player(struct Camera *c) {
     f32 dist;
     s16 pitch, yaw;
     Vec3f pan = { 0, 0, 0 };
@@ -876,6 +876,7 @@ s16 find_in_bounds_yaw_wdw_bob_thi(Vec3f pos, Vec3f origin, s16 yaw) {
  * Rotates the camera around the area's center point.
  */
 s32 update_radial_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
+    return 0;
     f32 cenDistX = sMarioCamState->pos[0] - c->areaCenX;
     f32 cenDistZ = sMarioCamState->pos[2] - c->areaCenZ;
     s16 camYaw = atan2s(cenDistZ, cenDistX) + sModeOffsetYaw;
@@ -1053,7 +1054,7 @@ void radial_camera_move(struct Camera *c) {
  * Moves Lakitu from zoomed in to zoomed out and vice versa.
  * When C-Down mode is not active, sLakituDist and sLakituPitch decrease to 0.
  */
-void lakitu_zoom(f32 rangeDist, s16 rangePitch) {
+static void lakitu_zoom(f32 rangeDist, s16 rangePitch) {
     if (sLakituDist < 0) {
         if ((sLakituDist += 30) > 0) {
             sLakituDist = 0;
@@ -1083,7 +1084,7 @@ void lakitu_zoom(f32 rangeDist, s16 rangePitch) {
     }
 }
 
-void radial_camera_input_default(struct Camera *c) {
+static void radial_camera_input_default(struct Camera *c) {
     radial_camera_input(c);
 }
 
@@ -1091,7 +1092,7 @@ void radial_camera_input_default(struct Camera *c) {
  * Makes Lakitu cam's yaw match the angle turned towards in C-Up mode, and makes Lakitu slowly fly back
  * to the distance he was at before C-Up
  */
-void update_yaw_and_dist_from_c_up(UNUSED struct Camera *c) {
+static void update_yaw_and_dist_from_c_up(UNUSED struct Camera *c) {
     sModeOffsetYaw = sModeInfo.transitionStart.yaw - sAreaYaw;
     sLakituDist = sModeInfo.transitionStart.dist - 1000.0f;
     // No longer in C-Up
@@ -1371,6 +1372,7 @@ void mode_outward_radial_camera(struct Camera *c) {
  * so Mario will run slightly towards the camera.
  */
 s32 update_parallel_tracking_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
+    return 0;
     Vec3f path[2];
     Vec3f parMidPoint;
     Vec3f marioOffset;
@@ -1534,6 +1536,7 @@ s32 update_parallel_tracking_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
  * Updates the camera during fixed mode.
  */
 s32 update_fixed_camera(struct Camera *c, Vec3f focus, UNUSED Vec3f pos) {
+    return 0;
     f32 focusFloorOff;
     f32 goalHeight;
     f32 ceilHeight;
@@ -1604,6 +1607,7 @@ s32 update_fixed_camera(struct Camera *c, Vec3f focus, UNUSED Vec3f pos) {
  * Updates the camera during a boss fight
  */
 s32 update_boss_fight_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
+    return 0;
     struct Object *obj;
     f32 focusDistance;
     // Floor normal values
@@ -2438,6 +2442,7 @@ void mode_mario_camera(struct Camera *c) {
  * Rotates the camera around the spiral staircase.
  */
 s32 update_spiral_stairs_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
+    return 0;
     /// The returned yaw
     s16 camYaw;
     /// The focus (Mario)'s yaw around the stairs
@@ -2536,7 +2541,7 @@ void mode_slide_camera(struct Camera *c) {
     }
 }
 
-void store_lakitu_cam_info_for_c_up(struct Camera *c) {
+static void store_lakitu_cam_info_for_c_up(struct Camera *c) {
     vec3f_copy(sCameraStoreCUp.pos, c->pos);
     vec3f_sub(sCameraStoreCUp.pos, sMarioCamState->pos);
     // Only store the y value, and as an offset from Mario, for some reason
@@ -2548,7 +2553,7 @@ void store_lakitu_cam_info_for_c_up(struct Camera *c) {
  *
  * @see update_mario_inputs
  */
-void set_mode_c_up(struct Camera *c) {
+static void set_mode_c_up(struct Camera *c) {
     if (!(gCameraMovementFlags & CAM_MOVE_C_UP_MODE)) {
         gCameraMovementFlags |= CAM_MOVE_C_UP_MODE;
         store_lakitu_cam_info_for_c_up(c);
@@ -2560,7 +2565,7 @@ void set_mode_c_up(struct Camera *c) {
  * Zoom the camera out of C-Up mode, avoiding moving into a wall, if possible, by searching for an open
  * direction.
  */
-void exit_c_up(struct Camera *c) {
+static void exit_c_up(struct Camera *c) {
     struct Surface *surface;
     Vec3f checkFoc;
     Vec3f curPos;
@@ -2696,7 +2701,7 @@ void move_mario_head_c_up(UNUSED struct Camera *c) {
 /**
  * Zooms the camera in for C-Up mode
  */
-void move_into_c_up(struct Camera *c) {
+static void move_into_c_up(struct Camera *c) {
     struct LinearTransitionPoint *start = &sModeInfo.transitionStart;
     struct LinearTransitionPoint *end = &sModeInfo.transitionEnd;
 
@@ -2729,7 +2734,7 @@ void move_into_c_up(struct Camera *c) {
 /**
  * The main update function for C-Up mode
  */
-void mode_c_up_camera(struct Camera *c) {
+static void mode_c_up_camera(struct Camera *c) {
     // Play a sound when entering C-Up mode
     if (!(sCameraSoundFlags & CAM_SOUND_C_UP_PLAYED)) {
         play_sound_cbutton_up();
@@ -2784,7 +2789,7 @@ s32 update_in_cannon(UNUSED struct Camera *c, Vec3f focus, Vec3f pos) {
  * Updates the camera when Mario is in a cannon.
  * sCannonYOffset is used to make the camera rotate down when Mario has just entered the cannon
  */
-void mode_cannon_camera(struct Camera *c) {
+static void mode_cannon_camera(struct Camera *c) {
     sLakituPitch = 0;
     gCameraMovementFlags &= ~CAM_MOVING_INTO_MODE;
     c->nextYaw = update_in_cannon(c, c->focus, c->pos);
@@ -2915,7 +2920,7 @@ void set_camera_mode(struct Camera *c, s16 mode, s16 frames) {
 /**
  * Updates Lakitu's position/focus and applies camera shakes.
  */
-void update_lakitu(struct Camera *c) {
+static void update_lakitu(struct Camera *c) {
     struct Surface *floor = NULL;
     Vec3f newPos;
     Vec3f newFoc;
@@ -3476,7 +3481,7 @@ void init_camera(struct Camera *c) {
  *      This isolates the lower 16 'area' bits, subtracts 1 because areas are 1-indexed, and effectively
  *      modulo-4's the result, because each 8-bit mask only has 4 area bits for each level
  */
-void zoom_out_if_paused_and_outside(struct GraphNodeCamera *camera) {
+static void zoom_out_if_paused_and_outside(struct GraphNodeCamera *camera) {
     s16 yaw;
     s32 areaMaskIndex = gCurrLevelArea / 32;
     s32 areaBit = 1 << (((gCurrLevelArea & 0x10) / 4) + (((gCurrLevelArea & 0xF) - 1) & 3));
@@ -3579,7 +3584,7 @@ void vec3f_to_object_pos(struct Object *obj, Vec3f src) {
  *
  * The spline is described at www2.cs.uregina.ca/~anima/408/Notes/Interpolation/UniformBSpline.htm
  */
-void evaluate_cubic_spline(f32 u, Vec3f Q, Vec3f spline1, Vec3f spline2, Vec3f spline3, Vec3f spline4) {
+static void evaluate_cubic_spline(f32 u, Vec3f Q, Vec3f spline1, Vec3f spline2, Vec3f spline3, Vec3f spline4) {
     f32 B[4];
     if (u > 1.0f) u = 1.0f;
 
@@ -4031,7 +4036,7 @@ s32 camera_approach_s16_symmetric_bool(s16 *current, s16 target, s16 increment) 
     }
 }
 
-s32 camera_approach_s16_symmetric(s16 current, s16 target, s16 increment) {
+static s32 camera_approach_s16_symmetric(s16 current, s16 target, s16 increment) {
     s16 dist = target - current;
 
     if (increment < 0) {
@@ -4225,7 +4230,7 @@ s32 clamp_positions_and_find_yaw(Vec3f pos, Vec3f origin, f32 xMax, f32 xMin, f3
  * @warning this is jank. It actually returns the yaw that will rotate further INTO the wall. So, the
  *          developers just add 180 degrees to the result.
  */
-s32 calc_avoid_yaw(s16 yawFromMario, s16 wallYaw) {
+static s32 calc_avoid_yaw(s16 yawFromMario, s16 wallYaw) {
     s16 yawDiff;
     yawDiff = wallYaw - yawFromMario + DEGREES(90);
 
@@ -4248,7 +4253,7 @@ s32 calc_avoid_yaw(s16 yawFromMario, s16 wallYaw) {
  * @param yMax absolute-value max size in y, set to -1 to ignore
  * @param zMax absolute-value max size in z, set to -1 to ignore
  */
-s32 is_surf_within_bounding_box(struct Surface *surf, f32 xMax, f32 yMax, f32 zMax) {
+static s32 is_surf_within_bounding_box(struct Surface *surf, f32 xMax, f32 yMax, f32 zMax) {
     // Surface vertex coordinates
     Vec3s sx, sy, sz;
     // Max delta between x, y, and z
@@ -4307,7 +4312,7 @@ s32 is_surf_within_bounding_box(struct Surface *surf, f32 xMax, f32 yMax, f32 zM
  *
  * Because the function only uses `surf`s first vertex, some surfaces can shadow others.
  */
-s32 is_behind_surface(Vec3f pos, struct Surface *surf) {
+static s32 is_behind_surface(Vec3f pos, struct Surface *surf) {
     s32 behindSurface = 0;
     // Surface normal
     f32 normX = (surf->vertex2[1] - surf->vertex1[1]) * (surf->vertex3[2] - surf->vertex2[2]) -
@@ -4355,7 +4360,7 @@ s32 is_range_behind_surface(Vec3f from, Vec3f to, struct Surface *surf, s16 rang
     return behindSurface;
 }
 
-s32 is_mario_behind_surface(UNUSED struct Camera *c, struct Surface *surf) {
+static s32 is_mario_behind_surface(UNUSED struct Camera *c, struct Surface *surf) {
     s32 behindSurface = is_behind_surface(sMarioCamState->pos, surf);
 
     return behindSurface;
@@ -4374,7 +4379,7 @@ void scale_along_line(Vec3f dst, Vec3f from, Vec3f to, f32 scale) {
  * Effectively created a rectangular prism defined by a vector starting at the center
  * and extending to the corners. If the position is in this box, the function returns true.
  */
-s32 is_pos_in_bounds(Vec3f pos, Vec3f center, Vec3f bounds, s16 boundsYaw) {
+static s32 is_pos_in_bounds(Vec3f pos, Vec3f center, Vec3f bounds, s16 boundsYaw) {
     Vec3f rel;
     vec3_diff(rel, center, pos);
 
