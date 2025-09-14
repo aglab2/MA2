@@ -1,0 +1,14 @@
+extern u8 gh_skybox_greenhill256_1_rgba16[];
+extern u8 gh_skybox_greenhill64_2_ci4[];
+extern u8 gh_skybox_greenhill64_2_pal_rgba16[];
+extern u8 gh_skybox_greenhill128_5_ci4[];
+extern u8 gh_skybox_greenhill128_5_pal_rgba16[];
+extern Vtx gh_skybox_gh_skybox_mesh_vtx_0[768];
+extern Vtx gh_skybox_gh_skybox_mesh_vtx_1[91];
+extern Vtx gh_skybox_gh_skybox_mesh_vtx_2[134];
+extern Vtx gh_skybox_gh_skybox_mesh_vtx_3[38];
+extern Vtx gh_skybox_gh_skybox_mesh_vtx_4[38];
+extern Vtx gh_skybox_gh_skybox_mesh_vtx_5[38];
+extern Vtx gh_skybox_gh_skybox_mesh_vtx_6[38];
+extern Vtx gh_skybox_gh_skybox_mesh_vtx_7[90];
+extern Gfx gh_skybox_gh_skybox_mesh[];

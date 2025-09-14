@@ -20,6 +20,7 @@
 #include "src/game/texscroll/fc_texscroll.inc.h"
 #include "src/game/texscroll/lb_texscroll.inc.h"
 #include "src/game/texscroll/lf_texscroll.inc.h"
+#include "src/game/texscroll/gh_texscroll.inc.h"
 extern void scroll_textures();
 
 #endif

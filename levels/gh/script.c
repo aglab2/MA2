@@ -23,9 +23,11 @@ extern IWDHeader* iw_descs_gh[];
 #define gh_area_2 gh_area_1
 #include "levels/gh/area_1/collision.inc.c"
 #include "levels/gh/area_2/collision.inc.c"
+extern Gfx gh_skybox_gh_skybox_mesh[];
 static struct LevelConfig cfg = {
 	.iwds = iw_descs_gh,
 	.viewRangeMult = 3.f,
+	.skybox = gh_skybox_gh_skybox_mesh,
 };
 /* Fast64 end persistent block [scripts] */
 
