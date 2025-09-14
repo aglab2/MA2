@@ -551,13 +551,13 @@ s32 begin_braking_action(struct MarioState *m) {
     return set_mario_action(m, ACT_DECELERATING, 0);
 }
 
-void anim_and_audio_for_walk(struct MarioState *m) {
+static void anim_and_audio_for_walk(struct MarioState *m, f32 vel) {
     s32 animSpeed;
     struct Object *marioObj = m->marioObj;
     s32 inLoop = TRUE;
     s16 targetPitch = 0;
 
-    f32 intendedSpeed = MAX(m->intendedMag, m->forwardVel);
+    f32 intendedSpeed = MAX(m->intendedMag, vel);
 
     if (intendedSpeed < 4.0f) {
         intendedSpeed = 4.0f;
@@ -639,7 +639,8 @@ void anim_and_audio_for_walk(struct MarioState *m) {
     }
 
     marioObj->oMarioWalkingPitch = approach_s32_symmetric(marioObj->oMarioWalkingPitch, targetPitch, 0x800);
-    marioObj->header.gfx.angle[0] = marioObj->oMarioWalkingPitch;
+    if (m->action != ACT_FCGR_WALKING)
+        marioObj->header.gfx.angle[0] = marioObj->oMarioWalkingPitch;
 }
 
 void anim_and_audio_for_hold_walk(struct MarioState *m) {
@@ -850,7 +851,7 @@ s32 act_walking(struct MarioState *m) {
             break;
 
         case GROUND_STEP_NONE:
-            anim_and_audio_for_walk(m);
+            anim_and_audio_for_walk(m, m->forwardVel);
             if (m->intendedMag - m->forwardVel > 16.0f) {
                 m->particleFlags |= PARTICLE_DUST;
             }
@@ -869,6 +870,13 @@ s32 act_walking(struct MarioState *m) {
 
 #include "fcgr.h"
 
+enum ActionStatesIdle { // act_idle, act_metal_water_standing
+    ACT_STATE_IDLE_HEAD_LEFT,
+    ACT_STATE_IDLE_HEAD_RIGHT,
+    ACT_STATE_IDLE_HEAD_CENTER,
+    ACT_STATE_IDLE_RESET_OR_SLEEP
+};
+
 s32 act_fcgr_walking(struct MarioState *m)
 {
     switch (fcgr_spin(m))
@@ -885,7 +893,34 @@ s32 act_fcgr_walking(struct MarioState *m)
 
     vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
     vec3s_set(m->marioObj->header.gfx.angle, m->faceAngle[0], m->faceAngle[1], m->faceAngle[2]);
-    anim_and_audio_for_hold_walk(m);
+    f32 vel = sqrtf(m->vel[0] * m->vel[0] + m->vel[2] * m->vel[2] + m->vel[1] * m->vel[1]);
+
+    if (vel < 0.1f)
+    {
+        switch (m->actionState) {
+            case ACT_STATE_IDLE_HEAD_LEFT:
+                set_mario_animation(m, MARIO_ANIM_IDLE_HEAD_LEFT);
+                break;
+
+            case ACT_STATE_IDLE_HEAD_RIGHT:
+                set_mario_animation(m, MARIO_ANIM_IDLE_HEAD_RIGHT);
+                break;
+
+            case ACT_STATE_IDLE_HEAD_CENTER:
+                set_mario_animation(m, MARIO_ANIM_IDLE_HEAD_CENTER);
+                break;
+        }
+
+        if (is_anim_at_end(m)) {
+            if (++m->actionState == ACT_STATE_IDLE_RESET_OR_SLEEP) {
+                m->actionState = ACT_STATE_IDLE_HEAD_LEFT;
+            }
+        }        
+    }
+    else
+    {
+        anim_and_audio_for_walk(m, vel);
+    }
 
     return FALSE;
 }

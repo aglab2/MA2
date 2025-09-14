@@ -159,20 +159,36 @@ int fcgr_spin(struct MarioState *m)
 
     sCylVel.z = CLAMP(sCylVel.z * frictionPositional, -50.f, 50.f);
     sCylVel.theta = CLAMP(sCylVel.theta * frictionAngular, -0x1000, 0x1000);
-    if (landed)
+
+    const f32 zAccel = 2.2f;
+    const f32 aAccel = 85.f;
+
+    if (landed && (m->input & INPUT_NONZERO_ANALOG))
     {
         if (obj->oFaceAnglePitch)
         {
             s16 diff = m->intendedYaw - obj->oFaceAngleYaw;
-            sCylVel.z += m->intendedMag * coss(diff) * 0.05f * 1.5f;
-            sCylVel.theta -= m->intendedMag * sins(diff) * 0.8f * 3.f;
+            sCylVel.z = approach_f32(sCylVel.z, m->intendedMag * coss(diff) * 2.5f, zAccel, zAccel);
+            sCylVel.theta = approach_f32(sCylVel.theta, -m->intendedMag * sins(diff) * 40.f, aAccel, aAccel);
         }
         else
         {
-            sCylVel.z += m->controller->stickY * 0.04f;
-            sCylVel.theta += m->controller->stickX * 1.f;
+            sCylVel.z = approach_f32(sCylVel.z, m->controller->stickY * 1.f, zAccel, zAccel);
+            sCylVel.theta = approach_f32(sCylVel.theta, m->controller->stickX * 18.f, aAccel, aAccel);
         }
     }
+
+    /*
+when walking:
+	IM 32
+	Z 46
+	T -1251
+    print_text_fmt_int(20, 20, "Z %d", sCylVel.z);
+    print_text_fmt_int(20, 40, "T %d", sCylVel.theta);
+    print_text_fmt_int(20, 60, "IM %d", m->intendedMag);
+    print_text_fmt_int(20, 80, "Y %d", m->controller->stickY);
+    print_text_fmt_int(20, 100, "X %d", m->controller->stickX);
+    */
 
     f32 rvel = (m->input & INPUT_A_DOWN) ? 1.f : 4.f;
     sCylVel.r -= rvel;
@@ -317,7 +333,8 @@ int fcgr_spin(struct MarioState *m)
         else
         {
             m->faceAngle[0] = 0;
-            m->faceAngle[1] = atan2s(m->vel[2], m->vel[0]);
+            // we can inherit the yaw from the tube just fine
+            //m->faceAngle[1] = atan2s(m->vel[2], m->vel[0]);
             m->faceAngle[2] = 0;
         }
     }

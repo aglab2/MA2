@@ -1996,6 +1996,10 @@ void pss_end_slide(struct MarioState *m) {
 #endif
 
 void mario_handle_special_floors(struct MarioState *m) {
+    if (m->action == ACT_FCGR_JUMP || m->action == ACT_FCGR_WALKING) {
+        return;
+    }
+
     if ((m->action & ACT_GROUP_MASK) == ACT_GROUP_CUTSCENE) {
         return;
     }
