@@ -223,39 +223,14 @@ int fcgr_spin(struct MarioState *m)
         }
         else
         {
-            int parts = ((int) ((u16) (cyl.theta + 0x2000))) / 0x4000;
-            int mult = obj->oFaceAngleYaw ? -1 : 1;
-            switch (parts)
-            {
-                case 0:
-                {
-                    m->faceAngle[0] = cyl.theta;
-                    m->faceAngle[1] = zaAngle - 0x4000 + obj->oFaceAngleYaw;
-                    m->faceAngle[2] = 0;
-                }
-                break;
-                case 1:
-                {
-                    m->faceAngle[0] = -mult * zaAngle + 0x4000;
-                    m->faceAngle[1] = -obj->oFaceAngleYaw;
-                    m->faceAngle[2] = 0x4000;
-                }
-                break;
-                case 2:
-                {
-                    m->faceAngle[0] = cyl.theta;
-                    m->faceAngle[1] = -zaAngle - 0x4000 + obj->oFaceAngleYaw;
-                    m->faceAngle[2] = 0;
-                }
-                break;
-                case 3:
-                {
-                    m->faceAngle[0] = mult * zaAngle - 0x4000;
-                    m->faceAngle[1] = obj->oFaceAngleYaw;
-                    m->faceAngle[2] = -0x4000;
-                }
-                break;
-            }
+            s16 lerpAngle = zaAngle;
+
+            f32 lerpAmt0 = coss(lerpAngle);
+            f32 lerpAmt2 = sins(lerpAngle);
+
+            m->faceAngle[0] = lerpf(0, cyl.theta, lerpAmt0);
+            m->faceAngle[1] = zaAngle - 0x4000 + obj->oFaceAngleYaw;
+            m->faceAngle[2] = lerpf(0, cyl.theta, lerpAmt2);
         }
     }
 
