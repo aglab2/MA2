@@ -26,6 +26,6 @@ extern u8 gHasEX3;
 #define gHasEX3 1
 #endif
 
-#define gIsConsole !gHasEmulator
+#define gIsConsole __builtin_expect(!gHasEmulator, 1)
 
 #endif

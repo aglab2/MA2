@@ -1810,6 +1810,76 @@ static void adjust_view_range()
     }
 }
 
+static int is_clipped_conic(Vec3f loc, f32 sphR)
+{
+    if (!sphR)
+        return 0;
+
+    Vec3f d;
+    vec3_diff(d, gCurGraphNodeCamera->pos, loc);
+    f32 dLen2 = vec3_sumsq(d);
+    f32 sphR2 = sphR * sphR;
+
+    // center of the sphere is too close to the apex
+    if (sphR2 > dLen2)
+    {
+        return 0;
+    }
+
+    // decompose vector 'd' to 'h' and 'r'
+    // h is amount of cone 'u' vector, r is rest hence orthogonal to cone 'u'
+    Vec3f coneU;
+    vec3_copy(coneU, sNodeCameraVec);
+    f32 coneHLen = vec3_dot(d, coneU);
+    Vec3f coneH;
+    vec3_scale_dest(coneH, coneU, coneHLen);
+    Vec3f coneR;
+    vec3_diff(coneR, d, coneH);
+    f32 coneHLen2 = coneHLen * coneHLen;
+    f32 coneRLen2 = vec3_sumsq(coneR);
+
+    // sphere center is inside the cone but it might be also inverted cone...
+    // This assume 45 degree cone!
+    int coneSphCenterInside =  coneRLen2 < coneHLen2;
+    if (coneSphCenterInside)
+    {
+        // ...and cone is not inverted but center is actually inside...
+        if (coneHLen >= 0)
+            return 0;
+        
+        // ...otherwise the point is very behind the cone hence sphere itself cannot be inside anymore
+        return 1;
+    }
+
+    // sphere center is somewhere outside in such a manner that closest point is a projection on the cone side
+    // find the minimal vertical projection length that would make the sphere touch the cone side
+    f32 maxConeHLen = sqrtf(coneRLen2) - 1.421875f * sphR; // 1.41421356237
+    if (coneHLen < maxConeHLen)
+        return 1;
+
+    return 0;
+}
+
+static int is_clipped_backplane(Vec3f loc, f32 sphR)
+{
+    if (!sphR)
+        return 0;
+
+    Vec3f d;
+    vec3_diff(d, gCurGraphNodeCamera->pos, loc);
+    Vec3f coneU;
+    vec3_copy(coneU, sNodeCameraVec);
+    f32 coneHLen = vec3_dot(d, coneU);
+    if (coneHLen < -sphR)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
 f32 gViewRangeMult;
 // if no probing is done, it will be const propagated out
 static int is_far_from_mario(f32 l0, f32 l1, f32 l2, f32 sphR, int probe)
@@ -1835,92 +1905,16 @@ static int is_far_from_mario(f32 l0, f32 l1, f32 l2, f32 sphR, int probe)
         return 1;
     }
 
-#define HAVE_BACK_FLIPPING_V1
-#ifdef HAVE_BACK_FLIPPING_V1
-    while (sphR)
+    if (gIsConsole)
     {
-        if (probe)
-        {
-            print_text_fmt_int(20, 20, "SPHR %d", (int) sphR);
-        }
-
-        vec3_diff(d, gCurGraphNodeCamera->pos, loc);
-        f32 dLen2 = vec3_sumsq(d);
-        f32 sphR2 = sphR * sphR;
-
-        if (probe)
-        {
-            print_text_fmt_int(20, 40, "SPHR2 %d", (int) sphR2);
-            print_text_fmt_int(20, 60, "DLEN2 %d", (int) dLen2);
-            print_text_fmt_int(20, 80, "DLEN %d", (int) sqrtf(dLen2));
-        }
-
-        // center of the sphere is too close to the apex
-        if (sphR2 > dLen2)
-        {
-            break;
-        }
-
-        // decompose vector 'd' to 'h' and 'r'
-        // h is amount of cone 'u' vector, r is rest hence orthogonal to cone 'u'
-        Vec3f coneU;
-        vec3_copy(coneU, sNodeCameraVec);
-        f32 coneHLen = vec3_dot(d, coneU);
-        Vec3f coneH;
-        vec3_scale_dest(coneH, coneU, coneHLen);
-        Vec3f coneR;
-        vec3_diff(coneR, d, coneH);
-        f32 coneHLen2 = coneHLen * coneHLen;
-        f32 coneRLen2 = vec3_sumsq(coneR);
-
-        // sphere center is inside the cone but it might be also inverted cone...
-        // This assume 45 degree cone!
-        int coneSphCenterInside =  coneRLen2 < coneHLen2;
-        if (coneSphCenterInside)
-        {
-            // ...and cone is not inverted but center is actually inside...
-            if (coneHLen >= 0)
-                break;
-            
-            // ...otherwise the point is very behind the cone hence sphere itself cannot be inside anymore
+        if (is_clipped_conic(loc, sphR))
             return 1;
-        }
-
-        // sphere center is somewhere outside in such a manner that closest point is a projection on the cone side
-        // find the minimal vertical projection length that would make the sphere touch the cone side
-        f32 maxConeHLen = sqrtf(coneRLen2) - 1.421875f * sphR; // 1.41421356237
-        if (coneHLen < maxConeHLen)
-            return 1;
-
-        break;
     }
-#endif
-
-// #define HAVE_BACK_FLIPPING_V2
-#ifdef HAVE_BACK_FLIPPING_V2
-    while (sphR)
+    else
     {
-        vec3_diff(d, gCurGraphNodeCamera->pos, loc);
-#if 0
-        f32 dLen2 = vec3_sumsq(d);
-        // center of the sphere is too close to the apex
-        if (sphR*sphR < dLen2)
-        {
-            break;
-        }
-#endif
-        
-        Vec3f coneU;
-        vec3_copy(coneU, sNodeCameraVec);
-        f32 coneHLen = vec3_dot(d, coneU);
-        if (coneHLen < -sphR)
-        {
+        if (is_clipped_backplane(loc, sphR))
             return 1;
-        }
-
-        break;
     }
-#endif
 
     gPriority = priority;
     return 0;
