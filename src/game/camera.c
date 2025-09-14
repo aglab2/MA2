@@ -671,11 +671,22 @@ void calc_y_to_curr_floor(f32 *posOff, f32 posMul, f32 posBound, f32 *focOff, f3
     }
 }
 
+extern int fcgr_override_posYoff(f32* posYOff);
 void focus_on_mario(Vec3f focus, Vec3f pos, f32 posYOff, f32 focYOff, f32 dist, s16 pitch, s16 yaw) {
     Vec3f marioPos;
 
+    if (gIsGravityFlipped)
+    {
+        posYOff = -posYOff;
+    }
+
+    if (sMarioCamState->action == ACT_FCGR_JUMP || sMarioCamState->action == ACT_FCGR_WALKING)
+    {
+        fcgr_override_posYoff(&posYOff);
+    }
+
     marioPos[0] = sMarioCamState->pos[0];
-    marioPos[1] = sMarioCamState->pos[1] + (gIsGravityFlipped ? -posYOff : posYOff);
+    marioPos[1] = sMarioCamState->pos[1] + posYOff;
     marioPos[2] = sMarioCamState->pos[2];
 
     vec3f_set_dist_and_angle(marioPos, pos, dist, (gIsGravityFlipped ? -pitch-sLakituPitch : pitch + sLakituPitch), yaw);

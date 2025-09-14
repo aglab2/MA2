@@ -231,6 +231,14 @@ int fcgr_spin(struct MarioState *m)
             m->faceAngle[0] = lerpf(0, cyl.theta, lerpAmt0);
             m->faceAngle[1] = zaAngle - 0x4000 + obj->oFaceAngleYaw;
             m->faceAngle[2] = lerpf(0, cyl.theta, lerpAmt2);
+
+            print_text_fmt_int(20, 20, "0 %d", m->faceAngle[0]);
+            print_text_fmt_int(20, 40, "1 %d", m->faceAngle[1]);
+            print_text_fmt_int(20, 60, "2 %d", m->faceAngle[2]);
+            
+            print_text_fmt_int(20, 80, "CT %d", cyl.theta);
+            print_text_fmt_int(20, 100, "LA0 %d", 10000 * lerpAmt0);
+            print_text_fmt_int(20, 120, "LA2 %d", 10000 * lerpAmt2);
         }
     }
 
@@ -314,7 +322,9 @@ int fcgr_angle_overriden(s16 yaw, s16 marioAngle, f32* pan)
         {
             // bottom or top of the tube, flip the panning but otherwise do vanilla logic
             if (parts)
+            {
                 pan[2] = -pan[2];
+            }
 
             return 0;
         }
@@ -360,4 +370,18 @@ int fcgr_angle_overriden(s16 yaw, s16 marioAngle, f32* pan)
         pan[1] = sPanYOffset;
         return 1;
     }
+}
+
+int fcgr_override_posYoff(f32* posYOff)
+{
+    if (sCylObj->oFaceAnglePitch)
+    {
+        f32 mul = coss(sCylPos.theta);
+        if (mul < 0.f) 
+            mul *= -10.f;
+
+        *posYOff *= mul;
+    }
+
+    return 0;
 }
