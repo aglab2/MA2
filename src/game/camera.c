@@ -630,7 +630,7 @@ void unused_set_camera_pitch_shake_env(s16 shake) {
  *          Since focMul is 0.9, `focOff` is closer to the floor than `posOff`
  *      posOff and focOff are sometimes the same address, which just ignores the pos calculation
  */
-void calc_y_to_curr_floor(f32 *posOff, f32 posMul, f32 posBound, f32 *focOff, f32 focMul, f32 focBound) {
+static void calc_y_to_curr_floor(f32 *posOff, f32 posMul, f32 posBound, f32 *focOff, f32 focMul, f32 focBound) {
     f32 floorHeight = sMarioGeometry.currFloorHeight;
     f32 waterHeight;
 
@@ -671,7 +671,7 @@ void calc_y_to_curr_floor(f32 *posOff, f32 posMul, f32 posBound, f32 *focOff, f3
     }
 }
 
-extern int fcgr_override_posYoff(f32* posYOff);
+extern int fcgr_override_posYoff(f32* posYOff, f32* focYoff);
 void focus_on_mario(Vec3f focus, Vec3f pos, f32 posYOff, f32 focYOff, f32 dist, s16 pitch, s16 yaw) {
     Vec3f marioPos;
 
@@ -682,7 +682,7 @@ void focus_on_mario(Vec3f focus, Vec3f pos, f32 posYOff, f32 focYOff, f32 dist, 
 
     if (sMarioCamState->action == ACT_FCGR_JUMP || sMarioCamState->action == ACT_FCGR_WALKING)
     {
-        fcgr_override_posYoff(&posYOff);
+        fcgr_override_posYoff(&posYOff, &focYOff);
     }
 
     marioPos[0] = sMarioCamState->pos[0];

@@ -361,22 +361,12 @@ int fcgr_angle_overriden(s16 yaw, s16 marioAngle, f32* pan)
 {
     if (sCylObj->oFaceAnglePitch)
     {
+        pan[1] = 30.f;
+        return 0;
         // laying on the ground, can follow the vanilla logic
         int parts = ((int) ((u16) (sCylPos.theta + 0x2000))) / 0x4000;
-        if (0 == (parts & 1))
         {
-            // bottom or top of the tube, flip the panning but otherwise do vanilla logic
-            if (parts)
-            {
-                pan[2] = -pan[2];
-            }
-
-            return 0;
-        }
-        else
-        {
-            if (1 == parts)
-                pan[0] = -pan[2];
+            pan[0] = -pan[0];
             
             yaw = -yaw;
 
@@ -390,10 +380,10 @@ int fcgr_angle_overriden(s16 yaw, s16 marioAngle, f32* pan)
             // rotate_in_xz(pand, pand, yaw);
 
             pan[0] = dir[0] / 2.f - pand[0];
-            approach_f32_asymptotic_bool(&sPanYOffset, -dir[1] / 2.f, 0.025f);
-            pan[1] = sPanYOffset;
+            //approach_f32_asymptotic_bool(&sPanYOffset, -dir[1] / 2.f, 0.025f);
+            //pan[1] = sPanYOffset;
 
-            return 1;
+            return 0;
         }
     }
     else
@@ -417,15 +407,21 @@ int fcgr_angle_overriden(s16 yaw, s16 marioAngle, f32* pan)
     }
 }
 
-int fcgr_override_posYoff(f32* posYOff)
+int fcgr_override_posYoff(f32* posYOff, f32* focYoff)
 {
     if (sCylObj->oFaceAnglePitch)
     {
         f32 mul = coss(sCylPos.theta);
-        if (mul < 0.f) 
-            mul *= -10.f;
-
-        *posYOff *= mul;
+        if (mul > 0)
+        {
+            *posYOff = lerpf(0.f, -150.f, 1.f - mul);
+            *focYoff = -200.f * (1.f - mul);
+        }
+        else
+        {
+            *posYOff *= -10.f * (mul - 0.2f);
+            *focYoff = -200.f;
+        }
     }
 
     return 0;
