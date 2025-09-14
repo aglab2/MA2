@@ -228,17 +228,62 @@ int fcgr_spin(struct MarioState *m)
             f32 lerpAmt0 = coss(lerpAngle);
             f32 lerpAmt2 = sins(lerpAngle);
 
-            m->faceAngle[0] = lerpf(0, cyl.theta, lerpAmt0);
-            m->faceAngle[1] = zaAngle - 0x4000 + obj->oFaceAngleYaw;
-            m->faceAngle[2] = lerpf(0, cyl.theta, lerpAmt2);
+            s16 angle = cyl.theta;
+            int flip = 0;
+            if (angle < -0x4000)
+            {
+                angle += 0x8000;
+                flip = 1;
+            }
+            else if (angle > 0x4000)
+            {
+                angle -= 0x8000;
+                flip = 1;
+            }
 
+            m->faceAngle[0] = lerpf(0, angle, lerpAmt0);
+            m->faceAngle[1] = zaAngle - 0x4000 + obj->oFaceAngleYaw;
+            m->faceAngle[2] = lerpf(0, angle, lerpAmt2);
+
+#if 0
+            static int style = 0;
+            if (gPlayer1Controller->buttonPressed & L_TRIG)
+            {
+                style++;
+            }
+
+            if (flip)
+            {
+                if (style & 1)
+                    m->faceAngle[0] = -m->faceAngle[0];
+                if (style & 2)
+                    m->faceAngle[2] = -m->faceAngle[2];
+                if (style & 4)
+                    m->faceAngle[0] = 0x8000+m->faceAngle[0];
+                if (style & 8)
+                    m->faceAngle[2] = 0x8000+m->faceAngle[2];
+                if (style & 16)
+                    m->faceAngle[1] = -m->faceAngle[1];
+                if (style & 32)
+                    m->faceAngle[1] = 0x8000+m->faceAngle[1];
+            }
+            print_text_fmt_int(20, 160, "S %d", style % 64);
             print_text_fmt_int(20, 20, "0 %d", m->faceAngle[0]);
             print_text_fmt_int(20, 40, "1 %d", m->faceAngle[1]);
             print_text_fmt_int(20, 60, "2 %d", m->faceAngle[2]);
             
             print_text_fmt_int(20, 80, "CT %d", cyl.theta);
-            print_text_fmt_int(20, 100, "LA0 %d", 10000 * lerpAmt0);
-            print_text_fmt_int(20, 120, "LA2 %d", 10000 * lerpAmt2);
+            print_text_fmt_int(20, 100, "CTA %d", angle);
+            print_text_fmt_int(20, 120, "LA0 %d", 10000 * lerpAmt0);
+            print_text_fmt_int(20, 140, "LA2 %d", 10000 * lerpAmt2);
+#else
+            if (flip)
+            {
+                m->faceAngle[0] = -m->faceAngle[0];
+                m->faceAngle[2] = 0x8000+m->faceAngle[2];
+                m->faceAngle[1] = -m->faceAngle[1];
+            }
+#endif
         }
     }
 
