@@ -21,6 +21,8 @@ static s16 sCylArea;
 static s16 sZAAngle;
 static struct Object* sCylObj;
 static f32 sPanYOffset = 0.f;
+static u8 sCylFlipped = 0;
+#define CYL_FLIPPED_CUTOFF 0x6000
 
 #define IN_TUBE_R 900.f
 
@@ -41,6 +43,7 @@ void bhv_fc_grav_loop()
         drop_and_set_mario_action(gMarioStates, ACT_FCGR_JUMP, 0);   
         sCylObj = o;
         sCylArea = gCurrAreaIndex;
+        sCylFlipped = ABS(cyl.theta) > CYL_FLIPPED_CUTOFF;
 
         // For velocity conversion, we cannot use generic 'to_cyl' function because
         // angular speed depends on the location of the object, not just the velocity.
@@ -177,7 +180,10 @@ int fcgr_spin(struct MarioState *m)
         if (obj->oFaceAnglePitch)
         {
             s16 diff = m->intendedYaw - obj->oFaceAngleYaw;
-            sCylVel.z = approach_f32(sCylVel.z, m->intendedMag * coss(diff) * 2.5f, zAccel, zAccel);
+            if (sCylFlipped)
+                diff = -diff;
+
+            sCylVel.z = approach_f32(sCylVel.z, m->intendedMag * coss(diff) * 2.6f, zAccel, zAccel);
             sCylVel.theta = approach_f32(sCylVel.theta, -m->intendedMag * sins(diff) * 40.f, aAccel, aAccel);
         }
         else
@@ -185,6 +191,10 @@ int fcgr_spin(struct MarioState *m)
             sCylVel.z = approach_f32(sCylVel.z, m->controller->stickY * 1.f, zAccel, zAccel);
             sCylVel.theta = approach_f32(sCylVel.theta, m->controller->stickX * 18.f, aAccel, aAccel);
         }
+    }
+    else
+    {
+        sCylFlipped = ABS(sCylPos.theta) > CYL_FLIPPED_CUTOFF;
     }
 
     /*
@@ -229,6 +239,7 @@ when walking:
         vec3_diff(dir, newPos, oldPos);
         struct Surface* hitSurf = NULL;
         Vec3f hitPos;
+        // mind that this ray is just an approximation. we live in cylindric coordinate space...
         find_surface_on_ray(oldPos, dir, &hitSurf, hitPos, RAYCAST_FIND_ALL);
 
         if (hitSurf && hitSurf->type == SURFACE_BURNING)
