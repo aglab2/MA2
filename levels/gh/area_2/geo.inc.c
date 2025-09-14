@@ -1,13 +1,13 @@
 #include "src/game/envfx_snow.h"
 
-const GeoLayout gh_area_1_geo[] = {
+const GeoLayout gh_area_2_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
-		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-1426.971435546875, (s16)-103.5866436958313, (s16)-1388.55859375, gh_dl_a3_001_mesh_layer_5),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_TRANSPARENT, (s16)-1426.971435546875, (s16)-103.58584642410278, (s16)-1388.55859375, gh_dl_a3_002_mesh_layer_5),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
-const GeoLayout gh_area_1[] = {
+const GeoLayout gh_area_2[] = {
 	GEO_NODE_SCREEN_AREA(10, SCREEN_WIDTH/2, SCREEN_HEIGHT/2, SCREEN_WIDTH/2, SCREEN_HEIGHT/2),
 	GEO_OPEN_NODE(),
 		GEO_ZBUFFER(0),
@@ -21,9 +21,9 @@ const GeoLayout gh_area_1[] = {
 		GEO_OPEN_NODE(),
 			GEO_CAMERA_FRUSTUM_WITH_FUNC(45.0000, 100, 30000, geo_camera_fov),
 			GEO_OPEN_NODE(),
-				GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 0, -3315, -17100, 0, -3334, -17100, geo_camera_main),
+				GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 0, -12815, -93100, 0, -12834, -93100, geo_camera_main),
 				GEO_OPEN_NODE(),
-					GEO_BRANCH(1, gh_area_1_geo),
+					GEO_BRANCH(1, gh_area_2_geo),
 					GEO_RENDER_OBJ(),
 					GEO_ASM(ENVFX_MODE_NONE, geo_envfx_main),
 				GEO_CLOSE_NODE(),

@@ -7,5 +7,9 @@
 
 #include "make_const_nonconst.h"
 
-
+#if 0
 #include "levels/gh/leveldata.inc.c"
+#else
+#include "levels/gh/visual/header_lvlopt.inc.h"
+#include "levels/gh/visual/model_lvlopt.inc.c"
+#endif
