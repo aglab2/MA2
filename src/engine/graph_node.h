@@ -171,7 +171,7 @@ struct PairingHeapNode {
 	struct PairingHeapNode *first_child;
 	struct PairingHeapNode *next_sibling;
 	struct PairingHeapNode *prev_or_parent;
-    u32 priority;
+    s32 priority;
 };
 
 struct PairingHeapNodeDisplayList {

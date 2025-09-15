@@ -672,7 +672,7 @@ static void append_dl_with_hint(struct DisplayListLinks* list, void* dl, u8 hint
 }
 
 #ifdef ENABLE_HEAP_BATCHES
-static void append_dl_with_hint_course(struct PairingHeapHead* mat_heap, struct PairingHeapLinks* heap, void* dl, u8 hint, u32 prio, u32 batchIdx)
+static void append_dl_with_hint_course(struct PairingHeapHead* mat_heap, struct PairingHeapLinks* heap, void* dl, u8 hint, s32 prio, u32 batchIdx)
 {
     struct PairingHeapNodeDisplayList* heapNode = main_pool_alloc_aligned_cde(sizeof(struct PairingHeapNodeDisplayList));
 
@@ -1196,7 +1196,7 @@ struct BatchCmd
     void* data;
 };
 
-static u32 gPriority;
+static s32 gPriority;
 static void geo_lvl_append_display_list(void *displayList, s32 layer) {
     struct BatchArray* task = gCurGraphNodeMasterList->layers[layer].course;
     struct BatchCmd* data = displayList;
