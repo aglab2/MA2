@@ -22,6 +22,7 @@ static u32 sCancelDeadline = 0;
 static u8 sCancelTimeout = 0;
 static u8 sAngleFlipped = 0;
 static u8 sTrajectoryArea = 0;
+static u8 sForwardVelLimitDecelTimer = 0;
 const RailDesc** gRailDesc;
 
 static inline float point_to_segment_distance(Vec3f Q, Vec3f P1, Vec3f P2, Vec3f closest_point) {
@@ -225,7 +226,8 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
     
             sForwardVel = trajDirection[0] * gMarioStates->vel[0] + trajDirection[1] * gMarioStates->vel[1] + trajDirection[2] * gMarioStates->vel[2];
             sExtraTilt = 0; // trajDirection[0] * gMarioStates->vel[2] - trajDirection[2] * gMarioStates->vel[0];
-            sForwardVelLimit = 55.f + CLAMP(traj_length(traj) / 400.f, 30.f, 120.f);    
+            sForwardVelLimit = 55.f + CLAMP(traj_length(traj) / 400.f, 30.f, 120.f);
+            sForwardVelLimitDecelTimer = 0;
         }
 
         sTrajectory = traj;
@@ -358,6 +360,12 @@ static f32 approach_f32_i(f32 current, f32 target, f32 inc, f32 dec) {
 
 int zipline_step(int exSpeed, s16* extraTilt, int holdZ)
 {
+    if (sForwardVelLimitDecelTimer)
+    {
+        sForwardVelLimitDecelTimer--;
+        sForwardVelLimit -= 1.f;
+    }
+
     f32 exSpeedBoost = sForwardVel * (exSpeed ? (100 - exSpeed * exSpeed) / 2000.f : 0);
     sForwardVel += exSpeedBoost;
     f32 velLimit = sForwardVelLimit + absf(exSpeedBoost);
@@ -623,6 +631,14 @@ int zipline_step(int exSpeed, s16* extraTilt, int holdZ)
 int zipline_on_loop()
 {
     return sLoopDesc != NULL;
+}
+
+void zipline_boost()
+{
+    int sign = sForwardVel >= 0 ? 1 : -1;
+    sForwardVelLimit += 1.f * 10.f;
+    sForwardVelLimitDecelTimer += 10;
+    sForwardVel = sForwardVelLimit * sign;
 }
 
 int zipline_get_tilt(zipline_tilt_t* tilt)

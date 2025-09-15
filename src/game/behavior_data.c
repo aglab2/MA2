@@ -7340,3 +7340,12 @@ const BehaviorScript bhvCwRotCtl[] = {
         CALL_NATIVE(bhv_cw_rot_ctl_loop),
     END_LOOP(),
 };
+
+extern void bhv_fc_speed_loop();
+const BehaviorScript bhvFcSpeed[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_fc_speed_loop),
+    END_LOOP(),
+};

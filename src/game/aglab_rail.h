@@ -10,6 +10,7 @@ typedef int (*rail_valid_fn)(void* ctx, f32 cx, f32 cy, f32 cz);
 int do_zipline_cancel(f32 range, rail_valid_fn fn, void* ctx, f32* closestPoint);
 int zipline_step(int exSpeed, s16* extraTilt, int holdZ);
 int zipline_on_loop();
+void zipline_boost();
 
 // normalized vector that is perpendicular to the zipline direction matching Mario's tilt
 typedef struct {

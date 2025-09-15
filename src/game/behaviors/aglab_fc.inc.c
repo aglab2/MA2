@@ -513,3 +513,13 @@ int fcgr_override_posYoff(f32* posYOff, f32* focYoff)
 
     return 0;
 }
+
+extern void zipline_boost();
+void bhv_fc_speed_loop()
+{
+    if (o->oDistanceToMario < 400.f)
+    {
+        cur_obj_play_sound_1(SOUND_ARG_LOAD(SOUND_BANK_ENV, 0x05, 0x00, SOUND_NO_VOLUME_LOSS | SOUND_CONSTANT_FREQUENCY));
+        zipline_boost();
+    }
+}
