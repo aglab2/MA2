@@ -882,8 +882,12 @@ s32 act_fcgr_walking(struct MarioState *m)
     switch (fcgr_spin(m))
     {
         case FCGR_BREAK_AIR:
+            m->faceAngle[0] = 0;
+            m->faceAngle[2] = 0;
             return set_mario_action(m, ACT_FREEFALL, 0);
         case FCGR_BREAK_LAND:
+            m->faceAngle[0] = 0;
+            m->faceAngle[2] = 0;
             return set_mario_action(m, ACT_WALKING, 0);
     }
 
@@ -1436,6 +1440,8 @@ s32 act_rail_grind(struct MarioState *m)
     s16 extraTilt = 0;
     int clampedTimer = m->actionTimer > 10 ? 10 : m->actionTimer;
     if (zipline_step(clampedTimer, &extraTilt, holdZ)) {
+        m->faceAngle[0] = 0;
+        m->faceAngle[2] = 0;
         int butt = 0;
         if (gIsGravityFlipped)
             m->pos[1] = 9000.f - m->pos[1];

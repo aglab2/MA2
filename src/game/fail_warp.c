@@ -154,7 +154,7 @@ s32 fail_warp_pre_level_trigger_warp(struct MarioState *m, s32* warpOp)
     }
 
     *warpOp = WARP_OP_TELEPORT;
-    if (warpOpOg == WARP_OP_WARP_FLOOR && (gCurrCourseNum == COURSE_FR || (gCurrCourseNum == COURSE_CG && gCurrAreaIndex == 3)))
+    if (warpOpOg == WARP_OP_WARP_FLOOR && (gCurrCourseNum == COURSE_FR || gCurrCourseNum == COURSE_FC || (gCurrCourseNum == COURSE_CG && gCurrAreaIndex == 3)))
     {
         sCamAngleToSet = sSafe2PosCameraYaw;
         spoof_warp2(m);
