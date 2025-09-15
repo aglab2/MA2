@@ -19,7 +19,6 @@ extern const GeoLayout fc_area_4[];
 extern const Collision fc_area_4_collision[];
 extern const MacroObject fc_area_4_macro_objs[];
 extern const Trajectory fc_area_4_spline_0120_object_0143FCBC_001_Rail[];
-extern const Trajectory fc_area_4_spline_NurbsCurve_Spring_004[];
 extern const Trajectory fc_area_4_spline_NurbsCurve_Spring_005[];
 extern const Trajectory fc_area_4_spline_NurbsCurve_Spring_006[];
 extern const GeoLayout fc_area_5_geo[];

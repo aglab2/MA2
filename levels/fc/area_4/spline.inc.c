@@ -27,13 +27,6 @@ const Trajectory fc_area_4_spline_0120_object_0143FCBC_001_Rail[] = {
 	TRAJECTORY_POS( 25, 3810, -14649, 1052),
 	TRAJECTORY_END(),
 };
-const Trajectory fc_area_4_spline_NurbsCurve_Spring_004[] = {
-	TRAJECTORY_POS( 0, -3198, -377, 13322),
-	TRAJECTORY_POS( 1, -2403, -302, 13322),
-	TRAJECTORY_POS( 2, -1361, -816, 13322),
-	TRAJECTORY_POS( 3, -909, -1460, 13322),
-	TRAJECTORY_END(),
-};
 const Trajectory fc_area_4_spline_NurbsCurve_Spring_005[] = {
 	TRAJECTORY_POS( 0, -756, -1843, 14152),
 	TRAJECTORY_POS( 1, -756, -1152, 14227),

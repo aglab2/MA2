@@ -11,7 +11,6 @@ static const RailDesc rails_area2[] = {
 };
 
 static const SpringDesc spring_area4[] = {
-	fc_area_4_spline_NurbsCurve_Spring_004,
 	fc_area_4_spline_NurbsCurve_Spring_005,
 	fc_area_4_spline_NurbsCurve_Spring_006,
 	NULL
