@@ -109,7 +109,7 @@ const Trajectory fc_area_8_spline_NurbsCurve_Spring_002[] = {
 	TRAJECTORY_POS( 0, 1190, 182, 13800),
 	TRAJECTORY_POS( 1, 843, -513, 11857),
 	TRAJECTORY_POS( 2, 562, -2048, 10356),
-	TRAJECTORY_POS( 3, 589, -3954, 9625),
+	TRAJECTORY_POS( 3, 589, -4238, 9595),
 	TRAJECTORY_END(),
 };
 const Trajectory fc_area_8_spline_NurbsCurve_Spring_003[] = {
