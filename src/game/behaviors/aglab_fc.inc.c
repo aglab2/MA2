@@ -180,8 +180,10 @@ int fcgr_spin(struct MarioState *m)
         if (obj->oFaceAnglePitch)
         {
             s16 diff = m->intendedYaw - obj->oFaceAngleYaw;
+#if 0
             if (sCylFlipped)
                 diff = -diff;
+#endif
 
             sCylVel.z = approach_f32(sCylVel.z, m->intendedMag * coss(diff) * 2.6f, zAccel, zAccel);
             sCylVel.theta = approach_f32(sCylVel.theta, -m->intendedMag * sins(diff) * 40.f, aAccel, aAccel);
@@ -362,9 +364,17 @@ when walking:
 #else
             if (flip)
             {
-                m->faceAngle[0] = -m->faceAngle[0];
-                m->faceAngle[2] = 0x8000+m->faceAngle[2];
-                m->faceAngle[1] = -m->faceAngle[1];
+                if (gCurrAreaIndex == 8)
+                {
+                    m->faceAngle[0] = 0x8000+m->faceAngle[0];
+                    m->faceAngle[1] = -m->faceAngle[1];
+                }
+                else
+                {
+                    m->faceAngle[0] = -m->faceAngle[0];
+                    m->faceAngle[2] = 0x8000+m->faceAngle[2];
+                    m->faceAngle[1] = -m->faceAngle[1];
+                }
             }
 #endif
         }
