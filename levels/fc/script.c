@@ -58,6 +58,13 @@ const LevelScript level_fc_entry[] = {
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
 	JUMP_LINK(script_func_global_1), 
 	JUMP_LINK(script_func_global_2), 
+	LOAD_MODEL_FROM_GEO(MODEL_CW_METEO, fc_meteob_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_CW_METEO_BREAK, fc_meteof_break_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_CW_METEO_B, fc_meteoc_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_CW_METEO_B_BREAK, fc_meteof_break_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_CW_METEO_LAVA, fc_meteof_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_CW_METEO_LAVA_BREAK, fc_meteof_break_geo),
+
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */

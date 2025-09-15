@@ -18,3 +18,8 @@
 #else
 #include "levels/fc/visual/geo_lvl.inc.c"
 #endif
+
+#include "levels/fc/fc_meteof/geo.inc.c"
+#include "levels/fc/fc_meteob/geo.inc.c"
+#include "levels/fc/fc_meteoc/geo.inc.c"
+#include "levels/fc/fc_meteof_break/geo.inc.c"

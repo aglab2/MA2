@@ -37,3 +37,7 @@ static const LDLDesc loop_desc2 = { -0x4000 };
 #endif
 
 #include "levels/fc/fc_skybox/model.inc.c"
+#include "levels/fc/fc_meteof/model.inc.c"
+#include "levels/fc/fc_meteob/model.inc.c"
+#include "levels/fc/fc_meteoc/model.inc.c"
+#include "levels/fc/fc_meteof_break/model.inc.c"
