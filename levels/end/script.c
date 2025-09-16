@@ -33,6 +33,7 @@ const LevelScript level_end_entry[] = {
 
 	AREA(1, end_area_1, 0, 0, 0),
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		WARP_NODE(0x0B, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0xf0, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0x20, LEVEL_CE, 0x01, 0x0A, WARP_NO_CHECKPOINT),
@@ -90,6 +91,7 @@ const LevelScript level_end_entry[] = {
 		OBJECT(MODEL_CASTLE_KEY_DOOR, -6099, -124, -48, 0, -90, 0, (1 << 24), bhvDoorWarp),
 		OBJECT(MODEL_CASTLE_KEY_DOOR, -6099, -124, 105, 0, 90, 0, (1 << 24), bhvDoorWarp),
 		OBJECT(MODEL_NONE, -8109, 458, -38, 0, 90, 0, (0xa << 16), bhvAirborneStarCollectWarp),
+		OBJECT(MODEL_NONE, -8109, 458, -38, 0, 90, 0, (0xb << 16), bhvInstantActiveWarp),
 		OBJECT(MODEL_NONE, -8109, 458, -38, 0, 90, 0, (0xf1 << 16), bhvDeathWarp),
 		OBJECT(MODEL_THI_WARP_PIPE, -9157, -124, 328, 0, 90, 0, (0x11 << 16), bhvWarpPipe),
 		OBJECT(MODEL_THI_WARP_PIPE, -9157, -124, -398, 0, 90, 0, (0x12 << 16), bhvWarpPipe),

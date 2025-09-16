@@ -42,6 +42,7 @@ void bhv_ow_ctl_init()
     int off = 0x80;
     int levelCount = gCurrLevelNum == LEVEL_CASTLE_GROUNDS2 ? OW2_LEVEL_COUNT : OW_LEVEL_COUNT;
     int levelBase = gCurrLevelNum == LEVEL_CASTLE_GROUNDS2 ? (LEVEL_IG - LEVEL_CE) : (LEVEL_CE - LEVEL_CE);
+    int saveBase = gCurrLevelNum == LEVEL_CASTLE_GROUNDS2 ? (COURSE_IG - 1) : (COURSE_CE - 1);
     f32 xbase = gCurrLevelNum == LEVEL_CASTLE_GROUNDS2 ? -624.f : -585.f;
     for (int i = 0; i < levelCount; i++)
     {
@@ -75,7 +76,7 @@ void bhv_ow_ctl_init()
             }
             else
             {
-                obj->oBehParams2ndByte = i + levelBase;
+                obj->oBehParams2ndByte = i + saveBase;
                 SET_BPARAM1(obj->oBehParams, 0);
             }
         }
@@ -110,6 +111,36 @@ void bhv_ow_ctl_init()
 
 void bhv_ow_ctl_loop()
 {
+    if (gCurrLevelNum == LEVEL_CASTLE_GROUNDS)
+    {
+        if (gMarioStates->pos[2] < -8400.f)
+        {
+            gMarioStates->usedObj = o;
+            SET_BPARAM2(o->oBehParams, 0x81);
+            level_trigger_warp(gMarioStates, WARP_OP_TELEPORT);
+        }
+        if (gMarioStates->pos[2] > 8000.f && save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_SS2 - 1))
+        {
+            gMarioStates->usedObj = o;
+            SET_BPARAM2(o->oBehParams, 0x80);
+            level_trigger_warp(gMarioStates, WARP_OP_TELEPORT);
+        }
+    }
+    else
+    {
+        if (gMarioStates->pos[2] < -9000.f && save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_SS1 - 1))
+        {
+            gMarioStates->usedObj = o;
+            SET_BPARAM2(o->oBehParams, 0x80);
+            level_trigger_warp(gMarioStates, WARP_OP_TELEPORT);
+        }
+        if (gMarioStates->pos[2] >  5700.f)
+        {
+            gMarioStates->usedObj = o;
+            SET_BPARAM2(o->oBehParams, 0x81);
+            level_trigger_warp(gMarioStates, WARP_OP_TELEPORT);
+        }
+    }
 }
 
 static void hide_if_invisible()
