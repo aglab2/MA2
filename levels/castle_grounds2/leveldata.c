@@ -25,3 +25,4 @@
 #include "levels/castle_grounds2/ow2_sr/model.inc.c"
 #include "levels/castle_grounds2/ow2_ms/model.inc.c"
 #include "levels/castle_grounds2/ow2_cw/model.inc.c"
+#include "levels/castle_grounds2/ow2_fc/model.inc.c"
