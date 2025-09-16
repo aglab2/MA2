@@ -15,7 +15,7 @@
 #include "levels/end/header.h"
 
 /* Fast64 begin persistent block [scripts] */
-#define LEVEL_DARK LEVEL_CASTLE_GROUNDS
+#define LEVEL_DARK LEVEL_CASTLE_GROUNDS2
 #define LEVEL_AM LEVEL_AQ
 #define SEQ_LEVEL_GRASS 0x38
 extern const GeoLayout key_door_geo[];
