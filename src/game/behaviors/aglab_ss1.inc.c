@@ -419,5 +419,5 @@ void bhv_ss_ctl_loop()
     if (o->oAction <= 10)
         load_object_collision_model();
 
-    print_text_fmt_int(20, 20, "A %d", bowser->oHealth);
+    // print_text_fmt_int(20, 20, "A %d", bowser->oHealth);
 }

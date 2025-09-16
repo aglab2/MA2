@@ -175,6 +175,23 @@ static int warpIdTargetLevel()
     return LEVEL_CASTLE_GROUNDS;
 }
 
+static int wantLevelWarpOverride()
+{
+    if (gCurrCourseNum != COURSE_SS2)
+    {
+        return 0;
+    }
+    if (gCurrCourseNum != COURSE_SS1)
+    {
+        return 0;
+    }
+    if (gCurrCourseNum >= COURSE_CCT)
+    {
+        return 0;
+    }
+    return 1;
+}
+
 extern void LevelReset_markObjectsForRespawn();
 struct ObjectWarpNode *area_get_warp_node(u8 id) {
     if (id == WARP_NODE_FAIL_WARP || id == WARP_NODE_FAIL_WARP2 || (0xe0 <= id && id < 0xf0))
@@ -190,7 +207,7 @@ struct ObjectWarpNode *area_get_warp_node(u8 id) {
         }
     }
 
-    if (gCurrCourseNum != COURSE_SS2 && id == WARP_NODE_DEFAULT) {
+    if (wantLevelWarpOverride() && id == WARP_NODE_DEFAULT) {
         node->node.destArea = 1;
         node->node.destLevel = warpIdTargetLevel();
         node->node.destNode = 0x50 + warpIdBase();
