@@ -13,7 +13,7 @@ static void to_xyz(Vec3f point, const Vec3f start, const Vec3f x_axis, const Vec
 static void to_xyz_vec(Vec3f point, const Vec3f x_axis, const Vec3f y_axis, const Vec3f z_axis, cyl_t cyl);
 static void gen_axis(Vec3f x_axis, Vec3f y_axis, Vec3f z_axis, s16 yaw, s16 pitch);
 static void gen_axis_point_oriented(Vec3f x_axis_new, Vec3f y_axis_new, const Vec3f x_axis, const Vec3f y_axis, const Vec3f z_axis, const s16 theta);
-static int in_tube(const cyl_t* cyl, f32 lim, int len);
+static int in_tube(const cyl_t* cyl, f32 lim, int len, int angled);
 
 static cyl_t sCylVel;
 static cyl_t sCylPos;
@@ -37,7 +37,7 @@ void bhv_fc_grav_loop()
 
     cyl_t cyl = to_cyl(gMarioStates[0].pos, &o->oPosVec, x_axis, y_axis, z_axis);
 
-    if (in_tube(&cyl, IN_TUBE_R, o->oBehParams2ndByte))
+    if (in_tube(&cyl, IN_TUBE_R, o->oBehParams2ndByte, o->oFaceAngleYaw))
     {
         drop_and_set_mario_action(gMarioStates, ACT_FCGR_JUMP, 0);   
         sCylObj = o;
@@ -269,6 +269,23 @@ when walking:
             m->hurtCounter += 4;
             play_sound(SOUND_MARIO_ON_FIRE, m->marioObj->header.gfx.cameraToObject);
         }
+
+#if 0
+        if (hitSurf)
+        {
+            print_text_fmt_int(20, 20, "HS %d", 10000 * ABS(hitSurf->normal.y));
+        }
+
+        if (hitSurf && gCurrAreaIndex == 9 && ABS(hitSurf->normal.y) > 0.99f)
+        {
+            vec3_copy(newPos, hitPos);
+            cyl = to_cyl(newPos, &obj->oPosVec, x_axis, y_axis, z_axis);
+            
+            sCylVel.theta = 0;
+            sCylVel.z = 0;
+            sCylVel.r = 0;
+        }
+#endif
     }
 
     vec3_copy(m->pos, newPos);
@@ -390,7 +407,7 @@ when walking:
     m->slideVelZ = m->vel[2];
     m->forwardVel = sqrtf(sqr(m->vel[0]) + sqr(m->vel[2]));
 
-    if (!in_tube(&cyl, IN_TUBE_R + 100.f, obj->oBehParams2ndByte))
+    if (!in_tube(&cyl, IN_TUBE_R + 100.f, obj->oBehParams2ndByte, o->oFaceAngleYaw))
     {
         if (obj->oFaceAnglePitch)
         {
@@ -423,9 +440,12 @@ when walking:
     return type;
 }
 
-static int in_tube(const cyl_t* cyl, f32 lim, int len)
+static int in_tube(const cyl_t* cyl, f32 lim, int len, int angled)
 {
     f32 height = 1400.f + 1500.f * len;
+    if (!angled && gCurrAreaIndex == 9)
+        height -= 100.f;
+
     int z_ok = 0.f < cyl->z && cyl->z < height;
     int r_ok = cyl->r < lim;
     return z_ok && r_ok;
