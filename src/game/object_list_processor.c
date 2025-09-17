@@ -262,7 +262,7 @@ void bhv_mario_update(void) {
         // print_text_fmt_int(20, 20, "RY %d", (s32)realY);    
         f32 distToFloor = gMarioStates->pos[1] - gMarioStates->floorHeight;
         // print_text_fmt_int(20, 40, "DF %d", (s32)distToFloor);
-        if (distToFloor < 100.f || (gMarioStates->action == ACT_RAIL_GRIND || gMarioStates->action == ACT_FCGR_JUMP || gMarioStates->action == ACT_FCGR_WALKING))
+        if (distToFloor < 100.f || (gMarioStates->action == ACT_FLYING || gMarioStates->action == ACT_RAIL_GRIND || gMarioStates->action == ACT_FCGR_JUMP || gMarioStates->action == ACT_FCGR_WALKING))
         {
             gSafeY = realY;
         }
