@@ -1,0 +1,12 @@
+extern const GeoLayout gh_plat_geo[];
+extern u8 gh_plat_greenhill128_6_ci4[];
+extern u8 gh_plat_greenhill128_6_pal_rgba16[];
+extern u8 gh_plat_greenhill128_2_ci4[];
+extern u8 gh_plat_greenhill128_2_pal_rgba16[];
+extern u8 gh_plat_greenhill128_4_ci4[];
+extern u8 gh_plat_greenhill128_4_pal_rgba16[];
+extern Vtx gh_plat_gf_plat_mesh_layer_1_vtx_0[32];
+extern Vtx gh_plat_gf_plat_mesh_layer_1_vtx_1[24];
+extern Vtx gh_plat_gf_plat_mesh_layer_1_vtx_2[12];
+extern Vtx gh_plat_gf_plat_mesh_layer_1_vtx_3[4];
+extern Gfx gh_plat_gf_plat_mesh_layer_1[];

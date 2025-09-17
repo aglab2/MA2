@@ -19,3 +19,9 @@
 #include "levels/gh/visual/header_lvl.inc.h"
 #include "levels/gh/visual/geo_lvl.inc.c"
 #endif
+
+#include "levels/gh/gh_plat/geo.inc.c"
+#include "levels/gh/gh_fall/geo.inc.c"
+#include "levels/gh/gh_fall_break/geo.inc.c"
+#include "levels/gh/gh_batabata/geo.inc.c"
+#include "levels/gh/gh_beeton/geo.inc.c"

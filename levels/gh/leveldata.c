@@ -16,3 +16,10 @@
 #endif
 
 #include "levels/gh/gh_skybox/model.inc.c"
+#include "levels/gh/gh_plat/collision.inc.c"
+#include "levels/gh/gh_plat/model.inc.c"
+#include "levels/gh/gh_fall/collision.inc.c"
+#include "levels/gh/gh_fall/model.inc.c"
+#include "levels/gh/gh_fall_break/model.inc.c"
+#include "levels/gh/gh_batabata/model.inc.c"
+#include "levels/gh/gh_beeton/model.inc.c"
