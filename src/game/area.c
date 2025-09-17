@@ -177,11 +177,11 @@ static int warpIdTargetLevel()
 
 static int wantLevelWarpOverride()
 {
-    if (gCurrCourseNum != COURSE_SS2)
+    if (gCurrCourseNum == COURSE_SS2)
     {
         return 0;
     }
-    if (gCurrCourseNum != COURSE_SS1)
+    if (gCurrCourseNum == COURSE_SS1)
     {
         return 0;
     }
