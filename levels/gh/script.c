@@ -29,6 +29,7 @@ static struct LevelConfig cfg = {
 	.viewRangeMult = 3.f,
 	.skybox = gh_skybox_gh_skybox_mesh,
 };
+#define SEQ_LEVEL_GRASS 0x4D
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_gh_entry[] = {
