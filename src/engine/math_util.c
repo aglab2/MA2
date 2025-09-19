@@ -174,16 +174,11 @@ UNUSED void mtxf_rotate_xyz_and_translate(Mat4 dest, Vec3f trans, Vec3s rot) {
 }
 
 /// Build a matrix that rotates around the z axis, then the x axis, then the y axis, and then translates and multiplies.
-void mtxf_rotate_zxy_and_translate_and_mul(s16 rot0, s16 rot1, s16 rot2, Mat4 dest, Mat4 src, f32 trans0, f32 trans1, f32 trans2) {
-    Vec3s rot = { rot0, rot1, rot2 };
+static void mtxf_rotate_zxy_and_translate_and_mul_impl(Mat4 dest, Mat4 src
+                                                    , f32 trans0, f32 trans1, f32 trans2
+                                                    , f32 sx, f32 cx, f32 sy, f32 cy, f32 sz, f32 cz) {
     Vec3f trans = { trans0, trans1, trans2 };
     PUPPYPRINT_ADD_COUNTER(gPuppyCallCounter.matrix);
-    f32 sx = sins(rot[0]);
-    f32 cx = coss(rot[0]);
-    f32 sy = sins(rot[1]);
-    f32 cy = coss(rot[1]);
-    f32 sz = sins(rot[2]);
-    f32 cz = coss(rot[2]);
     Vec3f entry;
     f32 sysz = (sy * sz);
     f32 cycz = (cy * cz);
@@ -204,6 +199,58 @@ void mtxf_rotate_zxy_and_translate_and_mul(s16 rot0, s16 rot1, s16 rot2, Mat4 de
     linear_mtxf_mul_vec3f(src, dest[3], trans);
     vec3f_add(dest[3], src[3]);
     MTXF_END(dest);
+}
+
+void mtxf_rotate_zxy_and_translate_and_mul(Mat4 dest, Mat4 src, Vec3s rot, f32 trans0, f32 trans1, f32 trans2) {
+    f32 sx = sins(rot[0]);
+    f32 cx = coss(rot[0]);
+    f32 sy = sins(rot[1]);
+    f32 cy = coss(rot[1]);
+    f32 sz = sins(rot[2]);
+    f32 cz = coss(rot[2]);
+    return mtxf_rotate_zxy_and_translate_and_mul_impl(dest, src, trans0, trans1, trans2, sx, cx, sy, cy, sz, cz);
+}
+
+static const f32 gMiniSineTable[] = {
+    0.0000958738f,0.0001917476f,0.0002876214f,0.0003834952f,0.0004793690f,0.0005752427f,0.0006711166f,
+    0.0007669904f,0.0008628641f,0.0009587379f,0.0010546116f,0.0011504854f,0.0012463591f,0.0013422329f,0.0014381065f,
+};
+
+static const f32 gMiniCosineTable[] = {
+    1.0000000000f,1.0000000000f,0.9999999404f,0.9999999404f,0.9999998808f,0.9999998212f,0.9999997616f,
+    0.9999997020f,0.9999996424f,0.9999995232f,0.9999994636f,0.9999993443f,0.9999992251f,0.9999991059f,0.9999989867f,
+};
+
+typedef _Complex float f32x2;
+#define F32X2_NEW(x, y) __builtin_complex((float) (x), (float) (y))
+#define F32X2_AT(pair, idx) __builtin_choose_expr(idx / (idx == 0 || idx == 1), __real__(pair), __imag__(pair))
+
+static f32x2 precise_angle(u16 a)
+{
+    u16 i = a >> 4;
+    f32 s0 = gSineTable[i];
+    f32 c0 = gCosineTable[i];
+    u16 r = a & 0xF;
+    if (0 == r)
+    {
+        return F32X2_NEW(s0, c0);
+    }
+
+    f32 ms = gMiniSineTable  [r - 1];
+    f32 mc = gMiniCosineTable[r - 1];
+
+    // sin(a+b) = sin(a)*cos(b) + cos(a)*sin(b)
+    // cos(a+b) = cos(a)*cos(b) - sin(a)*sin(b)
+    f32 s = s0 * mc + c0 * ms;
+    f32 c = c0 * mc - s0 * ms;
+    return F32X2_NEW(s, c);
+}
+
+void mtxf_rotate_zxy_and_translate_and_mul_precise(Mat4 dest, Mat4 src, Vec3s rot, f32 trans0, f32 trans1, f32 trans2) {
+    f32x2 sx = precise_angle(rot[0]);
+    f32x2 sy = precise_angle(rot[1]);
+    f32x2 sz = precise_angle(rot[2]);
+    return mtxf_rotate_zxy_and_translate_and_mul_impl(dest, src, trans0, trans1, trans2, F32X2_AT(sx, 1), F32X2_AT(sx, 0), F32X2_AT(sy, 1), F32X2_AT(sy, 0), F32X2_AT(sz, 1), F32X2_AT(sz, 0));
 }
 
 void mtxf_translate_and_mul(f32 trans0, f32 trans1, f32 trans2, Mat4 dest, Mat4 src) {

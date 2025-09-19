@@ -275,20 +275,27 @@ enum GeoLayoutCommands {
     CMD_HHHHHH(tx, ty, tz, rx, ry, rz), \
     CMD_PTR(displayList)
 
-#define GEO_FLOAT_DELIMITER 1000.0f
-#define GEO_FLOAT_TO_INT(fv) ((s32) ((fv) * GEO_FLOAT_DELIMITER))
-#define GEO_INT_TO_FLOAT(iv) ((f32) ((iv) / GEO_FLOAT_DELIMITER))
+#define F32_SIGNED_CAST_FIXUP(value) ((value) >= 0.f ? (0.5f) : (-0.5f))
+#define F32_SIGNED_CAST(value) (((value) + F32_SIGNED_CAST_FIXUP(value)))
+
+// roughly 8000 units of precision inversed
+#define GEO_INV_FLOAT_DELIMITER (0.00012493134f)
+#define GEO_FLOAT_TO_INT(fv) ((s32) F32_SIGNED_CAST((fv) / GEO_INV_FLOAT_DELIMITER))
+#define GEO_INT_TO_FLOAT(iv) ((f32) ((iv) * GEO_INV_FLOAT_DELIMITER))
+
+#define TO_MARIO_ANGLE(angle) ((angle) * 65536.f / 360.f)
+#define F32_ANGLE_TO_MARIO(angle) (s16) F32_SIGNED_CAST(TO_MARIO_ANGLE(angle))
 
 #define GEO_LVL_BATCH_TRANSLATE_ROTATE(layer, tx, ty, tz, rx, ry, rz, displayList) \
-    CMD_BBH(GEO_CMD_LVL_NODE_TRANSLATION_ROTATION, (0x00 | layer), (s16) (rx / 360. * 0x10000)), \
-    CMD_HH((s16) (ry / 360. * 0x10000), (s16) (rz / 360. * 0x10000)), \
+    CMD_BBH(GEO_CMD_LVL_NODE_TRANSLATION_ROTATION, (0x00 | layer), F32_ANGLE_TO_MARIO(rx)), \
+    CMD_HH(F32_ANGLE_TO_MARIO(ry), F32_ANGLE_TO_MARIO(rz)), \
     CMD_W(GEO_FLOAT_TO_INT(tx)), \
     CMD_W(GEO_FLOAT_TO_INT(ty)), \
     CMD_W(GEO_FLOAT_TO_INT(tz)), \
     CMD_PTR(displayList)
 #define GEO_LVL_TRANSLATE_ROTATE_NODE(layer, tx, ty, tz, rx, ry, rz) \
-    CMD_BBH(GEO_CMD_LVL_NODE_TRANSLATION_ROTATION, (0x80 | layer), (s16) (rx / 360. * 0x10000)), \
-    CMD_HH((s16) (ry / 360. * 0x10000), (s16) (rz / 360. * 0x10000)), \
+    CMD_BBH(GEO_CMD_LVL_NODE_TRANSLATION_ROTATION, (0x80 | layer), F32_ANGLE_TO_MARIO(rx)), \
+    CMD_HH(F32_ANGLE_TO_MARIO(ry), F32_ANGLE_TO_MARIO(rz)), \
     CMD_W(GEO_FLOAT_TO_INT(tx)), \
     CMD_W(GEO_FLOAT_TO_INT(ty)), \
     CMD_W(GEO_FLOAT_TO_INT(tz))

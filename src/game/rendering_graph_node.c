@@ -1105,7 +1105,7 @@ void geo_process_translation_rotation(struct GraphNodeTranslationRotation *node)
     Vec3f translation;
 
     vec3s_to_vec3f(translation, node->translation);
-    mtxf_rotate_zxy_and_translate_and_mul(node->rotation[0], node->rotation[1], node->rotation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
+    mtxf_rotate_zxy_and_translate_and_mul(gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], node->rotation, translation[0], translation[1], translation[2]);
 
     inc_mat_stack();
     append_dl_and_return((struct GraphNodeDisplayList *)node);
@@ -1132,7 +1132,7 @@ void geo_process_translation(struct GraphNodeTranslation *node) {
  * For the rest it acts as a normal display list node.
  */
 void geo_process_rotation(struct GraphNodeRotation *node) {
-    mtxf_rotate_zxy_and_translate_and_mul(node->rotation[0], node->rotation[1], node->rotation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], 0, 0, 0);
+    mtxf_rotate_zxy_and_translate_and_mul(gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], node->rotation, 0, 0, 0);
 
     inc_mat_stack();
     append_dl_and_return(((struct GraphNodeDisplayList *)node));
@@ -1935,7 +1935,7 @@ void geo_process_lvl_translation_rotation(struct LightGraphLvlNodeTranslationRot
     if (is_far_from_mario(translation[0], translation[1], translation[2], lvlNode->radius, 0))
         return;
 
-    mtxf_rotate_zxy_and_translate_and_mul(lvlNode->rotation[0], lvlNode->rotation[1], lvlNode->rotation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
+    mtxf_rotate_zxy_and_translate_and_mul_precise(gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], lvlNode->rotation, translation[0], translation[1], translation[2]);
 
     inc_mat_stack();
     return append_lvl_dl_and_return(node);
@@ -1975,7 +1975,7 @@ void geo_process_lvl_translation_rotation_cold(struct GraphNodeLvlTranslationRot
     if (is_far_from_mario(translation[0], translation[1], translation[2], lvlNode->radius, 0))
         return;
 
-    mtxf_rotate_zxy_and_translate_and_mul(lvlNode->rotation[0], lvlNode->rotation[1], lvlNode->rotation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
+    mtxf_rotate_zxy_and_translate_and_mul_precise(gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], lvlNode->rotation, translation[0], translation[1], translation[2]);
 
     inc_mat_stack();
     return append_lvl_dl_and_return_cold(node);
@@ -2055,7 +2055,7 @@ void geo_process_obj_translation_rotation(struct GraphNodeTranslationRotation *n
     rotation[0] = node->rotation[0] + obj->oGeoPitch;
     rotation[1] = node->rotation[1] + obj->oGeoYaw;
     rotation[2] = node->rotation[2] + obj->oGeoRoll;
-    mtxf_rotate_zxy_and_translate_and_mul(rotation[0], rotation[1], rotation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
+    mtxf_rotate_zxy_and_translate_and_mul(gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], rotation, translation[0], translation[1], translation[2]);
 
     inc_mat_stack();
     append_dl_and_return((struct GraphNodeDisplayList *)node);
@@ -2097,7 +2097,7 @@ void geo_process_batchset_translation(struct GraphNodeBatchsetTranslation *node)
 void geo_process_batchset_translation_rotation(struct GraphNodeBatchsetTranslationRotation* node) {
     Vec3f translation;
     vec3_copy(translation, node->translation);
-    mtxf_rotate_zxy_and_translate_and_mul(node->rotation[0], node->rotation[1], node->rotation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], translation[0], translation[1], translation[2]);
+    mtxf_rotate_zxy_and_translate_and_mul_precise(gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], node->rotation, translation[0], translation[1], translation[2]);
 
     inc_mat_stack();
     append_lvl_dl_and_return(&node->node);
