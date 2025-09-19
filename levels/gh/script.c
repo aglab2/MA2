@@ -24,10 +24,14 @@ extern IWDHeader* iw_descs_gh[];
 #include "levels/gh/area_1/collision.inc.c"
 #include "levels/gh/area_2/collision.inc.c"
 extern Gfx gh_skybox_gh_skybox_mesh[];
+extern const SpringDesc* spring_descs_gh[];
+extern const RailDesc* rail_descs_gh[];
 static struct LevelConfig cfg = {
 	.iwds = iw_descs_gh,
 	.viewRangeMult = 3.f,
 	.skybox = gh_skybox_gh_skybox_mesh,
+	.springDescs = spring_descs_gh,
+	.railDesc = rail_descs_gh,
 };
 #define SEQ_LEVEL_GRASS 0x4D
 /* Fast64 end persistent block [scripts] */

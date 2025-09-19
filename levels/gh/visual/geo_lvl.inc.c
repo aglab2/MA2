@@ -1,8 +1,9 @@
 #include "src/game/envfx_snow.h"
 
+extern const struct FlipbookLayer gh_flipbooks[LAYER_COUNT];
 extern Gfx *geo_gh_flowers(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx);
 const GeoLayout gh_area_1_geo[] = {
-	GEO_BATCH_NODE_START(batch_lvl_dls_gh),
+	GEO_BATCH_NODE_START_WITH_FLIPBOOK(batch_lvl_dls_gh, gh_flipbooks),
 	GEO_OPEN_NODE(),
 		GEO_ASM(0, geo_render_backdrop),
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, (f32)-9550.0, (f32)-3100.0, (f32)-51100.0, gh_dl_0000_object_012A96EC_mesh_layer_1),
