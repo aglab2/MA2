@@ -7351,3 +7351,24 @@ const BehaviorScript bhvFcSpeed[] = {
         CALL_NATIVE(bhv_fc_speed_loop),
     END_LOOP(),
 };
+
+extern const Collision gh_plat_collision[];
+extern void bhv_gh_plat_loop();
+extern const BehaviorScript bhvGhPlat[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    LOAD_COLLISION_DATA(gh_plat_collision),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_gh_plat_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern void bhv_gh_warp_loop();
+extern const BehaviorScript bhvGhWarp[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    OR_INT(oFlags, OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_gh_warp_loop),
+    END_LOOP(),
+};

@@ -664,4 +664,7 @@ extern const BehaviorScript bhvSnufitCC[];
 
 extern const BehaviorScript bhvCWLads[];
 
+extern const BehaviorScript bhvGhPlat[];
+extern const BehaviorScript bhvGhWarp[];
+
 #endif // BEHAVIOR_DATA_H
