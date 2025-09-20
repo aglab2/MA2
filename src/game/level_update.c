@@ -1365,9 +1365,23 @@ s32 play_mode_paused(void) {
             }
             else
             {
-                int warpId = gMenuOptSelectIndex == MENU_OPT_WARP_CHECKPOINT ? WARP_NODE_FAIL_WARP : 0xf0 - gMenuOptSelectIndex + MENU_OPT_WARP_CHECKPOINT;
-                struct ObjectWarpNode* node = fail_warp_area_get_warp_node(warpId);
-                initiate_warp(node->node.destLevel, node->node.destArea, warpId, WARP_FLAG_EXIT_COURSE);
+                int cc = COURSE_CCT <= gCurrCourseNum && gCurrCourseNum <= COURSE_CCS;
+                if (!cc)
+                {
+                    int warpId = gMenuOptSelectIndex == MENU_OPT_WARP_CHECKPOINT ? WARP_NODE_FAIL_WARP : 0xf0 - gMenuOptSelectIndex + MENU_OPT_WARP_CHECKPOINT;
+                    struct ObjectWarpNode* node = fail_warp_area_get_warp_node(warpId);
+                    initiate_warp(node->node.destLevel, node->node.destArea, warpId, WARP_FLAG_EXIT_COURSE);
+                }
+                else
+                {
+                    int id = gMenuOptSelectIndex == MENU_OPT_WARP_CHECKPOINT ? 0 : (gMenuOptSelectIndex - MENU_OPT_WARP_CHECKPOINT - 1);
+                    int destLevel = id / 2 + LEVEL_CCT;
+                    if (destLevel > LEVEL_CCS)
+                        destLevel = LEVEL_LB;
+
+                    int warpId = (id % 2 == 0) ? 0xa : 0xee;
+                    initiate_warp(destLevel, 1, warpId, WARP_FLAG_EXIT_COURSE);
+                }
             }
             gSavedCourseNum = COURSE_NONE;
 

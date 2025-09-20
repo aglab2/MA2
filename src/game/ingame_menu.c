@@ -1805,6 +1805,20 @@ static int getCourseNumber()
     return 0;
 }
 
+static int ccShowLimit()
+{
+    int lvlShowLimit = gCurrCourseNum;
+    for (int lvl = COURSE_CCT; lvl <= COURSE_CCS; lvl++)
+    {
+        if (save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(lvl)))
+        {
+            lvlShowLimit = MAX(lvl, lvlShowLimit);
+        }
+    }
+
+    return lvlShowLimit;
+}
+
 void render_pause_my_score_coins(void) {
     char str[20];
 
@@ -1837,14 +1851,7 @@ void render_pause_my_score_coins(void) {
                 static const u64 starsFlagMask = 0xffffffffULL;
                 static const u64 checkpointsFlagMask = 0xF000000000000000ULL;
 
-                int lvlShowLimit = gCurrCourseNum;
-                for (int lvl = COURSE_CCT; lvl <= COURSE_CCS; lvl++)
-                {
-                    if (save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(lvl)))
-                    {
-                        lvlShowLimit = MAX(lvl, lvlShowLimit);
-                    }
-                }
+                int lvlShowLimit = ccShowLimit();
 
                 starFlags = 0;
                 checkpointCountTotal = 0;
@@ -1958,11 +1965,36 @@ void render_pause_my_score_coins(void) {
 
 extern const Gfx dl_draw_triangle_down[];
 static void render_quick_warp(s16 x, s16 y, s8 *index, s16 xIndex) {
-    handle_menu_scrolling(MENU_SCROLL_HORIZONTAL, index, 1, 64 - sCheckpointIds - 1);
+    int limit = 64 - sCheckpointIds - 1;
+    int cc = COURSE_CCT <= gCurrCourseNum && gCurrCourseNum <= COURSE_CCS;
+    if (cc)
+    {
+        int lvlShowLimit = ccShowLimit();
+        limit = 2*(lvlShowLimit - COURSE_CCT) + 1;
+
+        if (lvlShowLimit == COURSE_CCS)
+            limit++;
+    }
+
+    handle_menu_scrolling(MENU_SCROLL_HORIZONTAL, index, 1, limit);
     if (*index == 1)
         return;
 
-    int xoff = PAUSE_MENU_LEFT_X - 57 + *index * 16;
+    int anIndex = *index;
+    int xoff = PAUSE_MENU_LEFT_X - 57 + anIndex * 16;
+    if (cc)
+    {
+        if (anIndex == 10)
+        {
+            xoff = 310;
+        }
+        else
+        {
+            int major = (anIndex - 1) / 2;
+            anIndex += major;
+            xoff = PAUSE_MENU_LEFT_X - 57 + anIndex * 16;
+        }
+    }
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     set_text_color(255, 255, 255);
@@ -2215,7 +2247,23 @@ static int get_checkpoint_warp()
         return MENU_OPT_WARP_CHECKPOINT;
 
     int checkpointIdx = 64 - sCheckpointIds == gDialogCameraAngleIndex ? 63 : 62 - (gDialogCameraAngleIndex - 2);
-    if (save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum)) & (1ULL << checkpointIdx))
+    int cc = COURSE_CCT <= gCurrCourseNum && gCurrCourseNum <= COURSE_CCS;
+    int hasCheckpoint;
+    if (cc)
+    {
+        checkpointIdx = 62 - (gDialogCameraAngleIndex - 2);
+        int shiftedIdx = gDialogCameraAngleIndex - 3;
+        int course = (shiftedIdx / 2) + COURSE_CCT;
+        int idx = (shiftedIdx % 2) ? 62 : 63;
+        hasCheckpoint = !!(save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(course)) & (1ULL << idx));
+    }
+    else
+    {
+        checkpointIdx = 64 - sCheckpointIds == gDialogCameraAngleIndex ? 63 : 62 - (gDialogCameraAngleIndex - 2);
+        hasCheckpoint = !!(save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum)) & (1ULL << checkpointIdx));
+    }
+
+    if (hasCheckpoint)
         return MENU_OPT_WARP_CHECKPOINT + 64 - checkpointIdx;
     else
         return MENU_OPT_CONTINUE;
