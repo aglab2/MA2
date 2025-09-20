@@ -7374,3 +7374,12 @@ extern const BehaviorScript bhvGhWarp[] = {
         CALL_NATIVE(bhv_gh_warp_loop),
     END_LOOP(),
 };
+
+extern void bhv_k_source_loop();
+extern const BehaviorScript bhvKSource[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_k_source_loop),
+    END_LOOP(),
+};

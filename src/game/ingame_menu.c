@@ -1841,10 +1841,21 @@ void render_pause_my_score_coins(void) {
 
                     u64 ccLvlFlags = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(lvl));
                     u64 ccLvlStars = ccLvlFlags & starsFlagMask;
-                    u64 ccLvlCheckpoints = (ccLvlFlags & checkpointsFlagMask) >> (60 - starCountTotal);
+                    u64 ccLvlCleared = ccLvlFlags & (1ULL << 63);
+                    u64 ccLvlCheckpointHave = ccLvlFlags & (1ULL << 62);
+
                     starFlags |= (ccLvlStars << starCountTotal);
-                    starFlags |= (ccLvlCheckpoints << (62 - checkpointCountTotal));
-                    checkpointCountTotal += 3;
+                    if (ccLvlCheckpointHave)
+                        starFlags |= (1ULL << (62 - checkpointCountTotal));
+                    if (ccLvlCleared)
+                    {
+                        if (lvl == LEVEL_CCS)
+                            starFlags |= (1ULL << 63);
+                        else
+                            starFlags |= (1ULL << (61 - checkpointCountTotal));
+                    }
+
+                    checkpointCountTotal += 2;
                     starCountTotal += starCountsPerCC[lvl - COURSE_CCT];
                 }
 
@@ -1853,12 +1864,13 @@ void render_pause_my_score_coins(void) {
 
             int y = PAUSE_MENU_MY_SCORE_Y + 20;
             print_generic_string_aligned(PAUSE_MENU_LEFT_X + 3 - 45, y, textCheckpoint, TEXT_ALIGN_RIGHT);
+            int checkpointShift = 0;
             for (int i = 62; i > checkpointCountTotal; i--)
             {
-                if (cc && 1 == (i % 3))
-                    continue;
+                if (cc && (i % 2))
+                    checkpointShift++;
 
-                render_star_at(!!(starFlags & (1ULL << i)), PAUSE_MENU_LEFT_X + 3 + (62 - i) * 16 - 30, y);
+                render_star_at(!!(starFlags & (1ULL << i)), PAUSE_MENU_LEFT_X + 3 + (62 - i + checkpointShift) * 16 - 30, y);
             }
             if (gLevelWithHardModes & (1ULL << (gCurrLevelNum - LEVEL_CE)))
             {

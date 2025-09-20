@@ -29,6 +29,8 @@ static struct LevelConfig cfg = { };
 #define bhvKoopa bhvKoopaCC
 #define bhvSmallWhomp bhvSmallWhompCC
 
+#define MODEL_CCE_PYRAMID MODEL_K_SOURCE
+#define bhvCCEPyramid bhvKSource
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_cce_entry[] = {
@@ -56,7 +58,7 @@ const LevelScript level_cce_entry[] = {
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
-	AREA(1, cce_area_1, 0, -1000, -2000),
+	AREA(1, cce_area_1, 0, 0, 0),
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
@@ -109,8 +111,8 @@ const LevelScript level_cce_entry[] = {
 		OBJECT(MODEL_KOOPA_WITHOUT_SHELL, 5367, -17100, -9448, 0, 0, 0, 0x00000000, bhvKoopa),
 		OBJECT(MODEL_KOOPA_WITHOUT_SHELL, 6081, -17100, -9472, 0, 0, 0, 0x00000000, bhvKoopa),
 		OBJECT(MODEL_KOOPA_WITHOUT_SHELL, 5693, -16300, -13827, 0, 0, 0, 0x00000000, bhvKoopa),
-		OBJECT(MODEL_NONE, 44, 10031, 14990, 0, 0, 0, (0xa << 16), bhvInstantActiveWarp),
-		// OBJECT(MODEL_CCE_PYRAMID, 5704, 11200, -8215, 0, 90, 0, 0x00000000, bhvCCEPyramid),
+		OBJECT(MODEL_NONE, 44, 10031, 14990, 0, -180, 0, (0xa << 16), bhvInstantActiveWarp),
+		OBJECT(MODEL_CCE_PYRAMID, 5704, 11200, -8215, 0, 90, 0, 0x00000000, bhvCCEPyramid),
 		OBJECT(MODEL_NONE, 5695, 7213, -3397, 0, 90, 0, 0x00000000, bhvHiddenStarTrigger),
 		OBJECT(MODEL_NONE, 5695, -15957, -5098, 0, 90, 0, 0x00000000, bhvHiddenStarTrigger),
 		OBJECT(MODEL_NONE, 5695, -11716, -4415, 0, 90, 0, 0x00000000, bhvHiddenStarTrigger),

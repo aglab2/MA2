@@ -826,6 +826,7 @@ static int aglabGlobalScratch[0x12];
 #include "behaviors/aglab_eq.inc.c"
 #include "behaviors/aglab_geocmn.inc.c"
 #include "behaviors/aglab_gh.inc.c"
+#include "behaviors/aglab_k.inc.c"
 
 #include "behaviors/aglab_starmove.inc.c"
 #include "behaviors/aglab_spring.inc.c"

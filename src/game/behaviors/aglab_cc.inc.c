@@ -159,6 +159,12 @@ void bhv_cct_gate_loop()
         SET_BPARAM2(o->oBehParams, 0xa);
         gMarioStates->usedObj = o;
         level_trigger_warp(gMarioStates, WARP_OP_SPIN_SHRINK);
+
+        int starIndex = 63;
+        struct MarioState* m = gMarioStates;
+        save_file_collect_star_or_key(m->numCoins, starIndex);
+        m->numStars = save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1);
+
         o->oAction = 1;
     }
 }
