@@ -1642,12 +1642,14 @@ void load_language_text(void) {
 #endif
     }
 }
+#else
+static void load_language_text(void) {
+    load_segment_decompress(SEGMENT_EU_TRANSLATION, _translation_en_yay0SegmentRomStart, _translation_en_yay0SegmentRomEnd);
+}
 #endif
 
 s32 lvl_init_from_save_file(UNUSED s16 initOrUpdate, s32 levelNum) {
-#ifdef MULTILANG
     load_language_text();
-#endif
     sWarpDest.type = WARP_TYPE_NOT_WARPING;
     sDelayedWarpOp = WARP_OP_NONE;
 #ifdef ENABLE_VANILLA_LEVEL_SPECIFIC_CHECKS

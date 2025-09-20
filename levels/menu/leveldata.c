@@ -1961,8 +1961,6 @@ const Collision main_menu_seg7_collision[] = {
     COL_END(),
 };
 
-#ifdef MULTILANG
-
 // Duplicate course name tables; the main menu needs all languages loaded at
 // once since it switches language, so the copies in segment 19 aren't good
 // enough.
@@ -1972,6 +1970,8 @@ const Collision main_menu_seg7_collision[] = {
 #include "text/define_courses.inc.c"
 #undef COURSE_NAME_TABLE
 #undef COURSE_FILE
+
+#ifdef MULTILANG
 
 #ifdef ENABLE_FRENCH
 #define COURSE_NAME_TABLE course_strings_fr_table

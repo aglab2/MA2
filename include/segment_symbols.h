@@ -165,9 +165,10 @@ DECLARE_SEGMENT(title_screen_bg_mio0)
 
 DECLARE_SEGMENT(debug_level_select_mio0)
 
-#ifdef MULTILANG
 DECLARE_SEGMENT(translation_en_yay0)
 DECLARE_SEGMENT(translation_en_mio0)
+
+#ifdef MULTILANG
 #ifdef ENABLE_FRENCH
 DECLARE_SEGMENT(translation_fr_yay0)
 DECLARE_SEGMENT(translation_fr_mio0)

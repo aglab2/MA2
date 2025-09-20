@@ -375,9 +375,9 @@ SECTIONS
 
    /* load YAY0 and level data */
    YAY0_SEG(segment2, 0x02000000)
+   YAY0_SEG(translation_en, 0x1B000000)
 
 #ifdef MULTILANG
-   YAY0_SEG(translation_en, 0x1B000000)
 #ifdef ENABLE_FRENCH
    YAY0_SEG(translation_fr, 0x1B000000)
 #endif

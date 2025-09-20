@@ -6,9 +6,9 @@
 #include "sounds.h"
 #include "seq_ids.h"
 
-#define COURSE_NAME_TABLE course_name_table_en
-#define ACT_NAME_TABLE act_name_table_en
-#define DIALOG_TABLE dialog_table_en
+#define COURSE_NAME_TABLE seg2_course_name_table
+#define ACT_NAME_TABLE seg2_act_name_table
+#define DIALOG_TABLE seg2_dialog_table
 
 #define DIALOG_FILE "us/dialogs.h"
 #define COURSE_FILE "us/courses.h"

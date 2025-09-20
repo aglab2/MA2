@@ -90,7 +90,6 @@ extern struct MarioState gMarioStates[];
 extern s16 sCurrPlayMode;
 extern s16 sTransitionTimer;
 extern void (*sTransitionUpdate)(s16 *);
-extern void load_language_text(void);
 
 struct WarpDest {
     u8 type;

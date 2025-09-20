@@ -2444,7 +2444,7 @@ const Texture *const main_hud_camera_lut[] = {
 
 // If not using multilang, include the text data here in segment 0x02.
 // Otherwise, it will be placed into segment 0x19.
-#ifndef MULTILANG
+#if 0
 #include "sounds.h"
 #include "seq_ids.h"
 
