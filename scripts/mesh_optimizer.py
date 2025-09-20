@@ -4,6 +4,8 @@ import sys
 
 import numpy as np
 from scipy.spatial import ConvexHull
+import shapely
+from shapely.ops import triangulate
 
 
 HAS_EX3_COMMANDS = True
@@ -698,6 +700,34 @@ class BaryPreCalc:
     def __repr__(self):
         return f"BaryPreCalc(t={self.t}, r={self.r}, dr={self.dr}, tv={self.tv}, tl={self.tl})"
 
+class ShapelyAdapter:
+    def __init__(self, normal):
+        self._axis = 0
+        max_axis_value = abs(normal.x)
+        if abs(normal.y) > max_axis_value:
+            max_axis_value = abs(normal.y)
+            self._axis = 1
+        if abs(normal.z) > max_axis_value:
+            max_axis_value = abs(normal.z)
+            self._axis = 2
+
+        self._cache = {}
+
+    def vtx_to_2d(self, vtx, idx):
+        if self._axis == 0:
+            res = (vtx.y, vtx.z)
+        elif self._axis == 1:
+            res = (vtx.x, vtx.z)
+        else:
+            res = (vtx.x, vtx.y)
+
+        self._cache[res] = idx
+        return res
+
+    def vtx_from_2d(self, poly):
+        key = (int(poly[0]), int(poly[1]))
+        return self._cache[key]
+
 class ModelMeshEntry(TriKit):
     def __init__(self, next_line, model, vtxopt_name):
         self._model = model
@@ -874,6 +904,12 @@ class ModelMeshEntry(TriKit):
                 if not bary_coords:
                     return False
 
+                nbary_precalc = bary_precals[ntri]
+                mul = nbary_precalc.tv * bary_precalc.tv
+                if mul < 0:
+                    # Normals are facing opposite directions - do not merge
+                    return False
+
                 bary_total = sum(bary_coords)
                 tri_weighted = list(zip(bary_coords, bary_precalc.tri))
                 u_expected = sum([ w * t.uv[0]    for w, t in tri_weighted ])
@@ -934,7 +970,6 @@ class ModelMeshEntry(TriKit):
 
                     log_debug(f"strip_tri_to_tris: {strip_tri_to_tris}, triangle: {triangles}")
 
-                    ngon = list(tri)
                     ngon_tris = set()
                     ngon_tris.add(tri)
 
@@ -949,42 +984,8 @@ class ModelMeshEntry(TriKit):
                             if ntri in ngon_tris:
                                 continue
 
-                            # Can continue?
-                            nvtx = TriKit._v_in_triA_not_in_triB(ntri, curr)
-                            ntrir = TriKit._tri_rotate(ntri, nvtx)
-                            try:
-                                e1i = ngon.index(ntrir[1])
-                            except ValueError:
-                                assert False
-
-                            e2i = e1i - 1 if e1i > 0 else len(ngon) - 1
-                            e2 = ngon[e2i]
-                            assert e2 == ntrir[2]
-
-                            # Is sane continuation? - does not work as expected atm
-                            #fail = False
-                            #for ngon_tri in ngon_tris:
-                            #    bary_calc = bary_precals[ngon_tri]
-                            #    bary_coords = bary_calc.try_conv(vtx_values[nvtx].pos)
-                            #    assert bary_coords, "barycentric coordinates must be valid"
-                            #    # If all barycentric coordinates are positive, then the triangle is inside the ngon - we cannot allow that for continuation
-                            #    if (bary_coords[0] >= 0 and bary_coords[1] >= 0 and bary_coords[2] >= 0) or \
-                            #       (bary_coords[0] <= 0 and bary_coords[1] <= 0 and bary_coords[2] <= 0):
-                            #        fail = True
-                            #        break
-                            #
-                            #if fail:
-                            #    continue
-
-                            assert nvtx not in ngon
-                            ngon.insert(e2i + 1, nvtx)
                             ngon_tris.add(ntri)
                             stack.appendleft(ntri)
-
-                    bary_tri = bary_precals[tri]
-                    pivot = bary_tri.dr[0]
-                    pivot_dir = bary_tri.tv
-                    pivot_maxdir = pivot ^ pivot_dir
 
                     # Mark tris as used
                     for tri in ngon_tris:
@@ -1002,166 +1003,44 @@ class ModelMeshEntry(TriKit):
                     log_debug(f"strip_tri_to_tris after: {strip_tri_to_tris}, triangle: {triangles}")
 
                     # Try to reduce amount of vertices in ngon
-                    if len(ngon) <= 4:
+                    if len(ngon_tris) <= 4:
                         continue
 
-                    log_debug(f"ngon: {ngon}, ngon_tris: {ngon_tris}")
-                    changed = False
-                    ngon_values = [ vtx_values[vtx] for vtx in ngon ]
-                    log_debug(f"ngon_values: {ngon_values}")
-                    iter = 1
-                    while iter <= len(ngon):
-                        vp = ngon_values[iter - 2]
-                        vc = ngon_values[iter - 1]
-                        vn = ngon_values[0 if iter == len(ngon) else iter]
+                    for ngon_any_tri in ngon_tris:
+                        break
+                    ngon_any_tri_vtxs = [ vtx_values[vtx] for vtx in ngon_any_tri ]
+                    ngon_normal = (ngon_any_tri_vtxs[0].pos - ngon_any_tri_vtxs[1].pos) ^ (ngon_any_tri_vtxs[0].pos - ngon_any_tri_vtxs[2].pos)
+                    
+                    shad = ShapelyAdapter(ngon_normal)
+                    ngon_tris_vtx_pos = [[shad.vtx_to_2d(vtx_values[vtx].pos, vtx) for vtx in tri] for tri in ngon_tris]
+                    shapely_tris = [ shapely.Polygon(tri) for tri in ngon_tris_vtx_pos ]
+                    for shapely_tri in shapely_tris:
+                        shapely.set_precision(shapely_tri, 1)
 
-                        dvp = vp.pos - vc.pos
-                        dvpl = dvp * dvp
-                        dvn = vn.pos - vc.pos
-                        dvnl = dvn * dvn
-
-                        dvx = dvp ^ dvn
-                        dvxl = dvx * dvx * 10000
-                        if dvxl < dvpl * dvnl:
-                            log_debug(f"Removing vertex {ngon[iter - 1]} from ngon {ngon} because dvx {dvx} is too small {dvxl} compared to dvp {dvp} {dvpl} and dvn {dvn} {dvnl}")
-                            changed = True
-                            del ngon[iter - 1]
-                            del ngon_values[iter - 1]
-                        else:
-                            iter += 1
-
-                    if not changed:
+                    shapely_poly = shapely.unary_union(shapely_tris)
+                    shapely_simple_poly = shapely_poly.simplify(3, preserve_topology=True)
+                    shapely_triangulation = shapely.constrained_delaunay_triangles(shapely_simple_poly)
+                    if len(shapely_triangulation.geoms) >= len(ngon_tris):
                         continue
 
-                    log_debug(f"reduced ngon: {ngon} with ngon_values: {ngon_values}")
+                    triangulation = [ ( shad.vtx_from_2d(pt) for pt in tri.exterior.coords[:-1] ) for tri in shapely_triangulation.geoms ]
+                    log_debug(f"reduced ngon: {ngon_tris} with ngon_values: {triangulation}")
 
                     # Get rid of all triangles that are were part of the ngon...
                     triangles_altered = True
                     for tri in ngon_tris:
                         del triangles[triangles.index(tri)]
 
-                    # ...and retriangulate the ngon.
-                    # Calculate the angle cache for all edges of the ngonx
-                    #angle_edge_cache = {}
-                    #def angle_cached(i1, i2):
-                    #    pp = ngon[i1]
-                    #    pc = ngon[i2]
-                    #    if (pp, pc) in angle_edge_cache:
-                    #        return angle_edge_cache[(pp, pc)]
-                    #    pvp = ngon_values[i1].pos
-                    #    pvc = ngon_values[i2].pos
-                    #    ev = pvc - pvp
-                    #    angle = math.acos(pivot * ev / math.sqrt((ev * ev) * (pivot * pivot)))
-                    #    angle_edge_cache[(pp, pc)] = angle
-                    #    return angle
+                    for tri in triangulation:
+                        ttri = tuple(tri)
+                        vtri = [ vtx_values[vtx] for vtx in ttri ]
+                        normal_vtri = (vtri[0].pos - vtri[1].pos) ^ (vtri[0].pos - vtri[2].pos)
+                        if normal_vtri * ngon_normal < 0:
+                            ttri = (ttri[0], ttri[2], ttri[1])
 
-                    while len(ngon) > 4:
-                        # For this find convex hull of the ngon first
-
-                        # Find the first point that has the largest distance from the pivot
-                        max_point = ngon_values[0].pos
-                        max_i = 0
-                        for i, tri in enumerate(ngon_values[1:]):
-                            dp = max_point - tri.pos
-                            mul = dp * pivot_maxdir
-                            if mul > 0:
-                                max_point = tri.pos
-                                max_i = i + 1
-
-                        # Start builing the convex hull with the max point
-                        # !!! Mind that indices in 'hull' are indices in 'ngon' !!!
-                        hull_by_ngon_indices = [max_i]
-                        hull_cur_vec = pivot
-                        hull_cur = max_point
-                        while True:
-                            log_debug(f"Current hull: {hull_by_ngon_indices} ~> {[ngon[i] for i in hull_by_ngon_indices]}")
-                            max_i = -1
-                            max_a = -2
-                            for i, vc in enumerate(ngon_values):
-                                if i in hull_by_ngon_indices:
-                                    continue
-
-                                dv = vc.pos - hull_cur
-                                # only consider positive turns.... - pointless because points are selected carefully already
-                                #dvm = dv ^ hull_cur_vec
-                                #print(f"Turn between {hull[-1]} and {i}: {dvm} and {dvm * pivot_dir}")
-                                #if dvm * pivot_dir < 0:
-                                #    continue
-
-                                # ...and pick the one with the largest angle (will be between -1 and 1)
-                                dva = (dv * hull_cur_vec) / (math.sqrt(dv*dv) * math.sqrt(hull_cur_vec*hull_cur_vec))
-                                log_debug(f"Angle between {ngon[hull_by_ngon_indices[-1]]} and {ngon[i]}: {dva}")
-                                if dva > max_a:
-                                    max_a = dva
-                                    max_i = i
-                                    max_point = vc.pos
-
-                            if max_i == -1 or max_i == hull_by_ngon_indices[0]:
-                                break
-
-                            hull_by_ngon_indices.append(max_i)
-                            hull_cur_vec = max_point - hull_cur
-                            hull_cur = max_point
-
-                        # Setify the hull to know which edges are part of ears
-                        ears_indices = []
-                        for i in range(len(hull_by_ngon_indices)):
-                            i_p = hull_by_ngon_indices[i-1]
-                            i_c = hull_by_ngon_indices[i+0]
-                            i_n = hull_by_ngon_indices[(i+1) % len(hull_by_ngon_indices)]
-
-                            i_pexp = (i_c + 1) % len(ngon)
-                            i_nexp = (i_c - 1 + len(ngon)) % len(ngon)
-
-                            if i_pexp == i_p and i_nexp == i_n:
-                                ears_indices.append(i_c)
-
-                        assert len(ears_indices) >= 2, "there must be at least two ears in the ngon"
-                        if len(ears_indices) == len(ngon):
-                            fan = [ ngon[0], ngon[1], ngon[2] ]
-                            add_tri(tuple(fan))
-                            for vtx in ngon[3:]:
-                                fan[1] = fan[2]
-                                fan[2] = vtx
-                                add_tri(tuple(fan))
-                            ngon = []
-                            break
-                        else:
-                            # TODO: This is inefficient, vertices are already sorted properly so we have to just check for the sides
-                            #       The painful part is the checks on the very ends that must be carefully addressed
-                            banned_indices = set()
-                            filtered_ears = []
-                            for index in sorted(ears_indices):
-                                if index in banned_indices:
-                                    continue
-
-                                banned_indices.add((index - 1 + len(ngon)) % len(ngon))
-                                banned_indices.add((index + 1) % len(ngon))
-                                filtered_ears.append(index)
-
-                            ear_diff = 0
-                            for ear_undiff in filtered_ears:
-                                if len(ngon) <= 4:
-                                    break
-
-                                ear = ear_undiff - ear_diff
-                                add_tri((ngon[(ear - 1)], ngon[ear], ngon[(ear + 1) % len(ngon)]))
-                                del ngon[ear]
-                                del ngon_values[ear]
-                                ear_diff += 1
-                    
-                    if len(ngon) == 3:
-                        add_tri(tuple(ngon))
-                        pass
-                    elif len(ngon) == 4:
-                        pass
-                        add_tri(tuple(ngon[:3]))
-                        add_tri((ngon[0], ngon[2], ngon[3]))
-                    elif len(ngon) == 0:
-                        pass
-                    else:
-                        assert False, "ngon must be 3 or 4 vertices long"
+                        add_tri(ttri)
         except Exception as e:
+            print(e)
             triangles_altered = False
             pass
 
