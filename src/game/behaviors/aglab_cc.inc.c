@@ -16,6 +16,7 @@ static void cc_unfreeze()
 }
 
 #define CC_FREEZE() if (gTimeFrozen) { return cc_freeze(); } else { cc_unfreeze(); }
+#define CC_FREEZE_WITH(fn) if (gTimeFrozen) { cc_freeze(); return fn(); } else { cc_unfreeze(); }
 
 void bhv_cc_timestop_init()
 {
@@ -283,7 +284,40 @@ extern void bhv_coin_formation_spawned_coin_loop_cc()
 
 void bhv_cce_platform_fast_drop_loop()
 {
+    CC_FREEZE_WITH(load_object_collision_model);
 
+    if (0 == o->oAction)
+    {
+        load_object_collision_model();
+        if (o == gMarioObject->platform)
+        {
+            o->oAction = 1;
+        }
+    }
+    else
+    {
+        if (o->oTimer < 100)
+            o->oTimer = 100;
+
+        o->oPosY -= o->oTimer;
+        if (o->oPosY < -20000.f)
+        {
+            o->activeFlags = 0;
+        }
+    }
+}
+
+extern void bhv_cce_death_loop()
+{
+    if (gMarioStates->floorHeight != gMarioStates->pos[1])
+        return;
+
+    struct Surface* floor = gMarioStates->floor;
+    if (floor->type == SURFACE_HARD_NOT_SLIPPERY)
+    {
+        if (gMarioStates->health > 255)
+        gMarioStates->health -= 0x8;
+    }
 }
 
 #define oCCESpawnBlocks oObjF4
@@ -524,6 +558,8 @@ void bhv_cce_spawn_block_init()
     o->activeFlags = 0;
 }
 
+#define oCCBlockMaxY oFloatF4
+
 extern const Collision cce_block_collision[];
 extern const Collision ccr_block_collision[];
 extern const Collision cck_block_collision[];
@@ -538,11 +574,15 @@ void bhv_cce_block_init()
         obj_set_collision_data(o, cck_block_collision);
     if (gCurrLevelNum == LEVEL_CCS)
         obj_set_collision_data(o, ccs_block_collision);
+
+    struct Surface *ceil;
+    o->oCCBlockMaxY = find_ceil(o->oPosX, o->oPosY - 100.f, o->oPosZ, &ceil) - 50.f;
 }
 
 void bhv_cce_block_loop()
 {
-    CC_FREEZE();
+    CC_FREEZE_WITH(load_object_collision_model);
+
     f32 amt = 100 * sins(o->oTimer * 0x800);
     o->oOpacity = 150 + amt;
     o->oDamageOrCoinValue = 150 - amt;
@@ -559,6 +599,10 @@ void bhv_cce_block_loop()
         o->oPosX += o->oVelX;
         o->oPosY += o->oVelY;
         o->oPosZ += o->oVelZ;
+        if (o->oPosY < o->oCCBlockMaxY)
+        {
+            load_object_collision_model();
+        }
     }
 }
 

@@ -6729,7 +6729,15 @@ const BehaviorScript bhvCCTFastDrop[] = {
     LOAD_COLLISION_DATA(cce_step_collision),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_cce_platform_fast_drop_loop),
-        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern void bhv_cce_platform_fast_drop_loop();
+extern void bhv_cce_death_loop();
+const BehaviorScript bhvCCEDeath[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_cce_death_loop),
     END_LOOP(),
 };
 
@@ -6750,7 +6758,6 @@ const BehaviorScript bhvCCSpawnBlock[] = {
     CALL_NATIVE(bhv_cce_block_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_cce_block_loop),
-        CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
 
