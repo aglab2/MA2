@@ -114,13 +114,13 @@ void bhv_ow_ctl_loop()
 {
     if (gCurrLevelNum == LEVEL_CASTLE_GROUNDS)
     {
-        if (gMarioStates->pos[2] < -8400.f)
+        if (gMarioStates->pos[2] < -8400.f && save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_SS2 - 1))
         {
             gMarioStates->usedObj = o;
             SET_BPARAM2(o->oBehParams, 0x81);
             level_trigger_warp(gMarioStates, WARP_OP_TELEPORT);
         }
-        if (gMarioStates->pos[2] > 8000.f && save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_SS2 - 1))
+        if (gMarioStates->pos[2] > 8000.f)
         {
             gMarioStates->usedObj = o;
             SET_BPARAM2(o->oBehParams, 0x80);

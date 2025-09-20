@@ -975,17 +975,19 @@ u32 interact_warp(struct MarioState *m, UNUSED u32 interactType, struct Object *
 u32 interact_warp_door(struct MarioState *m, UNUSED u32 interactType, struct Object *obj) {
     u32 doorAction = ACT_UNINITIALIZED;
 #ifndef UNLOCK_ALL
-    u32 saveFlags = save_file_get_flags();
+    int hasK1 = !!save_file_get_course_star_count(gCurrSaveFileNum - 1, COURSE_SS1 - 1);
+    int hasK2 = !!save_file_get_course_star_count(gCurrSaveFileNum - 1, COURSE_SS2 - 1);
+    int hasBothKeys = hasK1 && hasK2;
+    int saveFlags = save_file_get_flags();
     s16 warpDoorId = (obj->oBehParams >> 24);
 #endif
 
     if (m->action == ACT_WALKING || m->action == ACT_DECELERATING) {
 #ifndef UNLOCK_ALL
         if (warpDoorId == 1 && !(saveFlags & SAVE_FLAG_UNLOCKED_UPSTAIRS_DOOR)) {
-            if (!(saveFlags & SAVE_FLAG_HAVE_KEY_2)) {
+            if (!hasBothKeys) {
                 if (!sDisplayingDoorText) {
-                    set_mario_action(m, ACT_READING_AUTOMATIC_DIALOG,
-                                     (saveFlags & SAVE_FLAG_HAVE_KEY_1) ? DIALOG_023 : DIALOG_022);
+                    set_mario_action(m, ACT_READING_AUTOMATIC_DIALOG, DIALOG_022);
                 }
                 sDisplayingDoorText = TRUE;
 
@@ -999,8 +1001,7 @@ u32 interact_warp_door(struct MarioState *m, UNUSED u32 interactType, struct Obj
             if (!(saveFlags & SAVE_FLAG_HAVE_KEY_1)) {
                 if (!sDisplayingDoorText) {
                     // Moat door skip was intended confirmed
-                    set_mario_action(m, ACT_READING_AUTOMATIC_DIALOG,
-                                     (saveFlags & SAVE_FLAG_HAVE_KEY_2) ? DIALOG_023 : DIALOG_022);
+                    set_mario_action(m, ACT_READING_AUTOMATIC_DIALOG, DIALOG_023);
                 }
                 sDisplayingDoorText = TRUE;
 
