@@ -7381,5 +7381,6 @@ extern const BehaviorScript bhvKSource[] = {
     OR_INT(oFlags, OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_k_source_loop),
+        CALL_NATIVE(load_object_static_model),
     END_LOOP(),
 };
