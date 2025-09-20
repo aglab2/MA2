@@ -763,6 +763,18 @@ void reset_mario_pitch(struct MarioState *m) {
     }
 }
 
+static int level_has100s(void)
+{
+    if (!gCurrCourseNum)
+        return 0;
+    if (gCurrCourseNum == COURSE_SS2 || gCurrCourseNum == COURSE_SS1)
+        return 0;
+    if (COURSE_CCT <= gCurrCourseNum && gCurrCourseNum < COURSE_CCS)
+        return 0;
+    
+    return 1;
+}
+
 u32 interact_coin(struct MarioState *m, UNUSED u32 interactType, struct Object *obj) {
     m->numCoins += obj->oDamageOrCoinValue;
     m->healCounter += 4 * obj->oDamageOrCoinValue;
@@ -772,7 +784,7 @@ u32 interact_coin(struct MarioState *m, UNUSED u32 interactType, struct Object *
     obj->oInteractStatus = INT_STATUS_INTERACTED;
 
 #ifdef X_COIN_STAR
-    if (gCurrCourseNum && gCurrCourseNum != COURSE_SS2 && m->numCoins - obj->oDamageOrCoinValue < X_COIN_STAR
+    if (level_has100s() && m->numCoins - obj->oDamageOrCoinValue < X_COIN_STAR
         && m->numCoins >= X_COIN_STAR && !g100CoinStarSpawned) {
         bhv_spawn_star_no_level_exit(STAR_BP_ACT_100_COINS);
         g100CoinStarSpawned = TRUE;
