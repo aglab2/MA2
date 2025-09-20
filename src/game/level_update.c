@@ -912,9 +912,9 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
                 break;
 
             case WARP_OP_SPIN_SHRINK: // bbh enter
-                sDelayedWarpTimer = 60;
+                sDelayedWarpTimer = 100;
                 sSourceWarpNodeId = GET_BPARAM2(m->usedObj->oBehParams);
-                play_transition(WARP_TRANSITION_FADE_INTO_COLOR, sDelayedWarpTimer, 0xFF, 0xFF, 0xFF);
+                play_transition(WARP_TRANSITION_FADE_INTO_COLOR, 60, 0, 0, 0);
                 break;
 
             case WARP_OP_TELEPORT:

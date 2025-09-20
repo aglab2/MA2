@@ -18,7 +18,9 @@ static void cc_unfreeze()
 #define CC_FREEZE() if (gTimeFrozen) { return cc_freeze(); } else { cc_unfreeze(); }
 
 void bhv_cc_timestop_init()
-{ }
+{
+    gTimeFrozen = 0;
+}
 
 static void bhv_purple_switch_loop_impl(int timer, int shift, f32 dist, int main);
 
