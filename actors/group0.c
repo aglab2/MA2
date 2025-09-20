@@ -45,3 +45,7 @@
 #include "rocket_launcher/collision.inc.c"
 #include "purple_switch/model.inc.c"
 #include "purple_switch/collision.inc.c"
+
+#include "k_source/model.inc.c"
+#include "k_plat/model.inc.c"
+#include "k_door/model.inc.c"

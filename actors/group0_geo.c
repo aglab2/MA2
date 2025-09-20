@@ -26,3 +26,6 @@
 #include "rocket/geo.inc.c"
 #include "rocket_launcher/geo.inc.c"
 #include "purple_switch/geo.inc.c"
+#include "k_source/geo.inc.c"
+#include "k_plat/geo.inc.c"
+#include "k_door/geo.inc.c"

@@ -123,6 +123,9 @@ const LevelScript level_main_scripts_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_RAMP, ramp_geo),
     LOAD_MODEL_FROM_GEO(MODEL_ROCKET, rocket_geo),
     LOAD_MODEL_FROM_GEO(MODEL_ROCKET_SPAWNER, rocket_launcher_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_K_DOOR, k_door_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_K_PLAT, k_plat_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_K_SOURCE, k_source_geo),
 
     LOAD_MODEL_FROM_GEO(MODEL_PURPLE_SWITCH,           purple_switch_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BREAKABLE_BOX,           box_wood_geo),

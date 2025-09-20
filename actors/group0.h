@@ -361,4 +361,10 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "purple_switch/collision_header.h"
 
+#include "k_source/geo_header.h"
+
+#include "k_plat/geo_header.h"
+
+#include "k_door/geo_header.h"
+
 #endif

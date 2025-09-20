@@ -580,6 +580,9 @@
 #define MODEL_THI_WARP_PIPE                       0xf8   // warp_pipe_geo
 #define MODEL_BOO                         0xf7
 #define MODEL_SNUFIT 0xf6
+#define MODEL_K_DOOR 0xf5
+#define MODEL_K_PLAT 0xf4
+#define MODEL_K_SOURCE 0xf3
 
 #define MODEL_BOOSTER MODEL_SPEEDER
 

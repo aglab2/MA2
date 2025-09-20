@@ -1,0 +1,16 @@
+extern const GeoLayout k_source_geo[];
+extern u8 k_source_sikake_28_64_ci4[];
+extern u8 k_source_sikake_28_64_pal_rgba16[];
+extern u8 k_source_sikake_22_64_ci4[];
+extern u8 k_source_sikake_22_64_pal_rgba16[];
+extern u8 k_source_sikake_26_64_ci4[];
+extern u8 k_source_sikake_26_64_pal_rgba16[];
+extern u8 k_source_sikake_27_64_ci4[];
+extern u8 k_source_sikake_27_64_pal_rgba16[];
+extern Vtx k_source_object_0070FFA4_mesh_layer_1_vtx_cull[8];
+extern Vtx k_source_object_0070FFA4_mesh_layer_1_vtx_0[48];
+extern Vtx k_source_object_0070FFA4_mesh_layer_1_vtx_1[106];
+extern Vtx k_source_object_0070FFA4_mesh_layer_1_vtx_2[32];
+extern Vtx k_source_object_0070FFA4_mesh_layer_1_vtx_3[48];
+extern Vtx k_source_object_0070FFA4_mesh_layer_1_vtx_4[12];
+extern Gfx k_source_object_0070FFA4_mesh_layer_1[];
