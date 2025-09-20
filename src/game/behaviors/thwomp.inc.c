@@ -54,9 +54,9 @@ static void grindel_thwomp_act_floating(void)
     grindel_thwomp_act_floating_impl(1);
 }
 
-void grindel_thwomp_act_rising_impl(int normal) {
-    int time = normal ? 40 : 30;
-    if (o->oBehParams2ndByte + time < o->oTimer) {
+void grindel_thwomp_act_rising_impl(int normal, int shift) {
+    int time = normal ? 33 : 30;
+    if (shift + time < o->oTimer) {
         o->oAction = GRINDEL_THWOMP_ACT_FLOATING;
         o->oPosY += 5.0f;
     } else {
@@ -65,7 +65,7 @@ void grindel_thwomp_act_rising_impl(int normal) {
 }
 
 void grindel_thwomp_act_rising(void) {
-    grindel_thwomp_act_rising_impl(0);
+    grindel_thwomp_act_rising_impl(0, 0);
 }
 
 ObjActionFunc sGrindelThwompActions[] = {

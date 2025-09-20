@@ -114,7 +114,7 @@ const LevelScript level_end_entry[] = {
 		WARP_NODE(2, LEVEL_END, 0x01, 2, WARP_NO_CHECKPOINT),
 		OBJECT(MODEL_CASTLE_KEY_DOOR, -1591, -124, -48, 0, -90, 0, (1 << 24) | (1 << 16), bhvDoorWarp),
 		OBJECT(MODEL_CASTLE_KEY_DOOR, -1591, -124, 105, 0, 90, 0, (1 << 24) | (2 << 16), bhvDoorWarp),
-		OBJECT(MODEL_THI_WARP_PIPE, 853, -124, 22, 0, 90, 0, (0x11 << 16), bhvWarpPipe),
+		OBJECT(MODEL_THI_WARP_PIPE, 853, -124, 22, 0, 90, 0, (0x0A << 16), bhvWarpPipe),
 		TERRAIN(end_area_2_collision),
 		MACRO_OBJECTS(end_area_2_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),

@@ -6860,6 +6860,7 @@ const BehaviorScript bhvSnufitCC[] = {
     END_LOOP(),
 };
 
+extern void bhv_grindel_thwomp_init_cc();
 extern void bhv_grindel_thwomp_loop_cc();
 const BehaviorScript bhvThwomp2CC[] = {
     BEGIN(OBJ_LIST_SURFACE),
@@ -6870,6 +6871,7 @@ const BehaviorScript bhvThwomp2CC[] = {
     SET_HOME(),
     SCALE(/*Unused*/ 0, /*Field*/ 140),
     SET_FLOAT(oDrawingDistance, 4000),
+    CALL_NATIVE(bhv_grindel_thwomp_init_cc),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_grindel_thwomp_loop_cc),
         CALL_NATIVE(load_object_collision_model),

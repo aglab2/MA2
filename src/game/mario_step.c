@@ -744,7 +744,7 @@ static void apply_vertical_wind(struct MarioState *m) {
             lim = 19500.f;
         }
         if (gCurrCourseNum == COURSE_CCT) {
-            lim = 1500.f;
+            lim = 1300.f;
         }
         if (gCurrCourseNum == COURSE_CCE) {
             lim = 16000.f;

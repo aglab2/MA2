@@ -1963,12 +1963,7 @@ s32 act_top_of_pole_jump(struct MarioState *m) {
 
 s32 act_vertical_wind(struct MarioState *m) {
     if (m->floor && m->floor->type != SURFACE_VERTICAL_WIND
-     && gCurrCourseNum != COURSE_SH
-     && gCurrCourseNum != COURSE_RH
-     && gCurrCourseNum != COURSE_LB
-     && gCurrCourseNum != COURSE_EE
-     && gCurrCourseNum != COURSE_LC
-     && gCurrCourseNum != COURSE_LF
+     && (gCurrCourseNum == COURSE_WC || gCurrCourseNum == COURSE_PH)
        ) {
         return set_mario_action(m, ACT_FLYING, 0);
     }
