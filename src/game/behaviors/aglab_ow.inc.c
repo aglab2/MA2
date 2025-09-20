@@ -32,6 +32,12 @@ const u64 gLevelWithHardModes = 1ULL << (LEVEL_CE - LEVEL_CE)
                               | 1ULL << (LEVEL_FC - LEVEL_CE)
 
                               | 1ULL << (LEVEL_GH - LEVEL_CE)
+
+                              | 1ULL << (LEVEL_CCT - LEVEL_CE)
+                              | 1ULL << (LEVEL_CCE - LEVEL_CE)
+                              | 1ULL << (LEVEL_CCR - LEVEL_CE)
+                              | 1ULL << (LEVEL_CCK - LEVEL_CE)
+                              | 1ULL << (LEVEL_CCS - LEVEL_CE)
                               ;
 
 extern u8 gIsHardMode;

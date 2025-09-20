@@ -337,6 +337,16 @@ void set_text_color(u32 r, u32 g, u32 b) {
     sActiveTextColor[3] = gDialogTextAlpha;
 }
 
+void set_text_color_modulated(u32 r, u32 g, u32 b, u32 a) {
+    a = (gDialogTextAlpha * a) / 255;
+    gDPSetEnvColor(gDisplayListHead++, r, g, b, a);
+
+    sActiveTextColor[0] = r;
+    sActiveTextColor[1] = g;
+    sActiveTextColor[2] = b;
+    sActiveTextColor[3] = a;
+}
+
 /**
  * Get the exact width of the line of a string of any font in pixels, using the given ASCII and UTF-8 tables.
  */
@@ -1739,8 +1749,8 @@ static void render_star_at(int enabled, int x, int y)
 
 extern const u64 gLevelWithHardModes;
 
-static const char kCollectTheGoalRing[] = "Objective: Collect the Goal Ring";
-static const char kCollectTheStars[] = "Objective: Find all the stars";
+static const char kCollectTheGoalRing[] = "Collect the Goal Ring";
+static const char kCollectTheStars[] = "Find all the stars";
 
 static const char* getStageName()
 {
@@ -1786,6 +1796,7 @@ void render_pause_my_score_coins(void) {
         gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
 
         set_text_color(255, 255, 255);
+        int curAlpha = 255;
 
         char *courseName = segmented_to_virtual(courseNameTbl[courseIndex]);
 
@@ -1793,11 +1804,58 @@ void render_pause_my_score_coins(void) {
             sprintf(str, getStageName(), getCourseNumber());
             print_generic_string_aligned(PAUSE_MENU_LEFT_X, PAUSE_MENU_COURSE_Y, str, TEXT_ALIGN_RIGHT);
             print_generic_string(PAUSE_MENU_RIGHT_X, PAUSE_MENU_COURSE_Y, courseName);
+            
+            u64 xluMask = 0;
+            int starCountTotal = sStarIds;
+            int checkpointCountTotal = sCheckpointIds;
+            int cc = COURSE_CCT <= gCurrCourseNum && gCurrCourseNum <= COURSE_CCS;
+            if (cc)
+            {
+                static const u8 starCountsPerCC[] = { 7, 12, 9, 12, 8 };
+                // there are never more than 32 stars per CC course
+                static const u64 starsFlagMask = 0xffffffffULL;
+                static const u64 checkpointsFlagMask = 0xF000000000000000ULL;
+
+                int lvlShowLimit = gCurrCourseNum;
+                for (int lvl = COURSE_CCT; lvl <= COURSE_CCS; lvl++)
+                {
+                    if (save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(lvl)))
+                    {
+                        lvlShowLimit = MAX(lvl, lvlShowLimit);
+                    }
+                }
+
+                starFlags = 0;
+                checkpointCountTotal = 0;
+                starCountTotal = 0;
+
+                // Compose the star count out of 5 course parts
+                for (int lvl = COURSE_CCT; lvl <= lvlShowLimit; lvl++)
+                {
+                    if (gCurrCourseNum == lvl)
+                    {
+                        xluMask = ~(((1ULL << starCountsPerCC[lvl - COURSE_CCT]) - 1) << starCountTotal);
+                    }
+
+                    u64 ccLvlFlags = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(lvl));
+                    u64 ccLvlStars = ccLvlFlags & starsFlagMask;
+                    u64 ccLvlCheckpoints = (ccLvlFlags & checkpointsFlagMask) >> (60 - starCountTotal);
+                    starFlags |= (ccLvlStars << starCountTotal);
+                    starFlags |= (ccLvlCheckpoints << (62 - checkpointCountTotal));
+                    checkpointCountTotal += 3;
+                    starCountTotal += starCountsPerCC[lvl - COURSE_CCT];
+                }
+
+                checkpointCountTotal = 64 - checkpointCountTotal;
+            }
 
             int y = PAUSE_MENU_MY_SCORE_Y + 20;
             print_generic_string_aligned(PAUSE_MENU_LEFT_X + 3 - 45, y, textCheckpoint, TEXT_ALIGN_RIGHT);
-            for (int i = 62; i > sCheckpointIds; i--)
+            for (int i = 62; i > checkpointCountTotal; i--)
             {
+                if (cc && 1 == (i % 3))
+                    continue;
+
                 render_star_at(!!(starFlags & (1ULL << i)), PAUSE_MENU_LEFT_X + 3 + (62 - i) * 16 - 30, y);
             }
             if (gLevelWithHardModes & (1ULL << (gCurrLevelNum - LEVEL_CE)))
@@ -1805,16 +1863,20 @@ void render_pause_my_score_coins(void) {
                 bool enabled = !!(starFlags & (1ULL << 63));
                 render_star_at(enabled, PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30, y);
                 
-                print_generic_string_aligned(160, y + 55, enabled ? kCollectTheStars : kCollectTheGoalRing, TEXT_ALIGN_CENTER);
+                char line[100];
+                sprintf(line, "Objective: %s", enabled ? kCollectTheGoalRing : kCollectTheStars);
+                print_generic_string_aligned(160, y + 55, line, TEXT_ALIGN_CENTER);
             }
             else
             {
-                print_generic_string_aligned(160, y + 55, kCollectTheStars, TEXT_ALIGN_CENTER);
+                char line[100];
+                sprintf(line, "Objective: %s", kCollectTheStars);
+                print_generic_string_aligned(160, y + 55, line, TEXT_ALIGN_CENTER);
             }
 
             y = PAUSE_MENU_MY_SCORE_Y + 5;
             print_generic_string_aligned(PAUSE_MENU_LEFT_X + 3 - 45, y, textStars, TEXT_ALIGN_RIGHT);
-            for (int i = 0; i < sStarIds; i++)
+            for (int i = 0; i < starCountTotal; i++)
             {
                 int sx = PAUSE_MENU_LEFT_X + 3 + i * 10 - 30;
                 int sy = y;
@@ -1823,13 +1885,29 @@ void render_pause_my_score_coins(void) {
                     sx -= 24 * 10;
                     sy -= 12;
                 }
+                
+                int wantAlpha = xluMask & (1ULL << i) ? 40 : 255;
+                if (wantAlpha != curAlpha)
+                {
+                    curAlpha = wantAlpha;
+                    set_text_color_modulated(255, 255, 255, curAlpha);
+                }
 
                 render_star_at(!!(starFlags & (1ULL << i)), sx, sy);
             }
-            if (gCurrLevelNum != LEVEL_SS2)
-                render_star_at(!!(starFlags & (1ULL << 48)), PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30, PAUSE_MENU_MY_SCORE_Y + 5 - 12);
-            else
-                render_star_at(!!(starFlags & (1ULL << 0)), PAUSE_MENU_LEFT_X + 3 - 30, PAUSE_MENU_MY_SCORE_Y + 5);
+            if (curAlpha != 255)
+            {
+                curAlpha = 255;
+                set_text_color(255, 255, 255);
+            }
+
+            if (!cc)
+            {
+                if (gCurrLevelNum != LEVEL_SS2 && gCurrLevelNum != LEVEL_SS1)
+                    render_star_at(!!(starFlags & (1ULL << 48)), PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30, PAUSE_MENU_MY_SCORE_Y + 5 - 12);
+                else
+                    render_star_at(!!(starFlags & (1ULL << 0)), PAUSE_MENU_LEFT_X + 3 - 30, PAUSE_MENU_MY_SCORE_Y + 5);
+            }
         } else {
             print_generic_string_aligned(SCREEN_CENTER_X, PAUSE_MENU_COURSE_Y, courseName, TEXT_ALIGN_CENTER);
         }
