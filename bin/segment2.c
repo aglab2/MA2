@@ -355,14 +355,17 @@ ALIGNED8 static const Texture texture_hud_char_beta_key[] = {
 #include "textures/segment2/segment2.beta_key.rgba16.inc.c"
 };
 
+#if 0
 ALIGNED8 static const Texture texture_hud_char_floomba[] = {
 #include "textures/segment2/segment2.floomba.rgba16.inc.c"
 };
+#endif
 
 ALIGNED8 const Texture texture_hud_char_umlaut[] = {
 #include "textures/segment2/segment2.umlaut_us.rgba16.inc.c"// EU ¨
 };
 
+#if 0
 ALIGNED8 static const Texture texture_credits_char_3[] = {
 #include "textures/segment2/segment2.06200.rgba16.inc.c"
 };
@@ -482,6 +485,7 @@ ALIGNED8 static const Texture texture_credits_char_Z[] = {
 ALIGNED8 static const Texture texture_credits_char_period[] = {
 #include "textures/segment2/segment2.07080.rgba16.inc.c"
 };
+#endif
 
 #ifdef JAPANESE_CHARACTERS
 // JP Small Font
@@ -1851,7 +1855,9 @@ const struct Utf8CharLUTEntry main_hud_utf8_3byte_lut[] = {
 };
 
 const struct Utf8CharLUTEntry main_hud_utf8_4byte_lut[] = {
+#if 0
     {0x1F633, 16, 0, texture_hud_char_floomba}, // 😳
+#endif
 };
 
 const struct Utf8CharLUTEntry main_hud_utf8_missing_char = {0, 16, 0, texture_hud_char_question};
@@ -2337,6 +2343,7 @@ const struct Utf8LUT main_font_utf8_lut = {
     &main_font_utf8_missing_char,
 };
 
+#if 0
 // ASCII lookup table for the green credits font
 const struct AsciiCharLUTEntry main_credits_font_lut[] = {
     {NULL, 4}, // 32 " "
@@ -2435,6 +2442,7 @@ const struct AsciiCharLUTEntry main_credits_font_lut[] = {
     {NULL, 0}, // 125 "}" (Unimplemented)
     {NULL, 0}, // 126 "~" (Unimplemented)
 };
+#endif
 
 // HUD camera table 0x020087CC-0x020087E3
 const Texture *const main_hud_camera_lut[] = {
@@ -3068,6 +3076,7 @@ const Gfx dl_transition_draw_filled_region[] = {
     gsSPEndDisplayList(),
 };
 
+#if 0
 // 0x02014708 - 0x02014738
 const Gfx dl_skybox_begin[] = {
     gsDPPipeSync(),
@@ -3138,6 +3147,7 @@ const Gfx dl_waterbox_end[] = {
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPEndDisplayList(),
 };
+#endif
 
 // 0x02014838 - 0x02014878
 ALIGNED8 static const Texture texture_ia8_up_arrow[] = {
@@ -3191,6 +3201,7 @@ const Gfx dl_ia8_up_arrow_end[] = {
 
 // 0x02014958 - 0x02014960
 
+#if 0
 // 0x02014970 - 0x020149A8
 const Gfx dl_paintings_rippling_begin[] = {
     gsDPPipeSync(),
@@ -3237,6 +3248,7 @@ const Gfx dl_paintings_draw_ripples[] = {
     gsSP1Triangle( 12, 13, 14, 0x0),
     gsSPEndDisplayList(),
 };
+#endif
 
 const Gfx dl_course_common_revert[] = {
 	gsSPSetGeometryMode(G_LIGHTING),
@@ -3248,6 +3260,7 @@ const Gfx dl_course_common_revert[] = {
 	gsSPEndDisplayList(),
 };
 
+#if 0
 // 14A60: triangle mesh
 // 0x02014A60
 const s16 seg2_painting_triangle_mesh[] = {
@@ -3846,6 +3859,7 @@ const s16 seg2_painting_mesh_neighbor_tris[] = {
       3, 240, 242, 244,
       1, 243,
 };
+#endif
 
 ALIGNED8 const Texture dark_outline_tex[] = {
     #include "textures/segment2/dark_outline.rgba16.inc.c"

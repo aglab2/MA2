@@ -850,6 +850,7 @@ void print_menu_generic_string(s16 x, s16 y, const char *str) {
  * Prints a string in the green credits font.
  */
 void print_credits_string(s16 x, s16 y, const char *str) {
+    return;
     s32 strPos = 0;
     char c;
     const struct AsciiCharLUTEntry *fontLUT = segmented_to_virtual(main_credits_font_lut);
@@ -898,6 +899,7 @@ void print_menu_generic_string_aligned(s16 x, s16 y, const char *str, u32 alignm
 }
 
 void print_credits_string_aligned(s16 x, s16 y, const char *str, u32 alignment) {
+    return;
     x += get_alignment_x_offset(str, alignment, main_credits_font_lut, NULL);
     print_credits_string(x, y, str);
 }
