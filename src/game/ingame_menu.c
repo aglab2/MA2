@@ -1751,8 +1751,27 @@ static void render_star_at(int enabled, int x, int y)
 
 extern const u64 gLevelWithHardModes;
 
-static const char kCollectTheGoalRing[] = "Collect the Goal Ring";
 static const char kCollectTheStars[] = "Find all the stars";
+
+static const char kCollectTheGoalRing[] = "Collect the Goal Ring";
+static const char kCCDestroyTheDoor[] = "Destroy the security door";
+static const char kCCDrainTheCore[] = "Use switch to drain the liquid";
+static const char kCCUnlockTheDoor[] = "Unlock the security door";
+static const char kCCReachTheCannonCore[] = "Reach the cannon's core";
+
+static const char* getMainObjective()
+{
+    if (gCurrLevelNum == LEVEL_CCT || gCurrLevelNum == LEVEL_CCE)
+        return kCCDestroyTheDoor;
+    if (gCurrLevelNum == LEVEL_CCR)
+        return kCCDrainTheCore;
+    if (gCurrLevelNum == LEVEL_CCK)
+        return kCCUnlockTheDoor;
+    if (gCurrLevelNum == LEVEL_CCS)
+        return kCCReachTheCannonCore;
+
+    return kCollectTheGoalRing;
+}
 
 static const char* getStageName()
 {
@@ -1878,7 +1897,7 @@ void render_pause_my_score_coins(void) {
                 render_star_at(enabled, PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30, y);
                 
                 char line[100];
-                sprintf(line, "Objective: %s", enabled ? kCollectTheGoalRing : kCollectTheStars);
+                sprintf(line, "Objective: %s", enabled ? getMainObjective() : kCollectTheStars);
                 print_generic_string_aligned(160, y + 55, line, TEXT_ALIGN_CENTER);
             }
             else
