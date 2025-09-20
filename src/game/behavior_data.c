@@ -7375,12 +7375,14 @@ extern const BehaviorScript bhvGhWarp[] = {
     END_LOOP(),
 };
 
+extern const Collision k_source_collision[];
 extern void bhv_k_source_loop();
 extern const BehaviorScript bhvKSource[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    LOAD_COLLISION_DATA(k_source_collision),
+    CALL_NATIVE(load_object_static_model),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_k_source_loop),
-        CALL_NATIVE(load_object_static_model),
     END_LOOP(),
 };

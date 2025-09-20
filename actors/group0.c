@@ -49,3 +49,6 @@
 #include "k_source/model.inc.c"
 #include "k_plat/model.inc.c"
 #include "k_door/model.inc.c"
+#include "k_source/collision.inc.c"
+#include "k_door/collision.inc.c"
+#include "k_plat/collision.inc.c"
