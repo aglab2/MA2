@@ -1826,6 +1826,7 @@ void render_pause_my_score_coins(void) {
 
     u8 courseIndex = COURSE_NUM_TO_INDEX(gCurrCourseNum);
     u64 starFlags = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
+    u64 realStarFlags = starFlags;
     if (!Hacktice_gEnabled)
     {
         gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
@@ -1900,7 +1901,7 @@ void render_pause_my_score_coins(void) {
             }
             if (gLevelWithHardModes & (1ULL << (gCurrLevelNum - LEVEL_CE)))
             {
-                bool enabled = !!(starFlags & (1ULL << 63));
+                bool enabled = !!(realStarFlags & (1ULL << 63));
                 render_star_at(enabled, PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30, y);
                 
                 char line[100];
@@ -2255,6 +2256,9 @@ static int get_checkpoint_warp()
         int shiftedIdx = gDialogCameraAngleIndex - 3;
         int course = (shiftedIdx / 2) + COURSE_CCT;
         int idx = (shiftedIdx % 2) ? 62 : 63;
+        if (shiftedIdx & 1)
+            course++;
+
         hasCheckpoint = !!(save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(course)) & (1ULL << idx));
     }
     else

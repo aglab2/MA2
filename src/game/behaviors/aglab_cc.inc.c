@@ -674,13 +674,15 @@ void bhv_ccr_switch2_loop()
     {
         o->oDrawingDistance = 10000.f;
         o->oDistanceToMario = 0.f;
+        // if (50 == o->oTimer)
         if (o == gMarioObject->platform)
         {
+            gTimeFrozen = 0;
             o->oAction = 1;
             gCamera->cutscene = CUTSCENE_CCR_2;
             o->parentObj = spawn_object(o, MODEL_CCR_RISING, bhvStaticObject);
             o->parentObj->oPosX = 0;
-            o->parentObj->oPosY = 100.f;
+            o->parentObj->oPosY = -300.f;
             o->parentObj->oPosZ = 0;
             enable_time_stop_including_mario();
             o->parentObj->activeFlags |= ACTIVE_FLAG_INITIATED_TIME_STOP;
@@ -692,7 +694,7 @@ void bhv_ccr_switch2_loop()
         {
             o->oPosY -= 1.f;
         }
-        else if (o->oTimer < 83)
+        else if (o->oTimer < 80)
         {
             aglabGlobalScratch[1] = o->oTimer - 30;
             gCamera->cutscene = CUTSCENE_CCR_2;
@@ -707,7 +709,7 @@ void bhv_ccr_switch2_loop()
                 level_trigger_warp(gMarioStates, WARP_OP_SPIN_SHRINK);
             }
 
-            o->parentObj->oPosY += 10.f;
+            o->parentObj->oPosY += 5.f;
             gCamera->cutscene = CUTSCENE_CCR_3;            
         }
     }
@@ -720,6 +722,7 @@ void bhv_ccr_capsule_init()
     aglabGlobalScratch[0] = 0;
 }
 
+extern struct GraphNodeMasterList *gMasterNode;
 extern Gfx mat_ccr_dl_WallSweep1_sa2mdl_0_f3d[];
 extern const Collision ccr_capopen_collision[];
 void bhv_ccr_capsule_loop()
@@ -767,7 +770,14 @@ void bhv_ccr_capsule_loop()
         if (10 == o->oTimer)
         {
             u8* ptr = (u8*) segmented_to_virtual(mat_ccr_dl_WallSweep1_sa2mdl_0_f3d);
-            ptr[10*8+7] = 0;
+            ptr[5*8+7] = 0;
+
+            struct MasterLayer* masterLayer = &gMasterNode->layers[LAYER_TRANSPARENT];
+            struct FlipbookArray* flipbooks = masterLayer->flipbooks;
+            ptr = flipbooks->dls[6].startDls[0];
+            ptr[5*8+7] = 0;
+            ptr = flipbooks->dls[6].startDls[1];
+            ptr[5*8+7] = 0;
         }
 
         if (110 == o->oTimer)
@@ -859,6 +869,9 @@ Gfx *geo_ccr_anim2_end(s32 callContext, struct GraphNode *node, UNUSED void *con
 extern u32 gLvlGlobalTimer;
 Gfx *geo_ccr_anim_rots(s32 callContext, struct GraphNode *node, UNUSED void *context)
 {
+    if (gTimeFrozen)
+        return NULL;
+
     if (callContext == GEO_CONTEXT_RENDER) {
         struct GraphNodeGenerated *genNode = (struct GraphNodeGenerated *) node;
         struct LightGraphLvlNodeTranslationRotation *graphNode = (struct LightGraphLvlNodeTranslationRotation *) node->next;

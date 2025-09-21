@@ -157,7 +157,7 @@ void geo_layout_cmd_branch(void) {
 #endif
 
 // 0x03: Return from branch
-static struct GraphNodeMasterList *gMasterNode = NULL;
+struct GraphNodeMasterList *gMasterNode = NULL;
 void geo_layout_cmd_return(void) {
     gGeoLayoutCommand = (u8 *) gGeoLayoutStack[--gGeoLayoutStackIndex];
 }
