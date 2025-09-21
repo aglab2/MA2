@@ -867,7 +867,7 @@ Gfx *geo_ccr_anim2_end(s32 callContext, struct GraphNode *node, UNUSED void *con
 }
 
 extern u32 gLvlGlobalTimer;
-Gfx *geo_ccr_anim_rots(s32 callContext, struct GraphNode *node, UNUSED void *context)
+static Gfx *geo_ccr_anim_rots_impl(s32 callContext, struct GraphNode *node, int idx, int velAngle, int velY)
 {
     if (gTimeFrozen)
         return NULL;
@@ -882,7 +882,7 @@ Gfx *geo_ccr_anim_rots(s32 callContext, struct GraphNode *node, UNUSED void *con
         //if (inverse)
         //    time = 200 - time;
 
-        f32 yVel = 1000 / 50;
+        f32 yVel = velY / 50;
         if (inverse)
             yVel = -yVel;
 
@@ -891,13 +891,13 @@ Gfx *geo_ccr_anim_rots(s32 callContext, struct GraphNode *node, UNUSED void *con
         switch (phase)
         {
             case 0:
-                graphNode->rotation[1] -= 0x2000 / 50;
+                graphNode->rotation[idx] -= velAngle / 50;
                 break;
             case 1:
                 graphNode->y -= yVel;
                 break;
             case 2:
-                graphNode->rotation[1] += 0x2000 / 50;
+                graphNode->rotation[idx] += velAngle / 50;
                 break;
             case 3:
                 graphNode->y += yVel;
@@ -906,6 +906,16 @@ Gfx *geo_ccr_anim_rots(s32 callContext, struct GraphNode *node, UNUSED void *con
     }
 
     return NULL;
+}
+
+Gfx *geo_ccr_anim_rots(s32 callContext, struct GraphNode *node, UNUSED void *context)
+{
+    return geo_ccr_anim_rots_impl(callContext, node, 1, 0x2000, 1000);
+}
+
+Gfx *geo_ccr_anim_rots_cck(s32 callContext, struct GraphNode *node, UNUSED void *context)
+{
+    return geo_ccr_anim_rots_impl(callContext, node, 0, 0x10000, 400);
 }
 
 extern const BehaviorScript bhvCCKSwitchP2[];
