@@ -129,6 +129,8 @@ void bhv_cct_gate_loop()
     if (o->oAction)
     {
         o->oHomeY += o->oTimer;
+        o->oHomeX += o->oTimer / 10.f;
+        o->oHomeZ += o->oTimer / 10.f;
         return;
     }
 
@@ -153,6 +155,8 @@ void bhv_cct_gate_loop()
     if (0 == o->oSubAction)
         obj_set_model(o, MODEL_CCT_GATE_HIT);
     o->oSubAction++;
+    if (gCurrCourseNum == COURSE_CCE)
+        o->oSubAction++;
     
     if (2 == o->oSubAction)
     {
@@ -321,7 +325,8 @@ extern void bhv_cce_death_loop()
     if (floor->type == SURFACE_HARD_NOT_SLIPPERY)
     {
         if (gMarioStates->health > 255)
-        {
+        {    
+            play_sound(SOUND_MOVING_SHOCKED, gMarioObject->header.gfx.cameraToObject);
             gMarioStates->invincTimer++;
             vec3_copy(&o->oPosVec, gMarioStates->pos);
             gMarioStates->health -= 0x8;
