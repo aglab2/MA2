@@ -15,8 +15,8 @@ static void cc_unfreeze()
     o->header.gfx.areaIndex = 1;
 }
 
-#define CC_FREEZE() if (gTimeFrozen) { return cc_freeze(); } else { cc_unfreeze(); }
-#define CC_FREEZE_WITH(fn) if (gTimeFrozen) { cc_freeze(); return fn(); } else { cc_unfreeze(); }
+#define CC_FREEZE() if (gTimeFrozen && (o->oAction || o->oTimer)) { return cc_freeze(); } else { cc_unfreeze(); }
+#define CC_FREEZE_WITH(fn) if (gTimeFrozen && (o->oAction || o->oTimer)) { cc_freeze(); return fn(); } else { cc_unfreeze(); }
 
 void bhv_cc_timestop_init()
 {
@@ -305,6 +305,11 @@ void bhv_cce_platform_fast_drop_loop()
             o->activeFlags = 0;
         }
     }
+}
+
+void bhv_cce_platform_loop()
+{
+    o->oPosY += sins(o->oTimer * 223) * 20.f;
 }
 
 extern void bhv_cce_death_loop()

@@ -373,4 +373,6 @@ extern const Gfx white_particle_small_unused_dl[];
 
 #include "k_plat/collision_header.h"
 
+#include "k_spark/geo_header.h"
+
 #endif

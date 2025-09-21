@@ -29,3 +29,4 @@
 #include "k_source/geo.inc.c"
 #include "k_plat/geo.inc.c"
 #include "k_door/geo.inc.c"
+#include "k_spark/geo.inc.c"

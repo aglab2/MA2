@@ -126,6 +126,7 @@ const LevelScript level_main_scripts_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_K_DOOR, k_door_geo),
     LOAD_MODEL_FROM_GEO(MODEL_K_PLAT, k_plat_geo),
     LOAD_MODEL_FROM_GEO(MODEL_K_SOURCE, k_source_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_K_SPARK, k_spark_geo),
 
     LOAD_MODEL_FROM_GEO(MODEL_PURPLE_SWITCH,           purple_switch_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BREAKABLE_BOX,           box_wood_geo),

@@ -30,6 +30,7 @@ static struct LevelConfig cfg = { };
 #define bhvSmallWhomp bhvSmallWhompCC
 
 #define MODEL_CCE_PYRAMID MODEL_K_SOURCE
+#define MODEL_CCT_STEP MODEL_CCE_STEP
 #define bhvCCEPyramid bhvKSource
 /* Fast64 end persistent block [scripts] */
 
@@ -48,7 +49,7 @@ const LevelScript level_cce_entry[] = {
 	JUMP_LINK(script_func_global_3), 
 	JUMP_LINK(script_func_global_15), 
 	LOAD_MODEL_FROM_GEO(MODEL_CCE_TIMESTOP, cce_switch_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCT_STEP, cce_step_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_CCE_STEP, cce_step_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CCE_GATE, cce_door_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CCE_GATE_HIT, cce_doorhit_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CCE_BLOCK, cce_block_geo), 
@@ -90,7 +91,6 @@ const LevelScript level_cce_entry[] = {
 		OBJECT(MODEL_NONE, 5699, 11200, -6950, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 5701, -17100, -9453, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 5682, -16300, -14517, 0, 0, 0, (2 << 16), bhvCoinFormation),
-		OBJECT(MODEL_NONE, 5672, -17801, -4519, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -4997, 15780, 9854, 0, 90, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -4997, 13449, 9854, 0, 90, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -4997, 11250, 9854, 0, 90, 0, (17 << 16), bhvCoinFormation),
@@ -102,8 +102,9 @@ const LevelScript level_cce_entry[] = {
 		OBJECT(MODEL_NONE, 5695, 10741, -3397, 0, 90, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_CCE_GATE, 5691, -16300, -15461, 0, 0, 0, 0x00000000, bhvCCTGate),
 		OBJECT(MODEL_CCT_STEP, 5699, 11200, -4029, 0, 0, 0, 0x00000000, bhvCCTFastDrop),
-		OBJECT(MODEL_CCT_STEP, 5688, -17334, -5696, 0, -90, 0, 0x00000000, bhvCCTFastDrop),
-		OBJECT(MODEL_CCT_STEP, 5688, -17334, -7057, 0, -90, 0, 0x00000000, bhvCCTFastDrop),
+		OBJECT(MODEL_CCT_STEP, 5688, -17334, -6046, 0, -90, 0, 0x00000000, bhvCCTPlat),
+		OBJECT(MODEL_CCT_STEP, 5688, -17334, -7057, 0, -90, 0, 0x00000000, bhvCCTPlat),
+		OBJECT(MODEL_CCT_STEP, 5688, -17334, -5078, 0, -90, 0, 0x00000000, bhvCCTPlat),
 		OBJECT(MODEL_CCT_STEP, 5688, -17334, -7057, 0, -90, 0, 0x00000000, bhvCCEDeath),
 		OBJECT(MODEL_KOOPA_WITHOUT_SHELL, -323, 9700, 12999, 0, 0, 0, 0x00000000, bhvKoopa),
 		OBJECT(MODEL_KOOPA_WITHOUT_SHELL, 326, 9700, 12999, 0, 0, 0, 0x00000000, bhvKoopa),
@@ -130,6 +131,7 @@ const LevelScript level_cce_entry[] = {
 		OBJECT(MODEL_NONE, 5705, -17100, -10698, 0, 0, 0, 0x00000000, bhvShutter),
 		OBJECT(MODEL_NONE, -37, 9700, 4309, 0, -90, 0, 0x00000000, bhvShutter),
 		OBJECT(MODEL_NONE, 6927, 11200, 4309, 0, -90, 0, 0x00000000, bhvShutter),
+		OBJECT(MODEL_WOODEN_SIGNPOST, 5699, 11200, -2977, 0, 0, 0, (1 << 24) | (1 << 16), bhvMessagePanel),
 		OBJECT(MODEL_SNUFIT, -3037, 10161, 12483, 0, 90, 0, 0x00000000, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, -3037, 10161, 13439, 0, 90, 0, 0x00000000, bhvSnufit),
 		OBJECT(MODEL_SNUFIT, -1807, 12067, 12483, 0, 90, 0, 0x00000000, bhvSnufit),
@@ -191,7 +193,7 @@ const LevelScript level_cce_entry[] = {
 		OBJECT(MODEL_NONE, 6787, -17791, -6557, 0, 90, 0, (12 << 16), bhvCCSpawn),
 		OBJECT(MODEL_STAR, -2, 10008, 20246, 0, 90, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -3326, 10584, 12999, 0, 90, 0, 0x00000000, bhvStar),
-		OBJECT(MODEL_STAR, -4998, 17126, 13744, 0, 90, 0, 0x00000000, bhvStar),
+		OBJECT(MODEL_STAR, -4998, 16901, 13744, 0, 90, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -4987, 10407, 6829, 0, 90, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 2684, 9914, 3126, 0, 90, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 4310, 9342, 4301, 0, 90, 0, 0x00000000, bhvStar),

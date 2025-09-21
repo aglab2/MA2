@@ -6732,6 +6732,16 @@ const BehaviorScript bhvCCTFastDrop[] = {
     END_LOOP(),
 };
 
+extern void bhv_cce_platform_loop();
+const BehaviorScript bhvCCTPlat[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(cce_step_collision),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_cce_platform_loop),
+    END_LOOP(),
+};
+
 extern void bhv_cce_platform_fast_drop_loop();
 extern void bhv_cce_death_loop();
 const BehaviorScript bhvCCEDeath[] = {
