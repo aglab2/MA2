@@ -309,7 +309,7 @@ void bhv_cce_platform_fast_drop_loop()
 
 void bhv_cce_platform_loop()
 {
-    o->oPosY += sins(o->oTimer * 223) * 20.f;
+    o->oPosY += sins(o->oTimer * 223);
 }
 
 extern void bhv_cce_death_loop()

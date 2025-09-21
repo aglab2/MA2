@@ -6739,6 +6739,7 @@ const BehaviorScript bhvCCTPlat[] = {
     LOAD_COLLISION_DATA(cce_step_collision),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_cce_platform_loop),
+        CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
 
@@ -7393,13 +7394,25 @@ extern const BehaviorScript bhvGhWarp[] = {
 };
 
 extern const Collision k_source_collision[];
+extern void bhv_k_source_init();
 extern void bhv_k_source_loop();
 extern const BehaviorScript bhvKSource[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
     LOAD_COLLISION_DATA(k_source_collision),
     CALL_NATIVE(load_object_static_model),
+    CALL_NATIVE(bhv_k_source_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_k_source_loop),
+    END_LOOP(),
+};
+
+extern void bhv_k_spark_loop();
+extern const BehaviorScript bhvKSpark[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BILLBOARD(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_k_spark_loop),
     END_LOOP(),
 };

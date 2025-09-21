@@ -670,5 +670,6 @@ extern const BehaviorScript bhvGhPlat[];
 extern const BehaviorScript bhvGhWarp[];
 
 extern const BehaviorScript bhvKSource[];
+extern const BehaviorScript bhvKSpark[];
 
 #endif // BEHAVIOR_DATA_H
