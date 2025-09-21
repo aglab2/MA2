@@ -640,6 +640,7 @@ static u32 should_strengthen_gravity_for_jump_ascent(struct MarioState *m) {
     return FALSE;
 }
 
+extern void print_text_fmt_int(s16 x, s16 y, const char *str, s32 i);
 static f32 get_grav_mult(struct MarioState *m)
 {
     f32 gravMult = 1.0f;
@@ -652,9 +653,10 @@ static f32 get_grav_mult(struct MarioState *m)
         // 5000  - gravity is 0 - upside down
         // 0     - gravity is 1.f - normal
         // -5000 - gravity is 2
-        return 1.0f - m->pos[1] / 6000.0f; 
+        gravMult = 1.0f - m->pos[1] / 6000.0f; 
     }
 
+    print_text_fmt_int(20, 20, "%d", gravMult * 10000);
     return gravMult;
 }
 
@@ -709,7 +711,7 @@ static void apply_gravity(struct MarioState *m) {
             m->vel[1] = terminalSpeed;
         }
     } else if (should_strengthen_gravity_for_jump_ascent(m)) {
-        m->vel[1] /= 4.0f * gravMult;
+        m->vel[1] /= 4.0f;
     } else if (m->action & ACT_FLAG_METAL_WATER) {
         m->vel[1] -= 1.6f * gravMult;
         if (m->vel[1] < -16.0f) {

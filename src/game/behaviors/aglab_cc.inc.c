@@ -674,8 +674,7 @@ void bhv_ccr_switch2_loop()
     {
         o->oDrawingDistance = 10000.f;
         o->oDistanceToMario = 0.f;
-        if (50 == o->oTimer)
-        // if (o == gMarioObject->platform)
+        if (o == gMarioObject->platform)
         {
             o->oAction = 1;
             gCamera->cutscene = CUTSCENE_CCR_2;
@@ -852,6 +851,45 @@ Gfx *geo_ccr_anim2_end(s32 callContext, struct GraphNode *node, UNUSED void *con
     if (callContext == GEO_CONTEXT_RENDER) {
         struct GraphNodeSwitchCase *switchCase = (struct GraphNodeSwitchCase *) node;
         switchCase->selectedCase = CLAMP(aglabGlobalScratch[1] - 20, 0, 15);
+    }
+
+    return NULL;
+}
+
+extern u32 gLvlGlobalTimer;
+Gfx *geo_ccr_anim_rots(s32 callContext, struct GraphNode *node, UNUSED void *context)
+{
+    if (callContext == GEO_CONTEXT_RENDER) {
+        struct GraphNodeGenerated *genNode = (struct GraphNodeGenerated *) node;
+        struct LightGraphLvlNodeTranslationRotation *graphNode = (struct LightGraphLvlNodeTranslationRotation *) node->next;
+        int param = genNode->parameter;
+        int inverse = param & 1;
+        int halfShift = param & 2;
+        int time = (gLvlGlobalTimer + (halfShift ? 100 : 0)) % 200;
+        //if (inverse)
+        //    time = 200 - time;
+
+        f32 yVel = 1000 / 50;
+        if (inverse)
+            yVel = -yVel;
+
+        int phase = time / 50;
+        int phaseTime = time % 50;
+        switch (phase)
+        {
+            case 0:
+                graphNode->rotation[1] -= 0x2000 / 50;
+                break;
+            case 1:
+                graphNode->y -= yVel;
+                break;
+            case 2:
+                graphNode->rotation[1] += 0x2000 / 50;
+                break;
+            case 3:
+                graphNode->y += yVel;
+                break;
+        }
     }
 
     return NULL;

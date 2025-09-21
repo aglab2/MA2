@@ -87,6 +87,8 @@ static struct FlipbookData flipbooks_xlu[] = {
 
     { LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32, .ci4s = ccr_lk_un114_rgba32, .count=15, .frames=2,  },
     { LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_KD_LK_UN114_RGBA32_1, .ci4s = ccr_lk_un114_rgba32, .count=15, .frames=2,  },
+
+    { LVL_BATCH_LAYER_TRANSPARENT_CCR_DL_SIKAKE_23_64_RGBA32, .tileScrollX=-2,  },
 };
 
 const struct FlipbookLayer ccr_flipbooks[LAYER_COUNT] = {

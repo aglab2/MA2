@@ -704,8 +704,6 @@ extern const GeoLayout ccr_area_1[];
 extern const Collision ccr_area_1_collision[];
 extern const MacroObject ccr_area_1_macro_objs[];
 extern const Trajectory ccr_area_1_spline_Spring_NurbsCurve[];
-extern const Trajectory ccr_area_1_spline_Spring_NurbsCurve_001[];
-extern const Trajectory ccr_area_1_spline_Spring_NurbsCurve_002[];
 extern u8 ccr_dl_kd_lk_un403_ci4[];
 extern u8 ccr_dl_kd_lk_un403_pal_rgba16[];
 extern u8 ccr_dl_kd_lk_un401_ci4[];

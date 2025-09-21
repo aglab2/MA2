@@ -44,3 +44,48 @@ void bhv_k_spark_loop()
 
     o->oAnimState++;
 }
+
+void bhv_k_door_init()
+{
+    f32 d;
+    o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvKSpark, &d);
+}
+
+void bhv_k_door_loop()
+{
+    if (0 == o->oAction && o->parentObj->oAction)
+    {
+        f32 dx = o->oPosX - gMarioStates->pos[0];
+        f32 dy = o->oPosY - gMarioStates->pos[1];
+        f32 dz = o->oPosZ - gMarioStates->pos[2];
+        f32 dist = sqr(dx) + sqr(dy) + sqr(dz);
+
+        if (dist < 200.f * 200.f)
+        {
+            o->oAction = 1;
+
+            o->parentObj->oKSparkAttachPrevObj = gMarioObject;
+            o->parentObj->oKSparkAttachObj = o;
+            o->parentObj->oKSparkAttachmentRate = 1.f;
+            o->parentObj->oAction = 2;
+        }
+        load_object_collision_model();
+    }
+    else
+    {
+        if (0 == o->parentObj->oKSparkAttachmentRate)
+        {
+            if (o->oAction != 2)
+            {
+                o->parentObj->oKSparkAttachObj = o;
+                o->parentObj->oKSparkAttachPrevObj = o;
+                o->parentObj->oAction = 2;
+                o->oAction = 2;
+            }
+        }
+        else
+        {
+            load_object_collision_model();
+        }
+    }
+}

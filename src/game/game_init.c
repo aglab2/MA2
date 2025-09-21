@@ -79,6 +79,7 @@ struct DmaHandlerList gDemoInputsBuf;
 
 // General timer that runs as the game starts
 u32 gGlobalTimer = 0;
+u32 gLvlGlobalTimer = 0;
 u8 *gAreaSkyboxStart[AREA_COUNT];
 u8 *gAreaSkyboxEnd[AREA_COUNT];
 
@@ -460,6 +461,7 @@ void select_gfx_pool(void) {
  * - Yields to the VI framerate twice, locking the game at 30 FPS.
  * - Selects which framebuffer will be rendered and displayed to next time.
  */
+extern u8 gTimeFrozen;
 void display_and_vsync(void) {
     osRecvMesg(&gGfxVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     if (gGoddardVblankCallback != NULL) {
@@ -485,6 +487,8 @@ void display_and_vsync(void) {
         }
     }
     gGlobalTimer++;
+    if (!gTimeFrozen)
+        gLvlGlobalTimer++;
 }
 
 #if !defined(DISABLE_DEMO) && defined(KEEP_MARIO_HEAD)

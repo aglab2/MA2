@@ -840,6 +840,8 @@ extern const s16 dBowserFlamesOrientationValues[];
 #include "platform_displacement.h"
 #include "behaviors/bowser.inc.c"
 
+extern u32 gLvlGlobalTimer;
 void clear_scratch(void) {
     bzero(aglabGlobalScratch, sizeof(aglabGlobalScratch));
+    gLvlGlobalTimer = 0;
 }

@@ -7397,7 +7397,7 @@ extern const Collision k_source_collision[];
 extern void bhv_k_source_init();
 extern void bhv_k_source_loop();
 extern const BehaviorScript bhvKSource[] = {
-    BEGIN(OBJ_LIST_SURFACE),
+    BEGIN(OBJ_LIST_SPAWNER), // must be earlier than any other K-objects
     OR_INT(oFlags, OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
     LOAD_COLLISION_DATA(k_source_collision),
     CALL_NATIVE(load_object_static_model),
@@ -7414,5 +7414,18 @@ extern const BehaviorScript bhvKSpark[] = {
     BILLBOARD(),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_k_spark_loop),
+    END_LOOP(),
+};
+
+extern const Collision k_door_collision[];
+extern void bhv_k_door_init();
+extern void bhv_k_door_loop();
+extern const BehaviorScript bhvKDoor[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(k_door_collision),
+    CALL_NATIVE(bhv_k_door_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_k_door_loop),
     END_LOOP(),
 };
