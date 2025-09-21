@@ -321,7 +321,11 @@ extern void bhv_cce_death_loop()
     if (floor->type == SURFACE_HARD_NOT_SLIPPERY)
     {
         if (gMarioStates->health > 255)
-        gMarioStates->health -= 0x8;
+        {
+            gMarioStates->invincTimer++;
+            vec3_copy(&o->oPosVec, gMarioStates->pos);
+            gMarioStates->health -= 0x8;
+        }
     }
 }
 
@@ -619,6 +623,14 @@ void bhv_chain_chomp_update_cc()
     }
 
     bhv_chain_chomp_update();
+    if (o->oAction != o->oPrevAction)
+    {
+        o->oTimer = 0;
+    }
+    else
+    {
+        o->oTimer++;
+    }
     bhv_chain_chomp_update();
 }
 
