@@ -106,8 +106,41 @@ ALIGNED8 u8 cck_lk_un114_rgba32[] = {
     #include "levels/cck/kd_lk_un114_15.rgba32.inc.c"
 };
 
+ALIGNED8 u8 cck_poisons_ci4[] = {
+    #include "levels/cck/tx_ccpoison001.ci4.inc.c"
+    #include "levels/cck/tx_ccpoison002.ci4.inc.c"
+    #include "levels/cck/tx_ccpoison003.ci4.inc.c"
+    #include "levels/cck/tx_ccpoison004.ci4.inc.c"
+    #include "levels/cck/tx_ccpoison005.ci4.inc.c"
+    #include "levels/cck/tx_ccpoison006.ci4.inc.c"
+    #include "levels/cck/tx_ccpoison007.ci4.inc.c"
+    #include "levels/cck/tx_ccpoison008.ci4.inc.c"
+    #include "levels/cck/tx_ccpoison009.ci4.inc.c"
+    #include "levels/cck/tx_ccpoison010.ci4.inc.c"
+    #include "levels/cck/tx_ccpoison011.ci4.inc.c"
+    #include "levels/cck/tx_ccpoison012.ci4.inc.c"
+    #include "levels/cck/tx_ccpoison013.ci4.inc.c"
+};
+
+ALIGNED8 u8 cck_poisons_pal[] = {
+    #include "levels/cck/tx_ccpoison001.ci4.pal"
+    #include "levels/cck/tx_ccpoison002.ci4.pal"
+    #include "levels/cck/tx_ccpoison003.ci4.pal"
+    #include "levels/cck/tx_ccpoison004.ci4.pal"
+    #include "levels/cck/tx_ccpoison005.ci4.pal"
+    #include "levels/cck/tx_ccpoison006.ci4.pal"
+    #include "levels/cck/tx_ccpoison007.ci4.pal"
+    #include "levels/cck/tx_ccpoison008.ci4.pal"
+    #include "levels/cck/tx_ccpoison009.ci4.pal"
+    #include "levels/cck/tx_ccpoison010.ci4.pal"
+    #include "levels/cck/tx_ccpoison011.ci4.pal"
+    #include "levels/cck/tx_ccpoison012.ci4.pal"
+    #include "levels/cck/tx_ccpoison013.ci4.pal"
+};
+
 static struct FlipbookData flipbooks_opaque[] = {
     { LVL_BATCH_LAYER_OPAQUE_CCK_DL_KD_LK_UN207_PAL_RGBA16, .count=15, .frames=1, .ci4s=cck_lk_un1_ci4, .pals=cck_lk_un1_pal },
+    { LVL_BATCH_LAYER_OPAQUE_CCK_DL_TX_CCPOISON001_001_PAL_RGBA16, .count=13, .frames=2, .ci4s=cck_poisons_ci4, .pals=cck_poisons_pal  },
 };
 
 static struct FlipbookData flipbooks_xlu[] = {
@@ -115,6 +148,9 @@ static struct FlipbookData flipbooks_xlu[] = {
     { LVL_BATCH_LAYER_TRANSPARENT_CCK_DL_KD_LK_WATER1_01_PAL_RGBA16, .count=14, .frames=1, .ci4s=cck_lk_water_ci4, .pals=cck_lk_water_pal  },
 
     { LVL_BATCH_LAYER_TRANSPARENT_CCK_DL_KD_LK_UN114_RGBA32, .ci4s = cck_lk_un114_rgba32, .count=15, .frames=2,  },
+    
+    { LVL_BATCH_LAYER_TRANSPARENT_CCK_DL_TX_CCPOISON001_PAL_RGBA16, .count=13, .frames=2, .ci4s=cck_poisons_ci4, .pals=cck_poisons_pal  },
+    { LVL_BATCH_LAYER_TRANSPARENT_CCK_DL_TX_CCPOISON001_PAL_RGBA16_COPY, .count=13, .frames=2, .ci4s=cck_poisons_ci4, .pals=cck_poisons_pal  },
 };
 
 const struct FlipbookLayer cck_flipbooks[LAYER_COUNT] = {

@@ -89,3 +89,13 @@ void bhv_k_door_loop()
         }
     }
 }
+
+void bhv_k_plat_init()
+{
+    bhv_k_door_init();
+}
+
+void bhv_k_plat_loop()
+{
+    // =-
+}

@@ -5,3 +5,10 @@ const Trajectory cck_area_1_spline_NurbsCurve_Spring[] = {
 	TRAJECTORY_POS( 3, 15, 8091, 3895),
 	TRAJECTORY_END(),
 };
+const Trajectory cck_area_1_spline_NurbsCurve_Spring_001[] = {
+	TRAJECTORY_POS( 0, 15, 7270, -71),
+	TRAJECTORY_POS( 1, 15, 7732, -93),
+	TRAJECTORY_POS( 2, 15, 8057, -131),
+	TRAJECTORY_POS( 3, 15, 8091, -259),
+	TRAJECTORY_END(),
+};

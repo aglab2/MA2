@@ -124,6 +124,18 @@ void bhv_lll_rotating_hex_flame_loop(void) {
     }
 }
 
+static void cc_grant_clear(struct MarioState* m)
+{
+    o->oBehParams2ndByte = 0xa;
+    SET_BPARAM2(o->oBehParams, 0xa);
+    gMarioStates->usedObj = o;
+    level_trigger_warp(m, WARP_OP_SPIN_SHRINK);
+
+    int starIndex = 63;
+    save_file_collect_star_or_key(m->numCoins, starIndex);
+    m->numStars = save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1);
+}
+
 void bhv_cct_gate_loop()
 {
     if (o->oAction)
@@ -160,16 +172,7 @@ void bhv_cct_gate_loop()
     
     if (2 == o->oSubAction)
     {
-        o->oBehParams2ndByte = 0xa;
-        SET_BPARAM2(o->oBehParams, 0xa);
-        gMarioStates->usedObj = o;
-        level_trigger_warp(gMarioStates, WARP_OP_SPIN_SHRINK);
-
-        int starIndex = 63;
-        struct MarioState* m = gMarioStates;
-        save_file_collect_star_or_key(m->numCoins, starIndex);
-        m->numStars = save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1);
-
+        cc_grant_clear(gMarioStates);
         o->oAction = 1;
     }
 }
@@ -703,10 +706,7 @@ void bhv_ccr_switch2_loop()
         {
             if (o->oTimer == 100)
             {
-                o->oBehParams2ndByte = 0xa;
-                SET_BPARAM2(o->oBehParams, 0xa);
-                gMarioStates->usedObj = o;
-                level_trigger_warp(gMarioStates, WARP_OP_SPIN_SHRINK);
+                cc_grant_clear(gMarioStates);
             }
 
             o->parentObj->oPosY += 5.f;
@@ -949,10 +949,7 @@ void bhv_cck_switch2_loop()
         }
         else if (o->oTimer == 70)
         {
-            o->oBehParams2ndByte = 0xa;
-            SET_BPARAM2(o->oBehParams, 0xa);
-            gMarioStates->usedObj = o;
-            level_trigger_warp(gMarioStates, WARP_OP_SPIN_SHRINK);
+            cc_grant_clear(gMarioStates);
         }
     }
 }

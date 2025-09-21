@@ -7429,3 +7429,16 @@ extern const BehaviorScript bhvKDoor[] = {
         CALL_NATIVE(bhv_k_door_loop),
     END_LOOP(),
 };
+
+extern const Collision k_plat_collision[];
+extern void bhv_k_plat_init();
+extern void bhv_k_plat_loop();
+extern const BehaviorScript bhvKPlat[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(k_plat_collision),
+    CALL_NATIVE(bhv_k_plat_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_k_plat_loop),
+    END_LOOP(),
+};
