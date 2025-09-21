@@ -518,6 +518,7 @@ static void warm_up_batch_node(void)
                 freshLvlNode->y = lvlNode->translation[1];
                 freshLvlNode->z = lvlNode->translation[2];
                 freshLvlNode->radius = lvlNode->radius;
+                vec3_copy(freshLvlNode->radiusDiff, lvlNode->radiusDiff);
                 if (GRAPH_NODE_TYPE_LVL_TRANSLATION_ROTATION_COLD == curGraphNode->type)
                 {
                     freshLvlNode->rotation[0] = lvlNode->rotation[0];

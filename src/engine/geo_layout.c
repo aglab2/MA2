@@ -1277,7 +1277,7 @@ struct CullDlPattern
     u16 amount;
 };
 
-static f32 get_radius_dl(void* dl)
+static f32 get_radius_dl(void* dl, s16* pos)
 {
     struct CullDlPattern* cullDl = segmented_to_virtual(dl);
     int amount;
@@ -1298,13 +1298,54 @@ static f32 get_radius_dl(void* dl)
         amount = cullDl->amount >> 1;
     }
 
-    f32 result = 0.f;
+    // weird? maybe a trigger an assert?
+    if (0 == amount)
+        return 0.f;
+
     Vtx* vtxs = segmented_to_virtual(cullDl->vtxsPtr);
+
+    // Step 1 - find AABB
+    Vec3f maxAABB;
+    maxAABB[0] = maxAABB[1] = maxAABB[2] = -32768.f;
+    Vec3f minAABB;
+    minAABB[0] = minAABB[1] = minAABB[2] = 32768.f;
     for (int i = 0; i < amount; i++)
     {
         Vtx* vtx = &vtxs[i];
         Vec3f pos;
         vec3_copy(pos, vtx->n.ob);
+
+        if (pos[0] > maxAABB[0])
+            maxAABB[0] = pos[0];
+        if (pos[1] > maxAABB[1])
+            maxAABB[1] = pos[1];
+        if (pos[2] > maxAABB[2])
+            maxAABB[2] = pos[2];
+
+        if (pos[0] < minAABB[0])
+            minAABB[0] = pos[0];
+        if (pos[1] < minAABB[1])
+            minAABB[1] = pos[1];
+        if (pos[2] < minAABB[2])
+            minAABB[2] = pos[2];
+    }
+
+    Vec3f center;
+    center[0] = (minAABB[0] + maxAABB[0]) / 2.f;
+    center[1] = (minAABB[1] + maxAABB[1]) / 2.f;
+    center[2] = (minAABB[2] + maxAABB[2]) / 2.f;
+    pos[0] = center[0];
+    pos[1] = center[1];
+    pos[2] = center[2];
+
+    // Step 2 - find the actual radius
+    f32 result = 0.f;
+    for (int i = 0; i < amount; i++)
+    {
+        Vtx* vtx = &vtxs[i];
+        Vec3f pos;
+        vec3_copy(pos, vtx->n.ob);
+        vec3_sub(pos, center);
         f32 pendingRadius = vec3_sumsq(pos);
         if (pendingRadius > result)
             result = pendingRadius;
@@ -1319,7 +1360,7 @@ struct BatchCmd
     void* dl;
 };
 
-static f32 get_radius_batch_cmds(void* commands)
+static f32 get_radius_batch_cmds(void* commands, s16* pos)
 {
     if (commands == (void*) 0x80000000)
         return 0.f;
@@ -1328,7 +1369,7 @@ static f32 get_radius_batch_cmds(void* commands)
     struct BatchCmd* batchCmd = (struct BatchCmd*)commands;
     while (batchCmd->check != 0)
     {
-        f32 dlRadius = get_radius_dl(batchCmd->dl);
+        f32 dlRadius = get_radius_dl(batchCmd->dl, pos);
         if (!dlRadius)
             return 0.f;
 
@@ -1340,8 +1381,8 @@ static f32 get_radius_batch_cmds(void* commands)
 
     if (result > 10000.f * 10000.f)
         return 0;
-    else
-        return sqrtf(result);
+
+    return sqrtf(result);
 }
 
 void geo_layout_cmd_lvl_translation_rotation(void) {
@@ -1377,13 +1418,14 @@ void geo_layout_cmd_lvl_translation_rotation(void) {
     if (displayList)
     {
         graphNode->dl = displayList;
-        f32 result = get_radius_batch_cmds(displayList);
+        f32 result = get_radius_batch_cmds(displayList, graphNode->radiusDiff);
         graphNode->radius = result;
     }
     else
     {
         graphNode->dl = NULL;
-        graphNode->radius = 0.f;
+        graphNode->radius = 0;
+        // radiusDiff can be garbage, it is unused
     }
 
     gGeoLayoutCommand = (u8 *) cmdPos;
@@ -1418,13 +1460,14 @@ void geo_layout_cmd_lvl_translation(void) {
     if (displayList)
     {
         graphNode->dl = displayList;
-        f32 result = get_radius_batch_cmds(displayList);
+        f32 result = get_radius_batch_cmds(displayList, graphNode->radiusDiff);
         graphNode->radius = result;
     }
     else
     {
         graphNode->dl = NULL;
-        graphNode->radius = 0.f;
+        graphNode->radius = 0;
+        // radiusDiff can be garbage, it is unused
     }
 
     gGeoLayoutCommand = (u8 *) cmdPos;

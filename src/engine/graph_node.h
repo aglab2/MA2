@@ -475,7 +475,8 @@ struct GraphNodeLvlTranslationRotation {
     struct GraphNode node;
     void* dl;
     Vec3f translation;
-    f32 radius;
+    u16 radius;
+    Vec3s radiusDiff;
     Vec3s rotation;
 };
 
@@ -483,7 +484,8 @@ struct GraphNodeLvlTranslation {
     struct GraphNode node;
     void* dl;
     Vec3f translation;
-    f32 radius;
+    u16 radius;
+    Vec3s radiusDiff;
 };
 
 struct LightGraphLvlNodeTranslation {
@@ -496,6 +498,8 @@ struct LightGraphLvlNodeTranslation {
     struct GraphNode *children;
 
     f32 z;
+    u16 radius;
+    Vec3s radiusDiff;
 };
 
 struct LightGraphLvlNodeTranslationRotation {
@@ -508,7 +512,8 @@ struct LightGraphLvlNodeTranslationRotation {
     struct GraphNode *children;
 
     f32 z;
-    f32 radius;
+    u16 radius;
+    Vec3s radiusDiff;
     Vec3s rotation;
 };
 

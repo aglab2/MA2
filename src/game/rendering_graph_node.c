@@ -1812,9 +1812,6 @@ static void adjust_view_range()
 
 static int is_clipped_conic(Vec3f loc, f32 sphR)
 {
-    if (!sphR)
-        return 0;
-
     Vec3f d;
     vec3_diff(d, gCurGraphNodeCamera->pos, loc);
     f32 dLen2 = vec3_sumsq(d);
@@ -1862,9 +1859,6 @@ static int is_clipped_conic(Vec3f loc, f32 sphR)
 
 static int is_clipped_backplane(Vec3f loc, f32 sphR)
 {
-    if (!sphR)
-        return 0;
-
     Vec3f d;
     vec3_diff(d, gCurGraphNodeCamera->pos, loc);
     Vec3f coneU;
@@ -1882,7 +1876,7 @@ static int is_clipped_backplane(Vec3f loc, f32 sphR)
 
 f32 gViewRangeMult;
 // if no probing is done, it will be const propagated out
-static int is_far_from_mario(f32 l0, f32 l1, f32 l2, f32 sphR, int probe)
+static int is_far_from_mario(f32 l0, f32 l1, f32 l2, f32 sphR, Vec3s centerDiff, Vec3s rot, int probe)
 {
     Vec3f loc = { l0, l1, l2 };
     Vec3f d;
@@ -1904,16 +1898,31 @@ static int is_far_from_mario(f32 l0, f32 l1, f32 l2, f32 sphR, int probe)
     {
         return 1;
     }
+    
+    if (sphR)
+    {
+        Vec3f center;
+        vec3_copy(center, centerDiff);
+        if (rot)
+        {
+            Mat4 rotMtx;
+            mtxf_rotate_zxy_and_translate(rotMtx, gVec3fZero, rot);
+            Vec3f centerRot;
+            linear_mtxf_mul_vec3(rotMtx, centerRot, center);
+            vec3_copy(center, centerRot);
+        }
 
-    if (gIsConsole)
-    {
-        if (is_clipped_conic(loc, sphR))
-            return 1;
-    }
-    else
-    {
-        if (is_clipped_backplane(loc, sphR))
-            return 1;
+        vec3_add(loc, center);
+        if (gIsConsole)
+        {
+            if (is_clipped_conic(loc, sphR))
+                return 1;
+        }
+        else
+        {
+            if (is_clipped_backplane(loc, sphR))
+                return 1;
+        }
     }
 
     gPriority = priority;
@@ -1932,7 +1941,7 @@ void geo_process_lvl_translation_rotation(struct LightGraphLvlNodeTranslationRot
     translation[2] = lvlNode->z;
     vec3_sub(translation, gCurrentArea->renderOffset);
 
-    if (is_far_from_mario(translation[0], translation[1], translation[2], lvlNode->radius, 0))
+    if (is_far_from_mario(translation[0], translation[1], translation[2], lvlNode->radius, lvlNode->radiusDiff, lvlNode->rotation, 0))
         return;
 
     mtxf_rotate_zxy_and_translate_and_mul_precise(gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], lvlNode->rotation, translation[0], translation[1], translation[2]);
@@ -1953,7 +1962,7 @@ void geo_process_lvl_translation(struct LightGraphLvlNodeTranslation *lvlNode) {
     translation[2] = lvlNode->z;
     vec3_sub(translation, gCurrentArea->renderOffset);
 
-    if (is_far_from_mario(translation[0], translation[1], translation[2], 0, 0))
+    if (is_far_from_mario(translation[0], translation[1], translation[2], 0, NULL, NULL, 0))
         return;
 
     mtxf_translate_and_mul(translation[0], translation[1], translation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
@@ -1972,7 +1981,7 @@ void geo_process_lvl_translation_rotation_cold(struct GraphNodeLvlTranslationRot
     vec3_copy(translation, lvlNode->translation);
     vec3_sub(translation, gCurrentArea->renderOffset);
 
-    if (is_far_from_mario(translation[0], translation[1], translation[2], lvlNode->radius, 0))
+    if (is_far_from_mario(translation[0], translation[1], translation[2], lvlNode->radius, lvlNode->radiusDiff, lvlNode->rotation, 0))
         return;
 
     mtxf_rotate_zxy_and_translate_and_mul_precise(gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex], lvlNode->rotation, translation[0], translation[1], translation[2]);
@@ -1991,7 +2000,7 @@ void geo_process_lvl_translation_cold(struct GraphNodeLvlTranslation *lvlNode) {
     vec3_copy(translation, lvlNode->translation);
     vec3_sub(translation, gCurrentArea->renderOffset);
 
-    if (is_far_from_mario(translation[0], translation[1], translation[2], lvlNode->radius, 0))
+    if (is_far_from_mario(translation[0], translation[1], translation[2], lvlNode->radius, lvlNode->radiusDiff, NULL, 0))
         return;
 
     mtxf_translate_and_mul(translation[0], translation[1], translation[2], gMatStack[gMatStackIndex + 1], gMatStack[gMatStackIndex]);
