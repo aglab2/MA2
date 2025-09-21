@@ -1810,9 +1810,14 @@ static int ccShowLimit()
     int lvlShowLimit = gCurrCourseNum;
     for (int lvl = COURSE_CCT; lvl <= COURSE_CCS; lvl++)
     {
-        if (save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(lvl)))
+        u64 flags = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(lvl)); 
+        if (flags)
         {
             lvlShowLimit = MAX(lvl, lvlShowLimit);
+        }
+        if ((flags & (1ULL << 63)) && (lvl != LEVEL_CCS))
+        {
+            lvlShowLimit = MAX(lvl + 1, lvlShowLimit);
         }
     }
 
@@ -1886,6 +1891,7 @@ void render_pause_my_score_coins(void) {
                     starCountTotal += starCountsPerCC[lvl - COURSE_CCT];
                 }
 
+                checkpointCountTotal++;
                 checkpointCountTotal = 64 - checkpointCountTotal;
             }
 
@@ -1972,9 +1978,7 @@ static void render_quick_warp(s16 x, s16 y, s8 *index, s16 xIndex) {
     {
         int lvlShowLimit = ccShowLimit();
         limit = 2*(lvlShowLimit - COURSE_CCT) + 1;
-
-        if (lvlShowLimit == COURSE_CCS)
-            limit++;
+        limit += 2;
     }
 
     handle_menu_scrolling(MENU_SCROLL_HORIZONTAL, index, 1, limit);
@@ -1985,7 +1989,7 @@ static void render_quick_warp(s16 x, s16 y, s8 *index, s16 xIndex) {
     int xoff = PAUSE_MENU_LEFT_X - 57 + anIndex * 16;
     if (cc)
     {
-        if (anIndex == 10)
+        if (anIndex == 11)
         {
             xoff = 310;
         }
