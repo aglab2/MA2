@@ -106,9 +106,34 @@ ALIGNED8 u8 ccs_ls_gc801_rgba16[] = {
     #include "levels/ccs/kd_ls_gc801_15.rgba16.inc.c"
 };
 
+ALIGNED8 u8 ccs_kd[] = {
+    #include "levels/ccs/kd_ls_unit201.001_0.ci4.inc.c"
+    #include "levels/ccs/kd_ls_unit201.001_1.ci4.inc.c"
+    #include "levels/ccs/kd_ls_unit201.001_2.ci4.inc.c"
+    #include "levels/ccs/kd_ls_unit201.001_3.ci4.inc.c"
+    #include "levels/ccs/kd_ls_unit201.001_4.ci4.inc.c"
+    #include "levels/ccs/kd_ls_unit201.001_5.ci4.inc.c"
+    #include "levels/ccs/kd_ls_unit201.001_6.ci4.inc.c"
+    #include "levels/ccs/kd_ls_unit201.001_7.ci4.inc.c"
+};
+
+ALIGNED8 u8 ccs_kd_pal[] = {
+    #include "levels/ccs/kd_ls_unit201.001_0.pal"
+    #include "levels/ccs/kd_ls_unit201.001_1.pal"
+    #include "levels/ccs/kd_ls_unit201.001_2.pal"
+    #include "levels/ccs/kd_ls_unit201.001_3.pal"
+    #include "levels/ccs/kd_ls_unit201.001_4.pal"
+    #include "levels/ccs/kd_ls_unit201.001_5.pal"
+    #include "levels/ccs/kd_ls_unit201.001_6.pal"
+    #include "levels/ccs/kd_ls_unit201.001_7.pal"
+};
+
 static struct FlipbookData flipbooks_opaque[] = {
     { LVL_BATCH_LAYER_OPAQUE_CCS_DL_KD_LK_UN101_PAL_RGBA16, .count=15, .frames=2, .ci4s=ccs_lk_un1_ci4, .pals=ccs_lk_un1_pal },
     { LVL_BATCH_LAYER_OPAQUE_CCS_DL_KD_LK_UN101_PAL_RGBA16_1, .count=15, .frames=2, .ci4s=ccs_lk_un1_ci4, .pals=ccs_lk_un1_pal },
+
+    { LVL_BATCH_LAYER_OPAQUE_CCS_DL_KD_LS_UNIT201_001_0_PAL_RGBA16, .count=8, .frames=2, .ci4s=ccs_kd, .pals=ccs_kd_pal },
+    { LVL_BATCH_LAYER_OPAQUE_CCS_DL_KD_LS_UNIT201_001_0_PAL_RGBA16_1, .count=8, .frames=2, .ci4s=ccs_kd, .pals=ccs_kd_pal },
 };
 
 static struct FlipbookData flipbooks_xlu[] = {

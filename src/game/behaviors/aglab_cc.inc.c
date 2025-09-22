@@ -1141,7 +1141,7 @@ extern Gfx mat_ccs_dl_object_lsonic_un4_beam_BK04050607__nc_un4_beam1__sa2mdl_0_
 void bhv_ccs_lock_loop()
 {
     u8* ptr = (u8*) segmented_to_virtual(mat_ccs_dl_object_lsonic_un4_beam_BK04050607__nc_un4_beam1__sa2mdl_0_002_f);
-    ptr[10*8 + 7] = gTimeFrozen ? 0 : 180;
+    ptr[6*8 + 7] = gTimeFrozen ? 0 : 220;
 
     if (gTimeFrozen)
         return;
