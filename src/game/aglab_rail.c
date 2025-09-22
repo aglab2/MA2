@@ -598,7 +598,7 @@ int zipline_step(int exSpeed, s16* extraTilt, int holdZ)
                     // now calculate the velocity for the next point using the same principle
                     // this assume vel isn't too big to skip multiple points
                     Vec3s trajCurrPoint = { traj[sZiplineCurPoint + 1]    , traj[sZiplineCurPoint + 2]    , traj[sZiplineCurPoint + 3    ] };
-                    Vec3s trajNextPoint = { traj[sZiplineCurPoint + 1 - 4], traj[sZiplineCurPoint + 2 - 4], traj[sZiplineCurPoint + 3 - 4] };
+                    Vec3s trajNextPoint = { traj[sZiplineCurPoint + 1 + 4], traj[sZiplineCurPoint + 2 + 4], traj[sZiplineCurPoint + 3 + 4] };
 
                     Vec3f trajDirection;
                     vec3f_diff(trajDirection, trajNextPoint, trajCurrPoint);
