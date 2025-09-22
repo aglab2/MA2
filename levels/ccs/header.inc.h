@@ -2,6 +2,7 @@ extern const GeoLayout ccs_area_1_geo[];
 extern const GeoLayout ccs_area_1[];
 extern const Collision ccs_area_1_collision[];
 extern const MacroObject ccs_area_1_macro_objs[];
+extern const Trajectory ccs_area_1_spline_0166_object_012F560C_001_Rail[];
 extern const GeoLayout ccs_area_2_geo[];
 extern const GeoLayout ccs_area_2[];
 extern const Collision ccs_area_2_collision[];

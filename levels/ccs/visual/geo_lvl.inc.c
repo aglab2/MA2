@@ -2,6 +2,7 @@
 
 extern Gfx *geo_switch_cc(s32 callContext, struct GraphNode *node, UNUSED void *context);
 #define geo_ccs_switch geo_switch_cc
+extern Gfx *geo_switch_cc2(s32 callContext, struct GraphNode *node, UNUSED void *context);
 
 extern const GeoLayout ccs_dl_sUn0Tuuro0_0_geo[];
 extern const GeoLayout ccs_dl_sUn0Tuuro0_0_001_geo[];
@@ -431,7 +432,7 @@ const GeoLayout ccs_area_1_geo[] = {
 		//GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, (f32)-5100.0, (f32)-5300.0006103515625, (f32)-4249.998779296875, ccs_dl_object_01ACA8B4_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_OPAQUE, (f32)0.0, (f32)-4451.0357666015625, (f32)2200.0, ccs_dl_object_8DBE43E22ED5B6F6D41_mesh_layer_1),
 		GEO_LVL_BATCH_TRANSLATE_NODE(LAYER_TRANSPARENT, (f32)0.0, (f32)-4451.0357666015625, (f32)2200.0, ccs_dl_object_8DBE43E22ED60B3C887_mesh_layer_5),
-		GEO_SWITCH_CASE(8, geo_ccs_switch),
+		GEO_SWITCH_CASE(1, geo_switch_cc2),
 		GEO_OPEN_NODE(),
 			GEO_BRANCH(1, ccs_dl_sUn0Tuuro0_0_geo),
 			GEO_BRANCH(1, ccs_dl_sUn0Tuuro0_1_geo),
@@ -442,7 +443,7 @@ const GeoLayout ccs_area_1_geo[] = {
 			GEO_BRANCH(1, ccs_dl_sUn0Tuuro0_6_geo),
 			GEO_BRANCH(1, ccs_dl_sUn0Tuuro0_7_geo),
 		GEO_CLOSE_NODE(),
-		GEO_SWITCH_CASE(8, geo_ccs_switch),
+		GEO_SWITCH_CASE(1, geo_switch_cc2),
 		GEO_OPEN_NODE(),
 			GEO_BRANCH(1, ccs_dl_sUn0Tuuro0_0_001_geo),
 			GEO_BRANCH(1, ccs_dl_sUn0Tuuro0_1_001_geo),
@@ -643,7 +644,7 @@ const GeoLayout ccs_area_1_geo[] = {
 			GEO_BRANCH(1, ccs_dl_sUn0Tuuro1_14_009_geo),
 			GEO_BRANCH(1, ccs_dl_sUn0Tuuro1_15_009_geo),
 		GEO_CLOSE_NODE(),
-		GEO_SWITCH_CASE(8, geo_ccs_switch),
+		GEO_SWITCH_CASE(8, geo_switch_cc2),
 		GEO_OPEN_NODE(),
 			GEO_BRANCH(1, ccs_dl_sUn0Tuuro2_0_geo),
 			GEO_BRANCH(1, ccs_dl_sUn0Tuuro2_1_geo),
@@ -654,7 +655,7 @@ const GeoLayout ccs_area_1_geo[] = {
 			GEO_BRANCH(1, ccs_dl_sUn0Tuuro2_6_geo),
 			GEO_BRANCH(1, ccs_dl_sUn0Tuuro2_7_geo),
 		GEO_CLOSE_NODE(),
-		GEO_SWITCH_CASE(8, geo_ccs_switch),
+		GEO_SWITCH_CASE(8, geo_switch_cc2),
 		GEO_OPEN_NODE(),
 			GEO_BRANCH(1, ccs_dl_sUn0Tuuro2_0_001_geo),
 			GEO_BRANCH(1, ccs_dl_sUn0Tuuro2_1_001_geo),

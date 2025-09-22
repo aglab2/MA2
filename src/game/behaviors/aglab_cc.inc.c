@@ -1206,3 +1206,24 @@ void bhv_fly_guy_update_cc()
 {
     return bhv_fly_guy_update_impl(o->oBehParams2ndByte);
 }
+
+void bhv_ccs_flyguy_lock_init()
+{
+    f32 d;
+    o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvFlyGuyCC, &d);
+}
+
+void bhv_ccs_flyguy_lock_loop()
+{
+    o->parentObj->oPosX = o->oPosX;
+    o->parentObj->oPosY = o->oPosY;
+    o->parentObj->oPosZ = o->oPosZ;
+}
+
+void bhv_ccs_music_switch_loop()
+{
+}
+
+void bhv_ccs_coin_star_loop()
+{
+}

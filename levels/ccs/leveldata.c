@@ -5,6 +5,7 @@
 #include "textures.h"
 #include "dialog_ids.h"
 #include "instant_warp_desc.h"
+#include "rail_desc.h"
 
 #include "make_const_nonconst.h"
 
@@ -14,6 +15,8 @@
 #include "levels/ccs/visual/header_lvlopt.inc.h"
 #include "levels/ccs/visual/model_lvlopt.inc.c"
 #include "levels/ccs/flipbook.inc.c"
+#include "levels/ccs/area_1/spline.inc.c"
+#include "levels/ccs/rails.inc.c"
 #endif
 
 #include "levels/ccs/ccs_block/collision.inc.c"

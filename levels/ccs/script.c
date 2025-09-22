@@ -18,6 +18,7 @@
 #include "levels/ccs/area_1/collision.inc.c"
 #include "levels/ccs/area_2/collision.inc.c"
 #include "level_config.h"
+#include "rail_desc.h"
 #define ccs_area_2 ccs_area_1
 #define SEQ_LEVEL_GRASS 0x00
 #define bhvFloorSwitchGrills bhvFloorSwitchHardcodedModel
@@ -30,9 +31,11 @@
 #define bhvFlyGuy bhvFlyGuyCC
 #define bhvEnemyLakitu bhvEnemyLakituCC
 #define SEQ_LEVEL_GRASS 0x46
+extern const RailDesc* rail_descs_ccs[];
 extern const IWDHeader* iw_descs_ccs[];
 static struct LevelConfig cfg = {
 	.iwds = iw_descs_ccs,
+	.railDesc = rail_descs_ccs,
 };
 /* Fast64 end persistent block [scripts] */
 
@@ -50,75 +53,19 @@ const LevelScript level_ccs_entry[] = {
 	JUMP_LINK(script_func_global_1), 
 	JUMP_LINK(script_func_global_12), 
 	JUMP_LINK(script_func_global_17), 
-	JUMP_LINK(script_func_global_1), 
-	JUMP_LINK(script_func_global_12), 
-	JUMP_LINK(script_func_global_17), 
-	JUMP_LINK(script_func_global_1), 
-	JUMP_LINK(script_func_global_12), 
-	JUMP_LINK(script_func_global_17), 
-	JUMP_LINK(script_func_global_1), 
-	JUMP_LINK(script_func_global_12), 
-	JUMP_LINK(script_func_global_17), 
-	JUMP_LINK(script_func_global_1), 
-	JUMP_LINK(script_func_global_12), 
-	JUMP_LINK(script_func_global_17), 
-	JUMP_LINK(script_func_global_1), 
-	JUMP_LINK(script_func_global_12), 
-	JUMP_LINK(script_func_global_17), 
-	JUMP_LINK(script_func_global_1), 
-	JUMP_LINK(script_func_global_12), 
-	JUMP_LINK(script_func_global_17), 
-	JUMP_LINK(script_func_global_1), 
-	JUMP_LINK(script_func_global_12), 
-	JUMP_LINK(script_func_global_17), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_TIMESTOP, ccs_switch_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_BLOCK, ccs_block_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_LEFT, ccs_shutter_left_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_RIGHT, ccs_shutter_right_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_TIMESTOP, ccs_switch_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_BLOCK, ccs_block_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_LEFT, ccs_shutter_left_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_RIGHT, ccs_shutter_right_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_TIMESTOP, ccs_switch_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_BLOCK, ccs_block_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_LEFT, ccs_shutter_left_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_RIGHT, ccs_shutter_right_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_TIMESTOP, ccs_switch_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_BLOCK, ccs_block_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_LEFT, ccs_shutter_left_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_RIGHT, ccs_shutter_right_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_TIMESTOP, ccs_switch_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_BLOCK, ccs_block_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_LEFT, ccs_shutter_left_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_RIGHT, ccs_shutter_right_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_TIMESTOP, ccs_switch_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_BLOCK, ccs_block_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_LEFT, ccs_shutter_left_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_RIGHT, ccs_shutter_right_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_TIMESTOP, ccs_switch_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_BLOCK, ccs_block_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_LEFT, ccs_shutter_left_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_RIGHT, ccs_shutter_right_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CCS_TIMESTOP, ccs_switch_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CCS_BLOCK, ccs_block_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_LEFT, ccs_shutter_left_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_RIGHT, ccs_shutter_right_geo), 
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
-	JUMP_LINK(script_func_global_1), 
-	JUMP_LINK(script_func_global_12), 
-	JUMP_LINK(script_func_global_17), 
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_TIMESTOP, ccs_switch_geo),
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_BLOCK, ccs_block_geo),
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_LEFT, ccs_shutter_left_geo),
-	LOAD_MODEL_FROM_GEO(MODEL_CCS_SHUTTER_RIGHT, ccs_shutter_right_geo),
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, ccs_area_1, 0, 0, 2000-3000),
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
-		// OBJECT(MODEL_NONE, -5100, -7850, -4900, 0, 143, 0, 0x00000000, bhvCCSMusicSwitch),
+		OBJECT(MODEL_NONE, -5100, -7850, -4900, 0, 143, 0, 0x00000000, bhvCCSMusicSwitch),
 		MARIO_POS(0x01, 0, -3, -4310, 19568),
 		OBJECT(MODEL_CHILL_BULLY, -5472, -4800, 9006, 0, 0, 0, (2 << 16), bhvSmallBully),
 		OBJECT(MODEL_CHILL_BULLY, -4729, -4800, 8976, 0, 0, 0, (2 << 16), bhvSmallBully),
@@ -143,10 +90,11 @@ const LevelScript level_ccs_entry[] = {
 		OBJECT(MODEL_ENEMY_LAKITU, -3962, -4642, 12438, 0, 0, 0, 0x00000000, bhvEnemyLakitu),
 		OBJECT(MODEL_ENEMY_LAKITU, -5795, -6042, -13425, 0, 0, 0, 0x00000000, bhvEnemyLakitu),
 		OBJECT(MODEL_ENEMY_LAKITU, -4485, -6042, -13425, 0, 0, 0, 0x00000000, bhvEnemyLakitu),
-		OBJECT(MODEL_FLYGUY, 8, -4611, 17967, 0, 0, 0, (1 << 16), bhvFlyGuy),
+		OBJECT(MODEL_FLYGUY, 8, -4483, 17967, 0, 0, 0, (1 << 16), bhvFlyGuy),
 		OBJECT(MODEL_FLYGUY, 4014, -4553, 12202, 0, 0, 0, (2 << 16), bhvFlyGuy),
 		OBJECT(MODEL_FLYGUY, 4494, -4553, 11685, 0, 0, 0, 0x00000000, bhvFlyGuy),
 		OBJECT(MODEL_FLYGUY, 4494, -4553, 12688, 0, 0, 0, 0x00000000, bhvFlyGuy),
+		OBJECT(MODEL_NONE, -5, -4472, 17978, 0, 0, 0, 0x00000000, bhvCcsFlyguyLock),
 		OBJECT(MODEL_GOAL, -14699, -56304, -66012, 0, 0, 0, 0x00000000, bhvGoal),
 		OBJECT(MODEL_NONE, 0, -4800, 14192, 0, 0, 0, 0x00000000, bhvGoombaTripletSpawner),
 		OBJECT(MODEL_NONE, -5093, -4800, 8973, 0, 0, 0, 0x00000000, bhvGoombaTripletSpawner),
@@ -162,14 +110,12 @@ const LevelScript level_ccs_entry[] = {
 		OBJECT(MODEL_NONE, -5690, -4603, 8997, 0, 0, 0, 0x00000000, bhvCCSpawn),
 		OBJECT(MODEL_STAR, -5106, -4588, 4032, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -5077, -5072, 8278, 0, 0, 0, 0x00000000, bhvStar),
-		OBJECT(MODEL_STAR, -812, -4374, 19956, 0, 0, 0, 0x00000000, bhvStar),
-		OBJECT(MODEL_STAR, -5112, -4444, 5716, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -4212, -10651, -3298, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -5119, -9571, -13290, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -5042, -15950, -14141, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -5106, -6329, -16883, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -3, -4009, 12204, 0, 0, 0, 0x00000000, bhvStar),
-		OBJECT(MODEL_NONE, -3, -4310, 19568, 0, 0, 0, (0xa << 16), bhvInstantActiveWarp),
+		OBJECT(MODEL_NONE, 5, 97, 29292, 0, -180, 0, (0xa << 16), bhvInstantActiveWarp),
 		OBJECT(MODEL_PURPLE_SWITCH, 3400, -4800, 12200, 0, 0, 0, 0x00000000, bhvFloorSwitchGrills),
 		OBJECT(MODEL_CCS_TIMESTOP, -5101, -4700, 4724, 0, 0, 0, 0x00000000, bhvCCTimestop),
 		TERRAIN(ccs_area_1_collision),
@@ -179,7 +125,7 @@ const LevelScript level_ccs_entry[] = {
 		/* Fast64 begin persistent block [area commands] */
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
-	AREA(2, ccs_area_2, 0, -4000, 2000-7000),
+	AREA(2, ccs_area_2, 0, -4000, -7000),
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
@@ -212,6 +158,7 @@ const LevelScript level_ccs_entry[] = {
 		OBJECT(MODEL_NONE, -8434, -12362, -25995, 0, -180, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -1422, -1662, -10155, 0, -180, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -9937, 12438, -1008, 0, -180, 0, (2 << 16), bhvCoinFormation),
+		OBJECT(MODEL_NONE, -5093, 24667, 18285, 0, 0, 0, 0x00000000, bhvCcsCoinStar),
 		TERRAIN(ccs_area_2_collision),
 		MACRO_OBJECTS(ccs_area_2_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),

@@ -674,4 +674,8 @@ extern const BehaviorScript bhvKSpark[];
 extern const BehaviorScript bhvKDoor[];
 extern const BehaviorScript bhvKPlat[];
 
+extern const BehaviorScript bhvCcsFlyguyLock[];
+extern const BehaviorScript bhvCCSMusicSwitch[];
+extern const BehaviorScript bhvCcsCoinStar[];
+
 #endif // BEHAVIOR_DATA_H

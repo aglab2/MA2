@@ -1471,7 +1471,7 @@ s32 act_rail_grind(struct MarioState *m)
     m->marioObj->header.gfx.pos[2] = m->pos[2];
     f32 dist = 45.f;
     int anim;
-    if (gCurrCourseNum == COURSE_CG && !onLoop)
+    if ((gCurrCourseNum == COURSE_CG || gCurrCourseNum == COURSE_CCS) && !onLoop)
     {
         dist = gIsGravityFlipped ? 25.f : 155.f;
         anim = gIsGravityFlipped ? MARIO_ANIM_RIDING_SHELL : MARIO_ANIM_HANG_ON_OWL;

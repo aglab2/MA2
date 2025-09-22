@@ -7442,3 +7442,30 @@ extern const BehaviorScript bhvKPlat[] = {
         CALL_NATIVE(bhv_k_plat_loop),
     END_LOOP(),
 };
+
+extern void bhv_ccs_flyguy_lock_init();
+extern void bhv_ccs_flyguy_lock_loop();
+extern const BehaviorScript bhvCcsFlyguyLock[] = {
+    BEGIN(OBJ_LIST_PUSHABLE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    CALL_NATIVE(bhv_ccs_flyguy_lock_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ccs_flyguy_lock_loop),
+    END_LOOP(),
+};
+
+extern void bhv_ccs_music_switch_loop();
+extern const BehaviorScript bhvCCSMusicSwitch[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ccs_music_switch_loop),
+    END_LOOP(),
+};
+
+extern void bhv_ccs_coin_star_loop();
+extern const BehaviorScript bhvCcsCoinStar[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ccs_coin_star_loop),
+    END_LOOP(),
+};
