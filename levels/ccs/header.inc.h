@@ -14,7 +14,7 @@ extern u8 ccs_dl_ct128_1_pal_rgba16[];
 extern Vtx ccs_dl_0173_object_012E64E0_001_mesh_layer_1_vtx_0[67];
 extern Gfx ccs_dl_0173_object_012E64E0_001_mesh_layer_1_tri_0[];
 extern Vtx ccs_dl_object_01246248_mesh_layer_1_vtx_cull[8];
-extern Vtx ccs_dl_object_01246248_mesh_layer_1_vtx_0[16];
+extern Vtx ccs_dl_object_01246248_mesh_layer_1_vtx_0[20];
 extern Gfx ccs_dl_object_01246248_mesh_layer_1_tri_0[];
 extern Vtx ccs_dl_object_01246320_mesh_layer_1_vtx_cull[8];
 extern Vtx ccs_dl_object_01246320_mesh_layer_1_vtx_0[4];
