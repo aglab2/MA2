@@ -151,7 +151,7 @@ void bhv_bub_loop(void) {
     cur_obj_call_action_function(sCheepCheepActions);
     cur_obj_move_using_fvel_and_gravity();
 
-    if (o->parentObj->oAction == BUB_SPAWNER_ACT_REMOVE_BUBS) {
-        obj_mark_for_deletion(o);
-    }
+    //if (o->parentObj->oAction == BUB_SPAWNER_ACT_REMOVE_BUBS) {
+    //    obj_mark_for_deletion(o);
+    //}
 }
