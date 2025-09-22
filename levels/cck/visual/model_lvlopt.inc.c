@@ -33766,7 +33766,7 @@ Gfx mat_cck_dl_Water_sa2mdl_0_f3d[] = {
 };
 
 Gfx mat_cck_dl_LaserBarrier_sa2mdl_0_f3d[] = {
-	gsSPGeometryMode(G_LIGHTING, 0),
+	gsSPGeometryMode(G_LIGHTING | G_CULL_BACK, 0),
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0, TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0),
 	gsDPSetAlphaDither(G_AD_NOISE),

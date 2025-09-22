@@ -25,6 +25,7 @@
 #include "puppycam2.h"
 #include "main.h"
 #include "engine/gut.h"
+#include "game/debug.h"
 
 #include "hacktice/main.h"
 
@@ -1868,7 +1869,15 @@ void render_pause_my_score_coins(void) {
                 {
                     if (gCurrCourseNum == lvl)
                     {
-                        xluMask = ~(((1ULL << starCountsPerCC[lvl - COURSE_CCT]) - 1) << starCountTotal);
+                        int counts = starCountsPerCC[lvl - COURSE_CCT];
+#ifdef DEBUG_ASSERTIONS
+                        if (counts != sStarIds) {
+                            char errorMsg[40];
+                            sprintf(errorMsg, "Incorrect star count %d != %d", (u8) counts, (u8) sStarIds);
+                            error(errorMsg);
+                        }
+#endif
+                        xluMask = ~(((1ULL << counts) - 1) << starCountTotal);
                     }
 
                     u64 ccLvlFlags = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(lvl));
