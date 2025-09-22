@@ -1137,20 +1137,21 @@ void bhv_cck_doors_loop()
     ptr[10*8 + 7] = gTimeFrozen ? 0 : 180;
 }
 
+extern Gfx mat_ccs_dl_object_lsonic_un4_beam_BK04050607__nc_un4_beam1__sa2mdl_0_002_f[];
 void bhv_ccs_lock_loop()
 {
-    u8* ptr = (u8*) segmented_to_virtual(mat_cck_dl_LAZER_sa2mdl_0_f3d);
+    u8* ptr = (u8*) segmented_to_virtual(mat_ccs_dl_object_lsonic_un4_beam_BK04050607__nc_un4_beam1__sa2mdl_0_002_f);
     ptr[10*8 + 7] = gTimeFrozen ? 0 : 180;
 
     if (gTimeFrozen)
         return;
 
     f32 ydiff = gMarioStates->pos[1] - o->oPosY;
-    if (ydiff < -10.f || ydiff > 1000.f)
+    if (ydiff < -10.f || ydiff > 400.f)
         return;
 
-    f32 dx = gMarioStates->pos[0];
-    if (absf(dx) > 300.f)
+    f32 dx = gMarioStates->pos[0]  - o->oPosX;
+    if (absf(dx) > 1100.f)
         return;
 
     f32 dz = gMarioStates->pos[2] - o->oPosZ;
@@ -1215,6 +1216,11 @@ void bhv_ccs_flyguy_lock_init()
 
 void bhv_ccs_flyguy_lock_loop()
 {
+    if (o->parentObj->activeFlags == 0)
+    {
+        o->activeFlags = 0;
+        return;
+    }
     o->parentObj->oPosX = o->oPosX;
     o->parentObj->oPosY = o->oPosY;
     o->parentObj->oPosZ = o->oPosZ;

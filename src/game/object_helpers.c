@@ -317,6 +317,51 @@ Gfx *geo_switch_cc2(s32 callContext, struct GraphNode *node, UNUSED void *contex
     return NULL;
 }
 
+Gfx *geo_switch_ccs(s32 callContext, struct GraphNode *node, UNUSED void *context) {
+    if (callContext == GEO_CONTEXT_RENDER) {
+        struct GraphNodeSwitchCase *switchCase = (struct GraphNodeSwitchCase *) node;
+        if (switchCase->numCases)
+        {
+            int time = gFlipbookTimer % 16;
+            switch (time)
+            {
+                case 0:
+                    switchCase->selectedCase = 8;
+                    break;
+                case 1:
+                    switchCase->selectedCase = 0;
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                    switchCase->selectedCase = 1;
+                    break;
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                    switchCase->selectedCase = time - 9;
+                    break;
+            }
+        }
+        else
+        {
+            int time = gFlipbookTimer % 16;
+            switchCase->selectedCase = CLAMP(time, 0, 5);
+        }
+    }
+
+    return NULL;
+}
+
 Gfx *geo_ccr_mov(s32 callContext, struct GraphNode *node, UNUSED void *context)
 {
     if (callContext == GEO_CONTEXT_RENDER) {
