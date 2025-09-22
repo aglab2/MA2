@@ -27,16 +27,18 @@ static s16 sFlyGuyJitterAmounts[] = { 0x1000, -0x2000, 0x2000 };
  * Return to regular size. When mario is close enough or home is far enough,
  * turn toward mario/home and enter the approach mario action.
  */
-static void fly_guy_act_idle(void) {
+static void fly_guy_act_idle(int mode) {
     o->oForwardVel = 0.0f;
 
+    f32 range = mode ? 8000.f : 2000.f;
     if (approach_f32_ptr(&o->header.gfx.scale[0], 1.5f, 0.02f)) {
         // If we are >2000 units from home or Mario is <2000 units from us
-        if (o->oDistanceToMario >= 25000.0f || o->oDistanceToMario < 2000.0f) {
+        if (o->oDistanceToMario >= 25000.0f || o->oDistanceToMario < range) {
             // Turn toward home or Mario
-            obj_face_yaw_approach(o->oAngleToMario, 0x300);
+            int angle = mode ? 0x700 : 0x300;
+            obj_face_yaw_approach(o->oAngleToMario, angle);
 
-            if (cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x300)) {
+            if (cur_obj_rotate_yaw_toward(o->oAngleToMario, angle)) {
                 o->oAction = FLY_GUY_ACT_APPROACH_MARIO;
             }
         } else {
@@ -59,7 +61,8 @@ static void fly_guy_act_idle(void) {
  */
 static void fly_guy_act_approach_mario(int mode) {
     // If we are >2000 units from home or Mario is <2000 units from us
-    if (o->oDistanceToMario >= 25000.0f || o->oDistanceToMario < 2000.0f) {
+    f32 range = mode ? 8000.f : 2000.f;
+    if (o->oDistanceToMario >= 25000.0f || o->oDistanceToMario < range) {
         obj_forward_vel_approach(10.0f, 0.5f);
 
         // Turn toward home or Mario
@@ -71,11 +74,11 @@ static void fly_guy_act_approach_mario(int mode) {
         if (mode == 1)
             return;
 
-        f32 dist = mode ? 800.f : 400.f;
+        f32 dist = mode ? 3000.f : 400.f;
         if (abs_angle_diff(o->oAngleToMario, o->oFaceAngleYaw) < 0x2000
             && (o->oPosY - gMarioObject->oPosY > dist || o->oDistanceToMario < dist)) {
             // Either shoot fire or lunge
-            if (mode || (o->oBehParams2ndByte != FLY_GUY_BP_LUNGES && random_u16() % 2)) {
+            if (!mode && (o->oBehParams2ndByte != FLY_GUY_BP_LUNGES && random_u16() % 2)) {
                 o->oAction = FLY_GUY_ACT_SHOOT_FIRE;
                 o->oFlyGuyScaleVel = mode ? 0.12f : 0.06f;
             } else {
@@ -202,13 +205,16 @@ void bhv_fly_guy_update_impl(int mode) {
 
         switch (o->oAction) {
             case FLY_GUY_ACT_IDLE:
-                fly_guy_act_idle();
+                fly_guy_act_idle(mode);
                 break;
             case FLY_GUY_ACT_APPROACH_MARIO:
                 fly_guy_act_approach_mario(mode);
                 break;
             case FLY_GUY_ACT_LUNGE:
                 fly_guy_act_lunge();
+                if (mode)
+                    fly_guy_act_lunge();
+
                 break;
             case FLY_GUY_ACT_SHOOT_FIRE:
                 fly_guy_act_shoot_fire();
