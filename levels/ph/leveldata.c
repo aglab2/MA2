@@ -12,14 +12,6 @@
 #include "levels/ph/visual/header_lvl.inc.h"
 #include "levels/ph/rails.inc.c"
 
-const Trajectory* starmove_trajs_ph[] = {
-    ph_area_1_spline_NurbsCurve_StarMove,
-    ph_area_1_spline_NurbsCurve_StarMove_001,
-    ph_area_1_spline_NurbsCurve_StarMove_002,
-    ph_area_1_spline_NurbsCurve_StarMove_003,
-    ph_area_1_spline_NurbsCurve_StarMove_004,
-};
-
 #if 0
 #include "levels/ph/leveldata.inc.c"
 #else
