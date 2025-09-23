@@ -75,7 +75,7 @@ void bhv_k_door_loop()
         f32 dz = o->oPosZ - gMarioStates->pos[2];
         f32 dist = sqr(dx) + sqr(dy) + sqr(dz);
 
-        if (dist < 200.f * 200.f)
+        if (dist < 500.f * 500.f)
         {
             o->oAction = 1;
 
@@ -86,7 +86,7 @@ void bhv_k_door_loop()
         }
         load_object_collision_model();
     }
-    else
+    else if (1 == o->oAction)
     {
         if (0 == o->parentObj->oKSparkAttachmentRate)
         {
@@ -103,7 +103,6 @@ void bhv_k_door_loop()
         else
         {
             o->parentObj->oOpacity = o->oOpacity = 255 - 255 * o->parentObj->oKSparkAttachmentRate;
-            load_object_collision_model();
         }
     }
 }
@@ -114,9 +113,15 @@ void bhv_k_plat_init()
     o->oOpacity = 20;
 }
 
+static void k_plat_propagate_fun(struct Object* obj)
+{
+    obj->oOpacity = o->oOpacity;
+    obj->oAction = o->oAction;
+}
+
 void bhv_k_plat_loop()
 {
-    if (0 == o->oAction && o->parentObj->oAction)
+    if (0 == o->oAction && 1 == o->parentObj->oAction)
     {
         f32 dx = o->oPosX - gMarioStates->pos[0];
         f32 dy = o->oPosY - gMarioStates->pos[1];
@@ -133,25 +138,27 @@ void bhv_k_plat_loop()
             o->parentObj->oAction = 2;
         }
     }
-    else
+    else if (o->oAction == 1)
     {
         if (0 == o->parentObj->oKSparkAttachmentRate)
         {
             o->oOpacity = 255;
-            if (o->oAction != 2)
-            {
-                o->parentObj->oOpacity = 255;
-                o->parentObj->oKSparkAttachObj = o;
-                o->parentObj->oKSparkAttachPrevObj = o;
-                o->parentObj->oAction = 2;
-                o->oAction = 2;
-            }
+            o->parentObj->oOpacity = 255;
+            o->parentObj->oKSparkAttachObj = o;
+            o->parentObj->oKSparkAttachPrevObj = o;
+            o->oAction = 2;
+            cur_obj_foreach(bhvKPlat, k_plat_propagate_fun);
         }
         else
         {
             o->parentObj->oOpacity = 255 - 255 * o->parentObj->oKSparkAttachmentRate;
             o->oOpacity = 20 + 235 * (1.f - o->parentObj->oKSparkAttachmentRate);
+            cur_obj_foreach(bhvKPlat, k_plat_propagate_fun);
         }
+        load_object_collision_model();
+    }
+    else
+    {
         load_object_collision_model();
     }
 }
