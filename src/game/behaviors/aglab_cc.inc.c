@@ -1228,6 +1228,11 @@ void bhv_ccs_flyguy_lock_loop()
 
 void bhv_ccs_music_switch_loop()
 {
+    if (gMarioStates->pos[2] < o->oPosZ)
+    {
+        seq_player_play_sequence(0, 0x47, 0);
+        o->activeFlags = 0;
+    }
 }
 
 void bhv_ccs_coin_star_loop()

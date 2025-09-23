@@ -67305,7 +67305,7 @@ u32 ccs_dl_sUn5Denki_9_mesh_layer_1[] = {
 };
 
 u32 ccs_dl_sUn5Denki_9_mesh_layer_6[] = {
-	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_DECAL_CCS_DL__000_SA2MDL_1_F3D, ccs_dl_sUn5Denki_9_mesh_layer_6_tri_0),
+	BATCH_DL(LVL_BATCH_LAYER_TRANSPARENT_CCS_DL__000_SA2MDL_1_F3D, ccs_dl_sUn5Denki_9_mesh_layer_6_tri_0),
 	BATCH_END(),
 };
 

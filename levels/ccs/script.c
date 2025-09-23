@@ -61,7 +61,7 @@ const LevelScript level_ccs_entry[] = {
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
-	AREA(1, ccs_area_1, 0, 0, 2000-3000),
+	AREA(1, ccs_area_1, 0, 0, -3000),
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
