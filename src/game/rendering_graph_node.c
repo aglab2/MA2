@@ -563,6 +563,20 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
     s32 finalPhase    = enableZBuffer ? RENDER_PHASE_END : 1;
     Gfx *tempGfxHead = gDisplayListHead;
 
+#if 0
+    static u8 sClipRatio = 1;
+    if (enableZBuffer)
+    {
+        print_text_fmt_int(20, 20, "%d", sClipRatio);
+
+        if (gPlayer1Controller->buttonPressed & L_TRIG)
+        {
+            sClipRatio = 3 - sClipRatio;
+        }
+    }
+    gSPClipRatio(tempGfxHead++, sClipRatio);
+#endif
+
     if (enableZBuffer)
     {
         adjust_view_range();

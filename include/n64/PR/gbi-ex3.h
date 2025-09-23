@@ -2894,19 +2894,6 @@ other segments. */
 #define gsSPPerspNormalize(s)       gsMoveHalfwd(    G_MW_FX, G_MWO_PERSPNORM, (s))
 
 /**
- * @brief Clipping Macros
- * @deprecated
- * encodes SP no-ops it is not possible to change the clip ratio from 2 in F3DEX3.
- */
-#define gSPClipRatio(pkt, r) gSPNoOp(pkt)
-/**
- * @brief @copybrief gSPClipRatio
- * @deprecated
- * @copydetails gSPClipRatio
- */
-#define gsSPClipRatio(r) gsSPNoOp()
-
-/**
  * @brief Load new MVP matrix directly.
  * 
  * This is no longer supported as there is no MVP matrix in F3DEX3.
@@ -2920,6 +2907,7 @@ other segments. */
  */
 #define gsSPForceMatrix(mptr)    gsSPNoOp()
 
+#if 0
 /**
  * Ambient occlusion
  * Enabled with the G_AMBOCCLUSION bit in geometry mode.
@@ -2998,6 +2986,10 @@ _DW({                                         \
 #define gsSPAmbOcclusion(amb, dir, point)     \
     gsSPAmbOcclusionAmbDir(amb, dir),         \
     gsSPAmbOcclusionPoint(point)
+#else
+#define gSPClipRatio(pkt, cr) gMoveHalfwd(pkt, G_MW_FX, G_MWO_AO_AMBIENT, cr)
+#define gsSPClipRatio(cr) gsMoveHalfwd(G_MW_FX, G_MWO_AO_AMBIENT, cr)
+#endif
 
 /**
  * Fresnel - Feature suggested by thecozies

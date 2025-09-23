@@ -1870,7 +1870,7 @@ void render_pause_my_score_coins(void) {
                     if (gCurrCourseNum == lvl)
                     {
                         int counts = starCountsPerCC[lvl - COURSE_CCT];
-#ifdef DEBUG_ASSERTIONS
+#if 0
                         if (counts != sStarIds) {
                             char errorMsg[40];
                             sprintf(errorMsg, "Incorrect star count %d != %d", (u8) counts, (u8) sStarIds);

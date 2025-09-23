@@ -15,10 +15,12 @@
 #include "levels/end/header.h"
 
 /* Fast64 begin persistent block [scripts] */
+#include "level_config.h"
 #define LEVEL_DARK LEVEL_CASTLE_GROUNDS2
 #define LEVEL_AM LEVEL_AQ
 #define SEQ_LEVEL_GRASS 0x38
 extern const GeoLayout key_door_geo[];
+struct LevelConfig cfg = {};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_end_entry[] = {
@@ -29,6 +31,7 @@ const LevelScript level_end_entry[] = {
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
 	LOAD_MODEL_FROM_GEO(MODEL_CASTLE_KEY_DOOR, key_door_geo), 
 	/* Fast64 begin persistent block [level commands] */
+	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, end_area_1, 0, 0, 0),
