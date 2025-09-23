@@ -4,12 +4,26 @@
 #define oKSparkAttachPrevObj oObjF8
 #define oKSparkAttachmentRate oFloatFC
 
+u8 sSparkRefill = 1;
+
 extern const BehaviorScript bhvKSpark[];
 void bhv_k_source_init()
 {
     o->parentObj = spawn_object(o, MODEL_K_SPARK, bhvKSpark);
-    o->parentObj->oKSparkAttachObj = o;
-    o->parentObj->oKSparkAttachPrevObj = o;
+    if (sSparkRefill)
+    {
+        o->oKSourceDetached = 1;
+        o->parentObj->oKSparkAttachPrevObj = gMarioObject;
+        o->parentObj->oKSparkAttachObj = gMarioObject;
+        o->parentObj->oKSparkAttachmentRate = 0.f;
+        o->parentObj->oAction = 1;
+        sSparkRefill = 0;
+    }
+    else
+    {
+        o->parentObj->oKSparkAttachObj = o;
+        o->parentObj->oKSparkAttachPrevObj = o;
+    }
 }
 
 void bhv_k_source_loop()
@@ -49,6 +63,7 @@ void bhv_k_door_init()
 {
     f32 d;
     o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvKSpark, &d);
+    o->oOpacity = 255;
 }
 
 void bhv_k_door_loop()
@@ -75,8 +90,10 @@ void bhv_k_door_loop()
     {
         if (0 == o->parentObj->oKSparkAttachmentRate)
         {
+            o->oOpacity = 0;
             if (o->oAction != 2)
             {
+                o->parentObj->oOpacity = 255;
                 o->parentObj->oKSparkAttachObj = o;
                 o->parentObj->oKSparkAttachPrevObj = o;
                 o->parentObj->oAction = 2;
@@ -85,6 +102,7 @@ void bhv_k_door_loop()
         }
         else
         {
+            o->parentObj->oOpacity = o->oOpacity = 255 - 255 * o->parentObj->oKSparkAttachmentRate;
             load_object_collision_model();
         }
     }
@@ -93,9 +111,47 @@ void bhv_k_door_loop()
 void bhv_k_plat_init()
 {
     bhv_k_door_init();
+    o->oOpacity = 20;
 }
 
 void bhv_k_plat_loop()
 {
-    // =-
+    if (0 == o->oAction && o->parentObj->oAction)
+    {
+        f32 dx = o->oPosX - gMarioStates->pos[0];
+        f32 dy = o->oPosY - gMarioStates->pos[1];
+        f32 dz = o->oPosZ - gMarioStates->pos[2];
+        f32 dist = sqr(dx) + sqr(dy) + sqr(dz);
+
+        if (dist < 500.f * 500.f)
+        {
+            o->oAction = 1;
+
+            o->parentObj->oKSparkAttachPrevObj = gMarioObject;
+            o->parentObj->oKSparkAttachObj = o;
+            o->parentObj->oKSparkAttachmentRate = 1.f;
+            o->parentObj->oAction = 2;
+        }
+    }
+    else
+    {
+        if (0 == o->parentObj->oKSparkAttachmentRate)
+        {
+            o->oOpacity = 255;
+            if (o->oAction != 2)
+            {
+                o->parentObj->oOpacity = 255;
+                o->parentObj->oKSparkAttachObj = o;
+                o->parentObj->oKSparkAttachPrevObj = o;
+                o->parentObj->oAction = 2;
+                o->oAction = 2;
+            }
+        }
+        else
+        {
+            o->parentObj->oOpacity = 255 - 255 * o->parentObj->oKSparkAttachmentRate;
+            o->oOpacity = 20 + 235 * (1.f - o->parentObj->oKSparkAttachmentRate);
+        }
+        load_object_collision_model();
+    }
 }
