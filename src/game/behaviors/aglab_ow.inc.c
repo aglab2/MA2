@@ -44,6 +44,7 @@ extern u8 gIsHardMode;
 extern s8 gDialogCameraAngleIndex;
 extern f32 sViewRange;
 extern u8 gTimeFrozen;
+extern u8 sSparkRefill;
 void bhv_ow_ctl_init()
 {
     int off = 0x80;
@@ -107,6 +108,7 @@ void bhv_ow_ctl_init()
     gDialogCameraAngleIndex = 1;
     sViewRange = 400000000.0f;
     gSafeY = -30000.f;
+    sSparkRefill = 0;
 
 #if 0
     gIsHardMode = 0;

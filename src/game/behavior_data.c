@@ -6665,10 +6665,12 @@ const BehaviorScript bhvFCGrav[] = {
     END_LOOP(),
 };
 
+extern void bhv_cct_flames_init();
 extern void bhv_cct_flames_loop();
 const BehaviorScript bhvCCTFlames[] = {
     BEGIN(OBJ_LIST_SPAWNER),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    CALL_NATIVE(bhv_cct_flames_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_cct_flames_loop),
     END_LOOP(),
@@ -7407,11 +7409,13 @@ extern const BehaviorScript bhvKSource[] = {
     END_LOOP(),
 };
 
+extern void bhv_k_spark_init();
 extern void bhv_k_spark_loop();
 extern const BehaviorScript bhvKSpark[] = {
     BEGIN(OBJ_LIST_LEVEL),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     BILLBOARD(),
+    CALL_NATIVE(bhv_k_spark_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_k_spark_loop),
     END_LOOP(),
@@ -7422,7 +7426,7 @@ extern void bhv_k_door_init();
 extern void bhv_k_door_loop();
 extern const BehaviorScript bhvKDoor[] = {
     BEGIN(OBJ_LIST_SURFACE),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
     LOAD_COLLISION_DATA(k_door_collision),
     CALL_NATIVE(bhv_k_door_init),
     BEGIN_LOOP(),
@@ -7435,7 +7439,7 @@ extern void bhv_k_plat_init();
 extern void bhv_k_plat_loop();
 extern const BehaviorScript bhvKPlat[] = {
     BEGIN(OBJ_LIST_SURFACE),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
     LOAD_COLLISION_DATA(k_plat_collision),
     CALL_NATIVE(bhv_k_plat_init),
     BEGIN_LOOP(),

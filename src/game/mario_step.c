@@ -656,7 +656,6 @@ static f32 get_grav_mult(struct MarioState *m)
         gravMult = 1.0f - m->pos[1] / 6000.0f; 
     }
 
-    print_text_fmt_int(20, 20, "%d", gravMult * 10000);
     return gravMult;
 }
 

@@ -2255,6 +2255,7 @@ void render_pause_castle_main_strings(s16 x, s16 y) {
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
 }
 
+extern u8 sSparkRefill;
 static int get_checkpoint_warp()
 {
     if (1 == gDialogCameraAngleIndex)
@@ -2273,6 +2274,10 @@ static int get_checkpoint_warp()
             course++;
 
         hasCheckpoint = !!(save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(course)) & (1ULL << idx));
+        if (hasCheckpoint)
+        {
+            sSparkRefill = 0;
+        }
     }
     else
     {

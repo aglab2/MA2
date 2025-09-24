@@ -106,6 +106,13 @@ void bhv_cc_timestop_loop()
 
 extern ObjActionFunc sRotatingCwFireBarsActions[];
 
+extern u8 sSparkRefill;
+void bhv_cct_flames_init()
+{
+    // sparks are not allowed in CCT, it will also smoothly handle case when player exited next CC levels and reentered in CCT
+    sSparkRefill = 0;
+}
+
 void bhv_cct_flames_loop()
 {
     CC_FREEZE();

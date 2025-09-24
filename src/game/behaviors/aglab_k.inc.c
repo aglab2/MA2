@@ -4,25 +4,25 @@
 #define oKSparkAttachPrevObj oObjF8
 #define oKSparkAttachmentRate oFloatFC
 
-u8 sSparkRefill = 1;
+u8 sSparkRefill = LEVEL_CCK;
 
 extern const BehaviorScript bhvKSpark[];
 void bhv_k_source_init()
 {
-    o->parentObj = spawn_object(o, MODEL_K_SPARK, bhvKSpark);
-    if (sSparkRefill)
+    struct Object* spark;
+    spark = o->parentObj = spawn_object(o, MODEL_K_SPARK, bhvKSpark);
+    // this cumbersome logic is needed to allow dying after grabbing the spark but not entering the next phase
+    if (sSparkRefill == gCurrLevelNum || sSparkRefill == gCurrLevelNum - 1)
     {
-        o->oKSourceDetached = 1;
-        o->parentObj->oKSparkAttachPrevObj = gMarioObject;
-        o->parentObj->oKSparkAttachObj = gMarioObject;
-        o->parentObj->oKSparkAttachmentRate = 0.f;
-        o->parentObj->oAction = 1;
-        sSparkRefill = 0;
+        spark->oKSparkAttachPrevObj = gMarioObject;
+        spark->oKSparkAttachObj = gMarioObject;
+        spark->oKSparkAttachmentRate = 0.f;
+        spark->oAction = 1;
     }
     else
     {
-        o->parentObj->oKSparkAttachObj = o;
-        o->parentObj->oKSparkAttachPrevObj = o;
+        spark->oKSparkAttachObj = o;
+        spark->oKSparkAttachPrevObj = o;
     }
 }
 
@@ -34,11 +34,22 @@ void bhv_k_source_loop()
     if (gMarioObject->platform == o)
     {
         o->oKSourceDetached = 1;
-        o->parentObj->oKSparkAttachPrevObj = o;
-        o->parentObj->oKSparkAttachObj = gMarioObject;
-        o->parentObj->oKSparkAttachmentRate = 1.f;
-        o->parentObj->oAction = 1;
+        struct Object* spark = o->parentObj;
+        spark->oKSparkAttachPrevObj = o;
+        spark->oKSparkAttachObj = gMarioObject;
+        spark->oKSparkAttachmentRate = 1.f;
+        spark->oAction = 1;
+        int cc = COURSE_CCE <= gCurrCourseNum && gCurrCourseNum < COURSE_CCS;
+        if (cc)
+            sSparkRefill = gCurrLevelNum;
+        else
+            sSparkRefill = 0;
     }
+}
+
+void bhv_k_spark_init()
+{
+    o->oOpacity = 255;
 }
 
 void bhv_k_spark_loop()
@@ -68,41 +79,52 @@ void bhv_k_door_init()
 
 void bhv_k_door_loop()
 {
-    if (0 == o->oAction && o->parentObj->oAction)
+    struct Object* spark = o->parentObj;
+    // Checks for spark->oAction might be a bit too much because I do not think source and be put
+    // _that_ close to the door or plat but it is safer this way.
+    if (0 == o->oAction)
     {
-        f32 dx = o->oPosX - gMarioStates->pos[0];
-        f32 dy = o->oPosY - gMarioStates->pos[1];
-        f32 dz = o->oPosZ - gMarioStates->pos[2];
-        f32 dist = sqr(dx) + sqr(dy) + sqr(dz);
-
-        if (dist < 500.f * 500.f)
+        if (spark->oAction && o->oDistanceToMario < 500.f)
         {
             o->oAction = 1;
 
-            o->parentObj->oKSparkAttachPrevObj = gMarioObject;
-            o->parentObj->oKSparkAttachObj = o;
-            o->parentObj->oKSparkAttachmentRate = 1.f;
-            o->parentObj->oAction = 2;
+            spark->oKSparkAttachPrevObj = gMarioObject;
+            spark->oKSparkAttachObj = o;
+            spark->oKSparkAttachmentRate = 1.f;
+            spark->oAction = 2;
         }
         load_object_collision_model();
     }
     else if (1 == o->oAction)
     {
-        if (0 == o->parentObj->oKSparkAttachmentRate)
+        if (0 == spark->oKSparkAttachmentRate)
         {
             o->oOpacity = 0;
             if (o->oAction != 2)
             {
-                o->parentObj->oOpacity = 255;
-                o->parentObj->oKSparkAttachObj = o;
-                o->parentObj->oKSparkAttachPrevObj = o;
-                o->parentObj->oAction = 2;
+                int cc = COURSE_CCT <= gCurrCourseNum && gCurrCourseNum <= COURSE_CCS;
+                if (cc)
+                {
+                    spark->oOpacity = 255;
+                    struct Object* source = spark->parentObj;
+                    spark->oKSparkAttachObj = source;
+                    spark->oKSparkAttachPrevObj = source;
+                    spark->oAction = 0;
+                }
+                else
+                {
+                    spark->oOpacity = 0;
+                    spark->oKSparkAttachObj = o;
+                    spark->oKSparkAttachPrevObj = o;
+                }
+
+                cur_obj_hide();
                 o->oAction = 2;
             }
         }
         else
         {
-            o->parentObj->oOpacity = o->oOpacity = 255 - 255 * o->parentObj->oKSparkAttachmentRate;
+            spark->oOpacity = o->oOpacity = 255 * spark->oKSparkAttachmentRate;
         }
     }
 }
@@ -116,43 +138,52 @@ void bhv_k_plat_init()
 static void k_plat_propagate_fun(struct Object* obj)
 {
     obj->oOpacity = o->oOpacity;
-    obj->oAction = o->oAction;
+    obj->oAction = 2;
 }
 
 void bhv_k_plat_loop()
 {
-    if (0 == o->oAction && 1 == o->parentObj->oAction)
+    struct Object* spark = o->parentObj;
+    if (0 == o->oAction && 1 == spark->oAction)
     {
-        f32 dx = o->oPosX - gMarioStates->pos[0];
-        f32 dy = o->oPosY - gMarioStates->pos[1];
-        f32 dz = o->oPosZ - gMarioStates->pos[2];
-        f32 dist = sqr(dx) + sqr(dy) + sqr(dz);
-
-        if (dist < 500.f * 500.f)
+        if (o->oDistanceToMario < 500.f)
         {
             o->oAction = 1;
 
-            o->parentObj->oKSparkAttachPrevObj = gMarioObject;
-            o->parentObj->oKSparkAttachObj = o;
-            o->parentObj->oKSparkAttachmentRate = 1.f;
-            o->parentObj->oAction = 2;
+            spark->oKSparkAttachPrevObj = gMarioObject;
+            spark->oKSparkAttachObj = o;
+            spark->oKSparkAttachmentRate = 1.f;
+            spark->oAction = 2;
         }
     }
     else if (o->oAction == 1)
     {
-        if (0 == o->parentObj->oKSparkAttachmentRate)
+        if (0 == spark->oKSparkAttachmentRate)
         {
+            int cc = COURSE_CCT <= gCurrCourseNum && gCurrCourseNum <= COURSE_CCS;
             o->oOpacity = 255;
-            o->parentObj->oOpacity = 255;
-            o->parentObj->oKSparkAttachObj = o;
-            o->parentObj->oKSparkAttachPrevObj = o;
+            if (cc)
+            {
+                spark->oOpacity = 255;
+                struct Object* source = spark->parentObj;
+                spark->oKSparkAttachObj = source;
+                spark->oKSparkAttachPrevObj = source;
+                spark->oAction = 0;
+            }
+            else
+            {
+                spark->oOpacity = 0;
+                spark->oKSparkAttachObj = o;
+                spark->oKSparkAttachPrevObj = o;
+            }
+
             o->oAction = 2;
             cur_obj_foreach(bhvKPlat, k_plat_propagate_fun);
         }
         else
         {
-            o->parentObj->oOpacity = 255 - 255 * o->parentObj->oKSparkAttachmentRate;
-            o->oOpacity = 20 + 235 * (1.f - o->parentObj->oKSparkAttachmentRate);
+            spark->oOpacity = 255 - 255 * spark->oKSparkAttachmentRate;
+            o->oOpacity = 20 + 235 * (1.f - spark->oKSparkAttachmentRate);
             cur_obj_foreach(bhvKPlat, k_plat_propagate_fun);
         }
         load_object_collision_model();
