@@ -13,11 +13,14 @@
 
 #include "make_const_nonconst.h"
 #include "levels/chao/header.h"
-#include "level_config.h"
 
 /* Fast64 begin persistent block [scripts] */
+#include "level_config.h"
 #include "levels/chao/area_1/collision.inc.c"
-static struct LevelConfig cfg = {};
+extern Gfx chao_skybox_skybox_mesh[];
+static struct LevelConfig cfg = {
+	.skybox = chao_skybox_skybox_mesh,
+};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_chao_entry[] = {

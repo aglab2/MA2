@@ -3,7 +3,7 @@
 const GeoLayout chao_area_1_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
-		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)2400.0010681152344, (s16)335.0, (s16)2100.0, chao_dl_0136_object_01C868B0_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)4800.002136230469, (s16)670.0, (s16)4200.0, chao_dl_0136_object_01C868B0_mesh_layer_1),
 	GEO_CLOSE_NODE(),
 	GEO_RETURN(),
 };
@@ -21,7 +21,7 @@ const GeoLayout chao_area_1[] = {
 		GEO_OPEN_NODE(),
 			GEO_CAMERA_FRUSTUM_WITH_FUNC(45.0000, 100, 30000, geo_camera_fov),
 			GEO_OPEN_NODE(),
-				GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 0, 0, 0, 0, -10, 0, geo_camera_main),
+				GEO_CAMERA(CAMERA_MODE_8_DIRECTIONS, 0, 0, 0, 0, -20, 0, geo_camera_main),
 				GEO_OPEN_NODE(),
 					GEO_BRANCH(1, chao_area_1_geo),
 					GEO_RENDER_OBJ(),

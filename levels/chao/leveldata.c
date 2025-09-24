@@ -13,3 +13,5 @@
 #include "levels/chao/visual/header_lvlopt.inc.h"
 #include "levels/chao/visual/model_lvlopt.inc.c"
 #endif
+
+#include "levels/chao/chao_skybox/model.inc.c"
