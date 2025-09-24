@@ -20,7 +20,7 @@
 #define LEVEL_AM LEVEL_AQ
 #define SEQ_LEVEL_GRASS 0x38
 extern const GeoLayout key_door_geo[];
-struct LevelConfig cfg = {};
+static struct LevelConfig cfg = {};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_end_entry[] = {

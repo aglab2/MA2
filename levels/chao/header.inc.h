@@ -1,0 +1,11 @@
+extern const GeoLayout chao_area_1_geo[];
+extern const GeoLayout chao_area_1[];
+extern const Collision chao_area_1_collision[];
+extern const MacroObject chao_area_1_macro_objs[];
+extern u8 chao_dl_al_mouth02_ci8[];
+extern u8 chao_dl_al_mouth02_pal_rgba16[];
+extern Vtx chao_dl_0136_object_01C868B0_mesh_layer_1_vtx_0[20];
+extern Gfx chao_dl_0136_object_01C868B0_mesh_layer_1_tri_0[];
+extern Gfx mat_chao_dl_objLandTableRace_sa2blvl_185_f3d[];
+extern Gfx mat_revert_chao_dl_objLandTableRace_sa2blvl_185_f3d[];
+extern Gfx chao_dl_0136_object_01C868B0_mesh_layer_1[];

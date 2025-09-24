@@ -9,7 +9,7 @@
 
 #include "config.h"
 
-#define TEST_LEVEL LEVEL_CCK
+#define TEST_LEVEL LEVEL_CHAO
 
 extern const LevelScript level_main_scripts_entry[];
 const LevelScript level_script_entry[] = {

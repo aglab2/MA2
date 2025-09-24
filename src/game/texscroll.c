@@ -34,6 +34,7 @@
 #include "src/game/texscroll/lb_texscroll.inc.c"
 #include "src/game/texscroll/lf_texscroll.inc.c"
 #include "src/game/texscroll/gh_texscroll.inc.c"
+#include "src/game/texscroll/chao_texscroll.inc.c"
 void scroll_textures() {
 	if(SCROLL_CONDITION(sSegmentROMTable[0x7] == (uintptr_t)_wc_segment_7SegmentRomStart)) {
 		scroll_textures_wc();
@@ -105,6 +106,10 @@ void scroll_textures() {
 
 	if(SCROLL_CONDITION(sSegmentROMTable[0x7] == (uintptr_t)_gh_segment_7SegmentRomStart)) {
 		scroll_textures_gh();
+	}
+
+	if(SCROLL_CONDITION(sSegmentROMTable[0x7] == (uintptr_t)_chao_segment_7SegmentRomStart)) {
+		scroll_textures_chao();
 	}
 
 }
