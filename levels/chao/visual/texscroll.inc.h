@@ -1,0 +1,4 @@
+extern void scroll_gfx_mat_chao_dl_objLandTableRace_sa2blvl_0_f3d_layer5();
+extern void scroll_gfx_mat_chao_dl_objLandTableRace_sa2blvl_3_f3d_layer5();
+extern void scroll_gfx_mat_chao_dl_Waterfalls3_sa2mdl_0_f3d();
+extern void scroll_chao();
