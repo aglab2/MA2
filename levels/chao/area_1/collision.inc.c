@@ -7861,5 +7861,9 @@ const Collision chao_area_1_collision[] = {
 	COL_TRI(7, 2, 1),
 	COL_TRI(7, 1, 8),
 	COL_TRI_STOP(),
+	COL_WATER_BOX_INIT(3),
+	COL_WATER_BOX(0x00, 8646, 781, 10146, 2862, 689),
+	COL_WATER_BOX(0x00, 1364, 452, 9134, 6456, -599),
+	COL_WATER_BOX(0x00, 3113, -10796, 9120, -3351, -941),
 	COL_END()
 };
