@@ -147,9 +147,9 @@ static void k_plat_propagate_fun(struct Object* obj)
 void bhv_k_plat_loop()
 {
     struct Object* spark = o->parentObj;
-    if (0 == o->oAction && 1 == spark->oAction)
+    if (0 == o->oAction)
     {
-        if (o->oDistanceToMario < 500.f)
+        if (1 == spark->oAction && o->oDistanceToMario < 700.f)
         {
             o->oAction = 1;
 
