@@ -5,6 +5,8 @@ enum IWDType
     IWDT_NONE,
     IWDT_DIRECTIONS,
     IWDT_DIRECTIONS_HALF,
+    IWDT_DIRECTIONS_RH2,
+    IWDT_DIRECTIONS_RH3,
     IWDT_UP_DOWN_DIRECTIONS,
     IWDT_FULL_DIRECTIONS,
     // I am handling this case in a special manner because it is painful to do otherwise

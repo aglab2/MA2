@@ -574,11 +574,27 @@ void check_instant_warp(void) {
             header = segmented_to_virtual(header);
             switch (header->type)
             {
+                case IWDT_DIRECTIONS_RH2:
+                {
+                    if (gMarioStates->pos[2] < -15000.f && gMarioStates->pos[1] < -10000.f)
+                        break;
+                    // fallthrough
+                }
                 case IWDT_DIRECTIONS:
                 case IWDT_DIRECTIONS_HALF:
                 {
                     const IWDirectionAreasDesc* desc = (const IWDirectionAreasDesc*)header;
                     handle_iw_area_desc(&newArea, &desc->areas, header->type == IWDT_DIRECTIONS_HALF ? 20100.f : 21000.f);
+                    break;
+                }
+                case IWDT_DIRECTIONS_RH3:
+                {
+                    const IWDirectionAreasDesc* desc = (const IWDirectionAreasDesc*)header;
+                    handle_iw_area_desc(&newArea, &desc->areas, 21000.f);
+                    if (gMarioStates->pos[2] > 15000.f && gMarioStates->pos[1] < 13000.f)
+                    {
+                        newArea = 2;
+                    }
                     break;
                 }
                 case IWDT_UP_DOWN_DIRECTIONS:

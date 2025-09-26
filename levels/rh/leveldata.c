@@ -16,12 +16,12 @@ static IWDirectionAreasDesc iw_rh_area1 = {
 };
 
 static IWDirectionAreasDesc iw_rh_area2 = {
-    { IWDT_DIRECTIONS },
+    { IWDT_DIRECTIONS_RH2 },
     { .z_low = 3, .x_high = 1, },
 };
 
 static IWDirectionAreasDesc iw_rh_area3 = {
-    { IWDT_DIRECTIONS },
+    { IWDT_DIRECTIONS_RH3 },
     { .z_low = 4, .z_high = 2, },
 };
 
