@@ -75,6 +75,9 @@ void bhv_k_door_init()
     f32 d;
     o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvKSpark, &d);
     o->oOpacity = 255;
+
+    if (gCurrLevelNum == LEVEL_DL)
+        obj_scale(o, 0.9f);
 }
 
 void bhv_k_door_loop()
