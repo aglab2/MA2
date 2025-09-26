@@ -29,3 +29,4 @@
 #include "levels/wb/wb_shut_break/geo.inc.c"
 #include "levels/wb/wb_shuts/geo.inc.c"
 #include "levels/wb/wb_shuts_break/geo.inc.c"
+#include "levels/wb/wb_spark/geo.inc.c"

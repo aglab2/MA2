@@ -1,0 +1,11 @@
+extern const GeoLayout wb_spark_geo[];
+extern u8 wb_spark_thtsubu01_rgba32[];
+extern Vtx wb_spark_Plane_mesh_layer_5_vtx_0[4];
+extern Gfx wb_spark_Plane_mesh_layer_5_1[];
+extern Gfx wb_spark_Plane_mesh_layer_5_2[];
+extern Gfx wb_spark_Plane_mesh_layer_5_3[];
+extern Gfx wb_spark_Plane_mesh_layer_5_4[];
+extern Gfx wb_spark_Plane_mesh_layer_5_5[];
+extern Gfx wb_spark_Plane_mesh_layer_5_6[];
+extern Gfx wb_spark_Plane_mesh_layer_5_7[];
+extern Gfx wb_spark_Plane_mesh_layer_5_8[];

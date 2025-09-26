@@ -115,3 +115,49 @@ void bhv_wb_breakable_loop()
         }
     }
 }
+
+void bhv_wb_spark_init()
+{
+    o->oOpacity = 255;
+}
+
+void bhv_wb_spark_loop()
+{
+    o->oAnimState++;
+}
+
+void bhv_wb_move_spring_init()
+{
+    f32 d;
+    o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvSpring, &d);
+    bhv_wb_move_init();
+}
+
+void bhv_wb_move_spring_loop()
+{
+    bhv_wb_move_loop();
+    o->parentObj->oPosX = o->oPosX;
+    o->parentObj->oPosY = o->oPosY + 20.f;
+    o->parentObj->oPosZ = o->oPosZ;
+}
+
+void bhv_wb_door_chao_init()
+{
+    obj_set_collision_data(o, o->oBehParams2ndByte ? wb_shuts_collision : wb_shut_collision);
+    f32 d;
+    o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvWbChao, &d);
+}
+
+void bhv_wb_door_chao_loop()
+{
+    o->oDrawingDistance = 10000.f;
+    f32 dx = o->parentObj->oPosX - o->oPosX;
+    f32 dy = o->parentObj->oPosY - o->oPosY;
+    f32 dz = o->parentObj->oPosZ - o->oPosZ;
+
+    f32 dist = dx * dx + dy * dy + dz * dz;
+    if (dist < 400.f * 400.f)
+    {
+        o->activeFlags = 0;
+    }
+}

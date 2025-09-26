@@ -5884,6 +5884,13 @@ const BehaviorScript bhvCheckpoint[] = {
     END_LOOP(),
 };
 
+extern void bhv_checkpoint_chao_init();
+extern void bhv_checkpoint_chao_loop();
+const BehaviorScript bhvCheckpointChao[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    GOTO(bhvCheckpoint + 1),
+};
+
 extern void bhv_goal_init();
 extern void bhv_goal_loop();
 const BehaviorScript bhvGoal[] = {
@@ -6566,6 +6573,18 @@ const BehaviorScript bhvWbMove[] = {
     END_LOOP(),
 };
 
+extern void bhv_wb_move_spring_init();
+extern void bhv_wb_move_spring_loop();
+const BehaviorScript bhvWbMoveSpring[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    CALL_NATIVE(bhv_wb_move_spring_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_wb_move_spring_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
 extern void bhv_wb_door_init();
 extern void bhv_wb_door_loop();
 const BehaviorScript bhvWbDoor[] = {
@@ -6574,6 +6593,18 @@ const BehaviorScript bhvWbDoor[] = {
     CALL_NATIVE(bhv_wb_door_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_wb_door_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+extern void bhv_wb_door_chao_init();
+extern void bhv_wb_door_chao_loop();
+const BehaviorScript bhvWbDoorChao[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    CALL_NATIVE(bhv_wb_door_chao_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_wb_door_chao_loop),
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
@@ -7418,6 +7449,18 @@ extern const BehaviorScript bhvKSpark[] = {
     CALL_NATIVE(bhv_k_spark_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_k_spark_loop),
+    END_LOOP(),
+};
+
+extern void bhv_wb_spark_init();
+extern void bhv_wb_spark_loop();
+extern const BehaviorScript bhvWbChao[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BILLBOARD(),
+    CALL_NATIVE(bhv_wb_spark_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_wb_spark_loop),
     END_LOOP(),
 };
 

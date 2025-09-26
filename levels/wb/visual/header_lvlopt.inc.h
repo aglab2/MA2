@@ -169,7 +169,7 @@ extern Gfx wb_dl_000_object_005DA2F4_mesh_layer_1_tri_1[];
 extern Gfx wb_dl_001_object_005D8978_mesh_layer_5_tri_0[];
 extern Gfx wb_dl_001_object_005D8978_mesh_layer_5_tri_1[];
 extern Gfx wb_dl_001_object_005D8978_mesh_layer_5_tri_2[];
-extern Gfx wb_dl_001_object_005D8978_mesh_layer_6_tri_0[];
+extern Gfx wb_dl_001_object_005D8978_mesh_layer_5_tri_3[];
 extern Gfx wb_dl_002_object_005D84D8_mesh_layer_1_tri_0[];
 extern Gfx wb_dl_002_object_005D84D8_mesh_layer_1_tri_1[];
 extern Gfx wb_dl_003_object_005D7F28_mesh_layer_5_tri_0[];
@@ -462,6 +462,7 @@ extern Gfx wb_dl_object_005E3FB0_013_mesh_layer_1_tri_3[];
 extern Gfx wb_dl_object_005E3FB0_013_mesh_layer_1_tri_4[];
 extern Gfx wb_dl_object_005E3FB0_013_mesh_layer_6_tri_0[];
 extern Gfx wb_dl_object_005EC854_mesh_layer_5_tri_0[];
+extern Gfx wb_dl_object_005EC854_001_mesh_layer_5_tri_0[];
 extern Gfx wb_dl_object_005EC854_002_mesh_layer_5_tri_0[];
 extern Gfx wb_dl_object_005EC854_003_mesh_layer_5_tri_0[];
 extern Gfx wb_dl_object_005EC854_004_mesh_layer_5_tri_0[];
@@ -473,6 +474,8 @@ extern Gfx wb_dl_object_005EC854_009_mesh_layer_5_tri_0[];
 extern Gfx wb_dl_object_005EC854_010_mesh_layer_5_tri_0[];
 extern Gfx wb_dl_object_005EC854_011_mesh_layer_5_tri_0[];
 extern Gfx wb_dl_object_005EC854_012_mesh_layer_5_tri_0[];
+extern Gfx wb_dl_object_005EC854_013_mesh_layer_5_tri_0[];
+extern Gfx wb_dl_object_005EC854_014_mesh_layer_5_tri_0[];
 extern u32 wb_dl_0000_object_00C4C788_mesh_layer_1[];
 extern u32 wb_dl_0000_object_00C4C788_mesh_layer_2[];
 extern u32 wb_dl_0006_object_00C4C670_mesh_layer_1[];
@@ -485,7 +488,6 @@ extern u32 wb_dl_000_object_005D0578_mesh_layer_5[];
 extern u32 wb_dl_001_object_005CFB68_mesh_layer_1[];
 extern u32 wb_dl_000_object_005DA2F4_mesh_layer_1[];
 extern u32 wb_dl_001_object_005D8978_mesh_layer_5[];
-extern u32 wb_dl_001_object_005D8978_mesh_layer_6[];
 extern u32 wb_dl_002_object_005D84D8_mesh_layer_1[];
 extern u32 wb_dl_003_object_005D7F28_mesh_layer_5[];
 extern u32 wb_dl_004_object_005D7CB0_mesh_layer_1[];
@@ -595,6 +597,7 @@ extern u32 wb_dl_object_005E3FB0_012_mesh_layer_6[];
 extern u32 wb_dl_object_005E3FB0_013_mesh_layer_1[];
 extern u32 wb_dl_object_005E3FB0_013_mesh_layer_6[];
 extern u32 wb_dl_object_005EC854_mesh_layer_5[];
+extern u32 wb_dl_object_005EC854_001_mesh_layer_5[];
 extern u32 wb_dl_object_005EC854_002_mesh_layer_5[];
 extern u32 wb_dl_object_005EC854_003_mesh_layer_5[];
 extern u32 wb_dl_object_005EC854_004_mesh_layer_5[];
@@ -606,6 +609,8 @@ extern u32 wb_dl_object_005EC854_009_mesh_layer_5[];
 extern u32 wb_dl_object_005EC854_010_mesh_layer_5[];
 extern u32 wb_dl_object_005EC854_011_mesh_layer_5[];
 extern u32 wb_dl_object_005EC854_012_mesh_layer_5[];
+extern u32 wb_dl_object_005EC854_013_mesh_layer_5[];
+extern u32 wb_dl_object_005EC854_014_mesh_layer_5[];
 #define LVL_BATCH_LAYER_OPAQUE_WB_FIG_AI_ENEMY2_PAL_RGBA16 0
 #define LVL_BATCH_LAYER_OPAQUE_WB_FIG_AI_ENEMY_01_PAL_RGBA16 1
 #define LVL_BATCH_LAYER_OPAQUE_WB_FIG_AI_GUN01_PAL_RGBA16 2
@@ -713,9 +718,9 @@ extern u32 wb_dl_object_005EC854_012_mesh_layer_5[];
 #define LVL_BATCH_LAYER_TRANSPARENT_WB_DL_PR_3KAGE32_IA16 2
 #define LVL_BATCH_LAYER_TRANSPARENT_WB_DL_MIU32_WB002_PAL_RGBA16 3
 #define LVL_BATCH_LAYER_TRANSPARENT_WB_DL_PR_KAGE32_IA16 4
-#define LVL_BATCH_LAYER_TRANSPARENT_WB_DL_PR_KAGE32_IA16_1 5
-#define LVL_BATCH_LAYER_TRANSPARENT_WB_DL_GUN_LOGO001_PAL_RGBA16 6
-#define LVL_BATCH_LAYER_TRANSPARENT_WB_DL_PR_2KAGE32_IA16 7
+#define LVL_BATCH_LAYER_TRANSPARENT_WB_DL_PR_2KAGE32_IA16 5
+#define LVL_BATCH_LAYER_TRANSPARENT_WB_DL_PR_KAGE32_IA16_1 6
+#define LVL_BATCH_LAYER_TRANSPARENT_WB_DL_GUN_LOGO001_PAL_RGBA16 7
 #define LVL_BATCH_LAYER_TRANSPARENT_WB_DL_MIU32_MH006_PAL_RGBA16 8
 #define LVL_BATCH_LAYER_TRANSPARENT_WB_DL_MIU64_MH008_PAL_RGBA16 9
 #define LVL_BATCH_LAYER_TRANSPARENT_WB_DL_PR_KAGE32_IA16_2 10
@@ -725,14 +730,13 @@ extern u32 wb_dl_object_005EC854_012_mesh_layer_5[];
 #define LVL_BATCH_LAYER_TRANSPARENT_WB_DL_PR_3KAGE32_IA16_2 14
 #define LVL_BATCH_LAYER_TRANSPARENT_WB_DL_TX_SEA001_PAL_RGBA16 15
 #define LVL_BATCH_LAYER_OPAQUE_DECAL_WB_DL_PR64_18_PAL_RGBA16 0
-#define LVL_BATCH_LAYER_TRANSPARENT_DECAL_WB_DL_PR_2KAGE32_IA16 0
-#define LVL_BATCH_LAYER_TRANSPARENT_DECAL_WB_DL_PR_3KAGE32_IA16 1
-#define LVL_BATCH_LAYER_TRANSPARENT_DECAL_WB_DL_PR_KAGE32_IA16 2
-#define LVL_BATCH_LAYER_TRANSPARENT_DECAL_WB_DL_PR_KAGE32_IA16_1 3
-#define LVL_BATCH_LAYER_TRANSPARENT_DECAL_WB_DL_PR_3KAGE32_IA16_1 4
-#define LVL_BATCH_LAYER_TRANSPARENT_DECAL_WB_DL_PR_KAGE32_IA16_2 5
-#define LVL_BATCH_LAYER_TRANSPARENT_DECAL_WB_DL_PR_2KAGE32_IA16_1 6
-#define LVL_BATCH_LAYER_TRANSPARENT_DECAL_WB_DL_PR_KAGE32_IA16_3 7
+#define LVL_BATCH_LAYER_TRANSPARENT_DECAL_WB_DL_PR_3KAGE32_IA16 0
+#define LVL_BATCH_LAYER_TRANSPARENT_DECAL_WB_DL_PR_KAGE32_IA16 1
+#define LVL_BATCH_LAYER_TRANSPARENT_DECAL_WB_DL_PR_KAGE32_IA16_1 2
+#define LVL_BATCH_LAYER_TRANSPARENT_DECAL_WB_DL_PR_3KAGE32_IA16_1 3
+#define LVL_BATCH_LAYER_TRANSPARENT_DECAL_WB_DL_PR_KAGE32_IA16_2 4
+#define LVL_BATCH_LAYER_TRANSPARENT_DECAL_WB_DL_PR_2KAGE32_IA16 5
+#define LVL_BATCH_LAYER_TRANSPARENT_DECAL_WB_DL_PR_KAGE32_IA16_3 6
 extern struct BatchLevelDisplayLists batch_lvl_dls_wb[LAYER_COUNT];
 #define wb_dl_enemy_01_ci4 wb_fig_ai_enemy_01_ci4
 #define wb_dl_enemy_01_pal_rgba16 wb_fig_ai_enemy_01_pal_rgba16
@@ -745,8 +749,8 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_wb[LAYER_COUNT];
 #define wb_dl_005_object_005DCAE8_mesh_layer_5_vtx_0 wb_dl_003_object_005D7F28_mesh_layer_5_vtx_0
 #define wb_dl_006_object_005DC870_mesh_layer_1_vtx_0 wb_dl_004_object_005D7CB0_mesh_layer_1_vtx_0
 #define wb_dl_010_object_005DB140_mesh_layer_5_vtx_0 wb_dl_001_object_005D8978_mesh_layer_5_vtx_0
-#define wb_dl_010_object_005DB140_mesh_layer_5_vtx_2 wb_dl_001_object_005D8978_mesh_layer_6_vtx_0
-#define wb_dl_010_object_005DB140_mesh_layer_5_vtx_3 wb_dl_001_object_005D8978_mesh_layer_5_vtx_2
+#define wb_dl_010_object_005DB140_mesh_layer_5_vtx_2 wb_dl_001_object_005D8978_mesh_layer_5_vtx_2
+#define wb_dl_010_object_005DB140_mesh_layer_5_vtx_3 wb_dl_001_object_005D8978_mesh_layer_5_vtx_3
 #define wb_dl_object_005E3FB0_012_mesh_layer_1_vtx_0 wb_dl_object_005E3FB0_mesh_layer_1_vtx_0
 #define wb_dl_object_005E3FB0_012_mesh_layer_1_vtx_1 wb_dl_object_005E3FB0_mesh_layer_1_vtx_1
 #define wb_dl_object_005E3FB0_012_mesh_layer_1_vtx_2 wb_dl_object_005E3FB0_mesh_layer_1_vtx_2
@@ -879,8 +883,8 @@ extern struct BatchLevelDisplayLists batch_lvl_dls_wb[LAYER_COUNT];
 #define wb_dl_005_object_005DCAE8_mesh_layer_5_tri_0 wb_dl_003_object_005D7F28_mesh_layer_5_tri_0
 #define wb_dl_006_object_005DC870_mesh_layer_1_tri_0 wb_dl_004_object_005D7CB0_mesh_layer_1_tri_0
 #define wb_dl_010_object_005DB140_mesh_layer_5_tri_0 wb_dl_001_object_005D8978_mesh_layer_5_tri_0
-#define wb_dl_010_object_005DB140_mesh_layer_5_tri_2 wb_dl_001_object_005D8978_mesh_layer_6_tri_0
-#define wb_dl_010_object_005DB140_mesh_layer_5_tri_3 wb_dl_001_object_005D8978_mesh_layer_5_tri_2
+#define wb_dl_010_object_005DB140_mesh_layer_5_tri_2 wb_dl_001_object_005D8978_mesh_layer_5_tri_2
+#define wb_dl_010_object_005DB140_mesh_layer_5_tri_3 wb_dl_001_object_005D8978_mesh_layer_5_tri_3
 #define wb_dl_object_005E3FB0_012_mesh_layer_1_tri_0 wb_dl_object_005E3FB0_mesh_layer_1_tri_0
 #define wb_dl_object_005E3FB0_012_mesh_layer_1_tri_1 wb_dl_object_005E3FB0_mesh_layer_1_tri_1
 #define wb_dl_object_005E3FB0_012_mesh_layer_1_tri_2 wb_dl_object_005E3FB0_mesh_layer_1_tri_2

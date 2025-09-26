@@ -678,4 +678,9 @@ extern const BehaviorScript bhvCcsFlyguyLock[];
 extern const BehaviorScript bhvCCSMusicSwitch[];
 extern const BehaviorScript bhvCcsCoinStar[];
 
+extern const BehaviorScript bhvWbChao[];
+extern const BehaviorScript bhvCheckpointChao[];
+extern const BehaviorScript bhvWbDoorChao[];
+extern const BehaviorScript bhvWbMoveSpring[];
+
 #endif // BEHAVIOR_DATA_H
