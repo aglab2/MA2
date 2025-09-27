@@ -331,15 +331,22 @@ extern void bhv_cce_death_loop()
     if (gMarioStates->floorHeight != gMarioStates->pos[1])
         return;
 
+    if (o->oAction)
+    {
+        spawn_object(gMarioObject, MODEL_BURN_SMOKE, bhvBlackSmokeBowser);
+        play_sound(SOUND_MOVING_SHOCKED, gMarioObject->header.gfx.cameraToObject);
+        gMarioStates->invincTimer++;
+        vec3_copy(&o->oPosVec, gMarioStates->pos);
+        gMarioStates->health -= 0x8;
+        o->oAction = 0;
+    }
+
     struct Surface* floor = gMarioStates->floor;
     if (floor->type == SURFACE_HARD_NOT_SLIPPERY)
     {
         if (gMarioStates->health > 255)
-        {    
-            play_sound(SOUND_MOVING_SHOCKED, gMarioObject->header.gfx.cameraToObject);
-            gMarioStates->invincTimer++;
-            vec3_copy(&o->oPosVec, gMarioStates->pos);
-            gMarioStates->health -= 0x8;
+        {
+            o->oAction = 1;
         }
     }
 }
