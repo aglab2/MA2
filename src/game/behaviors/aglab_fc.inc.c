@@ -302,6 +302,16 @@ when walking:
 #endif
     }
 
+    if (obj->oFaceAnglePitch == 0 && gCurrAreaIndex == 9)
+    {
+        if (newPos[1] > 2200.f)
+        {
+            newPos[1] = 2200.f;
+            cyl = to_cyl(newPos, &obj->oPosVec, x_axis, y_axis, z_axis);
+            sCylVel.z = 0.f;
+        }
+    }
+
     vec3_copy(m->pos, newPos);
     if (clampWalls)
     {
