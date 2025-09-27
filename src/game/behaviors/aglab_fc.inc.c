@@ -279,6 +279,11 @@ when walking:
             play_sound(SOUND_MARIO_ON_FIRE, m->marioObj->header.gfx.cameraToObject);
         }
 
+        if (hitSurf)
+        {
+            sCylVel.r = 0;
+        }
+
 #if 0
         if (hitSurf)
         {
