@@ -4,7 +4,6 @@ extern const Collision msp_area_1_collision[];
 extern const MacroObject msp_area_1_macro_objs[];
 extern const Trajectory msp_area_1_spline_NurbsCurve_Spring[];
 extern const Trajectory msp_area_1_spline_NurbsCurve_Spring_001[];
-extern const Trajectory msp_area_1_spline_NurbsCurve_Spring_002[];
 extern u8 msp_dl_et64_3_ci4[];
 extern u8 msp_dl_et64_3_pal_rgba16[];
 extern u8 msp_dl_space128_2_ci4[];
