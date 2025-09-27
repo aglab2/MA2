@@ -463,8 +463,8 @@ s32 act_fcgr_jump(struct MarioState *m)
     switch (fcgr_spin(m))
     {
         case FCGR_LAND:
-            m->faceAngle[0] = 0;
-            m->faceAngle[2] = 0;
+            //m->faceAngle[0] = 0;
+            //m->faceAngle[2] = 0;
             return set_mario_action(m, ACT_FCGR_WALKING, 0);
         case FCGR_BREAK_AIR:
             m->faceAngle[0] = 0;

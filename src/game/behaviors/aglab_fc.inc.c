@@ -156,8 +156,12 @@ int fcgr_spin(struct MarioState *m)
     int landed = m->action == ACT_FCGR_WALKING;
     if (landed && (m->input & INPUT_A_PRESSED))
     {
+#if 0
         // this is not exactly sane to give theta to the speed but it will feel better
         sCylVel.r = 50.f + absf(sCylVel.theta) * 0.01f;
+#else
+        sCylVel.r = 50.f + 800 * 0.01f;
+#endif
     }
 
     f32 frictionAngular = 0.9f;
@@ -397,6 +401,7 @@ when walking:
             }
 #endif
         }
+
     }
 
     Vec3f vel_component_r;
