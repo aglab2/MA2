@@ -2024,6 +2024,11 @@ static void render_quick_warp(s16 x, s16 y, s8 *index, s16 xIndex) {
         }
     }
 
+    if (hasExtraCourse && *index == limit)
+    {
+        xoff = 270 + 16 + 5;
+    }
+
     gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     set_text_color(255, 255, 255);
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);

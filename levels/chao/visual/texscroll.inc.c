@@ -1,6 +1,7 @@
 extern Gfx mat_chao_dl_objLandTableRace_sa2blvl_0_f3d_layer5[];
 extern Gfx mat_chao_dl_objLandTableRace_sa2blvl_3_f3d_layer5[];
 extern Gfx mat_chao_dl_Waterfalls1_sa2mdl_0_f3d[];
+extern Gfx  mat_chao_dl_Water2_sa2mdl_0_f3d[];
 
 void scroll_gfx_mat_chao_dl_objLandTableRace_sa2blvl_0_f3d_layer5() {
 	Gfx *mat = segmented_to_virtual(mat_chao_dl_objLandTableRace_sa2blvl_0_f3d_layer5);
@@ -27,8 +28,16 @@ void scroll_gfx_mat_chao_dl_Waterfalls3_sa2mdl_0_f3d() {
 
 };
 
+void scroll_gfx_mat_chao_dl_Waterfalls3_sa2mdl_0_f3d_2() {
+	Gfx *mat = segmented_to_virtual(mat_chao_dl_Water2_sa2mdl_0_f3d);
+
+	shift_t(mat, 10, PACK_TILESIZE(0, 1));
+
+};
+
 void scroll_chao_visual() {
 	scroll_gfx_mat_chao_dl_objLandTableRace_sa2blvl_0_f3d_layer5();
 	scroll_gfx_mat_chao_dl_objLandTableRace_sa2blvl_3_f3d_layer5();
 	scroll_gfx_mat_chao_dl_Waterfalls3_sa2mdl_0_f3d();
+	scroll_gfx_mat_chao_dl_Waterfalls3_sa2mdl_0_f3d_2();
 };
