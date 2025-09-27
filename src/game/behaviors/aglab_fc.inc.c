@@ -183,21 +183,36 @@ int fcgr_spin(struct MarioState *m)
     const f32 zAccel = 2.2f;
     const f32 aAccel = 85.f;
 
-    if (landed && (m->input & INPUT_NONZERO_ANALOG))
+    if (m->input & INPUT_NONZERO_ANALOG)
     {
-        if (obj->oFaceAnglePitch)
+        if (landed)
         {
-            s16 diff = m->intendedYaw - obj->oFaceAngleYaw;
-            if (sCylFlipped)
-                diff = -diff;
+            if (obj->oFaceAnglePitch)
+            {
+                s16 diff = m->intendedYaw - obj->oFaceAngleYaw;
+                if (sCylFlipped)
+                    diff = -diff;
 
-            sCylVel.z = approach_f32(sCylVel.z, m->intendedMag * coss(diff) * 2.6f, zAccel, zAccel);
-            sCylVel.theta = approach_f32(sCylVel.theta, -m->intendedMag * sins(diff) * 40.f, aAccel, aAccel);
+                sCylVel.z = approach_f32(sCylVel.z, m->intendedMag * coss(diff) * 2.6f, zAccel, zAccel);
+                sCylVel.theta = approach_f32(sCylVel.theta, -m->intendedMag * sins(diff) * 40.f, aAccel, aAccel);
+            }
+            else
+            {
+                sCylVel.z = approach_f32(sCylVel.z, m->controller->stickY * 1.f, zAccel, zAccel);
+                sCylVel.theta = approach_f32(sCylVel.theta, m->controller->stickX * 18.f, aAccel, aAccel);
+            }
         }
         else
         {
-            sCylVel.z = approach_f32(sCylVel.z, m->controller->stickY * 1.f, zAccel, zAccel);
-            sCylVel.theta = approach_f32(sCylVel.theta, m->controller->stickX * 18.f, aAccel, aAccel);
+            if (obj->oFaceAnglePitch)
+            {
+                s16 diff = m->intendedYaw - obj->oFaceAngleYaw;
+                sCylVel.z += m->intendedMag * coss(diff) * 0.016f;
+            }
+            else
+            {
+                sCylVel.z += m->controller->stickY * 0.005f;
+            }
         }
     }
     else
@@ -302,7 +317,7 @@ when walking:
 #endif
     }
 
-    if (obj->oFaceAnglePitch == 0 && gCurrAreaIndex == 9)
+    if (landed && obj->oFaceAnglePitch == 0 && gCurrAreaIndex == 9)
     {
         if (newPos[1] > 2200.f)
         {
