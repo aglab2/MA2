@@ -549,6 +549,90 @@ static const uint32_t kDirectionalLight = 0xFFFFFF00;
 uint32_t sBackdropRenderedOnFrame = 0;
 #endif
 
+extern const Gfx bobomb_seg8_dl_08023270[];
+extern const Gfx bobomb_seg8_dl_08023378[];
+extern const Gfx bobomb_seg8_dl_08023480[];
+extern const Gfx goomba_seg8_dl_0801CE20[];
+extern const Gfx goomba_seg8_dl_0801CF78[];
+extern const Gfx goomba_seg8_dl_0801D0D0[];
+extern const Gfx goomba_seg8_dl_0801D360[];
+extern const Gfx dirt_seg3_dl_cartoon_star_red[];
+extern const Gfx dirt_seg3_dl_cartoon_star_green[];
+extern const Gfx dirt_seg3_dl_cartoon_star_blue[];
+extern const Gfx dirt_seg3_dl_cartoon_star_yellow[];
+extern const Gfx dirt_seg3_dl_cartoon_star_billboard[];
+extern const Gfx dirt_seg3_dl_tiny_particle_red[];
+extern const Gfx dirt_seg3_dl_tiny_particle_green[];
+extern const Gfx dirt_seg3_dl_tiny_particle_blue[];
+extern const Gfx dirt_seg3_dl_tiny_particle_yellow[];
+extern const Gfx dirt_seg3_dl_tiny_particle_billboard[];
+static const void* sDlRequiresReset[] = {
+    bobomb_seg8_dl_08023270,
+    bobomb_seg8_dl_08023378,
+    bobomb_seg8_dl_08023480,
+    goomba_seg8_dl_0801CE20,
+    goomba_seg8_dl_0801CF78,
+    goomba_seg8_dl_0801D0D0,
+    goomba_seg8_dl_0801D360,
+    dirt_seg3_dl_cartoon_star_red,
+    dirt_seg3_dl_cartoon_star_green,
+    dirt_seg3_dl_cartoon_star_blue,
+    dirt_seg3_dl_cartoon_star_yellow,
+    dirt_seg3_dl_cartoon_star_billboard,
+    dirt_seg3_dl_tiny_particle_red,
+    dirt_seg3_dl_tiny_particle_green,
+    dirt_seg3_dl_tiny_particle_blue,
+    dirt_seg3_dl_tiny_particle_yellow,
+    dirt_seg3_dl_tiny_particle_billboard,
+};
+
+static int dl_wants_reset(const void* dl)
+{
+    for (int i = 0; i < sizeof(sDlRequiresReset) / sizeof(sDlRequiresReset[0]); i++)
+    {
+        if (sDlRequiresReset[i] == dl)
+            return 1;
+    }
+    return 0;
+}
+
+static ALWAYS_INLINE void render_heap_with_resets(Gfx **ptempGfxHead, struct PairingHeapHead* heap)
+{
+    Mtx *prevMtx = NULL;
+    void* prevDl = NULL;
+
+#define tempGfxHead (*ptempGfxHead)
+    u32 shift = ((u32) tempGfxHead) & 0xF;
+    do {
+        __builtin_mips_cache(0xd, ((u8*) tempGfxHead) + shift);
+        struct PairingHeapNodeDisplayList* dlNode = (struct PairingHeapNodeDisplayList*) pairingheap_remove_first(heap);
+        if (prevMtx != dlNode->transform)
+        {
+            gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(dlNode->transform), (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
+            prevMtx = dlNode->transform;
+        }
+        else
+        {
+            shift ^= 0x8;
+        }
+        
+        if (prevDl != dlNode->displayList)
+        {
+            prevDl = dlNode->displayList;
+            if (dl_wants_reset(prevDl))
+            {
+                gSPDisplayList(tempGfxHead++, dl_course_common_revert);
+            }
+        }
+
+        _gSPDisplayListRaw(tempGfxHead++, dlNode->displayList, dlNode->hint);
+
+        __builtin_mips_cache(0x11, ((u8*) dlNode) + 0x0);
+        __builtin_mips_cache(0x11, ((u8*) dlNode) + 0x10);
+    } while (!pairingheap_is_empty(heap));
+#undef tempGfxHead
+}
+
 extern u8 gTimeFrozen;
 static void adjust_view_range();
 static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
@@ -647,8 +731,7 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
             if (currHeap->root)
             {
                 set_render_mode(&tempGfxHead, enableZBuffer, currLayer);
-                Mtx* prevMtx = NULL;
-                render_heap(&tempGfxHead, &prevMtx, currHeap);
+                render_heap_with_resets(&tempGfxHead, currHeap);
             }
 
             clear_render_mode(&tempGfxHead, currLayer);

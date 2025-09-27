@@ -58,6 +58,9 @@ void bhv_rocket_loop()
         if (o->oTimer > 110)
         {
             int act = 0 == o->oBehParams2ndByte ? ACT_FLYING : ACT_VERTICAL_WIND;
+            if (gCurrCourseNum == COURSE_SH)
+                act = ACT_VERTICAL_WIND;
+
             set_mario_action(gMarioStates, act, 0);
             o->parentObj->oAction = 0;
             o->activeFlags = 0;
