@@ -52,6 +52,12 @@ static int toDialogId(int bparam2)
     if (bparam2 == 0xe2)
         id = 64 - sCheckpointIds;
 
+    int cc = COURSE_CCT <= gCurrCourseNum && gCurrCourseNum <= COURSE_CCS;
+    if (cc)
+    {
+        id += 2 * (gCurrCourseNum - COURSE_CCT);
+    }
+
     return id;
 }
 
