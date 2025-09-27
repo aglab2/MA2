@@ -107,7 +107,6 @@ const Trajectory rh_area_4_spline_Rail_NurbsCurve_008[] = {
 	TRAJECTORY_POS( 17, -12251, 455, 2516),
 	TRAJECTORY_POS( 18, -12250, 408, 1977),
 	TRAJECTORY_POS( 19, -12244, 372, 1440),
-	TRAJECTORY_POS( 20, -12237, 521, 940),
 	TRAJECTORY_END(),
 };
 const Trajectory rh_area_4_spline_Rail_NurbsCurve_009[] = {
@@ -131,6 +130,5 @@ const Trajectory rh_area_4_spline_Rail_NurbsCurve_009[] = {
 	TRAJECTORY_POS( 17, -14318, 455, 2516),
 	TRAJECTORY_POS( 18, -14317, 408, 1977),
 	TRAJECTORY_POS( 19, -14311, 372, 1440),
-	TRAJECTORY_POS( 20, -14317, 521, 940),
 	TRAJECTORY_END(),
 };
