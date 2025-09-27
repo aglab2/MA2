@@ -514,6 +514,13 @@ static void patch_behav_params(struct SpawnInfo *spawnInfo) {
         register_checkpoint_warp(warpId);
     }
 
+    if (spawnInfo->behaviorScript == bhvCheckpointChao) {
+        u32 id = 50;
+        u32 warpId = 0xf0 - (64 - id);
+        spawnInfo->behaviorArg = (id << 24) | (warpId << 16);
+        register_checkpoint_warp(warpId);
+    }
+
     if (spawnInfo->behaviorScript == bhvGoal) {
         u32 warpId = 0xf0 - 1;
         spawnInfo->behaviorArg = (63U << 24) | (warpId << 16);

@@ -76,7 +76,7 @@ static const BehaviorScript *sWarpBhvSpawnTable[] = {
     bhvHardAirKnockBackWarp,    bhvSpinAirborneCircleWarp, bhvDeathWarp,               bhvSpinAirborneWarp,
     bhvFlyingWarp,              bhvSwimmingWarp,           bhvPaintingStarCollectWarp, bhvPaintingDeathWarp,
     bhvAirborneStarCollectWarp, bhvAirborneDeathWarp,      bhvLaunchStarCollectWarp,   bhvLaunchDeathWarp,
-    bhvCheckpoint, bhvGoal
+    bhvCheckpoint, bhvGoal, bhvCheckpointChao
 };
 
 static const u8 sSpawnTypeFromWarpBhv[] = {
@@ -85,7 +85,7 @@ static const u8 sSpawnTypeFromWarpBhv[] = {
     MARIO_SPAWN_HARD_AIR_KNOCKBACK,    MARIO_SPAWN_SPIN_AIRBORNE_CIRCLE, MARIO_SPAWN_DEATH,                 MARIO_SPAWN_SPIN_AIRBORNE,
     MARIO_SPAWN_FLYING,                MARIO_SPAWN_SWIMMING,             MARIO_SPAWN_PAINTING_STAR_COLLECT, MARIO_SPAWN_PAINTING_DEATH,
     MARIO_SPAWN_AIRBORNE_STAR_COLLECT, MARIO_SPAWN_AIRBORNE_DEATH,       MARIO_SPAWN_AIRBORNE_STAR_COLLECT, MARIO_SPAWN_LAUNCH_DEATH,
-    MARIO_SPAWN_DEATH,                 MARIO_SPAWN_DEATH,
+    MARIO_SPAWN_DEATH,                 MARIO_SPAWN_DEATH,                MARIO_SPAWN_DEATH,
 };
 
 #ifdef F3DEX3

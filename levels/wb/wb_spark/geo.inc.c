@@ -1,7 +1,7 @@
 #include "src/game/envfx_snow.h"
 
 const GeoLayout wb_spark_geo[] = {
-	GEO_NODE_START(),
+	GEO_SHADOW(SHADOW_CIRCLE_4_VERTS, 0x9B, 70),
 	GEO_OPEN_NODE(),
 		GEO_SWITCH_CASE(8, geo_switch_anim_state),
 		GEO_OPEN_NODE(),
