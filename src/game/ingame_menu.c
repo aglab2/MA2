@@ -1916,11 +1916,20 @@ void render_pause_my_score_coins(void) {
             }
             if (gLevelWithHardModes & (1ULL << (gCurrLevelNum - LEVEL_CE)))
             {
-                bool enabled = !!(realStarFlags & (1ULL << 63));
-                render_star_at(enabled, PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30, y);
+                // goal ring
+                bool goalCollected;
+                {
+                    goalCollected = !!(realStarFlags & (1ULL << 63));
+                    render_star_at(goalCollected, PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30, y);
+                }
+                // secret course
+                {
+                    bool enabled = !!(realStarFlags & (1ULL << 50));
+                    render_star_at(enabled, PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30 - 20, y);
+                }
                 
                 char line[100];
-                sprintf(line, "Objective: %s", enabled ? getMainObjective() : kCollectTheStars);
+                sprintf(line, "Objective: %s", goalCollected ? getMainObjective() : kCollectTheStars);
                 print_generic_string_aligned(160, y + 55, line, TEXT_ALIGN_CENTER);
             }
             else
@@ -1989,6 +1998,11 @@ static void render_quick_warp(s16 x, s16 y, s8 *index, s16 xIndex) {
         limit = 2*(lvlShowLimit - COURSE_CCT) + 1;
         limit += 2;
     }
+
+    u64 realStarFlags = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
+    bool hasExtraCourse = !!(realStarFlags & (1ULL << 50));
+    if (hasExtraCourse)
+        limit++;
 
     handle_menu_scrolling(MENU_SCROLL_HORIZONTAL, index, 1, limit);
     if (*index == 1)
@@ -2281,8 +2295,19 @@ static int get_checkpoint_warp()
     }
     else
     {
-        checkpointIdx = 64 - sCheckpointIds == gDialogCameraAngleIndex ? 63 : 62 - (gDialogCameraAngleIndex - 2);
-        hasCheckpoint = !!(save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum)) & (1ULL << checkpointIdx));
+        u64 realStarFlags = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
+        bool hasExtraCourse = !!(realStarFlags & (1ULL << 50));
+        if (hasExtraCourse && 64 - sCheckpointIds == gDialogCameraAngleIndex)
+        {
+            // Need to select checkpoint idx as if checkpoint 64-50 is active
+            checkpointIdx = 62 - 12;
+            hasCheckpoint = 1;
+        }
+        else
+        {
+            checkpointIdx = 64 - sCheckpointIds == gDialogCameraAngleIndex ? 63 : 62 - (gDialogCameraAngleIndex - 2);
+            hasCheckpoint = !!(save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum)) & (1ULL << checkpointIdx));
+        }
     }
 
     if (hasCheckpoint)

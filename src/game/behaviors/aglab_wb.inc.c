@@ -236,6 +236,10 @@ void bhv_wb_door_chao_init()
     obj_set_collision_data(o, o->oBehParams2ndByte ? wb_shuts_collision : wb_shut_collision);
     f32 d;
     o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvWbChao, &d);
+    if (gDialogCameraAngleIndex == 6)
+    {
+        o->activeFlags = 0;
+    }
 }
 
 void bhv_wb_door_chao_loop()
@@ -244,10 +248,11 @@ void bhv_wb_door_chao_loop()
     f32 dx = o->parentObj->oPosX - o->oPosX;
     f32 dy = o->parentObj->oPosY - o->oPosY;
     f32 dz = o->parentObj->oPosZ - o->oPosZ;
-
     f32 dist = dx * dx + dy * dy + dz * dz;
-    if (dist < 500.f * 500.f)
+    if (dist < 600.f * 600.f)
     {
+        cur_obj_play_sound_2(SOUND_GENERAL_BREAK_BOX);
+        puffAt(o, 100.f, 10, 0.f);
         o->activeFlags = 0;
         o->parentObj->activeFlags = 0;
     }
