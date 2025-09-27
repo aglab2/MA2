@@ -44,6 +44,17 @@ void bhv_checkpoint_init()
     o->oDrawingDistance = 10000.0f;
 }
 
+extern u8 sCheckpointIds;
+static int toDialogId(int bparam2)
+{
+    int id = 1 + 0xef - bparam2;
+    // this is referring to extra course checkpoint
+    if (bparam2 == 0xe2)
+        id = 64 - sCheckpointIds;
+
+    return id;
+}
+
 void bhv_checkpoint_loop()
 {
     if (o->oAction)
@@ -56,7 +67,7 @@ void bhv_checkpoint_loop()
         }
         else
         {
-            if (gDialogCameraAngleIndex != 1 + 0xef - GET_BPARAM2(o->oBehParams))
+            if (gDialogCameraAngleIndex != toDialogId(GET_BPARAM2(o->oBehParams)))
             {
                 o->oAction = 0;
                 o->oGeoRoll = 0x4000;
@@ -69,7 +80,7 @@ void bhv_checkpoint_loop()
         if (o->oInteractStatus & INT_STATUS_INTERACTED)
         {
             sSafeWarpId = GET_BPARAM2(o->oBehParams);
-            gDialogCameraAngleIndex = 1 + 0xef - sSafeWarpId;
+            gDialogCameraAngleIndex = toDialogId(sSafeWarpId);
             o->oAction = 1;
         }
     }

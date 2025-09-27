@@ -237,12 +237,13 @@ void bhv_wb_move_spring_loop()
     bezier[3] = o->oPosZ;
 }
 
+extern u8 sSafeWarpId;
 void bhv_wb_door_chao_init()
 {
     obj_set_collision_data(o, o->oBehParams2ndByte ? wb_shuts_collision : wb_shut_collision);
     f32 d;
     o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvWbChao, &d);
-    if (gDialogCameraAngleIndex == 6)
+    if (gDialogCameraAngleIndex == 6 || sSafeWarpId == 0xe2)
     {
         o->activeFlags = 0;
         o->parentObj->activeFlags = 0;
