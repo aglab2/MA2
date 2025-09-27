@@ -239,6 +239,7 @@ void bhv_wb_door_chao_init()
     if (gDialogCameraAngleIndex == 6)
     {
         o->activeFlags = 0;
+        o->parentObj->activeFlags = 0;
     }
 }
 

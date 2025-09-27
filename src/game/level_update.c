@@ -1330,7 +1330,11 @@ static int exitWarpLvl()
     }
     if (gCurrLevelNum == LEVEL_GH)
     {
-        return LEVEL_GF;
+        return LEVEL_CASTLE_GROUNDS;
+    }
+    if (gCurrLevelNum == LEVEL_CHAO)
+    {
+        return LEVEL_CASTLE_GROUNDS2;
     }
 
     return LEVEL_LB;
@@ -1342,7 +1346,6 @@ static int exitWarpArea()
     {
         return 2;
     }
-    // TODO: appropriate for GH
 
     return 1;
 }
@@ -1359,7 +1362,11 @@ static int exitWarpId()
     }
     if (gCurrLevelNum == LEVEL_GH)
     {
-        // TODO: appropriate for GH
+        return LEVEL_GF - LEVEL_IG + 0x20;
+    }
+    if (gCurrLevelNum == LEVEL_CHAO)
+    {
+        return LEVEL_WB - LEVEL_IG + 0x20;
     }
 
     return 0xa;
