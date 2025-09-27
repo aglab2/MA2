@@ -1371,7 +1371,7 @@ s32 act_rail_grind(struct MarioState *m)
     int holdZ = 0;
     if (gCurrCourseNum == COURSE_CW)
     {
-        blocked = m->floor->type == SURFACE_DEATH_PLANE;
+        blocked = m->floor->type == SURFACE_DEATH_PLANE || (gCurrAreaIndex == 6 || gCurrAreaIndex == 7);
     }
 
     if (!onLoop) {

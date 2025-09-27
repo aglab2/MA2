@@ -1925,7 +1925,8 @@ void render_pause_my_score_coins(void) {
                 // secret course
                 {
                     bool enabled = !!(realStarFlags & (1ULL << 50));
-                    render_star_at(enabled, PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30 - 20, y);
+                    if (enabled)
+                        render_star_at(enabled, PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30 - 20, y);
                 }
                 
                 char line[100];
