@@ -32,6 +32,11 @@ void bhv_fc_grav_loop()
         return;
     }
 
+    if (gMarioStates->health <= 0xff)
+    {
+        return;
+    }
+
     Vec3f x_axis, y_axis, z_axis;
     gen_axis(x_axis, y_axis, z_axis, o->oFaceAngleYaw, o->oFaceAnglePitch);
 
@@ -401,7 +406,6 @@ when walking:
             }
 #endif
         }
-
     }
 
     Vec3f vel_component_r;

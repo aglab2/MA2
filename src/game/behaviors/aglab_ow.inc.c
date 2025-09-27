@@ -45,6 +45,16 @@ extern s8 gDialogCameraAngleIndex;
 extern f32 sViewRange;
 extern u8 gTimeFrozen;
 extern u8 sSparkRefill;
+
+void reset_globals()
+{
+    gTimeFrozen = 0;
+    sSpringBezier = NULL;
+    sTrajectory = NULL;
+    sViewRange = 400000000.0f;
+    gSafeY = -30000.f;
+}
+
 void bhv_ow_ctl_init()
 {
     int off = 0x80;
@@ -102,12 +112,8 @@ void bhv_ow_ctl_init()
 #endif
     }
 
-    gTimeFrozen = 0;
-    sSpringBezier = NULL;
-    sTrajectory = NULL;
+    reset_globals();
     gDialogCameraAngleIndex = 1;
-    sViewRange = 400000000.0f;
-    gSafeY = -30000.f;
     sSparkRefill = 0;
 
 #if 0

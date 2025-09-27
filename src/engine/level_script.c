@@ -447,7 +447,10 @@ extern const Gfx* gSkybox;
 extern const SpringDesc** gSpringDescs;
 extern const SpringLinkDesc* gSpringLinks;
 extern const IWDHeader** gIWDs;
+
+extern void reset_globals();
 static void level_cmd_lvl_config(void) {
+    reset_globals();
     struct LevelConfig *dl = segmented_to_virtual(CMD_GET(void *, 4));
     gViewRangeMult = dl->viewRangeMult ? dl->viewRangeMult : 1.0f;
     gRailDesc = dl->railDesc ? segmented_to_virtual(dl->railDesc) : NULL;
