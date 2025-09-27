@@ -379,7 +379,7 @@ const LevelScript level_wb_entry[] = {
 		OBJECT(MODEL_STAR, 12644, -799, -17544, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 16860, -1549, -19996, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_NONE, 15245, -1117, -16589, 0, 0, 0, 0x00000000, bhvHiddenRedCoinStar),
-		OBJECT(MODEL_STAR, 16137, -1931, -31408, 0, 0, 0, 0x00000000, bhvStar),
+		OBJECT(MODEL_STAR, 16137, -2055, -31408, 0, 0, 0, 0x00000000, bhvStar),
 		TERRAIN(wb_area_2_collision),
 		MACRO_OBJECTS(wb_area_2_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),

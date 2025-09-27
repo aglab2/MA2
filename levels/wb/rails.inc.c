@@ -23,3 +23,7 @@ const SpringDesc* spring_descs_wb[] = {
 	spring_area2,
 };
 
+const Trajectory* starmove_trajs_wb[] = {
+	wb_area_1_spline_NurbsCurve_StarMove,
+};
+

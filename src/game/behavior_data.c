@@ -7456,9 +7456,10 @@ extern void bhv_wb_spark_init();
 extern void bhv_wb_spark_loop();
 extern const BehaviorScript bhvWbChao[] = {
     BEGIN(OBJ_LIST_LEVEL),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
     BILLBOARD(),
     CALL_NATIVE(bhv_wb_spark_init),
+    SET_HOME(),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_wb_spark_loop),
     END_LOOP(),

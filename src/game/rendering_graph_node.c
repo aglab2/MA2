@@ -613,21 +613,6 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
             }
 #endif
 
-            struct DisplayListNode *currList = masterLayer->list.head;
-            if (currList)
-            {
-                set_render_mode(&tempGfxHead, enableZBuffer, currLayer);
-                render_lists(&tempGfxHead, masterLayer->list.head);
-            }
-
-            struct PairingHeapHead *currHeap = &masterLayer->heap;
-            if (currHeap->root)
-            {
-                set_render_mode(&tempGfxHead, enableZBuffer, currLayer);
-                Mtx* prevMtx = NULL;
-                render_heap(&tempGfxHead, &prevMtx, currHeap);
-            }
-
             if (masterLayer->course || masterLayer->objects)
             {
                 if (LEVEL_IG == gCurrLevelNum)
@@ -650,6 +635,22 @@ static void geo_process_master_list_sub(struct GraphNodeMasterList *node) {
                     gSPDisplayList(tempGfxHead++, gLightReset);
                 }
             }
+            
+            struct DisplayListNode *currList = masterLayer->list.head;
+            if (currList)
+            {
+                set_render_mode(&tempGfxHead, enableZBuffer, currLayer);
+                render_lists(&tempGfxHead, masterLayer->list.head);
+            }
+
+            struct PairingHeapHead *currHeap = &masterLayer->heap;
+            if (currHeap->root)
+            {
+                set_render_mode(&tempGfxHead, enableZBuffer, currLayer);
+                Mtx* prevMtx = NULL;
+                render_heap(&tempGfxHead, &prevMtx, currHeap);
+            }
+
             clear_render_mode(&tempGfxHead, currLayer);
         }
     }

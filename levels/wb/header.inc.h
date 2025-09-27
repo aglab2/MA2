@@ -2,6 +2,7 @@ extern const GeoLayout wb_area_1_geo[];
 extern const GeoLayout wb_area_1[];
 extern const Collision wb_area_1_collision[];
 extern const MacroObject wb_area_1_macro_objs[];
+extern const Trajectory wb_area_1_spline_NurbsCurve_StarMove[];
 extern const Trajectory wb_area_1_spline_Spring_NurbsCurve[];
 extern const Trajectory wb_area_1_spline_Spring_NurbsCurve_001[];
 extern const Trajectory wb_area_1_spline_Spring_NurbsCurve_009[];

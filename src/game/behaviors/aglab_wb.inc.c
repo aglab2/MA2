@@ -116,14 +116,104 @@ void bhv_wb_breakable_loop()
     }
 }
 
+#define oWbSparkTraj OBJECT_FIELD_CVPTR(0x1B)
+#define oWbSparkTrajIndex oF8
+
+static void wb_spark_reset()
+{
+    const Trajectory* traj = o->oWbSparkTraj;
+    o->oWbSparkTrajIndex = 0;
+    o->oVelY = 0;
+    o->oForwardVel = 0;
+
+    Vec3f prev;
+    prev[0] = traj[1];
+    prev[1] = traj[2];
+    prev[2] = traj[3];
+    Vec3f curr;
+    curr[0] = traj[1];
+    curr[1] = traj[2];
+    curr[2] = traj[3];
+    
+    Vec3f diff;
+    vec3_diff(diff, curr, prev);
+
+    o->oMoveAngleYaw = atan2s(diff[2], diff[0]);
+    o->oPosX = prev[0];
+    o->oPosY = prev[1];
+    o->oPosZ = prev[2];
+}
+
+extern const Trajectory wb_area_1_spline_NurbsCurve_StarMove[];
 void bhv_wb_spark_init()
 {
     o->oOpacity = 255;
+    o->oWbSparkTraj = segmented_to_virtual(wb_area_1_spline_NurbsCurve_StarMove);
+    wb_spark_reset();
 }
 
 void bhv_wb_spark_loop()
 {
     o->oAnimState++;
+    if (0 == o->oAction)
+    {
+        const Trajectory* traj = o->oWbSparkTraj;
+        if (0 == o->oWbSparkTrajIndex)
+        {
+            if (o->oDistanceToMario < 200.f)
+            {
+                o->oWbSparkTrajIndex = 4;
+                o->oTimer = 0;
+            }
+        }
+        else
+        {
+            Vec3f curr;
+            curr[0] = traj[o->oWbSparkTrajIndex + 1];
+            curr[1] = traj[o->oWbSparkTrajIndex + 2];
+            curr[2] = traj[o->oWbSparkTrajIndex + 3];
+            
+            Vec3f diff;
+            vec3_diff(diff, curr, &o->oPosVec);
+            f32 dlen = diff[0] * diff[0] + diff[1] * diff[1] + diff[2] * diff[2];
+
+            s16 yaw = atan2s(diff[2], diff[0]);
+            o->oMoveAngleYaw = approach_angle(o->oMoveAngleYaw, yaw, 0x200);
+
+            f32 velLim = CLAMP(dlen / 10000.f, 0, 28);
+            f32 vel = CLAMP(o->oTimer, 0, velLim);
+            o->oForwardVel = vel;
+
+            o->oVelX = o->oForwardVel * sins(o->oMoveAngleYaw);
+            o->oVelZ = o->oForwardVel * coss(o->oMoveAngleYaw);
+            o->oVelY = diff[1] / 100.f;
+
+            o->oPosX += o->oVelX;
+            o->oPosY += o->oVelY;
+            o->oPosZ += o->oVelZ;
+
+            if (dlen < 300.f * 300.f)
+            {
+                o->oWbSparkTrajIndex += 4;
+            }
+            
+            if (o->oDistanceToMario > 900.f)
+            {
+                o->oAction = 1;
+            }
+        }
+    }
+    else
+    {
+        play_sound(SOUND_MOVING_LAVA_BURN, o->header.gfx.cameraToObject);
+        spawn_object(o, MODEL_BURN_SMOKE, bhvBlackSmokeBowser);
+        o->oPosY -= o->oTimer;
+        if (30 == o->oTimer)
+        {
+            o->oAction = 0;
+            wb_spark_reset();
+        }
+    }
 }
 
 void bhv_wb_move_spring_init()
@@ -156,8 +246,9 @@ void bhv_wb_door_chao_loop()
     f32 dz = o->parentObj->oPosZ - o->oPosZ;
 
     f32 dist = dx * dx + dy * dy + dz * dz;
-    if (dist < 400.f * 400.f)
+    if (dist < 500.f * 500.f)
     {
         o->activeFlags = 0;
+        o->parentObj->activeFlags = 0;
     }
 }
