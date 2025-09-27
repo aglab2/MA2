@@ -1172,6 +1172,11 @@ static const u32* kCGBannedDls[] = {
 extern u32 cck_dl_001_object_00894794_mesh_layer_1[];
 extern u32 cck_dl_001_object_008C7A3C_mesh_layer_1[];
 
+extern u32 chao_dl_object_00F4BE14_mesh_layer_5[];
+extern u32 chao_dl_object_00F4CB24_mesh_layer_5[];
+extern u32 chao_dl_object_00F4D6CC_mesh_layer_5[];
+extern u32 chao_dl_object_00F4E524_mesh_layer_5[];
+
 static int dropped_for_console(void* dl, s32 layer)
 {
     if (gCurrCourseNum == COURSE_CE)
@@ -1231,6 +1236,18 @@ static int dropped_for_console(void* dl, s32 layer)
         if (dl == cck_dl_001_object_00894794_mesh_layer_1)
             return 1;
         if (dl == cck_dl_001_object_008C7A3C_mesh_layer_1)
+            return 1;
+    }
+
+    if (gCurrCourseNum == COURSE_CHAO)
+    {
+        if (dl == chao_dl_object_00F4BE14_mesh_layer_5)
+        return 1;
+        if (dl == chao_dl_object_00F4CB24_mesh_layer_5)
+            return 1;
+        if (dl == chao_dl_object_00F4D6CC_mesh_layer_5)
+            return 1;
+        if (dl == chao_dl_object_00F4E524_mesh_layer_5)
             return 1;
     }
 
