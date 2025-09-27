@@ -2914,6 +2914,7 @@ const BehaviorScript bhvWhompKingBoss[] = {
     GOTO(bhvSmallWhomp + 1 + 1),
 };
 
+extern void bhv_whomp_init();
 const BehaviorScript bhvSmallWhomp[] = {
     BEGIN(OBJ_LIST_SURFACE),
     SET_INT(oNumLootCoins, 5),
@@ -2924,6 +2925,7 @@ const BehaviorScript bhvSmallWhomp[] = {
     ANIMATE(WHOMP_ANIM_WALK),
     SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 0, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 0, /*Friction*/ 0, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
     SET_HOME(),
+    CALL_NATIVE(bhv_whomp_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_whomp_loop),
     END_LOOP(),

@@ -273,6 +273,14 @@ ObjActionFunc sWhompActions[] = {
     king_whomp_stop_music,
 };
 
+void bhv_whomp_init()
+{
+    if (gCurrCourseNum == COURSE_CW)
+    {
+        o->oGravity /= 1.5f;
+    }
+}
+
 void bhv_whomp_loop(void) {
     cur_obj_update_floor_and_walls();
     cur_obj_call_action_function(sWhompActions);
