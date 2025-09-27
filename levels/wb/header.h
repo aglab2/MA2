@@ -45,4 +45,6 @@ extern const LevelScript level_wb_entry[];
 
 #include "levels/wb/wb_spark/geo_header.h"
 
+#include "levels/wb/wb_shuts_chao/geo_header.h"
+
 #endif
