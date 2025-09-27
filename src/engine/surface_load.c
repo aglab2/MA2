@@ -158,7 +158,8 @@ static void add_surface_to_cell(s32 dynamic, s32 cellX, s32 cellZ, struct Surfac
 
     // Check if surface should be placed at the beginning of the list.
     s32 priority = (listIndex == SPATIAL_PARTITION_FLOORS) ? (curNode->upperY) : (-curNode->lowerY);
-    if (dynamic || listIndex == SPATIAL_PARTITION_WALLS || addingPriority > priority) {
+    int fastAdd = dynamic && gCurrCourseNum != COURSE_WB;
+    if (fastAdd || listIndex == SPATIAL_PARTITION_WALLS || addingPriority > priority) {
         *slimList = to_slimptr(newNode);
         newNode->next = curNode;
         return;
