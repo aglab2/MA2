@@ -53,6 +53,10 @@ void reset_globals()
     sTrajectory = NULL;
     sViewRange = 400000000.0f;
     gSafeY = -30000.f;
+    if (gCurrLevelNum == LEVEL_CHAO)
+    {
+        gDialogCameraAngleIndex = 1;
+    }
 }
 
 void bhv_ow_ctl_init()
