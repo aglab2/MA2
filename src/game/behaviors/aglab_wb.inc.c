@@ -223,12 +223,18 @@ void bhv_wb_move_spring_init()
     bhv_wb_move_init();
 }
 
+#define oSpringBezier OBJECT_FIELD_VPTR(0x1B)
 void bhv_wb_move_spring_loop()
 {
     bhv_wb_move_loop();
     o->parentObj->oPosX = o->oPosX;
-    o->parentObj->oPosY = o->oPosY + 20.f;
+    o->parentObj->oPosY = o->oPosY + 230.f;
     o->parentObj->oPosZ = o->oPosZ;
+
+    s16* bezier = (s16*)o->parentObj->oSpringBezier;
+    bezier[1] = o->oPosX;
+    bezier[2] = o->oPosY + 230.f;
+    bezier[3] = o->oPosZ;
 }
 
 void bhv_wb_door_chao_init()

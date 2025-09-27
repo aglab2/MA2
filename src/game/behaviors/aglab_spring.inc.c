@@ -10,7 +10,6 @@ static s16 sSpringBezierLevelNum = 0;
 const s16* sSpringBezier = NULL;
 static int sSpringTimer = 0;
 
-#define oSpringBezier OBJECT_FIELD_VPTR(0x1B)
 #define oSpringQuant OBJECT_FIELD_F32(0x1C)
 
 static void bezierInterp(s16* curve, Vec3f result, f32 t)
