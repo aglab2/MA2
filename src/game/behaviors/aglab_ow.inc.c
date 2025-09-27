@@ -71,13 +71,16 @@ void bhv_ow_ctl_init()
         u64 withExtraMode = gLevelWithHardModes & (1ULL << (i + levelBase));
 
         f32 baseDistanace;
+        f32 lockDiff;
         if (gCurrLevelNum == LEVEL_CASTLE_GROUNDS2)
         {
             baseDistanace = -7761.f + 1000.f * i;
+            lockDiff = 500.f;
         }
         else
         {
             baseDistanace = 7238.f - 1000.f * i;
+            lockDiff = -600.f;
         }
 
         {
@@ -90,7 +93,7 @@ void bhv_ow_ctl_init()
             struct Object* obj = spawn_object(o, MODEL_OW_LOCK, bhvOwLock);
             obj->oPosX = xbase;
             obj->oPosY = 0.f;
-            obj->oPosZ = baseDistanace - 600.f;
+            obj->oPosZ = baseDistanace + lockDiff;
             if (!withExtraMode)
             {
                 obj->oBehParams2ndByte = off++;
@@ -147,13 +150,13 @@ void bhv_ow_ctl_loop()
     }
     else
     {
-        if (gMarioStates->pos[2] < -9000.f && save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_SS1 - 1))
+        if (gMarioStates->pos[2] < -9000.f)
         {
             gMarioStates->usedObj = o;
             SET_BPARAM2(o->oBehParams, 0x80);
             level_trigger_warp(gMarioStates, WARP_OP_TELEPORT);
         }
-        if (gMarioStates->pos[2] >  5700.f)
+        if (gMarioStates->pos[2] >  5700.f && save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_SS1 - 1))
         {
             gMarioStates->usedObj = o;
             SET_BPARAM2(o->oBehParams, 0x81);
