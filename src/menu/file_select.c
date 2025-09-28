@@ -21,6 +21,12 @@
 #include "game/rumble_init.h"
 #include "sm64.h"
 
+static const u8 sCERemovedStars[] = { 16, 21 };
+
+static const u8* sRemovedStarsInLevels[] = {
+    [ COURSE_CE ] = sCERemovedStars,
+};
+
 /**
  * @file file_select.c
  * This file implements how the file select and it's menus render and function.
