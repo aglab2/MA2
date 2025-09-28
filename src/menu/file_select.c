@@ -27,6 +27,7 @@ static const s8 sPLRemovedStars[] = { 12, -1 };
 static const s8 sMHRemovedStars[] = { 10, 20, -1 };
 static const s8 sGFRemovedStars[] = { 7, -1 };
 static const s8 sPHRemovedStars[] = { 0, -1 };
+static const s8 sAQRemovedStars[] = { 7, 20, 21, -1 };
 
 static const s8* sRemovedStarsInLevels[] = {
     [ COURSE_CE ] = sCERemovedStars,
@@ -35,6 +36,7 @@ static const s8* sRemovedStarsInLevels[] = {
     [ COURSE_MH ] = sMHRemovedStars,
     [ COURSE_GF ] = sGFRemovedStars,
     [ COURSE_PH ] = sPHRemovedStars,
+    [ COURSE_AQ ] = sAQRemovedStars,
 };
 
 /**

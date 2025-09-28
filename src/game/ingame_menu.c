@@ -2158,9 +2158,9 @@ struct ViewDecl
     u16 has100 : 1;
 } ViewDecl;
 
-// Total: 1033
+// Total: 1030
 static const struct ViewDecl sViewDecls[] = {
-  [ COURSE_AQ ] = { .stars = 25, .checkpoints = 4, .has100 = true }
+  [ COURSE_AQ ] = { .stars = 22, .checkpoints = 4, .has100 = true }
 , [ COURSE_CCE ] = { .stars = 12, .checkpoints = 1, .goal = true }
 , [ COURSE_CCK ] = { .stars = 12, .checkpoints = 1, .goal = true }
 , [ COURSE_CCR ] = { .stars = 9, .checkpoints = 1, .goal = true }
