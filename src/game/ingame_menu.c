@@ -2149,13 +2149,120 @@ LangArray textPause = DEFINE_LANGUAGE_ARRAY(
     "PAUSE",
     "PAUSA");
 
+struct ViewDecl
+{
+    u8 stars;
+    u8 checkpoints;
+    u8 goal;
+    u8 extra;
+} ViewDecl;
+
+static const struct ViewDecl sViewDecls[] = {
+     [ COURSE_AQ ] = { .stars = 25, .checkpoints = 4 }
+,    [ COURSE_CCE ] = { .stars = 12, .checkpoints = 1, .goal = true }
+,    [ COURSE_CCK ] = { .stars = 12, .checkpoints = 1, .goal = true }
+,    [ COURSE_CCR ] = { .stars = 9, .checkpoints = 1, .goal = true }
+,    [ COURSE_CCS ] = { .stars = 7, .checkpoints = 1, .goal = true }
+,    [ COURSE_CCT ] = { .stars = 7, .checkpoints = 1, .goal = true }
+,    [ COURSE_CE ] = { .stars = 25, .checkpoints = 5, .goal = true }
+,    [ COURSE_CG ] = { .stars = 29, .checkpoints = 5, .goal = true }
+,    [ COURSE_CHAO ] = { .stars = 14, .checkpoints = 4 }
+,    [ COURSE_CW ] = { .stars = 27, .checkpoints = 8, .goal = true }
+,    [ COURSE_DC ] = { .stars = 36, .checkpoints = 5 }
+,    [ COURSE_DL ] = { .stars = 24, .checkpoints = 3 }
+,    [ COURSE_EE ] = { .stars = 22, .checkpoints = 5, .goal = true }
+,    [ COURSE_EQ ] = { .stars = 29, .checkpoints = 3 }
+,    [ COURSE_FC ] = { .stars = 38, .checkpoints = 8, .goal = true }
+,    [ COURSE_FR ] = { .stars = 39, .checkpoints = 5, .goal = true }
+,    [ COURSE_GF ] = { .stars = 27, .checkpoints = 6, .goal = true, .extra = true }
+,    [ COURSE_GH ] = { .stars = 22, .checkpoints = 2, .goal = true }
+,    [ COURSE_HB ] = { .stars = 34, .checkpoints = 5, .goal = true }
+,    [ COURSE_IG ] = { .stars = 18, .checkpoints = 3, .goal = true }
+,    [ COURSE_LC ] = { .stars = 22, .checkpoints = 3, .goal = true }
+,    [ COURSE_MH ] = { .stars = 30, .checkpoints = 5, .goal = true }
+,    [ COURSE_MHE ] = { .stars = 26, .checkpoints = 3 }
+,    [ COURSE_MS ] = { .stars = 23, .checkpoints = 5, .goal = true }
+,    [ COURSE_MSP ] = { .stars = 26, .checkpoints = 5 }
+,    [ COURSE_PC ] = { .stars = 26, .checkpoints = 6, .goal = true }
+,    [ COURSE_PH ] = { .stars = 26, .checkpoints = 4 }
+,    [ COURSE_PL ] = { .stars = 22, .checkpoints = 5, .goal = true }
+,    [ COURSE_RH ] = { .stars = 28, .checkpoints = 5, .goal = true }
+,    [ COURSE_SH ] = { .stars = 24, .checkpoints = 3 }
+,    [ COURSE_SO ] = { .stars = 27, .checkpoints = 3, .goal = true }
+,    [ COURSE_SR ] = { .stars = 28, .checkpoints = 4, .goal = true }
+,    [ COURSE_WB ] = { .stars = 23, .checkpoints = 4, .goal = true, .extra = true }
+,    [ COURSE_WC ] = { .stars = 27, .checkpoints = 4 }
+,    [ COURSE_WJ ] = { .stars = 27, .checkpoints = 5, .goal = true }
+
+,    [ COURSE_SS1 ] = { .stars = 1 }
+,    [ COURSE_SS2 ] = { .stars = 1 }
+,    [ COURSE_LB ] = { .stars = 1 }
+,    [ COURSE_LF ] = { .stars = 1 }
+,    [ COURSE_END ] = { .stars = 1 }
+};
+
+static void render_from_to(void **courseNameTbl, int from, int to)
+{
+    char line[100];
+    for (int i = from; i < to; i++)
+    {
+        u64 stars = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(i));
+        if (!stars)
+            continue;
+
+        u64 starsMask = (1ULL << sViewDecls[i].stars) - 1;
+        u64 checkpointsMask = sViewDecls[i].checkpoints ? ((1ULL << sViewDecls[i].checkpoints) - 1) << (64 - sViewDecls[i].checkpoints) : 0;
+        u64 goalMask = sViewDecls[i].goal ? (1ULL << 63) : 0;
+        u64 extraMask = sViewDecls[i].extra ? (1ULL << 50) : 0;
+        u64 mask = starsMask | checkpointsMask | goalMask | extraMask;
+        u64 maskInverted = ~mask;
+        if (stars & maskInverted)
+        {
+            char errorMsg[100];
+            sprintf(errorMsg, "Invalid star flags for course %d", i);
+            error(errorMsg);
+        }
+
+        char *courseName = segmented_to_virtual(courseNameTbl[i]);
+
+        int x = i % 2;
+        int y = i / 2;
+        print_generic_string_aligned(60 + x * 140, 200 - y * 16, courseName, TEXT_ALIGN_LEFT);
+    }
+}
+
+static u8 sPage = 0;
 void print_hud_pause_colorful_str(void) {
-    gSPDisplayList(gDisplayListHead++, dl_rgba16_text_begin);
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
 
-    print_hud_lut_string_aligned(SCREEN_CENTER_X, 81, LANG_ARRAY(textPause), TEXT_ALIGN_CENTER);
+    if (gPlayer1Controller->buttonPressed & R_TRIG) {
+        sPage++;
+        if (sPage > 2)
+            sPage = 0;
+    }
+    if (gPlayer1Controller->buttonPressed & Z_TRIG) {
+        if (sPage == 0)
+            sPage = 2;
+        else
+            sPage--;
+    }
 
-    gSPDisplayList(gDisplayListHead++, dl_rgba16_text_end);
+    void **courseNameTbl = segmented_to_virtual(gLanguageTables[gInGameLanguage].course_name_table);
+    switch (sPage)
+    {
+        case 0:
+            render_from_to(courseNameTbl, COURSE_CE, COURSE_SS2);
+        break;
+        case 1:
+            render_from_to(courseNameTbl, COURSE_IG, COURSE_SS1);
+        break;
+        case 2:
+            render_from_to(courseNameTbl, COURSE_CCT, COURSE_CHAO);
+        break;
+    }
+
+    gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
 }
 
 void render_pause_castle_course_stars(s16 x, s16 y, s16 fileIndex, s16 courseIndex) {

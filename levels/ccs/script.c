@@ -100,7 +100,6 @@ const LevelScript level_ccs_entry[] = {
 		OBJECT(MODEL_FLYGUY, 3740, -4283, 12716, 0, -180, 0, 0x00000000, bhvFlyGuy),
 		OBJECT(MODEL_FLYGUY, 3740, -4283, 11713, 0, -180, 0, 0x00000000, bhvFlyGuy),
 		OBJECT(MODEL_NONE, -5, -4472, 17978, 0, 0, 0, 0x00000000, bhvCcsFlyguyLock),
-		OBJECT(MODEL_GOAL, -14699, -56304, -66012, 0, 0, 0, 0x00000000, bhvGoal),
 		OBJECT(MODEL_NONE, 0, -4800, 14192, 0, 0, 0, 0x00000000, bhvGoombaTripletSpawner),
 		OBJECT(MODEL_NONE, -5093, -4800, 8973, 0, 0, 0, 0x00000000, bhvGoombaTripletSpawner),
 		OBJECT(MODEL_NONE, -5096, -6550, -15833, 0, 0, 0, 0x00000000, bhvGoombaTripletSpawner),
