@@ -72,7 +72,7 @@ extern Vtx pc_dl_C_pc_block_mesh_layer_1_vtx_0[8];
 extern Gfx pc_dl_C_pc_block_mesh_layer_1_tri_0[];
 extern Vtx pc_dl_object_006A0C08_mesh_layer_1_vtx_0[20];
 extern Gfx pc_dl_object_006A0C08_mesh_layer_1_tri_0[];
-extern Vtx pc_dl_object_006B5B48_mesh_layer_1_vtx_0[86];
+extern Vtx pc_dl_object_006B5B48_mesh_layer_1_vtx_0[79];
 extern Gfx pc_dl_object_006B5B48_mesh_layer_1_tri_0[];
 extern Vtx pc_dl_C_pc_keyhole_mesh_layer_1_vtx_0[17];
 extern Gfx pc_dl_C_pc_keyhole_mesh_layer_1_tri_0[];
