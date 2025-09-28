@@ -671,6 +671,7 @@ extern const BehaviorScript bhvGhPlat[];
 extern const BehaviorScript bhvGhWarp[];
 
 extern const BehaviorScript bhvKSource[];
+extern const BehaviorScript bhvKSourceDyn[];
 extern const BehaviorScript bhvKSpark[];
 extern const BehaviorScript bhvKDoor[];
 extern const BehaviorScript bhvKPlat[];

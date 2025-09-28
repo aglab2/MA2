@@ -7440,6 +7440,20 @@ extern const BehaviorScript bhvKSource[] = {
     END_LOOP(),
 };
 
+extern const Collision k_source_collision[];
+extern void bhv_k_source_init();
+extern void bhv_k_source_loop();
+extern const BehaviorScript bhvKSourceDyn[] = {
+    BEGIN(OBJ_LIST_SPAWNER), // must be earlier than any other K-objects
+    OR_INT(oFlags, OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    LOAD_COLLISION_DATA(k_source_collision),
+    CALL_NATIVE(bhv_k_source_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_k_source_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
 extern void bhv_k_spark_init();
 extern void bhv_k_spark_loop();
 extern const BehaviorScript bhvKSpark[] = {
