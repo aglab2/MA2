@@ -2203,6 +2203,12 @@ static const struct ViewDecl sViewDecls[] = {
 
 static void render_from_to(void **courseNameTbl, int from, int to)
 {
+    static const u8 Red[] = { 240, 100, 100 };
+    static const u8 Green[] = { 100, 240, 100 };
+    static const u8 White[] = { 255, 255, 255 };
+
+    u8 curColor = 255; // white
+
     char line[100];
     for (int i = from; i <= to; i++)
     {
@@ -2217,8 +2223,8 @@ static void render_from_to(void **courseNameTbl, int from, int to)
         u64 h100Mask = sViewDecls[i].has100 ? (1ULL << 48) : 0;
 
         u64 mask = expStarsMask | checkpointsMask | goalMask | extraMask | h100Mask;
-#if 0
         u64 maskInverted = ~mask;
+#if 0
         if (stars & maskInverted)
         {
             char errorMsg[100];
@@ -2227,20 +2233,31 @@ static void render_from_to(void **courseNameTbl, int from, int to)
         }
 #endif
         u64 realStarsMask = mask & starsMask;
+        u64 unaccountedStarsMask = starsMask & maskInverted;
+
         int stars = __builtin_popcountll(realStarsMask);
         int totalStars = __builtin_popcountll(mask);
 
         char *courseName = segmented_to_virtual(courseNameTbl[i - 1]);
 
+        u8* wantColors = (unaccountedStarsMask ? Red : (stars == totalStars ? Green : White));
+        u8 wantColor = wantColors[0];
+        if (wantColor != curColor)
+        {
+            curColor = wantColor;
+            set_text_color(curColor, wantColors[1], wantColors[2]);
+        }
+
         int diff = i - from;
         int x = diff % 2;
         int y = diff / 2;
         print_generic_string_aligned(40 + x * 140, 200 - y * 16, courseName, TEXT_ALIGN_LEFT);
-        
+
         char line[20];
         sprintf(line, "%d/%d", stars, totalStars);
         print_generic_string_aligned(40 + x * 140 + 80, 200 - y * 16, line, TEXT_ALIGN_LEFT);
     }
+    set_text_color(255, 255, 255);
 }
 
 static u8 sPage = 0;
