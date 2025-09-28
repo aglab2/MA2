@@ -21,10 +21,12 @@
 #include "game/rumble_init.h"
 #include "sm64.h"
 
-static const u8 sCERemovedStars[] = { 16, 21 };
+static const s8 sCERemovedStars[] = { 15, 20, -1 };
+static const s8 sWCRemovedStars[] = { 2, 13, 21, -1 };
 
-static const u8* sRemovedStarsInLevels[] = {
+static const s8* sRemovedStarsInLevels[] = {
     [ COURSE_CE ] = sCERemovedStars,
+    [ COURSE_WC ] = sWCRemovedStars,
 };
 
 /**
