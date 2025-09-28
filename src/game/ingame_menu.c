@@ -1825,6 +1825,7 @@ static int ccShowLimit()
     return lvlShowLimit;
 }
 
+u8 gHACK = 11;
 void render_pause_my_score_coins(void) {
     char str[20];
 
@@ -1854,8 +1855,8 @@ void render_pause_my_score_coins(void) {
             if (cc)
             {
                 static const u8 starCountsPerCC[] = { 7, 12, 9, 12, 8 };
-                // there are never more than 32 stars per CC course
-                static const u64 starsFlagMask = 0xffffffffULL;
+                // there are never more than 32 stars per CC course (actually even less)
+                static const u64 starsFlagMask = 0xffff;
                 static const u64 checkpointsFlagMask = 0xF000000000000000ULL;
 
                 int lvlShowLimit = ccShowLimit();
@@ -1901,8 +1902,13 @@ void render_pause_my_score_coins(void) {
                 }
 
                 checkpointCountTotal++;
+                if (checkpointCountTotal > gHACK)
+                    checkpointCountTotal = gHACK;
+
                 checkpointCountTotal = 64 - checkpointCountTotal;
             }
+
+            print_text_fmt_int(20, 40, "%d", checkpointCountTotal);
 
             int y = PAUSE_MENU_MY_SCORE_Y + 20;
             print_generic_string_aligned(PAUSE_MENU_LEFT_X + 3 - 45, y, textCheckpoint, TEXT_ALIGN_RIGHT);
@@ -1917,10 +1923,10 @@ void render_pause_my_score_coins(void) {
             if (gLevelWithHardModes & (1ULL << (gCurrLevelNum - LEVEL_CE)))
             {
                 // goal ring
-                bool goalCollected;
                 {
-                    goalCollected = !!(realStarFlags & (1ULL << 63));
-                    render_star_at(goalCollected, PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30, y);
+                    int goalId = cc ? 53 : 63;
+                    bool enabled = !!(starFlags & (1ULL << goalId));
+                    render_star_at(enabled, PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30, y);
                 }
                 // secret course
                 {
@@ -1928,7 +1934,8 @@ void render_pause_my_score_coins(void) {
                     if (enabled)
                         render_star_at(enabled, PAUSE_MENU_LEFT_X + 3 + 23 * 10 - 30 - 20, y);
                 }
-                
+
+                bool goalCollected = !(realStarFlags & (1ULL << 63));
                 char line[100];
                 sprintf(line, "Objective: %s", goalCollected ? getMainObjective() : kCollectTheStars);
                 print_generic_string_aligned(160, y + 55, line, TEXT_ALIGN_CENTER);
@@ -1997,8 +2004,11 @@ static void render_quick_warp(s16 x, s16 y, s8 *index, s16 xIndex) {
     {
         int lvlShowLimit = ccShowLimit();
         limit = 2*(lvlShowLimit - COURSE_CCT) + 1;
-        limit += 2;
+        limit++;
     }
+
+    if (limit > 11)
+        limit = 11;
 
     u64 realStarFlags = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
     bool hasExtraCourse = !!(realStarFlags & (1ULL << 50));
@@ -2287,12 +2297,8 @@ static int get_checkpoint_warp()
     if (cc)
     {
         checkpointIdx = 62 - (gDialogCameraAngleIndex - 2);
-        int shiftedIdx = gDialogCameraAngleIndex - 3;
-        int course = (shiftedIdx / 2) + COURSE_CCT;
-        int idx = (shiftedIdx % 2) ? 62 : 63;
-        if (shiftedIdx & 1)
-            course++;
-
+        int course = (gDialogCameraAngleIndex / 2) + COURSE_CCT - 1;
+        int idx = (gDialogCameraAngleIndex % 2) ? 63 : 62;
         hasCheckpoint = !!(save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(course)) & (1ULL << idx));
         if (hasCheckpoint)
         {

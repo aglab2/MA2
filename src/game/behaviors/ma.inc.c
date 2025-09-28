@@ -13,6 +13,7 @@ static struct ObjectHitbox sCheckpointInteract = {
 };
 
 extern s8 gDialogCameraAngleIndex;
+static s8 sCheckpointActive = -1;
 
 void bhv_checkpoint_init()
 {
@@ -29,6 +30,7 @@ void bhv_checkpoint_init()
         {
             o->oGeoRoll = 0;
             o->oInteractStatus = INT_STATUS_INTERACTED;
+            sCheckpointActive = gDialogCameraAngleIndex;
         }
         else
         {
@@ -73,7 +75,7 @@ void bhv_checkpoint_loop()
         }
         else
         {
-            if (gDialogCameraAngleIndex != toDialogId(GET_BPARAM2(o->oBehParams)))
+            if (sCheckpointActive != toDialogId(GET_BPARAM2(o->oBehParams)))
             {
                 o->oAction = 0;
                 o->oGeoRoll = 0x4000;
@@ -86,7 +88,8 @@ void bhv_checkpoint_loop()
         if (o->oInteractStatus & INT_STATUS_INTERACTED)
         {
             sSafeWarpId = GET_BPARAM2(o->oBehParams);
-            gDialogCameraAngleIndex = toDialogId(sSafeWarpId);
+            sCheckpointActive = toDialogId(sSafeWarpId);
+            gDialogCameraAngleIndex = sCheckpointActive;
             o->oAction = 1;
         }
     }

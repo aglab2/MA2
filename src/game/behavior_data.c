@@ -7510,9 +7510,11 @@ extern const BehaviorScript bhvCCSMusicSwitch[] = {
     END_LOOP(),
 };
 
+extern void bhv_ccs_coin_star_init();
 extern void bhv_ccs_coin_star_loop();
 extern const BehaviorScript bhvCcsCoinStar[] = {
     BEGIN(OBJ_LIST_LEVEL),
+    CALL_NATIVE(bhv_ccs_coin_star_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_ccs_coin_star_loop),
     END_LOOP(),

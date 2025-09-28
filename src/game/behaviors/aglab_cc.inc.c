@@ -1278,6 +1278,29 @@ void bhv_ccs_music_switch_loop()
     }
 }
 
+void bhv_ccs_coin_star_init()
+{
+    gMarioStates->numCoins = 0;
+    SET_BPARAM1(o->oBehParams, 7);
+}
+
 void bhv_ccs_coin_star_loop()
 {
+    print_text_fmt_int(140, 20, "✪×%d", gMarioStates->numCoins);
+    if (gMarioStates->numCoins >= 100)
+    {
+        if (o->oAction == 0)
+        {
+            o->oAction = 1;
+            o->oPosX = gMarioStates->pos[0];
+            o->oPosY = gMarioStates->pos[1] + 100.f;
+            o->oPosZ = gMarioStates->pos[2];
+            spawn_default_star(gMarioStates->pos[0], gMarioStates->pos[1], gMarioStates->pos[2]);
+        }
+    }
+
+    if (gMarioStates->pos[1] < -13000.f)
+    {
+        cc_grant_clear(gMarioStates);
+    }
 }

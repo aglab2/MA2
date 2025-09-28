@@ -73,7 +73,7 @@ const LevelScript level_ccs_entry[] = {
 		OBJECT(MODEL_CHILL_BULLY, -4531, -5270, 5957, 0, 0, 0, (2 << 16), bhvSmallBully),
 		OBJECT(MODEL_CHILL_BULLY, -4431, -5270, 7180, 0, 0, 0, (2 << 16), bhvSmallBully),
 		OBJECT(MODEL_CHILL_BULLY, -5630, -5270, 7131, 0, 0, 0, (2 << 16), bhvSmallBully),
-		OBJECT(MODEL_CHECKPOINT, -5118, -5270, 3833, 0, 0, 0, 0x00000000, bhvCheckpoint),
+		OBJECT(MODEL_CHECKPOINT, -5118, -5270, 3833, 0, 180, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_NONE, 175, -4665, 13318, 0, 143, 0, (4 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -5108, -8128, -9347, 0, -180, 0, (4 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -2, -4708, 18955, 0, 0, 0, 0x00000000, bhvCoinFormation),
@@ -135,7 +135,7 @@ const LevelScript level_ccs_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 	AREA(2, ccs_area_2, 0, -4000, 2000-7000),
-		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		WARP_NODE(0x0A, LEVEL_LB, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		OBJECT(MODEL_NONE, -5108, 23538, 18407, 0, -180, 0, (4 << 16), bhvCoinFormation),

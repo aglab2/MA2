@@ -355,6 +355,8 @@ void bhv_lb_ctl_loop()
 
             o->parentObj->hitboxRadius = 1000.f;
             o->parentObj->hitboxHeight = 1300.f;
+            o->parentObj->hurtboxRadius = 900.f;
+            o->parentObj->hurtboxHeight = 1200.f;
 
             s8DirModeYawOffset = 0x8000;
    

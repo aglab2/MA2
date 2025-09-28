@@ -1309,6 +1309,9 @@ u32 interact_bully(struct MarioState *m, UNUSED u32 interactType, struct Object 
         update_mario_sound_and_camera(m);
         play_sound(SOUND_MARIO_EEUH, m->marioObj->header.gfx.cameraToObject);
         play_sound(SOUND_OBJ_BULLY_METAL, m->marioObj->header.gfx.cameraToObject);
+        int cc = COURSE_CCT <= gCurrCourseNum && gCurrCourseNum <= COURSE_CCS;
+        if (cc)
+            m->invincTimer = 92;
 
         push_mario_out_of_object(m, obj, 5.0f);
         drop_and_set_mario_action(m, bully_knock_back_mario(m), 0);
