@@ -618,6 +618,7 @@ extern const BehaviorScript bhvCCTimestop[];
 extern const BehaviorScript bhvCCTFastDrop[];
 extern const BehaviorScript bhvCCTPlat[];
 extern const BehaviorScript bhvCCEDeath[];
+extern const BehaviorScript bhvCCRDucks[];
 extern const BehaviorScript bhvCCSpawn[];
 extern const BehaviorScript bhvCCSpawnBlock[];
 extern const BehaviorScript bhvCCRSwitch[];

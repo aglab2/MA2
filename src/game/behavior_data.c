@@ -6777,6 +6777,14 @@ const BehaviorScript bhvCCEDeath[] = {
     END_LOOP(),
 };
 
+extern void bhv_ccr_ducks_loop();
+const BehaviorScript bhvCCRDucks[] = {
+    BEGIN(OBJ_LIST_UNIMPORTANT),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ccr_ducks_loop),
+    END_LOOP(),
+};
+
 extern const Collision cce_block_collision[];
 extern void bhv_cce_spawn_block_init();
 const BehaviorScript bhvCCSpawn[] = {

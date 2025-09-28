@@ -351,6 +351,35 @@ extern void bhv_cce_death_loop()
     }
 }
 
+void bhv_ccr_ducks_loop()
+{
+    if (0 == o->oAction)
+    {
+        if (gMarioStates->pos[1] > 9000.f)
+        {
+            o->oAction = 1;
+            seq_player_play_sequence(0, 0x4A, 0);
+            set_mario_action(gMarioStates, ACT_JUMP, 0);
+        }
+    }
+    else
+    {
+        gMarioStates->pos[1] = CLAMP(9000.f + o->oTimer * 33.f, 0, 32000.f);
+        gMarioStates->vel[1] = 0;
+        spawn_object(gMarioObject, MODEL_SPARKLES, bhvCoinSparklesSpawner);
+
+        if (o->oTimer > 100)
+        {
+            print_text_aligned(160, 200, "GAME OVER", TEXT_ALIGN_CENTER);
+            print_text_aligned(160, 40, "PRESS L TO RETRY", TEXT_ALIGN_CENTER);
+            if (gPlayer1Controller->buttonPressed & L_TRIG)
+            {
+                level_trigger_warp(gMarioStates, WARP_OP_DEATH);
+            }
+        }
+    }
+}
+
 #define oCCESpawnBlocks oObjF4
 #define oCCEBlocksMask oF8
 

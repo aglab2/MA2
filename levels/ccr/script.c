@@ -71,6 +71,7 @@ const LevelScript level_ccr_entry[] = {
 		OBJECT(MODEL_NONE, 14, -1200, -6996, 0, 0, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_NONE, -7, 3917, -1265, 0, -180, 0, (20 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -40, 200, 1109, 0, 0, 0, 0x00000000, bhvCCEDeath),
+		OBJECT(MODEL_NONE, -40, 200, 1109, 0, 0, 0, 0x00000000, bhvCCRDucks),
 		OBJECT(MODEL_K_DOOR, -2650, 300, 3, 0, 90, 0, 0x00000000, bhvKDoor),
 		OBJECT(MODEL_CCR_PLATFORM, 6, -1530, -5499, 0, 0, 0, 0x00000000, bhvCCRPlatform),
 		OBJECT(MODEL_K_SOURCE, -5994, 300, 3, 0, 0, 0, 0x00000000, bhvKSource),
