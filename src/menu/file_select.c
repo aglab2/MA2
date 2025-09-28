@@ -24,11 +24,13 @@
 static const s8 sCERemovedStars[] = { 15, 20, -1 };
 static const s8 sWCRemovedStars[] = { 2, 13, 21, -1 };
 static const s8 sPLRemovedStars[] = { 12, -1 };
+static const s8 sMHRemovedStars[] = { 10, 20, -1 };
 
 static const s8* sRemovedStarsInLevels[] = {
     [ COURSE_CE ] = sCERemovedStars,
     [ COURSE_WC ] = sWCRemovedStars,
     [ COURSE_PL ] = sPLRemovedStars,
+    [ COURSE_MH ] = sMHRemovedStars,
 };
 
 /**
