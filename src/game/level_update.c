@@ -1362,7 +1362,7 @@ static int exitWarpId()
     }
     if (gCurrLevelNum == LEVEL_GH)
     {
-        return LEVEL_GF - LEVEL_IG + 0x20;
+        return LEVEL_GF - LEVEL_CE + 0x20;
     }
     if (gCurrLevelNum == LEVEL_CHAO)
     {

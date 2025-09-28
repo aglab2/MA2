@@ -14,9 +14,16 @@ extern const Trajectory gh_area_2_spline_0131_object_012A8F7C_001_StarMove_002[]
 extern const Trajectory gh_area_2_spline_NurbsCurve_Loop[];
 extern const Trajectory gh_area_2_spline_NurbsCurve_Spring_001[];
 extern Vtx gh_dl_a3_001_mesh_layer_5_vtx_0[24];
+extern Gfx gh_dl_a3_001_mesh_layer_5_tri_0[];
 extern Vtx gh_dl_a3_002_mesh_layer_5_vtx_0[24];
+extern Gfx gh_dl_a3_002_mesh_layer_5_tri_0[];
 extern Vtx gh_dl_Plane_mesh_layer_1_vtx_cull[8];
 extern Vtx gh_dl_Plane_mesh_layer_1_vtx_0[20];
+extern Gfx gh_dl_Plane_mesh_layer_1_tri_0[];
+extern Gfx mat_gh_dl_f3dlite_material_002[];
+extern Gfx mat_revert_gh_dl_f3dlite_material_002[];
+extern Gfx mat_gh_dl_f3dlite_material[];
+extern Gfx mat_revert_gh_dl_f3dlite_material[];
 extern Gfx gh_dl_a3_001_mesh_layer_5[];
 extern Gfx gh_dl_a3_002_mesh_layer_5[];
 extern Gfx gh_dl_Plane_mesh_layer_1[];

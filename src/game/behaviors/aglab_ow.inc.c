@@ -51,7 +51,6 @@ void reset_globals()
     gTimeFrozen = 0;
     sSpringBezier = NULL;
     sTrajectory = NULL;
-    sViewRange = 400000000.0f;
     gSafeY = -30000.f;
     if (gCurrLevelNum == LEVEL_CHAO)
     {
@@ -120,6 +119,7 @@ void bhv_ow_ctl_init()
     }
 
     reset_globals();
+    sViewRange = 400000000.0f;
     gDialogCameraAngleIndex = 1;
     sSparkRefill = 0;
 

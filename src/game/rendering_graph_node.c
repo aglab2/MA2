@@ -564,13 +564,6 @@ extern const Gfx dirt_seg3_dl_tiny_particle_green[];
 extern const Gfx dirt_seg3_dl_tiny_particle_blue[];
 extern const Gfx dirt_seg3_dl_tiny_particle_yellow[];
 extern const Gfx dirt_seg3_dl_tiny_particle_billboard[];
-extern const Gfx koopa_seg6_dl_0600C498[];
-extern const Gfx koopa_seg6_dl_0600BE10[];
-extern const Gfx koopa_seg6_dl_0600BC88[];
-extern const Gfx koopa_seg6_dl_0600BC18[];
-extern const Gfx koopa_seg6_dl_0600BA90[];
-extern const Gfx koopa_seg6_dl_0600BA10[];
-extern const Gfx koopa_seg6_dl_06007AA0[];
 static const void* sDlRequiresReset[] = {
     bobomb_seg8_dl_08023270,
     bobomb_seg8_dl_08023378,
@@ -587,13 +580,6 @@ static const void* sDlRequiresReset[] = {
     dirt_seg3_dl_tiny_particle_blue,
     dirt_seg3_dl_tiny_particle_yellow,
     dirt_seg3_dl_tiny_particle_billboard,
-    koopa_seg6_dl_0600C498,
-    koopa_seg6_dl_0600BE10,
-    koopa_seg6_dl_0600BC88,
-    koopa_seg6_dl_0600BC18,
-    koopa_seg6_dl_0600BA90,
-    koopa_seg6_dl_0600BA10,
-    koopa_seg6_dl_06007AA0,
 };
 
 static int dl_wants_reset(const void* dl)
