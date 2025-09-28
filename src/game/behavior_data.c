@@ -7409,7 +7409,7 @@ extern const Collision gh_plat_collision[];
 extern void bhv_gh_plat_loop();
 extern const BehaviorScript bhvGhPlat[] = {
     BEGIN(OBJ_LIST_SURFACE),
-    OR_INT(oFlags, OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
     LOAD_COLLISION_DATA(gh_plat_collision),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_gh_plat_loop),
