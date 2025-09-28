@@ -37,7 +37,7 @@ void bhv_rocket_loop()
         }
         else
         {
-            if (gCurrCourseNum == COURSE_RH)
+            if (gCurrCourseNum == COURSE_RH || gCurrCourseNum == COURSE_PH)
             {
                 o->oPosX -= 100.f * coss(o->oFaceAngleYaw);
                 o->oPosZ -= 100.f * sins(o->oFaceAngleYaw);
