@@ -2151,83 +2151,95 @@ LangArray textPause = DEFINE_LANGUAGE_ARRAY(
 
 struct ViewDecl
 {
-    u8 stars;
-    u8 checkpoints;
-    u8 goal;
-    u8 extra;
+    u16 stars : 6;
+    u16 checkpoints : 6;
+    u16 goal : 1;
+    u16 extra : 1;
+    u16 has100 : 1;
 } ViewDecl;
 
 static const struct ViewDecl sViewDecls[] = {
-     [ COURSE_AQ ] = { .stars = 25, .checkpoints = 4 }
-,    [ COURSE_CCE ] = { .stars = 12, .checkpoints = 1, .goal = true }
-,    [ COURSE_CCK ] = { .stars = 12, .checkpoints = 1, .goal = true }
-,    [ COURSE_CCR ] = { .stars = 9, .checkpoints = 1, .goal = true }
-,    [ COURSE_CCS ] = { .stars = 7, .checkpoints = 1, .goal = true }
-,    [ COURSE_CCT ] = { .stars = 7, .checkpoints = 1, .goal = true }
-,    [ COURSE_CE ] = { .stars = 25, .checkpoints = 5, .goal = true }
-,    [ COURSE_CG ] = { .stars = 29, .checkpoints = 5, .goal = true }
-,    [ COURSE_CHAO ] = { .stars = 14, .checkpoints = 4 }
-,    [ COURSE_CW ] = { .stars = 27, .checkpoints = 8, .goal = true }
-,    [ COURSE_DC ] = { .stars = 36, .checkpoints = 5 }
-,    [ COURSE_DL ] = { .stars = 24, .checkpoints = 3 }
-,    [ COURSE_EE ] = { .stars = 22, .checkpoints = 5, .goal = true }
-,    [ COURSE_EQ ] = { .stars = 29, .checkpoints = 3 }
-,    [ COURSE_FC ] = { .stars = 38, .checkpoints = 8, .goal = true }
-,    [ COURSE_FR ] = { .stars = 39, .checkpoints = 5, .goal = true }
-,    [ COURSE_GF ] = { .stars = 27, .checkpoints = 6, .goal = true, .extra = true }
-,    [ COURSE_GH ] = { .stars = 22, .checkpoints = 2, .goal = true }
-,    [ COURSE_HB ] = { .stars = 34, .checkpoints = 5, .goal = true }
-,    [ COURSE_IG ] = { .stars = 18, .checkpoints = 3, .goal = true }
-,    [ COURSE_LC ] = { .stars = 22, .checkpoints = 3, .goal = true }
-,    [ COURSE_MH ] = { .stars = 30, .checkpoints = 5, .goal = true }
-,    [ COURSE_MHE ] = { .stars = 26, .checkpoints = 3 }
-,    [ COURSE_MS ] = { .stars = 23, .checkpoints = 5, .goal = true }
-,    [ COURSE_MSP ] = { .stars = 26, .checkpoints = 5 }
-,    [ COURSE_PC ] = { .stars = 26, .checkpoints = 6, .goal = true }
-,    [ COURSE_PH ] = { .stars = 26, .checkpoints = 4 }
-,    [ COURSE_PL ] = { .stars = 22, .checkpoints = 5, .goal = true }
-,    [ COURSE_RH ] = { .stars = 28, .checkpoints = 5, .goal = true }
-,    [ COURSE_SH ] = { .stars = 24, .checkpoints = 3 }
-,    [ COURSE_SO ] = { .stars = 27, .checkpoints = 3, .goal = true }
-,    [ COURSE_SR ] = { .stars = 28, .checkpoints = 4, .goal = true }
-,    [ COURSE_WB ] = { .stars = 23, .checkpoints = 4, .goal = true, .extra = true }
-,    [ COURSE_WC ] = { .stars = 27, .checkpoints = 4 }
-,    [ COURSE_WJ ] = { .stars = 27, .checkpoints = 5, .goal = true }
-
-,    [ COURSE_SS1 ] = { .stars = 1 }
-,    [ COURSE_SS2 ] = { .stars = 1 }
-,    [ COURSE_LB ] = { .stars = 1 }
-,    [ COURSE_LF ] = { .stars = 1 }
-,    [ COURSE_END ] = { .stars = 1 }
+  [ COURSE_AQ ] = { .stars = 25, .checkpoints = 4, .has100 = true }
+, [ COURSE_CCE ] = { .stars = 12, .checkpoints = 1, .goal = true }
+, [ COURSE_CCK ] = { .stars = 12, .checkpoints = 1, .goal = true }
+, [ COURSE_CCR ] = { .stars = 9, .checkpoints = 1, .goal = true }
+, [ COURSE_CCS ] = { .stars = 7, .checkpoints = 1, .goal = true }
+, [ COURSE_CCT ] = { .stars = 7, .checkpoints = 1, .goal = true }
+, [ COURSE_CE ] = { .stars = 25, .checkpoints = 5, .goal = true, .has100 = true }
+, [ COURSE_CG ] = { .stars = 29, .checkpoints = 5, .goal = true, .has100 = true }
+, [ COURSE_CHAO ] = { .stars = 14, .checkpoints = 4, .has100 = true }
+, [ COURSE_CW ] = { .stars = 27, .checkpoints = 8, .goal = true, .has100 = true }
+, [ COURSE_DC ] = { .stars = 36, .checkpoints = 5, .has100 = true }
+, [ COURSE_DL ] = { .stars = 24, .checkpoints = 3, .has100 = true }
+, [ COURSE_EE ] = { .stars = 22, .checkpoints = 5, .goal = true, .has100 = true }
+, [ COURSE_END ] = { .stars = 1 }
+, [ COURSE_EQ ] = { .stars = 29, .checkpoints = 3, .has100 = true }
+, [ COURSE_FC ] = { .stars = 38, .checkpoints = 8, .goal = true, .has100 = true }
+, [ COURSE_FR ] = { .stars = 39, .checkpoints = 5, .goal = true, .has100 = true }
+, [ COURSE_GF ] = { .stars = 27, .checkpoints = 6, .goal = true, .extra = true, .has100 = true }
+, [ COURSE_GH ] = { .stars = 22, .checkpoints = 2, .goal = true, .has100 = true }
+, [ COURSE_HB ] = { .stars = 34, .checkpoints = 5, .goal = true, .has100 = true }
+, [ COURSE_IG ] = { .stars = 18, .checkpoints = 3, .goal = true, .has100 = true }
+, [ COURSE_LB ] = { .stars = 1 }
+, [ COURSE_LC ] = { .stars = 22, .checkpoints = 3, .goal = true, .has100 = true }
+, [ COURSE_LF ] = { .stars = 1 }
+, [ COURSE_MH ] = { .stars = 30, .checkpoints = 5, .goal = true, .has100 = true }
+, [ COURSE_MHE ] = { .stars = 26, .checkpoints = 3, .has100 = true }
+, [ COURSE_MS ] = { .stars = 23, .checkpoints = 5, .goal = true, .has100 = true }
+, [ COURSE_MSP ] = { .stars = 26, .checkpoints = 5, .has100 = true }
+, [ COURSE_PC ] = { .stars = 26, .checkpoints = 6, .goal = true, .has100 = true }
+, [ COURSE_PH ] = { .stars = 26, .checkpoints = 4, .has100 = true }
+, [ COURSE_PL ] = { .stars = 22, .checkpoints = 5, .goal = true, .has100 = true }
+, [ COURSE_RH ] = { .stars = 28, .checkpoints = 5, .goal = true, .has100 = true }
+, [ COURSE_SH ] = { .stars = 24, .checkpoints = 3, .has100 = true }
+, [ COURSE_SO ] = { .stars = 27, .checkpoints = 3, .goal = true, .has100 = true }
+, [ COURSE_SR ] = { .stars = 28, .checkpoints = 4, .goal = true, .has100 = true }
+, [ COURSE_SS1 ] = { .stars = 1 }
+, [ COURSE_SS2 ] = { .stars = 1 }
+, [ COURSE_WB ] = { .stars = 23, .checkpoints = 4, .goal = true, .extra = true, .has100 = true }
+, [ COURSE_WC ] = { .stars = 27, .checkpoints = 4, .has100 = true }
+, [ COURSE_WJ ] = { .stars = 27, .checkpoints = 5, .goal = true, .has100 = true }
 };
 
 static void render_from_to(void **courseNameTbl, int from, int to)
 {
     char line[100];
-    for (int i = from; i < to; i++)
+    for (int i = from; i <= to; i++)
     {
-        u64 stars = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(i));
-        if (!stars)
-            continue;
+        u64 starsMask = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(i));
+        //if (!starsMask)
+        //    continue;
 
-        u64 starsMask = (1ULL << sViewDecls[i].stars) - 1;
-        u64 checkpointsMask = sViewDecls[i].checkpoints ? ((1ULL << sViewDecls[i].checkpoints) - 1) << (64 - sViewDecls[i].checkpoints) : 0;
+        u64 expStarsMask = (1ULL << sViewDecls[i].stars) - 1;
+        u64 checkpointsMask = sViewDecls[i].checkpoints ? ((1ULL << sViewDecls[i].checkpoints) - 1) << (63 - sViewDecls[i].checkpoints) : 0;
         u64 goalMask = sViewDecls[i].goal ? (1ULL << 63) : 0;
         u64 extraMask = sViewDecls[i].extra ? (1ULL << 50) : 0;
-        u64 mask = starsMask | checkpointsMask | goalMask | extraMask;
+        u64 h100Mask = sViewDecls[i].has100 ? (1ULL << 48) : 0;
+
+        u64 mask = expStarsMask | checkpointsMask | goalMask | extraMask | h100Mask;
+#if 0
         u64 maskInverted = ~mask;
         if (stars & maskInverted)
         {
             char errorMsg[100];
-            sprintf(errorMsg, "Invalid star flags for course %d", i);
+            sprintf(errorMsg, "%08x%08x ~ %08x%08x %d", (u32)(stars >> 32), (u32)stars, (u32)(mask >> 32), (u32)mask, i);
             error(errorMsg);
         }
+#endif
+        u64 realStarsMask = mask & starsMask;
+        int stars = __builtin_popcountll(realStarsMask);
+        int totalStars = __builtin_popcountll(mask);
 
-        char *courseName = segmented_to_virtual(courseNameTbl[i]);
+        char *courseName = segmented_to_virtual(courseNameTbl[i - 1]);
 
-        int x = i % 2;
-        int y = i / 2;
-        print_generic_string_aligned(60 + x * 140, 200 - y * 16, courseName, TEXT_ALIGN_LEFT);
+        int diff = i - from;
+        int x = diff % 2;
+        int y = diff / 2;
+        print_generic_string_aligned(40 + x * 140, 200 - y * 16, courseName, TEXT_ALIGN_LEFT);
+        
+        char line[20];
+        sprintf(line, "%d/%d", stars, totalStars);
+        print_generic_string_aligned(40 + x * 140 + 80, 200 - y * 16, line, TEXT_ALIGN_LEFT);
     }
 }
 
