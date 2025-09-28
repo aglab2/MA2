@@ -28,7 +28,7 @@ extern const SpringDesc* spring_descs_gh[];
 extern const RailDesc* rail_descs_gh[];
 static struct LevelConfig cfg = {
 	.iwds = iw_descs_gh,
-	.viewRangeMult = 3.f,
+	.viewRangeMult = 2.f,
 	.skybox = gh_skybox_gh_skybox_mesh,
 	.springDescs = spring_descs_gh,
 	.railDesc = rail_descs_gh,
