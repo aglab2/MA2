@@ -1908,8 +1908,6 @@ void render_pause_my_score_coins(void) {
                 checkpointCountTotal = 64 - checkpointCountTotal;
             }
 
-            print_text_fmt_int(20, 40, "%d", checkpointCountTotal);
-
             int y = PAUSE_MENU_MY_SCORE_Y + 20;
             print_generic_string_aligned(PAUSE_MENU_LEFT_X + 3 - 45, y, textCheckpoint, TEXT_ALIGN_RIGHT);
             int checkpointShift = 0;
@@ -2262,20 +2260,32 @@ static void render_from_to(void **courseNameTbl, int from, int to)
 }
 
 static u8 sPage = 0;
+static u8 sPageCooldown = 0;
 void print_hud_pause_colorful_str(void) {
     gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
 
-    if (gPlayer1Controller->buttonPressed & R_TRIG) {
-        sPage++;
-        if (sPage > 2)
-            sPage = 0;
+    if (sPageCooldown > 0)
+    {
+        sPageCooldown--;
     }
-    if (gPlayer1Controller->buttonPressed & Z_TRIG) {
-        if (sPage == 0)
-            sPage = 2;
-        else
-            sPage--;
+    else
+    {
+        if (gPlayer1Controller->stickX > 40) {
+            play_sound(SOUND_MENU_CHANGE_SELECT, gGlobalSoundSource);
+            sPageCooldown = 5;
+            sPage++;
+            if (sPage > 2)
+                sPage = 0;
+        }
+        if (gPlayer1Controller->stickX < -40) {
+            play_sound(SOUND_MENU_CHANGE_SELECT, gGlobalSoundSource);
+            sPageCooldown = 5;
+            if (sPage == 0)
+                sPage = 2;
+            else
+                sPage--;
+        }
     }
 
     void **courseNameTbl = segmented_to_virtual(gLanguageTables[gInGameLanguage].course_name_table);
