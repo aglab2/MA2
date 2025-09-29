@@ -2158,7 +2158,7 @@ struct ViewDecl
     u16 has100 : 1;
 } ViewDecl;
 
-// Total: 1010
+// Total: 1009
 static const struct ViewDecl sViewDecls[] = {
   [ COURSE_AQ ] = { .stars = 22, .checkpoints = 4, .has100 = true }
 , [ COURSE_CCE ] = { .stars = 12, .checkpoints = 1, .goal = true }
@@ -2168,7 +2168,7 @@ static const struct ViewDecl sViewDecls[] = {
 , [ COURSE_CCT ] = { .stars = 7, .checkpoints = 1, .goal = true }
 , [ COURSE_CE ] = { .stars = 23, .checkpoints = 5, .goal = true, .has100 = true }
 , [ COURSE_CG ] = { .stars = 27, .checkpoints = 5, .goal = true, .has100 = true }
-, [ COURSE_CHAO ] = { .stars = 14, .checkpoints = 4, .has100 = true }
+, [ COURSE_CHAO ] = { .stars = 13, .checkpoints = 4, .has100 = true }
 , [ COURSE_CW ] = { .stars = 27, .checkpoints = 8, .goal = true, .has100 = true }
 , [ COURSE_DC ] = { .stars = 27, .checkpoints = 5, .has100 = true }
 , [ COURSE_DL ] = { .stars = 24, .checkpoints = 3, .has100 = true }

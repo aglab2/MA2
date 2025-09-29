@@ -114,7 +114,7 @@ extern Vtx chao_dl_0015_object_01CEBB64_001_mesh_layer_1_vtx_2[4];
 extern Gfx chao_dl_0015_object_01CEBB64_001_mesh_layer_1_tri_2[];
 extern Vtx chao_dl_0016_object_01CEB91C_001_mesh_layer_1_vtx_0[38];
 extern Gfx chao_dl_0016_object_01CEB91C_001_mesh_layer_1_tri_0[];
-extern Vtx chao_dl_0017_object_01CEB3BC_001_mesh_layer_1_vtx_0[145];
+extern Vtx chao_dl_0017_object_01CEB3BC_001_mesh_layer_1_vtx_0[156];
 extern Gfx chao_dl_0017_object_01CEB3BC_001_mesh_layer_1_tri_0[];
 extern Vtx chao_dl_0017_object_01CEB3BC_001_mesh_layer_1_vtx_1[11];
 extern Gfx chao_dl_0017_object_01CEB3BC_001_mesh_layer_1_tri_1[];
