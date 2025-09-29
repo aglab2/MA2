@@ -268,26 +268,14 @@ is so cool.")
 DEFINE_DIALOG(DIALOG_019, NO_SOUND, 5, 30, 200, "\
 \n\
 \n\
-    - Demo Clear! -\n\
+    - Story Clear! -\n\
 \n\
 \n\
-Thank you for playing!\n\
-I hope you enjoyed it\n\
-despite all the issues\n\
-I tried to sweep under\n\
-the rug for this demo!\n\
-This is by far my biggest\n\
-project I have worked on\n\
-while trying to push the\n\
-boundaries of SM64 Engine\n\
-and N64 Console.\n\
-I will try my best to\n\
-finish this hack. Currently\n\
-only 51.5%% of the game is\n\
-obtainable, try to find\n\
-all the stars!\n\
-\n\n\
-Thank you for your time!")
+Use the warp pipe ahead\n\
+to reach the end screen\n\
+picture or alternatively\n\
+use 2 keys to unlock the\n\
+Last Story.")
 
 DEFINE_DIALOG(DIALOG_020, NO_SOUND, 6, 95, 150, "\
 Dear Mario:\n\
@@ -398,21 +386,10 @@ sticky. You will not\n\
 be able to jump off it\n\
 till the end of the ride.")
 
-DEFINE_DIALOG(DIALOG_036, NO_SOUND, 5, 30, 200, "\
-OBSERVATION PLATFORM\n\
-Press Ⓒ▲ to take a look\n\
-around. Don't miss\n\
-anything!\n\
-\n\
-Press Ⓡ to switch to\n\
-Mario's camera. It\n\
-always follows Mario.\n\
-Press Ⓡ again to switch\n\
-to Lakitu's camera.\n\
-Pause the game and\n\
-switch the mode to “fix”\n\
-the camera in place while\n\
-holding Ⓡ. Give it a try!")
+DEFINE_DIALOG(DIALOG_036, NO_SOUND, 3, 30, 200, "\
+Make sure to check\n\
+the objective in the\n\
+pause menu.")
 
 DEFINE_DIALOG(DIALOG_037, SOUND_OBJ_BIG_PENGUIN_YELL, 2, 30, 200, "\
 I win! You lose!\n\
