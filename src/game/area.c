@@ -706,6 +706,8 @@ extern int gQuickLookups;
 extern int gSlowLookups;
 
 u8 gWaterTutorial;
+u8 gExtraGuides;
+const char* gExtraText;
 extern void shade_screen_water(void);
 extern void shade_screen_water_alight(void);
 void render_game(void) {
@@ -748,6 +750,16 @@ void render_game(void) {
             {
                 gWaterTutorial = 231;
             }
+        }
+
+        if (gExtraGuides)
+        {
+            gExtraGuides--;
+            gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
+            gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, CLAMP((int) gExtraGuides * 16, 0, 255));
+            
+            print_generic_string_aligned(160, 80, gExtraText, TEXT_ALIGN_CENTER);
+            gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
         }
 
         render_text_labels();

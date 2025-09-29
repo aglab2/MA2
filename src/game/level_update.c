@@ -1346,6 +1346,10 @@ static int exitWarpArea()
     {
         return 2;
     }
+    if (LEVEL_LB == gCurrLevelNum || LEVEL_LF == gCurrLevelNum)
+    {
+        return 2;
+    }
 
     return 1;
 }

@@ -53,6 +53,7 @@ const LevelScript level_castle_grounds_entry[] = {
 
 	AREA(1, castle_grounds_area_1, 0, 0, 0),
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		WARP_NODE(0x0B, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0xf0, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0x20, LEVEL_CE, 0x01, 0x0A, WARP_NO_CHECKPOINT),
@@ -155,6 +156,9 @@ const LevelScript level_castle_grounds_entry[] = {
 		OBJECT(MODEL_NONE, -310, 563, -5782, 0, -90+0, 0, (0x8d << 16), bhvAirborneDeathWarp),
 		OBJECT(MODEL_NONE, -310, 563, -6782, 0, -90+0, 0, (0x8e << 16), bhvAirborneDeathWarp),
 		OBJECT(MODEL_NONE, -310, 563, -7784, 0, -90+0, 0, (0x8f << 16), bhvAirborneDeathWarp),
+		
+		OBJECT(MODEL_NONE, -310, 563, 3218, 0, -90+0, 0, (0xb << 16), bhvInstantActiveWarp),
+
 		TERRAIN(castle_grounds_area_1_collision),
 		MACRO_OBJECTS(castle_grounds_area_1_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),

@@ -266,6 +266,48 @@ extern void set_camera_mode_8_directions(struct Camera *c);
 extern void func_8031D690(s32 player, s32 fadeInTime);
 extern const BehaviorScript bhvLBWind[];
 extern const BehaviorScript bhvLbBowserBomb[];
+
+extern u8 gExtraGuides;
+extern const char* gExtraText;
+
+static void handle_lb_warp(f32 wsx, f32 wsy, f32 wsz, int warpId, const char* text)
+{
+    f32 warpSpot[] = { wsx, wsy, wsz };
+    if ((gGlobalTimer & 7) == 0)
+    {
+        struct Object* sparkle = spawn_object(o, MODEL_SPARKLES, bhvCoinSparklesSpawner);
+        sparkle->oPosX = warpSpot[0];
+        sparkle->oPosY = warpSpot[1];
+        sparkle->oPosZ = warpSpot[2];
+    }
+
+    f32 dx = gMarioStates->pos[0] - warpSpot[0];
+    f32 dy = gMarioStates->pos[1] - warpSpot[1];
+    f32 dz = gMarioStates->pos[2] - warpSpot[2];
+    f32 d = dx*dx + dy*dy + dz*dz;
+    if (d < 1000.f * 1000.f)
+    {
+        if (gExtraGuides < 20)
+            gExtraGuides += 2;
+        
+        gExtraText = text;
+    }
+
+    if (d < 40.f * 40.f)
+    {
+        gMarioStates->usedObj = o;
+        SET_BPARAM2(o->oBehParams, warpId);
+        level_trigger_warp(gMarioStates, WARP_OP_WARP_DOOR);
+        drop_and_set_mario_action(gMarioStates, ACT_DISAPPEARED, 0);
+    }
+}
+
+static void show_lb_warps()
+{
+    handle_lb_warp(-2689.f, 100.f, 0.f, 0xc, "In a level full of lush vegetation, a traveller may\nfind a level referencing Sonic legacy near the safe spot.\n\nUse this warp to travel back to Hero story.");
+    handle_lb_warp( 2689.f, 100.f, 0.f, 0xd, "Seeking for a course filled with robots, a pilgrim\nmay find a suspicious door leading to the land of heavens.\n\nUse this warp to travel back to Dark story.");
+}
+
 void bhv_lb_ctl_loop()
 {
     if (o->oAction >= 3 && o->oAction <= 14)
@@ -295,6 +337,11 @@ void bhv_lb_ctl_loop()
 
     if (0 == o->oAction)
     {
+        if (gCamera->cutscene == 0)
+        {
+            show_lb_warps();
+        }
+
         o->parentObj->oPosX = 0;
         o->parentObj->oPosY = -1000;
         o->parentObj->oPosZ = 0;
