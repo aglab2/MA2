@@ -2158,7 +2158,7 @@ struct ViewDecl
     u16 has100 : 1;
 } ViewDecl;
 
-// Total: 1002
+// Total: 999
 static const struct ViewDecl sViewDecls[] = {
   [ COURSE_AQ ] = { .stars = 22, .checkpoints = 4, .has100 = true }
 , [ COURSE_CCE ] = { .stars = 12, .checkpoints = 1, .goal = true }
@@ -2169,12 +2169,12 @@ static const struct ViewDecl sViewDecls[] = {
 , [ COURSE_CE ] = { .stars = 23, .checkpoints = 5, .goal = true, .has100 = true }
 , [ COURSE_CG ] = { .stars = 27, .checkpoints = 5, .goal = true, .has100 = true }
 , [ COURSE_CHAO ] = { .stars = 13, .checkpoints = 4, .has100 = true }
-, [ COURSE_CW ] = { .stars = 27, .checkpoints = 8, .goal = true, .has100 = true }
+, [ COURSE_CW ] = { .stars = 26, .checkpoints = 8, .goal = true, .has100 = true }
 , [ COURSE_DC ] = { .stars = 27, .checkpoints = 5, .has100 = true }
 , [ COURSE_DL ] = { .stars = 24, .checkpoints = 3, .has100 = true }
 , [ COURSE_EE ] = { .stars = 20, .checkpoints = 5, .goal = true, .has100 = true }
 , [ COURSE_END ] = { .stars = 1 }
-, [ COURSE_EQ ] = { .stars = 29, .checkpoints = 3, .has100 = true }
+, [ COURSE_EQ ] = { .stars = 28, .checkpoints = 3, .has100 = true }
 , [ COURSE_FC ] = { .stars = 35, .checkpoints = 8, .goal = true, .has100 = true }
 , [ COURSE_FR ] = { .stars = 38, .checkpoints = 5, .goal = true, .has100 = true }
 , [ COURSE_GF ] = { .stars = 26, .checkpoints = 6, .goal = true, .extra = true, .has100 = true }
@@ -2194,7 +2194,7 @@ static const struct ViewDecl sViewDecls[] = {
 , [ COURSE_RH ] = { .stars = 26, .checkpoints = 5, .goal = true, .has100 = true }
 , [ COURSE_SH ] = { .stars = 24, .checkpoints = 3, .has100 = true }
 , [ COURSE_SO ] = { .stars = 27, .checkpoints = 3, .goal = true, .has100 = true }
-, [ COURSE_SR ] = { .stars = 28, .checkpoints = 4, .goal = true, .has100 = true }
+, [ COURSE_SR ] = { .stars = 27, .checkpoints = 4, .goal = true, .has100 = true }
 , [ COURSE_SS1 ] = { .stars = 1 }
 , [ COURSE_SS2 ] = { .stars = 1 }
 , [ COURSE_WB ] = { .stars = 23, .checkpoints = 4, .goal = true, .extra = true, .has100 = true }
