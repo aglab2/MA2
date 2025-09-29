@@ -52,7 +52,7 @@ const Trajectory fr_area_6_spline_Loop_28_ini_003[] = {
 	TRAJECTORY_POS( 7, -14123, -932, 9129),
 	TRAJECTORY_POS( 8, -14132, -880, 9129),
 	TRAJECTORY_POS( 9, -14132, -406, 9129),
-	TRAJECTORY_POS( 10, -14159, -337, 9129),
+	TRAJECTORY_POS( 10, -14159, -338, 9129),
 	TRAJECTORY_POS( 11, -14228, -310, 9129),
 	TRAJECTORY_POS( 12, -14344, -310, 9129),
 	TRAJECTORY_END(),
@@ -133,7 +133,7 @@ const Trajectory fr_area_6_spline_Spring_NurbsCurve_008[] = {
 };
 const Trajectory fr_area_6_spline_Spring_NurbsCurve_011[] = {
 	TRAJECTORY_POS( 0, -8690, -7399, 8310),
-	TRAJECTORY_POS( 1, -8690, -7154, 8435),
+	TRAJECTORY_POS( 1, -8690, -7155, 8435),
 	TRAJECTORY_POS( 2, -8690, -7035, 8662),
 	TRAJECTORY_POS( 3, -8690, -7020, 8865),
 	TRAJECTORY_END(),
