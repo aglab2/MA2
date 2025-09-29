@@ -771,6 +771,8 @@ static int level_has100s(void)
         return 0;
     if (COURSE_CCT <= gCurrCourseNum && gCurrCourseNum <= COURSE_CCS)
         return 0;
+    if (gCurrCourseNum == COURSE_LB || gCurrCourseNum == COURSE_LF)
+        return 0;
     
     return 1;
 }

@@ -2156,13 +2156,13 @@ struct ViewDecl
     u16 has100 : 1;
 } ViewDecl;
 
-// Total: 999
+// Total: 1000 - need 1 deslop bros...
 static const struct ViewDecl sViewDecls[] = {
   [ COURSE_AQ ] = { .stars = 22, .checkpoints = 4, .has100 = true }
 , [ COURSE_CCE ] = { .stars = 12, .checkpoints = 1, .goal = true }
 , [ COURSE_CCK ] = { .stars = 12, .checkpoints = 1, .goal = true }
 , [ COURSE_CCR ] = { .stars = 9, .checkpoints = 1, .goal = true }
-, [ COURSE_CCS ] = { .stars = 7, .checkpoints = 1, .goal = true }
+, [ COURSE_CCS ] = { .stars = 8, .checkpoints = 1, .goal = true }
 , [ COURSE_CCT ] = { .stars = 7, .checkpoints = 1, .goal = true }
 , [ COURSE_CE ] = { .stars = 23, .checkpoints = 5, .goal = true, .has100 = true }
 , [ COURSE_CG ] = { .stars = 27, .checkpoints = 5, .goal = true, .has100 = true }
@@ -2212,8 +2212,21 @@ static void render_from_to(void **courseNameTbl, int from, int to)
     for (int i = from; i <= to; i++)
     {
         u64 starsMask = save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(i));
-        //if (!starsMask)
-        //    continue;
+        if (!starsMask)
+        {
+            u8* wantColors = White;
+            u8 wantColor = 255;
+            if (wantColor != curColor)
+            {
+                curColor = wantColor;
+                set_text_color(curColor, wantColors[1], wantColors[2]);
+            }
+            int diff = i - from;
+            int x = diff % 2;
+            int y = diff / 2;
+            print_generic_string_aligned(40 + x * 140, 200 - y * 16, "???", TEXT_ALIGN_LEFT);
+            continue;
+        }
 
         u64 expStarsMask = (1ULL << sViewDecls[i].stars) - 1;
         u64 checkpointsMask = sViewDecls[i].checkpoints ? ((1ULL << sViewDecls[i].checkpoints) - 1) << (63 - sViewDecls[i].checkpoints) : 0;

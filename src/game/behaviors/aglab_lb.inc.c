@@ -35,6 +35,7 @@
 
 void bhv_lb_ctl_init()
 {
+    gDialogCameraAngleIndex = 1;
     f32 d;
     o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvBowser, &d);
     o->parentObj->oHomeY = -100.f;
@@ -822,7 +823,12 @@ void bhv_lb_ctl_loop()
             o->parentObj->oAction = BOWSER_ACT_CHARGE_MARIO;
         }
 
-        if (o->oTimer == 115)
+        f32 diffBowser[3];
+        diffBowser[0] = o->parentObj->oPosX - gMarioStates->pos[0];
+        diffBowser[1] = o->parentObj->oPosY - gMarioStates->pos[1];
+        diffBowser[2] = o->parentObj->oPosZ - gMarioStates->pos[2];
+        f32 distBowser = vec3_sumsq(diffBowser);
+        if (distBowser < 400.f * 400.f)
         {
             gMarioStates->usedObj = o;
             SET_BPARAM2(o->oBehParams, 0xa);
@@ -1018,7 +1024,7 @@ void bhv_lb_wind_loop()
         o->activeFlags = 0;
 
     f32 d = gMarioStates->pos[0] * gMarioStates->pos[0] + gMarioStates->pos[2] * gMarioStates->pos[2];
-    if (d < 1000.f * 1000.f)
+    if (d < 700.f * 700.f)
         return;
 
     if (gMarioStates->health >= 0x100)

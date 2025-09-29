@@ -282,8 +282,8 @@ void bhv_lf_ctl_loop()
         
     if (o->parentObj->oHealth == 0)
     {
-        print_text_fmt_int(20, 20, "A %d", o->parentObj->oAction);
-        print_text_fmt_int(20, 40, "SA %d", o->parentObj->oSubAction);
+        //print_text_fmt_int(20, 20, "A %d", o->parentObj->oAction);
+        //print_text_fmt_int(20, 40, "SA %d", o->parentObj->oSubAction);
         if (o->parentObj->oAction == BOWSER_ACT_DEAD && o->parentObj->oSubAction == 2 && o->parentObj->oTimer > 80)
         {
             gMarioStates->usedObj = o;
