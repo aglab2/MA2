@@ -10468,7 +10468,7 @@ u8 sZoomOutAreaMasks[] = {
 	ZOOMOUT_AREA_MASK(1, 1, 1, 1, 1, 0, 0, 0), // SA             | BITS
 	ZOOMOUT_AREA_MASK(1, 1, 1, 1, 1, 0, 0, 0), // LLL            | DDD
 	ZOOMOUT_AREA_MASK(1, 1, 1, 0, 1, 1, 1, 1), 
-	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), 
+	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 1, 1, 1), 
 	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), 
 	ZOOMOUT_AREA_MASK(1, 1, 1, 0, 1, 1, 1, 1), 
 	ZOOMOUT_AREA_MASK(1, 1, 0, 0, 1, 0, 0, 0), 
