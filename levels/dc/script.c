@@ -300,7 +300,7 @@ const LevelScript level_dc_entry[] = {
 		OBJECT(MODEL_THI_WARP_PIPE, 9797, -300, -6482, 0, -46, 0, (0x23 << 16), bhvWarpPipe),
 		OBJECT(MODEL_THI_WARP_PIPE, 5, -1300, 8362, 0, 179, 0, (0x24 << 16), bhvWarpPipe),
 		OBJECT(MODEL_THI_WARP_PIPE, -1609, 0, 14301, 0, 180, 0, (0x25 << 16), bhvWarpPipe),
-		OBJECT(MODEL_THI_WARP_PIPE, 3709, 800, -3713, 0, -46, 0, (0x26 << 16), bhvWarpPipe),
+		OBJECT(MODEL_THI_WARP_PIPE, 3709, 800, -3713, 0, 134, 0, (0x26 << 16), bhvWarpPipe),
 		OBJECT(MODEL_THI_WARP_PIPE, 2559, 1500, -2549, 0, -46, 0, (0x27 << 16), bhvWarpPipe),
 		OBJECT(MODEL_THI_WARP_PIPE, -9532, -1300, 3774, 0, -46, 0, (0x28 << 16), bhvWarpPipe),
 		OBJECT(MODEL_THI_WARP_PIPE, -1433, 772, 1417, 0, -46, 0, (0x29 << 16), bhvWarpPipe),
