@@ -21,20 +21,20 @@
 #include "game/rumble_init.h"
 #include "sm64.h"
 
-static const s8 sCERemovedStars[] = { 15, 20, -1 };
-static const s8 sWCRemovedStars[] = { 2, 13, 21, -1 };
-static const s8 sPLRemovedStars[] = { 12, -1 };
-static const s8 sMHRemovedStars[] = { 10, 20, -1 };
-static const s8 sGFRemovedStars[] = { 7, -1 };
-static const s8 sPHRemovedStars[] = { 0, -1 };
-static const s8 sAQRemovedStars[] = { 7, 20, 21, -1 };
-static const u8 sHBRemovedStars[] = { 16, 26, 32, 33, -1 };
-static const u8 sPCRemovedStars[] = { 22, -1 };
-static const u8 sDCRemovedStars[] = { 1, 8, 12, 13, 16, 20, 23, 26, 32, -1 };
-static const u8 sEERemovedStars[] = { 11, 18, -1 };
-static const u8 sMHERemovedStars[] = { 11, -1 };
-static const u8 sCGRemovedStars[] = { 13, 25, -1 };
-static const u8 sFCRemovedStars[] = { 9, -1 };
+static const s8 sCERemovedStars[] = { 15, 20, -1 }; // 2
+static const s8 sWCRemovedStars[] = { 2, 13, 21, -1 }; // 3
+static const s8 sPLRemovedStars[] = { 12, -1 }; // 1
+static const s8 sMHRemovedStars[] = { 10, 20, -1 }; // 2
+static const s8 sGFRemovedStars[] = { 7, -1 }; // 1
+static const s8 sPHRemovedStars[] = { 0, -1 }; // 1
+static const s8 sAQRemovedStars[] = { 7, 20, 21, -1 }; // 3
+static const u8 sHBRemovedStars[] = { 16, 26, 32, 33, -1 }; // 4
+static const u8 sPCRemovedStars[] = { 22, -1 }; // 1
+static const u8 sDCRemovedStars[] = { 1, 8, 12, 13, 16, 20, 23, 26, 32, -1 }; // 9
+static const u8 sEERemovedStars[] = { 11, 18, -1 }; // 2
+static const u8 sMHERemovedStars[] = { 11, -1 }; // 1
+static const u8 sCGRemovedStars[] = { 13, 25, -1 }; // 2
+static const u8 sFCRemovedStars[] = { 9, -1 }; // 1
 
 static const s8* sRemovedStarsInLevels[] = {
     [ COURSE_CE ] = sCERemovedStars,
