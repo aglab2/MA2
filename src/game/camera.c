@@ -675,14 +675,18 @@ extern int fcgr_override_posYoff(f32* posYOff, f32* focYoff);
 static void focus_on_mario(Vec3f focus, Vec3f pos, f32 posYOff, f32 focYOff, f32 dist, s16 pitch, s16 yaw) {
     Vec3f marioPos;
 
-    if (gIsGravityFlipped)
-    {
-        posYOff = -posYOff;
-    }
-
     if (sMarioCamState->action == ACT_FCGR_JUMP || sMarioCamState->action == ACT_FCGR_WALKING)
     {
         fcgr_override_posYoff(&posYOff, &focYOff);
+    }
+    if (sMarioCamState->action == ACT_RAIL_GRIND)
+    {
+        posYOff = 190.f;
+    }
+
+    if (gIsGravityFlipped)
+    {
+        posYOff = -posYOff;
     }
 
     marioPos[0] = sMarioCamState->pos[0];
