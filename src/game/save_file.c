@@ -546,13 +546,13 @@ s32 save_file_get_total_star_count(s32 fileIndex, s32 minCourse, s32 maxCourse) 
 }
 
 void save_file_set_flags(u32 flags) {
-    gSaveBuffer.files[gCurrSaveFileNum - 1][0].flags |= (flags | SAVE_FLAG_FILE_EXISTS);
+    gSaveBuffer.files[gCurrSaveFileNum - 1][0].flags |= (flags | (SAVE_FLAG_MOAT_DRAINED | SAVE_FLAG_FILE_EXISTS));
     gSaveFileModified = TRUE;
 }
 
 void save_file_clear_flags(u32 flags) {
     gSaveBuffer.files[gCurrSaveFileNum - 1][0].flags &= ~flags;
-    gSaveBuffer.files[gCurrSaveFileNum - 1][0].flags |= SAVE_FLAG_FILE_EXISTS;
+    gSaveBuffer.files[gCurrSaveFileNum - 1][0].flags |= (SAVE_FLAG_MOAT_DRAINED | SAVE_FLAG_FILE_EXISTS);
     gSaveFileModified = TRUE;
 }
 
@@ -592,7 +592,7 @@ u32 save_file_get_flags(void) {
  */
 static void save_file_set_star_flags(s32 fileIndex, s32 courseIndex, u64 starFlags) {
     gSaveBuffer.files[fileIndex][0].courseStars[courseIndex + 1] |= starFlags;
-    gSaveBuffer.files[fileIndex][0].flags |= SAVE_FLAG_FILE_EXISTS;
+    gSaveBuffer.files[fileIndex][0].flags |= (SAVE_FLAG_FILE_EXISTS | SAVE_FLAG_MOAT_DRAINED);
     gSaveFileModified = TRUE;
 }
 

@@ -28,13 +28,13 @@ static const s8 sMHRemovedStars[] = { 10, 20, -1 }; // 2
 static const s8 sGFRemovedStars[] = { 7, -1 }; // 1
 static const s8 sPHRemovedStars[] = { 0, -1 }; // 1
 static const s8 sAQRemovedStars[] = { 7, 20, 21, -1 }; // 3
-static const u8 sHBRemovedStars[] = { 16, 26, 32, 33, -1 }; // 4
-static const u8 sPCRemovedStars[] = { 22, -1 }; // 1
-static const u8 sDCRemovedStars[] = { 1, 8, 12, 13, 16, 20, 23, 26, 32, -1 }; // 9
-static const u8 sEERemovedStars[] = { 11, 18, -1 }; // 2
-static const u8 sMHERemovedStars[] = { 11, -1 }; // 1
-static const u8 sCGRemovedStars[] = { 13, 25, -1 }; // 2
-static const u8 sFCRemovedStars[] = { 9, -1 }; // 1
+static const s8 sHBRemovedStars[] = { 16, 26, 32, 33, -1 }; // 4
+static const s8 sPCRemovedStars[] = { 22, -1 }; // 1
+static const s8 sDCRemovedStars[] = { 1, 8, 12, 13, 16, 20, 23, 26, 32, -1 }; // 9
+static const s8 sEERemovedStars[] = { 11, 18, -1 }; // 2
+static const s8 sMHERemovedStars[] = { 11, -1 }; // 1
+static const s8 sCGRemovedStars[] = { 13, 25, -1 }; // 2
+static const s8 sFRRemovedStars[] = { 9, -1 }; // 1
 
 static const s8* sRemovedStarsInLevels[] = {
     [ COURSE_CE ] = sCERemovedStars,
@@ -50,8 +50,40 @@ static const s8* sRemovedStarsInLevels[] = {
     [ COURSE_EE ] = sEERemovedStars,
     [ COURSE_MHE ] = sMHERemovedStars,
     [ COURSE_CG ] = sCGRemovedStars,
-    [ COURSE_FC ] = sFCRemovedStars,
+    [ COURSE_FR ] = sFRRemovedStars,
 };
+ 
+void save_file_set_star_flags(s32 fileIndex, s32 courseIndex, u64 starFlags);
+static void patch_save_file(int id)
+{
+    for (int course = 1; course < sizeof(sRemovedStarsInLevels) / sizeof(*sRemovedStarsInLevels); course++)
+    {
+        const s8* currRemovedStar = sRemovedStarsInLevels[course];
+        if (!currRemovedStar)
+            continue;
+
+        u64 starFlags = save_file_get_star_flags(id, course - 1);
+        u64 newStarFlags = starFlags & ~((1ULL << 40) - 1);
+        int curStarWritten = 0;
+        for (int star = 0; star < 40; star++)
+        {
+            if (*currRemovedStar == star)
+            {
+                currRemovedStar++;
+            }
+            else
+            {
+                if (starFlags & (1ULL << star))
+                    newStarFlags |= (1ULL << curStarWritten);
+
+                curStarWritten++;
+            }
+        }
+
+        save_file_force_set_star_flags(id, course - 1, newStarFlags);
+    }
+    save_file_do_save(id);
+}
 
 /**
  * @file file_select.c
@@ -70,6 +102,7 @@ static u8 sYesNoColor[2];
 
 // The button that is selected when it is clicked.
 static s8 sSelectedButtonID = MENU_BUTTON_NONE;
+static s8 sAcceptingTransition = 0;
 
 // Whether we are on the main menu or one of the submenus.
 static s8 sCurrentMenuLevel = MENU_LAYER_MAIN;
@@ -1002,6 +1035,22 @@ void check_main_menu_clicked_buttons(void) {
 
             if (check_clicked_button(buttonX, buttonY, 200.0f)) {
                 // If menu button clicked, select it
+                if (MENU_BUTTON_PLAY_FILE_A <= buttonID && buttonID <= MENU_BUTTON_PLAY_FILE_D) {
+                    int flags = gSaveBuffer.files[buttonID - MENU_BUTTON_PLAY_FILE_A][0].flags;
+                    int acceptingId = buttonID + 1;
+                    if (!(flags & SAVE_FLAG_MOAT_DRAINED)) {
+                        if (sAcceptingTransition != acceptingId)
+                        {
+                            play_sound(SOUND_MENU_CAMERA_BUZZ, gGlobalSoundSource);
+                            sAcceptingTransition = acceptingId;
+                            break;
+                        }
+                        else
+                        {
+                            patch_save_file(buttonID - MENU_BUTTON_PLAY_FILE_A);
+                        }
+                    }
+                }
                 sMainMenuButtons[buttonID]->oMenuButtonState = MENU_BUTTON_STATE_GROWING;
                 sSelectedButtonID = buttonID;
                 break;
@@ -1421,7 +1470,8 @@ void print_main_menu_strings(void) {
     // Print "SELECT FILE" text
     gSPDisplayList(gDisplayListHead++, dl_rgba16_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
-    print_hud_lut_string_aligned(SCREEN_CENTER_X, 35, LANG_ARRAY(textSelectFile), TEXT_ALIGN_CENTER);
+    if (!sAcceptingTransition)
+        print_hud_lut_string_aligned(SCREEN_CENTER_X, 35, LANG_ARRAY(textSelectFile), TEXT_ALIGN_CENTER);
     // Print file star counts
     print_save_file_star_count(SAVE_FILE_A, 92, 78);
     print_save_file_star_count(SAVE_FILE_B, 209, 78);
@@ -2148,6 +2198,7 @@ void print_save_file_scores(s8 fileIndex) {
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
 
+#if 0
     for ((i = 0); (i < COURSE_STAGES_MAX); (i++)) {
         s32 lineY = 35 + (12 * i);
         format_int_to_string(str, i + 1);
@@ -2168,7 +2219,18 @@ void print_save_file_scores(s8 fileIndex) {
     } else {
         print_menu_generic_string_aligned(262, 24, LANG_ARRAY(textHiScore), TEXT_ALIGN_CENTER);
     }
+#endif
 
+    gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_end);
+}
+
+static void render_warnings()
+{
+    gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_begin);
+    gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
+    print_menu_generic_string_aligned(160, 20, "Your Demo savefile needs to be converted.", TEXT_ALIGN_CENTER);
+    print_menu_generic_string_aligned(160, 34, "This will remove several stars from Hero Story.", TEXT_ALIGN_CENTER);
+    print_menu_generic_string_aligned(160, 48, "Click the button again to accept.", TEXT_ALIGN_CENTER);
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_end);
 }
 
@@ -2179,7 +2241,7 @@ void print_save_file_scores(s8 fileIndex) {
 void print_file_select_strings(void) {
     create_dl_ortho_matrix();
     switch (sSelectedButtonID) {
-        case MENU_BUTTON_NONE:         print_main_menu_strings();                               break;
+        case MENU_BUTTON_NONE:         print_main_menu_strings();  if (sAcceptingTransition) { render_warnings(); } break;
         case MENU_BUTTON_SCORE:        print_score_menu_strings(); sScoreFileCoinScoreMode = 0; break;
         case MENU_BUTTON_COPY:         print_copy_menu_strings();                               break;
         case MENU_BUTTON_ERASE:        print_erase_menu_strings();                              break;

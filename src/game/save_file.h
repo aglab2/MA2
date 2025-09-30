@@ -178,6 +178,11 @@ static inline u64 save_file_get_star_flags(UNUSED s32 fileIndex, UNUSED s32 cour
 static inline u64 save_file_get_star_flags(s32 fileIndex, s32 courseIndex) {
     return gSaveBuffer.files[fileIndex][0].courseStars[courseIndex + 1];
 }
+static inline void save_file_force_set_star_flags(s32 fileIndex, s32 courseIndex, u64 starFlags) {
+    gSaveBuffer.files[fileIndex][0].courseStars[courseIndex + 1] = starFlags;
+    gSaveBuffer.files[fileIndex][0].flags |= (SAVE_FLAG_FILE_EXISTS | SAVE_FLAG_MOAT_DRAINED);
+    gSaveFileModified = TRUE;
+}
 #endif
 s32 save_file_get_course_coin_score(s32 fileIndex, s32 courseIndex);
 s32 save_file_is_cannon_unlocked(void);
