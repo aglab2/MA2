@@ -2234,8 +2234,8 @@ static void render_from_to(void **courseNameTbl, int from, int to)
         u64 extraMask = sViewDecls[i].extra ? (1ULL << 50) : 0;
         u64 h100Mask = sViewDecls[i].has100 ? (1ULL << 48) : 0;
 
-        u64 mask = expStarsMask | checkpointsMask | goalMask | extraMask | h100Mask;
-        u64 maskInverted = ~mask;
+        u64 mask = expStarsMask | checkpointsMask | goalMask | h100Mask;
+        u64 maskInverted = ~(mask | extraMask);
 #if 0
         if (stars & maskInverted)
         {
@@ -2246,9 +2246,10 @@ static void render_from_to(void **courseNameTbl, int from, int to)
 #endif
         u64 realStarsMask = mask & starsMask;
         u64 unaccountedStarsMask = starsMask & maskInverted;
+        int hasExtraStar = !!(starsMask & extraMask);
 
-        int stars = __builtin_popcountll(realStarsMask);
-        int totalStars = __builtin_popcountll(mask);
+        int stars = __builtin_popcountll(realStarsMask) + hasExtraStar;
+        int totalStars = __builtin_popcountll(mask) + hasExtraStar;
 
         char *courseName = segmented_to_virtual(courseNameTbl[i - 1]);
 
