@@ -91,9 +91,77 @@ static int facing_same_way(s32 xDiff, s32 zDiff)
     return xDiff * gMarioStates->vel[0] + zDiff * gMarioStates->vel[2] < 0;
 }
 
+struct match
+{
+    const Trajectory* traj;
+    const LDLDesc* loop;
+    Vec3f closestPoint;
+    f32 minT;
+    int minPoint;
+    s16 yaw;
+};
+
 extern void print_text_fmt_int(int x, int y, const char* fmt, int value);
 extern u8 gIsGravityFlipped;
-static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop, int it, f32 minRange, rail_valid_fn valid, void* ctx, f32* pclosestPoint)
+
+static int try_realize_yaw(const Trajectory* traj, const LDLDesc* loop, int point, s16* pyaw)
+{
+    // For loop it is necessary to find where trajectory direction is.
+    // The issue is that sometimes the closest point on the trajectory to Mario is
+    // on the exactly vertical line, so for angle estimations it is necessary to
+    // find the next segment on the trajectory.
+    s16 yaw;
+    {
+        int go_back = 0;
+        int xDiff, zDiff;
+        do
+        {
+            s32 xCurr = traj[point + 1];
+            s32 zCurr = traj[point + 3];
+
+            s32 xNext = traj[point + 5];
+            s32 zNext = traj[point + 7];
+
+            xDiff = xNext - xCurr;
+            zDiff = zNext - zCurr;
+            if (xDiff || zDiff)
+            {
+                break;
+            }
+
+            if (!go_back)
+            {
+                // try advance forwards but mind that we can be at the end of the trajectory
+                point += 4;
+                if (traj[point + 4] == -1)
+                {
+                    // try to advance backwards
+                    // I am assume that trajectory is sane not entirely vertical
+                    point -= 8;
+                    go_back = 1;
+                }
+            }
+            else
+            {
+                point -= 4;
+            }
+        }
+        while (1);
+
+        if (loop && !loop->canSnapBackwards && facing_same_way(xDiff, zDiff))
+        {
+            // Do not allow to use loop in the opposite direction, probably will cause some weird stuff
+            return 1;
+        }
+
+        yaw = atan2s(zDiff, xDiff);
+    }
+
+    *pyaw = yaw;
+    return 0;
+}
+
+static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop, int it, f32 minRange, rail_valid_fn valid, void* ctx, struct match* match)
 {
     (void) it;
     if (sCancelDeadline > gGlobalTimer && traj == sTrajectory && sTrajectoryArea == gCurrAreaIndex)
@@ -155,98 +223,58 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
 
     if (minPoint >= 0)
     {
-        if (pclosestPoint)
-        {
-            vec3_copy(pclosestPoint, closestPoint);
-        }
-        sZiplineProgress = minT;
-        sZiplineCurPoint = minPoint;
-
-        // For loop it is necessary to find where trajectory direction is.
-        // The issue is that sometimes the closest point on the trajectory to Mario is
-        // on the exactly vertical line, so for angle estimations it is necessary to
-        // find the next segment on the trajectory.
-        s16 yaw;
-        {
-            int go_back = 0;
-            int point = sZiplineCurPoint;
-            int xDiff, zDiff;
-            do
-            {
-                s32 xCurr = traj[point + 1];
-                s32 zCurr = traj[point + 3];
-    
-                s32 xNext = traj[point + 5];
-                s32 zNext = traj[point + 7];
-
-                xDiff = xNext - xCurr;
-                zDiff = zNext - zCurr;
-                if (xDiff || zDiff)
-                {
-                    break;
-                }
-
-                if (!go_back)
-                {
-                    // try advance forwards but mind that we can be at the end of the trajectory
-                    point += 4;
-                    if (traj[point + 4] == -1)
-                    {
-                        // try to advance backwards
-                        // I am assume that trajectory is sane not entirely vertical
-                        point -= 8;
-                        go_back = 1;
-                    }
-                }
-                else
-                {
-                    point -= 4;
-                }
-            }
-            while (1);
-
-            if (loop && !loop->canSnapBackwards && facing_same_way(xDiff, zDiff))
-            {
-                // Do not allow to use loop in the opposite direction, probably will cause some weird stuff
-                return 0;
-            }
-
-            yaw = atan2s(zDiff, xDiff);
-        }
-
-        {
-            Vec3s trajCurPoint = {traj[sZiplineCurPoint + 1], traj[sZiplineCurPoint + 2], traj[sZiplineCurPoint + 3]};
-            Vec3s trajNextPoint = {traj[sZiplineCurPoint + 4 + 1], traj[sZiplineCurPoint + 4 + 2], traj[sZiplineCurPoint + 4 + 3]};
-            Vec3f trajDirection;
-            vec3f_diff(trajDirection, trajNextPoint, trajCurPoint);
-            f32 dirMag = vec3_mag(trajDirection);
-            trajDirection[0] /= dirMag;
-            trajDirection[1] /= dirMag;
-            trajDirection[2] /= dirMag;
-    
-            sForwardVel = trajDirection[0] * gMarioStates->vel[0] + trajDirection[1] * gMarioStates->vel[1] + trajDirection[2] * gMarioStates->vel[2];
-            sExtraTilt = 0; // trajDirection[0] * gMarioStates->vel[2] - trajDirection[2] * gMarioStates->vel[0];
-            sForwardVelLimit = 55.f + CLAMP(traj_length(traj) / 400.f, 30.f, 120.f);
-            sForwardVelLimitDecelTimer = 0;
-        }
-
-        sTrajectory = traj;
-        sLoopDesc = loop;
-        sTrajectoryArea = gCurrAreaIndex;
-        sAngleFlipped = abs_angle_diff(gMarioStates->faceAngle[1], yaw) > 0x4000;
-        sCancelTimeout = sLoopDesc ? 30 : 4;
-        if (sLoopDesc)
-        {
-            sAngleFlipped = 0;
-            sZiplineLoopYaw = gMarioStates->faceAngle[1] = sLoopFaceAngle = yaw;
-            calculate_trajectory_middle();
-        }
-
-        return 1;
+        match->traj = traj;
+        match->loop = loop;
+        vec3_copy(match->closestPoint, closestPoint);
+        match->minT = minT;
+        match->minPoint = minPoint;
+        return !try_realize_yaw(traj, loop, minPoint, &match->yaw);
     }
     else
     {
         return 0;
+    }
+}
+
+static void commit_trajectory(const struct match* match, f32* pclosestPoint)
+{
+    if (pclosestPoint)
+    {
+        vec3_copy(pclosestPoint, match->closestPoint);
+    }
+    sZiplineProgress = match->minT;
+    sZiplineCurPoint = match->minPoint;
+    const Trajectory* traj = match->traj;
+    const LDLDesc* loop = match->loop;
+ 
+    s16 yaw = match->yaw;
+
+    {
+        Vec3s trajCurPoint = {traj[sZiplineCurPoint + 1], traj[sZiplineCurPoint + 2], traj[sZiplineCurPoint + 3]};
+        Vec3s trajNextPoint = {traj[sZiplineCurPoint + 4 + 1], traj[sZiplineCurPoint + 4 + 2], traj[sZiplineCurPoint + 4 + 3]};
+        Vec3f trajDirection;
+        vec3f_diff(trajDirection, trajNextPoint, trajCurPoint);
+        f32 dirMag = vec3_mag(trajDirection);
+        trajDirection[0] /= dirMag;
+        trajDirection[1] /= dirMag;
+        trajDirection[2] /= dirMag;
+
+        sForwardVel = trajDirection[0] * gMarioStates->vel[0] + trajDirection[1] * gMarioStates->vel[1] + trajDirection[2] * gMarioStates->vel[2];
+        sExtraTilt = 0; // trajDirection[0] * gMarioStates->vel[2] - trajDirection[2] * gMarioStates->vel[0];
+        sForwardVelLimit = 55.f + CLAMP(traj_length(traj) / 400.f, 30.f, 120.f);
+        sForwardVelLimitDecelTimer = 0;
+    }
+
+    sTrajectory = traj;
+    sLoopDesc = loop;
+    sTrajectoryArea = gCurrAreaIndex;
+    sAngleFlipped = abs_angle_diff(gMarioStates->faceAngle[1], yaw) > 0x4000;
+    sCancelTimeout = sLoopDesc ? 30 : 4;
+    if (sLoopDesc)
+    {
+        sAngleFlipped = 0;
+        sZiplineLoopYaw = gMarioStates->faceAngle[1] = sLoopFaceAngle = yaw;
+        calculate_trajectory_middle();
     }
 }
 
@@ -272,8 +300,12 @@ int do_zipline_cancel(f32 range, rail_valid_fn fn, void* ctx, f32* closestPoint)
     {
         const Trajectory* traj = segmented_to_virtual(trajectories->rail);
         const LDLDesc* loop = trajectories->loop;
-        if (handle_trajectory_cancel(traj, loop, it++, range, fn, ctx, closestPoint))
+        struct match match;
+        if (handle_trajectory_cancel(traj, loop, it++, range, fn, ctx, &match))
+        {
+            commit_trajectory(&match, closestPoint);
             return 1;
+        }
 
         trajectories++;
     }
