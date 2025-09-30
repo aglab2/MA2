@@ -479,11 +479,16 @@ when walking:
     return type;
 }
 
-static int in_tube(const cyl_t* cyl, f32 lim, int len, int angled)
+static int in_tube(const cyl_t* cyl, f32 lim, int len, int unangled)
 {
     f32 height = 1400.f + 1500.f * len;
-    if (!angled && gCurrAreaIndex == 9)
-        height -= 100.f;
+    if (gCurrAreaIndex == 9)
+    {
+        if (unangled)
+            height -= 0.f;
+        else
+            height += 40.f;
+    }
 
     int z_ok = 0.f < cyl->z && cyl->z < height;
     int r_ok = cyl->r < lim;
