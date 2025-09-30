@@ -238,7 +238,7 @@ const LevelScript level_ig_entry[] = {
 		OBJECT(MODEL_CHECKPOINT, -16221, -91, 2146, 0, 90, 0, (2 << 16), bhvCheckpoint),
 		OBJECT(MODEL_CHAIN_CHOMP, -8351, -1491, -3305, 0, -180, 0, 0x00000000, bhvChainChomp),
 		OBJECT(MODEL_CHUCKYA, -11094, -791, 1514, 0, 90, 0, 0x00000000, bhvChuckya),
-		OBJECT(MODEL_CHUCKYA, -12919, -791, 1355, 0, 90, 0, 0x00000000, bhvChuckya),
+		//OBJECT(MODEL_CHUCKYA, -12919, -791, 1355, 0, 90, 0, 0x00000000, bhvChuckya),
 		OBJECT(MODEL_CHUCKYA, -11447, -1491, -2215, 0, 90, 0, 0x00000000, bhvChuckya),
 		OBJECT(MODEL_NONE, -17031, -91, 2151, 0, -90, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_NONE, -15075, -91, 2141, 0, -90, 0, 0x00000000, bhvCoinFormation),

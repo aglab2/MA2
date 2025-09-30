@@ -70,6 +70,28 @@ static void ig_blow_up()
     }
 }
 
+static int random_ig_flag()
+{
+    int r = random_u16() & 3;
+    return 1 << (8 + r);
+}
+
+void bhv_ig_shelf_init()
+{   
+    o->oIgShelfFlags = 0;
+    if (gCurrAreaIndex == 1)
+    {
+        if (o->oPosX > 0.f)
+        {
+            o->oIgShelfFlags = random_ig_flag() | random_ig_flag();
+        }
+    }
+    else
+    {
+        o->oIgShelfFlags = random_ig_flag() | random_ig_flag() | random_ig_flag();
+    }
+}
+
 void bhv_ig_shelf_loop()
 {
     if (0 == o->oAction)
