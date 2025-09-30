@@ -45,7 +45,7 @@ const LevelScript level_wc_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_WC_FANBASE_BRIGHT, wc_fanbase_bright_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_WC_FANBASE_DARK, wc_fanbase_dark_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_WC_ROCK, wc_rock_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_WC_ROCK_BREAK, wc_rock_break_geo), 
+	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_WC_ROCK_BREAK, wc_rock_break_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_WC_STONEHEAD, wc_stonehead_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_WC_STONEHEAD_PATH, wc_stonehead_path_geo), 
 	/* Fast64 begin persistent block [level commands] */
