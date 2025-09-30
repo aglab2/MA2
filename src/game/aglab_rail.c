@@ -96,6 +96,7 @@ struct match
     const Trajectory* traj;
     const LDLDesc* loop;
     Vec3f closestPoint;
+    f32 minDist;
     f32 minT;
     int minPoint;
     s16 yaw;
@@ -228,6 +229,7 @@ static int handle_trajectory_cancel(const Trajectory* traj, const LDLDesc* loop,
         vec3_copy(match->closestPoint, closestPoint);
         match->minT = minT;
         match->minPoint = minPoint;
+        match->minDist = minDist;
         return !try_realize_yaw(traj, loop, minPoint, &match->yaw);
     }
     else
@@ -296,24 +298,34 @@ int do_zipline_cancel(f32 range, rail_valid_fn fn, void* ctx, f32* closestPoint)
 
     trajectories = segmented_to_virtual(trajectories);
     int it = 0;
+    int hasMatch = 0;
+    struct match match;
     while (trajectories->rail)
     {
         const Trajectory* traj = segmented_to_virtual(trajectories->rail);
         const LDLDesc* loop = trajectories->loop;
-        struct match match;
-        if (handle_trajectory_cancel(traj, loop, it++, range, fn, ctx, &match))
+        struct match newMatch;
+        if (handle_trajectory_cancel(traj, loop, it++, range, fn, ctx, &newMatch))
         {
-            commit_trajectory(&match, closestPoint);
-            return 1;
+            if (!hasMatch || newMatch.minDist < match.minDist)
+            {
+                match = newMatch;
+                hasMatch = 1;
+            }
         }
 
         trajectories++;
     }
 
-#if 0
-    print_text_fmt_int(20, 20, "%d", it);
-#endif
-    return 0;
+    if (hasMatch)
+    {
+        commit_trajectory(&match, closestPoint);
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 extern int on_spring();
