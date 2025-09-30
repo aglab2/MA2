@@ -7923,7 +7923,7 @@ void bowser_fight_intro_dialog(UNUSED struct Camera *c) {
     s16 dialog;
 
     switch (gCurrLevelNum) {
-        case LEVEL_BOWSER_1:
+        case LEVEL_SS1:
             dialog = DIALOG_067;
             break;
         case LEVEL_BOWSER_2:

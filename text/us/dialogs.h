@@ -782,16 +782,13 @@ again to launch Bowser.\n\
 Good luck, Mario! Our\n\
 fate is in your hands.")
 
-DEFINE_DIALOG(DIALOG_067, SOUND_OBJ_BOWSER_LAUGH, 5, 30, 200, "\
-Tough luck, Mario!\n\
-Princess Toadstool isn't\n\
-here...Gwa ha ha!! Go\n\
-ahead--just try to grab\n\
-me by the tail!\n\
-You'll never be able to\n\
-swing ME around! A wimp\n\
-like you won't throw me\n\
-out of here! Never! Ha!")
+DEFINE_DIALOG(DIALOG_067, SOUND_OBJ_BOWSER_LAUGH, 6, 30, 200, "\
+Ha! I cannot believe you\n\
+managed to find me!\n\
+My trap was almost\n\
+perfect but this is the\n\
+end for you! Don't even\n\
+try to jump on me!")
 
 DEFINE_DIALOG(DIALOG_068, NO_SOUND, 5, 30, 200, "\
 It's Lethal Lava Land!\n\

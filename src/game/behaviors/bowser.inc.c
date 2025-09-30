@@ -1330,11 +1330,6 @@ void bowser_dead_hide(void) {
 }
 
 /**
- * Dialog values that are set on each stage Bowser's is defeated
- */
-s16 sBowserDefeatedDialogText[3] = { DIALOG_119, DIALOG_120, DIALOG_121 };
-
-/**
  * Bowser's dead sequence that plays in BitDW/BitFS
  * Returns TRUE once done
  */
@@ -1347,8 +1342,7 @@ s32 bowser_dead_default_stage_ending(void) {
         }
         // Play Bowser defeated dialog
         if (cur_obj_update_dialog(MARIO_DIALOG_LOOK_UP,
-            (DIALOG_FLAG_TEXT_DEFAULT | DIALOG_FLAG_TIME_STOP_ENABLED),
-            sBowserDefeatedDialogText[o->oBehParams2ndByte], 0)) {
+            (DIALOG_FLAG_TEXT_DEFAULT | DIALOG_FLAG_TIME_STOP_ENABLED), DIALOG_119, 0)) {
             // Dialog is done, fade out music and play explode sound effect
             o->oBowserTimer++;
             cur_obj_play_sound_2(SOUND_GENERAL2_BOWSER_EXPLODE);
@@ -1374,12 +1368,6 @@ s32 bowser_dead_final_stage_ending(void) {
     s32 dialogID;
 
     if (o->oBowserTimer < 2) {
-        // Set dialog whenever you have 120 stars or not
-        if (gHudDisplay.stars < 120) {
-            dialogID = DIALOG_121;
-        } else {
-            dialogID = DIALOG_163;
-        }
         // Lower music volume
         if (o->oBowserTimer == 0) {
             seq_player_lower_volume(SEQ_PLAYER_LEVEL, 60, 40);
@@ -1387,7 +1375,7 @@ s32 bowser_dead_final_stage_ending(void) {
         }
         // Play Bowser defeated dialog
         if (cur_obj_update_dialog(MARIO_DIALOG_LOOK_UP,
-            (DIALOG_FLAG_TEXT_DEFAULT | DIALOG_FLAG_TIME_STOP_ENABLED), dialogID, 0)) {
+            (DIALOG_FLAG_TEXT_DEFAULT | DIALOG_FLAG_TIME_STOP_ENABLED), DIALOG_121, 0)) {
             // Dialog is done, fade out music and spawn grand star
             cur_obj_set_model(MODEL_BOWSER_NO_SHADOW);
             seq_player_unlower_volume(SEQ_PLAYER_LEVEL, 60);
