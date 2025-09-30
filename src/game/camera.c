@@ -3158,7 +3158,7 @@ void update_camera(struct Camera *c) {
             }
         }
     }
-    else
+    else if (c->cutscene != CUTSCENE_INTRO_PEACH)
     {
         c->camCollisionProgress = (struct CamCollisionProgress){};
     }
@@ -6251,7 +6251,7 @@ struct CutsceneSplinePoint sIntroPipeToDialogFocus[] = {
 };
 #else
 struct CutsceneSplinePoint sIntroPipeToDialogFocus[] = {
-    { 5, 40, { -1322, 333, 4591 } },
+                                                                      { 5, 40, { -1322, 333, 4591 } },
     { 6, 25, { -1185, 329, 4616 } }, { 7, 23, { -1059, 380, 4487 } }, { 8, 14, { -1086, 421, 4206 } },
     { 9, 21, { -1321, 346, 4098 } }, { 0, 0, { -1328, 385, 4354 } },  { 0, 0, { -1328, 385, 4354 } },
     { 0, 0, { -1328, 385, 4354 } },  { -1, 0, { -1328, 385, 4354 } }

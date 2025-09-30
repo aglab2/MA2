@@ -1038,7 +1038,7 @@ void check_main_menu_clicked_buttons(void) {
                 if (MENU_BUTTON_PLAY_FILE_A <= buttonID && buttonID <= MENU_BUTTON_PLAY_FILE_D) {
                     int flags = gSaveBuffer.files[buttonID - MENU_BUTTON_PLAY_FILE_A][0].flags;
                     int acceptingId = buttonID + 1;
-                    if (!(flags & SAVE_FLAG_MOAT_DRAINED)) {
+                    if (!(flags & SAVE_FLAG_MOAT_DRAINED) && (flags & SAVE_FLAG_FILE_EXISTS)) {
                         if (sAcceptingTransition != acceptingId)
                         {
                             play_sound(SOUND_MENU_CAMERA_BUZZ, gGlobalSoundSource);
