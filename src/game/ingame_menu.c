@@ -2200,7 +2200,7 @@ static const struct ViewDecl sViewDecls[] = {
 , [ COURSE_WJ ] = { .stars = 27, .checkpoints = 5, .goal = true, .has100 = true }
 };
 
-static void render_from_to(void **courseNameTbl, int from, int to)
+static void render_from_to(void **courseNameTbl, int from, int to, int renderOffset)
 {
     static const u8 Red[] = { 240, 100, 100 };
     static const u8 Green[] = { 100, 240, 100 };
@@ -2221,7 +2221,7 @@ static void render_from_to(void **courseNameTbl, int from, int to)
                 curColor = wantColor;
                 set_text_color(curColor, wantColors[1], wantColors[2]);
             }
-            int diff = i - from;
+            int diff = i - from + renderOffset;
             int x = diff % 2;
             int y = diff / 2;
             print_generic_string_aligned(40 + x * 140, 200 - y * 16, "???", TEXT_ALIGN_LEFT);
@@ -2251,8 +2251,6 @@ static void render_from_to(void **courseNameTbl, int from, int to)
         int stars = __builtin_popcountll(realStarsMask) + hasExtraStar;
         int totalStars = __builtin_popcountll(mask) + hasExtraStar;
 
-        char *courseName = segmented_to_virtual(courseNameTbl[i - 1]);
-
         u8* wantColors = (unaccountedStarsMask ? Red : (stars == totalStars ? Green : White));
         u8 wantColor = wantColors[0];
         if (wantColor != curColor)
@@ -2261,14 +2259,32 @@ static void render_from_to(void **courseNameTbl, int from, int to)
             set_text_color(curColor, wantColors[1], wantColors[2]);
         }
 
-        int diff = i - from;
+        int diff = i - from + renderOffset;
         int x = diff % 2;
         int y = diff / 2;
-        print_generic_string_aligned(40 + x * 140, 200 - y * 16, courseName, TEXT_ALIGN_LEFT);
+
+        char *courseName = segmented_to_virtual(courseNameTbl[i - 1]);
+        if (COURSE_CCT <= i && i <= COURSE_CCS)
+        {
+            sprintf(line, "%s %c", courseName, i - COURSE_CCT + 'A');
+            print_generic_string_aligned(40 + x * 140, 200 - y * 16, line, TEXT_ALIGN_LEFT);
+        }
+        else if (COURSE_LF == i)
+        {
+            print_generic_string_aligned(40 + x * 140, 200 - y * 16, "Final Hazard", TEXT_ALIGN_LEFT);
+        }
+        else if (COURSE_LB == i)
+        {
+            print_generic_string_aligned(40 + x * 140, 200 - y * 16, "Biolizard", TEXT_ALIGN_LEFT);
+        }
+        else
+        {
+            print_generic_string_aligned(40 + x * 140, 200 - y * 16, courseName, TEXT_ALIGN_LEFT);
+        }
 
         char line[20];
         sprintf(line, "%d/%d", stars, totalStars);
-        print_generic_string_aligned(40 + x * 140 + 80, 200 - y * 16, line, TEXT_ALIGN_LEFT);
+        print_generic_string_aligned(40 + x * 140 + 85, 200 - y * 16, line, TEXT_ALIGN_LEFT);
     }
     set_text_color(255, 255, 255);
 }
@@ -2306,13 +2322,15 @@ void print_hud_pause_colorful_str(void) {
     switch (sPage)
     {
         case 0:
-            render_from_to(courseNameTbl, COURSE_CE, COURSE_SS2);
+            render_from_to(courseNameTbl, COURSE_CE, COURSE_SS2, 0);
         break;
         case 1:
-            render_from_to(courseNameTbl, COURSE_IG, COURSE_SS1);
+            render_from_to(courseNameTbl, COURSE_IG, COURSE_SS1, 0);
         break;
         case 2:
-            render_from_to(courseNameTbl, COURSE_CCT, COURSE_CHAO);
+            render_from_to(courseNameTbl, COURSE_CCT, COURSE_CCS, 0);
+            render_from_to(courseNameTbl, COURSE_LB, COURSE_LF, 8);
+            render_from_to(courseNameTbl, COURSE_GH, COURSE_CHAO, 12);
         break;
     }
 
