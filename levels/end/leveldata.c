@@ -9,3 +9,5 @@
 
 
 #include "levels/end/leveldata.inc.c"
+#include "levels/end/end_block/model.inc.c"
+#include "levels/end/end_block/collision.inc.c"

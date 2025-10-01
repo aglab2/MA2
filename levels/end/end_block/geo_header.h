@@ -1,0 +1,16 @@
+extern const GeoLayout end_block_geo[];
+extern u8 end_block_sikake_23_64_rgba32[];
+extern u8 end_block_segment2_00800_rgba16_ci8[];
+extern u8 end_block_segment2_00800_rgba16_pal_rgba16[];
+extern u8 end_block_segment2_00000_rgba16_ci8[];
+extern u8 end_block_segment2_00000_rgba16_pal_rgba16[];
+extern u8 end_block_segment2_percent_rgba16_ci8[];
+extern u8 end_block_segment2_percent_rgba16_pal_rgba16[];
+extern Vtx end_block_Circle_mesh_layer_5_vtx_cull[8];
+extern Vtx end_block_Circle_mesh_layer_5_vtx_0[90];
+extern Vtx end_block_Circle_mesh_layer_4_vtx_cull[8];
+extern Vtx end_block_Circle_mesh_layer_4_vtx_0[4];
+extern Vtx end_block_Circle_mesh_layer_4_vtx_1[4];
+extern Vtx end_block_Circle_mesh_layer_4_vtx_2[4];
+extern Gfx end_block_Circle_mesh_layer_5[];
+extern Gfx end_block_Circle_mesh_layer_4[];

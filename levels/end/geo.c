@@ -15,3 +15,4 @@
 
 
 #include "levels/end/geo.inc.c"
+#include "levels/end/end_block/geo.inc.c"

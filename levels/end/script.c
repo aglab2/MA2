@@ -30,6 +30,7 @@ const LevelScript level_end_entry[] = {
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
 	LOAD_MODEL_FROM_GEO(MODEL_CASTLE_KEY_DOOR, key_door_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_END_BLOCK, end_block_geo),
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
@@ -95,6 +96,7 @@ const LevelScript level_end_entry[] = {
 		MARIO_POS(0x01, 90, -8109, -124, -38),
 		OBJECT(MODEL_CASTLE_KEY_DOOR, -6099, -124, -48, 0, -90, 0, (1 << 24) | (1 << 16), bhvDoorWarp),
 		OBJECT(MODEL_CASTLE_KEY_DOOR, -6099, -124, 105, 0, 90, 0, (1 << 24) | (2 << 16), bhvDoorWarp),
+		OBJECT(MODEL_END_BLOCK, -6099, -150, 25, 0, 270, 0, 0, bhvEndBlock),
 		OBJECT(MODEL_NONE, -8109, 458, -38, 0, 90, 0, (0xa << 16), bhvAirborneStarCollectWarp),
 		OBJECT(MODEL_NONE, -8109, 458, -38, 0, 90, 0, (0xb << 16), bhvInstantActiveWarp),
 		OBJECT(MODEL_NONE, -8109, 458, -38, 0, 90, 0, (0xf1 << 16), bhvDeathWarp),
@@ -186,6 +188,7 @@ const LevelScript level_end_entry[] = {
 		MARIO_POS(0x01, 90, -8109, -124, -38),
 		OBJECT(MODEL_CASTLE_KEY_DOOR, -6099, -124, -48, 0, -90, 0, (1 << 24) | (1 << 16), bhvDoorWarp),
 		OBJECT(MODEL_CASTLE_KEY_DOOR, -6099, -124, 105, 0, 90, 0, (1 << 24) | (2 << 16), bhvDoorWarp),
+		OBJECT(MODEL_END_BLOCK, -6099, -150, 25, 0, 270, 0, 0, bhvEndBlock),
 		OBJECT(MODEL_NONE, -8109, 458, -38, 0, 90, 0, (0xa << 16), bhvAirborneStarCollectWarp),
 		OBJECT(MODEL_NONE, -8109, 458, -38, 0, 90, 0, (0xb << 16), bhvInstantActiveWarp),
 		OBJECT(MODEL_NONE, -8109, 458, -38, 0, 90, 0, (0xf1 << 16), bhvDeathWarp),

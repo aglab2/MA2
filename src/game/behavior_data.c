@@ -7535,3 +7535,13 @@ extern const BehaviorScript bhvCcsCoinStar[] = {
         CALL_NATIVE(bhv_ccs_coin_star_loop),
     END_LOOP(),
 };
+
+extern const Collision end_block_collision[];
+extern void bhv_end_block_init();
+const BehaviorScript bhvEndBlock[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_COMPUTE_DIST_TO_MARIO),
+    LOAD_COLLISION_DATA(end_block_collision),
+    CALL_NATIVE(bhv_end_block_init),
+    BREAK(),
+};

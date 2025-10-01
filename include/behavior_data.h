@@ -685,4 +685,6 @@ extern const BehaviorScript bhvCheckpointChao[];
 extern const BehaviorScript bhvWbDoorChao[];
 extern const BehaviorScript bhvWbMoveSpring[];
 
+extern const BehaviorScript bhvEndBlock[];
+
 #endif // BEHAVIOR_DATA_H
