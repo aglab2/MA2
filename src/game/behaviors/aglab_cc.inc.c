@@ -382,6 +382,7 @@ void bhv_ccr_ducks_loop()
 
 #define oCCESpawnBlocks oObjF4
 #define oCCEBlocksMask oF8
+#define oCCBlockMaxY oFloatF4
 
 static struct Object* cc_spawn_block(int bparam, int* pidx)
 {
@@ -391,6 +392,9 @@ static struct Object* cc_spawn_block(int bparam, int* pidx)
     struct Object* block = spawn_object(o, MODEL_CCE_BLOCK, bhvCCSpawnBlock);
     block->oBehParams2ndByte = bparam;
     blocks[idx] = block;
+    
+    struct Surface *ceil;
+    block->oCCBlockMaxY = find_ceil(block->oPosX, block->oPosY - 100.f, block->oPosZ, &ceil) - 50.f;
 
     return block;
 }
@@ -618,8 +622,6 @@ void bhv_cce_spawn_block_init()
     o->activeFlags = 0;
 }
 
-#define oCCBlockMaxY oFloatF4
-
 extern const Collision cce_block_collision[];
 extern const Collision ccr_block_collision[];
 extern const Collision cck_block_collision[];
@@ -634,9 +636,6 @@ void bhv_cce_block_init()
         obj_set_collision_data(o, cck_block_collision);
     if (gCurrLevelNum == LEVEL_CCS)
         obj_set_collision_data(o, ccs_block_collision);
-
-    struct Surface *ceil;
-    o->oCCBlockMaxY = find_ceil(o->oPosX, o->oPosY - 100.f, o->oPosZ, &ceil) - 50.f;
 }
 
 void bhv_cce_block_loop()
