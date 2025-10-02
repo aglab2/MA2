@@ -288,7 +288,7 @@ when walking:
             sCylVel = to_cyl_velocity(n, x_axis, y_axis, z_axis, cyl);
             sCylVel.r = 0.f;
             sCylVel.z *= 50.f;
-            s16 mult = o->oFaceAngleYaw ? 30 : -30;
+            s16 mult = obj->oFaceAngleYaw ? 30 : -30;
             sCylVel.theta *= mult;
             m->hurtCounter += 4;
             play_sound(SOUND_MARIO_ON_FIRE, m->marioObj->header.gfx.cameraToObject);
@@ -446,7 +446,7 @@ when walking:
     m->slideVelZ = m->vel[2];
     m->forwardVel = sqrtf(sqr(m->vel[0]) + sqr(m->vel[2]));
 
-    if (!in_tube(&cyl, IN_TUBE_R + 100.f, obj->oBehParams2ndByte, o->oFaceAngleYaw))
+    if (!in_tube(&cyl, IN_TUBE_R + 100.f, obj->oBehParams2ndByte, obj->oFaceAngleYaw))
     {
         if (obj->oFaceAnglePitch)
         {
@@ -597,5 +597,59 @@ void bhv_fc_speed_loop()
     {
         cur_obj_play_sound_1(SOUND_ARG_LOAD(SOUND_BANK_ENV, 0x05, 0x00, SOUND_NO_VOLUME_LOSS | SOUND_CONSTANT_FREQUENCY));
         zipline_boost();
+    }
+}
+
+void fcgr_hitbox_xform(struct FcgrHitbox* hitbox)
+{
+    struct Object *obj = sCylObj;
+
+    Vec3f x_axis, y_axis, z_axis;
+    gen_axis(x_axis, y_axis, z_axis, obj->oFaceAngleYaw, obj->oFaceAnglePitch);
+    cyl_t cyl = to_cyl(&hitbox->x, &obj->oPosVec, x_axis, y_axis, z_axis);
+
+    f32 hr = hitbox->r;
+    f32 hh = hitbox->h;
+
+    if (obj->oFaceAnglePitch)
+    {
+        // side
+        s16 theta = ABS(cyl.theta);
+        s16 thetaMul = cyl.theta < 0 ? -1 : 1;
+        if (theta > 0x4000)
+        {
+            f32 convR = hr * 2.f * sins(theta - 0x4000) + hh * sins(0x8000 - theta);
+            f32 convH = hr * 2.f * coss(theta - 0x4000) + hh * coss(0x8000 - theta);
+            hitbox->r = convR / 2.f;
+            hitbox->h = convH;
+
+            f32 m = cyl.r * sins(theta - 0x4000);
+            f32 ym = convH - m;
+
+            hitbox->y -= convH + hr * sins(0x8000 - theta);
+            hitbox->x += (hr * coss(0x8000 - theta) + hh * sins(0x8000 - theta) - convR / 2.f) * thetaMul;
+        }
+        else
+        {
+            f32 convR = hr * 2.f * coss(theta) + hh * sins(theta);
+            f32 convH = hr * 2.f * sins(theta) + hh * coss(theta);
+            hitbox->r = convR / 2.f;
+            hitbox->h = convH;
+            
+            f32 m = cyl.r * coss(theta);
+            f32 ym = convH - m;
+            
+            hitbox->y -= hr * sins(theta);
+            hitbox->x += (hr * coss(theta) + hh * sins(theta) - convR / 2.f) * thetaMul;
+        }
+    }
+    else
+    {
+        // vertical - move the hitbox to the middle of mario and swap h/r
+        cyl.r += hr;
+        to_xyz(&hitbox->x, &obj->oPosVec, x_axis, y_axis, z_axis, cyl);
+
+        hitbox->h = hr;
+        hitbox->r = hh / 2.f;
     }
 }

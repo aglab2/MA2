@@ -7,6 +7,8 @@
 #include "object_list_processor.h"
 #include "spawn_object.h"
 #include "engine/math_util.h"
+#include "level_update.h"
+#include "fcgr.h"
 
 UNUSED struct Object *debug_print_obj_collision(struct Object *a) {
     struct Object *currCollidedObj;
@@ -22,16 +24,17 @@ UNUSED struct Object *debug_print_obj_collision(struct Object *a) {
     return NULL;
 }
 
-static s32 detect_object_hitbox_overlap(struct Object *a, struct Object *b) {
-    f32 dya_bottom = a->oPosY - a->hitboxDownOffset;
+static s32 detect_object_hitbox_overlap_impl(struct Object *a, struct Object *b
+                                           , f32 posX, f32 posY, f32 posZ, f32 hitboxRadius, f32 hitboxHeight) {
+    f32 dya_bottom = posY;
     f32 dyb_bottom = b->oPosY - b->hitboxDownOffset;
-    f32 dx = a->oPosX - b->oPosX;
-    f32 dz = a->oPosZ - b->oPosZ;
-    f32 collisionRadius = a->hitboxRadius + b->hitboxRadius;
+    f32 dx = posX - b->oPosX;
+    f32 dz = posZ - b->oPosZ;
+    f32 collisionRadius = hitboxRadius + b->hitboxRadius;
     f32 distance = sqr(dx) + sqr(dz);
 
     if (sqr(collisionRadius) > distance) {
-        f32 dya_top = a->hitboxHeight + dya_bottom;
+        f32 dya_top =    hitboxHeight + dya_bottom;
         f32 dyb_top = b->hitboxHeight + dyb_bottom;
 
         if (dya_bottom > dyb_top
@@ -52,12 +55,34 @@ static s32 detect_object_hitbox_overlap(struct Object *a, struct Object *b) {
     return FALSE;
 }
 
-static s32 detect_object_hurtbox_overlap(struct Object *a, struct Object *b) {
-    f32 dya_bottom = a->oPosY - a->hitboxDownOffset;
+static s32 detect_object_hitbox_overlap(struct Object *a, struct Object *b) {
+    f32 x = a->oPosX;
+    f32 y = a->oPosY - a->hitboxDownOffset;
+    f32 z = a->oPosZ;
+    f32 r = a->hitboxRadius;
+    f32 h = a->hitboxHeight;
+    return detect_object_hitbox_overlap_impl(a, b
+                                           , x
+                                           , y
+                                           , z
+                                           , r, h);
+}
+
+static s32 player_detect_object_hitbox_overlap(struct Object *player, struct Object *b, struct FcgrHitbox* hitbox) {
+    return detect_object_hitbox_overlap_impl(player, b
+                                           , hitbox->x
+                                           , hitbox->y
+                                           , hitbox->z
+                                           , hitbox->r, hitbox->h);
+}
+
+static s32 detect_object_hurtbox_overlap_impl(struct Object *a, struct Object *b
+                                           , f32 posX, f32 posY, f32 posZ, f32 hurtboxRadius, f32 hitboxHeight) {
+    f32 dya_bottom = posY;
     f32 dyb_bottom = b->oPosY - b->hitboxDownOffset;
-    f32 dx = a->oPosX - b->oPosX;
-    f32 dz = a->oPosZ - b->oPosZ;
-    f32 collisionRadius = a->hurtboxRadius + b->hurtboxRadius;
+    f32 dx = posX - b->oPosX;
+    f32 dz = posZ - b->oPosZ;
+    f32 collisionRadius = hurtboxRadius + b->hurtboxRadius;
     f32 distance = sqr(dx) + sqr(dz);
 
     if (a == gMarioObject) {
@@ -65,7 +90,7 @@ static s32 detect_object_hurtbox_overlap(struct Object *a, struct Object *b) {
     }
 
     if (sqr(collisionRadius) > distance) {
-        f32 dya_top = a->hitboxHeight  + dya_bottom;
+        f32 dya_top = hitboxHeight + dya_bottom;
         f32 dyb_top = b->hurtboxHeight + dyb_bottom;
 
         if (dya_bottom > dyb_top || dya_top < dyb_bottom) {
@@ -78,6 +103,28 @@ static s32 detect_object_hurtbox_overlap(struct Object *a, struct Object *b) {
     }
 
     return FALSE;
+}
+
+static s32 detect_object_hurtbox_overlap(struct Object *a, struct Object *b) {
+    f32 x = a->oPosX;
+    f32 y = a->oPosY - a->hitboxDownOffset;
+    f32 z = a->oPosZ;
+    f32 r = a->hurtboxRadius;
+    f32 h = a->hitboxHeight;
+
+    return detect_object_hurtbox_overlap_impl(a, b
+                                           , x
+                                           , y
+                                           , z
+                                           , r, h);
+}
+
+static s32 player_detect_object_hurtbox_overlap(struct Object *player, struct Object *b, struct FcgrHitbox* hitbox) {
+    return detect_object_hurtbox_overlap_impl(player, b
+                                           , hitbox->x
+                                           , hitbox->y
+                                           , hitbox->z
+                                           , hitbox->r, hitbox->h);
 }
 
 static void clear_object_collision(struct Object *a) {
@@ -106,18 +153,52 @@ static void check_collision_in_list(struct Object *a, struct Object *b, struct O
     }
 }
 
+static void player_check_collision_in_list(struct Object *player, struct Object *b, struct Object *c, struct FcgrHitbox* hitbox) {
+    if (player->oIntangibleTimer == 0) {
+        while (b != c) {
+            if (b->oIntangibleTimer == 0) {
+                if (player_detect_object_hitbox_overlap(player, b, hitbox) && b->hurtboxRadius != 0.0f) {
+                    player_detect_object_hurtbox_overlap(player, b, hitbox);
+                }
+            }
+            b = (struct Object *) b->header.next;
+        }
+    }
+}
+
 static const s8 kHitboxList[] = { OBJ_LIST_POLELIKE, OBJ_LIST_LEVEL, OBJ_LIST_GENACTOR, OBJ_LIST_PUSHABLE, OBJ_LIST_SURFACE, OBJ_LIST_DESTRUCTIVE, 0 };
 
 static void check_player_object_collision(void) {
     struct Object *playerObj = (struct Object *) &gObjectLists[OBJ_LIST_PLAYER];
     struct Object   *nextObj = (struct Object *) playerObj->header.next;
-
     while (nextObj != playerObj) {
-        check_collision_in_list(nextObj, (struct Object *) nextObj->header.next, playerObj);
+        struct FcgrHitbox hitbox =
+        {
+            .x = nextObj->oPosX,
+            .y = nextObj->oPosY - nextObj->hitboxDownOffset,
+            .z = nextObj->oPosZ,
+            .r = nextObj->hitboxRadius,
+            .h = nextObj->hitboxHeight
+        };
+        struct FcgrHitbox hurtbox =
+        {
+            .x = nextObj->oPosX,
+            .y = nextObj->oPosY - nextObj->hitboxDownOffset,
+            .z = nextObj->oPosZ,
+            .r = nextObj->hurtboxRadius,
+            .h = nextObj->hitboxHeight
+        };
+
+        if (gMarioStates->action == ACT_FCGR_JUMP || gMarioStates->action == ACT_FCGR_WALKING) {
+            fcgr_hitbox_xform(&hitbox);
+            fcgr_hitbox_xform(&hurtbox);
+        }
+
+        player_check_collision_in_list(nextObj, (struct Object *) nextObj->header.next, playerObj, &hitbox);
         s8* phb = kHitboxList;
         while (*phb)
         {
-            check_collision_in_list(nextObj, (struct Object *)  gObjectLists[*phb].next, (struct Object *) &gObjectLists[*phb]);
+            player_check_collision_in_list(nextObj, (struct Object *)  gObjectLists[*phb].next, (struct Object *) &gObjectLists[*phb], &hurtbox);
             phb++;
         }
 

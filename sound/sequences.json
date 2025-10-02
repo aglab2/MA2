@@ -78,5 +78,6 @@
     "4B_cw": [ "0C_extended_bank" ],
     "4C_lal": [ "0C_extended_bank" ],
     "4D_ghz": [ "0C_extended_bank" ],
-    "4E_jr": [ "0C_extended_bank" ]
+    "4E_jr": [ "0C_extended_bank" ],
+    "4F_end": [ "0C_extended_bank" ]
 }
