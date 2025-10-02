@@ -2034,8 +2034,7 @@ static int not_slippery(int type)
 extern void print_text_fmt_int(int x, int y, const char *str, int i);
 int must_cancel_landing(struct MarioState* m)
 {
-    static u64 Flags = (1ULL << (LEVEL_CE  - LEVEL_CE))
-                     | (1ULL << (LEVEL_WC  - LEVEL_CE))
+    static u64 Flags = (1ULL << (LEVEL_WC  - LEVEL_CE))
                      | (1ULL << (LEVEL_DL  - LEVEL_CE))
                      | (1ULL << (LEVEL_AQ  - LEVEL_CE))
                      | (1ULL << (LEVEL_DC  - LEVEL_CE))

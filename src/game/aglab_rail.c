@@ -280,7 +280,7 @@ static void commit_trajectory(const struct match* match, f32* pclosestPoint)
     }
     else
     {
-        gMarioStates->faceAngle[1] = sAngleFlipped ? yaw : (yaw + 0x8000);
+        gMarioStates->faceAngle[1] = sAngleFlipped ? (yaw + 0x8000) : (yaw);
     }
 }
 
