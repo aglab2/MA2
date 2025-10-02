@@ -1,6 +1,6 @@
 void bhv_end_block_init()
 {
-    aglabGlobalScratch[0] = gLastCompletedCourseNum;
+    gEndLevel = gLastCompletedCourseNum;
 
     reset_globals();
     if (gMarioStates->numStars < 400)

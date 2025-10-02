@@ -799,9 +799,10 @@ static int aglabGlobalScratch[0x12];
  */
 
 extern void seq_player_play_sequence(u8 player, u8 seqId, u16 arg2);
+u8 gEndLevel = 0;
 s32 lvl_play_the_end_screen_sound(UNUSED s16 initOrUpdate, UNUSED s32 levelNum) {
     play_sound(SOUND_MENU_THANK_YOU_PLAYING_MY_GAME, gGlobalSoundSource);
-    seq_player_play_sequence(SEQ_PLAYER_ENV, aglabGlobalScratch[0] == COURSE_SS2 ? 0x39 : 0x50, 0);
+    seq_player_play_sequence(SEQ_PLAYER_ENV, gEndLevel == COURSE_SS2 ? 0x39 : 0x50, 0);
     return TRUE;
 }
 
