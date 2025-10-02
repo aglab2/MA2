@@ -307,7 +307,7 @@ void bobomb_buddy_act_idle(void) {
     object_step();
 
     if (animFrame == 5 || animFrame == 16) {
-        cur_obj_play_sound_2(SOUND_OBJ_BOBOMB_WALK);
+        // cur_obj_play_sound_2(SOUND_OBJ_BOBOMB_WALK);
     }
 
     if (o->oDistanceToMario < 1000.0f) {
@@ -430,10 +430,27 @@ void bobomb_buddy_actions(void) {
     set_object_visibility(o, 3000);
 }
 
+static f32 approach_asymptotically(f32 current, f32 target, f32 factor) {
+    return current + (target - current) * factor;
+}
+
 void bhv_bobomb_buddy_loop(void) {
     bobomb_buddy_actions();
 
     curr_obj_random_blink(&o->oBobombBuddyBlinkTimer);
+
+#if 1
+    f32 curScale = o->header.gfx.scale[0];
+    if (o->oDistanceToMario < 300.f)
+    {
+        obj_scale(o, approach_asymptotically(curScale, 1.f, 0.1f));
+    }
+    else
+    {
+        obj_scale(o, approach_asymptotically(curScale, 0.01f, 0.1f));
+    }
+#else
+#endif
 
     o->oInteractStatus = INT_STATUS_NONE;
 }

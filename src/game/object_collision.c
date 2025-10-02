@@ -153,12 +153,35 @@ static void check_collision_in_list(struct Object *a, struct Object *b, struct O
     }
 }
 
-static void player_check_collision_in_list(struct Object *player, struct Object *b, struct Object *c, struct FcgrHitbox* hitbox) {
+static void player_check_collision_in_list(struct Object *player, struct Object *b, struct Object *c) {
     if (player->oIntangibleTimer == 0) {
         while (b != c) {
             if (b->oIntangibleTimer == 0) {
-                if (player_detect_object_hitbox_overlap(player, b, hitbox) && b->hurtboxRadius != 0.0f) {
-                    player_detect_object_hurtbox_overlap(player, b, hitbox);
+                struct FcgrHitbox hitbox =
+                {
+                    .x = player->oPosX,
+                    .y = player->oPosY - player->hitboxDownOffset,
+                    .z = player->oPosZ,
+                    .r = player->hitboxRadius,
+                    .h = player->hitboxHeight
+                };
+                if (gMarioStates->action == ACT_FCGR_JUMP || gMarioStates->action == ACT_FCGR_WALKING) {
+                    fcgr_hitbox_xform(&hitbox);
+                }
+
+                if (player_detect_object_hitbox_overlap(player, b, &hitbox) && b->hurtboxRadius != 0.0f) {
+                    struct FcgrHitbox hurtbox =
+                    {
+                        .x = player->oPosX,
+                        .y = player->oPosY - player->hitboxDownOffset,
+                        .z = player->oPosZ,
+                        .r = player->hurtboxRadius,
+                        .h = player->hitboxHeight
+                    };
+                    if (gMarioStates->action == ACT_FCGR_JUMP || gMarioStates->action == ACT_FCGR_WALKING) {
+                        fcgr_hitbox_xform(&hurtbox);
+                    }
+                    player_detect_object_hurtbox_overlap(player, b, &hurtbox);
                 }
             }
             b = (struct Object *) b->header.next;
@@ -172,33 +195,11 @@ static void check_player_object_collision(void) {
     struct Object *playerObj = (struct Object *) &gObjectLists[OBJ_LIST_PLAYER];
     struct Object   *nextObj = (struct Object *) playerObj->header.next;
     while (nextObj != playerObj) {
-        struct FcgrHitbox hitbox =
-        {
-            .x = nextObj->oPosX,
-            .y = nextObj->oPosY - nextObj->hitboxDownOffset,
-            .z = nextObj->oPosZ,
-            .r = nextObj->hitboxRadius,
-            .h = nextObj->hitboxHeight
-        };
-        struct FcgrHitbox hurtbox =
-        {
-            .x = nextObj->oPosX,
-            .y = nextObj->oPosY - nextObj->hitboxDownOffset,
-            .z = nextObj->oPosZ,
-            .r = nextObj->hurtboxRadius,
-            .h = nextObj->hitboxHeight
-        };
-
-        if (gMarioStates->action == ACT_FCGR_JUMP || gMarioStates->action == ACT_FCGR_WALKING) {
-            fcgr_hitbox_xform(&hitbox);
-            fcgr_hitbox_xform(&hurtbox);
-        }
-
-        player_check_collision_in_list(nextObj, (struct Object *) nextObj->header.next, playerObj, &hitbox);
+        player_check_collision_in_list(nextObj, (struct Object *) nextObj->header.next, playerObj);
         s8* phb = kHitboxList;
         while (*phb)
         {
-            player_check_collision_in_list(nextObj, (struct Object *)  gObjectLists[*phb].next, (struct Object *) &gObjectLists[*phb], &hurtbox);
+            player_check_collision_in_list(nextObj, (struct Object *)  gObjectLists[*phb].next, (struct Object *) &gObjectLists[*phb]);
             phb++;
         }
 

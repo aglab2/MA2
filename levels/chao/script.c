@@ -22,6 +22,7 @@ static struct LevelConfig cfg = {
 	.skybox = chao_skybox_skybox_mesh,
 };
 #define SEQ_LEVEL_GRASS 0x4E
+#define bhvBobombBuddy bhvBobomb
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_chao_entry[] = {

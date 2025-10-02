@@ -790,15 +790,19 @@ perfect but this is the\n\
 end for you! Don't even\n\
 try to jump on me!")
 
-DEFINE_DIALOG(DIALOG_068, NO_SOUND, 5, 30, 200, "\
-It's Lethal Lava Land!\n\
-If you catch fire or fall\n\
-into a pool of flames,\n\
-you'll be hopping mad, but\n\
-don't lose your cool.\n\
-You can still control\n\
-Mario--just try to keep\n\
-calm!")
+DEFINE_DIALOG(DIALOG_068, SOUND_OBJ_BOBOMB_BUDDY_TALK, 4, 30, 200, "\
+You need to use the\n\
+advanced techniques\n\
+to ride the rails in\n\
+the upcoming course.\n\
+Press Ⓑ with max speed\n\
+to perform the spin.\n\
+Hold Ⓩ to slow down.\n\
+\n\
+Use control stick to tilt\n\
+left or right and press Ⓐ\n\
+when tilted to hop on\n\
+the nearest rail.")
 
 DEFINE_DIALOG(DIALOG_069, NO_SOUND, 6, 30, 200, "\
 Sometimes you'll bump into\n\

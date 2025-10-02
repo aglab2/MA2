@@ -27,8 +27,11 @@ static struct LevelConfig cfg = {};
 const LevelScript level_castle_grounds_entry[] = {
 	INIT_LEVEL(),
 	LOAD_MIO0(0x7, _castle_grounds_segment_7SegmentRomStart, _castle_grounds_segment_7SegmentRomEnd), 
+	LOAD_YAY0(0x08, _common0_yay0SegmentRomStart, _common0_yay0SegmentRomEnd), 
+	LOAD_RAW(0x0F, _common0_geoSegmentRomStart, _common0_geoSegmentRomEnd), 
 	ALLOC_LEVEL_POOL(),
 	MARIO(MODEL_MARIO, 0x00000001, bhvMario), 
+	JUMP_LINK(script_func_global_1), 
 	LOAD_MODEL_FROM_GEO(MODEL_OW_CE, ow_ce_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_OW_WC, ow_wc_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_OW_PL, ow_pl_geo), 
@@ -158,6 +161,7 @@ const LevelScript level_castle_grounds_entry[] = {
 		OBJECT(MODEL_NONE, -310, 563, -7784, 0, -90+0, 0, (0x8f << 16), bhvAirborneDeathWarp),
 		
 		OBJECT(MODEL_NONE, -310, 563, 3218, 0, -90+0, 0, (0xb << 16), bhvInstantActiveWarp),
+		OBJECT(MODEL_BOBOMB_BUDDY, -453, 4, -6606, 0, 0, 0, (68 << 16) | (68 << 24), bhvBobombBuddy),
 
 		TERRAIN(castle_grounds_area_1_collision),
 		MACRO_OBJECTS(castle_grounds_area_1_macro_objs),
