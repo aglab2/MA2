@@ -80,5 +80,6 @@
     "4D_ghz": [ "0C_extended_bank" ],
     "4E_jr": [ "0C_extended_bank" ],
     "4F_end": [ "0C_extended_bank" ],
-    "50_throw": [ "0C_extended_bank" ]
+    "50_throw": [ "0C_extended_bank" ],
+    "51_credits": [ "26" ]
 }
