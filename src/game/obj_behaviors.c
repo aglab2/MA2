@@ -794,6 +794,17 @@ static void ALWAYS_INLINE cur_obj_foreach(const BehaviorScript *behavior, Object
 // it tends to be necessary to have a scratch to pass around between the objects.
 static int aglabGlobalScratch[0x12];
 
+/**
+ * Play the "thank you so much for to playing my game" sound.
+ */
+
+extern void seq_player_play_sequence(u8 player, u8 seqId, u16 arg2);
+s32 lvl_play_the_end_screen_sound(UNUSED s16 initOrUpdate, UNUSED s32 levelNum) {
+    play_sound(SOUND_MENU_THANK_YOU_PLAYING_MY_GAME, gGlobalSoundSource);
+    seq_player_play_sequence(SEQ_PLAYER_ENV, aglabGlobalScratch[0] == COURSE_SS2 ? 0x39 : 0x50, 0);
+    return TRUE;
+}
+
 #include "behaviors/aglab.inc.c"
 #include "behaviors/aglab_wc.inc.c"
 #include "behaviors/aglab_pl.inc.c"

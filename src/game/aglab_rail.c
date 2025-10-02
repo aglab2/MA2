@@ -278,6 +278,10 @@ static void commit_trajectory(const struct match* match, f32* pclosestPoint)
         sZiplineLoopYaw = gMarioStates->faceAngle[1] = sLoopFaceAngle = yaw;
         calculate_trajectory_middle();
     }
+    else
+    {
+        gMarioStates->faceAngle[1] = sAngleFlipped ? yaw : (yaw + 0x8000);
+    }
 }
 
 int do_zipline_cancel(f32 range, rail_valid_fn fn, void* ctx, f32* closestPoint)
