@@ -290,7 +290,7 @@
         },
         "Pan Flute": {
             "release_rate": 43,
-            "envelope": "envelope6",
+            "envelope": "envelope25",
             "sound": "41_pan_flute"
         },
         "Strings": {
@@ -343,7 +343,7 @@
         },
         "Celesta": {
             "release_rate": 10,
-            "envelope": "envelope16",
+            "envelope": "envelope7",
             "sound": "42_vibraphone"
         },
         "Banjo": {
@@ -600,7 +600,7 @@
         "Based Organ": {
             "release_rate": 19,
             "normal_range_hi": 50,
-            "envelope": "envelope0",
+            "envelope": "envelope25",
             "sound": "49_organ_1",
             "sound_hi": "4A_organ_1_lq"
         },
