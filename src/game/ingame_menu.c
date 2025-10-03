@@ -1843,7 +1843,7 @@ void render_pause_my_score_coins(void) {
 
         char *courseName = segmented_to_virtual(courseNameTbl[courseIndex]);
 
-        if (courseIndex <= COURSE_NUM_TO_INDEX(COURSE_STAGES_MAX)) {
+        if (courseIndex <= COURSE_NUM_TO_INDEX(COURSE_STAGES_MAX) && courseIndex != COURSE_NUM_TO_INDEX(COURSE_LB) && courseIndex != COURSE_NUM_TO_INDEX(COURSE_LF)) {
             sprintf(str, getStageName(), getCourseNumber());
             print_generic_string_aligned(PAUSE_MENU_LEFT_X, PAUSE_MENU_COURSE_Y, str, TEXT_ALIGN_RIGHT);
             print_generic_string(PAUSE_MENU_RIGHT_X, PAUSE_MENU_COURSE_Y, courseName);
