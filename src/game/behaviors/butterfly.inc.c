@@ -80,7 +80,7 @@ void butterfly_act_return_home(void) {
     o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, hAngleToHome, 0x800);
     o->oMoveAnglePitch = approach_s16_symmetric(o->oMoveAnglePitch, vAngleToHome, 0x50);
 
-    butterfly_step(7);
+    butterfly_step(40);
 
     if ((homeDistXSq + sqr(homeDist[1]) + homeDistZSq) < 144.0f) {
         cur_obj_init_animation(BUTTERFLY_ANIM_RESTING);
@@ -91,6 +91,11 @@ void butterfly_act_return_home(void) {
 }
 
 void bhv_butterfly_loop(void) {
+    if (o->parentObj->oTimer == 90)
+    {
+        o->oHomeZ -= 20000.f;
+    }
+
     switch (o->oAction) {
         case BUTTERFLY_ACT_RESTING:
             butterfly_act_rest();

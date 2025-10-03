@@ -60,12 +60,14 @@ void bhv_credits_loop()
 
     if (o->oTimer == 90)
     {
+        despawn_all(bhvTree);
         play_sound(SOUND_PEACH_MARIO2, gGlobalSoundSource);
         set_mario_action(gMarioStates, ACT_WAKING_UP, 0);
     }
 
     if (o->oTimer == 120)
     {
+        despawn_all(bhvButterfly);
         play_sound(SOUND_PEACH_DEAR_MARIO, gGlobalSoundSource);
     }
 
@@ -88,16 +90,28 @@ void bhv_credits_loop()
         }
 
         gCurrDemoInput->rawStickY = -80;
-        gCurrDemoInput->rawStickX = CLAMP(200 - o->oTimer, -80, 0);
+        if (o->oTimer < 260)
+        {
+            gCurrDemoInput->rawStickX = CLAMP(200 - o->oTimer, -80, 0);
+        }
+        else
+        {
+            gCurrDemoInput->rawStickX = CLAMP(-260 + o->oTimer - 60, -80, 80);
+        }
     }
 
-    return;
+    if (o->oTimer > 290)
+    {
+        int a = 255 - (o->oTimer - 290) * 5;
+        sCreditsAlpha = CLAMP(a, 0, 255);
 
-    int alpha = sCreditsAlpha;
-    alpha -= 1;
-    if (alpha < 0)
-        alpha = 0;
-
-    sCreditsAlpha = alpha;
-
+        if (sCreditsAlpha < 20)
+        {
+            gMarioStates->usedObj = o;
+            SET_BPARAM2(o->oBehParams, 0xb);
+            level_trigger_warp(gMarioStates, WARP_OP_TELEPORT);
+            gCurrDemoInput = NULL;
+            o->activeFlags = 0;
+        }
+    }
 }
