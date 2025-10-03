@@ -2547,59 +2547,7 @@ static s32 act_end_peach_cutscene(struct MarioState *m) {
 #define TIMER_CREDITS_WARP     204
 
 static s32 act_credits_cutscene(struct MarioState *m) {
-    m->statusForCamera->cameraEvent = CAM_EVENT_START_CREDITS;
-    // checks if Mario is underwater (JRB, DDD, SA, etc.)
-    if (m->pos[1] < m->waterLevel - 100) {
-        if (m->area->camera->mode != CAMERA_MODE_BEHIND_MARIO) {
-            set_camera_mode(m->area->camera, CAMERA_MODE_BEHIND_MARIO, 1);
-        }
-        set_mario_animation(m, MARIO_ANIM_WATER_IDLE);
-        vec3f_copy_with_gravity_switch(m->marioObj->header.gfx.pos, m->pos);
-        // will copy over roll and pitch, if set
-        vec3s_copy(m->marioObj->header.gfx.angle, m->faceAngle);
-        m->particleFlags |= PARTICLE_BUBBLE;
-    } else {
-        set_mario_animation(m, MARIO_ANIM_FIRST_PERSON);
-        if (m->actionTimer > 0) {
-            stop_and_set_height_to_floor(m);
-        }
-    }
-
-    if (m->actionTimer >= TIMER_CREDITS_SHOW) {
-        if (m->actionState < 40) {
-            m->actionState += 2;
-        }
-
-        s32 width = m->actionState * (SCREEN_WIDTH * 2) / 100;
-        s32 height = m->actionState * (SCREEN_HEIGHT * 2) / 100;
-
-        sEndCutsceneVp.vp.vscale[0] = (SCREEN_WIDTH * 2) - width;
-        sEndCutsceneVp.vp.vscale[1] = (SCREEN_HEIGHT * 2) - height;
-#ifdef F3DEX3
-        sEndCutsceneVp.vp.vscale[1] = -sEndCutsceneVp.vp.vtrans[1];
-#endif
-        sEndCutsceneVp.vp.vtrans[0] =
-            (gCurrCreditsEntry->actNum & (1 << 4) ? width : -width) * 56 / 100 + (SCREEN_WIDTH  * 2);
-        sEndCutsceneVp.vp.vtrans[1] =
-            (gCurrCreditsEntry->actNum & (1 << 5) ? height : -height) * 66 / 100 + (SCREEN_HEIGHT * 2);
-
-        override_viewport_and_clip(&sEndCutsceneVp, 0, 0, 0, 0);
-    }
-
-    if (m->actionTimer == TIMER_CREDITS_PROGRESS) {
-        reset_cutscene_msg_fade();
-    }
-
-    if (m->actionTimer >= TIMER_CREDITS_PROGRESS) {
-        sDispCreditsEntry = gCurrCreditsEntry;
-    }
-
-    if (m->actionTimer++ == TIMER_CREDITS_WARP) {
-        level_trigger_warp(m, WARP_OP_CREDITS_NEXT);
-    }
-
-    m->marioObj->header.gfx.angle[1] += (gCurrCreditsEntry->actNum & 0xC0) << 8;
-
+    s32 animFrame = set_mario_animation(m, MARIO_ANIM_CREDITS_PEACE_SIGN);
     return FALSE;
 }
 

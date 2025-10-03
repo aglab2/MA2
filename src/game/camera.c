@@ -10250,6 +10250,48 @@ struct Cutscene sCutsceneCCK2[] = {
     { cutscene_cck2, CUTSCENE_LOOP },
 };
 
+struct CutsceneSplinePoint gCreditsPos[] = {
+    { 0, 0, { 18, 1567, 7860 } },
+    { 0, 0, { 18, 1567, 7860 } },
+    { 0, 0, { 18, 1567, 7860 } },
+    { 0, 0, { 500, 2824, 8030 } },
+    { 0, 0, { 1150, 4824, 8230 } },
+    { 0, 0, { 2150, 6824, 8630 } },
+    { 0, 0, { 2150, 6824, 8630 } },
+    { 0, 0, { 2150, 6824, 8630 } },
+};
+
+struct CutsceneSplinePoint gCreditsFocus[] = {
+    { 0, 50, { 18, 815, 9363 } },
+    { 0, 50, { 18, 815, 9363 } },
+    { 0, 50, { 18, 815, 9363 } },
+    { 0, 50, { -52, 448, 10013 } },
+    { 0, 50, { -152, 448, 11013 } },
+    { 0, 50, { -152, 1448, 1000+12013 } },
+    { 0, 50, { -152, 1448, 1000+12013 } },
+    { 0, 50, { -152, 1448, 1000+12013 } },
+};
+
+static void cutscene_credits2(struct Camera *c) {
+    c->focus[0] = 18.f;
+    c->focus[1] = 815.f;
+    c->focus[2] = 9363.f;
+
+    c->pos[0] = 18.f;
+    c->pos[1] = 1567.f;
+    c->pos[2] = 7860.f;
+}
+
+static void cutscene_credits3(struct Camera *c) {
+    move_point_along_spline(c->pos, gCreditsPos, &sCutsceneSplineSegment, &sCutsceneSplineSegmentProgress);
+    move_point_along_spline(c->focus, gCreditsFocus, &sCutsceneSplineSegment, &sCutsceneSplineSegmentProgress);
+}
+
+struct Cutscene sCutsceneCredits2[] = {
+    { cutscene_credits2, 150 },
+    { cutscene_credits3, CUTSCENE_LOOP },
+};
+
 /**
  * Cutscene that plays when Mario dies while standing, or from electrocution.
  */
@@ -10889,6 +10931,8 @@ void play_cutscene(struct Camera *c) {
 
         CUTSCENE(CUTSCENE_CCK_1,                sCutsceneCCK1)
         CUTSCENE(CUTSCENE_CCK_2,                sCutsceneCCK2)
+
+        CUTSCENE(CUTSCENE_CREDITS2,             sCutsceneCredits2)
     }
 
 #undef CUTSCENE

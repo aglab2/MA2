@@ -567,6 +567,30 @@ void run_demo_inputs(void) {
 
 #endif
 
+static void run_credits_inputs()
+{
+    // Eliminate the unused bits.
+    gPlayer1Controller->controllerData->button &= VALID_BUTTONS;
+
+    // Check if a demo inputs list exists and if so,
+    // run the active demo input list.
+    if (gCurrDemoInput != NULL) {
+        // Perform the demo inputs by assigning the current button mask and the stick inputs.
+        gPlayer1Controller->controllerData->stick_x = gCurrDemoInput->rawStickX;
+        gPlayer1Controller->controllerData->stick_y = gCurrDemoInput->rawStickY;
+
+        // To assign the demo input, the button information is stored in
+        // an 8-bit mask rather than a 16-bit mask. this is because only
+        // A, B, Z, Start, and the C-Buttons are used in a demo, as bits
+        // in that order. In order to assign the mask, we need to take the
+        // upper 4 bits (A, B, Z, and Start) and shift then left by 8 to
+        // match the correct input mask. We then add this to the masked
+        // lower 4 bits to get the correct button mask.
+        gPlayer1Controller->controllerData->button =
+            ((gCurrDemoInput->buttonMask & 0xF0) << 8) + ((gCurrDemoInput->buttonMask & 0xF));
+    }
+}
+
 /**
  * Take the updated controller struct and calculate the new x, y, and distance floats.
  */
@@ -622,6 +646,7 @@ void read_controller_inputs(s32 threadID) {
 #if !defined(DISABLE_DEMO) && defined(KEEP_MARIO_HEAD)
     run_demo_inputs();
 #endif
+    run_credits_inputs();
 
     for (s32 cont = 0; cont < MAX_NUM_PLAYERS; cont++) {
         struct Controller* controller = &gControllers[cont];
