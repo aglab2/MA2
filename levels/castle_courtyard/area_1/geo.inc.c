@@ -1,11 +1,15 @@
 #include "src/game/envfx_snow.h"
 
+extern Gfx *geo_update_alpha_compare_credits(s32 callContext, struct GraphNode *node, UNUSED void *context);
 const GeoLayout castle_courtyard_area_1_geo[] = {
 	GEO_NODE_START(),
 	GEO_OPEN_NODE(),
+		GEO_ASM(LAYER_TRANSPARENT, geo_update_alpha_compare_credits),
+		GEO_ASM(LAYER_PCL, geo_update_alpha_compare_credits),
+		GEO_ASM(LAYER_ALPHA, geo_update_alpha_compare_credits),
 		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, castle_courtyard_dl_Shape_IndexedFaceSet_009_Shape_IndexedFaceSet_001_mesh_layer_5),
 		GEO_DISPLAY_LIST(LAYER_TRANSPARENT, castle_courtyard_dl_Shape_IndexedFaceSet_009_Shape_IndexedFaceSet_002_mesh_layer_5),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, castle_courtyard_dl_Shape_IndexedFaceSet_009_Shape_IndexedFaceSet_131_mesh_layer_1),
+		GEO_DISPLAY_LIST(LAYER_PCL, castle_courtyard_dl_Shape_IndexedFaceSet_009_Shape_IndexedFaceSet_131_mesh_layer_1),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE_DECAL, castle_courtyard_dl_Shape_IndexedFaceSet_009_Shape_IndexedFaceSet_131_mesh_layer_2),
 		GEO_DISPLAY_LIST(LAYER_ALPHA, castle_courtyard_dl_Shape_IndexedFaceSet_009_Shape_IndexedFaceSet_131_mesh_layer_4),
 	GEO_CLOSE_NODE(),

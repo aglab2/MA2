@@ -687,4 +687,6 @@ extern const BehaviorScript bhvWbMoveSpring[];
 
 extern const BehaviorScript bhvEndBlock[];
 
+extern const BehaviorScript bhvCredits[];
+
 #endif // BEHAVIOR_DATA_H

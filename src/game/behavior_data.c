@@ -7545,3 +7545,13 @@ const BehaviorScript bhvEndBlock[] = {
     CALL_NATIVE(bhv_end_block_init),
     BREAK(),
 };
+
+extern void bhv_credits_init();
+extern void bhv_credits_loop();
+const BehaviorScript bhvCredits[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    CALL_NATIVE(bhv_credits_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_credits_loop),
+    END_LOOP(),
+};

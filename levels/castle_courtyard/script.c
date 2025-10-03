@@ -63,7 +63,7 @@ const LevelScript level_castle_courtyard_entry[] = {
 		OBJECT(MODEL_CASTLE_GROUNDS_BUBBLY_TREE, -7842, 1073, 16022, 0, 0, 0, 0x00000000, bhvTree),
 		OBJECT(MODEL_CASTLE_GROUNDS_BUBBLY_TREE, -7542, 994, 14696, 0, 0, 0, 0x00000000, bhvTree),
 		OBJECT(MODEL_CASTLE_GROUNDS_BUBBLY_TREE, -1939, 1147, 11298, 0, 0, 0, 0x00000000, bhvTree),
-		// OBJECT(MODEL_WOODEN_SIGNPOST, -30, 815, 10080, 0, -180, 0, (16 << 24) | (16 << 16), bhvMessagePanel),
+		OBJECT(MODEL_NONE, 0, 0, 0, 0, -180, 0, 0, bhvCredits),
 		OBJECT(MODEL_YOSHI, -1201, 3728, 19558, 0, 0, 0, 0x00000000, bhvYoshi),
 		TERRAIN(castle_courtyard_area_1_collision),
 		MACRO_OBJECTS(castle_courtyard_area_1_macro_objs),
