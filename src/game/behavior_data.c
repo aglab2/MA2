@@ -7555,3 +7555,13 @@ const BehaviorScript bhvCredits[] = {
         CALL_NATIVE(bhv_credits_loop),
     END_LOOP(),
 };
+
+extern void bhv_credits_roll_init();
+extern void bhv_credits_roll_loop();
+const BehaviorScript bhvCreditsCtl[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    CALL_NATIVE(bhv_credits_roll_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_credits_roll_loop),
+    END_LOOP(),
+};

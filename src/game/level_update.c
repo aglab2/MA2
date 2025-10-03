@@ -701,7 +701,7 @@ void check_instant_warp(void) {
 #endif
 }
 
-s16 music_unchanged_through_warp(s16 arg) {
+static s16 music_unchanged_through_warp(s16 arg) {
     struct ObjectWarpNode *warpNode = area_get_warp_node(arg);
 
 #ifdef DEBUG_ASSERTIONS
@@ -1005,7 +1005,7 @@ void initiate_delayed_warp(void) {
 
         if (gDebugLevelSelect && (sDelayedWarpOp & WARP_OP_TRIGGERS_LEVEL_SELECT)) {
             warp_special(WARP_SPECIAL_LEVEL_SELECT);
-        } else if (gCurrDemoInput != NULL) {
+        } else if (0) {
             if (sDelayedWarpOp == WARP_OP_DEMO_END) {
                 warp_special(WARP_SPECIAL_INTRO_SPLASH_SCREEN);
             } else {
@@ -1601,7 +1601,7 @@ s32 init_level(void) {
             }
         }
 #else
-            if (gCurrDemoInput != NULL) {
+            if (0) {
                 set_mario_action(gMarioState, ACT_IDLE, 0);
             } else if (!gDebugLevelSelect) {
                 if (gMarioState->action != ACT_UNINITIALIZED) {
@@ -1723,7 +1723,7 @@ s32 lvl_set_current_level(UNUSED s16 initOrUpdate, s32 levelNum) {
     gCurrLevelNum = levelNum;
     gCurrCourseNum = gLevelToCourseNumTable[levelNum - 1];
 
-    if (gCurrDemoInput != NULL || gCurrCreditsEntry != NULL || gCurrCourseNum == COURSE_NONE) {
+    if (0 || gCurrCreditsEntry != NULL || gCurrCourseNum == COURSE_NONE) {
         return FALSE;
     }
 

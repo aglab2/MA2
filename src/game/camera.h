@@ -256,6 +256,7 @@ enum Cutscenes {
     CUTSCENE_CCK_1,
     CUTSCENE_CCK_2,
     CUTSCENE_CREDITS2,
+    CUTSCENE_CREDITS3,
 };
 
 /**

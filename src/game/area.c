@@ -707,6 +707,8 @@ extern int gSlowLookups;
 
 u8 gWaterTutorial;
 u8 gExtraGuides;
+extern void render_credits();
+
 const char* gExtraText;
 extern void shade_screen_water(void);
 extern void shade_screen_water_alight(void);
@@ -760,6 +762,11 @@ void render_game(void) {
             
             print_generic_string_aligned(160, 80, gExtraText, TEXT_ALIGN_CENTER);
             gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
+        }
+
+        if (gCurrLevelNum == LEVEL_CREDITS)
+        {
+            render_credits();
         }
 
         render_text_labels();

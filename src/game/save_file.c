@@ -579,7 +579,7 @@ u32 save_file_get_flags(void) {
             SAVE_FLAG_COLLECTED_MIPS_STAR_1  |
             SAVE_FLAG_COLLECTED_MIPS_STAR_2);
 #else
-    if (gCurrCreditsEntry != NULL || gCurrDemoInput != NULL) {
+    if (gCurrCreditsEntry != NULL || 0) {
         return 0;
     }
     return gSaveBuffer.files[gCurrSaveFileNum - 1][0].flags;

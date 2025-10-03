@@ -6192,6 +6192,9 @@ struct CameraTrigger sCamGh[] = {
 struct CameraTrigger sCamChao[] = {
 	NULL_TRIGGER
 };
+struct CameraTrigger sCamCredits[] = {
+	NULL_TRIGGER
+};
 struct CameraTrigger *sCameraTriggers[LEVEL_COUNT + 1] = {
     NULL,
     #include "levels/level_defines.h"
@@ -10292,6 +10295,20 @@ struct Cutscene sCutsceneCredits2[] = {
     { cutscene_credits3, CUTSCENE_LOOP },
 };
 
+static void cutscene_credits_stop(struct Camera *c) {
+    c->focus[0] = 0.f;
+    c->focus[1] = 1000.f;
+    c->focus[2] = 0.f;
+
+    c->pos[0] = 0.f;
+    c->pos[1] = 1000.f;
+    c->pos[2] = 100.f;
+}
+
+struct Cutscene sCutsceneCredits3[] = {
+    { cutscene_credits_stop, CUTSCENE_LOOP },
+};
+
 /**
  * Cutscene that plays when Mario dies while standing, or from electrocution.
  */
@@ -10533,7 +10550,7 @@ u8 sZoomOutAreaMasks[] = {
 	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), 
 	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), 
 	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 1, 0, 0), 
-	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 0, 0, 0, 0), 
+	ZOOMOUT_AREA_MASK(1, 0, 0, 0, 1, 0, 0, 0), 
 };
 
 /*
@@ -10933,6 +10950,7 @@ void play_cutscene(struct Camera *c) {
         CUTSCENE(CUTSCENE_CCK_2,                sCutsceneCCK2)
 
         CUTSCENE(CUTSCENE_CREDITS2,             sCutsceneCredits2)
+        CUTSCENE(CUTSCENE_CREDITS3,             sCutsceneCredits3)
     }
 
 #undef CUTSCENE
