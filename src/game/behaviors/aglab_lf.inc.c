@@ -289,6 +289,11 @@ void bhv_lf_ctl_loop()
             gMarioStates->usedObj = o;
             SET_BPARAM2(o->oBehParams, 0xa);
             level_trigger_warp(gMarioStates, WARP_OP_TELEPORT);
+
+            int starIndex = 63;
+            save_file_collect_star_or_key(m->numCoins, starIndex);
+            gMarioStates->numStars = save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1);
+
             disable_background_sound();
         }
         return;
