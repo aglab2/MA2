@@ -16,7 +16,7 @@ void bhv_mips_init(void) {
     o->oFriction = 0.89f;
     o->oBuoyancy = 1.2f;
 
-    cur_obj_init_animation(0);
+    cur_obj_init_animation(4);
 }
 
 /**
@@ -97,7 +97,7 @@ void bhv_mips_act_follow_path(void) {
 
     // If we are at the end of the path, do idle animation and wait for Mario.
     if (followStatus == PATH_REACHED_END) {
-        cur_obj_init_animation(0);
+        cur_obj_init_animation(4);
         o->oAction = MIPS_ACT_WAIT_FOR_NEARBY_MARIO;
     }
 
@@ -115,7 +115,7 @@ void bhv_mips_act_follow_path(void) {
  */
 void bhv_mips_act_wait_for_animation_done(void) {
     if (cur_obj_check_if_near_animation_end()) {
-        cur_obj_init_animation(0);
+        cur_obj_init_animation(4);
         o->oAction = MIPS_ACT_IDLE;
     }
 }
@@ -192,6 +192,7 @@ void bhv_mips_held(void) {
     cur_obj_set_pos_relative(gMarioObject, 0, 60.0f, 100.0f);
     cur_obj_become_intangible();
 
+#if 0
     // If MIPS hasn't spawned his star yet...
     if (o->oMipsStarStatus == MIPS_STAR_STATUS_HAVENT_SPAWNED_STAR) {
         // Choose dialog based on which MIPS encounter this is.
@@ -211,6 +212,7 @@ void bhv_mips_held(void) {
             }
         }
     }
+#endif
 }
 
 /**
@@ -219,7 +221,7 @@ void bhv_mips_held(void) {
 void bhv_mips_dropped(void) {
     cur_obj_get_dropped();
     o->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
-    cur_obj_init_animation(0);
+    cur_obj_init_animation(4);
     o->oHeldState = HELD_FREE;
     cur_obj_become_tangible();
     o->oForwardVel = 3.0f;
