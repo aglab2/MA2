@@ -1,0 +1,15 @@
+extern const GeoLayout cct_blockla_geo[];
+extern u8 cct_blockla_MIU64_CG007_ci4[];
+extern u8 cct_blockla_MIU64_CG007_pal_rgba16[];
+extern u8 cct_blockla_MIU64_EE001_ci4[];
+extern u8 cct_blockla_MIU64_EE001_pal_rgba16[];
+extern u8 cct_blockla_MIU128_CG007_ci4[];
+extern u8 cct_blockla_MIU128_CG007_pal_rgba16[];
+extern u8 cct_blockla_MIU64_CG021_ci4[];
+extern u8 cct_blockla_MIU64_CG021_pal_rgba16[];
+extern Vtx cct_blockla_000_object_0123D284_001_mesh_layer_5_vtx_0[51];
+extern Vtx cct_blockla_000_object_0123D284_001_mesh_layer_1_vtx_0[76];
+extern Vtx cct_blockla_000_object_0123D284_001_mesh_layer_1_vtx_1[42];
+extern Vtx cct_blockla_000_object_0123D284_001_mesh_layer_1_vtx_2[83];
+extern Gfx cct_blockla_000_object_0123D284_001_mesh_layer_5[];
+extern Gfx cct_blockla_000_object_0123D284_001_mesh_layer_1[];

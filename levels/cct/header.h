@@ -42,4 +42,6 @@ extern const LevelScript level_cct_entry[];
 
 #include "levels/cct/cct_switch/geo_header.h"
 
+#include "levels/cct/cct_blockla/geo_header.h"
+
 #endif

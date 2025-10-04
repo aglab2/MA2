@@ -857,6 +857,33 @@ void bhv_ccr_water_lock_loop()
         gMarioStates->pos[2] = -2450.f + 100.f;
 }
 
+extern Gfx cct_blockla_000_object_0123D284_001_mesh_layer_5[];
+void bhv_cct_lock_loop()
+{
+    u8* content = segmented_to_virtual(cct_blockla_000_object_0123D284_001_mesh_layer_5);
+    content[72+7] = gTimeFrozen ? 0 : 180;
+
+    if (gTimeFrozen)
+        return;
+
+    f32 dy = gMarioStates->pos[1] - o->oPosY;
+    if (ABS(dy) > 2800.f)
+        return;
+
+    f32 dx = gMarioStates->pos[0] - o->oPosX;
+    if (absf(dx) > 2000.f)
+        return;
+
+    f32 dz = gMarioStates->pos[2] - o->oPosZ;
+    if (absf(dz) > 100.f)
+        return;
+
+    if (dz < 0)
+        gMarioStates->pos[2] = o->oPosZ - 100.f;
+    else
+        gMarioStates->pos[2] = o->oPosZ + 100.f;
+}
+
 extern void bhv_clam_loop_impl(int buff);
 void bhv_clam_cc_loop()
 {

@@ -7041,6 +7041,14 @@ extern const BehaviorScript bhvCCRBlock[] = {
     END_LOOP(),
 };
 
+extern void bhv_cct_lock_loop();
+extern const BehaviorScript bhvCCTBlock[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_cct_lock_loop),
+    END_LOOP(),
+};
+
 extern const Collision ccr_step_collision[];
 extern const BehaviorScript bhvCCRPlatform[] = {
     BEGIN(OBJ_LIST_SURFACE),
