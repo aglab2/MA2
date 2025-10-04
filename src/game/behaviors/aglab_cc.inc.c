@@ -1303,3 +1303,28 @@ void bhv_ccs_coin_star_loop()
         cc_grant_clear(gMarioStates);
     }
 }
+
+void bhv_ccr_coin_placer_loop()
+{
+    Vec3f start = { 0, 589.f, -2350.f };
+    Vec3f end = { -740.f, 4476.f, 687.f };
+
+    Vec3f diff;
+    vec3_diff(diff, end, start);
+    f32 len = vec3_mag(diff);
+    diff[0] /= len / 250;
+    diff[1] /= len / 250;
+    diff[2] /= len / 250;
+
+    for (int i = 0; i < 50; i++)
+    {
+        Vec3f pos = { start[0] + diff[0] * i, start[1] + diff[1] * i, start[2] + diff[2] * i };
+        if (pos[1] > end[1])
+            break;
+
+        struct Object* coin = spawn_object(o, MODEL_YELLOW_COIN, bhvYellowCoinSpawnedCC);
+        coin->oPosX = pos[0];
+        coin->oPosY = pos[1];
+        coin->oPosZ = pos[2];
+    }
+}

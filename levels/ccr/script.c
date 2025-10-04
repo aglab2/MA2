@@ -105,6 +105,7 @@ const LevelScript level_ccr_entry[] = {
 		OBJECT(MODEL_CCR_TIMESTOP, 7, -600, -8892, 0, 0, 0, (100 << 24), bhvCCTimestop),
 		OBJECT(MODEL_CCR_TIMESTOP, -4, -1504, -6500, 90, 0, 0, 0x00000000, bhvCCTimestop),
 		OBJECT(MODEL_PURPLE_SWITCH, 7, -600, -9598, 0, 0, 0, 0x00000000, bhvFloorSwitchGrills),
+		OBJECT(MODEL_NONE, 7, -600, -9598, 0, 0, 0, 0x00000000, bhvCCRCoinPlacer),
 		TERRAIN(ccr_area_1_collision),
 		MACRO_OBJECTS(ccr_area_1_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),

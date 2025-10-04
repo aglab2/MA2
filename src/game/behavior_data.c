@@ -7576,3 +7576,10 @@ const BehaviorScript bhvChaoLove[] = {
         CALL_NATIVE(bhv_chao_love_loop),
     END_LOOP(),
 };
+
+extern void bhv_ccr_coin_placer_loop();
+const BehaviorScript bhvCCRCoinPlacer[] = {
+    BEGIN(OBJ_LIST_SPAWNER),
+    CALL_NATIVE(bhv_ccr_coin_placer_loop),
+    BREAK(),
+};
