@@ -63,3 +63,4 @@ DEFINE_LEVEL("LF", LEVEL_LF, COURSE_LF, lf, generic, 20000, 0x00, 0x00, 0x00, _,
 DEFINE_LEVEL("GH", LEVEL_GH, COURSE_GH, gh, generic, 20000, 0x00, 0x00, 0x00, _, sCamGh) 
 DEFINE_LEVEL("CHAO", LEVEL_CHAO, COURSE_CHAO, chao, generic, 20000, 0x00, 0x00, 0x00, _, sCamChao) 
 DEFINE_LEVEL("CREDITS", LEVEL_CREDITS, COURSE_NONE, credits, generic, 20000, 0x00, 0x00, 0x00, _, sCamCredits) 
+DEFINE_LEVEL("GG", LEVEL_GG, COURSE_GG, gg, generic, 20000, 0x00, 0x00, 0x00, _, sCamGg) 

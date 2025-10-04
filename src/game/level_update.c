@@ -1100,7 +1100,8 @@ void update_hud_values(void) {
               && gCurrCourseNum != COURSE_CCK
               && gCurrCourseNum != COURSE_CCS
               && gCurrCourseNum != COURSE_LB
-              && gCurrCourseNum != COURSE_LF, gHudDisplay.flags, HUD_DISPLAY_FLAG_COIN_COUNT);
+              && gCurrCourseNum != COURSE_LF
+              && gCurrCourseNum != COURSE_GG, gHudDisplay.flags, HUD_DISPLAY_FLAG_COIN_COUNT);
 
         if (gHudDisplay.coins < gMarioState->numCoins) {
             if (gGlobalTimer & 1) {
