@@ -1,3 +1,4 @@
+#include "game/emutest.h"
 
 /**
  * @file fish.inc.c
@@ -8,7 +9,12 @@
  * Spawns fish with settings chosen by oBehParams2ndByte.
  * These settings are animations, colour, and spawn quantity.
  */
+extern const struct Animation *const blue_fish_seg3_anims_0301C2B0[];
+extern const struct Animation *const cyan_fish_seg6_anims_0600E264[];
 static void fish_spawner_act_spawn(void) {
+    if (gIsConsole)
+        return;
+
     s32 i;
     s32 schoolQuantity;
     ModelID16 model;
@@ -218,6 +224,8 @@ static ObjActionFunc sFishActions[] = {
  * Main loop for fish
  */
 void bhv_fish_loop(void) {
+    CC_FREEZE();
+
     cur_obj_scale(1.0f);
 
     // oFishWaterLevel tracks if a fish has roamed out of water.

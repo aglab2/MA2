@@ -849,6 +849,8 @@ s32 lvl_play_the_end_screen_sound(UNUSED s16 initOrUpdate, UNUSED s32 levelNum) 
 #include "behaviors/aglab_gravflip.inc.c"
 #include "behaviors/aglab_speeder.inc.c"
 
+#include "behaviors/fish.inc.c"
+
 extern const s16 dBowserFlamesOrientationValues[];
 #include "obj_behaviors_2.h"
 #include "platform_displacement.h"
