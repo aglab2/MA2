@@ -679,7 +679,8 @@ static void focus_on_mario(Vec3f focus, Vec3f pos, f32 posYOff, f32 focYOff, f32
     {
         fcgr_override_posYoff(&posYOff, &focYOff);
     }
-    if (sMarioCamState->action == ACT_RAIL_GRIND)
+    int animId = gMarioObject->header.gfx.animInfo.animID;
+    if (sMarioCamState->action == ACT_RAIL_GRIND && animId != MARIO_ANIM_HANG_ON_OWL)
     {
         posYOff = 190.f;
     }
