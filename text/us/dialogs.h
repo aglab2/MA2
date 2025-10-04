@@ -181,7 +181,7 @@ Do you want to Save?\n\
 \tYes\t\tNo")
 
 DEFINE_DIALOG(DIALOG_014, NO_SOUND, 4, 30, 200, "\
-Checkpoint found!\n\
+Thank you for playing!\n\
 Do you want to Save?\n\
 \n\
 \tYou Bet\tNot Now")

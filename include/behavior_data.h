@@ -694,4 +694,6 @@ extern const BehaviorScript bhvCCRCoinPlacer[];
 
 extern const BehaviorScript bhvCCTBlock[];
 
+extern const BehaviorScript bhvGG[];
+
 #endif // BEHAVIOR_DATA_H

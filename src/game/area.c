@@ -707,6 +707,7 @@ extern int gSlowLookups;
 
 u8 gWaterTutorial;
 u8 gExtraGuides;
+u8 gFinaleNotes;
 extern void render_credits();
 
 const char* gExtraText;
@@ -761,6 +762,17 @@ void render_game(void) {
             gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, CLAMP((int) gExtraGuides * 16, 0, 255));
             
             print_generic_string_aligned(160, 80, gExtraText, TEXT_ALIGN_CENTER);
+            gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
+        }
+
+        if (gFinaleNotes)
+        {
+            gFinaleNotes = CLAMP(gFinaleNotes - 8, 0, 255);
+            gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
+            gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, CLAMP(gFinaleNotes, 0, 255));
+            print_generic_string_aligned(160 - 2, 210 - 2, gExtraText, TEXT_ALIGN_CENTER);
+            gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, CLAMP(gFinaleNotes, 0, 255));
+            print_generic_string_aligned(160, 210, gExtraText, TEXT_ALIGN_CENTER);
             gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
         }
 

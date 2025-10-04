@@ -841,6 +841,7 @@ s32 lvl_play_the_end_screen_sound(UNUSED s16 initOrUpdate, UNUSED s32 levelNum) 
 #include "behaviors/aglab_k.inc.c"
 #include "behaviors/aglab_end.inc.c"
 #include "behaviors/aglab_credits.inc.c"
+#include "behaviors/aglab_gg.inc.c"
 
 #include "behaviors/aglab_starmove.inc.c"
 #include "behaviors/aglab_spring.inc.c"

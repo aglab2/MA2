@@ -596,7 +596,10 @@ void general_star_dance_handler(struct MarioState *m, s32 isInWater) {
                 //! TODO: Is this check necessary? Both seem to do the exact same thing.
                 if (m->actionArg & 1) {
                     // No exit
-                    play_course_clear(obj_has_model(celebStar, MODEL_BOWSER_KEY));
+                    if (gCurrCourseNum != COURSE_GG)
+                    {
+                        play_course_clear(obj_has_model(celebStar, MODEL_BOWSER_KEY));
+                    }
                 } else {
                     // Exit
                     if (obj_has_model(celebStar, MODEL_BOWSER_KEY)) {

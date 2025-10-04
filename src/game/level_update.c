@@ -1625,7 +1625,7 @@ s32 init_level(void) {
             play_transition(WARP_TRANSITION_FADE_FROM_STAR, 0x10, 0xFF, 0xFF, 0xFF);
         }
 
-        if (gCurrDemoInput == NULL) {
+        if (gCurrDemoInput == NULL && gCurrCourseNum != COURSE_GG) {
 #ifdef BETTER_REVERB
             gBetterReverbPresetValue = gCurrentArea->betterReverbPreset;
 #endif
@@ -1656,6 +1656,12 @@ s32 init_level(void) {
 /**
  * Initialize the current level if initOrUpdate is 0, or update the level if it is 1.
  */
+s32 lvl_gg(s16, s32)
+{
+    set_background_music(0, 0x52, 0);
+    return 0;
+}
+
 s32 lvl_init_or_update(s16 initOrUpdate, UNUSED s32 unused) {
     return (initOrUpdate ? update_level() : init_level());
 }

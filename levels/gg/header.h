@@ -8,4 +8,6 @@ extern const LevelScript level_gg_entry[];
 
 
 #include "levels/gg/header.inc.h"
+#include "levels/gg/gg_skybox/header.h"
+
 #endif

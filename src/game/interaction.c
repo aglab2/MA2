@@ -827,6 +827,9 @@ static enum StarGrabStyle get_star_grab_style(struct Object *obj)
     if (gCurrCourseNum == COURSE_SS2 || gCurrCourseNum == COURSE_SS1)
         return STAR_GRAB_EXIT;
 
+    if (gCurrCourseNum == COURSE_GG)
+        return STAR_GRAB_CHECKPOINT;
+
     if (obj_has_model(obj, MODEL_CHECKPOINT))
         return STAR_GRAB_NONSTOP;
 
@@ -906,7 +909,9 @@ u32 interact_star_or_key(struct MarioState *m, UNUSED u32 interactType, struct O
             fadeout_level_music(126);
         }
 
-        play_sound(SOUND_MENU_STAR_SOUND, m->marioObj->header.gfx.cameraToObject);
+        if (gCurrCourseNum != COURSE_GG)
+            play_sound(SOUND_MENU_STAR_SOUND, m->marioObj->header.gfx.cameraToObject);
+
         update_mario_sound_and_camera(m);
 
         if (grandStar) {

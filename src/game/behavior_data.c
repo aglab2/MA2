@@ -7591,3 +7591,12 @@ const BehaviorScript bhvCCRCoinPlacer[] = {
     CALL_NATIVE(bhv_ccr_coin_placer_loop),
     BREAK(),
 };
+
+extern void bhv_gg_loop();
+const BehaviorScript bhvGG[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_gg_loop),
+    END_LOOP(),
+};

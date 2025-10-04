@@ -1,0 +1,13 @@
+extern u8 gg_skybox_spacenbg64_ci4[];
+extern u8 gg_skybox_spacenbg64_pal_rgba16[];
+extern u8 gg_skybox_spacenbg128_ci4[];
+extern u8 gg_skybox_spacenbg128_pal_rgba16[];
+extern u8 gg_skybox_y_co8_11_rgba32[];
+extern u8 gg_skybox_earth512_2_rgba16[];
+extern Vtx gg_skybox_object_00888FE4_mesh_vtx_cull[8];
+extern Vtx gg_skybox_object_00888FE4_mesh_vtx_0[33];
+extern Vtx gg_skybox_object_00888FE4_mesh_vtx_1[41];
+extern Vtx gg_skybox_object_00888FE4_mesh_vtx_2[115];
+extern Vtx gg_skybox_object_00888FE4_mesh_vtx_3[4];
+extern Vtx gg_skybox_object_00888FE4_mesh_vtx_4[449];
+extern Gfx gg_skybox_object_00888FE4_mesh[];

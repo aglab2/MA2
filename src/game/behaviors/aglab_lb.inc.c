@@ -271,6 +271,17 @@ extern const BehaviorScript bhvLbBowserBomb[];
 extern u8 gExtraGuides;
 extern const char* gExtraText;
 
+static int can_lb_warp(int warpId)
+{
+    if (warpId != 0xe)
+        return 1;
+
+    if (gMarioStates->numStars == 999)
+        return 0;
+    else
+        return 1;
+}
+
 static void handle_lb_warp(f32 wsx, f32 wsy, f32 wsz, int warpId, const char* text)
 {
     f32 warpSpot[] = { wsx, wsy, wsz };
@@ -294,7 +305,7 @@ static void handle_lb_warp(f32 wsx, f32 wsy, f32 wsz, int warpId, const char* te
         gExtraText = text;
     }
 
-    if (d < 40.f * 40.f)
+    if (can_lb_warp(warpId) && d < 40.f * 40.f)
     {
         gMarioStates->usedObj = o;
         SET_BPARAM2(o->oBehParams, warpId);
@@ -307,6 +318,7 @@ static void show_lb_warps()
 {
     handle_lb_warp(-2689.f, 100.f, 0.f, 0xc, "In a level full of lush vegetation, a traveller may\nfind a level referencing Sonic legacy near the safe spot.\n\nUse this warp to travel back to Hero story.");
     handle_lb_warp( 2689.f, 100.f, 0.f, 0xd, "Seeking in a course filled with robots, a pilgrim\nmay find a suspicious door leading to the land of heavens.\n\nUse this warp to travel back to Dark story.");
+    handle_lb_warp( 0.f, 20.f, -2900.f, 0xe, "The final reward awaits\nthe player that has 99.9%% completion.");
 }
 
 void bhv_lb_ctl_loop()
