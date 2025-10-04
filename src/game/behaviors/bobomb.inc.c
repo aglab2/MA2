@@ -439,9 +439,9 @@ void bhv_bobomb_buddy_loop(void) {
 
     curr_obj_random_blink(&o->oBobombBuddyBlinkTimer);
 
-#if 1
     f32 curScale = o->header.gfx.scale[0];
-    if (o->oDistanceToMario < 300.f)
+    f32 dz = ABS(gMarioStates->pos[2] - o->oPosZ);
+    if (dz < 300.f)
     {
         obj_scale(o, approach_asymptotically(curScale, 1.f, 0.1f));
     }
@@ -449,8 +449,6 @@ void bhv_bobomb_buddy_loop(void) {
     {
         obj_scale(o, approach_asymptotically(curScale, 0.01f, 0.1f));
     }
-#else
-#endif
 
     o->oInteractStatus = INT_STATUS_NONE;
 }
