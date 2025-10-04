@@ -2104,22 +2104,22 @@ void render_pause_course_options(s16 x, s16 y, s8 *index, s16 yIndex) {
     }
 }
 
-void render_pause_castle_menu_box(s16 x, s16 y) {
-    create_dl_translation_matrix(MENU_MTX_PUSH, x - 78, y - 32, 0);
-    create_dl_scale_matrix(MENU_MTX_NOPUSH, 1.2f, 0.8f, 1.0f);
+static void render_pause_castle_menu_box(s16 x, s16 y) {
+    create_dl_translation_matrix(MENU_MTX_PUSH, x - 127 - 10, y + 77, 0);
+    create_dl_scale_matrix(MENU_MTX_NOPUSH, 2.1f, 1.7f, 1.0f);
     gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, 105);
     gSPDisplayList(gDisplayListHead++, dl_draw_text_bg_box);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    create_dl_translation_matrix(MENU_MTX_PUSH, x + 6, y - 28, 0);
-    create_dl_rotation_matrix(MENU_MTX_NOPUSH, DEFAULT_DIALOG_BOX_ANGLE, 0, 0, 1.0f);
+    create_dl_translation_matrix(MENU_MTX_PUSH, x + 140, y, 0);
+    create_dl_rotation_matrix(MENU_MTX_NOPUSH, 0, 0, 0, 1.0f);
     gDPPipeSync(gDisplayListHead++);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, gDialogTextAlpha);
     gSPDisplayList(gDisplayListHead++, dl_draw_triangle);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 
-    create_dl_translation_matrix(MENU_MTX_PUSH, x - 9, y - 101, 0);
-    create_dl_rotation_matrix(MENU_MTX_NOPUSH, 270.0f, 0, 0, 1.0f);
+    create_dl_translation_matrix(MENU_MTX_PUSH, x - 140, y + 16, 0);
+    create_dl_rotation_matrix(MENU_MTX_NOPUSH, 180.0f, 0, 0, 1.0f);
     gSPDisplayList(gDisplayListHead++, dl_draw_triangle);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 }
@@ -2202,6 +2202,8 @@ static const struct ViewDecl sViewDecls[] = {
 
 static void render_from_to(void **courseNameTbl, int from, int to, int renderOffset)
 {
+    static const int xShift = 30;
+
     static const u8 Red[] = { 240, 100, 100 };
     static const u8 Green[] = { 100, 240, 100 };
     static const u8 White[] = { 255, 255, 255 };
@@ -2224,7 +2226,7 @@ static void render_from_to(void **courseNameTbl, int from, int to, int renderOff
             int diff = i - from + renderOffset;
             int x = diff % 2;
             int y = diff / 2;
-            print_generic_string_aligned(40 + x * 140, 200 - y * 16, "???", TEXT_ALIGN_LEFT);
+            print_generic_string_aligned(xShift + x * 140, 200 - y * 16, "???", TEXT_ALIGN_LEFT);
             continue;
         }
 
@@ -2267,24 +2269,24 @@ static void render_from_to(void **courseNameTbl, int from, int to, int renderOff
         if (COURSE_CCT <= i && i <= COURSE_CCS)
         {
             sprintf(line, "%s %c", courseName, i - COURSE_CCT + 'A');
-            print_generic_string_aligned(40 + x * 140, 200 - y * 16, line, TEXT_ALIGN_LEFT);
+            print_generic_string_aligned(xShift + x * 140, 200 - y * 16, line, TEXT_ALIGN_LEFT);
         }
         else if (COURSE_LF == i)
         {
-            print_generic_string_aligned(40 + x * 140, 200 - y * 16, "Final Hazard", TEXT_ALIGN_LEFT);
+            print_generic_string_aligned(xShift + x * 140, 200 - y * 16, "Final Hazard", TEXT_ALIGN_LEFT);
         }
         else if (COURSE_LB == i)
         {
-            print_generic_string_aligned(40 + x * 140, 200 - y * 16, "Biolizard", TEXT_ALIGN_LEFT);
+            print_generic_string_aligned(xShift + x * 140, 200 - y * 16, "Biolizard", TEXT_ALIGN_LEFT);
         }
         else
         {
-            print_generic_string_aligned(40 + x * 140, 200 - y * 16, courseName, TEXT_ALIGN_LEFT);
+            print_generic_string_aligned(xShift + x * 140, 200 - y * 16, courseName, TEXT_ALIGN_LEFT);
         }
 
         char line[20];
         sprintf(line, "%d/%d", stars, totalStars);
-        print_generic_string_aligned(40 + x * 140 + 85, 200 - y * 16, line, TEXT_ALIGN_LEFT);
+        print_generic_string_aligned(xShift + x * 140 + 85, 200 - y * 16, line, TEXT_ALIGN_LEFT);
     }
     set_text_color(255, 255, 255);
 }
@@ -2570,9 +2572,8 @@ s32 render_pause_courses_and_castle(void) {
 
         case DIALOG_STATE_HORIZONTAL:
             shade_screen();
+            render_pause_castle_menu_box(160, 143);
             print_hud_pause_colorful_str();
-            // render_pause_castle_menu_box(160, 143);
-            // render_pause_castle_main_strings(SCREEN_CENTER_X, 55);
 
             if (gPlayer1Controller->buttonPressed & (A_BUTTON | START_BUTTON)) {
                 level_set_transition(0, NULL);
