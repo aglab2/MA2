@@ -92,7 +92,7 @@ const LevelScript level_wc_entry[] = {
 		OBJECT(MODEL_CHECKPOINT, 2035, 10700, -2080, 0, 0, 0, (3 << 24), bhvCheckpoint),
 		OBJECT(MODEL_CHECKPOINT, 2108, 4570, -3492, 0, 0, 0, (2 << 24), bhvCheckpoint),
 		OBJECT(MODEL_WOODEN_SIGNPOST, 1985, 650, -3557, 0, -180, 0, (142 << 24) | (142 << 16), bhvMessagePanel),
-		OBJECT(MODEL_WC_BOX, -732, 9614, -770, 0, 0, 0, (MODEL_WC_BOX_BROKEN << 16), bhvBreakable),
+		OBJECT(MODEL_WC_BOX, -732, 9500, -770, 0, 0, 0, (MODEL_WC_BOX_BROKEN << 16), bhvBreakable),
 		OBJECT(MODEL_WC_BOX, 1359, 650, -4467, 0, 0, 0, (MODEL_WC_BOX_BROKEN << 16), bhvBreakable),
 		OBJECT(MODEL_WC_BOX, 1996, 650, -4454, 0, 0, 0, (MODEL_WC_BOX_BROKEN << 16), bhvBreakable),
 		OBJECT(MODEL_WC_BOX, 2669, 650, -4442, 0, 0, 0, (MODEL_WC_BOX_BROKEN << 16), bhvBreakable),
