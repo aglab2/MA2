@@ -277,9 +277,9 @@ static int can_lb_warp(int warpId)
         return 1;
 
     if (gMarioStates->numStars == 999)
-        return 0;
-    else
         return 1;
+    else
+        return 0;
 }
 
 static void handle_lb_warp(f32 wsx, f32 wsy, f32 wsz, int warpId, const char* text)
