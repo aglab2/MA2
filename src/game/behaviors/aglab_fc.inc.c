@@ -288,7 +288,7 @@ when walking:
             sCylVel = to_cyl_velocity(n, x_axis, y_axis, z_axis, cyl);
             sCylVel.r = 0.f;
             sCylVel.z *= 50.f;
-            s16 mult = obj->oFaceAngleYaw ? 30 : -30;
+            s16 mult = 30;
             sCylVel.theta *= mult;
             m->hurtCounter += 4;
             play_sound(SOUND_MARIO_ON_FIRE, m->marioObj->header.gfx.cameraToObject);
