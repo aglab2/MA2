@@ -44,7 +44,12 @@ void bhv_fc_grav_loop()
 
     if (in_tube(&cyl, IN_TUBE_R, o->oBehParams2ndByte, o->oFaceAngleYaw))
     {
-        drop_and_set_mario_action(gMarioStates, ACT_FCGR_JUMP, 0);   
+        if (gMarioStates->hurtCounter)
+        {
+            gMarioStates->invincTimer = 30;
+        }
+
+        drop_and_set_mario_action(gMarioStates, ACT_FCGR_JUMP, 0);
         sCylObj = o;
         sCylArea = gCurrAreaIndex;
         sCylFlipped = ABS(cyl.theta) > 0x4000; // upper tube part
