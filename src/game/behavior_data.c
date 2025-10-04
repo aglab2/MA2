@@ -4719,6 +4719,7 @@ const BehaviorScript bhvTreasureChestTop[] = {
     END_LOOP(),
 };
 
+extern const struct Animation *const mips_seg6_anims_06015634[];
 const BehaviorScript bhvMips[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_HOLDABLE | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
@@ -7563,5 +7564,15 @@ const BehaviorScript bhvCreditsCtl[] = {
     CALL_NATIVE(bhv_credits_roll_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_credits_roll_loop),
+    END_LOOP(),
+};
+
+extern void bhv_chao_love_loop();
+const BehaviorScript bhvChaoLove[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BILLBOARD(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_chao_love_loop),
     END_LOOP(),
 };

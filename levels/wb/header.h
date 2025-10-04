@@ -49,4 +49,10 @@ extern const LevelScript level_wb_entry[];
 
 #include "levels/wb/wb_chao/geo_header.h"
 
+#include "levels/wb/chao_love/geo_header.h"
+
+#include "levels/wb/chao_neut/geo_header.h"
+
+#include "levels/wb/chao_puzz/geo_header.h"
+
 #endif

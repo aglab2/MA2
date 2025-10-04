@@ -246,7 +246,6 @@ void bhv_wb_door_chao_init()
     if (gDialogCameraAngleIndex == 6 || sSafeWarpId == 0xe2)
     {
         o->activeFlags = 0;
-        o->parentObj->activeFlags = 0;
     }
 }
 
@@ -262,6 +261,5 @@ void bhv_wb_door_chao_loop()
         cur_obj_play_sound_2(SOUND_GENERAL_BREAK_BOX);
         puffAt(o, 100.f, 10, 0.f);
         o->activeFlags = 0;
-        o->parentObj->activeFlags = 0;
     }
 }

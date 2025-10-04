@@ -45,3 +45,6 @@
 #include "levels/wb/wb_spark/model.inc.c"
 #include "levels/wb/wb_shuts_chao/model.inc.c"
 #include "levels/wb/wb_chao/model.inc.c"
+#include "levels/wb/chao_love/model.inc.c"
+#include "levels/wb/chao_neut/model.inc.c"
+#include "levels/wb/chao_puzz/model.inc.c"

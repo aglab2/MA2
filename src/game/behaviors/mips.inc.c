@@ -7,6 +7,7 @@
  * Initializes MIPS' physics parameters and checks if he should be active,
  * hiding him if necessary.
  */
+extern const BehaviorScript bhvChaoLove[];
 void bhv_mips_init(void) {
     o->oBehParams2ndByte = MIPS_BP_STAR_2;
     o->oMipsForwardVelocity = 45.0f;
@@ -17,6 +18,7 @@ void bhv_mips_init(void) {
     o->oBuoyancy = 1.2f;
 
     cur_obj_init_animation(4);
+    spawn_object(o, MODEL_WB_CHAO_NEUT, bhvChaoLove);
 }
 
 /**
@@ -264,5 +266,37 @@ void bhv_mips_loop(void) {
         case HELD_DROPPED:
             bhv_mips_dropped();
             break;
+    }
+}
+
+extern void print_text_fmt_int(s32 x, s32 y, const char *str, s32 value);
+void bhv_chao_love_loop()
+{
+    f32 dist = 50.f + sins(o->oTimer * (0x10000 / 30)) * 4.f;
+    f32 up = 140.f + coss(o->oTimer * (0x10000 / 30)) * coss(o->oTimer * (0x10000 / 30)) * 4.f;
+    int held =  o->parentObj->oHeldState == HELD_HELD;
+    if (held)
+    {
+        obj_set_model(o, MODEL_WB_CHAO_LOVE);
+        dist *= 2;
+    }
+    else
+    {
+        obj_set_model(o, MODEL_WB_CHAO_NEUT);
+    }
+
+    if (o->parentObj->oPosY < -1750.f)
+        obj_set_model(o, MODEL_WB_CHAO_PUZZ);
+
+    o->oPosX = approach_asymptotically(o->oPosX, o->parentObj->oPosX - sins(o->parentObj->oFaceAngleYaw) * dist, 0.9f);
+    o->oPosY = approach_asymptotically(o->oPosY, o->parentObj->oPosY + up + 10.f * sins(o->oTimer * 0x423), 0.2f);
+    if (o->oPosY < o->parentObj->oPosY + 140.f)
+        o->oPosY = o->parentObj->oPosY + 140.f;
+
+    o->oPosZ = approach_asymptotically(o->oPosZ, o->parentObj->oPosZ - coss(o->parentObj->oFaceAngleYaw) * dist, 0.9f);
+
+    if (held && gMarioStates->pos[2] < -19000.f)
+    {
+        drop_and_set_mario_action(gMarioStates, ACT_START_CROUCHING, 0);
     }
 }

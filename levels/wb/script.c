@@ -55,6 +55,9 @@ const LevelScript level_wb_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_WB_SHUTS_BREAK, wb_shuts_break_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_WB_CHAO, mips_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_WB_SHUTS_CHAO, wb_shuts_chao_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_WB_CHAO_LOVE, chao_love_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_WB_CHAO_NEUT, chao_neut_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_WB_CHAO_PUZZ, chao_puzz_geo),
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */

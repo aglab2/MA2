@@ -34,3 +34,6 @@
 #include "levels/wb/wb_spark/geo.inc.c"
 #include "levels/wb/wb_shuts_chao/geo.inc.c"
 #include "levels/wb/wb_chao/geo.inc.c"
+#include "levels/wb/chao_love/geo.inc.c"
+#include "levels/wb/chao_neut/geo.inc.c"
+#include "levels/wb/chao_puzz/geo.inc.c"
