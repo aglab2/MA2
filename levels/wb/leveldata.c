@@ -19,6 +19,10 @@
 #include "levels/wb/flipbook.inc.c"
 #include "levels/wb/rails.inc.c"
 #include "levels/wb/iw.inc.c"
+#include "levels/wb/mips/header.h"
+#include "levels/wb/mips/model.inc.c"
+#include "levels/wb/mips/anims/data.inc.c"
+#include "levels/wb/mips/anims/table.inc.c"
 #endif
 
 #include "levels/wb/wb_skybox/model.inc.c"

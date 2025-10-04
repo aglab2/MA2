@@ -29,6 +29,7 @@ static struct LevelConfig cfg = {
 extern const BehaviorScript bhvWbBreakable[];
 #define SEQ_LEVEL_GRASS 0x3d
 #define bhvBreakable bhvWbBreakable
+extern const GeoLayout mips_geo[];
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_wb_entry[] = {
@@ -52,7 +53,7 @@ const LevelScript level_wb_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_WB_SHUT_BREAK, wb_shut_break_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_WB_SHUTS, wb_shuts_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_WB_SHUTS_BREAK, wb_shuts_break_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_WB_CHAO, wb_spark_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_WB_CHAO, mips_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_WB_SHUTS_CHAO, wb_shuts_chao_geo), 
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
@@ -143,7 +144,7 @@ const LevelScript level_wb_entry[] = {
 		OBJECT(MODEL_WB_FIG_AI2, -1025, -1597, -12439, 0, -180, 0, (MODEL_WB_FIG_AI << 16), bhvBreakable),
 		OBJECT(MODEL_WB_FIG_AI2, -492, -1597, -12052, 0, -180, 0, (MODEL_WB_FIG_AI << 16), bhvBreakable),
 		OBJECT(MODEL_WB_FIG_AI2, -1025, -1597, -12052, 0, -180, 0, (1 << 24) | (MODEL_WB_FIG_AI << 16), bhvBreakable),
-		OBJECT(MODEL_WB_CHAO, -3687, -1467, -15353, 0, 0, 0, 0x00000000, bhvWbChao),
+		OBJECT(MODEL_WB_CHAO, -3687, -1467, -15353, 0, 0, 0, 0x00000000, bhvMips),
 		OBJECT(MODEL_CHECKPOINT, -19977, -1600, 11223, 0, -180, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_CHECKPOINT, -819, -1600, -2959, 0, -180, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_CHECKPOINT, 1174, -1698, -6135, 0, 90, 0, 0x00000000, bhvCheckpointChao),

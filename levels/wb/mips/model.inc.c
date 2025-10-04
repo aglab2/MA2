@@ -2,7 +2,6 @@
 
 // 0x0600FB80
 ALIGNED8 static const Texture mips_seg6_texture_0600FB80[] = {
-#include "actors/mips/mips_eyes.rgba16.inc.c"
 };
 
 // 0x06010380

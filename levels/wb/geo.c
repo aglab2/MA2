@@ -17,6 +17,8 @@
 #include "levels/wb/geo.inc.c"
 #else
 #include "levels/wb/visual/geo_lvl.inc.c"
+#include "levels/wb/mips/header.h"
+#include "levels/wb/mips/geo.inc.c"
 #endif
 
 #include "levels/wb/wb_cont/geo.inc.c"

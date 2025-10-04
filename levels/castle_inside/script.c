@@ -282,7 +282,6 @@ const LevelScript level_castle_inside_entry[] = {
         OBJECT(/*model*/ MODEL_CASTLE_WATER_LEVEL_PILLAR, /*pos*/  7066, -1178,  -819, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvWaterLevelPillar),
         OBJECT(/*model*/ MODEL_CASTLE_WATER_LEVEL_PILLAR, /*pos*/  7066, -1178,  -205, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvWaterLevelPillar),
         OBJECT(/*model*/ MODEL_NONE,                      /*pos*/     0,     0,     0, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvDddWarp),
-        OBJECT(/*model*/ MODEL_MIPS,                      /*pos*/ -1509, -1177, -1564, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvMips),
         OBJECT(/*model*/ MODEL_TOAD,                      /*pos*/  1787, -1381, -1957, /*angle*/ 0, 126, 0, /*behParam*/ DIALOG_082 << 24, /*beh*/ bhvToadMessage),
         OBJECT(/*model*/ MODEL_TOAD,                      /*pos*/ -4048, -1381, -1334, /*angle*/ 0,  30, 0, /*behParam*/ DIALOG_136 << 24, /*beh*/ bhvToadMessage),
         JUMP_LINK(script_castle_inside_area_3_objects_1),
