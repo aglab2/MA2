@@ -135,7 +135,7 @@ void bhv_k_door_loop()
 void bhv_k_plat_init()
 {
     bhv_k_door_init();
-    o->oOpacity = 20;
+    o->oOpacity = 30;
 }
 
 static void k_plat_propagate_fun(struct Object* obj)
@@ -186,7 +186,7 @@ void bhv_k_plat_loop()
         else
         {
             spark->oOpacity = 255 - 255 * spark->oKSparkAttachmentRate;
-            o->oOpacity = 20 + 235 * (1.f - spark->oKSparkAttachmentRate);
+            o->oOpacity = 30 + 225 * (1.f - spark->oKSparkAttachmentRate);
             cur_obj_foreach(bhvKPlat, k_plat_propagate_fun);
         }
         load_object_collision_model();
