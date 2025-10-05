@@ -41,6 +41,7 @@ Gfx *geo_update_projectile_pos_from_parent(s32 callContext, UNUSED struct GraphN
     return NULL;
 }
 
+extern void print_text_fmt_int(s32 x, s32 y, const char *str, int d);
 Gfx *geo_update_layer_transparency(s32 callContext, struct GraphNode *node, UNUSED void *context) {
     Gfx *dlStart = NULL;
 

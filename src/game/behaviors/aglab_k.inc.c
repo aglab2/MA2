@@ -14,6 +14,7 @@ void bhv_k_source_init()
     // this cumbersome logic is needed to allow dying after grabbing the spark but not entering the next phase
     if (sSparkRefill == gCurrLevelNum || sSparkRefill == gCurrLevelNum - 1)
     {
+        sSparkRefill = gCurrLevelNum;
         spark->oKSparkAttachPrevObj = gMarioObject;
         spark->oKSparkAttachObj = gMarioObject;
         spark->oKSparkAttachmentRate = 0.f;

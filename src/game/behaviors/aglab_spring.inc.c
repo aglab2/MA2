@@ -47,25 +47,8 @@ static void calculate_quant()
     o->oSpringQuant = (bezierLength < 2000.f ? 70.f : 140.f) / bezierLength;
 }
 
-static void spring_cck_init()
-{
-    f32 d;
-    o->parentObj = cur_obj_find_nearest_object_with_behavior(bhvKPlat, &d);
-    o->oHomeY = o->oPosY;
-}
-
-static void spring_cck_loop()
-{
-    o->oPosY = o->oHomeY + (255 - o->parentObj->oOpacity);
-}
-
 void bhv_spring_init()
 {
-    if (gCurrCourseNum == COURSE_CCK)
-    {
-        spring_cck_init();
-    }
-
     if (sSpringBezier == o->oSpringBezier)
     {
         o->oAction = 1;
@@ -79,11 +62,6 @@ void bhv_spring_init()
 extern u8 gIsGravityFlipped;
 void bhv_spring_loop()
 {
-    if (gCurrCourseNum == COURSE_CCK)
-    {
-        spring_cck_loop();
-    }
-
     if (0 == o->oAction)
     {
         if (o->oDistanceToMario < 200.f)
