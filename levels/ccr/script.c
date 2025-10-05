@@ -101,7 +101,7 @@ const LevelScript level_ccr_entry[] = {
 		OBJECT(MODEL_STAR, 2082, 30, 73, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_NONE, 31, 847, 1250, 0, 180, 0, (0xa << 16), bhvInstantActiveWarp),
 		OBJECT(MODEL_CCR_SWITCH, 0, 300, 0, 0, 0, 0, 0x00000000, bhvCCRSwitch),
-		OBJECT(MODEL_CCR_TIMESTOP, -813, 4400, 809, 0, 0, 0, (250 << 24), bhvCCTimestop),
+		OBJECT(MODEL_CCR_TIMESTOP, -813, 4400, 809, 0, 0, 0, (220 << 24), bhvCCTimestop),
 		OBJECT(MODEL_CCR_TIMESTOP, 7, -600, -8892, 0, 0, 0, (100 << 24), bhvCCTimestop),
 		OBJECT(MODEL_CCR_TIMESTOP, -4, -1504, -6500, 90, 0, 0, 0x00000000, bhvCCTimestop),
 		OBJECT(MODEL_PURPLE_SWITCH, 7, -600, -9598, 0, 0, 0, 0x00000000, bhvFloorSwitchGrills),

@@ -133,7 +133,7 @@ const LevelScript level_cck_entry[] = {
 		OBJECT(MODEL_CCK_SWITCH_P1, 4402, -1750, -17359, 0, 0, 0, 0x00000000, bhvCCKSwitch),
 		OBJECT(MODEL_PURPLE_SWITCH, -5, 7900, 3272, 0, 0, 0, 0x00000000, bhvFloorSwitchGrills),
 		OBJECT(MODEL_NONE, -5, 6843, 7, 0, 0, 0, (17 << 16), bhvCoinFormation),
-		OBJECT(MODEL_CC_TIMESTOP, -798, 4400, 801, 0, 0, 0, 0x00000000, bhvCCTimestop),
+		OBJECT(MODEL_CC_TIMESTOP, -798, 4400, 801, 0, 0, 0, (220 << 24), bhvCCTimestop),
 		OBJECT(MODEL_CC_TIMESTOP, 1, 3450, -7778, 0, 0, 0, 0x00000000, bhvCCTimestop),
 		OBJECT(MODEL_CC_TIMESTOP, -38, -1450, -13963, 0, 0, 0, 0x00000000, bhvCCTimestop),
 		OBJECT(MODEL_CC_TIMESTOP, 123, -950, -17253, 0, 0, 0, 0x00000000, bhvCCTimestop),
