@@ -1,44 +1,52 @@
 #include "level_conv.h"
+#include "course_table.h"
 
-LevelConv_SM64Levels LevelConv_toSM64Level(LevelConv_PlainLevels pl)
+int LevelConv_toSM64Level(LevelConv_PlainLevels pl)
 {
     static const char levels[] = 
     {
-        LevelConv_SM64Levels_OFF,
-        LevelConv_SM64Levels_C1,
-        LevelConv_SM64Levels_C2,
-        LevelConv_SM64Levels_C3,
-        LevelConv_SM64Levels_C4,
-        LevelConv_SM64Levels_C5,
-        LevelConv_SM64Levels_C6,
-        LevelConv_SM64Levels_C7,
-        LevelConv_SM64Levels_C8,
-        LevelConv_SM64Levels_C9,
-        LevelConv_SM64Levels_C10,
-        LevelConv_SM64Levels_C11,
-        LevelConv_SM64Levels_C12,
-        LevelConv_SM64Levels_C13,
-        LevelConv_SM64Levels_C14,
-        LevelConv_SM64Levels_C15,
-
-        LevelConv_SM64Levels_B1,
-        LevelConv_SM64Levels_B2,
-        LevelConv_SM64Levels_B3,
-
-        LevelConv_SM64Levels_Slide,
-
-        LevelConv_SM64Levels_MC,
-        LevelConv_SM64Levels_WC,
-        LevelConv_SM64Levels_VC,
-
-        LevelConv_SM64Levels_S1,
-        LevelConv_SM64Levels_S2,
-        LevelConv_SM64Levels_S3,
-
-        LevelConv_SM64Levels_F1,
-        LevelConv_SM64Levels_F2,
-        LevelConv_SM64Levels_F3,
+        0,
+        COURSE_CE,
+        COURSE_WC,
+        COURSE_PL,
+        COURSE_MH,
+        COURSE_GF,
+        COURSE_PH,
+        COURSE_MS,
+        COURSE_AQ,
+        COURSE_HB,
+        COURSE_PC,
+        COURSE_DC,
+        COURSE_EE,
+        COURSE_MHE,
+        COURSE_CG,
+        COURSE_FR,
+        COURSE_SS2,
+        COURSE_IG,
+        COURSE_DL,
+        COURSE_SO,
+        COURSE_RH,
+        COURSE_EQ,
+        COURSE_LC,
+        COURSE_WB,
+        COURSE_SH,
+        COURSE_WJ,
+        COURSE_SR,
+        COURSE_MSP,
+        COURSE_CW,
+        COURSE_FC,
+        COURSE_SS1,
+        COURSE_CCT,
+        COURSE_CCE,
+        COURSE_CCR,
+        COURSE_CCK,
+        COURSE_CCS,
+        COURSE_LB,
+        COURSE_LF,
+        COURSE_GH,
+        COURSE_CHAO,
+        COURSE_GG,
     };
 
-    return (LevelConv_SM64Levels) levels[(int) pl];
+    return levels[(int) pl];
 }

@@ -66,6 +66,7 @@ static void resetCommon()
     sReloadObjectsAreasMask = ~0;
 }
 
+extern void reset_globals_ex();
 void LevelReset_onNormal()
 {
     if (sTimerRunningDeferred)
@@ -103,7 +104,8 @@ void LevelReset_onNormal()
     LevelConv_PlainLevels warp = Config_warpIdAndReset();
     if (warp != LevelConv_PlainLevels_OFF)
     {
-        LevelConv_SM64Levels sm64lvl = LevelConv_toSM64Level(warp);
+        reset_globals_ex();
+        int sm64lvl = LevelConv_toSM64Level(warp);
         
         sWarpDest.levelNum = (u8) sm64lvl;
         sWarpDest.type = 2;

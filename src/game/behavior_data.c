@@ -7600,3 +7600,10 @@ const BehaviorScript bhvGG[] = {
         CALL_NATIVE(bhv_gg_loop),
     END_LOOP(),
 };
+
+extern void reset_globals_ex();
+const BehaviorScript bhvEndResetter[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    CALL_NATIVE(reset_globals_ex),
+    BREAK(),
+};

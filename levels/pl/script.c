@@ -17,7 +17,10 @@
 /* Fast64 begin persistent block [scripts] */
 extern const BehaviorScript bhvPLRoll[];
 #include "levels/pl/area_1/collision.inc.c"
+#include "level_config.h"
 #define SEQ_LEVEL_GRASS 0x2C
+static struct LevelConfig cfg = {
+};
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_pl_entry[] = {
@@ -44,6 +47,7 @@ const LevelScript level_pl_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_PL_TANK, pl_tank_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_PL_TANK_BREAKA, pl_tank_breaka_geo), 
 	/* Fast64 begin persistent block [level commands] */
+	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, pl_area_1, 0, 0, 0),

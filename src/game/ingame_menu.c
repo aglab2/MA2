@@ -29,7 +29,7 @@
 
 #include "hacktice/main.h"
 
-#define STARS_TO_ENABLE_HACKTICE 0
+#define STARS_TO_ENABLE_HACKTICE 1000
 
 u16 gDialogColorFadeTimer;
 s8 gLastDialogLineNum;
@@ -1671,7 +1671,7 @@ LangArray textCurrRatio169 = DEFINE_LANGUAGE_ARRAY(
     "アスペクトひ: １６:９\nＬボタンできりかえ",
     "RELACIÓN DE ASPECTO: 16:9\nPULSA L PARA CAMBIAR");
 
-static const char pressBToHacktice[] = "PRESS B TO ENABLE HACKTICE";
+static const char pressBToHacktice[] = "B to enable hacktice";
 
 /// By default, not needed as puppycamera has an option, but should you wish to revert that, you are legally allowed.
 #if defined(WIDE) && !defined(PUPPYCAM)
@@ -1691,21 +1691,25 @@ void render_widescreen_setting(void) {
 }
 #endif
 
-void render_hacktice_setting(int x, int y)
+static void render_hacktice_setting(int x, int y)
 {
-    return;
     bool hackticeAllowed = save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1) >= STARS_TO_ENABLE_HACKTICE;
     if (hackticeAllowed)
     {
         if (!Hacktice_gEnabled)
-            print_generic_string(x, y, pressBToHacktice);
+        {
+            gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
+            set_text_color(255, 255, 255);
+            print_generic_string(20, 46, pressBToHacktice);
+            gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
+        }
 
         if (gPlayer1Controller->buttonPressed & B_BUTTON)
             Hacktice_gEnabled = !Hacktice_gEnabled;
     }
 }
 
-void render_cam_collision_settings()
+static void render_cam_collision_settings()
 {
     gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     set_text_color(255, 255, 255);
@@ -1994,7 +1998,6 @@ void render_pause_my_score_coins(void) {
     {
         gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
         Hacktice_onPause();
-        render_hacktice_setting(90, 40);
         gSPDisplayList(gDisplayListHead++, dl_ia_text_end); 
     }
 }
@@ -2326,19 +2329,26 @@ void print_hud_pause_colorful_str(void) {
     }
 
     void **courseNameTbl = segmented_to_virtual(gLanguageTables[gInGameLanguage].course_name_table);
-    switch (sPage)
+    if (!Hacktice_gEnabled)
     {
-        case 0:
-            render_from_to(courseNameTbl, COURSE_CE, COURSE_SS2, 0);
-        break;
-        case 1:
-            render_from_to(courseNameTbl, COURSE_IG, COURSE_SS1, 0);
-        break;
-        case 2:
-            render_from_to(courseNameTbl, COURSE_CCT, COURSE_CCS, 0);
-            render_from_to(courseNameTbl, COURSE_LB, COURSE_LF, 8);
-            render_from_to(courseNameTbl, COURSE_GH, COURSE_CHAO, 12);
-        break;
+        switch (sPage)
+        {
+            case 0:
+                render_from_to(courseNameTbl, COURSE_CE, COURSE_SS2, 0);
+            break;
+            case 1:
+                render_from_to(courseNameTbl, COURSE_IG, COURSE_SS1, 0);
+            break;
+            case 2:
+                render_from_to(courseNameTbl, COURSE_CCT, COURSE_CCS, 0);
+                render_from_to(courseNameTbl, COURSE_LB, COURSE_LF, 8);
+                render_from_to(courseNameTbl, COURSE_GH, COURSE_CHAO, 12);
+            break;
+        }
+    }
+    else
+    {    
+        Hacktice_onPause();
     }
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
@@ -2464,8 +2474,6 @@ void render_pause_castle_main_strings(s16 x, s16 y) {
                                                              COURSE_NUM_TO_INDEX(COURSE_MAX)));
         sprintf(str, LANG_ARRAY(textStarX), countText);
         print_generic_string_aligned(x, y + 18, str, TEXT_ALIGN_CENTER);
-
-        render_hacktice_setting(x - 20, y + 120);
     }
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
@@ -2594,7 +2602,10 @@ s32 render_pause_courses_and_castle(void) {
         if (!Hacktice_gEnabled)
             render_widescreen_setting();
 #endif
-    render_cam_collision_settings();
+    render_hacktice_setting(90, 40);
+    if (!Hacktice_gEnabled)
+        render_cam_collision_settings();
+
     gDialogTextAlpha += 25;
     if (gDialogTextAlpha > 250) {
         gDialogTextAlpha = 250;

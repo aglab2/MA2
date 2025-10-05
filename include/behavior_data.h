@@ -696,4 +696,6 @@ extern const BehaviorScript bhvCCTBlock[];
 
 extern const BehaviorScript bhvGG[];
 
+extern const BehaviorScript bhvEndResetter[];
+
 #endif // BEHAVIOR_DATA_H

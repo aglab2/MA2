@@ -57,6 +57,7 @@ const LevelScript level_lb_entry[] = {
 		OBJECT(MODEL_NONE, 0, 0, 0, 0, 0, 0, 0x00000000, bhvLBCtl),
 		OBJECT(MODEL_NONE, -521, 487, 2717, 0, 180, 0, (0xa << 16), bhvInstantActiveWarp),
 		OBJECT(MODEL_BOWSER, -110, -856, 29, 0, 0, 0, 0x00000000, bhvBowser),
+		OBJECT(MODEL_NONE, 853, -124, 22, 0, 180+90, 0, (0x0A << 16), bhvEndResetter),
 		TERRAIN(lb_area_1_collision),
 		MACRO_OBJECTS(lb_area_1_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
