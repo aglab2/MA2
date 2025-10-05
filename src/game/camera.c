@@ -684,6 +684,10 @@ static void focus_on_mario(Vec3f focus, Vec3f pos, f32 posYOff, f32 focYOff, f32
     {
         posYOff = 190.f;
     }
+    if (gCurrCourseNum == COURSE_MH && gCurrAreaIndex == 4 && gMarioStates->pos[0] > -5000.f)
+    {
+        posYOff = 100.f;
+    }
 
     if (gIsGravityFlipped)
     {

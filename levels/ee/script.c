@@ -55,9 +55,9 @@ const LevelScript level_ee_entry[] = {
 	JUMP_LINK(script_func_global_2), 
 	LOAD_MODEL_FROM_GEO(MODEL_EE_SHUTTER_LEFT, ee_shutter_left_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_EE_SHUTTER_RIGHT, ee_shutter_right_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_EE_TANK, ee_tank_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_EE_TANK_BREAK, ee_tank_break_geo), 
 	/* Fast64 begin persistent block [level commands] */
+	LOAD_MODEL_FROM_GEO_NO_HEAP(MODEL_EE_TANK, ee_tank_geo), 
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
 
