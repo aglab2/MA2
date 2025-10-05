@@ -32,7 +32,7 @@ static u8 sClearAllCells;
  * The static surface pool is resized to be exactly the amount of memory needed for the level geometry.
  * The dynamic surface pool is set at a fixed length and cleared every frame.
  */
-static void* gDynamicSurfacePoolStart;
+#define gDynamicSurfacePoolStart ((void*) 0x80500000)
 
 /**
  * The end of the data currently allocated to the surface pools.
@@ -44,14 +44,25 @@ static void *gDynamicSurfacePoolEnd;
  */
 u32 gTotalStaticSurfaceData;
 
+static inline void* allocate(int dynamic, int amount) {
+    if (dynamic) {
+        u8** start = (u8**) &gDynamicSurfacePoolEnd;
+        *start -= amount; 
+        return *start;
+    } else {
+        u8** end = (u8**) &sMainPool.regions[0].start;
+        u8* result = *end;
+        *end += amount;
+        return result;
+    }
+}
+
 /**
  * Allocate the part of the surface node pool to contain a surface node.
  */
-static struct SurfaceNode *alloc_surface_node(u8** pend, struct Surface* surface, u32 lowerXCelled, u32 upperXCelled, s32 lowerY, s32 upperY, u32 lowerZCelled, u32 upperZCelled) {
-    u8* end = *pend;
-    struct SurfaceNode *node = (struct SurfaceNode*) end;
-    __builtin_mips_cache(0xd, end);
-    *pend = (void*) ((u8*) end + 0x10);
+static struct SurfaceNode *alloc_surface_node(int dynamic, struct Surface* surface, u32 lowerXCelled, u32 upperXCelled, s32 lowerY, s32 upperY, u32 lowerZCelled, u32 upperZCelled) {
+    struct SurfaceNode *node = (struct SurfaceNode*) allocate(dynamic, sizeof(struct SurfaceNode));
+    __builtin_mips_cache(0xd, node);
 
     gSurfaceNodesAllocated++;
     node->lowerY = lowerY;
@@ -69,15 +80,12 @@ static struct SurfaceNode *alloc_surface_node(u8** pend, struct Surface* surface
  * Allocate the part of the surface pool to contain a surface and
  * initialize the surface.
  */
-static struct Surface *alloc_surface(u8** pend) {
-    struct Surface *surface;
-    u8* end = *pend;
-    surface = (struct Surface*) end;
-    __builtin_mips_cache(0xd, end + 0x0);
-    __builtin_mips_cache(0xd, end + 0x10);
-    __builtin_mips_cache(0xd, end + 0x20);
-    __builtin_mips_cache(0xd, end + 0x30);
-    *pend = (void*) ((u8*) end + 0x40);
+static struct Surface *alloc_surface(int dynamic) {
+    struct Surface *surface = allocate(dynamic, 0x40);
+    __builtin_mips_cache(0xd, ((u8*) surface) + 0x00);
+    __builtin_mips_cache(0xd, ((u8*) surface) + 0x10);
+    __builtin_mips_cache(0xd, ((u8*) surface) + 0x20);
+    __builtin_mips_cache(0xd, ((u8*) surface) + 0x30);
 
     gSurfacesAllocated++;
 
@@ -95,14 +103,6 @@ static u32 celled_coord(s32 coord, s32 cell, int shift) {
     s32 celledCoord = (coord + LEVEL_BOUNDARY_MAX) - (cell * CELL_SIZE);
     // with shift to allow negative values
     return CLAMP((celledCoord >> CELLED_COORD_SHIFT) - shift, 0, 255);
-}
-
-static inline u8** get_pend(int dynamic) {
-    if (dynamic) {
-        return (u8**) &gDynamicSurfacePoolEnd;
-    } else {
-        return (u8**) &sMainPool.regions[0].start;
-    }
 }
 
 /**
@@ -131,8 +131,7 @@ static void add_surface_to_cell(s32 dynamic, s32 cellX, s32 cellZ, struct Surfac
         listIndex = SPATIAL_PARTITION_WALLS;
     }
 
-    u8** pend = get_pend(dynamic);
-    struct SurfaceNode *newNode = alloc_surface_node(pend, surface, lowerXCelled, upperXCelled, lowerY, upperY, lowerZCelled, upperZCelled);
+    struct SurfaceNode *newNode = alloc_surface_node(dynamic, surface, lowerXCelled, upperXCelled, lowerY, upperY, lowerZCelled, upperZCelled);
 
     if (dynamic) {
         slimList = &gDynamicSurfacePartition[cellZ][cellX][listIndex];
@@ -258,8 +257,7 @@ static struct Surface *read_surface_data(TerrainData *vertexData, TerrainData **
     mag = 1.0f / sqrtf(mag);
     vec3_scale(n, mag);
 
-    u8** pend = get_pend(dynamic);
-    struct Surface *surface = alloc_surface(pend);
+    struct Surface *surface = alloc_surface(dynamic);
 
     vec3s_copy(surface->vertex1, v[0]);
     vec3s_copy(surface->vertex2, v[1]);
@@ -405,11 +403,6 @@ static void load_environmental_regions(TerrainData **data) {
  * Allocate the dynamic surface pool for object collision.
  */
 void alloc_surface_pools(void) {
-    gDynamicSurfacePoolStart = main_pool_alloc_aligned(0, 0x8000, 0);
-    // In reality this condition is extremely unlikely to ever be true, but it's here as a failsafe.
-    if (gDynamicSurfacePoolStart == (void*) 0x80400000) {
-        gDynamicSurfacePoolStart = (void*) 0x80400010; 
-    }
     gDynamicSurfacePoolEnd = gDynamicSurfacePoolStart;
     gCCMEnteredSlide = FALSE;
     reset_red_coins_collected();
