@@ -91,7 +91,7 @@ const LevelScript level_aq_entry[] = {
 		OBJECT(MODEL_BUB, 1655, -2732, 2743, 0, 0, 0, 0x00000000, bhvBub),
 		OBJECT(MODEL_BOO, 2619, -6861, 5635, 0, 0, 0, 0x00000000, bhvBoo),
 		OBJECT(MODEL_CHECKPOINT, -801, 3100, -32, 0, 0, 0, 0x00000000, bhvCheckpoint),
-		OBJECT(MODEL_CHECKPOINT, -4315, -920, -2432, 0, 0, 0, 0x00000000, bhvCheckpoint),
+		OBJECT(MODEL_CHECKPOINT, -4315, -920, -2432, 0, 90, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_CHECKPOINT, -28, -2340, 619, 0, 0, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_CHECKPOINT, 3279, -900, -5097, 0, 0, 0, 0x00000000, bhvCheckpoint),
 		OBJECT(MODEL_CHUCKYA, 1800, -800, -6, 0, 0, 0, (2 << 16), bhvChuckya),
