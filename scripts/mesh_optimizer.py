@@ -881,7 +881,7 @@ class ModelMeshEntry(TriKit):
         vtx_values = [ Vtx(vtx) for vtx in self._vertices ]
         triangles_altered = False
         try: # "cck_dl_0040_object_013EC7E4_mesh_layer_1_tri_3" in vtx_entry.name:
-
+            raise Exception("")
             # Step 0: Merge coplanar vertices
             triangles = self._triangles[:]
             log_debug(f"start triangles: {triangles}")
@@ -1040,7 +1040,6 @@ class ModelMeshEntry(TriKit):
 
                         add_tri(ttri)
         except Exception as e:
-            print(e)
             triangles_altered = False
             pass
 
