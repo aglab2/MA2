@@ -761,11 +761,11 @@ void render_game(void) {
             gExtraGuides--;
             gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
             
-            gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, CLAMP((int) gExtraGuides * 16, 0, 255));
-            print_generic_string_aligned(160, 80, gExtraText, TEXT_ALIGN_CENTER);
-            gDPPipeSync(gDisplayListHead++);
             gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, CLAMP((int) gExtraGuides * 16, 0, 255));
             print_generic_string_aligned(160 - 2, 80 - 2, gExtraText, TEXT_ALIGN_CENTER);
+            gDPPipeSync(gDisplayListHead++);
+            gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, CLAMP((int) gExtraGuides * 16, 0, 255));
+            print_generic_string_aligned(160, 80, gExtraText, TEXT_ALIGN_CENTER);
 
             gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
         }
