@@ -711,6 +711,7 @@ u8 gFinaleNotes;
 extern void render_credits();
 
 const char* gExtraText;
+const char* gExtraText2;
 extern void shade_screen_water(void);
 extern void shade_screen_water_alight(void);
 void render_game(void) {
@@ -759,20 +760,39 @@ void render_game(void) {
         {
             gExtraGuides--;
             gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
-            gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, CLAMP((int) gExtraGuides * 16, 0, 255));
             
+            gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, CLAMP((int) gExtraGuides * 16, 0, 255));
             print_generic_string_aligned(160, 80, gExtraText, TEXT_ALIGN_CENTER);
+            gDPPipeSync(gDisplayListHead++);
+            gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, CLAMP((int) gExtraGuides * 16, 0, 255));
+            print_generic_string_aligned(160 - 2, 80 - 2, gExtraText, TEXT_ALIGN_CENTER);
+
             gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
         }
 
         if (gFinaleNotes)
         {
+            gSPDisplayList(gDisplayListHead++, dl_shade_screen_begin);
+            gDPSetPrimColor(gDisplayListHead++, 0, 0, 0, 0, 0, gFinaleNotes * 4 / 5);
+            *(gDisplayListHead++) = gFillRectCmd;
+            gSPDisplayList(gDisplayListHead++, dl_shade_screen_end);
+
             gFinaleNotes = CLAMP(gFinaleNotes - 8, 0, 255);
             gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
+
             gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, CLAMP(gFinaleNotes, 0, 255));
             print_generic_string_aligned(160 - 2, 210 - 2, gExtraText, TEXT_ALIGN_CENTER);
+            gDPPipeSync(gDisplayListHead++);
             gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, CLAMP(gFinaleNotes, 0, 255));
             print_generic_string_aligned(160, 210, gExtraText, TEXT_ALIGN_CENTER);
+            
+            gDPPipeSync(gDisplayListHead++);
+            gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, CLAMP(gFinaleNotes, 0, 255));
+            print_generic_string_aligned(20 - 2, 206 - 2, gExtraText2, TEXT_ALIGN_LEFT);
+            gDPPipeSync(gDisplayListHead++);
+            gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, CLAMP(gFinaleNotes, 0, 255));
+            print_generic_string_aligned(20, 206, gExtraText2, TEXT_ALIGN_LEFT);
+
             gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
         }
 

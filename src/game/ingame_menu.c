@@ -2178,7 +2178,7 @@ static const struct ViewDecl sViewDecls[] = {
 , [ COURSE_EE ] = { .stars = 20, .checkpoints = 5, .goal = true, .has100 = true }
 , [ COURSE_END ] = { .stars = 1 }
 , [ COURSE_EQ ] = { .stars = 28, .checkpoints = 3, .has100 = true }
-, [ COURSE_FC ] = { .stars = 35, .checkpoints = 8, .goal = true, .has100 = true }
+, [ COURSE_FC ] = { .stars = 34, .checkpoints = 8, .goal = true, .has100 = true }
 , [ COURSE_FR ] = { .stars = 38, .checkpoints = 5, .goal = true, .has100 = true }
 , [ COURSE_GF ] = { .stars = 26, .checkpoints = 6, .goal = true, .extra = true, .has100 = true }
 , [ COURSE_GH ] = { .stars = 22, .checkpoints = 2, .goal = true, .has100 = true }

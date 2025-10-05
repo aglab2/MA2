@@ -1,6 +1,7 @@
 
 extern u8 gFinaleNotes;
-static void gg_check(Vec3f loc, const char* note)
+extern const char* gExtraText2;
+static void gg_check(Vec3f loc, const char* note, int i)
 {
     if ((o->oTimer & 7) == 0)
     {
@@ -19,9 +20,13 @@ static void gg_check(Vec3f loc, const char* note)
     int notesVal = gFinaleNotes + 20;
     if (notesVal > 255)
         notesVal = 255;
-    
+ 
+    char* tmpLine = (char*) aglabGlobalScratch;
+    sprintf(tmpLine, "Note %d/4", i + 1);
+        
     gFinaleNotes = notesVal;
-    gExtraText = note;
+    gExtraText = tmpLine;
+    gExtraText2 = note;
 }
 
 extern const char gGGNote0[];
@@ -42,8 +47,8 @@ void bhv_gg_loop()
     const Vec3f notePos2 = {  700,  -500, -1612 };
     const Vec3f notePos3 = {  1200, -500, -982 };
 
-    gg_check(notePos0, segmented_to_virtual(sLines[0]));
-    gg_check(notePos1, segmented_to_virtual(sLines[1]));
-    gg_check(notePos2, segmented_to_virtual(sLines[2]));
-    gg_check(notePos3, segmented_to_virtual(sLines[3]));
+    gg_check(notePos0, segmented_to_virtual(sLines[0]), 0);
+    gg_check(notePos1, segmented_to_virtual(sLines[1]), 1);
+    gg_check(notePos2, segmented_to_virtual(sLines[2]), 2);
+    gg_check(notePos3, segmented_to_virtual(sLines[3]), 3);
 }

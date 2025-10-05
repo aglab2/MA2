@@ -185,7 +185,7 @@ const LevelScript level_fc_entry[] = {
 		OBJECT(MODEL_NONE, 3353, -11787, 15936, 0, 0, 0, 0x00000000, bhvHiddenStarTrigger),
 		OBJECT(MODEL_NONE, 3305, -12086, 16705, 0, 0, 0, 0x00000000, bhvHiddenStarTrigger),
 		OBJECT(MODEL_STAR, -4065, -6677, -16208, 0, 0, 0, 0x00000000, bhvStar),
-		OBJECT(MODEL_STAR, -4459, -4091, -5673, 0, 0, 0, 0x00000000, bhvStar),
+		// OBJECT(MODEL_STAR, -4459, -4091, -5673, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_NONE, 3636, 3598, -1194, 0, 0, 0, 0x00000000, bhvHiddenRedCoinStar),
 		OBJECT(MODEL_STAR, 3679, -11421, 6676, 0, 0, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 2919, -2091, 13187, 0, 0, 0, 0x00000000, bhvStar),
