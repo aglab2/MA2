@@ -393,7 +393,7 @@ const LevelScript level_wb_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 	FREE_LEVEL_POOL(),
-	MARIO_POS(0x01, 0, -3213, -1600, -15477),
+	MARIO_POS(0x01, 0, -3620, -1673, -4132),
 	CALL(0, lvl_init_or_update),
 	CALL_LOOP(1, lvl_init_or_update),
 	CLEAR_LEVEL(),
