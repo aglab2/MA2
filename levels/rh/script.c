@@ -124,7 +124,7 @@ const LevelScript level_rh_entry[] = {
 		OBJECT(MODEL_STAR, -6072, -3713, -13574, 0, -90, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -2815, -2114, -11032, 0, -90, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, -745, -508, -13997, 0, -90, 0, 0x00000000, bhvStar),
-		OBJECT(MODEL_STAR, -7598, -1088, -12204, 0, -90, 0, 0x00000000, bhvStar),
+		OBJECT(MODEL_STAR, -7598, -1488, -12204, 0, -90, 0, 0x00000000, bhvStar),
 		TERRAIN(rh_area_1_collision),
 		MACRO_OBJECTS(rh_area_1_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
