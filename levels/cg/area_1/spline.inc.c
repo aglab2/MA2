@@ -1,5 +1,5 @@
 const Trajectory cg_area_1_spline_NurbsCurve_Loop_001[] = {
-	TRAJECTORY_POS( 0, -17141, -786, 6450),
+	TRAJECTORY_POS( 0, -16970, -786, 6450),
 	TRAJECTORY_POS( 1, -16970, -5646, 6450),
 	TRAJECTORY_POS( 2, -16970, -6014, 6450),
 	TRAJECTORY_POS( 3, -17004, -6269, 6450),
