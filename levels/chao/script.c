@@ -148,6 +148,7 @@ const LevelScript level_chao_entry[] = {
 		OBJECT(MODEL_STAR, 5723, -833, -4510, 0, -91, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 5699, -582, -14398, 0, -91, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_STAR, 10858, 988, 4184, 0, -91, 0, 0x00000000, bhvStar),
+		OBJECT(MODEL_WOODEN_SIGNPOST, 12249, 1900, 6012, 0, 89, 0, (42 << 24) | (42 << 16), bhvMessagePanel),
 		TERRAIN(chao_area_1_collision),
 		MACRO_OBJECTS(chao_area_1_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),

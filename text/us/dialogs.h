@@ -439,23 +439,8 @@ messin' with Koopa the\n\
 Quick.\n\
 Better luck next time!")
 
-DEFINE_DIALOG(DIALOG_042, NO_SOUND, 4, 30, 200, "\
-Caution! Narrow Bridge!\n\
-Cross slowly!\n\
-\n\
-\n\
-You can jump to the edge\n\
-of the cliff and hang on,\n\
-and you can climb off the\n\
-edge if you move slowly.\n\
-When you want to let go,\n\
-either press Ⓩ or press\n\
-the Control Stick in the\n\
-direction of Mario's back.\n\
-To climb up, press Up on\n\
-the Control Stick. To\n\
-scurry up quickly, press\n\
-the Ⓐ Button.")
+DEFINE_DIALOG(DIALOG_042, NO_SOUND, 1, 30, 200, "\
+You saw nothing.")
 
 DEFINE_DIALOG(DIALOG_043, NO_SOUND, 5, 30, 200, "\
 If you jump and hold the\n\
