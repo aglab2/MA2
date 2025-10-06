@@ -336,7 +336,7 @@ extern Vtx chao_dl_0129_object_01C939FC_001_mesh_layer_1_vtx_4[280];
 extern Gfx chao_dl_0129_object_01C939FC_001_mesh_layer_1_tri_4[];
 extern Vtx chao_dl_0129_object_01C939FC_001_mesh_layer_1_vtx_5[9];
 extern Gfx chao_dl_0129_object_01C939FC_001_mesh_layer_1_tri_5[];
-extern Vtx chao_dl_0130_object_01C8D99C_001_mesh_layer_1_vtx_0[26];
+extern Vtx chao_dl_0130_object_01C8D99C_001_mesh_layer_1_vtx_0[3];
 extern Gfx chao_dl_0130_object_01C8D99C_001_mesh_layer_1_tri_0[];
 extern Vtx chao_dl_0130_object_01C8D99C_001_mesh_layer_1_vtx_1[252];
 extern Gfx chao_dl_0130_object_01C8D99C_001_mesh_layer_1_tri_1[];

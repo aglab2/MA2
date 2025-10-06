@@ -310,7 +310,7 @@ const GeoLayout chao_area_1_geo[] = {
 		GEO_OPEN_NODE(),
 			GEO_DISPLAY_LIST(LAYER_ALPHA, chao_dl_0108_object_01CAF064_mesh_layer_4),
 		GEO_CLOSE_NODE(),
-		GEO_DISPLAY_LIST(LAYER_OPAQUE, chao_dl_0109_object_01CAE1E4_mesh_layer_1),
+		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)0.0, (s16)-0.0011444091796875, (s16)-9600.0, chao_dl_0109_object_01CAE1E4_mesh_layer_1),
 		GEO_TRANSLATE_NODE_WITH_DL(LAYER_OPAQUE, (s16)3000.0, (s16)-0.0011205673217773438, (s16)-9400.0, chao_dl_0110_object_01CAD3D4_mesh_layer_1),
 		GEO_OPEN_NODE(),
 			GEO_DISPLAY_LIST(LAYER_ALPHA, chao_dl_0110_object_01CAD3D4_mesh_layer_4),
