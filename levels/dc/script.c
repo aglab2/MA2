@@ -294,6 +294,7 @@ const LevelScript level_dc_entry[] = {
 		OBJECT(MODEL_STAR, -2899, 1879, -61, 0, -46, 0, 0x00000000, bhvStar),
 		OBJECT(MODEL_NONE, 13632, 110, -5, 0, 91, 0, 0x00000000, bhvHiddenRedCoinStar),
 		OBJECT(MODEL_SUSHI, 1714, -2403, 1260, 0, -136, 0, 0x00000000, bhvSushiShark),
+		OBJECT(MODEL_SUSHI, 1714, -1703, 1260, 0, -136, 0, 0x00000000, bhvSushiShark),
 		OBJECT(MODEL_THI_WARP_PIPE, 9822, -300, 6480, 0, 0, 0, (0x20 << 16), bhvWarpPipe),
 		OBJECT(MODEL_THI_WARP_PIPE, 12006, -300, 4204, 0, 90, 0, (0x21 << 16), bhvWarpPipe),
 		OBJECT(MODEL_THI_WARP_PIPE, 12035, -300, -4208, 0, 90, 0, (0x22 << 16), bhvWarpPipe),
