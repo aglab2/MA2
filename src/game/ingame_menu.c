@@ -2189,7 +2189,7 @@ static const struct ViewDecl sViewDecls[] = {
 , [ COURSE_IG ] = { .stars = 18, .checkpoints = 3, .goal = true, .has100 = true }
 , [ COURSE_LB ] = { .stars = 1 }
 , [ COURSE_LC ] = { .stars = 20, .checkpoints = 3, .goal = true, .has100 = true }
-, [ COURSE_LF ] = { .stars = 1 }
+, [ COURSE_LF ] = { .goal = true }
 , [ COURSE_MH ] = { .stars = 28, .checkpoints = 5, .goal = true, .has100 = true }
 , [ COURSE_MHE ] = { .stars = 25, .checkpoints = 3, .has100 = true }
 , [ COURSE_MS ] = { .stars = 23, .checkpoints = 5, .goal = true, .has100 = true }
@@ -2352,6 +2352,11 @@ void print_hud_pause_colorful_str(void) {
     }
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
+}
+
+void set_menu_page(int id)
+{
+    sPage = id;
 }
 
 void render_pause_castle_course_stars(s16 x, s16 y, s16 fileIndex, s16 courseIndex) {

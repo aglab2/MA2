@@ -54,12 +54,14 @@ void reset_globals()
     gSafeY = -30000.f;
 }
 
+extern void set_menu_page(int id);
 void reset_globals_ex()
 {
     reset_globals();
     sViewRange = 400000000.0f;
     gDialogCameraAngleIndex = 1;
     sSparkRefill = 0;
+    set_menu_page(2);
 }
 
 void bhv_ow_ctl_init()
@@ -130,6 +132,8 @@ void bhv_ow_ctl_init()
     level_control_timer(TIMER_CONTROL_STOP);
     level_control_timer(TIMER_CONTROL_HIDE);
 #endif
+
+    set_menu_page(gCurrLevelNum == LEVEL_CASTLE_GROUNDS2 ? 1 : 0);
 }
 
 void bhv_ow_ctl_loop()
