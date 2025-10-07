@@ -162,15 +162,38 @@ void bhv_coin_loop(void) {
     bhv_coin_sparkles_init();
 }
 
-void bhv_coin_formation_spawned_coin_loop(void) {
+extern const BehaviorScript bhvCoinFormationSpawnedCoinFake[];
+static s32 bhv_coin_sparkles_init_x(void) {
+    if (o->oInteractStatus & INT_STATUS_INTERACTED
+        && !(o->oInteractStatus & INT_STATUS_TOUCHED_BOB_OMB)) {
+        spawn_object(o, MODEL_SPARKLES, bhvCoinSparklesSpawner);
+        obj_mark_for_deletion(o);
+
+        struct Object* fake = spawn_object(o, MODEL_SILVER_COIN, bhvCoinFormationSpawnedCoinFake);
+        fake->parentObj = o->parentObj;
+        fake->oCoinSnapToGround = o->oCoinSnapToGround;
+        fake->oBehParams2ndByte = o->oBehParams2ndByte;
+        fake->oAnimState = o->oAnimState;
+
+        return TRUE;
+    }
+
+    o->oInteractStatus = INT_STATUS_NONE;
+
+    return FALSE;
+}
+
+static void bhv_coin_formation_spawned_coin_loop_impl(struct ObjectHitbox *hitbox, int modelNoShadow) {
     if (o->oTimer == 0) {
         cur_obj_set_behavior(bhvYellowCoin);
-        obj_set_hitbox(o, &sYellowCoinHitbox);
+        if (hitbox)
+            obj_set_hitbox(o, hitbox);
+
         if (o->oCoinSnapToGround) {
             o->oPosY += 300.0f;
             cur_obj_update_floor_height();
 
-            if (o->oPosY + FIND_FLOOR_BUFFER < o->oFloorHeight || o->oFloorHeight < FLOOR_LOWER_LIMIT_MISC) {
+            if (o->oPosY + FIND_FLOOR_BUFFER < o->oFloorHeight || o->oFloorHeight < FLOOR_LOWER_LIMIT) {
                 obj_mark_for_deletion(o);
             } else {
                 o->oPosY = o->oFloorHeight;
@@ -179,11 +202,11 @@ void bhv_coin_formation_spawned_coin_loop(void) {
             cur_obj_update_floor_height();
 
             if (absf(o->oPosY - o->oFloorHeight) > 250.0f) {
-                cur_obj_set_model(MODEL_YELLOW_COIN_NO_SHADOW);
+                cur_obj_set_model(modelNoShadow);
             }
         }
     } else {
-        if (bhv_coin_sparkles_init()) {
+        if (bhv_coin_sparkles_init_x()) {
             o->parentObj->oCoinRespawnBits |= (1 << o->oBehParams2ndByte);
         }
         o->oAnimState++;
@@ -193,7 +216,17 @@ void bhv_coin_formation_spawned_coin_loop(void) {
     }
 }
 
-static void spawn_coin_in_formation(s32 index, s32 shape, const BehaviorScript* coinBhv) {
+void bhv_coin_formation_spawned_coin_loop(void)
+{
+    return bhv_coin_formation_spawned_coin_loop_impl(&sYellowCoinHitbox, MODEL_YELLOW_COIN_NO_SHADOW);
+}
+
+void bhv_coin_formation_spawned_coin_fake_loop(void)
+{
+    return bhv_coin_formation_spawned_coin_loop_impl(NULL, MODEL_SILVER_COIN_NO_SHADOW);
+}
+
+static void spawn_coin_in_formation(s32 index, s32 shape, int model, const BehaviorScript* coinBhv) {
     Vec3i pos = { 0, 0, 0 };
     s32 spawnCoin    = TRUE;
     s32 snapToGround = TRUE;
@@ -229,7 +262,7 @@ static void spawn_coin_in_formation(s32 index, s32 shape, const BehaviorScript* 
 
     if (spawnCoin) {
         struct Object *newCoin =
-            spawn_object_relative(index, pos[0], pos[1], pos[2], o, MODEL_YELLOW_COIN, coinBhv);
+            spawn_object_relative(index, pos[0], pos[1], pos[2], o, model, coinBhv);
         newCoin->oCoinSnapToGround = snapToGround;
     }
 }
@@ -250,12 +283,19 @@ void bhv_coin_formation_loop_impl(const BehaviorScript *coinBhv) {
         dist = COIN_FORMATION_DISTANCE * 0.3f;    
     }
 
+    int shape = o->oBehParams2ndByte;
+    int want_persistent_coins = 17 == shape && (gCurrCourseNum == COURSE_CW || gCurrCourseNum == COURSE_FC);
     switch (o->oAction) {
         case COIN_FORMATION_ACT_INACTIVE:
             if (o->oDistanceToMario < dist) {
                 for (bitIndex = 0; bitIndex < 8; bitIndex++) {
                     if (!(o->oCoinRespawnBits & (1 << bitIndex))) {
-                        spawn_coin_in_formation(bitIndex, o->oBehParams2ndByte, coinBhv);
+                        spawn_coin_in_formation(bitIndex, shape, MODEL_YELLOW_COIN, coinBhv);
+                    } else {
+                        if (want_persistent_coins)
+                        {
+                            spawn_coin_in_formation(bitIndex, shape, MODEL_SILVER_COIN, bhvCoinFormationSpawnedCoinFake);
+                        }
                     }
                 }
                 o->oAction = COIN_FORMATION_ACT_ACTIVE;
