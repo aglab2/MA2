@@ -169,11 +169,15 @@ static s32 bhv_coin_sparkles_init_x(void) {
         spawn_object(o, MODEL_SPARKLES, bhvCoinSparklesSpawner);
         obj_mark_for_deletion(o);
 
-        struct Object* fake = spawn_object(o, MODEL_SILVER_COIN, bhvCoinFormationSpawnedCoinFake);
-        fake->parentObj = o->parentObj;
-        fake->oCoinSnapToGround = o->oCoinSnapToGround;
-        fake->oBehParams2ndByte = o->oBehParams2ndByte;
-        fake->oAnimState = o->oAnimState;
+        int want_persistent_coins = 17 == o->parentObj->oBehParams2ndByte && (gCurrCourseNum == COURSE_CW || gCurrCourseNum == COURSE_FC);
+        if (want_persistent_coins)
+        {
+            struct Object* fake = spawn_object(o, MODEL_SILVER_COIN, bhvCoinFormationSpawnedCoinFake);
+            fake->parentObj = o->parentObj;
+            fake->oCoinSnapToGround = o->oCoinSnapToGround;
+            fake->oBehParams2ndByte = o->oBehParams2ndByte;
+            fake->oAnimState = o->oAnimState;
+        }
 
         return TRUE;
     }

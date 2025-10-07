@@ -2972,10 +2972,13 @@ const Gfx dl_draw_quad_verts_4567[] = {
     gsSPEndDisplayList(),
 };
 
+#define	G_CC_SHADOW_IA             TEXEL0, 0, SHADE, 0, TEXEL0, 0, SHADE, 0
+#define	G_CC_SHADOW_IFADEA         TEXEL0, 0, SHADE, 0, TEXEL0, 0, PRIMITIVE, 0
+
 const Gfx dl_shadow_begin[] = {
     gsDPPipeSync(),
     gsSPClearGeometryMode(G_LIGHTING | G_CULL_BACK),
-    gsDPSetCombineMode(G_CC_MODULATEIFADEA, G_CC_MODULATEIFADEA),
+    gsDPSetCombineMode(G_CC_SHADOW_IFADEA, G_CC_SHADOW_IFADEA),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPEndDisplayList(),
 };
