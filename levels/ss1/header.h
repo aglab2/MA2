@@ -32,4 +32,10 @@ extern const LevelScript level_ss1_entry[];
 
 #include "levels/ss1/ss1_golem_go/geo_header.h"
 
+#include "levels/ss1/fight_platform/collision_header.h"
+
+#include "levels/ss1/fight_platform/geo_header.h"
+
+#include "levels/ss1/fight_plat_shadow/geo_header.h"
+
 #endif

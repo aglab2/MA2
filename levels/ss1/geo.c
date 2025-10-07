@@ -22,3 +22,5 @@
 #include "levels/ss1/ss1_fly/geo.inc.c"
 #include "levels/ss1/ss1_golem/geo.inc.c"
 #include "levels/ss1/ss1_golem_go/geo.inc.c"
+#include "levels/ss1/fight_platform/geo.inc.c"
+#include "levels/ss1/fight_plat_shadow/geo.inc.c"

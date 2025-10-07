@@ -14,10 +14,31 @@ extern const Collision ss1_golem_collision[];
 #define oSSCtlLastRadius oFloatF8
 #define oSSCtlInitAngle oFC
 #define oSSCtlAwaitTiming o100
+#define oSSCtlPlat oObj104
 
 extern s16 s8DirModeYawOffset;
 
+void bhv_ss1_platform_loop(void)
+{
+    if (o->oAction)
+    {
+        o->oVelY -= 3.f;
+        o->oPosY += o->oVelY;
+        o->oOpacity -= 10;
+        if (o->oOpacity < 0)
+        {
+            o->oOpacity = 0;
+            o->activeFlags = 0;
+        }
+    }
+    else
+    {
+        load_object_collision_model();
+    }
+}
+
 extern const BehaviorScript bhvSS1Golem[];
+extern const BehaviorScript bhvSS1Plat[];
 extern s32 approach_f32_ptr(f32 *px, f32 target, f32 delta);
 void bhv_ss_ctl_loop()
 {
@@ -268,10 +289,15 @@ void bhv_ss_ctl_loop()
             o->oSSCtlSpecial->activeFlags = 0;
             obj_set_collision_data(o, ss1_fly_collision);
             s8DirModeYawOffset = -0x4000;
+            o->oSSCtlPlat = spawn_object(o, MODEL_SS1_PLAT, bhvSS1Plat);
         }
     }
     else if (8 == o->oAction)
     {
+        o->oSSCtlPlat->oPosX = bowser->oPosX;
+        o->oSSCtlPlat->oPosY = bowser->oPosY - 250.f;
+        o->oSSCtlPlat->oPosZ = bowser->oPosZ;
+
         int opacity = 8*o->oTimer;
         if (opacity > 255)
         {
@@ -295,6 +321,7 @@ void bhv_ss_ctl_loop()
     }
     else if (9 == o->oAction)
     {
+        bowser->oPosY = 0;
         if (BOWSER_ACT_HIT_MINE == bowser->oAction)
         {
             if (0 == o->oSubAction)
@@ -325,11 +352,15 @@ void bhv_ss_ctl_loop()
         bowser->oPosX = 0;
         bowser->oPosY = 700.f;
         bowser->oPosZ = 800.f * sins(gGlobalTimer * 234);
+        o->oSSCtlPlat->oPosX = bowser->oPosX;
+        o->oSSCtlPlat->oPosY = bowser->oPosY - 190.f;
+        o->oSSCtlPlat->oPosZ = bowser->oPosZ;
         bowser->oMoveAngleYaw = 0x8000 * (coss(gGlobalTimer * 234) < 0);
         if (bowser->oAction != BOWSER_ACT_CHARGE_MARIO)
         {
             o->oAction = 11;
             bowser->oInteractStatus = -1;
+            o->oSSCtlPlat->oAction = 1;
         }
     }
     else if (11 == o->oAction)

@@ -2827,6 +2827,19 @@ const BehaviorScript bhvStaticObject[] = {
     BREAK(),
 };
 
+extern const Collision fight_platform_collision[];
+extern void bhv_ss1_platform_loop(void);
+const BehaviorScript bhvSS1Plat[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_COLLISION_DATA(fight_platform_collision),
+    SET_INT(oOpacity, 255),
+    BEGIN_LOOP(),
+        ADD_INT(oMoveAngleYaw, 0x100),
+        CALL_NATIVE(bhv_ss1_platform_loop),
+    END_LOOP(),
+};
+
 const BehaviorScript bhvCastleFloorTrap[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     DISABLE_RENDERING(),
