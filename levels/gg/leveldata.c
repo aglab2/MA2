@@ -60,9 +60,6 @@ Fast forwards to October 2025, I finally got all 1000
 stars working and polished the hack enough to be
 released. I hope you enjoyed playing it as much as
 I enjoyed making it!
-Admittedly 11 months of every day work to develop
-a project of this scale is quite exhausting, so
-I will be taking a break from SM64 hacking for a bit.
 
 If you strive for more content, consider playing
 Mario Adventure 35 that features SA2 Kart Racing.
