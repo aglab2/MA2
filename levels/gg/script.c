@@ -36,6 +36,7 @@ const LevelScript level_gg_entry[] = {
 
 	AREA(1, gg_area_1, 0, 0, 0),
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		WARP_NODE(0x0B, LEVEL_GG, 0x02, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		OBJECT(MODEL_NONE, 0, 0, 400, 435, -180, 0, (0xa << 16), bhvSpinAirborneWarp),
@@ -60,7 +61,7 @@ const LevelScript level_gg_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 	FREE_LEVEL_POOL(),
-	MARIO_POS(2, 0, 0, 0, 0),
+	MARIO_POS(1, 0, 0, 0, 0),
 
 	BLACKOUT(/*active*/ FALSE),
 	CALL(0, lvl_gg),
