@@ -48,8 +48,19 @@ const LevelScript level_gg_entry[] = {
 		/* Fast64 begin persistent block [area commands] */
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
+	AREA(2, gg_area_2, 0, 0, 0),
+		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
+		TERRAIN(gg_area_2_collision),
+		MACRO_OBJECTS(gg_area_2_macro_objs),
+		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
+		TERRAIN_TYPE(TERRAIN_GRASS),
+		OBJECT(MODEL_NONE, 0, 0, 400, 435, -180, 0, (0xa << 16), bhvInstantActiveWarp),
+		// OBJECT(MODEL_NONE, 0, -148, 8, 0, -180, 0, 0x00000000, bhvGG),
+		/* Fast64 begin persistent block [area commands] */
+		/* Fast64 end persistent block [area commands] */
+	END_AREA(),
 	FREE_LEVEL_POOL(),
-	MARIO_POS(1, 0, 0, 0, 0),
+	MARIO_POS(2, 0, 0, 0, 0),
 
 	BLACKOUT(/*active*/ FALSE),
 	CALL(0, lvl_gg),
