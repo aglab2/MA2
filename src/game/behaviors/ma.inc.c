@@ -15,6 +15,23 @@ static struct ObjectHitbox sCheckpointInteract = {
 extern s8 gDialogCameraAngleIndex;
 static s8 sCheckpointActive = -1;
 
+extern u8 sCheckpointIds;
+static int toDialogId(int bparam2)
+{
+    int id = 1 + 0xef - bparam2;
+    // this is referring to extra course checkpoint
+    if (bparam2 == 0xe2)
+        id = 64 - sCheckpointIds;
+
+    int cc = COURSE_CCT <= gCurrCourseNum && gCurrCourseNum <= COURSE_CCS;
+    if (cc)
+    {
+        id += 2 * (gCurrCourseNum - COURSE_CCT);
+    }
+
+    return id;
+}
+
 void bhv_checkpoint_init()
 {
     u8 starId = GET_BPARAM1(o->oBehParams);
@@ -26,7 +43,7 @@ void bhv_checkpoint_init()
     if (currentLevelStarFlags & (1ULL << starId)) {
 #endif
         o->oOpacity = 255;
-        if (gDialogCameraAngleIndex == 1 + 0xef - GET_BPARAM2(o->oBehParams))
+        if (gDialogCameraAngleIndex == toDialogId(GET_BPARAM2(o->oBehParams)))
         {
             o->oGeoRoll = 0;
             o->oInteractStatus = INT_STATUS_INTERACTED;
@@ -44,23 +61,6 @@ void bhv_checkpoint_init()
     }
 
     o->oDrawingDistance = 10000.0f;
-}
-
-extern u8 sCheckpointIds;
-static int toDialogId(int bparam2)
-{
-    int id = 1 + 0xef - bparam2;
-    // this is referring to extra course checkpoint
-    if (bparam2 == 0xe2)
-        id = 64 - sCheckpointIds;
-
-    int cc = COURSE_CCT <= gCurrCourseNum && gCurrCourseNum <= COURSE_CCS;
-    if (cc)
-    {
-        id += 2 * (gCurrCourseNum - COURSE_CCT);
-    }
-
-    return id;
 }
 
 void bhv_checkpoint_loop()
