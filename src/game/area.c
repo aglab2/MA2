@@ -708,6 +708,7 @@ extern int gSlowLookups;
 u8 gWaterTutorial;
 u8 gExtraGuides;
 u8 gFinaleNotes;
+s16 gRolls;
 extern void render_credits();
 
 const char* gExtraText;
@@ -760,12 +761,18 @@ void render_game(void) {
         {
             gExtraGuides--;
             gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
+
+            int y = 80;
+            if (gCurrCourseNum == COURSE_GG)
+            {
+                y = 210;
+            }
             
             gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, CLAMP((int) gExtraGuides * 16, 0, 255));
-            print_generic_string_aligned(160 - 2, 80 - 2, gExtraText, TEXT_ALIGN_CENTER);
+            print_generic_string_aligned(160 - 2, y - 2, gExtraText, TEXT_ALIGN_CENTER);
             gDPPipeSync(gDisplayListHead++);
             gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, CLAMP((int) gExtraGuides * 16, 0, 255));
-            print_generic_string_aligned(160, 80, gExtraText, TEXT_ALIGN_CENTER);
+            print_generic_string_aligned(160, y, gExtraText, TEXT_ALIGN_CENTER);
 
             gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
         }
@@ -792,6 +799,19 @@ void render_game(void) {
             gDPPipeSync(gDisplayListHead++);
             gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, CLAMP(gFinaleNotes, 0, 255));
             print_generic_string_aligned(20, 206, gExtraText2, TEXT_ALIGN_LEFT);
+
+            gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
+        }
+
+        if (gRolls)
+        {
+            gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
+
+            gDPSetEnvColor(gDisplayListHead++, 0, 0, 0, 255);
+            print_generic_string_aligned_precise(220 - 2, (gRolls - 2) * 0.5f, gExtraText, TEXT_ALIGN_CENTER);
+            gDPPipeSync(gDisplayListHead++);
+            gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, 255);
+            print_generic_string_aligned_precise(220, gRolls * 0.5f, gExtraText, TEXT_ALIGN_CENTER);
 
             gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
         }

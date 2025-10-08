@@ -66,3 +66,69 @@ Mario Adventure 35 that features SA2 Kart Racing.
 
 But for now... Rest easy, heroes.
 )";
+
+const char gRollsStr[] = R"(
+Mario Adventure 2
+Made by aglab2
+
+Original Games
+SEGA
+Nintendo
+
+Testers
+Mushie64
+Nobbie
+
+HackerSM64 Maintainers
+Arthurtilly
+ArcticJaguar
+
+MIDIs
+VGMusic
+Miditechx
+
+Extra instruments
+DNVIC
+PC HQ Sounds
+bicycle soda
+
+Emulator Development
+gonetz
+falcobuster
+
+Base F3DEX3 Microcode
+sauraen
+
+N64 Wizardry
+Rasky
+Fazana
+
+Libraries used
+n64-libc
+LZ4(T)
+PostgreSQL pairing heap
+
+Camera collision
+Reonu
+
+Better swimming
+thecozies
+
+VNs read
+Tsukihime Remake + OG
+Kagetsu Tohya
+Katawa Shoujo
+
+EABI libultra
+Wiseguy
+
+GCC Patches
+Thar0
+
+Special Thanks
+Arzztt
+someone2639
+CowQuack
+)";
+
+const char gClearText[] = "Thank you for playing!";

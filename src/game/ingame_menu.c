@@ -556,7 +556,7 @@ static u32 render_generic_unicode_char(const char *str, s32 *strPos) {
  * Uses the global variables sGenericFontLineHeight and sGenericFontLineAlignment 
  * to control printing.
  */
-static s32 render_main_font_text(s16 x, s16 y, const char *str, s32 maxLines) {
+static s32 render_main_font_text(f32 x, f32 y, const char *str, s32 maxLines) {
     char c;
     s8 kerning = 0;
     u8 queuedSpaces = 0; // Optimization to only have one translation matrix if there are multiple spaces in a row.
@@ -884,6 +884,12 @@ void print_credits_string(s16 x, s16 y, const char *str) {
  * Variants of the above that allow for text alignment.
  */
 void print_generic_string_aligned(s16 x, s16 y, const char *str, u32 alignment) {
+    sGenericFontLineHeight = DIALOG_LINE_HEIGHT_EN;
+    sGenericFontLineAlignment = alignment;
+    render_main_font_text(x, y, str, -1);
+}
+
+void print_generic_string_aligned_precise(f32 x, f32 y, const char *str, u32 alignment) {
     sGenericFontLineHeight = DIALOG_LINE_HEIGHT_EN;
     sGenericFontLineAlignment = alignment;
     render_main_font_text(x, y, str, -1);

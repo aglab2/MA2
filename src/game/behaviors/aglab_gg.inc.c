@@ -53,9 +53,25 @@ void bhv_gg_loop()
     gg_check(notePos3, segmented_to_virtual(sLines[3]), 3);
 }
 
+extern s16 gRolls;
+extern const char gRollsStr[];
+extern const char gClearText[];
 void bhv_gg2_loop()
 {
-    gCamera->cutscene = CUTSCENE_CREDITS4;
+    if (o->oTimer < 2460)
+    {
+        gFinaleNotes = 0;
+        gRolls = o->oTimer;
+        gCamera->cutscene = CUTSCENE_CREDITS4;
+        gExtraText = segmented_to_virtual(gRollsStr);
+    }
+    else
+    {
+        if (gExtraGuides < 20)
+            gExtraGuides += 2;
+
+        gExtraText = segmented_to_virtual(gClearText);
+    }
 }
 
 Gfx* geo_credits_castle_move(s32 callContext, struct GraphNode* node, UNUSED void* context)
@@ -65,6 +81,7 @@ Gfx* geo_credits_castle_move(s32 callContext, struct GraphNode* node, UNUSED voi
         int param = fnNode->parameter;
         struct GraphNodeTranslationRotation *transNode = (struct GraphNodeTranslationRotation *) node->next;
         transNode->rotation[1] += param;
+        transNode->translation[1] += param / 5;
     }
     return NULL;
 }

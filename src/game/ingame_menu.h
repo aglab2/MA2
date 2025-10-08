@@ -274,6 +274,7 @@ void print_hud_lut_string(s16 x, s16 y, const char *str);
 void print_menu_generic_string(s16 x, s16 y, const char *str);
 void print_credits_string(s16 x, s16 y, const char *str);
 void print_generic_string_aligned(s16 x, s16 y, const char *str, u32 alignment);
+void print_generic_string_aligned_precise(f32 x, f32 y, const char *str, u32 alignment);
 void print_hud_lut_string_aligned(s16 x, s16 y, const char *str, u32 alignment);
 void print_menu_generic_string_aligned(s16 x, s16 y, const char *str, u32 alignment);
 void print_credits_string_aligned(s16 x, s16 y, const char *str, u32 alignment);
