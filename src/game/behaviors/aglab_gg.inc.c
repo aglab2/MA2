@@ -57,3 +57,14 @@ void bhv_gg2_loop()
 {
     gCamera->cutscene = CUTSCENE_CREDITS4;
 }
+
+Gfx* geo_credits_castle_move(s32 callContext, struct GraphNode* node, UNUSED void* context)
+{
+    if (callContext == GEO_CONTEXT_RENDER) {
+        struct GraphNodeGenerated *fnNode = (struct GraphNodeGenerated *) node;
+        int param = fnNode->parameter;
+        struct GraphNodeTranslationRotation *transNode = (struct GraphNodeTranslationRotation *) node->next;
+        transNode->rotation[1] += param;
+    }
+    return NULL;
+}
