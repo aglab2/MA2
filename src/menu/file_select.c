@@ -1360,7 +1360,7 @@ void print_save_file_star_count(s8 fileIndex, s16 x, s16 y) {
         if (starCount >= 1000)
             sprintf(starCountText, "%d%%", starCount / 10);
         else
-            sprintf(starCountText, "%d.%01d%%", starCount / 10, starCount % 10);
+            sprintf(starCountText, "%d.%d%%", starCount / 10, starCount % 10);
         print_hud_lut_string(x, y, starCountText);
     } else {
         // Print "new" text

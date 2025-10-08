@@ -453,7 +453,11 @@ void render_hud_stars(void) {
     char str[10];
     int amount = gHudDisplay.stars / 10;
     int digit = gHudDisplay.stars % 10;
-    sprintf(str, "%d.%d%%", amount, digit);
+    if (gHudDisplay.stars >= 1000)
+        sprintf(str, "%d%%", amount);
+    else
+        sprintf(str, "%d.%d%%", amount, digit);
+
     print_text(20, gBorderHeight + gHudDisplay.starsY - 16, str);
 }
 

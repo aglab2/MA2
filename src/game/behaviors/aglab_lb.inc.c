@@ -276,7 +276,7 @@ static int can_lb_warp(int warpId)
     if (warpId != 0xe)
         return 1;
 
-    if (gMarioStates->numStars == 999)
+    if (gMarioStates->numStars >= 999)
         return 1;
     else
         return 0;
