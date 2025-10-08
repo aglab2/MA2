@@ -7625,6 +7625,16 @@ const BehaviorScript bhvGG[] = {
     END_LOOP(),
 };
 
+extern void bhv_credits_roll_init();
+extern void bhv_gg2_loop();
+const BehaviorScript bhvGG2[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    CALL_NATIVE(bhv_credits_roll_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_gg2_loop),
+    END_LOOP(),
+};
+
 extern void reset_globals_ex();
 const BehaviorScript bhvEndResetter[] = {
     BEGIN(OBJ_LIST_SURFACE),

@@ -52,3 +52,8 @@ void bhv_gg_loop()
     gg_check(notePos2, segmented_to_virtual(sLines[2]), 2);
     gg_check(notePos3, segmented_to_virtual(sLines[3]), 3);
 }
+
+void bhv_gg2_loop()
+{
+    gCamera->cutscene = CUTSCENE_CREDITS4;
+}

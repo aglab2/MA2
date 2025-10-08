@@ -10317,6 +10317,20 @@ struct Cutscene sCutsceneCredits3[] = {
     { cutscene_credits_stop, CUTSCENE_LOOP },
 };
 
+static void cutscene_credits_last(struct Camera *c) {
+    c->focus[0] = -3000.f;
+    c->focus[1] = 8.f * 950.f - 4000.f;
+    c->focus[2] = 0.f;
+
+    c->pos[0] = -3000.f;
+    c->pos[1] = 8.f * 1000.f - 4100.f;
+    c->pos[2] = 8.f * 100.f;
+}
+
+struct Cutscene sCutsceneCredits4[] = {
+    { cutscene_credits_last, CUTSCENE_LOOP },
+};
+
 /**
  * Cutscene that plays when Mario dies while standing, or from electrocution.
  */
@@ -10960,6 +10974,7 @@ void play_cutscene(struct Camera *c) {
 
         CUTSCENE(CUTSCENE_CREDITS2,             sCutsceneCredits2)
         CUTSCENE(CUTSCENE_CREDITS3,             sCutsceneCredits3)
+        CUTSCENE(CUTSCENE_CREDITS4,             sCutsceneCredits4)
     }
 
 #undef CUTSCENE

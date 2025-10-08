@@ -55,7 +55,7 @@ const LevelScript level_gg_entry[] = {
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),
 		TERRAIN_TYPE(TERRAIN_GRASS),
 		OBJECT(MODEL_NONE, 0, 0, 400, 435, -180, 0, (0xa << 16), bhvInstantActiveWarp),
-		// OBJECT(MODEL_NONE, 0, -148, 8, 0, -180, 0, 0x00000000, bhvGG),
+		OBJECT(MODEL_NONE, 0, -148, 8, 0, -180, 0, 0x00000000, bhvGG2),
 		/* Fast64 begin persistent block [area commands] */
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
