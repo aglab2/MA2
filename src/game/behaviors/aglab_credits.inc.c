@@ -135,7 +135,7 @@ typedef struct Credits
 
 static void decay_credits()
 {
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 7; i++)
     {
         credits_t* c = &((credits_t*) aglabGlobalScratch)[i];
         if (c->alpha > 5)
@@ -245,7 +245,7 @@ void render_credits()
 {
     credits_t* credits = (credits_t*) aglabGlobalScratch;
     gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 7; i++)
     {
         credits_t* c = &credits[i];
         if (c->text == NULL)

@@ -21,6 +21,8 @@
 #define RIG_COL 200
 #define FLEF_COL 80
 #define FRIG_COL 240
+#define MLEF_COL 90
+#define MRIG_COL 210
 
 static const CreditsEntry sHackers[] = {
 	{ MID_COL, TOP_ROW, "Made with HackerSM64" },
@@ -80,9 +82,14 @@ static const CreditsEntry sMicrocode[] = {
 };
 
 static const CreditsEntry sAlgorithms[] = {
-	{ MID_COL, TOP_ROW, "Algorithms" },
-	{ FLEF_COL, BTM_ROW, "Rasky" },
-	{ FRIG_COL, BTM_ROW, "Postgres" },
+	{ MLEF_COL, TOP_ROW + 10, "N64 Wizardry" },
+	{ MLEF_COL, BTM_ROW + 10, "Rasky" },
+	{ MLEF_COL, BTM_ROW - 10, "Fazana" },
+
+	{ MRIG_COL, BTM_ROW + 10 + 5, "n64-libc" },
+	{ MRIG_COL, TOP_ROW + 10 + 5, "Libraries used" },
+	{ MRIG_COL, BTM_ROW - 10 + 5, "LZ4(T)" },
+	{ MRIG_COL, BTM_ROW - 30 + 5, "PostgreSQL pairing heap" },
 	{},
 };
 
