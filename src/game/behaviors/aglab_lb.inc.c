@@ -302,7 +302,7 @@ static void handle_lb_warp(f32 wsx, f32 wsy, f32 wsz, int warpId, const char* te
         if (gExtraGuides < 20)
             gExtraGuides += 2;
         
-        gExtraText = text;
+        gExtraText = segmented_to_virtual(text);
     }
 
     if (can_lb_warp(warpId) && d < 40.f * 40.f)
@@ -314,11 +314,14 @@ static void handle_lb_warp(f32 wsx, f32 wsy, f32 wsz, int warpId, const char* te
     }
 }
 
+extern const char gLbText0[];
+extern const char gLbText1[];
+extern const char gLbText2[];
 static void show_lb_warps()
 {
-    handle_lb_warp(-2689.f, 100.f, 0.f, 0xc, "In a level full of lush vegetation, a traveller may\nfind a course referencing Sonic legacy near the safe spot.\n\nUse this warp to travel back to Hero story.");
-    handle_lb_warp( 2689.f, 100.f, 0.f, 0xd, "Seeking in a course filled with robots, a pilgrim\nmay find a suspicious door leading to the land of heavens.\n\nUse this warp to travel back to Dark story.");
-    handle_lb_warp( 0.f, 20.f, -2900.f, 0xe, "The final reward awaits\nthe player that has 99.9%% completion.");
+    handle_lb_warp(-2689.f, 100.f, 0.f, 0xc, gLbText0);
+    handle_lb_warp( 2689.f, 100.f, 0.f, 0xd, gLbText1);
+    handle_lb_warp( 0.f, 20.f, -2900.f, 0xe, gLbText2);
 }
 
 void bhv_lb_ctl_loop()

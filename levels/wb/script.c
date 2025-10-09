@@ -57,7 +57,7 @@ const LevelScript level_wb_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_WB_SHUTS_CHAO, wb_shuts_chao_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_WB_CHAO_LOVE, chao_love_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_WB_CHAO_NEUT, chao_neut_geo), 
-	LOAD_MODEL_FROM_GEO(MODEL_WB_CHAO_PUZZ, chao_puzz_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_WB_CHAO_PUZZ, chao_puzz_geo), 
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
@@ -83,6 +83,8 @@ const LevelScript level_wb_entry[] = {
 		OBJECT(MODEL_BOOSTER, -19281, -1600, 21805, 0, -1, 0, 0x00000000, bhvBooster),
 		OBJECT(MODEL_BOOSTER, -19470, -1598, 19000, 0, -1, 0, 0x00000000, bhvBooster),
 		OBJECT(MODEL_BOOSTER, -20830, -1600, 14855, 0, -1, 0, 0x00000000, bhvBooster),
+		OBJECT(MODEL_BOOSTER, -1963, -1600, -5659, 0, 13, 0, 0x00000000, bhvBooster),
+		OBJECT(MODEL_BOOSTER, -2878, -1600, -9588, 0, 13, 0, 0x00000000, bhvBooster),
 		OBJECT(MODEL_BREAKABLE_BOX, -14230, -2800, -2972, 0, -180, 0, 0x00000000, bhvBreakableBox),
 		OBJECT(MODEL_BREAKABLE_BOX, -14230, -2600, -2972, 0, -180, 0, 0x00000000, bhvBreakableBox),
 		OBJECT(MODEL_BREAKABLE_BOX, -14230, -2800, -2572, 0, -180, 0, 0x00000000, bhvBreakableBox),
@@ -393,7 +395,7 @@ const LevelScript level_wb_entry[] = {
 		/* Fast64 end persistent block [area commands] */
 	END_AREA(),
 	FREE_LEVEL_POOL(),
-	MARIO_POS(0x01, 0, -3620, -1673, -4132),
+	MARIO_POS(0x01, 0, -3213, -1600, -15477),
 	CALL(0, lvl_init_or_update),
 	CALL_LOOP(1, lvl_init_or_update),
 	CLEAR_LEVEL(),
