@@ -532,6 +532,7 @@ void bhv_lb_ctl_loop()
 
         if (o->parentObj->oAction != BOWSER_ACT_HIT_EDGE)
         {
+            o->parentObj->oHealth = 100;
             o->oAction = 7;
             lb_rails_activate_switch();
         }
@@ -604,6 +605,7 @@ void bhv_lb_ctl_loop()
 
         if (o->parentObj->oAction != BOWSER_ACT_HIT_EDGE)
         {
+            o->parentObj->oHealth = 100;
             o->oAction = 10;
             lb_rails_activate_switch();
         }
@@ -687,6 +689,7 @@ void bhv_lb_ctl_loop()
 
         if (o->parentObj->oAction != BOWSER_ACT_HIT_EDGE)
         {
+            o->parentObj->oHealth = 100;
             o->oAction = 13;
         }
     }

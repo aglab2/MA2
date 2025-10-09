@@ -446,6 +446,7 @@ static void bowser_handle_dmg(void)
 {
     if (o->oInteractStatus & INT_STATUS_WAS_ATTACKED)
     {
+        o->oBowserTimer = 0;
         o->oHealth--;
         if (o->oHealth <= 0) {
             o->oAction = BOWSER_ACT_DEAD;
