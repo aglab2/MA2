@@ -2170,7 +2170,7 @@ struct ViewDecl
     u16 has100 : 1;
 } ViewDecl;
 
-// Total: 1000 star - need to remove 1 star
+// Total: 999 - missing one star!
 static const struct ViewDecl sViewDecls[] = {
   [ COURSE_AQ ] = { .stars = 22, .checkpoints = 4, .has100 = true }
 , [ COURSE_CCE ] = { .stars = 12, .checkpoints = 1, .goal = true }
@@ -2178,24 +2178,24 @@ static const struct ViewDecl sViewDecls[] = {
 , [ COURSE_CCR ] = { .stars = 9, .checkpoints = 1, .goal = true }
 , [ COURSE_CCS ] = { .stars = 8, .checkpoints = 1, .goal = true }
 , [ COURSE_CCT ] = { .stars = 7, .checkpoints = 1, .goal = true }
-, [ COURSE_CE ] = { .stars = 23, .checkpoints = 5, .goal = true, .has100 = true }
+, [ COURSE_CE ] = { .stars = 24, .checkpoints = 5, .goal = true, .has100 = true }
 , [ COURSE_CG ] = { .stars = 27, .checkpoints = 5, .goal = true, .has100 = true }
 , [ COURSE_CHAO ] = { .stars = 13, .checkpoints = 4, .has100 = true }
 , [ COURSE_CW ] = { .stars = 26, .checkpoints = 8, .goal = true, .has100 = true }
 , [ COURSE_DC ] = { .stars = 27, .checkpoints = 5, .has100 = true }
 , [ COURSE_DL ] = { .stars = 24, .checkpoints = 3, .has100 = true }
 , [ COURSE_EE ] = { .stars = 20, .checkpoints = 5, .goal = true, .has100 = true }
-, [ COURSE_END ] = { .stars = 1 }
 , [ COURSE_EQ ] = { .stars = 28, .checkpoints = 3, .has100 = true }
 , [ COURSE_FC ] = { .stars = 34, .checkpoints = 8, .goal = true, .has100 = true }
 , [ COURSE_FR ] = { .stars = 38, .checkpoints = 5, .goal = true, .has100 = true }
 , [ COURSE_GF ] = { .stars = 26, .checkpoints = 6, .goal = true, .extra = true, .has100 = true }
+, [ COURSE_GG ] = { .stars = 1 }
 , [ COURSE_GH ] = { .stars = 22, .checkpoints = 2, .goal = true, .has100 = true }
 , [ COURSE_HB ] = { .stars = 30, .checkpoints = 5, .goal = true, .has100 = true }
 , [ COURSE_IG ] = { .stars = 18, .checkpoints = 3, .goal = true, .has100 = true }
 , [ COURSE_LB ] = { .stars = 1 }
 , [ COURSE_LC ] = { .stars = 20, .checkpoints = 3, .goal = true, .has100 = true }
-, [ COURSE_LF ] = { .goal = true }
+, [ COURSE_LF ] = { .stars = 0, .goal = true }
 , [ COURSE_MH ] = { .stars = 28, .checkpoints = 5, .goal = true, .has100 = true }
 , [ COURSE_MHE ] = { .stars = 25, .checkpoints = 3, .has100 = true }
 , [ COURSE_MS ] = { .stars = 23, .checkpoints = 5, .goal = true, .has100 = true }
@@ -2358,6 +2358,19 @@ void print_hud_pause_colorful_str(void) {
     }
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
+
+    int total = 0;
+    for (int i = COURSE_CE; i <= COURSE_GG; i++)
+    {
+        const struct ViewDecl* decl = &sViewDecls[i];
+        total += decl->stars;
+        total += decl->checkpoints;
+        total += decl->goal;
+        total += decl->extra;
+        total += decl->has100;
+    }
+
+    print_text_fmt_int(20, 50, "%d", total);
 }
 
 void set_menu_page(int id)

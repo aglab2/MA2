@@ -6,6 +6,7 @@ star_patterns = [
     "bhvHiddenRedCoinStar)",
     "bhvHiddenStar)",
     "bhvCETimerStar)",
+    "bhvCcsCoinStar)",
 ]
 
 goal_patterns = [
@@ -20,9 +21,9 @@ checkpoint_patterns_chao = [
     "bhvCheckpointChao)",
 ]
 
-force_goals = [ 'cct', 'cce', 'ccr', 'cck', 'ccs' ]
-force_stars = [ 'ss1', 'ss2', 'lb', 'lf', 'end' ]
-course_without100 = [ 'cct', 'cce', 'ccr', 'cck', 'ccs', 'ss1', 'ss2', 'lb', 'lf', 'end' ]
+force_goals = [ 'cct', 'cce', 'ccr', 'cck', 'ccs', 'lf' ]
+force_stars = [ 'ss1', 'ss2', 'lb' ]
+course_without100 = [ 'cct', 'cce', 'ccr', 'cck', 'ccs', 'ccs', 'ss1', 'ss2', 'lb', 'lf', 'end', 'gg' ]
 
 class StarCount:
     def __init__(self):
