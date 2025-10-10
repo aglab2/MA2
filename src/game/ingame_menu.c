@@ -2358,7 +2358,7 @@ void print_hud_pause_colorful_str(void) {
     }
 
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
-
+#if 0
     int total = 0;
     for (int i = COURSE_CE; i <= COURSE_GG; i++)
     {
@@ -2371,6 +2371,7 @@ void print_hud_pause_colorful_str(void) {
     }
 
     print_text_fmt_int(20, 50, "%d", total);
+#endif
 }
 
 void set_menu_page(int id)
