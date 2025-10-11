@@ -502,36 +502,49 @@ static void apply_flipbooks(struct MasterLayer* masterLayer)
         {
             if (flipData->pals)
             {
-                *(u8**) &startDl[flipDls->offCI4] = flipData->ci4s + frame * 2048;
+                if (flipDls->offCI4)
+                    *(u8**) &startDl[flipDls->offCI4] = flipData->ci4s + frame * 2048;
+
                 if (flipData->pals)
                 {
-                    *(u8**) &startDl[flipDls->offPal] = flipData->pals + frame * 32;
+                    if (flipDls->offPal)
+                        *(u8**) &startDl[flipDls->offPal] = flipData->pals + frame * 32;
                 }
             }
             else
             {
-                // offPal will correspond to the first entry for loadblock which we will need to use
-                *(u8**) &startDl[flipDls->offPal ?: flipDls->offCI4] = flipData->ci4s + frame * 4096;
+                int off = flipDls->offPal ?: flipDls->offCI4;
+                if (off)
+                {
+                    // offPal will correspond to the first entry for loadblock which we will need to use
+                    *(u8**) &startDl[off] = flipData->ci4s + frame * 4096;
+                }
             }
         }
 
         if (flipData->shading)
         {
-            u8* primColorCmd = (u8*) &startDl[flipDls->offPrimColor];
-            int mul = (gCurrCourseNum == COURSE_CG || gCurrCourseNum == COURSE_LC) ? 0x424 : 0x223;
-            primColorCmd[7] = 0x80 + 0x50 * sins(gFlipbookTimer * 0x223 + flipData->shading);
+            if (flipDls->offPrimColor)
+            {
+                u8* primColorCmd = (u8*) &startDl[flipDls->offPrimColor];
+                int mul = (gCurrCourseNum == COURSE_CG || gCurrCourseNum == COURSE_LC) ? 0x424 : 0x223;
+                primColorCmd[7] = 0x80 + 0x50 * sins(gFlipbookTimer * 0x223 + flipData->shading);
+            }
         }
 
-        SetTileSize* tile = (SetTileSize*) &startDl[flipDls->offTile];
-        if (flipData->tileScrollX)
+        if (flipDls->offTile)
         {
-            tile->t = gFlipbookTimer * flipData->tileScrollX;
-            // tile->u = gFlipbookTimer * flipData->tileScrollX;
-        }
-        if (flipData->tileScrollY)
-        {
-            tile->s = gFlipbookTimer * flipData->tileScrollY;
-            // tile->v = gFlipbookTimer * flipData->tileScrollY;
+            SetTileSize* tile = (SetTileSize*) &startDl[flipDls->offTile];
+            if (flipData->tileScrollX)
+            {
+                tile->t = gFlipbookTimer * flipData->tileScrollX;
+                // tile->u = gFlipbookTimer * flipData->tileScrollX;
+            }
+            if (flipData->tileScrollY)
+            {
+                tile->s = gFlipbookTimer * flipData->tileScrollY;
+                // tile->v = gFlipbookTimer * flipData->tileScrollY;
+            }
         }
 
         // this bending constness rules a bit but trust me, it's fine

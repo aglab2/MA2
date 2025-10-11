@@ -16,7 +16,7 @@
 #define ST_P(s, t)	{TC_P(s), TC_P(t)}
 
 #ifdef F3DEX3
-#if 0
+#if 1
 #define gsDPSetAlphaCompareReal gsDPSetAlphaCompare
 #define gDPSetAlphaCompareReal gDPSetAlphaCompare
 #define gSPAlight(...)
