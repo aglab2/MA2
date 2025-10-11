@@ -86,7 +86,7 @@ static const CreditsEntry sAlgorithms[] = {
 	{ MLEF_COL, BTM_ROW + 10, "Rasky" },
 	{ MLEF_COL, BTM_ROW - 10, "Fazana" },
 
-	{ MRIG_COL, BTM_ROW + 10 + 5, "n64-libc" },
+	{ MRIG_COL, BTM_ROW + 10 + 5, "n64-libc+arith64" },
 	{ MRIG_COL, TOP_ROW + 10 + 5, "Libraries used" },
 	{ MRIG_COL, BTM_ROW - 10 + 5, "LZ4(T)" },
 	{ MRIG_COL, BTM_ROW - 30 + 5, "PostgreSQL pairing heap" },
