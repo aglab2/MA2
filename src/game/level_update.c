@@ -132,16 +132,12 @@ u8 g100CoinStarSpawned = FALSE;
 // struct MarioState *gMarioState = &gMarioStates[0];
 s8 sWarpCheckpointActive = FALSE;
 
-static const u16 kTimes[] = {
-    [ COURSE_CE ] = 30 * 60 * 3,
-};
-
 u16 level_control_timer(s32 timerOp) {
     switch (timerOp) {
         case TIMER_CONTROL_SHOW:
             gHudDisplay.flags |= HUD_DISPLAY_FLAG_TIMER;
-            sTimerRunning = FALSE;
-            gHudDisplay.timer = kTimes[COURSE_CE];
+            sTimerRunning = Hacktice_gEnabled;
+            gHudDisplay.timer = 0;
             break;
 
         case TIMER_CONTROL_START:
@@ -154,7 +150,7 @@ u16 level_control_timer(s32 timerOp) {
 
         case TIMER_CONTROL_HIDE:
             gHudDisplay.flags &= ~HUD_DISPLAY_FLAG_TIMER;
-            sTimerRunning = FALSE;
+            sTimerRunning = Hacktice_gEnabled;
             gHudDisplay.timer = 0;
             break;
     }
@@ -1262,12 +1258,8 @@ s32 play_mode_normal(void) {
         area_update_objects();
     }
 #else
-    if (sTimerRunning && gHudDisplay.timer > 0) {
-        gHudDisplay.timer--;
-        if (0 == gHudDisplay.timer)
-        {
-            gMarioStates->health = 0;
-        }
+    if (sTimerRunning) {
+        gHudDisplay.timer++;
     }
     area_update_objects();
 #endif

@@ -488,9 +488,9 @@ void render_hud_timer(void) {
     u16 timerValFrames = gHudDisplay.timer;
     u16 timerMins = timerValFrames / (30 * 60);
     u16 timerSecs = (timerValFrames - (timerMins * 1800)) / 30;
-    u16 timerFracSecs = ((timerValFrames - (timerMins * 1800) - (timerSecs * 30)) & 0xFFFF) / 3;
+    u16 timerFracMSecs = ((timerValFrames - (timerMins * 1800) - (timerSecs * 30)) & 0xFFFF) * 3.33333333333f;
 
-    sprintf(str, "%0d'%02d", timerMins, timerSecs);
+    sprintf(str, "%0d'%02d\"%02d", timerMins, timerSecs, timerFracMSecs);
     print_text_aligned(160, 205, str, TEXT_ALIGN_CENTER);
 }
 
