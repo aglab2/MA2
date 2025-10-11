@@ -17,8 +17,6 @@
 
 #ifdef F3DEX3
 #if 1
-#define gsDPSetAlphaCompareReal gsDPSetAlphaCompare
-#define gDPSetAlphaCompareReal gDPSetAlphaCompare
 #define gSPAlight(...)
 #include "gbi-ex3b.h"
 #else

@@ -111,7 +111,7 @@ of warnings if you use -Wpedantic. */
 #define G_QUAD              0x07
 /*#define G_LINE3D          0x08  no-op in F3DEX2 */
 #define G_TRISNAKE          0x08  /* used to be G_TRISTRIP */
-/* no command for           0x09     used to be G_TRIFAN */
+#define G_ALIGHT            0x09
 #define G_LIGHTTORDP        0x0A
 #define G_RELSEGMENT        0x0B
 
@@ -635,10 +635,17 @@ longer a multiple of 8 (DMA word). This was not used in any command anyway. */
 #define G_CD_DISABLE        (3 << G_MDSFT_RGBDITHER)
 
 /* G_SETOTHERMODE_H gSetAlphaDither */
+#if 0
 #define G_AD_PATTERN        (0 << G_MDSFT_ALPHADITHER)
 #define G_AD_NOTPATTERN     (1 << G_MDSFT_ALPHADITHER)
 #define G_AD_NOISE          (2 << G_MDSFT_ALPHADITHER)
 #define G_AD_DISABLE        (3 << G_MDSFT_ALPHADITHER)
+#else
+#define G_AD_PATTERN        (3 << G_MDSFT_ALPHADITHER)
+#define G_AD_NOTPATTERN     (3 << G_MDSFT_ALPHADITHER)
+#define G_AD_NOISE          (3 << G_MDSFT_ALPHADITHER)
+#define G_AD_DISABLE        (3 << G_MDSFT_ALPHADITHER)
+#endif
 
 /* G_SETOTHERMODE_L gSetAlphaCompare */
 #define G_AC_NONE           (0 << G_MDSFT_ALPHACOMPARE)
@@ -658,9 +665,11 @@ between a manually written rendermode using IM_RD for transparency and one using
 it for antialiasing. */
 #define AA_DEF 0
 #define RD_DEF 0
+#define AA_XLU_DEF AA_EN
 #else
 #define AA_DEF AA_EN
 #define RD_DEF IM_RD
+#define AA_XLU_DEF AA_EN
 #endif
 
 /* G_SETOTHERMODE_L gSetRenderMode */
@@ -710,7 +719,7 @@ it for antialiasing. */
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_A_MEM)
 
 #define RM_AA_ZB_XLU_SURF(clk)                                  \
-    AA_DEF | Z_CMP | IM_RD | CVG_DST_WRAP | CLR_ON_CVG |        \
+    AA_XLU_DEF | Z_CMP | IM_RD | CVG_DST_WRAP | CLR_ON_CVG |        \
     FORCE_BL | ZMODE_XLU |                                      \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
@@ -725,7 +734,7 @@ it for antialiasing. */
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_A_MEM)
 
 #define RM_AA_ZB_XLU_DECAL(clk)                                 \
-    AA_DEF | Z_CMP | IM_RD | CVG_DST_WRAP | CLR_ON_CVG |        \
+    AA_XLU_DEF | Z_CMP | IM_RD | CVG_DST_WRAP | CLR_ON_CVG |        \
     FORCE_BL | ZMODE_DEC |                                      \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
@@ -740,12 +749,12 @@ it for antialiasing. */
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_A_MEM)
 
 #define RM_AA_ZB_XLU_INTER(clk)                                 \
-    AA_DEF | Z_CMP | IM_RD | CVG_DST_WRAP | CLR_ON_CVG |        \
+    AA_XLU_DEF | Z_CMP | IM_RD | CVG_DST_WRAP | CLR_ON_CVG |        \
     FORCE_BL | ZMODE_INTER |                                    \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
 #define RM_AA_ZB_XLU_LINE(clk)                                  \
-    AA_DEF | Z_CMP | IM_RD | CVG_DST_CLAMP | CVG_X_ALPHA |      \
+    AA_XLU_DEF | Z_CMP | IM_RD | CVG_DST_CLAMP | CVG_X_ALPHA |      \
     ALPHA_CVG_SEL | FORCE_BL | ZMODE_XLU |                      \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
@@ -802,12 +811,12 @@ it for antialiasing. */
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_A_MEM)
 
 #define RM_AA_XLU_SURF(clk)                                     \
-    AA_DEF | IM_RD | CVG_DST_WRAP | CLR_ON_CVG | FORCE_BL |     \
+    AA_XLU_DEF | IM_RD | CVG_DST_WRAP | CLR_ON_CVG | FORCE_BL |     \
     ZMODE_OPA |                                                 \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
 #define RM_AA_XLU_LINE(clk)                                     \
-    AA_DEF | IM_RD | CVG_DST_CLAMP | CVG_X_ALPHA |              \
+    AA_XLU_DEF | IM_RD | CVG_DST_CLAMP | CVG_X_ALPHA |              \
     ALPHA_CVG_SEL | FORCE_BL | ZMODE_OPA |                      \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
@@ -866,7 +875,7 @@ it for antialiasing. */
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
 #define RM_ZB_CLD_SURF(clk)                                     \
-    Z_CMP | IM_RD | CVG_DST_SAVE | FORCE_BL | ZMODE_XLU |       \
+    AA_XLU_DEF | Z_CMP | IM_RD | CVG_DST_SAVE | FORCE_BL | ZMODE_XLU |       \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
 #define RM_ZB_OVL_SURF(clk)                                     \
@@ -893,7 +902,7 @@ it for antialiasing. */
     GBL_c##clk(G_BL_CLR_IN, G_BL_0, G_BL_CLR_IN, G_BL_1)
 
 #define RM_CLD_SURF(clk)                                        \
-    IM_RD | CVG_DST_SAVE | FORCE_BL | ZMODE_OPA |               \
+    AA_XLU_DEF | IM_RD | CVG_DST_SAVE | FORCE_BL | ZMODE_OPA |               \
     GBL_c##clk(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)
 
 #define RM_PCL_SURF(clk)                                        \
@@ -3827,10 +3836,15 @@ _DW({                                                       \
 #define gsDPSetColorDither(mode)        \
     gsSPSetOtherMode(    G_SETOTHERMODE_H, G_MDSFT_RGBDITHER, 2, mode)
 
+#if 0
 #define gDPSetAlphaDither(pkt, mode)    \
     gSPSetOtherMode(pkt, G_SETOTHERMODE_H, G_MDSFT_ALPHADITHER, 2, mode)
 #define gsDPSetAlphaDither(mode)        \
     gsSPSetOtherMode(    G_SETOTHERMODE_H, G_MDSFT_ALPHADITHER, 2, mode)
+#else
+#define gDPSetAlphaDither(...) gSPNoOp(pkt)
+#define gsDPSetAlphaDither(...) gsSPNoOp()
+#endif
 
 /**
  * 'blendmask' is not supported anymore.
@@ -3844,10 +3858,20 @@ _DW({                                                       \
  */
 #define gsDPSetBlendMask(mask)      gsSPNoOp()
 
+#if 0
 #define gDPSetAlphaCompare(pkt, type)   \
     gSPSetOtherMode(pkt, G_SETOTHERMODE_L, G_MDSFT_ALPHACOMPARE, 2, type)
 #define gsDPSetAlphaCompare(type)       \
     gsSPSetOtherMode(    G_SETOTHERMODE_L, G_MDSFT_ALPHACOMPARE, 2, type)
+#else
+#define gDPSetAlphaCompare(pkt, type) gSPNoOp(pkt)
+#define gsDPSetAlphaCompare(type) gsSPNoOp()
+
+#define gDPSetAlphaCompareReal(pkt, type)   \
+    gSPSetOtherMode(pkt, G_SETOTHERMODE_L, G_MDSFT_ALPHACOMPARE, 2, type)
+#define gsDPSetAlphaCompareReal(type)       \
+    gsSPSetOtherMode(    G_SETOTHERMODE_L, G_MDSFT_ALPHACOMPARE, 2, type)
+#endif
 
 #define gDPSetDepthSource(pkt, src) \
     gSPSetOtherMode(pkt, G_SETOTHERMODE_L, G_MDSFT_ZSRCSEL, 1, src)
@@ -3858,6 +3882,17 @@ _DW({                                                       \
     gSPSetOtherMode(pkt, G_SETOTHERMODE_L, G_MDSFT_RENDERMODE, 29, (c0) | (c1))
 #define gsDPSetRenderMode(c0, c1)   \
     gsSPSetOtherMode(    G_SETOTHERMODE_L, G_MDSFT_RENDERMODE, 29, (c0) | (c1))
+
+#define gSPAlight(pkt, r, g, b, a)                      \
+_DW({                                                   \
+    Gfx *_g = (Gfx *)(pkt);                             \
+                                                        \
+    _g->words.w0 = (_SHIFTL(G_ALIGHT, 24, 8) |          \
+                    _SHIFTL(a,  8, 8));                 \
+    _g->words.w1 = (_SHIFTL(r, 24, 8) |                 \
+                    _SHIFTL(g, 16, 8) |                 \
+                    _SHIFTL(b,  8, 8));                 \
+})
 
 #define gSetImage(pkt, cmd, fmt, siz, width, i)     \
 _DW({                                               \
