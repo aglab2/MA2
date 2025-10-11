@@ -3894,6 +3894,17 @@ _DW({                                                   \
                     _SHIFTL(b,  8, 8));                 \
 })
 
+#define gSPAlightEx(pkt, r, g, b, a_ex)                 \
+_DW({                                                   \
+    Gfx *_g = (Gfx *)(pkt);                             \
+                                                        \
+    _g->words.w0 = (_SHIFTL(G_ALIGHT, 24, 8) |          \
+                    _SHIFTL(a_ex, 0, 16));              \
+    _g->words.w1 = (_SHIFTL(r, 24, 8) |                 \
+                    _SHIFTL(g, 16, 8) |                 \
+                    _SHIFTL(b,  8, 8));                 \
+})
+
 #define gSetImage(pkt, cmd, fmt, siz, width, i)     \
 _DW({                                               \
     Gfx *_g = (Gfx *)(pkt);                         \
