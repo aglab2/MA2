@@ -25,6 +25,12 @@ static u8 sCylFlipped = 0;
 
 #define IN_TUBE_R 900.f
 
+static int fc_camera_sideways(struct Object* obj)
+{
+    s16 ody = ABS(obj->oFaceAngleYaw - gMarioStates->area->camera->yaw);
+    return ody < 0x2000 || ody > 0x6000;
+}
+
 void bhv_fc_grav_loop()
 {
     if (gMarioStates->action == ACT_FCGR_WALKING || gMarioStates->action == ACT_FCGR_JUMP)
@@ -52,7 +58,7 @@ void bhv_fc_grav_loop()
         drop_and_set_mario_action(gMarioStates, ACT_FCGR_JUMP, 0);
         sCylObj = o;
         sCylArea = gCurrAreaIndex;
-        sCylFlipped = ABS(cyl.theta) > 0x4000; // upper tube part
+        sCylFlipped = ABS(cyl.theta) > 0x5000 && fc_camera_sideways(o); // upper tube part
 
         // For velocity conversion, we cannot use generic 'to_cyl' function because
         // angular speed depends on the location of the object, not just the velocity.
@@ -215,11 +221,7 @@ int fcgr_spin(struct MarioState *m)
                 s16 diff = yaw - obj->oFaceAngleYaw;
                 if (sCylFlipped)
                 {
-                    s16 ody = ABS(obj->oFaceAngleYaw - gMarioStates->area->camera->yaw);
-                    if (ody < 0x2000 || ody > 0x6000)
-                    {
-                        diff = -diff;
-                    }
+                    diff = -diff;
                 }
 
                 sCylVel.z = approach_f32(sCylVel.z, m->intendedMag * coss(diff) * 2.6f, zAccel, zAccel);
@@ -246,12 +248,13 @@ int fcgr_spin(struct MarioState *m)
     }
     else
     {
+        s16 ody = ABS(obj->oFaceAngleYaw - gMarioStates->area->camera->yaw);
         s16 absCylTheta = ABS(sCylPos.theta);
         if (absCylTheta < 0x3000)
             sCylFlipped = 0;
 
         if (absCylTheta > 0x5000)
-            sCylFlipped = 1;
+            sCylFlipped = fc_camera_sideways(obj);
     }
 
     /*
