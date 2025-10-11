@@ -17,7 +17,6 @@
 
 #ifdef F3DEX3
 #if 1
-#define gSPAlight(...)
 #include "gbi-ex3b.h"
 #else
 #include "gbi-ex3.h"
