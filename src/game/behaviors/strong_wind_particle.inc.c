@@ -20,7 +20,7 @@ void bhv_strong_wind_particle_loop(void) {
     obj_set_hitbox(o, &sStrongWindParticleHitbox);
 
     if (o->oTimer == 0) {
-        o->oStrongWindParticlePenguinObj = cur_obj_nearest_object_with_behavior(bhvSLWalkingPenguin);
+        o->oStrongWindParticlePenguinObj = NULL; // cur_obj_nearest_object_with_behavior(bhvSLWalkingPenguin);
         obj_translate_xyz_random(o, 100.0f);
 
         o->oForwardVel = coss(o->oMoveAnglePitch) * 100.0f;
@@ -36,7 +36,7 @@ void bhv_strong_wind_particle_loop(void) {
     }
 
     // If collided with the SL walking penguin, deactivate.
-    penguinObj = o->oStrongWindParticlePenguinObj;
+    penguinObj = NULL;
     if (penguinObj != NULL) {
         penguinXDist = penguinObj->oSLWalkingPenguinWindCollisionXPos - o->oPosX;
         penguinZDist = penguinObj->oSLWalkingPenguinWindCollisionZPos - o->oPosZ;
