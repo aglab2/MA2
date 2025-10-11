@@ -167,5 +167,5 @@ jsml["courseDescription"] = course_descriptions
 jsml["secretDescription"] = secret_descriptions
 
 path = 'd:\\git\\MA2\\layout.jsml'
-with open('data.json', 'w') as f:
+with open(path, 'w') as f:
     json.dump(jsml, f)

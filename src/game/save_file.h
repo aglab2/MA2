@@ -76,6 +76,7 @@ struct SaveBuffer {
     // Main menu data, storing config options.
     struct MainMenuSaveData menuData;
 };
+
 extern struct SaveBuffer gSaveBuffer __attribute__((section(".bss.gSaveBuffer")));
 
 #ifdef PUPPYCAM
