@@ -194,9 +194,33 @@ int fcgr_spin(struct MarioState *m)
         {
             if (obj->oFaceAnglePitch)
             {
-                s16 diff = m->intendedYaw - obj->oFaceAngleYaw;
+                s16 yaw = m->intendedYaw;
+#if 0
                 if (sCylFlipped)
-                    diff = -diff;
+                {
+                    print_text_fmt_int(20, 20, "Y %d", yaw);
+                    s16 areaYaw = gMarioStates->area->camera->yaw;
+                    print_text_fmt_int(20, 40, "AY %d", areaYaw);
+                    s16 realYaw = yaw - areaYaw;
+                    print_text_fmt_int(20, 60, "RY %d", realYaw);
+                    // realYaw = -realYaw;
+                    // areaYaw = -areaYaw;
+                    yaw = realYaw + areaYaw;
+                    print_text_fmt_int(20, 80, "NY %d", yaw);
+                    print_text_fmt_int(20, 100, "OY %d", obj->oFaceAngleYaw);
+                    print_text_fmt_int(20, 120, "ODY %d", obj->oFaceAngleYaw - gMarioStates->area->camera->yaw);
+                }
+#else
+#endif
+                s16 diff = yaw - obj->oFaceAngleYaw;
+                if (sCylFlipped)
+                {
+                    s16 ody = ABS(obj->oFaceAngleYaw - gMarioStates->area->camera->yaw);
+                    if (ody < 0x2000 || ody > 0x6000)
+                    {
+                        diff = -diff;
+                    }
+                }
 
                 sCylVel.z = approach_f32(sCylVel.z, m->intendedMag * coss(diff) * 2.6f, zAccel, zAccel);
                 sCylVel.theta = approach_f32(sCylVel.theta, -m->intendedMag * sins(diff) * 40.f, aAccel, aAccel);
