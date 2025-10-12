@@ -997,7 +997,7 @@ void bhv_lb_stand_loop()
     {
         if (o->oTimer <= 64)
         {
-            f32 scale = CLAMP(o->oTimer*2, 1, 100);
+            f32 scale = CLAMP(o->oTimer*2, 1, 110);
             obj_scale(o, scale / 64.f);
         }
 
