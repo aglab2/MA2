@@ -893,7 +893,7 @@ static void bhv_lb_ball_common()
             f32 len = vec3_sumsq(diff);
             if (len < 320.f * 320.f)
             {
-                gMarioStates->health -= 0x100;
+                gMarioStates->hurtCounter += 8;
                 o->oLbZapHitTimer = 1;
             }
         }

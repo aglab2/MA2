@@ -129,6 +129,7 @@ void bhv_k_door_loop()
         else
         {
             spark->oOpacity = o->oOpacity = 255 * spark->oKSparkAttachmentRate;
+            cur_obj_play_sound_1(SOUND_AIR_BOBOMB_LIT_FUSE);
         }
     }
 }
@@ -189,6 +190,7 @@ void bhv_k_plat_loop()
             spark->oOpacity = 255 - 255 * spark->oKSparkAttachmentRate;
             o->oOpacity = 30 + 225 * (1.f - spark->oKSparkAttachmentRate);
             cur_obj_foreach(bhvKPlat, k_plat_propagate_fun);
+            cur_obj_play_sound_1(SOUND_AIR_BOBOMB_LIT_FUSE);
         }
         load_object_collision_model();
     }
