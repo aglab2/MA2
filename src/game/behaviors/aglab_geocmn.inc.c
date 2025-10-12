@@ -41,3 +41,13 @@ Gfx *geo_lvlbatch_rotate4(s32 callContext, struct GraphNode *node, UNUSED s32 co
     }
     return NULL;
 }
+
+Gfx *geo_lvlbatch_rotate_pc(s32 callContext, struct GraphNode *node, UNUSED s32 context)
+{
+    if (callContext == GEO_CONTEXT_RENDER) {
+        struct GraphNodeGenerated *fnNode = (struct GraphNodeGenerated *) node;
+        struct LightGraphLvlNodeTranslationRotation *transNode = (struct LightGraphLvlNodeTranslationRotation *) node->next;
+        transNode->rotation[0] = sins(gGlobalTimer * 0x123) * 1000;
+    }
+    return NULL;
+}
