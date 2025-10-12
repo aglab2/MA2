@@ -147,7 +147,6 @@ s32 LevelReset_onSpawnObjectsFromInfoHook(struct SpawnInfo* spawnInfo)
         spawnInfo->respawnInfo = RESPAWN_INFO_NONE;
 #endif
 
-        spawnInfo->behaviorArg &= ~(RESPAWN_INFO_DONT_RESPAWN << 8);
         return true;
     }
 
