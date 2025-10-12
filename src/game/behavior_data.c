@@ -7309,7 +7309,7 @@ extern const Collision lb_stand_collision[];
 extern void bhv_lb_stand_loop();
 const BehaviorScript bhvLbStand[] = {
     BEGIN(OBJ_LIST_SURFACE),
-    OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_DONT_CALC_COLL_DIST)),
+    OR_LONG(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_DONT_CALC_COLL_DIST | OBJ_FLAG_COMPUTE_DIST_TO_MARIO)),
     SET_FLOAT(oCollisionDistance, 100),
     LOAD_COLLISION_DATA(lb_stand_collision),
     BEGIN_LOOP(),

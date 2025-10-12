@@ -1,5 +1,5 @@
 // #define LB_NO_STAR
-// #define LB_DEBUG_SHORTCUT_TO_PHASE 14
+// #define LB_DEBUG_SHORTCUT_TO_PHASE 12
 
 #define LB_PHASE0_LENGTH 40
 #define LB_PHASE1_LENGTH 300
@@ -341,6 +341,9 @@ void bhv_lb_ctl_loop()
 #ifdef LB_DEBUG_SHORTCUT_TO_PHASE
     if (0 == o->oTimer && o->oAction == 0)
     {
+            s16 angle = random_u16();
+            lb_spawn_upp(0x50, angle);
+
         obj_scale(o->parentObj, 5.f);
         o->parentObj->hitboxRadius = 1000.f;
         o->parentObj->hitboxHeight = 1300.f;
@@ -991,13 +994,24 @@ void bhv_lb_sparkle_loop()
         o->activeFlags = 0;
 }
 
+static int lb_half_circle_grip()
+{
+    if (o->oLbPlatformGrippedFrame < o->oTimer - 10)
+        return 0;
+
+    if (gMarioStates->pos[1] < o->oPosY - 35.f)
+        return 0;
+
+    return o->oDistanceToMario < 50.f;
+}
+
 void bhv_lb_stand_loop()
 {
     if (0 == o->oAction)
     {
         if (o->oTimer <= 64)
         {
-            f32 scale = CLAMP(o->oTimer*2, 1, 110);
+            f32 scale = CLAMP(o->oTimer*2, 1, 100);
             obj_scale(o, scale / 64.f);
         }
 
@@ -1005,8 +1019,7 @@ void bhv_lb_stand_loop()
         f32 range = o->oLbPlatformRange;
         o->oPosX = range * sins(o->oMoveAngleYaw);
         o->oPosZ = range * coss(o->oMoveAngleYaw);
-
-        if (gMarioObject->platform == o)
+        if (gMarioObject->platform == o || lb_half_circle_grip())
         {
             gMarioStates->pos[0] = o->oPosX;
             gMarioStates->pos[2] = o->oPosZ;
