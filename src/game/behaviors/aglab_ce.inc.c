@@ -39,6 +39,9 @@ void bhv_ce_timer_loop()
 void bhv_ce_timer_star_loop()
 {
     ce_timer_print();
+    if (sCeTimerDeadline < gGlobalTimer)
+        return;
+
     if (gMarioStates->pos[1] < o->oPosY && gCurrAreaIndex == 10)
     {
         spawn_star(o, o->oPosX, o->oPosY, o->oPosZ);
