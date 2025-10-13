@@ -300,6 +300,7 @@ const LevelScript level_ee_entry[] = {
 		OBJECT(MODEL_NONE, -16636, 12937, 8214, 0, -180, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_NONE, -13056, 11736, 8541, 0, 90, 0, 0x00000000, bhvCoinFormation),
 		OBJECT(MODEL_GOAL, -7693, -18428, 8277, 0, 0, 0, 0x00000000, bhvGoal),
+		OBJECT(MODEL_NONE, -9173, 11236, 8507, 0, -90, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_RED_COIN, -9173, 6222, 8380, 0, -90, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_RED_COIN, -9173, 6562, 8380, 0, -90, 0, 0x00000000, bhvRedCoin),
 		OBJECT(MODEL_RED_COIN, -10602, -1255, 8371, 0, -90, 0, 0x00000000, bhvRedCoin),
