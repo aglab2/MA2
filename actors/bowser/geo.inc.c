@@ -332,7 +332,7 @@ extern Gfx *geo_update_layer_pcl(s32 callContext, struct GraphNode *node, UNUSED
 
 // 0x0D000AB8 / 0AC4
 const GeoLayout bowser_geo[] = {
-   GEO_NODE_START(),
+	GEO_CULLING_RADIUS(4000),
    GEO_OPEN_NODE(),
       GEO_ASM(GEO_TRANSPARENCY_MODE_NORMAL, geo_update_layer_pcl),
       GEO_SWITCH_CASE(3, geo_switch_anim_state),
@@ -362,7 +362,7 @@ const GeoLayout bowser_geo[] = {
 
 // 0x0D000B18 / 0B40
 const GeoLayout bowser_geo_no_shadow[] = {
-   GEO_NODE_START(),
+	GEO_CULLING_RADIUS(4000),
    GEO_OPEN_NODE(),
       GEO_ASM(GEO_TRANSPARENCY_MODE_NORMAL, geo_update_layer_pcl),
       GEO_SWITCH_CASE(3, geo_switch_anim_state),

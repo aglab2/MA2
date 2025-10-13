@@ -389,7 +389,10 @@ till the end of the ride.")
 DEFINE_DIALOG(DIALOG_036, NO_SOUND, 3, 30, 200, "\
 Make sure to check\n\
 the objective in the\n\
-pause menu.")
+pause menu.\n\
+Use warp feature in\n\
+pause menu to move\n\
+around the areas.")
 
 DEFINE_DIALOG(DIALOG_037, SOUND_OBJ_BIG_PENGUIN_YELL, 2, 30, 200, "\
 I win! You lose!\n\
