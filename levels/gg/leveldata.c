@@ -14,7 +14,7 @@
 const char gGGNote0[] = R"(
 Thank you a lot for playing my hack!
 
-This project idea has been in my head when HackerSM64
+This project idea has been in my head since HackerSM64
 was released and fast64 showed its potential.
 The earliest mention of Mario Adventure 2 was around
 the time when HackCast Season 2 Episode 2 aired.
@@ -35,7 +35,7 @@ to be playable in SM64 with proper collision!
 
 It was around this time when I realized this project can
 be more than just a thought experiment, and I started
-working on Hero Story full time. Would not it make for
+working on Hero Story full time. Would it not make for
 a silly joke to release the hack on April 1st as a
 grand reference to a 1000 star hack...
 )";
