@@ -125,6 +125,8 @@ const LevelScript level_aq_entry[] = {
 		OBJECT(MODEL_NONE, 1499, -5900, 5513, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -5434, -920, -1840, 0, 0, 0, (2 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -6, 1300, -2360, 0, 0, 0, (2 << 16), bhvCoinFormation),
+		OBJECT(MODEL_NONE, 3263, -1463, -5624, 0, 0, 0, (17 << 16), bhvCoinFormation),
+		OBJECT(MODEL_NONE, 3275, -2952, -3142, 0, 0, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -2615, 1201, -2627, 0, 0, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, -543, 251, -2620, 0, 0, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 581, 244, -2607, 0, 0, 0, (17 << 16), bhvCoinFormation),
