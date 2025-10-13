@@ -53,3 +53,30 @@ void bhv_ms_slane_loop()
         }
     }
 }
+
+extern const Collision ms_car1_collision[];
+extern const Collision ms_car2_collision[];
+extern const Collision ms_car3_collision[];
+extern const Collision ms_car4_collision[];
+extern const Collision ms_car5_collision[];
+
+static const Collision* kMsCarCollisions[] = {
+    ms_car1_collision,
+    ms_car2_collision,
+    ms_car3_collision,
+    ms_car4_collision,
+    ms_car5_collision,
+};
+
+extern void bhv_speeder_init();
+void bhv_ms_car_init()
+{
+    obj_scale(o, 0.2f);
+
+    int type = random_u16() % 5;
+    int model = MODEL_MS_CAR1 + type;
+    obj_set_model(o, model);
+    obj_set_collision_data(o, kMsCarCollisions[type]);
+    o->oDrawingDistance = 20000.f;
+    //bhv_speeder_init();
+}

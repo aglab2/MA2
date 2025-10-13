@@ -61,6 +61,11 @@ const LevelScript level_ms_entry[] = {
 	LOAD_MODEL_FROM_GEO(MODEL_MS_BUFFER_BREAK, ms_buffer_break_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_MS_BREAK, ms_slane_geo), 
 	LOAD_MODEL_FROM_GEO(MODEL_MS_SLANE_BREAK, ms_slane_break_geo), 
+	LOAD_MODEL_FROM_GEO(MODEL_MS_CAR1, ms_car1_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_MS_CAR2, ms_car2_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_MS_CAR3, ms_car3_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_MS_CAR4, ms_car4_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_MS_CAR5, ms_car5_geo),
 	/* Fast64 begin persistent block [level commands] */
 	LVL_CONFIG(&cfg),
 	/* Fast64 end persistent block [level commands] */
@@ -169,6 +174,9 @@ const LevelScript level_ms_entry[] = {
 		OBJECT(MODEL_WHOMP, -21716, -1650, -6719, 0, 0, 0, 0x00000000, bhvSmallWhomp),
 		OBJECT(MODEL_WHOMP, 19492, 2000, -16566, 0, -90, 0, 0x00000000, bhvSmallWhomp),
 		OBJECT(MODEL_WHOMP, 19492, 2000, -15287, 0, -90, 0, 0x00000000, bhvSmallWhomp),
+		OBJECT(MODEL_NONE, -10311, -65, 13719, 0, 0, 0, 0x00000000, bhvMsCar),
+		OBJECT(MODEL_NONE, -9702, -65, 11453, 0, 0, 0, 0x00000000, bhvMsCar),
+		OBJECT(MODEL_NONE, -7798, -65, 8818, 0, -45, 0, 0x00000000, bhvMsCar),
 		TERRAIN(ms_area_1_collision),
 		MACRO_OBJECTS(ms_area_1_macro_objs),
 		SET_BACKGROUND_MUSIC(0x00, SEQ_LEVEL_GRASS),

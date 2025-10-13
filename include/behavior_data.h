@@ -580,6 +580,7 @@ extern const BehaviorScript bhvGravFlip[];
 extern const BehaviorScript bhvSpeeder[];
 extern const BehaviorScript bhvCeTimer[];
 extern const BehaviorScript bhvCeCar[];
+extern const BehaviorScript bhvMsCar[];
 extern const BehaviorScript bhvCeCarMove[]; 
 extern const BehaviorScript bhvCETimerStar[];
 extern const BehaviorScript bhvCETimerStarCtl[];

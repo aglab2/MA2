@@ -6350,6 +6350,15 @@ const BehaviorScript bhvCeCar[] = {
     END_LOOP(),
 };
 
+extern void bhv_ms_car_init();
+const BehaviorScript bhvMsCar[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    CALL_NATIVE(bhv_ms_car_init),
+    CALL_NATIVE(load_object_static_model),
+    BREAK(),
+};
+
 extern void bhv_ce_car_move_init();
 extern void bhv_ce_car_move_loop();
 const BehaviorScript bhvCeCarMove[] = {

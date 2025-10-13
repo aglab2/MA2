@@ -26,3 +26,8 @@
 #include "levels/ms/ms_hammer/geo.inc.c"
 #include "levels/ms/ms_slane_break/geo.inc.c"
 #include "levels/ms/ms_slane/geo.inc.c"
+#include "levels/ms/ms_car1/geo.inc.c"
+#include "levels/ms/ms_car2/geo.inc.c"
+#include "levels/ms/ms_car3/geo.inc.c"
+#include "levels/ms/ms_car4/geo.inc.c"
+#include "levels/ms/ms_car5/geo.inc.c"
