@@ -45,6 +45,11 @@ static void calculate_quant()
     }
 
     o->oSpringQuant = (bezierLength < 2000.f ? 70.f : 140.f) / bezierLength;
+
+    if (gCurrCourseNum == COURSE_RH && gCurrAreaIndex == 2 && bezierLength < 2000.f)
+    {
+        o->oSpringQuant *= 1.5f;
+    }
 }
 
 void bhv_spring_init()

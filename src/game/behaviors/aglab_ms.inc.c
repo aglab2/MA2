@@ -14,6 +14,7 @@ void bhv_ms_slane_loop()
         {
             o->oAction = 1 + o->oBehParams2ndByte;
             obj_set_model(o, MODEL_MS_SLANE_BREAK);
+            create_sound_spawner(SOUND_GENERAL_EXPLOSION7);
         }
     }
     else if (1 == o->oAction)

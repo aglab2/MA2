@@ -11,6 +11,7 @@ void bhv_rh_slane_loop()
         {
             o->oAction = 1;
             cur_obj_set_model(MODEL_RH_SLANE_BREAK);
+            create_sound_spawner(SOUND_GENERAL_EXPLOSION7);
         }
     }
     else if (1 == o->oAction)
