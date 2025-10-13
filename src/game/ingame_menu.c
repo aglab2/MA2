@@ -1719,11 +1719,9 @@ static void render_cam_collision_settings()
 {
     gSPDisplayList(gDisplayListHead++, dl_ia_text_begin);
     set_text_color(255, 255, 255);
-    if (!gCamCollision) {
-        print_generic_string(20, 34, "L to enable camera collision");
-    } else {
-        print_generic_string(20, 34, "L to disable camera collision");
-    }
+    char line[100];
+    sprintf(line, "L to %s" COL_RGB("FFFFFF") " camera collision", !gCamCollision ? COL_RGB("60FF60") "enable" : COL_RGB("FF6060") "disable");
+    print_generic_string(20, 34, line);
     gSPDisplayList(gDisplayListHead++, dl_ia_text_end);
     if (gPlayer1Controller->buttonPressed & L_TRIG){
         gCamCollision ^= 1;

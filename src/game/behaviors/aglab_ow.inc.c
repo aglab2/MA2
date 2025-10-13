@@ -47,6 +47,7 @@ extern u8 gTimeFrozen;
 extern u8 sSparkRefill;
 extern u8 gExtraGuides;
 extern u8 gFinaleNotes;
+extern s8 gMHClamp;
 
 void reset_globals()
 {
@@ -56,6 +57,7 @@ void reset_globals()
     gSafeY = -30000.f;
     gExtraGuides = 0;
     gFinaleNotes = 0;
+    gMHClamp = 0;
 }
 
 extern void set_menu_page(int id);

@@ -1267,6 +1267,18 @@ static void eight_dir_collision_handler(struct Camera *c)
     c->yaw = atan2s(c->pos[2] - gMarioState->pos[2], c->pos[0] - gMarioState->pos[0]);
 }
 
+s8 gMHClamp = 0;
+static int want_cam_collision()
+{
+    if ((gMarioStates->action == ACT_FCGR_JUMP) || (gMarioStates->action == ACT_FCGR_WALKING))
+        return 0;
+
+    if (gMHClamp)
+        return 1;
+
+    return gCamCollision;
+}
+
 /**
  * A mode that only has 8 camera angles, 45 degrees apart
  */
@@ -1318,7 +1330,7 @@ void mode_8_directions_camera(struct Camera *c) {
     c->paraCamOrigPos[1] = c->pos[1];
     c->paraCamOrigPos[2] = c->pos[2];
     sAreaYawChange = sAreaYaw - oldAreaYaw;
-    if (!gCamCollision || (gMarioStates->action == ACT_FCGR_JUMP) || (gMarioStates->action == ACT_FCGR_WALKING))
+    if (!want_cam_collision())
     {
         c->camCollisionProgress.y = 1.f;
         c->camCollisionProgress.xz = 1.f;
@@ -1326,6 +1338,15 @@ void mode_8_directions_camera(struct Camera *c) {
     else
     {
         eight_dir_collision_handler(c);
+    }
+    
+    if (gMHClamp)
+    {
+        if (gMarioStates->ceil)
+        {
+            if (c->pos[1] > gMarioStates->ceilHeight)
+                c->pos[1] = gMarioStates->ceilHeight;
+        }
     }
 }
 
