@@ -65,7 +65,6 @@ static const Collision* kMsCarCollisions[] = {
     ms_car2_collision,
     ms_car3_collision,
     ms_car4_collision,
-    ms_car5_collision,
 };
 
 extern void bhv_speeder_init();
@@ -73,7 +72,7 @@ void bhv_ms_car_init()
 {
     obj_scale(o, 0.2f);
 
-    int type = random_u16() % 5;
+    int type = random_u16() % 4;
     int model = MODEL_MS_CAR1 + type;
     obj_set_model(o, model);
     obj_set_collision_data(o, kMsCarCollisions[type]);
