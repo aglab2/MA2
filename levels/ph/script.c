@@ -148,7 +148,7 @@ const LevelScript level_ph_entry[] = {
 		OBJECT(MODEL_MAD_PIANO, 4672, -13643, -12582, 0, 0, 0, 0x00000000, bhvMadPiano),
 		OBJECT(MODEL_K_PLAT, -7682, -10012, 3695, 0, 0, 0, 0x00000000, bhvKPlat),
 		OBJECT(MODEL_K_SOURCE, 1435, -2493, 589, 0, -90, 0, (1 << 16), bhvKSource),
-		OBJECT(MODEL_NONE, 1114, -2493, 858, 0, 118, 0, (4 << 16), bhvCoinFormation),
+		OBJECT(MODEL_NONE, 1114, -2493, 858, 0, 180+118, 0, (4 << 16), bhvCoinFormation),
 		OBJECT(MODEL_ROCKET_SPAWNER, -1738, -13613, -3490, 0, -76, 0, 0x00000000, bhvRocketSpawner),
 		OBJECT(MODEL_ROCKET_SPAWNER, 3796, -13613, -15903, 0, 164, 0, 0x00000000, bhvRocketSpawner),
 		OBJECT(MODEL_ROCKET_SPAWNER, 1628, -2493, -142, 0, -90, 0, (1 << 16), bhvRocketSpawner),
