@@ -999,10 +999,7 @@ static int lb_half_circle_grip()
     if (o->oLbPlatformGrippedFrame < o->oTimer - 10)
         return 0;
 
-    if (gMarioStates->pos[1] < o->oPosY - 35.f)
-        return 0;
-
-    return o->oDistanceToMario < 50.f;
+    return o->oDistanceToMario < 100.f;
 }
 
 void bhv_lb_stand_loop()
