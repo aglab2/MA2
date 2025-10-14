@@ -177,6 +177,10 @@ int fcgr_spin(struct MarioState *m)
         sCylVel.r = 50.f + absf(sCylVel.theta) * 0.01f;
 #else
         sCylVel.r = 50.f + 800 * 0.01f;
+        if (gCurrAreaIndex == 8)
+        {
+            sCylVel.r += 5.f;
+        }
 #endif
     }
 
