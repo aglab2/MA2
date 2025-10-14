@@ -86,7 +86,7 @@ static const CreditsEntry sAlgorithms[] = {
 	{ MLEF_COL, BTM_ROW + 10, "Rasky" },
 	{ MLEF_COL, BTM_ROW - 10, "Fazana" },
 
-	{ MRIG_COL, BTM_ROW + 10 + 5, "n64-libc+arith64" },
+	{ MRIG_COL, BTM_ROW + 10 + 5, "n64-libc + arith64" },
 	{ MRIG_COL, TOP_ROW + 10 + 5, "Libraries used" },
 	{ MRIG_COL, BTM_ROW - 10 + 5, "LZ4(T)" },
 	{ MRIG_COL, BTM_ROW - 30 + 5, "PostgreSQL pairing heap" },
@@ -94,21 +94,24 @@ static const CreditsEntry sAlgorithms[] = {
 };
 
 static const CreditsEntry sExtras1[] = {
-	{ FLEF_COL, TOP_ROW, "Camera collision" },
-	{ FLEF_COL, BTM_ROW, "Reonu" },
+	{ MLEF_COL, TOP_ROW - 30, "Camera collision" },
+	{ MLEF_COL, BTM_ROW - 30, "Reonu" },
 
-	{ FRIG_COL, TOP_ROW, "Better swimming" },
-	{ FRIG_COL, BTM_ROW, "thecozies" },
+	{ MRIG_COL, TOP_ROW - 30, "Better swimming" },
+	{ MRIG_COL, BTM_ROW - 30, "thecozies" },
+
+	{ MID_COL, TOP_ROW + 30, "Mario Model" },
+	{ MID_COL, BTM_ROW + 30, "Yoshi Milkman" },
 
 	{},
 };
 
 static const CreditsEntry sExtras2[] = {
-	{ FLEF_COL, TOP_ROW, "EABI libultra" },
-	{ FLEF_COL, BTM_ROW, "Wiseguy" },
+	{ MLEF_COL, TOP_ROW, "EABI libultra" },
+	{ MLEF_COL, BTM_ROW, "Wiseguy" },
 
-	{ FRIG_COL, TOP_ROW, "GCC Patches" },
-	{ FRIG_COL, BTM_ROW, "Thar0" },
+	{ MRIG_COL, TOP_ROW, "GCC Patches" },
+	{ MRIG_COL, BTM_ROW, "Thar0" },
 
 	{},
 };

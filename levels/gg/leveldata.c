@@ -104,7 +104,7 @@ Rasky
 Fazana
 
 Libraries used
-n64-libc+arith64
+n64-libc + arith64
 LZ4(T)
 PostgreSQL pairing heap
 
@@ -113,6 +113,9 @@ Reonu
 
 Better swimming
 thecozies
+
+Mario Model
+Yoshi Milkman
 
 VNs read
 Tsukihime Remake + OG
