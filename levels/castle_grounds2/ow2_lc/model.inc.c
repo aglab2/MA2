@@ -2711,7 +2711,7 @@ Gfx ow2_lc_0099_object_01134EB4_mesh_layer_1[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED),
 	gsDPSetFogColor(0, 0, 0, 255),
-	gsSPFogPosition(640, 1000),
+	gsSPFogPosition(670, 1000),
 	gsSPSetOtherMode(G_SETOTHERMODE_H, 4, 20, G_AD_NOISE | G_CD_MAGICSQ | G_CK_NONE | G_TC_FILT | G_TF_BILERP | G_TT_RGBA16 | G_TL_TILE | G_TD_CLAMP | G_TP_PERSP | G_CYC_2CYCLE | G_PM_1PRIMITIVE),
 	gsSPSetOtherMode(G_SETOTHERMODE_L, 0, 32, G_AC_DITHER | G_ZS_PIXEL | G_RM_FOG_SHADE_A | G_RM_AA_ZB_PCL_SURF2),
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, ow2_lc_miu256_cg001_pal_rgba16),
