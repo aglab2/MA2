@@ -177,7 +177,7 @@ const LevelScript level_sh_entry[] = {
 		OBJECT(MODEL_RED_COIN, -3749, -990, 1065, 0, 0, 0, (1 << 16), bhvRedCoin),
 		OBJECT(MODEL_RED_COIN, -2949, -645, 1563, 0, 0, 0, (1 << 16), bhvRedCoin),
 		OBJECT(MODEL_RED_COIN, -3341, -822, 1840, 0, 0, 0, (1 << 16), bhvRedCoin),
-		OBJECT(MODEL_ROCKET_SPAWNER, 2, -8830, 2622, 0, -90, 0, 0x00000000, bhvRocketSpawner),
+		OBJECT(MODEL_ROCKET_SPAWNER, 2, -8830, 2622, 0, 90, 0, 0x00000000, bhvRocketSpawner),
 		OBJECT(MODEL_SKEETER, 5318, -5730, 1093, 0, 0, 0, 0x00000000, bhvSkeeter),
 		OBJECT(MODEL_SKEETER, 5404, -5130, 1678, 0, 0, 0, 0x00000000, bhvSkeeter),
 		OBJECT(MODEL_SKEETER, 4771, -5730, 5366, 0, 0, 0, 0x00000000, bhvSkeeter),
