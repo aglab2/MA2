@@ -470,6 +470,7 @@ static int render_course_batches(Gfx **ptempGfxHead, struct BatchArray* arr, int
 #endif
 
         const struct BatchDisplayLists* batchDisplayLists = &arr->batchDLs[batch];
+        cde_ahead(tempGfxHead);
         _gSPDisplayListRaw(tempGfxHead++, batchDisplayLists->startDl, batchDisplayLists->startHint);
         amountRendered++;
         struct PairingHeapHead* heap = &arr->batches[batch].heap.head;
