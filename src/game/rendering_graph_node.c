@@ -346,12 +346,17 @@ static ALWAYS_INLINE void render_lists(Gfx **ptempGfxHead, struct DisplayListNod
 #define tempGfxHead (*ptempGfxHead)
     u32 shift = ((u32) tempGfxHead) & 0xF;
     do {
+        void* transform = currList->transform;
+        void* displayList = currList->displayList;
+        u8 hint = currList->hint;
+        struct DisplayListNode* next = currList->next;
+        asm volatile("": : :"memory");
+        __builtin_mips_cache(0x11, currList);
+        currList = next;
         __builtin_mips_cache(0xd, ((u8*) tempGfxHead) + shift);
-        gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(currList->transform), (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
-        _gSPDisplayListRaw(tempGfxHead++, currList->displayList, currList->hint);
-        void* to_free = currList;
-        currList = currList->next;
-        __builtin_mips_cache(0x11, to_free);
+
+        gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(transform), (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
+        _gSPDisplayListRaw(tempGfxHead++, displayList, hint);
     } while (currList != NULL);
 #undef tempGfxHead
 }
@@ -382,28 +387,36 @@ static int render_batches(Gfx **ptempGfxHead, struct BatchArray* arr, int currLa
     return amountRendered;
 }
 
+static ALWAYS_INLINE void cde_ahead(Gfx* head)
+{
+    u8* temp = ((u8*) head);
+    u8* temp_ahead = temp + ((uintptr_t) head & 0xF);
+    __builtin_mips_cache(0xd, temp_ahead);
+}
+
 #ifdef ENABLE_HEAP_BATCHES
 static ALWAYS_INLINE void render_heap(Gfx **ptempGfxHead, Mtx **pprevMtx, struct PairingHeapHead* heap)
 {
 #define tempGfxHead (*ptempGfxHead)
 #define prevMtx (*pprevMtx)
-    u32 shift = ((u32) tempGfxHead) & 0xF;
     do {
-        __builtin_mips_cache(0xd, ((u8*) tempGfxHead) + shift);
         struct PairingHeapNodeDisplayList* dlNode = (struct PairingHeapNodeDisplayList*) pairingheap_remove_first(heap);
-        if (prevMtx != dlNode->transform)
-        {
-            gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(dlNode->transform), (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
-            prevMtx = dlNode->transform;
-        }
-        else
-        {
-            shift ^= 0x8;
-        }
-        _gSPDisplayListRaw(tempGfxHead++, dlNode->displayList, dlNode->hint);
-
+        Mtx *transform = dlNode->transform;
+        void *displayList = dlNode->displayList;
+        u8 hint = dlNode->hint;
+        asm volatile("": : :"memory");
         __builtin_mips_cache(0x11, ((u8*) dlNode) + 0x0);
         __builtin_mips_cache(0x11, ((u8*) dlNode) + 0x10);
+        // !!! DO NOT USE dlNode AFTER THIS !!!
+
+        cde_ahead(tempGfxHead);
+        if (prevMtx != transform)
+        {
+            gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(transform), (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
+            prevMtx = transform;
+        }
+        _gSPDisplayListRaw(tempGfxHead++, displayList, hint);
+
     } while (!pairingheap_is_empty(heap));
 #undef prevMtx
 #undef tempGfxHead
@@ -447,6 +460,7 @@ static int render_course_batches(Gfx **ptempGfxHead, struct BatchArray* arr, int
         struct PairingHeapNodeBatch* batchNode = (struct PairingHeapNodeBatch*) pairingheap_remove_first(&arr->mat_heap);
         int batch = batchNode->idx;
         // TODO: pack idx inside the priority
+        asm volatile("": : :"memory");
         __builtin_mips_cache(0x11, ((u8*) batchNode) + 0x0);
         __builtin_mips_cache(0x11, ((u8*) batchNode) + 0x10);
 #if 0
@@ -611,33 +625,36 @@ static ALWAYS_INLINE void render_heap_with_resets(Gfx **ptempGfxHead, struct Pai
     void* prevDl = NULL;
 
 #define tempGfxHead (*ptempGfxHead)
-    u32 shift = ((u32) tempGfxHead) & 0xF;
     do {
-        __builtin_mips_cache(0xd, ((u8*) tempGfxHead) + shift);
         struct PairingHeapNodeDisplayList* dlNode = (struct PairingHeapNodeDisplayList*) pairingheap_remove_first(heap);
-        if (prevMtx != dlNode->transform)
+        Mtx *transform = dlNode->transform;
+        void *displayList = dlNode->displayList;
+        u8 hint = dlNode->hint;
+        asm volatile("": : :"memory");
+        __builtin_mips_cache(0x11, ((u8*) dlNode) + 0x0);
+        __builtin_mips_cache(0x11, ((u8*) dlNode) + 0x10);
+        // !!! DO NOT USE dlNode AFTER THIS !!!
+
+        cde_ahead(tempGfxHead);
+
+        if (prevMtx != transform)
         {
-            gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(dlNode->transform), (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
-            prevMtx = dlNode->transform;
-        }
-        else
-        {
-            shift ^= 0x8;
+            gSPMatrix(tempGfxHead++, VIRTUAL_TO_PHYSICAL(transform), (G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH));
+            prevMtx = transform;
         }
         
-        if (prevDl != dlNode->displayList)
+        if (prevDl != displayList)
         {
-            prevDl = dlNode->displayList;
+            prevDl = displayList;
             if (dl_wants_reset(prevDl))
             {
+                cde_ahead(tempGfxHead);
                 gSPDisplayList(tempGfxHead++, dl_course_common_revert);
             }
         }
 
-        _gSPDisplayListRaw(tempGfxHead++, dlNode->displayList, dlNode->hint);
+        _gSPDisplayListRaw(tempGfxHead++, displayList, hint);
 
-        __builtin_mips_cache(0x11, ((u8*) dlNode) + 0x0);
-        __builtin_mips_cache(0x11, ((u8*) dlNode) + 0x10);
     } while (!pairingheap_is_empty(heap));
 #undef tempGfxHead
 }
