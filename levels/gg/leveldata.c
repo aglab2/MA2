@@ -79,6 +79,9 @@ Testers
 Mushie64
 Nobbie
 
+Proofreading
+Mushie64
+
 HackerSM64 Maintainers
 Arthurtilly
 ArcticJaguar
