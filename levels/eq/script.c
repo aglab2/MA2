@@ -21,6 +21,7 @@
 extern const GeoLayout green_flame_geo[];
 static struct LevelConfig cfg = {
 };
+#define bhvBreakable bhvBreakableShrinking
 /* Fast64 end persistent block [scripts] */
 
 const LevelScript level_eq_entry[] = {
