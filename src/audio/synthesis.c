@@ -71,14 +71,14 @@ struct VolumeChange {
     u16 targetRight;
 };
 
-u64 *synthesis_do_one_audio_update(s16 *aiBuf, u32 bufLen, u64 *cmd, s32 updateIndex);
-u64 *synthesis_process_notes(s16 *aiBuf, u32 bufLen, u64 *cmd);
-u64 *load_wave_samples(u64 *cmd, struct Note *note, s32 nSamplesToLoad);
+static u64 *synthesis_do_one_audio_update(s16 *aiBuf, u32 bufLen, u64 *cmd, s32 updateIndex);
+static u64 *synthesis_process_notes(s16 *aiBuf, u32 bufLen, u64 *cmd);
+static u64 *load_wave_samples(u64 *cmd, struct Note *note, s32 nSamplesToLoad);
 #ifdef ENABLE_STEREO_HEADSET_EFFECTS
 u64 *process_envelope(u64 *cmd, struct Note *note, s32 nSamples, u16 inBuf, s32 headsetPanSettings);
 u64 *note_apply_headset_pan_effects(u64 *cmd, struct Note *note, s32 bufLen, s32 flags, s32 leftRight);
 #else
-u64 *process_envelope(u64 *cmd, struct Note *note, s32 nSamples, u16 inBuf);
+static u64 *process_envelope(u64 *cmd, struct Note *note, s32 nSamples, u16 inBuf);
 #endif
 
 struct SynthesisReverb gSynthesisReverb;
@@ -215,7 +215,7 @@ void set_better_reverb_buffers(u32 *inputDelaysL, u32 *inputDelaysR) {
 }
 #endif
 
-void prepare_reverb_ring_buffer(s32 chunkLen, u32 updateIndex) {
+static void prepare_reverb_ring_buffer(s32 chunkLen, u32 updateIndex) {
     struct ReverbRingBufferItem *item;
     s32 srcPos, dstPos;
     s32 nSamples;
@@ -404,7 +404,7 @@ u64 *synthesis_execute(u64 *cmdBuf, s32 *writtenCmds, s16 *aiBuf, s32 bufLen) {
     return cmd;
 }
 
-u64 *synthesis_do_one_audio_update(s16 *aiBuf, u32 bufLen, u64 *cmd, s32 updateIndex) {
+static u64 *synthesis_do_one_audio_update(s16 *aiBuf, u32 bufLen, u64 *cmd, s32 updateIndex) {
     s16 ra;
     s16 t4;
     struct ReverbRingBufferItem *v1;

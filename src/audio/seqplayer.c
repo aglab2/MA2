@@ -18,8 +18,8 @@ s32 seq_channel_layer_process_script_part3(struct SequenceChannelLayer *layer, s
 s32 seq_channel_layer_process_script_part4(struct SequenceChannelLayer *layer, s32 cmd);
 s32 seq_channel_layer_process_script_part5(struct SequenceChannelLayer *layer, s32 cmd);
 #endif
-void seq_channel_layer_process_script(struct SequenceChannelLayer *layer);
-void sequence_channel_process_script(struct SequenceChannel *seqChannel, int i);
+static void seq_channel_layer_process_script(struct SequenceChannelLayer *layer);
+static void sequence_channel_process_script(struct SequenceChannel *seqChannel, int i);
 u32 get_instrument(struct SequenceChannel *seqChannel, u8 instId, struct Instrument **instOut,
                    struct AdsrSettings *adsr);
 
@@ -92,7 +92,7 @@ void sequence_channel_init(struct SequenceChannel *seqChannel) {
     init_note_lists(&seqChannel->notePool);
 }
 
-s32 seq_channel_set_layer(struct SequenceChannel *seqChannel, s32 layerIndex) {
+static s32 seq_channel_set_layer(struct SequenceChannel *seqChannel, s32 layerIndex) {
     struct SequenceChannelLayer *layer;
 
     if (seqChannel->layers[layerIndex] == NULL) {
@@ -158,7 +158,7 @@ void seq_channel_layer_disable(struct SequenceChannelLayer *layer) {
     }
 }
 
-void seq_channel_layer_free(struct SequenceChannel *seqChannel, s32 layerIndex) {
+static void seq_channel_layer_free(struct SequenceChannel *seqChannel, s32 layerIndex) {
     struct SequenceChannelLayer *layer = seqChannel->layers[layerIndex];
 
     if (layer != NULL) {
@@ -191,7 +191,7 @@ void sequence_channel_disable(struct SequenceChannel *seqChannel) {
     seqChannel->finished = TRUE;
 }
 
-struct SequenceChannel *allocate_sequence_channel(void) {
+static struct SequenceChannel *allocate_sequence_channel(void) {
     s32 i;
     for (i = 0; i < ARRAY_COUNT(gSequenceChannels); i++) {
         if (gSequenceChannels[i].seqPlayer == NULL) {
@@ -205,7 +205,7 @@ struct SequenceChannel *allocate_sequence_channel(void) {
     return &gSequenceChannelNone;
 }
 
-void sequence_player_init_channels(struct SequencePlayer *seqPlayer, u16 channelBits) {
+static void sequence_player_init_channels(struct SequencePlayer *seqPlayer, u16 channelBits) {
     struct SequenceChannel *seqChannel;
     s32 i;
 
@@ -234,7 +234,7 @@ void sequence_player_init_channels(struct SequencePlayer *seqPlayer, u16 channel
     }
 }
 
-void sequence_player_disable_channels(struct SequencePlayer *seqPlayer, u16 channelBits) {
+static void sequence_player_disable_channels(struct SequencePlayer *seqPlayer, u16 channelBits) {
     struct SequenceChannel *seqChannel;
     s32 i;
 
@@ -261,7 +261,7 @@ void sequence_player_disable_channels(struct SequencePlayer *seqPlayer, u16 chan
     }
 }
 
-void sequence_channel_enable(struct SequencePlayer *seqPlayer, u8 channelIndex, void *script) {
+static void sequence_channel_enable(struct SequencePlayer *seqPlayer, u8 channelIndex, void *script) {
     struct SequenceChannel *seqChannel = seqPlayer->channels[channelIndex];
     s32 i;
     if (IS_SEQUENCE_CHANNEL_VALID(seqChannel) == FALSE) {
@@ -368,7 +368,7 @@ void *audio_list_pop_back(struct AudioListItem *list) {
     return item->u.value;
 }
 
-void init_layer_freelist(void) {
+static void init_layer_freelist(void) {
     s32 i;
 
     gLayerFreeList.prev = &gLayerFreeList;
@@ -387,7 +387,7 @@ void init_layer_freelist(void) {
     }
 }
 
-u32 m64_read_u8(struct M64ScriptState *state) {
+static u32 m64_read_u8(struct M64ScriptState *state) {
 #if defined(VERSION_EU) || defined(VERSION_SH)
     return *(state->pc++);
 #else
@@ -396,13 +396,13 @@ u32 m64_read_u8(struct M64ScriptState *state) {
 #endif
 }
 
-s32 m64_read_s16(struct M64ScriptState *state) {
+static s32 m64_read_s16(struct M64ScriptState *state) {
     s16 ret = *(state->pc++) << 8;
     ret = *(state->pc++) | ret;
     return ret;
 }
 
-u32 m64_read_compressed_u16(struct M64ScriptState *state) {
+static u32 m64_read_compressed_u16(struct M64ScriptState *state) {
     u16 ret = *(state->pc++);
     if (ret & 0x80) {
         ret = (ret << 8) & 0x7f00;
@@ -1443,11 +1443,11 @@ void set_instrument(struct SequenceChannel *seqChannel, u8 instId) {
     seqChannel->hasInstrument = TRUE;
 }
 
-void sequence_channel_set_volume(struct SequenceChannel *seqChannel, u8 volume) {
+static void sequence_channel_set_volume(struct SequenceChannel *seqChannel, u8 volume) {
     Music_setVolumeHook(seqChannel, volume);
 }
 
-void sequence_channel_process_script(struct SequenceChannel *seqChannel, int seqChannelIdx) {
+static void sequence_channel_process_script(struct SequenceChannel *seqChannel, int seqChannelIdx) {
     struct M64ScriptState *state;
     struct SequencePlayer *seqPlayer;
     u8 cmd;
@@ -2198,7 +2198,7 @@ void sequence_channel_process_script(struct SequenceChannel *seqChannel, int seq
     }
 }
 
-void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
+static void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
     u8 cmd;
     u8 loBits;
     u8 temp;

@@ -233,7 +233,7 @@ void create_dl_ortho_matrix(void) {
  * Returns the table entry of the relevant character.
  * Also increments the string position by the correct amount to reach the next character.
  */
-const struct Utf8CharLUTEntry *utf8_lookup(const struct Utf8LUT *lut, const char *str, s32 *strPos) {
+static const struct Utf8CharLUTEntry *utf8_lookup(const struct Utf8LUT *lut, const char *str, s32 *strPos) {
     u32 codepoint;
     const struct Utf8CharLUTEntry *usedLUT;
     u32 length;

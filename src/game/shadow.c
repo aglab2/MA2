@@ -34,7 +34,7 @@ struct Shadow *s = &gCurrShadow;
  * Shrink a shadow when its parent object is further from the floor, given the
  * initial size of the shadow and the current distance.
  */
-f32 scale_shadow_with_distance(f32 initial, f32 distFromFloor) {
+static f32 scale_shadow_with_distance(f32 initial, f32 distFromFloor) {
     if (distFromFloor <= 0.0f) {
         return initial;
     } else if (distFromFloor >= 600.0f) {
@@ -47,7 +47,7 @@ f32 scale_shadow_with_distance(f32 initial, f32 distFromFloor) {
 /**
  * Dim a shadow when its parent object is further from the ground.
  */
-s32 dim_shadow_with_distance(u8 solidity, f32 distFromFloor) {
+static s32 dim_shadow_with_distance(u8 solidity, f32 distFromFloor) {
     if (solidity < 121) {
         return solidity;
     } else if (distFromFloor <= 0.0f) {
@@ -67,7 +67,7 @@ s32 dim_shadow_with_distance(u8 solidity, f32 distFromFloor) {
  * @param overwriteSolidity Flag for whether the existing shadow solidity should
  *                          be dimmed based on its distance to the floor
  */
-s32 init_shadow(f32 distToShadow, s16 shadowScale, s8 shadowType, u8 overwriteSolidity) {
+static s32 init_shadow(f32 distToShadow, s16 shadowScale, s8 shadowType, u8 overwriteSolidity) {
     f32 baseScale;
 
     if (shadowType != SHADOW_SQUARE_PERMANENT) {
@@ -91,7 +91,7 @@ s32 init_shadow(f32 distToShadow, s16 shadowScale, s8 shadowType, u8 overwriteSo
  * Linearly interpolate a shadow's solidity between zero and finalSolidity
  * depending on curr's relation to start and end.
  */
-void linearly_interpolate_solidity_positive(u8 finalSolidity, s16 curr, s16 start,
+static void linearly_interpolate_solidity_positive(u8 finalSolidity, s16 curr, s16 start,
                                             s16 end) {
     if (curr >= 0 && curr < start) {
         s->solidity = 0;
@@ -107,7 +107,7 @@ void linearly_interpolate_solidity_positive(u8 finalSolidity, s16 curr, s16 star
  * depending on curr's relation to start and end. Note that if curr < start,
  * the solidity will be zero.
  */
-void linearly_interpolate_solidity_negative(u8 initialSolidity, s16 curr, s16 start,
+static void linearly_interpolate_solidity_negative(u8 initialSolidity, s16 curr, s16 start,
                                             s16 end) {
     // The curr < start case is not handled. Thus, if start != 0, this function
     // will have the surprising behavior of hiding the shadow until start.
@@ -123,7 +123,7 @@ void linearly_interpolate_solidity_negative(u8 initialSolidity, s16 curr, s16 st
 /**
  * Change a shadow's solidity based on the player's current animation frame.
  */
-s32 correct_shadow_solidity_for_animations(u8 initialSolidity) {
+static s32 correct_shadow_solidity_for_animations(u8 initialSolidity) {
     s16 animFrame = gMarioObject->header.gfx.animInfo.animFrame;
     switch (gMarioObject->header.gfx.animInfo.animID) {
         case MARIO_ANIM_IDLE_ON_LEDGE:

@@ -20,13 +20,13 @@ enum NoteAlloc {
 
 void process_notes(void);
 void seq_channel_layer_note_decay(struct SequenceChannelLayer *seqLayer);
-void seq_channel_layer_note_release(struct SequenceChannelLayer *seqLayer);
+static void seq_channel_layer_note_release(struct SequenceChannelLayer *seqLayer);
 void init_synthetic_wave(struct Note *note, struct SequenceChannelLayer *seqLayer);
 void init_note_lists(struct NotePool *pool);
 void init_note_free_list(void);
 void note_pool_clear(struct NotePool *pool);
 void note_pool_fill(struct NotePool *pool, s32 count);
-void audio_list_push_front(struct AudioListItem *list, struct AudioListItem *item);
+static void audio_list_push_front(struct AudioListItem *list, struct AudioListItem *item);
 void audio_list_remove(struct AudioListItem *item);
 struct Note *alloc_note(struct SequenceChannelLayer *seqLayer);
 void reclaim_notes(void);

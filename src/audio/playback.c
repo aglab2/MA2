@@ -9,7 +9,7 @@
 #include "effects.h"
 #include "external.h"
 
-void note_set_resampling_rate(struct Note *note, f32 resamplingRateInput);
+static void note_set_resampling_rate(struct Note *note, f32 resamplingRateInput);
 
 #if defined(VERSION_EU) || defined(VERSION_SH)
 #ifdef VERSION_SH
@@ -283,7 +283,7 @@ struct Drum *get_drum(s32 bankId, s32 drumId) {
 #if defined(VERSION_EU) || defined(VERSION_SH)
 void note_init_for_layer(struct Note *note, struct SequenceChannelLayer *seqLayer);
 #else
-s32 note_init_for_layer(struct Note *note, struct SequenceChannelLayer *seqLayer);
+static s32 note_init_for_layer(struct Note *note, struct SequenceChannelLayer *seqLayer);
 #endif
 
 void note_init(struct Note *note) {
@@ -674,7 +674,7 @@ struct Drum *get_drum(s32 bankId, s32 drumId) {
 }
 #endif
 
-void seq_channel_layer_decay_release_internal(struct SequenceChannelLayer *seqLayer, s32 target) {
+static void seq_channel_layer_decay_release_internal(struct SequenceChannelLayer *seqLayer, s32 target) {
     struct Note *note;
     struct NoteAttributes *attributes;
 
@@ -790,7 +790,7 @@ void seq_channel_layer_note_decay(struct SequenceChannelLayer *seqLayer) {
     seq_channel_layer_decay_release_internal(seqLayer, ADSR_STATE_DECAY);
 }
 
-void seq_channel_layer_note_release(struct SequenceChannelLayer *seqLayer) {
+static void seq_channel_layer_note_release(struct SequenceChannelLayer *seqLayer) {
     seq_channel_layer_decay_release_internal(seqLayer, ADSR_STATE_RELEASE);
 }
 
@@ -834,7 +834,7 @@ s32 build_synthetic_wave(struct Note *note, struct SequenceChannelLayer *seqLaye
 }
 
 #else
-void build_synthetic_wave(struct Note *note, struct SequenceChannelLayer *seqLayer) {
+static void build_synthetic_wave(struct Note *note, struct SequenceChannelLayer *seqLayer) {
     s32 i;
     s32 j;
     s32 pos;
@@ -1068,7 +1068,7 @@ void audio_list_remove(struct AudioListItem *item) {
     }
 }
 
-struct Note *pop_node_with_lower_prio(struct AudioListItem *list, s32 limit) {
+static struct Note *pop_node_with_lower_prio(struct AudioListItem *list, s32 limit) {
     struct AudioListItem *cur = list->next;
     struct AudioListItem *best;
 
@@ -1141,7 +1141,7 @@ void note_init_for_layer(struct Note *note, struct SequenceChannelLayer *seqLaye
     sub->reverbIndex = seqLayer->seqChannel->reverbIndex & 3;
 }
 #else
-s32 note_init_for_layer(struct Note *note, struct SequenceChannelLayer *seqLayer) {
+static s32 note_init_for_layer(struct Note *note, struct SequenceChannelLayer *seqLayer) {
     note->prevParentLayer = NO_LAYER;
     note->parentLayer = seqLayer;
     note->priority = seqLayer->seqChannel->notePriority;
@@ -1166,12 +1166,12 @@ s32 note_init_for_layer(struct Note *note, struct SequenceChannelLayer *seqLayer
 }
 #endif
 
-void func_80319728(struct Note *note, struct SequenceChannelLayer *seqLayer) {
+static void func_80319728(struct Note *note, struct SequenceChannelLayer *seqLayer) {
     seq_channel_layer_note_release(note->parentLayer);
     note->wantedParentLayer = seqLayer;
 }
 
-void note_release_and_take_ownership(struct Note *note, struct SequenceChannelLayer *seqLayer) {
+static void note_release_and_take_ownership(struct Note *note, struct SequenceChannelLayer *seqLayer) {
     note->wantedParentLayer = seqLayer;
 #ifdef VERSION_SH
     note->priority = seqLayer->seqChannel->notePriority;
@@ -1187,7 +1187,7 @@ void note_release_and_take_ownership(struct Note *note, struct SequenceChannelLa
     note->adsr.action |= ADSR_ACTION_RELEASE;
 }
 
-struct Note *alloc_note_from_disabled(struct NotePool *pool, struct SequenceChannelLayer *seqLayer) {
+static struct Note *alloc_note_from_disabled(struct NotePool *pool, struct SequenceChannelLayer *seqLayer) {
     struct Note *note = audio_list_pop_back(&pool->disabled);
     if (note != NULL) {
 #if defined(VERSION_EU) || defined(VERSION_SH)
@@ -1203,7 +1203,7 @@ struct Note *alloc_note_from_disabled(struct NotePool *pool, struct SequenceChan
     return note;
 }
 
-struct Note *alloc_note_from_decaying(struct NotePool *pool, struct SequenceChannelLayer *seqLayer) {
+static struct Note *alloc_note_from_decaying(struct NotePool *pool, struct SequenceChannelLayer *seqLayer) {
     struct Note *note = audio_list_pop_back(&pool->decaying);
     if (note != NULL) {
         note_release_and_take_ownership(note, seqLayer);
@@ -1212,7 +1212,7 @@ struct Note *alloc_note_from_decaying(struct NotePool *pool, struct SequenceChan
     return note;
 }
 
-struct Note *alloc_note_from_active(struct NotePool *pool, struct SequenceChannelLayer *seqLayer) {
+static struct Note *alloc_note_from_active(struct NotePool *pool, struct SequenceChannelLayer *seqLayer) {
 #ifdef VERSION_SH
     struct Note *rNote;
 #endif
