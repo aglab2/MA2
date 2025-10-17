@@ -122,7 +122,7 @@ const LevelScript level_msp_entry[] = {
 		OBJECT(MODEL_NONE, 1165, -7031, 11164, 0, 60, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 1165, -5606, 10382, 0, 60, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 513, -8715, 11049, 0, 60, 0, (17 << 16), bhvCoinFormation),
-		OBJECT(MODEL_NONE, -4496, -8780, -4950, 0, 137, 0, 0x00000000, bhvCoinFormation),
+		OBJECT(MODEL_NONE, -4496, -8780, -4950, 0, 137, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_MR_I, 8, -17734, 8, 0, 0, 0, 0x00000000, bhvMrI),
 		OBJECT(MODEL_MR_I, 7279, 3164, -2480, 0, 0, 0, 0x00000000, bhvMrI),
 		OBJECT(MODEL_MR_I, 6716, 3160, -3531, 0, 0, 0, 0x00000000, bhvMrI),
