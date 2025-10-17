@@ -60,7 +60,7 @@ static const CreditsEntry sMusic[] = {
 };
 
 static const CreditsEntry sMusic2[] = {
-	{ MID_COL, TOP_ROW, "Extra instruments" },
+	{ MID_COL, TOP_ROW, "Extra Instruments" },
 	{ FLEF_COL, BTM_ROW, "DNVIC" },
 	{ MID_COL, BTM_ROW, "PC HQ Sounds" },
 	{ FRIG_COL, BTM_ROW, "bicycle soda" },
@@ -87,17 +87,17 @@ static const CreditsEntry sAlgorithms[] = {
 	{ MLEF_COL, BTM_ROW - 10, "Fazana" },
 
 	{ MRIG_COL, BTM_ROW + 10 + 5, "n64-libc + arith64" },
-	{ MRIG_COL, TOP_ROW + 10 + 5, "Libraries used" },
+	{ MRIG_COL, TOP_ROW + 10 + 5, "Libraries Used" },
 	{ MRIG_COL, BTM_ROW - 10 + 5, "LZ4(T)" },
 	{ MRIG_COL, BTM_ROW - 30 + 5, "PostgreSQL pairing heap" },
 	{},
 };
 
 static const CreditsEntry sExtras1[] = {
-	{ MLEF_COL, TOP_ROW - 30, "Camera collision" },
+	{ MLEF_COL, TOP_ROW - 30, "Camera Collision" },
 	{ MLEF_COL, BTM_ROW - 30, "Reonu" },
 
-	{ MRIG_COL, TOP_ROW - 30, "Better swimming" },
+	{ MRIG_COL, TOP_ROW - 30, "Better Swimming" },
 	{ MRIG_COL, BTM_ROW - 30, "thecozies" },
 
 	{ MID_COL, TOP_ROW + 30, "Mario Model" },

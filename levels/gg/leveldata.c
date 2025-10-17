@@ -90,7 +90,7 @@ MIDIs
 VGMusic
 Miditechx
 
-Extra instruments
+Extra Instruments
 DNVIC
 PC HQ Sounds
 bicycle soda
@@ -106,15 +106,15 @@ N64 Wizardry
 Rasky
 Fazana
 
-Libraries used
+Libraries Used
 n64-libc + arith64
 LZ4(T)
 PostgreSQL pairing heap
 
-Camera collision
+Camera Collision
 Reonu
 
-Better swimming
+Better Swimming
 thecozies
 
 Mario Model
