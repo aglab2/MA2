@@ -280,7 +280,7 @@ const LevelScript level_cw_entry[] = {
 		OBJECT(MODEL_NONE, 5344, 12605, -2064, 0, -90, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 6675, 9296, -499, 0, -90, 0, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 5267, 9296, -499, 0, -90, 0, (17 << 16), bhvCoinFormation),
-		OBJECT(MODEL_NONE, 5975, 13856, -1703, 0, -90, 0, (17 << 16), bhvCoinFormation),
+		OBJECT(MODEL_NONE, 5975, 13856, -1703, 0, -90, -30, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 5976, -5022, 11104, 0, -90, -18, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 6014, -2137, 1716, 0, -90, 0, (17+32 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 6014, 2091, 1716, 0, -90, 0, (17+32 << 16), bhvCoinFormation),
