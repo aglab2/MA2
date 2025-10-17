@@ -73,7 +73,7 @@ extern const char gRollsStr[];
 extern const char gClearText[];
 void bhv_gg2_loop()
 {
-    if (o->oTimer < 2560)
+    if (o->oTimer < 2670)
     {
         gFinaleNotes = 0;
         gRolls = o->oTimer;
