@@ -682,7 +682,7 @@ static void focus_on_mario(Vec3f focus, Vec3f pos, f32 posYOff, f32 focYOff, f32
     int animId = gMarioObject->header.gfx.animInfo.animID;
     if (sMarioCamState->action == ACT_RAIL_GRIND && animId != MARIO_ANIM_HANG_ON_OWL)
     {
-        posYOff = 100.f;
+        posYOff = 90.f;
     }
     if (gCurrCourseNum == COURSE_MH && gCurrAreaIndex == 4 && gMarioStates->pos[0] > -5000.f)
     {
