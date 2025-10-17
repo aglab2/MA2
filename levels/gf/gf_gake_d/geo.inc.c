@@ -1,7 +1,7 @@
 #include "src/game/envfx_snow.h"
 
 const GeoLayout gf_gake_d_geo[] = {
-	GEO_NODE_START(),
+	GEO_CULLING_RADIUS(10000),
 	GEO_OPEN_NODE(),
 		GEO_DISPLAY_LIST(LAYER_OPAQUE, gf_gake_d_gf_gake_d_mesh_layer_1),
 		GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, (s16)-80.39741516113281, (s16)4995.0, (s16)-41.5814208984375, (s16)14.88550254126152, (s16)-92.30506840595241, (s16)-0.34633728166592587, gf_gake_d_001_object_00C67B28_mesh_layer_1),
