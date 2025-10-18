@@ -832,15 +832,12 @@ Stars next. You don't\n\
 have to recover the one\n\
 described by the hint.")
 
-DEFINE_DIALOG(DIALOG_071, NO_SOUND, 3, 30, 200, "\
-Danger Ahead!\n\
-Beware of the strange\n\
-cloud! Don't inhale!\n\
-If you feel faint, run for\n\
-higher ground and fresh\n\
-air!\n\
-Circle: Shelter\n\
-Arrow: Entrance-Exit")
+DEFINE_DIALOG(DIALOG_071, NO_SOUND, 5, 30, 200, "\
+Do not try to get on top\n\
+of the tubes from here.\n\
+Use the next checkpoint\n\
+and ride on top platform.\n\
+Follow the coin arrow.")
 
 DEFINE_DIALOG(DIALOG_072, NO_SOUND, 5, 30, 200, "\
 High winds ahead!\n\
