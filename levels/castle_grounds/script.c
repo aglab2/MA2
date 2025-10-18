@@ -162,6 +162,7 @@ const LevelScript level_castle_grounds_entry[] = {
 		
 		OBJECT(MODEL_NONE, -310, 563, 3218, 0, -90+0, 0, (0xb << 16), bhvInstantActiveWarp),
 		OBJECT(MODEL_BOBOMB_BUDDY, -453, 4, -6606, 0, 0, 0, (68 << 16) | (68 << 24), bhvBobombBuddy),
+		OBJECT(MODEL_WOODEN_SIGNPOST, -584, 4, -8133, 0, 0, 0, (72 << 16) | (72 << 24), bhvMessagePanel),
 
 		TERRAIN(castle_grounds_area_1_collision),
 		MACRO_OBJECTS(castle_grounds_area_1_macro_objs),

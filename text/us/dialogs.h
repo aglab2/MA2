@@ -839,12 +839,10 @@ Use the next checkpoint\n\
 and ride on top platform.\n\
 Follow the coin arrow.")
 
-DEFINE_DIALOG(DIALOG_072, NO_SOUND, 5, 30, 200, "\
-High winds ahead!\n\
-Pull your Cap down tight.\n\
-If it blows off, you'll\n\
-have to find it on this\n\
-mountain.")
+DEFINE_DIALOG(DIALOG_072, NO_SOUND, 3, 30, 200, "\
+Walk past this sign\n\
+to reach the end, if\n\
+you have beaten Bowser")
 
 DEFINE_DIALOG(DIALOG_073, NO_SOUND, 4, 95, 200, "\
 Aarrgh! Ahoy, matey. I\n\
