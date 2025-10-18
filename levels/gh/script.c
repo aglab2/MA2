@@ -53,6 +53,7 @@ const LevelScript level_gh_entry[] = {
 	/* Fast64 end persistent block [level commands] */
 
 	AREA(1, gh_area_1, 0, -174, -900),
+		OBJECT(MODEL_NONE, 853, -124, 22, 0, 180+90, 0, (0x0A << 16), bhvEndResetter),
 		WARP_NODE(0x0A, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf0, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
 		WARP_NODE(0xf1, LEVEL_CASTLE_GROUNDS, 0x01, 0x0A, WARP_NO_CHECKPOINT),
