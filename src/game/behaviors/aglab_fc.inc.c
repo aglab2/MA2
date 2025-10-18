@@ -685,8 +685,8 @@ void fcgr_hitbox_xform(struct FcgrHitbox* hitbox)
         cyl.r += hr;
         to_xyz(&hitbox->x, &obj->oPosVec, x_axis, y_axis, z_axis, cyl);
 
-        hitbox->y -= hr;
-        hitbox->h = hr * 2.1f;
+        hitbox->y -= hr * 1.5f;
+        hitbox->h = hr * 2.6f;
         hitbox->r = hh / 2.f;
     }
 }

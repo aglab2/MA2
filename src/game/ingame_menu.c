@@ -2025,6 +2025,9 @@ static void render_quick_warp(s16 x, s16 y, s8 *index, s16 xIndex) {
     if (hasExtraCourse)
         limit++;
 
+    if (*index > limit)
+        *index = limit;
+
     handle_menu_scrolling(MENU_SCROLL_HORIZONTAL, index, 1, limit);
     if (*index == 1)
         return;
