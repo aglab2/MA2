@@ -22,6 +22,7 @@ static s16 sZAAngle;
 static struct Object* sCylObj;
 static f32 sPanYOffset = 0.f;
 static u8 sCylFlipped = 0;
+static u8 sAngleSetOnce = 0;
 
 #define IN_TUBE_R 900.f
 
@@ -59,6 +60,7 @@ void bhv_fc_grav_loop()
         sCylObj = o;
         sCylArea = gCurrAreaIndex;
         sCylFlipped = ABS(cyl.theta) > 0x5000 && fc_camera_sideways(o); // upper tube part
+        sAngleSetOnce = 0;
 
         // For velocity conversion, we cannot use generic 'to_cyl' function because
         // angular speed depends on the location of the object, not just the velocity.
@@ -390,8 +392,9 @@ when walking:
     f32 za_forwardVel = sqrtf(sqr(vel_component_za[0]) + sqr(vel_component_za[2]));
     f32 totalSpeedSqr = sqr(angularVel) + sqr(sCylVel.z);
 
-    if (totalSpeedSqr > 1.f)
+    if (totalSpeedSqr > 1.f || !sAngleSetOnce)
     {
+        sAngleSetOnce = 1;
         s16 zaAngle = atan2s(angularVel, sCylVel.z);
         sZAAngle = zaAngle;
         if (!obj->oFaceAnglePitch)
@@ -504,8 +507,18 @@ when walking:
         else
         {
             m->faceAngle[0] = 0;
-            // we can inherit the yaw from the tube just fine
-            //m->faceAngle[1] = atan2s(m->vel[2], m->vel[0]);
+
+            s16 absCylTheta = ABS(sCylPos.theta);
+            int forceYaw = 1;
+            if (absCylTheta < 0x2000)
+                forceYaw = 0;
+
+            if (absCylTheta > 0x6000)
+                forceYaw = 0;
+
+            if (forceYaw)
+                m->faceAngle[1] = atan2s(m->vel[2], m->vel[0]);
+
             m->faceAngle[2] = 0;
         }
     }
