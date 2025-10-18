@@ -99,7 +99,7 @@ const LevelScript level_chao_entry[] = {
 		OBJECT(MODEL_NONE, 2481, -800, -11201, 0, -91, 0, 0x00000000, bhvGoombaTripletSpawner),
 		OBJECT(MODEL_NONE, -1, 386, 487, 0, 0, 0, (0xa << 16), bhvInstantActiveWarp),
 		OBJECT(MODEL_MONTY_MOLE, 9330, 740, 4273, 0, -91, 0, 0x00000000, bhvMontyMole),
-		OBJECT(MODEL_MONTY_MOLE, 2477, -800, -11219, 0, -91, 0, 0x00000000, bhvMontyMole),
+		// OBJECT(MODEL_MONTY_MOLE, 2477, -800, -11219, 0, -91, 0, 0x00000000, bhvMontyMole),
 		// OBJECT(MODEL_MONTY_MOLE, 5634, -800, -11352, 0, -91, 0, 0x00000000, bhvMontyMole),
 		OBJECT(MODEL_DL_MONTY_MOLE_HOLE, 9294, 763, 3369, 0, -91, 0, 0x00000000, bhvMontyMoleHole),
 		OBJECT(MODEL_DL_MONTY_MOLE_HOLE, 9321, 740, 4253, 0, -91, 0, 0x00000000, bhvMontyMoleHole),
