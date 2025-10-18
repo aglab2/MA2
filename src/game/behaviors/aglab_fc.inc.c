@@ -179,7 +179,7 @@ int fcgr_spin(struct MarioState *m)
         sCylVel.r = 50.f + 800 * 0.01f;
         if (gCurrAreaIndex == 8)
         {
-            sCylVel.r += 5.f;
+            sCylVel.r += 8.f;
         }
 #endif
     }
@@ -685,7 +685,8 @@ void fcgr_hitbox_xform(struct FcgrHitbox* hitbox)
         cyl.r += hr;
         to_xyz(&hitbox->x, &obj->oPosVec, x_axis, y_axis, z_axis, cyl);
 
-        hitbox->h = hr;
+        hitbox->y -= hr;
+        hitbox->h = hr * 2.1f;
         hitbox->r = hh / 2.f;
     }
 }

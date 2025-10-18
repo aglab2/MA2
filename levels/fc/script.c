@@ -439,7 +439,7 @@ const LevelScript level_fc_entry[] = {
 		OBJECT(MODEL_NONE, 2630, -2900, 732, 0, 90, 0, (16 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 1150, -1591, -1088, 0, 90, 0, (16 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 1484, 539, -6597, 0, -180, 0, 0x00000000, bhvCoinFormation),
-		OBJECT(MODEL_NONE, 2175, 6344, -19917, 0, 90, 0, (17 << 16), bhvCoinFormation),
+		OBJECT(MODEL_NONE, 2175, 6344, -19917, 0, 90, 0, (17+32 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 765, 6344, -19917, 0, 90, 0, (17+32 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 1186, -2850, 467, 0, 90, -33, (17 << 16), bhvCoinFormation),
 		OBJECT(MODEL_NONE, 1186, -1596, -1312, 0, 90, -32, (17 << 16), bhvCoinFormation),
