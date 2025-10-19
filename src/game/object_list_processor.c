@@ -281,6 +281,11 @@ void bhv_mario_update(void) {
         }
     }
 
+    if ((gCurrCourseNum == COURSE_FC && (gCurrAreaIndex == 3 || gCurrAreaIndex == 6 || gCurrAreaIndex == 7)))
+    {
+        gSafeY = -30000.f;
+    }
+
     if (gMarioStates->action != ACT_FLYING && !(gMarioStates->action & (ACT_FLAG_SWIMMING | ACT_FLAG_METAL_WATER)))
     {
         if (gMarioStates->area->camera->mode == FLYING_CAMERA_MODE) {
