@@ -384,7 +384,11 @@ DEFINE_DIALOG(DIALOG_035, NO_SOUND, 4, 30, 200, "\
 Rail ahead is very\n\
 sticky. You will not\n\
 be able to jump off it\n\
-till the end of the ride.")
+till the end of the ride.\n\
+Remember that you can\n\
+hold Ⓩ to slow down and\n\
+press Ⓑ with max speed\n\
+to perform the spin.")
 
 DEFINE_DIALOG(DIALOG_036, NO_SOUND, 3, 30, 200, "\
 Make sure to check\n\
@@ -783,14 +787,18 @@ You need to use the\n\
 advanced techniques\n\
 to ride the rails in\n\
 the upcoming course.\n\
-Press Ⓑ with max speed\n\
-to perform the spin.\n\
-Hold Ⓩ to slow down.\n\
+1) Press Ⓑ with max\n\
+speed to perform the spin.\n\
+2) Hold Ⓩ to slow down.\n\
 \n\
-Use control stick to tilt\n\
-left or right and press Ⓐ\n\
-when tilted to hop on\n\
-the nearest rail.")
+3) Use control stick to\n\
+tilt left or right and\n\
+press Ⓐ when tilted to\n\
+hop on the nearest rail.\n\
+Practice these 3 rail\n\
+skills at the start\n\
+of the course well,\n\
+you will need them!")
 
 DEFINE_DIALOG(DIALOG_069, NO_SOUND, 6, 30, 200, "\
 Sometimes you'll bump into\n\
