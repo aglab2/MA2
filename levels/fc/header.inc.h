@@ -38,6 +38,8 @@ extern const Trajectory fc_area_6_spline_0073_object_01441884_001_Rail[];
 extern const Trajectory fc_area_6_spline_0074_object_01440DDC_001_Rail[];
 extern const Trajectory fc_area_6_spline_NurbsCurve_Loop[];
 extern const Trajectory fc_area_6_spline_NurbsCurve_Spring[];
+extern const Trajectory fc_area_6_spline_NurbsCurve_Spring_004[];
+extern const Trajectory fc_area_6_spline_NurbsCurve_Spring_008[];
 extern const GeoLayout fc_area_7_geo[];
 extern const GeoLayout fc_area_7[];
 extern const Collision fc_area_7_collision[];
