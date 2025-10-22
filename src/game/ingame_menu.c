@@ -2858,11 +2858,8 @@ s32 render_course_complete_screen(void) {
             break;
 
         case DIALOG_STATE_VERTICAL:
-            shade_screen();
-            render_course_complete_lvl_info_and_hud_str();
-            render_save_confirmation(SAVE_CONFIRMATION_X, 86, &gDialogLineNum, 20);
-
-            if (gCourseDoneMenuTimer > 110 && (gPlayer1Controller->buttonPressed & (A_BUTTON | START_BUTTON))) {
+            gDialogLineNum = 1;
+            if (gCourseDoneMenuTimer > 97) {
                 level_set_transition(0, NULL);
                 play_sound(SOUND_MENU_STAR_SOUND, gGlobalSoundSource);
                 gDialogBoxState = DIALOG_STATE_OPENING;
