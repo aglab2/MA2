@@ -1213,6 +1213,12 @@ s32 act_unused_death_exit(struct MarioState *m) {
 
 extern int zipline_cancel();
 s32 act_falling_death_exit(struct MarioState *m) {
+    if (m->usedObj->behavior == bhvCheckpoint)
+    {
+        m->pos[0] = m->usedObj->oPosX;
+        m->pos[2] = m->usedObj->oPosZ;
+    }
+
     int zipLineCanceled = zipline_cancel();
     if (zipLineCanceled || launch_mario_until_land(m, ACT_DEATH_EXIT_LAND, MARIO_ANIM_GENERAL_FALL, 0.0f)) {
         play_sound(SOUND_MARIO_OOOF2, m->marioObj->header.gfx.cameraToObject);
