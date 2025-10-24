@@ -203,7 +203,7 @@ static void bhv_coin_formation_spawned_coin_loop_impl(struct ObjectHitbox *hitbo
                 o->oPosY = o->oFloorHeight;
             }
 
-            if (o->oFloor->type == SURFACE_DEATH_PLANE) {
+            if (o->oFloor && o->oFloor->type == SURFACE_DEATH_PLANE) {
                 o->activeFlags = 0;
             }
         } else {
